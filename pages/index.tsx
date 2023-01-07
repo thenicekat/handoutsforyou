@@ -44,7 +44,7 @@ export default function Home({ handoutsMap }: any) {
 
       <div className='px-2 md:px-20'>
         {
-          Object.keys(handoutsMap).map((handoutMap: any) => {
+          Object.keys(handoutsMap).reverse().map((handoutMap: any) => {
             return <YearComponent handouts={handoutsMap[handoutMap]} year={handoutMap} key={handoutMap} searchWord={search}/>
           })
         }
