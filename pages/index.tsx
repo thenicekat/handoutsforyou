@@ -35,9 +35,10 @@ export default function Home({ handoutsMap }: any) {
 
       {/* Search box */}
       <div className='grid h-[50vh] place-items-center'>
-        <>
+        <div className='w-[50vw] place-items-center flex flex-col justify-between'>
+          <h1 className='text-5xl p-3'>Handouts For You.</h1>
           <input type="text" placeholder="Search..." className="input input-bordered w-full max-w-xs" onChange={e => setSearch(e.target.value)} />
-        </>
+        </div>
       </div>
 
       <div className='px-20'>
