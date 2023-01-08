@@ -1,7 +1,15 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head'
 import { useState } from 'react'
-import YearComponent from './../Components/YearComponent';
+import dynamic from 'next/dynamic';
+
+const YearComponent = dynamic(() => import('./../Components/YearComponent'), {
+  loading: () => (
+    <div className='grid place-items-center'>
+      <p className='text-xl'>Loading...</p>
+    </div>
+  ),
+})
 
 export const getStaticProps: GetStaticProps = async () => {
   const fs = require('fs');
@@ -46,7 +54,7 @@ export default function Home({ handoutsMap }: any) {
       <div className='px-2 md:px-20'>
         {
           Object.keys(handoutsMap).reverse().map((handoutMap: any) => {
-            return <YearComponent handouts={handoutsMap[handoutMap]} year={handoutMap} key={handoutMap} searchWord={search}/>
+            return <YearComponent handouts={handoutsMap[handoutMap]} year={handoutMap} key={handoutMap} searchWord={search} />
           })
         }
       </div>
