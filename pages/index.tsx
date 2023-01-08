@@ -34,7 +34,7 @@ export default function Home({ handoutsMap }: any) {
       </Head>
 
       {/* Search box */}
-      <div className='grid h-[50vh] place-items-center'>
+      <div className='grid h-96 place-items-center'>
         <div className='w-[50vw] place-items-center flex flex-col justify-between'>
           <h1 className='text-5xl p-3'>Handouts For You.</h1>
           <p className='py-3'>NOTE: Contains all handouts for 18-19/21-22/22-23 but only GS and HSS handouts for 19-20/20-21</p>
@@ -42,6 +42,7 @@ export default function Home({ handoutsMap }: any) {
         </div>
       </div>
 
+      {/* Handouts List */}
       <div className='px-2 md:px-20'>
         {
           Object.keys(handoutsMap).reverse().map((handoutMap: any) => {
