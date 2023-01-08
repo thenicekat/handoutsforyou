@@ -45,7 +45,7 @@ export default function Home({ handoutsMap }: any) {
       <div className='grid h-96 place-items-center'>
         <div className='w-[50vw] place-items-center flex flex-col justify-between'>
           <h1 className='text-5xl p-3'>Handouts For You.</h1>
-          <p className='py-3'>NOTE: Contains all handouts for 18-19/21-22/22-23 but only GS and HSS handouts for 19-20/20-21</p>
+          <p className='py-3'>NOTE: Contains all handouts for 18-19/20-21/21-22/22-23 but only GS and HSS handouts for 19-20</p>
           <input type="text" placeholder="Search..." className="input input-bordered w-full max-w-xs" onChange={e => setSearch(e.target.value)} />
         </div>
       </div>
