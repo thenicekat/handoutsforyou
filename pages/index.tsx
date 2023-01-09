@@ -2,6 +2,7 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head'
 import { useState } from 'react'
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
 
 const YearComponent = dynamic(() => import('./../Components/YearComponent'), {
   loading: () => (
@@ -46,6 +47,8 @@ export default function Home({ handoutsMap }: any) {
         <div className='w-[50vw] place-items-center flex flex-col justify-between'>
           <h1 className='text-5xl p-3'>Handouts For You.</h1>
           <p className='py-3'>NOTE: Contains all handouts for 18-19/20-21/21-22/22-23 but only GS and HSS handouts for 19-20</p>
+          <p className='py-3'>If handout is missing, Please send an <Link className="text-cyan-400 underline" href={'mailto:f20210075@hyderabad.bits-pilani.ac.in'}>email</Link></p>
+        
           <input type="text" placeholder="Search..." className="input input-bordered w-full max-w-xs" onChange={e => setSearch(e.target.value)} />
         </div>
       </div>
