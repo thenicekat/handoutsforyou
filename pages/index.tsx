@@ -51,7 +51,7 @@ export default function Home({ handoutsMap }: any) {
         <div className='w-[50vw] place-items-center flex flex-col justify-between'>
           <h1 className='text-5xl p-3'>Handouts For You.</h1>
           <p className='py-3'>NOTE: Contains all BITS Pilani, Hyderabad Campus handouts for 18-19/20-21/21-22/22-23 but only GS and HSS handouts for 19-20</p>
-          <p className='py-3'>If handout is missing, Please send the handout to <Link className="text-cyan-400 underline" href={'mailto:f20210075@hyderabad.bits-pilani.ac.in'}>email</Link></p>
+          <p className='py-3'>If you have any handout and it is missing here, Please send the handout through <Link className="text-cyan-400 underline" href={'mailto:f20210075@hyderabad.bits-pilani.ac.in'}>email</Link></p>
         
           <input type="text" placeholder="Search..." className="input input-bordered w-full max-w-xs" onChange={e => setSearch(e.target.value)} />
         </div>
