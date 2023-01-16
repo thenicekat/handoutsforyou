@@ -21,7 +21,7 @@ export default function YearComponent({ handouts, year, searchWord }: Props) {
                 <span>{handout}</span>
               </div>
               <div className="flex-none">
-                <button className="btn btn-sm btn-ghost">{'Year ' + year.split("_")[0] + '-' + year.split("_")[1]}</button>
+                <button className="btn btn-sm btn-ghost">{'Year ' + year.split("_")[0] + '-' + year.split("_")[1] + " " + (year.split("_").length > 2 ?  year.split("_")[2] : "")}</button>
               
                 <Link href={"https://github.com/Divyateja04/handoutsforyou/raw/main/public/handouts/" + year + '/' + handout + '?raw=true'}><button className="btn btn-sm btn-primary">View</button></Link>
               </div>
