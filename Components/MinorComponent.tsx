@@ -19,16 +19,16 @@ export default function MinorComponent({ minor }: Props) {
         <h1 className="text-2xl py-3">1. Core Courses</h1>
         <ol>
         {
-            minor.coreCourses.map(coreCourse => (
-                <li className="px-3">{coreCourse}</li>
+            minor.coreCourses.map((coreCourse, _) => (
+                <li className="px-3" key={_}>{coreCourse}</li>
             ))
         }
         </ol>
         <h1 className="text-2xl py-3">2. Electives</h1>
         <ol>
         {
-            minor.electives.map(elective => (
-                <li className="px-3">{elective}</li>
+            minor.electives.map((elective, _) => (
+                <li className="px-3" key={_}>{elective}</li>
             ))
         }
         </ol>

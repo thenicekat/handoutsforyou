@@ -25,14 +25,13 @@ function Minors() {
             <div className='grid h-96 place-items-center'>
                 <div className='w-[50vw] place-items-center flex flex-col justify-between'>
                     <h1 className='text-5xl py-5'>Minors.</h1>
-                    
                 </div>
             </div>
 
             <div className='px-2 md:px-20'>
                 {
-                    minors.map(minor => (
-                        <MinorComponent minor={minor} />
+                    minors.map((minor, _) => (
+                        <MinorComponent minor={minor} key={_}/>
                     ))
                 }
             </div>
