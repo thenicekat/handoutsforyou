@@ -1,0 +1,673 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>ER Modelling</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="c29c0cce-f9fc-4895-8d2b-f5abde340355" class="page sans"><header><h1 class="page-title">ER Modelling</h1></header><div class="page-body"><nav id="98d00ef3-cf52-4e0b-b7d2-15529d2e804c" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#348c95e7-e07a-4489-972a-a3804029cf4a">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c294df3f-bd9d-4116-80cf-6376ce4c3581">Entity</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ec939921-ad11-4fe7-8e45-38333710f800">Concepts used in ER</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3a02dbde-4ef5-49c2-8cf0-504844b96cec">Notations used in ER</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b6297442-9d83-4c54-8fb2-105dcd16b4c3">Relationships in ER</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#860b720b-6918-4f84-a607-e511946f7ef2">Degree of a Relationship</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#53e1c8f2-724e-4e42-b020-ddf528ffdd04">Cardinality of a Relationship</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a5347b1f-9177-49bc-808e-1113e7afe53b">Participation Constraint</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#729e664b-887e-45cf-8733-0e058c2de59c">EER</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#bd5e5365-386f-47d3-8fd4-0c3e43b8267d">Subclasses in EER</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0da99277-c833-4b02-9126-fba65196a32f">Specialization</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e3ec361f-c056-4d4a-960e-7da49f57cedd">Generalization</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#70bdd77a-1a0d-4785-83aa-e7545203e75e">Constraints</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#24b2063e-1459-4276-986c-68919557259c">Exercise Problem</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a1636a0e-8095-48a6-ab72-b95f6a4cc87b">Question 1</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2ddd49f9-ddd6-4191-90ce-4f29b920b18b">Answer 1</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#da96ea16-b8c6-4c9f-a84e-d0c0cc1aa341">Question 2</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#aa45ecad-38cb-496c-9f17-7541e2487fdd">Answer 2</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#cf4c0040-71f5-4051-bf22-1a94e05d2db4">Exercise 3</a></div></nav><h1 id="348c95e7-e07a-4489-972a-a3804029cf4a" class="">Introduction</h1><ul id="fb13b6aa-e134-41ed-bd10-fcad432b738c" class="bulleted-list"><li style="list-style-type:disc">Popular high level data model and is an approach to designing semantic conceptual schema of a database</li></ul><ul id="9356eb1d-2f25-486e-96f0-7222c1901bda" class="bulleted-list"><li style="list-style-type:disc">Allows us to describe the data involved in a real world environment in terms of objects and their relationships, which are widely used in design of database</li></ul><ul id="aba9bab1-fb45-4438-a2cd-db89b8603f83" class="bulleted-list"><li style="list-style-type:disc">Provides preliminary concepts or ideas about the data representation which is later modified to achieve final detailed design</li></ul><h2 id="c294df3f-bd9d-4116-80cf-6376ce4c3581" class="">Entity</h2><ul id="57d6fbbc-cfea-4ca2-b116-d49bc292d53f" class="bulleted-list"><li style="list-style-type:disc">Object in a real world or some idea or concept which can be distinguished from other objects</li></ul><ul id="2b735df9-d540-4e1a-ae49-1d348b25969f" class="bulleted-list"><li style="list-style-type:disc">Has independent existence</li></ul><ul id="9c3aa980-887c-441c-87e5-3c26e0b621bc" class="bulleted-list"><li style="list-style-type:disc">Each entity belongs to an entity type that defines the structure</li></ul><ul id="c1f8300e-7668-4d34-9b8f-c18e1d087732" class="bulleted-list"><li style="list-style-type:disc">Entity set is a collection of similar objects</li></ul><h1 id="ec939921-ad11-4fe7-8e45-38333710f800" class="">Concepts used in ER</h1><ul id="3c55312c-823e-4dfa-a136-1df4256fff6d" class="bulleted-list"><li style="list-style-type:disc">Attribute reflects a property of an object or entity<ul id="a303fe17-1337-419b-90d6-12744d1c3f26" class="bulleted-list"><li style="list-style-type:circle">Simple</li></ul><ul id="771c7cef-ced1-4e4f-83db-2adf8281b966" class="bulleted-list"><li style="list-style-type:circle">Composite</li></ul><ul id="c1fe1d5a-e5d7-4cbe-b298-588bb913920f" class="bulleted-list"><li style="list-style-type:circle">Single Valued</li></ul><ul id="8f233fdb-2b38-4cc5-8ef9-408bc405ff1b" class="bulleted-list"><li style="list-style-type:circle">Multi Valued</li></ul><ul id="db1ed411-687a-44c0-81c3-5e77db7c24bb" class="bulleted-list"><li style="list-style-type:circle">Derived</li></ul><ul id="f4f61b81-b7fa-4607-8199-55397db1d915" class="bulleted-list"><li style="list-style-type:circle">Stored → Stored in the database</li></ul></li></ul><ul id="ab6ac015-aeb1-4cf4-b7e1-f11ea26b27f3" class="bulleted-list"><li style="list-style-type:disc">Key is an attribute of an entity type whose value can uniquely identity an entity in set</li></ul><ul id="1879bc29-8ba9-46da-9f8f-86c184023950" class="bulleted-list"><li style="list-style-type:disc">Relationship is the association between entities</li></ul><ul id="ce7a690b-fcc5-4995-a760-b597e95753fb" class="bulleted-list"><li style="list-style-type:disc">Domain of an attribute is the set of all possible values that attribute can take</li></ul><h1 id="3a02dbde-4ef5-49c2-8cf0-504844b96cec" class="">Notations used in ER</h1><ul id="39f8dbbd-439b-43ad-b95e-25986f39d2c4" class="bulleted-list"><li style="list-style-type:disc">Weak Entities → Don’t have individual unique identification attribute</li></ul><ul id="ec31b68e-fd47-48d3-8e2f-a100d2b824d8" class="bulleted-list"><li style="list-style-type:disc">Relationship between an Entity and Weak Entity is called an Identifying Relationship type only incase the weak entity has to use the attributes from the normal entity to uniquely identify themselves</li></ul><ul id="2169970b-c3e7-47ae-8c3b-10c878107eb2" class="bulleted-list"><li style="list-style-type:disc">A weak entity will always have an Identification Relationship and will be total 🙂</li></ul><ul id="e3e6ca4e-5ab5-4865-8079-14a0b868d3d3" class="bulleted-list"><li style="list-style-type:disc">A key that comes after the identification relationship is made and acts as part of the super key is called the partial key</li></ul><ul id="6b1462fe-c673-403c-97e0-0cf9b0acbea5" class="bulleted-list"><li style="list-style-type:disc">We use dotted lines for attributes in weak entities if unique wrt the parent entity</li></ul><ul id="38624520-178b-4f49-88cb-134ec109a6bc" class="bulleted-list"><li style="list-style-type:disc">This is called Partial Key</li></ul><figure id="9b16935f-c57a-41af-b532-041620e68660" class="image"><a href="ER%20Modelling%20c29c0ccef9fc48958d2bf5abde340355/Untitled.png"><img style="width:991px" src="ER%20Modelling%20c29c0ccef9fc48958d2bf5abde340355/Untitled.png"/></a></figure><figure id="ed12b1f8-2cb5-41a4-84f2-5b02b01650e0" class="image"><a href="ER%20Modelling%20c29c0ccef9fc48958d2bf5abde340355/Untitled%201.png"><img style="width:725px" src="ER%20Modelling%20c29c0ccef9fc48958d2bf5abde340355/Untitled%201.png"/></a></figure><figure id="97a89d75-d358-447a-a3aa-41c131853ec9" class="image"><a href="ER%20Modelling%20c29c0ccef9fc48958d2bf5abde340355/Untitled%202.png"><img style="width:1065px" src="ER%20Modelling%20c29c0ccef9fc48958d2bf5abde340355/Untitled%202.png"/></a></figure><figure id="898ac490-bc28-4e85-ae16-ed5133acb88f" class="image"><a href="ER%20Modelling%20c29c0ccef9fc48958d2bf5abde340355/Untitled%203.png"><img style="width:710px" src="ER%20Modelling%20c29c0ccef9fc48958d2bf5abde340355/Untitled%203.png"/></a></figure><h1 id="b6297442-9d83-4c54-8fb2-105dcd16b4c3" class="">Relationships in ER</h1><p id="49acf476-8f28-4793-956f-4afdb23a2f99" class="">NOTE: Relationships can have their own attributes</p><h2 id="860b720b-6918-4f84-a607-e511946f7ef2" class="">Degree of a Relationship</h2><ul id="42dcbd1f-dc0c-4612-aebb-d9796d92500d" class="bulleted-list"><li style="list-style-type:disc">The number of entities involved in a relationship is called the degree of that particular relationship</li></ul><ul id="2340f298-4c5b-4f95-a374-0cb895bade51" class="bulleted-list"><li style="list-style-type:disc">If there are two entity types involved it is a binary relationships</li></ul><ul id="f5c6bdad-0b52-41c0-b855-7a3b4d7d86ed" class="bulleted-list"><li style="list-style-type:disc">If there are three entity types then it’s a ternary</li></ul><ul id="b8b908d3-eb13-40e0-accc-d0cdbb3df913" class="bulleted-list"><li style="list-style-type:disc">Unary relationships are also known as recursive relationship</li></ul><h2 id="53e1c8f2-724e-4e42-b020-ddf528ffdd04" class="">Cardinality of a Relationship</h2><ul id="531cf88e-0c84-4d6a-8514-3c2de481168b" class="bulleted-list"><li style="list-style-type:disc">Relationships are rarely one to one</li></ul><ul id="a1f66930-f84d-4862-9bdd-87edb3a8d812" class="bulleted-list"><li style="list-style-type:disc">We have 1:1, 1:M, M:1 and M:N</li></ul><ul id="c7b32832-af88-4dd9-b120-07d320dd9a86" class="bulleted-list"><li style="list-style-type:disc">1:1 is one to one say one man is married to one woman</li></ul><ul id="1311d7b8-0f3d-4170-a1e7-6ed559b491a0" class="bulleted-list"><li style="list-style-type:disc">1:M is one to many, one manager to multiple employees</li></ul><ul id="7f7c3fa0-d374-47ce-8d40-ca03c3dc6727" class="bulleted-list"><li style="list-style-type:disc">M:1 is many to one i.e. many students in one course</li></ul><ul id="00f5662f-ddab-45ed-b8dc-0f216709dead" class="bulleted-list"><li style="list-style-type:disc">M:N is where there are many comments for many posts</li></ul><ul id="417d50e2-b359-47e2-8d34-4cf462b7709c" class="bulleted-list"><li style="list-style-type:disc">For marking cardinality, we take a relation, say an <code>employee heads dept</code></li></ul><ul id="9fb88f57-b4af-4828-8887-da0aad8f12c3" class="bulleted-list"><li style="list-style-type:disc">We start from an employee side and see how many dept one employee can be in → 1</li></ul><ul id="3cc16ab2-cfa3-4ce7-b436-2b64cda2ad7b" class="bulleted-list"><li style="list-style-type:disc">And for dept it can have n employees</li></ul><ul id="57bef514-19bc-42c5-8a2c-7cf8e9d27871" class="bulleted-list"><li style="list-style-type:disc">So We mark EMPLOYEE —N—&gt; HEADS —1—&gt; DEPARTMENT</li></ul><ul id="f65187c7-522c-42c8-a40e-b9de69f5974c" class="bulleted-list"><li style="list-style-type:disc">So like one department has n employees so we mark n near employees and same for dept</li></ul><ul id="bc16da87-f2bb-47ce-96e3-03b6eef24b4f" class="bulleted-list"><li style="list-style-type:disc">But when we are marking limits we mark on same side i.e. on dept side we mark for no of employees in that dept say (10, infinite)</li></ul><h2 id="a5347b1f-9177-49bc-808e-1113e7afe53b" class="">Participation Constraint</h2><ul id="2c576a3e-e519-43c4-8520-a9e464eb1d4c" class="bulleted-list"><li style="list-style-type:disc">If all entities of an entity type are involved in the relationship then that entity type’s involvement said to be total in that relationship</li></ul><ul id="70946c44-27fd-4e4c-a007-0acfd42cd28f" class="bulleted-list"><li style="list-style-type:disc">In the below relationship, if each employee is associated with atleast one department</li></ul><ul id="d80432f0-e156-4d62-af41-6493693c8991" class="bulleted-list"><li style="list-style-type:disc">Then the participation of EMP is total</li></ul><ul id="b5260884-cc08-4f9d-9c8f-1e8741653e90" class="bulleted-list"><li style="list-style-type:disc">Here EMP works for dept</li></ul><ul id="d807fcc7-0fc1-4c32-9e79-c9121cb0c52f" class="bulleted-list"><li style="list-style-type:disc">If only some then it’s called partial</li></ul><figure id="43189462-885f-4ca8-abba-5a12cf841801" class="image"><a href="ER%20Modelling%20c29c0ccef9fc48958d2bf5abde340355/Untitled%204.png"><img style="width:770px" src="ER%20Modelling%20c29c0ccef9fc48958d2bf5abde340355/Untitled%204.png"/></a></figure><h1 id="729e664b-887e-45cf-8733-0e058c2de59c" class="">EER</h1><ul id="a13d8b25-f484-4991-a37e-c0b17811f133" class="bulleted-list"><li style="list-style-type:disc">EER stands for Extended ER modeling or Enhanced ER modeling</li></ul><ul id="ee01d82c-762b-4211-8a5b-6141a4132e24" class="bulleted-list"><li style="list-style-type:disc">EER includes object oriented concepts such as inheritance<ul id="aa291079-1dff-464c-b937-1448fb41a59e" class="bulleted-list"><li style="list-style-type:circle">Specialization and generalization</li></ul><ul id="f778a6cf-aab7-4c59-a3de-b787e9142af8" class="bulleted-list"><li style="list-style-type:circle">Attribute and Relationship Inheritance</li></ul><ul id="5e54c06c-0806-4c7c-976d-208bba1c691d" class="bulleted-list"><li style="list-style-type:circle">Subclasses and super classes</li></ul></li></ul><h2 id="bd5e5365-386f-47d3-8fd4-0c3e43b8267d" class="">Subclasses in EER</h2><ul id="7fb2dc49-2b28-4670-8604-15ef6a5f312e" class="bulleted-list"><li style="list-style-type:disc">An entity type may have additional sub groupings</li></ul><ul id="8d8e8d95-2037-4539-8497-64dfe42502df" class="bulleted-list"><li style="list-style-type:disc">Subclass member is the same entity in a distinct specific role</li></ul><ul id="a13f396e-d1d3-46df-a4b1-91c6b300fb2f" class="bulleted-list"><li style="list-style-type:disc">An entity cannot exist in the database merely by being a member of the subclass</li></ul><ul id="099ad8a5-903c-4448-af38-00025e86aa2b" class="bulleted-list"><li style="list-style-type:disc">It must also be a member of the superclass</li></ul><ul id="b07594e1-e6ba-41cd-b215-4302c96d9641" class="bulleted-list"><li style="list-style-type:disc">A member of the superclass can be optionally included as a member of any number of it’s subclasses</li></ul><h2 id="0da99277-c833-4b02-9126-fba65196a32f" class="">Specialization</h2><ul id="d0aaed23-c48d-4b03-b5c1-f71d1b87bed8" class="bulleted-list"><li style="list-style-type:disc">Process of defining a set of subclasses of a superclass</li></ul><ul id="a1a364cf-67ad-4642-a1fc-11ff77411d87" class="bulleted-list"><li style="list-style-type:disc">Here secretary cannot be technician and vice versa → disjoint</li></ul><ul id="e7d74fb8-e7df-45d8-85ba-2d97cf3b422e" class="bulleted-list"><li style="list-style-type:disc">d in circle means disjoint while o means overlapping</li></ul><figure id="f3aec5f0-8212-4f98-b633-901d48089821" class="image"><a href="ER%20Modelling%20c29c0ccef9fc48958d2bf5abde340355/Untitled%205.png"><img style="width:1053px" src="ER%20Modelling%20c29c0ccef9fc48958d2bf5abde340355/Untitled%205.png"/></a></figure><h2 id="e3ec361f-c056-4d4a-960e-7da49f57cedd" class="">Generalization</h2><ul id="9574feba-ab59-411a-90d9-e5a2a7e77c96" class="bulleted-list"><li style="list-style-type:disc">Reverse of the specialization process.</li></ul><ul id="7ab530bc-cd79-4362-bdfa-deeb31fa260b" class="bulleted-list"><li style="list-style-type:disc">Several classes with common features are generalized into a superclass</li></ul><figure id="f8b1a02c-86cd-43eb-9537-3ad75e62cc88" class="image"><a href="ER%20Modelling%20c29c0ccef9fc48958d2bf5abde340355/Untitled%206.png"><img style="width:1224px" src="ER%20Modelling%20c29c0ccef9fc48958d2bf5abde340355/Untitled%206.png"/></a></figure><h3 id="70bdd77a-1a0d-4785-83aa-e7545203e75e" class="">Constraints</h3><ul id="2285ee67-4213-4942-b8d1-70ef310864b7" class="bulleted-list"><li style="list-style-type:disc">We have two types of constraints<ul id="cdc52a4c-52d7-4b56-94a8-efbc80ee7bf7" class="bulleted-list"><li style="list-style-type:circle">Disjoint-ness Constraint and</li></ul><ul id="f8e16082-272a-489c-8d98-2731d6e0cb86" class="bulleted-list"><li style="list-style-type:circle">Completeness Constraint</li></ul></li></ul><ul id="3855d851-c055-4d96-aab4-687c00f36fca" class="bulleted-list"><li style="list-style-type:disc">Hence we have 4 types of specialization or generalization<ul id="429dd673-9adb-436d-ad34-d1e67ffb2b54" class="bulleted-list"><li style="list-style-type:circle">Disjoint total</li></ul><ul id="0d849a0c-895e-485f-a5e6-9016066610ed" class="bulleted-list"><li style="list-style-type:circle">Disjoint partial</li></ul><figure id="4f40bb8d-5828-4d2a-aa17-76b865e3c97a" class="image"><a href="ER%20Modelling%20c29c0ccef9fc48958d2bf5abde340355/Untitled%207.png"><img style="width:336px" src="ER%20Modelling%20c29c0ccef9fc48958d2bf5abde340355/Untitled%207.png"/></a></figure><ul id="a2b1840a-94f5-4833-a050-75ce90063a46" class="bulleted-list"><li style="list-style-type:circle">Overlapping total</li></ul><figure id="de04c654-fe3c-4479-8853-1c1d3d762617" class="image"><a href="ER%20Modelling%20c29c0ccef9fc48958d2bf5abde340355/Untitled%208.png"><img style="width:480px" src="ER%20Modelling%20c29c0ccef9fc48958d2bf5abde340355/Untitled%208.png"/></a></figure><ul id="755482c9-a8bc-4a86-8fbe-02db45f8c04a" class="bulleted-list"><li style="list-style-type:circle">Overlapping partial</li></ul></li></ul><ul id="2827ce64-5c15-4a4d-9377-37453d74ef5f" class="bulleted-list"><li style="list-style-type:disc">Generalization is usually total because the superclass is derived from the subclasses</li></ul><h1 id="24b2063e-1459-4276-986c-68919557259c" class="">Exercise Problem</h1><h3 id="a1636a0e-8095-48a6-ab72-b95f6a4cc87b" class="">Question 1</h3><p id="c34ac7e5-fcc1-4291-ba5b-64ccfedef24a" class="">Assume that we need to capture the data about a Non-profit organization(NPO) with following details/requirements.</p><p id="16de475a-c296-4d72-a6f7-7eedcaca458a" class="">i) The NPO depends on a number of different types of persons for its successful operations.</p><p id="a812be64-0887-455d-8171-0289f7553d3e" class="">ii) The NPO is interested in following attributes of a person- SSN (identifier), name, address (consists of house#/city/state/zip components), and telephone.</p><p id="2c3395a9-02d4-4ec3-97fa-1c8b48f9b58e" class="">iii) Three types of persons are of great interest to the NPO- employees, volunteers, and donors.</p><p id="c1e18d78-b531-442b-a985-c7bde0165159" class="">iv) Employees have only a date_hired attribute, volunteers have skill attribute, and donors have donor category as specific attribute.</p><p id="4a118d8e-0e24-472e-938d-f009717950a6" class="">v) Donors have a specific relationship (called Donates) with an item entity type(assume suitable attributes for Item entity type including a key).</p><p id="1d1a432a-c41d-4e6e-9e86-8f2473a251af" class="">vi) A donor must have donated one or more items, and an item may have no donors,
+or one or more donors.</p><p id="27081110-1d9f-4670-a728-eb31ea2802ee" class="">vii) There are persons other than employees, volunteers, and donors who are of
+interest to the NPO, so that a person need not belong to any of these three
+types/groups. On the other hand, at a given time a person may belong to two or
+more of the above group</p><h3 id="2ddd49f9-ddd6-4191-90ce-4f29b920b18b" class="">Answer 1</h3><h3 id="da96ea16-b8c6-4c9f-a84e-d0c0cc1aa341" class="">Question 2</h3><figure id="dd3ac1d3-8322-4f89-a861-90e7bedabeae" class="image"><a href="ER%20Modelling%20c29c0ccef9fc48958d2bf5abde340355/Untitled%209.png"><img style="width:543px" src="ER%20Modelling%20c29c0ccef9fc48958d2bf5abde340355/Untitled%209.png"/></a></figure><h3 id="aa45ecad-38cb-496c-9f17-7541e2487fdd" class="">Answer 2</h3><ul id="16c23f22-1a25-415d-ac32-acf2c422f3be" class="bulleted-list"><li style="list-style-type:disc">Student - Name, Roll No(Key), Address(Composite Attribute), Contact(Multivalued), branch</li></ul><ul id="af201f4b-ec41-4d42-9fca-b14c3f9f637e" class="bulleted-list"><li style="list-style-type:disc">Clubs are specialized </li></ul><ul id="3b990e3a-4370-44ae-b886-74e0a1581c36" class="bulleted-list"><li style="list-style-type:disc">Club - Name(Key), start_date, fic, funds availale</li></ul><ul id="e6838ea1-e990-4171-bdde-01517ac4122b" class="bulleted-list"><li style="list-style-type:disc">Event - start date, end date, desc, budget</li></ul><ul id="03974140-b8fa-4576-bfc5-dcd8bbc3866f" class="bulleted-list"><li style="list-style-type:disc">A single club cannot conduct more than one event at a given point of time</li></ul><ul id="9a33cd06-05df-4326-a70c-4c11e7ff5613" class="bulleted-list"><li style="list-style-type:disc">One event → One club</li></ul><ul id="bfdc2dbe-6c1c-4df3-9158-9f781c1b8209" class="bulleted-list"><li style="list-style-type:disc">Students can be members and office bearers</li></ul><h3 id="cf4c0040-71f5-4051-bf22-1a94e05d2db4" class="">Exercise 3</h3><figure id="b99edf07-3f84-4604-a9cf-3ccc447b2ae9" class="image"><a href="ER%20Modelling%20c29c0ccef9fc48958d2bf5abde340355/Untitled%2010.png"><img style="width:1870px" src="ER%20Modelling%20c29c0ccef9fc48958d2bf5abde340355/Untitled%2010.png"/></a></figure><figure id="757c88e4-f4e6-4483-b6bc-ec3b3070ea8d" class="image"><a href="ER%20Modelling%20c29c0ccef9fc48958d2bf5abde340355/Untitled%2011.png"><img style="width:1320px" src="ER%20Modelling%20c29c0ccef9fc48958d2bf5abde340355/Untitled%2011.png"/></a></figure><figure id="0dc99e95-4ec0-4661-9ce5-025a25bb9a7e" class="image"><a href="ER%20Modelling%20c29c0ccef9fc48958d2bf5abde340355/Untitled%2012.png"><img style="width:1234px" src="ER%20Modelling%20c29c0ccef9fc48958d2bf5abde340355/Untitled%2012.png"/></a></figure></div></article></body></html>

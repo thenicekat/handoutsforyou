@@ -1,0 +1,682 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Structured Query Language</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="eb948c38-0469-44e5-8757-46617d53b9fb" class="page sans"><header><h1 class="page-title">Structured Query Language</h1></header><div class="page-body"><nav id="dab23627-18bf-4520-8099-017ee3402e51" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0322afa3-61b5-4eec-8e17-caf2e85c2790">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a3e00113-4b96-4c5e-87e3-5b78f9f9e75b">Features of SQL</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#55facf08-d8ec-460b-800b-2d4cb2902cb9">DDL Commands</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3de4bf31-fc23-44d3-87ba-bee4e5862d6b">CREATE</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#dde55f92-6134-433f-9958-0eb4888b78fb">DROP</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#dfc586a2-385f-448c-a227-1a2e87930037">ALTER</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8f78375b-4f52-44e0-8eb8-f0aaa547ade8">CHECK</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ec93e928-a0f9-4e28-b940-687c43536434">DML Commands</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#dd3f7efb-a366-4b66-97f4-1e5e3e742e39">SELECT</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#433f52bb-3a03-4620-89ef-b97de027efe2">Substring Comparisons in SQL</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#a52a25a2-bac8-4191-bd8f-8beec7182174">BETWEEN</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#616bad43-a259-4264-bf6e-ca7d22ce843c">ORDER BY</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d30da23a-8399-4044-91b5-8cce9c570211">NESTED QUERIES and EXISTS</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#1d757685-6f40-4a03-8f83-d98af4021675">JOIN Operations</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#cf48864a-6b73-4eb6-8264-e1a1497c1f5d">Aggregate Functions</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#9a25c296-bbc5-49ec-b218-7f60a73ebef8">GROUP BY</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a4539ca8-797a-43a8-8922-c0d5cce6f73b">INSERT</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7a39da24-8b13-4891-a678-e27087103777">DELETE TUPLE</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2d345d97-fde2-4ee5-b213-0f6bed5dbc55">UPDATE</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e18c65f6-06f5-49d8-a910-469cb0260be3">Views in SQL</a></div></nav><h1 id="0322afa3-61b5-4eec-8e17-caf2e85c2790" class="">Introduction</h1><ul id="672ce6e8-b341-4cad-b762-2f1fb38a88ec" class="bulleted-list"><li style="list-style-type:disc">Structured Query Language → most widely used commercial query language</li></ul><ul id="e5c3e0cd-dbd6-4df2-8b6d-166f7f83c48d" class="bulleted-list"><li style="list-style-type:disc">High level <span style="border-bottom:0.05em solid">declarative language</span> to specify data retrieval requests for data stored in relational databases</li></ul><ul id="a6948391-b79e-4c6b-b175-c51829ac996f" class="bulleted-list"><li style="list-style-type:disc">Declarative because we tell it what to do and not how to do</li></ul><ul id="cb6a762b-be78-4d70-8b68-9b184733ea7d" class="bulleted-list"><li style="list-style-type:disc">SQL is relationally complete → everything done in relational algebra and calculus can be done in SQL</li></ul><ul id="3c478492-a35a-4a2e-bc95-9af9827069ff" class="bulleted-list"><li style="list-style-type:disc">Supports views</li></ul><h1 id="a3e00113-4b96-4c5e-87e3-5b78f9f9e75b" class="">Features of SQL</h1><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="ca92caa8-0688-4715-af04-b80373a09b6f"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Why do we prefer SQL?</div></figure><ol type="1" id="cbd0c9c2-a5e8-4297-933e-aa330e0cf7e0" class="numbered-list" start="1"><li>DDL(Data Definition Language)→ Set of commands to support creation, deletion and modification of table structures and views</li></ol><ol type="1" id="d6de9578-75b5-499b-b68b-3312d8cee442" class="numbered-list" start="2"><li>DML(Data Manipulation Language) → Set of commands to pose queries, insert new tuples and update or delete existing tuples</li></ol><ol type="1" id="d0122e71-c87d-4d63-82b9-93a06cb7d8e6" class="numbered-list" start="3"><li>Embedded SQL → Allows users to call SQL from a lot of languages like C and C++</li></ol><ol type="1" id="2cb9551a-fb21-4ab0-af45-f2c9a7d25252" class="numbered-list" start="4"><li>Triggers → Actions executed by the DBMS whenever changes to the database meet specified conditions. Action to be performed and the set of conditions can be defined in “Triggers”.</li></ol><ol type="1" id="f2f71b00-c150-4c11-9cf1-a3eb48e42afc" class="numbered-list" start="5"><li>Transaction management</li></ol><ol type="1" id="8c67c981-c750-496b-8597-27bc9d83aa63" class="numbered-list" start="6"><li>Indexes can be created to speed up the access to data stored in DB</li></ol><h1 id="55facf08-d8ec-460b-800b-2d4cb2902cb9" class="">DDL Commands</h1><h2 id="3de4bf31-fc23-44d3-87ba-bee4e5862d6b" class="">CREATE</h2><ul id="c580dd91-b5d9-4e35-8907-2e688a97a797" class="bulleted-list"><li style="list-style-type:disc">Create Table - <code>CREATE TABLE DEPT(DNUM INT, DNAME VARCHAR(5), DLOC VARCHAR(10), PRIMARY KEY (DNUM), UNIQUE (DNAME));</code></li></ul><ul id="5f89eb93-1c5a-4852-bee6-e656d327e63a" class="bulleted-list"><li style="list-style-type:disc">Create Table with foreign key - <code>CREATE TABLE EMP( EID INT PRIMARY KEY, ENAME VARCHAR(20), ESAL INT, DNO INT, ECITY VC(10), FOREIGN KEY (DNO) REFERENCES DEPT(DNUM));</code></li></ul><ul id="91ad1b28-c82e-4d54-b49a-a5be278bc0ce" class="bulleted-list"><li style="list-style-type:disc"><code>CREATE TABLE PROJ( PNUM INT PRIMARY KEY, PNAME VARCHAR(10));</code></li></ul><ul id="76bcf7ab-3d5f-4a75-b50f-8bf1c4561aa2" class="bulleted-list"><li style="list-style-type:disc">Create Table with 2 Primary key and 2 foreign key - <code>CREATE TABLE EMP_PROJ( EINO INT , PNO INT, HRS INT, PRIMARY KEY (ENO, PNO), FOREIGN KEY (ENO) REFERENCES EMP(EID), FOREIGN KEY (PNO) REFERENCES PROJ(PNUM));</code></li></ul><h2 id="dde55f92-6134-433f-9958-0eb4888b78fb" class="">DROP</h2><ul id="475899a7-1fb1-4fbe-b803-f1cde6d2090f" class="bulleted-list"><li style="list-style-type:disc"><code>DROP TABLE EMP;</code></li></ul><h2 id="dfc586a2-385f-448c-a227-1a2e87930037" class="">ALTER</h2><ul id="8279dcd0-f2b3-412b-8cf8-7d57c3bc36ca" class="bulleted-list"><li style="list-style-type:disc">Add Column <code>ALTER TABLE EMP ADD ‘CITY’ VARCHAR(20);</code></li></ul><ul id="dffcb969-7ebc-435b-ae3c-c65c03fee5d5" class="bulleted-list"><li style="list-style-type:disc">Drop Column <code>ALTER TABLE EMP DROP AGE CASCADE/RESTRICT;</code></li></ul><ul id="4dcbee97-5aaf-48ed-b289-af8c14b78adf" class="bulleted-list"><li style="list-style-type:disc">Add Primary Key <code>ALTER TABLE Persons ADD CONSTRAINT PK_Person PRIMARY KEY (ID,LastName);</code></li></ul><ul id="6fa8e32e-87f4-482a-b6d1-8c0f7ecdf1b6" class="bulleted-list"><li style="list-style-type:disc">Add Foreign Key <code>ALTER TABLE Orders ADD CONSTRAINT FK_PersonOrder FOREIGN KEY (Person ID) REFERENCES Persons(PersonID);</code></li></ul><h2 id="8f78375b-4f52-44e0-8eb8-f0aaa547ade8" class="">CHECK</h2><ul id="f682bea3-8152-48a7-be15-35e1acfcf6d2" class="bulleted-list"><li style="list-style-type:disc">Used to put a constraint on the given data</li></ul><ul id="63f450cd-96df-42b6-ae4d-31182e517142" class="bulleted-list"><li style="list-style-type:disc"><code>CHECK (Age&gt;=18)</code></li></ul><ul id="8e82a5cc-92d7-45bf-a205-c55ff54cbe60" class="bulleted-list"><li style="list-style-type:disc">To add it to an already existing table: <code>ALTER TABLE students ADD CHECK (age &gt;= 18);</code></li></ul><h1 id="ec93e928-a0f9-4e28-b940-687c43536434" class="">DML Commands</h1><ul id="0d524716-d62a-4c74-9117-4d5c32995135" class="bulleted-list"><li style="list-style-type:disc">Selecting tuples, columns</li></ul><ul id="b652e46f-9212-4fd9-87f7-07ab98a0faac" class="bulleted-list"><li style="list-style-type:disc">Inserting new tuples and updating existing tuples</li></ul><ul id="00f4baed-c7e2-421b-a120-97584a010738" class="bulleted-list"><li style="list-style-type:disc">Deleting existing tuples</li></ul><h2 id="dd3f7efb-a366-4b66-97f4-1e5e3e742e39" class="">SELECT</h2><ul id="6c28279b-b340-4cb6-a6d5-9cff71568ab4" class="bulleted-list"><li style="list-style-type:disc">SELECT is used for retrieving information</li></ul><ul id="f349e58a-bd76-4d86-a2c2-59201a00a8e2" class="bulleted-list"><li style="list-style-type:disc">Has no relationship with SELECT(<style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi></mrow><annotation encoding="application/x-tex">\sigma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span></span></span></span></span><span>﻿</span></span>) in relational algebra</li></ul><ul id="22425bc3-bbe9-4a63-a2c8-d24d3c348641" class="bulleted-list"><li style="list-style-type:disc"><code>SELECT attribute_list FROM table_list WHERE condition;</code></li></ul><ul id="674afbc3-c45e-47ba-b7a6-3ed8628e191b" class="bulleted-list"><li style="list-style-type:disc">We can join tables directly using tables</li></ul><ul id="1833823d-849a-480e-8345-5d57aab33b98" class="bulleted-list"><li style="list-style-type:disc"><code>SELECT * FROM qrcodes, studata WHERE studata.uid = &quot;f20210075&quot;;</code> Gives data from both the tables as in it doesn’t combine any 2 columns</li></ul><ul id="bec8cb16-3ef8-4c46-b368-78411975aa71" class="bulleted-list"><li style="list-style-type:disc"><code>SELECT DISTINCT esal FROM emp;</code> This command only gives distinct values compared to normal SELECT</li></ul><ul id="e766db45-d760-49da-8584-e8e12d2f7dfb" class="bulleted-list"><li style="list-style-type:disc">We have unions, except and intersect in SQL</li></ul><div id="d059f347-1bff-4c30-b7ac-a9e3d3f0c116" class="column-list"><div id="853dd11a-3a11-4fef-9dc0-cc4d6f8a0e26" style="width:50%" class="column"><figure id="85b30cb6-fbbd-4991-ab74-471b7945dd9a" class="image"><a href="Structured%20Query%20Language%20eb948c38046944e5875746617d53b9fb/Untitled.png"><img style="width:432px" src="Structured%20Query%20Language%20eb948c38046944e5875746617d53b9fb/Untitled.png"/></a></figure></div><div id="f4046d48-94b5-4d13-8fe4-52725b804ff9" style="width:50%" class="column"><figure id="18d83f6b-fe3c-4f4a-ab45-fdccf8870587" class="image"><a href="Structured%20Query%20Language%20eb948c38046944e5875746617d53b9fb/Untitled%201.png"><img style="width:432px" src="Structured%20Query%20Language%20eb948c38046944e5875746617d53b9fb/Untitled%201.png"/></a></figure></div></div><figure id="cfaefaf5-50ad-47bf-b4f2-2fdccf9888e3" class="image"><a href="Structured%20Query%20Language%20eb948c38046944e5875746617d53b9fb/Untitled%202.png"><img style="width:336px" src="Structured%20Query%20Language%20eb948c38046944e5875746617d53b9fb/Untitled%202.png"/></a></figure><h3 id="433f52bb-3a03-4620-89ef-b97de027efe2" class="">Substring Comparisons in SQL</h3><ul id="8f16313d-2a8d-494d-948d-7622ae9d7361" class="bulleted-list"><li style="list-style-type:disc">% is used for arbitrary number of characters while _ is used for single character</li></ul><h3 id="a52a25a2-bac8-4191-bd8f-8beec7182174" class="">BETWEEN</h3><pre id="6c5acf9a-b300-4269-a732-5c09a9b1870b" class="code"><code>SELECT * FROM EMP WHERE (esal BETWEEN 30000 AND 40000) and dno= 5;</code></pre><h3 id="616bad43-a259-4264-bf6e-ca7d22ce843c" class="">ORDER BY</h3><ul id="28bda934-a10d-48c7-a5ab-f3e3c316b3de" class="bulleted-list"><li style="list-style-type:disc">Default ordering is ascending i.e. ASC</li></ul><ul id="54b97ad8-eb0a-41f0-b0bc-d054d2de50a0" class="bulleted-list"><li style="list-style-type:disc">We specify DESC if we need descending order</li></ul><pre id="9dd7eefa-04f5-4559-a3b2-b4d3758380c3" class="code"><code>SELECT * FROM Customers
+ORDER BY Country ASC, CustomerName DESC;
+// For multiple columns use this</code></pre><h3 id="d30da23a-8399-4044-91b5-8cce9c570211" class="">NESTED QUERIES and EXISTS</h3><pre id="05589e63-05c2-4919-b9e4-5f48dfd702eb" class="code"><code>SELECT E.eid, E.ename 
+FROM EMP AS E 
+WHERE E.dno IN(SELECT DNUM FROM DEPT WHERE DLOC = “chennai”);`</code></pre><ul id="c01235d7-66ba-4d1c-b0b8-dcd3eac590a0" class="bulleted-list"><li style="list-style-type:disc">Here we have one query inside another and there is substitution going on</li></ul><ul id="a12760dd-2862-49f9-81a7-77e6d95b6c85" class="bulleted-list"><li style="list-style-type:disc">We have a <code>NOT EXISTS</code> term as well</li></ul><ul id="4f8c35b7-94c8-494e-821a-403267097e06" class="bulleted-list"><li style="list-style-type:disc">EXISTS only checks if any tuple exists</li></ul><ul id="f1e98f3e-c4b8-48b7-92c5-17b0d52e1f1d" class="bulleted-list"><li style="list-style-type:disc">Generally <span style="border-bottom:0.05em solid">EXISTS and NOT EXISTS have correlations and correlations basically means inner query refers to an attribute from the outer query</span></li></ul><pre id="b7947828-0d99-4822-bd94-ef63ac3ba0c5" class="code"><code>SELECT E.eid, E. esal
+FROM EMP AS E
+WHERE NOT EXISTS (SELECT * FROM EMP_PROJ AS EP WHERE 
+E.EID = EP.ENO);</code></pre><h3 id="1d757685-6f40-4a03-8f83-d98af4021675" class="">JOIN Operations</h3><ul id="8452448d-7170-4120-a5b9-3e303b4a5c92" class="bulleted-list"><li style="list-style-type:disc">We have join, natural join, left outer join and right outer join</li></ul><ul id="792bd08c-2a35-4e71-8b4c-9968d302ae0d" class="bulleted-list"><li style="list-style-type:disc">If foreign key = null these are not counted in the response</li></ul><figure id="d1b661a7-aae5-4895-b352-efe63e2a4ce1" class="image"><a href="Structured%20Query%20Language%20eb948c38046944e5875746617d53b9fb/Untitled%203.png"><img style="width:576px" src="Structured%20Query%20Language%20eb948c38046944e5875746617d53b9fb/Untitled%203.png"/></a></figure><figure id="4b63ef3f-728d-47d3-b88c-e3b10e15638e" class="image"><a href="Structured%20Query%20Language%20eb948c38046944e5875746617d53b9fb/Untitled%204.png"><img style="width:576px" src="Structured%20Query%20Language%20eb948c38046944e5875746617d53b9fb/Untitled%204.png"/></a></figure><ul id="d6f191c5-6680-4d5d-8f9c-c6ca52a1f35b" class="bulleted-list"><li style="list-style-type:disc">Left outer join on table A, B includes all results of A no matter what</li></ul><ul id="1fcd5687-94d6-41a0-b36f-c7799b45c5b3" class="bulleted-list"><li style="list-style-type:disc">Right outer join on table A, B includes all tuples of B no matter what</li></ul><ul id="6e51a7d4-f7c3-4eb5-864a-12f959fabdc8" class="bulleted-list"><li style="list-style-type:disc">We can argue that nested select conditions are also there but the issue is nested select conditions give cross product while join gives the intersection</li></ul><ul id="d1ed0f04-dc97-406d-b883-95c0d5bed528" class="bulleted-list"><li style="list-style-type:disc">Full Outer Join is a combination of Left Outer Join and Right Outer Join. Gives all the rows of the database. If for any data in the left table, there’s no row in the right table, then it gives only the left data with NULL values for right data and vice versa</li></ul><h3 id="cf48864a-6b73-4eb6-8264-e1a1497c1f5d" class="">Aggregate Functions</h3><ul id="370c89f1-f763-493b-af97-30588833d1c1" class="bulleted-list"><li style="list-style-type:disc">COUNT, SUM, MAX, MIN, AVG</li></ul><figure id="50787cfc-bb0a-4a03-aa27-42d6ca25955c" class="image"><a href="Structured%20Query%20Language%20eb948c38046944e5875746617d53b9fb/Untitled%205.png"><img style="width:1652px" src="Structured%20Query%20Language%20eb948c38046944e5875746617d53b9fb/Untitled%205.png"/></a></figure><h3 id="9a25c296-bbc5-49ec-b218-7f60a73ebef8" class="">GROUP BY</h3><pre id="f0ef99d1-1961-4d3e-8494-c2042149610c" class="code"><code>SELECT dno, count (*)
+FROM EMP
+GROUP BY Dno
+HAVING count(*)&gt;5;</code></pre><ul id="d46c980f-07da-43a6-8ff6-612793d46265" class="bulleted-list"><li style="list-style-type:disc">Here only those attributes in the group clause will be displayed</li></ul><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="409fc94d-6c2c-4845-b221-1568e4daf0d7"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Where is executed first, then Group by is executed and then having is executed and then selection takes place</div></figure><h2 id="a4539ca8-797a-43a8-8922-c0d5cce6f73b" class="">INSERT</h2><ul id="1ab2dd54-832f-4a2d-bfb1-50d61ed2811e" class="bulleted-list"><li style="list-style-type:disc"><code>INSERT INTO table_name VALUES(v1, v2, ...vn);</code></li></ul><h2 id="7a39da24-8b13-4891-a678-e27087103777" class="">DELETE TUPLE</h2><ul id="715464c3-f737-4366-83b9-c13eb954a442" class="bulleted-list"><li style="list-style-type:disc"><code>DELETE FROM &lt;table name&gt; WHERE &lt;condition&gt;;</code></li></ul><ul id="3a84284f-e904-4183-87ff-f95b650d68c5" class="bulleted-list"><li style="list-style-type:disc">If we don’t specify condition, all are deleted</li></ul><h2 id="2d345d97-fde2-4ee5-b213-0f6bed5dbc55" class="">UPDATE</h2><ul id="fdade72f-340e-4aa2-8f54-e3a9bcabce04" class="bulleted-list"><li style="list-style-type:disc"><code>UPDATE table_name SET column_name = value WHERE condition;</code></li></ul><h1 id="e18c65f6-06f5-49d8-a910-469cb0260be3" class="">Views in SQL</h1><ul id="023464d5-4282-4f17-a45e-e134b58adfeb" class="bulleted-list"><li style="list-style-type:disc">Single table derived from other tables</li></ul><ul id="32bc261e-8f01-41a1-ab7d-2fcbf39dced6" class="bulleted-list"><li style="list-style-type:disc">These other tables are called base tables</li></ul><ul id="e5a0746f-3873-434c-9317-4a6042ae174b" class="bulleted-list"><li style="list-style-type:disc">A view does not necessarily exist in physical form, it can be considered a virtual table</li></ul><ul id="652037c9-bbb4-4b2b-b425-32e7beebde02" class="bulleted-list"><li style="list-style-type:disc">The tuples in a view are actually stored in various tables</li></ul><pre id="59e3b8de-6fbb-43b6-b557-02ba85ee87b2" class="code"><code>CREATE VIEW EMP_DETAILS AS 
+SELECT eid, ename, dname FROM
+EMP, DEPT WHERE dno = dnum</code></pre><ul id="35c861dd-bce5-4b8b-81c8-9fd38ceca4b6" class="bulleted-list"><li style="list-style-type:disc">View definitions are stored in the database but not the data of each view</li></ul><ul id="770900b5-31ec-456d-8b93-baa3a7a350e0" class="bulleted-list"><li style="list-style-type:disc">From the next time, the view can be seen as a table and queries can be posed on it</li></ul><ul id="4e7647d6-0de2-462d-b0bf-8826e8d1f55c" class="bulleted-list"><li style="list-style-type:disc">A view is always up to date</li></ul><ul id="fc38dd7f-7276-4edf-8421-6634d3537f35" class="bulleted-list"><li style="list-style-type:disc">Updates are generally not possible in views</li></ul><ul id="bb083904-4a3d-4192-ba5f-fd3897b32515" class="bulleted-list"><li style="list-style-type:disc">Meant for querying only</li></ul><ul id="afce3946-812f-41e4-94c0-417b9ce6c131" class="bulleted-list"><li style="list-style-type:disc">Some times it’s possible to store views also for a specific time and these are called <span style="border-bottom:0.05em solid">materialized views</span> and we can use materialized views for caching</li></ul><ul id="77ba15eb-ca83-4955-98be-97833523dc0d" class="bulleted-list"><li style="list-style-type:disc">Every time you execute a view, the SQL statement is run</li></ul><figure id="9cc7641d-e189-453c-8983-0202e62d1b36" class="image"><a href="Structured%20Query%20Language%20eb948c38046944e5875746617d53b9fb/20230302_103908.jpg"><img style="width:4032px" src="Structured%20Query%20Language%20eb948c38046944e5875746617d53b9fb/20230302_103908.jpg"/></a></figure><figure id="cba3d78e-ceaa-46b3-95b5-d66756aa4bbe" class="image"><a href="Structured%20Query%20Language%20eb948c38046944e5875746617d53b9fb/20230302_103913.jpg"><img style="width:4032px" src="Structured%20Query%20Language%20eb948c38046944e5875746617d53b9fb/20230302_103913.jpg"/></a></figure><figure id="864002ea-e4b7-4b05-8dc9-cb7545c409a7" class="image"><a href="Structured%20Query%20Language%20eb948c38046944e5875746617d53b9fb/20230302_103919.jpg"><img style="width:4032px" src="Structured%20Query%20Language%20eb948c38046944e5875746617d53b9fb/20230302_103919.jpg"/></a></figure><p id="3810d780-da89-44ef-beac-ea51a81be9bf" class="">
+</p></div></article></body></html>
