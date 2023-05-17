@@ -100,7 +100,7 @@ export default function Notes() {
                     <div>
                     {
                         groupdata.filter(d => d.name.toLowerCase().includes(input.toLowerCase())).map(data => (
-                            <a href={data.link} className='text-xl text-pink-600 dark:text-pink-500 hover:underline'><h4 className='py-1'>{data.name}</h4></a>
+                            <a href={data.link} key={data.link} className='text-xl text-pink-600 dark:text-pink-500 hover:underline'><h4 className='py-1'>{data.name}</h4></a>
                         ))
                     }
                     </div>
@@ -113,7 +113,7 @@ export default function Notes() {
                     <div>
                     {
                         coursewise.filter(d => d.name.toLowerCase().includes(input.toLowerCase())).map(data => (
-                            <a href={data.link} className='text-xl text-pink-600 dark:text-pink-500 hover:underline'><h4 className='py-1'>{data.name}</h4></a>
+                            <a href={data.link} key={data.link} className='text-xl text-pink-600 dark:text-pink-500 hover:underline'><h4 className='py-1'>{data.name}</h4></a>
                         ))
                     }
                     </div>
