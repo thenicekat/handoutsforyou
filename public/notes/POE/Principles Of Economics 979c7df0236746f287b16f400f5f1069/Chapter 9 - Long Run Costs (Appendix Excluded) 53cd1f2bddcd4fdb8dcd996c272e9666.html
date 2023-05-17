@@ -1,0 +1,669 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 9 - Long Run Costs (Appendix Excluded)</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="53cd1f2b-ddcd-4fdb-8dcd-996c272e9666" class="page sans"><header><h1 class="page-title">Chapter 9 - Long Run Costs (Appendix Excluded)</h1></header><div class="page-body"><nav id="d990fd7e-b752-40cd-9dda-4eae115656d0" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#816f215c-496e-4a98-bf7c-00b99d04767c">Introduction: Price and Cost determines Profit</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7bfb75e4-06c6-4e1e-a43b-d7330ac5c5ac">Supply Decisions in Long Run vs Short Run</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#40107efe-5bc3-42c6-838c-61f5b4d617b7">Long Run Cost Curve</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fd259e09-7720-42b6-802c-aad51280a360">Firms in three short run circumstances</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#83975e82-27a4-4fcf-aef7-971e09600acb">Normal Rate of Return and Breaking Even</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d6a50c38-53ee-44ba-b342-a12f7f18ec58">Blue Velvet Example</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#75dc5584-c401-4535-988e-54bab1cb8aed">Firms that suffer Loss in short run</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e2da1cb1-0b76-41dc-a974-16e48bc324b1">Shutdown Point</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#96f84bb4-4f37-48a5-a8ed-02a98ccfa8f5">Short Run Industry Supply Curve</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#59ea4a56-6c31-42ec-ab6f-d509222ac229">Short Run Cost vs Long Run Cost Curve</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#61db8375-2e96-4414-a1fc-38bbf082ea4d">Long Run Cost Curve</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5c526e3c-6580-4c2b-a0ec-b25516c7e8a3">Economics and Diseconomics of scale</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#67223afe-ffda-4276-82ad-84310ade87a4">Increasing Returns to Scale</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#6b396ace-ef02-4235-85e5-58b4b6fea531">MES</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#ed335075-017c-4878-9cb9-cf346055cb18">Long run Average Cost Curve</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7a3beae8-9702-41ae-9734-f091e99f329f">Constant Returns to Scale</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3b1bbc7c-ab7e-445f-a52e-f9cf974c711a">Decreasing Returns of Scale</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6916fb3e-f9fa-427e-a728-a33ee928a5ac">U shaped Long Run Average Costs</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#14a54952-30cd-4c9d-aa61-d42aaeb68150">Long Run Adjustments to Short Run Conditions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d9fee304-e060-46b1-80e7-a3c4a01e86ae">Short Run Profits</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#cc27ede8-c8f2-4dd9-be57-138e0d685270">Long Run Adjustments - Investment flows towards Profit</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#85370c95-e7b1-4304-8151-4aa4af3b8b64">Formulae and Problems</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#73107c93-e6a7-4e40-8851-cfb4c01cf137">Profit Maximization</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#88b8c783-6a54-4ed5-ae3e-00e85f2a161c">Breakeven and Shutdown Point</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d59c451c-78d1-4b47-8bb7-e8e0fa5e7fcd"><del>Appendix - NOT IN PORTION</del></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#45b9d6d1-c8a9-4ded-b0b6-90412d58c506"><del>External Economies and Diseconomies</del></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e288358f-fa79-42cd-9b4a-89d634b75ca8"><del>Long Run Industry Supply Curve</del></a></div></nav><h2 id="816f215c-496e-4a98-bf7c-00b99d04767c" class="">Introduction: Price and Cost determines Profit</h2><ul id="d7f32475-82e0-463f-9999-0b594077647e" class="bulleted-list"><li style="list-style-type:disc">Firms use info on input prices, output prices, and tech to make decisions that will lead to most profit</li></ul><ul id="5dec3415-2c22-4f53-8c60-79d1a8c1c4f1" class="bulleted-list"><li style="list-style-type:disc">Firms must know how much their products will sell for and how much production will cost using the most efficient technology</li></ul><ul id="2bfede0e-1b7e-4dd5-b4dd-a994c5d3d7d3" class="bulleted-list"><li style="list-style-type:disc">The price at which it sells determines the quantity of output that will maximize profit</li></ul><ul id="99e421da-74e9-4100-908b-1e543d269e35" class="bulleted-list"><li style="list-style-type:disc">For profit, MR = MC = P and the marginal cost curve of such a firm is thus the same as the supply curve</li></ul><h2 id="7bfb75e4-06c6-4e1e-a43b-d7330ac5c5ac" class="">Supply Decisions in Long Run vs Short Run</h2><ul id="03272635-6c44-460c-838e-e1d593bfe075" class="bulleted-list"><li style="list-style-type:disc">Long run is less constrained than the short run <ul id="ea7f4470-4a47-41df-b68d-853f48dd8e50" class="bulleted-list"><li style="list-style-type:circle">In long run, the firm can increase any or all of it’s inputs and thus has no constraints</li></ul><ul id="07eba158-3151-4ec8-8a6e-23b858b89f48" class="bulleted-list"><li style="list-style-type:circle">Firms are free to enter industries to seek profits and to leave industries to avoid losses</li></ul></li></ul><h2 id="40107efe-5bc3-42c6-838c-61f5b4d617b7" class="">Long Run Cost Curve</h2><ul id="108113b5-d2b2-4399-9224-c40b0f2428f6" class="bulleted-list"><li style="list-style-type:disc">Long run cost curves need not slope up at all</li></ul><ul id="64d4dfca-d777-4db0-8669-2064135839f4" class="bulleted-list"><li style="list-style-type:disc">In long run, every factor can be varied</li></ul><h3 id="fd259e09-7720-42b6-802c-aad51280a360" class="">Firms in three short run circumstances</h3><ul id="8b23bcec-50ce-4eec-a499-5ab61bb96727" class="bulleted-list"><li style="list-style-type:disc">firms earning economic profit</li></ul><ul id="34f18091-c00f-4169-9b83-6808c3b4b7f2" class="bulleted-list"><li style="list-style-type:disc">firms suffering economic losses but continuing to operate to reduce or minimize those losses</li></ul><ul id="cd608efd-4664-4e8c-9b7f-2ee9010cc4a3" class="bulleted-list"><li style="list-style-type:disc">firms that decide to shut down and bear losses just equal to fixed costs</li></ul><h3 id="83975e82-27a4-4fcf-aef7-971e09600acb" class="">Normal Rate of Return and Breaking Even</h3><ul id="30a6e8f8-7030-4c13-abb6-573c0c8998fc" class="bulleted-list"><li style="list-style-type:disc">A normal rate of return is a rate that is just sufficient to keep current investors interested in the industry<ul id="16f33242-9f3e-4867-8201-61bcb08fe6a7" class="bulleted-list"><li style="list-style-type:circle">Also known as <strong>opportunity cost of capital</strong></li></ul></li></ul><ul id="51ef71f4-85fc-4216-bdaa-62a4ef09715b" class="bulleted-list"><li style="list-style-type:disc">Earning greater than Normal rate of return, when a firm is earning an above-normal rate of return, it has a positive profit level, otherwise it does not</li></ul><ul id="d95d8bb5-0e14-46dd-b4aa-83bd080c69af" class="bulleted-list"><li style="list-style-type:disc">Earning exactly normal rate of return, a firm that is breaking even or earning a zero level of profit, is one that is earning exactly a normal rate of return. <ul id="decb5ca8-8512-4b67-953d-5bf6048e890b" class="bulleted-list"><li style="list-style-type:circle">New investors are not attracted but currents ones do not run away too</li></ul></li></ul><ul id="2b67ad03-c57a-49a9-86bb-4387b387b87c" class="bulleted-list"><li style="list-style-type:disc">Earning less than normal rate of return, when a firm is earning a below-normal rate of return, it has a negative profit level</li></ul><h2 id="d6a50c38-53ee-44ba-b342-a12f7f18ec58" class="">Blue Velvet Example</h2><ul id="d270a0bf-928b-48bd-a029-e36c1552bd30" class="bulleted-list"><li style="list-style-type:disc">Investors have put up $500000 to construct a building and purchase all the equipment required to wash cars</li></ul><ul id="e8667182-7baa-47d7-868e-65aa9f9f27b7" class="bulleted-list"><li style="list-style-type:disc">Fixed Costs<ul id="5ceade11-d668-4f04-8be8-a79eb6babcb8" class="bulleted-list"><li style="list-style-type:circle">If the car wash closes, all this can be sold for their actual price</li></ul><ul id="818e25c0-d338-4594-8d7d-ee8375620310" class="bulleted-list"><li style="list-style-type:circle">Investors could get 10% return on their investment in another business</li></ul><ul id="a906e11d-19f8-4524-a609-60684f159fe5" class="bulleted-list"><li style="list-style-type:circle">Thus the annual cost of the capital needed for the business is $50000</li></ul><ul id="23470ed9-b6f2-43fc-8e11-38b7f8d52806" class="bulleted-list"><li style="list-style-type:circle">Car wash is currently servicing 800 cars a week and can be open 50 weeks a year( 2 weeks needed for maintenance)</li></ul><ul id="22eef841-79df-4692-9a6a-054ccf96ad47" class="bulleted-list"><li style="list-style-type:circle">The cost of basic maintenance contract on the equipment is $50000 per year and has to pay even if it’s closed</li></ul><ul id="8c0de1e0-753a-4ada-a33e-1d3ab6cdc056" class="bulleted-list"><li style="list-style-type:circle">The fixed costs for car wash are $100000 per year i.e. capital costs and equipment contract</li></ul><ul id="973ac23d-5b24-48bd-9bc3-731d88d0a85a" class="bulleted-list"><li style="list-style-type:circle">On a weekly basis, this becomes $2000 per week </li></ul><ul id="871ef853-e6bf-44b5-9a8a-b025fe8270c4" class="bulleted-list"><li style="list-style-type:circle">If a car wash operates at the level of 800 cars per week FC = $2.5 per car $2000/800<ul id="1bddb477-840d-416c-8cf3-c392518c464a" class="bulleted-list"><li style="list-style-type:square">FC/Week = $2000/Week</li></ul><ul id="96be1f6a-1e7c-4649-9aa6-aa112b174e69" class="bulleted-list"><li style="list-style-type:square">FC/Car = $2.5/car</li></ul></li></ul></li></ul><ul id="15ec9ac2-bbe8-4370-9eb2-6a4de03ffd45" class="bulleted-list"><li style="list-style-type:disc">Variable Costs<ul id="8ee4f8f5-61c1-43bf-975b-76e2871f4f08" class="bulleted-list"><li style="list-style-type:circle">Worker - $10 per hour and can do 800 cars per week, each worker can wash 8 cars an hour and he works for 100 hours per week</li></ul><ul id="53277906-d06d-48b4-8023-7b5a12d331e5" class="bulleted-list"><li style="list-style-type:circle">They hire workers for 10hours and has a wage bull of $1000</li></ul><ul id="560a9072-52dd-41b7-8b63-9b47ee582420" class="bulleted-list"><li style="list-style-type:circle">The labor cost of each car wash when blue velevet serves 800 is $1.25 i.e. 10/8</li></ul><ul id="9dd3eee9-8a1e-40fb-8072-1b98b306b478" class="bulleted-list"><li style="list-style-type:circle">Ever car that is washed costs $0.75 in soap adding $600 to the weekly bull</li></ul><ul id="f4dea2d4-ed2b-423a-a910-a7fbed605054" class="bulleted-list"><li style="list-style-type:circle">TVC/week = $1600/week</li></ul><ul id="2b49dffd-971d-426b-8506-4b294d5b96c1" class="bulleted-list"><li style="list-style-type:circle">TVC/Car = $2 per car</li></ul></li></ul><ul id="445ab5c9-da63-41e7-be2e-e2bc4910d851" class="bulleted-list"><li style="list-style-type:disc">Total Revenue<ul id="12e37735-f7aa-4771-bac6-127138d24849" class="bulleted-list"><li style="list-style-type:circle">TR/Week = 5*800 = $4000/week</li></ul><ul id="24ce838e-42d3-4ee9-9f9d-1f2e862907fb" class="bulleted-list"><li style="list-style-type:circle">TR/Car = $5/car</li></ul></li></ul><ul id="9221d191-6cef-4248-9d80-0751368a257e" class="bulleted-list"><li style="list-style-type:disc">Profit or Loss<ul id="a8a42231-1184-4314-abe2-d0fdd761e869" class="bulleted-list"><li style="list-style-type:circle">$4000 - (2000 + 1600) = $400 Profit per week</li></ul></li></ul><figure id="63446084-2b2c-4c1f-95c4-fc3eae2d1b98" class="image"><a href="Chapter%209%20-%20Long%20Run%20Costs%20(Appendix%20Excluded)%2053cd1f2bddcd4fdb8dcd996c272e9666/Untitled.png"><img style="width:1750px" src="Chapter%209%20-%20Long%20Run%20Costs%20(Appendix%20Excluded)%2053cd1f2bddcd4fdb8dcd996c272e9666/Untitled.png"/></a></figure><ul id="f71a7371-e29b-48a1-b564-6c33c710179d" class="bulleted-list"><li style="list-style-type:disc">Total Cost = ATC * q = $3600</li></ul><ul id="26e6b1cf-2283-46aa-a97c-681cda46ea08" class="bulleted-list"><li style="list-style-type:disc">MC contains information about that the additional cost of producing one unit of output</li></ul><ul id="b5d1f6e7-075b-40eb-acc8-a740c119174e" class="bulleted-list"><li style="list-style-type:disc">Here they are moving away from the minimum point as market price is higher</li></ul><h2 id="75dc5584-c401-4535-988e-54bab1cb8aed" class="">Firms that suffer Loss in short run</h2><ol type="1" id="248571b1-9a80-411d-9521-2608dcd35bb9" class="numbered-list" start="1"><li>Those firms that find it better to shut down immediately and bear losses equal to total fixed costs<ol type="a" id="21eb8b23-700a-46c8-a440-97cd1a2a619f" class="numbered-list" start="1"><li>Loss &lt; TFC</li></ol><ol type="a" id="31715d86-c814-4929-b967-06f91a395ab3" class="numbered-list" start="2"><li>No revenue and no variable costs</li></ol></li></ol><ol type="1" id="032ab181-38de-476b-9057-3f3cd9760532" class="numbered-list" start="2"><li>Those firms that continue to operate in the short run and minimize loss<ol type="a" id="97e57967-cc1d-4eec-aca5-b2cfe2905b17" class="numbered-list" start="1"><li>Loss &gt; TFC</li></ol></li></ol><p id="73091edf-3a21-4878-bfba-d6f21db89265" class="">Note: Firms cannot exit in the short run, so a firm cannot go out of business in short run i.e. fixed costs must be paid no matter what the firm does. </p><p id="9d86ca3f-3797-431c-b47e-794fc06904e1" class="">So the decision depends on whether total revenue from operating is sufficient to cover total variable costs</p><ul id="2ac6cfca-6589-4ce2-980f-f1350fd626a7" class="bulleted-list"><li style="list-style-type:disc">If Operating Proft = TR  - TVC &gt; 0, then the loss reduces because you are making a small profit. The excess revenue can be used to offset fixed costs and reduce losses</li></ul><ul id="4f88899d-d896-488d-a7ca-36c07bd46cf8" class="bulleted-list"><li style="list-style-type:disc">Otherwise, TR &lt; TC, revenus is smaller than TVC and the firm will suffer more loss in excess of fixed costs, so the firm is better off shutting down<ul id="83413047-04a5-41c6-9771-8db571f0b207" class="bulleted-list"><li style="list-style-type:circle"><code>Operating Proft = TR  - TVC</code></li></ul></li></ul><ul id="f2922359-769c-4884-a32f-e2440376e905" class="bulleted-list"><li style="list-style-type:disc">Minimum ATC should be equal to Price otherwise it’ll lead to loss</li></ul><ul id="17c90258-02a1-4bb5-90d4-dce594897dc9" class="bulleted-list"><li style="list-style-type:disc">Firm will make profit as long as price is above Average total cost i.e. <code>P &gt; ATC ⇒ P*q &gt; Total Cost</code></li></ul><ul id="7be3beda-8c91-4631-96b3-4c767dec94a7" class="bulleted-list"><li style="list-style-type:disc">The lowerst point of the AVC is the shutdown point → Point of intersection with Marginal Cost curve</li></ul><ul id="26843649-9aaf-4e8d-9afe-772541aa60a1" class="bulleted-list"><li style="list-style-type:disc">The MC shows the profit maximizing level of output above this point</li></ul><ul id="718e696f-037f-4f0d-8f5a-a2bc13a82a4e" class="bulleted-list"><li style="list-style-type:disc">The short run supply curve of a firm is the part of the MC above the shutdown point</li></ul><ul id="09eeeab6-1dea-4b8e-8691-8d502e107b90" class="bulleted-list"><li style="list-style-type:disc">Intersection of MC and ATC it’s the break even point</li></ul><h3 id="e2da1cb1-0b76-41dc-a974-16e48bc324b1" class="">Shutdown Point</h3><ul id="d9d3a79e-38ca-4c6d-944d-f0c83369cce5" class="bulleted-list"><li style="list-style-type:disc">The lowest point on the average variable cost curve. When price falls below the minimum point on AVC, total revenue is insufficient to cover variable costs and the firm will shut down and bear losses equal to fixed costs</li></ul><figure id="6b6d9992-554e-4226-99c9-945cf6fec749" class="image"><a href="Chapter%209%20-%20Long%20Run%20Costs%20(Appendix%20Excluded)%2053cd1f2bddcd4fdb8dcd996c272e9666/Untitled%201.png"><img style="width:1773px" src="Chapter%209%20-%20Long%20Run%20Costs%20(Appendix%20Excluded)%2053cd1f2bddcd4fdb8dcd996c272e9666/Untitled%201.png"/></a></figure><h2 id="96f84bb4-4f37-48a5-a8ed-02a98ccfa8f5" class="">Short Run Industry Supply Curve</h2><ul id="64838f92-4891-4488-9b81-e845cf6892ba" class="bulleted-list"><li style="list-style-type:disc">The short-run industry supply curve is the sum of the individual firm supply curves—that is, the marginal cost curves (above AVC) of all the firms in the industry.</li></ul><ul id="c0c7301a-bc26-466c-aaa1-a1a5c31eedfc" class="bulleted-list"><li style="list-style-type:disc">Supply in an industry is the sum of quantity supplied by individual firms</li></ul><ul id="3ce1ce44-98db-4e49-b52a-0273cf98fab1" class="bulleted-list"><li style="list-style-type:disc">We perform horizontal addition i.e. marginal cost curves of all the firms in the industry </li></ul><ul id="4f2af96a-f6b9-4e77-81af-905c9db35b55" class="bulleted-list"><li style="list-style-type:disc">Also due to the fact that quantities are being added at a fixed price</li></ul><ul id="90b43a1a-7e8d-4c4b-a7a0-4a3cd3b58986" class="bulleted-list"><li style="list-style-type:disc">In the long run, an increase or decrease in the number of firms—and, therefore, in the number  of individual firm supply curves—shifts the total industry supply curve. If new firms enter the industry, the industry supply curve moves to the right; if firms exit the industry, the industry supply curve moves to the left.</li></ul><figure id="65ba2545-c768-4db5-8f62-e98ffb2a57fe" class="image"><a href="Chapter%209%20-%20Long%20Run%20Costs%20(Appendix%20Excluded)%2053cd1f2bddcd4fdb8dcd996c272e9666/Untitled%202.png"><img style="width:1854px" src="Chapter%209%20-%20Long%20Run%20Costs%20(Appendix%20Excluded)%2053cd1f2bddcd4fdb8dcd996c272e9666/Untitled%202.png"/></a></figure><h2 id="59ea4a56-6c31-42ec-ab6f-d509222ac229" class="">Short Run Cost vs Long Run Cost Curve</h2><ul id="11a2083e-8b24-4bd8-ba7e-3b489bf1c086" class="bulleted-list"><li style="list-style-type:disc">Shapes of short run cost curves follow directly from the assumption of a fixed factor of production</li></ul><ul id="1ab1cce3-dd9f-4015-9a3f-f2b5fade7cf3" class="bulleted-list"><li style="list-style-type:disc">As output increases beyond a certain point, the fixed factor comes into picture</li></ul><ul id="a8a5b93e-3034-4fc1-b017-b0cd73c8c5bd" class="bulleted-list"><li style="list-style-type:disc">In long run however, there is no fixed factor of production. Firms can choose any scale of production</li></ul><figure id="79da522e-b9b3-4668-8a08-d9b1481e7ca3" class="image"><a href="Chapter%209%20-%20Long%20Run%20Costs%20(Appendix%20Excluded)%2053cd1f2bddcd4fdb8dcd996c272e9666/Untitled%203.png"><img style="width:1449px" src="Chapter%209%20-%20Long%20Run%20Costs%20(Appendix%20Excluded)%2053cd1f2bddcd4fdb8dcd996c272e9666/Untitled%203.png"/></a></figure><h1 id="61db8375-2e96-4414-a1fc-38bbf082ea4d" class="">Long Run Cost Curve</h1><h2 id="5c526e3c-6580-4c2b-a0ec-b25516c7e8a3" class="">Economics and Diseconomics of scale</h2><ul id="47828245-7a1b-4dfa-be84-7900cf763483" class="bulleted-list"><li style="list-style-type:disc">Scale → Scale of production</li></ul><ul id="a0447ba1-dd12-4a78-a31c-663e6d3dbb71" class="bulleted-list"><li style="list-style-type:disc">In some firms, increased scale, or size reduces cost while in others, increases scale leads to higher per unit costs</li></ul><ul id="d2406cb1-e691-4163-ad73-205c2b37313b" class="bulleted-list"><li style="list-style-type:disc">Increasing returns to scale<ul id="dcbcfef6-26ab-410c-82a9-b3edd0057fc6" class="bulleted-list"><li style="list-style-type:circle">When an increase in a firm’s scale of production leads to lower average costs</li></ul><ul id="ac3d16b5-4472-49e3-a0fd-71f751ac8039" class="bulleted-list"><li style="list-style-type:circle">Aka economies of scale</li></ul></li></ul><ul id="e1430be4-0e9e-4a99-9894-40178987cd02" class="bulleted-list"><li style="list-style-type:disc">Constant returns to scale<ul id="e8291e58-12ca-4216-9e4d-7af3bc0a9342" class="bulleted-list"><li style="list-style-type:circle">When average costs do not change with scale of production</li></ul></li></ul><ul id="1d37ceff-c118-4103-a855-6a28742ac28a" class="bulleted-list"><li style="list-style-type:disc">Decreasing returns to scale<ul id="8ff728db-ce76-4b6d-89f2-1b1bcc840929" class="bulleted-list"><li style="list-style-type:circle">When an increase in a firm’s scale of production leads to higher average costs </li></ul><ul id="509dd3d8-f051-400c-9ade-c2b374b2e22c" class="bulleted-list"><li style="list-style-type:circle">Aka diseconomies of scale</li></ul></li></ul><h2 id="67223afe-ffda-4276-82ad-84310ade87a4" class="">Increasing Returns to Scale</h2><ul id="1a1ebb91-7f40-49a8-a3f1-2ad490a64a9d" class="bulleted-list"><li style="list-style-type:disc">When we say that a production function exhibits increasing returns, we mean that a given percentage of increase in inputs leads to a larger percentage of increase in the production of output</li></ul><ul id="54846f08-07fe-4e8b-9ed9-44b337fef8e8" class="bulleted-list"><li style="list-style-type:disc">Example, if a firm doubled or tripled inputs, then it would have double or tripled output</li></ul><ul id="093c2da5-7d06-46c8-8b04-e142d363483e" class="bulleted-list"><li style="list-style-type:disc">When firms can count on fixed input prices, that is when the prices of inputs do not change with output levels → increasing returns to scale also means that as output rises, average cost of production falls</li></ul><ul id="d0185836-7061-4ed4-bb2c-d28449aa4853" class="bulleted-list"><li style="list-style-type:disc">The term economies of scale refers directly to this reduction in cost per unit of output that follows from larger scale</li></ul><ul id="b142ace4-3638-4caf-baf2-5886aba6fd60" class="bulleted-list"><li style="list-style-type:disc">Most ecnonomies of scale result from factors that are technological in nature</li></ul><ul id="40317b96-8aac-484c-bc4a-e5e588d309dc" class="bulleted-list"><li style="list-style-type:disc">Some economies of scale result not from tech but from firm-level efficiences and bargaining power that can come with size</li></ul><ul id="7c8bd5f9-4d60-46e4-8dc7-2bd80412548c" class="bulleted-list"><li style="list-style-type:disc">When firms experience economies of scale, it’s LRAC → Long Run Average Cost will decline with output </li></ul><h3 id="6b396ace-ef02-4235-85e5-58b4b6fea531" class="">MES</h3><ul id="0de290c5-e0af-4171-ace1-42e4cf32dfc2" class="bulleted-list"><li style="list-style-type:disc">MES aka Minimum Efficient Scale is the scale at which long run average cost is minimum</li></ul><h3 id="ed335075-017c-4878-9cb9-cf346055cb18" class="">Long run Average Cost Curve</h3><ul id="f17f7a47-91bf-407c-bae8-852a915013bb" class="bulleted-list"><li style="list-style-type:disc">Envelope of a set of short run cost curves</li></ul><ul id="5301451e-cc02-45b9-b111-8e6217e42974" class="bulleted-list"><li style="list-style-type:disc">It shows the way per unit costs change with output in the long run.</li></ul><ul id="e79bda64-c191-453f-a350-b98d8bccc827" class="bulleted-list"><li style="list-style-type:disc">Each point in the LRAC shows the minimum cost at which goods can be produced at that scale</li></ul><figure id="a6bd0686-3cd1-4de5-94d3-90dc79e85695" class="image"><a href="Chapter%209%20-%20Long%20Run%20Costs%20(Appendix%20Excluded)%2053cd1f2bddcd4fdb8dcd996c272e9666/Untitled%204.png"><img style="width:1519px" src="Chapter%209%20-%20Long%20Run%20Costs%20(Appendix%20Excluded)%2053cd1f2bddcd4fdb8dcd996c272e9666/Untitled%204.png"/></a></figure><h2 id="7a3beae8-9702-41ae-9734-f091e99f329f" class="">Constant Returns to Scale</h2><ul id="60466adf-134a-4c9a-b94b-d658bcb47006" class="bulleted-list"><li style="list-style-type:disc">Quantitative relationship between input and output stays constant or the same when output is increased</li></ul><ul id="e7b9908f-06b2-446f-9a98-3179783f6404" class="bulleted-list"><li style="list-style-type:disc">If a firm doubles inputs, it doubles output and so on</li></ul><ul id="d3a3f139-23db-4e5a-ae68-133403abe3ac" class="bulleted-list"><li style="list-style-type:disc">If input prices are fixed, constant returns imply that average cost of production does not change with scale</li></ul><ul id="58f8120a-4026-4584-8b18-cbf168d5f7f8" class="bulleted-list"><li style="list-style-type:disc">The LRAC will be flat</li></ul><h2 id="3b1bbc7c-ab7e-445f-a52e-f9cf974c711a" class="">Decreasing Returns of Scale</h2><ul id="e878b9c8-ed4b-4d27-85e3-17f4e47c2a1b" class="bulleted-list"><li style="list-style-type:disc">When average cost increases with scale of production, a firm faces diseconomies of scale</li></ul><ul id="9c3fae6d-d6f3-401b-9edd-e58ba9d56005" class="bulleted-list"><li style="list-style-type:disc">LRAC curve slopes up</li></ul><ul id="1a063bf1-50de-4e3a-809f-82841dfc186e" class="bulleted-list"><li style="list-style-type:disc">Increases bureaucracy affecting incentives and control</li></ul><h2 id="6916fb3e-f9fa-427e-a728-a33ee928a5ac" class="">U shaped Long Run Average Costs</h2><ul id="69bb80a0-af98-4213-a3e7-3f717b81ce59" class="bulleted-list"><li style="list-style-type:disc">Some firms exhibit both economies of scale and diseconomies of scale</li></ul><ul id="f5e24805-8bf5-44f8-a54f-e41a161b269d" class="bulleted-list"><li style="list-style-type:disc">Unique optimal scale exists</li></ul><figure id="9e0d002f-11fd-4e7e-bb10-56d946b77221" class="image"><a href="Chapter%209%20-%20Long%20Run%20Costs%20(Appendix%20Excluded)%2053cd1f2bddcd4fdb8dcd996c272e9666/Untitled%205.png"><img style="width:1369px" src="Chapter%209%20-%20Long%20Run%20Costs%20(Appendix%20Excluded)%2053cd1f2bddcd4fdb8dcd996c272e9666/Untitled%205.png"/></a></figure><h1 id="14a54952-30cd-4c9d-aa61-d42aaeb68150" class="">Long Run Adjustments to Short Run Conditions</h1><h2 id="d9fee304-e060-46b1-80e7-a3c4a01e86ae" class="">Short Run Profits</h2><ul id="d82bdb49-8ee7-4c1c-b4e7-b3d5ec423e86" class="bulleted-list"><li style="list-style-type:disc">Market price is such that firms are earning a normal rate of return and flow of firms in and out of industry balances out</li></ul><figure id="25f11a04-a66f-4d64-9674-9fcd29c11be9" class="image"><a href="Chapter%209%20-%20Long%20Run%20Costs%20(Appendix%20Excluded)%2053cd1f2bddcd4fdb8dcd996c272e9666/Untitled%206.png"><img style="width:1473px" src="Chapter%209%20-%20Long%20Run%20Costs%20(Appendix%20Excluded)%2053cd1f2bddcd4fdb8dcd996c272e9666/Untitled%206.png"/></a></figure><figure id="a0cea7cd-ec66-4ba5-95f0-92592041044c" class="image"><a href="Chapter%209%20-%20Long%20Run%20Costs%20(Appendix%20Excluded)%2053cd1f2bddcd4fdb8dcd996c272e9666/Untitled%207.png"><img style="width:1422px" src="Chapter%209%20-%20Long%20Run%20Costs%20(Appendix%20Excluded)%2053cd1f2bddcd4fdb8dcd996c272e9666/Untitled%207.png"/></a></figure><ul id="4d68591b-be56-4e2f-b57a-9a68b3d28092" class="bulleted-list"><li style="list-style-type:disc">In Equilibrium →<strong> p = SRMC = SRAC = LRAC</strong></li></ul><h2 id="cc27ede8-c8f2-4dd9-be57-138e0d685270" class="">Long Run Adjustments - Investment flows towards Profit</h2><ul id="6fdb16d7-b25e-44f9-a972-a6d39aa757e8" class="bulleted-list"><li style="list-style-type:disc">In efficient markets, investment flows towards capital opportunities</li></ul><ul id="57dc4c45-d844-49d5-9aea-97f34bdbffcb" class="bulleted-list"><li style="list-style-type:disc">MC = d/dQ(Cost)</li></ul><ul id="613196d6-6fb9-406a-a07d-952a584c7cee" class="bulleted-list"><li style="list-style-type:disc">Long Run Competitive Equilibrium → <strong>P = SRMC = SRAC = LRAC</strong> and profits are zero</li></ul><h1 id="85370c95-e7b1-4304-8151-4aa4af3b8b64" class="">Formulae and Problems</h1><h3 id="73107c93-e6a7-4e40-8851-cfb4c01cf137" class="">Profit Maximization</h3><ul id="f7a2014c-86f0-4235-9388-4a4afc383c2f" class="bulleted-list"><li style="list-style-type:disc">MR = MC = P</li></ul><ul id="c1b699b1-2723-41da-a301-63dc9381e649" class="bulleted-list"><li style="list-style-type:disc">MR = d/dQ(Rev)</li></ul><h3 id="88b8c783-6a54-4ed5-ae3e-00e85f2a161c" class="">Breakeven and Shutdown Point</h3><ul id="71462431-f32d-4e14-9ac5-0cd7bb72460c" class="bulleted-list"><li style="list-style-type:disc">Breakeven : Profit = 0 i.e. P = ATC</li></ul><ul id="134f43f6-16e9-49e2-bac5-990b3591f185" class="bulleted-list"><li style="list-style-type:disc"><strong>MC = ATC → Equilibrium</strong></li></ul><ul id="62c287bc-863d-477d-9066-4f8d7661fed5" class="bulleted-list"><li style="list-style-type:disc">Shutdown Condition → MC = AVC</li></ul><h1 id="d59c451c-78d1-4b47-8bb7-e8e0fa5e7fcd" class=""><del>Appendix - NOT IN PORTION</del></h1><h2 id="45b9d6d1-c8a9-4ded-b0b6-90412d58c506" class=""><del>External Economies and Diseconomies</del></h2><ul id="6aa93bdb-f3a4-4bf1-853f-440e859f3307" class="bulleted-list"><li style="list-style-type:disc"><del>When long run average costs decrease as a result of industry growth, we say that there are external economies</del></li></ul><ul id="be9f870c-adc5-4082-ab9c-92fb8eebb0cf" class="bulleted-list"><li style="list-style-type:disc"><del>When average costs increase as a result of industry growth, we say that there are external diseconomies</del></li></ul><ul id="3a5147a8-9b2d-452a-91a8-0431b185e3f5" class="bulleted-list"><li style="list-style-type:disc"><del>Internal is within firms while external occurs on an industry wide basis</del></li></ul><h2 id="e288358f-fa79-42cd-9b4a-89d634b75ca8" class=""><del>Long Run Industry Supply Curve</del></h2><ul id="b795bb1b-1e65-47b7-b320-24b0e7449f17" class="bulleted-list"><li style="list-style-type:disc"><del>Profit = LRAC = SRAC = SRMC</del></li></ul><ul id="9b6d0d9e-6089-4586-a501-7a93638e2446" class="bulleted-list"><li style="list-style-type:disc"><del>This is the minimum point of their LRAC curve</del></li></ul><ul id="02215ff8-31c7-4fdf-a665-0320b9f29ef3" class="bulleted-list"><li style="list-style-type:disc"><del>Long run equilibrium is not easy to attain</del></li></ul><ul id="fb8e073b-414d-4798-b779-5e128541a042" class="bulleted-list"><li style="list-style-type:disc"><del>Extent of internal economies/diseconomies determines the shape of a firm’s long run average cost curve</del></li></ul><ul id="e34a7f96-ac0c-4b48-93ef-f28029ed667f" class="bulleted-list"><li style="list-style-type:disc"><del>LRAC shows the relationship between a firm’s output and average total cost</del></li></ul><ul id="b8ca8b30-3a31-4d30-b56b-fcdd1b2519ae" class="bulleted-list"><li style="list-style-type:disc"><del>External economies/diseconomies have nothing to do with the size of individual firms in a competitive market</del></li></ul><ul id="b1d4657e-20e7-4f12-b647-01ea58613c2a" class="bulleted-list"><li style="list-style-type:disc"><del>If industry expansion causes costs to increase, the LRAC curves facing individual firms shift upward</del></li></ul><ul id="f873f5ee-169b-415c-a30e-e3bb646e64bf" class="bulleted-list"><li style="list-style-type:disc"><del>We end up getting a line that is the long run industry supply curve.</del></li></ul><ul id="ae5aee08-0696-45d3-bb52-5bc86dab8a35" class="bulleted-list"><li style="list-style-type:disc"><del>When an industry enjoys external economies, it’s LRIS slopes down and is called a decreasing cost industry</del></li></ul><figure id="8a8f3e8f-960e-44c8-8270-6abd0bfbb545" class="image"><a href="Chapter%209%20-%20Long%20Run%20Costs%20(Appendix%20Excluded)%2053cd1f2bddcd4fdb8dcd996c272e9666/Untitled%208.png"><img style="width:1410px" src="Chapter%209%20-%20Long%20Run%20Costs%20(Appendix%20Excluded)%2053cd1f2bddcd4fdb8dcd996c272e9666/Untitled%208.png"/></a></figure><figure id="37029ab1-6c75-4def-89e4-3fdbb9dd4675" class="image"><a href="Chapter%209%20-%20Long%20Run%20Costs%20(Appendix%20Excluded)%2053cd1f2bddcd4fdb8dcd996c272e9666/Untitled%209.png"><img style="width:1377px" src="Chapter%209%20-%20Long%20Run%20Costs%20(Appendix%20Excluded)%2053cd1f2bddcd4fdb8dcd996c272e9666/Untitled%209.png"/></a></figure></div></article></body></html>

@@ -1,0 +1,669 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 11 - Capital Market and Investment Decision</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="51751788-193c-4388-9fc6-7f9686dba723" class="page sans"><header><h1 class="page-title">Chapter 11 - Capital Market and Investment Decision</h1></header><div class="page-body"><nav id="59b66c08-3e14-4c03-88fe-68fdb6a52993" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#78f52c06-58de-45d7-ae63-84b495dd0870">Capital, Investment and Depreciation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fd140076-1736-448d-a4c5-66c573d824bd">Capital</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#0d5186bd-e5b3-452d-b347-63a4e1b20a14">Tangible Capital</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#dbffb7fe-da2d-4806-8d82-0c4a6b4dfca4">Social Capital - Infrastructure</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b89b90d9-dcbe-4390-921f-6a60d3e5fee1">Intangible Capital</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#9bcfefa9-9000-4d30-82eb-e068c2624ade">Measuring Capital</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#21d9267d-4f4e-4cc2-9f8f-d0cf451167da">Investment and Depreciation</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#6c6c124c-5f10-4a45-9468-99a2da8c37ce">Capital Market</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c67ccef-0b4e-4f9d-a017-efedcc1d3941">Interest</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7492c68e-9659-4607-8685-edf6ecf669ae">Profits</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#29b9b311-a52e-47ed-8bd4-21e952fdeb76">Mortgages and Mortgage Market</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2de65ec6-20e8-4c2d-81cf-8156b5e1d3f9">Capital Accumulation and Allocation</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0b81a7e0-2b3c-43a1-afdd-6280add844a6">Demand for New Capital and Investment Decision</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#24ae7136-5c38-4c37-ba4e-281b69edf06c">Forming Expectations</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#1004f4a8-8a77-4526-997b-9cf796a6cf4e">Expected Benefits of Investment</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#abfaea00-dcd2-44e3-8ec2-10e1cd7f9673">Expected Costs of Investment</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#64288038-65cb-4d45-b1c6-4487cc40e174">Comparing Costs and Expected Returns</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#532777b2-2420-4441-8e55-c05778a9a3d1">The expected rate of return and the Marginal Revenue Product of Capital</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a0814c01-c940-4e69-b708-8b872a93583d">Appendix</a></div></nav><h1 id="78f52c06-58de-45d7-ae63-84b495dd0870" class="">Capital, Investment and Depreciation</h1><h2 id="fd140076-1736-448d-a4c5-66c573d824bd" class="">Capital</h2><ul id="e4ae1994-02ea-421b-9659-b10049e60bdd" class="bulleted-list"><li style="list-style-type:disc">Produced by the economic system that are used as inputs to produce other goods and services over time</li></ul><ul id="5aa1f47f-7199-4104-9583-3dc853b473e6" class="bulleted-list"><li style="list-style-type:disc">The value of capital is only as great as the value of the service it renders over time</li></ul><h3 id="0d5186bd-e5b3-452d-b347-63a4e1b20a14" class="">Tangible Capital</h3><ul id="d79375ea-d3cb-491d-99fa-d29d554a05a1" class="bulleted-list"><li style="list-style-type:disc">Also known as physical capital</li></ul><ul id="8ec2eb9f-26fa-477e-8fd9-8f45993873d2" class="bulleted-list"><li style="list-style-type:disc">Non residential Structures, durable equipment and residential structures and inventories of inputs and outputs</li></ul><ul id="0cee0f26-ca40-45d3-aa9c-d9d7874ea64e" class="bulleted-list"><li style="list-style-type:disc">Most firms need tangible capital along with labor and land to produce their products.</li></ul><h3 id="dbffb7fe-da2d-4806-8d82-0c4a6b4dfca4" class="">Social Capital - Infrastructure</h3><ul id="85513c9c-92f4-4931-a3cf-7c10c125f1f3" class="bulleted-list"><li style="list-style-type:disc">Some physical or tangible capital is owned by the public instead of by private firms.</li></ul><ul id="bffe5270-3317-40b0-a714-e2006e7c29f3" class="bulleted-list"><li style="list-style-type:disc">Social Capital also called infrastructure is capital that provides services to public</li></ul><ul id="6f3b94e0-7911-4632-929f-46b2eddd17e8" class="bulleted-list"><li style="list-style-type:disc">Most of this takes the form of public works</li></ul><h3 id="b89b90d9-dcbe-4390-921f-6a60d3e5fee1" class="">Intangible Capital</h3><ul id="413798c7-c94e-4473-b17a-a5fc8f6bdfbc" class="bulleted-list"><li style="list-style-type:disc">Not all capital is physical</li></ul><ul id="4a9171b4-e49f-46cc-a2de-a4e7d88107ff" class="bulleted-list"><li style="list-style-type:disc">Some things are intangible</li></ul><ul id="2ef67c45-ac19-497b-9def-53eeca08f2ec" class="bulleted-list"><li style="list-style-type:disc">When a firm invests in advertising to establish a brand name it is producing a form of intangible capital called goodwill</li></ul><ul id="012e9edb-ba39-436e-98c3-f87c3d1b694e" class="bulleted-list"><li style="list-style-type:disc">This yields valuable services to the firm over time</li></ul><ul id="659ef539-7369-4c58-8690-1b55ed2f332c" class="bulleted-list"><li style="list-style-type:disc">When a firm establishes a training program it is investing in it’s worker’s skills</li></ul><ul id="fe93d743-c800-4494-945f-be91df3e35c7" class="bulleted-list"><li style="list-style-type:disc">We can think of such an investment as production of intagible form of capital called human capital</li></ul><h3 id="9bcfefa9-9000-4d30-82eb-e068c2624ade" class="">Measuring Capital</h3><ul id="fa1643a3-a0e7-479b-98ea-e1c55c9ce9a8" class="bulleted-list"><li style="list-style-type:disc">Labor is measured in hours and land is measured in square feet or acres</li></ul><ul id="29a76e2c-353c-40d2-8caf-3adf2059d8c8" class="bulleted-list"><li style="list-style-type:disc">Because capital comes in so many forms, it’s virtually impossible to measure it directly in physical terms</li></ul><ul id="5e0b8ba5-3148-4ab4-8b67-5d108f2d19e0" class="bulleted-list"><li style="list-style-type:disc">So we use it’s current market value</li></ul><ul id="05138555-f7e1-476b-9ab2-ff700cfe3ccb" class="bulleted-list"><li style="list-style-type:disc">The measure of a firm’s capital stock is the current market value of it’s plant, equipment, inventories and economists</li></ul><ul id="ed1dbbf2-a29e-4980-a77d-1f88d1fcab75" class="bulleted-list"><li style="list-style-type:disc">Capital is measured as a stock value</li></ul><h2 id="21d9267d-4f4e-4cc2-9f8f-d0cf451167da" class="">Investment and Depreciation</h2><ul id="31065491-bded-4cae-8e36-bc8e80e4ed85" class="bulleted-list"><li style="list-style-type:disc">Stock measures are valued at a particular point in time</li></ul><ul id="5d066946-202f-4fb9-8117-dc15aa514688" class="bulleted-list"><li style="list-style-type:disc">Flow measures are valued over a period of time</li></ul><ul id="54b8ffa0-1840-43cd-9740-317598a25fa4" class="bulleted-list"><li style="list-style-type:disc">Capital Stocks are affected over time by two flows: Investment and Depreciation</li></ul><ul id="1d609e53-f59a-48ef-873e-9d58bed864bd" class="bulleted-list"><li style="list-style-type:disc">Investment is a flow that increases the stock of capital</li></ul><ul id="d395a59e-a7d7-41d9-93aa-04ee137de989" class="bulleted-list"><li style="list-style-type:disc">Because it has time dimension, we speak of investment per period</li></ul><ul id="cc8f1b10-fe28-4eaa-89c9-3c346a6a290d" class="bulleted-list"><li style="list-style-type:disc">Depreciation is the decline in an asset’s economic value over time</li></ul><h1 id="6c6c124c-5f10-4a45-9468-99a2da8c37ce" class="">Capital Market</h1><ul id="13d6fa3c-9fc2-4de1-be80-df88748f8585" class="bulleted-list"><li style="list-style-type:disc">Income that is earned on savings that have been put to use through financial capital markets is called Capital Income</li></ul><ul id="5a52ffc2-7a57-46d0-9620-9264e7505539" class="bulleted-list"><li style="list-style-type:disc">Capital Income helps households by giving income and profits</li></ul><h2 id="2c67ccef-0b4e-4f9d-a017-efedcc1d3941" class="">Interest</h2><ul id="48ea5c44-90c0-4ca6-9766-5fdd90c6f359" class="bulleted-list"><li style="list-style-type:disc">Most common form of capital income received by households</li></ul><ul id="3df5a129-837b-4791-8cd3-410723fc0c79" class="bulleted-list"><li style="list-style-type:disc">Payment made for use of household money</li></ul><ul id="4565f68a-4060-434e-8b84-69b92a7b2429" class="bulleted-list"><li style="list-style-type:disc">Banks pay interest to depositors whose money is loaned out to businesses and individuals who want to make investments</li></ul><ul id="ba20b352-bfd4-4830-a44d-41ac206a8b19" class="bulleted-list"><li style="list-style-type:disc">Banks also charge interest and Corporations pay interest to households that buy their bonds</li></ul><ul id="d1c4ed45-16fb-49a5-9bd2-e30e8d932454" class="bulleted-list"><li style="list-style-type:disc">Interest rate is almost always expressed as an annual rate</li></ul><ul id="c7f945b3-f92f-4765-a256-76ff78c435e4" class="bulleted-list"><li style="list-style-type:disc">It is usually agreed to when the loan or deposit is made</li></ul><ul id="8e6d2447-c7a0-4b86-b8d0-3836c4511ad8" class="bulleted-list"><li style="list-style-type:disc">Sometimes interest rate is changed periodically and this is called floating point or adjustable loans</li></ul><h2 id="7492c68e-9659-4607-8685-edf6ecf669ae" class="">Profits</h2><ul id="c23d8de1-5429-4d0d-a781-b5b75418ef7d" class="bulleted-list"><li style="list-style-type:disc">Revenue minus cost of production</li></ul><ul id="4adee920-7d43-4dd7-9ae3-cdec52fb4bc5" class="bulleted-list"><li style="list-style-type:disc">A share of common stock is a certificate that represents the ownership of a share of a business, almost always a corporation</li></ul><ul id="a232bf35-c9d9-4f40-b6a2-a97a33f23f0f" class="bulleted-list"><li style="list-style-type:disc">When profits are paid directly to shareholders, the payment is called a dividend.</li></ul><figure id="8db43f8d-d375-4d13-93ec-10a7661efdc6" class="image"><a href="Chapter%2011%20-%20Capital%20Market%20and%20Investment%20Decisio%2051751788193c43889fc67f9686dba723/Untitled.png"><img style="width:1380px" src="Chapter%2011%20-%20Capital%20Market%20and%20Investment%20Decisio%2051751788193c43889fc67f9686dba723/Untitled.png"/></a></figure><figure id="cc2a9a4c-4643-42eb-9c0a-9fcd4e6e9a4e" class="image"><a href="Chapter%2011%20-%20Capital%20Market%20and%20Investment%20Decisio%2051751788193c43889fc67f9686dba723/Untitled%201.png"><img style="width:1075px" src="Chapter%2011%20-%20Capital%20Market%20and%20Investment%20Decisio%2051751788193c43889fc67f9686dba723/Untitled%201.png"/></a></figure><h2 id="29b9b311-a52e-47ed-8bd4-21e952fdeb76" class="">Mortgages and Mortgage Market</h2><ul id="d73233a8-a10a-455f-b281-589f0da07387" class="bulleted-list"><li style="list-style-type:disc">Mortgage like a bond is a contract in which the borrower promises to repay the lender in the future</li></ul><ul id="6964cbaa-2b52-4034-a586-c85f7b0df28d" class="bulleted-list"><li style="list-style-type:disc">Real Estate is collateral for mortgage</li></ul><ul id="4e4273ea-81ba-4c03-a9d9-e10e125b807f" class="bulleted-list"><li style="list-style-type:disc">Previously mortgages were done in the banks where depositor’s money was used to make loans and signed promissory notes were given to lenders who took money every month</li></ul><ul id="d0c6550e-9fcd-4283-8617-03624f8089ff" class="bulleted-list"><li style="list-style-type:disc">Recently mortgage shifted to brokers and bankers who immediately sell mortgages to a secondary market</li></ul><h2 id="2de65ec6-20e8-4c2d-81cf-8156b5e1d3f9" class="">Capital Accumulation and Allocation</h2><ul id="0f052c32-56cb-4143-bb3a-c8d6f552312d" class="bulleted-list"><li style="list-style-type:disc">In modern industrial societies, investment decisions (capital production decisions) are made primarily by firms. </li></ul><ul id="dc37a044-cc5e-45ca-9167-f54cca3e0157" class="bulleted-list"><li style="list-style-type:disc">Households decide how much to save, and in the long run, savings limit or constrain the amount of investment that firms can undertake. </li></ul><ul id="f1884385-1383-4cef-b7e7-9394a22bdb20" class="bulleted-list"><li style="list-style-type:disc">The capital market exists to direct savings into profitable investment projects.</li></ul><h1 id="0b81a7e0-2b3c-43a1-afdd-6280add844a6" class="">Demand for New Capital and Investment Decision</h1><ul id="4c94d0a4-ef7f-4e3e-b24f-cfae9adfaed6" class="bulleted-list"><li style="list-style-type:disc">Even when a firm does not have profit, it has to still do some investing</li></ul><ul id="609f1a3b-0bea-445e-94e7-a00b37ef39ac" class="bulleted-list"><li style="list-style-type:disc">First, equipment wears out, and must be replaced if the firm has to stay in business</li></ul><ul id="6083c924-b0a0-4ddf-85c9-8359801c85db" class="bulleted-list"><li style="list-style-type:disc">A new technology might come and sales pattern might shift and the firm may expand or contract its line</li></ul><ul id="a6ef69fd-317b-4d5d-b1a1-bec12df71217" class="bulleted-list"><li style="list-style-type:disc">Investment Decision process within an individual firm</li></ul><h2 id="24ae7136-5c38-4c37-ba4e-281b69edf06c" class="">Forming Expectations</h2><ul id="89499f10-bf77-4b48-bfde-d8c72299a41f" class="bulleted-list"><li style="list-style-type:disc">Capital provides some useful services over time</li></ul><h3 id="1004f4a8-8a77-4526-997b-9cf796a6cf4e" class="">Expected Benefits of Investment</h3><ul id="91ee64e1-c473-4178-b8d5-88bf6d91eb10" class="bulleted-list"><li style="list-style-type:disc">Decision makers must have expectations of what will happen in the future</li></ul><ul id="be8e27ec-ab3e-4a1f-8d2b-6cde1b69e8ef" class="bulleted-list"><li style="list-style-type:disc">The investment process requires that the potential investor evaluate the expected flow of future productive services that an investment will yield</li></ul><ul id="a6c38644-4141-4de8-8420-e52811c2323e" class="bulleted-list"><li style="list-style-type:disc">For example, someone might forecast that some product’s demand will increase, then we need to check that the firm has enough capabilities to produce the same</li></ul><h3 id="abfaea00-dcd2-44e3-8ec2-10e1cd7f9673" class="">Expected Costs of Investment</h3><ul id="52c79c85-f01b-4c37-9e43-230aeddf0edc" class="bulleted-list"><li style="list-style-type:disc">The benefits of investment take the form of future revenue</li></ul><ul id="2a0207d7-3490-40da-9f17-7687ff761ef3" class="bulleted-list"><li style="list-style-type:disc">But revenues must be forcast and costs also should be evaluated</li></ul><ul id="a6ce3b9a-1601-48be-87ac-a2df2b3871ff" class="bulleted-list"><li style="list-style-type:disc">If a firm decides to borrow money to finance a project, the interest on the loan is part of the project</li></ul><ul id="2dc79392-a39b-41c5-a47a-7d98c38b4691" class="bulleted-list"><li style="list-style-type:disc">The project will not be undertaken unless it is expected to yield more than the market interest rate. </li></ul><ul id="a8d3dff6-972e-41b8-91c1-926763b9ba38" class="bulleted-list"><li style="list-style-type:disc">The cost of an investment project may thus be direct or indirect because the ability to lend at the market rate of interest means that there is an opportunity cost associated with every investment project.</li></ul><ul id="037533a5-c832-4470-9bf9-6f3b8e1ef9df" class="bulleted-list"><li style="list-style-type:disc">The evaluation process thus involves not only estimating future benefits but also comparing them with the possible alternative uses of the funds required to undertake the project</li></ul><h2 id="64288038-65cb-4d45-b1c6-4487cc40e174" class="">Comparing Costs and Expected Returns</h2><ul id="8bdb064d-788d-44ff-8b25-896fab745003" class="bulleted-list"><li style="list-style-type:disc">Once we find the expectations, firms must quantify them using money to check profit and loss</li></ul><ul id="ce99e101-a670-4974-a7c5-83bc07446ac7" class="bulleted-list"><li style="list-style-type:disc">One way to quantify is to calculate expected rate of return</li></ul><ul id="1037a6b9-ef9b-45d2-8eb9-8f21fb6d82ed" class="bulleted-list"><li style="list-style-type:disc">As long as the expected rate of return &gt; normal rate of return, firms will invest in this</li></ul><ul id="6a1831a8-66ae-46fa-90c5-b651f29cc34b" class="bulleted-list"><li style="list-style-type:disc">This depends on price of investment, expected length of time of project, additional cost savings or revenue</li></ul><ul id="f2fb9fc7-b148-435a-b69f-0bbdc57fada4" class="bulleted-list"><li style="list-style-type:disc">We can derive the firm’s demand for new capital by horizontal addition of all firms at every interest rate → We get market demand curve for capital</li></ul><h3 id="532777b2-2420-4441-8e55-c05778a9a3d1" class="">The expected rate of return and the Marginal Revenue Product of Capital</h3><ul id="7a388a78-bda7-45ec-98ef-6ab019820847" class="bulleted-list"><li style="list-style-type:disc">Firm will keep investing until the marginal revenue product is equal to the price of the capital</li></ul><ul id="969b1b90-cbf1-4eb2-b334-73f8b8737695" class="bulleted-list"><li style="list-style-type:disc"><strong>MRP_K = P_K</strong></li></ul><h1 id="a0814c01-c940-4e69-b708-8b872a93583d" class="">Appendix</h1><ul id="c43cf421-96be-4821-86ae-cd7f2340b205" class="bulleted-list"><li style="list-style-type:disc">Basically if you make 1600 after an investment of 1200 but you are getting 1600 after a time of 5 years you need to think properly whether to invest or not</li></ul><ul id="470c5e98-d337-4947-946f-47d03d02ba43" class="bulleted-list"><li style="list-style-type:disc">The amount of money that you would have to put in the imaginary bank to replicate the flow of profits from an investment project is called the present discounted value (PDV) or simply the net present value (NPV) of the expected flow of profits</li></ul><ul id="cbf86281-c0e2-4f10-9e17-0116941fe6bd" class="bulleted-list"><li style="list-style-type:disc">If PDV is less than what you are investing in a firm, then there’s no point in investing in the project or firm</li></ul><div><figure id="92e14ce8-0ff2-4429-8f9f-291358042098" class="image"><a href="Chapter%2011%20-%20Capital%20Market%20and%20Investment%20Decisio%2051751788193c43889fc67f9686dba723/Untitled%202.png"><img style="width:1491px" src="Chapter%2011%20-%20Capital%20Market%20and%20Investment%20Decisio%2051751788193c43889fc67f9686dba723/Untitled%202.png"/></a></figure></div><ul id="83e80f30-f3ae-4004-8ede-e662e508bc53" class="bulleted-list"><li style="list-style-type:disc">PDV or NPV = The present discounted value of R dollars to be paid t years in the future is the amount you need to pay today, at current interest rates, to ensure that you end up with R dollars t years from now. it is the current market value of receiving R dollars in t years</li></ul><ul id="bac91531-9668-47ec-9515-0224ab8184c0" class="bulleted-list"><li style="list-style-type:disc">Evaluating the opportunity costs of any investment project - Three Steps</li></ul><figure id="a23db3d5-3532-4cab-a1a5-9148044c4c50" class="image"><a href="Chapter%2011%20-%20Capital%20Market%20and%20Investment%20Decisio%2051751788193c43889fc67f9686dba723/Untitled%203.png"><img style="width:961px" src="Chapter%2011%20-%20Capital%20Market%20and%20Investment%20Decisio%2051751788193c43889fc67f9686dba723/Untitled%203.png"/></a></figure><figure id="55c7a796-a2d1-4187-9d96-d722c252e3da" class="image"><a href="Chapter%2011%20-%20Capital%20Market%20and%20Investment%20Decisio%2051751788193c43889fc67f9686dba723/Untitled%204.png"><img style="width:1005px" src="Chapter%2011%20-%20Capital%20Market%20and%20Investment%20Decisio%2051751788193c43889fc67f9686dba723/Untitled%204.png"/></a></figure><ol type="1" id="4f60df98-f3ab-4a46-9fe7-c452c4d3c41f" class="numbered-list" start="1"><li>Discount Rate<ol type="a" id="8ff1c29c-f553-4f95-b4e3-ee1354af8ebe" class="numbered-list" start="1"><li>Interest rate that you could earn by investing a similar amount of money </li></ol></li></ol><ol type="1" id="709ad3dd-7715-4392-9625-bacd98391f71" class="numbered-list" start="2"><li>Is your investment worth it?<ol type="a" id="68c40665-09b9-4a16-99de-f3b178a66ac6" class="numbered-list" start="1"><li>You must consider the opportunity cost of the money</li></ol><ol type="a" id="b9a25282-ad05-4e7f-80ff-3b84e894410c" class="numbered-list" start="2"><li>The question is how much would you have to put in a bank at a given rate of interest to get the same amount of money after the end</li></ol><ol type="a" id="21b205d0-1c65-4ef5-b76a-95e5a5c11425" class="numbered-list" start="3"><li>In this case it’s not</li></ol></li></ol></div></article></body></html>

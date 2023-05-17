@@ -1,0 +1,675 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Interest Rates and Security Valuation</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="38cf741a-6a98-422a-8d72-0e5325f7a9bd" class="page sans"><header><h1 class="page-title">Interest Rates and Security Valuation</h1></header><div class="page-body"><nav id="c07ba1d6-c18b-43a0-a0a5-d46399a7b138" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2f7c0eaa-29ca-48c0-8273-8b474d722527">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#6fe71a52-333b-4a79-b988-f59cea6b4ee3">Various Interest Rate Measures</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5eee73cc-6bb5-4b5a-9163-d4453266293b">Coupon Rate</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9acd8e59-9437-4353-b1c2-6e3838b67347">Required Rate of Return</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0d65799f-1591-42f2-b673-2cacc4099554">Expected Rate of Return</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c39f0664-813f-404c-af28-2d9199196db8">Realized Rate of Return</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4a8f1e66-03f3-4512-8c11-1052a831de0c">Bond Valuation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#86e93fc8-86f1-43e4-b2a5-e93afe9fde36">Fair Present Values</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0defaa01-dd9d-44a3-aa51-4138c77151f3">Yield to Maturity</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c38c1172-2ce8-41b5-a7a8-7a265349536a">Equity Valuation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#cf6a9ef7-bba5-4641-bfc9-2ad2d997bba5">3 Types of Dividends</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a070c722-d7d1-419c-bbf0-75bcecf11360">Important Points</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5f9cb5a8-7afa-4b84-9104-9a14681b2489">Duration Analysis</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#24603065-2609-457c-97e0-e96f107573e5">Impact of Interest Rate changes on Security Values</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4798bc38-ed3f-4c1b-9864-50ddcf853a0d">Impact of Maturity on Security Values</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3e022412-2656-490f-afa8-65967f2a6eb1">Impact of Coupon Value on Security Values</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c8da7944-6d4d-4235-8a8a-0efc599e14f0">Duration</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d1a11054-01f2-481e-9ecb-5837f46192e9">Features of Duration</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7ac6c1eb-6732-4573-9f7e-859a75db93fb">Economic Meaning of Duration</a></div></nav><h1 id="2f7c0eaa-29ca-48c0-8273-8b474d722527" class="">Introduction</h1><ul id="b9150fcb-ac20-4875-888d-715ebdfc4936" class="bulleted-list"><li style="list-style-type:disc">Normally after a point you won’t have capital to open multiple branches of the same firm, say single proprietorship and if it goes into loss, you are totally liable for that money if borrowed</li></ul><ul id="5ce423e6-170f-45d1-9fe9-f4b700edc8d5" class="bulleted-list"><li style="list-style-type:disc">Sometimes even if they sell ancestral property they might not be able to return the money</li></ul><ul id="f027fa9c-4a8e-4e9d-98ea-1b0989e31203" class="bulleted-list"><li style="list-style-type:disc">We borrow the concept called limited liability</li></ul><ul id="8408df12-ace4-42b1-b9d1-4921242ebf4f" class="bulleted-list"><li style="list-style-type:disc">We split the big amount into small amounts and the small amount becomes liability for one guy with whom profits/losses will be shared</li></ul><ul id="e3d7ea1f-326e-4510-a31f-1db8351636b4" class="bulleted-list"><li style="list-style-type:disc">In n shareholders case, we are not responsible for the loss that happened<ul id="814b4b9d-98ee-4c83-93dc-6dafe8cf5bf4" class="bulleted-list"><li style="list-style-type:circle">Say we need 100cr, we take 50cr loan and 50cr from shareholders</li></ul><ul id="721c56fb-7d61-487e-8d2e-349c1177971d" class="bulleted-list"><li style="list-style-type:circle">In this case if we face only return of 7cr, we still have 43cr to pay to the debt holders</li></ul><ul id="3f657a4a-d723-41bc-8af8-296efc46f233" class="bulleted-list"><li style="list-style-type:circle">No one will be responsible for this profit</li></ul><ul id="ed11202b-ec31-48da-9ff8-eacf10e08a11" class="bulleted-list"><li style="list-style-type:circle">Lenders will charge higher interest rate </li></ul><ul id="6dce2595-3a92-49d5-95ab-abe4dc4eb9f8" class="bulleted-list"><li style="list-style-type:circle">Limited Liability Concept  → Ltd. companies</li></ul></li></ul><ul id="dfbb6a60-791d-4603-9b89-c74b5576560f" class="bulleted-list"><li style="list-style-type:disc">Lending Rates or Interest Rates change drastically</li></ul><h1 id="6fe71a52-333b-4a79-b988-f59cea6b4ee3" class="">Various Interest Rate Measures</h1><h2 id="5eee73cc-6bb5-4b5a-9163-d4453266293b" class="">Coupon Rate</h2><ul id="63818a01-4877-4674-9b8d-dc54cb26ca26" class="bulleted-list"><li style="list-style-type:disc">Periodic cash flow a bond issuer contractually promises to pay a bond holder</li></ul><ul id="a66aef5e-cc0f-4451-a557-153797d0a503" class="bulleted-list"><li style="list-style-type:disc">Fraud → You can borrow your company shares for 4000/- and sell them, then make their value go down, buy for 1000/- and then give it back at 4000 🙂 → Profit of 3000</li></ul><ul id="69e5674d-eee7-46b1-8d65-c104c86bb55d" class="bulleted-list"><li style="list-style-type:disc">Demat Accounts → Dematerialized Accounts</li></ul><ul id="a198f741-1d78-4402-a81f-f84f82b274f0" class="bulleted-list"><li style="list-style-type:disc">In simple words, it’s basically interest rate but named coupon rate</li></ul><ul id="a3d9e4f9-49cd-4adf-8551-7402632ec216" class="bulleted-list"><li style="list-style-type:disc">Bond is a debt while share is the ownership right</li></ul><h2 id="9acd8e59-9437-4353-b1c2-6e3838b67347" class="">Required Rate of Return</h2><ul id="fc04bbf3-ac16-4a50-9c6c-76c275805e4e" class="bulleted-list"><li style="list-style-type:disc">Rates used by individual market participants to calculate fair present values</li></ul><ul id="382be57e-8170-450a-865c-895698fe85b5" class="bulleted-list"><li style="list-style-type:disc">This is the interest rate someone should receive to cover up for their money</li></ul><ul id="45c81787-1fd7-4ba2-aa44-877e4940ba7a" class="bulleted-list"><li style="list-style-type:disc">If c1, c2, c3.. are coupon rates</li></ul><ul id="d396a283-a7d5-42d2-a56f-30985bb9b457" class="bulleted-list"><li style="list-style-type:disc"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mi>V</mi><mo>=</mo><mfrac><mrow><mi>c</mi><mn>1</mn></mrow><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>r</mi><mo stretchy="false">)</mo></mrow></mfrac><mo>+</mo><mfrac><mrow><mi>c</mi><mn>2</mn></mrow><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>r</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow></mfrac><mo>+</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo>+</mo><mfrac><mrow><mi>f</mi><mi>a</mi><mi>c</mi><mi>e</mi><mi>v</mi><mi>a</mi><mi>l</mi><mi>u</mi><mi>e</mi></mrow><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>r</mi><msup><mo stretchy="false">)</mo><mi>n</mi></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">pV = \frac {c1} {(1+r)} + \frac {c2}{(1+r)^2} + ... + \frac {face value} {(1+r)^n}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.365108em;vertical-align:-0.52em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">1</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mclose mtight">)</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">c</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.52em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.365108em;vertical-align:-0.52em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">1</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mclose mtight"><span class="mclose mtight">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7463142857142857em;"><span style="top:-2.786em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">c</span><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.52em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord">...</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.452216em;vertical-align:-0.52em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9322159999999999em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">1</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mclose mtight"><span class="mclose mtight">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.5935428571428571em;"><span style="top:-2.786em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.446108em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight">ce</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight">e</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.52em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span><span>﻿</span></span></li></ul><figure id="9986a036-8170-4a17-bf3e-a4886fa5dffd" class="image"><a href="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled.png"><img style="width:846px" src="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled.png"/></a></figure><figure id="eb401e7c-260b-4dad-a3e1-72f29b4df09c" class="image"><a href="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%201.png"><img style="width:989px" src="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%201.png"/></a></figure><h2 id="0d65799f-1591-42f2-b673-2cacc4099554" class="">Expected Rate of Return</h2><ul id="89e541bb-f86d-4a7a-b24d-9482583a0e43" class="bulleted-list"><li style="list-style-type:disc">Rates participants would earn by buying securities at current market prices</li></ul><ul id="7be6a020-157d-4add-aff5-00947be166d0" class="bulleted-list"><li style="list-style-type:disc">If E(r) ≥ r or Current Market Price ≤ Present Value you should buy this security else no</li></ul><ul id="ce51d766-24a3-4ae3-94f1-5bedd1322836" class="bulleted-list"><li style="list-style-type:disc">We have two ex ante terms by now, one is the expected rate of return and other is the required rate of return</li></ul><ul id="46bf983c-f7fe-4332-b8d2-deff53c2f378" class="bulleted-list"><li style="list-style-type:disc">The req rate is used to calculate a fair present value of a financial security while expected rate is a discount rate used in conjunction with current market price </li></ul><figure id="c26ac665-0837-428d-94d8-462348a0dedd" class="image"><a href="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%202.png"><img style="width:877px" src="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%202.png"/></a></figure><figure id="2815eaf4-f583-4c03-95d0-baa3a79e70d3" class="image"><a href="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%203.png"><img style="width:1148px" src="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%203.png"/></a></figure><h2 id="c39f0664-813f-404c-af28-2d9199196db8" class="">Realized Rate of Return</h2><ul id="e68fd771-1119-4b15-9128-1ee44c614a4f" class="bulleted-list"><li style="list-style-type:disc">Rates actually earned on investments</li></ul><ul id="9c19f769-5ce1-470a-8673-6af42e812fe1" class="bulleted-list"><li style="list-style-type:disc">This is ex post and not ex ante</li></ul><figure id="bce10207-a823-4657-8846-847ef4871e14" class="image"><a href="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%204.png"><img style="width:933px" src="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%204.png"/></a></figure><figure id="4aeb72c4-4eac-47d4-8f7a-9955ae919ee9" class="image"><a href="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%205.png"><img style="width:1117px" src="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%205.png"/></a></figure><h1 id="4a8f1e66-03f3-4512-8c11-1052a831de0c" class="">Bond Valuation</h1><h2 id="86e93fc8-86f1-43e4-b2a5-e93afe9fde36" class="">Fair Present Values</h2><ul id="bb4b3b92-95b3-495c-ad7f-d426061990c7" class="bulleted-list"><li style="list-style-type:disc">Uses time value of money concepts</li></ul><ul id="b5d1b6de-5e99-4099-9473-5468c7f93d52" class="bulleted-list"><li style="list-style-type:disc">Most bonds pay a stated coupon rate of interest to the bond holders → coupon bonds</li></ul><ul id="21fe7e05-4614-4cb8-b273-6661bab11699" class="bulleted-list"><li style="list-style-type:disc">The interest or coupon INT is generally fixed</li></ul><ul id="ec6e21bc-78cd-4a29-bfcb-e5ca8437724c" class="bulleted-list"><li style="list-style-type:disc">Bonds that do not pay coupon interest are called zero-coupon bonds</li></ul><figure id="19caaf76-96cb-47b5-a534-975c8c027135" class="image"><a href="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%206.png"><img style="width:1134px" src="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%206.png"/></a></figure><figure id="e19ac908-96a6-43b8-b5de-6e20320e37a3" class="image"><a href="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%207.png"><img style="width:1068px" src="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%207.png"/></a></figure><ul id="bd996229-3578-46c5-a1cf-7084af507896" class="bulleted-list"><li style="list-style-type:disc">In the previous example, we notice that when rate was 8%, our fair value was higher than the face value so he’ll buy this bond</li></ul><ul id="a8241ab6-2410-450e-95ea-f7e4e17e038f" class="bulleted-list"><li style="list-style-type:disc">Coupon rate &gt; Required rate of return → PREMIUM</li></ul><ul id="ce78851d-9832-4f06-b7a0-dd0177ca2504" class="bulleted-list"><li style="list-style-type:disc">When the required rate of return was less than the coupon interest, our fair value is less</li></ul><ul id="4b29b2a2-48b2-47ba-9388-ce6981767337" class="bulleted-list"><li style="list-style-type:disc">Coupon Rate &lt; Required Rate of Return → DISCOUNT</li></ul><ul id="04f5dad5-0760-4253-9cad-02878406fe87" class="bulleted-list"><li style="list-style-type:disc">When coupon rate = required rate of return → PAR</li></ul><h2 id="0defaa01-dd9d-44a3-aa51-4138c77151f3" class="">Yield to Maturity</h2><ul id="64565e65-9400-483f-8eac-9442ae8e2a3e" class="bulleted-list"><li style="list-style-type:disc">Yield to Maturity or ytmm is defined as the return the bond holder will earn on the bond if he/she buys the bond at the current market price, receives all coupon and principal amounts and holds the bond until it matures</li></ul><figure id="99336d7f-95b4-47a9-9238-3d322f260d26" class="image"><a href="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%208.png"><img style="width:1040px" src="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%208.png"/></a></figure><figure id="7a7429ce-09d2-45c3-a97a-0befc86cc3b6" class="image"><a href="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%209.png"><img style="width:1080px" src="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%209.png"/></a></figure><h1 id="c38c1172-2ce8-41b5-a7a8-7a265349536a" class="">Equity Valuation</h1><ul id="3c0dcb21-4561-441d-a667-694bf87bb140" class="bulleted-list"><li style="list-style-type:disc">The valuation for an equity instrument such as stock involves finding the present rate </li></ul><pre id="d1cdba36-67f0-4e8a-aa87-e441a1e57161" class="code"><code>- D = Dividend paid out to stockholders at the end of every year
+- Pt = Price of stock at the end of the year
+- P0 = Current Price
+- rs = Interest rate</code></pre><ul id="ebebdee2-ebbd-4df7-a9f0-994c3b5a78e4" class="bulleted-list"><li style="list-style-type:disc">Suppose you owned a stock for the last two years. You originally bought the stock two
+years ago for $25 ( P0 ) and just sold it for $35 ( P2 ). The stock paid an annual dividend of $1( D ) on the last day of each of the past two years. Your realized rate of return on the stock investment can be calculated using the following time value of money equation:</li></ul><figure id="83c8c8a4-1821-41ce-bf38-778884659433" class="image"><a href="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%2010.png"><img style="width:576px" src="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%2010.png"/></a></figure><ul id="b9ffb779-636d-4760-8a54-857eae79b205" class="bulleted-list"><li style="list-style-type:disc">Equity, Stock or share are the same things</li></ul><ul id="ef844dd5-e70d-43c6-90ed-ffd829de695e" class="bulleted-list"><li style="list-style-type:disc">The difference between stock/bond is that in a stock we don’t have any maturity period</li></ul><figure id="22d8afad-5ac9-4319-97b5-4bf843df880c" class="image"><a href="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%2011.png"><img style="width:576px" src="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%2011.png"/></a></figure><h2 id="cf6a9ef7-bba5-4641-bfc9-2ad2d997bba5" class="">3 Types of Dividends</h2><ul id="20495809-22ae-4f3f-aeac-e01ed52d1ae6" class="bulleted-list"><li style="list-style-type:disc">Zero Growth Dividends i.e. D remains constant<figure id="e09c0933-662f-41a6-9b76-4a21149f88a9" class="image"><a href="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%2012.png"><img style="width:480px" src="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%2012.png"/></a></figure></li></ul><ul id="e52cc3b3-7f45-4960-ac35-12fdf6053d19" class="bulleted-list"><li style="list-style-type:disc">Constant Growth Dividends i.e. D increases at a constant rate<figure id="93822445-66df-49a6-bfac-b3bb7162a059" class="image"><a href="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%2013.png"><img style="width:480px" src="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%2013.png"/></a></figure></li></ul><ul id="0994d3fe-2515-4765-b174-8bff90149cc4" class="bulleted-list"><li style="list-style-type:disc">Supernormal or non constant growth in dividends<figure id="39e05cb3-deda-4817-82e1-e1ac2171e182" class="image"><a href="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%2014.png"><img style="width:480px" src="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%2014.png"/></a></figure></li></ul><h1 id="a070c722-d7d1-419c-bbf0-75bcecf11360" class="">Important Points</h1><ul id="8f8e8232-2f93-4eca-9379-0ab610038cfe" class="bulleted-list"><li style="list-style-type:disc">Arbitrage → Buying at low and selling at high</li></ul><ul id="5147b347-e884-4daf-9a0f-821b15ed4fee" class="bulleted-list"><li style="list-style-type:disc">Put means you are sort of insuring your purchase of the stock</li></ul><h1 id="5f9cb5a8-7afa-4b84-9104-9a14681b2489" class="">Duration Analysis</h1><h2 id="24603065-2609-457c-97e0-e96f107573e5" class="">Impact of Interest Rate changes on Security Values</h2><ul id="adcbd67d-4899-4ccc-aa05-4506fab5a95b" class="bulleted-list"><li style="list-style-type:disc">When required rate of return increases from 8 to 10%, the present value decreases</li></ul><ul id="4b6ca0b6-9fa8-4774-bbc3-2cb62976e20e" class="bulleted-list"><li style="list-style-type:disc">Let’s assume coupon rate is 10%, if the required rate is just 8%, then the value of the bond is higher than what we expect in face value</li></ul><figure id="d7f2dfb0-b3a1-48c9-9dcb-1351d0264f5c" class="image"><a href="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%2015.png"><img style="width:1282px" src="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%2015.png"/></a></figure><h2 id="4798bc38-ed3f-4c1b-9864-50ddcf853a0d" class="">Impact of Maturity on Security Values</h2><ul id="f08cb51f-3808-4a2d-b097-1d289f0e9fde" class="bulleted-list"><li style="list-style-type:disc">A bond’s price sensitivity is measured by the percentage change in it’s present value for a given change in interest rates</li></ul><ul id="42e676c1-4e1d-4f30-90b3-0d7b6d494375" class="bulleted-list"><li style="list-style-type:disc">The shorter the time remaining to maturity, the closer a bond’s price is to it’s face value</li></ul><ul id="a9c29bf1-6677-4b2a-98fc-207c1784ffe0" class="bulleted-list"><li style="list-style-type:disc">The further a bond is from maturity, the more sensitive the price is it’s face value</li></ul><figure id="8ebdb12d-a071-47f6-8b99-9e1a33259bab" class="image"><a href="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%2016.png"><img style="width:1974px" src="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%2016.png"/></a></figure><ul id="7086efaa-c8f7-499e-8ed7-df036fbda613" class="bulleted-list"><li style="list-style-type:disc">The intuition behind this is that nobody would pay much more than the face value of the bond and any remaining (in this case semiannual) coupon payments just prior to maturity since these
+are the only cash flows left to be paid on the bond.</li></ul><ul id="fd82e806-32ed-4595-af28-863ebdeb8fbc" class="bulleted-list"><li style="list-style-type:disc">Thus, the time value effect is reduced as the maturity of the bond approaches.</li></ul><h2 id="3e022412-2656-490f-afa8-65967f2a6eb1" class="">Impact of Coupon Value on Security Values</h2><ul id="3318ddbc-d2f7-4cda-b215-3e70dd4f16d9" class="bulleted-list"><li style="list-style-type:disc">Higher the coupon rate, higher the present value of the bond</li></ul><h2 id="c8da7944-6d4d-4235-8a8a-0efc599e14f0" class="">Duration</h2><ul id="6747768c-5544-44e9-86b9-e7e9fd43c233" class="bulleted-list"><li style="list-style-type:disc">If you have a 1 billion $ bond, if the required rate of return changes by 0.25%<ul id="a258c8d6-64e2-4b1d-8476-a2b1e1fefdb5" class="bulleted-list"><li style="list-style-type:circle">Face Value is 1 billion</li></ul><ul id="b52fcbc5-e818-493a-bc2e-36432118a884" class="bulleted-list"><li style="list-style-type:circle">Coupon is 10%</li></ul><ul id="1d31436f-caaa-413d-8cd7-dd43490bdb17" class="bulleted-list"><li style="list-style-type:circle">Discount Rate is 8%</li></ul><ul id="b055af39-18ae-4616-96ba-78e465f1fb7d" class="bulleted-list"><li style="list-style-type:circle">Interest rate increases to 8.25% Or increase to 8.75%</li></ul></li></ul><ul id="2b45e076-371c-4881-9089-bbc720023b1f" class="bulleted-list"><li style="list-style-type:disc">All bond issuers are going to cry a lot</li></ul><ul id="aa054e10-17ac-4244-ba8b-609fd4fbc168" class="bulleted-list"><li style="list-style-type:disc">Interest Rates are gonna change in small portions and we use duration analysis to find a relation between maturity, coupon rate etc.</li></ul><ul id="ee056942-afab-4940-9d73-789b64aa40b8" class="bulleted-list"><li style="list-style-type:disc">100bps = 1% change where bps means basis points</li></ul><ul id="2b1bc53c-bb4a-452c-9ee1-e360b6f26d9b" class="bulleted-list"><li style="list-style-type:disc">We use bps because humans work on a large scale 🙂</li></ul><ul id="86941b3d-b9c6-436d-93b7-82ee1acfa817" class="bulleted-list"><li style="list-style-type:disc">Duration is the weighted average time to maturity on a financial security using the relative present values of cash flows as weights</li></ul><ul id="598eca51-154a-45ac-acae-496fd896ac88" class="bulleted-list"><li style="list-style-type:disc">Duration also has economic meaning as the sensitivity or elasticity of that asset or liability’s value to small interest rate changes → either required rate or return or yield to maturity</li></ul><figure id="7e15b230-0418-4efe-89f0-f6ee0fe4a2cb" class="image"><a href="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%2017.png"><img style="width:1342px" src="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%2017.png"/></a></figure><ul id="d9cc26f4-dfbc-4505-aa46-51f1eadfca30" class="bulleted-list"><li style="list-style-type:disc">For a zero bond, duration = time of the bond because you are not getting any coupons in between</li></ul><h2 id="d1a11054-01f2-481e-9ecb-5837f46192e9" class="">Features of Duration</h2><ul id="f1333c21-f61c-4a58-9777-59b9869bf903" class="bulleted-list"><li style="list-style-type:disc">Higher the coupon rate, shorter the duration, because you recover most money before only</li></ul><ul id="170ccf34-b33c-4bc5-8a29-9b5d1b592f2c" class="bulleted-list"><li style="list-style-type:disc">As rate of return increases, the duration decreases, because if you are getting more in return that would mean you would recover earlier → Because of low present value</li></ul><ul id="5fdceb49-f66e-45c1-85e3-824d40a38ed9" class="bulleted-list"><li style="list-style-type:disc">As maturity period increases, the duration also increases at a decreasing rate. We see that as maturity period increases, the number of coupons increases, so the duration also increases due to more spread out coupons </li></ul><h1 id="7ac6c1eb-6732-4573-9f7e-859a75db93fb" class="">Economic Meaning of Duration</h1><figure id="d11a6b55-dc1b-4bd7-a96c-58aa0871d5f8" class="image"><a href="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%2018.png"><img style="width:502px" src="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%2018.png"/></a></figure><ul id="94783a53-b1ee-464f-9871-4daa3d67544a" class="bulleted-list"><li style="list-style-type:disc">We get <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>δ</mi><mi>P</mi></mrow><mi>P</mi></mfrac><mo>=</mo><mo>−</mo><mi>D</mi><mo>∗</mo><mfrac><mrow><mi>δ</mi><msub><mi>r</mi><mi>b</mi></msub></mrow><mrow><mn>1</mn><mo>+</mo><msub><mi>r</mi><mi>b</mi></msub></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac {\delta P} {P} = -D* \frac {\delta r_b} {1+r_b}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2251079999999999em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801079999999999em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03785em;">δ</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.3528279999999997em;vertical-align:-0.4508599999999999em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9019679999999999em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mbin mtight">+</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3487714285714287em;margin-left:-0.02778em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">b</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15122857142857138em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.41586em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03785em;">δ</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3487714285714287em;margin-left:-0.02778em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">b</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15122857142857138em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4508599999999999em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span><span>﻿</span></span></li></ul><ul id="4d34e268-ad1f-49fb-b06b-5ea4f3947db0" class="bulleted-list"><li style="list-style-type:disc">This tells that percentage change in present value depends on Duration and the change in interest rate</li></ul><ul id="6c65a9bd-0cf1-4d27-860b-edd24f8a6d61" class="bulleted-list"><li style="list-style-type:disc">We also combine terms D/1+rb into a new term called MB ⇒ <span style="border-bottom:0.05em solid">Modified Duration</span></li></ul><figure id="bf07bca0-097d-4405-8ea5-18ddfe7635a0" class="image"><a href="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%2019.png"><img style="width:1491px" src="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%2019.png"/></a></figure><ul id="7199173d-5bc2-48f2-b64f-774b766576de" class="bulleted-list"><li style="list-style-type:disc">But we have to note that this formula only works for small changes in interest rates → specifically 0-1% </li></ul><figure id="bd9dfbbf-98a0-4c6c-bf79-187f87cc908a" class="image"><a href="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%2020.png"><img style="width:979px" src="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%2020.png"/></a></figure><ul id="c8ee261a-e94d-4267-b1da-0b80adf38d5b" class="bulleted-list"><li style="list-style-type:disc">We observe convexity<ul id="f8508a51-c712-4d93-9b35-6e479eef2d50" class="bulleted-list"><li style="list-style-type:circle">Greater the convexity, more insurance or interest rate protection an investor has against rate increases and greater the gains after interest rate falls. Let’s say interest rate increases from 8 to 10, then your price will fall from 1067 to 1000 rather than to 997 which is an advantage</li></ul><ul id="fc103817-0744-4c82-9211-03f4a9c6fbfc" class="bulleted-list"><li style="list-style-type:circle">And if interest decreases price will increase a lot if it’s a convex curve</li></ul><ul id="c5bcfe85-0468-47c0-a546-b3a1f9678923" class="bulleted-list"><li style="list-style-type:circle">The larger the interest rate changes and the more convex a fixed-income security or portfolio, the greater the error the investor or FI manager faces in using just duration (and duration matching) to immunize exposure to interest rate shocks</li></ul><ul id="3d69e045-84f5-4450-a499-cd1945e84a68" class="bulleted-list"><li style="list-style-type:circle">All fixed-income securities are convex</li></ul></li></ul><figure id="58d7c98b-75f6-457b-8add-61a47f785124" class="image"><a href="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%2021.png"><img style="width:922px" src="Interest%20Rates%20and%20Security%20Valuation%2038cf741a6a98422a8d720e5325f7a9bd/Untitled%2021.png"/></a></figure><p id="f3a93905-ec25-4b53-b3eb-c1821a8aafcf" class="">
+</p></div></article></body></html>

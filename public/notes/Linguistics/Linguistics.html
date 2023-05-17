@@ -1,0 +1,669 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Linguistics</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="b3598985-281c-48ae-9383-307dcf8e6ffc" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🥌</span></div><h1 class="page-title">Linguistics</h1></header><div class="page-body"><nav id="d6fe4c47-9045-4abc-b452-624f55bfb193" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e46a02e7-ac99-4100-865a-73bbf02e30d1">Course Details</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7f7248fb-9a9a-4231-8847-11bf599ed197">Class #01</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d7c2fb98-6438-44de-8ec1-f00e27836bc5">Class #02</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7af41827-4860-4b98-9d6b-3c48f51eed4b">Linguistics is the Study of Language</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e7aa2cbf-c431-4ff0-bbb5-e68466c8dcb0">Linguist</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#6588cc5e-51eb-4f25-a678-ba4d43b43d8f">Class #03</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5c951e0f-5b8f-48fa-ad13-1c3aa69f42d7">A linguist is interested in thinks like</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3aa8b625-fbb3-4e2e-b5a2-a5a49d36cefd">Class #04</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#699cd975-26b7-4605-898e-dbb1843b3eee">Characteristics of Human Language - Part 1</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#51b8f9e9-df38-40f1-976d-581cde781e44">Class #05</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ec777549-afe3-4380-b246-7d087a135b6c">Optimality Theory</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5b44c3df-aca7-4ba5-ab38-c295c96d34ed">Characteristics of Human Language - Part 2</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#7e9c54bb-010e-4caa-ae6e-e2f3f79ca5f6">Duality</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d9732b9a-ed8c-4212-b7db-07b284fe4882">Arbitrariness</a></div></nav><h1 id="e46a02e7-ac99-4100-865a-73bbf02e30d1" class="">Course Details</h1><ul id="eacf26e7-6fa5-4036-9622-dcec6f010d51" class="bulleted-list"><li style="list-style-type:disc">Ded Class 🙂 → More like our death</li></ul><ul id="d98dc87e-eca6-4c97-817c-27a01f90b10c" class="bulleted-list"><li style="list-style-type:disc">Says english is the medium of instruction, but lack of english should not stop you from participating</li></ul><ul id="f01de47a-d556-4497-a8d7-194fec4e4203" class="bulleted-list"><li style="list-style-type:disc">Bring examples from your own mother tongue (first language). </li></ul><ul id="621016f7-7caa-4c43-a13d-be1ff65a1075" class="bulleted-list"><li style="list-style-type:disc">The more exotic, the better (sus bro)</li></ul><ul id="a720823f-3411-4879-8445-02e31da91a1f" class="bulleted-list"><li style="list-style-type:disc">Attacks bengali for being bengali or bangla</li></ul><ul id="f3986dc0-bf67-4d8f-bd9b-ddd4874160f5" class="bulleted-list"><li style="list-style-type:disc">Questions the existence of uttar pradesh and madhya pradesh cause same language</li></ul><ul id="7c754eb4-4eb3-4d68-bc34-43a7cefca1dd" class="bulleted-list"><li style="list-style-type:disc">If there’s any difficulty in the course<ul id="9354aca3-0145-40bd-a34c-d18c7f74a6ec" class="bulleted-list"><li style="list-style-type:circle">Drop me an email → pranesh@hyderabad.bits-pilani.ac.in</li></ul><ul id="8c4507cd-c874-4075-a3e4-d938bce82d1b" class="bulleted-list"><li style="list-style-type:circle">Speak up during the lectures</li></ul><ul id="4108cfcc-e01a-4510-8ec4-647d985d6125" class="bulleted-list"><li style="list-style-type:circle">Take an appointment for any trouble → Seek help</li></ul></li></ul><ul id="dccd315f-2e91-4eda-8306-3ef9e5effce8" class="bulleted-list"><li style="list-style-type:disc">Chad Marking Scheme<ul id="f1c888f9-68b5-4d0c-a1b6-b65f5cf722e8" class="bulleted-list"><li style="list-style-type:circle">1 As</li></ul><ul id="3b19b6da-fb87-4409-a7cd-bef6005b4bbd" class="bulleted-list"><li style="list-style-type:circle">2 A-s </li></ul></li></ul><h1 id="7f7248fb-9a9a-4231-8847-11bf599ed197" class="">Class #01</h1><ul id="7af464bf-02d1-4220-872c-cb43618dbb11" class="bulleted-list"><li style="list-style-type:disc">Patanjali is the person who fell into the cusps of someone and then he made most of the theories in language</li></ul><ul id="38fee763-d683-420a-8fa1-221007bc6448" class="bulleted-list"><li style="list-style-type:disc">Only in thoughtless state are we without language</li></ul><ul id="193bedea-ecc3-4c13-9ca0-e07f30cd8ab8" class="bulleted-list"><li style="list-style-type:disc">Even while asleep we keep thinking and it’ll still be in your first language</li></ul><ul id="3c38cac9-f6c8-4f78-a200-06cc03447f88" class="bulleted-list"><li style="list-style-type:disc">Dreams don’t have logic, none of the laws apply yet we will hear words which are syntactically and symantically correct in the language</li></ul><ul id="75687619-1c64-449a-8afb-f02ba9d92ae9" class="bulleted-list"><li style="list-style-type:disc">There’s bhasha and boli</li></ul><ul id="5019dbbc-ebcf-466b-a13f-e4031711de25" class="bulleted-list"><li style="list-style-type:disc">When you get hurt → Cry or Swear but these are also in some language - Mother Tongue</li></ul><ul id="f8435136-8cfc-43e1-a222-efc4d1fb7a94" class="bulleted-list"><li style="list-style-type:disc">You cannot run away from language </li></ul><ul id="317b6cc5-12e2-4a60-8282-0c0f66446582" class="bulleted-list"><li style="list-style-type:disc">Ugliest organ - Thumb </li></ul><ul id="6c0e387b-3241-4066-82a3-d2224b1e7cd6" class="bulleted-list"><li style="list-style-type:disc">Lamarck’s theory - Something happens in your body cause you want it to happen for a long time over generations</li></ul><ul id="20dee629-080b-4fa8-b0aa-9b20f24ce539" class="bulleted-list"><li style="list-style-type:disc">Best CGI Effect is something that doesn’t look like CGI 🙂</li></ul><ul id="34cc5664-95de-449f-b651-871b51025779" class="bulleted-list"><li style="list-style-type:disc">Language is so natural and obvious that only it’s absence is noted but not it’s presence</li></ul><ul id="89e8e507-061d-47d8-8827-038805ddf4dc" class="bulleted-list"><li style="list-style-type:disc">Language is life/love </li></ul><ul id="a7ba3611-333d-44b6-9f0d-48f4835b1e3d" class="bulleted-list"><li style="list-style-type:disc">Argument: Do deaf/dumb have a language<ul id="89857e64-5e9e-45d1-b74f-b98ee3884e55" class="bulleted-list"><li style="list-style-type:circle">Positively complicated </li></ul></li></ul><ul id="7c6725c1-fef2-4df8-8b21-f5f0b46b964f" class="bulleted-list"><li style="list-style-type:disc">Question - What happens when you are not able to articulate something even though you know the language<ul id="734563ed-3c57-42ec-bf5e-a78bb1bcfc92" class="bulleted-list"><li style="list-style-type:circle"><code>Cat got your tongue</code></li></ul><ul id="21272f1f-cb98-4a26-8c14-1bd5e0d07d74" class="bulleted-list"><li style="list-style-type:circle">Modules of brain keep choosing words and one another module keep checking if it’s correct or not</li></ul><ul id="2972f5a9-fd7a-4f2d-be5b-a9d3a74204f8" class="bulleted-list"><li style="list-style-type:circle">So sometimes second sentence is already made before the first sentence is even out</li></ul></li></ul><ul id="5d3d2c53-7f2f-4f6b-82cb-1d4cf1970aa2" class="bulleted-list"><li style="list-style-type:disc">Some things cannot be translated from one language to another and that is because if a language does not have a word so you don’t have that concept itself in that language</li></ul><ul id="64ac0b38-2ba9-4017-adc0-3f6a26fff455" class="bulleted-list"><li style="list-style-type:disc">What we can talk about is what we have experienced earlier</li></ul><ul id="9f2d0ade-d7c8-4e09-8a19-5e740554e09b" class="bulleted-list"><li style="list-style-type:disc">Fragnance - foul smell that does smells nice</li></ul><ul id="e048c598-cd1a-4ea0-83b5-9744c827496c" class="bulleted-list"><li style="list-style-type:disc">Religion - Biggest business without any proof</li></ul><ul id="558deaaf-b924-4f74-8ba8-5a728c5df5c3" class="bulleted-list"><li style="list-style-type:disc">Palpable - Something you can touch</li></ul><h1 id="d7c2fb98-6438-44de-8ec1-f00e27836bc5" class="">Class #02</h1><ul id="66407e0c-ff50-42c6-9ee0-a6b10e4b7f4c" class="bulleted-list"><li style="list-style-type:disc">Greatest invention of humankind → language</li></ul><ul id="b3a82932-1620-46d3-a938-495106dd7863" class="bulleted-list"><li style="list-style-type:disc">Knowledge is not knowledge if you don’t express it</li></ul><ul id="6a460fee-6330-471b-9712-85ae19b724bd" class="bulleted-list"><li style="list-style-type:disc">Donkey carrying books is still a donkey since it can’t read books</li></ul><ul id="aad63b1d-9f8b-435b-bf92-6b10b04ec791" class="bulleted-list"><li style="list-style-type:disc">Language helps in sharing the knowledge and pointing out the problems, also helps in bringing up the solutions and encoding the knowledge for later generations as well</li></ul><h3 id="7af41827-4860-4b98-9d6b-3c48f51eed4b" class="">Linguistics is the Study of Language</h3><ul id="706e5a02-f0de-493f-b7fa-6e0be1c1dda7" class="bulleted-list"><li style="list-style-type:disc">Scientific Study of human speech including the units, nature, structure and modification of language</li></ul><ul id="ab9b0e5b-b3b4-4862-8766-f414adb9f48e" class="bulleted-list"><li style="list-style-type:disc">Involves analysis of language form, language meaning, and language in context</li></ul><ul id="132863b6-a591-436b-b1af-31cfc315689d" class="bulleted-list"><li style="list-style-type:disc">If there is predictability, repeatability, falsifiability and organization → scientific study</li></ul><ul id="75ddb913-74ba-4359-82f1-ee30b9c86682" class="bulleted-list"><li style="list-style-type:disc">Scientific study of language and it’s structure, including the study of grammer, syntax and phonetics</li></ul><h3 id="e7aa2cbf-c431-4ff0-bbb5-e68466c8dcb0" class="">Linguist</h3><ul id="c348982d-325c-4834-a03b-0d86f25a5e25" class="bulleted-list"><li style="list-style-type:disc">Does not speak many languages → that is polyglot</li></ul><ul id="79985439-5dc0-4692-9511-cab7fb3a9e7d" class="bulleted-list"><li style="list-style-type:disc">Does not teach english or edit english texts</li></ul><ul id="57d840b6-9aee-4da9-b370-2bd46909dbfb" class="bulleted-list"><li style="list-style-type:disc">Does not necessarily love languages</li></ul><ul id="2ed06fd7-b1af-40e3-ba5c-69b94da8e9e1" class="bulleted-list"><li style="list-style-type:disc"><code>Oh you are a pharmacy student, you must be making paracetamol at home</code></li></ul><ul id="a4959418-f45b-413d-9288-659b74e5528b" class="bulleted-list"><li style="list-style-type:disc">Uses scientific methods to understand similarity and differences between languages</li></ul><ul id="58220d38-b913-4207-992e-466fe93cef88" class="bulleted-list"><li style="list-style-type:disc">fool → doesn’t mean stupid but rather intelligent cause he was supposed to make kings laugh</li></ul><ul id="cb976acf-10e2-4966-958d-6fd0e260307a" class="bulleted-list"><li style="list-style-type:disc">Linguist interested in things like the difference between <code>/p/</code> → has less voicing and <code>/b/</code> → has more voicing and infact more power, even <code>/k/</code> and <code>/g/</code></li></ul><ul id="6ea97f3c-6e6b-40f5-b6c3-74b43cbe736c" class="bulleted-list"><li style="list-style-type:disc">unpossible guys :)</li></ul><ul id="0ac2947d-9f76-4bed-9a56-3956b7f3a678" class="bulleted-list"><li style="list-style-type:disc">Reason being unpossible has np which sorta becomes m and so we end up making it impossible</li></ul><ul id="5cca0b7b-eefc-49bf-a1c0-ac7464ce35cf" class="bulleted-list"><li style="list-style-type:disc">For kids all have to end in oo or aa sound </li></ul><ul id="daae10a3-c67f-4e7a-97ca-42ecbfdbe816" class="bulleted-list"><li style="list-style-type:disc">I mean technically <code>What&#x27;s up</code> doesn’t really make sense but then the fact that it’s been widely used and infact there’s now an app WHATSAPP proves that language doesn’t really require meaning as long as it’s being used</li></ul><ul id="0d9ba9fc-c6e2-42b5-b81e-8c64b8976793" class="bulleted-list"><li style="list-style-type:disc">Stick 5 bananas and practice on them → very sus bro</li></ul><ul id="1d8536ff-b825-4016-af2b-9dadbf2433bf" class="bulleted-list"><li style="list-style-type:disc">How do you pronounce the name !Alex → gives a click sound and then we say Alex</li></ul><ul id="4cc57b27-e2da-4e44-91c2-64fa5826d856" class="bulleted-list"><li style="list-style-type:disc">Phonetics and Phonology - Study of production, transmission and perception of human</li></ul><h1 id="6588cc5e-51eb-4f25-a678-ba4d43b43d8f" class="">Class #03</h1><ul id="610517dc-f60d-4bcb-bcbf-b2841dfe5246" class="bulleted-list"><li style="list-style-type:disc">Konkani doesn’t have a script yet, use both roman and devangari script</li></ul><ul id="883e98e5-907b-4c5c-9b2b-e9587a74a42a" class="bulleted-list"><li style="list-style-type:disc">In olden days, people used language to warn about predators and for hunting</li></ul><ul id="16e36c2f-dcc7-47e1-81e5-2251166e92fc" class="bulleted-list"><li style="list-style-type:disc">Japanese find it difficult to use other languages, japanese is just a CVCV language, which uses Consonent Vowel Consonent Vowel language</li></ul><ul id="8ca3db29-3750-4a07-8f4c-5e36c7290734" class="bulleted-list"><li style="list-style-type:disc">Hi-ro-shi-ma, na-ga-sa-ki and they celebrate these moments</li></ul><ul id="aa0564c7-cc64-4775-88c9-40dc81f96d78" class="bulleted-list"><li style="list-style-type:disc"><code>sk</code> is a consonant cluster and they cannot pronounce it</li></ul><ul id="bd63783e-1837-405b-9c4b-814fcaa72ab4" class="bulleted-list"><li style="list-style-type:disc">Narendra → Narendar because we need a CV language</li></ul><ul id="5caf5fba-63e5-4145-98d9-1e6b435fea50" class="bulleted-list"><li style="list-style-type:disc">Spasht → sipasht or aspasht</li></ul><ul id="c7cf6b33-7dd6-4bea-bdf8-3655d01c0e38" class="bulleted-list"><li style="list-style-type:disc">Salil → in east of india becomes shalil and also shlil but because <code>sh</code> is a consonant cluster so we get <code>ashlil</code></li></ul><h3 id="5c951e0f-5b8f-48fa-ad13-1c3aa69f42d7" class="">A linguist is interested in thinks like</h3><ul id="bcd3c6fa-6b66-46c0-a6c8-6763a14bcf42" class="bulleted-list"><li style="list-style-type:disc">First one is kii-kii and which one is a boo-boo</li></ul><ul id="0b606b80-628f-4700-93c0-dd2db2e52b7d" class="bulleted-list"><li style="list-style-type:disc">ii is sharp</li></ul><ul id="a28d5036-2691-4869-b40f-e715332cfc45" class="bulleted-list"><li style="list-style-type:disc">Synesthesia → intermixing of your sensory perceptions</li></ul><ul id="ea3173d9-2a2d-49d5-a73a-abdd7ce37c89" class="bulleted-list"><li style="list-style-type:disc">Why do we tend to put our cell phone on the right ear?<ul id="e33ce652-ffc1-40e2-9f0d-1353997c5bda" class="bulleted-list"><li style="list-style-type:circle">Your right side of the body is controlled by the left hemisphere and vice-versa</li></ul></li></ul><ul id="74f78020-e13d-493b-bef2-907fa5425fc7" class="bulleted-list"><li style="list-style-type:disc">Where language lives in the brain?</li></ul><ul id="65f3fcb5-8474-4276-8aed-8270910a1360" class="bulleted-list"><li style="list-style-type:disc">Why we have difficulty reading tongue twisters in speed?</li></ul><ul id="a6fc0e36-5a79-4679-a3a6-7e53d1142e39" class="bulleted-list"><li style="list-style-type:disc">If language has a lot of non standard practices, we get that they are older</li></ul><ul id="f3afcc08-ed15-4eee-9a66-99f3c751f385" class="bulleted-list"><li style="list-style-type:disc">Espiranto → Newest Language</li></ul><ul id="86859377-c263-40b2-bebb-34b6e6502723" class="bulleted-list"><li style="list-style-type:disc">Neuro Cognitive Linguistics → Study of language as a mental phenomenon. Study of relationship between language and brain</li></ul><ul id="d7a9386f-2256-41ea-99e6-4de2fcf8bed0" class="bulleted-list"><li style="list-style-type:disc">Also interested in how plurals come → <ul id="92477d61-d516-4405-a8bc-ea8465996c6d" class="bulleted-list"><li style="list-style-type:circle">Sheep Sheep</li></ul><ul id="7a6bd816-0c3c-4dc3-ae21-6eb07b62dcee" class="bulleted-list"><li style="list-style-type:circle">Radius Radii</li></ul><ul id="e0225d9d-ef35-4d91-9cba-e49b019d507f" class="bulleted-list"><li style="list-style-type:circle">Wug Wugs 🙂</li></ul><ul id="54bf8582-ebd5-436d-88ea-6b9a9e4ee314" class="bulleted-list"><li style="list-style-type:circle">Software Software</li></ul></li></ul><ul id="45d9ccd6-9626-4f10-8e8a-fff34c34ed74" class="bulleted-list"><li style="list-style-type:disc">It sorta works as a pattern recognition system where we choose the least expensive</li></ul><ul id="a78811ef-fce0-40ed-b07d-b79869093c35" class="bulleted-list"><li style="list-style-type:disc">We choose the one which has least assumptions</li></ul><ul id="0f1440fd-b311-4722-bb0e-f8ed55117c00" class="bulleted-list"><li style="list-style-type:disc">In american english, fuckin’ can mean very. We sometimes fuse two words by inserting one word into another. If you were an american teenager you had to insert the word fuckin’ into absolutely → infixation (similar to prefixation and postfixation)<ul id="dd6ed60e-b955-4639-8bea-cbda3c2c9529" class="bulleted-list"><li style="list-style-type:circle">ab-fuckin’-solutely</li></ul><ul id="40008560-de30-4872-8a92-d7cec73d1f16" class="bulleted-list"><li style="list-style-type:circle"><strong>abso-fuckin’-lutely</strong></li></ul><ul id="2f170b5e-b947-42d4-b8bd-bc12d231b3f9" class="bulleted-list"><li style="list-style-type:circle">absolu-fuckin’-tely</li></ul><ul id="b46d596f-8171-41a5-8228-0a03fc52ce08" class="bulleted-list"><li style="list-style-type:circle">absolute-fuckin’-ly</li></ul></li></ul><ul id="57a8d598-216a-4fe0-9627-662731aaa153" class="bulleted-list"><li style="list-style-type:disc">Madhu → Madhav</li></ul><ul id="fc7908c9-fae1-4c66-8774-8093a8356748" class="bulleted-list"><li style="list-style-type:disc">Yadu → Yadav</li></ul><ul id="18a3e9f5-3355-48e5-a855-1a81a2c28509" class="bulleted-list"><li style="list-style-type:disc">Raghu → Raghav</li></ul><ul id="a0a27dc5-632b-43d5-b1a6-9e1802204e70" class="bulleted-list"><li style="list-style-type:disc">Children use holded instead of held and same for hair → hair</li></ul><ul id="f0d95442-a429-4e3a-81cd-90bf1585cb83" class="bulleted-list"><li style="list-style-type:disc">Morphology → Study of formation and changes with language</li></ul><ul id="f0821390-c048-433c-a253-202aa09bcb6d" class="bulleted-list"><li style="list-style-type:disc">Let’s eat, grandpa versus Let’s eat grandpa</li></ul><ul id="6d07f1da-f293-4545-a83f-43fae831af7e" class="bulleted-list"><li style="list-style-type:disc">I am holding the nail. When I nod my head, hit it with a hammer → very ambigious whether it references head or nail</li></ul><ul id="17095afa-c5fb-4fe3-9851-060dfbd9244e" class="bulleted-list"><li style="list-style-type:disc">Flying planes can be dangerous, <ul id="09b6db28-8415-45f6-8d02-9732a4b76317" class="bulleted-list"><li style="list-style-type:circle">specially if you don’t know how to fly one</li></ul><ul id="808dd403-bac0-4ab4-a926-58aad1bf8602" class="bulleted-list"><li style="list-style-type:circle">specially those which fly very low (you are not flying the plane)</li></ul></li></ul><ul id="4388b966-78e9-4406-bfa3-e2378e633705" class="bulleted-list"><li style="list-style-type:disc">Syntax: The study of the structure of sentences</li></ul><ul id="793a93a3-8b0b-4c45-b466-64a5105dbf46" class="bulleted-list"><li style="list-style-type:disc">Can you pass me the salt?<ul id="eeb4548e-e53f-4494-9da2-f9191a6e467e" class="bulleted-list"><li style="list-style-type:circle">Yes. I am very strong → this is not an answer I mean he asked you to pass the salt and not a question</li></ul><ul id="1ca2af93-d45c-430a-8224-4b4ef84f2e4e" class="bulleted-list"><li style="list-style-type:circle">More like it’s a request</li></ul></li></ul><ul id="a6e461f9-7a69-4c02-84b1-78f7d54fd78e" class="bulleted-list"><li style="list-style-type:disc">Semantics → Study of meaning which is encoded </li></ul><ul id="6d1529ce-44da-4f92-a3f4-e1ecf11bda74" class="bulleted-list"><li style="list-style-type:disc">You spill the tea on someone<ul id="506af20e-53a5-4be7-a7dc-6d607f8b13a7" class="bulleted-list"><li style="list-style-type:circle">Sorry man, Ma bad</li></ul><ul id="19715362-13ad-4657-b198-0e662d8739ae" class="bulleted-list"><li style="list-style-type:circle">Lol wut. HI hi hi</li></ul><ul id="ef68b240-c5c7-4505-b1d5-4317007c72e7" class="bulleted-list"><li style="list-style-type:circle">My sorry knows no bound on perceiving the fact that I have inadvertently been the cause of spilling the tea on your personage. PLease accept my codial apologies</li></ul></li></ul><ul id="69cebec5-9849-40dd-a932-4354c49758ab" class="bulleted-list"><li style="list-style-type:disc">Sociolinguistic is the study of language in relation with context and other stuff</li></ul><h1 id="3aa8b625-fbb3-4e2e-b5a2-a5a49d36cefd" class="">Class #04</h1><ul id="8d7d3d68-a2b4-4ceb-af19-f62553403e81" class="bulleted-list"><li style="list-style-type:disc">Cambodian has 74 characters in it’s alphabet</li></ul><ul id="dde36cbf-2026-4955-bdf2-87247b4dc403" class="bulleted-list"><li style="list-style-type:disc">Alphabet and letter are not same, alphabet is the set of all the letters</li></ul><ul id="819e8ff0-8be1-46ae-a53b-96b4afc51d5b" class="bulleted-list"><li style="list-style-type:disc">If ABC is given, you can’t say it’s english alphabet because we don’t know what comes after</li></ul><ul id="6ac44feb-3ff6-48e5-8f2a-380691d07dd6" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">(But sir said you can say roman alphabet. How?) </mark>And the answer is it’s not roman alphabet but rather roman script</li></ul><ul id="8288f51c-532c-4cc5-8859-d770d61d3853" class="bulleted-list"><li style="list-style-type:disc">Following is the data from Kurmanji Kurdish, which is language spoken by the Kurdish people. Match the Kurdish expressions with English on right</li></ul><table id="223bf65a-1e2e-4ed2-b4c8-d1dfa603d549" class="simple-table"><tbody><tr id="b9f4d700-d56e-4e37-b693-6e5c22339b51"><td id="&gt;d_z" class="" style="width:232.66666666666666px"><strong>Kurdish</strong></td><td id="u_Xr" class="" style="width:232.66666666666666px"><strong>English Options</strong></td><td id="bUu`" class="" style="width:232.66666666666666px"><strong>Correct Answer</strong></td></tr><tr id="97a684fb-bc7d-4766-874e-f319a671eb6e"><td id="&gt;d_z" class="" style="width:232.66666666666666px">Ez hirche dibinim</td><td id="u_Xr" class="" style="width:232.66666666666666px">You see bear</td><td id="bUu`" class="" style="width:232.66666666666666px">I see bear</td></tr><tr id="8977933a-7b3e-43ed-b2f0-5034e5bad40f"><td id="&gt;d_z" class="" style="width:232.66666666666666px">Tu direvi</td><td id="u_Xr" class="" style="width:232.66666666666666px">You see me</td><td id="bUu`" class="" style="width:232.66666666666666px">You run</td></tr><tr id="358dcfc6-1576-4155-8a35-6329fccea6da"><td id="&gt;d_z" class="" style="width:232.66666666666666px">Tu min dibini</td><td id="u_Xr" class="" style="width:232.66666666666666px">Bear runs</td><td id="bUu`" class="" style="width:232.66666666666666px">you see me</td></tr><tr id="369ff1d3-58de-4701-8286-5aa790e14916"><td id="&gt;d_z" class="" style="width:232.66666666666666px">HIrch direve</td><td id="u_Xr" class="" style="width:232.66666666666666px">you run</td><td id="bUu`" class="" style="width:232.66666666666666px">bear runs</td></tr><tr id="00948b51-a83b-4874-92c0-f4425837d7ac"><td id="&gt;d_z" class="" style="width:232.66666666666666px">Ez direvim</td><td id="u_Xr" class="" style="width:232.66666666666666px">I see bear</td><td id="bUu`" class="" style="width:232.66666666666666px">I run</td></tr><tr id="14b19105-736d-4284-9ef3-ea83c762b4f2"><td id="&gt;d_z" class="" style="width:232.66666666666666px">Tu hurchi dibini</td><td id="u_Xr" class="" style="width:232.66666666666666px">I run</td><td id="bUu`" class="" style="width:232.66666666666666px">you see bear</td></tr></tbody></table><ul id="3b232ba4-45da-4ebd-bece-f087f2630294" class="bulleted-list"><li style="list-style-type:disc">Ans → Tu is You, Ez is I</li></ul><ul id="b27e4515-13b2-4dab-b6db-93d95cca5230" class="bulleted-list"><li style="list-style-type:disc">Pronouns are small, and generally babies need it very early so these are generally small words</li></ul><ul id="c03d42c8-1b43-428d-a9f2-ee49cde35ea9" class="bulleted-list"><li style="list-style-type:disc">There is always a book around which religion starts</li></ul><ul id="3489e8f9-f2ea-4030-9e3c-e54d8dd21772" class="bulleted-list"><li style="list-style-type:disc">When we have John loves mary → We have subject verb and object</li></ul><ul id="99145917-7822-4c60-af67-1d5e40adc5a9" class="bulleted-list"><li style="list-style-type:disc">Verb is the nucleus for a sentence</li></ul><ul id="13805669-f938-4a81-a371-a2481f776c13" class="bulleted-list"><li style="list-style-type:disc">In hindi, John mary se pyaar karta hain</li></ul><ul id="95ba9f8e-4eb5-4150-9c44-0c4c559e3b73" class="bulleted-list"><li style="list-style-type:disc">Here we have subject, object and verb in this order</li></ul><ul id="f4eb4ff7-0d2a-4d90-8e1d-2ecf31b44c39" class="bulleted-list"><li style="list-style-type:disc">In india we have subject object verb predominantly so incase we can sorta relate languages this way</li></ul><h2 id="699cd975-26b7-4605-898e-dbb1843b3eee" class="">Characteristics of Human Language - Part 1</h2><ul id="ebc4c9e3-694c-4ddc-85e8-b533240a6ab0" class="bulleted-list"><li style="list-style-type:disc">Same as weaknesses of a language</li></ul><ul id="ea03631a-3951-4803-b411-c39141d6a636" class="bulleted-list"><li style="list-style-type:disc">kal for tomorrow and yesterday, in hindi and bengali</li></ul><ul id="583eeb7d-5a01-4251-8e80-a1446fd99ce0" class="bulleted-list"><li style="list-style-type:disc">Assigning genders to neutral words should be removed</li></ul><ul id="d6b35d71-22c3-42bd-b3a7-9619761d5a06" class="bulleted-list"><li style="list-style-type:disc">Language needs to have an easy script<ul id="c6914cd4-3d1a-43fc-bae8-de9676797656" class="bulleted-list"><li style="list-style-type:circle">We are trying to connect a visual sign to a sound</li></ul><ul id="3ebe8d41-6fd8-4a95-89e3-896dda95271d" class="bulleted-list"><li style="list-style-type:circle">There are 2 types of scripts<ul id="124afcb4-15bb-43c2-af8f-938272b14124" class="bulleted-list"><li style="list-style-type:square">Different letters for speech sounds and they are put together - Alphabetic writing system where each has it’s own sound → English</li></ul><ul id="cd68777d-f9e9-4895-aac7-eba25572e6fa" class="bulleted-list"><li style="list-style-type:square">Alphasyllabory writing system → Hindi → more compact but also complex → Abugida writing system</li></ul><ul id="f95cf8ad-0cf7-419c-b226-de776cf2b287" class="bulleted-list"><li style="list-style-type:square">Korean has a weirder way of writing where they name sound based on how your mouth behaves</li></ul><ul id="acb1736c-3d64-417e-835e-7d26fd0efb58" class="bulleted-list"><li style="list-style-type:square">Chinese have letters/more like diagrams for each concept and after a point the number of letters/words increases a lot</li></ul><ul id="57a561d2-e3cd-4bbd-8365-1cd45425a389" class="bulleted-list"><li style="list-style-type:square">Complex characters → glyph or grapheme</li></ul></li></ul></li></ul><ul id="a71264e1-9cfd-4aad-bc66-813ffacf2acc" class="bulleted-list"><li style="list-style-type:disc">Less need for monitoring to ensure there’s consistency in the language like for example, air can be written in hindi as <code>ay ah r</code> or <code>ay ya r</code></li></ul><ul id="58b5f24d-6a0d-49b2-ad34-db82bc7abf2a" class="bulleted-list"><li style="list-style-type:disc">Dibolical thinking where you argue with yourself 🙂</li></ul><ul id="b936e366-fdc1-4b13-a467-daf304c1fe64" class="bulleted-list"><li style="list-style-type:disc">Ambiguity of syllables</li></ul><ul id="769e740a-fa8b-4216-a7b1-150bc3437421" class="bulleted-list"><li style="list-style-type:disc">Oral = Spoken sounds, even whistling</li></ul><ul id="49c9dd23-9d40-4a26-a907-305339742c33" class="bulleted-list"><li style="list-style-type:disc">Remember languages use symbols to encode ideas</li></ul><ul id="0e7c8d73-51bd-43d0-af7c-82b2d23f3a54" class="bulleted-list"><li style="list-style-type:disc">Gestural = Sign Language</li></ul><ul id="81140713-62a4-46c6-90d8-a657fda98d68" class="bulleted-list"><li style="list-style-type:disc">My Answers<ul id="ebc3f3fe-1d8f-4226-a2b9-34c02f549a38" class="bulleted-list"><li style="list-style-type:circle">Not very complicated to pronounce</li></ul></li></ul><h1 id="51b8f9e9-df38-40f1-976d-581cde781e44" class="">Class #05</h1><ul id="47b014bd-4f43-40dc-a883-d49c1e242901" class="bulleted-list"><li style="list-style-type:disc">Cigarette has 3/4 syllables based on pronounciation</li></ul><ul id="d8fb00f4-15aa-461f-a72a-68d97641bad1" class="bulleted-list"><li style="list-style-type:disc">We can say <code>fish</code> spelling is <code>ghoti</code> because <ul id="23af6621-9303-4adf-918b-9beaef7d778e" class="bulleted-list"><li style="list-style-type:circle">gh comes from rough</li></ul><ul id="1f6be3c0-0756-4374-a07c-a6339f399fbc" class="bulleted-list"><li style="list-style-type:circle">o from women</li></ul><ul id="78568306-93b7-4034-b13c-1bbf5f314b1e" class="bulleted-list"><li style="list-style-type:circle">ti from recognition </li></ul></li></ul><ul id="b400bb1d-6b1c-4d3c-a7b6-24d79daed359" class="bulleted-list"><li style="list-style-type:disc">Anonymous looks greek</li></ul><ul id="57758a52-4ed2-4950-b431-7cfad3034954" class="bulleted-list"><li style="list-style-type:disc">Sugar start is weird but sure also has same start</li></ul><ul id="41b6676e-7f51-4786-9325-39e998b3bad9" class="bulleted-list"><li style="list-style-type:disc">When a word begins from a language, the accent for the word also comes from there</li></ul><ul id="9bab56e2-0986-4add-bc83-81fd7a0eed91" class="bulleted-list"><li style="list-style-type:disc">The word doesn’t exist so they probably don’t have letters for those sounds </li></ul><ul id="ad641414-005d-46a0-a975-db8f8c699806" class="bulleted-list"><li style="list-style-type:disc">When is your wisdom is still sleeping, language is still awake</li></ul><h3 id="ec777549-afe3-4380-b246-7d087a135b6c" class="">Optimality Theory</h3><ul id="3489e464-25ab-42c5-89c2-a0d124c222a5" class="bulleted-list"><li style="list-style-type:disc">There are certain rules where some rules can be flouted more than other rules</li></ul><h2 id="5b44c3df-aca7-4ba5-ab38-c295c96d34ed" class="">Characteristics of Human Language - Part 2</h2><h3 id="7e9c54bb-010e-4caa-ae6e-e2f3f79ca5f6" class="">Duality</h3><ul id="e891612f-689d-4049-a291-966f741e7b51" class="bulleted-list"><li style="list-style-type:disc">Human language is organized at two levels or layers simultaneously</li></ul><ul id="e16e21c5-928b-4709-ba86-a2bac2eed5d9" class="bulleted-list"><li style="list-style-type:disc">This property is called duality or double articulation</li></ul><ul id="6f2d21c1-17d5-4108-a6e7-9f8fcd9edfa1" class="bulleted-list"><li style="list-style-type:disc">In speech production, we have a physical level at which we can produce individual sounds like n, b, and i</li></ul><ul id="361a4087-f8c4-40fb-9c0d-70b6c1df79eb" class="bulleted-list"><li style="list-style-type:disc">As individual sounds, none of these forms have any intrinsic meaning</li></ul><ul id="aadb2eec-a6ca-47d1-b6cd-13f1bd617b8c" class="bulleted-list"><li style="list-style-type:disc">In a particular combination such as bin, we have another level producting a meaning that is different from the meaning of the combination in nib</li></ul><ul id="80e483ed-b383-4d95-b42c-732a63ee6f60" class="bulleted-list"><li style="list-style-type:disc">In school also they start sounds, before language → Language comes before education</li></ul><ul id="7bc9f8a1-f448-4109-91bc-62e530ca50fe" class="bulleted-list"><li style="list-style-type:disc">Grammer Nazis are a consequence of prosperity</li></ul><ul id="fc075acc-6f03-489b-a5ad-ea8e00330b5a" class="bulleted-list"><li style="list-style-type:disc">In sign language, gestures come and then the sign</li></ul><ul id="483beda5-4530-4206-a764-ba725b1c0363" class="bulleted-list"><li style="list-style-type:disc">So at one level we have distinct sounds and at another level, we have distinct meanings. </li></ul><ul id="48936c39-12a4-4e3d-a4ca-fafabd9a5c96" class="bulleted-list"><li style="list-style-type:disc">This duality of levels is in fact one of the most economical features of human language because, with a limited set of discrete sounds, we are capable of producing a very large number of sound combinations i.e. words which are distinch in meaning</li></ul><ul id="b375f2d3-7b69-49db-9856-04af553a7569" class="bulleted-list"><li style="list-style-type:disc">Logographic we have strokes and the symbols</li></ul><ul id="bdedda8a-6dfd-4c7c-94e0-5fb1f6c0f480" class="bulleted-list"><li style="list-style-type:disc">Language is organized at two levels or layers<ul id="4c6efb07-4ed8-4771-b555-3a528e2dce18" class="bulleted-list"><li style="list-style-type:circle">Set of sounds, Elementary, Limited and Meaningless Ex: Phonemes</li></ul><ul id="1175dbd9-96e4-4a7c-a5a0-4b157d774285" class="bulleted-list"><li style="list-style-type:circle">Formation of complex units from elements Ex: Words, Phrases, Expressions and Sentences</li></ul></li></ul><h3 id="d9732b9a-ed8c-4212-b7db-07b284fe4882" class="">Arbitrariness</h3><ul id="b4e279a2-855c-4e7a-b7f9-a242bae6468e" class="bulleted-list"><li style="list-style-type:disc">What is the animal that flies in the air, and has wings and a beak?</li></ul><ul id="0e678082-11fb-4291-889e-2f9906af76a5" class="bulleted-list"><li style="list-style-type:disc">English? French? Indian Languages?</li></ul><ul id="03e8789a-5203-4640-b743-017e21a81e9b" class="bulleted-list"><li style="list-style-type:disc">The connection between idea and symbol is arbitrary<ul id="53f85e91-c45f-4c86-87d1-d29f3418dca5" class="bulleted-list"><li style="list-style-type:circle">There are a lot of languages</li></ul><ul id="f2abd73a-3577-401b-93bf-39c1ad3a764b" class="bulleted-list"><li style="list-style-type:circle">Learning a foreign language is difficult</li></ul></li></ul><ul id="8aeae10a-32af-43fa-b3b4-ec3982ff137b" class="bulleted-list"><li style="list-style-type:disc">If there are two pronounciations say from dialects, we say only one is correct and this is what we mean arbitrariness</li></ul><ul id="189bc70b-99d7-41ce-8097-1f0fe6cfb871" class="bulleted-list"><li style="list-style-type:disc">Language is a dialect with an army and a navy → It’s the people who decide which is a dialect</li></ul><ul id="fd2e9486-bccf-47f6-8500-71ce9786b822" class="bulleted-list"><li style="list-style-type:disc">X of Y and Y ka X are opposite 🙂</li></ul><ul id="376ce3c0-db58-44d6-9384-9767b23bae33" class="bulleted-list"><li style="list-style-type:disc">Telangana Telugu and Andhra telugu are standard wise same but then people have to agree for this that both are same language</li></ul><ul id="1e397da8-7be9-4c83-b001-4f6e879376ed" class="bulleted-list"><li style="list-style-type:disc"><code>the</code> is the most confusing word in english ;-;</li></ul></div></article></body></html>

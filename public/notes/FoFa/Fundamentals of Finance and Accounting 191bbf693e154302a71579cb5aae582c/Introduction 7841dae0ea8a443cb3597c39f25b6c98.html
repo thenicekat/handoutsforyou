@@ -1,0 +1,669 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Introduction</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="7841dae0-ea8a-443c-b359-7c39f25b6c98" class="page sans"><header><h1 class="page-title">Introduction</h1></header><div class="page-body"><nav id="73d264dd-3936-47f5-8647-8ee9e25d61b8" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e68280e6-317b-4063-8a60-a7d80a4353f6">Financial Markets</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#01b5194d-24fe-4775-bf16-b5160255bccd">Primary Markets</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5d0e1a40-a074-40ff-b087-f4472e7504b9">Secondary Markets</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7711cd14-841b-455b-a121-dc349a83b59b">Money Markets</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6984048c-5ff8-4d4b-811a-eea601ba0aac">Capital Markets</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3dec67c7-3a81-4bc5-92b5-9577ab4c1ebc">Foreign Exchange Markets</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fc5946a0-ab0d-451e-bdca-d21a5210788c">Derivative Security Markets</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f2fad2c6-5908-4678-a48a-2e6460d47d9b">Financial Market Regulations</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2af04808-4b49-40e5-9613-287085e486ae">Financial Institutions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#604775da-b5e8-44b2-b83d-014b5aadb9d3">Problems that led to Creation of FIs</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8e7801bc-4bd3-4f23-81ee-52131d641618">Unique Economic Functions Performed by Financial Institutions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4ef90f20-fdfd-40a6-b9e4-fd513eb2d017">Services Benefiting Suppliers of Funds:</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#3862a167-c6bf-4201-81c6-724b5af3aaed">Monitoring Costs</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#e95e4fe0-f906-4459-99ba-4ec3a790a205">Liquidity and Price Risk</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#4faf22af-04a7-48b3-83cf-a796ea7c1536">Transaction Cost Services</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#557693af-e168-472a-8faa-bcfa563d37bc">Maturity Intermediation</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#84eea1c8-9e86-45a9-b373-6221fa6c0986">Denomination Intermediation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a09bb6f2-3ffd-429a-8fb4-05084ada6d0d">Services benefitting the overall economy</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#6497d0f6-75dd-4a79-bbb8-391d67179c80">Transmission of Monetary Policy</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#92a765e8-5666-4149-9823-c942c300509b">Credit Allocation</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#5f29245a-aef0-4887-8f59-a1092b60c050">Intergenerational Wealth Transfers or Time Intermediation</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d65ef5cd-8b6d-47c5-9415-80a1110eed15">Payment Services</a></div></nav><h1 id="e68280e6-317b-4063-8a60-a7d80a4353f6" class="">Financial Markets</h1><h2 id="01b5194d-24fe-4775-bf16-b5160255bccd" class="">Primary Markets</h2><ul id="8e900194-ec71-4ad6-9ad8-2c3535be8aec" class="bulleted-list"><li style="list-style-type:disc">Users of funds raise funds through new issues of financial instruments such as stocks and bonds</li></ul><ul id="b991ca4b-dc11-4b4d-866d-28710ed85ecb" class="bulleted-list"><li style="list-style-type:disc">Fund users/corporations issue securities in the external primary markets to raise additional funds</li></ul><ul id="d43a867d-806a-4f52-aafc-9129b46f1819" class="bulleted-list"><li style="list-style-type:disc">New issues of financial instruments are sold to initial suppliers of funds, say households</li></ul><ul id="aae7cb5c-e6d0-4cee-8a0e-bda6d68ba25f" class="bulleted-list"><li style="list-style-type:disc">Most primary market transactions happen though investment banks</li></ul><ul id="77637a5a-7e15-4772-8d37-636583ab2c6b" class="bulleted-list"><li style="list-style-type:disc">Investment bank provides the funds user with a price and number of securities to issue and attracts an IPO</li></ul><ul id="f782fd3e-a81c-4669-a161-1d3dff98fa59" class="bulleted-list"><li style="list-style-type:disc">This is called underwriting</li></ul><h2 id="5d0e1a40-a074-40ff-b087-f4472e7504b9" class="">Secondary Markets</h2><ul id="5c649da5-c0a1-40aa-8f42-e27e532c8b77" class="bulleted-list"><li style="list-style-type:disc">Once financial instruments such as stocks are issued in primary markets, they are then traded i.e. rebought and resold in secondary markets</li></ul><ul id="565cd62e-f4c4-4d06-b731-1a8a2f2ec3b3" class="bulleted-list"><li style="list-style-type:disc">Buyers of secondary market securities are economic agents with excess funds</li></ul><ul id="ab17a1c1-67ba-46b5-8158-ca8cc3398550" class="bulleted-list"><li style="list-style-type:disc">Sellers are in need of funds</li></ul><ul id="c943ca08-b66b-4ddc-b563-2d31d98d2114" class="bulleted-list"><li style="list-style-type:disc">Generally intermediary here is a securities broker</li></ul><ul id="4bd588b4-f1ff-41df-b0b3-82b482574f05" class="bulleted-list"><li style="list-style-type:disc">Stock markets are secondary markets</li></ul><ul id="a7d204d6-aeda-476c-a8a8-deeaae2d1952" class="bulleted-list"><li style="list-style-type:disc">In addition to stocks and bonds, secondary markets also exist for financial instruments backed by mortgages and other assets, foreign exchange and futures and options </li></ul><ul id="5af56f94-75b5-4228-bbf1-e818ed118375" class="bulleted-list"><li style="list-style-type:disc">Derivative Security is a financial security whose payoffs are linked to other previously issued securities</li></ul><h2 id="7711cd14-841b-455b-a121-dc349a83b59b" class="">Money Markets</h2><ul id="60f86482-212d-493b-9342-52283ba7b532" class="bulleted-list"><li style="list-style-type:disc">These trade debt securities or instruments with maturities of one year or less</li></ul><ul id="55dd59be-88f7-4d5f-bf42-43b816720e11" class="bulleted-list"><li style="list-style-type:disc">Short term and have small fluctuations</li></ul><ul id="7ded4856-a672-4fdf-8a24-3a91a2bf777e" class="bulleted-list"><li style="list-style-type:disc">Include Treasury bills, federal funds, repurchase agreements, commercial paper and banker’s acceptances</li></ul><h2 id="6984048c-5ff8-4d4b-811a-eea601ba0aac" class="">Capital Markets</h2><ul id="470aa7bf-8cbc-4ccb-b09d-cc071110cc4f" class="bulleted-list"><li style="list-style-type:disc">Trade equity and debt instruments with maturities of more than one year</li></ul><ul id="9a5d66b9-cf1d-4b6f-9712-a5d525d60ace" class="bulleted-list"><li style="list-style-type:disc">Major suppliers of capital market securities are corporations and governments</li></ul><ul id="8c6c7a0f-92c4-4f3a-a99c-1de51367f30e" class="bulleted-list"><li style="list-style-type:disc">Households are the major suppliers of funds for these securities</li></ul><ul id="95055ce9-159c-4aff-976a-eed95fd02678" class="bulleted-list"><li style="list-style-type:disc">Experience wider price fluctuations due to long term nature</li></ul><figure id="00e19cfb-d690-4003-bbc3-e7cf855fe984" class="image"><a href="Introduction%207841dae0ea8a443cb3597c39f25b6c98/Untitled.png"><img style="width:624px" src="Introduction%207841dae0ea8a443cb3597c39f25b6c98/Untitled.png"/></a></figure><h2 id="3dec67c7-3a81-4bc5-92b5-9577ab4c1ebc" class="">Foreign Exchange Markets</h2><ul id="da2acc0d-24ce-4dda-ae53-16ff84504282" class="bulleted-list"><li style="list-style-type:disc">The sensitivity of the value of cash flows on foreign investments to changes in the foreign currency’s price in terms of dollars is foreign exchange risk</li></ul><h2 id="fc5946a0-ab0d-451e-bdca-d21a5210788c" class="">Derivative Security Markets</h2><ul id="f9d612c6-ba9a-4be7-87fb-91263436a488" class="bulleted-list"><li style="list-style-type:disc">Derivative Security is a financial security whose payoff is linked to another previously issued security</li></ul><ul id="d72798df-6ec8-4776-a162-f161d7ab9894" class="bulleted-list"><li style="list-style-type:disc">Derivative securities generally involve an agreement between two parties to exchange a standard quantity of an asset or cash flow at a predetermined price and at a specified date in the future.</li></ul><ul id="979ed618-b670-4bce-8c99-747c46e9a01d" class="bulleted-list"><li style="list-style-type:disc">As the value of the underlying security to be exchanged changes, the value of the derivative security changes.</li></ul><h2 id="f2fad2c6-5908-4678-a48a-2e6460d47d9b" class="">Financial Market Regulations</h2><ul id="2cd9c057-ae8d-4740-8028-b62e389278b4" class="bulleted-list"><li style="list-style-type:disc">SEC → Securities and exchange commission → the main regulator of securities markets since the passage of the Securities Act of 1934</li></ul><ul id="834d3e54-bba3-463b-81b9-e4b69cc053b1" class="bulleted-list"><li style="list-style-type:disc">Prospectus must contain the issue of new stocks and any risks associated with the issue </li></ul><ul id="1e7d5055-76f6-4715-ac28-50de0ff992de" class="bulleted-list"><li style="list-style-type:disc">SEC also monitors major exchanges</li></ul><ul id="70392037-5ee7-4fe4-abad-55030890bb6b" class="bulleted-list"><li style="list-style-type:disc">SEC is not intended to protect investors against poor investment choices but rather to ensure that investors have full and accurate information available about corporate issuers when making their decision</li></ul><h1 id="2af04808-4b49-40e5-9613-287085e486ae" class="">Financial Institutions</h1><h2 id="604775da-b5e8-44b2-b83d-014b5aadb9d3" class="">Problems that led to Creation of FIs</h2><ul id="f45aaee1-213d-4521-a30c-525ebcb93ee1" class="bulleted-list"><li style="list-style-type:disc">To ensure that their money doesn’t go into losses or is given to someone without any guarantee that the money is returned</li></ul><ul id="a597526e-62a7-45d6-b6ee-d6f9b7b200e4" class="bulleted-list"><li style="list-style-type:disc">Long term nature of many financial claims creates another disincentive for suppliers of funds to hold the direct claims issued by fund users</li></ul><ul id="b39cb694-29fb-44cf-93bf-406513679643" class="bulleted-list"><li style="list-style-type:disc">Fund suppliers may choose to hold cash for liquidity reasons</li></ul><ul id="633508c2-4d07-492a-9827-493d841bca38" class="bulleted-list"><li style="list-style-type:disc">By allowing fund suppliers to trade financial securities among themselves, fund suppliers face a price risk upon the sale of securities</li></ul><ul id="2d955a74-1817-4cf8-b801-2cb860b493ad" class="bulleted-list"><li style="list-style-type:disc">Which means that a person can be fooled into buying something at a higher price than it was sold at initially</li></ul><ul id="7bfb3f01-4698-4b51-ba3f-14a00bc360fd" class="bulleted-list"><li style="list-style-type:disc">In simple, issues → Monitoring Costs, Liquidity Costs, Price Risk</li></ul><h2 id="8e7801bc-4bd3-4f23-81ee-52131d641618" class="">Unique Economic Functions Performed by Financial Institutions</h2><ul id="8f11af16-6ff2-4fa4-9a62-a19b445f6041" class="bulleted-list"><li style="list-style-type:disc">Indirect Transfer is the transfer of funds between suppliers and users of funds through a financial intermediary</li></ul><ul id="499bacc2-4490-46b2-8860-7b406205b420" class="bulleted-list"><li style="list-style-type:disc">Due to costs of monitoring, liquidity risk, and price risk as well as for other reasons explained later, fund suppliers often prefer to hold financial claims issued by FIs</li></ul><h2 id="4ef90f20-fdfd-40a6-b9e4-fd513eb2d017" class="">Services Benefiting Suppliers of Funds:</h2><h3 id="3862a167-c6bf-4201-81c6-724b5af3aaed" class="">Monitoring Costs</h3><ul id="4e28c54e-8208-4e65-91d5-4be0bb9b6439" class="bulleted-list"><li style="list-style-type:disc">Aggregation of funds in an FI provides greater incentive to collect a firm’s information and monitor actions</li></ul><ul id="0f6cc979-944c-443c-a55b-dfd2d1fbd918" class="bulleted-list"><li style="list-style-type:disc">The relatively large size of the FI allows this collection of information to be accomplished at a lower average cost</li></ul><ul id="26e5c2c8-5401-4ee5-8cfa-08345952c60a" class="bulleted-list"><li style="list-style-type:disc">FI acts as delegated monitor</li></ul><h3 id="e95e4fe0-f906-4459-99ba-4ec3a790a205" class="">Liquidity and Price Risk</h3><ul id="e99380f8-1f49-4551-b277-fc89b7753daf" class="bulleted-list"><li style="list-style-type:disc">FIs provide financial claims to household savers with superior liquidity attributes and with lower price risk</li></ul><ul id="d457b5c7-aced-4f2c-905d-c01b4a507a00" class="bulleted-list"><li style="list-style-type:disc">Act as asset transformers</li></ul><ul id="2b0d9dbf-540d-4c12-b7ff-a5a9dd1aa16c" class="bulleted-list"><li style="list-style-type:disc">FIs take financial claims from users of funds and give suppliers of funds in the form of securities and policies</li></ul><ul id="5a282043-a36e-44f0-8836-e686c390d57f" class="bulleted-list"><li style="list-style-type:disc">FIs allow suppliers to take money at a very short notice</li></ul><ul id="bfe6a074-0e4e-44e2-b349-a848e9fd27ea" class="bulleted-list"><li style="list-style-type:disc">FIs diversify their risk i.e. by spreading their investment on a number of assets, FIs can diversify high amounts of portfolio risk</li></ul><ul id="8defbede-bb3b-4212-9102-a43c7967c67b" class="bulleted-list"><li style="list-style-type:disc">Because of small wealth values, it’s harder for small investors to diversify their investment</li></ul><h3 id="4faf22af-04a7-48b3-83cf-a796ea7c1536" class="">Transaction Cost Services</h3><ul id="66bcfec7-5a1b-42d3-a0bb-13e77a356433" class="bulleted-list"><li style="list-style-type:disc">An FIs size can result in economies of scale in transaction cost</li></ul><h3 id="557693af-e168-472a-8faa-bcfa563d37bc" class="">Maturity Intermediation</h3><ul id="b7803d92-29de-439f-8926-a4d3904c9202" class="bulleted-list"><li style="list-style-type:disc">FIs can better bear the risk of mismatching the maturities of their assets and liabilities</li></ul><h3 id="84eea1c8-9e86-45a9-b373-6221fa6c0986" class="">Denomination Intermediation</h3><ul id="6c318953-18c1-475e-8965-bc28ee6852ad" class="bulleted-list"><li style="list-style-type:disc">FIs such as mutual funds allow small investors to overcome constraints of buying assets imposed by large minimum denomination size</li></ul><h2 id="a09bb6f2-3ffd-429a-8fb4-05084ada6d0d" class="">Services benefitting the overall economy</h2><h3 id="6497d0f6-75dd-4a79-bbb8-391d67179c80" class="">Transmission of Monetary Policy</h3><ul id="2241d230-4c7d-4353-b464-81e963b1451f" class="bulleted-list"><li style="list-style-type:disc">Highly liquid nature of bank and thrift deposits has resulted in their acceptance by the public as the most widely used medium of exchange in the economy</li></ul><ul id="2a62bbe4-4b1a-4983-a583-7a83b94af82f" class="bulleted-list"><li style="list-style-type:disc">Because deposits are a significant component of the money supply, which in turn directly impact the rate of economic growth and the rate of inflation, depository institutions play a key role in transmission of monetary policy from the RBI</li></ul><ul id="739856ab-a062-4aa9-b1a0-898e5eeb008e" class="bulleted-list"><li style="list-style-type:disc">Because depository institutions are instrumental in determining the size and growth of the money supply, they have been designated as the primary conduit through which monetary policy actions by the Federal Reserve impact the rest of the financial sector and the economy in general</li></ul><h3 id="92a765e8-5666-4149-9823-c942c300509b" class="">Credit Allocation</h3><ul id="53f0cded-1e90-4117-81cc-e71117775fc5" class="bulleted-list"><li style="list-style-type:disc">FIs provide a unique service in that they are the major source of financing</li></ul><ul id="0d4c53aa-67f2-4101-89d3-1feef7856520" class="bulleted-list"><li style="list-style-type:disc">Based on places, FIs can focus on a specific area for improvement</li></ul><h3 id="5f29245a-aef0-4887-8f59-a1092b60c050" class="">Intergenerational Wealth Transfers or Time Intermediation</h3><ul id="f02cb7dd-23a2-4db1-b7bd-b7e39a0eb2f7" class="bulleted-list"><li style="list-style-type:disc">The ability of savers to transfer wealth from their youth to their old age and across generations also happens through FIs</li></ul><ul id="a342027a-77e3-44b9-a64f-caf768cac44a" class="bulleted-list"><li style="list-style-type:disc">Special taxation relief and other subsidy mechanisms encourage investment by saving in life insurance, annuties and pension funds</li></ul><h3 id="d65ef5cd-8b6d-47c5-9415-80a1110eed15" class="">Payment Services</h3></div></article></body></html>
