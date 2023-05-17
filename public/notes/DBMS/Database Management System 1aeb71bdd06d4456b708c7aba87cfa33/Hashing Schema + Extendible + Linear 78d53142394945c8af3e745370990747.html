@@ -1,0 +1,737 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Hashing Schema + Extendible + Linear</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="78d53142-3949-45c8-af3e-745370990747" class="page sans"><header><h1 class="page-title">Hashing Schema + Extendible + Linear</h1></header><div class="page-body"><nav id="7359a3dc-ff9b-4ded-be7c-0e727986e803" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#37046732-0b08-4346-a47c-b94f7a82602c">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b2d44b5f-65c9-4491-b723-38609a0d29c3">Internal Hashing</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#32e9c0a1-1b36-4bc1-92a1-7f57c61a286c">Methods for Collision Resolution</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8451ff1b-343d-47a3-9701-63e0163a573b">External Hashing</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8ae7d949-c234-42f1-91e7-9bf563add266">Static Hashing Scheme</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#96672c71-0ce5-4e79-8e22-0def4592955e">Dynamic Hashing</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#6ba838a9-b95c-471b-84fa-471121abb255">Extendible Hashing</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#37f7e2a2-61d2-464b-b475-2dcd2e555253">Extensible Hashing - Example 1</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#dc9e0b59-d6c9-44bb-8361-7eb466713658">Extensible Hashing - Example 2</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#ebc5ca4c-7755-4067-a0bd-d25fdf4ef389">Extensible Hashing - Example 3</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#5c2ec117-021f-443e-8950-fc1a9ab243c2">Linear Hashing</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#94b04ffc-3cc8-412b-a7bf-7c3eeca0a2f0">Linear Hashing - Example 1</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b1aee8fa-d73d-4167-b4c9-94da83553169">Linear Hashing - Example 2</a></div></nav><h1 id="37046732-0b08-4346-a47c-b94f7a82602c" class="">Introduction</h1><ul id="0c8fdaa9-143e-46bc-994d-1c37ab428764" class="bulleted-list"><li style="list-style-type:disc">Hashing is an alternative to indexing leading to fast retrieval of data records based on search key</li></ul><ul id="e8164ce2-394b-4371-bc01-13db420c8917" class="bulleted-list"><li style="list-style-type:disc">The search field is called as hash field of the file</li></ul><ul id="23a72c5d-f6d0-4bb5-8db7-1334e24f6b8d" class="bulleted-list"><li style="list-style-type:disc">In most cases the hash field is also a key field of the file, in which case it is called a hash key</li></ul><ul id="fa39f9f6-d2ea-4b8f-8307-a82a8077cd7f" class="bulleted-list"><li style="list-style-type:disc">The basic idea of hashing is that a hash function h, when supplied a hash field value K of a record produces the address B of the disk block that contains the record with specified key value</li></ul><ul id="2b4f175a-475c-457d-9aab-1db86e977f6d" class="bulleted-list"><li style="list-style-type:disc">Indexing is where all indices are stored in another table, which we use to retrieve data</li></ul><ul id="e3cea90b-a1c4-4a5e-989d-8c45f21aee8b" class="bulleted-list"><li style="list-style-type:disc">In indexing, we have two types of <code>bfr</code>, <code>bfr_i</code> and <code>bfr_d</code> for index table and data table respectively and <code>bfr_i</code> will always be higher (because it only consists of key-value pairs)</li></ul><ul id="94c0b721-17d0-4e26-8799-118a8367d5e3" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background">h: K → B</mark> ⇒ hash function: key value → disk block address or location</li></ul><ul id="d424a8e3-6f96-44f5-adff-f294bcd8cd35" class="bulleted-list"><li style="list-style-type:disc">For most records, we require only one block access</li></ul><h2 id="b2d44b5f-65c9-4491-b723-38609a0d29c3" class="">Internal Hashing</h2><ul id="95b71230-8c85-43c6-9098-f711e7ef8ac4" class="bulleted-list"><li style="list-style-type:disc">Scheme which is used to hash records on main memory not on disk</li></ul><ul id="fe4f369a-1661-40a1-8905-868f7220ba3c" class="bulleted-list"><li style="list-style-type:disc">Implemented as a hash table through use of an array of records</li></ul><ul id="ac1f2a33-b6f8-44cc-9bce-90f55ea395f0" class="bulleted-list"><li style="list-style-type:disc">The most common hash function used is h(k) = K mod M</li></ul><ul id="6c0a251b-5a03-475c-bfd6-48b0b307d972" class="bulleted-list"><li style="list-style-type:disc">This gives the index of the location in the array</li></ul><ul id="882c7051-19d8-47cb-8268-2635e3634c11" class="bulleted-list"><li style="list-style-type:disc">If two or more records are hashed to the same location, it is called collision</li></ul><ul id="fbe9e171-58d6-4621-9a77-14fbc15bd5b8" class="bulleted-list"><li style="list-style-type:disc">Then we need to find some other location this process is called collision resolution</li></ul><h3 id="32e9c0a1-1b36-4bc1-92a1-7f57c61a286c" class="">Methods for Collision Resolution</h3><ul id="455a1b8a-a1d7-41e8-91d6-80427e56b036" class="bulleted-list"><li style="list-style-type:disc">Open Addressing - When collision occurs try with alternate cells</li></ul><ul id="3dc8bb72-32ef-4d4e-b67b-bd39f2b83c76" class="bulleted-list"><li style="list-style-type:disc">Chaining - Various overflow locations are kept by extending the array by number of overflow positions. Collision resolved by using an unused overflow position</li></ul><ul id="a3906752-de84-4bc8-9a48-e7570fad5729" class="bulleted-list"><li style="list-style-type:disc">Multiple Hashing - We apply second hash function if first results in collision</li></ul><h2 id="8451ff1b-343d-47a3-9701-63e0163a573b" class="">External Hashing</h2><ul id="72e81ecd-6523-434b-9e26-945850ed4912" class="bulleted-list"><li style="list-style-type:disc">Hashing that is used to decide which location an record is stored on the disk</li></ul><ul id="1f9c6373-eee7-44cf-9661-e08a2fed1f66" class="bulleted-list"><li style="list-style-type:disc">Best suited for database systems</li></ul><ul id="f404d5fb-b835-48b5-8312-786a5574ad66" class="bulleted-list"><li style="list-style-type:disc">Target address space is divided into buckets, each of which can hold multiple records</li></ul><ul id="3c48f329-5b92-4b8c-b6df-aa88acec062a" class="bulleted-list"><li style="list-style-type:disc">Sometime it could be a cluster of blocks</li></ul><ul id="02945387-2f3b-4c03-92a3-2260ffbe1941" class="bulleted-list"><li style="list-style-type:disc">Maps a key to a relative bucket number rather than an absolute block address</li></ul><figure id="94f45600-0382-4681-919e-76add3dfd48d" class="image"><a href="Hashing%20Schema%20+%20Extendible%20+%20Linear%2078d53142394945c8af3e745370990747/Untitled.png"><img style="width:672px" src="Hashing%20Schema%20+%20Extendible%20+%20Linear%2078d53142394945c8af3e745370990747/Untitled.png"/></a></figure><figure id="47fa0627-4083-4963-8704-627b42e5358b" class="image"><a href="Hashing%20Schema%20+%20Extendible%20+%20Linear%2078d53142394945c8af3e745370990747/Untitled%201.png"><img style="width:528px" src="Hashing%20Schema%20+%20Extendible%20+%20Linear%2078d53142394945c8af3e745370990747/Untitled%201.png"/></a></figure><h2 id="8ae7d949-c234-42f1-91e7-9bf563add266" class="">Static Hashing Scheme</h2><figure id="f4e9218d-2817-4ff8-bc2e-b57ae8c30e52" class="image"><a href="Hashing%20Schema%20+%20Extendible%20+%20Linear%2078d53142394945c8af3e745370990747/Untitled%202.png"><img style="width:1346px" src="Hashing%20Schema%20+%20Extendible%20+%20Linear%2078d53142394945c8af3e745370990747/Untitled%202.png"/></a></figure><ul id="1af719a6-45a8-4507-98e6-f2c82855f628" class="bulleted-list"><li style="list-style-type:disc">Here we don’t store block address but the record address</li></ul><ul id="60f97191-e3aa-4cdc-997c-8bd5a6286e11" class="bulleted-list"><li style="list-style-type:disc">Overflow buckets will be the same size of the normal bucket</li></ul><ul id="f73e62a5-197f-4f6c-9700-4f9c220a648e" class="bulleted-list"><li style="list-style-type:disc">The above scheme is called as static hashing because the number of buckets allocated is fixed. This is a big constraint for files that are dynamic.</li></ul><ul id="0f7c226f-4573-496e-8444-3977ae23fcc7" class="bulleted-list"><li style="list-style-type:disc">When a bucket is filled to capacity and if the new record is hashed on to the same bucket, then chaining is adopted, where a pointer is maintained in each bucket to a linked list of overflow records for the bucket.</li></ul><ul id="0d5d48e4-48c0-4aa4-87b4-67b240d11200" class="bulleted-list"><li style="list-style-type:disc">Here the pointers are record pointers which include both block address and a relative record position within that block</li></ul><ul id="e1ead029-c9da-4df4-9434-3b204e77022b" class="bulleted-list"><li style="list-style-type:disc">But the disadvantages of static hashing include<ul id="a34a36a1-5974-4e15-99fb-a0ca26478049" class="bulleted-list"><li style="list-style-type:circle">If initial number of buckets is too small and file grows performance will degrade due to too much overflow/chaining</li></ul><ul id="649e973d-e8f8-4f20-91d6-e66e1ea1938d" class="bulleted-list"><li style="list-style-type:circle">If space is allocated for anticipated growth, a significant amount of space will be wasted initially and buckets will be underutilized </li></ul><ul id="2e7acc93-720d-41a5-bb34-7ba477fcd9e8" class="bulleted-list"><li style="list-style-type:circle">If database shrinks, again space will be wasted</li></ul></li></ul><h2 id="96672c71-0ce5-4e79-8e22-0def4592955e" class="">Dynamic Hashing</h2><h3 id="6ba838a9-b95c-471b-84fa-471121abb255" class="">Extendible Hashing</h3><ul id="4bde8405-194d-42ba-a920-8c275a56c065" class="bulleted-list"><li style="list-style-type:disc">The first technique is called as extendible hashing. </li></ul><ul id="40df5733-4ea4-43cc-9264-f5500ded97db" class="bulleted-list"><li style="list-style-type:disc">This scheme stores a directory structure in addition to the file. </li></ul><ul id="b0d5b57b-7e53-44d6-88e8-37c1d8ba5e3e" class="bulleted-list"><li style="list-style-type:disc">This access structure is based on the result of the hash function to the search field. </li></ul><ul id="2cec1a8d-c295-4394-9e55-83f1f4681e0f" class="bulleted-list"><li style="list-style-type:disc">Each result of applying the hash function is a nonnegative integer and hence can be represented with a binary pattern. </li></ul><ul id="65d40f80-fc26-4a01-875f-43cee6f8169f" class="bulleted-list"><li style="list-style-type:disc">This we call it as hash value of the record. </li></ul><ul id="fa3c7ce0-56ba-4746-a83f-c25fbbd22cee" class="bulleted-list"><li style="list-style-type:disc">Records are distributed among the buckets based on the values of the leading bits in their hash value</li></ul><ul id="1c15a408-7138-4a25-a331-b4d2b4967cb4" class="bulleted-list"><li style="list-style-type:disc">The major advantage of extendible hashing is that performance does not degrade because of chaining, as the file grows as we have seen in static hashing.</li></ul><ul id="0171ef2a-545d-4c7e-95c0-95d1a72fee97" class="bulleted-list"><li style="list-style-type:disc">In extendible hashing no additional space is wasted towards the allocations for future growth, but additional buckets can be allocated dynamically as needed.</li></ul><ul id="ffd266a4-66a9-420d-9110-ab3839a61a65" class="bulleted-list"><li style="list-style-type:disc">The only overhead in this scheme is that a <span style="border-bottom:0.05em solid">directory structure</span> needs to be searched before the buckets are accessed</li></ul><figure id="1701f622-a2db-49dc-bd37-271dbca47e3d" class="image"><a href="Hashing%20Schema%20+%20Extendible%20+%20Linear%2078d53142394945c8af3e745370990747/Untitled%203.png"><img style="width:1050px" src="Hashing%20Schema%20+%20Extendible%20+%20Linear%2078d53142394945c8af3e745370990747/Untitled%203.png"/></a></figure><ul id="2b20b2cc-0ad1-4c56-b1e5-46e5126392b7" class="bulleted-list"><li style="list-style-type:disc">We start with a given global depth(depth on the directory side) and a given local depth(depth on the file side)</li></ul><ul id="12cbebc0-5459-40c7-bb3d-edfd4fe96a0e" class="bulleted-list"><li style="list-style-type:disc">Global depth cannot go beyond local depth so we increase global depth before that only</li></ul><h3 id="37f7e2a2-61d2-464b-b475-2dcd2e555253" class="">Extensible Hashing - Example 1</h3><pre id="61d3fc3a-1ac9-445b-aa1d-1c10688eab57" class="code"><code>Assume that we need to load some records of the relation 
+EMP into expandable hashfiles based on extendible hashing 
+technique. Records are inserted into the file with following key 
+field values: 32, 28, 43, 15, 66, 27, 86, 54, 35, 98, 72. The 
+order of insertion should be same as the above. Each bucket 
+is one disk block and each block can store maximum of three 
+records. Show the structure of the directory at each step, and 
+the local and global depths. Use the hash function h(K)=K 
+mod 10. Start with Global depth-2, Local depth-1. Consider 
+	LSB of the hash value for directory entries</code></pre><figure id="8e28c062-ade1-4124-8cd4-1dee96d7929a" class="image"><a href="Hashing%20Schema%20+%20Extendible%20+%20Linear%2078d53142394945c8af3e745370990747/Untitled%204.png"><img style="width:1604px" src="Hashing%20Schema%20+%20Extendible%20+%20Linear%2078d53142394945c8af3e745370990747/Untitled%204.png"/></a></figure><figure id="d8c11ee7-cbe3-44a0-8448-d0adc0898f44" class="image"><a href="Hashing%20Schema%20+%20Extendible%20+%20Linear%2078d53142394945c8af3e745370990747/Untitled%205.png"><img style="width:1615px" src="Hashing%20Schema%20+%20Extendible%20+%20Linear%2078d53142394945c8af3e745370990747/Untitled%205.png"/></a></figure><figure id="ba58cf12-bce0-43ed-8900-a7cbd9878951" class="image"><a href="Hashing%20Schema%20+%20Extendible%20+%20Linear%2078d53142394945c8af3e745370990747/Untitled%206.png"><img style="width:1403px" src="Hashing%20Schema%20+%20Extendible%20+%20Linear%2078d53142394945c8af3e745370990747/Untitled%206.png"/></a></figure><h3 id="dc9e0b59-d6c9-44bb-8361-7eb466713658" class="">Extensible Hashing - Example 2</h3><figure id="4121f242-6dd1-47c0-bf9f-5a139a72c00e" class="image"><a href="Hashing%20Schema%20+%20Extendible%20+%20Linear%2078d53142394945c8af3e745370990747/Untitled%207.png"><img style="width:1238px" src="Hashing%20Schema%20+%20Extendible%20+%20Linear%2078d53142394945c8af3e745370990747/Untitled%207.png"/></a></figure><h3 id="ebc5ca4c-7755-4067-a0bd-d25fdf4ef389" class="">Extensible Hashing - Example 3</h3><ul id="4e48bc07-e41c-482a-8a4b-89d6766d7a73" class="bulleted-list"><li style="list-style-type:disc">Given Data as follows</li></ul><table id="af10f081-60e0-41b3-baf0-436fdbf1bbee" class="simple-table"><tbody><tr id="0404177f-b73a-48de-b91a-9ad805121001"><td id="cUzf" class="">14</td><td id="ShVB" class="">33</td><td id="~mQj" class="">18</td><td id="oUrz" class="">70</td><td id="lgRv" class="">26</td><td id="Xroz" class="">63</td><td id="cxas" class="">02</td></tr><tr id="78fe43d9-11b1-4924-9eae-64f8de8a9ab1"><td id="cUzf" class="">4</td><td id="ShVB" class="">3</td><td id="~mQj" class="">8</td><td id="oUrz" class="">0</td><td id="lgRv" class="">6</td><td id="Xroz" class="">3</td><td id="cxas" class="">2</td></tr><tr id="078e6599-f94d-4b3a-b530-148147552aa7"><td id="cUzf" class="">0100</td><td id="ShVB" class="">0011</td><td id="~mQj" class="">1000</td><td id="oUrz" class="">0000</td><td id="lgRv" class="">0110</td><td id="Xroz" class="">0011</td><td id="cxas" class="">0010</td></tr></tbody></table><ul id="588b9ae8-059e-44fa-84e9-1812c47dd68e" class="bulleted-list"><li style="list-style-type:disc">Initially GD = 2, and LD = 1 having BFR = 2</li></ul><ul id="b64bd377-0941-4d24-bd45-bf1d2a46c279" class="bulleted-list"><li style="list-style-type:disc">Step 1: (00, 01, 10, 11) → (0: 14)</li></ul><ul id="a3236c60-1efc-4354-832f-1edde4135764" class="bulleted-list"><li style="list-style-type:disc">Step 2: (00, 01, 10, 11) → (0: 14, 1: 33)</li></ul><ul id="ce4c1fe2-4f06-46a0-82cf-f93d5024d699" class="bulleted-list"><li style="list-style-type:disc">Step 3: (00, 01, 10, 11) → (0: 14/18, 1: 33)</li></ul><ul id="9febc2cf-1134-4e68-9056-e17b83088ece" class="bulleted-list"><li style="list-style-type:disc">Step 4: (00, 01, 10, 11) → (00: 14/18→70, 11: 33, 01: , 10: 26)</li></ul><ul id="3cbfeed5-c8db-4e70-953a-c83d401ea76a" class="bulleted-list"><li style="list-style-type:disc">Step 5: (00, 01, 10, 11) → (00: 14/18→70, 11: 33/63, 01: , 10: 26)</li></ul><ul id="ce925abd-96ad-4086-996c-e2c7cc1400c5" class="bulleted-list"><li style="list-style-type:disc">Step 5: (00, 01, 10, 11) → (00: 14/18→70, 11: 33/63, 01: , 10: 26/02)</li></ul><h3 id="5c2ec117-021f-443e-8950-fc1a9ab243c2" class="">Linear Hashing</h3><ul id="7bb80d8f-ac9d-4d72-8b3e-ecb6c89e590a" class="bulleted-list"><li style="list-style-type:disc">In the second scheme called linear hashing, no directory structure is used. </li></ul><ul id="9eba576d-d74c-45f1-8a62-ca32274dd399" class="bulleted-list"><li style="list-style-type:disc">Here instead of one hash function, multiple hash functions are used. </li></ul><ul id="f9a4a070-11e3-427c-ae63-236741869d68" class="bulleted-list"><li style="list-style-type:disc">When collision occurs with one hash function, the bucket that overflows is split in to two and the records in the original bucket are distributed among two buckets using the next hash function <code>h(i + 1) (k)</code> </li></ul><ul id="23ca354f-94f8-4d4d-b6fb-8bc19427b73e" class="bulleted-list"><li style="list-style-type:disc">Hence we have multiple hash functions</li></ul><h3 id="94b04ffc-3cc8-412b-a7bf-7c3eeca0a2f0" class="">Linear Hashing - Example 1</h3><pre id="1758f524-c286-4fd3-b816-8fe9a9ecd05b" class="code"><code>Assume that we use Linear hashing technique in some 
+situation and we use the hash functions h0, h1, h2, ... as 
+(K mod 2), (K mod 4), (K mod 8) and so on. Assume that 
+a bucket(one block) can accommodate 2 records. Now 
+insert the records with following keys in same order and 
+show the dynamic structure of the hashing scheme after 
+each insertion.
+Keys to be inserted are: 14, 21, 7, 24, 6, 22, 5, 19. Note 
+that split occurs when the fileload factor (f) exceeds 0.7</code></pre><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="9da59f9d-234a-4523-ae6d-897a990522b2"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">File Load Factor = No of records inserted/(No of records * BFR)</div></figure><ul id="ce5f1bbd-f1de-4c43-8f94-8ca3002dc4e4" class="bulleted-list"><li style="list-style-type:disc">n indicates whenever it’s time to split a bucket, which bucket is split is based on n</li></ul><ul id="b52f91f0-24f9-414b-a256-e3fe8831daf1" class="bulleted-list"><li style="list-style-type:disc">Step 1: n = 0, Insert 14 → 0: 14 and 1: NULL FLF=0.25</li></ul><ul id="c178cf83-4f38-4a7d-b789-b9ad71cbb810" class="bulleted-list"><li style="list-style-type:disc">Step 2: n = 0, Insert 21 → 0: 14 and 1: 21 FLF = 0.5</li></ul><ul id="a1042439-3535-4291-9a6c-cc49e0bfc4bf" class="bulleted-list"><li style="list-style-type:disc">Step 3: n = 0, Insert 7, FLF becomes 0.75 so we have to split the bucket with n = 0</li></ul><ul id="e3251c9d-04ce-4d2f-b6f7-3961a0ef5b0e" class="bulleted-list"><li style="list-style-type:disc">Step 4: n = 1, 0: 24 | 1: 21,7 | 2: 14 FLF = 0.5</li></ul><ul id="78879abb-abaf-4dcb-a584-3bfd2a6cb9fe" class="bulleted-list"><li style="list-style-type:disc">Adding 6, we get FLF &gt; 0.7, we we split 1</li></ul><figure id="88ed34de-865a-48b2-a30d-091f518db1d0" class="image"><a href="Hashing%20Schema%20+%20Extendible%20+%20Linear%2078d53142394945c8af3e745370990747/Untitled%208.png"><img style="width:1033px" src="Hashing%20Schema%20+%20Extendible%20+%20Linear%2078d53142394945c8af3e745370990747/Untitled%208.png"/></a></figure><figure id="ea535622-dc06-4da2-867f-c459c230f4e2" class="image"><a href="Hashing%20Schema%20+%20Extendible%20+%20Linear%2078d53142394945c8af3e745370990747/Untitled%209.png"><img style="width:1083px" src="Hashing%20Schema%20+%20Extendible%20+%20Linear%2078d53142394945c8af3e745370990747/Untitled%209.png"/></a></figure><h3 id="b1aee8fa-d73d-4167-b4c9-94da83553169" class="">Linear Hashing - Example 2</h3><pre id="5b00c71a-e8a0-4097-969e-ba6e75fb5968" class="code"><code>Numbers: 8 7 13 5 22 11 42 21 16 31
+kmod2:   0 1 1  1 0  1  0  1  0  1
+
+BFR = 2
+split when FLF &gt; 0.7
+
+Step 1
+0: 8
+1: 7
+FLF = 0.5
+
+Step 2
+0: 8
+1: 7 13
+FLF = 0.75
+
+n = 0
+Step 3
+0: 8 5
+1: 7 13
+FLF = 1
+Here we split and make it
+
+0: 8 
+1: 7 13 -&gt; 5 
+2: 
+Consider overflow buckets also
+FLF = 0.5
+
+Insert 22
+22 mod 2 = 0, but here we have split image, also not every bucket has a split image, but since 0 has a split image, we use mod 4
+22 mod 4 = 2
+So we will have 
+0: 8
+1: 7 13 -&gt; 5
+2: 22
+
+n = 1
+Next we have 11
+11 mod 2 = 1 
+FLF = 0.75
+so we have 
+0: 8
+1: 7 13 -&gt; 5 11
+2: 22
+
+we will split here and make n = 0 again because all are done
+0: 8
+1: 13 5
+2: 22
+3: 7 11</code></pre><p id="2d416bd4-d907-45ab-a5ba-c8b206acca72" class="">
+</p></div></article></body></html>

@@ -75,6 +75,10 @@ export default function Notes() {
             link: "https://drive.google.com/file/d/1c-oJ1Qu9ffpk0_X0t9hdkAIH9PslOL0H/view?usp=sharing"
         },
         {
+            name: "DBMS Notes",
+            link: "/notes/DBMS/dbms.html"
+        },
+        {
             name: "Linguistics Incomplete Notes",
             link: "/notes/Linguistics/Linguistics.html"
         },
@@ -88,13 +92,13 @@ export default function Notes() {
         <>
             <div className='grid place-items-center'>
                 <div className='w-[50vw] place-items-center flex flex-col justify-between'>
-                    <h1 className='text-6xl p-5'>Notes and Resources.</h1>
+                    <h1 className='text-6xl p-[35px]'>Notes and Resources.</h1>
                     <input type="text" placeholder="Search..." className="input input-bordered w-full max-w-xs" onChange={e => setInput(e.target.value)} />
                 </div>
             </div>
 
             <div className='grid place-items-center py-3'>
-                <div className="w-[50vw] place-items-center flex flex-col justify-between">
+                <div className="w-100 place-items-center flex flex-col justify-between">
                     <h1 className='text-4xl p-3'>BITS Combined Resources</h1>
                     <h3 className='text-xl'>(Contains PYQs and Solutions if available, textbooks, textbook solutions, slides and notes)</h3>
                     <div>
@@ -108,7 +112,7 @@ export default function Notes() {
             </div>
 
             <div className='grid place-items-center py-3'>
-                <div className="w-[50vw] place-items-center flex flex-col justify-between">
+                <div className="w-100 place-items-center flex flex-col justify-between">
                     <h1 className='text-4xl p-3'>Course Wise Notes</h1>
                     <div>
                     {

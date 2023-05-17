@@ -1,0 +1,845 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Lab: PL SQL</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="3c5d5f97-df5a-45ac-8c7a-20ceadd38542" class="page sans"><header><h1 class="page-title">Lab: PL SQL</h1></header><div class="page-body"><nav id="797a080b-ec1f-42bf-ae23-d5108946efba" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3a4d04a6-103b-46e6-ada4-f57034c60b63">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a7d00103-9375-4fac-93ff-8b8af6fe8cbf">Features of PL/SQL</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7b3147e4-a2cf-455c-b694-b28d167e9dc1">Parts of PL/SQL Code</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#80afb25d-d425-4c6a-86b4-0f5e6cb427f1">Declare Section</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#cbeec761-47a0-4dd3-8b94-4cd32bd0aced">Execution Section</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4498ce6f-035b-4a12-8c37-ff11aed3677d">Exception Section</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9b0f0c1c-e8b2-4947-9cb0-789a992399de">Stored Procedures</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#18073c6e-fcd0-41f5-b441-db17da966f5d">Basic Programs</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#e6ad352f-3a89-4d4a-802f-1a08851c6688">Example 1: Update</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d59a117b-5147-447c-a1b6-0a303f14ee83">Example 2: Select INTO</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#e2c99991-820c-4303-9c96-c635edd30b50">Example 3: Sum</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#7b56642a-5fe7-45ec-b12e-d584aa184733">Example 4: Select into book price</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#274e1cd1-669b-4826-afb7-a273d0c0703b">Example 5: Inserting a Book</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#5bcf1503-d4c5-4b31-961b-6ca7714cf097">Example 6: In/Out Operations</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#e783c9b0-5fef-4437-9015-c61fe559a906">Example 7</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#64f6a458-18be-459e-b464-91bd4231469b">If Else Ladder</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#1c1716f4-3050-4b5d-88dc-283c9e51015b">Example 8: Check if total number of records is odd or even</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#58aabddc-3c9e-42ef-ae59-af33f9eb360d">Example 9: Emp and Dept tables Update Dept Size when Emp is added</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fa7c40ea-14d7-47e9-bfbc-4dea5a6a7810">Looping</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b800bf4b-1c82-4745-9896-0814b19d71fe">Example 10: Simple loop</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#fd98563f-e4fc-48bc-be92-b675b136ab5a">PL SQL Functions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6592240a-1297-47a5-928b-ebfb02bcc4f1">Basic Example</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6e8e96cd-48f5-4452-9b0f-7ebda8d6f576">Anonymous Calling of Function</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#bd8da840-559c-4ed4-823f-7f55e5981d9f">Cursor</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9e033649-82f8-4789-b5cf-62fdbf15496b">Sequences</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1a0dd5de-86e0-4ca7-be57-9d609f241ab8">Triggers</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f00d057c-fed7-4331-a7c9-425a92960021">Example 1: Insert Trigger</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0a254677-379b-4530-9cf5-ddcde3353ae3">Example 2: Using variables</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7eaa1d35-2be9-43d0-97ff-0f7b2462e35c">Example 3: Row Level Trigger VS Table Level Trigger</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4fa276e0-9833-4771-ba7e-459b22d64a18">Example 4: Use of :old and :new</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8f5d4d3d-bed3-41b1-83c3-c34e334d3c45">Example 5: Conditions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#141dec0c-66ee-4486-88d2-ad01faf05af1">Example 6: Write a trigger on SUPPLY table after insert, that prints the total quantity supplied by all vendors for the part recently inserted</a></div></nav><h1 id="3a4d04a6-103b-46e6-ada4-f57034c60b63" class="">Introduction</h1><ul id="0d09ce36-b5f8-4d1a-9940-10a64e5e4844" class="bulleted-list"><li style="list-style-type:disc">Oracle’s procedural language extenstion for SQL</li></ul><ul id="4ff866a0-f859-413c-8ee0-66428a747a66" class="bulleted-list"><li style="list-style-type:disc">SQL does not provide technique of condition checking, looping and branching</li></ul><ul id="62171d60-1b90-49b4-9a52-30dc070c8c71" class="bulleted-list"><li style="list-style-type:disc">SQL statements are sent to the oracle engine one by one which increases traffic and decreases speed</li></ul><ul id="95e1a866-2ae4-48ef-bee4-d104a5f4a607" class="bulleted-list"><li style="list-style-type:disc">SQL has no facility of error checking during manipulation of data</li></ul><h1 id="a7d00103-9375-4fac-93ff-8b8af6fe8cbf" class="">Features of PL/SQL</h1><ul id="925d0e7e-57ec-4671-96bb-357961e98d98" class="bulleted-list"><li style="list-style-type:disc">Basically a procedural language which provides the functionality of decision making, iteration and many more features of procedural programming languages</li></ul><ul id="b54f2a36-59a7-4383-a546-04bd69db6224" class="bulleted-list"><li style="list-style-type:disc">It can execute a number of queries in one block using a single command</li></ul><ul id="2a84ae2e-ac78-4aa8-9297-95ad2370683f" class="bulleted-list"><li style="list-style-type:disc">One can create a PL/SQL unit such as procedures, functions, packages, triggers and types which are stored in the database for reuse by applications</li></ul><ul id="038e6eaa-498f-41f0-974a-90ec1f3fc9fe" class="bulleted-list"><li style="list-style-type:disc">Has exception handling which occurs in exception handling block</li></ul><ul id="7543de75-2d39-410d-9cb8-079de25c8173" class="bulleted-list"><li style="list-style-type:disc">Statements are portable </li></ul><ul id="23dd1fc9-0073-41e8-9ef9-83b90677db60" class="bulleted-list"><li style="list-style-type:disc">Offers extensive error checking</li></ul><h1 id="7b3147e4-a2cf-455c-b694-b28d167e9dc1" class="">Parts of PL/SQL Code</h1><h2 id="80afb25d-d425-4c6a-86b4-0f5e6cb427f1" class="">Declare Section</h2><ul id="35bf5f12-caa2-4e00-b563-1dd2b37f59be" class="bulleted-list"><li style="list-style-type:disc">Starts with DECLARE Keyword in which variables, constants, records as cursors can be declared which stores data temporarily</li></ul><ul id="58cae9d6-3eb2-4e66-af19-e3f7445be39b" class="bulleted-list"><li style="list-style-type:disc">It basically consists definition of PL/SQL identifiers </li></ul><ul id="a18c6bc7-3add-4132-a944-7b3de45e3324" class="bulleted-list"><li style="list-style-type:disc">This part of the code is optional</li></ul><h2 id="cbeec761-47a0-4dd3-8b94-4cd32bd0aced" class="">Execution Section</h2><ul id="8342350f-36ee-4863-b147-603c040822cf" class="bulleted-list"><li style="list-style-type:disc">Starts with BEGIN and ends with an END keyword</li></ul><ul id="2e8fcf67-4e5a-4210-be6f-e68c65cf307a" class="bulleted-list"><li style="list-style-type:disc">This is a mandatory section and here the program logic is written </li></ul><ul id="1179a759-a391-43c4-a2f3-af9c10fd86ae" class="bulleted-list"><li style="list-style-type:disc">Supports all DML and DDL commands and SQLPLUS built in functions</li></ul><h2 id="4498ce6f-035b-4a12-8c37-ff11aed3677d" class="">Exception Section</h2><ul id="161f642e-6fcc-4466-8b63-b27bdaddff0f" class="bulleted-list"><li style="list-style-type:disc">Starts with EXCEPTION keyword</li></ul><ul id="2f0f3875-e9e6-4487-b248-4b0040d2f763" class="bulleted-list"><li style="list-style-type:disc">Optional Section which contains statements executed after a run time error</li></ul><h1 id="9b0f0c1c-e8b2-4947-9cb0-789a992399de" class="">Stored Procedures</h1><h2 id="18073c6e-fcd0-41f5-b441-db17da966f5d" class="">Basic Programs</h2><ul id="ab1ccd59-a0cc-464a-9c87-b6881f4dc8e9" class="bulleted-list"><li style="list-style-type:disc">Oracle stores in the database and can be called by name from an application</li></ul><ul id="68cf1b15-745b-4271-b7f2-c773aa87bbe6" class="bulleted-list"><li style="list-style-type:disc">Oracle parses the procedure and stores it’s parsed representation in the database</li></ul><ul id="d33d36f2-ee80-4d7f-a5cf-a3134f568a2b" class="bulleted-list"><li style="list-style-type:disc">Named collection of procedural and SQL statements</li></ul><ul id="4eb790b6-1f31-4fd0-9276-d2894009f3f5" class="bulleted-list"><li style="list-style-type:disc">Stored in the database</li></ul><ul id="85f7493b-3dfd-4e90-ae54-2b17acf2e493" class="bulleted-list"><li style="list-style-type:disc">Set of SQL statements that perform a business transaction can be encapsulated within a procedure and stored and then invocated as required</li></ul><ul id="10ed0e2b-6aff-45b5-9643-cb6680ae4f81" class="bulleted-list"><li style="list-style-type:disc">Reduces network traffic</li></ul><ul id="631b7091-c427-4ac4-b9f6-ec0461581db7" class="bulleted-list"><li style="list-style-type:disc">Helps reducing code duplication</li></ul><ul id="cef0d9fd-9de2-4102-9e6f-93ae126ca42e" class="bulleted-list"><li style="list-style-type:disc">Function can return but stored procedure cannot return anything back to the caller</li></ul><ul id="24b45f58-8c51-46cb-ab0d-7eefcd863cfe" class="bulleted-list"><li style="list-style-type:disc">Run procedure as exec proc;</li></ul><ul id="db4b5ec7-3740-492c-9c51-2e36c0adb128" class="bulleted-list"><li style="list-style-type:disc"><strong>SET SERVEROUTPUT ON; - Use this for setting dbmsoutput on</strong></li></ul><h3 id="e6ad352f-3a89-4d4a-802f-1a08851c6688" class="">Example 1: Update</h3><ul id="c184cd8d-e972-4b25-8020-5ae590cf5a55" class="bulleted-list"><li style="list-style-type:disc">Create a table Book - bid int pk/title vc(10)/price int</li></ul><ul id="8c5214b0-997c-4a8b-ac69-7c9e76516280" class="bulleted-list"><li style="list-style-type:disc">Insert 101, Operations, 300 and 107, Databases, 370 and 128, Networks, 175</li></ul><blockquote id="24df2cae-a9b5-4cc5-813d-12e8045072ab" class="">NOTE: To create procedure, first grant create procedure to user</blockquote><pre id="16741e4f-1a27-4b33-8f43-7f0f8bc8b9b8" class="code"><code>BEGIN;
+CREATE TABLE BOOK(bid int primary key, title varchar(10), price int);
+INSERT INTO BOOK VALUES(101, &#x27;Operations&#x27;, 300);
+INSERT INTO BOOK VALUES(107, &#x27;Databases&#x27;, 370);
+INSERT INTO BOOK VALUES(128, &#x27;Networks&#x27;, 175);
+END;</code></pre><pre id="30ee2b67-32f9-41c1-bef5-d6b65aa01129" class="code"><code>CREATE OR REPLACE PROCEDURE proc1 AS
+BEGIN
+UPDATE Book SET price = 250 WHERE price = 300;
+dbms_output.put_line(&#x27;Update done&#x27;);
+END;
+/</code></pre><h3 id="d59a117b-5147-447c-a1b6-0a303f14ee83" class="">Example 2: Select INTO</h3><ul id="1383a45a-f429-4d22-adf8-b2ea2381f659" class="bulleted-list"><li style="list-style-type:disc">Write a procedure with input parameter book id - bid and prints the price of the book passed on</li></ul><ul id="77c4a255-20a2-4bb5-a1b4-66f271883f60" class="bulleted-list"><li style="list-style-type:disc">There are 2 different kinds of parameters, IN parameters, OUT parameters and INOUT parameters</li></ul><pre id="f0d4cf40-4e18-44eb-8a60-9d10df3331e1" class="code"><code>CREATE OR REPLACE PROCEDURE proc2(d in number) AS 
+n number;
+BEGIN
+SELECT price INTO n from BOOK WHERE bid = d;
+dbms_output.put_line(&#x27;price of book with ID:&#x27; || d || &#x27; is: &#x27; || n);
+end;
+/</code></pre><h3 id="e2c99991-820c-4303-9c96-c635edd30b50" class="">Example 3: Sum</h3><ul id="4e82cf9e-1269-4b31-a7bc-953ca8fd7b0a" class="bulleted-list"><li style="list-style-type:disc">Write a stored procedure for printing sum of 3 numbers</li></ul><pre id="380c16b7-7208-4f1a-a0f5-8cfddb178a22" class="code"><code>CREATE OR REPLACE PROCEDURE sum_proc(x in number, y in number, z in number) AS
+n number;
+BEGIN
+n := x+y+z;
+dbms_output.put_line(&#x27;The sum of the numbers &#x27;|| x ||&#x27;, &#x27;||y||&#x27;, &#x27;||z||&#x27; is: &#x27;||n);
+end;
+/</code></pre><h3 id="7b56642a-5fe7-45ec-b12e-d584aa184733" class="">Example 4: Select into book price</h3><pre id="d8230889-9ac4-4e95-b0ce-b4c23c1e7e73" class="code"><code>CREATE OR REPLACE PROCEDURE proc2(n in number, o out number) AS
+BEGIN
+SELECT PRICE INTO o FROM book where bid = n;
+END;
+/</code></pre><h3 id="274e1cd1-669b-4826-afb7-a273d0c0703b" class="">Example 5: Inserting a Book</h3><pre id="e349a889-dc7f-42e2-a23e-7320bc6e4b21" class="code"><code>CREATE OR REPLACE PROCEDURE addbook(id in number, name in varchar2, pr in number) AS
+BEGIN
+INSERT INTO book VALUES(id, name, pr);
+dbms_output.put_line(&#x27;Book: &#x27;||id||&#x27; Name: &#x27;||name||&#x27; added to table);
+END;
+/</code></pre><h3 id="5bcf1503-d4c5-4b31-961b-6ca7714cf097" class="">Example 6: In/Out Operations</h3><ul id="5dc29ac2-e8b8-412a-b1e1-984a6e62ecf0" class="bulleted-list"><li style="list-style-type:disc">In operands cannot be reassigned</li></ul><pre id="43374b3b-3322-4e65-827e-68c73e4b71bd" class="code"><code>CREATE OR REPLACE PROCEDURE addten(inn in number) AS
+n number;
+BEGIN
+dbms_output.put_line(&#x27;Argument Value: &#x27;|| inn);
+n := inn+10;
+dbms_output.put_line(&#x27;Argument Value After Addition: &#x27;|| n);
+END;
+/</code></pre><h3 id="e783c9b0-5fef-4437-9015-c61fe559a906" class="">Example 7</h3><pre id="f1b43050-178a-4d9c-9923-d6e7e76b2985" class="code"><code>CREATE OR REPLACE PROCEDURE addten(inn in number, outn out number) AS
+n number;
+BEGIN
+outn:= inn + 10;
+dbms_output.put_line(&#x27;Argument Value After Addition: &#x27;|| outn);
+END;
+/</code></pre><ul id="43959211-de4d-4f84-bb6f-aca704867b0f" class="bulleted-list"><li style="list-style-type:disc">We can use DECLARE and write an anonymous procedure to check them</li></ul><figure id="cd297a8a-b14a-4563-a32b-27d588234374" class="image"><a href="Lab%20PL%20SQL%203c5d5f97df5a45ac8c7a20ceadd38542/Untitled.png"><img style="width:432px" src="Lab%20PL%20SQL%203c5d5f97df5a45ac8c7a20ceadd38542/Untitled.png"/></a></figure><h2 id="64f6a458-18be-459e-b464-91bd4231469b" class="">If Else Ladder</h2><pre id="9e8311a4-9909-4559-b6e8-5a31dc3168fe" class="code"><code>IF condition1 THEN
+ {...statements to execute when condition1 is TRUE...}
+ELSIF condition2 THEN
+ {...statements to execute when condition1 is FALSE and condition2 is 
+TRUE...}
+ELSE
+ {...statements to execute when both condition1 and condition2 are 
+FALSE...}
+END IF;</code></pre><h3 id="1c1716f4-3050-4b5d-88dc-283c9e51015b" class="">Example 8: Check if total number of records is odd or even</h3><pre id="70004031-75ed-4616-90b7-eb763816fec0" class="code"><code>CREATE OR REPLACE PROCEDURE proc7(id in number, name in varchar2, pr in number) AS
+n number := 0;
+BEGIN
+INSERT INTO BOOK VALUES(id, name, pr);
+SELECT count(*) INTO n FROM BOOK; 
+SELECT MOD(n, 2) INTO n FROM dual;
+if n&lt;&gt;0 
+	then dbms_output.put_line(&#x27;Odd Number of Tuples in Books&#x27;);
+end if;
+END;
+/</code></pre><ul id="05123f23-93e6-4889-a1c4-008bf51a3803" class="bulleted-list"><li style="list-style-type:disc">ELSIF is used for ELSE IF</li></ul><h3 id="58aabddc-3c9e-42ef-ae59-af33f9eb360d" class="">Example 9: Emp and Dept tables Update Dept Size when Emp is added</h3><figure id="4a15d3b7-73b1-4e5d-9c78-3b152a0c895d" class="image"><a href="Lab%20PL%20SQL%203c5d5f97df5a45ac8c7a20ceadd38542/Untitled%201.png"><img style="width:1255px" src="Lab%20PL%20SQL%203c5d5f97df5a45ac8c7a20ceadd38542/Untitled%201.png"/></a></figure><h2 id="fa7c40ea-14d7-47e9-bfbc-4dea5a6a7810" class="">Looping</h2><h3 id="b800bf4b-1c82-4745-9896-0814b19d71fe" class="">Example 10: Simple loop</h3><pre id="9ae4ef61-cbcd-482d-afa0-03e97ca60074" class="code"><code>CREATE OR REPLACE PROCEDURE proc9 as
+n number:= 10
+BEGIN
+LOOP
+ DBMS_OUTPUT.PUT_LINE(&#x27;Number: &#x27; || n);
+ n := n + 10;
+EXIT WHEN n &gt; 100;
+END LOOP;
+END;
+/</code></pre><h1 id="fd98563f-e4fc-48bc-be92-b675b136ab5a" class="">PL SQL Functions</h1><h3 id="6592240a-1297-47a5-928b-ebfb02bcc4f1" class="">Basic Example</h3><pre id="46605df7-0730-4b19-85ea-77f0609f3890" class="code"><code>CREATE FUNCTION func(bookid IN NUMBER) RETURN NUMBER IS
+PRC NUMBER;
+BEGIN
+SELECT price INTO PRC FROM book WHERE bid = bookid;
+RETURN PRC;
+END;
+/</code></pre><h3 id="6e8e96cd-48f5-4452-9b0f-7ebda8d6f576" class="">Anonymous Calling of Function</h3><pre id="96d6538c-3f74-49ae-937b-2cba57f17f24" class="code"><code>DECLARE
+n NUMBER;
+BEGIN
+n := func(107);
+END;
+/</code></pre><h1 id="bd8da840-559c-4ed4-823f-7f55e5981d9f" class="">Cursor</h1><ul id="ab0511db-d188-4d8e-a9ef-68c8105dd9cd" class="bulleted-list"><li style="list-style-type:disc">Special Construct used to hold data rows returned by SQL Query</li></ul><ul id="fe301225-d3bc-4aac-8ea7-b1ce2b880d27" class="bulleted-list"><li style="list-style-type:disc">Can be seen as reserved memory in which the output of a query can be stored</li></ul><ul id="dafb64e5-2d2b-419f-b1ec-bcefe4430238" class="bulleted-list"><li style="list-style-type:disc">It held in reserved area of DBMS in server</li></ul><ul id="db887988-8e4a-493c-8be7-ed17dc2b7848" class="bulleted-list"><li style="list-style-type:disc">Cursor Commands → Open, Fetch and Close</li></ul><ul id="51fde751-5713-42ba-9cd3-556d594c9b92" class="bulleted-list"><li style="list-style-type:disc">Attributes<ul id="ca2a296c-f63a-4714-8647-828129ae9394" class="bulleted-list"><li style="list-style-type:circle">%rowcount → returns number of rows fetched so far</li></ul><ul id="47cad4d7-b5d7-4bc0-bec8-f88b112c283d" class="bulleted-list"><li style="list-style-type:circle">%found → returns true if last fetch returned a row</li></ul><ul id="9393d007-5363-46a1-ae8c-017858e85cc5" class="bulleted-list"><li style="list-style-type:circle">%notfound → opposite of %found</li></ul><ul id="e7d1a324-62d6-4a3a-9897-a1dea196dad3" class="bulleted-list"><li style="list-style-type:circle">%isopen → true if cursor is open</li></ul><pre id="be08a555-02e6-46c9-adb5-eabad9ac5695" class="code"><code>CREATE OR REPLACE PROCEDURE proc55 AS
+id NUMBER:
+pr NUMBER;
+CURSOR book_cursor IS SELECT bid, price FROM book;
+BEGIN
+OPEN book_cursor;
+LOOP
+FETCH book_cursor INTO id,pr;
+EXIT WHEN book_cursor%notfound;
+DBMS_OUTPUT.PUT_LINE(&#x27;For the book with id: &#x27; || id || &#x27; the price is: &#x27; || price);
+END LOOP;
+CLOSE book_cursor;
+EXIT;
+/</code></pre><pre id="dfe75140-dd60-4ce2-a7f3-2995e44ea49b" class="code"><code>FOR CURSOR IN (SELECT * FROM PROPERTY WHERE PROPERTY.OWNERID = P_OWNERID)
+    LOOP
+        DBMS_OUTPUT.PUT_LINE(&#x27;---------------------&#x27;);
+        DBMS_OUTPUT.PUT_LINE(&#x27;Property ID         : &#x27; || CURSOR.PROPERTYID);
+        DBMS_OUTPUT.PUT_LINE(&#x27;Owner ID            : &#x27; || CURSOR.OWNERID);
+        DBMS_OUTPUT.PUT_LINE(&#x27;Rent per Month      : &#x27; || CURSOR.RENTPERMONTH);
+        DBMS_OUTPUT.PUT_LINE(&#x27;Available From      : &#x27; || CURSOR.AVAILABLEFROM);
+        DBMS_OUTPUT.PUT_LINE(&#x27;Available Till      : &#x27; || CURSOR.AVAILABLETILL);
+        DBMS_OUTPUT.PUT_LINE(&#x27;Total Area          : &#x27; || CURSOR.TOTALAREA);
+        DBMS_OUTPUT.PUT_LINE(&#x27;Plinth Area         : &#x27; || CURSOR.PLINTHAREA);
+        DBMS_OUTPUT.PUT_LINE(&#x27;No. of floors       : &#x27; || CURSOR.NOOFFLOORS);
+        DBMS_OUTPUT.PUT_LINE(&#x27;Year of Construction: &#x27; || CURSOR.YEAROFCONSTRUCTION);
+        DBMS_OUTPUT.PUT_LINE(&#x27;Locality            : &#x27; || CURSOR.LOCALITY);
+        DBMS_OUTPUT.PUT_LINE(&#x27;Address             : &#x27; || CURSOR.ADDRESS);
+        DBMS_OUTPUT.PUT_LINE(&#x27;Annual Hike         : &#x27; || CURSOR.ANNUALHIKE);
+        DBMS_OUTPUT.PUT_LINE(&#x27;Residential         : &#x27; || CURSOR.RESIDENTIAL);
+        DBMS_OUTPUT.PUT_LINE(&#x27;No. of Bedroom      : &#x27; || CURSOR.NOOFBEDROOMs);
+        DBMS_OUTPUT.PUT_LINE(&#x27;---------------------&#x27;);
+    END LOOP;</code></pre></li></ul><h1 id="9e033649-82f8-4789-b5cf-62fdbf15496b" class="">Sequences</h1><ul id="446a453e-4796-46ff-af1d-53cce7b3848d" class="bulleted-list"><li style="list-style-type:disc">Used to generate keys automatically</li></ul><ul id="efe046f7-953d-4e1b-8a27-5d97c4355a7e" class="bulleted-list"><li style="list-style-type:disc"><code>CREATE SEQUENCE bookid_seq START WITH 500;</code></li></ul><ul id="288b5360-51e2-4e0b-bea8-08c5550cac56" class="bulleted-list"><li style="list-style-type:disc"><code>INSERT INTO BOOK VALUES (bookid_seq.nextval, &#x27;Biology&#x27;, 650);</code></li></ul><ul id="de53ec2c-d002-4e70-8b38-87485a5e41fc" class="bulleted-list"><li style="list-style-type:disc"><code>INSERT INTO BOOK VALUES (bookid_seq.nextval, &#x27;Commerce&#x27;, 650);</code></li></ul><h1 id="1a0dd5de-86e0-4ca7-be57-9d609f241ab8" class="">Triggers</h1><ul id="be09d228-7445-4a88-afbf-acb22548228f" class="bulleted-list"><li style="list-style-type:disc">A trigger is a procedural SQL code, that is automatically invoked by the RDBMS upon occurence of a data manipulation event</li></ul><ul id="bcbc79af-660e-430a-9ff6-c1d2bf9ab045" class="bulleted-list"><li style="list-style-type:disc">A trigger is invoked before a record is inserted, deleted and updated</li></ul><ul id="98fa0d5b-f7db-49d5-a93a-2bb16e90f0ca" class="bulleted-list"><li style="list-style-type:disc">A trigger is associated with a database table</li></ul><ul id="daa9ad1e-5094-473b-802c-b643b92290d7" class="bulleted-list"><li style="list-style-type:disc">Each table can have multiple triggers</li></ul><ul id="2434de1f-f330-4aec-a94d-0b44c7323276" class="bulleted-list"><li style="list-style-type:disc">Used to enforce constraints</li></ul><ul id="f18082b4-1e2e-40a2-b493-0a9158d3514f" class="bulleted-list"><li style="list-style-type:disc">Used for auditing</li></ul><ul id="c0209156-59c4-43e7-8d0a-dea1c1ae3894" class="bulleted-list"><li style="list-style-type:disc">Generation of derived values</li></ul><h3 id="f00d057c-fed7-4331-a7c9-425a92960021" class="">Example 1: Insert Trigger</h3><pre id="d93f7d01-edf2-46b2-a2e0-bab6affc63da" class="code"><code>CREATE OR REPLACE TRIGGER t1
+AFTER INSERT
+ON BOOK
+BEGIN
+	DBMS_OUTPUT.PUT_LINE(&#x27;Inserted a new Record&#x27;);
+END;
+/</code></pre><h3 id="0a254677-379b-4530-9cf5-ddcde3353ae3" class="">Example 2: Using variables</h3><pre id="67c9d4f9-f898-4500-b66e-e5c8ba024255" class="code"><code>CREATE OR REPLACE TRIGGER t2
+AFTER INSERT
+ON BOOK
+DECLARE
+totalbooks NUMBER:
+BEGIN
+SELECT count(*) into totalbooks FROM BOOK;
+DBMS_OUTPUT.PUT_LINE(&#x27;Inserted a new record&#x27;);
+DBMS_OUTPUT.PUT_LINE(&#x27;After new Entry, total number of books is: &#x27; || totalbooks);
+end;
+/</code></pre><h3 id="7eaa1d35-2be9-43d0-97ff-0f7b2462e35c" class="">Example 3: Row Level Trigger VS Table Level Trigger</h3><pre id="ba493830-e6e6-4731-8cae-3516e05212db" class="code"><code>-- Table Level
+CREATE OR REPLACE TRIGGER T4 
+BEFORE UPDATE OF PRICE ON BOOK
+BEGIN
+DBMS_OUTPUT.PUT_LINE(&#x27;UPDATE DONE&#x27;);
+END;
+/
+
+-- Row Level
+CREATE OR REPLACE TRIGGER T4 
+BEFORE UPDATE OF PRICE ON BOOK
+FOR EACH ROW
+BEGIN
+DBMS_OUTPUT.PUT_LINE(&#x27;UPDATE DONE&#x27;);
+END;
+/</code></pre><h3 id="4fa276e0-9833-4771-ba7e-459b22d64a18" class="">Example 4: Use of :old and :new</h3><pre id="50646878-5ac9-40f8-b356-85e7a1e0a861" class="code"><code>CREATE OR REPLACE TRIGGER T5 
+BEFORE UPDATE OF PRICE ON BOOK
+FOR EACH ROW
+BEGIN
+DBMS_OUTPUT.PUT_LINE(&#x27;Old Price: &#x27; || :old.price || &#x27;New Price: &#x27; || :new.price);
+end;
+/</code></pre><h3 id="8f5d4d3d-bed3-41b1-83c3-c34e334d3c45" class="">Example 5: Conditions</h3><p id="6f470f25-cc33-4b25-9ca6-084c100f12e7" class="">Write a trigger on book after update price. Check the new price is not less than existing value. If so print an alert statement in monitor</p><pre id="819ed046-1383-4403-9f73-9b3190839794" class="code"><code>CREATE OR REPLACE TRIGGER T6
+BEFORE UPDATE OF PRICE ON BOOK
+FOR EACH ROW
+BEGIN
+	IF :new.price &lt; :old.price THEN
+		DBMS_OUTPUT.PUT_LINE(&#x27;New Price is lower&#x27;);
+	ELSE
+		DBMS_OUTPUT.PUT_LINE(&#x27;Old Price is lower&#x27;);
+	END IF;
+END;
+/</code></pre><h3 id="141dec0c-66ee-4486-88d2-ad01faf05af1" class="">Example 6: Write a trigger on SUPPLY table after insert, that prints the total quantity supplied by all vendors for the part recently inserted</h3><pre id="9cedc0de-902a-4829-bc90-629e5e01b7a1" class="code code-wrap"><code>CREATE OR REPLACE TRIGGER print_total_quantity
+BEFORE INSERT ON SUPPLY
+FOR EACH ROW
+DECLARE
+total_quantity NUMBER;
+BEGIN
+  SELECT SUM(qty)
+  INTO total_quantity
+  FROM SUPPLY
+  WHERE pid=:NEW.pid;
+
+	total_quantity := total_quantity + :new.qty;
+  
+  dbms_output.put_line(&#x27;Total quantity supplied: &#x27; || total_quantity);
+END;
+/</code></pre><pre id="347fc8ee-0eef-43cb-b33e-2326895e6d26" class="code code-wrap"><code>INSERT INTO SUPPLY VALUES (101, 14, 20);</code></pre><p id="904b6fac-599c-4be4-9dfe-8eb202608e9d" class="">
+</p></div></article></body></html>

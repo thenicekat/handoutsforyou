@@ -1,0 +1,670 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Database Design</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="22862ddf-6fdc-49ff-8b2d-0a9529eccae2" class="page sans"><header><h1 class="page-title">Database Design</h1></header><div class="page-body"><nav id="a3a2d1f4-c27e-486d-8e9f-7aeef3bf25cf" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#58aa506b-70e6-46d3-af39-6118226184a4">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#df57a633-b5ee-4edb-adbc-479f13f4ab02">Parts of DB Design</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#bc055f9d-6dc9-488f-93d0-eae14d83acad">Objectives of Good Database Design:</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#14340edb-c5e5-4096-8547-6767a4ea1f43">Informal Guidelines</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#bdb956c8-c8a6-42cc-bd9d-6c367f1d8c77">Functional Dependencies</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#26e22168-75ba-4a9d-8b30-a732e9ebd34b">Inference Rules for FDs</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2081e3ba-8b70-4ff8-bc85-e717ab0381cc">Normalization and Normal Forms</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e18be949-8bb3-4755-956b-c9abdd06d082">First Normal Form</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#32ee5d98-a236-40cd-a60d-a75ceaf24e22">Second Normal Form - 2NF</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a2b49cf9-d74e-42f9-a27e-c230570c8b02">Third Normal Form - 3NF</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ed8bc6de-a511-431d-8344-a453f5316bbf">Boyce Codd Normal Form - BCNF</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#26b5610d-8d7c-4dfc-bece-d0a45952e037">Example 1 for Normal Forms</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#460ba77e-19ec-4dbc-8b8b-c81e84feb2aa">Example 2 for Normal Forms</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#c450a1aa-8873-45a1-b488-7e3827895ad5">R1(A, B, C, D) = AB → D | AB → C | C → B | B → D</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2dfa2b42-1d79-4204-bb7a-5d1eb1ad33e7">Decomposition and Desirable Properties</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#29bd9c54-b69c-4fc4-9163-e0cd957caafe">Loss less join Decomposition</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6c2630f3-7854-4644-befd-27890f616bb5">Test for Lossy and Lossless Decomposition</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2b9f723c-19ba-48e8-a9fe-4e163686e3a3">Intersection Method</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#fdc6c07c-5bda-4b4c-8a2e-bfccef1ac877">Matrix Method</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d087ccb5-569e-459c-9d7c-1436473cbe2f">Example 1 for Matrix Method</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#76c96e51-6d3b-4893-a289-9d55dd20d00d">Example 2 for Matrix Method</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#f50b1a11-789e-42d9-997a-54eecddefe90">Example 3 for Matrix Method</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a50a16ad-07fe-40ca-bb9b-df27c4b702ab">Dependency Preserving Decomposition</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#f1af85cb-301f-4b00-90ab-07650c045285">Example 1</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#5687413f-84ea-467d-850e-889bc8e7e800">Example 2</a></div></nav><h1 id="58aa506b-70e6-46d3-af39-6118226184a4" class="">Introduction</h1><h2 id="df57a633-b5ee-4edb-adbc-479f13f4ab02" class="">Parts of DB Design</h2><ul id="8adbf4d8-e3d2-4220-885d-87bef6886b40" class="bulleted-list"><li style="list-style-type:disc">Requirement Analysis</li></ul><ul id="5bb01e57-a521-4dac-a2b3-06e8006fbae7" class="bulleted-list"><li style="list-style-type:disc">Conceptual Design - ER/EER</li></ul><ul id="ab2aa62e-e4eb-4a87-8ca3-d7928404c8ca" class="bulleted-list"><li style="list-style-type:disc">Logical DB Design - Tables</li></ul><ul id="43e299d9-4d7d-473e-a872-560a956812c7" class="bulleted-list"><li style="list-style-type:disc">Schema Refinement - Normalization</li></ul><ul id="9583331c-999a-4fcc-b19e-b35bd61fe687" class="bulleted-list"><li style="list-style-type:disc">Physical DB Design - Indexing</li></ul><h2 id="bc055f9d-6dc9-488f-93d0-eae14d83acad" class="">Objectives of Good Database Design:</h2><ul id="48834bcf-d001-42c4-bea2-327ba65edde6" class="bulleted-list"><li style="list-style-type:disc">Clarity in understanding the database</li></ul><ul id="171cb912-2e44-42b4-874b-61631fe01525" class="bulleted-list"><li style="list-style-type:disc">To formulate good queries</li></ul><ul id="752c859d-abff-43dc-824a-4347703d0cfc" class="bulleted-list"><li style="list-style-type:disc">Essential to develop good relational schemas</li></ul><h2 id="14340edb-c5e5-4096-8547-6767a4ea1f43" class="">Informal Guidelines</h2><ul id="e7de0964-e1be-4cc2-8d92-0363aca3ff15" class="bulleted-list"><li style="list-style-type:disc">Design the schema so that it’s easy to explain the <span style="border-bottom:0.05em solid">semantics</span></li></ul><ul id="f3a6aa5e-cb58-4e63-aa2f-a604c7770e86" class="bulleted-list"><li style="list-style-type:disc">Design the schema such that no insertion, deletion and update <span style="border-bottom:0.05em solid">anomalies </span>are present<ul id="cc172d36-3a95-4249-9374-351d3399bed8" class="bulleted-list"><li style="list-style-type:circle">Insertion anomaly is when we have two tables in one say employee and department but if we have a department with no employees it’ll give error if the employee id is the primary key</li></ul><ul id="f7bd85fb-b136-44e1-b9bf-366b34abd0f9" class="bulleted-list"><li style="list-style-type:circle">Deletion Anomaly is if an employee is fired the department also gets deleted</li></ul><ul id="c6a92c89-7af0-4929-b129-6ddbd6e7e58b" class="bulleted-list"><li style="list-style-type:circle">Update anomaly → If we want to update dloc for a department we’ll have to change it in every tuple which has that department</li></ul></li></ul><ul id="ae94f4c8-7875-45a8-8e39-fb18119576d9" class="bulleted-list"><li style="list-style-type:disc">Avoid placing attributes in base relations whose value might frequently be NULL - <span style="border-bottom:0.05em solid">Wastage of Storage</span></li></ul><ul id="1ee579b5-0eec-4618-a6d8-d03c9ea3df74" class="bulleted-list"><li style="list-style-type:disc">Design relations in such a way that they can be joined on keys and no <span style="border-bottom:0.05em solid">spurious tuples</span> are found. Avoid relations that contain matching attributes that are not PK, FK pairs<ul id="7819b4d3-9877-470e-86d4-1348da233cd6" class="bulleted-list"><li style="list-style-type:circle">If we have two tables with city column then it’ll lead to wrong natural join even if the city fields of both the tables are not related say employee city and dept city because they have same name</li></ul></li></ul><h1 id="bdb956c8-c8a6-42cc-bd9d-6c367f1d8c77" class="">Functional Dependencies</h1><ul id="e802c082-f39e-4c4b-b3be-8d6a98230f94" class="bulleted-list"><li style="list-style-type:disc">FDs work as business logic</li></ul><ul id="359d69f5-4465-41d3-bf4d-5d15b768102b" class="bulleted-list"><li style="list-style-type:disc">Constraint between two sets of attributes from the database</li></ul><ul id="92832383-d0da-4157-b351-f9f4eb7e495d" class="bulleted-list"><li style="list-style-type:disc">X → Y tells that X functionally determines Y in a relation schema R iff whenever two tuples of r(R) agree on their X values they must necessarily agree on their Y values but Y → X need not be true</li></ul><ul id="2c83c376-ee57-4f5f-b8a2-00ec03a252ac" class="bulleted-list"><li style="list-style-type:disc">Ex: <code>ssn → ename {ssn, pnumber} → hours</code></li></ul><ul id="14d12088-5f06-4f68-8ae3-1132149688c4" class="bulleted-list"><li style="list-style-type:disc">Functional dependencies are not defined on a table but on the database</li></ul><ul id="8928d6ff-8ac2-4b43-a671-bce7fb3860ef" class="bulleted-list"><li style="list-style-type:disc">Primary key of the table determines all the columns 🙂, but say we have emp table with eid and project with pid and works for table with eid, pid then { eid, pid } ⇒ FD</li></ul><ul id="ab55a3dc-57ab-4b00-8a06-7653cf1a94b0" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background"><strong>Note: FDs cannot be inferred, they should be defined by someone who knows the semantics of the database very well</strong></mark></li></ul><h2 id="26e22168-75ba-4a9d-8b30-a732e9ebd34b" class="">Inference Rules for FDs</h2><ol type="1" id="fff178d9-da61-4401-aa23-ba7208a66065" class="numbered-list" start="1"><li>(1R1) Reflexing: If Y <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⊆</mo><mtext> </mtext></mrow><annotation encoding="application/x-tex">\subseteq </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mrel">⊆</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mord"> </span></span></span></span></span><span>﻿</span></span>X then X→Y otherwise non trivial</li></ol><ol type="1" id="a881df40-7d77-499d-bdbf-854c67aba7e4" class="numbered-list" start="2"><li>(1R2) Augmentation: if X→Y then XZ→YZ</li></ol><ol type="1" id="c6bd99e2-bef4-41dd-aef3-cb809e054620" class="numbered-list" start="3"><li>(1R3) Transitive: If X→Y and Y→Z then X→Z</li></ol><ol type="1" id="0fa6df5e-7c6d-474a-98fd-40f6c48accc9" class="numbered-list" start="4"><li>(1R4) Decomposition or Projective Rule: If X→YZ then X→Y and X→Z</li></ol><ol type="1" id="1bf4dd31-f05a-41f4-9b06-768d946374df" class="numbered-list" start="5"><li>(1R5) Union Rule: X→A and X→B then X→AB</li></ol><ol type="1" id="59635087-ecc6-4ec9-a4d7-f3d84c9c690e" class="numbered-list" start="6"><li>(1R6) Pseudo Transitive: X→Y and WY→Z then WX→Z</li></ol><p id="d6b1da52-d065-4699-aae7-2dc38fd631b5" class=""> (Armstrong’s Inference Rules) → IR1 to IR3 → Repeatedly applying these can give us a different set of inference rules → New set is called F closure (<style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>F</mi><mo>+</mo></msup></mrow><annotation encoding="application/x-tex">F^+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.771331em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.771331em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">+</span></span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span>)</p><p id="7a6a4a7e-6a54-4ac9-acea-76b184d5c857" class="">If an attribute is not part of any functional dependency, it must be part of the candidate key</p><h1 id="2081e3ba-8b70-4ff8-bc85-e717ab0381cc" class="">Normalization and Normal Forms</h1><ul id="086ba554-6c88-43c2-aa67-dce4b68cb06b" class="bulleted-list"><li style="list-style-type:disc">Process was first proposed by Raymond Boyce and Edgar Codd in 1972</li></ul><ul id="55bf4558-cf0b-48a1-9d67-ccb84f333c62" class="bulleted-list"><li style="list-style-type:disc">It is the process of analyzing relation schemas based on their FDs and PKs to minimize redundancy</li></ul><ul id="ade3d052-51e2-4adc-96c2-c73aa888cbb5" class="bulleted-list"><li style="list-style-type:disc">3NF → It is in 2nd and 1st normal form</li></ul><ul id="d8e6a458-7fc8-4e10-bba9-b511b13d9145" class="bulleted-list"><li style="list-style-type:disc">A super key of a relation schema R = {A1, A2, … , An} is a set of attributes S ⊆ R with the property that no two tuples t1 and t2 in any legal relation state r of R will have t1[S] = t2[S].</li></ul><ul id="dcb5e2c6-db3f-4c3d-b926-5c72523ec54c" class="bulleted-list"><li style="list-style-type:disc">A key K is a super key with the additional property that removal of any attribute from K will cause K not to be a super key anymore</li></ul><ul id="1f6c00ff-5ccb-407c-aadd-f39c8176034f" class="bulleted-list"><li style="list-style-type:disc">An attribute of relation schema R is called a <span style="border-bottom:0.05em solid">prime attribute</span> of R if it is a member of some <span style="border-bottom:0.05em solid">candidate key</span> of R. An attribute is called nonprime if it is not a prime attribute—that is, if it is not a member of any candidate key</li></ul><h2 id="e18be949-8bb3-4755-956b-c9abdd06d082" class="">First Normal Form</h2><ul id="51019ce1-88b0-4f4f-9a7b-6b5fffa5d639" class="bulleted-list"><li style="list-style-type:disc">It states that the domain of any attribute must include only atomic(single/simple/individual) values</li></ul><ul id="1c0d9d51-59b4-4022-8b6e-7b653cefd801" class="bulleted-list"><li style="list-style-type:disc">Phone number in some cases is multivalued → not allowed</li></ul><ul id="b7dc73c2-6abf-468a-8ed8-63b363399166" class="bulleted-list"><li style="list-style-type:disc">Cannot be composite nor multivalued</li></ul><ul id="7a5fcef8-818e-461a-aebd-ebeef911a47f" class="bulleted-list"><li style="list-style-type:disc">In order to convert a table to 1NF, we can have multiple rows with <code>dloc</code></li></ul><h2 id="32ee5d98-a236-40cd-a60d-a75ceaf24e22" class="">Second Normal Form - 2NF</h2><ul id="8a668dfc-bd43-41b5-b283-901124768ee1" class="bulleted-list"><li style="list-style-type:disc">It is based on full functional dependency</li></ul><ul id="73c13f74-b4ae-4d36-9f70-68b1d0722a08" class="bulleted-list"><li style="list-style-type:disc">X → A is fully functional if we remove any attribute from X then that FD does not hold anymore</li></ul><ul id="91bcb576-3dbf-48ed-a4c2-f0b169530a43" class="bulleted-list"><li style="list-style-type:disc">Condition: All non key attributes are fully functionally dependent on key or no non key attribute should be dependent on part of key(partial dependency)</li></ul><ul id="e5b5960e-1538-4d2a-a0cb-a01156b1b8e3" class="bulleted-list"><li style="list-style-type:disc">NOTE: If AB is primary key, then BD cannot be partial key</li></ul><figure id="bbcdf1de-768d-4159-a799-8a18c0e128d8" class="image"><a href="Database%20Design%2022862ddf6fdc49ff8b2d0a9529eccae2/Untitled.png"><img style="width:528px" src="Database%20Design%2022862ddf6fdc49ff8b2d0a9529eccae2/Untitled.png"/></a></figure><ul id="2941a6a9-7d0a-4197-907e-3d60d566145e" class="bulleted-list"><li style="list-style-type:disc">If we have <code>{ eid, pno } → hrs,</code> X is <code>{ eid, pno }</code> and A is hrs then if we remove any of these from the  X component we won’t get the same FD, so it’s fully functional dependent</li></ul><ul id="73ed10f6-a0e7-4fcf-9622-d7cd4391138b" class="bulleted-list"><li style="list-style-type:disc">If we have <code>{ eid, ename } → dno</code> and we remove name it’ll still be an FD so we have a partial dependency</li></ul><ul id="8e0a8b8b-cac9-448a-8b0e-475b5f6587e6" class="bulleted-list"><li style="list-style-type:disc">Here <code>{ ename }</code> is a non key attribute and determined by <code>{ eid }</code> which is part of the key, Hence we say that <code>ename</code> not fully functionally dependent on key</li></ul><ul id="7881eeee-8eb4-497a-a3dd-597d55784b72" class="bulleted-list"><li style="list-style-type:disc">The relation shown is not in 2NF, now we decompose this into 3 relations as shown below</li></ul><figure id="132101c9-e3fa-4aaa-ac01-ffe1f4555ae9" class="image"><a href="Database%20Design%2022862ddf6fdc49ff8b2d0a9529eccae2/Untitled%201.png"><img style="width:576px" src="Database%20Design%2022862ddf6fdc49ff8b2d0a9529eccae2/Untitled%201.png"/></a></figure><ul id="0c36b829-857a-4b35-95e4-ad915712afd1" class="bulleted-list"><li style="list-style-type:disc">If we find some non key attribute which is partially dependent on key it is not in 2NF</li></ul><ul id="97230a72-18d8-46a2-8439-fe3e9d115589" class="bulleted-list"><li style="list-style-type:disc">If we have A, B → C (2NF) and A, B → D  (2NF) and B → D (Only B alone can determine D so D is partially dependent on key, so it’s not fully dependent)<ul id="161e1a7b-1134-44f4-b0de-41f74e7e8fbe" class="bulleted-list"><li style="list-style-type:circle">We check RHS and check if it’s a non key attribute</li></ul><ul id="43e2e7ab-8eb2-4370-b893-479b6acc82a3" class="bulleted-list"><li style="list-style-type:circle">Now we need to check 2NF</li></ul></li></ul><ul id="4e0ee980-480a-4bd9-85c2-2151a006ba92" class="bulleted-list"><li style="list-style-type:disc">If we apply decomposition:<ul id="44d5eb08-005c-4353-b05a-b13bfa02e2da" class="bulleted-list"><li style="list-style-type:circle">B D → Separate table</li></ul><ul id="ac6dba2c-55f4-4bea-a952-5e93db595359" class="bulleted-list"><li style="list-style-type:circle">Remaining we leave in the same table A B C</li></ul></li></ul><ul id="dcd19ced-7b6b-40d0-b67e-4c9d50535975" class="bulleted-list"><li style="list-style-type:disc">Example: If we have A B C D and A B is the primary key, then all key → key are 2NF and non key → non key are 2NF but half key → non key is not valid even non key → key is fine</li></ul><figure id="08050856-566d-43e7-9306-c5226a62cd04" class="image"><a href="Database%20Design%2022862ddf6fdc49ff8b2d0a9529eccae2/Untitled%202.png"><img style="width:1142px" src="Database%20Design%2022862ddf6fdc49ff8b2d0a9529eccae2/Untitled%202.png"/></a></figure><h2 id="a2b49cf9-d74e-42f9-a27e-c230570c8b02" class="">Third Normal Form - 3NF</h2><ul id="39a3ea51-b9f2-4a48-898a-5e30e188d66d" class="bulleted-list"><li style="list-style-type:disc">If we have a functional dependency X → Y</li></ul><ul id="511c7fe4-d628-4ba9-8abd-b7470a07cd9a" class="bulleted-list"><li style="list-style-type:disc">A relation is in 3NF:<ul id="d390268e-cc3e-4538-bc59-3019ca5e4227" class="bulleted-list"><li style="list-style-type:circle">If X is a super key (OR)</li></ul><ul id="089e70f8-2583-458a-887d-0065a3aaafe9" class="bulleted-list"><li style="list-style-type:circle">If Y is a key attribute</li></ul></li></ul><ul id="51e28ce3-d9e7-4c71-a16a-d15c4acd538f" class="bulleted-list"><li style="list-style-type:disc">based on transitive dependency</li></ul><ul id="7080b92b-826b-44c0-8943-bc12647cd399" class="bulleted-list"><li style="list-style-type:disc">A relation should not have a non key attribute functionally determined by another non key attribute.</li></ul><h2 id="ed8bc6de-a511-431d-8344-a453f5316bbf" class="">Boyce Codd Normal Form - BCNF</h2><ul id="91a12920-4e6a-48d3-b236-41cd4f97b7f4" class="bulleted-list"><li style="list-style-type:disc">Stricter form of 3NF</li></ul><ul id="2497f71f-59f7-4544-a90c-db41eb285013" class="bulleted-list"><li style="list-style-type:disc">For every functional dependency X → Y, X has to be super key</li></ul><h2 id="26b5610d-8d7c-4dfc-bece-d0a45952e037" class="">Example 1 for Normal Forms</h2><figure id="f43f47cf-395c-4491-9719-7e8df72f6f9d" class="image"><a href="Database%20Design%2022862ddf6fdc49ff8b2d0a9529eccae2/Untitled%203.png"><img style="width:624px" src="Database%20Design%2022862ddf6fdc49ff8b2d0a9529eccae2/Untitled%203.png"/></a></figure><ul id="1d2f46bc-55e2-4640-b1e2-a1fc718b320d" class="bulleted-list"><li style="list-style-type:disc">Here keys are<ul id="4ba78242-d48e-45a7-b95f-5c398e32dd94" class="bulleted-list"><li style="list-style-type:circle">prop#</li></ul><ul id="ba481eb7-d80e-4466-9d47-c03bf662a03d" class="bulleted-list"><li style="list-style-type:circle">county name and lot#</li></ul></li></ul><ul id="25ce9d68-1f62-4251-95b2-83d291f1e110" class="bulleted-list"><li style="list-style-type:disc">Since county name alone is determining tax rate, it won’t be in 2NF</li></ul><figure id="24f098f9-b8ac-48f9-a0a6-20e7dbd9ba5b" class="image"><a href="Database%20Design%2022862ddf6fdc49ff8b2d0a9529eccae2/Untitled%204.png"><img style="width:576px" src="Database%20Design%2022862ddf6fdc49ff8b2d0a9529eccae2/Untitled%204.png"/></a></figure><figure id="c1ebc2cf-b39a-4160-8330-c5b2f73ee091" class="image"><a href="Database%20Design%2022862ddf6fdc49ff8b2d0a9529eccae2/Untitled%205.png"><img style="width:528px" src="Database%20Design%2022862ddf6fdc49ff8b2d0a9529eccae2/Untitled%205.png"/></a></figure><h2 id="460ba77e-19ec-4dbc-8b8b-c81e84feb2aa" class="">Example 2 for Normal Forms</h2><h3 id="c450a1aa-8873-45a1-b488-7e3827895ad5" class="">R1(A, B, C, D) = AB → D | AB → C | C → B | B → D</h3><ul id="ca195d08-626c-4695-a971-39076035674b" class="bulleted-list"><li style="list-style-type:disc">We infer that the key is AB, since we are able to infer all attributes through these 2 say A/B/C/D</li></ul><ul id="c32c1e99-7e24-4801-9985-f9d12282088a" class="bulleted-list"><li style="list-style-type:disc">So we take that as the key</li></ul><ul id="ace4149e-069e-43f8-95f8-3c5f718f9adf" class="bulleted-list"><li style="list-style-type:disc">Now AB → D super key → non key BCNF</li></ul><ul id="827b1d74-e522-475d-97eb-1a74c8e0f66b" class="bulleted-list"><li style="list-style-type:disc">AB → C BCNF</li></ul><ul id="d6d8d8eb-c395-4342-8283-274e1ab0f414" class="bulleted-list"><li style="list-style-type:disc">C → B non key → key 3NF</li></ul><ul id="1a57e8c0-2684-4912-a066-75c0a2a1ef69" class="bulleted-list"><li style="list-style-type:disc">B → D partial key → non key 1NF</li></ul><h1 id="2dfa2b42-1d79-4204-bb7a-5d1eb1ad33e7" class="">Decomposition and Desirable Properties</h1><ul id="80486cda-1571-4bc8-a297-cab26f667c7b" class="bulleted-list"><li style="list-style-type:disc">Decomposition is a major step in the process of normalization</li></ul><ul id="3869fa91-2827-46e9-890f-a6f2ba29f658" class="bulleted-list"><li style="list-style-type:disc">But during this activity, we need to make sure the decomposition is lossless and dependency preserving</li></ul><h2 id="29bd9c54-b69c-4fc4-9163-e0cd957caafe" class="">Loss less join Decomposition</h2><ul id="1d38fc8b-3fec-4bec-950e-d344f9128441" class="bulleted-list"><li style="list-style-type:disc">Let C represent a set of constraints on the database. </li></ul><ul id="1d7c2afb-1882-457d-bb8f-da9f75a7cd71" class="bulleted-list"><li style="list-style-type:disc">A decomposition { R1, R2, R3…Rn } of a relation schema R is a lossless join decomposition for R if all relation instances r on R that are legal under C</li></ul><ul id="1754fd85-b7cd-4f60-838f-79ef016f1d14" class="bulleted-list"><li style="list-style-type:disc">If we are decomposing R into R1, R2 and R3 → Natural join of projection of r(R) on these 3 sub relations should give you the correct tuple</li></ul><ul id="5b541225-3e0e-4c72-b67c-d14da777cf71" class="bulleted-list"><li style="list-style-type:disc"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><msub><mi>π</mi><mrow><mi>R</mi><mn>1</mn></mrow></msub><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo><mo>∗</mo><msub><mi>π</mi><mrow><mi>R</mi><mn>2</mn></mrow></msub><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo><mo>=</mo><mi>r</mi><mtext> </mtext><mi>w</mi><mi>h</mi><mi>e</mi><mi>r</mi><mi>e</mi><mtext> </mtext><msub><mi>π</mi><mrow><mi>R</mi><mn>1</mn></mrow></msub><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo><mtext> </mtext></mrow><annotation encoding="application/x-tex">r = \pi_{R1}(r) * \pi_{R2}(r) = r \space where\space  \pi_{R1}(r) \space</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace"> </span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mord mathnormal">h</span><span class="mord mathnormal">ere</span><span class="mspace"> </span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mclose">)</span><span class="mspace"> </span></span></span></span></span><span>﻿</span></span>is the projection of r on R1 and r is the relation instance in R and F = FDs on R </li></ul><ul id="2c3f8492-97cc-4350-858e-6297012091c9" class="bulleted-list"><li style="list-style-type:disc">Meaning R → { R1, R2 }</li></ul><ul id="64e8c576-8697-487c-8e93-c44e49b03643" class="bulleted-list"><li style="list-style-type:disc">So basically, we have a bunch of tuples, we decompose the relation into multiple tuples and then in the decomposed relations, we write all the tuples, now if we do a natural join we should get only the given tuples</li></ul><table id="2d207106-ed2c-4fb0-b9d8-4c5cd22c8084" class="simple-table"><thead class="simple-table-header"><tr id="0c18a9a5-3b50-4c3c-8965-600bf12ff388"><th id="noF?" class="simple-table-header-color simple-table-header">eid</th><th id="Z}sN" class="simple-table-header-color simple-table-header">ename</th><th id="eOn?" class="simple-table-header-color simple-table-header">dno</th><th id="OdUz" class="simple-table-header-color simple-table-header">dloc</th></tr></thead><tbody><tr id="b51645cd-377c-44b4-a578-f2a26387e467"><td id="noF?" class="">101</td><td id="Z}sN" class="">Kiran</td><td id="eOn?" class="">10</td><td id="OdUz" class="">Hyd</td></tr><tr id="04f1721b-eb8e-4761-8057-80bf2b74cfc2"><td id="noF?" class="">104</td><td id="Z}sN" class="">Mohan</td><td id="eOn?" class="">20</td><td id="OdUz" class="">Che</td></tr><tr id="47640769-3c4e-4e1c-aa10-42c6c7a6eae3"><td id="noF?" class="">108</td><td id="Z}sN" class="">John</td><td id="eOn?" class="">30 </td><td id="OdUz" class="">Hyd</td></tr></tbody></table><ul id="88d1fd37-19b8-4fa4-99c9-0f473803dfa4" class="bulleted-list"><li style="list-style-type:disc">If we decompose this into <code>{ eid, ename, dloc }</code> and <code>{ dno, dloc }</code> we get</li></ul><table id="c324ae4d-d434-4c41-b19e-3cd0c9cbda38" class="simple-table"><thead class="simple-table-header"><tr id="464443cb-e1d1-446b-bdca-7ead6018f319"><th id="yMkP" class="simple-table-header-color simple-table-header">eid</th><th id="HjLv" class="simple-table-header-color simple-table-header">ename</th><th id="^KHm" class="simple-table-header-color simple-table-header">dloc</th></tr></thead><tbody><tr id="40b5898c-07fd-4c43-9e5e-43964706fd57"><td id="yMkP" class="">101</td><td id="HjLv" class="">Kiran</td><td id="^KHm" class="">Hyd</td></tr><tr id="69ed370d-16e9-4f3c-a7b7-d12a1e647a7d"><td id="yMkP" class="">104</td><td id="HjLv" class="">Mohan</td><td id="^KHm" class="">Che</td></tr><tr id="79a96434-89c3-4381-a0e6-851030d84642"><td id="yMkP" class="">108</td><td id="HjLv" class="">John</td><td id="^KHm" class="">Hyd</td></tr></tbody></table><table id="76626ea3-ae28-441b-84e8-6a0903f5b0c4" class="simple-table"><thead class="simple-table-header"><tr id="7e61155d-fd03-4e64-8ae9-cf0b8c0e4dda"><th id="Gyzn" class="simple-table-header-color simple-table-header">dno</th><th id="J{ni" class="simple-table-header-color simple-table-header">dloc</th></tr></thead><tbody><tr id="c0badbbf-fb2d-4fc1-9408-8e507afed57b"><td id="Gyzn" class="">10</td><td id="J{ni" class="">Hyd</td></tr><tr id="3720f5bf-3aca-42af-96a7-bb23e75ea34b"><td id="Gyzn" class="">20</td><td id="J{ni" class="">Che</td></tr><tr id="8b2b8570-af9d-471b-8bc2-53dc4bdbb731"><td id="Gyzn" class="">30 </td><td id="J{ni" class="">Hyd</td></tr></tbody></table><ul id="92155f00-600b-4984-9af0-986f5a07408c" class="bulleted-list"><li style="list-style-type:disc">Now if we do natural join on these, we get a lot of extra tuples</li></ul><ul id="c3f1ae1b-85eb-41c5-a5cd-56e671100c19" class="bulleted-list"><li style="list-style-type:disc">This decomposition is very lossy, leading to spurious tuples</li></ul><ul id="49ab3821-7c71-4177-baf9-020a653bb680" class="bulleted-list"><li style="list-style-type:disc">If we decompose into <code>{ eid, ename, dno }</code> and <code>{ dno, dloc }</code> we don’t get any extra tuples and this will be a lossless decomposition</li></ul><h2 id="6c2630f3-7854-4644-befd-27890f616bb5" class="">Test for Lossy and Lossless Decomposition</h2><h3 id="2b9f723c-19ba-48e8-a9fe-4e163686e3a3" class="">Intersection Method</h3><ul id="337ebfd5-6816-4484-8d07-ae87324f0b74" class="bulleted-list"><li style="list-style-type:disc">If there are only 2 relations in the decomposition it is called binary decomposition, same for ternary and so on</li></ul><ul id="80db5b1b-faf3-4f65-ae49-a94cd1f0e528" class="bulleted-list"><li style="list-style-type:disc">If we have 2 relations, R1 and R2, <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mn>1</mn><mo>∩</mo><mi>R</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">R1 \cap R2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∩</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mord">2</span></span></span></span></span><span>﻿</span></span> should give a key of R1 or R2</li></ul><ul id="7920206b-cc9a-4dfc-af5f-fb194fe5b6d0" class="bulleted-list"><li style="list-style-type:disc">Can only be applied for binary decomposition</li></ul><h3 id="fdc6c07c-5bda-4b4c-8a2e-bfccef1ac877" class="">Matrix Method</h3><ul id="d61ee4b8-ba70-41a9-aad9-17e3d771a312" class="bulleted-list"><li style="list-style-type:disc">We make a matrix with number of columns = number of attributes</li></ul><figure id="e5d9ad8f-8a99-4c11-97c8-68f12370ad89" class="image"><a href="Database%20Design%2022862ddf6fdc49ff8b2d0a9529eccae2/Untitled%206.png"><img style="width:763px" src="Database%20Design%2022862ddf6fdc49ff8b2d0a9529eccae2/Untitled%206.png"/></a></figure><ul id="4fcfe254-9f2b-441a-a898-cd10f6f3dcd7" class="bulleted-list"><li style="list-style-type:disc">Mark b if that attribute is not there in that relation else mark a</li></ul><ul id="b6bf4067-1d90-458e-a2eb-efa07d72d516" class="bulleted-list"><li style="list-style-type:disc">Take any functional dependency of the form X → Y and pick up any two rows for which X is both a for both the rows</li></ul><ul id="ccea4599-1912-4e60-8496-9442f626916d" class="bulleted-list"><li style="list-style-type:disc">If we have any such rows, we can change b to a on the Y part</li></ul><ul id="44962e0f-84ce-4205-ab9f-2a267d40eff6" class="bulleted-list"><li style="list-style-type:disc">NOTE: We can only change b to a if the other row has a, if both are b you cannot change</li></ul><ul id="468f3d03-e153-45c8-a363-f82300f2cc7f" class="bulleted-list"><li style="list-style-type:disc">Also if we have any row with all a(s) then it’ll become a loss less decomposition</li></ul><figure id="7649c6a8-bef0-4a05-b5fd-b3791d091802" class="image"><a href="Database%20Design%2022862ddf6fdc49ff8b2d0a9529eccae2/Untitled%207.png"><img style="width:1230px" src="Database%20Design%2022862ddf6fdc49ff8b2d0a9529eccae2/Untitled%207.png"/></a></figure><ul id="df8f5622-8ed8-43e2-8bc0-f64eaf6e60c9" class="bulleted-list"><li style="list-style-type:disc">In the second example, where we take <code>{ eid, ename, sal, dno }</code> and <code>{ dno, dname, dloc }</code>, we get a loss less decomposition by matrix method</li></ul><h3 id="d087ccb5-569e-459c-9d7c-1436473cbe2f" class="">Example 1 for Matrix Method</h3><figure id="1152d1a1-c859-48a4-b555-24645b461af4" class="image"><a href="Database%20Design%2022862ddf6fdc49ff8b2d0a9529eccae2/Untitled%208.png"><img style="width:1202px" src="Database%20Design%2022862ddf6fdc49ff8b2d0a9529eccae2/Untitled%208.png"/></a></figure><table id="70b55c86-8028-4d88-b451-60a502766655" class="simple-table"><tbody><tr id="f243c73c-b42a-46b8-b6c0-b02de7fa7f96"><td id=":=XA" class=""></td><td id="QuES" class="">SSN</td><td id="lG|}" class="">ENAME</td><td id="&lt;EAj" class="">PNUMBER</td><td id=":e}n" class="">PNAME</td><td id="Oplc" class="">PLOC</td><td id="}zNv" class="">HOURS</td></tr><tr id="e92bd01a-94b7-4063-bf11-94aa3a694c04"><td id=":=XA" class="">R1</td><td id="QuES" class="">a</td><td id="lG|}" class="">a</td><td id="&lt;EAj" class="">b</td><td id=":e}n" class="">b</td><td id="Oplc" class="">b</td><td id="}zNv" class="">b</td></tr><tr id="888855e5-17e6-4c1b-a30a-4b3c5e2b8a51"><td id=":=XA" class="">R2</td><td id="QuES" class="">b</td><td id="lG|}" class="">b</td><td id="&lt;EAj" class="">a</td><td id=":e}n" class="">a</td><td id="Oplc" class="">a</td><td id="}zNv" class="">b</td></tr><tr id="a383a81f-b6d9-47af-9eca-d5f8c8a719ce"><td id=":=XA" class="">R3</td><td id="QuES" class="">a</td><td id="lG|}" class="">b→a</td><td id="&lt;EAj" class="">a</td><td id=":e}n" class="">b→a</td><td id="Oplc" class="">b→a</td><td id="}zNv" class="">a</td></tr></tbody></table><ul id="5ed3f62d-9e69-4fd4-82fb-20ca5b85b721" class="bulleted-list"><li style="list-style-type:disc">We go FD wise, SSN → ENAME : R1 and R3 have same a so ENAME in R3 will become a</li></ul><ul id="470016b9-ac75-4851-8cee-1e81f33b4e43" class="bulleted-list"><li style="list-style-type:disc">PNUMBER → PNAME, PLOCATION : R2 and R3 have a in PNUMBER</li></ul><ul id="7034c5bc-6202-4263-801f-da8f020b753e" class="bulleted-list"><li style="list-style-type:disc">SSN, PNUMBER → HOURS : </li></ul><ul id="b76da974-8cdb-49d8-9d8f-8245de622ad2" class="bulleted-list"><li style="list-style-type:disc">We have R3 full a, which means that it is a lossless decomposition</li></ul><h3 id="76c96e51-6d3b-4893-a289-9d55dd20d00d" class="">Example 2 for Matrix Method</h3><ul id="d9fd0e43-bb78-4f4f-8978-e6b419447788" class="bulleted-list"><li style="list-style-type:disc">Suppose that we decompose the relation R=(A,B,C,D,E) into three relations- R1(A, C, E) , R2(B, D) and R3(A, B, E) . Find whether this decomposition is lossless, if the following set F of functional dependencies holds. F={ A→CE; B→D; } Note: Detailed working is required with final answer</li></ul><table id="21a1e26d-61b1-478a-a381-1eec622d24f8" class="simple-table"><tbody><tr id="9fec15d5-6af6-49e9-93cd-7b9692f48cfc"><td id="OcXA" class=""></td><td id="Q:;D" class="">A</td><td id="^zVf" class="">B</td><td id="^w}O" class="">C</td><td id="deJx" class="">D</td><td id="tDRs" class="">E</td></tr><tr id="c091cbbf-fb48-4d6e-916f-54e8cd39e784"><td id="OcXA" class="">R1</td><td id="Q:;D" class="">a</td><td id="^zVf" class="">b</td><td id="^w}O" class="">a</td><td id="deJx" class="">b</td><td id="tDRs" class="">a</td></tr><tr id="a5053522-9077-4751-ac3f-56d1ba835fdf"><td id="OcXA" class="">R2</td><td id="Q:;D" class="">b</td><td id="^zVf" class="">a</td><td id="^w}O" class="">b</td><td id="deJx" class="">a</td><td id="tDRs" class="">b</td></tr><tr id="c34f20e2-82cd-4e51-a672-da0f42bd2a70"><td id="OcXA" class="">R3</td><td id="Q:;D" class="">a</td><td id="^zVf" class="">a</td><td id="^w}O" class="">b→a</td><td id="deJx" class="">b→a</td><td id="tDRs" class="">a</td></tr></tbody></table><ul id="f86814bf-267d-4890-8299-dfb42fa31dca" class="bulleted-list"><li style="list-style-type:disc">We have the functional dependency A→CE and B→D</li></ul><ul id="a12d2d0c-124d-4d85-9bf8-18bf7f816d46" class="bulleted-list"><li style="list-style-type:disc">We have full R3 to be a, so we have a lossless decomposition</li></ul><h3 id="f50b1a11-789e-42d9-997a-54eecddefe90" class="">Example 3 for Matrix Method</h3><figure id="1637ca39-8ec4-4148-9a56-68fc67beb840" class="image"><a href="Database%20Design%2022862ddf6fdc49ff8b2d0a9529eccae2/Untitled%209.png"><img style="width:1198px" src="Database%20Design%2022862ddf6fdc49ff8b2d0a9529eccae2/Untitled%209.png"/></a></figure><table id="24c4d64d-bd0e-435f-b7ef-3e2a588bcde0" class="simple-table"><tbody><tr id="3c2c5078-7c53-47a0-a6e0-8eeb92dd2efe"><td id="xb~~" class=""></td><td id="Qog{" class="">SSN</td><td id="SqEf" class="">ENAME</td><td id="_|tp" class="">PNUMBER</td><td id=":pYo" class="">PNAME</td><td id="HiYB" class="">PLOC</td><td id="HMkw" class="">HOURS</td></tr><tr id="713bfb79-fb60-4449-9d88-463f9f96a3b0"><td id="xb~~" class="">R1</td><td id="Qog{" class="">A</td><td id="SqEf" class="">A</td><td id="_|tp" class="">B</td><td id=":pYo" class="">B</td><td id="HiYB" class="">B</td><td id="HMkw" class="">B</td></tr><tr id="be31e39f-be35-42a2-8c3e-f70f1a8ee9dc"><td id="xb~~" class="">R2</td><td id="Qog{" class="">B</td><td id="SqEf" class="">B</td><td id="_|tp" class="">A</td><td id=":pYo" class="">A</td><td id="HiYB" class="">A</td><td id="HMkw" class="">B</td></tr><tr id="e9dfe096-a7b9-4901-b9f6-0c3dd4cc5271"><td id="xb~~" class="">R3</td><td id="Qog{" class="">A</td><td id="SqEf" class="">B→A</td><td id="_|tp" class="">A</td><td id=":pYo" class="">B→A</td><td id="HiYB" class="">B→A</td><td id="HMkw" class="">A</td></tr></tbody></table><ul id="91e28ce5-9117-4528-ae2b-19cced0d660d" class="bulleted-list"><li style="list-style-type:disc">We have full R3 to be A, so it’s lossless</li></ul><h2 id="a50a16ad-07fe-40ca-bb9b-df27c4b702ab" class="">Dependency Preserving Decomposition</h2><ul id="fb1834cc-e39c-4745-a448-79d758c4c4ee" class="bulleted-list"><li style="list-style-type:disc">After decomposition, we should not add a new FD or remove an existing FD</li></ul><ul id="a62d0a52-d237-4974-a603-a90883122b57" class="bulleted-list"><li style="list-style-type:disc">Both are undesirable, so we check if a decomposition is dependency preserving or not</li></ul><ul id="9b2c8338-8095-4765-b125-72a0ed705390" class="bulleted-list"><li style="list-style-type:disc">If <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><msub><mi>π</mi><mrow><mi>R</mi><mn>1</mn></mrow></msub><mo stretchy="false">(</mo><mi>F</mi><mo stretchy="false">)</mo><mo>∗</mo><msub><mi>π</mi><mrow><mi>R</mi><mn>2</mn></mrow></msub><mo stretchy="false">(</mo><mi>F</mi><mo stretchy="false">)</mo><msup><mo stretchy="false">)</mo><mo>+</mo></msup><mo>=</mo><msup><mi>F</mi><mo>+</mo></msup></mrow><annotation encoding="application/x-tex">(\pi_{R1}(F) * \pi_{R2}(F))^+ = F^+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.021331em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mclose">)</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.771331em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">+</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.771331em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.771331em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">+</span></span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span> then it is a dependency preserving decomposition where <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>π</mi><mrow><mi>R</mi><mn>1</mn></mrow></msub><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\pi_{R1}(f)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span> is projection of F on R1 and F is set of FDs</li></ul><ul id="94cc7156-3fc8-4d0e-a36a-443e5217b4bd" class="bulleted-list"><li style="list-style-type:disc">Computing <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>F</mi><mo>+</mo></msup></mrow><annotation encoding="application/x-tex">F^+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.771331em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.771331em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">+</span></span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span> → We see what are the possible new functional dependencies that can be made using Armstrong’s inference rules</li></ul><ul id="9ee5d597-ae71-4dee-aecf-33bc5d690d20" class="bulleted-list"><li style="list-style-type:disc">Basically projection of F on R1 gives which functional dependencies will be involved in R1</li></ul><ul id="7a779938-227d-42e2-a4c9-f03c02307b0d" class="bulleted-list"><li style="list-style-type:disc">Each set will be a set of FDs and we take union</li></ul><ul id="68fcf29a-858d-49cb-a6c0-7a9b1b0cb99b" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">NOTE: We project from F closure only</span></li></ul><h3 id="f1af85cb-301f-4b00-90ab-07650c045285" class="">Example 1</h3><ul id="90d4d9a8-1d06-490b-a5fa-2a9717b811ed" class="bulleted-list"><li style="list-style-type:disc">Suppose that we decompose the relation R=(A,B,C,D) into two relations R1(A, C, D) ,and R2(A, B). Find whether this decomposition is lossless and Dependency preserving, if the following set F of functional dependencies holds. F={ A→B; B→C; C→D; A→D}</li></ul><table id="e96af369-1266-4c29-be0a-725fc77c4403" class="simple-table"><tbody><tr id="398c6a02-95e6-4348-b1b7-1719bf26ee73"><td id=":y&gt;|" class=""></td><td id="CNs}" class="">A</td><td id="wx]X" class="">B</td><td id="l&gt;&gt;v" class="">C</td><td id="|\:W" class="">D</td></tr><tr id="0d396983-7868-45ba-85bb-182a42a30b30"><td id=":y&gt;|" class="">R1</td><td id="CNs}" class="">A</td><td id="wx]X" class="">B→A</td><td id="l&gt;&gt;v" class="">A</td><td id="|\:W" class="">A</td></tr><tr id="95205e5c-eb34-4de8-b591-dbf444a3dd5f"><td id=":y&gt;|" class="">R2</td><td id="CNs}" class="">A</td><td id="wx]X" class="">A</td><td id="l&gt;&gt;v" class="">B→A</td><td id="|\:W" class="">B→A</td></tr></tbody></table><ul id="544c451f-0e7e-492b-96e7-dbf421f37911" class="bulleted-list"><li style="list-style-type:disc">It is lossless</li></ul><ul id="2783e2b3-db95-4389-9b37-65bec6c66f46" class="bulleted-list"><li style="list-style-type:disc"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>F</mi><mo>+</mo></msup></mrow><annotation encoding="application/x-tex">F^+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.771331em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.771331em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">+</span></span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span> (Don’t add trivial ones)<ul id="a7254231-a0ff-4bda-99ae-949f8422ed5c" class="bulleted-list"><li style="list-style-type:circle">A→B</li></ul><ul id="b45c7595-5b5f-4557-b90d-ccb459299537" class="bulleted-list"><li style="list-style-type:circle">B→C</li></ul><ul id="538b5342-396a-4801-80e6-a3f98538cd9f" class="bulleted-list"><li style="list-style-type:circle">C→D</li></ul><ul id="996d8357-a1ee-4b82-9afc-e1cba1d3ae14" class="bulleted-list"><li style="list-style-type:circle">A→D</li></ul><ul id="f1b0ff47-18b6-4544-8e2f-9d6bd27a50c2" class="bulleted-list"><li style="list-style-type:circle">A→C</li></ul><ul id="b886cc51-a470-425b-8272-7a31c8ac37e9" class="bulleted-list"><li style="list-style-type:circle">B→D</li></ul></li></ul><ul id="67307712-8ce9-4cba-b1e0-158a0f8db705" class="bulleted-list"><li style="list-style-type:disc">R1 (A, C, D) and now <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>π</mi><mrow><mi>R</mi><mn>1</mn></mrow></msub><mo stretchy="false">(</mo><mi>F</mi><mo stretchy="false">)</mo><mo>=</mo></mrow><annotation encoding="application/x-tex">\pi_{R1}(F) = </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span></span></span></span><span>﻿</span></span> C→D, A→D, A→C</li></ul><ul id="e63e4fb7-3f9e-4879-95f9-4dd092ad03e3" class="bulleted-list"><li style="list-style-type:disc">R2 (A, B) and now <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>π</mi><mrow><mi>R</mi><mn>2</mn></mrow></msub><mo stretchy="false">(</mo><mi>F</mi><mo stretchy="false">)</mo><mo>=</mo></mrow><annotation encoding="application/x-tex">\pi_{R2}(F) =</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span></span></span></span><span>﻿</span></span> A→B</li></ul><ul id="87baf5e9-536e-4190-8ee1-7d86231181e4" class="bulleted-list"><li style="list-style-type:disc">We take union of these two and compute closure</li></ul><ul id="edc2343e-7b05-460e-889f-3db47d0953a3" class="bulleted-list"><li style="list-style-type:disc">We get A→B, A→D, C→D, A→C</li></ul><ul id="d45036d7-da4c-4f8a-86b7-927ac9516eb5" class="bulleted-list"><li style="list-style-type:disc">We take closure of this, which gives the same thing</li></ul><ul id="d781a2f1-bab0-40e5-8637-9400d410a4e4" class="bulleted-list"><li style="list-style-type:disc">So this is <span style="border-bottom:0.05em solid">not dependency preserving</span> :)</li></ul><h3 id="5687413f-84ea-467d-850e-889bc8e7e800" class="">Example 2</h3><ul id="4498e17e-9d96-4166-95ec-a583f76bc0ce" class="bulleted-list"><li style="list-style-type:disc">If a relation R(A,B,C,D,E) with functional dependencies F={AB→CD; D→E} is decomposed into R1(A,B,E), R2(A,B,D), and R3(C,D,E), check if the decomposition is-
+(i) dependency preserving or not. (ii) Lossless or not.</li></ul><ul id="7286cf90-2b89-4e08-8a20-de65c4fcc7b6" class="bulleted-list"><li style="list-style-type:disc">F+ ⇒ AB→C, AB→D, AB→E, D→E<ul id="318d3cc6-1986-4cb6-9d15-6d96b2e574c7" class="bulleted-list"><li style="list-style-type:circle">R1(A, B, E) ⇒ AB→E</li></ul><ul id="90b17d43-dc2c-4d19-8c1d-2968958fd87f" class="bulleted-list"><li style="list-style-type:circle">R2(A, B, D) ⇒ AB→D</li></ul><ul id="f0832e53-d4cf-4514-a5e7-5c3287bb39d3" class="bulleted-list"><li style="list-style-type:circle">R3(C, D, E) ⇒ D→ E</li></ul></li></ul><ul id="45e60570-2825-4ef3-9333-1e503f16472b" class="bulleted-list"><li style="list-style-type:disc">We get AB→E, AB→D AND D→E and this is not same as F+ which means it is not dependency preserving </li></ul><ul id="c41c84db-b55b-42dd-aad8-1e228acf2472" class="bulleted-list"><li style="list-style-type:disc">It is lossy also</li></ul><figure id="6bcc6247-765e-4d01-8c26-1cae88ac1d86" class="image"><a href="Database%20Design%2022862ddf6fdc49ff8b2d0a9529eccae2/image-1680750918596.jpg2478461954851258749.jpg"><img style="width:4032px" src="Database%20Design%2022862ddf6fdc49ff8b2d0a9529eccae2/image-1680750918596.jpg2478461954851258749.jpg"/></a></figure></div></article></body></html>

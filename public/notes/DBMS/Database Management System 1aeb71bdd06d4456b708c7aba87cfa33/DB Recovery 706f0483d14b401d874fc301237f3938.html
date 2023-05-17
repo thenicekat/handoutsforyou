@@ -1,0 +1,669 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>DB Recovery</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="706f0483-d14b-401d-874f-c301237f3938" class="page sans"><header><h1 class="page-title">DB Recovery</h1></header><div class="page-body"><nav id="4c22f7d3-92cb-401d-a8e4-2b37cfc2c1ec" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a0f54e05-27e4-4cd6-9b58-96f4eaa385ed">Recovery Techniques</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1a049f29-ec9a-4f2a-89ec-1139a6ff9b5d">Log Based Recovery</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b3ea8558-5b73-46ce-83e0-f2385c5e406d">Deferred Database Modification</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#8bebd415-fc32-4e8f-bb1c-a9bfe15637a6">Deferred Update Protocol</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#32c6b77c-2b96-4407-9ce6-9f6245bf3c59">Immediate Database Modification</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a9e81e0c-f4b7-4fdd-8f70-056da0d36210">Checkpointing</a></div></nav><h1 id="a0f54e05-27e4-4cd6-9b58-96f4eaa385ed" class="">Recovery Techniques</h1><ul id="ff57bd77-a5bc-41d6-b708-5b2ed9d723d5" class="bulleted-list"><li style="list-style-type:disc">If a transaction T performed multiple database modifications, several output operations may be required and a failure may occur after some of these modifications have been made but before all of them are made</li></ul><ul id="6f71008c-6a6b-41d2-bca8-cd48eb4f3bc0" class="bulleted-list"><li style="list-style-type:disc">In order to restore to the recent consistent state, we must first write the information describing these modifications to System log without modifying the database itself</li></ul><ul id="cc9dad77-915f-476b-b098-36c4e18821ec" class="bulleted-list"><li style="list-style-type:disc">This helps us to remove the modifications done by a failed transaction</li></ul><h2 id="1a049f29-ec9a-4f2a-89ec-1139a6ff9b5d" class="">Log Based Recovery</h2><ul id="a6d2f9fe-8f65-405d-9841-c29cda47fde3" class="bulleted-list"><li style="list-style-type:disc">Each log record describes a single database write operation and contains the following details: Transaction name, Data item name, old value, new value</li></ul><figure id="db7185ff-fece-4174-bc63-b5a32a90c2ef" class="image"><a href="DB%20Recovery%20706f0483d14b401d874fc301237f3938/Untitled.png"><img style="width:652px" src="DB%20Recovery%20706f0483d14b401d874fc301237f3938/Untitled.png"/></a></figure><ul id="586e31c6-ffcd-47bf-b651-8a6dee4a2bd4" class="bulleted-list"><li style="list-style-type:disc">With these log records we have the ability to undo or redo a modification that has already been output to the DB</li></ul><h3 id="b3ea8558-5b73-46ce-83e0-f2385c5e406d" class="">Deferred Database Modification</h3><ul id="42e0c506-4f03-4871-a9fe-f58ef0145959" class="bulleted-list"><li style="list-style-type:disc">This technique ensures atomicity by recording all database modifications in the log, but deferring the actual updates to the database until the transaction commits</li></ul><ul id="83eb7371-fe3b-461f-8496-0fb5177b7d37" class="bulleted-list"><li style="list-style-type:disc">As no data item is written before commit record of the transaction, we need only new value. Hence we perform only redo operation. </li></ul><ul id="97bc4900-a22d-447b-8f99-b2d34c914e92" class="bulleted-list"><li style="list-style-type:disc">The redo operation sets the value of all data items updated by transaction to the new values</li></ul><ul id="6925a751-129a-4078-8da7-66b55eb10a30" class="bulleted-list"><li style="list-style-type:disc">All new values will be found in the log records</li></ul><ul id="9f59813c-801e-4d14-b082-f5dcdf4d9602" class="bulleted-list"><li style="list-style-type:disc">Redo does not have any bad effects</li></ul><h3 id="8bebd415-fc32-4e8f-bb1c-a9bfe15637a6" class="">Deferred Update Protocol</h3><ul id="46eb08e7-4cdc-4430-b444-6d2682c5fbff" class="bulleted-list"><li style="list-style-type:disc">A transaction cannot change the database on disk until it reaches the commit point</li></ul><ul id="1926875a-d171-4f85-9868-82848aef0256" class="bulleted-list"><li style="list-style-type:disc">A transaction does not reach commit point until all it’s updates are recorded in the log and log is force written to disk</li></ul><ul id="7d5859c8-9a96-494d-b804-679be538e5ba" class="bulleted-list"><li style="list-style-type:disc">Redoing is needed when we have all modifications on log and have doubts about successful writing to the database</li></ul><figure id="e9650500-3d8b-4276-b90e-9c649f129500" class="image"><a href="DB%20Recovery%20706f0483d14b401d874fc301237f3938/Untitled%201.png"><img style="width:663px" src="DB%20Recovery%20706f0483d14b401d874fc301237f3938/Untitled%201.png"/></a></figure><figure id="a364ce94-cda2-4773-80d2-781b683eb428" class="image"><a href="DB%20Recovery%20706f0483d14b401d874fc301237f3938/Untitled%202.png"><img style="width:336px" src="DB%20Recovery%20706f0483d14b401d874fc301237f3938/Untitled%202.png"/></a></figure><ul id="7ee6f407-79ce-403e-9255-7c3d6c6bfd83" class="bulleted-list"><li style="list-style-type:disc">In this case, we might have to redo T1 and T2. We <span style="border-bottom:0.05em solid">only redo for those which have started and committed</span></li></ul><h3 id="32c6b77c-2b96-4407-9ce6-9f6245bf3c59" class="">Immediate Database Modification</h3><ul id="4eb7406e-83d9-4542-bb09-d11755a446ec" class="bulleted-list"><li style="list-style-type:disc">In this, database modification to be output to the database while transaction is still in active state i.e. before commit, after log entry is done and log entries are written to disk</li></ul><ul id="04a99c48-a7b7-400b-b77b-0aca9f2a3bd9" class="bulleted-list"><li style="list-style-type:disc">If such is the case for incomplete transactions, on failure, undo maybe done</li></ul><figure id="e702fa61-d9dd-4a67-98cd-48afef4beb90" class="image"><a href="DB%20Recovery%20706f0483d14b401d874fc301237f3938/Untitled%203.png"><img style="width:340px" src="DB%20Recovery%20706f0483d14b401d874fc301237f3938/Untitled%203.png"/></a></figure><ul id="9510b71a-fbec-4725-a4f8-646cdab13dec" class="bulleted-list"><li style="list-style-type:disc">In this case, we redo T1 and T2, but undo T3</li></ul><h2 id="a9e81e0c-f4b7-4fdd-8f70-056da0d36210" class="">Checkpointing</h2><ul id="3b78dcd4-a84e-480b-963e-2f767dfe4d7b" class="bulleted-list"><li style="list-style-type:disc">In case of failure, the log records need to be searched to determine the transactions that need to be redone or undone</li></ul><ul id="6d1aa572-8973-45ae-ba6e-5bfe7c2d6c2e" class="bulleted-list"><li style="list-style-type:disc">But this searching is time consuming and most of the time the algorithm will redo the transactions which actually written their updates to the DB, redoing them is waste of time</li></ul><ul id="3b38e0db-732b-4a46-b404-db3d9d471939" class="bulleted-list"><li style="list-style-type:disc">In order to reduce these types of overheads, check pointing is helpful</li></ul><ul id="8cc80478-a917-4d12-83f7-879c1d747449" class="bulleted-list"><li style="list-style-type:disc">Sequence of actions in checkpointing<ul id="9abaf3a5-4060-4d5b-9aa4-93cadadcfb28" class="bulleted-list"><li style="list-style-type:circle">Output all log records currently in main memory onto stable storage</li></ul><ul id="8564bfd4-9e47-4e15-af5c-9e963931d8c8" class="bulleted-list"><li style="list-style-type:circle">Output all modified buffer blocks to the disk</li></ul><ul id="6a4ef2c1-80ac-4d7e-beb0-f7f10f113bd9" class="bulleted-list"><li style="list-style-type:circle">Output log record &lt;check point&gt; on to stable storage</li></ul><ul id="ddc777b6-5ad5-4e86-9a49-b967e44a60d0" class="bulleted-list"><li style="list-style-type:circle">During the recover process, the redo or undo operations for the transactions will be considered which occur after or just before the latest &lt;check point&gt; record on log</li></ul><figure id="b88baa79-2266-4395-8d99-12067bad9317" class="image"><a href="DB%20Recovery%20706f0483d14b401d874fc301237f3938/Untitled%204.png"><img style="width:547px" src="DB%20Recovery%20706f0483d14b401d874fc301237f3938/Untitled%204.png"/></a></figure><h2 id="88ca1cae-ad98-4e68-bb2a-4379aab23e48" class="">Shadow Paging</h2><ul id="31fb1e1d-2387-4511-be57-651e0887417b" class="bulleted-list"><li style="list-style-type:circle">This technique is an alternative to log based recovery method.</li></ul><ul id="a5f4aba3-2eb4-437b-96ab-bb12f4078de2" class="bulleted-list"><li style="list-style-type:circle">We know that the database is partitioning into same fixed length blocks called as pages</li></ul><ul id="228348db-6f57-42c1-a227-a1b5c71046c7" class="bulleted-list"><li style="list-style-type:circle">These pages need not be in a particular order on disk</li></ul><ul id="ae3d4ebb-5dd1-42b8-9d7c-101545d64584" class="bulleted-list"><li style="list-style-type:circle">A page table is used to find the location of i’th block</li></ul><ul id="ba287629-c0a7-469e-9f1f-bcc708bb9feb" class="bulleted-list"><li style="list-style-type:circle">Updated block is written to a new location instead of overwriting the old location and accordingly we change pointer in page table</li></ul><ul id="8a703ebe-12a3-4bac-bb32-1ac37c3ed03d" class="bulleted-list"><li style="list-style-type:circle">The shadow page table which is a copy of the page table and this still points to the old page</li></ul><ul id="2d940e6c-1fb8-480a-820c-2286ec49626c" class="bulleted-list"><li style="list-style-type:circle">If something goes wrong, we make the shadow table as the current table</li></ul><ul id="33c3ab85-aeae-4545-bf5c-995133428e31" class="bulleted-list"><li style="list-style-type:circle">If it’s committed, we use the current table as is</li></ul><h1 id="3ccdfeb4-1473-4422-a26e-48019076331e" class="">Example Problems</h1><h2 id="9666f4c7-1945-42d5-9fbc-4fc1be1cef48" class="">Problem 1</h2><figure id="14a2af5f-58a5-44c5-9582-5de30d95272a" class="image"><a href="DB%20Recovery%20706f0483d14b401d874fc301237f3938/Untitled%205.png"><img style="width:624px" src="DB%20Recovery%20706f0483d14b401d874fc301237f3938/Untitled%205.png"/></a></figure><figure id="a3aa24d3-73cc-4593-a6c2-f236d3e4c06b" class="image"><a href="DB%20Recovery%20706f0483d14b401d874fc301237f3938/Untitled%206.png"><img style="width:304px" src="DB%20Recovery%20706f0483d14b401d874fc301237f3938/Untitled%206.png"/></a></figure><ul id="8d2b5585-1517-48d7-ae75-062af99cd375" class="bulleted-list"><li style="list-style-type:circle">So if we have immediate modification technique, we modify immediately, so in this case<ul id="6d96b02a-5008-4a59-8e49-e91889c4d564" class="bulleted-list"><li style="list-style-type:square">T1: ignored</li></ul><ul id="67f12b59-ae5b-412a-bac2-bd81b43b3daf" class="bulleted-list"><li style="list-style-type:square">T2: undo </li></ul><ul id="eb68298d-8397-4bc4-8b89-0733989c6d6b" class="bulleted-list"><li style="list-style-type:square">T3: ignored</li></ul><ul id="3b1c632f-7b2a-4f9e-9935-d63416e5c610" class="bulleted-list"><li style="list-style-type:square">T4: redo</li></ul><ul id="2e03a598-4e60-4d69-aefa-cb3bd9113c0e" class="bulleted-list"><li style="list-style-type:square">T5: undo</li></ul></li></ul><ul id="049409b1-93ab-4149-9cac-56d3cbd26e4f" class="bulleted-list"><li style="list-style-type:circle">If we have deferred modification technique<ul id="9470a2ac-6877-406c-ae79-590981ddd22d" class="bulleted-list"><li style="list-style-type:square">T1: ignored</li></ul><ul id="92b8d3a3-21a8-440c-abf5-5677ed3c3a74" class="bulleted-list"><li style="list-style-type:square">T2: ignored</li></ul><ul id="b9dd31ed-ab27-4156-88fc-0e4dc45cb60c" class="bulleted-list"><li style="list-style-type:square">T3: ignored</li></ul><ul id="6488e2e4-8d67-466d-91d4-9e3a9b4e3828" class="bulleted-list"><li style="list-style-type:square">T4: redo</li></ul><ul id="ac16b191-3a9f-460b-b92f-0dfc5d4d320c" class="bulleted-list"><li style="list-style-type:square">T5: ignored</li></ul></li></ul><h2 id="8604fa9e-bb95-440a-8526-8b6d0d61357d" class="">Problem 2</h2><figure id="131a0c2f-4f9a-463e-9162-c9608bbf814a" class="image"><a href="DB%20Recovery%20706f0483d14b401d874fc301237f3938/Untitled%207.png"><img style="width:628px" src="DB%20Recovery%20706f0483d14b401d874fc301237f3938/Untitled%207.png"/></a></figure><ul id="16133048-9477-467b-a398-bca6cd55364f" class="bulleted-list"><li style="list-style-type:circle">Here, we have immediate modification technique:<ul id="bc37f3ee-76ee-449a-bce8-315687a41e11" class="bulleted-list"><li style="list-style-type:square">T1 → nothing</li></ul><ul id="e41012d8-6195-40a0-8b0d-8562c263c6eb" class="bulleted-list"><li style="list-style-type:square">T2 → redo (checkpointing is not a recovery process 🙂)</li></ul><ul id="df3d0800-02f2-4e4c-ad73-021f6c76292c" class="bulleted-list"><li style="list-style-type:square">T3 → undo</li></ul><ul id="6d69c881-1176-439a-8a3e-26cc755d27c2" class="bulleted-list"><li style="list-style-type:square">T4 → redo</li></ul></li></ul><ul id="6cc1155d-09ce-4000-97b3-a3ac15a50faa" class="bulleted-list"><li style="list-style-type:circle">Here if we have deferred<ul id="65c072ee-dc85-4abb-a767-3ae58354d62c" class="bulleted-list"><li style="list-style-type:square">T1 → nothing</li></ul><ul id="ff0de603-c51b-4323-9317-186190942707" class="bulleted-list"><li style="list-style-type:square">T2 → redo</li></ul><ul id="17bcade9-baee-4fc6-a7f1-cd3cde4a4145" class="bulleted-list"><li style="list-style-type:square">T3 → nothing </li></ul><ul id="c48db0f4-92a4-40f1-95c6-2a66c39d4fe4" class="bulleted-list"><li style="list-style-type:square">T4 → redo</li></ul></li></ul><h2 id="26f90beb-4a32-4429-ad91-398782360254" class="">Problem 3</h2><figure id="f7a395f9-91a5-4880-808d-e59b9c8a6fdb" class="image"><a href="DB%20Recovery%20706f0483d14b401d874fc301237f3938/Untitled%208.png"><img style="width:638px" src="DB%20Recovery%20706f0483d14b401d874fc301237f3938/Untitled%208.png"/></a></figure><ul id="26ff72df-6bd9-4196-8ba6-865c62962b35" class="bulleted-list"><li style="list-style-type:circle">In case of immediate modification<ul id="cada67c9-78c7-4f76-a1ea-e71271d09682" class="bulleted-list"><li style="list-style-type:square">T1: Undo</li></ul><ul id="384992d7-4eec-455b-9608-4f529bb44222" class="bulleted-list"><li style="list-style-type:square">T2: Redo</li></ul><ul id="836cd0cb-b974-4592-b9c5-2adb9a32e4de" class="bulleted-list"><li style="list-style-type:square">T3: Redo</li></ul></li></ul><ul id="7c83eb0b-705f-4dd7-9e94-e76932bf5df6" class="bulleted-list"><li style="list-style-type:circle">Deferred Modification<ul id="61a562d0-a13d-4716-835c-c69f87b9565e" class="bulleted-list"><li style="list-style-type:square">T1: Ignored</li></ul><ul id="4ca8e071-8f26-44d9-b490-96c3d64b979a" class="bulleted-list"><li style="list-style-type:square">T2: Redo</li></ul><ul id="0f71c0f8-72ed-410a-9f06-d12c061a990b" class="bulleted-list"><li style="list-style-type:square">T3: Redo</li></ul></li></ul><h1 id="b6013b4a-1a83-4ce2-a3cf-23ed1caf88dd" class="">Reading Assignment</h1><ul id="b3c4e627-8953-4b72-bcc1-608662ad8275" class="bulleted-list"><li style="list-style-type:circle">Fuzzy Checkpointing Concept</li></ul><ul id="f0d57706-bf9a-4ce1-8e31-59ed7c522166" class="bulleted-list"><li style="list-style-type:circle">ARIES Recovery Algorithm</li></ul></li></ul></div></article></body></html>
