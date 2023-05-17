@@ -1,0 +1,671 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Computer Mediated Communication</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="68b1592b-13ef-4c2a-92f7-13ccd0b1f800" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">⌨️</span></div><h1 class="page-title">Computer Mediated Communication</h1></header><div class="page-body"><figure id="e1e454ca-7940-42e5-a947-32648b1cfc9e" class="link-to-page"><a href="Computer%20Mediated%20Communication%2068b1592b13ef4c2a92f713ccd0b1f800/Assignment%201%20e1e454ca794042e5a94732648b1cfc9e.html">Assignment 1</a></figure><figure id="c375409c-8fe6-452c-9423-ba10eba362b5" class="link-to-page"><a href="Computer%20Mediated%20Communication%2068b1592b13ef4c2a92f713ccd0b1f800/Midsem%20c375409c8fe6452c9423ba10eba362b5.html">Midsem</a></figure><figure id="f46a7448-46fe-41b1-9b07-4a72d386d354" class="link-to-page"><a href="Computer%20Mediated%20Communication%2068b1592b13ef4c2a92f713ccd0b1f800/Compre%20f46a744846fe41b19b074a72d386d354.html">Compre</a></figure><nav id="598698c0-f562-4a47-908d-1798f0ca674f" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#13e32650-1500-4c57-82a3-901b2ac85769">Psychology Today ⇒ Read Articles</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#71f3d238-076c-4dea-8b26-3a77e536f3a2">What is CMC?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0f74efcb-ea28-417c-9c2a-8fe9f34dc85f">Theories of CMC</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c532055-9110-473b-a479-2f42a5bba777">Social Presence Theory</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3bb1e396-264f-4ca4-b63e-c2ff48cd36a0"> Uses and Gratification Theory</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#49020431-c4ac-4591-90e7-6fc395f9d7e7">Media Richness Theory</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#73e0918c-f5e4-499d-b6a9-c1c6624b17aa">Social Information Processing theory</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3259a338-c55c-4ed9-ae20-bed20ce8e6ce">Social Identification/De-Individuation Theory</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f5b56ca7-82ac-406d-9d1c-07d7084fcf37">Hyper Personal Communication Model</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3c916b8f-837b-4be5-a4a5-7eb38e2f340e">Chatting and Online Dating</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#dfca459e-7464-4eae-81a2-5094729b1ad4">Chatting Behavior</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#96e045bd-5560-4a3c-bb9b-d66ab8130c31">Sexting</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#568e71b9-a865-4e8c-8ab7-b3c9d92338f2">Chatting and Identity</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b01efa38-6b9d-47ae-a4e2-4819b85c4c01">Harassment</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#04a1ff66-4fad-4eaa-934a-a871cdb5a962">Streaming Videos</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ec297e37-e67a-4d2a-9555-2748196ff8e7">Gaming</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b5581315-f08a-446a-8383-54df593214c0">Pornography</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#90529530-7157-4dc9-8d36-96fec8c59cbd">Myths</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#091c6ca3-e5b9-43ec-a51c-068d37db7fa6">Fake News</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b899e06b-4021-4e21-9d95-08c964451c71">Hate Speech</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#34952d8e-0f1f-4500-8956-14f48b47ab2c">Criticial Discourse Analysis</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#381bb210-ee29-420b-9aac-698e1e8f4f90">Text Analysis - Nehru Speech</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#71a6dfdd-b802-4673-a064-f2ff0aba97e4">Speech Analysis - MLK - I have a dream</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#33d2e853-ab99-4189-a824-35f1e8539ce9">Video Analysis - Osho Marriage</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#296a6c43-7865-476d-96f2-65a5895c19d9">Video Analysis - Sam Harris - Best Arguments against Religion</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9d1bf09b-c721-40cb-a8c0-8ac78e7851f0">Critical Digital Literacy</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#97963431-7048-4aea-a155-8a01863ddaf9">Digital Literacy</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a8c1aaaf-e8ca-4c53-a5de-5646f941c6eb">Critical Digital Literacy</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d1dc6e01-58b3-4823-b4cd-16a53df99d88">Search Engine</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#474d2bd9-860c-4b68-bf8a-0513e9b16f7c">Internet Behavior</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0a38b90c-13ee-4fc9-a317-5c7a6d4304f0">The girl who posted obscene videos - Revisited</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4786b4ba-0673-4b02-84c5-6a1d0cab4c63">Innovation and Scholarship</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0e9f4456-f0c0-43fc-b244-9cbe989c7a31">Communication, Collaboration and Participation</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#aeb3f30d-05e6-4229-b7a0-e51e86d39498">Digital Marketing</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#318c1945-a8a4-439b-b873-5f4f9c8a9fb7">Advertising</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#588e6794-9ad2-4a0d-9852-d53950006256">Mechanism of digital ads</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#9a3a79c2-60f3-47ea-9ec9-d9188cd7d205">Brand Awareness</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#6492373f-8cd0-43de-b233-6c3613fae4ce">Brand Loyalty</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b38211a9-7709-4fa8-9de8-19e48defd380">Buying behavior</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#445e0076-818b-4bcc-ab1c-c7c2658a439a">Privacy</a></div></nav><h2 id="13e32650-1500-4c57-82a3-901b2ac85769" class="">Psychology Today ⇒ Read Articles</h2><h1 id="71f3d238-076c-4dea-8b26-3a77e536f3a2" class="">What is CMC?</h1><ul id="fd9467dc-e9d8-407e-86e8-9dbff43a5cd4" class="bulleted-list"><li style="list-style-type:disc">Mediation(an intermediary) by some form of computation tech</li></ul><ul id="f7b1ff9d-2d96-4db9-97ad-d5057787ef61" class="bulleted-list"><li style="list-style-type:disc">It is computer mediated and not digital mediated because computer mediated deals with devices but we are not going beyond these devices</li></ul><ul id="7b868e1e-2f0c-461e-8dbd-9847649ae6fb" class="bulleted-list"><li style="list-style-type:disc"> In CMC, we can have one-to-one, one-to-many, many-to-many and many-to-one communication</li></ul><ul id="411f0053-ad38-4669-ae21-7272ca42d6bb" class="bulleted-list"><li style="list-style-type:disc">Relationship between the new and the previous messages</li></ul><ul id="0a3f05bf-a44e-401f-9e9b-1c7fc6a83536" class="bulleted-list"><li style="list-style-type:disc">We need <table id="96190ef8-d027-4b56-91fc-6de93d44d945" class="simple-table"><tbody><tr id="b44c11d4-f744-49c9-b2c9-8d7086bad068"><td id="WQoa" class="">Context</td><td id="f|&lt;z" class="">Scaffold(Support to communicate)</td><td id="YfB[" class="" style="width:130.796875px">The other person</td><td id="uBjj" class="">Content</td></tr><tr id="f518fe87-aa3c-4828-b6f1-445f1d3a762b"><td id="WQoa" class="">Intention</td><td id="f|&lt;z" class="">Cost</td><td id="YfB[" class="" style="width:130.796875px">Language</td><td id="uBjj" class="">Consent</td></tr><tr id="c168f31f-8c4b-4d89-a81c-ce40facfe53b"><td id="WQoa" class="">Outcome</td><td id="f|&lt;z" class="">Place + time</td><td id="YfB[" class="" style="width:130.796875px">Mode</td><td id="uBjj" class="">Ensuring Privacy</td></tr><tr id="bc6fcffa-b82a-4585-906e-8cb1901e32a3"><td id="WQoa" class="">Reasons to communicate</td><td id="f|&lt;z" class=""></td><td id="YfB[" class="" style="width:130.796875px"></td><td id="uBjj" class=""></td></tr></tbody></table></li></ul><ul id="efca21ea-f777-4d4f-a597-1263d540691d" class="bulleted-list"><li style="list-style-type:disc">These shape how you communicate and who you become</li></ul><ul id="0395ae3c-d206-420f-b00e-0841f2d4416a" class="bulleted-list"><li style="list-style-type:disc">Identity shapes your CMC and CMC shapes your Identity and you lose or get new characteristics which you either had before or never had.</li></ul><ul id="7468c1a9-16b7-4d2d-9c87-49056768d69f" class="bulleted-list"><li style="list-style-type:disc">Interactivity → Acceptance/Satisfaction/Connection → All of them are not always high and this goes on like a graph</li></ul><ul id="6ececac9-a452-4b25-a081-e5230fdf8a61" class="bulleted-list"><li style="list-style-type:disc">Selective presentation of self</li></ul><ul id="30139c4e-34c9-41db-aef2-908a78526051" class="bulleted-list"><li style="list-style-type:disc">Lack of non verbal behavior → Mostly Cultural but the foundation can be said to be biological</li></ul><ul id="9ef21b28-2208-49ca-9e38-b7e3f2b37a91" class="bulleted-list"><li style="list-style-type:disc">Gratification is the sense of fulfilment and joy and satisfaction</li></ul><ul id="ca63339a-37cf-4653-8f62-e37afe693780" class="bulleted-list"><li style="list-style-type:disc">Eliciting favorable responses as in giving them what they want and things like asking pictures</li></ul><ul id="f7fae4c0-8c24-4283-9c14-ea0384a5e14d" class="bulleted-list"><li style="list-style-type:disc">Synchronous vs asynchronous → Sync is where the convo is live and there’s less chance for faking emotions</li></ul><ul id="827f68d3-d098-4e1b-9b0b-2d1341d3055a" class="bulleted-list"><li style="list-style-type:disc">Async is where there’s more scope for manipulation, planning. Example: Email</li></ul><ul id="579e3240-edeb-44e4-9e18-71de39f79118" class="bulleted-list"><li style="list-style-type:disc">Altering of the process and outcomes of communication: </li></ul><ul id="5c657d1a-1274-4757-b1b4-bce3ac6f9294" class="bulleted-list"><li style="list-style-type:disc">Self identity, impressions, relationships, community and collaboration</li></ul><ul id="a39d3440-aa45-468a-97e9-386b22b0f1a3" class="bulleted-list"><li style="list-style-type:disc">Capacity of the channel</li></ul><ul id="c95632db-d0de-4c30-814c-b7a69c199861" class="bulleted-list"><li style="list-style-type:disc">Real vs virtual - blurred boundaries</li></ul><ul id="1fccb7ea-3c93-4cff-ad8d-80b81e4cef65" class="bulleted-list"><li style="list-style-type:disc">Anonymity, transparency and synchrony</li></ul><ul id="9ef526d1-a8ec-4d61-bd2a-b7a1c50482d0" class="bulleted-list"><li style="list-style-type:disc">CMC is advantageous for those who are shy, introverted on the autism spectrum or not speakers of the local language</li></ul><ul id="3312e69f-486d-4c25-a8a2-c1f844ecca63" class="bulleted-list"><li style="list-style-type:disc">Even within long term relationships, it’s use has risen</li></ul><ul id="817f8cb2-3677-4a4c-bd89-a537d0a7d4ae" class="bulleted-list"><li style="list-style-type:disc">With CMC, we feel in control on how others see us and perhaps less vulnerable as we hide behind our screens</li></ul><ul id="b9a49174-072f-4a6d-b8ba-44a73f59331f" class="bulleted-list"><li style="list-style-type:disc">Rather than the convo being direct, it’s edited and send on our command</li></ul><ul id="f933cbee-999f-4144-8671-6b19da0484ee" class="bulleted-list"><li style="list-style-type:disc">CMC has advantages too<ul id="80574a9f-0818-42d9-b084-e8d05e82d8a1" class="bulleted-list"><li style="list-style-type:circle">Empowering the vulnerable: Where communication is urgent and needed</li></ul><ul id="bbde421f-e9b0-4a07-9452-effd8e7f19dd" class="bulleted-list"><li style="list-style-type:circle">Bridging Distances: Websites help in crowdfunding, advices and home remedies</li></ul><ul id="ba8a94c5-352c-4564-b0ad-d5d1fdaa97bc" class="bulleted-list"><li style="list-style-type:circle">Maximizing Work Opportunities</li></ul><ul id="65885f8a-c712-4b73-ba0f-c8f3da637bd1" class="bulleted-list"><li style="list-style-type:circle">Expanding social pressures</li></ul></li></ul><ul id="4d4cf190-19c9-4e3d-985b-c18e6a228da5" class="bulleted-list"><li style="list-style-type:disc">We keep gaining reach but end up losing touch in the process</li></ul><h1 id="0f74efcb-ea28-417c-9c2a-8fe9f34dc85f" class="">Theories of CMC</h1><p id="06a4f094-e321-4be9-962b-7c4be6f5f79c" class=""><a href="https://socialsci.libretexts.org/Bookshelves/Communication/Interpersonal_Communication/Book%3A_Interpersonal_Communication_-_A_Mindful_Approach_to_Relationships_(Wrench_et_al.)/12%3A_Interpersonal_Communication_in_Mediated_Contexts/12.04%3A_Theories_of_Computer-Mediated_Communication">12.4: Theories of Computer-Mediated Communication - Social Sci LibreTexts</a></p><ul id="bbf062c3-778e-49ec-bade-ee64c0994f94" class="bulleted-list"><li style="list-style-type:disc">Uses and gratifications theory helps explain why people use the types of mass media they do. Papacharissi and Rubin found that there were five reasons why people use the Internet: interpersonal utility (allows people to interact with others), pass time (helps people kill time), information seeking (enables people to locate specific information they want or need), convenience (it’s faster than F2F or even a phone call), and entertainment (people enjoy using the Internet).</li></ul><ul id="681de82f-2786-4946-8c75-3b0d01f57606" class="bulleted-list"><li style="list-style-type:disc">Social presence theory helps us understand whether or not individuals using CMC technologies perceive the people they are interacting with as “real.” Our perceptions of social presence are largely based on the degree to which we can interpret nonverbal cues from the people we are interacting with.</li></ul><ul id="7b9550a5-fbab-43bd-ad16-54814cd7b0a7" class="bulleted-list"><li style="list-style-type:disc">Media richness theory helps us understand CMC behavior by examining the capacity that a type of media has for transmitting data. As media becomes richer and has more nonverbal content, the easier it is for a receiver to interpret the message accurately, which can, in turn, lead to more successful social interactions online.</li></ul><ul id="2e12d8c4-5602-48f3-aa36-f372d534ff65" class="bulleted-list"><li style="list-style-type:disc">Social information processing (SIP theory helps researchers understand the development of interpersonal relationships in CMC contexts. SIP argues that overtime relationships formed in a CMC context can develop like those relationships that develop F2F</li></ul><h3 id="2c532055-9110-473b-a479-2f42a5bba777" class="">Social Presence Theory</h3><ul id="d5e36fc3-e34b-4bd2-8b18-649316769670" class="bulleted-list"><li style="list-style-type:disc">The degree of awareness about another person</li></ul><ul id="db05b0f0-650f-4b46-8de5-bdbdfc7bbd45" class="bulleted-list"><li style="list-style-type:disc">The more you know about a person, you are more aware about them</li></ul><ul id="118040eb-1954-4a3b-bb0a-90042a484b66" class="bulleted-list"><li style="list-style-type:disc">Social presence is dependent on the kind of media being used</li></ul><ul id="d516751d-1882-4b62-95db-f9d4fc702fe6" class="bulleted-list"><li style="list-style-type:disc">If it’s face to face, your awareness is very high in comparison with online</li></ul><ul id="4f2202ca-abba-4031-877c-e5a0ed4a3505" class="bulleted-list"><li style="list-style-type:disc">F2F vs CMC - lack of non verbal cues and reduced feedback</li></ul><ul id="36f32944-5856-4c79-ac04-270896c88745" class="bulleted-list"><li style="list-style-type:disc">Extra effort to be taken to overcome shortcomings</li></ul><ul id="3da2cfd6-031b-42f9-865c-5deabc17f857" class="bulleted-list"><li style="list-style-type:disc">Difficult to resolve issues/miscommunications</li></ul><ul id="59dec6e9-0c31-4aea-a7ad-3377d96b8739" class="bulleted-list"><li style="list-style-type:disc">The time of when we message also matter</li></ul><ul id="f071d091-b771-4803-9c61-9282380fa644" class="bulleted-list"><li style="list-style-type:disc">Even though GIFs/Stickers and all these help in communication</li></ul><ul id="6c36ed74-bf35-42ac-9f4d-cf7fd3f68b65" class="bulleted-list"><li style="list-style-type:disc">What the medium can facilitate given the target the relationship needs</li></ul><ul id="e6f83caa-553f-4ec4-ac7a-6ba253004bac" class="bulleted-list"><li style="list-style-type:disc">Successful CMC is where the goals === social presence enabled by the medium</li></ul><ul id="b59ac00e-460e-41a3-a03a-52402491e26d" class="bulleted-list"><li style="list-style-type:disc">The more social presence we have in someone’s lives, the more you know that person</li></ul><h3 id="3bb1e396-264f-4ca4-b63e-c2ff48cd36a0" class=""> Uses and Gratification Theory</h3><ul id="30386e1b-5a2c-4472-b143-8726665dc51f" class="bulleted-list"><li style="list-style-type:disc">Explanation for why people use certain media</li></ul><ul id="0593a2e3-7580-46f7-af19-9ddf9ae38842" class="bulleted-list"><li style="list-style-type:disc">Some use calls, some use snapchat, some use telegram</li></ul><ul id="75bdae3c-2742-4bcb-a958-1b4351e903b3" class="bulleted-list"><li style="list-style-type:disc">Due to anonymity, features, constraints the media has, the other person’s relation with you</li></ul><ul id="94cd2c74-4e7c-40a4-8eca-ef8e85d2bc3d" class="bulleted-list"><li style="list-style-type:disc">Use or gratification as a reason: This is basically reason for any communication because you generally have a use or some satisfaction from that conversation</li></ul><ul id="4f3e6298-c9b0-454d-a3f7-3bdcd4580f5a" class="bulleted-list"><li style="list-style-type:disc">Interpersonal utility, pass time, information seeking, convenience an d entertainment</li></ul><ul id="9da80e3d-3350-4163-8b85-95ab4fc8aed8" class="bulleted-list"><li style="list-style-type:disc">CMC replacing F2F is not so rewarding because the communication is not so effective</li></ul><ul id="b33f6ee2-f6a0-4a8b-b194-cc4dafa51397" class="bulleted-list"><li style="list-style-type:disc">But CMC is more rewarding as a supplementary medium</li></ul><h3 id="49020431-c4ac-4591-90e7-6fc395f9d7e7" class="">Media Richness Theory</h3><ul id="b2b2dd5b-c7af-451a-a0c1-d19afe45f60c" class="bulleted-list"><li style="list-style-type:disc">Media and the number of channels used for providing information and feedback - rich vs lean</li></ul><ul id="b5512448-ca3d-44c5-9b38-76ab69617469" class="bulleted-list"><li style="list-style-type:disc">CMC is more focused than F2F in this case. Because say we are talking to a guy about something, we’ll be observing his clothes, smell etc.</li></ul><ul id="f7f59cac-a6fb-438f-88a8-f9dfa8abbb4e" class="bulleted-list"><li style="list-style-type:disc">Scope of interpretation of the communication task → the richness of media</li></ul><ul id="abb4565a-b2d6-42dd-8965-6ff56cfd3351" class="bulleted-list"><li style="list-style-type:disc">Tasks determine the information richness - inconclusive findings (For a salesman it’s better for him to be offline because he can be more persuasive and show his body language)</li></ul><ul id="a32eb30d-56e2-4484-bd9e-2f364100fc06" class="bulleted-list"><li style="list-style-type:disc">Experience → Effectiveness of CMC</li></ul><ul id="625a21f1-5300-4e98-8a1f-0621804024b5" class="bulleted-list"><li style="list-style-type:disc">More channels you have less focused you are</li></ul><h3 id="73e0918c-f5e4-499d-b6a9-c1c6624b17aa" class="">Social Information Processing theory</h3><ul id="595a7498-ddfa-4256-80e9-10fc8976d301" class="bulleted-list"><li style="list-style-type:disc">Decrease unreliability, develop bonding and bring closeness → Sharing Secrets</li></ul><ul id="cc3c848d-dc99-4a61-9fb1-ed5894fcca20" class="bulleted-list"><li style="list-style-type:disc">Probably in a fight or something, it’s better to use F2F than CMC</li></ul><ul id="0938b802-0782-4e1a-943f-311acefc2105" class="bulleted-list"><li style="list-style-type:disc">Non verbal cues don’t really determine the effectiveness</li></ul><ul id="be2819ac-7afc-4157-96b7-ef33f5474b13" class="bulleted-list"><li style="list-style-type:disc">Content, style and timing are important</li></ul><ul id="cd50a9ef-f860-4546-a760-7fcff362cb55" class="bulleted-list"><li style="list-style-type:disc">Interaction strategies are more used in CMC</li></ul><h3 id="3259a338-c55c-4ed9-ae20-bed20ce8e6ce" class="">Social Identification/De-Individuation Theory</h3><ul id="e9547c2a-1a9c-43ab-9a09-d25ff23f9108" class="bulleted-list"><li style="list-style-type:disc">Shortage of non-verbal cues → masks interpersonal and identity info</li></ul><ul id="860896e6-98ce-403d-bbfc-459c21744802" class="bulleted-list"><li style="list-style-type:disc">Leads to deindividuation</li></ul><ul id="fb406a05-47d1-445d-b3ef-2e9fe160b67a" class="bulleted-list"><li style="list-style-type:disc">Greater group identification → strengthening group norms.</li></ul><ul id="828243b7-9e0f-4bd2-af88-d884aa863e06" class="bulleted-list"><li style="list-style-type:disc">More effort to find similarities with others → creation of group identity</li></ul><h3 id="f5b56ca7-82ac-406d-9d1c-07d7084fcf37" class="">Hyper Personal Communication Model</h3><ul id="5935739d-c585-426d-a5d6-195ed8643276" class="bulleted-list"><li style="list-style-type:disc">Enhanced communication: sender, receiver, channel, and feedback</li></ul><ul id="ba304e28-e8c5-4fb3-9597-f2f880ef32f4" class="bulleted-list"><li style="list-style-type:disc">But feedback is a problem in CMC</li></ul><ul id="189d0057-d01f-412b-a493-2ae45c4efc23" class="bulleted-list"><li style="list-style-type:disc">More goal-oriented ness → more task-oriented (the process to get the goal done)</li></ul><ul id="e5af4b0d-c480-4355-9b83-43337e6336ae" class="bulleted-list"><li style="list-style-type:disc">Hyper personal feedback → effectiveness</li></ul><h1 id="3c916b8f-837b-4be5-a4a5-7eb38e2f340e" class="">Chatting and Online Dating</h1><ul id="f7004d0e-b456-47d8-8235-577bab5df220" class="bulleted-list"><li style="list-style-type:disc">We chat for time pass, gossiping, information sharing, bonding</li></ul><h3 id="dfca459e-7464-4eae-81a2-5094729b1ad4" class="">Chatting Behavior</h3><ul id="b33818fd-4751-42f1-bd2b-a76e1ae6b3aa" class="bulleted-list"><li style="list-style-type:disc">Continual craving for attention and gratification</li></ul><ul id="cf71867d-fb46-4d08-8ec3-5fcca1afece0" class="bulleted-list"><li style="list-style-type:disc">The willing suspension of disbelief</li></ul><ul id="b91513d8-2b3c-437a-b1e3-6dc01cceef2b" class="bulleted-list"><li style="list-style-type:disc">Procrastination is a lack of fulfillment in your life in some way.</li></ul><ul id="c34d57c0-aca1-4526-a9d6-ebc5b5010dd2" class="bulleted-list"><li style="list-style-type:disc">Caters to self-obsession → being desired, unique, and apart</li></ul><ul id="af60c4cc-da75-4757-b900-9c03b437f70c" class="bulleted-list"><li style="list-style-type:disc">Fewer Channels → Less complex → Social Presence Theory</li></ul><ul id="f13bc63c-94b0-4ed5-bab4-23ef3360cfec" class="bulleted-list"><li style="list-style-type:disc">Less social class consciousness and inhibitory behavior</li></ul><ul id="4c6216d3-2655-4f8e-8384-a624d31374cc" class="bulleted-list"><li style="list-style-type:disc">The effect of upbringing on chatting behavior - Personality changes, class consciousness, mannerisms etc.</li></ul><ul id="e2e9ff27-6624-45bd-aeae-fa6ea1883d8d" class="bulleted-list"><li style="list-style-type:disc">Anonymity - Absence of norms, restrictions, physical presence <ul id="217bde50-d1eb-4ef6-9262-b7705349ca57" class="bulleted-list"><li style="list-style-type:circle">No rules</li></ul><ul id="9698dcb9-c24c-4e4c-accc-96c2419a2abb" class="bulleted-list"><li style="list-style-type:circle">No liabilities</li></ul><ul id="729d0f95-8a05-4ce7-8393-67f27ea1225d" class="bulleted-list"><li style="list-style-type:circle">No morality</li></ul><ul id="9a3c4b8f-5294-4586-b77c-86bc31b4d908" class="bulleted-list"><li style="list-style-type:circle">No Boundaries</li></ul><ul id="a4cb09ee-a300-46c5-a799-84c9502ca35d" class="bulleted-list"><li style="list-style-type:circle">No relationship</li></ul><ul id="908db491-09de-4cdc-a3dd-79b3bfb84653" class="bulleted-list"><li style="list-style-type:circle">Unlimited Gratification</li></ul><ul id="962d371d-464d-4ea5-9ed2-0f1b3c00f722" class="bulleted-list"><li style="list-style-type:circle">Less self-conscious</li></ul><ul id="c54d735c-2dae-4b56-908d-049baeb6ff74" class="bulleted-list"><li style="list-style-type:circle">No inhibition</li></ul><ul id="c979f8ff-d710-4fb0-95d6-ce1f3e1984c3" class="bulleted-list"><li style="list-style-type:circle">No real identity</li></ul></li></ul><ul id="56420c31-a78e-4860-bfc6-f7c9ec068e22" class="bulleted-list"><li style="list-style-type:disc">Why anonymous<ul id="734538e6-4877-4bbb-9ead-f354647b6581" class="bulleted-list"><li style="list-style-type:circle">No one’s judging you</li></ul><ul id="5bf7dea9-c497-4b85-abbe-682f7aa7c2a8" class="bulleted-list"><li style="list-style-type:circle">Finding good friends is hard <em>if you keep ditching them</em></li></ul><ul id="ab3156ff-349e-4bc8-b8fd-dffbf1664c6c" class="bulleted-list"><li style="list-style-type:circle">Gratification</li></ul></li></ul><ul id="c34d74f2-a7ed-42d4-a4b8-aa297690558f" class="bulleted-list"><li style="list-style-type:disc">Deindividuation → antisocial and other kinds of deviant behavior<ul id="99e60a71-9c0f-4315-8bee-ba34ddcaf404" class="bulleted-list"><li style="list-style-type:circle">Leads to loss of identity</li></ul><ul id="d105fda1-ea63-421b-9472-50bbba221fda" class="bulleted-list"><li style="list-style-type:circle">Acquire someone else’s behavior and become antisocial/deviant</li></ul><ul id="1518bbf4-6424-4e0c-8bca-c132ba4284ba" class="bulleted-list"><li style="list-style-type:circle">Metacognitive awareness - helps in self-monitoring as well</li></ul></li></ul><ul id="a83095a4-3e18-4c4c-91e5-e572c7275d4e" class="bulleted-list"><li style="list-style-type:disc">Interactivity → interpersonal relationship, trust, psychological well being<ul id="caddb48c-5e41-4258-8686-eb6a968012cd" class="bulleted-list"><li style="list-style-type:circle">Good chat always leads to bond formation</li></ul><ul id="6d796d6f-4fc6-4c48-be3b-e64de73e2932" class="bulleted-list"><li style="list-style-type:circle">An honest bond</li></ul><ul id="c5c59706-4d74-4a7e-9aef-eff401db6c00" class="bulleted-list"><li style="list-style-type:circle">It helps in building a good relationship</li></ul><ul id="e6d214b2-f99d-4b16-872a-2852a3a0c5b3" class="bulleted-list"><li style="list-style-type:circle">Leads to mental wellbeing</li></ul></li></ul><ul id="494d73ed-a900-430b-9247-392bc64a51dd" class="bulleted-list"><li style="list-style-type:disc">Personal Choice vs Social Morality<ul id="748db41b-083a-4399-86cb-d2d905482584" class="bulleted-list"><li style="list-style-type:circle">You should take bath daily - Don’t do Aprup things</li></ul></li></ul><ul id="4a8b2c86-2072-45ed-bcfe-54ca9218b355" class="bulleted-list"><li style="list-style-type:disc">Morality - benefits</li></ul><h1 id="96e045bd-5560-4a3c-bb9b-d66ab8130c31" class="">Sexting</h1><ul id="89bd1a3b-d07e-46df-ab14-06d6c5c0344d" class="bulleted-list"><li style="list-style-type:disc">Chatting → Sexting, Closeness<ul id="97a74d48-fef1-4e87-9551-20458486c70e" class="bulleted-list"><li style="list-style-type:circle">Any exchange of sexually indicative content through chatting</li></ul><ul id="152bf96a-f90f-4314-a349-545771360378" class="bulleted-list"><li style="list-style-type:circle">Can be in the form of text, images, videos etc.</li></ul></li></ul><ul id="c0b4e5a9-c37e-4473-a256-515edf3a7cd3" class="bulleted-list"><li style="list-style-type:disc">Contemporary Research on Sexting</li></ul><ul id="2f7b0045-b3fa-4519-8164-3933439092ab" class="bulleted-list"><li style="list-style-type:disc">Depression → Irresponsible Sexting Behavior <ul id="5642d0f8-35d7-4e61-bd9f-a9a3d2a5c8a6" class="bulleted-list"><li style="list-style-type:circle">Non consensual</li></ul><ul id="73d69910-b00e-4abc-a67c-8a52b90333b0" class="bulleted-list"><li style="list-style-type:circle">Sexting someone you don’t trust</li></ul><ul id="3a2f8536-305c-4645-9edd-8bc6cc6c05c0" class="bulleted-list"><li style="list-style-type:circle">People with questionable past </li></ul><ul id="55514e10-3f24-49cd-916d-37319dbe8932" class="bulleted-list"><li style="list-style-type:circle">Can be Addicting</li></ul><ul id="3c7a626c-4b44-4bae-a789-e3dc890b1617" class="bulleted-list"><li style="list-style-type:circle">Also involves people who are gullible</li></ul><ul id="8b863b62-858d-4634-afbe-2f10945b6b77" class="bulleted-list"><li style="list-style-type:circle">Can also involve blackmailing/harassment</li></ul></li></ul><ul id="60039971-bca1-4dc4-904f-7f76c8f8ca20" class="bulleted-list"><li style="list-style-type:disc">More explicit texts than images</li></ul><ul id="66b5421b-b971-48f3-91ea-798273636dd3" class="bulleted-list"><li style="list-style-type:disc">Attached People <ul id="2047cdcd-ae5a-48d5-b19a-fa70b3cf2370" class="bulleted-list"><li style="list-style-type:circle">More Attachment. </li></ul><ul id="3da2d6b2-e32a-43c4-8e6e-9c295532ee24" class="bulleted-list"><li style="list-style-type:circle">Basically sexting can also help strengthen relationships but research always ignores the positive effect due to the fact that sexting is a taboo</li></ul></li></ul><ul id="0d84f3bb-f813-4dab-9e55-65199b075d21" class="bulleted-list"><li style="list-style-type:disc">Avoidant people <ul id="f531eb9a-4f3b-4733-a2f9-4558f34644d5" class="bulleted-list"><li style="list-style-type:circle">Fear of closeness</li></ul><ul id="f485e0e9-d059-4028-8121-46889143ac67" class="bulleted-list"><li style="list-style-type:circle">Strategy to satisfy sexual needs </li></ul><ul id="fc27298d-0af1-4748-bb9b-164038f89c3e" class="bulleted-list"><li style="list-style-type:circle">Afraid of building a complete relationship</li></ul><ul id="e0f9d913-e37f-4069-b026-eda905869d37" class="bulleted-list"><li style="list-style-type:circle">More like you feel that relations lose freedom</li></ul></li></ul><ul id="3e3597b2-6aa6-4795-be0f-3226d73e782f" class="bulleted-list"><li style="list-style-type:disc">Anxious-Ambivalent <ul id="4b18231f-5bb0-4fd7-bf3d-04a51dd10597" class="bulleted-list"><li style="list-style-type:circle">Sorta freeway, as in, it’s not exactly done but not like it’s dead as well</li></ul><ul id="9bf57257-8044-47f7-b0a5-8ee3721ff801" class="bulleted-list"><li style="list-style-type:circle">You want it but can’t commit to it</li></ul><ul id="46ba8f06-8f54-445f-ad03-33b31ea93bc4" class="bulleted-list"><li style="list-style-type:circle">Sex through sexting</li></ul></li></ul><ul id="657a35d7-3ef0-412e-bcb7-c56a72ee688d" class="bulleted-list"><li style="list-style-type:disc">Anxiety Attachment<ul id="e9b58525-fba3-4984-a33e-b0bd21042a06" class="bulleted-list"><li style="list-style-type:circle">Compulsive seeking of closeness</li></ul><ul id="8f1498e8-3510-47c5-83f6-cb1e1704f8fe" class="bulleted-list"><li style="list-style-type:circle">So insecure</li></ul><ul id="4dc08ae2-e45e-428c-98ef-3bebf7bd159e" class="bulleted-list"><li style="list-style-type:circle">More like possessiveness</li></ul><ul id="c283869c-bb11-48b8-ae36-85b315b9050e" class="bulleted-list"><li style="list-style-type:circle">Think they can save the relationship using sexting</li></ul><ul id="51e4db83-bb37-4e2d-87b9-b637d2db18cd" class="bulleted-list"><li style="list-style-type:circle">Maslow’s hierarchy of needs<ol type="1" id="e8b06e77-f417-4fd1-8879-b10947c56014" class="numbered-list" start="1"><li>Self Actualization</li></ol><ol type="1" id="b42ad343-419a-4d3e-9a22-99b9ffe6b6ed" class="numbered-list" start="2"><li>Esteem</li></ol><ol type="1" id="58d9826c-cef0-4f80-85a1-f2569751a1a9" class="numbered-list" start="3"><li>Love and belonging</li></ol><ol type="1" id="383deae4-48cd-4b85-b2fc-c3f52c6bc5fb" class="numbered-list" start="4"><li>Safety Needs</li></ol><ol type="1" id="4182b63a-469a-41e3-a446-b2b5be6d7a55" class="numbered-list" start="5"><li>Physiological needs</li></ol></li></ul></li></ul><ul id="46ce8909-6b2f-449f-a871-856d311ae81e" class="bulleted-list"><li style="list-style-type:disc">Established Relationships &lt; Young Adults → Less Sex</li></ul><ul id="4547e98b-8313-402a-9c72-694075b4f1b5" class="bulleted-list"><li style="list-style-type:disc">Nudes and Semi Nudes<ul id="19eee57b-fa7d-41a3-a625-ba91000cea8a" class="bulleted-list"><li style="list-style-type:circle">Generally Females in Avoidant relationships, because of the fact that sex is prioritized here but not closeness in the relationship</li></ul><ul id="99841523-10c1-462f-b748-d7f78a4fa5d8" class="bulleted-list"><li style="list-style-type:circle">Generally Males in Anxious relationships</li></ul></li></ul><ul id="588837e7-5c5c-4f4a-b5b9-ceff0a57977d" class="bulleted-list"><li style="list-style-type:disc">Married Couples → inconclusive about the satisfaction derived</li></ul><h1 id="568e71b9-a865-4e8c-8ab7-b3c9d92338f2" class="">Chatting and Identity</h1><ul id="afcea2c2-8db0-4a31-ad32-d0f303329393" class="bulleted-list"><li style="list-style-type:disc">CMC subverting social restrictions - preference for Mathematical matching algorithm - unlimited access<ul id="03510d25-2024-4fc5-9e54-5210e5fefc60" class="bulleted-list"><li style="list-style-type:circle">Feels like dystopia</li></ul><ul id="83e34409-d529-474e-a0ad-83dd193c79dd" class="bulleted-list"><li style="list-style-type:circle">Laziness, accessibility, or due to group identity but the main reason is intimacy needs</li></ul><ul id="4f0aa550-cf3c-45c8-9ade-30eece6b3571" class="bulleted-list"><li style="list-style-type:circle">Tinder is very good at giving intimacy needs</li></ul><ul id="05ebfe89-9bae-4b7b-b6a5-553e4c4a45b5" class="bulleted-list"><li style="list-style-type:circle">Subversion of social restrictions</li></ul></li></ul><ul id="b11c7398-2246-458e-89b3-ead3c5835327" class="bulleted-list"><li style="list-style-type:disc">Tinder times, distorted levels of attraction among partners, exceptionally positive<ul id="525cb612-8dc6-47f6-8fbf-899e52537f31" class="bulleted-list"><li style="list-style-type:circle">Level of affection is determined by the media</li></ul><ul id="205f3ad5-b2fc-4db9-bfa5-a7e27ee60a56" class="bulleted-list"><li style="list-style-type:circle">There are also trust issues</li></ul><ul id="9cc7c715-f769-4251-b9cd-b749293f44ef" class="bulleted-list"><li style="list-style-type:circle">The feel-good factor, there’s less accountability and responsibility</li></ul><ul id="7d6b3068-d593-4c21-b023-9470f94fa56a" class="bulleted-list"><li style="list-style-type:circle">Willing suspension of disbelief</li></ul></li></ul><ul id="d6b7a0fc-23ea-4bb0-89ea-49cba920a45f" class="bulleted-list"><li style="list-style-type:disc">Romantic attraction: physical attraction has visual cues which can be compensated by videoconferencing<ul id="e634041a-c62c-4633-bff7-41c57e891460" class="bulleted-list"><li style="list-style-type:circle">Videoconferencing adds channels, and the more the channels, the more trustworthy the relationship will be</li></ul></li></ul><ul id="df2b864f-53cf-4e98-9ecd-db32a089f9b5" class="bulleted-list"><li style="list-style-type:disc">Avoiding text-based conversations - more video based - accuracy of info</li></ul><ul id="edb27029-c27d-43bc-85fa-5f581657ed8e" class="bulleted-list"><li style="list-style-type:disc">Devaluing of human characteristics and objectification of partners<ul id="01167e55-abba-4062-8cd7-e7e046d687b7" class="bulleted-list"><li style="list-style-type:circle">High importance to physical traits over human characteristics</li></ul><ul id="140f4647-05bf-4360-b3e0-68a85bf51d72" class="bulleted-list"><li style="list-style-type:circle">We keep following parents and not questioning things. Questioning things ensures you get a better decision making skills, and then we get to become more individual and more independent</li></ul><ul id="7410de29-e916-47a2-8c68-a70bb7147630" class="bulleted-list"><li style="list-style-type:circle">Argue more, get better answers</li></ul></li></ul><ul id="88f67834-0704-449d-a326-16ffa6d653ad" class="bulleted-list"><li style="list-style-type:disc">Hyper personal model - perceiving and creating messages without F2F cues</li></ul><ul id="b57ca1af-1538-4a00-afde-65f81376d3c0" class="bulleted-list"><li style="list-style-type:disc">Identity projections - online self disclosure leading to intimacy<ul id="a3c5cc12-2f2e-46b4-92a1-e490a6d60c95" class="bulleted-list"><li style="list-style-type:circle">Acceptance</li></ul><ul id="6fd98488-5e1b-4777-bfa9-959db1aca5df" class="bulleted-list"><li style="list-style-type:circle">Expecting similar responses</li></ul><ul id="4d6f95a4-13a1-4969-9f25-11604040e131" class="bulleted-list"><li style="list-style-type:circle">Obtaining more intimacy</li></ul></li></ul><ul id="fcdaebc3-71c5-46ff-95ca-239aa28743d9" class="bulleted-list"><li style="list-style-type:disc">Hiding undesirable personal features - more poignant and sympathetic</li></ul><ul id="16b00f9e-d36d-4d85-b694-50682094e787" class="bulleted-list"><li style="list-style-type:disc">Strategic Revision - selective self-presentation vs cheating</li></ul><ul id="f7bb4eb8-b715-4f55-b7e1-aabac5f213ed" class="bulleted-list"><li style="list-style-type:disc">Trying out alternative identities, avatars, larger than life image<ul id="6ea2c405-92a4-4f38-bd9c-beaee0f4e8db" class="bulleted-list"><li style="list-style-type:circle">Low confidence in yourself</li></ul><ul id="88534910-4660-4ac6-af36-e635262e6c3b" class="bulleted-list"><li style="list-style-type:circle">Curiosity on how you can live like others</li></ul><ul id="904ebfb6-71a0-4702-baf6-020351eef6d7" class="bulleted-list"><li style="list-style-type:circle">Avatars because you like their characteristics</li></ul></li></ul><ul id="7cb5f73b-20bf-4754-84a5-08aea5b25e9e" class="bulleted-list"><li style="list-style-type:disc">Identity shift - evaluating and modifying one’s identity - reconstruction<ul id="26a3f939-dcb9-4f77-9da4-0976d4e6d093" class="bulleted-list"><li style="list-style-type:circle">Gender switches are examples where the person accepts the change first, then the family, friends, etc.</li></ul></li></ul><ul id="af6df973-0921-4748-aa8e-d85aa45c1a5c" class="bulleted-list"><li style="list-style-type:disc">Emotional and sexual cheating - online emotional behavior as more harmful<ul id="8767bca1-7b84-49ef-b4d5-196f116e72e1" class="bulleted-list"><li style="list-style-type:circle">Not being committed to the partner you choose</li></ul><ul id="423ac341-203a-4688-b26a-8a9b01b0ec91" class="bulleted-list"><li style="list-style-type:circle">Not emotionally invested in only one person who is called commitment</li></ul><ul id="a3eea479-900f-4069-ba6b-cb89827c18bf" class="bulleted-list"><li style="list-style-type:circle">Breaching that code, breaking trust, and not being loyal is also called cheating</li></ul><ul id="60fc8a62-7379-4d4c-b7e2-9dca5c418d75" class="bulleted-list"><li style="list-style-type:circle">When the other person has some emotional attachment with you but from your POV, it’s just a casual relationship</li></ul></li></ul><ul id="454474c4-f157-41da-8d84-290675edf950" class="bulleted-list"><li style="list-style-type:disc">25-40% of people are in committed relationships when they cheat<ul id="f9ef4360-c926-4302-92fb-10e0e2004b3c" class="bulleted-list"><li style="list-style-type:circle">The thin line starts when you start talking with multiple people at the same time</li></ul></li></ul><ul id="97891066-5cb7-4005-8af8-4f5339f18dcd" class="bulleted-list"><li style="list-style-type:disc">You are trying to build a relationship with someone, but if you deviate in between, it depends on how much you were involved in deciding whether you are cheating or not</li></ul><ul id="dcf86446-c093-440f-abe5-30f610417310" class="bulleted-list"><li style="list-style-type:disc">Committed cheats are more psychopathic, narcissistic, and less agreeable and conscientious (you have a conscience) than single ones - more casual sexual relationships<ul id="38bb9fb3-e00d-4ee6-ab7c-13a111bbae59" class="bulleted-list"><li style="list-style-type:circle">You love yourself too much</li></ul><ul id="6a43fc1a-7f13-4bc5-892a-fd8bba821623" class="bulleted-list"><li style="list-style-type:circle">Self-obsessed</li></ul><ul id="efb2e568-4fea-49d2-8736-f25cd16ff58e" class="bulleted-list"><li style="list-style-type:circle">Have pics of themself in their room</li></ul><ul id="3fd418bb-39eb-415b-9ecf-23c475c5b4bb" class="bulleted-list"><li style="list-style-type:circle">Psychopathic - Lack empathy</li></ul></li></ul><ul id="d5c899a4-c2b9-4f32-b969-4d558ad832a1" class="bulleted-list"><li style="list-style-type:disc">Committed women generally cheat less</li></ul><ul id="5a7f654d-0f1c-4533-a9c1-e8234b894a22" class="bulleted-list"><li style="list-style-type:disc">Cheating in a cyber relationship → Difficult to define<ul id="9e142bd2-a031-459a-92d4-f700d6b39aca" class="bulleted-list"><li style="list-style-type:circle">There’s no specific boundaries defined</li></ul><ul id="43f44242-3f00-41dd-a860-6468e537063f" class="bulleted-list"><li style="list-style-type:circle">Let’s say you are scared that someone will find out about something. The something is basically cheating.</li></ul></li></ul><ul id="4423705c-5062-441e-9e93-d365cac69058" class="bulleted-list"><li style="list-style-type:disc">Cheating in an in-person relationship → evading responsibility</li></ul><ul id="52040bd5-4492-4f02-92e0-9e0e4d9f36a7" class="bulleted-list"><li style="list-style-type:disc">With another person → Closeness, sharing feelings and maintaining a relationship → cheating</li></ul><ul id="515608a9-59e5-40bc-b5c8-232ede00e2bf" class="bulleted-list"><li style="list-style-type:disc">Misconceptions: The following are not true<ul id="20b4ad8d-a984-41c5-a2c9-2878976806c3" class="bulleted-list"><li style="list-style-type:circle">Existing bad relationships lead to online cheating</li></ul><ul id="4dacd283-a054-4769-9080-e1032e07defc" class="bulleted-list"><li style="list-style-type:circle">impossible to overcome the trauma of being cheated</li></ul><ul id="d728bbe9-8561-493d-a94c-d191dca1640d" class="bulleted-list"><li style="list-style-type:circle">Emotional Affair - not cheating </li></ul></li></ul><ul id="1764c8aa-9c21-448c-ab38-3a6269123788" class="bulleted-list"><li style="list-style-type:disc">Erotic growth and incompatibilities - the heart of cheating<ul id="ae5a7ba1-2a09-46a3-b6a9-1daadabf26b8" class="bulleted-list"><li style="list-style-type:circle">There is a craving for this and you end up talking to more people than the one you are committed to</li></ul><ul id="b8c71d45-b2ce-4d51-b64b-2fc916c3aee3" class="bulleted-list"><li style="list-style-type:circle">Cavemen moment → Socialization changed us, but previously, it was always like this</li></ul><ul id="b21cd234-4b1b-449a-877a-ecc4f811a4fd" class="bulleted-list"><li style="list-style-type:circle">Evolution cannot be proved as such</li></ul><ul id="86797c71-ee77-4f9f-9bcc-59aac93fc75d" class="bulleted-list"><li style="list-style-type:circle">Fantasies for something new and something exciting</li></ul></li></ul><ul id="17bf7eb6-df12-40ab-a72d-95917817406c" class="bulleted-list"><li style="list-style-type:disc">Unexpressed desire, participation, or exploration of another gender or sexuality</li></ul><ul id="eb6c2fd7-7e75-43fa-a7e0-35b3b16f6de9" class="bulleted-list"><li style="list-style-type:disc">Acknowledgment is the first step to regaining normalcy</li></ul><h1 id="b01efa38-6b9d-47ae-a4e2-4819b85c4c01" class="">Harassment</h1><ul id="c1ee7ca7-c204-4db5-8b26-1235b43986b3" class="bulleted-list"><li style="list-style-type:disc">Sexual Harassment increased with rise in online communication due to there being anonymity, less repercussions and easier to find victims</li></ul><ul id="d24b00a5-0db3-45c6-9e98-1dd8f773a9f2" class="bulleted-list"><li style="list-style-type:disc">You can go spot free and there are not many consequences </li></ul><ul id="4961eb6d-5bb5-4c16-b436-3d0170c6bb99" class="bulleted-list"><li style="list-style-type:disc">Gender harassment, unwanted attention and sexual coercion</li></ul><ul id="532ff9b0-2de4-4a9b-b409-60d40f0ba2c8" class="bulleted-list"><li style="list-style-type:disc">People follow herd mentality for harassment also</li></ul><ul id="4477c6a5-c00b-406b-930c-d8f815c754c4" class="bulleted-list"><li style="list-style-type:disc">Misogynist behaviors that are insulting, hostile or degrading </li></ul><ul id="147ed429-22ea-464d-a581-68948a641f9e" class="bulleted-list"><li style="list-style-type:disc">Creating a hostile work environment</li></ul><ul id="3efecf5e-f10a-47db-bc54-fcb71cb9ab61" class="bulleted-list"><li style="list-style-type:disc">Sexual comments about dress, touching and display of sexual materials</li></ul><ul id="f9d9e0cd-43b7-4c2e-93dc-82e830c12f6e" class="bulleted-list"><li style="list-style-type:disc">Passive harassment is where it goes under the table and is not direct</li></ul><ul id="83b0f7cf-fb06-4499-a7dc-cc6768ab362b" class="bulleted-list"><li style="list-style-type:disc">Active or Passive depends on <ul id="87e73e4e-df22-4b7f-a3f2-4ed3412117b1" class="bulleted-list"><li style="list-style-type:circle">Relationship history</li></ul><ul id="5b137e6a-98d8-4a84-bcde-ce2215252e9d" class="bulleted-list"><li style="list-style-type:circle">Social norms</li></ul><ul id="4a3cc695-9176-458d-9b65-039bce9cfe07" class="bulleted-list"><li style="list-style-type:circle">Empathy</li></ul><ul id="aec99d28-4398-4934-83f4-db9c791eea5d" class="bulleted-list"><li style="list-style-type:circle">Knowing what is harassment</li></ul></li></ul><ul id="b9eb3a86-7a23-463f-9b1e-3aa4be991cc5" class="bulleted-list"><li style="list-style-type:disc">Bribed or threatened to perform sexual acts in exchange for some job-related benefit</li></ul><ul id="23e6d424-3a5f-4160-8e4b-1f0974409ede" class="bulleted-list"><li style="list-style-type:disc">Email harassment, cyber stalking, cyber defamation, hacking, morphing (editing pictures), email spoofing (where the origin is misrepresented), cyber pornography, cyber sexual defamation, cyber flirting and cyberbullying</li></ul><ul id="a279b9d9-c2ea-4164-95cb-8007503e2c5d" class="bulleted-list"><li style="list-style-type:disc">Reasons: social stereotyping, lack of education, cultural beliefs, aloneness, lack of inhibition towards rules</li></ul><h1 id="04a1ff66-4fad-4eaa-934a-a871cdb5a962" class="">Streaming Videos</h1><ul id="bd8edb26-d7ba-48a6-9932-f932339f7d48" class="bulleted-list"><li style="list-style-type:disc">People try to comment too much to gain attention of streamers</li></ul><ul id="6be74f61-62f0-411a-98e6-cee0a2d6dd97" class="bulleted-list"><li style="list-style-type:disc">Streamer can be too general or a vlogger, youtuber or a live streamer</li></ul><ul id="5a99d464-7afc-4615-a4a0-07b57a82be1e" class="bulleted-list"><li style="list-style-type:disc">Creating - Streaming - Consuming Streaming Video<ul id="a84e4e26-5336-41c9-ab8a-b325a8bb56eb" class="bulleted-list"><li style="list-style-type:circle">Self Expression</li></ul><ul id="88f4992c-6178-446f-a797-2629f0a5b1ab" class="bulleted-list"><li style="list-style-type:circle">Spending time on the videos</li></ul><ul id="12e84963-fbda-4a83-9a7f-02340d1c1737" class="bulleted-list"><li style="list-style-type:circle">There are videos which are posted when they get more engagement</li></ul><ul id="5d6e1bcc-a280-46b6-9897-0ca1287aa397" class="bulleted-list"><li style="list-style-type:circle">People keep becoming more commercial</li></ul><ul id="1c553519-883e-4ee1-98ba-28ee2790c318" class="bulleted-list"><li style="list-style-type:circle">Lose their touch over time</li></ul><ul id="2aa0b907-d5d4-45bf-a00e-139bd002adbf" class="bulleted-list"><li style="list-style-type:circle">Become someone else</li></ul></li></ul><ul id="0878869d-b493-4ae3-af86-2f9dddf1a9de" class="bulleted-list"><li style="list-style-type:disc">On girls’ videos, comments are objectified, sleazy and vulgar</li></ul><ul id="a48750f9-9851-4ad2-b13e-ec6ee1b9a677" class="bulleted-list"><li style="list-style-type:disc">On boys’ videos, comments are nice and all properly</li></ul><ul id="a739a714-958f-4d2c-a2f6-f94e52d653a7" class="bulleted-list"><li style="list-style-type:disc">She doesn’t really like these comments but still continues to do the same → Gratification Theory</li></ul><ul id="75b8b270-15f0-4c2c-8635-5b35bdf039a5" class="bulleted-list"><li style="list-style-type:disc">Consumer behavior has a direct impact on the creator behavior</li></ul><ul id="104eaaba-5ab3-4561-9f8c-a3e72886ceb5" class="bulleted-list"><li style="list-style-type:disc">Creating → Extrinsic vs Intrinsic motivation, habit, incentive<ul id="ee060282-1677-45b4-9dfa-b89ed31edda3" class="bulleted-list"><li style="list-style-type:circle">Extrinsic → Financial gain, Social Appeal, Hotspot participation, economic benefit</li></ul><ul id="8d336493-c8d5-4c71-897c-222c94cb49af" class="bulleted-list"><li style="list-style-type:circle">Intrinsic → Learning more, gaining knowledge, self expression and emotional control</li></ul></li></ul><ul id="51b3b864-342f-4f73-bd3d-3770705348d7" class="bulleted-list"><li style="list-style-type:disc">4 types of behavior found in consumers → Play, stop, jump and pause</li></ul><ul id="f0c94630-c31c-4870-b0ad-74ba3d725216" class="bulleted-list"><li style="list-style-type:disc">Play it when you get what you want</li></ul><ul id="ce786176-5981-49dd-bf35-50c50a2c5195" class="bulleted-list"><li style="list-style-type:disc">Stop if there is any external block or you don’t need it anymore</li></ul><ul id="e8e1eeb6-4385-4357-a8ed-67739daf9442" class="bulleted-list"><li style="list-style-type:disc">Pause it when you have something else to do</li></ul><ul id="627b9395-0c59-4bf2-adb2-dc79a3c6af9e" class="bulleted-list"><li style="list-style-type:disc">Social signals, via facial expressions, body movement, vocal cues and written language(via chat) - affective computing - cooperative play</li></ul><ul id="742d121b-3836-47a9-9f86-b188d151b058" class="bulleted-list"><li style="list-style-type:disc">Cooperative play is when you come together and consume videos</li></ul><ul id="cd8821f8-c09c-4343-b1b8-1797f99a6738" class="bulleted-list"><li style="list-style-type:disc">Food - Fashion - Discount - Display of Products</li></ul><ul id="3a35f095-7514-43dc-a06c-c65a2ed35502" class="bulleted-list"><li style="list-style-type:disc">Discount is where you are getting discount for watching the video </li></ul><ul id="697038e7-9a11-4ea6-b741-71f1e8d40375" class="bulleted-list"><li style="list-style-type:disc">Life Satisfaction - Loneliness - Personality Traits - Motivations - Escapism - Peeking<ul id="7abdbdf8-7859-4f5f-b80c-6f1c367dd584" class="bulleted-list"><li style="list-style-type:circle">Every rom com can make you feel lonely</li></ul><ul id="e310969c-9e21-4e86-b1e1-13e049e3729b" class="bulleted-list"><li style="list-style-type:circle">You can derive life satisfaction from any thing that satisfies you</li></ul><ul id="6c2c45ad-c13e-408a-b0c1-bde7d2c8a9ab" class="bulleted-list"><li style="list-style-type:circle">Something you can’t do in real life, you try to derive from videos</li></ul><ul id="652cbdb7-0f3c-43d6-8a18-039ee8f86944" class="bulleted-list"><li style="list-style-type:circle">Escapism is where you escape from a situation by consuming videos</li></ul><ul id="8b1bfcf4-dd07-4d1a-94af-bebddd3216b4" class="bulleted-list"><li style="list-style-type:circle">Peeking into lives of others say home tours</li></ul></li></ul><ul id="84552360-f7b9-4787-9c42-b222d1608901" class="bulleted-list"><li style="list-style-type:disc">Agreeableness + Neuroticism = Addiction<ul id="d4daf4ac-a451-4ff7-a1e7-5f79ef43c770" class="bulleted-list"><li style="list-style-type:circle">Agreeableness is when you are nice and keep going with the flow, and you watch whatever people suggest</li></ul><ul id="4be62c89-826e-4fe2-8f71-c11224e8141f" class="bulleted-list"><li style="list-style-type:circle">Neuroticism is when you have some kind of compulsion and there is some amount of anxiety and you can be repetitive</li></ul><ul id="67b2ec15-54b5-4d04-ad9e-6cd61355bccb" class="bulleted-list"><li style="list-style-type:circle">If you are metacognitively aware, you tend to not get addicted i.e. you are able to manage your own thinking and your decisions</li></ul></li></ul><ul id="4ff79a43-a21d-43a4-bb7e-8c14619dc492" class="bulleted-list"><li style="list-style-type:disc">Filling gaps in information, understanding, education, holistic views about issues and keeping one updated</li></ul><h1 id="ec297e37-e67a-4d2a-9555-2748196ff8e7" class="">Gaming</h1><ul id="f3bb5ddb-c6b5-4715-bfa7-ac7382b07cbf" class="bulleted-list"><li style="list-style-type:disc">Passion, adrenaline, addiction, competitiveness, satisfaction, aggression, focus, reflexes, teamwork, mental sharpness</li></ul><ul id="f5c56a49-e1d8-4f13-a652-f8cda731b1f3" class="bulleted-list"><li style="list-style-type:disc">Benefits of controlled gaming → creativity, focus, multitasking, memory</li></ul><ul id="63b80b81-3ff8-4416-8020-6fd747055fb0" class="bulleted-list"><li style="list-style-type:disc">Uncontrolled → when it starts inhibiting your normal life<ul id="7ab419aa-36cf-4953-ba15-c6258b076c07" class="bulleted-list"><li style="list-style-type:circle">Become restless</li></ul><ul id="eeebb195-90e5-4326-8766-43715dcbf30a" class="bulleted-list"><li style="list-style-type:circle">Constantly seek gratification</li></ul></li></ul><ul id="5193b525-42e1-4530-a2c4-fd8c475c0301" class="bulleted-list"><li style="list-style-type:disc">Lower educational and career achievement, problems with peers, poor social skills, addictive behavior - males &gt; females</li></ul><ul id="27146a2e-ca18-43d7-8d31-0a7e7fc949d6" class="bulleted-list"><li style="list-style-type:disc">You wouldn’t want to socialize much</li></ul><ul id="3c4aa715-c7fb-459c-8699-29e1544c6d7b" class="bulleted-list"><li style="list-style-type:disc">Low self esteem and self efficacy, anxiety, aggression</li></ul><ul id="1b39c69c-be70-4fd7-996a-2ffa16c7f55e" class="bulleted-list"><li style="list-style-type:disc">Mostly people are worried their children get addicted but the main problem goes beyond the extent of playing, it also includes such issues as craving, loss of craving, loss of control and negative consequences of excessive gaming</li></ul><ul id="c4761b78-566c-43bc-8db0-4b9a72e36a25" class="bulleted-list"><li style="list-style-type:disc">Distorted sense of self and others, craving for an identity</li></ul><ul id="01c27c15-797d-478b-8941-cdb74e3611b7" class="bulleted-list"><li style="list-style-type:disc">People get lost in the game when they play and forget everything</li></ul><ul id="ddd90e24-1b41-474e-9c50-e2e0814d3ef9" class="bulleted-list"><li style="list-style-type:disc">There’s both positive and negative effects of gaming, and most of the negatives were just because of the fact that they were using gaming to cope against other life stressor</li></ul><ul id="9946a887-7c8c-42e0-9de4-dd930f4a7d33" class="bulleted-list"><li style="list-style-type:disc">Posiitves include reduced PTSD, reduced chronic pain and also help in improving visual cognition, arithmetic, memorization, leadership and team functioning</li></ul><h1 id="b5581315-f08a-446a-8383-54df593214c0" class="">Pornography</h1><ul id="9e33cce9-6d60-4a85-8b7c-8be6eb15de12" class="bulleted-list"><li style="list-style-type:disc">Videos used for sexual pleasure and fantasies. Pictures, audio, video, written text that can be used to satisfy your sexual cravings.</li></ul><ul id="3b9b39b9-571d-47f4-b8ca-3528c78cf176" class="bulleted-list"><li style="list-style-type:disc">It was always an integral part of our lives, say Ellora and Ajanta caves</li></ul><ul id="05de4015-53eb-459b-86de-447702740e0a" class="bulleted-list"><li style="list-style-type:disc">Even dancers in front of kings counts as porn</li></ul><ul id="40a2b335-3d95-47f4-87ca-fd7e2385255c" class="bulleted-list"><li style="list-style-type:disc">Also used as sex education since a long time</li></ul><ul id="328d9cc6-5bcd-4f83-9b1b-b0ee959ca431" class="bulleted-list"><li style="list-style-type:disc">Depiction of erotic behavior intended to cause sexual excitement, but the problem is what counts as erotic</li></ul><ul id="aa41e2ee-996c-453f-a83d-77923fbb0599" class="bulleted-list"><li style="list-style-type:disc">Say bestiality, rapes. Legally SC allows you to watch porn, but there are some clauses to it<ul id="233c41cb-1828-4ec7-8399-7860b293a1ec" class="bulleted-list"><li style="list-style-type:circle">Professionally shot porn is probably allowed</li></ul><ul id="021ab86c-8447-4224-8c46-e11b09380f4a" class="bulleted-list"><li style="list-style-type:circle">You cannot watch in public places</li></ul><ul id="7da04eba-760e-4e4a-8e2f-3850ae573f43" class="bulleted-list"><li style="list-style-type:circle">All child porn is illegal</li></ul><ul id="182211a7-15e8-4245-ac6b-266a46c13fb9" class="bulleted-list"><li style="list-style-type:circle">Rape/Violence against children, women are prohibited</li></ul><ul id="3bc56108-48f3-4b41-90cc-f688cc60afa4" class="bulleted-list"><li style="list-style-type:circle">Public obscenity is punishable</li></ul></li></ul><ul id="0e16a145-478c-4927-b5a6-0d8f004bfc69" class="bulleted-list"><li style="list-style-type:disc">50 shades of gray should be banned because it has BDSM?<ul id="c6b463f0-7a07-4826-a584-fb04714214d5" class="bulleted-list"><li style="list-style-type:circle">Not allowed for theoretical display (prolly)</li></ul><ul id="91b6bd3d-79e9-44ff-b66e-687633bd50a5" class="bulleted-list"><li style="list-style-type:circle">Lolita is banned in India</li></ul><ul id="97111d11-ee50-4e2a-a94c-44142d561c03" class="bulleted-list"><li style="list-style-type:circle">Law doesn’t support BDSM and it’s punishable in India</li></ul><ul id="d09563e4-789f-479b-8fdd-d9a666aa696f" class="bulleted-list"><li style="list-style-type:circle">Sex toys cannot be bought in India and searching for them can also be problematic - </li></ul></li></ul><ul id="39c3a52b-ec47-4292-be5c-02cc7311246d" class="bulleted-list"><li style="list-style-type:disc">Curiosity → Finding By Accident → Habit → Addiction (Through the ads)</li></ul><ul id="216ba62d-2a01-4901-a844-9bcc85dcb2e7" class="bulleted-list"><li style="list-style-type:disc">Reddit is a porn website ;-; → Source of pornographic that is legal?</li></ul><ul id="3c00a6ad-1c41-4f8e-a06e-0693dd1c95d7" class="bulleted-list"><li style="list-style-type:disc">During Covid, a lot of people bought new phones and all and got into this</li></ul><ul id="d1ba67a0-8cb3-452a-9893-460e6193505d" class="bulleted-list"><li style="list-style-type:disc">Research confined only to developed countries</li></ul><ul id="d84b8e01-a0c1-40db-b663-1e67708d2b8f" class="bulleted-list"><li style="list-style-type:disc">Sexual Pleasure &gt; Sexual Curiosity &gt; Fantasy &gt; self exploration &gt; lack of sexual satisfaction &gt; boredom prevention &gt; emotional suppression or distraction &gt; stress reduction &gt; other</li></ul><ul id="5cb1354c-5675-461b-9bf3-37140c8df042" class="bulleted-list"><li style="list-style-type:disc">Don&#x27;t watch porn during exams</li></ul><ul id="8165a30c-5323-42d9-bee7-bbefc8d35e2a" class="bulleted-list"><li style="list-style-type:disc">Emotional suppression is when they are going through a trauma and they end up watching porn</li></ul><ul id="779281fb-5160-4064-bf11-a83b82b86bac" class="bulleted-list"><li style="list-style-type:disc">Don&#x27;t believe that porn is good</li></ul><ul id="ea0a6515-c41e-428e-94ae-d757540d34f2" class="bulleted-list"><li style="list-style-type:disc">Porn is depiction of the act than the act itself</li></ul><ul id="a3c50199-63e4-4ae3-b01d-a967c5fbb3d4" class="bulleted-list"><li style="list-style-type:disc">In most porn, women are shown submissive, pleasing their partners and not focusing on their own pleasure<ul id="4f841481-a85c-490b-91c5-304b8c2adce1" class="bulleted-list"><li style="list-style-type:circle">Softcore pornography does not focus on genitals as much as hardcore does</li></ul></li></ul><ul id="2833055d-fb39-4ecc-af74-430616728085" class="bulleted-list"><li style="list-style-type:disc">Frequent exposure to sexually explicit material has an impact on their social perceptions and attitude toward reality</li></ul><ul id="cd5b5662-99dc-48bf-9034-50dc25bff49a" class="bulleted-list"><li style="list-style-type:disc">Early exposure to sexually explicit material increases the likelihood that both male and females  adolescents will engage in oral sex and sexual intercourse earlier than their non-exposed peers</li></ul><ul id="67497b93-5cbf-465e-8989-b0dc7259eff9" class="bulleted-list"><li style="list-style-type:disc">This study also suggested that frequent viewers of sexually explicit material believed using such material could create a more stimulating sex life for those consumers</li></ul><ul id="702830b6-87a9-4ac7-9690-993e4473bb7e" class="bulleted-list"><li style="list-style-type:disc">Their study found that increased exposure to sexually explicit material increased the likelihood
+that adolescents, regardless of gender, would view women as sex objects</li></ul><p id="7e1094dd-f20e-47d6-8a47-bc9c29fba561" class="">Problems with porn<div class="indented"><ol type="1" id="48477329-ca13-43e1-9ec1-86a4708ad6fe" class="numbered-list" start="1"><li>Conflict - Watching porn prevented me from bringing out the best in me<ol type="a" id="fed843fa-3ec8-4576-85d2-9e44b7aee3b2" class="numbered-list" start="1"><li>Gives you a sexual sense that is completely different from real life</li></ol><ol type="a" id="9aeac933-f344-406a-aaab-1bcdc047f578" class="numbered-list" start="2"><li>Negative sense of self comes in due to higher expectations from porn</li></ol><ol type="a" id="9c9adebe-9267-450c-bc38-80f24d87098a" class="numbered-list" start="3"><li>Don&#x27;t start believing in it</li></ol><ol type="a" id="08508a11-b63e-47d3-aacb-c45e197cd3fd" class="numbered-list" start="4"><li>Conflict arises when people put themselves in places of porn stars and feel bad when their social performance falls</li></ol></li></ol><ol type="1" id="7e03c514-6605-413b-904c-e3cfc4b19e49" class="numbered-list" start="2"><li>Mood modification - Watching porn got rid of my negative feelings<ol type="a" id="af6e32d4-0376-46a1-8b7e-8e9f4a313b10" class="numbered-list" start="1"><li>If you depend on porn for changing mood, then it&#x27;ll become an addiction</li></ol></li></ol><ol type="1" id="daa86f0f-36a1-4706-b957-f77d59ba8923" class="numbered-list" start="3"><li>Relapse - When I vowed not to watch porn anymore, I could only do it for a short period of time<ol type="a" id="8c3736c8-8114-4acc-9ea9-0b3f9c3f68f2" class="numbered-list" start="1"><li>One guy used to watch for 1hr everyday even though he had a job, family, children and he was sent a documentary on porn that is on Netflix which talks about how porn is made, how porn is consumed - Hot Girls Wanted</li></ol></li></ol><ol type="1" id="c8b85082-a0f3-4a0b-8039-88e012855655" class="numbered-list" start="4"><li>Salience - I continually planned when to watch porn (Reward themselves with porn)</li></ol><ol type="1" id="aede1a88-2098-4ea8-acdb-9a879a4c3158" class="numbered-list" start="5"><li>Tolerance - I felt that I needed more and more porn in order to satisfy my needs</li></ol><ol type="1" id="c7de3b22-74d3-4f37-abf5-5c160364d8f9" class="numbered-list" start="6"><li>Withdrawal - I became agitated when I was unable to watch porn</li></ol></div></p><ul id="410e824f-6710-483e-ab42-ef71e509eea0" class="bulleted-list"><li style="list-style-type:disc">20min of walk every day can help to stay away from depression and other stuff like porn and all </li></ul><ul id="aef47b9d-09d1-4609-849a-1b06bf83f3b2" class="bulleted-list"><li style="list-style-type:disc">Most porn consumption from Pakistan, Saudi, and Afghanistan</li></ul><h3 id="90529530-7157-4dc9-8d36-96fec8c59cbd" class="">Myths</h3><ol type="1" id="80aa1835-27e4-41f4-874f-936b0590f886" class="numbered-list" start="1"><li>Porn makes a bad society, this is not conclusive due to lack of data</li></ol><ol type="1" id="0fa3b129-d371-49f2-99b0-06b6de5e50c5" class="numbered-list" start="2"><li>Creates objectification<ol type="a" id="e7567c35-7e66-4305-a248-c4f6a079d340" class="numbered-list" start="1"><li>It can happen without porn also</li></ol><ol type="a" id="8635b9ac-09bc-45ae-aa2b-7f5860cba0d3" class="numbered-list" start="2"><li>Happens in movies also</li></ol><ol type="a" id="7104690b-808a-4256-8d4c-d189bd4999ba" class="numbered-list" start="3"><li>Male chauvinism is when they normalize male is more dominant</li></ol></li></ol><ol type="1" id="139c0ba8-60ed-4a02-8190-eda1e7a78cae" class="numbered-list" start="3"><li>Creates relationship problems<ol type="a" id="c4b2c518-282c-455e-bff9-3f6d62d83685" class="numbered-list" start="1"><li>Higher expectations from porn</li></ol><ol type="a" id="9bab0746-81c2-474c-8837-fc5180bb34f5" class="numbered-list" start="2"><li>People might focus more on porn than their partners</li></ol><ol type="a" id="d0960618-5473-4d04-909f-34d8a9cd0698" class="numbered-list" start="3"><li>Society is more conservative due to which there&#x27;s way less divorces assuming that there is a correlation between porn and divorces</li></ol></li></ol><ol type="1" id="b5f727b4-bca7-48d8-a121-0d5799dba273" class="numbered-list" start="4"><li>Pornifies the brain and rewires it negatively, so the brain needs to be rebooted</li></ol><ol type="1" id="e5dbd74f-6401-49a5-bf04-f89477c5bdef" class="numbered-list" start="5"><li>Leads to sexual offending and sexual violence towards women</li></ol><ol type="1" id="30e276ae-bae6-4ca8-a990-f4f1d948084e" class="numbered-list" start="6"><li>Addictive</li></ol><h1 id="091c6ca3-e5b9-43ec-a51c-068d37db7fa6" class="">Fake News</h1><ul id="6581842f-40ba-4279-91e2-d0ba262eeba6" class="bulleted-list"><li style="list-style-type:disc"><code>Plagiarism - 90 Words you don’t have to quote</code> </li></ul><ul id="18b39ce1-953f-4270-a517-986083cc85ff" class="bulleted-list"><li style="list-style-type:disc">Fake News is<ul id="55abf1ed-02c9-4370-86c4-3735c19a5ece" class="bulleted-list"><li style="list-style-type:circle">Made-up/Unreal/Lying → Misleading - no because made up can be fake news but fake news is not always made up</li></ul><ul id="25a0ac59-aaa2-4429-b7c0-8c23ded1ca35" class="bulleted-list"><li style="list-style-type:circle">Manipulation - Fake news has 2 parts, the action and the consequence. The more important feature in fake news is the consequence. Manipulation deals more with consequences</li></ul></li></ul><ul id="37e31e10-b0a4-4078-ad68-b3f095ae6f23" class="bulleted-list"><li style="list-style-type:disc">When we talk about fake news we talk about something that misleads</li></ul><ul id="a63fe498-ef3a-4a76-b84b-99a012e21e1a" class="bulleted-list"><li style="list-style-type:disc">We focus on consequence a lot because that is what matters to the guy started it in the first place and not the action but what he wanted out of it that is important</li></ul><ul id="cc59dc09-8999-417b-b1d9-381c2429eb05" class="bulleted-list"><li style="list-style-type:disc">Why fake news: We verify using <ul id="c99c90a2-8975-4957-8806-3f9d1d684b3b" class="bulleted-list"><li style="list-style-type:circle">Attention</li></ul><ul id="241df191-52ab-42c0-851f-f925e754938d" class="bulleted-list"><li style="list-style-type:circle">Personal Benefit</li></ul><ul id="73adb7fa-d570-4479-ac73-8e3b7410b573" class="bulleted-list"><li style="list-style-type:circle">Create Sensation</li></ul><ul id="296dbb71-61a4-4085-98ab-d0b2fbb666a5" class="bulleted-list"><li style="list-style-type:circle">Avoid Boredom</li></ul><ul id="afcd5690-9718-46b8-b09f-486909b8e7e7" class="bulleted-list"><li style="list-style-type:circle">Revenge</li></ul><ul id="968de7d0-408a-41eb-a242-d2091ca70bfc" class="bulleted-list"><li style="list-style-type:circle">For fun/enjoyment</li></ul></li></ul><ul id="4b4a0588-31c8-4b62-854f-f5e90dafc6fc" class="bulleted-list"><li style="list-style-type:disc">There’s no definition for fake news: Misleading information which is also falsely portrayed as news</li></ul><ul id="09ec65ae-059a-42f4-9d57-fa32483079c5" class="bulleted-list"><li style="list-style-type:disc">Misleading - action, not properly - intention - lying and bullshit</li></ul><ul id="d5333827-b98b-4e18-9b9d-6fffaba6b510" class="bulleted-list"><li style="list-style-type:disc">Value and intentionality</li></ul><ul id="8c0a7c58-0f46-4f76-83e6-0af617b84a27" class="bulleted-list"><li style="list-style-type:disc">Habit of quick information - seeking behavior</li></ul><ul id="33e3fda9-dd70-4d1d-8f4c-494b9102da1a" class="bulleted-list"><li style="list-style-type:disc">Who’s more vulnerable to fake news?<ul id="3d40f6ee-dc37-43f2-9fd3-3f465041fe0c" class="bulleted-list"><li style="list-style-type:circle">People with political allegiance, religious beliefs</li></ul><ul id="e5434776-e420-41b9-aaab-7c95df73ceea" class="bulleted-list"><li style="list-style-type:circle">Less informed people/Less aware people</li></ul><ul id="672071a0-7184-4917-b7cf-09dba6c27a5d" class="bulleted-list"><li style="list-style-type:circle">Lazy people and People in a hurry</li></ul><ul id="000ae2b0-250e-4cf5-9515-58f273e7971f" class="bulleted-list"><li style="list-style-type:circle">Senior Citizens</li></ul><ul id="c511c0b2-5490-46e0-abda-75273cac4bbf" class="bulleted-list"><li style="list-style-type:circle">Lack of concern for consequences </li></ul><ul id="a7dcadd6-029c-4668-a4ef-dbe321f06a23" class="bulleted-list"><li style="list-style-type:circle">Emotionally weak people</li></ul></li></ul><ul id="3d026bf1-c046-40fe-b640-c55deea74da0" class="bulleted-list"><li style="list-style-type:disc">Discuss rather than directly accepting</li></ul><ul id="a7d403f3-cc91-49ed-8755-8e82d391f963" class="bulleted-list"><li style="list-style-type:disc">Know the strategy</li></ul><ul id="043520e8-e6b9-456f-b029-7220ae5e9420" class="bulleted-list"><li style="list-style-type:disc">Corrections and Warnings</li></ul><ul id="bd056940-09ef-4ad2-b1c5-777f589c8948" class="bulleted-list"><li style="list-style-type:disc">Use reason, doubt and question things</li></ul><ul id="f37181f6-ba1b-423a-9d9f-b4a07d564168" class="bulleted-list"><li style="list-style-type:disc">Political<ul id="d1cef714-1d3e-40d8-83e8-208e5265ffc8" class="bulleted-list"><li style="list-style-type:circle">Mass manipulation</li></ul><ul id="3124ebc5-3f43-4438-89f6-fbe9399e6678" class="bulleted-list"><li style="list-style-type:circle">We’ll believe it because matches our thinking and has credibility</li></ul><ul id="aa22e26f-77d2-4500-8018-e770eb77b0d4" class="bulleted-list"><li style="list-style-type:circle">Herd Mentality</li></ul><ul id="10cc15b5-3778-482a-bead-68d187aa3c17" class="bulleted-list"><li style="list-style-type:circle">Laziness - Lazy to verify the things</li></ul><ul id="88c7a94b-e2d0-4380-93d5-65160cd527a4" class="bulleted-list"><li style="list-style-type:circle">Starts very harmless and intensity grows and becomes harmful</li></ul><ul id="edd64d74-05d6-4160-ab5c-21e1b87f8c4f" class="bulleted-list"><li style="list-style-type:circle">Adherance to scientists, babas, politicians - Sometimes causation and correlation can cause people to believe in babas and all</li></ul><ul id="30ac7b21-4143-4ed9-82aa-332f152b0532" class="bulleted-list"><li style="list-style-type:circle">Always use falsification, verification and questioning</li></ul><ul id="622387c0-0712-41cc-970f-ac500d67fc9e" class="bulleted-list"><li style="list-style-type:circle">Impacts of Political Hate Speech<ul id="fbef8c0e-768e-4d1b-b1e6-7e79f265234f" class="bulleted-list"><li style="list-style-type:square">Idealogical - Clash with belief Systems</li></ul><ul id="b2ab9f4f-08ed-4313-999b-a829437c130d" class="bulleted-list"><li style="list-style-type:square">Material - Can impact material characteristics of a person i.e companies can go down</li></ul><ul id="77259c3c-7802-4c5f-891a-b373275fdfc1" class="bulleted-list"><li style="list-style-type:square">Communal - May lose communal harmony as the reason</li></ul></li></ul></li></ul><ul id="63f964b2-2292-46ff-9ee9-c8f48c2ee025" class="bulleted-list"><li style="list-style-type:disc">Ambiguous <ul id="a4e478e2-dbf3-41bc-9e0f-0add51b17be8" class="bulleted-list"><li style="list-style-type:circle">Blurred Outlines<ul id="9977a812-20f5-4c37-9159-98312d5b873d" class="bulleted-list"><li style="list-style-type:square">When someone is trying to create a sensation</li></ul><ul id="b20ba355-13d2-40e3-99f2-a55c1be864af" class="bulleted-list"><li style="list-style-type:square">Creating disturbance/hatred</li></ul></li></ul><ul id="716e1e93-ef1e-4491-8b16-a7cd63b6a459" class="bulleted-list"><li style="list-style-type:circle">A behavior that’s psychotic and psychopathic</li></ul><ul id="514a458b-72bb-4eca-af6d-0947f931fb9a" class="bulleted-list"><li style="list-style-type:circle">Personal Challenge<ul id="6e5ccf46-83f6-462f-a01c-f9ce554530ad" class="bulleted-list"><li style="list-style-type:square">For example, people tell things that you can use them for your own challenge and try to challenge him</li></ul></li></ul></li></ul><h1 id="b899e06b-4021-4e21-9d95-08c964451c71" class="">Hate Speech</h1><ul id="0017a74c-3a29-42e5-a04c-4b8b2db38174" class="bulleted-list"><li style="list-style-type:disc">Discussion: Anything that is negatively exaggerated can be counted as hate speech</li></ul><ul id="35cc4beb-2d4e-484f-a131-8d4baee8ed2a" class="bulleted-list"><li style="list-style-type:disc">Discussion: It’s just a perception, maybe not universal as such</li></ul><ul id="cc8dcd3f-d3d4-45e6-b16b-d4ac125c1fc3" class="bulleted-list"><li style="list-style-type:disc">Very small line between freedom of speech and hate speech</li></ul><ul id="6ce98fe2-56f0-4d2c-9453-43a1c97ff920" class="bulleted-list"><li style="list-style-type:disc">Depends on the influence of the person</li></ul><ul id="6d789c83-c069-40da-8638-24280217f1a6" class="bulleted-list"><li style="list-style-type:disc">Tone and Context of the speech</li></ul><ul id="6de087f0-0244-4da3-a46c-b748e4a9ff74" class="bulleted-list"><li style="list-style-type:disc">Medium of the speech and Language</li></ul><ul id="922d9622-c9e0-4009-8357-b928574cff84" class="bulleted-list"><li style="list-style-type:disc">The audience for the speech and the speaker</li></ul><ul id="481a307d-ee1f-4b98-8817-7f1b1f2aca0c" class="bulleted-list"><li style="list-style-type:disc">But they are always spreading hatred against a person or a community of people</li></ul><ul id="f93f6ef0-3589-4c3b-bb58-bf2178e9f758" class="bulleted-list"><li style="list-style-type:disc">Hate Speech<ul id="7a8739c8-91f7-40c8-81b4-6ce103dc6417" class="bulleted-list"><li style="list-style-type:circle">Political<ul id="5b7929f7-8bc7-4018-b514-35be5cdae840" class="bulleted-list"><li style="list-style-type:square">No room for logical discussion, due to ego issues. </li></ul><ul id="1c20718c-fe4b-4cb0-919e-4dc7a9a04b67" class="bulleted-list"><li style="list-style-type:square">Facts cannot be brought to table</li></ul><ul id="c94831ac-a388-4e72-8aa8-0adff82f94a4" class="bulleted-list"><li style="list-style-type:square">High stakes involved → political parties that believe in religion</li></ul><ul id="b5ee0584-3ace-4644-a174-99aad8c4df15" class="bulleted-list"><li style="list-style-type:square">The benefits and outcomes are high</li></ul><ul id="d6f10bad-0cde-4ef5-bc1c-a4c0429345a4" class="bulleted-list"><li style="list-style-type:square">Counter the situation<ul id="13239ef0-6021-40ee-aad1-a910367f81e0" class="bulleted-list"><li style="list-style-type:disc">Empathy - Show some empathy towards the guy who’s spreading hatred</li></ul><ul id="0583a9d4-ddb8-405d-9fa2-3a88a8583efa" class="bulleted-list"><li style="list-style-type:disc">Tolerance - Don’t take it to heart and tolerate</li></ul><ul id="274ad196-a9be-4dd9-985e-7910b3a52911" class="bulleted-list"><li style="list-style-type:disc">Patience - Don’t get incited very easily</li></ul><ul id="1597a36c-00c4-465a-96d8-6513043fa955" class="bulleted-list"><li style="list-style-type:disc">Slow down and become individualistic</li></ul><ul id="825b2405-2db0-4f24-afeb-d54cf0d9eb5b" class="bulleted-list"><li style="list-style-type:disc">Verify - critical digital literacy</li></ul></li></ul></li></ul><ul id="81ee2130-0b70-4245-b885-019aa8c4c174" class="bulleted-list"><li style="list-style-type:circle">Personal<ul id="281d7ee7-7cc6-4232-bda1-ab904d43acc3" class="bulleted-list"><li style="list-style-type:square">Direct attack on you and these attacks are generally aimed at a single person</li></ul><ul id="61399869-7c8e-4eb1-b2d6-623f4f586a91" class="bulleted-list"><li style="list-style-type:square">Identity/Identifying yourself with a belief system</li></ul><ul id="cc14186a-9c18-456b-93fb-2fd05e3b51c6" class="bulleted-list"><li style="list-style-type:square">The stronger you bond with a system, the more you get offensive you take it</li></ul><ul id="5ff6c346-d130-4c87-aabe-7ad2351a4d8b" class="bulleted-list"><li style="list-style-type:square">General Perception vs Arguments against the same</li></ul><ul id="ebc4827f-7403-4e04-8e29-47062b89d777" class="bulleted-list"><li style="list-style-type:square">Destabilizing their belief system</li></ul><ul id="e05c6c2c-3639-4e37-be74-b4d860a118d9" class="bulleted-list"><li style="list-style-type:square">If there’s a scope for discussion, then it cannot be offensive </li></ul><ul id="f9bb1f0c-a7cf-473d-97c4-b7e61d12ee2c" class="bulleted-list"><li style="list-style-type:square"><em>NOTE: Ze is beyond male and female. For he, it’s him and she it’s her and ze it’s zir</em></li></ul><ul id="c59d770c-1e82-4efa-ad40-bdc4c912e9d7" class="bulleted-list"><li style="list-style-type:square">Room for discussion</li></ul><ul id="5cc67585-d586-465d-8c75-649603acb924" class="bulleted-list"><li style="list-style-type:square">Level playing field</li></ul></li></ul><ul id="9eea77c8-ee8c-4c30-9b05-bd34fa568190" class="bulleted-list"><li style="list-style-type:circle">Ambiguous</li></ul></li></ul><ul id="4cb6c586-484c-4af6-870d-fd65d5c848a7" class="bulleted-list"><li style="list-style-type:disc">We’ll talk about manipulative, impact, and also use cognitive sciences and psychology</li></ul><h1 id="34952d8e-0f1f-4500-8956-14f48b47ab2c" class="">Criticial Discourse Analysis</h1><ul id="57c8ac8b-adec-4bce-917e-6d1c849b819f" class="bulleted-list"><li style="list-style-type:disc">Text, Discourse and it’s Social Political Aspects<ol type="1" id="790e58be-80dd-43fa-9d45-826f9e7eb267" class="numbered-list" start="1"><li>Sentence Structure</li></ol><ol type="1" id="5fe9f2a9-c6e8-4e16-9aee-f27801373484" class="numbered-list" start="2"><li>Logical Aspect - Choice of words and phrases</li></ol><ol type="1" id="165b0ac2-d2b1-4c92-87c7-663305bff8c8" class="numbered-list" start="3"><li>Any Repetition</li></ol><ol type="1" id="6a6bd05b-cc9d-4c02-8be1-845d5e278605" class="numbered-list" start="4"><li>Intended Impact through language or image</li></ol></li></ul><hr id="dcb04efb-f4b5-42c7-9420-e03fb918d0aa"/><ul id="3f9ed2b5-4bc3-4f14-a7b9-278486c0d062" class="bulleted-list"><li style="list-style-type:disc">Inductive Coding → We have codes which categorize or label people into parts</li></ul><ul id="3cdd41a4-7c36-4cf9-9b49-613d4701b2ca" class="bulleted-list"><li style="list-style-type:disc">Deductive Coding → Patterns are already there, we make codes later</li></ul><ul id="22524b05-0db2-4219-8d75-2c640cc127dc" class="bulleted-list"><li style="list-style-type:disc">We try to identify a pattern here</li></ul><h3 id="381bb210-ee29-420b-9aac-698e1e8f4f90" class="">Text Analysis - Nehru Speech</h3><ol type="1" id="66f1dfcb-472d-4f2a-8863-d29b0115a190" class="numbered-list" start="1"><li>Sentences are long complex. All tenses are used. Incerted sentence structures are used</li></ol><ol type="1" id="581c28f9-21d5-4723-9954-b6f4ead6250c" class="numbered-list" start="2"><li>We are addressing a selctive percent of people</li></ol><ol type="1" id="b08b444f-7d4a-4965-938b-90f14b58f775" class="numbered-list" start="3"><li>Speech was projected as for the mass but could reach only a small percent</li></ol><ol type="1" id="bccfd9c7-1f3d-4327-a229-ea63df1d2a0e" class="numbered-list" start="4"><li>Manipulation/Deception involved</li></ol><hr id="3a3fa71f-f22d-4005-9dbb-6ddcd7eb5a3c"/><ol type="1" id="16d9d2f6-0c08-4a38-aa9a-a136831b7002" class="numbered-list" start="1"><li>Lots of references to time</li></ol><ol type="1" id="093f1ee9-d67c-4919-835d-19074d7fd80e" class="numbered-list" start="2"><li>Order of sentences is jumbled but not always → S V O</li></ol><ol type="1" id="91f24aa4-8028-48fe-9f8e-78b69ad72b1a" class="numbered-list" start="3"><li>Contrasting sentences</li></ol><ol type="1" id="e56a4806-c55e-4b02-baee-7aec95528916" class="numbered-list" start="4"><li>Independence, due to struggle he has an agenda</li></ol><h3 id="71a6dfdd-b802-4673-a064-f2ff0aba97e4" class="">Speech Analysis - MLK - I have a dream</h3><ul id="018eee94-db7e-41bc-a563-1c9900325bf3" class="bulleted-list"><li style="list-style-type:disc">Simple sentences</li></ul><ul id="9e9b9676-4381-4648-bdbe-65ebc1338750" class="bulleted-list"><li style="list-style-type:disc">Greatest demonstration</li></ul><ul id="eb77c4c0-ea87-4c68-b7c4-48243a5acdc6" class="bulleted-list"><li style="list-style-type:disc">history, freedom used a lot</li></ul><h3 id="33d2e853-ab99-4189-a824-35f1e8539ce9" class="">Video Analysis - Osho Marriage</h3><p id="535b5f6f-3805-408f-82f5-db06350f1472" class="">My Analysis</p><ul id="01c24698-aeda-42ad-8e26-6937fba9bec3" class="bulleted-list"><li style="list-style-type:disc">Against Marriage</li></ul><ul id="40688098-4af3-4df9-b939-077ea561b695" class="bulleted-list"><li style="list-style-type:disc">Keeps pointing out that Society forces something on you → 2</li></ul><ul id="ae5bc2dd-a0f8-4173-82d8-124154f746b9" class="bulleted-list"><li style="list-style-type:disc">Rebellious</li></ul><ul id="a5fd6912-b4bf-40a2-a65d-3c7d8f3d7935" class="bulleted-list"><li style="list-style-type:disc">Compares marriage to Slavery</li></ul><p id="c9d0fa66-3bdc-463c-9c91-82029764614a" class="">Discussion of Labels</p><ul id="3a1566e9-722f-44c0-80ee-7bb9b5158eeb" class="bulleted-list"><li style="list-style-type:disc">Paranoid</li></ul><ul id="e9afebdb-4112-4b09-8386-b03219a82e32" class="bulleted-list"><li style="list-style-type:disc">Anti Orthodoxy</li></ul><ul id="59351293-04a8-4311-88e5-4ef12ac8c53e" class="bulleted-list"><li style="list-style-type:disc">Rebellious</li></ul><ul id="6b300993-bae3-4e8d-adb5-be94829e0930" class="bulleted-list"><li style="list-style-type:disc">Hatred towards marriage</li></ul><ul id="1b2b1ebc-99eb-4db0-bba3-8b52b5a7d949" class="bulleted-list"><li style="list-style-type:disc">Lighting and Clothing<ul id="42f71fa3-bce0-45a4-9f8b-acf00de65afe" class="bulleted-list"><li style="list-style-type:circle">Trying to give an impression of a wise man/saint</li></ul><ul id="5bbbfdc9-87f8-4cba-a81d-7dd5ebc691e7" class="bulleted-list"><li style="list-style-type:circle">Expressionless → No Attachment with whatsoever he is talking about, no objectivity</li></ul><ul id="c6d11a66-9977-481b-8378-b228d51e1f44" class="bulleted-list"><li style="list-style-type:circle">Detachment</li></ul><ul id="c77073db-9730-44bd-9ec9-a05911bfaa23" class="bulleted-list"><li style="list-style-type:circle">Emphasis through pace</li></ul><ul id="9384734b-fc37-46cc-afbb-4298cb9c75ef" class="bulleted-list"><li style="list-style-type:circle">Clothes are fashionable, costly and anti-saintly</li></ul><ul id="a0dfaa6e-1f56-42a4-88dd-5d4813c3a86a" class="bulleted-list"><li style="list-style-type:circle">Skin is wrinkle-free and nails were manicured → Good self care is relavent, well-fed and even the seat is pretty costly</li></ul><ul id="86a05327-542c-47cd-b12b-44b9aff8ac3c" class="bulleted-list"><li style="list-style-type:circle">Affluent</li></ul></li></ul><ul id="1a945d92-bb47-4047-be18-45b5deee08fe" class="bulleted-list"><li style="list-style-type:disc">Metaphors → little bit advanced for general audience</li></ul><ul id="c02df84e-6c48-4f84-a7b7-42bc5dfee198" class="bulleted-list"><li style="list-style-type:disc">His target audience, slightly intellectual</li></ul><ul id="3bccd3a2-3aaa-4045-85c2-527f06f1c3c7" class="bulleted-list"><li style="list-style-type:disc">Successful and a lot of self assurance</li></ul><ul id="a6370ce9-3a63-4248-876f-5801b146ca39" class="bulleted-list"><li style="list-style-type:disc">He was dehumanizing</li></ul><ul id="46365e54-730b-4d11-88b3-7eb00b96e5e3" class="bulleted-list"><li style="list-style-type:disc">Fake science is involved</li></ul><ul id="b7713dd6-37cd-41e4-8b50-7afe448d5ed3" class="bulleted-list"><li style="list-style-type:disc">Created self elevation</li></ul><p id="1407c01c-5450-48e5-8fec-d8c12ce528e5" class="">Categorize these into Patterns</p><ul id="6275b33e-33b3-47c1-a667-014156c10c16" class="bulleted-list"><li style="list-style-type:disc">Against society norms</li></ul><ul id="cfe11c75-4801-49fc-8c7d-fdc83ef1bcdb" class="bulleted-list"><li style="list-style-type:disc">Free thinker</li></ul><ul id="5f93c076-91d7-4a0b-9bde-f0a44b67ceee" class="bulleted-list"><li style="list-style-type:disc">Personal Success</li></ul><ul id="8bedba9c-e5c7-4015-9c9b-52bf929c63fa" class="bulleted-list"><li style="list-style-type:disc">Focuses a lot on himself → Narcissism</li></ul><ul id="f75b9b4b-25ff-4723-be80-d8d8c5536942" class="bulleted-list"><li style="list-style-type:disc">Elite and intellectual audience</li></ul><p id="56b600dd-d788-47e7-8dad-91461bc155f8" class="">Next Level Analysis</p><ul id="c33c47d3-874d-45d8-8753-6e0ef090489f" class="bulleted-list"><li style="list-style-type:disc">Personal Impact</li></ul><h3 id="296a6c43-7865-476d-96f2-65a5895c19d9" class="">Video Analysis - Sam Harris - Best Arguments against Religion</h3><ul id="3b55a594-e531-477e-b452-a79733865c4e" class="bulleted-list"><li style="list-style-type:disc">Has case studies</li></ul><ul id="58ef05a2-d15d-469a-8dd5-2ede6a4540ac" class="bulleted-list"><li style="list-style-type:disc">Doesn’t give the choice of believing in religion</li></ul><ul id="89feadcc-d0a6-4c45-a4fe-3354ba2f125b" class="bulleted-list"><li style="list-style-type:disc">Tries to use emotional stories</li></ul><ul id="a0cb6bdf-b8d1-44b2-bde4-4fd6c9f79630" class="bulleted-list"><li style="list-style-type:disc">Attacks god in a very direct way</li></ul><ul id="3949147f-61bb-46c0-81ea-57c60bfd8798" class="bulleted-list"><li style="list-style-type:disc">Evidence based</li></ul><ul id="68d75ee4-bbe6-4b47-b0d2-835ee20e5901" class="bulleted-list"><li style="list-style-type:disc">Rich and affluent</li></ul><ul id="e4467efc-1f00-4bc6-b5b5-2ae264d8220b" class="bulleted-list"><li style="list-style-type:disc">Manipulative</li></ul><ul id="693be598-4b32-40ce-a8cb-c2f52334fb89" class="bulleted-list"><li style="list-style-type:disc">Weapon of Irony</li></ul><ul id="fa4083d5-8892-483f-9b00-4e5232ce8d89" class="bulleted-list"><li style="list-style-type:disc">Speaks confidently and very formal</li></ul><ul id="f5848bfb-4162-4481-8316-8469696069f6" class="bulleted-list"><li style="list-style-type:disc">He wants audience’s attention</li></ul><h1 id="9d1bf09b-c721-40cb-a8c0-8ac78e7851f0" class="">Critical Digital Literacy</h1><ul id="b3fb18b5-fc8d-45c5-94b3-81152684ac14" class="bulleted-list"><li style="list-style-type:disc">How to use digital tools</li></ul><ul id="23e7e2b6-12e5-43a9-b299-680272e43c3d" class="bulleted-list"><li style="list-style-type:disc">Where the info is available</li></ul><ul id="3284706f-5c49-44e4-ab2e-07e5bb447528" class="bulleted-list"><li style="list-style-type:disc">Reliability of info provided by sources</li></ul><ul id="21657c78-e9d9-41e9-af82-d61af2d59625" class="bulleted-list"><li style="list-style-type:disc">Awareness of intentions</li></ul><ul id="306b0049-ebab-4743-a102-98dec57e3128" class="bulleted-list"><li style="list-style-type:disc">Awareness of practices</li></ul><ul id="31966ce4-28ef-4102-a02b-a528f25ab25b" class="bulleted-list"><li style="list-style-type:disc">Awareness of manipulation</li></ul><ul id="92d18d97-eba9-4f31-8790-1c79cac06fdc" class="bulleted-list"><li style="list-style-type:disc">Verifying and validating info</li></ul><ul id="d642bb92-3a4f-40ce-a91c-c930bf6dc781" class="bulleted-list"><li style="list-style-type:disc">How it shapes relationships</li></ul><ul id="e674c8bb-142f-4c07-963c-92e704eb5622" class="bulleted-list"><li style="list-style-type:disc">Digital divide</li></ul><ul id="e115b9b6-96e2-4dec-a5ab-bde69fb69673" class="bulleted-list"><li style="list-style-type:disc">Digital haves and havenots</li></ul><p id="48e9afc0-ca94-4efa-97bd-050e9f33ed70" class="">Criticality is related to how we use facts, logic, science and reason</p><ul id="d2568f65-0ea0-4f6e-b6bb-ff2f332bdc52" class="bulleted-list"><li style="list-style-type:disc">Operationalisation of power</li></ul><ul id="447c69d2-5658-46d1-8710-6068ea53f094" class="bulleted-list"><li style="list-style-type:disc">Social inequalities → social divide → wealth controls knowledge → official knowledge</li></ul><h3 id="97963431-7048-4aea-a155-8a01863ddaf9" class="">Digital Literacy</h3><ul id="fa7af3f9-13cf-4b8c-8675-43f623a64002" class="bulleted-list"><li style="list-style-type:disc">Read and write online</li></ul><ul id="bd61a632-d62c-4741-9cf1-bc9804e30d95" class="bulleted-list"><li style="list-style-type:disc">Ability to do things online, verify and produce information online</li></ul><ul id="966e25b2-a4e3-4c67-a999-2ada16a2846d" class="bulleted-list"><li style="list-style-type:disc">Digital tools/technology and media</li></ul><ul id="8d99cd39-9bf6-4dc6-9c6e-c0966288f3f7" class="bulleted-list"><li style="list-style-type:disc">Literacies mean forms of literacy, used just due to the fact that there are many forms and not just one<ul id="7d865763-d778-4361-aed2-c2e51869952a" class="bulleted-list"><li style="list-style-type:circle">What you benefit with it</li></ul><ul id="bb54cf50-52fb-4253-94be-0d77fae862f0" class="bulleted-list"><li style="list-style-type:circle">What they benefit from you</li></ul><ul id="799cc6e5-cc1a-4436-a5ff-2cae6542d9a7" class="bulleted-list"><li style="list-style-type:circle">The way you are making use of it</li></ul><ul id="38dfb19f-b8b2-4027-bd97-bc348baa1d12" class="bulleted-list"><li style="list-style-type:circle">Ability to use language, images, videos and audio</li></ul></li></ul><ul id="0a23b703-c0eb-46fa-957e-4818a06cc1f6" class="bulleted-list"><li style="list-style-type:disc">Digital ability can lead to a divide. Someone who is exposed to the internet and using it for productive work will always be in a better place in comparision with others</li></ul><ul id="06419e3a-3b6f-47d1-9426-483c462c7760" class="bulleted-list"><li style="list-style-type:disc">Can impact the way social divisions are created</li></ul><ul id="cc3ebd7b-41f4-4703-b99d-d69fdf779357" class="bulleted-list"><li style="list-style-type:disc">Defn: Focus on Knowledge and Skills and focus is very less on how mediation works socioculturally - how meaning - making happens<ul id="fcda0378-f5b0-4f48-b227-edf3bc75a74d" class="bulleted-list"><li style="list-style-type:circle">Our point is that this is completely not dependent on mediation even though mediation works based on individual preference but this also comes from the mediator point of view</li></ul><ul id="68ebac20-51da-465f-a532-4ee77a7b9a71" class="bulleted-list"><li style="list-style-type:circle">This preference comes from training which comes from your social cultural background say your friends, family etc.</li></ul></li></ul><h3 id="a8c1aaaf-e8ca-4c53-a5de-5646f941c6eb" class="">Critical Digital Literacy</h3><ul id="305beb82-1125-48ec-bb75-33a972922f9b" class="bulleted-list"><li style="list-style-type:disc">Knowledge - Information</li></ul><ul id="b4525b77-f733-4cfe-a066-a8aed51aea7c" class="bulleted-list"><li style="list-style-type:disc">Skill - Awareness and digital</li></ul><ul id="93a357c5-aee9-4918-a7ec-36937da85123" class="bulleted-list"><li style="list-style-type:disc">What do we mean by critical<ul id="9192167f-d884-40aa-b5ca-396b8b9d24fc" class="bulleted-list"><li style="list-style-type:circle">Somebody who understands consequences</li></ul><ul id="74a52a3c-8fa7-4cff-be33-1e26716bf85d" class="bulleted-list"><li style="list-style-type:circle">Digital divide perpetuated leads to power</li></ul><ul id="77f6193e-1303-49b4-abfb-89ec05110895" class="bulleted-list"><li style="list-style-type:circle">Inequal access i.e. look at criticality in terms of access</li></ul><ul id="d3460138-4901-4084-b58e-318a2ca3f62d" class="bulleted-list"><li style="list-style-type:circle">Training can help you become good at stuff, and it can create a divide</li></ul><ul id="58a9f649-eb69-4686-9130-55fdc27fd383" class="bulleted-list"><li style="list-style-type:circle">How collaboration works and determines where you are placed and all</li></ul><ul id="5858c609-1fd9-4c96-a45c-3210adcb4350" class="bulleted-list"><li style="list-style-type:circle">Moral aspects → Need awareness → Also determines if it’s a crime or not<ul id="e0d92d20-b1f0-473d-a1cb-01068a2a22c8" class="bulleted-list"><li style="list-style-type:square">Pirating Stuff</li></ul></li></ul><ul id="6b69304e-e2f0-47af-829c-04803121fbfa" class="bulleted-list"><li style="list-style-type:circle">Control and Power</li></ul></li></ul><ul id="ef1afacd-d67c-43da-9447-2defeb3e4c94" class="bulleted-list"><li style="list-style-type:disc">If you are critical you understand all of the above</li></ul><ul id="18c68a5f-4a8a-4a55-9bb2-24c53e7d6b12" class="bulleted-list"><li style="list-style-type:disc">Verify Claim → Multitasking damages our brain and reduces our productivity<ul id="4efabaa8-e020-466e-b93e-1ffb64883553" class="bulleted-list"><li style="list-style-type:circle">To verify, we need reliable sources</li></ul><ul id="49275638-e00c-434a-8b76-31e2f582c973" class="bulleted-list"><li style="list-style-type:circle">Check citations, the organization, the credits</li></ul><ul id="de8411a9-a7e0-4ce9-bd5f-d11383412f46" class="bulleted-list"><li style="list-style-type:circle">Google Scholars</li></ul><ul id="e900f3b6-0ded-42bc-b284-b7ff277e5e9d" class="bulleted-list"><li style="list-style-type:circle">Check publishers → OUP, Elsivier, University Presses. Govt Reports, World NGO Reports</li></ul></li></ul><h3 id="d1dc6e01-58b3-4823-b4cd-16a53df99d88" class="">Search Engine</h3><ul id="c691a0fe-82c0-4811-8f9b-daf63a491d80" class="bulleted-list"><li style="list-style-type:disc">Search on google, duckduckgo, bing and yandex. I searched for the first word i.e. digital divide<ul id="41c846f4-2b0f-454d-81e5-96a7208a48ea" class="bulleted-list"><li style="list-style-type:circle">Digital Divide</li></ul><ul id="c2027fd6-6713-44ec-a8bb-ee29cd48978e" class="bulleted-list"><li style="list-style-type:circle">Internet Privacy</li></ul><ul id="ab2bbdc1-5f93-4168-b57b-8e0320a8ccb9" class="bulleted-list"><li style="list-style-type:circle">Criticial Pedagogy</li></ul><ul id="9e6093d0-f44d-407e-893e-d0f660aa4636" class="bulleted-list"><li style="list-style-type:circle">Trolling</li></ul></li></ul><ul id="fe42cb2b-abab-448e-ad89-b271d6ea1b0a" class="bulleted-list"><li style="list-style-type:disc">Google asked for location access and tried to give results as close as possible, highlighted the main definition</li></ul><ul id="d896d9de-0ea9-4f63-bc1f-62b8dcb621f9" class="bulleted-list"><li style="list-style-type:disc">Bing was also sorta similar, Bing also gave news articles, very accurate for translations</li></ul><ul id="81a733e7-205d-42fd-892b-4beeac733530" class="bulleted-list"><li style="list-style-type:disc">Duckduckgo gave definitions and words and didn’t give news articles. If you choose location videos and stuff as well</li></ul><ul id="9729798a-fe1d-49ae-9887-f4cc4d52e55a" class="bulleted-list"><li style="list-style-type:disc">Yandex gave global results as in it didn’t even go on to give results close to google or bing. Yandex gave international links of other languages also. Even yandex took location. Yandex seems to literally search for the keyword. Mostly gives russian results</li></ul><ul id="599ebfa8-586d-414e-aa3f-171662211b14" class="bulleted-list"><li style="list-style-type:disc">Tracking through cookies, frequency of websites, location, surveys, likes and dislikes</li></ul><h3 id="474d2bd9-860c-4b68-bf8a-0513e9b16f7c" class="">Internet Behavior</h3><ul id="90b57c30-40b4-4f52-8021-ce8bc215e17f" class="bulleted-list"><li style="list-style-type:disc">Posts and comments, why you liked and why you didn’t like?</li></ul><ul id="99438157-62db-433a-ab90-9da2022047e2" class="bulleted-list"><li style="list-style-type:disc">Posts that have guides or information given will generally get more likes while posts on controversial topics have a high chance of getting more dislikes due to the fact that there will always be people who are against it</li></ul><ul id="50d1ce27-2125-40ad-9b5e-d1421ca2cd5d" class="bulleted-list"><li style="list-style-type:disc">Companies play on the gratification mood and try to make you stay with the same company</li></ul><ul id="177af3a6-4076-46dd-91c7-bf85a28e422e" class="bulleted-list"><li style="list-style-type:disc">Even grammarly gives stuff like the number of words you use and all and it makes you use it more</li></ul><ul id="108c581e-9f27-43d1-a463-54a0726aef49" class="bulleted-list"><li style="list-style-type:disc">Pirated websites put in a lot of ads since they know that you won’t leave the website and they need to pay </li></ul><ul id="6497b91d-3f2a-4106-a78e-a056b81ddda8" class="bulleted-list"><li style="list-style-type:disc">Sometimes, you download the app just to view stats and get gratification</li></ul><h3 id="0a38b90c-13ee-4fc9-a317-5c7a6d4304f0" class="">The girl who posted obscene videos - Revisited</h3><ul id="515b0846-a1ac-4045-989a-b8a4d5bb69ee" class="bulleted-list"><li style="list-style-type:disc">What do you think about the Critical Literacy of the girl</li></ul><ul id="a8d29cd0-b1c8-4676-bcbd-1804436820e4" class="bulleted-list"><li style="list-style-type:disc">The obscene comments increases, views increased and even the videos went in the same direction</li></ul><ul id="46cf88ba-233c-4a8a-b69e-88ed336b189f" class="bulleted-list"><li style="list-style-type:disc">She doesn’t have much knowledge about videos and how to post them</li></ul><ul id="250ce688-f247-43bd-8072-703bbb2e0725" class="bulleted-list"><li style="list-style-type:disc">We can also say that she has high CDL because even though she knows she’s getting lewd comments, she keeps going to earn money and all even though she ends up objectifying herself</li></ul><ul id="5ab1f419-81d1-40de-9e96-2cbb11eb6390" class="bulleted-list"><li style="list-style-type:disc">Can we take it beyond - Personal</li></ul><ul id="32109222-9cbe-45f0-ae4e-c521f37a29fd" class="bulleted-list"><li style="list-style-type:disc">She will end up influencing other girls to objectify themselves and also increase chauvasnistic behavior</li></ul><ul id="ab765135-345c-4e6c-b9f5-ddbd17d001f6" class="bulleted-list"><li style="list-style-type:disc">The serious social consequence is that every other guy will now assume every girl is like that</li></ul><ul id="b3a324c9-8f59-47b3-a9db-1f661010b32c" class="bulleted-list"><li style="list-style-type:disc">Digital Footprint → Once you do something on any social media, it stays there forever</li></ul><h3 id="4786b4ba-0673-4b02-84c5-6a1d0cab4c63" class="">Innovation and Scholarship</h3><ul id="c582d5fe-072e-40ca-b701-8ab4439b714f" class="bulleted-list"><li style="list-style-type:disc">Being humane and philanthrophic</li></ul><ul id="35e75423-abd8-4d8d-a7c7-78c673b82d98" class="bulleted-list"><li style="list-style-type:disc">If your CDL is low, then even if you try to do all these things, the reverse effect comes up</li></ul><ul id="fb3c5c7e-6866-4ebc-8db6-4f0598e8262d" class="bulleted-list"><li style="list-style-type:disc">Example: Greta Thunberg → She is a child environmentalist but she also ended up getting caught in a few scandals</li></ul><h3 id="0e9f4456-f0c0-43fc-b244-9cbe989c7a31" class="">Communication, Collaboration and Participation</h3><ul id="e2e66cbd-8d23-4df4-b5a5-b005b0908928" class="bulleted-list"><li style="list-style-type:disc">Issues with old people who can’t use phone properly</li></ul><ul id="b75e27d7-28b6-4db8-b241-8c67595a758f" class="bulleted-list"><li style="list-style-type:disc">During Pandemic, people who had more CDL had it easy to host and record online meets</li></ul><h1 id="aeb3f30d-05e6-4229-b7a0-e51e86d39498" class="">Digital Marketing</h1><ul id="722a1bdf-e45b-44e3-af94-2cf7b63cb694" class="bulleted-list"><li style="list-style-type:disc">They keep track of your data</li></ul><ul id="075fbe15-1f15-4f17-8891-d043fc15eaed" class="bulleted-list"><li style="list-style-type:disc">They somehow always end up convincing you</li></ul><ul id="c3546759-b8ac-47da-bd09-068d65441ce5" class="bulleted-list"><li style="list-style-type:disc">Need to attract the consumer</li></ul><ul id="d00b4a69-7da3-4be9-aa45-0933dd2e89db" class="bulleted-list"><li style="list-style-type:disc">Computer Mediated Marketing - not there in the picture 2-3 decades ago</li></ul><ul id="d7b55bb5-fb60-41b8-9a67-8f9a81135495" class="bulleted-list"><li style="list-style-type:disc">Digital relationship with customers</li></ul><ul id="01be4169-356f-4241-9a5b-d09033bf9260" class="bulleted-list"><li style="list-style-type:disc">Transformation of consumer’s lives through digitisation</li></ul><ul id="76ba9c48-baed-455e-b991-d794246565eb" class="bulleted-list"><li style="list-style-type:disc">Acquire customers and build customer preferences, promote brands, retain customers and increase sales</li></ul><ul id="43855455-a28f-4672-ad64-7fcdc45a08d2" class="bulleted-list"><li style="list-style-type:disc">Invasion of privacy becomes common because the investment is low but profit is high and you can create addictive algorithms and get people to work on these</li></ul><ul id="435da899-e6f2-46ba-87d0-76a081ba27e1" class="bulleted-list"><li style="list-style-type:disc">Fair might become unfair but also vice verse, advertising opens up the market and every company has equal chance to decide which ad and how many ads there are</li></ul><ul id="198debae-92c2-479c-925d-e105974f4a92" class="bulleted-list"><li style="list-style-type:disc">Facebook also seems to reduce initial reach for a big company and then ask you money for increasing reach later</li></ul><ul id="14c88faf-cb3b-4ba2-afd3-33f50938e9f3" class="bulleted-list"><li style="list-style-type:disc">It does transform lives by giving you enough information about the same</li></ul><ul id="7fed4d1e-f1be-4079-8431-bef4f4aa94a2" class="bulleted-list"><li style="list-style-type:disc">We have digital literacy before advertising due to the fact that we need to know what we can watch, what we can reject and stuff</li></ul><h1 id="318c1945-a8a4-439b-b873-5f4f9c8a9fb7" class="">Advertising</h1><ul id="cd427923-6d4c-46f6-b962-321194cc4fe1" class="bulleted-list"><li style="list-style-type:disc">The first thing that catches our eye is always the vividness of messages </li></ul><ul id="3f69a5cc-1458-4da0-a0ae-a3a6eb1168ea" class="bulleted-list"><li style="list-style-type:disc">Interactivity - a saturation point - </li></ul><ul id="2031c6b1-6d42-4a6b-be69-756547830b39" class="bulleted-list"><li style="list-style-type:disc">Same response as a non digital ads</li></ul><ul id="5e6d5e53-a0f4-4295-83b0-2753de0b9ee9" class="bulleted-list"><li style="list-style-type:disc">Holding attention longer</li></ul><ul id="b583f244-9c2e-457f-b2e2-bda869a6f582" class="bulleted-list"><li style="list-style-type:disc">Use this for emails - <a href="https://tutanota.com/">Secure email: Tutanota free encrypted email.</a></li></ul><h2 id="588e6794-9ad2-4a0d-9852-d53950006256" class="">Mechanism of digital ads</h2><h3 id="9a3a79c2-60f3-47ea-9ec9-d9188cd7d205" class="">Brand Awareness</h3><ul id="2eb2cbea-fede-4676-89c8-835791851548" class="bulleted-list"><li style="list-style-type:disc">Knowing about the brands and products associated with the brand</li></ul><ul id="232acd2d-dabc-499d-a943-9b2e278fb13b" class="bulleted-list"><li style="list-style-type:disc">Having this means, we have more choices and you become critically aware of the choice</li></ul><ul id="ccb0c9e7-df22-4e5a-952c-9a99c2fb7262" class="bulleted-list"><li style="list-style-type:disc">Social cultural and economic awareness</li></ul><h3 id="6492373f-8cd0-43de-b233-6c3613fae4ce" class="">Brand Loyalty</h3><ul id="621e53b6-7057-49ae-b1de-07ca385d7698" class="bulleted-list"><li style="list-style-type:disc">Commitment to a brand</li></ul><h3 id="b38211a9-7709-4fa8-9de8-19e48defd380" class="">Buying behavior</h3><ul id="79b03734-aec1-4d7a-8eb7-c1038dd9ec83" class="bulleted-list"><li style="list-style-type:disc">Can be a routine, impulsive or even limited decision making</li></ul><h1 id="445e0076-818b-4bcc-ab1c-c7c2658a439a" class="">Privacy</h1><ul id="468345d2-a0de-4e18-bf17-d38827675c7a" class="bulleted-list"><li style="list-style-type:disc">Digitally self is alone, not actually a reality</li></ul><ul id="377bd338-02d6-4629-96b9-7d73a3870c24" class="bulleted-list"><li style="list-style-type:disc">Every data which once goes out can become risky </li></ul><ul id="ff56780c-ef4d-455c-814d-ca03270e7d28" class="bulleted-list"><li style="list-style-type:disc">May be socially unacceptable and to evade other social norms</li></ul><ul id="0dda5e3c-a621-4639-a720-234797fffe0e" class="bulleted-list"><li style="list-style-type:disc">There are movies which might not be released in india and people watch it just cause of curiosity and in cases like this you might want to evade the government and other norms</li></ul><ul id="d1f0b04b-b224-49ee-851a-bfb91f563344" class="bulleted-list"><li style="list-style-type:disc">Privacy is the state of being alone and that no one is monitoring and observing<ul id="51b34377-f847-4037-ad68-e2f7aefd9e78" class="bulleted-list"><li style="list-style-type:circle">You will feel safe</li></ul><ul id="4e1c34c6-4e63-475d-afbd-dd7f9c668568" class="bulleted-list"><li style="list-style-type:circle">Fear of being judged is not there</li></ul></li></ul><ul id="e2becca8-667d-4056-beb6-4f0aeeede567" class="bulleted-list"><li style="list-style-type:disc">Privacy and freedom of expression → challenged by digital media<ul id="c5356197-ca4d-4b1b-83bb-5a6bc79684c5" class="bulleted-list"><li style="list-style-type:circle">Freedom of expression should go hand in hand in with the other person’s boundaries</li></ul><ul id="4c3d94e4-d1c8-4413-8068-0481c0f51fc2" class="bulleted-list"><li style="list-style-type:circle">Saying it is not the problem but finding out that you did is the problem</li></ul></li></ul><ul id="f51b65d0-358a-4388-8091-e798b1bb8a76" class="bulleted-list"><li style="list-style-type:disc">Invasive Technologies<ul id="40df91f9-d8fc-4063-8293-1e69239ca42b" class="bulleted-list"><li style="list-style-type:circle">Spyware, Cookies, History</li></ul><ul id="9b4db06e-5584-493e-8fb4-d320f810412a" class="bulleted-list"><li style="list-style-type:circle">ISP visits</li></ul><ul id="092a13ab-c123-4f08-bc74-79cb9f8d5d1b" class="bulleted-list"><li style="list-style-type:circle">Call records and Truecaller</li></ul><ul id="c41de256-f8b1-4304-9929-40a7e17af683" class="bulleted-list"><li style="list-style-type:circle">Snapchat Map</li></ul><ul id="8ea40729-7019-47d5-b8a5-dd1149cb2cf9" class="bulleted-list"><li style="list-style-type:circle">Mail Track → Unprofessional → Block mails like this</li></ul></li></ul><ul id="64c5b0e5-64c2-45ec-b79c-94b26301f9db" class="bulleted-list"><li style="list-style-type:disc">Politics of Algorithms<ul id="88769099-02ce-4666-a54c-73711b70b029" class="bulleted-list"><li style="list-style-type:circle">Making something that makes you want it</li></ul><ul id="3fef6412-bd7a-4539-9cf2-e97358519717" class="bulleted-list"><li style="list-style-type:circle">There are people who push you to think in that direction</li></ul><ul id="0e165a7c-ca48-4e1c-8e60-2b4ae79dcbc6" class="bulleted-list"><li style="list-style-type:circle">They invade your thoughts as well as privacy</li></ul></li></ul><ul id="494e4087-86f5-491a-b640-1c2a3fcf6bea" class="bulleted-list"><li style="list-style-type:disc">Social Web → Opinions, Experiences and Knowledge + Personal Information such as names, contact information and private photos</li></ul><ul id="8d1cc45e-5571-43e3-a35c-b06313956004" class="bulleted-list"><li style="list-style-type:disc">Concern about threats → little application of adaptive behaviour</li></ul><ul id="1bd3b20f-4eb4-42a8-af97-ec4dff64d4bc" class="bulleted-list"><li style="list-style-type:disc">Privacy Paradox → Lack of Risk Awareness<ul id="cf50e142-ed12-4409-b7fc-e1740b165ca8" class="bulleted-list"><li style="list-style-type:circle">People get into trouble knowing that it’s trouble</li></ul></li></ul><ul id="a45097d8-faa4-4f4a-bec6-9e46a248dcf8" class="bulleted-list"><li style="list-style-type:disc">Online self disclosure<ul id="b71208df-c488-4759-9629-db49cd1d4d3e" class="bulleted-list"><li style="list-style-type:circle">Be careful on what all you disclose to a stranger</li></ul><ul id="f20276b3-d4b5-4e19-be53-26c765999dbc" class="bulleted-list"><li style="list-style-type:circle">Unless you become vulnerable how do you establish a relationship</li></ul><ul id="ffcef2df-1b53-43a6-a115-9ecfc6f4e8d6" class="bulleted-list"><li style="list-style-type:circle">Providing personal information in the Social Web can be considered self-disclosure</li></ul><ul id="5125f9c1-92a2-4a0f-ae7f-9ef598921632" class="bulleted-list"><li style="list-style-type:circle">As such, self-disclosure can vary in scope; in degree of intimacy or depth and value; of sincerity or precision; in tone; and in the degree of awareness</li></ul><ul id="3fff9242-443d-4566-8ae3-c5d181b6584e" class="bulleted-list"><li style="list-style-type:circle">An ideal degree of privacy is reached when the individual need for social interaction and
+self-disclosure is brought in line with the need for privacy</li></ul></li></ul><ul id="29301865-c137-4b44-9ba7-0402a0ad5ac8" class="bulleted-list"><li style="list-style-type:disc">Important Relations<ul id="88d214cd-42eb-4441-8c87-0b963d491382" class="bulleted-list"><li style="list-style-type:circle">Online privacy concerns are negatively related to public self-disclosure on the Social Web</li></ul><ul id="964a2e9a-a65c-4ed3-ad94-2440619e4f4f" class="bulleted-list"><li style="list-style-type:circle">Online privacy concerns are positively related to the importance of the social relevance of the Social Web.</li></ul><ul id="5c4d72ec-7b2f-4463-afe3-c2bc024ffdff" class="bulleted-list"><li style="list-style-type:circle">Importance of the social relevance of the Social Web is positively related to self-disclosure on the Social Web</li></ul><ul id="7464b33b-fe34-45ad-b3bf-fc38e297cece" class="bulleted-list"><li style="list-style-type:circle">Online privacy concerns are negatively related to the number of Social Web applications used</li></ul></li></ul></div></article></body></html>

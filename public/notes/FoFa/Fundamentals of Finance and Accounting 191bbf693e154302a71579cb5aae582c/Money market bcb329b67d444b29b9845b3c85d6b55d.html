@@ -1,0 +1,670 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Money market</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="bcb329b6-7d44-4b29-b984-5b3c85d6b55d" class="page sans"><header><h1 class="page-title">Money market</h1></header><div class="page-body"><nav id="92b7e2a6-37fb-4d0b-add9-b0455abed7bc" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#bde3ce61-06c7-4267-87ff-3acc71214547">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1fa1d04a-4f22-42bc-9f42-82a9c2137d8e">Yields on Money Market</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#568cb88a-4434-4f5b-94d4-90aaada8a27c">Effective Annual Return</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#db7222f0-456c-4ba9-a76e-7ba8660bb383">Discount Yields</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#eb175b73-efaf-4eff-a423-8e637c3e1a8b">Single Payment Yields</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3414be37-dba8-41ba-811f-773ff1c87589">Money Market Securities</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#260d7baa-eb96-44ed-83fb-28f19aecb664">Treasury Bills</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#58dbe2ff-5f46-4ff9-9169-1c7fd7f9d53b">Federal Funds</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#dff2805a-c4c1-41ee-9996-706b60bc183e">Repurchase Agreements</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ab8d6e95-fa25-45d4-82f7-f8719e9f0b4f">Commercial Paper</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#33236a75-b37f-493c-b05c-a6a0dd6a2e2d">Negotiable Certificates of Deposit</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#86d73b14-3ab3-4298-a043-f012b82ee80a">Banker’s Acceptances</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4554631b-80d6-413b-9b1c-07a7a2c0c76a">Market Participants</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d9ab4184-f169-4f86-b6d3-6324ec65e34f">US Treasury</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#08c0cc9f-baca-4fe9-a4c6-dcaadebe3a06">Federal Reserves</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ba936d57-32a7-4a5f-9c81-65d31d71065c">Commercial Banks</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a707167a-ce29-4f68-b18d-9e62db26a7bd">Money Market Mutual Funds</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7853f372-caea-4017-a985-5d4081342e02">Brokers and Dealers</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e7111438-8227-452d-819b-2ce6e5167f7b">International Aspects of Money Markets</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#23c42df1-d617-4381-8c30-0ac35ae6952d">Euro Money Markets</a></div></nav><h1 id="bde3ce61-06c7-4267-87ff-3acc71214547" class="">Introduction</h1><ul id="bf18343f-a3d5-4d8c-b199-9416b8126954" class="bulleted-list"><li style="list-style-type:disc">Short term debt instruments are issued by economic agents that require short term funds</li></ul><ul id="c48eadf9-a30a-4d4e-871b-b9ae3c20f990" class="bulleted-list"><li style="list-style-type:disc">Money markets trade in secondary trade markets</li></ul><ul id="952aa9f6-8174-41c1-a4c4-2c9d536f18a7" class="bulleted-list"><li style="list-style-type:disc">Capital markets serve similar function for market participants with excess funds to invest for periods of time longer than one year</li></ul><ul id="81e16c29-9ce2-494a-9167-7c9c77c6ad29" class="bulleted-list"><li style="list-style-type:disc">Reallocate the fixed amounts of liquid funds available in the market at any particular time</li></ul><ul id="8ec0a3a6-aabe-4596-9579-047d3b9a7522" class="bulleted-list"><li style="list-style-type:disc">Need arises because of the immediate cash needs of individuals, corporations and governments do not coincide with their receipts of cash</li></ul><ul id="5ec0a410-c164-4a39-9c74-1f32b605374b" class="bulleted-list"><li style="list-style-type:disc">Excessive holdings of cash balances involve a cost in the form of forgone interest → opportunity cost</li></ul><ul id="ee13cbf5-902d-47ee-ae3b-3f6db2b1fb24" class="bulleted-list"><li style="list-style-type:disc">We generally put only minimum needed to meet their day to day transactions</li></ul><ul id="fc0a70a0-d61a-4ec0-9a0b-b357072cc2b0" class="bulleted-list"><li style="list-style-type:disc">Holders of cash invest excess cash funds in financial securities that can be quickly and relatively costlessly converted back to cash when needed with little risk of loss of value over the short investment horizon</li></ul><ul id="afadfd04-98ed-43cb-bc6c-b612274c099b" class="bulleted-list"><li style="list-style-type:disc">Money markets enable large amounts of money to be transferred from suppliers of funds to users of funds for short periods of time both quickly and at low cost to the transacting parties</li></ul><ul id="874e7abc-c31a-47a7-8d0a-775c8cef9915" class="bulleted-list"><li style="list-style-type:disc">Money market instrument provides an investment opportunity that generates higher rate of interest than holding cash but it is also very liquid and has relatively low default risk</li></ul><ul id="d1a4464c-3558-4439-a64c-e82b7f82b6be" class="bulleted-list"><li style="list-style-type:disc">3 Basic charecteristics<ul id="423160b0-aa6d-4337-b88c-de70c0fb0bb1" class="bulleted-list"><li style="list-style-type:circle">Sold in large denominations - to avoid time waste and low transaction cost for the sellers</li></ul><ul id="ffea907c-0ae8-46b0-a68b-dc3ebc7c89cf" class="bulleted-list"><li style="list-style-type:circle">low default risk - the risk of late or non payment of principal and or interest is generally small</li></ul><ul id="eb1f7cea-ab39-4f11-a7dc-3349751b6f08" class="bulleted-list"><li style="list-style-type:circle">Original maturity of one year or less</li></ul></li></ul><h1 id="1fa1d04a-4f22-42bc-9f42-82a9c2137d8e" class="">Yields on Money Market</h1><ul id="e11679ec-d4f6-4657-ae4b-855fb93b5e55" class="bulleted-list"><li style="list-style-type:disc">We cannot use time value of money equations</li></ul><ul id="e8e2729a-cd40-478a-a76d-6e4ddf07cb76" class="bulleted-list"><li style="list-style-type:disc">Some are based on 360 day year while some are based on 365</li></ul><ul id="650e5df2-6a9f-4057-be30-961efd8f2b8e" class="bulleted-list"><li style="list-style-type:disc"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>i</mi><mrow><mi>d</mi><mi>y</mi></mrow></msub><mo>=</mo><mfrac><mrow><mo stretchy="false">(</mo><msub><mi>P</mi><mi>f</mi></msub><mo>−</mo><msub><mi>P</mi><mi>o</mi></msub><mo stretchy="false">)</mo></mrow><msub><mi>P</mi><mi>f</mi></msub></mfrac><mo>∗</mo><mfrac><mn>360</mn><mi>h</mi></mfrac></mrow><annotation encoding="application/x-tex">i_{dy} = \frac {(P_f - P_o)} {P_f} * \frac {360} {h}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9456279999999999em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathnormal">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">d</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.5861599999999998em;vertical-align:-0.5480799999999999em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.03808em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3487714285714287em;margin-left:-0.13889em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29011428571428566em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.51308em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3487714285714287em;margin-left:-0.13889em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29011428571428566em;"><span></span></span></span></span></span></span><span class="mbin mtight">−</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.16454285714285719em;"><span style="top:-2.357em;margin-left:-0.13889em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">o</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.5480799999999999em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">h</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">360</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span><span>﻿</span></span> → This is discount yields if we don’t compare discount securities to the US Treasury bonds</li></ul><ul id="40e1a68d-e9b4-4486-815c-9e9fd299e0b2" class="bulleted-list"><li style="list-style-type:disc">P_f is face value</li></ul><ul id="e6879c4a-de15-4144-b7ce-79f0608c90e3" class="bulleted-list"><li style="list-style-type:disc">P_o is the purchase price</li></ul><ul id="0234dfbc-8119-4b27-8c4f-0023ecbe0dcb" class="bulleted-list"><li style="list-style-type:disc">h is the number of days until maturity</li></ul><ul id="000d41fc-99da-4427-adba-337525fab679" class="bulleted-list"><li style="list-style-type:disc"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>i</mi><mrow><mi>b</mi><mi>e</mi><mi>y</mi></mrow></msub><mo>=</mo><mfrac><mrow><mo stretchy="false">(</mo><msub><mi>P</mi><mi>f</mi></msub><mo>−</mo><msub><mi>P</mi><mi>o</mi></msub><mo stretchy="false">)</mo></mrow><msub><mi>P</mi><mi>o</mi></msub></mfrac><mo>∗</mo><mfrac><mn>365</mn><mi>h</mi></mfrac></mrow><annotation encoding="application/x-tex">i_{bey} = \frac {(P_f - P_o)} {P_o} * \frac {365} {h}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9456279999999999em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathnormal">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">b</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">ey</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.48318em;vertical-align:-0.44509999999999994em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.03808em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.16454285714285719em;"><span style="top:-2.357em;margin-left:-0.13889em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">o</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.51308em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3487714285714287em;margin-left:-0.13889em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29011428571428566em;"><span></span></span></span></span></span></span><span class="mbin mtight">−</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.16454285714285719em;"><span style="top:-2.357em;margin-left:-0.13889em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">o</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.44509999999999994em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">h</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">365</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span><span>﻿</span></span> → This is bond equivalent yields if we compare discount securities to US Treasury bonds</li></ul><ul id="23e04498-3165-4abe-9234-d8fac53a3409" class="bulleted-list"><li style="list-style-type:disc">The only change is that we are avoiding arbitrage opportunities based on the number of days</li></ul><ul id="ec501669-497c-4f78-986d-abf19615072a" class="bulleted-list"><li style="list-style-type:disc">So interest rate will change</li></ul><h2 id="568cb88a-4434-4f5b-94d4-90aaada8a27c" class="">Effective Annual Return</h2><ul id="272721cb-162a-406e-a992-5fa038787062" class="bulleted-list"><li style="list-style-type:disc"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mi>A</mi><mi>R</mi><mo>=</mo><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><msub><mi>i</mi><mi>b</mi></msub><mi>e</mi><mi>y</mi><mi mathvariant="normal">/</mi><mo stretchy="false">(</mo><mn>365</mn><mi mathvariant="normal">/</mi><mi>h</mi><mo stretchy="false">)</mo><msup><mo stretchy="false">)</mo><mo stretchy="false">(</mo></msup><mn>365</mn><mi mathvariant="normal">/</mi><mi>h</mi><mo stretchy="false">)</mo><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">EAR = (1 + i_bey/(365/h))^(365/h) - 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.138em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">b</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.03588em;">ey</span><span class="mord">/</span><span class="mopen">(</span><span class="mord">365/</span><span class="mord mathnormal">h</span><span class="mclose">)</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8879999999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mopen mtight">(</span></span></span></span></span></span></span></span><span class="mord">365/</span><span class="mord mathnormal">h</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></span><span>﻿</span></span></li></ul><h2 id="db7222f0-456c-4ba9-a76e-7ba8660bb383" class="">Discount Yields</h2><ul id="b50e65e9-156b-4a12-8b0a-06be94cb7351" class="bulleted-list"><li style="list-style-type:disc">Some money market instruments are sold on a discount basis</li></ul><ul id="4047c2ec-564c-4b1d-b7cd-cafbf2fb9f23" class="bulleted-list"><li style="list-style-type:disc">Instead of directly received interest payments over the investment horizon, the return on these securities results from the purchase of the security at a discount from it’s face value and receipt of face value at maturity</li></ul><ul id="38db860d-0cc3-42df-b15f-2ff57b1d5295" class="bulleted-list"><li style="list-style-type:disc">These use a 360 day year</li></ul><ul id="e8b6f403-7355-4838-be59-695b488fd361" class="bulleted-list"><li style="list-style-type:disc">i_bey = i_dy * (Pf/Po) * (365/360)</li></ul><h2 id="eb175b73-efaf-4eff-a423-8e637c3e1a8b" class="">Single Payment Yields</h2><ul id="877691d2-5078-4065-9482-4264b408e513" class="bulleted-list"><li style="list-style-type:disc">Pay interest only once</li></ul><ul id="6dd9c896-05f4-43bc-85b2-078ef278fdc5" class="bulleted-list"><li style="list-style-type:disc">Receives a terminal payment consisting of interest + the face value</li></ul><figure id="840293c9-d7e1-4d98-8c04-e833efd6bc33" class="image"><a href="Money%20market%20bcb329b67d444b29b9845b3c85d6b55d/Untitled.png"><img style="width:1043px" src="Money%20market%20bcb329b67d444b29b9845b3c85d6b55d/Untitled.png"/></a></figure><h1 id="3414be37-dba8-41ba-811f-773ff1c87589" class="">Money Market Securities</h1><h2 id="260d7baa-eb96-44ed-83fb-28f19aecb664" class="">Treasury Bills</h2><ul id="f74175da-bf7e-4000-a565-b213e006a812" class="bulleted-list"><li style="list-style-type:disc">Main tool used by US government to implement monetary policy</li></ul><ul id="af3f86ec-f0e2-4e1f-940f-4309ee2dee89" class="bulleted-list"><li style="list-style-type:disc">Sold through an auction</li></ul><ul id="2c3c56d9-2688-4d76-8c23-6978a26bd709" class="bulleted-list"><li style="list-style-type:disc">Because backed by the US government, virtually default risk free</li></ul><ul id="72b8c7da-55df-4d4e-b622-fe2a8ced297c" class="bulleted-list"><li style="list-style-type:disc">The risk free asset in the US</li></ul><ul id="2a30ae48-48be-48f9-8836-81b86fded7ad" class="bulleted-list"><li style="list-style-type:disc">Little interest rate and liquidity risk</li></ul><ul id="dfae4004-9da9-4282-b5ed-7a7fc8b838ac" class="bulleted-list"><li style="list-style-type:disc">In competitive bids, highest bidder receives the first allocation of T bills and subsequent bids are filled in decreasing order of the bid</li></ul><ul id="c7c56970-1922-4138-b866-7288b7c1f140" class="bulleted-list"><li style="list-style-type:disc">No bidder can legally receive more than 35% of the T-bills involved in any auction</li></ul><ul id="f10107f3-394d-4602-b3ba-bbe22490aa66" class="bulleted-list"><li style="list-style-type:disc">In noncompetitive bids, the bidder indicates the quantity of T-bills he or she wants to buy and agrees to pay the lowest price of the winning competitive bidders</li></ul><ul id="47284d54-f1db-4b7c-a4a9-c1ccd6ad472a" class="bulleted-list"><li style="list-style-type:disc">Sold on discount basis</li></ul><ul id="d4233860-11b7-41e0-adb9-3cfb0fc38fab" class="bulleted-list"><li style="list-style-type:disc">Coupon rate is 0</li></ul><p id="8a069a13-f1b2-415c-966f-9297fa609cc4" class="">
+</p><figure id="6f4efa69-869b-4724-860f-5ba6919037c5" class="image"><a href="Money%20market%20bcb329b67d444b29b9845b3c85d6b55d/Untitled%201.png"><img style="width:947px" src="Money%20market%20bcb329b67d444b29b9845b3c85d6b55d/Untitled%201.png"/></a></figure><h2 id="58dbe2ff-5f46-4ff9-9169-1c7fd7f9d53b" class="">Federal Funds</h2><ul id="99fb85ba-60fe-4a29-bcbf-809f2a389ec1" class="bulleted-list"><li style="list-style-type:disc">Short term funds transferred between financial institiutions</li></ul><ul id="23b53585-bb4c-4981-ba0f-5782e842b5f2" class="bulleted-list"><li style="list-style-type:disc">Usually for a period of one day</li></ul><ul id="b3828164-9877-4529-b87a-c2fdef67e414" class="bulleted-list"><li style="list-style-type:disc">Use excess reserves for the same</li></ul><ul id="f6675477-7bf5-4b47-bd8d-7c1b5e1ef336" class="bulleted-list"><li style="list-style-type:disc">The overnight interest rate → federal funds rate</li></ul><ul id="12aa555b-5b2f-47b1-95cc-d6f0e9603d12" class="bulleted-list"><li style="list-style-type:disc">Single payment loans - they pay interest only once, at maturity</li></ul><ul id="1a7ad460-439c-4ccf-a6ab-ca9fdae2a220" class="bulleted-list"><li style="list-style-type:disc">Take the form of short term unsecured loans</li></ul><ul id="e79a5bdf-518c-4298-9db4-7d13a3dc70a5" class="bulleted-list"><li style="list-style-type:disc">We take 360 day year</li></ul><figure id="8b43238c-1c54-4f73-8a14-46346b5663ae" class="image"><a href="Money%20market%20bcb329b67d444b29b9845b3c85d6b55d/Untitled%202.png"><img style="width:1162px" src="Money%20market%20bcb329b67d444b29b9845b3c85d6b55d/Untitled%202.png"/></a></figure><ul id="3c7bb344-2eec-4f45-9241-12bc855760ce" class="bulleted-list"><li style="list-style-type:disc">Bank that finds itself with $75 million excess reserves can call it’s correspondent banks to see if they need overnight reserves</li></ul><h2 id="dff2805a-c4c1-41ee-9996-706b60bc183e" class="">Repurchase Agreements</h2><ul id="a34a8c87-c1d9-4cc7-8f28-9b86360e9d58" class="bulleted-list"><li style="list-style-type:disc">An agreement involving sale of securities by one party to another with the promise of ubuying it back at a specified price in the future</li></ul><ul id="c70e11a4-9db4-415a-9d80-e4c51bffd107" class="bulleted-list"><li style="list-style-type:disc">Essentially a collaterized fed funds loan</li></ul><ul id="f9c2b74e-b99c-40b0-822f-0838c2764ac8" class="bulleted-list"><li style="list-style-type:disc">A reverse repurchase agreement is buying something with the promise of selling it back in the future</li></ul><ul id="854bdf84-1f0f-4038-8bfb-5fde9d64e391" class="bulleted-list"><li style="list-style-type:disc">A given transaction has both repo and reverse repo rate</li></ul><ul id="2c59707e-2303-4529-8fb7-926be4c5238e" class="bulleted-list"><li style="list-style-type:disc">NOTE: In india, repo rate is very important, when RBI increases repo rate, the interest rate on money lent to banks increases and the same for consumers increases so spending decreases so liquidity decreases since loan price increases</li></ul><ul id="cfb307e0-a8e4-468c-bf9a-898d15700b73" class="bulleted-list"><li style="list-style-type:disc">We use a 360day year</li></ul><figure id="466e5cd3-260f-48fc-9f8d-2ea4092162cf" class="image"><a href="Money%20market%20bcb329b67d444b29b9845b3c85d6b55d/Untitled%203.png"><img style="width:1203px" src="Money%20market%20bcb329b67d444b29b9845b3c85d6b55d/Untitled%203.png"/></a></figure><h2 id="ab8d6e95-fa25-45d4-82f7-f8719e9f0b4f" class="">Commercial Paper</h2><ul id="5ad3ff8f-947b-457e-b05f-16d8195d66f0" class="bulleted-list"><li style="list-style-type:disc">Unsecured short term promissory note → to raise short term cash</li></ul><ul id="4efbf216-da5a-4336-8264-097137d7ba42" class="bulleted-list"><li style="list-style-type:disc">Often to finance working capital requirements</li></ul><ul id="830a7735-9dc6-4391-9527-0abb779772a1" class="bulleted-list"><li style="list-style-type:disc">One of the largest money market instruments</li></ul><ul id="c6776625-4a08-4aa2-8fa3-c848c0506d64" class="bulleted-list"><li style="list-style-type:disc">There is no active secondary market for commercial paper</li></ul><ul id="c6277206-0e53-4af7-94bc-9ac916e3fd98" class="bulleted-list"><li style="list-style-type:disc">It is also unsecured debt</li></ul><ul id="0ca9ccba-e26f-45c7-b902-2056813d81e3" class="bulleted-list"><li style="list-style-type:disc">A letter of credit backing commercial paper effectively substitiutes credit rating of the issuer with credit rating of the bank</li></ul><ul id="9444ea45-fa19-42b2-8231-761a71cf6deb" class="bulleted-list"><li style="list-style-type:disc">Better the credit rating, lower the interest rate on the issue</li></ul><ul id="8cce6560-d1a8-45a8-a0fd-803ae901e839" class="bulleted-list"><li style="list-style-type:disc">Also uses 360 day year</li></ul><figure id="f0e7ce62-4160-4721-afc2-6470b3790271" class="image"><a href="Money%20market%20bcb329b67d444b29b9845b3c85d6b55d/Untitled%204.png"><img style="width:1194px" src="Money%20market%20bcb329b67d444b29b9845b3c85d6b55d/Untitled%204.png"/></a></figure><h2 id="33236a75-b37f-493c-b05c-a6a0dd6a2e2d" class="">Negotiable Certificates of Deposit</h2><ul id="6ea3094f-6084-4c36-991f-c3db011854a5" class="bulleted-list"><li style="list-style-type:disc">A bank issued time deposit that specifies an interest rate and maturity date and is negotiable in the secondary market</li></ul><ul id="6ee47b53-c3d3-4773-ac2d-11cc7b06173a" class="bulleted-list"><li style="list-style-type:disc">Bearer instrument - whoever holds it when it matures receives principal  + interest</li></ul><ul id="84b99d55-1ae6-455a-83c0-f975c261e96a" class="bulleted-list"><li style="list-style-type:disc">Purchased using mutual funds - group of people pool fund and buy</li></ul><figure id="10fe2081-404e-4f92-808b-70ab3a2946a8" class="image"><a href="Money%20market%20bcb329b67d444b29b9845b3c85d6b55d/Untitled%205.png"><img style="width:1176px" src="Money%20market%20bcb329b67d444b29b9845b3c85d6b55d/Untitled%205.png"/></a></figure><figure id="242f43fc-7773-4c1d-bdc4-f6f6b653b01b" class="image"><a href="Money%20market%20bcb329b67d444b29b9845b3c85d6b55d/Untitled%206.png"><img style="width:1212px" src="Money%20market%20bcb329b67d444b29b9845b3c85d6b55d/Untitled%206.png"/></a></figure><h2 id="86d73b14-3ab3-4298-a043-f012b82ee80a" class="">Banker’s Acceptances</h2><ul id="5de6d68b-9ddd-40ba-bca2-932c8bd5c8c0" class="bulleted-list"><li style="list-style-type:disc">Used to fund expenses which haven’t been delivered it</li></ul><ul id="0aa857d5-9991-432a-9137-a45e114aabf4" class="bulleted-list"><li style="list-style-type:disc">Used in international trade transactions and the underlying LOCs are used for goods that have not yet been shipped</li></ul><ul id="18d958ad-6a9c-47de-950a-7e6af60e8e7a" class="bulleted-list"><li style="list-style-type:disc">Risk - very low</li></ul><h1 id="4554631b-80d6-413b-9b1c-07a7a2c0c76a" class="">Market Participants</h1><h2 id="d9ab4184-f169-4f86-b6d3-6324ec65e34f" class="">US Treasury</h2><ul id="1c552273-f46a-46c3-8e7e-8e0887d227d3" class="bulleted-list"><li style="list-style-type:disc">Raises significant amounts of funds in the money market when it issues T-bills</li></ul><ul id="e8cb0cbb-75a0-4460-a75a-d20290604836" class="bulleted-list"><li style="list-style-type:disc">Most actively traded money market securities</li></ul><ul id="71851281-e9ce-4e77-b041-631a0ebd3ab8" class="bulleted-list"><li style="list-style-type:disc">Raise money to meet unavoidable Short term expenditure needs prior to the receipt of tax revenues</li></ul><h2 id="08c0cc9f-baca-4fe9-a4c6-dcaadebe3a06" class="">Federal Reserves</h2><ul id="b019925e-20fb-430c-8335-418360646bf8" class="bulleted-list"><li style="list-style-type:disc">Hold T-bills when it wants to increase the money supply and selling T-bills when it wants to decrease money supply</li></ul><ul id="9c8f81c3-6d9f-4054-8997-957d115186ab" class="bulleted-list"><li style="list-style-type:disc">Uses repurchase agreements and reverse repos to temporarily smooth interest rates and the money supply</li></ul><ul id="4afc1720-db1d-46d9-b558-84ae2befe744" class="bulleted-list"><li style="list-style-type:disc">Also uses a discount window</li></ul><h2 id="ba936d57-32a7-4a5f-9c81-65d31d71065c" class="">Commercial Banks</h2><ul id="b64e0272-a779-49d1-b0df-096d10750680" class="bulleted-list"><li style="list-style-type:disc">Participate as issuers and/or investors of almost all money market instruments discussed above</li></ul><ul id="c2cd24ca-e9c3-4c68-8813-5db50595e05e" class="bulleted-list"><li style="list-style-type:disc">Banks are the major issuers of NCDs, banker’s acceptances, fed funds and repurchase agreements</li></ul><h2 id="a707167a-ce29-4f68-b18d-9e62db26a7bd" class="">Money Market Mutual Funds</h2><ul id="8df682d7-8ecb-43f2-b57c-289b29d24e27" class="bulleted-list"><li style="list-style-type:disc">Money market mutual funds purchase large amounts of money market securities and sell shares in these pools based on the value of their underlying (money market) securities (see Chapter 17 ). </li></ul><ul id="72e4f1f4-99b3-46a4-bce7-22871adb2331" class="bulleted-list"><li style="list-style-type:disc">In doing so, money market mutual funds allow small investors to invest in money market instruments</li></ul><h2 id="7853f372-caea-4017-a985-5d4081342e02" class="">Brokers and Dealers</h2><ul id="705fc1ea-6bf4-411e-8423-cacf42f4cd12" class="bulleted-list"><li style="list-style-type:disc">First group → 18 Primary Government Security Dealers<ul id="54ce20dd-b18e-413f-9294-11d3de16fd5f" class="bulleted-list"><li style="list-style-type:circle">Marketing new issues of T-bills</li></ul><ul id="82b6ede7-9812-4fa6-a67b-1ddd39c2ff2d" class="bulleted-list"><li style="list-style-type:circle">Buying securities from the Federal Reserve</li></ul><ul id="537ed281-0220-4b48-8ff3-247e2ccfe15d" class="bulleted-list"><li style="list-style-type:circle">Assist when it uses repo market to increase/decrease supply of bank reserves</li></ul></li></ul><ul id="8a2a2ad5-3c6c-4d3c-8149-5602a43b8abb" class="bulleted-list"><li style="list-style-type:disc">Second group → Money and Security Brokers<ul id="fb4b6742-5d6b-4611-a254-249cf4e9b212" class="bulleted-list"><li style="list-style-type:circle">Use this group as intermediaries</li></ul><ul id="a9010023-3c62-462c-8a11-df758718bda3" class="bulleted-list"><li style="list-style-type:circle">Also play a major role in linking buyers and sellers in the fed funds market and assist secondary trading in other money</li></ul></li></ul><h1 id="e7111438-8227-452d-819b-2ce6e5167f7b" class="">International Aspects of Money Markets</h1><ul id="d4e82b6e-6b1f-4eff-a88c-a502ec955387" class="bulleted-list"><li style="list-style-type:disc">Two forms of growth<ul id="3ba01c19-dc2d-48ac-8ca2-ac239361be52" class="bulleted-list"><li style="list-style-type:circle">US money market securities bought and sold by foreign investores</li></ul><ul id="de868e9c-71c1-4d17-96ee-e2822e278cc3" class="bulleted-list"><li style="list-style-type:circle">Foreign money market securities</li></ul></li></ul><h2 id="23c42df1-d617-4381-8c30-0ac35ae6952d" class="">Euro Money Markets</h2><ul id="7569b355-d993-44b8-96ba-b7eff8561ae2" class="bulleted-list"><li style="list-style-type:disc">Dollar denominated deposits held offshore in US bank branches overseas and in other banks are called eurodollar deposits</li></ul><ul id="26b0cf5a-bcd5-41ad-b087-b244d3a16c24" class="bulleted-list"><li style="list-style-type:disc">Market is named Eurodollar market</li></ul><ul id="8cebcc7b-9d11-4ad5-9eba-476dc45dd5c4" class="bulleted-list"><li style="list-style-type:disc">Not subject to US bank regulations</li></ul><ul id="bef2005b-9ad5-484c-b1a0-4a8af74ddf8d" class="bulleted-list"><li style="list-style-type:disc">As an alternative to the Eurodollar market, companies can also obtain short-term funding by issuing Eurocommercial paper.</li></ul><ul id="5c442c0c-ec46-4b1c-abf1-6c65c4e5601f" class="bulleted-list"><li style="list-style-type:disc">Eurocommercial paper is issued in Europe but can be held by investors inside or outside of Europe.</li></ul></div></article></body></html>

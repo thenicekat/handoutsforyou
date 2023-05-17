@@ -1,0 +1,669 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 3 - Demand, Supply and Market Equilibrium</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2e6b5324-586f-4cac-a714-9e6fb735d1d4" class="page sans"><header><h1 class="page-title">Chapter 3 - Demand, Supply and Market Equilibrium</h1></header><div class="page-body"><nav id="e825c47a-026b-439b-81b3-abfe5c4f69e1" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#227ec59c-7ccb-46e1-ac12-5c9224b54dfc">Household and Firms - Basic Decision Making Units</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3c28cccc-aa39-44d8-ba2a-0e698ba4f53b">Firms</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e5a93b11-ca15-4ce6-96cd-86dadbbaa076">Households</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#cb65a24f-04ea-43de-a0b6-d3f1bde69332">Circular Flow of Economic Activity</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#558be0d4-b36c-4d73-a59a-ef2e097f7442">Demand in Product/Output Markets</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0be8c28d-b4c0-4b04-b38c-f3468deea8a1">Change in Demand vs Change in Quantity Demanded</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3914720c-a16e-4322-b504-2e681fb6904b">Demand Curve</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#53d62557-a479-491a-9009-888446f871c9">Other determinants of Household Demand</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e4c49b57-134d-4032-8068-0b76329b878e">Income and Wealth</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#aafcf147-df57-483d-ba3f-4a6158682de2">Prices of other goods and services</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d1a93fde-3923-4708-a6f8-83181ae497cb">Tastes and Preferences</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#44bf8759-29d0-43e1-a3c6-34be7ba0c804">Expectations</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3173cf4c-5eef-4188-9564-06393ccdea3f">Market Demand</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#421c529b-f090-4cbd-867b-a170374eb666">Supply</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ec481ff8-8f8c-4981-83eb-a29a5d60f4ee">Law of Supply</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fe421871-7de7-45c5-9f2b-3bd871d95515">Other Determinants of Supply</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#59f90c55-bc44-486b-ba81-885c7a1d3d7e">Cost of Production</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#24fc486c-3523-48b9-9fa0-544ff2da95d0">Prices of Related Products</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4fea4d70-7af1-4d9d-83cf-5d650fec10f3">Shift of Supply vs Movement along a Supply Curve</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#34f8f71e-b1b3-43ff-a787-09eefc8429ba">Market Equilibrium</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2752739d-a47d-4e9f-bcbc-d4dee2eb3912">Excess Demand</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7eb5df7d-8e9c-45b5-9cb5-66d59722d6c0">Excess Supply</a></div></nav><h2 id="227ec59c-7ccb-46e1-ac12-5c9224b54dfc" class="">Household and Firms - Basic Decision Making Units</h2><ul id="16d7d508-0834-4543-92a9-be31366de46b" class="bulleted-list"><li style="list-style-type:disc">Firms are the primary producing units in an economy</li></ul><ul id="93133adb-6d2f-4d4a-bb54-e385059c15ec" class="bulleted-list"><li style="list-style-type:disc">Households are the consuming units in an economy</li></ul><ul id="7056a9e9-d6a4-45fe-8e92-9470df3094d0" class="bulleted-list"><li style="list-style-type:disc">Firms: An organization that transforms resources into products. An entrepreneur is a person who organizes, manages and assumes the risks of a firm taking a new idea or a new product and turning it into a successful business</li></ul><h3 id="3c28cccc-aa39-44d8-ba2a-0e698ba4f53b" class="">Firms</h3><ul id="f4161945-b2f1-4911-bd12-a57bf5f4c200" class="bulleted-list"><li style="list-style-type:disc">Maximize Profit</li></ul><ul id="dbe3e9b5-e7ea-4636-950f-b0fd36949413" class="bulleted-list"><li style="list-style-type:disc">BITS for example, does not exist to make a profit (APPARENTLY)</li></ul><ul id="decb3168-35ea-45ee-a402-aa50a8f930ec" class="bulleted-list"><li style="list-style-type:disc">The analysis of a firms behavior that follows rests on the assumptio</li></ul><h3 id="e5a93b11-ca15-4ce6-96cd-86dadbbaa076" class="">Households</h3><ul id="bca19afe-9f2f-49d5-b6a9-d3b7935f7b46" class="bulleted-list"><li style="list-style-type:disc">Limited Incomes and all must pay for goods and services</li></ul><ul id="23f07316-7fde-4286-ac65-44184aa2aaa9" class="bulleted-list"><li style="list-style-type:disc">Households may have some control over their incomes, they can work more or fewer hours, they are also constrained by the availability of jobs, current wages, their own abilities and their accumulated/inherited wealth</li></ul><h2 id="cb65a24f-04ea-43de-a0b6-d3f1bde69332" class="">Circular Flow of Economic Activity</h2><figure id="c7057864-16a6-4475-9906-dbcf38fa086a" class="image"><a href="Chapter%203%20-%20Demand,%20Supply%20and%20Market%20Equilibrium%202e6b5324586f4caca7149e6fb735d1d4/Untitled.png"><img style="width:480px" src="Chapter%203%20-%20Demand,%20Supply%20and%20Market%20Equilibrium%202e6b5324586f4caca7149e6fb735d1d4/Untitled.png"/></a></figure><h2 id="558be0d4-b36c-4d73-a59a-ef2e097f7442" class="">Demand in Product/Output Markets</h2><ul id="170c359c-2e66-408f-83b4-590055591970" class="bulleted-list"><li style="list-style-type:disc">A household’s decision about what quantity of a particular output/product depends on<ul id="d9185935-0604-46c5-8886-dfc526225405" class="bulleted-list"><li style="list-style-type:circle"><strong>Price of the product</strong>: Inversely proportional to demand</li></ul><ul id="c29ab7b1-7b28-40bf-a89d-fd786b7c61a0" class="bulleted-list"><li style="list-style-type:circle"><strong>Income Available to the household</strong>: As income increases, if demand increases these are normal goods while the one’s whose demand decreases is inferior goods</li></ul><ul id="b779e0b0-7923-4a99-a884-7ab9a6787b80" class="bulleted-list"><li style="list-style-type:circle">Household’s amount of accumulated wealth, same relation as before</li></ul><ul id="c6bbc7ed-6fb5-4023-9e68-9bc00b1eebb2" class="bulleted-list"><li style="list-style-type:circle">Prices of other products available <ul id="97962151-aef2-4658-a6b3-885c2ce6bb94" class="bulleted-list"><li style="list-style-type:square">Substitute goods are goods like dominos and pizza hut</li></ul><ul id="ee15541a-9136-4b68-9d05-4e82a19ea9b7" class="bulleted-list"><li style="list-style-type:square">Goods like toothbrush and toothpaste are called compliment goods</li></ul></li></ul><ul id="228f2dbc-aeb1-4670-987d-6942e256fc4c" class="bulleted-list"><li style="list-style-type:circle">Tastes and Preferences</li></ul><ul id="af9a656a-dd14-425e-bb02-867d9b7523ba" class="bulleted-list"><li style="list-style-type:circle">Expectations about Future income, wealth and prices</li></ul></li></ul><h2 id="0be8c28d-b4c0-4b04-b38c-f3468deea8a1" class="">Change in Demand vs Change in Quantity Demanded</h2><ul id="f8822db8-725f-4db0-b3ae-cfcab2458b8a" class="bulleted-list"><li style="list-style-type:disc">Change in quantity demanded moves along the curve and it happens only if price changes - (movement along a demand curve)</li></ul><ul id="295e4023-c2e4-42a1-a8d3-11c5f4084912" class="bulleted-list"><li style="list-style-type:disc">Change in demand happens when the curve shifts and this happens due to external factors like change in income, preferences or prices of OTHER goods and services - (shift of a demand curve)</li></ul><h2 id="3914720c-a16e-4322-b504-2e681fb6904b" class="">Demand Curve</h2><ul id="c283bf8f-cdbb-4f97-ad7b-bdbb88440a58" class="bulleted-list"><li style="list-style-type:disc">Slopes Downwards</li></ul><ul id="4961a9e3-80dd-44ae-a14e-07cdd8ce89bf" class="bulleted-list"><li style="list-style-type:disc">There is a negative/inverse relationship between quantity demanded and price</li></ul><ul id="e86957d8-6a5d-44a0-9076-bb02502f5f7a" class="bulleted-list"><li style="list-style-type:disc">When prices rise, demand falls and this is the law of demand</li></ul><ul id="02929278-af45-44a0-87ee-ffd66985dde7" class="bulleted-list"><li style="list-style-type:disc">The curve intersects the price access which means there’s a price at which people won’t buy it at all</li></ul><ul id="3ea762e5-4980-4995-8eb5-a37323042a74" class="bulleted-list"><li style="list-style-type:disc">And it also intersects the quantity axis which means the price can fall to 0 as well due to limited income and wealth</li></ul><h2 id="53d62557-a479-491a-9009-888446f871c9" class="">Other determinants of Household Demand</h2><h3 id="e4c49b57-134d-4032-8068-0b76329b878e" class="">Income and Wealth</h3><ul id="94f91dc1-314c-48aa-ad8f-a822f987334e" class="bulleted-list"><li style="list-style-type:disc">A household’s income is the sum of all wages, salaries, profits, interest payments, rents and other form of earnings. </li></ul><ul id="843e15cf-d6c9-48ca-9798-3c8e997131c3" class="bulleted-list"><li style="list-style-type:disc">Income is a flow measure</li></ul><ul id="ca7168cd-fa17-4c2a-b0b1-c80a6ee1337c" class="bulleted-list"><li style="list-style-type:disc">Wealth is the total value of what a household owns minus what it owes. </li></ul><ul id="0b55652b-0ada-4e67-923f-753e75e928f4" class="bulleted-list"><li style="list-style-type:disc">Also known as net worth, wealth is a stock measure. It is measured at a given point of time and not over a period of time</li></ul><ul id="ecc80bcc-acad-41fd-96c9-771c94d83a67" class="bulleted-list"><li style="list-style-type:disc">Normal goods are those for which demand goes up when income is higher and demand goes down when income is lower</li></ul><ul id="0b0777be-791d-4b78-a53e-2b1038b93357" class="bulleted-list"><li style="list-style-type:disc">Inferior goods are those which demand tends to fall when income rises</li></ul><h3 id="aafcf147-df57-483d-ba3f-4a6158682de2" class="">Prices of other goods and services</h3><ul id="6716f029-4586-483c-aac6-3cf7aa8be02b" class="bulleted-list"><li style="list-style-type:disc">When an increase in the price of one good causes demand for another good to increase we say the goods are substitutes</li></ul><ul id="8424fb53-8281-4bf7-90c4-f5444e815ea3" class="bulleted-list"><li style="list-style-type:disc">Substitutes are goods that can serve as replacements for one another</li></ul><ul id="cde57fa6-0dbd-4540-8cb1-c7399dbb9564" class="bulleted-list"><li style="list-style-type:disc">To be substitutes, two products need not be identical but if they are identical they are called perfect substitutes</li></ul><ul id="8bc24199-685b-4407-82f3-08477bf55e10" class="bulleted-list"><li style="list-style-type:disc">When two goods complement each other, a decrease in price of one results in an increase in demand for the other and vice versa.</li></ul><h3 id="d1a93fde-3923-4708-a6f8-83181ae497cb" class="">Tastes and Preferences</h3><ul id="74d70dd1-af78-403f-9e46-5c981ed72cad" class="bulleted-list"><li style="list-style-type:disc">Changes in preferences can and do manifest themselves in market behavior.</li></ul><h3 id="44bf8759-29d0-43e1-a3c6-34be7ba0c804" class="">Expectations</h3><ul id="006c8b2f-49a8-4a22-985a-3c30aebbd2da" class="bulleted-list"><li style="list-style-type:disc">What you decide to buy today certainly depends on today’s prices and your current income and wealth</li></ul><ul id="1afa6f01-f9c9-4bd1-8995-198702bb30ea" class="bulleted-list"><li style="list-style-type:disc">You also have expectations about what your position will be in future</li></ul><ul id="f0705303-6a11-483a-a81b-c6387ccfb533" class="bulleted-list"><li style="list-style-type:disc">Demand depends on more than just current income, prices and tastes</li></ul><h2 id="3173cf4c-5eef-4188-9564-06393ccdea3f" class="">Market Demand</h2><ul id="4d607fa5-3fcb-4199-9e16-e8302f9551c5" class="bulleted-list"><li style="list-style-type:disc">Sum total of all quantities of good or a service demanded per period by all the households buying in the market for that good or service</li></ul><figure id="718a1e38-bb0f-452d-8748-a995b17f0ff7" class="image"><a href="Chapter%203%20-%20Demand,%20Supply%20and%20Market%20Equilibrium%202e6b5324586f4caca7149e6fb735d1d4/Untitled%201.png"><img style="width:1145px" src="Chapter%203%20-%20Demand,%20Supply%20and%20Market%20Equilibrium%202e6b5324586f4caca7149e6fb735d1d4/Untitled%201.png"/></a></figure><figure id="f257ba1d-72f3-4f35-9fb3-cb593e3ff101" class="image"><a href="Chapter%203%20-%20Demand,%20Supply%20and%20Market%20Equilibrium%202e6b5324586f4caca7149e6fb735d1d4/Untitled%202.png"><img style="width:1176px" src="Chapter%203%20-%20Demand,%20Supply%20and%20Market%20Equilibrium%202e6b5324586f4caca7149e6fb735d1d4/Untitled%202.png"/></a></figure><h1 id="421c529b-f090-4cbd-867b-a170374eb666" class="">Supply</h1><h2 id="ec481ff8-8f8c-4981-83eb-a29a5d60f4ee" class="">Law of Supply</h2><ul id="7642cafb-e125-49f2-a6a1-8eeb57c619e5" class="bulleted-list"><li style="list-style-type:disc">There is a positive relationship between the quantity of a good supplied and price. </li></ul><ul id="226a6951-f86c-4048-8468-8fe8dba968c4" class="bulleted-list"><li style="list-style-type:disc">This statement sums up the law of supply: An increase in market price will lead to an increase in quantity supplied, and a decrease in market price will lead to a decrease in quantity supplied.</li></ul><h2 id="fe421871-7de7-45c5-9f2b-3bd871d95515" class="">Other Determinants of Supply</h2><h3 id="59f90c55-bc44-486b-ba81-885c7a1d3d7e" class="">Cost of Production</h3><ul id="7ed700c6-6789-4f4f-8e49-272f21889bfe" class="bulleted-list"><li style="list-style-type:disc">Revenue must exceed it’s costs</li></ul><ul id="725070cf-b21e-4081-8cca-313a5bc03742" class="bulleted-list"><li style="list-style-type:disc">Technological Changes can have enormous impact on the cost of production over time</li></ul><ul id="10440e72-120c-4672-b6f7-db7d425c4f6e" class="bulleted-list"><li style="list-style-type:disc">When a technological advancement lowers the cost of production, output is likely to increase</li></ul><h3 id="24fc486c-3523-48b9-9fa0-544ff2da95d0" class="">Prices of Related Products</h3><h2 id="4fea4d70-7af1-4d9d-83cf-5d650fec10f3" class="">Shift of Supply vs Movement along a Supply Curve</h2><ul id="61eb0244-e147-442c-8009-77948bb5c35b" class="bulleted-list"><li style="list-style-type:disc">When factors other than price cause supply curves to shift, we say there has been a change in supply</li></ul><ul id="e3943bd0-79d0-42ee-af57-87cf04b0f413" class="bulleted-list"><li style="list-style-type:disc">Movement along supply curve takes place when price changes the quantity of supply</li></ul><h1 id="34f8f71e-b1b3-43ff-a787-09eefc8429ba" class="">Market Equilibrium</h1><h2 id="2752739d-a47d-4e9f-bcbc-d4dee2eb3912" class="">Excess Demand</h2><ul id="d29ca4f9-e6fa-443f-8617-d1457daab8cb" class="bulleted-list"><li style="list-style-type:disc">Aka shortage</li></ul><ul id="7adfc50f-bbfc-4bf2-a070-568aa5a364cd" class="bulleted-list"><li style="list-style-type:disc">Quantity demanded is greater than quantity supplied at the current price</li></ul><ul id="a5f24de2-96ef-4939-af46-2058b0864eb9" class="bulleted-list"><li style="list-style-type:disc">Price rises as different demanders compete against each other for the limited supply</li></ul><ul id="b0f8d09b-87ad-43e9-8796-281063a57afa" class="bulleted-list"><li style="list-style-type:disc">As price rises, the quantity demanded can drop as buyers drop out and the quantity supplied increases as suppliers get more price</li></ul><ul id="cf08c806-ada8-43af-bd9b-9fe0ac73f2f7" class="bulleted-list"><li style="list-style-type:disc">Process continues until shortage is eliminated</li></ul><h2 id="7eb5df7d-8e9c-45b5-9cb5-66d59722d6c0" class="">Excess Supply</h2><ul id="acbf27d0-97f1-4579-9d89-c63afe18c848" class="bulleted-list"><li style="list-style-type:disc">Aka surplus</li></ul><ul id="f20e6f7b-0fd3-4ae1-babc-56fa2bb1976d" class="bulleted-list"><li style="list-style-type:disc">When quantity supplied exceeds the quantity demanded</li></ul><ul id="c1b9b582-fa51-4fb9-953a-3a3a0e768d84" class="bulleted-list"><li style="list-style-type:disc">When quantity supplied exceeds quantity demanded at the current price, the price tends to fall. </li></ul><ul id="5202ce75-bf60-4de5-9703-b485e9a472ee" class="bulleted-list"><li style="list-style-type:disc">When price falls, quantity supplied is likely to decrease and quantity demanded is likely to increase until an equilibrium price is reached where quantity supplied and quantity demanded are equal</li></ul><figure id="76bec356-3d2c-4521-b274-3233da7ad7ab" class="image"><a href="Chapter%203%20-%20Demand,%20Supply%20and%20Market%20Equilibrium%202e6b5324586f4caca7149e6fb735d1d4/Untitled%203.png"><img style="width:1121px" src="Chapter%203%20-%20Demand,%20Supply%20and%20Market%20Equilibrium%202e6b5324586f4caca7149e6fb735d1d4/Untitled%203.png"/></a></figure><figure id="016b70b2-4e1c-453f-b392-94cec55b2c01" class="image"><a href="Chapter%203%20-%20Demand,%20Supply%20and%20Market%20Equilibrium%202e6b5324586f4caca7149e6fb735d1d4/Untitled%204.png"><img style="width:1093px" src="Chapter%203%20-%20Demand,%20Supply%20and%20Market%20Equilibrium%202e6b5324586f4caca7149e6fb735d1d4/Untitled%204.png"/></a></figure></div></article></body></html>

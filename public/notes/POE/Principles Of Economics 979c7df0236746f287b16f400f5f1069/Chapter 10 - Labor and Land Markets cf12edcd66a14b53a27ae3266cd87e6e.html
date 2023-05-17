@@ -1,0 +1,669 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 10 - Labor and Land Markets</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="cf12edcd-66a1-4b53-a27a-e3266cd87e6e" class="page sans"><header><h1 class="page-title">Chapter 10 - Labor and Land Markets</h1></header><div class="page-body"><nav id="0bbb902c-c88b-4a82-9db4-64e5684b9410" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#89d6acc2-ccbb-4e41-987c-03b3e9770d4e">Input Markets</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#27c880bf-c6a1-4d0f-8f65-64ea87729bc5">Demand for Inputs</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#96f77e0a-3223-4e2a-83ac-fce13c6690b1">Marginal Revenue Product</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#bc405ceb-72ec-4d8f-a59a-42b4e1854602">Labor Supply</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c18f984f-d9ee-4e2f-b6af-26844b3b63df">Labor Markets</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a25afa8c-6ed9-4f11-8210-3ac5cf2c4e85">The Firm’s Labor Market Decision</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fd605949-d6f3-40b1-81ba-0de65652436e">Comparing Marginal Revenue and Marginal Cost to Maximize Profits</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e68aa53a-f5ae-4b8d-8287-9ce358bae855">Land Markets</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#13bd7885-bf18-4f87-9752-635256aaa224">Input Demand Curves</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3f2b80ba-6bb2-4381-b489-bbf2e898a7fc">Shifts in Factor Demand Curves</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b07e8749-9c82-444f-974b-b2f69928ca9d">Demand for Outputs</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#ffdd81d1-0254-4772-ba14-661a563ead07">Quantity of Complementary and Sustainable Inputs</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#3bd11b60-8749-4ef8-accc-68f33b711015">Price of Inputs</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#38b90b3a-951d-4215-9ccf-24be8a373e04">Technological Change</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a1af1b95-637a-4051-a2c6-8b5c0cf39bf7">Profit maximizing in Input Markets</a></div></nav><h1 id="89d6acc2-ccbb-4e41-987c-03b3e9770d4e" class="">Input Markets</h1><h2 id="27c880bf-c6a1-4d0f-8f65-64ea87729bc5" class="">Demand for Inputs</h2><ul id="e3139921-38af-49bf-b660-68643371fb7d" class="bulleted-list"><li style="list-style-type:disc">The central difference between demand for final goods and services and demand for an input is that input demand is derived demand</li></ul><ul id="5233e722-11d2-4f4b-9e1e-e07c58dac4ee" class="bulleted-list"><li style="list-style-type:disc">Higher the demand for final good, higher the demand for input</li></ul><ul id="ebe5e32b-f5c5-415b-83cf-c3bf16de471d" class="bulleted-list"><li style="list-style-type:disc">Inputs are demanded by a firm iff households demand the good or service provided by that firm</li></ul><h2 id="96f77e0a-3223-4e2a-83ac-fce13c6690b1" class="">Marginal Revenue Product</h2><ul id="b3978882-c851-4d56-858d-d6a48dda2dbd" class="bulleted-list"><li style="list-style-type:disc">Additional revenue a firm earns by employing one more unit of that input </li></ul><ul id="d5fdfb3e-7823-4519-874c-1b8a79e2371a" class="bulleted-list"><li style="list-style-type:disc">Marginal revenue product is the revenue produced by selling the good or service that is produced by the marginal unit of labor. </li></ul><ul id="8ecb7e1f-3280-4b3a-bc5c-162dc45413b4" class="bulleted-list"><li style="list-style-type:disc">In a competitive firm, marginal revenue product is the value of a factor’s marginal product. The marginal revenue product is also called the value of the marginal product</li></ul><ul id="e0a89f5a-721c-419c-8608-a465996fbab6" class="bulleted-list"><li style="list-style-type:disc">Marginal Revenue Product of Labor → <code>MRP_L = MP_L * P_x</code></li></ul><h1 id="bc405ceb-72ec-4d8f-a59a-42b4e1854602" class="">Labor Supply</h1><ul id="2d6e1b94-dcd5-4203-b654-f7f4f88501e3" class="bulleted-list"><li style="list-style-type:disc">Market Labor Supply is the horizontal aggregation of the individual labor supply curves for workers in an area</li></ul><ul id="9bac0bf8-bd8e-42b6-a283-4bd8f6f247e2" class="bulleted-list"><li style="list-style-type:disc">It traces the relationship between wage rates and the number of hours workers are willing to supply, holding other things constant</li></ul><ul id="2107fc18-0226-40aa-80e1-0d4dda1046c8" class="bulleted-list"><li style="list-style-type:disc">The number of hours people are willing to work clearly depends on factors other than wage rates, factors that shift the supply curve</li></ul><ul id="0f125970-aa48-4a73-a97b-7fabb8f68df2" class="bulleted-list"><li style="list-style-type:disc">If we increase the number of individuals in a market this naturally shifts the labor supply curve to the right</li></ul><h1 id="c18f984f-d9ee-4e2f-b6af-26844b3b63df" class="">Labor Markets</h1><h2 id="a25afa8c-6ed9-4f11-8210-3ac5cf2c4e85" class="">The Firm’s Labor Market Decision</h2><ul id="665c83ac-ebc8-495b-94d7-064838673abf" class="bulleted-list"><li style="list-style-type:disc">A competitive firm will use that factor as long as it’s marginal revenue product exceeds its unit cost</li></ul><ul id="fe2228d9-ccbc-45b3-bfc7-bbbf77b9a9e0" class="bulleted-list"><li style="list-style-type:disc">A perfectly competitive firm will hire labor as long as MRP_L is greater than the going wage W because the revenue they get from labor should be more than what they are paying them</li></ul><h2 id="fd605949-d6f3-40b1-81ba-0de65652436e" class="">Comparing Marginal Revenue and Marginal Cost to Maximize Profits</h2><h1 id="e68aa53a-f5ae-4b8d-8287-9ce358bae855" class="">Land Markets</h1><ul id="d2ed6ea2-a198-4c0a-a247-edc1b456351c" class="bulleted-list"><li style="list-style-type:disc">Unlike labor and capital, land has a special feature that we have not yet considered</li></ul><ul id="c87021bc-0aad-4f76-8455-297e23ac234f" class="bulleted-list"><li style="list-style-type:disc">It is in strictly fixed(perfectly inelastic) supply in total</li></ul><ul id="f98c35ef-d353-4aa6-9331-bec1fadaa19a" class="bulleted-list"><li style="list-style-type:disc">Because land is fixed in supply, we say that it’s price is demand determined as in price is determined only by how much households/firms are willing to pay for it</li></ul><ul id="3b080dec-314a-42ec-82c5-44c039dad422" class="bulleted-list"><li style="list-style-type:disc">The return to any factor of production in fixed supply is called a pure rent</li></ul><ul id="d0ba9a17-77e8-480e-852d-61de7e476465" class="bulleted-list"><li style="list-style-type:disc">Rent depends completely on what potential buyers are willing to pay</li></ul><ul id="b71fe988-924e-494f-9fda-494c5446c557" class="bulleted-list"><li style="list-style-type:disc">A profit maximizing firm will employ an addition factor of production as long as it’s marginal revenue product exceeds its market price</li></ul><ul id="94d2b1f6-0526-47bf-a8f7-1b15945dae68" class="bulleted-list"><li style="list-style-type:disc">A firm will pay and use land as long as the revenue earned from selling the product produced on that land is sufficient to cover the price of the land<ul id="3b6d577d-a8c2-4d79-a7a6-a1e13900de19" class="bulleted-list"><li style="list-style-type:circle"><code>MRP_a = P_a</code> where a is land</li></ul></li></ul><h1 id="13bd7885-bf18-4f87-9752-635256aaa224" class="">Input Demand Curves</h1><h2 id="3f2b80ba-6bb2-4381-b489-bbf2e898a7fc" class="">Shifts in Factor Demand Curves</h2><ul id="0a2ff7d5-be0e-4feb-a39d-4ad0d6ee7586" class="bulleted-list"><li style="list-style-type:disc">Derived from production functions and output price</li></ul><h3 id="b07e8749-9c82-444f-974b-b2f69928ca9d" class="">Demand for Outputs</h3><ul id="09885fc8-b5cc-46e3-8af1-dc4d2b295337" class="bulleted-list"><li style="list-style-type:disc">A firm will demand an input as long as it’s marginal revenue exceeds it’s market price</li></ul><ul id="3b8b2d54-84a2-4211-928c-36c014e12731" class="bulleted-list"><li style="list-style-type:disc">MRPl = MPl * Px</li></ul><ul id="972e1fb6-7534-49f0-b38b-73294c37a8c3" class="bulleted-list"><li style="list-style-type:disc">If product demand increases, price will rise, and MRP_l will increase</li></ul><h3 id="ffdd81d1-0254-4772-ba14-661a563ead07" class="">Quantity of Complementary and Sustainable Inputs</h3><ul id="e252d80c-5832-4f73-958f-ec92d1b17f1e" class="bulleted-list"><li style="list-style-type:disc">Productivity of and thus the demand for any factor of production depends on the other factors with which it works</li></ul><ul id="2c36f134-3727-4a36-924b-f4ea31f22499" class="bulleted-list"><li style="list-style-type:disc">Example, increasing grills</li></ul><h3 id="3bd11b60-8749-4ef8-accc-68f33b711015" class="">Price of Inputs</h3><ul id="cbd212fd-4b5a-4d0a-9f46-dbe19946670e" class="bulleted-list"><li style="list-style-type:disc">It has also been argued that an energy crisis can lead to an increase in demand for labor. </li></ul><ul id="6adf74bf-613e-4e92-a82a-24ba6570b116" class="bulleted-list"><li style="list-style-type:disc">If capital and energy are complementary inputs—that is, if technologies that are capital-intensive  are also energyintensive—the argument goes, the higher energy prices tended to push firms way from capital-intensive techniques toward more labor-intensive technique</li></ul><h3 id="38b90b3a-951d-4215-9ccf-24be8a373e04" class="">Technological Change</h3><ul id="642fcbf3-02dc-493d-9f2f-b3e5f82c412e" class="bulleted-list"><li style="list-style-type:disc">New technologies generally increase ways to produce output with less inputs<ul id="dc90fff4-365a-4559-aaa5-bbf5f509a7db" class="bulleted-list"><li style="list-style-type:circle">Because marginal revenue product reflects productivity, increases in productivity directly shift the input demand curves</li></ul></li></ul><h1 id="a1af1b95-637a-4051-a2c6-8b5c0cf39bf7" class="">Profit maximizing in Input Markets</h1><ul id="57c1f778-bd6c-4b6e-b792-00c74b7a637a" class="bulleted-list"><li style="list-style-type:disc">PL = MRP_L = (MP_L * PX)</li></ul><ul id="87814549-85ad-4b7e-a7e7-2c62424406f2" class="bulleted-list"><li style="list-style-type:disc">PK = MRP_K = (MP_K * PX)</li></ul><ul id="7d613e41-48f1-4d24-99e1-cbe9b5c4549f" class="bulleted-list"><li style="list-style-type:disc">PA = MRP_A = (MP_A * PX)</li></ul><ul id="2ecd6b84-f761-45ca-99da-2db849bad551" class="bulleted-list"><li style="list-style-type:disc">We get <code>MP_L/P_L = MP_A/P_A = MP_K/P_K</code></li></ul></div></article></body></html>

@@ -1,0 +1,681 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Central Banking System</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="a57a840b-4426-48ed-a6c4-5193cc2298fb" class="page sans"><header><h1 class="page-title">Central Banking System</h1></header><div class="page-body"><nav id="71297244-5948-46d1-b989-9f38df5d0f7d" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0c07b0c4-a32a-4e49-a1b6-dc20ee0569a3">Federal Reserve</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ada040d9-f5d1-413d-9368-3d7d1f6daba3">Structure of the Federal Reserve</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5ee366c0-d8b8-429e-ac5e-e1a1a9a5b2af">Federal Open Market Committee</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a0001fe0-4657-4e2e-9ac7-9e017b9499f6">Federal Reserve Banks</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#27c4789f-9811-481a-87a9-4f650f364be0">Balance Sheet of the Federal Reserve</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#f8f3aec2-2a7c-4190-977c-a7f87566656b">Major Assets</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#dd33c5f9-8876-43b2-a281-84ccc0c2cfc0">Major Liabilities</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#f2bea3c9-6833-49e4-b8fd-9bec17757e1f">Monetary Policy</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7626b147-fad7-497c-889b-7ff6c06b7d20">Open Market Operations</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b86a9be7-d72e-4334-8fb0-1b43820042c3">Reserve Bank of India</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4ec08bb7-ca4b-4b31-aeed-02e8fb777dec">Main functions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ab886d58-f1d1-4b63-ba9a-577616834549">Role of RBI</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#53b71f90-2002-45bc-bfdb-5affd4edbcc4">Monetary Policy Committee</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#231e6cb3-daad-4a30-8639-2db2aefcf70e">Monetary Policy Tools in India</a></div></nav><h1 id="0c07b0c4-a32a-4e49-a1b6-dc20ee0569a3" class="">Federal Reserve</h1><ul id="156d84ac-34b6-4b59-9057-59ca40c6a234" class="bulleted-list"><li style="list-style-type:disc">Found by congress and subject to oversight by congress</li></ul><ul id="40b6583b-884c-42f6-bac3-b795a01872d8" class="bulleted-list"><li style="list-style-type:disc">Independent central bank - decisions do not have to be ratified by the president</li></ul><ul id="42d15764-29d5-472b-9a99-7d39ee439113" class="bulleted-list"><li style="list-style-type:disc">Conduct monetary policy</li></ul><ul id="53234f66-272b-4400-a6e9-c6489bfab152" class="bulleted-list"><li style="list-style-type:disc">Supervise and regulate depository institutions</li></ul><ul id="cb73dd34-784b-4e27-8afb-17fb6524e2a9" class="bulleted-list"><li style="list-style-type:disc">Maintain financial system stability</li></ul><ul id="fc772f53-9509-474b-a0c8-0a73025b4e8d" class="bulleted-list"><li style="list-style-type:disc">Provide payment and other financial services to the US govt., the public</li></ul><h2 id="ada040d9-f5d1-413d-9368-3d7d1f6daba3" class="">Structure of the Federal Reserve</h2><ul id="c3b67b4b-450e-46c0-9fe5-c3adefd35e99" class="bulleted-list"><li style="list-style-type:disc">Divided into 12 federal reserves district each with a main federal reserve bank</li></ul><ul id="d61d2503-312b-4806-ad83-3abd656f6946" class="bulleted-list"><li style="list-style-type:disc">Under the board of governers of FRS </li></ul><ul id="46753c94-3034-4f0e-92a1-5579927b9dc1" class="bulleted-list"><li style="list-style-type:disc">FRS members own these banks</li></ul><ul id="50b4637f-2004-49e4-a07a-870bbbf8043e" class="bulleted-list"><li style="list-style-type:disc">FRS → Seven membered board. President appoints and the senate confirms for 14 year terms</li></ul><ul id="b91c34d4-797a-4b76-86f3-46365487539d" class="bulleted-list"><li style="list-style-type:disc">Chairman and vice chair → 4 years</li></ul><ul id="303b54df-2993-4961-8f8e-06459cb81ec9" class="bulleted-list"><li style="list-style-type:disc">Formulates and conducts monetary policy and supervises and regulates banks</li></ul><h2 id="5ee366c0-d8b8-429e-ac5e-e1a1a9a5b2af" class="">Federal Open Market Committee</h2><ul id="a2b7e988-81af-4494-b959-475e80ca1875" class="bulleted-list"><li style="list-style-type:disc">Monetary policy making body of FRS</li></ul><ul id="8f28dc72-0c17-449e-884e-f379fa3ee77e" class="bulleted-list"><li style="list-style-type:disc">Policies seek to promote full employment, economic growth, price stability and a sustainable pattern of international trade</li></ul><ul id="4f98efd4-194a-4ce4-97e0-acdc1bbf63e4" class="bulleted-list"><li style="list-style-type:disc">FOMC sets ranges for growth of monetary aggregates </li></ul><ul id="39db6941-94a5-44a9-b29e-76b3b666bd0d" class="bulleted-list"><li style="list-style-type:disc">Main policy tool used to achieve monetary targets</li></ul><ul id="5e79760f-502e-43b1-84a0-dc087faecf89" class="bulleted-list"><li style="list-style-type:disc">Involve purchase and sale of US government and federal agency securities</li></ul><h2 id="a0001fe0-4657-4e2e-9ac7-9e017b9499f6" class="">Federal Reserve Banks</h2><ul id="f6e65a85-602f-467d-893a-69dd874541fb" class="bulleted-list"><li style="list-style-type:disc">Assist in the conduct of monetary policy by setting and changing discount rate</li></ul><ul id="d9e6e5e1-5253-44b4-96bc-9cb8a309a6c4" class="bulleted-list"><li style="list-style-type:disc">Supervise and regulate FRS member banks<ul id="5885c98d-3e34-4bb9-91c9-ad4cab14fa4f" class="bulleted-list"><li style="list-style-type:circle">conduct examinations and inspections of member banks</li></ul><ul id="5883e200-5a7f-47e0-9400-152425fb798f" class="bulleted-list"><li style="list-style-type:circle">issue warnings when banking activity is unsafe or unsound</li></ul><ul id="138754dd-38f6-4cbe-b477-eda59b7d858e" class="bulleted-list"><li style="list-style-type:circle">approve bank mergers and acquisitions</li></ul></li></ul><ul id="8b54f5a1-96f0-4b1e-8d85-47f3f81b5075" class="bulleted-list"><li style="list-style-type:disc">Provide government services - acting as commercial banks</li></ul><ul id="99f4a4a3-9ada-42c6-a5c6-6aa943280f1d" class="bulleted-list"><li style="list-style-type:disc">Issue new currency</li></ul><ul id="053e9f99-94bc-43ea-8b93-e7d57054f6a8" class="bulleted-list"><li style="list-style-type:disc">Clear checks</li></ul><ul id="69978d03-47f7-4190-86ed-4131eca2ce94" class="bulleted-list"><li style="list-style-type:disc">Provide wire transfer services</li></ul><ul id="c21477dc-cfcb-4d03-9ab9-93d547282929" class="bulleted-list"><li style="list-style-type:disc">Perform banking sector and economic research</li></ul><h2 id="27c4789f-9811-481a-87a9-4f650f364be0" class="">Balance Sheet of the Federal Reserve</h2><h3 id="f8f3aec2-2a7c-4190-977c-a7f87566656b" class="">Major Assets</h3><ul id="3ad07923-2c15-4c39-99d6-6ad8a845b06d" class="bulleted-list"><li style="list-style-type:disc">Treasury Securities</li></ul><ul id="cd12967d-afb8-4857-be30-795acd75144f" class="bulleted-list"><li style="list-style-type:disc">Gold and foreign exchange</li></ul><ul id="2e7c716e-c8d7-431e-83aa-dd70b81131e2" class="bulleted-list"><li style="list-style-type:disc">Loans to domestic banks</li></ul><h3 id="dd33c5f9-8876-43b2-a281-84ccc0c2cfc0" class="">Major Liabilities</h3><ul id="35295a1b-5f12-4cde-9ddf-c12a3f3f4016" class="bulleted-list"><li style="list-style-type:disc">Reserves</li></ul><ul id="d082bc35-af8b-41f2-87d8-a36c9be02717" class="bulleted-list"><li style="list-style-type:disc">Currency in circulation</li></ul><h1 id="f2bea3c9-6833-49e4-b8fd-9bec17757e1f" class="">Monetary Policy</h1><ul id="ce19ad37-5d12-4b5c-ab1a-e1705ac19037" class="bulleted-list"><li style="list-style-type:disc">Affects the macroeconomy by influencing the supply and demand for excess bank reserves</li></ul><ul id="8d9f7038-1595-4612-9e34-a60f8cc01632" class="bulleted-list"><li style="list-style-type:disc">Influences the money supply and level of short term and long term interest rates</li></ul><h2 id="7626b147-fad7-497c-889b-7ff6c06b7d20" class="">Open Market Operations</h2><ul id="08e30251-c407-466a-bddd-54d6580437be" class="bulleted-list"><li style="list-style-type:disc">policy directive of FOMC is forwarded to federal reserve board trading desk</li></ul><ul id="1073373d-132b-4674-95ae-cebf399825be" class="bulleted-list"><li style="list-style-type:disc">operations maybe permanent or transparent</li></ul><ul id="647ecaae-2a8e-4e98-9ab9-226706cd5a35" class="bulleted-list"><li style="list-style-type:disc">Discount rate is the rate federal reserve banks charge on loans to depository institutions in their district</li></ul><ul id="d16be2ae-182c-4c10-a41f-4eda1911a812" class="bulleted-list"><li style="list-style-type:disc">Federal Reserve rarely uses discount rate as a policy tool</li></ul><ul id="71ddd62c-f5f8-4051-b7fe-be16b8252bcc" class="bulleted-list"><li style="list-style-type:disc">Reserve requiremnets are the reserve assets depoistory institutions must keep to back transaction deposits</li></ul><figure id="0a0f3d2a-a29b-445a-aef3-cf11c4d21b60" class="image"><a href="Central%20Banking%20System%20a57a840b442648eda6c45193cc2298fb/Untitled.png"><img style="width:877px" src="Central%20Banking%20System%20a57a840b442648eda6c45193cc2298fb/Untitled.png"/></a></figure><h1 id="b86a9be7-d72e-4334-8fb0-1b43820042c3" class="">Reserve Bank of India</h1><ul id="c7d209b1-636c-4863-8918-7a694561817b" class="bulleted-list"><li style="list-style-type:disc">April 1 1935 → start date → During British Raj Rule</li></ul><ul id="bec1f86c-3524-4d79-b5c3-280f7248e1a6" class="bulleted-list"><li style="list-style-type:disc">Managed by Central Board of Directors, four local Boards of Directors and a committee of the central board of Directors</li></ul><h2 id="4ec08bb7-ca4b-4b31-aeed-02e8fb777dec" class="">Main functions</h2><ul id="ff6a7ade-4d69-4dc7-b129-91ceceb6b891" class="bulleted-list"><li style="list-style-type:disc">Maintain monetary stability</li></ul><ul id="a9226479-fa14-4ed5-9961-9dbf3937c078" class="bulleted-list"><li style="list-style-type:disc">Maintain financial stability → money circulation → financial system</li></ul><ul id="0e4883c8-59eb-490d-846b-a91ef8f16de9" class="bulleted-list"><li style="list-style-type:disc">Maintain stable payment system → RBI facilitates UPI/NEFT/RTGS</li></ul><ul id="e2445b65-894d-4daa-8f3e-b2ae18c54a2d" class="bulleted-list"><li style="list-style-type:disc">Promote the development of financial infrastructure of markets and systems → RBI made a rule that if a bank wants to open branch in urban area, then they have to open 2 branches in rural areas</li></ul><ul id="aefcdc4a-fd02-4a35-82ef-7f6197e282fb" class="bulleted-list"><li style="list-style-type:disc">To ensure that credit allocation by the financial system broadly reflects the national economy priorities and concern</li></ul><ul id="2344fdf7-7c87-4199-804c-79d6ac587b60" class="bulleted-list"><li style="list-style-type:disc">Regulate overall volume of money and credit in the economy</li></ul><h2 id="ab886d58-f1d1-4b63-ba9a-577616834549" class="">Role of RBI</h2><ul id="bc6276ea-3f57-49b8-b1dc-f1743c3c5246" class="bulleted-list"><li style="list-style-type:disc">Note Issuing Authority → Has sole right or authority or monpoly of issuing currency notes other than one rupee notes and coins and coins of smaller denominations</li></ul><ul id="9487b399-fb98-449d-882f-8e328960e407" class="bulleted-list"><li style="list-style-type:disc">Government Banker → The RBI is the banker to the Central and state governments. As a banker to the government, the bank can make ways and means advances to both the Central and State government and also provides over draft facilities</li></ul><ul id="a5e729ee-bbf5-4a61-80d5-e5904a4a7ca8" class="bulleted-list"><li style="list-style-type:disc">Banker’s bank → The RBI can be called a banker’s bank because it has a very special relationship with commercial and co operative banks and the major part of it’s business is with these banks</li></ul><ul id="dadee23f-4968-4c5e-864c-9b84aec3386f" class="bulleted-list"><li style="list-style-type:disc">Supervising Authority → The RBI has the power to supervise and control commerical and cooperative banks to issue licenses for starting branches to inspect htese banks in india</li></ul><ul id="edb08673-d294-49ff-bb4e-ee4595f9d5b2" class="bulleted-list"><li style="list-style-type:disc">Exchange Control Authority → RBI also performs the role of maintaining the stability of external value of rupee. It pursues this objective thorugh it’s domestic policies and regulation of foreign exchange market → Foreign Exchange Rate Regulation Act(FERA) → FEMA</li></ul><ul id="fcc53141-7e8e-4611-a749-7641f732ef99" class="bulleted-list"><li style="list-style-type:disc">Promoter of Financial system → RBI has been rendering development or promotional services which have strenthened the country’s banking and financial structure</li></ul><ul id="e8ef2c65-b446-47e1-8c51-ff23a0b4696b" class="bulleted-list"><li style="list-style-type:disc">Banking ombudsman scheme → Under this scheme which was made in 1995, the complainants can file their complaints in any form, including online and can also appeal to the RBI against the awards and the other decisions of the Banking ombudsman</li></ul><ul id="82754b3b-726f-4379-b8be-4a753d2f6f57" class="bulleted-list"><li style="list-style-type:disc">Monetary Policy Implementation → RBI implements the monetary policy through it’s various instruments</li></ul><ul id="077134f3-cdf6-4e13-8bf0-84f54e3a32c2" class="bulleted-list"><li style="list-style-type:disc">Banking Codes and Standards Board of India → To measure the performance of banks against codes and standards based on established global practices, the RBI set up the banking codes and standards board of india(BCSBI)</li></ul><ul id="6411a657-ee88-4d17-83fe-a6c6330e6028" class="bulleted-list"><li style="list-style-type:disc">Customer Service Department in RBI → RBI can set up a new department called customer service department to carry out a variety of activities relating customer services and grievance redressal in the RBI</li></ul><ul id="50970a3b-3e24-4c86-ba93-736d3a29778d" class="bulleted-list"><li style="list-style-type:disc">Fair Practices Codes for Lenders → RBI formulated the FPCL which was communicated to banks to safegaurd the rightful interest of the borrowers</li></ul><ul id="a05980ec-bc33-41a8-b991-38b73860e9a0" class="bulleted-list"><li style="list-style-type:disc">Transparency and reasonableness of bank charges</li></ul><h1 id="53b71f90-2002-45bc-bfdb-5affd4edbcc4" class="">Monetary Policy Committee</h1><ul id="8f34cb2a-05a5-4fe8-9d44-d1ee663ca8f8" class="bulleted-list"><li style="list-style-type:disc">Committee of RBI that is responsible for fixing the benchmark interest rate of India</li></ul><ul id="d7e7464d-c38e-4635-aa4c-ad1534fa127d" class="bulleted-list"><li style="list-style-type:disc">Meetings are to be held atleast 4 times a year → has to be published after each such meeting</li></ul><ul id="fd39323d-25e7-4e37-a481-8c2fa5cbdbd9" class="bulleted-list"><li style="list-style-type:disc">If RBI wants to control inflation → RBI increases interest rate and he will postpone consumption → Extra available money is sucked out</li></ul><ul id="a8421c41-f5e5-457f-85b9-006aebca48c2" class="bulleted-list"><li style="list-style-type:disc">When RBI reduces interest rate, then prices inflate and flow of currency increases</li></ul><ul id="630f7b27-0155-4427-862e-d7cc37328450" class="bulleted-list"><li style="list-style-type:disc">Monetary Benefit Passthrough → Floating Point EMI</li></ul><h1 id="231e6cb3-daad-4a30-8639-2db2aefcf70e" class="">Monetary Policy Tools in India</h1><p id="a46ec017-4448-4f78-bc69-21e5e6cba2b1" class="">1) Repo Rate: The (fixed) interest rate at which the Reserve Bank provides overnight liquidity to banks against the collateral of government and other approved securities
+under the liquidity adjustment facility (LAF).</p><p id="f3a08395-8436-4b73-8ee8-795c48976997" class="">
+2) Reverse Repo Rate: The (fixed) interest rate at which the Reserve Bank absorbs liquidity, on an overnight basis, from banks against the collateral of eligible government
+securities under the LAF.</p><p id="ef58cd9b-e8c9-4cd3-ad5d-c59f7ea69a14" class="">
+3) Liquidity Adjustment Facility (LAF): The LAF consists of overnight as well as term repo auctions. Progressively, the Reserve Bank has increased the proportion of liquidity injected under fine-tuning variable rate repo auctions of range of tenors. The aim of term repo is to help develop the inter-bank term money market, which in turn can set market based benchmarks for pricing of loans and deposits, and hence improve transmission of monetary policy. The Reserve Bank also conducts variable interest rate reverse repo auctions, as necessitated under the market conditions.</p><p id="b10faf47-72d3-4483-b989-abbf179213be" class="">
+4) Marginal Standing Facility (MSF): A facility under which scheduled commercial banks can borrow additional amount of overnight money from the Reserve Bank by dipping into their Statutory Liquidity Ratio (SLR) portfolio up to a limit at a penal rate of interest. This provides a safety valve against unanticipated liquidity shocks to the banking system.</p><p id="f9a45109-f215-4397-80f7-4edd047b2409" class="">
+5) Corridor: The MSF rate and reverse repo rate determine the corridor for the daily movement in the weighted average call money rate.</p><p id="4def51c9-5f83-49ee-8c3a-243766197dae" class="">
+6) Bank Rate: It is the rate at which the Reserve Bank is ready to buy or rediscount bills of exchange or other commercial papers. The Bank Rate is published under Section 49 of the Reserve Bank of India Act, 1934. This rate has been aligned to the MSF rate and, therefore, changes automatically as and when the MSF rate changes alongside policy repo rate changes.</p><p id="0b5f4218-a3ec-4d85-979c-ab669b7beef2" class="">
+7) Cash Reserve Ratio (CRR): The average daily balance that a bank is required to maintain with the Reserve Bank as a share of such per cent of its Net demand and time liabilities (NDTL) that the Reserve Bank may notify from time to time in the Gazette of India.</p><p id="22c62fee-05b0-416d-a2e3-d37ac0091b3e" class="">
+8) Statutory Liquidity Ratio (SLR): The share of NDTL (Net Demand and Time Liabilities) that a bank is required to maintain in safe and liquid assets, such as, unencumbered government securities, cash and gold. Changes in SLR often influence the availability of resources in the banking system for lending to the private sector.</p><p id="347e08ce-a4ff-486b-81cf-3fa025dbda4c" class="">
+9) Open Market Operations (OMOs): These include both, outright purchase and sale of government securities, for injection and absorption of durable liquidity, respectively.</p><p id="e3fb9d03-afdb-43be-8b13-45731802fa30" class="">
+10) Market Stabilisation Scheme (MSS): This instrument for monetary management was introduced in 2004. Surplus liquidity of a more enduring nature arising from large capital inflows is absorbed through sale of short-dated government securities and treasury bills. The cash so mobilised is held in a separate government account with the Reserve Bank.</p><p id="1082b38a-f313-44f9-bb0f-f42e8fe26b99" class="">
+</p><p id="88f092aa-f3c9-4214-8c8b-bdda1f1bfe1b" class="">11) </p></div></article></body></html>

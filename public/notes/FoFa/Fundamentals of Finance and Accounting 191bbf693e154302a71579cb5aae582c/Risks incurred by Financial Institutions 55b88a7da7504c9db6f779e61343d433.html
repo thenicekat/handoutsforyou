@@ -1,0 +1,670 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Risks incurred by Financial Institutions</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="55b88a7d-a750-4c9d-b6f7-79e61343d433" class="page sans"><header><h1 class="page-title">Risks incurred by Financial Institutions</h1></header><div class="page-body"><nav id="281d7685-e58d-498e-b966-e01524abcde1" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b6d13618-a0c8-4a0b-85c8-bcb14e724805">Credit Risk</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#17de17ef-6ad4-4a38-a8d7-97ff43543e31">Liquidity Risk</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#60879054-cf4c-4e13-82e8-72697ccaf9b7">Interest Rate Risk</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3d0fd61c-4800-4b5d-9a9f-d32d2933eaec">Market Risk</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e5a4f25b-8673-4089-8bcc-8f66d8fea05f">Off Balance Sheet Risk</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7b4cb6c8-4333-4c9d-a520-479cdbc543d0">Foreign Exchange Risk</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0981884e-7a02-4516-867e-6929026dcf01">Country or Sovereign Risk</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#65cb8197-2745-443c-9b63-c9e1c1371028">Technology Risk and Operational Risk</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ac1a7ed8-e5b1-487d-aaf9-5dccad7b2123">Insolvency Risk</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#8ca7f295-de9f-4fc2-ac6f-194ea6d3ff13">Regulators of Financial Institutions</a></div></nav><h1 id="b6d13618-a0c8-4a0b-85c8-bcb14e724805" class="">Credit Risk</h1><ul id="8ad01abb-b382-4167-8944-1e529ffa97b3" class="bulleted-list"><li style="list-style-type:disc">Risk that promised cash flows from loans and securities held by FIs may not be paid in full</li></ul><ul id="37e6b1c4-002e-485a-a85b-baabf52521df" class="bulleted-list"><li style="list-style-type:disc">Many financial claims by individuals or corporations have:<ul id="560653a1-dfc0-4bbd-9299-d517b4da1023" class="bulleted-list"><li style="list-style-type:circle">limited upside return with a high probability</li></ul><ul id="fa3c37fb-1d83-49a6-8599-89bf07173aab" class="bulleted-list"><li style="list-style-type:circle">large downside risk with a low probability</li></ul></li></ul><ul id="83f00fdf-a746-4a01-a34c-536374ff9d43" class="bulleted-list"><li style="list-style-type:disc">A key role of FIs involves screening and montoring loan applicants to ensure only the creditworthy receive loans</li></ul><ul id="b4fda0df-58ca-4e7c-8fb5-838df5877e99" class="bulleted-list"><li style="list-style-type:disc">The effects of credit risk are evidenced by charge offs</li></ul><ul id="f06e2746-e9d3-41cd-a299-61bf20c1f136" class="bulleted-list"><li style="list-style-type:disc">FIs can diversify away some individual firm specific credit risk but nor systematic credit risk<ul id="4c9d5923-4dcc-4bd1-8d19-78fdfe185916" class="bulleted-list"><li style="list-style-type:circle">Firm specific → Risk of default for the borrowing firm associated with the specific types of project risk taken by that firm</li></ul><ul id="e55c187d-ae24-4a3c-b597-f276bbacf4b9" class="bulleted-list"><li style="list-style-type:circle">Systematic credit risk → Risk of default associated with general economy wide or macroeconomic conditions affecting all borrowers</li></ul></li></ul><ul id="5ddd55ec-561c-4197-819d-4c2397261dbe" class="bulleted-list"><li style="list-style-type:disc">Diversification reduces firm specific credit risk, but leaves the FI exposed to systematic credit risk</li></ul><h1 id="17de17ef-6ad4-4a38-a8d7-97ff43543e31" class="">Liquidity Risk</h1><ul id="a06c565a-3236-4a13-b7d9-657f5237b8a9" class="bulleted-list"><li style="list-style-type:disc">Sudden and unexpected increase in liability withdrawals may require an FI to liquidite assets in a very short period of time and at low prices</li></ul><ul id="f71e59b7-ee8d-451a-ba09-c5f07f2f9934" class="bulleted-list"><li style="list-style-type:disc">Day to day withdrawals by liability holders are generally predictable</li></ul><ul id="417272ce-82de-46d8-b18a-2fb9901ecad8" class="bulleted-list"><li style="list-style-type:disc">Unusually large withdrawals by liability holders can create liquidity problems</li></ul><ul id="c066242d-335c-4260-b9f9-4f2d66c11fba" class="bulleted-list"><li style="list-style-type:disc">FIs may be forced to sell less liquid assets at fire-sale prices</li></ul><h1 id="60879054-cf4c-4e13-82e8-72697ccaf9b7" class="">Interest Rate Risk</h1><ul id="f03fe1ad-73d2-4a0c-a96e-3dcd1073bd45" class="bulleted-list"><li style="list-style-type:disc">Risk incurred by an FI when the maturities of it’s assets and liabilities are mismatched and interest rates are volatile</li></ul><ul id="3c089c43-d307-442e-98fc-8b22b77dadc7" class="bulleted-list"><li style="list-style-type:disc">Asset Transformation involves an FI issuing secondary securities or liabilities to fund the purchase of primary securities or assets</li></ul><ul id="c87e4c29-a2dd-4597-b258-818673091c53" class="bulleted-list"><li style="list-style-type:disc">Primary securities or assets </li></ul><ul id="cdd669f0-1ba6-4c26-890c-6d81bb24b323" class="bulleted-list"><li style="list-style-type:disc">If an FI’s assets are longer term than it’s liabilities, it faces refinancing risk i.e. the cost of rolling over or reborrowing funds will rise above the returns being earned on asset investments</li></ul><ul id="7f794497-50e7-4754-83bb-3270a425cab9" class="bulleted-list"><li style="list-style-type:disc">Borrower will not be able to replace existing debt with new debt</li></ul><ul id="18fd8c5c-82eb-41cf-b9eb-65081351c886" class="bulleted-list"><li style="list-style-type:disc">Interest rate increases after you borrow</li></ul><ul id="82cbad73-0392-41f5-98ac-42a0192b47d3" class="bulleted-list"><li style="list-style-type:disc">If an FI’s assets are shorted than it’s liabilities, it faces reinvestment risk i.e. the risk that the returns on funds to be reinvested will fall below the cost of funds</li></ul><ul id="e5c63fa3-e914-4ab2-adea-ffd47fe74e8f" class="bulleted-list"><li style="list-style-type:disc">Interest rate falls after you lend</li></ul><ul id="84e408bb-8879-4419-80ce-eee42609775e" class="bulleted-list"><li style="list-style-type:disc">All FI’s face price risk i.e price of security changes when interest rate changes</li></ul><h1 id="3d0fd61c-4800-4b5d-9a9f-d32d2933eaec" class="">Market Risk</h1><ul id="bb3bdd5f-aebd-4900-bd5b-cde2b1b1b7cd" class="bulleted-list"><li style="list-style-type:disc">Risk incurred in trading assets and liabilities due to changes in interest rates, exchange rates and other asset prices</li></ul><ul id="fd7ebde0-ad5e-4bac-bc64-9b07c076d39a" class="bulleted-list"><li style="list-style-type:disc">Arises when FIs actively trade assets and liabilities rather than holding them for longer term investment, funding or hedging purposes</li></ul><h1 id="e5a4f25b-8673-4089-8bcc-8f66d8fea05f" class="">Off Balance Sheet Risk</h1><ul id="433f3ec2-a2d4-47c5-aceb-7a65e52834a8" class="bulleted-list"><li style="list-style-type:disc">Can increase FI’s interest rate risk, credit risk and foreign exchange risk</li></ul><ul id="5704e7da-8c01-4534-81db-339ee2928de4" class="bulleted-list"><li style="list-style-type:disc">Risk incurred by an FI as the result of activities related to contingent assets and liabilities</li></ul><ul id="0a280cf3-8da3-4687-8df8-db29893790b7" class="bulleted-list"><li style="list-style-type:disc">OBS items become on balance sheet items only if some future event occurs</li></ul><ul id="24647aa6-aab1-4fd2-8a80-6e296449993a" class="bulleted-list"><li style="list-style-type:disc">A Letter of Credit is a credit guarantee issued by an FI for a fee on which payment is contingent on some future event occuring, most notably default of the agent that purchases the LOC</li></ul><h1 id="7b4cb6c8-4333-4c9d-a520-479cdbc543d0" class="">Foreign Exchange Risk</h1><ul id="cd499b2c-3b40-4562-b2f0-a1f53c7a1fd8" class="bulleted-list"><li style="list-style-type:disc">Risk that exchange rate changes can affect the value of an FI’s assets and liabilities denominated in foreign currencies</li></ul><ul id="23249ca9-9f0c-4515-9083-6ed4b0b04c6d" class="bulleted-list"><li style="list-style-type:disc">A net long position in a foreign currency involves holding more foreign assets than foreign liabilities<ul id="fc4e35e8-29cd-448d-8128-30f687a63f4c" class="bulleted-list"><li style="list-style-type:circle">FI loses when foreign currency falls relative to $</li></ul></li></ul><ul id="b8d879a6-ca8d-46c7-8959-d981a8904937" class="bulleted-list"><li style="list-style-type:disc">A net short position in a foreign currency involves holding less foreign assets than liabilites</li></ul><ul id="0f05df54-b8e6-41f9-a126-fcc3fcf6e2a6" class="bulleted-list"><li style="list-style-type:disc">A FI is fully hedged if it holds an equal amount of assets and liabilities</li></ul><h1 id="0981884e-7a02-4516-867e-6929026dcf01" class="">Country or Sovereign Risk</h1><ul id="be19c2ed-f49a-4256-84b7-c631f9e56312" class="bulleted-list"><li style="list-style-type:disc">Risk that repayments may be interrupted because of interference from foreign governments</li></ul><ul id="9d0ba061-2c0e-41ac-a2b3-f4791aeec3c3" class="bulleted-list"><li style="list-style-type:disc">Differs from credit risk because with domestic assets, FIs usually have some recourse through bankruptcy courts i.e. FIs can recoup some of their losses when defaulted firms are liquidated or restructured</li></ul><ul id="3f47f122-aa64-48bc-bf54-077f188fbaf7" class="bulleted-list"><li style="list-style-type:disc">Foreign corporations may be unable to pay principal or interest even if they want to because foreign governments may limit or prohibit them from debit repayment due to forign currency shortages or adverse political events</li></ul><h1 id="65cb8197-2745-443c-9b63-c9e1c1371028" class="">Technology Risk and Operational Risk</h1><ul id="f8d269a5-809e-4b9e-be61-f964e29d6b4b" class="bulleted-list"><li style="list-style-type:disc">Technology risk is the risk incurred by an FI when it’s technological investments do not produce anticipated cost savings<ul id="47306d6d-1eab-4af5-961c-25737fdc8a1c" class="bulleted-list"><li style="list-style-type:circle">Lowering Operative Costs</li></ul><ul id="4dcc748b-8666-406b-9541-1534d91353fc" class="bulleted-list"><li style="list-style-type:circle">Increasing profits</li></ul><ul id="2e099c53-4388-490c-b899-90baa7bdf0bc" class="bulleted-list"><li style="list-style-type:circle">Capturing new markets</li></ul></li></ul><ul id="f9421264-1c50-48ee-8296-de635336633b" class="bulleted-list"><li style="list-style-type:disc">Operational Risk is the risk that existing technology or support systems may malfunction or break down<ul id="aa1d52a9-728d-42da-9df7-a001aebb6b7e" class="bulleted-list"><li style="list-style-type:circle">The BIS defines operational risk as the risk of loss resulting from inadequate or failed internal processes</li></ul></li></ul><h1 id="ac1a7ed8-e5b1-487d-aaf9-5dccad7b2123" class="">Insolvency Risk</h1><ul id="c4203b2e-eb99-4718-a1e5-420741fa69d5" class="bulleted-list"><li style="list-style-type:disc">Risk that an FI may not have enough capital to offset a sudden decline in the value of it’s assets relative to it’s liabilities</li></ul><ul id="42a86240-7d06-4a82-b533-2feecf984bc5" class="bulleted-list"><li style="list-style-type:disc">Consequence of one or more risks previously described</li></ul><ul id="4c19a38e-6bf3-4eb6-ac4d-77407efaa0d6" class="bulleted-list"><li style="list-style-type:disc">Generally the more equity capital to borrowed funds an FI has the less insolvency risk it is exposed to</li></ul><h1 id="8ca7f295-de9f-4fc2-ac6f-194ea6d3ff13" class="">Regulators of Financial Institutions</h1><ul id="1edbe512-58e6-43b4-a3db-d25eb00a387f" class="bulleted-list"><li style="list-style-type:disc">Ministry of Finance</li></ul><ul id="5f8dec5e-0f7f-4f91-8377-a116526a42f4" class="bulleted-list"><li style="list-style-type:disc">Reserve Bank of India</li></ul><ul id="b02c0b7b-a68b-48e3-802f-09ea71e3d813" class="bulleted-list"><li style="list-style-type:disc">Securities Exchange Board of India</li></ul><ul id="258a3ab7-2fc8-4c05-a681-e767cf1f74ff" class="bulleted-list"><li style="list-style-type:disc">Insurance Regulatory Development Authority</li></ul><p id="59f722e2-a89d-421f-9d3e-38baf3f8b52c" class="">
+</p></div></article></body></html>

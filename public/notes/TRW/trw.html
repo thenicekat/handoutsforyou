@@ -1,0 +1,669 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>TRW </title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="c125e737-7b28-4fff-911b-7d871558fddf" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">💬</span></div><h1 class="page-title">TRW </h1></header><div class="page-body"><h3 id="b9dbf213-b642-4f95-997d-e7fcc8bcd603" class="">Paraphrasing:</h3><ul id="9900b38f-cfc4-4c24-bd22-3ed08680aec1" class="bulleted-list"><li style="list-style-type:disc">Your own rendition of essential information and ideas expressed by someone else is presented in a new form</li></ul><ul id="270f0037-3457-4998-b1f8-290e1801f306" class="bulleted-list"><li style="list-style-type:disc">Don&#x27;t directly quote too much</li></ul><ul id="ef7f0836-ef0c-4e0f-8931-1c348faf6797" class="bulleted-list"><li style="list-style-type:disc">Try to understand it as a whole rather than pursuing to write down ideas</li></ul><ul id="1bca295a-b859-4042-94cd-b62d6f7d0961" class="bulleted-list"><li style="list-style-type:disc">Be selective</li></ul><ul id="00f1a08c-d575-457b-a816-1197423520f1" class="bulleted-list"><li style="list-style-type:disc">Your own opinions can be used</li></ul><ul id="ae55ee61-fb73-41de-a362-3348815b87fb" class="bulleted-list"><li style="list-style-type:disc">You can also use direct quotations without changing or using quotation marks</li></ul><ul id="2d778927-ac4e-4eba-bd31-f5e268df6602" class="bulleted-list"><li style="list-style-type:disc">Record the source inclusive of page numbers</li></ul><ul id="97732ea4-a5bc-4644-a71b-fd25964318a7" class="bulleted-list"><li style="list-style-type:disc">Write keywords to indicate subject</li></ul><ul id="ab9f2a9a-9cb7-48c7-a5d5-2995929848b8" class="bulleted-list"><li style="list-style-type:disc">Use quotation to identify any unique term or phrase</li></ul><ul id="2ce0e404-b465-4ca3-abca-5e3724fa2697" class="bulleted-list"><li style="list-style-type:disc">Set original aside and make sure it doesn&#x27;t lose its essence</li></ul><h3 id="ad836928-a76b-482f-b9c1-051df1c5886e" class="">Summary:</h3><ul id="244baa4d-918b-4322-b516-de3556e981b4" class="bulleted-list"><li style="list-style-type:disc">Ignore specifics</li></ul><ul id="b0aeadd4-81af-4862-8fdc-e92510346797" class="bulleted-list"><li style="list-style-type:disc">Write main points and maybe ignore minor details</li></ul><ul id="fa9db4a8-69b0-4aa0-a7a6-2ecd836f94e7" class="bulleted-list"><li style="list-style-type:disc">Cover the main idea</li></ul><ul id="8bc89c42-0e4a-4630-9eee-dda3844186be" class="bulleted-list"><li style="list-style-type:disc">Any words or phrases directly taken put in &quot;&quot;</li></ul><ul id="487092b2-b571-455a-ba0b-4222f97eda04" class="bulleted-list"><li style="list-style-type:disc">The tone of the summary should be neutral</li></ul><ul id="3916533d-9b0f-45e5-a880-6e921ab07c10" class="bulleted-list"><li style="list-style-type:disc">Length should be strictly followed</li></ul><h3 id="a50bc515-d251-46fc-9156-80dafd406f31" class="">Citations:</h3><h3 id="ab1fedf1-3a92-4359-a8e7-c9552d077250" class="">MLA:</h3><ul id="c07356f9-69f7-4073-a490-0cbaa002633e" class="bulleted-list"><li style="list-style-type:disc">In this citation, more emphasis is on the author and so the full name of the author is used.</li></ul><ul id="8f3e367b-51d4-48f9-abf9-457adc283362" class="bulleted-list"><li style="list-style-type:disc">Has works cited page and not references</li></ul><ul id="b99c6c03-da22-448c-a025-905c5e001ef4" class="bulleted-list"><li style="list-style-type:disc">Date/Year should be written at the end in brackets</li></ul><ul id="45c38ffd-b524-49b6-b265-fcb6ac244ed8" class="bulleted-list"><li style="list-style-type:disc">URL should be mentioned as <strong>URL accessed on Date</strong></li></ul><ul id="56b72f9e-ec63-4ba3-9f3d-b5b7671a3ca4" class="bulleted-list"><li style="list-style-type:disc">In URL don&#x27;t put http</li></ul><ul id="8978d6de-8015-4fcd-b42a-252427bafb1c" class="bulleted-list"><li style="list-style-type:disc">Title in Title case(Pride and Prejudice)</li></ul><ul id="9e059dc0-2a79-40ce-87e5-e6159cd4b86a" class="bulleted-list"><li style="list-style-type:disc">Title in italics</li></ul><ul id="c8c0eec5-de55-4c10-b702-aad3dcc68799" class="bulleted-list"><li style="list-style-type:disc">We have to put the article name in double quotes here.</li></ul><ul id="787010c8-aa87-4ffb-bfb9-2856ef45dfa4" class="bulleted-list"><li style="list-style-type:disc"><strong>Author last name, first name. </strong><em><strong>Book Title. </strong></em><strong>Publisher, year.</strong></li></ul><ul id="14b3ced6-f6a2-4ac3-959c-67c21f19d31a" class="bulleted-list"><li style="list-style-type:disc">If authors &gt;=3, mention the first one and use et al.</li></ul><ul id="62b4e051-754d-4898-a8e2-511b4f788594" class="bulleted-list"><li style="list-style-type:disc"><strong>Author last name, first name. “Article Name.”</strong><em><strong> Container</strong></em><strong>, year. URL. Accessed day month year.</strong></li></ul><h3 id="ddd44b94-3c7e-4815-a104-c7499dd86835" class="">APA:</h3><ul id="adb7f7ea-35a6-4de1-b5b3-6eb4dc79d050" class="bulleted-list"><li style="list-style-type:disc">In this citation, we have the last name, initials, and the year in brackets and then the article name, then the title in sentence case(Pride and prejudice)</li></ul><ul id="8b171ff1-0978-44b7-a245-0f1ff3cb6f1e" class="bulleted-list"><li style="list-style-type:disc">Title in italics</li></ul><ul id="ee203279-4670-4f18-bd30-5828829e479b" class="bulleted-list"><li style="list-style-type:disc">In the end Location: Publisher</li></ul><ul id="8c25937f-364b-4706-a127-8ebbfb10e0c9" class="bulleted-list"><li style="list-style-type:disc">If authors &gt; 6, mention 1 and use <strong>et al.</strong></li></ul><ul id="95c61df3-782f-4331-a63c-b24fb46f3e29" class="bulleted-list"><li style="list-style-type:disc">All APA citations should use hanging indents, that is, the first line of an entry should be flush left, and the second and subsequent lines should be indented ½</li></ul><ul id="f85edf90-8f7b-49ae-97bf-854823376846" class="bulleted-list"><li style="list-style-type:disc">If there is <strong>more than one author</strong>, use an ampersand (&amp;) before the name of the last author. If there are more than six authors, list only the first one and use et al. for the rest.</li></ul><ul id="3e3083e3-9a00-4d69-845f-ec015818dd1d" class="bulleted-list"><li style="list-style-type:disc">Place the<strong> date of publication in parentheses immediately after the name of the author</strong>. Place a period after the closing parenthesis. Do not italicize, underline, or put quotes around the titles of shorter works within longer works.</li></ul><ul id="6321dcc5-d1cc-4816-acbc-9040017b264a" class="bulleted-list"><li style="list-style-type:disc"><strong>Examples:</strong></li></ul><ul id="db5fbedb-82b0-47e2-96fe-c1604abbc9e1" class="bulleted-list"><li style="list-style-type:disc"><strong>Searles, B., &amp; Last, M. (1979). </strong><em><strong>A reader&#x27;s guide to science fiction</strong></em><strong>. New York: Facts on File, Inc.</strong></li></ul><ul id="04b56afd-c3f6-48f1-ac85-c47529fb4051" class="bulleted-list"><li style="list-style-type:disc"><strong>Bergmann, P. G. (1993). Relativity. In </strong><em><strong>The new encyclopedia britannica</strong></em><strong> (Vol. 26, pp. 501-508). Chicago: Encyclopedia Britannica.</strong></li></ul><ul id="6e88dab1-7805-4fa6-82a0-e569e122d330" class="bulleted-list"><li style="list-style-type:disc"><strong>Harlow, H. F. (1983). Fundamentals for preparing psychology journal articles. </strong><em><strong>Journal of Comparative and Physiological Psychology, 55</strong></em><strong>, 893-896.</strong></li></ul><ul id="27f17f10-3543-4b17-b672-322aecd3b023" class="bulleted-list"><li style="list-style-type:disc">Note: Do not enclose the title in quotation marks. Put a period after the title. If a periodical includes a volume number, italicize it and then give the page range (in regular type) without &quot;pp.&quot; If the periodical does not use volume numbers, as in newspapers, use <em>p</em>. or <em>pp</em>. for page numbers.</li></ul><ul id="7000d690-66f4-407a-8e54-9a9a51b38969" class="bulleted-list"><li style="list-style-type:disc">Note: Unlike other periodicals, p. or pp. precedes page numbers for a newspaper reference in APA style</li></ul><ul id="e41dd6d5-ee66-41fd-91d0-380f6bcfa4a2" class="bulleted-list"><li style="list-style-type:disc">Note: When citing Internet sources, refer to the specific website document. If a document is undated, use &quot;n.d.&quot; (for no date) immediately after the document title. Break a lengthy URL that goes to another line after a slash or before a period. Continually check your references to online documents. There is no period following a URL.</li></ul><ul id="8670e310-8e02-4dcb-af79-7f583aae4eb5" class="bulleted-list"><li style="list-style-type:disc">Note: If you cannot find some of this information, cite what is available.</li></ul><ul id="2d277390-1110-41e9-8b9c-958e1b2ff790" class="bulleted-list"><li style="list-style-type:disc">If we have a revised edition, use the newest date in curly brackets and the old year in square brackets</li></ul><ul id="68884d6c-0b22-41bd-816f-bc683e2581ab" class="bulleted-list"><li style="list-style-type:disc">Use Ed. and Eds. for editors in the citation and put name in reverse as in initial first and last name</li></ul><ul id="1e3ecc89-d484-4a0d-b5c4-c55839dd3907" class="bulleted-list"><li style="list-style-type:disc">If the print source does not show the publisher but if you can infer the publisher, the</li></ul><ul id="0bea266f-46a9-451b-abec-831a457f17a6" class="bulleted-list"><li style="list-style-type:disc"><em><strong>GVU&#x27;s 8th WWW user survey</strong></em><strong>. (n.d.). Retrieved August 8, 2000, from </strong><a href="http://www.cc.gatech.edu/gvu/usersurveys/survey1997-10/"><strong>http://www.cc.gatech.edu/gvu/usersurveys/survey1997-10/</strong></a></li></ul><h3 id="82e370ca-1aa6-4079-b181-f2c34fcd9130" class="">Chicago:</h3><ul id="6a2dd537-8135-45b4-a867-fa20e0f61d77" class="bulleted-list"><li style="list-style-type:disc"><strong>Author last name, first name. Year. </strong><em><strong>Book Title</strong></em><strong>. City of publication: Publisher.</strong></li></ul><ul id="0431d63a-e1bf-4653-ab55-44663f9daedc" class="bulleted-list"><li style="list-style-type:disc">If authors &gt;=4, mention the first one and use et al.</li></ul><ul id="5ff9f8fe-a44f-4e26-9d7b-1f47841f1de6" class="bulleted-list"><li style="list-style-type:disc"><strong>Author last name, first name. Year. “Article name.” In </strong><em><strong>Container, </strong></em><strong>__ - __. City of publication: Publisher.</strong></li></ul><figure id="6b96d704-fd01-4c56-aa4c-d4e20a6ba904" class="image"><a href="https://lh5.googleusercontent.com/Cr6cK46q9CqcNVrSbU_J4qnEIIoQLNmtGThMRzui1ra_1Zlf3B0zAaCOeCdpcFxFTtfs0cJGefqnLP4yuF9aIXdVJS1T9K58mtk9LHto4JL70HO-DfRyhkAEqENXpthEaqfDePDn9sfMspqzblMKCmZDX9wL_9-NlgqQWBCkUNKxzpjYgyM9utsWFN7i"><img src="https://lh5.googleusercontent.com/Cr6cK46q9CqcNVrSbU_J4qnEIIoQLNmtGThMRzui1ra_1Zlf3B0zAaCOeCdpcFxFTtfs0cJGefqnLP4yuF9aIXdVJS1T9K58mtk9LHto4JL70HO-DfRyhkAEqENXpthEaqfDePDn9sfMspqzblMKCmZDX9wL_9-NlgqQWBCkUNKxzpjYgyM9utsWFN7i"/></a></figure><figure id="a5472641-4d4f-4be3-aeda-2e103e85bcad" class="image"><a href="https://lh5.googleusercontent.com/n4UDtoRVMGkY_jICnQOREspaG5cCbBkSGKsZaBRPBTJx7x8aIJi3rLUCGlSA2LpUWgwK65NT18srkLUjC1-XKi7WPNEaQzse9ubSE7mkykGrKAL15t0kM2t6qzXBKjgNTc2yWGHUaEuPHmiN6P1hLYSBI6DsllzO9SmQ0_2krKd25mh6nWoqH2HQRJmr"><img src="https://lh5.googleusercontent.com/n4UDtoRVMGkY_jICnQOREspaG5cCbBkSGKsZaBRPBTJx7x8aIJi3rLUCGlSA2LpUWgwK65NT18srkLUjC1-XKi7WPNEaQzse9ubSE7mkykGrKAL15t0kM2t6qzXBKjgNTc2yWGHUaEuPHmiN6P1hLYSBI6DsllzO9SmQ0_2krKd25mh6nWoqH2HQRJmr"/></a></figure><h3 id="9ab327d1-050b-4a66-91d8-ff264bbf08b4" class="">Linkers:</h3><ul id="c149dbfe-4268-4d2d-b275-51581c63393a" class="bulleted-list"><li style="list-style-type:disc">Linker is a word that needs to be after . or , or between two ,</li></ul><figure id="63c3e623-5f7b-4574-8ec2-d6b8e03127fb" class="image"><a href="https://lh4.googleusercontent.com/_QwK1VAragoUcNhAua6uPUbf7LNOd3wzLIXYnGwHcxEQoW2N_7lfo3qsqeQEynexsme0zHKSDsceVoqxni7A4Bf-MfChnLRJBBrkVqNfMyXhoLld9tFLf7KKhRIsZ09ChryRA1Eh-D0szAYnXGagr6ew1ahaEjW3pDVBxJctEeVqlcYUXOVARJvsPdvu"><img src="https://lh4.googleusercontent.com/_QwK1VAragoUcNhAua6uPUbf7LNOd3wzLIXYnGwHcxEQoW2N_7lfo3qsqeQEynexsme0zHKSDsceVoqxni7A4Bf-MfChnLRJBBrkVqNfMyXhoLld9tFLf7KKhRIsZ09ChryRA1Eh-D0szAYnXGagr6ew1ahaEjW3pDVBxJctEeVqlcYUXOVARJvsPdvu"/></a></figure><h3 id="c7459c96-3381-4e76-8f25-b9c469e4afd5" class="">Parts of Technical Report:</h3><ol type="1" id="74a50aa7-19c0-4070-84fa-0b95c92a069b" class="numbered-list" start="1"><li>Title Page</li></ol><ol type="1" id="a3d05ef0-fb61-464a-a533-bf89284b2bb5" class="numbered-list" start="2"><li>Acknowledgment</li></ol><ol type="1" id="2b613629-66c8-47d8-9a0f-8bb79c1e7ea5" class="numbered-list" start="3"><li>Abstract</li></ol><ol type="1" id="6e5870b5-7630-4e16-9bc6-446396352ac3" class="numbered-list" start="4"><li>Content</li></ol><ol type="1" id="fb15b397-0efd-40bb-8914-01fd18a1da62" class="numbered-list" start="5"><li>Introduction</li></ol><ol type="1" id="702bb23a-b4e2-4aa9-9fff-55e6a10d157f" class="numbered-list" start="6"><li>Aim/Rationale</li></ol><ol type="1" id="c937be82-f25c-4106-99fd-8e2e9e216342" class="numbered-list" start="7"><li>Methods and Literature Review</li></ol><ol type="1" id="6f7c6202-2fd1-46aa-a161-bddfb485bce4" class="numbered-list" start="8"><li>Results/Discussion and critique</li></ol><ol type="1" id="29768dc7-32d6-42a8-8a49-b3465f8885ae" class="numbered-list" start="9"><li>Conclusion</li></ol><ol type="1" id="679b4175-3d2d-4652-acab-73d3bd969324" class="numbered-list" start="10"><li>Bibliography and References</li></ol><h3 id="4ffa192b-8a75-457b-9c38-ebf575f3d151" class="">Parts of Abstract:</h3><ul id="0230c096-b0ad-4f75-a424-0c0d50dd6868" class="bulleted-list"><li style="list-style-type:disc">Claims and Evidence</li></ul><ul id="02b2e0a4-2f89-40d6-af93-f96ee35e3f2a" class="bulleted-list"><li style="list-style-type:disc">Organization</li></ul><ul id="6f83f6a0-dc6d-4eae-bfa2-fa70cdfcbc16" class="bulleted-list"><li style="list-style-type:disc">Use of literature</li></ul><ul id="c242b84e-c1c0-45d1-9904-61c49b1717e0" class="bulleted-list"><li style="list-style-type:disc">Order</li></ul><ol type="1" id="ea7a4ec7-bb45-4063-8cba-08a929cd8427" class="numbered-list" start="1"><li>Introduction</li></ol><ol type="1" id="c9a6cf35-98bc-4191-927c-f4afa079a819" class="numbered-list" start="2"><li>Aim/Purpose</li></ol><ol type="1" id="5867da02-aa26-42df-8d63-52723bab127c" class="numbered-list" start="3"><li>Methods</li></ol><ol type="1" id="6c9129af-f6c9-43f2-8b34-8cff6bd50f23" class="numbered-list" start="4"><li>Results</li></ol><ol type="1" id="67ba424f-083c-4191-b2be-414797eec11c" class="numbered-list" start="5"><li>Conclusion</li></ol><h3 id="bcd38354-de63-42d0-a2ee-be540077d151" class="">Parts of an Introduction:</h3><ul id="869a61f2-49f7-427c-8a4c-855a6a59fe43" class="bulleted-list"><li style="list-style-type:disc">No method/results/conclusion</li></ul><ul id="8b89e20e-0bb0-4055-818d-854a951e5f57" class="bulleted-list"><li style="list-style-type:disc">Has</li></ul><ol type="1" id="12a96aa4-7cc4-46d3-a2b1-71d9f31c5265" class="numbered-list" start="1"><li>Aim</li></ol><ol type="1" id="8a56b0cf-aac7-457e-afdd-7c512b3dc514" class="numbered-list" start="2"><li>Gap in research</li></ol><ol type="1" id="539afed9-8e35-4b68-87bc-319703db9061" class="numbered-list" start="3"><li>Relevance</li></ol><ol type="1" id="b118cab4-34d6-4c59-a341-845b9470e93b" class="numbered-list" start="4"><li>Background</li></ol><ol type="1" id="0e9580b8-ca45-4260-bdc8-8310a2e07dc0" class="numbered-list" start="5"><li>Method</li></ol><ol type="1" id="1d92ca13-66fc-4da6-abbd-21102288badf" class="numbered-list" start="6"><li>Summary of results</li></ol><ol type="1" id="2583f4f1-4500-49a6-950e-69380a9f9846" class="numbered-list" start="7"><li>Discussion or critique</li></ol><h3 id="b76b030c-3f51-4047-919b-8fe12fd06e7c" class="">Parts of a Critique:</h3><ol type="1" id="eb57aae7-6927-458a-a55c-c1e20afc254e" class="numbered-list" start="1"><li>Introduction</li></ol><ul id="9701baef-3578-4ed7-8604-45246e2f9416" class="bulleted-list"><li style="list-style-type:disc">Gives a brief statement of your overall evaluation of the work</li></ul><ul id="385d8cb0-eb39-4f87-8b5f-be3337937d58" class="bulleted-list"><li style="list-style-type:disc">Restates the overall view of the article highlighting strengths and weaknesses</li></ul><ul id="20571fb0-6f8e-4ea8-8824-baefa701a541" class="bulleted-list"><li style="list-style-type:disc">Gives names of authors and titles</li></ul><ul id="697c7eb5-9a3c-4182-b9e4-fa8519aae7b4" class="bulleted-list"><li style="list-style-type:disc">Reports aims of work and data and methods used</li></ul><ol type="1" id="70c594f1-ef03-4827-b356-1c432cdbd698" class="numbered-list" start="1"><li>Evaluation</li></ol><ul id="ed18f6b2-78b9-4f8c-8cd7-87a8c4408e29" class="bulleted-list"><li style="list-style-type:disc">Are you convinced by the conclusions drawn by the authors</li></ul><ul id="7051359b-bec7-41a0-9ced-be0ccc549347" class="bulleted-list"><li style="list-style-type:disc">How good are the evidence, data, and methods used</li></ul><ul id="b1f371d4-0dc4-4c5e-89de-8c55e5bf1ce0" class="bulleted-list"><li style="list-style-type:disc">Report main findings and conclusions</li></ul><ol type="1" id="573fd863-4765-4e93-856c-f1faa2695dcd" class="numbered-list" start="1"><li>Conclusion</li></ol><ul id="1cfa924d-a8ab-47dc-ba36-d06d400da722" class="bulleted-list"><li style="list-style-type:disc">Can you see any limitations of research not mentioned by the authors</li></ul></div></article></body></html>

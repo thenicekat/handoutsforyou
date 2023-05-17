@@ -1,0 +1,687 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>OOAD &amp; UML</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="3f1612f5-d245-46cf-9853-975d50bcbf97" class="page sans"><header><h1 class="page-title">OOAD &amp; UML</h1></header><div class="page-body"><nav id="55fc20cc-5ea2-4148-8698-6775c98e7fe5" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ef699042-b736-4c8c-a67f-17ecbdc9392e">UML Diagram</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e458f76b-9596-4f94-9522-c3ad7c78a3fc">Decomposition</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b0d616f7-218f-4bda-a41b-90910185f0dd">Object Oriented Analysis</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#782b0d42-47ba-4897-a3cd-9fb5d1d13371">Object Oriented Design</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d723fd69-2066-4acd-a9fa-57d6bb5c5f17">Steps </a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5e09da4e-aa54-4521-b8bc-0a3cbb457d5b">Example - Telephone</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#adc8e419-0140-4c7e-8f7f-73e2bf2fc8b1">Problem Description</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b0a718e6-efc5-402e-84a5-f264dc61383e">Identify Classes - Search for Nouns</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c71791e-3639-4ba5-bf2f-23e9205c7aef">Identify Responsibilites</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#bc0a912c-07e0-43bf-bb06-0154f0aded8d">Identify Relationships</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#928803a3-4a26-44f0-8787-ac1ee3ab1663">Use Cases</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9d17f8d0-4f12-41a9-be0b-8e6e1f49fb2d">CRC Cards</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#625771b5-7364-4351-b105-f7a267a9a0e2">Guidelines</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#08043504-1d6d-4fca-88a7-4187341edc34">Collaborations</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#141ac398-6152-4c31-bb74-89b12a3ddb70">Interactions</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#312e22c8-64b5-4032-ae0b-0edfe409631b">Benefits of OOAD</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#65a487fe-50bb-4661-a33b-7ec76c42cd39">Model</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#235dc29c-1c2a-4051-b624-4c7ab820d6a9">UML</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#81271e4c-73d8-4112-b6b5-a7f0dfcc4dce">UML Diagrams</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ada4ce8f-6d9c-4b6a-b0fb-edc39ffe69fb">Views in UML</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#be194318-792e-466b-a6f2-c9b5b6760297">Use Case Diagrams</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4bc82ece-5a2b-43cc-8899-0e5aee8aefe5">Class Diagrams</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9335e534-37f5-4e0d-a02c-993ed2adc4ce">Object Diagrams</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#8a36511f-313a-4545-95bb-4bdfc3e4ed18">Sequence Diagram</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0911bb04-3759-43e5-9f66-54166760faa3">Component Diagram</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b935e835-67e3-4f24-8e2f-f3eb9206451f">Deployment Diagram</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#8703d730-2a3c-4bcc-b538-71e9abc673db">Design Patterns</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#92a93154-0a7b-4d7d-b364-dad8b17bb3f6">Patterns</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1e8f998e-5a06-4ddb-a7d9-d5a933fb2951">Frameworks</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f44c8a30-1fbf-477f-9b1a-ab6c501b0a87">Patterns vs Frameworks</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e0b8fa7f-70aa-43b9-a5be-ced277890cfa">Documenting Patterns</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ef9ecd96-0410-4228-9d94-dbcb369ce436">Types of Design Patterns</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#107d94b7-05c0-4f2d-a174-b610a998e3f1">Creational Pattern</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#c03796d9-bb0c-48c5-b5f8-3684cee85cdf">Singleton Pattern</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a29599a8-5356-4aaf-a5ae-cabbae2cd8e5">Structural Patterns</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f46470af-e945-444d-b769-8be2ef6eec19">Behavioral Patterns</a></div></nav><h2 id="ef699042-b736-4c8c-a67f-17ecbdc9392e" class="">UML Diagram</h2><figure id="ca506f38-2cf5-4287-a2cd-e27836acf924" class="image"><a href="OOAD%20&amp;%20UML%203f1612f5d24546cf9853975d50bcbf97/Untitled.png"><img style="width:1036px" src="OOAD%20&amp;%20UML%203f1612f5d24546cf9853975d50bcbf97/Untitled.png"/></a></figure><h2 id="e458f76b-9596-4f94-9522-c3ad7c78a3fc" class="">Decomposition</h2><ul id="67729f9b-34ff-4574-8c25-19a6a5ea460e" class="bulleted-list"><li style="list-style-type:disc">Algorithmic Decomposition is where the system is organized hierarchically in modules.</li></ul><ul id="99863b24-53b3-4106-a6b6-e83bd14afe13" class="bulleted-list"><li style="list-style-type:disc">Each module denotes a significant step in some overall process, and the functionality process forms the basis of modularization.</li></ul><ul id="c4810d40-6d41-4d3f-8679-84fe8c70f455" class="bulleted-list"><li style="list-style-type:disc">OO Decomposition is where we view the world as a set of autonomous objects that collaborate to provide high-level functionality.</li></ul><ul id="d39b7e0d-64bd-491a-ac24-b78851d3e73f" class="bulleted-list"><li style="list-style-type:disc">Each object is simply a conceptual or physical entity that exhibits some behavior.</li></ul><ul id="e060d923-0046-4f24-8c73-1e6206c4f45b" class="bulleted-list"><li style="list-style-type:disc">AD highlights the ordering of events, while OOD emphasizes the objects and their actions and is more about how objects collaborate to provide functionality.</li></ul><ul id="ae8347f5-3a15-407d-902f-9dd5beff7bc3" class="bulleted-list"><li style="list-style-type:disc">OOD is best suited for more complex systems, and here we can reuse the common mechanisms resulting in increased reusability</li></ul><h2 id="b0d616f7-218f-4bda-a41b-90910185f0dd" class="">Object Oriented Analysis</h2><ul id="7c1241fa-baac-4ed7-b5d6-b876a519b92a" class="bulleted-list"><li style="list-style-type:disc">Refers to the analysis of requirements from the point of view of classes and objects found in the vocabulary of the problem domain</li></ul><ul id="8b2d2a84-3793-4e8c-9bdd-bd413bbcd837" class="bulleted-list"><li style="list-style-type:disc">Functional specs define the task to be performed readable by both domain expert and the SW developer</li></ul><ul id="283bcbe2-071a-4898-adf1-5e6f993dff12" class="bulleted-list"><li style="list-style-type:disc">Functional Requirements define what is to be done and what is the functionality of the system</li></ul><ul id="2dd4e0ff-98f8-4ad4-9358-c26ec1bd5f1e" class="bulleted-list"><li style="list-style-type:disc">Non functional Requirements define how well the system provides functionality</li></ul><ul id="f0e2f3f5-9f73-4249-ae62-41e4bdd45b2f" class="bulleted-list"><li style="list-style-type:disc"></li></ul><h2 id="782b0d42-47ba-4897-a3cd-9fb5d1d13371" class="">Object Oriented Design</h2><ul id="40cd622b-44a2-4431-a4f7-91303ce3464a" class="bulleted-list"><li style="list-style-type:disc">OOD leads to Object Oriented Decomposition</li></ul><ul id="9791d972-9531-49d4-9365-ee2449dae6bc" class="bulleted-list"><li style="list-style-type:disc">Uses the process of Object Oriented Decomposition and notation for depicting logical, physical and static, and dynamic models of the system</li></ul><ul id="ca5e460a-edce-4240-ac08-d2b8233cf3f2" class="bulleted-list"><li style="list-style-type:disc">Models solution to the problem in terms of object</li></ul><ul id="51a7aa83-19db-4e7d-916e-daf227892ed1" class="bulleted-list"><li style="list-style-type:disc">The goal is to identify the objects that the system contains,relationships and interactions between the objects</li></ul><h1 id="d723fd69-2066-4acd-a9fa-57d6bb5c5f17" class="">Steps </h1><ol type="1" id="596f3751-abab-46a5-be39-50c05e8ffe0b" class="numbered-list" start="1"><li>Problem Description</li></ol><ol type="1" id="e8180b18-0007-408e-8acd-55f7177669fa" class="numbered-list" start="2"><li>Identifying Classes</li></ol><ol type="1" id="05151cd3-b632-4251-a2a8-1be4b4561c8f" class="numbered-list" start="3"><li>Identifying Responsibilities</li></ol><ol type="1" id="5bd6ccb8-f916-47ad-a333-9fde93046798" class="numbered-list" start="4"><li>Identifying Relationships between Classes</li></ol><ol type="1" id="f38c0a70-c46d-4a8f-ad7f-d0938b7e4b8c" class="numbered-list" start="5"><li>Identify Use Cases</li></ol><ol type="1" id="8cc5e859-f77d-4c4f-8ecc-19041b78f651" class="numbered-list" start="6"><li>Identify Collaborations</li></ol><ol type="1" id="487578f6-9c3e-4b60-9980-0c69440c0d4f" class="numbered-list" start="7"><li>Define Interactions</li></ol><h1 id="5e09da4e-aa54-4521-b8bc-0a3cbb457d5b" class="">Example - Telephone</h1><h3 id="adc8e419-0140-4c7e-8f7f-73e2bf2fc8b1" class="">Problem Description</h3><p id="4f47392d-7402-44c3-8d46-ba4e30e41227" class="">In a voice mail system, a person dials an extension number and, provided the other party does not
+pick up the telephone, leaves a message. The other party can later retrieve the messages,
+keep them, delete them. Real-world systems have a multitude of fancy features: messages
+can be forwarded to one or more mail boxes; distribution lists can be defined, retained and
+edited; and authorized persons can send broadcast messages to all users.</p><h3 id="b0a718e6-efc5-402e-84a5-f264dc61383e" class="">Identify Classes - Search for Nouns</h3><ul id="54d3800f-5a16-43ba-9ceb-bf28080284d2" class="bulleted-list"><li style="list-style-type:disc">User</li></ul><ul id="81c3cff9-d80d-4b68-9675-fe16339c0ad4" class="bulleted-list"><li style="list-style-type:disc">Message</li></ul><ul id="730b099a-79f9-4018-ba00-3c1f3b201397" class="bulleted-list"><li style="list-style-type:disc">Mailbox</li></ul><ul id="907573e3-5df4-47c7-aaf2-2ee7f5a60070" class="bulleted-list"><li style="list-style-type:disc">Extension</li></ul><ul id="291c76de-4102-406e-b5cd-973f37a653d6" class="bulleted-list"><li style="list-style-type:disc">Passcode</li></ul><h3 id="2c71791e-3639-4ba5-bf2f-23e9205c7aef" class="">Identify Responsibilites</h3><ul id="8db2138d-3af3-4235-825e-676798ca60c2" class="bulleted-list"><li style="list-style-type:disc">User - log in</li></ul><ul id="14d47ec9-1189-4e55-9b95-495fd3c6e7bc" class="bulleted-list"><li style="list-style-type:disc">Message - recorded, played and deleted</li></ul><ul id="5d0f8456-42c4-4d06-9143-d840b437f6c2" class="bulleted-list"><li style="list-style-type:disc">Mailbox - adding to mailbox</li></ul><ul id="5f969844-b829-4a19-8698-88064fc83a6b" class="bulleted-list"><li style="list-style-type:disc">Extension - </li></ul><ul id="5892b4d4-d777-4265-a714-d99cfac41951" class="bulleted-list"><li style="list-style-type:disc">Passcode - must be checked</li></ul><h3 id="bc0a912c-07e0-43bf-bb06-0154f0aded8d" class="">Identify Relationships</h3><ul id="171dd151-9762-403a-abec-85b260427f8f" class="bulleted-list"><li style="list-style-type:disc">Three common relationships are aggregation, dependency and inheritance<ul id="c7127fbd-59c3-4fd2-a371-9b9541e2ea2e" class="bulleted-list"><li style="list-style-type:circle">Dependency is when one class calls methods of another class</li></ul><ul id="c3ea8ada-bb27-4bc8-94c4-ee2d2ecc0a4b" class="bulleted-list"><li style="list-style-type:circle">Mailbox manipulates messages</li></ul><ul id="614a8985-d7d8-4124-902c-94ed937a349b" class="bulleted-list"><li style="list-style-type:circle">Aggregation is when one class contains objects of another class</li></ul><ul id="ee1c079d-243c-4d45-898e-c54bf675ab07" class="bulleted-list"><li style="list-style-type:circle">Inheritance is where one class takes in features from another class</li></ul><ul id="63554f87-284a-4aec-95c7-128bc942b7b8" class="bulleted-list"><li style="list-style-type:circle">Forwarded message inherits Messages</li></ul></li></ul><h3 id="928803a3-4a26-44f0-8787-ac1ee3ab1663" class="">Use Cases</h3><ul id="83afc0b5-2ef8-4191-ad0f-3557311dae9d" class="bulleted-list"><li style="list-style-type:disc">Use cases are an analysis technique to describe in a formal way how a system should work.</li></ul><ul id="e2ea055e-b37b-4b07-bd2c-efdc93a266f8" class="bulleted-list"><li style="list-style-type:disc">Each Use case focuses on describing the steps that are necessary to achieve a behavior and bring it to successful completion. </li></ul><ul id="3dd7202f-9ad0-4b62-a19f-b48e85b4f779" class="bulleted-list"><li style="list-style-type:disc">Each step represents an interaction with people or entities outside the system (actors) and the system itself</li></ul><ul id="4f44ec28-c09e-42ce-a55e-52bc4a8debd9" class="bulleted-list"><li style="list-style-type:disc">They describe a sequence of steps that yields a result</li></ul><ul id="57567b82-a807-40b0-bd4f-089a63c5cfd3" class="bulleted-list"><li style="list-style-type:disc">Leave a Message<ul id="a4686180-a78b-4a5f-92db-0969081c98cf" class="bulleted-list"><li style="list-style-type:circle">Describe steps that caller must take to dial an extension and leave the message. Caller is the actor here</li></ul></li></ul><ul id="1e5f43b4-b214-4b5f-a833-9b703fa25454" class="bulleted-list"><li style="list-style-type:disc">Example : Leave a message</li></ul><figure id="b584ef50-9078-4861-90bb-d04dfd405fe5" class="image"><a href="OOAD%20&amp;%20UML%203f1612f5d24546cf9853975d50bcbf97/Untitled%201.png"><img style="width:1790px" src="OOAD%20&amp;%20UML%203f1612f5d24546cf9853975d50bcbf97/Untitled%201.png"/></a></figure><h1 id="9d17f8d0-4f12-41a9-be0b-8e6e1f49fb2d" class="">CRC Cards</h1><ul id="c4f26246-31f7-4b24-ab73-ad9ac5ebd8ff" class="bulleted-list"><li style="list-style-type:disc">Class, Responsibilities, Collaborators</li></ul><ul id="f36bda6b-6dda-46f9-80ea-8492c1d785b2" class="bulleted-list"><li style="list-style-type:disc">It’s an index card that describes a class it’s high level responsibilities and it’s collaborations i.e. dependent classes</li></ul><ul id="952beed4-5154-4993-95d2-02a098f284a3" class="bulleted-list"><li style="list-style-type:disc">It’s a design technique for discovering class, responsibilty and relationships</li></ul><ul id="8984783b-3ef2-4aba-83c1-e0d2d656471c" class="bulleted-list"><li style="list-style-type:disc">They are small and low tech and convenient to handle during brain storming sessions</li></ul><ul id="68b410ed-bd64-49fb-98b4-c0d40e1faa9e" class="bulleted-list"><li style="list-style-type:disc">Not a means of documenting design</li></ul><h2 id="625771b5-7364-4351-b105-f7a267a9a0e2" class="">Guidelines</h2><ul id="ff8bd65d-a47c-46a8-b746-23f207da2dec" class="bulleted-list"><li style="list-style-type:disc">Do not assign more than 3 responsibilities to a class</li></ul><ul id="f63d92ac-f120-4a4b-a77c-3c4600247cd4" class="bulleted-list"><li style="list-style-type:disc">Maintain coherency and attach only related responsibilities</li></ul><ul id="6075f5b1-6a12-4dfc-b741-aa91acb2947a" class="bulleted-list"><li style="list-style-type:disc">Don’t add unnecessary responsibilities</li></ul><ul id="fc524080-da37-493e-9d46-f362b2982cc0" class="bulleted-list"><li style="list-style-type:disc">Delete classes with no responsibilities</li></ul><h2 id="08043504-1d6d-4fca-88a7-4187341edc34" class="">Collaborations</h2><ul id="1ce4ff9f-2c2e-4078-9026-59c551c78c62" class="bulleted-list"><li style="list-style-type:disc">Defines how objects collaborate to provide a functionality</li></ul><ul id="956065fa-fb75-40c3-adfd-ed86db077acd" class="bulleted-list"><li style="list-style-type:disc">Hence one class may participate in more than one collab</li></ul><figure id="2faac9a6-2e89-4583-a015-6121996c97ed" class="image"><a href="OOAD%20&amp;%20UML%203f1612f5d24546cf9853975d50bcbf97/Untitled%202.png"><img style="width:710px" src="OOAD%20&amp;%20UML%203f1612f5d24546cf9853975d50bcbf97/Untitled%202.png"/></a></figure><h2 id="141ac398-6152-4c31-bb74-89b12a3ddb70" class="">Interactions</h2><ul id="08c3cc38-6ee6-4214-8ff6-76a54cdfdb60" class="bulleted-list"><li style="list-style-type:disc">OO Programs work by sending/receiving messages from/to objects</li></ul><ul id="031c0750-c57f-4379-b25b-d891e8a07367" class="bulleted-list"><li style="list-style-type:disc">Message is a request by sender to execute an operation of a target object</li></ul><ul id="df5929c3-a0b6-49ed-a481-79d657396158" class="bulleted-list"><li style="list-style-type:disc">This kind of message passing is called as interaction between objects</li></ul><h1 id="312e22c8-64b5-4032-ae0b-0edfe409631b" class="">Benefits of OOAD</h1><ul id="283ef6b4-d983-4327-9d9f-c0b8ff11f6be" class="bulleted-list"><li style="list-style-type:disc">Promotes better understanding of user requirements</li></ul><ul id="798d9c2c-a65b-4202-b5d0-8215db5929cf" class="bulleted-list"><li style="list-style-type:disc">Leads cleaner design</li></ul><ul id="d75d3635-a7ad-4bb7-ae4b-45fafccababd" class="bulleted-list"><li style="list-style-type:disc">Design flexibility</li></ul><ul id="4bc316d6-236a-424a-9aa1-4a7bd5666c8f" class="bulleted-list"><li style="list-style-type:disc">Decomposition</li></ul><ul id="c06a593d-6522-47af-9f42-5805a1f41550" class="bulleted-list"><li style="list-style-type:disc">Facilitates data abstraction and information hiding</li></ul><ul id="6d0ee3c4-b304-4fd8-9a37-f57af5cfdd57" class="bulleted-list"><li style="list-style-type:disc">Software reuse</li></ul><ul id="0dcd3926-6301-4a9a-9b19-e9b3f21b96d7" class="bulleted-list"><li style="list-style-type:disc">Easy maintenance</li></ul><h1 id="65a487fe-50bb-4661-a33b-7ec76c42cd39" class="">Model</h1><ul id="471b647e-09d1-4243-a133-c3b7f98f1bd9" class="bulleted-list"><li style="list-style-type:disc">Simplification of reality</li></ul><h1 id="235dc29c-1c2a-4051-b624-4c7ab820d6a9" class="">UML</h1><ul id="a7d24c56-9f83-4ea8-bd90-4675f40689cd" class="bulleted-list"><li style="list-style-type:disc">Graphical notation of conveying design info</li></ul><ul id="a148da9f-24e8-425e-9fd1-888a4e3e123b" class="bulleted-list"><li style="list-style-type:disc">Made by Booch, Jacobson and Rumbaugh</li></ul><ul id="66222172-7bab-4814-9da6-fcd44cedb69b" class="bulleted-list"><li style="list-style-type:disc">Popular method for designing OO SW</li></ul><ul id="f8f20126-b17d-4938-8aba-58c5e2895d74" class="bulleted-list"><li style="list-style-type:disc">It is for visualizing, specifying, constructing and documenting the artifacts of OO Software Systems</li></ul><h2 id="81271e4c-73d8-4112-b6b5-a7f0dfcc4dce" class="">UML Diagrams</h2><ol type="1" id="560911bf-9427-46cc-bfc9-8f8dd1e1d5d1" class="numbered-list" start="1"><li>Use Case Diagram</li></ol><ol type="1" id="2756ef2a-7c95-49fc-a7af-050ecd818627" class="numbered-list" start="2"><li>Class Diagram</li></ol><ol type="1" id="8fd3d8c5-0237-453d-b1b6-b3982935a9d9" class="numbered-list" start="3"><li>Sequence Diagram</li></ol><ol type="1" id="3970930d-7ef5-4961-8104-0feb4cd06d0a" class="numbered-list" start="4"><li>Collaboration Diagram</li></ol><ol type="1" id="55ed9a92-d596-418e-ac39-c2adce89f0f4" class="numbered-list" start="5"><li>State Diagram</li></ol><ol type="1" id="88a8bd6f-b152-4a03-9c7b-4b234b355c4c" class="numbered-list" start="6"><li>Activity Diagram</li></ol><ol type="1" id="d03d3c16-0578-4c91-862f-9637e3432826" class="numbered-list" start="7"><li>Object Diagram</li></ol><ol type="1" id="2d884f91-6b6d-43ae-8db3-904b8bf37c26" class="numbered-list" start="8"><li>Component Diagram</li></ol><ol type="1" id="52c73bb8-6aa8-4a63-8963-4d52d6aebe05" class="numbered-list" start="9"><li>Deployment Diagram</li></ol><h2 id="ada4ce8f-6d9c-4b6a-b0fb-edc39ffe69fb" class="">Views in UML</h2><ul id="2a5be471-9751-4042-84d4-189ef7be95ee" class="bulleted-list"><li style="list-style-type:disc">Use case view - Use Case diagrams</li></ul><ul id="b7ca3cdc-d46b-4853-b646-ebbaa8990e20" class="bulleted-list"><li style="list-style-type:disc">Static/Structural View - Class Diagrams</li></ul><ul id="c63bc4ce-9cfc-4d03-8739-9b08d5aa0016" class="bulleted-list"><li style="list-style-type:disc">Behavioral or Dynamic View - Sequence, Collaboration, State and Activity Diagram</li></ul><ul id="76bffcd2-1cfe-4f42-83b4-5b51af42f7e0" class="bulleted-list"><li style="list-style-type:disc">Organizational or Implementation View - Component diagrams, Node diagrams</li></ul><ul id="6ff0fef2-f34a-4a5c-981b-c720da1bd053" class="bulleted-list"><li style="list-style-type:disc">Deployment view - Deployment diagrams</li></ul><h1 id="be194318-792e-466b-a6f2-c9b5b6760297" class="">Use Case Diagrams</h1><ul id="e25c2536-b7cb-4263-b2a8-9648f855de30" class="bulleted-list"><li style="list-style-type:disc">Uses stickperson as actors</li></ul><ul id="dc8374d1-cbb3-414a-8ddb-39d4067c5a14" class="bulleted-list"><li style="list-style-type:disc">Two sides of the system and includes both the sides which are service takers and service providers</li></ul><figure id="1c8e731a-f9af-4676-b725-919707f8edc7" class="image"><a href="OOAD%20&amp;%20UML%203f1612f5d24546cf9853975d50bcbf97/Untitled%203.png"><img style="width:1396px" src="OOAD%20&amp;%20UML%203f1612f5d24546cf9853975d50bcbf97/Untitled%203.png"/></a></figure><h1 id="4bc82ece-5a2b-43cc-8899-0e5aee8aefe5" class="">Class Diagrams</h1><figure id="f7a6314e-5b94-4e3e-ab66-4a226db0e38d" class="image"><a href="OOAD%20&amp;%20UML%203f1612f5d24546cf9853975d50bcbf97/Untitled%204.png"><img style="width:927px" src="OOAD%20&amp;%20UML%203f1612f5d24546cf9853975d50bcbf97/Untitled%204.png"/></a></figure><figure id="5e358912-2a6b-4cd7-9817-f8a293cd6c79" class="image"><a href="OOAD%20&amp;%20UML%203f1612f5d24546cf9853975d50bcbf97/Untitled%205.png"><img style="width:895px" src="OOAD%20&amp;%20UML%203f1612f5d24546cf9853975d50bcbf97/Untitled%205.png"/></a></figure><figure id="1dc864ae-80b0-4fbb-9abc-ee95c4ffdf00" class="image"><a href="OOAD%20&amp;%20UML%203f1612f5d24546cf9853975d50bcbf97/Untitled%206.png"><img style="width:1631px" src="OOAD%20&amp;%20UML%203f1612f5d24546cf9853975d50bcbf97/Untitled%206.png"/></a></figure><h1 id="9335e534-37f5-4e0d-a02c-993ed2adc4ce" class="">Object Diagrams</h1><ul id="c5cc4db4-5cef-4fa5-8731-7270779cca0a" class="bulleted-list"><li style="list-style-type:disc">Shows a set of objects and the relationship between them</li></ul><figure id="74fe571f-2a66-4123-acc6-3bac491c4241" class="image"><a href="OOAD%20&amp;%20UML%203f1612f5d24546cf9853975d50bcbf97/Untitled%207.png"><img style="width:1500px" src="OOAD%20&amp;%20UML%203f1612f5d24546cf9853975d50bcbf97/Untitled%207.png"/></a></figure><h1 id="8a36511f-313a-4545-95bb-4bdfc3e4ed18" class="">Sequence Diagram</h1><ul id="ddbf8f8f-be62-4a5a-bfa1-2de61ee92c50" class="bulleted-list"><li style="list-style-type:disc">Shows time ordering of method calls and communication pattern among objects</li></ul><ul id="a0750259-2c34-4fb0-bbaf-730e0e6ba028" class="bulleted-list"><li style="list-style-type:disc">Represent message sequencing in the system</li></ul><ul id="1764d0be-a716-4067-8408-94ea9dd6b931" class="bulleted-list"><li style="list-style-type:disc">Time goes down</li></ul><figure id="d4abfa77-e6e2-412c-899d-12c6cb7c07cf" class="image"><a href="OOAD%20&amp;%20UML%203f1612f5d24546cf9853975d50bcbf97/Untitled%208.png"><img style="width:1735px" src="OOAD%20&amp;%20UML%203f1612f5d24546cf9853975d50bcbf97/Untitled%208.png"/></a></figure><h1 id="0911bb04-3759-43e5-9f66-54166760faa3" class="">Component Diagram</h1><ul id="0b3ef46b-2a6a-445c-a2ba-4ce0364995fc" class="bulleted-list"><li style="list-style-type:disc">Physical and replacable part of the system which conforms to and provides realization for a set of interfaces</li></ul><ul id="9436ed34-b5d7-4a24-99f8-c9606a2ca500" class="bulleted-list"><li style="list-style-type:disc">Includes Packages, Libraries, Class files, file, database table</li></ul><figure id="ed1b51c8-b930-4c6f-aba8-8641a00a6fd1" class="image"><a href="OOAD%20&amp;%20UML%203f1612f5d24546cf9853975d50bcbf97/Untitled%209.png"><img style="width:1633px" src="OOAD%20&amp;%20UML%203f1612f5d24546cf9853975d50bcbf97/Untitled%209.png"/></a></figure><h1 id="b935e835-67e3-4f24-8e2f-f3eb9206451f" class="">Deployment Diagram</h1><ul id="e9ff9bec-2abd-46ef-ac2c-a4a397c2f37a" class="bulleted-list"><li style="list-style-type:disc">Node is a cube → A physical processor which has some memory</li></ul><ul id="51bfa8a7-f583-4a56-adf3-92b3aa150be4" class="bulleted-list"><li style="list-style-type:disc">We have two components or more on each node which are the physical and replacable part of the system which conforms to and provides realization for a set of interfaces</li></ul><h1 id="8703d730-2a3c-4bcc-b538-71e9abc673db" class="">Design Patterns</h1><h3 id="92a93154-0a7b-4d7d-b364-dad8b17bb3f6" class="">Patterns</h3><ul id="5a34b50a-660f-48b3-9962-c51c48ba7b3c" class="bulleted-list"><li style="list-style-type:disc">Means for capturing knowledge about problems and successful solutions in software development</li></ul><ul id="c2cfc1fd-c7b0-47ef-9702-0d20d66306a8" class="bulleted-list"><li style="list-style-type:disc">Experience that has been gained in the past can be reused in similar situations</li></ul><ul id="63200300-61e1-4c02-9824-62ce84e42707" class="bulleted-list"><li style="list-style-type:disc">Reduces the effort in producing more resilient, more flexible and more efficient</li></ul><h3 id="1e8f998e-5a06-4ddb-a7d9-d5a933fb2951" class="">Frameworks</h3><ul id="bd9f3d61-5e4c-416d-92e8-c2ca9380190d" class="bulleted-list"><li style="list-style-type:disc">Partially completed systems which contain unfinished elements which can be completed according to the requirement</li></ul><h3 id="f44c8a30-1fbf-477f-9b1a-ab6c501b0a87" class="">Patterns vs Frameworks</h3><ul id="954302b3-1c80-4f34-834c-e5b84d0e6999" class="bulleted-list"><li style="list-style-type:disc">Patterns are more abstract and general than frameworks</li></ul><ul id="dddbcb7e-8407-4c3c-9027-81f1eec86eec" class="bulleted-list"><li style="list-style-type:disc">Pattern is a description of the way that a type problem can be solved but it itself is not a solution</li></ul><ul id="0538103c-7302-4943-bc2a-c1687407f904" class="bulleted-list"><li style="list-style-type:disc">Patterns are more primitive than frameworks</li></ul><ul id="c849fe38-ebca-4866-82ce-6f8b36e7e5ae" class="bulleted-list"><li style="list-style-type:disc">A framework can use several patterns but a pattern can’t employ a framework</li></ul><h3 id="e0b8fa7f-70aa-43b9-a5be-ced277890cfa" class="">Documenting Patterns</h3><ul id="ef7bb4b0-f06a-42b8-82bb-549bed1e99cf" class="bulleted-list"><li style="list-style-type:disc">Name</li></ul><ul id="37d690ef-f2f1-4eb6-860c-f05034bbb1c7" class="bulleted-list"><li style="list-style-type:disc">Problem</li></ul><ul id="60117e81-9bb2-44bc-aff9-d2674a4aba0f" class="bulleted-list"><li style="list-style-type:disc">Context</li></ul><ul id="cef3b094-65b4-42bb-b2d8-71731e07c8a9" class="bulleted-list"><li style="list-style-type:disc">Forces</li></ul><ul id="73be3fab-1332-4be9-bd2a-a70b106d42fb" class="bulleted-list"><li style="list-style-type:disc">Solution</li></ul><h1 id="ef9ecd96-0410-4228-9d94-dbcb369ce436" class="">Types of Design Patterns</h1><h2 id="107d94b7-05c0-4f2d-a174-b610a998e3f1" class="">Creational Pattern</h2><ul id="a63f595c-6fe6-40bd-b0ef-29bc444c337b" class="bulleted-list"><li style="list-style-type:disc">Construction of Object instances</li></ul><ul id="0520ccbb-59ff-41e3-83d2-456a79d81319" class="bulleted-list"><li style="list-style-type:disc">Separates the operation of an application from how it’s objects are created</li></ul><h3 id="c03796d9-bb0c-48c5-b5f8-3684cee85cdf" class="">Singleton Pattern</h3><ul id="8af28ff6-f706-4e2e-8bb1-684e26f4b8df" class="bulleted-list"><li style="list-style-type:disc">A singleton class has exactly one instance, and all clients need to access a single shared instance of a class</li></ul><ul id="ff401076-f200-48d7-934d-262b47ff1379" class="bulleted-list"><li style="list-style-type:disc">You want to ensure that no additional instances can be created accidentally</li></ul><ul id="d91cacb9-c30c-441f-966f-48bf06952e9f" class="bulleted-list"><li style="list-style-type:disc">Define class with private constructor and supply a static method that returns a reference to the single object</li></ul><pre id="cd573026-4417-460c-82e5-740bc74444be" class="code"><code>public class DBManager 
+{
+	private static DBManager dbm=null;
+	public static DBManager getInstance()
+	{
+		if(dbm==null)
+		{
+			dbm= new DBManager();
+		}
+		return dbm;
+	}
+
+	private DBManager() 
+	{}
+}</code></pre><h2 id="a29599a8-5356-4aaf-a5ae-cabbae2cd8e5" class="">Structural Patterns</h2><ul id="ae521d9e-974e-4699-8354-9182e632207f" class="bulleted-list"><li style="list-style-type:disc">Concerned with the way the classes and objects are organized</li></ul><ul id="00693bbf-793d-40fa-ae23-c135ee3484d7" class="bulleted-list"><li style="list-style-type:disc">Offer effective ways of using object oriented constructs such as inheritance, aggregation and composition</li></ul><h2 id="f46470af-e945-444d-b769-8be2ef6eec19" class="">Behavioral Patterns</h2><ul id="5d8ca324-e295-484e-8b90-cd28320da882" class="bulleted-list"><li style="list-style-type:disc">Address the problems that arise when assigning responsibilities to classes and when designing algorithms</li></ul><ul id="6077a032-8256-48df-b9b4-8b1bd4526cf1" class="bulleted-list"><li style="list-style-type:disc">Also focus on structural organization and also describe how objects communicate with each other</li></ul><figure id="2a0f348c-9156-4a29-8c35-c52dd013a7e4" class="image"><a href="OOAD%20&amp;%20UML%203f1612f5d24546cf9853975d50bcbf97/Untitled%2010.png"><img style="width:1778px" src="OOAD%20&amp;%20UML%203f1612f5d24546cf9853975d50bcbf97/Untitled%2010.png"/></a></figure></div></article></body></html>

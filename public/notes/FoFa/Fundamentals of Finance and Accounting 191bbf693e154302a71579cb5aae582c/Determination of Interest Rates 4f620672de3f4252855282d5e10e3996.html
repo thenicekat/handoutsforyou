@@ -1,0 +1,670 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Determination of Interest Rates</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="4f620672-de3f-4252-8552-82d5e10e3996" class="page sans"><header><h1 class="page-title">Determination of Interest Rates</h1></header><div class="page-body"><nav id="5b0b0115-7428-4165-9eb1-3d36526de938" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b4efd1b9-2e97-46c3-8016-f875d1c95d5c">Loanable Funds Theory</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0a25d598-30df-4666-accd-74f4d694aefa">Supply of Loanable Funds</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d5de0fae-30f3-4f1c-887a-1a800dd11539">Demand of Loanable Funds</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2dc29ebf-af0c-4ff7-bb6c-77bc3671a5f3">Equilibrium Interest Rate</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#699409cd-2fda-473e-8d54-4a02f1d26a51">Factors that cause shift in supply and demand curves</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#369ea4dd-f413-4f8f-95b6-3f4289f9905f">Supply of Funds</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#8b41f5e9-18c0-4b76-bb2c-1a0e102fc248">Demand of funds</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9191fc90-79c3-41b6-81bf-3d1559a88912">Determinants of interest rates for indivdiual securities</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#beebd830-ba04-4605-b7a3-cf3289167dd3">Inflation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6ede9776-7d61-4df2-abaf-786019075acb">Real Risk Free Rates</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#270ee524-e4e5-49d9-9b5e-a35581269013">Fisher Effect</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5e9d3faa-82fc-4085-8769-9cd3e79c334c">Default or Credit Risk</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d7ce01a9-ee84-44a4-ace2-44f746f3ce89">Liquidity Risk</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#08a975e2-adec-48f3-b2aa-036a2548f2a0">Special Provisions or Covenants</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7fd72e65-697a-4578-b16f-85f626a1d2df">Term to Maturity</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9214c04f-5382-41fa-aeef-9e0ab97d24d4">Term Structure</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#770fb90a-3452-4d94-9cd3-c2ebdd39cd39">Unbiased Expectations Theory</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#49c27d43-4103-4ebc-9dcf-bab6cf2fca28">Liquidity Premium Theory</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a7e3bf25-f648-4667-a7ca-f1af27f0be26">Market Segmentation</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#894d44dd-925a-4b14-aba0-08224f9cf3b6">Forecasting Rate of Interest</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#475dcf99-271d-4058-9273-c4bd35bcce3e">Time Value of Money</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#73fb4c7e-bd54-4aee-be59-2f6928ab20b7">Simple Interest VS Compound Interest</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7e4de653-863c-4cbf-9135-c4e91e68d447">Lump Sum vs Annuties</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7678190a-740c-4946-a0ef-79edc867e135">Lump Sum Valuation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8cbafd69-4902-4351-a180-d1def658ddc7">Annuity Valuation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#84ea11d0-f543-4b11-a67e-3b95ff378cf0">Effective Annual Return</a></div></nav><h1 id="b4efd1b9-2e97-46c3-8016-f875d1c95d5c" class="">Loanable Funds Theory</h1><ul id="065f1a60-4892-486a-8294-b6144da92a62" class="bulleted-list"><li style="list-style-type:disc">A theory of interest rate determination that views equilibrium interest rates in financial markets as a result of the supply of and demand for loanable funds</li></ul><h2 id="0a25d598-30df-4666-accd-74f4d694aefa" class="">Supply of Loanable Funds</h2><ul id="9b8c86fa-11be-42b9-b09e-bd985afcab9d" class="bulleted-list"><li style="list-style-type:disc">Household sector</li></ul><ul id="b24e4075-3361-40d1-bb4f-33d5ea65f586" class="bulleted-list"><li style="list-style-type:disc">Governments</li></ul><ul id="0925e55f-aace-4e67-a81e-e45ad1dc8f67" class="bulleted-list"><li style="list-style-type:disc">Foreign Investors</li></ul><h2 id="d5de0fae-30f3-4f1c-887a-1a800dd11539" class="">Demand of Loanable Funds</h2><ul id="5d27ffb0-7873-4605-b69d-477247e39cb3" class="bulleted-list"><li style="list-style-type:disc">Households</li></ul><ul id="0384d713-9f96-42e2-9c02-b026e0772c37" class="bulleted-list"><li style="list-style-type:disc">Business</li></ul><ul id="433e1bdd-bb37-4359-b320-0231ae2df13f" class="bulleted-list"><li style="list-style-type:disc">Governments</li></ul><ul id="b1c46ad1-42ef-4d03-b27c-665ca2d240ef" class="bulleted-list"><li style="list-style-type:disc">Foreign participants</li></ul><h2 id="2dc29ebf-af0c-4ff7-bb6c-77bc3671a5f3" class="">Equilibrium Interest Rate</h2><ul id="d5d603b2-73d2-421f-b20e-c78aa01f86de" class="bulleted-list"><li style="list-style-type:disc">The interest rate that equates the aggregate quantity of loanable funds supplied with the aggregate quantity of loanable funds demanded is called the equilibrium interest rate</li></ul><h2 id="699409cd-2fda-473e-8d54-4a02f1d26a51" class="">Factors that cause shift in supply and demand curves</h2><figure id="7264344c-ff6a-40cf-94b1-bf1e042e3bcf" class="image"><a href="Determination%20of%20Interest%20Rates%204f620672de3f4252855282d5e10e3996/Untitled.png"><img style="width:384px" src="Determination%20of%20Interest%20Rates%204f620672de3f4252855282d5e10e3996/Untitled.png"/></a></figure><h3 id="369ea4dd-f413-4f8f-95b6-3f4289f9905f" class="">Supply of Funds</h3><ul id="ce92ed8d-93a8-40c2-8078-c34278afeff2" class="bulleted-list"><li style="list-style-type:disc">Wealth → As wealth increases, supply of funds increases and interest rate decreases</li></ul><ul id="f4eaea77-9c6c-4ab0-8c0f-86e121e7cd8b" class="bulleted-list"><li style="list-style-type:disc">Risk of financial security → As risk increases, supply of funds decreases and interest rate increases</li></ul><ul id="ddc192cc-f60c-4a55-b803-0c428c9a36ee" class="bulleted-list"><li style="list-style-type:disc">Near-term spending needs → When these increase, supply decreases so interest increases</li></ul><ul id="40a4ed2e-45b1-490e-8028-f58b25209fbd" class="bulleted-list"><li style="list-style-type:disc">Monetary Expansion → When policies restrict economic expansion, it decreases supply of funds so interest rate increases as some </li></ul><h3 id="8b41f5e9-18c0-4b76-bb2c-1a0e102fc248" class="">Demand of funds</h3><ul id="1e079577-5f0f-46c3-a726-c77936a80314" class="bulleted-list"><li style="list-style-type:disc">Utility derived from assets purchased with borrowed funds → As utility increases, the need for money increases and demand increases and so interest rate increases</li></ul><figure id="ececff0a-b66c-48bd-be27-39fa8b4f1509" class="image"><a href="Determination%20of%20Interest%20Rates%204f620672de3f4252855282d5e10e3996/Untitled%201.png"><img style="width:528px" src="Determination%20of%20Interest%20Rates%204f620672de3f4252855282d5e10e3996/Untitled%201.png"/></a></figure><h1 id="9191fc90-79c3-41b6-81bf-3d1559a88912" class="">Determinants of interest rates for indivdiual securities</h1><h2 id="beebd830-ba04-4605-b7a3-cf3289167dd3" class="">Inflation</h2><ul id="5462d777-adef-44f1-912a-55ad93ccabe9" class="bulleted-list"><li style="list-style-type:disc">Inflation is the continual increase in the price level of a basket of goods and services</li></ul><ul id="d400df7b-6be5-49ab-9f76-f336e8dee421" class="bulleted-list"><li style="list-style-type:disc">IP → Inflation percentage</li></ul><ul id="12c2db8b-f350-4617-8580-1c36d1275c8e" class="bulleted-list"><li style="list-style-type:disc">Higher the level of actual or expedited inflation, higher will be the level of interest rates</li></ul><ul id="85bd5d9e-fb6e-4085-a87f-18426e82a19d" class="bulleted-list"><li style="list-style-type:disc">The intuition behind the positive relationship between interest rates and inflation rates is that an investor who buys a financial asset must earn a higher interest rate when inflation increases to compensate for the increased cost of forgoing consumption</li></ul><ul id="dd55a3ce-9e8c-43b4-a1af-55a16efd6453" class="bulleted-list"><li style="list-style-type:disc">Higher the inflation, higher the price and so interest rate is higher</li></ul><p id="165ab513-edd9-42c9-aad2-6deee2535c03" class="">Inflation Percentage = <code>CPI(t+1) - CPI(t)/CPI(t) * 100</code></p><h2 id="6ede9776-7d61-4df2-abaf-786019075acb" class="">Real Risk Free Rates</h2><ul id="35617a6b-08dc-47e1-a89c-736e64858f4d" class="bulleted-list"><li style="list-style-type:disc">Interest rate that would exist on a risk free security if no inflation were expected over the holding period</li></ul><ul id="fdbca3f5-d197-47cc-8645-9773bceeabfa" class="bulleted-list"><li style="list-style-type:disc">The higher society’s preference to consume today. the higher the real risk free rate will be</li></ul><h3 id="270ee524-e4e5-49d9-9b5e-a35581269013" class="">Fisher Effect</h3><ul id="fa270609-33bc-481b-8121-e16d16da9079" class="bulleted-list"><li style="list-style-type:disc">The relationship between Real interest rate, expected inflation and nominal interest rate (i)<ul id="6ef6bf43-9b97-4ba3-950d-bd02545db2a0" class="bulleted-list"><li style="list-style-type:circle">i = RIR + E(IP) + (RIR*EIP)</li></ul><ul id="a6b9f712-2cce-4175-af7d-cc0acb393959" class="bulleted-list"><li style="list-style-type:circle">i = RIR + EIP</li></ul><ul id="add94084-354c-4263-af91-58ee4d5f6ad6" class="bulleted-list"><li style="list-style-type:circle">RIR = i - EIP</li></ul><figure id="c5a83fac-c03b-40b3-a6ab-a5e8eede8cc8" class="image"><a href="Determination%20of%20Interest%20Rates%204f620672de3f4252855282d5e10e3996/Untitled%202.png"><img style="width:922px" src="Determination%20of%20Interest%20Rates%204f620672de3f4252855282d5e10e3996/Untitled%202.png"/></a></figure></li></ul><h2 id="5e9d3faa-82fc-4085-8769-9cd3e79c334c" class="">Default or Credit Risk</h2><ul id="a3cb91cf-95a4-4188-86a7-c7d1fda6998f" class="bulleted-list"><li style="list-style-type:disc">Risk that security issuer will default on making it’s promised interest and principal payments to the buyer of the security</li></ul><ul id="68705c0e-0fe5-4626-a1f0-c080a4d3b37f" class="bulleted-list"><li style="list-style-type:disc">Higher the risk, higher the interest rate</li></ul><ul id="dad38c95-5da5-46e4-9ffb-92d1f27d3c11" class="bulleted-list"><li style="list-style-type:disc">DRP_j = i_jt - i_tt where ijt = interest rate on a security issued by a non treasury and tt is a security issued by the treasury</li></ul><figure id="c574a674-8d65-44ad-8a5a-df8d49f84ab0" class="image"><a href="Determination%20of%20Interest%20Rates%204f620672de3f4252855282d5e10e3996/Untitled%203.png"><img style="width:1183px" src="Determination%20of%20Interest%20Rates%204f620672de3f4252855282d5e10e3996/Untitled%203.png"/></a></figure><h2 id="d7ce01a9-ee84-44a4-ace2-44f746f3ce89" class="">Liquidity Risk</h2><ul id="43f27696-e6b1-4bfc-ad25-f0e1d3980f74" class="bulleted-list"><li style="list-style-type:disc">A highly liquid asset is one that can be sold at a predictable price with low transaction costs and thus can be converted into it’s full market value at short notice</li></ul><ul id="be330395-4a45-4570-a3b4-b5d9a2d86426" class="bulleted-list"><li style="list-style-type:disc">If a security is illiquid, investors add liquidity risk to it, namely Liquidity Risk Premium</li></ul><h2 id="08a975e2-adec-48f3-b2aa-036a2548f2a0" class="">Special Provisions or Covenants</h2><ul id="502f6939-0001-4331-88f6-7099d6ec5f34" class="bulleted-list"><li style="list-style-type:disc">For example, for investors, interest payments on municipal securities are free of federal, state, and local taxes. Thus, the interest rate demanded by a municipal bond hold is smaller than that on a comparable taxable bond—for example, a Treasury bond, which is taxable at the federal level but not at the state or local (city) levels, or a corporate bond, whose interest payments are taxable at the state and local levels as well as federal levels.</li></ul><h2 id="7fd72e65-697a-4578-b16f-85f626a1d2df" class="">Term to Maturity</h2><ul id="32e5378a-5d77-4fe6-be6f-f13630e9478d" class="bulleted-list"><li style="list-style-type:disc">This relationship is often called the term structure of interest rates or the yield curve</li></ul><ul id="c11be617-ae0a-434b-8c3f-3cf690d3f44f" class="bulleted-list"><li style="list-style-type:disc">The change in required interest rates as the maturity of a security changes is called the maturity premium</li></ul><figure id="038045bd-4487-4323-85c6-d1e3a3cc3649" class="image"><a href="Determination%20of%20Interest%20Rates%204f620672de3f4252855282d5e10e3996/Untitled%204.png"><img style="width:1077px" src="Determination%20of%20Interest%20Rates%204f620672de3f4252855282d5e10e3996/Untitled%204.png"/></a></figure><h1 id="9214c04f-5382-41fa-aeef-9e0ab97d24d4" class="">Term Structure</h1><h2 id="770fb90a-3452-4d94-9cd3-c2ebdd39cd39" class="">Unbiased Expectations Theory</h2><ul id="f655d0d8-c315-4d7f-bdac-59ea949a614a" class="bulleted-list"><li style="list-style-type:disc">In equilibrium, the return to holding a four-year bond to maturity should equal the
+expected return to investing in four successive one-year bonds. </li></ul><ul id="b430df9d-4cc7-445a-8f7d-7e27a41d62f5" class="bulleted-list"><li style="list-style-type:disc">If this equality does not hold, an arbitrage opportunity exists. </li></ul><ul id="2fbf4bf3-9fd4-4475-93c6-0c6a8922e9ba" class="bulleted-list"><li style="list-style-type:disc">For example, if the investor could earn more on the one-year bond investments, he could short (or sell) the four-year bond, use the proceeds to buy the four successive one-year bonds, and earn a guaranteed profit over the four-year investment horizon</li></ul><ul id="d19fd8ed-0d5f-4069-9ef6-5c112884c956" class="bulleted-list"><li style="list-style-type:disc">Thus, according to the unbiased expectations hypothesis, if future one-year rates are expected to rise each successive year into the future, then the yield curve will slope upwards</li></ul><figure id="4c43ad8c-f033-4b0f-8545-1e8164e22088" class="image"><a href="Determination%20of%20Interest%20Rates%204f620672de3f4252855282d5e10e3996/Untitled%205.png"><img style="width:813px" src="Determination%20of%20Interest%20Rates%204f620672de3f4252855282d5e10e3996/Untitled%205.png"/></a></figure><figure id="a567a206-3fc7-40db-b045-09f935a13b68" class="image"><a href="Determination%20of%20Interest%20Rates%204f620672de3f4252855282d5e10e3996/Untitled%206.png"><img style="width:1119px" src="Determination%20of%20Interest%20Rates%204f620672de3f4252855282d5e10e3996/Untitled%206.png"/></a></figure><figure id="5b587a6e-2848-4195-808a-670ecbb10450" class="image"><a href="Determination%20of%20Interest%20Rates%204f620672de3f4252855282d5e10e3996/Untitled%207.png"><img style="width:1051px" src="Determination%20of%20Interest%20Rates%204f620672de3f4252855282d5e10e3996/Untitled%207.png"/></a></figure><h2 id="49c27d43-4103-4ebc-9dcf-bab6cf2fca28" class="">Liquidity Premium Theory</h2><ul id="9fcc42ea-3fe5-4f8c-9256-439dd825f1ac" class="bulleted-list"><li style="list-style-type:disc">Based on the idea that as investors will hold on to securities as long as they are being compensated for the risk they possess</li></ul><h2 id="a7e3bf25-f648-4667-a7ca-f1af27f0be26" class="">Market Segmentation</h2><ul id="9ae3bfeb-fab0-4b30-b85e-91d4983731c1" class="bulleted-list"><li style="list-style-type:disc">Individual investors and FIs have specific maturity preferences, and to get them to hold securities with maturities other than their most preferred requires a higher interest rate (maturity premium)</li></ul><h1 id="894d44dd-925a-4b14-aba0-08224f9cf3b6" class="">Forecasting Rate of Interest</h1><h1 id="475dcf99-271d-4058-9273-c4bd35bcce3e" class="">Time Value of Money</h1><ul id="d93dc2a1-65b4-4814-abc5-aef1a2db1d47" class="bulleted-list"><li style="list-style-type:disc">A forward rate is an expected or “implied” rate on a short-term security that is to be originated  at some point in the future. </li></ul><ul id="d1c2754a-a1ca-48cb-a470-ce9b070c0002" class="bulleted-list"><li style="list-style-type:disc">Using the equations representing the unbiased expectations theory, the market’s expectation of forward rates can be derived directly from existing or actual rates on securities currently traded in the spot market</li></ul><ul id="4b88efa2-e592-4fba-ac96-b2af05af6fb3" class="bulleted-list"><li style="list-style-type:disc">We use f instead of E(r) 🙂</li></ul><h3 id="73fb4c7e-bd54-4aee-be59-2f6928ab20b7" class="">Simple Interest VS Compound Interest</h3><figure id="eb18d429-274b-4651-95a4-f9fd3684a49f" class="image"><a href="Determination%20of%20Interest%20Rates%204f620672de3f4252855282d5e10e3996/Untitled%208.png"><img style="width:992px" src="Determination%20of%20Interest%20Rates%204f620672de3f4252855282d5e10e3996/Untitled%208.png"/></a></figure><h3 id="7e4de653-863c-4cbf-9135-c4e91e68d447" class="">Lump Sum vs Annuties</h3><ul id="00cbabbd-a4a9-47fc-af58-a0ac1921a4b9" class="bulleted-list"><li style="list-style-type:disc">SIngle Cash payment in the end or in the starting is called lump sum</li></ul><ul id="2453fe39-7c0f-48ce-8da6-9c2dad441ade" class="bulleted-list"><li style="list-style-type:disc">Annuities are a set of payments set over equal intervals</li></ul><h2 id="7678190a-740c-4946-a0ef-79edc867e135" class="">Lump Sum Valuation</h2><figure id="d9a77c36-ca19-4fad-b1ff-c1c4629e5397" class="image"><a href="Determination%20of%20Interest%20Rates%204f620672de3f4252855282d5e10e3996/Untitled%209.png"><img style="width:1749px" src="Determination%20of%20Interest%20Rates%204f620672de3f4252855282d5e10e3996/Untitled%209.png"/></a></figure><ul id="d6964d78-2b95-4629-a91d-0b8dd9eb89c0" class="bulleted-list"><li style="list-style-type:disc">as interest rates increase , the present values of the investment decrease at a decreasing rate</li></ul><ul id="9f0e9800-0032-4281-a014-2d7c190a228e" class="bulleted-list"><li style="list-style-type:disc">Future value is just the converse</li></ul><h2 id="8cbafd69-4902-4351-a180-d1def658ddc7" class="">Annuity Valuation</h2><figure id="276b7026-00cb-47b4-a864-4d4cdc531772" class="image"><a href="Determination%20of%20Interest%20Rates%204f620672de3f4252855282d5e10e3996/Untitled%2010.png"><img style="width:576px" src="Determination%20of%20Interest%20Rates%204f620672de3f4252855282d5e10e3996/Untitled%2010.png"/></a></figure><figure id="81340bac-9ae1-4eb0-a635-80c1c58f5b81" class="image"><a href="Determination%20of%20Interest%20Rates%204f620672de3f4252855282d5e10e3996/Untitled%2011.png"><img style="width:576px" src="Determination%20of%20Interest%20Rates%204f620672de3f4252855282d5e10e3996/Untitled%2011.png"/></a></figure><figure id="2428266c-421b-41e6-a1a9-73e0e7c2dc31" class="image"><a href="Determination%20of%20Interest%20Rates%204f620672de3f4252855282d5e10e3996/Untitled%2012.png"><img style="width:597px" src="Determination%20of%20Interest%20Rates%204f620672de3f4252855282d5e10e3996/Untitled%2012.png"/></a></figure><figure id="0bab6065-44e5-46e2-8cff-2cbd7ee23e5e" class="image"><a href="Determination%20of%20Interest%20Rates%204f620672de3f4252855282d5e10e3996/Untitled%2013.png"><img style="width:610px" src="Determination%20of%20Interest%20Rates%204f620672de3f4252855282d5e10e3996/Untitled%2013.png"/></a></figure><ul id="eac0cc5e-bfb6-465c-8ce3-20ea73909832" class="bulleted-list"><li style="list-style-type:disc">Note that when we calculate future value we don&#x27;t count the last one because it comes after the time ends</li></ul><h2 id="84ea11d0-f543-4b11-a67e-3b95ff378cf0" class="">Effective Annual Return</h2><ul id="f9654950-3084-4029-86d7-b213ca4220ac" class="bulleted-list"><li style="list-style-type:disc">The effective or equivalent annual return ( EAR ) is the return earned or paid over a 12-month period taking any within-year compounding of interest into account.</li></ul><ul id="acbf46e7-7e47-483c-ab7c-2ba58565e9f6" class="bulleted-list"><li style="list-style-type:disc">Here r is rate and c is the number of compoundings per year</li></ul><figure id="d311ebf2-80d0-4ca4-a60c-8c45fbc50699" class="image"><a href="Determination%20of%20Interest%20Rates%204f620672de3f4252855282d5e10e3996/Untitled%2014.png"><img style="width:551px" src="Determination%20of%20Interest%20Rates%204f620672de3f4252855282d5e10e3996/Untitled%2014.png"/></a></figure></div></article></body></html>

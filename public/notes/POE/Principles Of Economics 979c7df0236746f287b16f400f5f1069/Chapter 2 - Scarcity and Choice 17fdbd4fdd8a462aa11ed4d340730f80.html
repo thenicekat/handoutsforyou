@@ -1,0 +1,669 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 2 - Scarcity and Choice</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="17fdbd4f-dd8a-462a-a11e-d4d340730f80" class="page sans"><header><h1 class="page-title">Chapter 2 - Scarcity and Choice</h1></header><div class="page-body"><nav id="bad4511b-2029-4d5a-accd-8875a9bcdc48" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#16c48fcd-362b-47ce-838a-3ad092f4e424">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#fdf4d2f8-c10b-42a6-9abf-07a0efbb1d44">Scarcity, Choice and Opportunity Cost</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8ff52f54-c486-468d-ae42-e63d72b76380">One Person Economy</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#893e3941-e0ff-46d9-be56-99d3250c07c7">Two or More Person Economy</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9216358f-3dec-4cfe-a508-8ffd7f40a201">Weighing Present &amp; Expected Future Costs &amp; Benefits</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#8312106a-09f3-4065-a502-65a7581826d1">Production Possibility Frontier</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3bb0d3db-5076-4905-a165-6ab71c537009">Sources of Growth and Dilemma of Poor Countries</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1fb5e9ee-65da-4052-8b83-67f8fb7a5118">Economic Systems and the Role of Government</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3c9d95d4-7a9b-4511-ae37-aac3f1e2a427">Command Economics</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#84c764ce-56a7-4e0b-88b4-94ed82a2d78b">Free Economics</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#797aa7bf-2949-4e6f-9bbe-f0a0f488a8c6">Consumer Sovereignty</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#61f032c2-4cc3-4fee-959a-0ccacc5c1c0f">Individual Production Decisions - Free enterprise</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d1480ad8-0776-4c24-89b7-dadc225f25d0">Distribution of Output</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9e904a18-b0f9-43f0-8d25-9ac4c4cdb6ae">Price Theory</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#814760b9-dfdc-49f2-a150-398a1a38677a">Mixed Systems</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#30af95cd-896d-4b52-946c-f37658a13690">Extra Content</a></div></nav><h2 id="16c48fcd-362b-47ce-838a-3ad092f4e424" class="">Introduction</h2><ul id="fa45e8c3-e2bc-487a-9d8b-feceb4d6535d" class="bulleted-list"><li style="list-style-type:disc">Things that are produced and then used in production of other goods and services are called capital resources or capital</li></ul><ul id="9739f16f-a1c7-4233-b340-fbbf5ae641f9" class="bulleted-list"><li style="list-style-type:disc">The basic resources available to a society are often referred to as factors of production or simple factors</li></ul><ul id="be70f61d-5402-437d-a5f2-d27f10bd58ae" class="bulleted-list"><li style="list-style-type:disc">Three key factors are land, labor and capital</li></ul><h2 id="fdf4d2f8-c10b-42a6-9abf-07a0efbb1d44" class="">Scarcity, Choice and Opportunity Cost</h2><ul id="88f5c42c-8922-4d70-a704-cfc48923705a" class="bulleted-list"><li style="list-style-type:disc">Important Questions are WHAT, HOW and WHO</li></ul><h3 id="8ff52f54-c486-468d-ae42-e63d72b76380" class="">One Person Economy</h3><ul id="a444c2fd-33b9-4260-8f5e-34a08221433c" class="bulleted-list"><li style="list-style-type:disc">Individual and society are one. </li></ul><ul id="e52a9c56-b5ac-408c-9027-0202286def0e" class="bulleted-list"><li style="list-style-type:disc">The question of who to distribute doesn’t exist here</li></ul><ul id="c8221050-904e-429e-bf11-625238efefe4" class="bulleted-list"><li style="list-style-type:disc">Opportunity Cost: The concepts of constrained choice and scarcity are central to the discipline of economics. They can be applied when discussing </li></ul><ul id="ec3062b2-2cf6-49a1-8d42-defe28c3cf82" class="bulleted-list"><li style="list-style-type:disc">If there’s a single guy on an island, he must decide WHAT he wants to produce not what he NEEDS because we don’t define what someone needs</li></ul><ul id="31d742fa-c023-4eaf-b0d3-0cdd07199dd2" class="bulleted-list"><li style="list-style-type:disc">He always will face trade offs from the other alternative that’s available and this is called opportunity cost</li></ul><ul id="631f35ef-2d78-4969-8639-cbec04f106e9" class="bulleted-list"><li style="list-style-type:disc">If he becomes comfortable, he may work on making a building where he can stay but this reduces the time available for him to gather food</li></ul><h3 id="893e3941-e0ff-46d9-be56-99d3250c07c7" class="">Two or More Person Economy</h3><ul id="321a10a1-14f3-4ec6-9a6d-5686f16cf966" class="bulleted-list"><li style="list-style-type:disc">Works on the concept of specialization, exchange and comparative advantage</li></ul><ul id="9aaf5411-3973-4f5b-9377-4b04f22b11a9" class="bulleted-list"><li style="list-style-type:disc">These 3 will benefit all parties involved even when some are absolutely more efficient than others</li></ul><ul id="9b7012b5-dd8a-42b4-a1d2-69556b2bdefb" class="bulleted-list"><li style="list-style-type:disc">Both of them can have different preferences and skill sets</li></ul><ul id="0b237140-4033-40ac-a05a-56509988a62a" class="bulleted-list"><li style="list-style-type:disc">Preferences about what things to produce are likely to be different</li></ul><ul id="446064cc-6fb0-40ed-92f5-c1ea87361659" class="bulleted-list"><li style="list-style-type:disc">Say, Colleen is very good at tracking animals and Bill has a knack for building things</li></ul><ul id="0a0d0c26-2fe1-43c7-bdf1-0b37b01d4a79" class="bulleted-list"><li style="list-style-type:disc">Once things are produced, they also have to decide how to divide them<ul id="3ac91925-bccf-477d-83f1-097cad4c670b" class="bulleted-list"><li style="list-style-type:circle">One of the other may take the charge</li></ul><ul id="99549545-4f0a-4a0d-a81b-09f25bd6e7e1" class="bulleted-list"><li style="list-style-type:circle">The two may agree to cooperate</li></ul><ul id="05295929-e58f-4803-94c6-d0b527d52366" class="bulleted-list"><li style="list-style-type:circle">They may go off to live alone at opposite ends of the island and later share the resources by sharing and trading</li></ul></li></ul><ul id="e97234d8-a45c-4c62-9607-ca29e68638ae" class="bulleted-list"><li style="list-style-type:disc">Comparative Advantage<ul id="0fbeaade-508d-4bbe-93f1-10a9a8b34c67" class="bulleted-list"><li style="list-style-type:circle">The specialization and free trade will benefit all trading parties, even those that may be absolutely more efficient producers</li></ul><ul id="02320262-dd24-43c7-b1cb-cf1166d41a44" class="bulleted-list"><li style="list-style-type:circle">A producer has a comparative advantage over another in the production of a good or service if he or she can produce that product at a lower opportunity cost</li></ul></li></ul><ul id="09fc0578-3d12-4ace-ad4c-f0d9154c893e" class="bulleted-list"><li style="list-style-type:disc">Absolute Advantage<ul id="865ecb59-360a-4cc2-a0d3-3f5fefd66a21" class="bulleted-list"><li style="list-style-type:circle">A producer has absolute advantage in the production of a good or service if he/she can produce that product using fewer resources (a lower absolute cost per unit)</li></ul><ul id="d62c6eec-8359-4967-aa82-0080fb43317d" class="bulleted-list"><li style="list-style-type:circle">In a situation where one guy, say A is &gt;&gt; the other guy B in everything, then A is said to have <strong>absolute advantage</strong> over B if A can produce the same thing as B using fewer resources</li></ul></li></ul><ul id="f4d159f0-7ad6-4c26-bf1a-25e720fd3e99" class="bulleted-list"><li style="list-style-type:disc">Let’s say we have 2 jobs, cutting logs and gathering food</li></ul><ul id="19dc4108-5d46-409d-89b1-c7d1eaefbcd2" class="bulleted-list"><li style="list-style-type:disc">B is able to produce more food while C is able to produce more logs</li></ul><table id="7ccf30fb-54d3-4d50-8480-4790aac0baf6" class="simple-table"><tbody><tr id="111c099d-6ff1-42ae-abc4-a81115646c81"><td id="?bkf" class=""></td><td id="dHHN" class="">Food</td><td id="ZmL@" class="">Log</td></tr><tr id="78a8ba56-b458-4c88-bf07-4cee4f1b19e9"><td id="?bkf" class="">Bill</td><td id="dHHN" class="">10</td><td id="ZmL@" class="">8</td></tr><tr id="fea4a7a5-8c0e-4d00-90fe-13edcb085c9b"><td id="?bkf" class="">Colleen</td><td id="dHHN" class="">5</td><td id="ZmL@" class="">20</td></tr></tbody></table><ul id="3c98677e-0dbc-4523-bb98-efc61f73fd8f" class="bulleted-list"><li style="list-style-type:disc">Here if they split work equally to make food and logs, say 15 days food and other 15 logs, we get 735 approximate units</li></ul><ul id="e423b534-4ab6-4b64-ad17-28fe41a40f5f" class="bulleted-list"><li style="list-style-type:disc">But if we use absolute advantage, we get 900 units</li></ul><ul id="7e9225d8-7ff6-45e9-b2ce-54873c9fa46c" class="bulleted-list"><li style="list-style-type:disc">If in a case, C is better in both cutting logs and gathering food but C’s time is limited so she cannot do both</li></ul><ul id="19d0cdee-4a6c-4713-905a-38926ebb2e7a" class="bulleted-list"><li style="list-style-type:disc">We check opportunity costs in this scenario, for bill producing 1F, how much is the number of logs he’s sacrificing 0.5L</li></ul><ul id="2bdc8e98-a612-44fb-9ef9-a0b8eab09469" class="bulleted-list"><li style="list-style-type:disc">For colleen, 1 food = 1 Log, so bill has lower opportunity cost and so Bill has comparative advantage in food</li></ul><ul id="bfe76bd2-3a7a-40da-8edf-d88544493fb5" class="bulleted-list"><li style="list-style-type:disc">We have a question where Kristen can produce 15 WB and 3 PH</li></ul><ul id="c4b7a5ad-b353-4ff7-bd47-550029c88600" class="bulleted-list"><li style="list-style-type:disc">Anna has 12 WB and 2 PH</li></ul><ul id="20d1682e-790b-4b6f-ba7f-4508b7da10a6" class="bulleted-list"><li style="list-style-type:disc">Absolute advantage is with Kristen in both the cases</li></ul><ul id="28d8eb89-a98d-4b85-816b-2c3007a507d5" class="bulleted-list"><li style="list-style-type:disc">For Krisren, 1Wb = 0.2PH and for anna it’s 1Wb = 0.166PH, so we have anna having less opportunity costs</li></ul><figure id="7eb26858-3beb-4d87-9e1c-d10dfc376ac1" class="image"><a href="Chapter%202%20-%20Scarcity%20and%20Choice%2017fdbd4fdd8a462aa11ed4d340730f80/Untitled.png"><img style="width:288px" src="Chapter%202%20-%20Scarcity%20and%20Choice%2017fdbd4fdd8a462aa11ed4d340730f80/Untitled.png"/></a></figure><ul id="8730d09a-7821-4846-b655-01d59437a4c2" class="bulleted-list"><li style="list-style-type:disc">A society trades it’s present resources in exchange for future benefits</li></ul><ul id="d9552b2e-d892-4a39-ba4f-830228294959" class="bulleted-list"><li style="list-style-type:disc">Investment in economics refers to recreation of capital</li></ul><ul id="1b8a8886-effa-44f3-84e1-cfcbc805aa0b" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background">NOTE: Please ensure you are actually using productivity and not hours or something</mark></li></ul><ul id="e6033cef-27cb-46b7-98b8-da0ccc59dc19" class="bulleted-list"><li style="list-style-type:disc">Comparative advantage comes into picture only if same person has absolute advantage in 2 things</li></ul><ul id="bf82c43a-6669-405e-bed6-03a1d57c7ae2" class="bulleted-list"><li style="list-style-type:disc">For example, if A can produce 4 cars, 3 bikes and B can produce 1 car and 1 bike <ul id="c9c799a7-c13d-431b-943c-1ba2ba11d255" class="bulleted-list"><li style="list-style-type:circle">A has absolute advantage in producing cars and bikes</li></ul><ul id="dad2f068-e894-4bfe-978e-a3c379972252" class="bulleted-list"><li style="list-style-type:circle">A can produce 1 car by sacrificing 3/4 bikes and B can produce 1 car by sacrificing 1 bike so A has comparative advantage in producing cars</li></ul></li></ul><h3 id="9216358f-3dec-4cfe-a508-8ffd7f40a201" class="">Weighing Present &amp; Expected Future Costs &amp; Benefits</h3><ul id="889d0ba5-1fbd-4ca3-be34-12fe0c9dbe56" class="bulleted-list"><li style="list-style-type:disc">We trade off present and future benefits in small ways all the time</li></ul><ul id="3a73978a-9763-4d86-876b-f36567797933" class="bulleted-list"><li style="list-style-type:disc">Simple Example is the act of saving</li></ul><ul id="479f41ec-e8f5-4959-b73b-964ee4e1f754" class="bulleted-list"><li style="list-style-type:disc">Consumer Goods → Present Consumption</li></ul><ul id="1b386c0c-613d-41f5-b230-d6b00ca0e166" class="bulleted-list"><li style="list-style-type:disc">Capital Goods → Goods that already are produced and these will be used to produce other valuable goods and services over time</li></ul><ul id="533a31e2-01dd-4b66-b0dd-066aae93e83d" class="bulleted-list"><li style="list-style-type:disc">Because resources are scarce, the opportunity cost of every investment in capital is forgone present consumption</li></ul><ul id="b56d3544-e352-45a2-802e-846f025ee967" class="bulleted-list"><li style="list-style-type:disc">The process of using resources to produce new capital is called investment</li></ul><h2 id="8312106a-09f3-4065-a502-65a7581826d1" class="">Production Possibility Frontier</h2><ul id="945970eb-565e-4741-9659-247e0cad93df" class="bulleted-list"><li style="list-style-type:disc">A graph that shows all the combinations of goods and services that can be produced if all the society’s resources are used efficiently</li></ul><ul id="83856d91-7a5c-49c0-b337-731ca5bcc0e2" class="bulleted-list"><li style="list-style-type:disc">Points that are actually on the curve are points of both full resource employment and production efficiency but not allocation efficiency</li></ul><ul id="c56945be-7e4c-421f-8764-e2aae1acb45d" class="bulleted-list"><li style="list-style-type:disc">Production efficiency is a state in which a given mix of outputs is produced at least cost</li></ul><ul id="64fad1c0-cc8d-4279-a551-b627d49188f2" class="bulleted-list"><li style="list-style-type:disc">Points in the gray area represent either unemployment or production inefficiency<ul id="867c2d45-6e8c-4505-ab9c-a5a790968cdc" class="bulleted-list"><li style="list-style-type:circle">Unemployment: <ul id="cc6805e6-cf48-44d1-a483-a404add5c53e" class="bulleted-list"><li style="list-style-type:square">During economic downturns or recessions, industrial plants run at less than their total capacity</li></ul><ul id="5fdaa26f-7256-4a54-b8be-e02b6f57a026" class="bulleted-list"><li style="list-style-type:square">Moving onto the frontier from a point such as D means achieving full employment of resources</li></ul></li></ul><ul id="c17cb10e-7ba1-43e2-b032-bab1b8f1d1d4" class="bulleted-list"><li style="list-style-type:circle">Inefficiency<ul id="ea3b7515-3b60-4b07-be32-ff4063ddd422" class="bulleted-list"><li style="list-style-type:square">Can result from waste and mismanagement from a firm’s operating</li></ul><ul id="d48beece-da47-4ddd-9cb7-63fe5be45e54" class="bulleted-list"><li style="list-style-type:square">Policy Paralysis</li></ul></li></ul></li></ul><ul id="227b3e58-c63e-495c-a4e7-fd04332fc1d9" class="bulleted-list"><li style="list-style-type:disc">An economy must produce what people want, so in addition to the point being on the curve it has to be on the correct position depending on which axis it’s close to</li></ul><ul id="2845dad8-1abd-4f08-b24b-21d38f69c5bc" class="bulleted-list"><li style="list-style-type:disc">The fact that scarcity exists is illustrated by the negative slope of the PPF → The ratio of change in capital goods to the change in consumer goods is NEGATIVE</li></ul><ul id="1f15ae1d-a9f1-4cfe-ad80-6ec3cb476939" class="bulleted-list"><li style="list-style-type:disc">Law of increasing opportunity cost: <ul id="f6e15678-06d9-4018-b0fb-c906bc77b401" class="bulleted-list"><li style="list-style-type:circle">Here the point is that say we are going from E to F in the below graph, we have 250 change in capital goods for every 200 change in consumer goods</li></ul><ul id="de6305f4-a203-48c1-b859-a5f9a3c57465" class="bulleted-list"><li style="list-style-type:circle">But say the point moves towards producing more capital goods, then the opportunity cost increases drastically since for higher change in consumer goods we’ll get less change in capital goods</li></ul><ul id="7fc8b8f3-c4d1-452f-baf5-0ea5f3c10f4e" class="bulleted-list"><li style="list-style-type:circle">This is because of the fact that we were already producing max capital goods, and the more we increase production of capital goods we would have to stretch the resources a lot for the same</li></ul></li></ul><figure id="93ba86e7-9144-4a94-9514-1dc7d267f541" class="image"><a href="Chapter%202%20-%20Scarcity%20and%20Choice%2017fdbd4fdd8a462aa11ed4d340730f80/Untitled%201.png"><img style="width:432px" src="Chapter%202%20-%20Scarcity%20and%20Choice%2017fdbd4fdd8a462aa11ed4d340730f80/Untitled%201.png"/></a></figure><ul id="9d7a2a99-1213-4d5b-9349-eebfeb67ee0e" class="bulleted-list"><li style="list-style-type:disc">Above the curve situations are not possible</li></ul><ul id="2910ae7b-4e7d-4240-8c63-ad80c96aa0e4" class="bulleted-list"><li style="list-style-type:disc">Below the curve, we get that it’s inefficient</li></ul><ul id="a0c6dfab-0c4d-491f-8fbc-f15f5c122e19" class="bulleted-list"><li style="list-style-type:disc">Technology and More Resources lead to a better PPF curve</li></ul><ul id="a9c7eae9-7138-4b6c-944a-3178ab1e5321" class="bulleted-list"><li style="list-style-type:disc">A → All resources given to capital goods</li></ul><ul id="003fb162-852f-485c-a133-20e8f7540fb6" class="bulleted-list"><li style="list-style-type:disc">B → All resources given to consumer goods</li></ul><figure id="970d1690-2405-4f90-8171-d0c281d1c03e" class="image"><a href="Chapter%202%20-%20Scarcity%20and%20Choice%2017fdbd4fdd8a462aa11ed4d340730f80/Untitled%202.png"><img style="width:576px" src="Chapter%202%20-%20Scarcity%20and%20Choice%2017fdbd4fdd8a462aa11ed4d340730f80/Untitled%202.png"/></a></figure><h2 id="3bb0d3db-5076-4905-a165-6ab71c537009" class="">Sources of Growth and Dilemma of Poor Countries</h2><ul id="0c74a73a-2a6a-425b-ad97-d769d9aa812f" class="bulleted-list"><li style="list-style-type:disc">Majorly due to Accumulation of Capital and Technological advances</li></ul><ul id="6a3d36ba-faae-4ae8-b739-a51d0aa3ac86" class="bulleted-list"><li style="list-style-type:disc">For poor countries, capital is essential</li></ul><ul id="f4f2f60b-4cdc-4227-87e4-f04ad2aa0db5" class="bulleted-list"><li style="list-style-type:disc">The resources used to produce capital goods and technological advances can be used to produce consumer goods</li></ul><ul id="f0e0cc2d-a18c-4a4b-9750-1e8c547a5eb6" class="bulleted-list"><li style="list-style-type:disc">The more a poor country wants to invest in R&amp;D the less capital it’ll have for consumer goods</li></ul><ul id="ebeaaa43-eecb-4bfe-a783-e3c55f081772" class="bulleted-list"><li style="list-style-type:disc">And this leads to a growing gap between some poor and rich nations</li></ul><ul id="0de72d8a-5560-430e-9c8e-192d3b6454e6" class="bulleted-list"><li style="list-style-type:disc">On the other hand, rich nations devote a lot of money to capital while a poor country invests in consumer goods</li></ul><h2 id="1fb5e9ee-65da-4052-8b83-67f8fb7a5118" class="">Economic Systems and the Role of Government</h2><h3 id="3c9d95d4-7a9b-4511-ae37-aac3f1e2a427" class="">Command Economics</h3><ul id="c95a3553-8b7f-4c13-b041-c202d97640db" class="bulleted-list"><li style="list-style-type:disc">In this system of economics, the central government answers the economic questions, and sets output targets, incomes and prices</li></ul><ul id="a5c723bf-a3fc-41c8-af24-cec90f9519ee" class="bulleted-list"><li style="list-style-type:disc">Government involvement in theory, can improve efficiency and fairness of the allocation of a nation’s resources</li></ul><ul id="4058ee62-7c0d-40ed-98b7-facec7420f96" class="bulleted-list"><li style="list-style-type:disc">A poorly functioning government can destroy incentives, lead to corruption and result in the waste of a society’s resources</li></ul><h3 id="84c764ce-56a7-4e0b-88b4-94ed82a2d78b" class="">Free Economics</h3><ul id="8692faf1-f2f1-4d6b-9cf5-7cfd0f6d909a" class="bulleted-list"><li style="list-style-type:disc">This is known as laissez-faire economy → which basically means <em>allow them to do</em></li></ul><ul id="672bc52c-1027-4e45-bea4-3943344b1d3b" class="bulleted-list"><li style="list-style-type:disc">The central institution through which a free economy answers the basic questions is the market</li></ul><ul id="43c72b89-d54e-494b-b5d8-3fffdfb0793b" class="bulleted-list"><li style="list-style-type:disc">No role of the government</li></ul><ul id="7e073800-b0da-4624-a033-c9623e25c0e6" class="bulleted-list"><li style="list-style-type:disc">Market is the institution through which buyers and sellers interact and engage in exchange</li></ul><ul id="51ef34f6-7945-4ecb-8c1e-f40250d9ee87" class="bulleted-list"><li style="list-style-type:disc">The behavior of buyers and sellers in a laissez faire economy determines what gets produced, how it is produced and who gets it.</li></ul><h3 id="797aa7bf-2949-4e6f-9bbe-f0a0f488a8c6" class="">Consumer Sovereignty</h3><ul id="87fdf56a-4d2d-4fb3-bfff-817fc58f6048" class="bulleted-list"><li style="list-style-type:disc">In a free, regulated market, goods and services are produced and sold only if the supplier can make a profit</li></ul><ul id="6b7202ff-1579-4b8f-a52c-d1eca8bcaba2" class="bulleted-list"><li style="list-style-type:disc">You cannot make a profit unless someone wants to buy the product that you are selling</li></ul><ul id="27983b35-827d-4f4b-8ca8-31b45a18f822" class="bulleted-list"><li style="list-style-type:disc">This logic leads to the notion of consumer sovereignty</li></ul><ul id="0aa06543-3ff1-498a-b35b-3e78e0e76282" class="bulleted-list"><li style="list-style-type:disc">The Idea that consumers ultimately dictate what will be produced(or not produced) by choosing what to produce</li></ul><h3 id="61f032c2-4cc3-4fee-959a-0ccacc5c1c0f" class="">Individual Production Decisions - Free enterprise</h3><ul id="039c4c73-27bb-4a74-80fd-33202e54c4d6" class="bulleted-list"><li style="list-style-type:disc">Under a free market system, individual producers must also determine how to organize and coordinate the actual production of their products or services.</li></ul><ul id="c56afc21-7da4-4bda-8a41-82e958c4cd23" class="bulleted-list"><li style="list-style-type:disc">Often the market system is a free enterprise system</li></ul><ul id="4acb078a-bad7-4b0e-8e9e-6c436a5257dd" class="bulleted-list"><li style="list-style-type:disc">It means the freedom of individuals to start private businesses in search of profits</li></ul><ul id="927ae2c0-c956-492d-9c27-c7ed3fd72cd7" class="bulleted-list"><li style="list-style-type:disc">Because new businesses require capital before starting up, it’s very risky</li></ul><ul id="cdfe38d0-2061-46cc-b185-b9086fea4f5c" class="bulleted-list"><li style="list-style-type:disc">Proponents of free market systems argue that free enterprise leads to more efficient production and better response to diverse and changing consumer preferences</li></ul><ul id="74e5133f-be9b-4979-86ce-a431c0f4d006" class="bulleted-list"><li style="list-style-type:disc">If a producer is inefficient, competitors will come along, fight for the business and eventually take it away</li></ul><ul id="7e1b513a-3d01-49ca-a32a-67fa9dd1f0a9" class="bulleted-list"><li style="list-style-type:disc">Competition forces producers to use efficient techniques of production</li></ul><ul id="0e3f7905-95ba-468f-a81f-2b1b9142bf54" class="bulleted-list"><li style="list-style-type:disc">One of the major themes in economics is the tension between the advantages of free, unregulated markets and the desire for govt involvement</li></ul><ul id="a3f2e0c8-d655-493f-b7b4-5e58e4292952" class="bulleted-list"><li style="list-style-type:disc">Advocates of free markets argue that such markets work best when left to themselves<ul id="12856712-5117-4fb3-93b4-adae610a2be6" class="bulleted-list"><li style="list-style-type:circle">They produce only what they want, without buyers, sellers go out of business</li></ul><ul id="ccb346aa-2329-4c61-8491-25be0277bf90" class="bulleted-list"><li style="list-style-type:circle">Competition forces firms to adopt efficient production techniques</li></ul><ul id="0e6abc6f-9a80-40a2-93d3-7c054e340329" class="bulleted-list"><li style="list-style-type:circle">Wage differentials lead to people to acquire needed skills</li></ul><ul id="dab97efc-c170-4f85-9c40-b63b3cbb8b9a" class="bulleted-list"><li style="list-style-type:circle">Competition leads to innovation in both production techniques and products</li></ul></li></ul><ul id="c75c9393-90be-47be-8815-72133be1641e" class="bulleted-list"><li style="list-style-type:disc">Disadvantages<ul id="7da4bf48-b177-4a3e-8e9a-2b7c13a83583" class="bulleted-list"><li style="list-style-type:circle">They do not always produce what people want at the lowest cost: They will form monopolies, which will then control market pricing</li></ul><ul id="55ff8524-b0ad-48bd-8470-e7a01d3d8c8d" class="bulleted-list"><li style="list-style-type:circle">Rewards(income) may be unfairly distributed</li></ul><ul id="18e15e6a-cedb-423a-b72c-47daff90dae5" class="bulleted-list"><li style="list-style-type:circle">Periods of unemployment and inflation recur with some regularity</li></ul></li></ul><h3 id="d1480ad8-0776-4c24-89b7-dadc225f25d0" class="">Distribution of Output</h3><ul id="2488acfd-fb65-4002-b870-ff3ea23ef349" class="bulleted-list"><li style="list-style-type:disc">In a free market system, the distribution of output - who gets what is also determined in a decentralized way</li></ul><ul id="f1e36412-fedf-4d78-8597-c890733575ef" class="bulleted-list"><li style="list-style-type:disc">The amount a household gets depends on it’s <mark class="highlight-yellow_background">income and wealth</mark></li></ul><ul id="ac7ba965-183b-4454-a58e-1f9bff80f0cb" class="bulleted-list"><li style="list-style-type:disc">Income is the amount a household earns</li></ul><ul id="20bdb944-7569-478e-9590-57961c167bf8" class="bulleted-list"><li style="list-style-type:disc">Wealth is the amount that households have accumulated out of past income through saving or inheritance</li></ul><h3 id="9e904a18-b0f9-43f0-8d25-9ac4c4cdb6ae" class="">Price Theory</h3><ul id="000b691a-5a1d-4f4f-b738-3aa43ade5cf3" class="bulleted-list"><li style="list-style-type:disc">Price is the amount that a product sells for per unit and it reflects what society is willing to pay</li></ul><ul id="e31bb72a-e2c9-4ef3-b271-5097171ade75" class="bulleted-list"><li style="list-style-type:disc">Prices of inputs → labor, land and capital → determine how much it costs to produce a product</li></ul><ul id="22dde64f-ad96-4ed1-ae25-9b005cdb459d" class="bulleted-list"><li style="list-style-type:disc">Individuals pursuing their own self interest will go into business and produce the products and services that people want</li></ul><ul id="cd4936e1-273c-4254-8063-d9e31ff3f22e" class="bulleted-list"><li style="list-style-type:disc">The Basic Coordinating mechanism is price</li></ul><ul id="09ffe662-0039-4ad1-af2b-d95db7c045eb" class="bulleted-list"><li style="list-style-type:disc">Microeconomic theory is often simply called price theory</li></ul><ul id="b0277752-3341-4d4f-9bdf-5aaa934a857b" class="bulleted-list"><li style="list-style-type:disc">Many of the independent decisions made in a market economy involve the weighing of prices and costs</li></ul><h2 id="814760b9-dfdc-49f2-a150-398a1a38677a" class="">Mixed Systems</h2><ul id="b78adedb-b34d-45c3-b5c8-ce24b77451f6" class="bulleted-list"><li style="list-style-type:disc">All real systems are mixed i.e. individual enterprise exists and independent choice is exercised even in economics in which the government plays a major role</li></ul><ul id="2367ec3e-c31c-42df-b7c3-adbf4c65959a" class="bulleted-list"><li style="list-style-type:disc">Individual enterprise exists and independent choice is exercised even in economies in which government plays a major role</li></ul><ul id="4d439e4c-61ee-4660-9928-e8b51e245b43" class="bulleted-list"><li style="list-style-type:disc">Market economies can’t exist without government intervention namely for production, employment and for redistribution of income</li></ul><ul id="9334ff9b-d39d-437b-80ac-17515d3b2c92" class="bulleted-list"><li style="list-style-type:disc">But this can also fail: <ul id="0df6af49-3d05-4736-8e92-8e96a323f8ff" class="bulleted-list"><li style="list-style-type:circle">There is no guarantee, a government will actually complete their tasks or they’ll act in own self interest</li></ul><ul id="bfea80e4-5f5b-46d6-81bd-f303f1b94991" class="bulleted-list"><li style="list-style-type:circle">May fail to produce an allocation of resources</li></ul></li></ul><h1 id="30af95cd-896d-4b52-946c-f37658a13690" class="">Extra Content</h1><ul id="da795eb3-3ce0-438e-bf30-f29a94a7fc4b" class="bulleted-list"><li style="list-style-type:disc">In the Keynesian economy, aggregate demand = Consumer expenditure + government expenditure + investment + national exports</li></ul><ul id="4e56956e-a93d-4356-92bb-0774b747eb18" class="bulleted-list"><li style="list-style-type:disc">So if AD falls due to lack of investment → we should improve exports</li></ul><ul id="742fd0c1-3ebe-4f69-8221-d4a0bbed5218" class="bulleted-list"><li style="list-style-type:disc">Keynesian become very dominant ⇒ More Government intervention</li></ul><ul id="cf081718-e3a5-4b76-b94e-208aabaa34b1" class="bulleted-list"><li style="list-style-type:disc">Government will try to decrease inflation but will end up increasing unemployment</li></ul></div></article></body></html>

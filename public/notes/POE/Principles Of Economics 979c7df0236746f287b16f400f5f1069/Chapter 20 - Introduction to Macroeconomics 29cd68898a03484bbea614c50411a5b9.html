@@ -1,0 +1,670 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 20 - Introduction to Macroeconomics</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="29cd6889-8a03-484b-bea6-14c50411a5b9" class="page sans"><header><h1 class="page-title">Chapter 20 - Introduction to Macroeconomics</h1></header><div class="page-body"><nav id="917b1765-e2c4-485f-92e0-c64f61491d57" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#39e8b66d-b27d-4ffa-b5f1-31e7fdc1d71b">Some Basic Definitions</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d54272d8-7855-4666-b062-0a541b2f6372">Macroeconomic Concerns</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9faeabba-0f76-4e3e-afb7-7a60a07970e9">Output Growth</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#42e8c3ec-900a-4467-aaea-559a9794b6ae">Unemployment</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#565bf412-8572-43f3-b149-231a3910671f">Inflation and Deflation</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e1361af2-e960-43e5-98d8-f6046c41e735">Components of Macroeconomy</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#61e3b624-b23f-4d96-9759-a69038dba2b5">Circular Flow Diagram</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4be9cdde-3e27-40a9-853f-f5de0589ec91">Three Market Arenas</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#693dab8e-7eea-44a0-a5bf-9eeb7a243045">Goods and Services Market</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d1d49aec-6ae4-46e2-9305-238d0410f296">Labor Market</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#83801c48-26ca-46ff-9e70-ff25dce6ddc2">Money Market</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#82ed28e8-cbea-4a2c-a131-ea70d02ac4d6">Role of government in Macroeconomy</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d57f64ae-0a96-49e7-97f5-64fad00370ff">Fiscal Policy</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#172bbbaa-ab2d-4047-a280-2aa5a5bd3eb0">Monetary Policy</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#23c80150-3ddf-45d6-a4a5-ab91236384d2">Stagflation</a></div></nav><h1 id="39e8b66d-b27d-4ffa-b5f1-31e7fdc1d71b" class="">Some Basic Definitions</h1><ul id="f9cfab4d-d769-4c2d-8e3b-f6623afcd232" class="bulleted-list"><li style="list-style-type:disc">Microeconomics - Examines the functioning of individual industries and the behavior of individual  decision-making units—firms and households.</li></ul><ul id="6fe73f02-7914-44b9-a8fe-e56797497d80" class="bulleted-list"><li style="list-style-type:disc">Macroeconomics focuses on the determinants of total national output. Macroeconomics studies not household income but national income, not individual prices but the overall price level. </li></ul><ul id="51b1fe61-7231-4337-84ef-1440ae517cff" class="bulleted-list"><li style="list-style-type:disc">It does not analyze the demand for labor in the automobile industry but instead total employment in the economy</li></ul><ul id="393bc4f7-31dc-44c2-b633-e8532a6e956a" class="bulleted-list"><li style="list-style-type:disc">Aggregate is used in macroeconomics to refer to sums. When we speak of aggregate behavior, we mean the behavior of all households as well as the behavior of all firms</li></ul><ul id="df815a3b-84b6-4dda-9717-7bab7698f23a" class="bulleted-list"><li style="list-style-type:disc">Sticky prices are prices that do not always adjust rapidly to maintain equality between quantity
+supplied and quantity demanded.</li></ul><ul id="c1e28ca6-5c87-473d-89f1-9623e034c117" class="bulleted-list"><li style="list-style-type:disc">In macro economics, prices are not so flexible</li></ul><h1 id="d54272d8-7855-4666-b062-0a541b2f6372" class="">Macroeconomic Concerns</h1><h3 id="9faeabba-0f76-4e3e-afb7-7a60a07970e9" class="">Output Growth</h3><ul id="7b421bed-adc6-4630-89e8-0f97787af0ad" class="bulleted-list"><li style="list-style-type:disc">Economies tend to experience ups and downs which are called the business cycle</li></ul><ul id="82c0316a-9924-4569-8402-d362a5113a99" class="bulleted-list"><li style="list-style-type:disc">The main measure of output growth is the aggregate output</li></ul><ul id="88d51f64-5a4a-404d-a3c1-7b861535f078" class="bulleted-list"><li style="list-style-type:disc">Recessions are periods during which aggregate output decreases</li></ul><ul id="7d5aede0-0340-4689-bf55-b77c48d93f67" class="bulleted-list"><li style="list-style-type:disc">A prolonged and long recession is called depression</li></ul><ul id="6dbadcf0-f2e9-47b1-9932-a2d0a63f1188" class="bulleted-list"><li style="list-style-type:disc">The period of growing from a low point to a high point is called an expansion or boom</li></ul><ul id="c7fa3578-377e-4c34-9380-9d7c4259ed84" class="bulleted-list"><li style="list-style-type:disc">The period from a peak to a trough is called contraction, recession or slump</li></ul><ul id="5210f3a7-5b00-4a78-9580-a24325f063d6" class="bulleted-list"><li style="list-style-type:disc">Sometimes the expansion phase can be longer than the contraction phase</li></ul><h3 id="42e8c3ec-900a-4467-aaea-559a9794b6ae" class="">Unemployment</h3><ul id="b12150be-09b0-4c72-8aee-49919301f3c8" class="bulleted-list"><li style="list-style-type:disc">Unemployment rate is the percentage of labor force that is unemployed and is a key indicator of the economy’s health</li></ul><ul id="98f13274-52f4-4e29-be93-a7b2682ef58e" class="bulleted-list"><li style="list-style-type:disc">Because this is closely related to the aggregate output</li></ul><ul id="973670a3-be62-4b87-b511-2a3e0303a127" class="bulleted-list"><li style="list-style-type:disc">How economy adjusts when the unemployment rises beyond a base level</li></ul><ul id="83c23808-f20e-4e80-9712-878435871eb1" class="bulleted-list"><li style="list-style-type:disc">The existence of unemployment seems to imply that the aggregate labor market is not in equilibrium that something prevents quantity supplied and quantity demanded from equating</li></ul><h3 id="565bf412-8572-43f3-b149-231a3910671f" class="">Inflation and Deflation</h3><ul id="9915c883-2199-49c8-9a7c-eab22e36c00e" class="bulleted-list"><li style="list-style-type:disc">Inflation is an increase in the overall price level</li></ul><ul id="ef0b498f-f9ce-4e19-8520-958afe48e959" class="bulleted-list"><li style="list-style-type:disc">Keeping inflation low has long been a goal of government policy</li></ul><ul id="11efa152-5c33-47de-9a92-c56a9ed3ff7c" class="bulleted-list"><li style="list-style-type:disc">Hyperinflations are periods of very rapid increases in the overall price level</li></ul><ul id="d1ef22e4-ffb4-4327-b72c-aeb7f65ca8c1" class="bulleted-list"><li style="list-style-type:disc">A decrease in overall price level is called deflation</li></ul><h1 id="e1361af2-e960-43e5-98d8-f6046c41e735" class="">Components of Macroeconomy</h1><ul id="dbf93846-18a0-4e19-8826-f4d1f8680d95" class="bulleted-list"><li style="list-style-type:disc">It is helpful to divide macroeconomy into 4 groups <ul id="56c329ce-4bf1-4044-9efb-3c9e9d9e9628" class="bulleted-list"><li style="list-style-type:circle">Households - Private</li></ul><ul id="23ece4b6-9609-40cd-bd73-cba02ca4b458" class="bulleted-list"><li style="list-style-type:circle">Firms - Private</li></ul><ul id="7872a6d7-5893-4d05-a8d0-fac5323a6934" class="bulleted-list"><li style="list-style-type:circle">Government - Public</li></ul><ul id="f8c1436f-180a-41bc-b073-0b110da205be" class="bulleted-list"><li style="list-style-type:circle">Rest of the world - Foreign</li></ul></li></ul><h3 id="61e3b624-b23f-4d96-9759-a69038dba2b5" class="">Circular Flow Diagram</h3><ul id="ab833038-03c5-426f-a767-d8c429189ff2" class="bulleted-list"><li style="list-style-type:disc">Cast payments made by government to people who do not supply goods, services or labor in exchange for these payments are called transfer payments</li></ul><ul id="99789ea8-b1d9-42b8-9106-0e0454dbbf0e" class="bulleted-list"><li style="list-style-type:disc">Examples include social security benefits welfare payments etc.</li></ul><figure id="7c7536e0-a4f8-4785-967c-0e935845f5ff" class="image"><a href="Chapter%2020%20-%20Introduction%20to%20Macroeconomics%2029cd68898a03484bbea614c50411a5b9/Untitled.png"><img style="width:1124px" src="Chapter%2020%20-%20Introduction%20to%20Macroeconomics%2029cd68898a03484bbea614c50411a5b9/Untitled.png"/></a></figure><ul id="7e13eb58-54c3-4e72-89a1-18bd0abd6e12" class="bulleted-list"><li style="list-style-type:disc">Household earns money and can decide to save or dissave money</li></ul><ul id="cd69831c-973d-4bfb-b7d6-9e869ccc554a" class="bulleted-list"><li style="list-style-type:disc">Firms sell goods and services and earn revenue which flows into the firm sector</li></ul><ul id="7d6b5004-a9b4-4df8-9908-8a7d0b782ff2" class="bulleted-list"><li style="list-style-type:disc">Firms pay wages, dividends etc which flow out of the firms</li></ul><ul id="f377664f-66c3-4555-ab87-c216381b0a9d" class="bulleted-list"><li style="list-style-type:disc">Government collects taxes but buys goods and services from firms and households</li></ul><h1 id="4be9cdde-3e27-40a9-853f-f5de0589ec91" class="">Three Market Arenas</h1><h3 id="693dab8e-7eea-44a0-a5bf-9eeb7a243045" class="">Goods and Services Market</h3><ul id="aabbe4b4-2562-47ff-9cfa-65ea81214e98" class="bulleted-list"><li style="list-style-type:disc">Households and government purchase goods and services from firms in this market</li></ul><ul id="b6cddce1-bf57-4809-b04a-6fe18f63c692" class="bulleted-list"><li style="list-style-type:disc">Firms also purchase goods and services from each other</li></ul><ul id="4a4aeddf-aa46-4435-80c4-66e0f13120de" class="bulleted-list"><li style="list-style-type:disc">Supply by firms</li></ul><ul id="e6f4d4ea-5382-4631-9620-73d84e4b27b0" class="bulleted-list"><li style="list-style-type:disc">Demand by households, government and firms</li></ul><h3 id="d1d49aec-6ae4-46e2-9305-238d0410f296" class="">Labor Market</h3><ul id="e8c114fc-0857-4e43-92b1-c31daeea8d77" class="bulleted-list"><li style="list-style-type:disc">Interaction here takes place when firms and government purchase labor from households</li></ul><ul id="5a073c19-a643-4109-83fc-6f87ef385449" class="bulleted-list"><li style="list-style-type:disc">Supply by households</li></ul><ul id="523e72b2-9338-4c61-ac83-b6daba328ca4" class="bulleted-list"><li style="list-style-type:disc">Demand by Firms and Government</li></ul><ul id="2a9da8d3-f116-41d3-8872-051f995ab32c" class="bulleted-list"><li style="list-style-type:disc">Also supplied and demanded to from the rest of the world</li></ul><h3 id="83801c48-26ca-46ff-9e70-ff25dce6ddc2" class="">Money Market</h3><ul id="c502f6fb-b537-4f6f-8c0d-09df1f0872d1" class="bulleted-list"><li style="list-style-type:disc">Aka financial market</li></ul><ul id="bfb086e9-ca16-48dd-b7e4-24b5b9e1177d" class="bulleted-list"><li style="list-style-type:disc">Supply of funds by households</li></ul><ul id="6da4406b-8a92-408d-a66e-cd650887c94c" class="bulleted-list"><li style="list-style-type:disc">Demand of funds by households</li></ul><ul id="69521de4-5f69-4179-ba78-2eef8314c822" class="bulleted-list"><li style="list-style-type:disc">Firms also borrow to earn more and return the money</li></ul><ul id="4ed1f6f8-8539-4d1f-bd0f-17a2069ba084" class="bulleted-list"><li style="list-style-type:disc">When a firm, a household, or the government borrows to finance a purchase, it has an obligation to pay that loan back, usually at some specified time in the future. </li></ul><ul id="3ab16e9e-9950-46d5-ae8a-4a34c03a6e53" class="bulleted-list"><li style="list-style-type:disc">Most loans also involve payment of interest as a fee for the use of the borrowed funds. </li></ul><ul id="a4947d95-068d-45bd-9b16-8c51fe701932" class="bulleted-list"><li style="list-style-type:disc">When a loan is made, the borrower usually signs a “promise to repay,” or promissory note, and gives it to the lender. </li></ul><ul id="5ba21ecd-7484-484a-b8b5-c4481a327aaa" class="bulleted-list"><li style="list-style-type:disc">When the federal government borrows, it issues “promises” called Treasury bonds, notes, or bills in exchange for money.</li></ul><ul id="7ed97eb6-5ca0-4a8a-9eb5-a12f5ed489f9" class="bulleted-list"><li style="list-style-type:disc">Firms can borrow from banks, or in the case of corporations, they can issue corporate bonds</li></ul><ul id="e0f1d1bc-7b88-4855-b720-0af22b911b65" class="bulleted-list"><li style="list-style-type:disc">Instead of issuing bonds, corporations can also issue shares</li></ul><ul id="2caba5f4-f8ea-4283-b781-49f5a6b7f4f8" class="bulleted-list"><li style="list-style-type:disc">A share of stock is a financial instrument that gives the holder a share of the firm’s ownership and therefore right to share the firm’s profits</li></ul><ul id="8863b0f3-20d3-4716-9d23-97b9e2ecd9a3" class="bulleted-list"><li style="list-style-type:disc">Dividents are portions of the firm’s profits that the firm pays out each period to it’s shareholders</li></ul><h1 id="82ed28e8-cbea-4a2c-a131-ea70d02ac4d6" class="">Role of government in Macroeconomy</h1><h3 id="d57f64ae-0a96-49e7-97f5-64fad00370ff" class="">Fiscal Policy</h3><ul id="b6f5970c-301c-486b-bb98-ed02aa166b81" class="bulleted-list"><li style="list-style-type:disc">Government’s decisions about how much to tax and spend</li></ul><ul id="e6c27b67-95d3-477f-9250-471e87ce26c2" class="bulleted-list"><li style="list-style-type:disc">Government collects taxes and spends these funds on goods and services</li></ul><ul id="5d1f75be-b6e1-46d7-b8cd-a4395d5b3806" class="bulleted-list"><li style="list-style-type:disc">An expansionary fiscal policy is a policy where taxes are cut or government spending increases</li></ul><ul id="18aa49fb-dd04-44e7-a20c-9198949fb7ab" class="bulleted-list"><li style="list-style-type:disc">Contractionary is the opposite</li></ul><h3 id="172bbbaa-ab2d-4047-a280-2aa5a5bd3eb0" class="">Monetary Policy</h3><ul id="80f88026-3af0-4d82-a464-48808e34bf37" class="bulleted-list"><li style="list-style-type:disc">Controls short term interest rates in the economy</li></ul><h3 id="23c80150-3ddf-45d6-a4a5-ab91236384d2" class="">Stagflation</h3><ul id="bde8d20e-9bbf-400a-81d6-3d32e3eddf8d" class="bulleted-list"><li style="list-style-type:disc">Situation of high inflation and high unemployment</li></ul></div></article></body></html>
