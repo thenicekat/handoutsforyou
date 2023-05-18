@@ -97,7 +97,7 @@ export default function Notes() {
                 </div>
             </div>
 
-            <div className='grid place-items-center py-3'>
+            <div className='grid place-items-center p-5'>
                 <div className="w-100 place-items-center flex flex-col justify-between">
                     <h1 className='text-4xl p-3'>BITS Combined Resources</h1>
                     <h3 className='text-xl'>(Contains PYQs and Solutions if available, textbooks, textbook solutions, slides and notes)</h3>
@@ -111,7 +111,7 @@ export default function Notes() {
                 </div>
             </div>
 
-            <div className='grid place-items-center py-3'>
+            <div className='grid place-items-center p-5'>
                 <div className="w-100 place-items-center flex flex-col justify-between">
                     <h1 className='text-4xl p-3'>Course Wise Notes</h1>
                     <div>
