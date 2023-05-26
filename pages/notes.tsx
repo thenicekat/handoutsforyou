@@ -13,7 +13,6 @@ export default function Notes() {
             name: "1-1 Resources - MeOW, EEE, M1, Chem, Workshop",
             link: "https://drive.google.com/drive/folders/1CnTsW7eex3adZY0TgLsTeNPRF2RTX4y4?usp=share_link"
         },
-
         {
             name: "1-2 Resources - CP, TRW, Bio, M2, PnS, EG",
             link: "https://drive.google.com/drive/folders/1bkFqiiPP1bN-w-ezvtQ5j5mSkyNTttaM?usp=share_link"
@@ -29,6 +28,10 @@ export default function Notes() {
         {
             name: "2-1 Phoenix Resources - EM, EMT, ED, DD, Intro to Dev Studies, EVS",
             link: "https://drive.google.com/drive/folders/1YWAHsJySYLsQVkQtS-B45JoWUFcuCjBc?usp=share_link"
+        },
+        {
+            name: "2-2 Phoenix Resources - Consys, Mass Comm, MEC, MPi, POE, Pop Lit",
+            link: "https://drive.google.com/drive/folders/1_f1yZnfg1ATSluRBBwNu6hnPyyGX0sVz?usp=drive_link"
         },
         {
             name: "Huels - Computer Mediated Communications, Globalization, Linguistics",
