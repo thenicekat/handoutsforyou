@@ -25,12 +25,16 @@ export default function Notes() {
             link: "https://drive.google.com/drive/folders/1YWAHsJySYLsQVkQtS-B45JoWUFcuCjBc?usp=share_link"
         },
         {
-            name: "Humanties Electives Resources - Computer Mediated Communications, Globalization",
+            name: "Huels - Computer Mediated Communications, Globalization, Linguistics",
             link: "https://drive.google.com/drive/folders/1IZ1ZatyqlyqLO9u7_l63SYq2zN41sDUZ?usp=sharing"
         },
         {
-            name: "Del - Machine Learning (ML)",
+            name: "Elective - Machine Learning (ML)",
             link: "https://drive.google.com/drive/folders/1FJXFb2jtHerLvNglgweCFyetc8MmItOs?usp=share_link"
+        },
+        {
+            name: "Elective - Fundamentals of Finance and Accounting (FOFA)",
+            link: "https://drive.google.com/drive/folders/1FO3tvzR4dhWDUHlfzY_AHq6n57dWtJgJ?usp=drive_link"
         }
     ];
     const coursewise = [
