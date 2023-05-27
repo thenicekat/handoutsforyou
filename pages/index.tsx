@@ -66,14 +66,19 @@ export default function Home({ handoutsMap }: any) {
             </Link>
           </p>
           <div className="py-3">
-            <Link className="m-4" href={"/minors.html"}>
+            <Link className="m-5" href={"/minors.html"}>
               <button className="btn btn-outline btn-primary">
                 Info. about Minors
               </button>
             </Link>
-            <Link className="m-4" href={"/notes"}>
+            <Link className="m-5" href={"/notes"}>
               <button className="btn btn-outline btn-primary">
                 Notes and Resources
+              </button>
+            </Link>
+            <Link className="m-5" href={"/faqs"}>
+              <button className="btn btn-outline btn-primary">
+                FAQs about Campus
               </button>
             </Link>
           </div>
