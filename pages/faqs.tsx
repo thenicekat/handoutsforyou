@@ -5,7 +5,7 @@ type FaqModel = {
     answer: string
 }
 
-export default function faqs() {
+export default function Faqs() {
     const [input, setInput] = useState("");
 
     const faqs: FaqModel[] = [
