@@ -2,9 +2,8 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head';
 import React from 'react'
 import { signIn, signOut, useSession } from 'next-auth/react';
-import { createClient } from '@supabase/supabase-js'
-import { supabase } from '../supabase';
-
+import { supabase } from '../api/supabase';
+import { ParsedUrlQuery } from 'querystring';
 
 export const getStaticPaths: GetStaticPaths = async () => {
     const fs = require("fs");
@@ -35,10 +34,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-    const slug = params?.slug;
+    const slug = (params as ParsedUrlQuery).slug;
     const { data, error } = await supabase.from('reviews').select("*").eq('coursename', slug)
-    // console.log(slug)
-    // console.log(data, error)
+
     if (error != null) {
         return {
             props: {
@@ -57,8 +55,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         }
     }
 }
-
-
 
 export default function CourseReviews({ name, data, err, errMsg }: {
     name: string,
