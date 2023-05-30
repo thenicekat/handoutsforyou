@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Link from 'next/link';
 import { useState } from 'react'
 
@@ -112,6 +113,20 @@ export default function Notes() {
 
     return (
         <>
+            <Head>
+                <title>Notes and Resources.</title>
+                <meta name="description" content="Handouts app for bits hyderabad" />
+                <meta name="description" content="BPHC Handouts" />
+                <meta name="description" content="Handouts for you." />
+                <meta
+                    name="description"
+                    content="handouts, bits pilani hyderabad campus"
+                />
+                <meta name="robots" content="index, follow" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
+
             <div className='grid place-items-center'>
                 <div className='w-[50vw] place-items-center flex flex-col justify-between'>
                     <h1 className='text-6xl p-[35px]'>Notes and Resources.</h1>
