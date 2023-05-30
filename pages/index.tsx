@@ -52,7 +52,7 @@ export default function Home({ handoutsMap }: any) {
       {/* Search box */}
       <div className="grid place-items-center">
         <div className="w-[50vw] place-items-center flex flex-col justify-between">
-          <h1 className="text-5xl p-3">Handouts For You.</h1>
+          <h1 className="text-6xl p-[35px]">Handouts For You.</h1>
           <p className="py-3">
             NOTE: Contains all BITS Pilani, Hyderabad Campus handouts for
             18-19/20-21/21-22/22-23 but only GS and HSS handouts for 19-20. If
