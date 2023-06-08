@@ -38,6 +38,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const { data, error } = await supabase.from('reviews').select("*").eq('coursename', slug)
 
     if (error != null) {
+        console.log(error)
         return {
             props: {
                 name: slug,
@@ -106,10 +107,7 @@ export default function CourseReviews({ name, data, err, errMsg }: {
                     <h1 className='text-6xl p-[35px]'>Course Reviews.</h1>
                     <h3 className='py-2 text-2xl'>{name.toUpperCase()}</h3>
                     {
-                        (err != null) && <p>{errMsg}</p>
-                    }
-                    {
-                        err == null && !session
+                        (err != false) ? <p>{errMsg}</p> : !session
                             ?
                             <>
                                 <p className='text-2xl'>You will need to sign in to access these pages.</p>
@@ -165,6 +163,7 @@ export default function CourseReviews({ name, data, err, errMsg }: {
                                 })}
                             </>
                     }
+
 
                 </div>
             </div>
