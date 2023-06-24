@@ -36,9 +36,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     const slug = (params as ParsedUrlQuery).slug;
     const { data, error } = await supabase.from('reviews').select("*").eq('coursename', slug)
-
+    console.log(error)
     if (error != null) {
-        console.log(error)
         return {
             props: {
                 name: slug,
