@@ -37,13 +37,13 @@ export default function Home({ handoutsMap }: any) {
     <>
       <Head>
         <title>Handouts for You.</title>
-        <meta name="description" content="Handouts app for bits hyderabad" />
-        <meta name="description" content="BPHC Handouts" />
         <meta name="description" content="Handouts for you." />
+        <meta name="description" content="A website containing all bits pilani hyderabad campus handouts" />
         <meta
           name="description"
-          content="handouts, bits pilani hyderabad campus"
+          content="Handouts For You."
         />
+        <meta name="keywords" content="BITS Pilani, Handouts, BPHC, Hyderabad Campus" />
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -53,6 +53,7 @@ export default function Home({ handoutsMap }: any) {
       <div className="grid place-items-center">
         <div className="w-[50vw] place-items-center flex flex-col justify-between">
           <h1 className="text-6xl p-[35px]">Handouts For You.</h1>
+          <p>Made with &lt;3 by Divyateja Pasupuleti and Vashisth Choudhari</p>
           <p className="py-3">
             NOTE: Contains all BITS Pilani, Hyderabad Campus handouts for
             18-19/20-21/21-22/22-23 but only GS and HSS handouts for 19-20. If
