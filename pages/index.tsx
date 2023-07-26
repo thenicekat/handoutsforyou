@@ -37,13 +37,8 @@ export default function Home({ handoutsMap }: any) {
     <>
       <Head>
         <title>Handouts for You.</title>
-        <meta name="description" content="Handouts for you." />
         <meta name="description" content="A website containing all bits pilani hyderabad campus handouts" />
-        <meta
-          name="description"
-          content="Handouts For You."
-        />
-        <meta name="keywords" content="BITS Pilani, Handouts, BPHC, Hyderabad Campus" />
+        <meta name="keywords" content="BITS Pilani, Handouts, BPHC, Hyderabad Campus, BITS Hyderabad, BITS, Pilani, Handouts for you, handouts, for, you, bits, birla, institute, bits hyd, academics" />
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
