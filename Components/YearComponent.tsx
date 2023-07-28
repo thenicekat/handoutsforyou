@@ -8,7 +8,7 @@ type Props = {
 
 export default function YearComponent({ handouts, year, searchWord }: Props) {
   return (
-    <div className="border-solid border-[0.5px] border-white rounded-xl p-3 m-3">
+    <div className="border-solid border-[2px] border-black rounded-xl p-3 m-3">
       {
         handouts.filter((handout: any) => handout.toLowerCase().includes(searchWord.toLowerCase())).map((handout: any) => (
           <div key={handout} className='py-1'>
@@ -23,7 +23,7 @@ export default function YearComponent({ handouts, year, searchWord }: Props) {
                 <button className="btn btn-sm btn-ghost">{'Year ' + year.split("_")[0] + '-' + year.split("_")[1] + " " + (year.split("_").length > 2 ? year.split("_")[2] : "")}</button>
 
                 {/* <Link href={'/coursereviews/' + year + '-' + handout.split(".")[0]}><button className="btn btn-sm btn-primary">Reviews</button></Link> */}
-                <Link href={"https://github.com/Divyateja04/handoutsforyou/raw/main/public/handouts/" + year + '/' + handout + '?raw=true'}><button className="btn btn-sm btn-primary">View</button></Link>
+                <Link href={"https://github.com/Divyateja04/handoutsforyou/raw/main/public/handouts/" + year + '/' + handout + '?raw=true'}><button className="btn btn-sm">View</button></Link>
               </div>
             </div>
           </div>
