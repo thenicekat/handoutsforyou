@@ -47,33 +47,41 @@ export default function Home({ handoutsMap }: any) {
       {/* Search box */}
       <div className="grid place-items-center">
         <div className="w-[50vw] place-items-center flex flex-col justify-between">
-          <h1 className="text-6xl p-[35px]">Handouts For You.</h1>
+          <h1 className="text-6xl pt-[50px] pb-[20px] px-[35px]">Handouts For You.</h1>
           <p>Made with &lt;3 by Divyateja Pasupuleti and Vashisth Choudhari</p>
+
           <p className="py-3">
             NOTE: Contains all BITS Pilani, Hyderabad Campus handouts for
             18-19/20-21/21-22/22-23 but only GS and HSS handouts for 19-20. If
             you have any handout and it is missing here, Please send the handout
-            through{" "}
+            to{" "}
             <Link
               className="text-cyan-400 underline"
               href={"mailto:f20210075@hyderabad.bits-pilani.ac.in"}
             >
-              email
+              Divyateja 
+            </Link>
+            {' '}or {' '}
+            <Link
+              className="text-cyan-400 underline"
+              href={"mailto:f20211989@hyderabad.bits-pilani.ac.in"}
+            >
+              Vashisth.
             </Link>
           </p>
           <div className="py-3">
             <Link className="m-5" href={"/minors.html"}>
-              <button className="btn btn-outline btn-primary">
+              <button className="btn btn-outline">
                 Info. about Minors
               </button>
             </Link>
             <Link className="m-5" href={"/notes"}>
-              <button className="btn btn-outline btn-primary">
+              <button className="btn btn-outline">
                 Notes and Resources
               </button>
             </Link>
             <Link className="m-5" href={"/faqs"}>
-              <button className="btn btn-outline btn-primary">
+              <button className="btn btn-outline">
                 FAQs about Campus
               </button>
             </Link>
