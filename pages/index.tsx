@@ -48,27 +48,23 @@ export default function Home({ handoutsMap }: any) {
       <div className="grid place-items-center">
         <div className="w-[50vw] place-items-center flex flex-col justify-between">
           <h1 className="text-6xl pt-[50px] pb-[20px] px-[35px]">Handouts For You.</h1>
-          <p>Made with &lt;3 by Divyateja Pasupuleti and Vashisth Choudhari</p>
-
-          <p className="py-3">
-            NOTE: Contains all BITS Pilani, Hyderabad Campus handouts for
-            18-19/20-21/21-22/22-23 but only GS and HSS handouts for 19-20. If
-            you have any handout and it is missing here, Please send the handout
-            to{" "}
-            <Link
-              className="text-cyan-400 underline"
-              href={"mailto:f20210075@hyderabad.bits-pilani.ac.in"}
-            >
-              Divyateja 
-            </Link>
-            {' '}or {' '}
-            <Link
-              className="text-cyan-400 underline"
-              href={"mailto:f20211989@hyderabad.bits-pilani.ac.in"}
-            >
-              Vashisth.
-            </Link>
+          
+          <p>Made with &lt;3 by <Link
+            className="text-cyan-400 underline"
+            href={"mailto:f20210075@hyderabad.bits-pilani.ac.in"}
+          >
+            Divyateja Pasupuleti
+          </Link>
+          {' '} and {' '}
+          <Link
+            className="text-cyan-400 underline"
+            href={"mailto:f20211989@hyderabad.bits-pilani.ac.in"}
+          >
+            Vashisth Choudhari
+          </Link>
           </p>
+
+
           <div className="py-3">
             <Link className="m-5" href={"/minors.html"}>
               <button className="btn btn-outline">
@@ -86,6 +82,7 @@ export default function Home({ handoutsMap }: any) {
               </button>
             </Link>
           </div>
+
           <input
             type="text"
             placeholder="Search..."
