@@ -8,7 +8,7 @@ type Props = {
 
 export default function YearComponent({ handouts, year, searchWord }: Props) {
   return (
-    <div className="border-solid border-[2px] border-black rounded-xl p-3 m-3">
+    <div className="border-solid border-[2px] border-white rounded-xl p-3 m-3">
       {
         handouts.filter((handout: any) => handout.toLowerCase().includes(searchWord.toLowerCase())).map((handout: any) => (
           <div key={handout} className='py-1'>
