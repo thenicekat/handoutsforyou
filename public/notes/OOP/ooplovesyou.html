@@ -1,4 +1,4 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Coding Questions</title><style>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Object Oriented Programming</title><style>
 /* cspell:disable-file */
 /* webkit printing magic: print all background colors */
 html {
@@ -213,7 +213,7 @@ ul > li {
 }
 
 ul.to-do-list {
-	text-indent: -1.7em;
+	padding-inline-start: 0;
 }
 
 ul.to-do-list > li {
@@ -281,6 +281,10 @@ ol > li {
 .collection-title {
 	display: inline-block;
 	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
 }
 
 .simple-table {
@@ -637,16 +641,19 @@ blockquote {
 .block-color-red_background {
 	background: rgba(253, 235, 236, 1);
 }
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
 .select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
 .select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
 .select-value-color-green { background-color: rgba(219, 237, 219, 1); }
 .select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
-.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
 .select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
 .select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
 .select-value-color-red { background-color: rgba(255, 226, 221, 1); }
 .select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
 .select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
 
 .checkbox {
 	display: inline-flex;
@@ -666,7 +673,7 @@ blockquote {
 	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
 }
 	
-</style></head><body><article id="c1d7a657-2fff-4f40-bc4c-84e1109f3ad0" class="page sans"><header><h1 class="page-title">Coding Questions</h1></header><div class="page-body"><pre id="d90533ed-76ec-4c25-b5aa-d3b4db3bc314" class="code code-wrap"><code>class Line{
+</style></head><body><article id="f27bd5f2-5f9e-474c-897d-f375dc2d08af" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">👽</span></div><h1 class="page-title">Object Oriented Programming</h1><p class="page-description"></p></header><div class="page-body"><nav id="896c9437-a656-46fb-93ac-454811dbccf3" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5e36b236-b180-47fc-a24a-8d3378972e9c">Important Points and Codes</a></div></nav><div id="93806fec-f4dc-4c92-a003-520992f8fd72" class="column-list"><div id="24a8bf5e-96f9-474c-a09b-401e435f5e78" style="width:50%" class="column"><figure id="74fa484f-89b6-4a27-8d1f-49dcbfbbc54f" class="link-to-page"><a href="Object%20Oriented%20Programming%20f27bd5f25f9e474c897df375dc2d08af/OOPS%20Concepts%2074fa484f89b64a278d1f49dcbfbbc54f.html">OOPS Concepts</a></figure><figure id="2d86c251-87f9-4b77-816b-61bebd65186a" class="link-to-page"><a href="Object%20Oriented%20Programming%20f27bd5f25f9e474c897df375dc2d08af/Object,%20Packages%20and%20Cloning%202d86c25187f94b77816b61bebd65186a.html">Object, Packages and Cloning</a></figure><figure id="5e2559fe-ea16-4ac3-b02c-42c48053659c" class="link-to-page"><a href="Object%20Oriented%20Programming%20f27bd5f25f9e474c897df375dc2d08af/Exception%20Handling,%20Storage%205e2559feea164ac3b02c42c48053659c.html">Exception Handling, Storage</a></figure><figure id="64c68f21-5d6c-4970-a72a-4aa44ac2107f" class="link-to-page"><a href="Object%20Oriented%20Programming%20f27bd5f25f9e474c897df375dc2d08af/Multithreading%2064c68f215d6c4970a72a4aa44ac2107f.html">Multithreading</a></figure><figure id="bd17eca3-3201-4452-8b90-553986602f68" class="link-to-page"><a href="Object%20Oriented%20Programming%20f27bd5f25f9e474c897df375dc2d08af/IO%20and%20Serialization%20bd17eca3320144528b90553986602f68.html">IO and Serialization</a></figure><figure id="3f1612f5-d245-46cf-9853-975d50bcbf97" class="link-to-page"><a href="Object%20Oriented%20Programming%20f27bd5f25f9e474c897df375dc2d08af/OOAD%20&amp;%20UML%203f1612f5d24546cf9853975d50bcbf97.html">OOAD &amp; UML</a></figure></div><div id="fb7b4487-5df6-42a2-ab03-f3d4f2a714bc" style="width:50%" class="column"><figure id="67178d91-d3dc-4a57-ac11-63b17717a610" class="link-to-page"><a href="Object%20Oriented%20Programming%20f27bd5f25f9e474c897df375dc2d08af/Input%20and%20Datatypes%2067178d91d3dc4a57ac1163b17717a610.html">Input and Datatypes</a></figure><figure id="5f55fab9-33a0-4a1c-a601-0d03debca4f6" class="link-to-page"><a href="Object%20Oriented%20Programming%20f27bd5f25f9e474c897df375dc2d08af/AWT%205f55fab933a04a1ca6010d03debca4f6.html">AWT</a></figure><figure id="defa360f-8ddc-40f2-b657-c965310171cc" class="link-to-page"><a href="Object%20Oriented%20Programming%20f27bd5f25f9e474c897df375dc2d08af/Java%20Util%20Package%20defa360f8ddc40f2b657c965310171cc.html">Java Util Package</a></figure><figure id="33186866-282b-41ff-954c-b9bb9a6a74c0" class="link-to-page"><a href="Object%20Oriented%20Programming%20f27bd5f25f9e474c897df375dc2d08af/Java%20Lang%20Package%2033186866282b41ff954cb9bb9a6a74c0.html">Java Lang Package</a></figure><figure id="37f00252-0ce6-4f6c-a1ad-b18bed613f63" class="link-to-page"><a href="Object%20Oriented%20Programming%20f27bd5f25f9e474c897df375dc2d08af/Other%20OOP%20Languages%2037f002520ce64f6ca1adb18bed613f63.html">Other OOP Languages</a></figure><figure id="215469e3-99fb-4717-8e96-bcb93fb9d050" class="link-to-page"><a href="Object%20Oriented%20Programming%20f27bd5f25f9e474c897df375dc2d08af/Strings%20215469e399fb47178e96bcb93fb9d050.html">Strings</a></figure></div></div><h1 id="5e36b236-b180-47fc-a24a-8d3378972e9c" class="">Important Points and Codes</h1><ul id="afd5ef80-aa95-4793-980f-ee715b19f982" class="bulleted-list"><li style="list-style-type:disc">The overriding method can not have a more restrictive access modifier.</li></ul><ul id="ff270df4-15ee-45eb-8c73-c70be0e7cde4" class="bulleted-list"><li style="list-style-type:disc">You always need a super() without arguments while extending because the subclass always calls the superclass</li></ul><ul id="e028b655-e120-4161-91a8-ad34464cd062" class="bulleted-list"><li style="list-style-type:disc">Although a final method cannot be overridden, the method is private and therefore hidden in this case. The effect is that a new, accessible method flipper is created. Therefore, no polymorphism occurs in this example, the method invoked is simply that of the child class, and no error occurs</li></ul><ul id="2dc17522-c7bc-4380-8d60-8ee16be48331" class="bulleted-list"><li style="list-style-type:disc">There’s nothing called super.super()</li></ul><ul id="1c9de094-4af5-4387-b4d0-45d0d7da69a4" class="bulleted-list"><li style="list-style-type:disc">Static import is a feature introduced in <strong>Java </strong>programming language ( versions five and above ) that allows members ( fields and methods ) defined in a class as public <strong>static </strong>to be used in Java code without specifying the class in which the field is defined</li></ul><ul id="fc7e4f4a-55bb-40d0-8fec-2f3842c2a79c" class="bulleted-list"><li style="list-style-type:disc">Constructor call to superclass must be the first statement in the constructor of the Derived class</li></ul><ul id="17862c3e-a250-410d-8fbf-9e0978fbb5d1" class="bulleted-list"><li style="list-style-type:disc">When a derived class overrides a base class function,<a href="https://www.geeksforgeeks.org/more-restrictive-access-is-given-to-a-derived-class-method-in-java/"><strong> more restrictive access can’t be given to the overridden function</strong></a></li></ul><ul id="707e1d40-89d2-4348-8bd2-611272c5aebf" class="bulleted-list"><li style="list-style-type:disc">NOTE: Static and transient variables cannot be serialized</li></ul><ul id="890bbecf-cba7-4f42-a803-0708bf759b59" class="bulleted-list"><li style="list-style-type:disc">We can use the isAlive condition to make a thread wait until another thread ;-;</li></ul><ul id="1a6c75a5-72c8-4b10-a79f-9a8752038871" class="bulleted-list"><li style="list-style-type:disc">Any exceptions in the finalize method are ignored </li></ul><hr id="7bfd8113-c1b4-49d0-a35a-3e52cb2294d9"/><pre id="14097cda-1df1-419e-ba88-24bb51aa25ab" class="code code-wrap"><code>class Line{
     static {
         System.out.println(&quot;Static&quot;);
     }
@@ -689,41 +696,9 @@ public class Main
 //Gives:
 //Hello World
 //Static
-//Display</code></pre><pre id="f305c731-f95a-4247-833d-fda4ad80e365" class="code code-wrap"><code>When we use inheritance and store say child class object in parent class, even though the functions happen from the child class, the variables of the parent class gets executed
+//Display</code></pre><pre id="c2e9a5e3-e4a4-4789-94b4-c9036e904cbe" class="code code-wrap"><code>When we use inheritance and store say child class object in parent class, even though the functions happen from the child class, the variables of the parent class gets executed
 
-This depends on how the method is made as well, if the method is static then the parent class function is only run and not the child class function</code></pre><pre id="4e64ea08-7a52-4775-ad4b-da5607b2f8c4" class="code code-wrap"><code>class A {
-    public static void show(){
-        System.out.println(&quot;A&quot;);
-    }
-    
-    public void show2(){
-        System.out.println(&quot;A&quot;);
-    }
-}
-
-class B extends A {
-    public static void show(){
-        System.out.println(&quot;B&quot;);
-    }
-    
-    public void show2(){
-        System.out.println(&quot;B&quot;);
-    }
-}
-
-public class Main
-{
-	public static void main(String[] args) {
-		A a = new B();
-		a.show();
-		a.show2();
-	}
-}
-
-//Gives
-//A --&gt; Basically if we have static methods and we are calling it through the object, it&#x27;ll call parent class
-//B --&gt; Otherwise it&#x27;ll call subclass functions
-//In inheritance, although subclass functions are called super class variables will be used</code></pre><pre id="4ea822d4-1b1d-483a-ae27-10a3811f1510" class="code code-wrap"><code>class Base {
+This depends on how the method is made as well, if the method is static then the parent class function is only run and not the child class function</code></pre><pre id="aecbcd4b-38c9-4b71-934e-6fe739efdfdf" class="code code-wrap"><code>class Base {
     
     public void methodOne(){
         System.out.println(&quot;M1 Base&quot;);
@@ -767,4 +742,4 @@ public class PYQ4
 //M2 Base
 //B
 //D
-//C</code></pre><ul id="bcb70b5d-07f2-4c20-a8bd-37c154c9bdad" class="bulleted-list"><li style="list-style-type:disc">If interface is there and we don’t have access modifiers for the implemented functions, we get compilation error</li></ul></div></article></body></html>
+//C</code></pre><ul id="8ae1454f-648e-431f-943c-396d2cc9ce39" class="bulleted-list"><li style="list-style-type:disc">If the interface is there and we don’t have access modifiers for the implemented functions, we get a compilation error.</li></ul><ul id="243b90c5-fc0d-4138-907a-12febd0decc5" class="bulleted-list"><li style="list-style-type:disc"><a href="https://leetcode.com/discuss/interview-question/3828150/oops-cheatsheet-for-interviews-30-questions">OOPS Cheatsheet for Interviews | 30 questions - LeetCode Discuss</a></li></ul></div></article></body></html>
