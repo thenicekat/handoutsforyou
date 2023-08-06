@@ -1,4 +1,4 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Doubts and Practice</title><style>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Java Lang Package</title><style>
 /* cspell:disable-file */
 /* webkit printing magic: print all background colors */
 html {
@@ -281,6 +281,10 @@ ol > li {
 .collection-title {
 	display: inline-block;
 	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
 }
 
 .simple-table {
@@ -637,6 +641,7 @@ blockquote {
 .block-color-red_background {
 	background: rgba(253, 235, 236, 1);
 }
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
 .select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
 .select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
 .select-value-color-green { background-color: rgba(219, 237, 219, 1); }
@@ -647,6 +652,8 @@ blockquote {
 .select-value-color-red { background-color: rgba(255, 226, 221, 1); }
 .select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
 .select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
 
 .checkbox {
 	display: inline-flex;
@@ -666,10 +673,5 @@ blockquote {
 	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
 }
 	
-</style></head><body><article id="d519e81c-d3f0-4002-be76-f34e2a650044" class="page sans"><header><h1 class="page-title">Doubts and Practice</h1></header><div class="page-body"><figure id="bdf055b1-0a46-4f40-b6dc-daae6389e038" class="image"><a href="Doubts%20and%20Practice%20d519e81cd3f04002be76f34e2a650044/Untitled.png"><img style="width:1855px" src="Doubts%20and%20Practice%20d519e81cd3f04002be76f34e2a650044/Untitled.png"/></a></figure><ul id="d0147689-0bda-41ca-9d3a-02062f97447b" class="bulleted-list"><li style="list-style-type:disc">In this question, A→B B→C and C→BD, if we take directly we get A as key</li></ul><ul id="6138fdba-c7ed-4b5b-aec6-5e4e0cc5ad29" class="bulleted-list"><li style="list-style-type:disc">but if we consider AB→A and AB→B and AB→B→C and AB→B→C→BD</li></ul><ul id="5119a80d-6366-4416-91dd-baa5d8f0a5ba" class="bulleted-list"><li style="list-style-type:disc">Will give you AB as candidate key</li></ul><ul id="6e0439d2-0568-4795-ad5b-0acf1e6bb9f4" class="bulleted-list"><li style="list-style-type:disc">Answer: In this question B won’t come</li></ul><hr id="5b857080-272e-49db-897d-b93bbf8ef4be"/><figure id="4448096b-2ef7-4468-8ace-e43298864eb8" class="image"><a href="Doubts%20and%20Practice%20d519e81cd3f04002be76f34e2a650044/Untitled%201.png"><img style="width:1787px" src="Doubts%20and%20Practice%20d519e81cd3f04002be76f34e2a650044/Untitled%201.png"/></a></figure><ul id="742acd22-35c5-4446-bf74-9986a8879cfb" class="bulleted-list"><li style="list-style-type:disc">In this question D only is not there?</li></ul><ul id="ea92a089-55f7-4815-9549-e0b4f5d336c9" class="bulleted-list"><li style="list-style-type:disc">Answer: We always take D in the CK in this case</li></ul><ul id="a7fa2af8-6949-4ae8-b981-cfafdeba059b" class="bulleted-list"><li style="list-style-type:disc">CK: <ul id="3824439a-25e3-4b2b-a0ea-d9959f4b28fd" class="bulleted-list"><li style="list-style-type:circle">AD→ABCDEFGH</li></ul><ul id="0e613d4e-030c-42ee-becb-eb655d89f8ac" class="bulleted-list"><li style="list-style-type:circle">ED</li></ul><ul id="66afc567-5b68-4f72-bdea-dd93ad0325b7" class="bulleted-list"><li style="list-style-type:circle">FD→ABCDEFGH</li></ul><ul id="8a6268b5-595a-4237-abba-e17aff71eb7a" class="bulleted-list"><li style="list-style-type:circle">BD</li></ul></li></ul><ul id="83231cef-bd2e-4920-8483-c372dec391ef" class="bulleted-list"><li style="list-style-type:disc">CH→G (non key → non key) 2NF</li></ul><ul id="82681e65-0098-4f85-935f-c27666552515" class="bulleted-list"><li style="list-style-type:disc">A→BC (partial key → non key) 1NF</li></ul><ul id="7c6eba6b-1ba0-42a8-a658-08b1001f0df3" class="bulleted-list"><li style="list-style-type:disc">B→CFH (partial key → non key) 1NF</li></ul><ul id="f2a4d46d-90a1-49bf-a39c-7c620e729dd6" class="bulleted-list"><li style="list-style-type:disc">E→A (partial key → key attribute) 2NF</li></ul><ul id="093b62f2-4ce2-4a8a-8d67-51d0681dc612" class="bulleted-list"><li style="list-style-type:disc">F→EG (non key → non key) 1NF</li></ul><ul id="7a9118cd-d104-4eed-b7b9-06bf92d31d3e" class="bulleted-list"><li style="list-style-type:disc">So, we decompose into A B C | B C F H | F E G | A C E H G</li></ul><hr id="aca4b756-b14a-4941-92a3-8a28e92a729c"/><figure id="c60220a3-cfd6-4c53-86c3-b6dc9d795253" class="image"><a href="Doubts%20and%20Practice%20d519e81cd3f04002be76f34e2a650044/Untitled%202.png"><img style="width:1487px" src="Doubts%20and%20Practice%20d519e81cd3f04002be76f34e2a650044/Untitled%202.png"/></a></figure><p id="179e5a14-75fb-4f1f-b1fe-19bb632ad247" class="">A-&gt;A
-A-&gt;B
-A-&gt;C
-A-&gt;D
-A-&gt;E
-A-&gt;F
-A-&gt;G</p><p id="5fd8dc9e-0c92-449e-af54-f114197aa97e" class="">AD IS CANDIDATE KEY?</p><hr id="07764515-4d62-4457-bc36-378e5750394f"/></div></article></body></html>
+</style></head><body><article id="33186866-282b-41ff-954c-b9bb9a6a74c0" class="page sans"><header><h1 class="page-title">Java Lang Package</h1><p class="page-description"></p></header><div class="page-body"><nav id="a7f9bea5-bdc8-42cf-916e-f96ddabb85ba" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b6c32e79-ae01-49fa-a35b-4440fef7417f">Memory Management</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#709266e5-6d46-47d5-9313-d4d181a4ecdf">Executing Programs</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9c6d8675-c073-4db2-a491-51a13f8d9186">Time Elapsion</a></div></nav><h1 id="b6c32e79-ae01-49fa-a35b-4440fef7417f" class="">Memory Management</h1><figure id="9d57ac8b-522c-4428-82c7-b5f56c1ce76a" class="image"><a href="Java%20Lang%20Package%2033186866282b41ff954cb9bb9a6a74c0/Untitled.png"><img style="width:871px" src="Java%20Lang%20Package%2033186866282b41ff954cb9bb9a6a74c0/Untitled.png"/></a></figure><h1 id="709266e5-6d46-47d5-9313-d4d181a4ecdf" class="">Executing Programs</h1><ul id="7e6144fd-fdf4-4816-bd72-b33cb8b72b4d" class="bulleted-list"><li style="list-style-type:disc">In safe environments, you can use Java to execute other heavyweight processes
+(that is, programs) on your multitasking operating system. </li></ul><ul id="6561ccef-9618-40c1-81c4-022c8434a71f" class="bulleted-list"><li style="list-style-type:disc">Several forms of the exec( ) method allow you to name the program you want to run as well as its input parameters. </li></ul><ul id="7b3ceb15-e233-4969-907a-4d675e2d44fc" class="bulleted-list"><li style="list-style-type:disc">The exec( ) method returns a Process object, which can then be used to control how your Java program interacts with this new running process. </li></ul><ul id="5e22cf0b-3485-483b-966b-5fbded6426e9" class="bulleted-list"><li style="list-style-type:disc">Because Java can run on a variety of platforms and under a variety of operating systems, exec( ) is inherently environment-dependent.</li></ul><ul id="6eed3cc3-b8f5-4d3a-83f1-879d9d939411" class="bulleted-list"><li style="list-style-type:disc">The following example uses exec( ) to launch notepad, Windows’ simple text editor. Obviously, this example must be run under the Windows operating system.</li></ul><figure id="3f25aefc-6193-4705-a1dc-ee7429edcd95" class="image"><a href="Java%20Lang%20Package%2033186866282b41ff954cb9bb9a6a74c0/Untitled%201.png"><img style="width:773px" src="Java%20Lang%20Package%2033186866282b41ff954cb9bb9a6a74c0/Untitled%201.png"/></a></figure><h1 id="9c6d8675-c073-4db2-a491-51a13f8d9186" class="">Time Elapsion</h1><figure id="128d78a4-0e1b-4b14-8066-713370b1e2f2" class="image"><a href="Java%20Lang%20Package%2033186866282b41ff954cb9bb9a6a74c0/Untitled%202.png"><img style="width:1279px" src="Java%20Lang%20Package%2033186866282b41ff954cb9bb9a6a74c0/Untitled%202.png"/></a></figure></div></article></body></html>

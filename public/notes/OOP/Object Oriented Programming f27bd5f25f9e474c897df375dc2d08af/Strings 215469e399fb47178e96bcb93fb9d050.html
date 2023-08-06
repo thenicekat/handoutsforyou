@@ -213,7 +213,7 @@ ul > li {
 }
 
 ul.to-do-list {
-	text-indent: -1.7em;
+	padding-inline-start: 0;
 }
 
 ul.to-do-list > li {
@@ -281,6 +281,10 @@ ol > li {
 .collection-title {
 	display: inline-block;
 	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
 }
 
 .simple-table {
@@ -637,16 +641,19 @@ blockquote {
 .block-color-red_background {
 	background: rgba(253, 235, 236, 1);
 }
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
 .select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
 .select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
 .select-value-color-green { background-color: rgba(219, 237, 219, 1); }
 .select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
-.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
 .select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
 .select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
 .select-value-color-red { background-color: rgba(255, 226, 221, 1); }
 .select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
 .select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
 
 .checkbox {
 	display: inline-flex;
@@ -666,7 +673,7 @@ blockquote {
 	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
 }
 	
-</style></head><body><article id="215469e3-99fb-4717-8e96-bcb93fb9d050" class="page sans"><header><h1 class="page-title">Strings</h1></header><div class="page-body"><nav id="090f4683-eb8b-4f08-b7e4-8eb5952fd6cb" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#eb299418-7e64-4dc6-8085-e1f3d4432f92">String</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#24a4a4ec-9d36-45e9-b109-ca35fef5d762">StringBuffer</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#85f41057-cb82-4fda-adf7-e103f80f2db1">StringBuilder</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d4f5fff8-c952-46ef-8013-657939ca4dc5">String Tokenizer</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#69bc7665-f69b-41a0-85cf-c992656fe6c3">Regular Expressions</a></div></nav><h2 id="eb299418-7e64-4dc6-8085-e1f3d4432f92" class="">String</h2><ul id="5feb5863-e4c9-4acc-b041-83c7200bddfd" class="bulleted-list"><li style="list-style-type:disc">In Java, String is not a primitive type, nor is it an array of characters</li></ul><ul id="f2000838-5881-4044-8e51-d6c71cfdc2a6" class="bulleted-list"><li style="list-style-type:disc">String rather describes an object and cannot be edited once declared, but rather only new ones can be made</li></ul><ul id="6f9482a6-daf5-49c7-90cb-30368d012fbb" class="bulleted-list"><li style="list-style-type:disc">.length() gives the length of the string</li></ul><ul id="d6aa496e-076f-40be-831a-d6103b105aac" class="bulleted-list"><li style="list-style-type:disc">We have concat, replace, substring and toLowerCase</li></ul><ul id="be3fa698-8194-4680-80d6-3bda14090c9d" class="bulleted-list"><li style="list-style-type:disc">toLowerCase() returns the same string, but every letter is in lower case</li></ul><ul id="54aefb9b-ee8f-459f-973d-a75716909bff" class="bulleted-list"><li style="list-style-type:disc">Strings are immutable, which means a string cannot change its properties but only a copy of it</li></ul><ul id="7cd6eec8-f46b-4ac4-8f27-4aa0e2184586" class="bulleted-list"><li style="list-style-type:disc">Concat returns a new string with the string that&#x27;s passed added to it</li></ul><ul id="cd9e7a6e-a6d3-42ce-901b-85c8973e40d7" class="bulleted-list"><li style="list-style-type:disc">This function uses pass-by-value</li></ul><ul id="e88e54e7-12b0-4d02-af34-bd428b3667a0" class="bulleted-list"><li style="list-style-type:disc">Replace method replaces old char by new char, and this also returns a new string since strings are immutable</li></ul><ul id="3b89898c-b5fe-468a-b6e1-0d1dd82b23e8" class="bulleted-list"><li style="list-style-type:disc">Substring gives the substring in the string but with the index starting from 0 and does not include the last number</li></ul><ul id="992631f9-c5ca-4fb0-abe2-5bd09ed743ce" class="bulleted-list"><li style="list-style-type:disc">[Image containing all String Functions and Descriptions from Slides - 253]</li></ul><figure id="aeebc054-68b7-4374-b909-02b6d14c5e7a" class="image"><a href="Strings%20215469e399fb47178e96bcb93fb9d050/Untitled.png"><img style="width:1566px" src="Strings%20215469e399fb47178e96bcb93fb9d050/Untitled.png"/></a></figure><pre id="46cce9b3-6e39-475c-a457-de847e6a6c38" class="code code-wrap"><code>public String substring(int startIndex, int endIndex)
+</style></head><body><article id="215469e3-99fb-4717-8e96-bcb93fb9d050" class="page sans"><header><h1 class="page-title">Strings</h1><p class="page-description"></p></header><div class="page-body"><nav id="090f4683-eb8b-4f08-b7e4-8eb5952fd6cb" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#eb299418-7e64-4dc6-8085-e1f3d4432f92">String</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#24a4a4ec-9d36-45e9-b109-ca35fef5d762">StringBuffer</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#85f41057-cb82-4fda-adf7-e103f80f2db1">StringBuilder</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d4f5fff8-c952-46ef-8013-657939ca4dc5">String Tokenizer</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#69bc7665-f69b-41a0-85cf-c992656fe6c3">Regular Expressions</a></div></nav><h2 id="eb299418-7e64-4dc6-8085-e1f3d4432f92" class="">String</h2><ul id="5feb5863-e4c9-4acc-b041-83c7200bddfd" class="bulleted-list"><li style="list-style-type:disc">In Java, String is not a primitive type, nor is it an array of characters</li></ul><ul id="f2000838-5881-4044-8e51-d6c71cfdc2a6" class="bulleted-list"><li style="list-style-type:disc">String rather describes an object and cannot be edited once declared, but rather only new ones can be made</li></ul><ul id="6f9482a6-daf5-49c7-90cb-30368d012fbb" class="bulleted-list"><li style="list-style-type:disc">.length() gives the length of the string</li></ul><ul id="d6aa496e-076f-40be-831a-d6103b105aac" class="bulleted-list"><li style="list-style-type:disc">We have concat, replace, substring and toLowerCase</li></ul><ul id="be3fa698-8194-4680-80d6-3bda14090c9d" class="bulleted-list"><li style="list-style-type:disc">toLowerCase() returns the same string, but every letter is in lower case</li></ul><ul id="54aefb9b-ee8f-459f-973d-a75716909bff" class="bulleted-list"><li style="list-style-type:disc">Strings are immutable, which means a string cannot change its properties but only a copy of it</li></ul><ul id="7cd6eec8-f46b-4ac4-8f27-4aa0e2184586" class="bulleted-list"><li style="list-style-type:disc">Concat returns a new string with the string that&#x27;s passed added to it</li></ul><ul id="cd9e7a6e-a6d3-42ce-901b-85c8973e40d7" class="bulleted-list"><li style="list-style-type:disc">This function uses pass-by-value</li></ul><ul id="e88e54e7-12b0-4d02-af34-bd428b3667a0" class="bulleted-list"><li style="list-style-type:disc">Replace method replaces old char by new char, and this also returns a new string since strings are immutable</li></ul><ul id="3b89898c-b5fe-468a-b6e1-0d1dd82b23e8" class="bulleted-list"><li style="list-style-type:disc">Substring gives the substring in the string but with the index starting from 0 and does not include the last number</li></ul><ul id="992631f9-c5ca-4fb0-abe2-5bd09ed743ce" class="bulleted-list"><li style="list-style-type:disc">[Image containing all String Functions and Descriptions from Slides - 253]</li></ul><figure id="aeebc054-68b7-4374-b909-02b6d14c5e7a" class="image"><a href="Strings%20215469e399fb47178e96bcb93fb9d050/Untitled.png"><img style="width:1566px" src="Strings%20215469e399fb47178e96bcb93fb9d050/Untitled.png"/></a></figure><pre id="46cce9b3-6e39-475c-a457-de847e6a6c38" class="code code-wrap"><code>public String substring(int startIndex, int endIndex)
 public String replace(char initial, char final)
 public String toLowerCase()
 public int indexOf(String str)

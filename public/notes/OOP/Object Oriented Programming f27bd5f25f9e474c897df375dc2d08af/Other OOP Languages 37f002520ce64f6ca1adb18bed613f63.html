@@ -1,4 +1,4 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>AWT</title><style>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Other OOP Languages</title><style>
 /* cspell:disable-file */
 /* webkit printing magic: print all background colors */
 html {
@@ -213,7 +213,7 @@ ul > li {
 }
 
 ul.to-do-list {
-	text-indent: -1.7em;
+	padding-inline-start: 0;
 }
 
 ul.to-do-list > li {
@@ -281,6 +281,10 @@ ol > li {
 .collection-title {
 	display: inline-block;
 	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
 }
 
 .simple-table {
@@ -637,16 +641,19 @@ blockquote {
 .block-color-red_background {
 	background: rgba(253, 235, 236, 1);
 }
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
 .select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
 .select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
 .select-value-color-green { background-color: rgba(219, 237, 219, 1); }
 .select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
-.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
 .select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
 .select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
 .select-value-color-red { background-color: rgba(255, 226, 221, 1); }
 .select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
 .select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
 
 .checkbox {
 	display: inline-flex;
@@ -666,134 +673,5 @@ blockquote {
 	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
 }
 	
-</style></head><body><article id="bc37b036-b03e-45fa-8fa9-f3c3a1c2e2c0" class="page sans"><header><h1 class="page-title">AWT</h1></header><div class="page-body"><nav id="61fb27a6-4ea8-4dba-8d21-8b58c4d34a20" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#f1030278-6855-43c0-a1e4-443924a1c329">Some Functions</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#14a75f77-6306-4be5-a178-840557c77dc0">Introduction to AWT</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e884e899-422d-458f-a4e4-23b64f1bc8c3">Component</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8b9c580a-87bb-4ce2-96a0-7ba9f570daf8">Container</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#67f41797-0485-4d2d-ab2b-281421b99635">Panel</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9bc1e9de-7be9-45b2-9b4c-81eadb2e4ad8">Frame</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3158336e-8c2c-42a2-962a-8c2db9694b2a">Pixel</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5867fe33-4acc-4e12-b926-e1ee6ef9266e">Example Code</a></div></nav><h2 id="f1030278-6855-43c0-a1e4-443924a1c329" class="">Some Functions</h2><figure id="6eceafd8-d14d-4d87-833d-19ea89185633" class="image"><a href="AWT%20bc37b036b03e45fa8fa9f3c3a1c2e2c0/Untitled.png"><img style="width:1460px" src="AWT%20bc37b036b03e45fa8fa9f3c3a1c2e2c0/Untitled.png"/></a></figure><figure id="a8f4e151-75e0-4826-af64-5a8ed1c517e0" class="image"><a href="AWT%20bc37b036b03e45fa8fa9f3c3a1c2e2c0/Untitled%201.png"><img style="width:1282px" src="AWT%20bc37b036b03e45fa8fa9f3c3a1c2e2c0/Untitled%201.png"/></a></figure><figure id="ce877d01-f6e9-4e32-94ae-b5ac5d9d13ac" class="image"><a href="AWT%20bc37b036b03e45fa8fa9f3c3a1c2e2c0/Untitled%202.png"><img style="width:1267px" src="AWT%20bc37b036b03e45fa8fa9f3c3a1c2e2c0/Untitled%202.png"/></a></figure><ul id="762d8dd2-8944-4434-953b-6dfa5df6c133" class="bulleted-list"><li style="list-style-type:disc"><code>void drawString(String message, int x, int y)</code></li></ul><figure id="4bca1070-2ff3-41a3-ae70-c9d92b19493e" class="image"><a href="AWT%20bc37b036b03e45fa8fa9f3c3a1c2e2c0/Untitled%203.png"><img style="width:1316px" src="AWT%20bc37b036b03e45fa8fa9f3c3a1c2e2c0/Untitled%203.png"/></a></figure><ul id="781976f9-3003-4ae0-98dd-bd8ac78d197a" class="bulleted-list"><li style="list-style-type:disc">Repainting is used when we need to refresh a part of the screen</li></ul><pre id="636de0e3-245a-474d-9fcb-958a4bccb12f" class="code code-wrap"><code>void repaint()
-void repaint(int left, int top, int width, int height)
-void repaint(long maxDelay)
-void repaint(long maxDelay, int x, int y, int width, int height)
-</code></pre><ul id="d90b15c9-18df-42f6-8eec-343c5f9ae2f3" class="bulleted-list"><li style="list-style-type:disc">It has 4 forms</li></ul><pre id="c8ac5954-5a09-4a18-b47a-03bb73fff437" class="code code-wrap"><code>void drawLine(int startX, int startY, int endX, int endY )
-void drawRect(int left, int top, int width, int height)
-void fillRect(int left, int top, int width, int height)
-void drawRoundRect(int left, int top, int width, int height, int xDiam, int yDiam)
-void fillRoundRect(int left, int top, int width, int height, int xDiam, int yDiam)
-void drawOval(int left, int top, int width, int height)
-void fillOval(int left, int top, int width, int height)
-void drawArc(int left, int top, int width, int height, int startAngle,int sweepAngle)
-void fillArc(int left, int top, int width, int height, int startAngle,int sweepAngle)
-void drawPolygon(int x[ ], int y[ ], int numPoints)
-void fillPolygon(int x[ ], int y[ ], int numPoints)</code></pre><h2 id="14a75f77-6306-4be5-a178-840557c77dc0" class="">Introduction to AWT</h2><figure id="554ef2f1-1892-4509-81d9-61f3fd924c55" class="image"><a href="AWT%20bc37b036b03e45fa8fa9f3c3a1c2e2c0/Untitled%204.png"><img style="width:384px" src="AWT%20bc37b036b03e45fa8fa9f3c3a1c2e2c0/Untitled%204.png"/></a></figure><h3 id="e884e899-422d-458f-a4e4-23b64f1bc8c3" class="">Component</h3><ul id="0630e7fc-8ee2-4c23-a7ff-587a47a0a475" class="bulleted-list"><li style="list-style-type:disc">Component class is at the top of the hierarchy, it is an abstract class that encapsulates all of the attributes of a visual component</li></ul><ul id="a8563e94-70d1-47a0-8b0a-7910981d5860" class="bulleted-list"><li style="list-style-type:disc">Except for menus everything else is subclass of component</li></ul><h3 id="8b9c580a-87bb-4ce2-96a0-7ba9f570daf8" class="">Container</h3><ul id="c733e8a4-2785-4a12-813d-fe08ecb71395" class="bulleted-list"><li style="list-style-type:disc">Subclass of component</li></ul><ul id="eab11840-8f2f-4b18-97b9-e196789e64dd" class="bulleted-list"><li style="list-style-type:disc">has additional methods that allow other component objects like buttons etc. to be nested within it</li></ul><ul id="9004b51b-58c2-4180-bb8d-3d33de66008f" class="bulleted-list"><li style="list-style-type:disc">Layout manager does this automatically<ul id="fa7826d2-2d80-49b3-b01b-f2fffd43d4da" class="bulleted-list"><li style="list-style-type:circle">Flow</li></ul><ul id="6db50a13-66dd-4296-8b9f-32f9e8860d89" class="bulleted-list"><li style="list-style-type:circle">Grid</li></ul><ul id="2c50a6df-6b45-4b4f-8b23-f3ba433a1eac" class="bulleted-list"><li style="list-style-type:circle">Border</li></ul><ul id="f760db9f-233a-4de0-9e28-5d9e14e8217f" class="bulleted-list"><li style="list-style-type:circle">Box</li></ul></li></ul><ul id="1cdea87f-5718-490a-ac4d-c0890998dd4e" class="bulleted-list"><li style="list-style-type:disc">Subclasses of Container are <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Frame, Dialog and Panel</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></li></ul><ul id="e050a1a4-4f84-4618-a0c1-a55f6f1f85b0" class="bulleted-list"><li style="list-style-type:disc">Frame is a subclass of window</li></ul><h3 id="67f41797-0485-4d2d-ab2b-281421b99635" class="">Panel</h3><ul id="0e49bdbb-66bd-4aa9-b843-bae301d78843" class="bulleted-list"><li style="list-style-type:disc">Superclass of applet, i.e. a small program not intended to run on it’s own but rather embedded inside another application</li></ul><h3 id="9bc1e9de-7be9-45b2-9b4c-81eadb2e4ad8" class="">Frame</h3><ul id="d30cb32f-c487-4066-aff1-a942a0b700e5" class="bulleted-list"><li style="list-style-type:disc"><code>Frame()</code> and <code>Frame(String title)</code> are used to create frames, a HeadlessException is thrown when we create a frame but the environment does not support user interaction</li></ul><ul id="a65a30c4-c82f-48dd-83dc-0dcb9951d3e7" class="bulleted-list"><li style="list-style-type:disc">We have <code>setSize(int width, int height)</code> and <code>setSize(Dimension newDim)</code></li></ul><ul id="f340eb6b-6094-4099-9c85-02ce85d09924" class="bulleted-list"><li style="list-style-type:disc">Window will not be visible until you call the <code>setVisible()</code> and you can set title using <code>setTitle()</code></li></ul><ul id="13c4c1fc-f401-4da8-bab1-743b1db51019" class="bulleted-list"><li style="list-style-type:disc">Origin of each window is the top left corner</li></ul><h3 id="3158336e-8c2c-42a2-962a-8c2db9694b2a" class="">Pixel</h3><ul id="1e2b86e8-72d3-4204-ac18-23b84a7e4455" class="bulleted-list"><li style="list-style-type:disc">Picture Element - Represents any single point or dot on the screen</li></ul><figure id="02a0e5c7-5606-4cfb-8c03-69172e854ace" class="image"><a href="AWT%20bc37b036b03e45fa8fa9f3c3a1c2e2c0/Untitled%205.png"><img style="width:791px" src="AWT%20bc37b036b03e45fa8fa9f3c3a1c2e2c0/Untitled%205.png"/></a></figure><h2 id="5867fe33-4acc-4e12-b926-e1ee6ef9266e" class="">Example Code</h2><pre id="e6a6d188-fa2b-4eaa-9f4a-4f6968b7ac69" class="code code-wrap"><code>import java.awt.*;
-import java.awt.event.*;
-
-public class AWT1 extends Frame {
-    AWT1() {
-        super(&quot;Title is Title&quot;);
-
-        System.out.println(&quot;Starting the Frame&quot;);
-
-        addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent e) {
-                System.out.println(&quot;Closing the Frame&quot;);
-                System.exit(0);
-            }
-        });
-    }
-
-    public void paint(Graphics g) {
-        System.out.println(&quot;Printing&quot;);
-        g.setColor(Color.blue); // sets blue color for drawing
-        g.drawRect(40, 40, 200, 200);// display a rectangle to contain
-        g.drawOval(90, 70, 80, 80);// to draw oval (face)
-        g.drawOval(110, 95, 5, 5);// to draw a left eye
-        g.drawOval(145, 95, 5, 5);// to draw a right eye
-        g.drawLine(130, 95, 130, 115);// to draw a nose
-        g.drawArc(113, 115, 35, 20, 0, -180);// to draw a mouth
-    }
-
-    public static void main(String[] args) {
-        AWT1 f = new AWT1();
-        f.setSize(800, 400);
-        f.setVisible(true);
-        f.repaint();
-    }
-}</code></pre><pre id="f0bfb760-a370-4feb-987b-0f80fec82bbe" class="code code-wrap"><code>import java.awt.*;
-import java.awt.event.*;    
-
-public class Task1 extends Frame {
-    Task1(){
-        setLayout(new FlowLayout());
-
-        Label label = new Label(&quot;Buttons&quot;);
-        add(label);
-
-        TextField textField = new TextField();
-        add(textField);
-
-        TextArea textArea = new TextArea();
-        add(textArea);
-
-        Button b = new Button(&quot;One&quot;);
-        b.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                System.out.println(&quot;One&quot;);
-                label.setText(&quot;One&quot;);
-            }
-        });
-        add(b);
-        
-        Button b2 = new Button(&quot;Two&quot;);
-        b2.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                System.out.println(&quot;Two&quot;);
-                label.setText(&quot;Two&quot;);
-            }
-        });
-        add(b2);
-
-        Checkbox checkbox1 = new Checkbox(&quot;C++&quot;); 
-        Checkbox checkbox2 = new Checkbox(&quot;C--&quot;); 
-        Checkbox checkbox3 = new Checkbox(&quot;C__&quot;); 
-        add(checkbox1);
-        add(checkbox2);
-        add(checkbox3);
-
-        checkbox1.addItemListener(new ItemListener(){
-            public void itemStateChanged(ItemEvent a){
-                System.out.println(a.getItem());
-            }
-        });
-
-        Choice c = new Choice();   
-  
-        // setting the bounds of choice menu   
-        c.setBounds(100, 100, 75, 75);    
-  
-        // adding items to the choice menu  
-        c.add(&quot;Item 1&quot;);    
-        c.add(&quot;Item 2&quot;);    
-        c.add(&quot;Item 3&quot;);    
-        c.add(&quot;Item 4&quot;);    
-        c.add(&quot;Item 5&quot;);    
-
-        c.addItemListener(new ItemListener(){
-            @Override
-            public void itemStateChanged(ItemEvent e) {
-                System.out.println(e.getItem());
-            }
-        });
-  
-        // adding choice menu to frame  
-        add(c);    
-
-        setVisible(true);
-
-        addWindowListener(new WindowAdapter(){
-            public void windowClosing(WindowEvent e){
-                System.exit(0);
-            }
-        });
-    }
-
-    public static void main(String[] args){
-        Task1 task1 = new Task1();
-        task1.setSize(400, 500);
-    }
-}</code></pre></div></article></body></html>
+</style></head><body><article id="37f00252-0ce6-4f6c-a1ad-b18bed613f63" class="page sans"><header><h1 class="page-title">Other OOP Languages</h1><p class="page-description"></p></header><div class="page-body"><nav id="162b2235-0a1a-4b78-b972-ae00ace8acf0" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#6ea14c32-09a9-4708-be6a-61549cedaf75">Smalltalk</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0c17fe89-0434-444c-a825-bf2f9e414ecf">C++</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#02ee968d-0e6e-428a-91e7-91a857cfeee2">Eiffel</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7780016e-3b43-4502-bb47-b43a2fad2887">Ada</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e45c538d-8a4d-40fa-abfc-a19a9136d09d">Ruby</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#cab4653c-a659-4dee-a4a3-cba505913a06">C#</a></div></nav><h1 id="6ea14c32-09a9-4708-be6a-61549cedaf75" class="">Smalltalk</h1><ul id="92b950a2-1291-4742-afca-2dd5a15cb10a" class="bulleted-list"><li style="list-style-type:disc">Pure dynamically typed</li></ul><ul id="821fca1f-6f16-46a2-ae9e-bbc530b4fe3d" class="bulleted-list"><li style="list-style-type:disc">Full inheritance</li></ul><ul id="35c40bb8-6339-4275-8a71-f0a37d0f4f4f" class="bulleted-list"><li style="list-style-type:disc">No multiple inheritance</li></ul><h1 id="0c17fe89-0434-444c-a825-bf2f9e414ecf" class="">C++</h1><ul id="eca0d0aa-ec65-45d9-a31a-217895270c96" class="bulleted-list"><li style="list-style-type:disc">Statically typed</li></ul><ul id="964a7ec7-9c82-42e1-a53e-25935ac19864" class="bulleted-list"><li style="list-style-type:disc">Not a pure OOL</li></ul><ul id="5d0af3a6-6c5f-499a-9cf8-a47138352fb1" class="bulleted-list"><li style="list-style-type:disc">Supports multiple inheritance</li></ul><ul id="b4b87b42-2766-4796-82ec-2b64d7df30bf" class="bulleted-list"><li style="list-style-type:disc">No garbage collection</li></ul><h1 id="02ee968d-0e6e-428a-91e7-91a857cfeee2" class="">Eiffel</h1><ul id="832976e9-5391-4ace-a2e2-e0235584f3db" class="bulleted-list"><li style="list-style-type:disc">Multiple Inheritance</li></ul><ul id="26033560-58e0-409e-8aad-0ac56c19b4ea" class="bulleted-list"><li style="list-style-type:disc">Pure OOL</li></ul><h1 id="7780016e-3b43-4502-bb47-b43a2fad2887" class="">Ada</h1><ul id="480adabb-de52-4ec3-a590-2ae28b8d17bc" class="bulleted-list"><li style="list-style-type:disc">Statically typed</li></ul><ul id="88e60533-570d-4d41-bbb2-a9c7f56cb483" class="bulleted-list"><li style="list-style-type:disc">Object oriented extended from Pascal</li></ul><h1 id="e45c538d-8a4d-40fa-abfc-a19a9136d09d" class="">Ruby</h1><ul id="7fd5f58c-a2ef-455f-a1bf-facbd63daee6" class="bulleted-list"><li style="list-style-type:disc">Pure object oriented</li></ul><ul id="fe5198b1-0a1c-416f-95f2-21d69d762f73" class="bulleted-list"><li style="list-style-type:disc">No functions</li></ul><ul id="1dc1e1f7-6950-4a56-ac3b-d58586859c05" class="bulleted-list"><li style="list-style-type:disc">Only single inheritance</li></ul><h1 id="cab4653c-a659-4dee-a4a3-cba505913a06" class="">C#</h1><ul id="208de40a-63a8-40d5-bbca-4d7f83c76714" class="bulleted-list"><li style="list-style-type:disc">Not a pure OOPL</li></ul><ul id="8735b200-a8ea-4b6e-9d29-2b3217535dda" class="bulleted-list"><li style="list-style-type:disc">Has garbage collection and compiled to an intermediate language</li></ul><ul id="63520a1f-815c-4cc9-9cf5-4dfb652f5eb3" class="bulleted-list"><li style="list-style-type:disc">JVM → CLR = Common Language Runtime</li></ul><p id="3dcc4810-646c-4359-aa29-79b091ea40c5" class="">
+</p></div></article></body></html>
