@@ -74,10 +74,6 @@ export default function Notes() {
             link: "https://drive.google.com/file/d/19GvuOCJne0yfholKESraZ54HASAtTUFm/view?usp=share_link"
         },
         {
-            name: "Object Oriented Programming - OOPL Notes",
-            link: "/notes/OOP/oop.html"
-        },
-        {
             name: "Digital Design - DD Notes",
             link: "https://drive.google.com/file/d/1uDqE4AYudKAuAd5P5Fv61GNjwbI8cvnm/view?usp=share_link"
         },
@@ -96,10 +92,6 @@ export default function Notes() {
         {
             name: "Machine Learning Notes",
             link: "https://drive.google.com/file/d/1c-oJ1Qu9ffpk0_X0t9hdkAIH9PslOL0H/view?usp=sharing"
-        },
-        {
-            name: "DBMS Notes",
-            link: "/notes/DBMS/dbms.html"
         },
         {
             name: "Linguistics Incomplete Notes",
