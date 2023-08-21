@@ -18,6 +18,10 @@ export default function Notes() {
         {
             name: "DBMS Notes",
             link: "/notes/DBMS/dbmslovesme.html"
+        },
+        {
+            name: "LSN Notes",
+            link: "/notes/LSN/lsn.html"
         }
     ]
 
