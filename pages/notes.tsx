@@ -16,7 +16,7 @@ export default function Notes() {
         },
         {
             name: "1-2 Resources - CP, TRW, Bio, M2, PnS, EG",
-            link: "https://drive.google.com/drive/folders/1bkFqiiPP1bN-w-ezvtQ5j5mSkyNTttaM?usp=share_link"
+            link: "https://hyderabadbitspilaniacin0-my.sharepoint.com/:f:/g/personal/f20210075_hyderabad_bits-pilani_ac_in/EuJiohQFlx1IsZHiWr6caokBy7dHl8m7npi3WkPpNvETLQ?e=i68svv"
         },
         {
             name: "2-1 CS Resources - Logic, Disco, DD, M3, PoE, OOPL",
