@@ -41,29 +41,21 @@ export default function Notes() {
         {
             name: "Elective - Machine Learning (ML)",
             link: "https://drive.google.com/drive/folders/1FJXFb2jtHerLvNglgweCFyetc8MmItOs?usp=share_link"
-        },
-        {
-            name: "Elective - Fundamentals of Finance and Accounting (FOFA)",
-            link: "https://drive.google.com/drive/folders/1FO3tvzR4dhWDUHlfzY_AHq6n57dWtJgJ?usp=drive_link"
         }
     ];
 
     const personalNotes: DataLinkType[] = [
-        {
-            name: "Mathematics 1 - M1 Notes",
-            link: "https://drive.google.com/file/d/1d-fdqKVl5kTf3Yx649teiAooxAxWMuiR/view?usp=share_link"
-        },
         {
             name: "C Programming - CP Notes",
             link: "/notes/CP/cp.html"
         },
         {
             name: "Probability and Statistics - PnS Notes",
-            link: "https://drive.google.com/file/d/1P4KFVTR-GlMEltfyAi4rg2laaJkcBJjh/view"
+            link: "/notes/PnS Notes.pdf"
         },
         {
             name: "Mathematics 2 - M2 Notes",
-            link: "https://drive.google.com/file/d/1Yjd1U4yDskDln5Sl_6h02hpRtNoqpl6g/view"
+            link: "/notes/M2 Notes.pdf"
         },
         {
             name: "Technical Report Writing - TRW Notes",
@@ -71,11 +63,11 @@ export default function Notes() {
         },
         {
             name: "Mathematics 3 - M3 Notes",
-            link: "https://drive.google.com/file/d/19GvuOCJne0yfholKESraZ54HASAtTUFm/view?usp=share_link"
+            link: "/notes/M3 Compre Notes.pdf"
         },
         {
             name: "Digital Design - DD Notes",
-            link: "https://drive.google.com/file/d/1uDqE4AYudKAuAd5P5Fv61GNjwbI8cvnm/view?usp=share_link"
+            link: "/notes/DD Notes.pdf"
         },
         {
             name: "Principles of Economics - POE Notes",
@@ -91,7 +83,7 @@ export default function Notes() {
         },
         {
             name: "Machine Learning Notes",
-            link: "https://drive.google.com/file/d/1c-oJ1Qu9ffpk0_X0t9hdkAIH9PslOL0H/view?usp=sharing"
+            link: "/notes/ML Notes.pdf"
         },
         {
             name: "Linguistics Incomplete Notes",
