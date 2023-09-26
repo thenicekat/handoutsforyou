@@ -48,20 +48,20 @@ export default function Home({ handoutsMap }: any) {
       <div className="grid place-items-center">
         <div className="w-[50vw] place-items-center flex flex-col justify-between">
           <h1 className="text-6xl pt-[50px] pb-[20px] px-[35px]">Handouts For You.</h1>
-          
+
           <p>Made with &lt;3 by <Link
             className="text-black underline"
             href={"mailto:f20210075@hyderabad.bits-pilani.ac.in"}
           >
             Divyateja Pasupuleti
           </Link>
-          {' '} and {' '}
-          <Link
-            className="text-black underline"
-            href={"mailto:f20211989@hyderabad.bits-pilani.ac.in"}
-          >
-            Vashisth Choudhari
-          </Link>
+            {' '} and {' '}
+            <Link
+              className="text-black underline"
+              href={"mailto:f20211989@hyderabad.bits-pilani.ac.in"}
+            >
+              Vashisth Choudhari
+            </Link>
           </p>
 
 
