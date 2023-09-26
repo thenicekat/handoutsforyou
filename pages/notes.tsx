@@ -12,7 +12,7 @@ export default function Notes() {
     const groupWiseResources: DataLinkType[] = [
         {
             name: "1-1 Resources - MeOW, EEE, M1, Chem, Workshop",
-            link: "https://drive.google.com/drive/folders/1CnTsW7eex3adZY0TgLsTeNPRF2RTX4y4?usp=share_link"
+            link: "https://hyderabadbitspilaniacin0-my.sharepoint.com/:f:/g/personal/f20210075_hyderabad_bits-pilani_ac_in/EmxTk3oa2kxPhU_--LJMEdQBVUtKJi6JfGSf-zEVpp3UeA?e=dbpwcm"
         },
         {
             name: "1-2 Resources - CP, TRW, Bio, M2, PnS, EG",
