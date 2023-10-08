@@ -2,7 +2,7 @@ import { Html, Head, Main, NextScript } from 'next/document'
 
 export default function Document() {
   return (
-    <Html lang="en" data-theme="forest">
+    <Html lang="en" data-theme="fantasy">
       <title>Handouts for You.</title>
       <Head />
       <body>
