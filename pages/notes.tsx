@@ -11,37 +11,17 @@ export default function Notes() {
     const [input, setInput] = useState("");
     const groupWiseResources: DataLinkType[] = [
         {
-            name: "1-1 Resources - MeOW, EEE, M1, Chem, Workshop",
-            link: "https://hyderabadbitspilaniacin0-my.sharepoint.com/:f:/g/personal/f20210075_hyderabad_bits-pilani_ac_in/EmxTk3oa2kxPhU_--LJMEdQBVUtKJi6JfGSf-zEVpp3UeA?e=dbpwcm"
+            name: "BITS Course Resources",
+            link: "https://hyderabadbitspilaniacin0-my.sharepoint.com/:f:/g/personal/f20210075_hyderabad_bits-pilani_ac_in/EjmBjVxy6AJDh3ZAIgaiMsUBJbG1hLe0LhtiRN2XTdCo2w?e=4p43t7"
         },
         {
-            name: "1-2 Resources - CP, TRW, Bio, M2, PnS, EG",
-            link: "https://hyderabadbitspilaniacin0-my.sharepoint.com/:f:/g/personal/f20210075_hyderabad_bits-pilani_ac_in/EuJiohQFlx1IsZHiWr6caokBy7dHl8m7npi3WkPpNvETLQ?e=i68svv"
-        },
-        {
-            name: "2-1 CS Resources - Logic, Disco, DD, M3, PoE, OOPL",
-            link: "https://drive.google.com/drive/folders/1A1jvtyWRMzu14oq1wc6vFxeS-tKJrQEN?usp=sharing"
-        },
-        {
-            name: "2-2 CS Resources - DSA, DBMS, MPi, EVS",
-            link: "https://drive.google.com/drive/folders/1uRiJ7Mrbwtjvm3J5ljPsKzJ3mI5XAyus?usp=share_link"
-        },
-        {
-            name: "2-1 Phoenix Resources - EM, EMT, ED, DD, Intro to Dev Studies, EVS",
+            name: "Sudhanshu's 2-1 Phoenix Resources - EM, EMT, ED, DD, Intro to Dev Studies, EVS",
             link: "https://drive.google.com/drive/folders/1YWAHsJySYLsQVkQtS-B45JoWUFcuCjBc?usp=share_link"
         },
         {
-            name: "2-2 Phoenix Resources - Consys, Mass Comm, MEC, MPi, POE, Pop Lit",
+            name: "Sudhanshu's 2-2 Phoenix Resources - Consys, Mass Comm, MEC, MPi, POE, Pop Lit",
             link: "https://drive.google.com/drive/folders/1_f1yZnfg1ATSluRBBwNu6hnPyyGX0sVz?usp=drive_link"
         },
-        {
-            name: "Huels - Computer Mediated Communications, Globalization, Linguistics",
-            link: "https://drive.google.com/drive/folders/1IZ1ZatyqlyqLO9u7_l63SYq2zN41sDUZ?usp=sharing"
-        },
-        {
-            name: "Elective - Machine Learning (ML)",
-            link: "https://drive.google.com/drive/folders/1FJXFb2jtHerLvNglgweCFyetc8MmItOs?usp=share_link"
-        }
     ];
 
     const personalNotes: DataLinkType[] = [
