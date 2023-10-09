@@ -11,6 +11,10 @@ export default function Notes() {
     const [input, setInput] = useState("");
     const groupWiseResources: DataLinkType[] = [
         {
+            name: "Acads Sem Wise Template",
+            link: "https://docs.google.com/spreadsheets/d/1hrfrx9yIHyq7ik6XhxsRTTx275SxbZo6I-ZUOho9oL8/edit?usp=sharing"
+        },
+        {
             name: "BITS Course Resources",
             link: "https://hyderabadbitspilaniacin0-my.sharepoint.com/:f:/g/personal/f20210075_hyderabad_bits-pilani_ac_in/EjmBjVxy6AJDh3ZAIgaiMsUBJbG1hLe0LhtiRN2XTdCo2w?e=4p43t7"
         },
