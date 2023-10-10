@@ -46,7 +46,7 @@ export default function Home({ handoutsMap }: any) {
 
       {/* Search box */}
       <div className="grid place-items-center">
-        <div className="w-[50vw] place-items-center flex flex-col justify-between">
+        <div className="w-[70vw] place-items-center flex flex-col justify-between">
           <h1 className="text-6xl pt-[50px] pb-[20px] px-[35px]">Handouts For You.</h1>
 
           <p>Made with &lt;3 by <Link
@@ -65,7 +65,7 @@ export default function Home({ handoutsMap }: any) {
           </p>
 
 
-          <div className="py-3">
+          <div className="py-3 items-center justify-around">
             <Link className="m-5" href={"/minors.html"}>
               <button className="btn btn-outline">
                 Info. about Minors
