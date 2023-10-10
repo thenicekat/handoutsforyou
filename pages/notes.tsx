@@ -16,7 +16,7 @@ export default function Notes() {
         },
         {
             name: "BITS Course Resources",
-            link: "https://hyderabadbitspilaniacin0-my.sharepoint.com/:f:/g/personal/f20210075_hyderabad_bits-pilani_ac_in/EjmBjVxy6AJDh3ZAIgaiMsUBJbG1hLe0LhtiRN2XTdCo2w?e=4p43t7"
+            link: "https://hyderabadbitspilaniacin0-my.sharepoint.com/:f:/g/personal/f20210075_hyderabad_bits-pilani_ac_in/EjmBjVxy6AJDh3ZAIgaiMsUBqr8bEQp1r3IPdI4PtD5ZkA?e=sgO558"
         },
         {
             name: "Sudhanshu's 2-1 Phoenix Resources - EM, EMT, ED, DD, Intro to Dev Studies, EVS",
