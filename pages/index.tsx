@@ -3,11 +3,12 @@ import Head from "next/head";
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import Menu from "../Components/Menu";
 
 const YearComponent = dynamic(() => import("./../Components/YearComponent"), {
   loading: () => (
     <div className="grid place-items-center">
-      <p className="text-xl">Loading...</p>
+      <p className="text-xl">...</p>
     </div>
   ),
 });
@@ -49,39 +50,7 @@ export default function Home({ handoutsMap }: any) {
         <div className="w-[70vw] place-items-center flex flex-col justify-between">
           <h1 className="text-6xl pt-[50px] pb-[20px] px-[35px]">Handouts For You.</h1>
 
-          <p>Made with &lt;3 by <Link
-            className="text-black underline"
-            href={"mailto:f20210075@hyderabad.bits-pilani.ac.in"}
-          >
-            Divyateja Pasupuleti
-          </Link>
-            {' '} and {' '}
-            <Link
-              className="text-black underline"
-              href={"mailto:f20211989@hyderabad.bits-pilani.ac.in"}
-            >
-              Vashisth Choudhari
-            </Link>
-          </p>
-
-
-          <div className="py-3 items-center justify-around">
-            <Link className="m-5" href={"/minors.html"}>
-              <button className="btn btn-outline">
-                Info. about Minors
-              </button>
-            </Link>
-            <Link className="m-5" href={"/notes"}>
-              <button className="btn btn-outline">
-                Notes and Resources
-              </button>
-            </Link>
-            <Link className="m-5" href={"/faqs"}>
-              <button className="btn btn-outline">
-                FAQs about Campus
-              </button>
-            </Link>
-          </div>
+          <Menu linkToHome={false} />
 
           <input
             type="text"
