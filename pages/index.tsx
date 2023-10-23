@@ -19,7 +19,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const semsWithYears = fs.readdirSync("./public/handouts/");
 
-  semsWithYears.forEach((sem: any) => {
+  semsWithYears.forEach((sem: string) => {
     const semWiseHandouts = fs.readdirSync("./public/handouts/" + sem);
     handoutsMap[sem] = semWiseHandouts;
   });
@@ -50,7 +50,7 @@ export default function Home({ handoutsMap }: any) {
         <div className="w-[70vw] place-items-center flex flex-col justify-between">
           <h1 className="text-6xl pt-[50px] pb-[20px] px-[35px]">Handouts For You.</h1>
 
-          <Menu linkToHome={false} />
+          <Menu current={"home"} />
 
           <input
             type="text"
