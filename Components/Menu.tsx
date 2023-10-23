@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 
 type Props = {
-    linkToHome: Boolean
+    current: String
 }
 
 const Menu = (props: Props) => {
@@ -38,20 +38,27 @@ const Menu = (props: Props) => {
                         Info. about Minors
                     </button>
                 </Link>
-                {props.linkToHome ? <Link className="m-5" href={"/"}>
-                    <button className="btn btn-outline">
-                        Home
-                    </button>
-                </Link> : <Link className="m-5" href={"/notes"}>
-                    <button className="btn btn-outline">
-                        Notes and Resources
-                    </button>
-                </Link>}
-                <Link className="m-5" href={"/faqs"}>
-                    <button className="btn btn-outline">
-                        FAQs about Campus
-                    </button>
-                </Link>
+                {
+                    props.current != "home" && <Link className="m-5" href={"/"}>
+                        <button className="btn btn-outline">
+                            Home
+                        </button>
+                    </Link>
+                }
+                {
+                    props.current != "notes" && <Link className="m-5" href={"/notes"}>
+                        <button className="btn btn-outline">
+                            Notes and Resources
+                        </button>
+                    </Link>
+                }
+                {
+                    props.current != "faqs" && <Link className="m-5" href={"/faqs"}>
+                        <button className="btn btn-outline">
+                            FAQs about Campus
+                        </button>
+                    </Link>
+                }
             </div>
         </>)
 }
