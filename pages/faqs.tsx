@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Menu from "../Components/Menu";
 
 type FaqModel = {
     question: string,
@@ -92,16 +93,37 @@ export default function Faqs() {
             Useless predictions based on quiz percentiles will only give unnecessary hope to people or it will unnecessarily demote some others.Don't do stuff like that.
             Plus, ek subject mein thoda kam aayega toh kuch nahi hoga.First year mein lagta hai ki ek course ki grade bahut badalta hai, but that's only cuz credits are less it'll make a huge diff in sg.But later as years go on with increasing credits, ek grade ka hai bahut chotta hota hai
             Please don't get discouraged due to one exam or one subject. 😔😔`
+        },
+        {
+            question: "Interactions on campus",
+            answer: `You can say no; there’s nothing wrong with saying no to something you don’t want to do, 
+            and no one will force you to do anything. In fact, most seniors do and will ask for your consent.
+            Know the intro format.Name, Id number(2022 Branch code (Ax or Bx) xxxx(last four digits), 
+            these numbers are meant to be said separately, 2022 is two zero two two. Then comes where you’re from, 
+            and finally, your hobbies and interests.Be open while talking about these, as this is where most of 
+            the conversation you’ll have with your seniors will branch out from. Very important tip, be shameless, 
+            but not disrespectful, no matter which branch, year, or what cg the senior has. 
+            In the end, they are your seniors and deserve respect. Make a good impression during 
+            these interactions, and you’ll get good connections with your seniors in various clubs and departments.
+            And this is also how you get your books, from talking to seniors, 
+            and they’ll approach you to sell books (humme bhi paise chahiye :”)). 
+            Good interaction implies more discounts on books and a nice treat.                `
+        },
+        {
+            question: "Facilities on Campus",
+            answer: `Now coming to the facilities on campus, though you’ll get acquainted with most of these while exploring, and some seniors might even take you on a detailed campus tour after your interactions (where some second year seniors may get interacted by 3rd and 4th years in front of you, cause life happens ;-;), but here are some things you’ll find on campus.
+                    Outlets for food. Old football ground/hockey field. New football ground, tinkerer’s lab,  swimming pool, cricket nets. Academic blocks(Workshop, Sandbox, Library, Auditorium, Amphitheater, Canteen, Classrooms and labs (unfortunately)). Student Activities Center(Gym, Indoor badminton court, Snooker/Pool Tables, Table tennis room, Several club rooms (music, dance, etc)). Connaught Place (or better known as CP): Stores and Stationary.`
         }
     ]
 
     return (
         <>
-            <div className='grid place-items-center'>
-                <div className='w-[50vw] place-items-center flex flex-col justify-between'>
-                    <h1 className='text-6xl p-[35px]'>FAQs About Campus.</h1>
-                    <h3>A Tribute to Mahith(f20190441), for being the guide for a lot of us on campus :) and Vashisth(f20211989) and me obviously Divyateja(f20210075)</h3>
-                    <br />
+            <div className="grid place-items-center">
+                <div className="w-[70vw] place-items-center flex flex-col justify-between">
+                    <h1 className="text-6xl pt-[50px] pb-[20px] px-[35px]">FAQs.</h1>
+
+                    <Menu current={"home"} />
+
                     <input type="text" placeholder="Search the faqs..." className="input input-bordered w-full max-w-xs" onChange={e => setInput(e.target.value)} />
                 </div>
             </div>
@@ -121,39 +143,6 @@ export default function Faqs() {
                         ))
                     }
                 </div>
-
-                <div className='grid p-10'>
-                <div className="w-100 flex flex-col justify-between py-2">
-                    <div className="card w-100 bg-primary shadow-xl">
-                        <div className="card-body text-black">
-                            <h2 className="card-title">Interactions on campus with seniors</h2>
-                            <li>You can say no; there’s nothing wrong with saying no to something you don’t want to do, and no one will force you to do anything. In fact, most seniors do and will ask for your consent.</li>
-                            <li>Know the intro format. Name, Id number (2022 Branch code (Ax or Bx) xxxx (last four digits), these numbers are meant to be said separately, 2022 is two zero two two. Then comes where you’re from, and finally, your hobbies and interests. Be open while talking about these, as this is where most of the conversation you’ll have with your seniors will branch out from. </li>
-                            <li>Very important tip, be shameless, but not disrespectful, no matter which branch, year, or what cg the senior has. In the end, they are your seniors and deserve respect.</li>
-                            <li>Make a good impression during these interactions, and you’ll get good connections with your seniors in various clubs and departments. And this is also how you get your books, from talking to seniors, and they’ll approach you to sell books (humme bhi paise chahiye :”)).</li>
-                            <li>Good interaction implies more discounts on books and a nice treat.</li>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div className='grid p-5'>
-                <div className="w-100 flex flex-col justify-between py-2">
-                    <div className="card w-100 bg-primary shadow-xl">
-                        <div className="card-body text-black">
-                            <h2 className="card-title">Facilities on Campus</h2>
-                            Now coming to the facilities on campus, though you’ll get acquainted with most of these while exploring, and some seniors might even take you on a detailed campus tour after your interactions (where some second year seniors may get interacted by 3rd and 4th years in front of you, cause life happens ;-;), but here are some things you’ll find on campus.
-                            <li>Outlets for food</li>
-                            <li>Old football ground/hockey field</li>
-                            <li>New football ground, tinkerer’s lab,  swimming pool, cricket nets</li>
-                            <li>Academic blocks(Workshop, Sandbox, Library, Auditorium, Amphitheater, Canteen, Classrooms and labs (unfortunately))</li>
-                            <li>Student Activities Center(Gym, Indoor badminton court, Snooker/Pool Tables, Table tennis room, Several club rooms (music, dance, etc))</li>
-                            <li>Connaught Place (or better known as CP): Stores and Stationary</li>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             </div>
         </>
     )
