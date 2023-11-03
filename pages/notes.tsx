@@ -96,10 +96,10 @@ export default function Notes() {
             <div className='grid place-items-center'>
                 <div className='w-[50vw] place-items-center flex flex-col justify-between'>
                     <h1 className='text-6xl p-[35px]'>Notes and Resources.</h1>
-                    <h5 className='text-lg'>Contain PYQs and Solutions if available, textbooks, textbook solutions, slides and notes</h5>
                     <Menu current={"notes"} />
                     <input type="text" placeholder="Search..." className="input input-bordered w-full max-w-xs" onChange={e => setInput(e.target.value)} />
                 </div>
+                <h5 className='text-lg'>Contain PYQs and Solutions if available, textbooks, textbook solutions, slides and notes</h5>
             </div>
 
             <div className='grid place-items-center p-5'>
