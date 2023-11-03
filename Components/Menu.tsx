@@ -10,28 +10,28 @@ const Menu = (props: Props) => {
         <>
             <p>Made with &lt;3 by{' '}
                 <Link
-                    className="text-black underline"
+                    className="text-white underline"
                     href={"mailto:f20210075@hyderabad.bits-pilani.ac.in"}
                 >
                     Divyateja Pasupuleti
                 </Link>
                 , {' '}
                 <Link
-                    className="text-black underline"
+                    className="text-white underline"
                     href={"mailto:f20211989@hyderabad.bits-pilani.ac.in"}
                 >
                     Vashisth Choudhari
                 </Link>
                 {' '}and{' '}
                 <Link
-                    className="text-black underline"
+                    className="text-white underline"
                     href={"mailto:f20190097h@alumni.bits-pilani.ac.in"}
                 >
                     Ruban S
                 </Link>
                 {' '}and{' '}
                 <Link
-                    className="text-black underline"
+                    className="text-white underline"
                     href={"mailto:f20190441@alumni.bits-pilani.ac.in"}
                 >
                     Mahith
