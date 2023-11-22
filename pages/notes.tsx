@@ -103,7 +103,7 @@ export default function Notes() {
             </div>
 
             <div className='grid place-items-center p-5'>
-                <div className="w-100 place-items-center flex flex-col justify-between">
+                <div className="w-100 place-items-center flex flex-col justify-between border border-primary-300 rounded-box">
                     <div>
                         {
                             groupWiseResources.filter(d => d.name.toLowerCase().includes(input.toLowerCase())).map(data => (
