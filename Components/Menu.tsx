@@ -32,7 +32,7 @@ const Menu = (props: Props) => {
                 {' '}and{' '}
                 <Link
                     className="text-white underline"
-                    href={"mailto:f20190441@alumni.bits-pilani.ac.in"}
+                    href={"mailto:f20190441h@alumni.bits-pilani.ac.in"}
                 >
                     Mahith
                 </Link>
@@ -48,7 +48,7 @@ const Menu = (props: Props) => {
                 {
                     props.current != "home" && <Link className="m-5" href={"/"}>
                         <button className="btn btn-outline">
-                            Home
+                            Go Back to Home
                         </button>
                     </Link>
                 }
