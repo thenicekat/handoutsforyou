@@ -28,6 +28,10 @@ export default function Notes() {
             link: "https://drive.google.com/drive/folders/1_f1yZnfg1ATSluRBBwNu6hnPyyGX0sVz?usp=drive_link"
         },
         {
+            name: "Mahith's Mechanical Resources",
+            link: "https://drive.google.com/drive/u/1/folders/1bwrDhP2x5CgUouikrFy9u95-qvKuwrBu"
+        },
+        {
             name: "C Programming - CP Notes",
             link: "/notes/CP/cp.html"
         },
