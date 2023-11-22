@@ -48,7 +48,7 @@ export default function Home({ handoutsMap }: any) {
       {/* Search box */}
       <div className="grid place-items-center">
         <div className="w-[70vw] place-items-center flex flex-col justify-between">
-          <h1 className="text-6xl pt-[50px] pb-[20px] px-[35px]">Handouts For You.</h1>
+          <h1 className="text-6xl pt-[50px] pb-[20px] px-[35px] text-primary">Handouts For You.</h1>
 
           <Menu current={"home"} />
 

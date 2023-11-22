@@ -132,7 +132,7 @@ export default function Faqs() {
                 <div className="w-50 flex flex-col justify-between py-2">
                     {
                         faqs.filter(f => f.question.toLowerCase().includes(input.toLowerCase())).map(faq => (
-                            <div tabIndex={0} key={faq.question} className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box m-2">
+                            <div tabIndex={0} key={faq.question} className="collapse collapse-plus border border-primary-300 bg-base-100 rounded-box m-2">
                                 <div className="collapse-title text-xl font-medium">
                                     {faq.question.toUpperCase()}
                                 </div>
