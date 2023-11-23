@@ -39,7 +39,7 @@ const Menu = (props: Props) => {
             </p>
 
 
-            <div className="py-3 items-center justify-around">
+            <div className="py-3 grid md:grid-cols-3">
                 <Link className="m-5" href={"/minors.html"}>
                     <button className="btn btn-outline">
                         Info. about Minors
