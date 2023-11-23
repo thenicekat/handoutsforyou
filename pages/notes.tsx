@@ -32,6 +32,14 @@ export default function Notes() {
             link: "https://drive.google.com/drive/u/1/folders/1bwrDhP2x5CgUouikrFy9u95-qvKuwrBu"
         },
         {
+            name: "Object Oriented Programming - OOPL Notes",
+            link: "/notes/OOP/ooplovesyou.html"
+        },
+        {
+            name: "DBMS Notes",
+            link: "/notes/DBMS/dbmslovesme.html"
+        },
+        {
             name: "C Programming - CP Notes",
             link: "/notes/CP/cp.html"
         },
