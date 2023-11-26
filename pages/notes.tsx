@@ -64,6 +64,10 @@ export default function Notes() {
             link: "/notes/DD Notes.pdf"
         },
         {
+            name: "Soham Barui's Principles of Economics - POE Notes",
+            link: "/notes/ext/poe_soham.html"
+        },
+        {
             name: "Principles of Economics - POE Notes",
             link: "/notes/POE/poe.html"
         },
