@@ -113,6 +113,26 @@ export default function Faqs() {
             question: "Facilities on Campus",
             answer: `Now coming to the facilities on campus, though you’ll get acquainted with most of these while exploring, and some seniors might even take you on a detailed campus tour after your interactions (where some second year seniors may get interacted by 3rd and 4th years in front of you, cause life happens ;-;), but here are some things you’ll find on campus.
                     Outlets for food. Old football ground/hockey field. New football ground, tinkerer’s lab,  swimming pool, cricket nets. Academic blocks(Workshop, Sandbox, Library, Auditorium, Amphitheater, Canteen, Classrooms and labs (unfortunately)). Student Activities Center(Gym, Indoor badminton court, Snooker/Pool Tables, Table tennis room, Several club rooms (music, dance, etc)). Connaught Place (or better known as CP): Stores and Stationary.`
+        },
+        {
+            question: "What are Projects and how do they work?",
+            answer: `
+            Study Project - SOP - theoretical - reading other research papers and writing a report. Lab Project- LOP. Design Project- DOP - gray area, whatever doesn't come under SOP and LOP.
+            Can start applying for projects at the end of 2-2, will get project bank in 2-1. Pre register for project important- mail the prof, only after that you can register. You can apply for projects of other depts but it will come under OPEL.
+            Prof can take max 12 students in a project. CS project - good relation w prof, good cg, should be pro. You can do only one project per semester except in 4th year if you are a singilite.
+            In 2-2 can apply only for SOP, from 3rd and 4th yr can apply any type project. max 3 projects can be counted as DEL.Informal project - for experience, resume, not graded but good to have projects for MS + placements - will get you LORs`
+        },
+        {
+            question: "HuELs = Humanities Electives (HSS, GS in doc)",
+            answer: "Only few courses are offered every semester, check doc carefully to see which ones are offered this sem. You will have to do 3 huels"
+        },
+        {
+            question: "DELs = Disciplinary Electives",
+            answer: "Electives related to dept GXXX denotes higher degree course. All single degree branches expect chem need 4 courses (12 creds), chem needs 5 courses (15 cred). Phoenix has 2 cred lab courses (other branches don't)"
+        },
+        {
+            question: "OPELs = Open Electives",
+            answer: "Anything that is neither CDC nor DEL. 5 courses - 15 creds. Need to be careful of cred requirements and order"
         }
     ]
 
