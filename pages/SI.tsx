@@ -60,7 +60,7 @@ export default function Home({ handoutsMap }: any) {
                     <br />
                     If you get offer, you have to accept it. otherwise you may not be allowed to sit for placements. You can go for off campus SI and this drive is diff for diff campuses. Once you get offer, the drive for you in done. You won't know the order in which the companies come, so it is up to you to decide which ones to apply for. The higher stipend ones may come earlier/later and you may miss out on those.
                     <br />
-                    "placement points" → if you hit 0 from 10, you can't sit for SI/placements anymore\
+                    placement points → if you hit 0 from 10, you can't sit for SI/placements anymore
                 </p>
             </div>
         </>

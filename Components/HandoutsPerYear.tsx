@@ -6,7 +6,7 @@ type Props = {
   searchWord: string;
 }
 
-export default function YearComponent({ handouts, year, searchWord }: Props) {
+export default function HandoutsPerYear({ handouts, year, searchWord }: Props) {
   return (
     <div className="border-solid border-[2px] border-white rounded-xl p-3 m-3">
       {

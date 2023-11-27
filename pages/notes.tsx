@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useState } from 'react'
 import Menu from '../Components/Menu';
+import { useSession } from 'next-auth/react';
 
 type DataLinkType = {
     name: string,
@@ -10,6 +11,7 @@ type DataLinkType = {
 
 export default function Notes() {
     const [input, setInput] = useState("");
+    const { data: session } = useSession()
     const groupWiseResources: DataLinkType[] = [
         {
             name: "Acad Sem Wise Tracker Template",
@@ -118,7 +120,7 @@ export default function Notes() {
                 <h5 className='text-lg'>Contain PYQs and Solutions if available, textbooks, textbook solutions, slides and notes</h5>
             </div>
 
-            <div className='grid place-items-center p-5'>
+            {session && <div className='grid place-items-center p-5'>
                 <div className="w-100 place-items-center flex flex-col justify-between border border-primary-300 rounded-box">
                     <div>
                         {
@@ -140,7 +142,7 @@ export default function Notes() {
                         }
                     </div>
                 </div>
-            </div>
+            </div>}
         </>
     )
 }
