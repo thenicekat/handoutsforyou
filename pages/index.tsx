@@ -2,10 +2,10 @@ import { GetStaticProps } from "next";
 import Head from "next/head";
 import { useState } from "react";
 import dynamic from "next/dynamic";
-import Link from "next/link";
+import { signIn, signOut, useSession } from 'next-auth/react';
 import Menu from "../Components/Menu";
 
-const YearComponent = dynamic(() => import("./../Components/YearComponent"), {
+const HandoutsPerYear = dynamic(() => import("./../Components/HandoutsPerYear"), {
   loading: () => (
     <div className="grid place-items-center">
       <p className="text-xl">...</p>
@@ -32,6 +32,7 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 export default function Home({ handoutsMap }: any) {
+  const { data: session } = useSession()
   const [search, setSearch] = useState("");
 
   return (
@@ -49,25 +50,19 @@ export default function Home({ handoutsMap }: any) {
       <div className="grid place-items-center">
         <div className="w-[70vw] place-items-center flex flex-col justify-between">
           <h1 className="text-6xl pt-[50px] pb-[20px] px-[35px] text-primary">Handouts For You.</h1>
-
           <Menu current={"home"} />
+          <input type="text" placeholder="Search..." className="input input-bordered w-full max-w-xs" onChange={(e) => setSearch(e.target.value)} />
 
-          <input
-            type="text"
-            placeholder="Search..."
-            className="input input-bordered w-full max-w-xs"
-            onChange={(e) => setSearch(e.target.value)}
-          />
         </div>
       </div>
 
       {/* Handouts List */}
-      <div className="px-2 md:px-20">
+      {session && <div className="px-2 md:px-20">
         {Object.keys(handoutsMap)
           .reverse()
           .map((handoutMap: any) => {
             return (
-              <YearComponent
+              <HandoutsPerYear
                 handouts={handoutsMap[handoutMap]}
                 year={handoutMap}
                 key={handoutMap}
@@ -75,7 +70,7 @@ export default function Home({ handoutsMap }: any) {
               />
             );
           })}
-      </div>
+      </div>}
     </>
   );
 }
