@@ -1,11 +1,14 @@
 import React from 'react'
 import Link from 'next/link'
+import { signIn, signOut, useSession } from 'next-auth/react'
 
 type Props = {
     current: String
 }
 
 const Menu = (props: Props) => {
+    const { data: session } = useSession()
+
     return (
         <>
             <p>Made with &lt;3 by{' '}
@@ -39,7 +42,7 @@ const Menu = (props: Props) => {
             </p>
 
 
-            <div className="py-3 grid md:grid-cols-3">
+            <div className="grid md:grid-cols-3">
                 <Link className="m-5" href={"/minors.html"}>
                     <button className="btn btn-outline">
                         Info. about Minors
@@ -65,6 +68,18 @@ const Menu = (props: Props) => {
                             FAQs about Campus
                         </button>
                     </Link>
+                }
+            </div>
+
+            <div className="grid place-items-center">
+                {
+                    !session
+                        ?
+                        <>
+                            <p className='text-xl'>You will need to sign in to access these pages.</p>
+                            <button className="btn btn-outline btn-primary m-3" onClick={() => signIn("google")}>Sign in</button>
+                        </>
+                        : <button className="btn btn-outline btn-primary m-3" onClick={() => signOut()}>Sign Out</button>
                 }
             </div>
         </>)
