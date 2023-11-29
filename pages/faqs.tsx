@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Menu from "../Components/Menu";
+import Head from "next/head";
 
 type FaqModel = {
     question: string,
@@ -138,6 +139,19 @@ export default function Faqs() {
 
     return (
         <>
+            <Head>
+                <title>FAQs.</title>
+                <meta name="description" content="Handouts app for bits hyderabad" />
+                <meta name="description" content="BPHC Handouts" />
+                <meta name="description" content="Handouts for you." />
+                <meta
+                    name="description"
+                    content="handouts, bits pilani hyderabad campus"
+                />
+                <meta name="robots" content="index, follow" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
                     <h1 className="text-6xl pt-[50px] pb-[20px] px-[35px]">FAQs.</h1>
