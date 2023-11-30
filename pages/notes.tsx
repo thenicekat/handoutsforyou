@@ -47,11 +47,11 @@ export default function Notes() {
         },
         {
             name: "Probability and Statistics - PnS Notes",
-            link: "/notes/PnS Notes.pdf"
+            link: "https://github.com/Divyateja04/handoutsforyou/raw/main/public/notes/PnS Notes.pdf"
         },
         {
             name: "Mathematics 2 - M2 Notes",
-            link: "/notes/M2 Notes.pdf"
+            link: "https://github.com/Divyateja04/handoutsforyou/raw/main/public/notes/M2 Notes.pdf"
         },
         {
             name: "Technical Report Writing - TRW Notes",
@@ -59,15 +59,15 @@ export default function Notes() {
         },
         {
             name: "Mathematics 3 - M3 Notes",
-            link: "/notes/M3 Compre Notes.pdf"
+            link: "https://github.com/Divyateja04/handoutsforyou/raw/main/public/notes/M3 Compre Notes.pdf"
         },
         {
             name: "Digital Design - DD Notes",
-            link: "/notes/DD Notes.pdf"
+            link: "https://github.com/Divyateja04/handoutsforyou/raw/main/public/notes/DD Notes.pdf"
         },
         {
             name: "Soham Barui's Principles of Economics - POE Notes",
-            link: "/notes/ext/poe_soham.html"
+            link: "https://github.com/Divyateja04/handoutsforyou/raw/main/public/notes/ext/poe_soham.pdf"
         },
         {
             name: "Principles of Economics - POE Notes",
