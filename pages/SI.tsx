@@ -5,25 +5,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import Menu from "../Components/Menu";
 
-export const getStaticProps: GetStaticProps = async () => {
-    const fs = require("fs");
-    const handoutsMap: any = {};
-
-    const semsWithYears = fs.readdirSync("./public/handouts/");
-
-    semsWithYears.forEach((sem: string) => {
-        const semWiseHandouts = fs.readdirSync("./public/handouts/" + sem);
-        handoutsMap[sem] = semWiseHandouts;
-    });
-
-    return {
-        props: {
-            handoutsMap,
-        },
-    };
-};
-
-export default function Home({ handoutsMap }: any) {
+export default function SI({ }: any) {
     const [search, setSearch] = useState("");
 
     return (
