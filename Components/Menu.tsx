@@ -39,6 +39,8 @@ const Menu = (props: Props) => {
                 >
                     Mahith
                 </Link>
+                <br />
+                <a href="https://forms.gle/eTtfHgthEUZtr5GW6">Add your own content.</a>
             </p>
 
 
