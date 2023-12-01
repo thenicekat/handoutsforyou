@@ -134,6 +134,13 @@ export default function Faqs() {
         {
             question: "OPELs = Open Electives",
             answer: "Anything that is neither CDC nor DEL. 5 courses - 15 creds. Need to be careful of cred requirements and order"
+        },
+        {
+            question: "Summer Internship?",
+            answer: `Drive starts after 2-2, come in 3-1, 3-2. All companies hold coding and interview rounds.SI gives you a good stipend and a chance of PPO.In general CG cutoff - 7.5 and there are Restrictions in branches.These companies will come on superset and you apply there with your resume.Create resume for company you want to apply to, then coding round, 1 / 2 interview rounds.If you get SI, cant go for 4 - 1 PS,
+            PS will be in 4 - 2 and placements in 4 - 1. https://docs.google.com/presentation/d/1Gk-_2DuInZjV1yo0RvJ3iGSwG_4MPGvrUtw6bmwud_s/edit#slide=id.gb83e9fc38f_0_84 -> SI Presentation
+            If you get offer, you have to accept it.otherwise you may not be allowed to sit for placements.You can go for off campus SI and this drive is diff for diff campuses.Once you get offer, the drive for you in done.You won & apos;t know the order in which the companies come, so it is up to you to decide which ones to apply for.The higher stipend ones may come earlier / later and you may miss out on those.
+            placement points → if you hit 0 from 10, you can & apos;t sit for SI / placements anymore`
         }
     ]
 
