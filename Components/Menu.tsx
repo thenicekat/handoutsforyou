@@ -40,34 +40,54 @@ const Menu = (props: Props) => {
                     Mahith
                 </Link>
                 <br />
-                <a href="https://forms.gle/eTtfHgthEUZtr5GW6">Add your own content.</a>
             </p>
 
 
-            <div className="grid md:grid-cols-3">
-                <Link className="m-5" href={"/minors.html"}>
-                    <button className="btn btn-outline">
+            <div className="grid md:grid-cols-3 justify-around">
+                <Link className="m-3" href={"/minors.html"}>
+                    <button className="btn btn-outline w-full">
                         Info. about Minors
                     </button>
                 </Link>
                 {
-                    props.current != "home" && <Link className="m-5" href={"/"}>
-                        <button className="btn btn-outline">
+                    props.current != "home" && <Link className="m-3" href={"/"}>
+                        <button className="btn btn-outline w-full">
                             Go Back to Home
                         </button>
                     </Link>
                 }
                 {
-                    props.current != "notes" && <Link className="m-5" href={"/notes"}>
-                        <button className="btn btn-outline">
+                    props.current != "notes" && <Link className="m-3" href={"/notes"}>
+                        <button className="btn btn-outline w-full">
                             Notes and Resources
                         </button>
                     </Link>
                 }
                 {
-                    props.current != "faqs" && <Link className="m-5" href={"/faqs"}>
-                        <button className="btn btn-outline">
+                    props.current != "faqs" && <Link className="m-3" href={"/faqs"}>
+                        <button className="btn btn-outline w-full">
                             FAQs about Campus
+                        </button>
+                    </Link>
+                }
+                {
+                    props.current != "si" && <Link className="m-3" href={"/si"}>
+                        <button className="btn btn-outline w-full">
+                            Summer Internships
+                        </button>
+                    </Link>
+                }
+                {
+                    <Link className="m-3" href={"https://forms.gle/eTtfHgthEUZtr5GW6"}>
+                        <button className="btn btn-outline w-full">
+                            Add your Content
+                        </button>
+                    </Link>
+                }
+                {
+                    props.current != "ps" && <Link className="m-3" href={"/ps"}>
+                        <button className="btn btn-outline w-full">
+                            Practice School
                         </button>
                     </Link>
                 }
