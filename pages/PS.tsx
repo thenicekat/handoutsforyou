@@ -1,9 +1,21 @@
 import { GetStaticProps } from "next";
 import Head from "next/head";
 import { useState } from "react";
-import dynamic from "next/dynamic";
-import Link from "next/link";
 import Menu from "../Components/Menu";
+
+type PS_Individual = {
+    name: string
+    id: string
+    cgpa: number
+    term: string
+}
+
+type PS_Station = {
+    name: string
+    last_paid_stipend: number
+    individuals: PS_Individual[]
+}
+
 
 export default function PS({ }: any) {
     const [search, setSearch] = useState("");
