@@ -2,9 +2,11 @@ import { GetStaticProps } from "next";
 import Head from "next/head";
 import { useState } from "react";
 import Menu from "../Components/Menu";
+import { useSession } from "next-auth/react";
 
 export default function PS({ }: any) {
     const [search, setSearch] = useState("");
+    const { data: session } = useSession()
 
     const chronicles = [
         {
@@ -44,10 +46,10 @@ export default function PS({ }: any) {
                 </div>
             </div>
 
-            <div className='grid md:grid-cols-2 place-items-center p-5'>
+            {session && <div className='grid md:grid-cols-2 place-items-center p-5'>
                 {
-                    chronicles.map(chronicle => (
-                        <div className="card w-96 bg-neutral text-neutral-content m-2">
+                    chronicles.filter(d => d.name.toLowerCase().includes(search.toLowerCase())).map(chronicle => (
+                        <div className="card w-96 bg-neutral text-neutral-content m-2" key={chronicle.name}>
                             <div className="card-body items-center text-center">
                                 <h2 className="card-title">SI Chronicles {chronicle.name}</h2>
                                 <div className="card-actions justify-end">
@@ -59,7 +61,7 @@ export default function PS({ }: any) {
                         </div>
                     ))
                 }
-            </div>
+            </div>}
 
         </>
     );
