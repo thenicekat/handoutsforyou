@@ -16,8 +16,19 @@ type PS_Station = {
     individuals: PS_Individual[]
 }
 
+export const getStaticProps: GetStaticProps = async () => {
+    const fs = require("fs");
+    let ps_chronicles = fs.readdirSync("./public/ps/chronicles/");
 
-export default function PS({ }: any) {
+    return {
+        props: {
+            ps_chronicles,
+        },
+    };
+};
+
+
+export default function PS({ ps_chronicles }: any) {
     const [search, setSearch] = useState("");
 
     return (
@@ -45,6 +56,23 @@ export default function PS({ }: any) {
                         onChange={(e) => setSearch(e.target.value)}
                     />
                 </div>
+            </div>
+
+            <div className='grid md:grid-cols-4 place-items-center p-5'>
+                {
+                    ps_chronicles.map((chron: string) => (
+                        <div className="card w-72 bg-neutral text-neutral-content m-2">
+                            <div className="card-body items-center text-center">
+                                <h2 className="card-title">PS Chronicles {chron.split(" ")[0]} Semester {chron.split(" ")[1]}</h2>
+                                <div className="card-actions justify-end">
+                                    <button className="btn btn-primary" onClick={
+                                        () => window.open("https://github.com/Divyateja04/handoutsforyou/raw/main/public/ps/chronicles" + chron)
+                                    }>View</button>
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
             </div>
 
         </>
