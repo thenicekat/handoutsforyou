@@ -2,6 +2,7 @@ import { GetStaticProps } from "next";
 import Head from "next/head";
 import { useState } from "react";
 import Menu from "../Components/Menu";
+import { useSession } from "next-auth/react";
 
 type PS_Individual = {
     name: string
@@ -30,6 +31,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 export default function PS({ ps_chronicles }: any) {
     const [search, setSearch] = useState("");
+    const { data: session } = useSession()
 
     return (
         <>
@@ -58,10 +60,10 @@ export default function PS({ ps_chronicles }: any) {
                 </div>
             </div>
 
-            <div className='grid md:grid-cols-4 place-items-center p-5'>
+            {session && <div className='grid md:grid-cols-4 place-items-center p-5'>
                 {
-                    ps_chronicles.map((chron: string) => (
-                        <div className="card w-72 bg-neutral text-neutral-content m-2">
+                    ps_chronicles.filter((d: string) => d.toLowerCase().includes(search.toLowerCase())).map((chron: string) => (
+                        <div className="card w-72 bg-neutral text-neutral-content m-2" key={chron}>
                             <div className="card-body items-center text-center">
                                 <h2 className="card-title">PS Chronicles {chron.split(" ")[0]} Semester {chron.split(" ")[1]}</h2>
                                 <div className="card-actions justify-end">
@@ -73,7 +75,7 @@ export default function PS({ ps_chronicles }: any) {
                         </div>
                     ))
                 }
-            </div>
+            </div>}
 
         </>
     );
