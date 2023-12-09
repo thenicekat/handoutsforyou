@@ -68,7 +68,7 @@ export default function PS({ ps_chronicles }: any) {
                                 <h2 className="card-title">PS Chronicles {chron.split(" ")[0]} Semester {chron.split(" ")[1]}</h2>
                                 <div className="card-actions justify-end">
                                     <button className="btn btn-primary" onClick={
-                                        () => window.open("https://github.com/Divyateja04/handoutsforyou/raw/main/public/ps/chronicles" + chron)
+                                        () => window.open("https://github.com/Divyateja04/handoutsforyou/raw/main/public/ps/chronicles/" + chron)
                                     }>View</button>
                                 </div>
                             </div>
