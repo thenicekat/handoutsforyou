@@ -1,0 +1,749 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Revision - Important Problems to Solve</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="9208ab54-bf4e-4f68-a01b-1f47630e69cf" class="page sans"><header><h1 class="page-title">Revision - Important Problems to Solve</h1><p class="page-description"></p></header><div class="page-body"><nav id="e390ea82-1375-431f-b5fb-3e6b6bf2e644" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#8833ebe7-5154-4671-b1b7-40fc0cb017da">LL Parser </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b1868a8c-ba20-4d67-8519-758b7ce26202">Example 1</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9abad5f5-5672-4d87-9bec-78377c78cfb8">Example 2</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d1df1fc4-d8f6-4b48-9869-f69c4343ba50">Shift Reduce or LR Parser</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#cd337ae5-08d8-4035-abe4-4ce0e545c77a">Recursive Descent Parsing - Also LL</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2820f2a0-f485-4127-bf91-4bed2e0e63db">Left Recursion Conversions</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#aaa1588b-7f3a-4918-8785-654d8ce8f97c">BNF to EBNF</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#77ebbe65-68fd-411b-b2a2-c7e717a0ff5c">Left Factoring</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9ed91493-41df-4415-a15a-7575a617f592">LR Parsing Table</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#71087702-8e95-4893-a114-587978443f8c">Attribute Grammar</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#8385e649-e996-49dd-8be8-01359bd3075c">Dynamic and Static Scoping</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#93f45426-c3af-4d59-b80a-baa7ffd298fd">Implementing Subprogram - Diagrams</a></div></nav><h1 id="8833ebe7-5154-4671-b1b7-40fc0cb017da" class="">LL Parser </h1><ul id="7a2fe4ee-e807-44ac-af8c-dd29728360fa" class="bulleted-list"><li style="list-style-type:disc">You start with S in stack and keep pushing the right hand side and end with empty</li></ul><h3 id="b1868a8c-ba20-4d67-8519-758b7ce26202" class="">Example 1</h3><pre id="f2bea115-7d5c-4cc3-978c-64912f8d3358" class="code code-wrap"><code>- S→ aM and M → bMa | a and we have abbaaa
+- Stack is represented by BOTTOM —&gt; TOP
+- LMD: S → aM → abMa → abbMaa → abbaaa
+
+- We use stack → push down stack
+- Stack: S
+- Stack: M a
+- Stack: M (pop a cause matches with input’s first character)
+- Stack: a M b
+- Stack: a M (pop b)
+- Stack: a M
+- Stack: a a M b
+- Stack: a a M (pop b)
+- Stack: a a a
+- Stack: (pop a) x 3
+- Stack: EMPTY!!</code></pre><h3 id="9abad5f5-5672-4d87-9bec-78377c78cfb8" class="">Example 2</h3><pre id="bfbf8cf7-49b9-46c0-8739-9c2b4eadff3d" class="code code-wrap"><code>- S → aAc and A → aA and A → b and we need aabc
+
+- Stack is represented by BOTTOM —&gt; TOP
+- Stack: S Input: aabc
+- Stack: c A a Input: aabc
+- Stack: c A Input: abc
+- Stack: c A a Input: abc
+- Stack: c A Input: bc
+- Stack: c b Input: bc
+- Stack: empty Input: empty</code></pre><h1 id="d1df1fc4-d8f6-4b48-9869-f69c4343ba50" class="">Shift Reduce or LR Parser</h1><ul id="7c0d12de-9c95-4964-a58b-103f3d118c9b" class="bulleted-list"><li style="list-style-type:disc">You start with empty on stack and keep adding characters and end with </li></ul><ul id="0600e693-7e83-4605-a5e4-55f88871fd4e" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">Note: Correct RHS is called the handle → It’s a substring in the sentential form</span></li></ul><ul id="0f95c48b-b2b4-4e4e-8dcc-2560befcda8e" class="bulleted-list"><li style="list-style-type:disc">Also called as shift reduce algorithms. A parser is a PDA</li></ul><ul id="0bd819a0-ccda-44da-9785-9cf79d44ca24" class="bulleted-list"><li style="list-style-type:disc">The input is examined from left to right, one symbol at a time.</li></ul><pre id="048b35ce-2bc0-4583-916e-566736590b8a" class="code code-wrap"><code>- S → aAc and A → aA | b
+
+- S ⇒ aAc → aaAc → aabc
+
+- Stack: Empty (Shift a)
+- Stack: a → (Shift a)
+- Stack: a → a → (Shift b)
+- Stack: a → a → b → (Reduce b to A using A → b)
+- Stack: a → a → A → (Reduce aA to A using A → aA)
+- Stack: a → A → (Shift c)
+- Stack: a → A → c (Reduce aAc to S using S → aAc)
+- Stack: S</code></pre><h1 id="cd337ae5-08d8-4035-abe4-4ce0e545c77a" class="">Recursive Descent Parsing - Also LL</h1><ul id="b0bfb25b-7e53-457f-8572-72d4e44734fd" class="bulleted-list"><li style="list-style-type:disc">Give recursive Descent Parser code for the following grammer: <code>S→aAb, A→bA | aB, B → c</code></li></ul><pre id="d8aa3ebb-ea04-49b7-a5aa-a4fda8d8c9c7" class="code code-wrap"><code>lexeme(){
+	returns the next input token
+}
+
+S(){
+	if(nextToken = &#x27;a&#x27;){
+		lexeme();
+		A();
+		lexeme();
+		if(nextToken = &#x27;b&#x27;){
+			Accepted
+		}else{
+			return error;
+		}
+	}
+}
+
+A(){
+	if(nextToken == &#x27;b&#x27;){
+		lexeme();
+		A();
+	}
+	else if(nextToken == &#x27;a&#x27;){
+		lexeme();
+		B();
+	}
+	else error;
+}
+
+B(){
+	if(nextToken == &#x27;c&#x27;){}
+	else error
+}
+
+parse(){
+	lexeme();
+	S();
+}</code></pre><h1 id="2820f2a0-f485-4127-bf91-4bed2e0e63db" class="">Left Recursion Conversions</h1><ul id="ba55af1d-0822-480e-bda0-95482af572a6" class="bulleted-list"><li style="list-style-type:disc">Replace these by<ul id="d2423f4c-9f71-4d28-9494-b34f3d423e12" class="bulleted-list"><li style="list-style-type:circle">A → b1A’, A → b2A’ … A→bmA’ and</li></ul><ul id="74e4de5f-98ac-4331-ac58-ea8a2581e839" class="bulleted-list"><li style="list-style-type:circle">A → a1A’, A’ → a2A’… A’ → anA’ and</li></ul><ul id="ef889faf-c5cd-4983-9fd6-0cba4f0f002a" class="bulleted-list"><li style="list-style-type:circle">A’ → e</li></ul></li></ul><ul id="28a0fe50-136a-4ceb-9e1a-924049da98bf" class="bulleted-list"><li style="list-style-type:disc">Example:<ul id="c5c24690-15f1-46fc-9544-3409efe4f8e9" class="bulleted-list"><li style="list-style-type:circle">E → E + T and E → T</li></ul><ul id="cea3da40-e312-4ced-aa14-a84460cc9028" class="bulleted-list"><li style="list-style-type:circle">Ans: E → TE’</li></ul><ul id="028ed669-6cc8-42b6-b1c1-46cab27606d8" class="bulleted-list"><li style="list-style-type:circle">E’ → +TE’</li></ul><ul id="cf5ed708-aa38-4a57-90c5-adc47a2f2cdd" class="bulleted-list"><li style="list-style-type:circle">E’ → e</li></ul></li></ul><ul id="5c685d17-dbfb-4bbb-8af7-85255a60bfb8" class="bulleted-list"><li style="list-style-type:disc">Example:<ul id="fcc79385-ab3c-4bde-b894-c7df72be0ecf" class="bulleted-list"><li style="list-style-type:circle">S → SabA | Sc and S → a and  S → b and A → cA | c</li></ul><ul id="beccbaf9-361c-4524-8c43-f74e3c762118" class="bulleted-list"><li style="list-style-type:circle">S → SabA we make abA as a1</li></ul><ul id="3c5e7190-cd44-4913-8e1f-79dc3e4689dc" class="bulleted-list"><li style="list-style-type:circle">S → Sc we make c as a2</li></ul><ul id="e56e7b97-034b-4f64-85e6-47ece27e2d17" class="bulleted-list"><li style="list-style-type:circle">S → a we make a as b1</li></ul><ul id="929b04b0-d80a-4873-bee4-f7a4b9533d19" class="bulleted-list"><li style="list-style-type:circle">S → b we make b as b2</li></ul><ul id="3a57b499-c716-42c9-b7a4-5e82e24054fb" class="bulleted-list"><li style="list-style-type:circle">Ans: S → aS’ | bS’</li></ul><ul id="85ab637f-f134-4e2f-96ca-5389f65c9348" class="bulleted-list"><li style="list-style-type:circle">S’ → abAS’ | cS’ | e</li></ul></li></ul><h1 id="aaa1588b-7f3a-4918-8785-654d8ce8f97c" class="">BNF to EBNF</h1><figure id="1c32fb75-4813-4964-b4f0-e5e77f518a04" class="image"><a href="Syntax%20and%20Semantics%209983f4edf2154695bd10d423acceaa37/Untitled%204.png"><img style="width:1210px" src="Syntax%20and%20Semantics%209983f4edf2154695bd10d423acceaa37/Untitled%204.png"/></a></figure><h1 id="77ebbe65-68fd-411b-b2a2-c7e717a0ff5c" class="">Left Factoring</h1><p id="f6a20e17-b4d2-4614-b15e-00c1c0ecfd82" class="">in A → abb | acb. Here first(abb) = first(acb). Hence it is a problem. We can apply left factoring<div class="indented"><ul id="e33182cc-7879-4fe1-a859-cd45a90a0334" class="bulleted-list"><li style="list-style-type:disc">A → aM</li></ul><ul id="6b071ac2-56bd-4410-b215-6d4f9f23e1ea" class="bulleted-list"><li style="list-style-type:disc">M → bb | cb</li></ul></div></p><h1 id="9ed91493-41df-4415-a15a-7575a617f592" class="">LR Parsing Table</h1><p id="2d18c7cc-f9cc-4b36-bc4b-4e7c4bab1395" class="">Gramma for aadd</p><ul id="756e5449-d0b2-4757-ba3d-03ec1f10346c" class="bulleted-list"><li style="list-style-type:disc">S → CC</li></ul><ul id="aa8e03e8-bd5b-4f7b-aaf2-29cd53e1b007" class="bulleted-list"><li style="list-style-type:disc">C → aC</li></ul><ul id="cd565791-ec15-4098-b4a4-7d7f1d77848f" class="bulleted-list"><li style="list-style-type:disc">C → d</li></ul><table id="1a15d719-4057-4f8a-8e49-08f001f8a227" class="simple-table"><tbody><tr id="da29f658-2db8-4813-8ac1-671825e79467"><td id="d[ki" class="">State</td><td id="{BRb" class="">Action a</td><td id="r`}j" class="">Action d</td><td id="&lt;JjW" class="">Action $</td><td id="g;Fp" class="">Goto S</td><td id="Mj|p" class="">Goto C</td></tr><tr id="a612a2c1-e01c-41a0-927f-0b8c708ef0c1"><td id="d[ki" class="">0</td><td id="{BRb" class="">s3</td><td id="r`}j" class="">s4</td><td id="&lt;JjW" class=""></td><td id="g;Fp" class="">1</td><td id="Mj|p" class="">2</td></tr><tr id="81ef8bed-4b44-41c4-91ca-8128a843b5de"><td id="d[ki" class="">1</td><td id="{BRb" class=""></td><td id="r`}j" class=""></td><td id="&lt;JjW" class="">accept</td><td id="g;Fp" class=""></td><td id="Mj|p" class=""></td></tr><tr id="4c62c3e0-bfca-4f44-9ed8-35aeb052349a"><td id="d[ki" class="">2</td><td id="{BRb" class="">s6</td><td id="r`}j" class="">s7</td><td id="&lt;JjW" class=""></td><td id="g;Fp" class=""></td><td id="Mj|p" class="">5</td></tr><tr id="46cb9d38-ed9f-4845-bf39-5f56a04ac90f"><td id="d[ki" class="">3</td><td id="{BRb" class="">s3</td><td id="r`}j" class="">s4</td><td id="&lt;JjW" class=""></td><td id="g;Fp" class=""></td><td id="Mj|p" class="">8</td></tr><tr id="4c7779f6-905f-49e6-80c3-d6ff7b47c8fc"><td id="d[ki" class="">4</td><td id="{BRb" class="">r3</td><td id="r`}j" class="">r3</td><td id="&lt;JjW" class=""></td><td id="g;Fp" class=""></td><td id="Mj|p" class=""></td></tr><tr id="2299727b-0af4-42ec-84ad-b1b5bd09440b"><td id="d[ki" class="">5</td><td id="{BRb" class=""></td><td id="r`}j" class=""></td><td id="&lt;JjW" class="">r1</td><td id="g;Fp" class=""></td><td id="Mj|p" class=""></td></tr><tr id="56d37e1f-ad36-43bd-b322-a1a2aa041b82"><td id="d[ki" class="">6</td><td id="{BRb" class="">s6</td><td id="r`}j" class="">s7</td><td id="&lt;JjW" class=""></td><td id="g;Fp" class=""></td><td id="Mj|p" class="">9</td></tr><tr id="36bae117-fd4d-4633-9ead-c496de7ebef1"><td id="d[ki" class="">7</td><td id="{BRb" class=""></td><td id="r`}j" class=""></td><td id="&lt;JjW" class="">r3</td><td id="g;Fp" class=""></td><td id="Mj|p" class=""></td></tr><tr id="72aea388-9279-4314-8040-06e358bea55a"><td id="d[ki" class="">8</td><td id="{BRb" class="">r2</td><td id="r`}j" class="">r2</td><td id="&lt;JjW" class=""></td><td id="g;Fp" class=""></td><td id="Mj|p" class=""></td></tr><tr id="5ba53437-1423-46d4-9f33-ee810140a865"><td id="d[ki" class="">9</td><td id="{BRb" class=""></td><td id="r`}j" class=""></td><td id="&lt;JjW" class="">r2</td><td id="g;Fp" class=""></td><td id="Mj|p" class=""></td></tr></tbody></table><table id="5d188eb7-9155-485c-a8da-7c83a1769bb5" class="simple-table"><tbody><tr id="bf119f39-eeed-41cc-a37d-4a7a73820b5a"><td id="Nmf=" class="" style="width:278px">Stack</td><td id="X_H:" class="" style="width:283px">Input</td><td id="gPPV" class="" style="width:243px">Action</td></tr><tr id="4a4fd444-5e02-442a-b41a-d17d2ab737d4"><td id="Nmf=" class="" style="width:278px">0</td><td id="X_H:" class="" style="width:283px">aadd$</td><td id="gPPV" class="" style="width:243px">Shift3</td></tr><tr id="3f0f15f8-5dfd-4f44-b4c6-68fa95e66674"><td id="Nmf=" class="" style="width:278px">0a3</td><td id="X_H:" class="" style="width:283px">add$</td><td id="gPPV" class="" style="width:243px">Shift3</td></tr><tr id="1c7d86b1-d677-4930-bb75-ff1218c08fa6"><td id="Nmf=" class="" style="width:278px">0a3a3</td><td id="X_H:" class="" style="width:283px">dd$</td><td id="gPPV" class="" style="width:243px">Shift4</td></tr><tr id="a1ed9b89-7f0f-470d-b2f6-cef53bc586bf"><td id="Nmf=" class="" style="width:278px">0a3a3d4</td><td id="X_H:" class="" style="width:283px">d$</td><td id="gPPV" class="" style="width:243px">Reduce3[GoTo(3,C)]</td></tr><tr id="dd93a136-bac4-4935-b16c-cd2786973601"><td id="Nmf=" class="" style="width:278px">0a3a3C8</td><td id="X_H:" class="" style="width:283px">d$</td><td id="gPPV" class="" style="width:243px">Reduce2[GoTo(3,C)]</td></tr><tr id="ac1dda53-af94-4b3d-9da5-05922a6dc495"><td id="Nmf=" class="" style="width:278px">0a3C8</td><td id="X_H:" class="" style="width:283px">d$</td><td id="gPPV" class="" style="width:243px">Reduce2[GoTo(0,C)]</td></tr><tr id="baa377fa-a6f2-4c7b-921d-dc2e0ce0e120"><td id="Nmf=" class="" style="width:278px">0C2</td><td id="X_H:" class="" style="width:283px">d$</td><td id="gPPV" class="" style="width:243px">Shift7</td></tr><tr id="059a506e-7a9b-4ffc-8575-7f1379d5fca6"><td id="Nmf=" class="" style="width:278px">0C2d7</td><td id="X_H:" class="" style="width:283px">$</td><td id="gPPV" class="" style="width:243px">Reduce3[Goto(2, C)]</td></tr><tr id="7bb0ec51-beb9-49ba-b324-5f59ba81ccaf"><td id="Nmf=" class="" style="width:278px">0C2C5</td><td id="X_H:" class="" style="width:283px">$</td><td id="gPPV" class="" style="width:243px">Reduce1[Goto(0,S)]</td></tr><tr id="06109d06-5205-4d32-a768-d3a9f2e6a3e6"><td id="Nmf=" class="" style="width:278px">0S1</td><td id="X_H:" class="" style="width:283px">$</td><td id="gPPV" class="" style="width:243px">Accept</td></tr></tbody></table><ul id="4f770436-1d21-4f30-9592-fd22615a3271" class="bulleted-list"><li style="list-style-type:disc">For goto you check the last number in stack before adding C</li></ul><ul id="a6dd2de6-503f-44a9-8b2e-b0aa753763e0" class="bulleted-list"><li style="list-style-type:disc">For Action, we check next char and current stack number</li></ul><h1 id="71087702-8e95-4893-a114-587978443f8c" class="">Attribute Grammar</h1><ol type="1" id="66687970-59c1-4613-b9e6-3d9d5c1f038b" class="numbered-list" start="1"><li>Syntax Rule: <code>&lt;assign&gt; → &lt;var&gt; = &lt;expr&gt;</code><p id="24caa694-386f-4a4d-a8b3-e4a4ec9d59e0" class="">Semantic Rule: <code>&lt;expr&gt;.expected_type ← &lt;var&gt;.actual_type</code></p></li></ol><ol type="1" id="a1d05db7-373e-4347-9d8c-ffe95b53d6ab" class="numbered-list" start="2"><li>Syntax Rule: <code>&lt;expr&gt; → &lt;var&gt;[2] + &lt;var&gt;[3]</code><p id="514a48ae-925a-4a63-9efa-2f0618acb5f5" class="">Semantic Rule: <code>&lt;expr&gt;.actual_type ← if (&lt;var&gt;[2].actual_type = int) and (&lt;var&gt;[3].actual_type = int) then int else real end if</code></p><p id="359eb801-1b83-4880-af53-df857c30942b" class="">Predicate: <code>&lt;expr&gt;.actual_type == &lt;expr&gt;.expected_type</code></p></li></ol><ol type="1" id="5fb85f41-5a9a-4fc3-9d2e-a25a3976ba9f" class="numbered-list" start="3"><li>Syntax Rule: <code>&lt;expr&gt; -&gt; &lt;var&gt;</code><p id="6f3c2d93-bac3-4138-ad47-6bbf273a2d8d" class="">Semantic Rule: <code>&lt;expr&gt;.actual_type &lt;- &lt;var&gt;.actual_type</code></p><p id="33f0ab47-6fb2-451f-a416-d36f160b201e" class="">Predicate: <code>&lt;expr&gt;.actual_type &lt;- &lt;var&gt;.actual_type&gt;</code></p></li></ol><ol type="1" id="42e8dfd3-4bfa-4f7e-81d6-9e32c4e9e1b2" class="numbered-list" start="4"><li>Syntax Rule: &lt;var&gt; → A | B | C<p id="0d4b09a0-935b-48ca-acbf-ea0eee2ec994" class="">Semantic Rule: <code>&lt;var&gt;.actual_type ← look-up(&lt;var&gt;.string)</code></p></li></ol><p id="a2702abd-4e53-49af-a0b1-57936b9f9553" class="">The look up function looks up the variable name in the symbol table and returns the variable’s type</p><h1 id="8385e649-e996-49dd-8be8-01359bd3075c" class="">Dynamic and Static Scoping</h1><p id="bb6696c7-818e-42e7-b7d3-653c250c3565" class="">Check </p><h1 id="93f45426-c3af-4d59-b80a-baa7ffd298fd" class="">Implementing Subprogram - Diagrams</h1><p id="25bee922-0cef-4b04-b818-9bdd7a2d707e" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

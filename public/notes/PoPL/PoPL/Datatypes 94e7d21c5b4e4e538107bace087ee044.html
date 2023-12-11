@@ -1,0 +1,676 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Datatypes</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="94e7d21c-5b4e-4e53-8107-bace087ee044" class="page sans"><header><h1 class="page-title">Datatypes</h1><p class="page-description"></p></header><div class="page-body"><nav id="6a430ea7-8a2e-4200-989e-84caa8e14546" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3bc7df26-36c1-476d-abd6-3642938bd686">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#717bdc45-c659-4664-ba11-d3d6b0e8e2ce">Primitive Data Types</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#92fa16e8-1f46-4167-85ef-97718763dd83">Numeric Type: Integer</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#235c6744-7c53-4f4c-93ad-ed301ef206e7">Numeric Type: Floating Point</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3296216e-5a7a-42da-9d90-01bf9ba34802">Numeric Type: Complex</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#816b75c3-8a71-4040-a4dc-318fb4f663cc">Numeric Type: Decimal</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#323420e5-bb0c-4793-ab46-7a19a5e258ae">Boolean Types</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#94bbf962-82fd-46be-8c2e-f60a8fbd7699">Character Types</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ead11daa-4162-46b1-abfa-da2e4263c114">Character String Types</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5d72de11-05d2-4821-ab50-898a76dd7251">User defined data types</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e7371c79-32cb-47d8-89f7-9f8e6217aad5">Arrays and Associative Arrays</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#f47dc8ad-d547-4016-ba54-886a6ec0475b">Record Types</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#78468c57-8879-452c-ab20-179bbdcfeadf">Tuple Type</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4a1eba96-9437-4231-9395-bd11a188128f">List Types</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#6bcb335a-ca2f-48ee-b23b-090f3e1a7e5e">Union Types</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#15f981d1-3ec9-4a5c-8ac1-84aa2f83929a">Pointer Types</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b8322705-b207-4ef5-bb00-5b62fe2b87ec">Type Checking</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#51a48138-979b-42ca-893a-133c787e5d3c">Strong Typing</a></div></nav><h1 id="3bc7df26-36c1-476d-abd6-3642938bd686" class="">Introduction</h1><ul id="2b093ef3-7fe3-4c9d-9f13-a3ea9b5ed45b" class="bulleted-list"><li style="list-style-type:disc">A data type defines a collection of data values and a set of predefined operations on those values</li></ul><ul id="36879320-435a-4fdc-9191-25ff33f5c92b" class="bulleted-list"><li style="list-style-type:disc">COBOL allowed programmers to specify accuracy of decimal data values</li></ul><ul id="ff738f02-8042-4e60-abfe-b72a76821cd1" class="bulleted-list"><li style="list-style-type:disc">Abstract data type → interface of a type which is visible to the user and is separated from the representation and the set of operations on those values which are hidden from the user</li></ul><ul id="e46bda94-2193-44d4-9369-75a4de908a7a" class="bulleted-list"><li style="list-style-type:disc">Most practical use of type system is error detection</li></ul><ul id="2053bc71-5f87-49ac-90f9-9e396f55e230" class="bulleted-list"><li style="list-style-type:disc">Second use of type checking is for modularization → results from cross module type checking that ensures consistency</li></ul><ul id="3ae0f917-7448-479a-bc71-3e3f9bf90c75" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">DESCRIPTOR is the collection of attributes of a variable</span> → area of memory that stores the attributes of the variable</li></ul><ul id="91b314fb-1188-4723-ad9a-45de353de012" class="bulleted-list"><li style="list-style-type:disc">If the attributes are all static, then descriptors are only required at compile time</li></ul><ul id="fcf86057-5717-4255-b0a4-7c7e9fb89ef3" class="bulleted-list"><li style="list-style-type:disc">For dynamic attributes, the part or all of the descriptor must be maintained during execution → run time</li></ul><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="d42890a1-5e41-4782-9cd0-7c03dcd91547"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Identifiers are just the attributes of a variable</div></figure><h1 id="717bdc45-c659-4664-ba11-d3d6b0e8e2ce" class="">Primitive Data Types</h1><ul id="4049362d-98b5-46ca-b55e-a7766ee8ea2f" class="bulleted-list"><li style="list-style-type:disc">Data types not defined in terms of other types are called primitive data types</li></ul><h2 id="92fa16e8-1f46-4167-85ef-97718763dd83" class="">Numeric Type: Integer</h2><ul id="40d0b43e-31cd-4471-a13e-9f806eb3dea5" class="bulleted-list"><li style="list-style-type:disc">Java has byte, short, int and long</li></ul><ul id="d6d6c39b-0f11-4f96-bb7a-3ac32805ce47" class="bulleted-list"><li style="list-style-type:disc">In python only int and long int</li></ul><ul id="8bad365b-b5e1-4261-ae66-9ed7fb12d749" class="bulleted-list"><li style="list-style-type:disc">negative integer stored in sign magnitude, or 2’s complement</li></ul><h2 id="235c6744-7c53-4f4c-93ad-ed301ef206e7" class="">Numeric Type: Floating Point</h2><ul id="f6886f8c-aadb-44da-ac71-09e4661e7ff9" class="bulleted-list"><li style="list-style-type:disc">Model real numbers but reps are only approximations </li></ul><ul id="17e090da-5a60-412c-b089-46c2dc412ad6" class="bulleted-list"><li style="list-style-type:disc">Neither pi nor e can be stored in floating point</li></ul><ul id="73e44daf-b201-43e0-bbee-9f4d62cb8e05" class="bulleted-list"><li style="list-style-type:disc">We have float and double with 4 and 8 bytes respectively</li></ul><ul id="9e1a250a-8e51-4327-b520-496c35ee49c7" class="bulleted-list"><li style="list-style-type:disc">Precision is the accuracy of the fractional part of a value measured as the number of bits</li></ul><ul id="cd189ff0-3995-4448-bdf9-360c311d1b12" class="bulleted-list"><li style="list-style-type:disc">Range is a combination of the range of fractions and more important, the range of exponents</li></ul><figure id="bd8903c6-9bb4-408d-8c12-5c776c0559d3" class="image"><a href="Datatypes%2094e7d21c5b4e4e538107bace087ee044/Untitled.png"><img style="width:1203px" src="Datatypes%2094e7d21c5b4e4e538107bace087ee044/Untitled.png"/></a></figure><h2 id="3296216e-5a7a-42da-9d90-01bf9ba34802" class="">Numeric Type: Complex</h2><ul id="ea75efe7-62d3-4230-bc93-4eb4f97831d3" class="bulleted-list"><li style="list-style-type:disc">7+3j </li></ul><ul id="3acb598b-f5b0-4504-9b35-07d531ceae57" class="bulleted-list"><li style="list-style-type:disc">Python</li></ul><h2 id="816b75c3-8a71-4040-a4dc-318fb4f663cc" class="">Numeric Type: Decimal</h2><ul id="9f9caf9d-4ca2-4a03-a2b5-c016ec80bbf1" class="bulleted-list"><li style="list-style-type:disc">BCD</li></ul><ul id="5654b01a-35d1-4e75-9191-f4a2f4fa03e9" class="bulleted-list"><li style="list-style-type:disc">6 digit decimal → 24 bits w/o binary but 20 bits with binary</li></ul><h2 id="323420e5-bb0c-4793-ab46-7a19a5e258ae" class="">Boolean Types</h2><ul id="d54e7e1a-be3b-436c-9066-1cdb17573156" class="bulleted-list"><li style="list-style-type:disc">Range of values has only true or false</li></ul><ul id="9bca86fe-90a0-45a8-a604-8813bfe0fc7f" class="bulleted-list"><li style="list-style-type:disc">Introduced in ALGOL 60</li></ul><ul id="b7d87627-3f73-4642-b1cd-b3a2fb2159be" class="bulleted-list"><li style="list-style-type:disc">Often used to represent switches or flags in the programs</li></ul><ul id="e7d3f066-0c00-4dda-a08b-a79f9fc6a95d" class="bulleted-list"><li style="list-style-type:disc">Boolean is more readable than using integers in their place</li></ul><ul id="7a7bb936-925b-4c64-8a51-349ce5f9758a" class="bulleted-list"><li style="list-style-type:disc">Boolean can be a bit but they are a byte</li></ul><h2 id="94bbf962-82fd-46be-8c2e-f60a8fbd7699" class="">Character Types</h2><ul id="857d8c92-1f2e-407e-ba33-27d53cbcb37e" class="bulleted-list"><li style="list-style-type:disc">Stored in computers as numeric coding</li></ul><ul id="895f0fb2-3d41-401a-a1b3-b13f02915137" class="bulleted-list"><li style="list-style-type:disc">Most common was 8 bit code ASCII → 0 to 127</li></ul><ul id="dee2402e-69aa-4c53-8fa8-12c552c6135f" class="bulleted-list"><li style="list-style-type:disc">UTF 32 → 4 byte character code</li></ul><h1 id="ead11daa-4162-46b1-abfa-da2e4263c114" class="">Character String Types</h1><ul id="78d1c63a-e672-4ae2-a866-c38676b620b4" class="bulleted-list"><li style="list-style-type:disc">Sequence of characters</li></ul><ul id="2f57d24f-4165-46ab-8d00-fe2daf089f19" class="bulleted-list"><li style="list-style-type:disc">Issues <ul id="6650d2aa-dcb3-4d24-b142-bed5aaed3fdf" class="bulleted-list"><li style="list-style-type:circle">Should strings simply a special kind of character array or a primitive type</li></ul><ul id="55c22aba-4baf-4044-bb3f-90b49619ecae" class="bulleted-list"><li style="list-style-type:circle">Should strings have static or dynamic length</li></ul></li></ul><ul id="7e305300-4e59-4f39-84bf-a43e3a22549a" class="bulleted-list"><li style="list-style-type:disc">Operations → assignment, concatenation, substring reference, comparison and pattern matching</li></ul><ul id="6486e007-aae4-4b3d-b04b-641a003fef46" class="bulleted-list"><li style="list-style-type:disc">Java string length is fixed but C and C++ use arrays</li></ul><ul id="de43f7bf-9744-4f19-bfcb-43f222a8fac9" class="bulleted-list"><li style="list-style-type:disc">Most common implementation uses Descriptor for referencing static character strings</li></ul><ul id="8ed79451-b35c-45f5-aa6f-ab4adf6677df" class="bulleted-list"><li style="list-style-type:disc">Can use linked lists but it is complex though simple</li></ul><ul id="576c4f23-ec9d-4f1f-91ac-1dcea36a8b7b" class="bulleted-list"><li style="list-style-type:disc">Array of pointers pointing to heap storage for each character</li></ul><ul id="606ebd01-0243-42a2-94db-479a09c088f5" class="bulleted-list"><li style="list-style-type:disc">Python supports unicode character set</li></ul><h1 id="5d72de11-05d2-4821-ab50-898a76dd7251" class="">User defined data types</h1><ul id="7b6f3e4b-509d-405e-8f82-30b36d8981e3" class="bulleted-list"><li style="list-style-type:disc">Ordinal type is one in which range of possible values can be easily associated with set of positive integers</li></ul><ul id="3a532af7-d996-47b5-9e50-bb7942d821be" class="bulleted-list"><li style="list-style-type:disc">In java, char and boolean are predefined ordinal types</li></ul><ul id="41af17bc-f015-40bd-bd47-80597d9a75be" class="bulleted-list"><li style="list-style-type:disc">Enum and subrange are user defined ordinal types by programming languages</li></ul><ul id="50e55ae2-10fc-4d22-9048-d1ed60313851" class="bulleted-list"><li style="list-style-type:disc">enum days = { Mon, Tue, Wed }</li></ul><ul id="5681255b-c0e1-442e-9093-a15c87c9f401" class="bulleted-list"><li style="list-style-type:disc">Issues<ul id="783ab61c-6ef1-4c61-afe7-881f3e2ec7cb" class="bulleted-list"><li style="list-style-type:circle">Can the constants appear in more than one definition</li></ul><ul id="15a0186f-21e0-4668-8460-094134c6938d" class="bulleted-list"><li style="list-style-type:circle">Are enumeration values coerced to int</li></ul><ul id="a8f7df73-b717-447c-9244-23d96673588c" class="bulleted-list"><li style="list-style-type:circle">Are any other type coerced to enum</li></ul></li></ul><ul id="4873b099-1a9c-4e82-89fb-5812b34e65ac" class="bulleted-list"><li style="list-style-type:disc">Subrange is a contiguous subsequence of an ordinal type</li></ul><ul id="15d1c773-6d67-4bdd-8942-0fe544566e9c" class="bulleted-list"><li style="list-style-type:disc">type days = {mon, tue, wed, thu, fri, sat}</li></ul><ul id="4af2365b-6376-45b1-aa3c-1ceff59c692c" class="bulleted-list"><li style="list-style-type:disc">subtype weekdays is mon..fri</li></ul><h1 id="e7371c79-32cb-47d8-89f7-9f8e6217aad5" class="">Arrays and Associative Arrays</h1><ul id="c07e1cb5-ef8e-4107-b1d2-e0169ca078db" class="bulleted-list"><li style="list-style-type:disc">In C, C++, Java, Ada, C# they store same types</li></ul><ul id="7d5d1377-d996-4a13-9861-16bc7d5fa9d7" class="bulleted-list"><li style="list-style-type:disc">C# has generic arrays</li></ul><ul id="7b45e9d7-fb83-4c84-8ca6-43a7d4dcb07e" class="bulleted-list"><li style="list-style-type:disc">In python, ruby, JS the array elements are pointers to other objects</li></ul><ul id="6042d8f1-8cb8-4c5b-87a1-853349f716bd" class="bulleted-list"><li style="list-style-type:disc">Associative array is an unordered collection of data elements that are indexed by an <span style="border-bottom:0.05em solid">equal number of values called keys</span></li></ul><ul id="77d10392-a1de-4165-bc7e-e61282208a90" class="bulleted-list"><li style="list-style-type:disc">In case of non associative array the indices are never stored because of their regularity</li></ul><ul id="6a05d31a-501c-4584-a727-02281ecce1ef" class="bulleted-list"><li style="list-style-type:disc">In an associative array the user defined key must be stored → key value pair</li></ul><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="9e523d87-cff3-4b6f-a2ae-7404858e77d0"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">F# (pronounced F sharp; 2005) is a functional-first, general purpose, strongly typed, multi-paradigm programming language that encompasses functional, imperative, and object-oriented programming methods</div></figure><figure id="d9f5965a-6001-4e0e-b120-addad0883528" class="image"><a href="Datatypes%2094e7d21c5b4e4e538107bace087ee044/Untitled%201.png"><img style="width:1167px" src="Datatypes%2094e7d21c5b4e4e538107bace087ee044/Untitled%201.png"/></a></figure><h1 id="f47dc8ad-d547-4016-ba54-886a6ec0475b" class="">Record Types</h1><ul id="d234777f-de0f-4a41-87e4-aa1b40fcaa41" class="bulleted-list"><li style="list-style-type:disc">Aggregate of data items in which individual elements are identified by name and accessed through offset from the first element</li></ul><ul id="59a651f8-e72d-466b-ae7c-7ce8c7ee22d9" class="bulleted-list"><li style="list-style-type:disc">C supports record type using struct</li></ul><figure id="2c1fa1d5-1e1a-4dc0-848c-6df1e583f7a3" class="image"><a href="Datatypes%2094e7d21c5b4e4e538107bace087ee044/Untitled%202.png"><img style="width:1138px" src="Datatypes%2094e7d21c5b4e4e538107bace087ee044/Untitled%202.png"/></a></figure><h1 id="78468c57-8879-452c-ab20-179bbdcfeadf" class="">Tuple Type</h1><ul id="f8288b98-995e-4905-bc29-c22d34dab855" class="bulleted-list"><li style="list-style-type:disc">Similar to records but the elements are not named</li></ul><figure id="05a20b8e-202c-4637-be6e-c2c34189fecf" class="image"><a href="Datatypes%2094e7d21c5b4e4e538107bace087ee044/Untitled%203.png"><img style="width:612px" src="Datatypes%2094e7d21c5b4e4e538107bace087ee044/Untitled%203.png"/></a></figure><h1 id="4a1eba96-9437-4231-9395-bd11a188128f" class="">List Types</h1><ul id="0ac9a273-ad6a-4752-8fee-95771fe3feec" class="bulleted-list"><li style="list-style-type:disc">First supported by LISP and Scheme</li></ul><figure id="f9c681c6-c46b-4d72-b4a6-ded17c31cf6a" class="image"><a href="Datatypes%2094e7d21c5b4e4e538107bace087ee044/Untitled%204.png"><img style="width:1173px" src="Datatypes%2094e7d21c5b4e4e538107bace087ee044/Untitled%204.png"/></a></figure><h1 id="6bcb335a-ca2f-48ee-b23b-090f3e1a7e5e" class="">Union Types</h1><ul id="df16242c-1bd1-4372-96ae-672491c90f3a" class="bulleted-list"><li style="list-style-type:disc">Union is a type whose variables may store different type of values at different times during program execution</li></ul><ul id="356863d2-de0c-478a-b433-3caae3198f36" class="bulleted-list"><li style="list-style-type:disc">Should type checking be done → should be dynamic</li></ul><ul id="701ce16a-bd69-4f7d-ba7e-6312d4b0b68c" class="bulleted-list"><li style="list-style-type:disc">Should unions be embedded in records</li></ul><ul id="35fc61e0-e9aa-4e3b-b247-5c25e8d4cab8" class="bulleted-list"><li style="list-style-type:disc">Free unions in C → there’s no type checking </li></ul><h1 id="15f981d1-3ec9-4a5c-8ac1-84aa2f83929a" class="">Pointer Types</h1><ul id="dc0e7844-a0af-4f1a-a2e6-d07e2fcf27f6" class="bulleted-list"><li style="list-style-type:disc">A pointer type is one in which variables have a range of values that consist of memory addresses and a special value nil</li></ul><ul id="0409754a-1dcb-4096-aaa0-58593dff4590" class="bulleted-list"><li style="list-style-type:disc">Provide same power of indirect addressing</li></ul><ul id="11e3c562-59fa-4e49-9848-2e961f098762" class="bulleted-list"><li style="list-style-type:disc">Provide way to manage dynamic storage</li></ul><ul id="70b9ebdf-2c62-4eea-bb6d-12c09a691102" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">Ada pointer is called access type</span></li></ul><h1 id="b8322705-b207-4ef5-bb00-5b62fe2b87ec" class="">Type Checking</h1><ul id="ec5c64c9-a3d8-4d9f-9526-71cc4447bbf5" class="bulleted-list"><li style="list-style-type:disc">It is an activity of ensuring that operands of an operator are of compatible types</li></ul><ul id="62d80bf3-f8fd-4ebe-b30c-cd81a7ca0061" class="bulleted-list"><li style="list-style-type:disc">Compatible type is one that either is legal for the operator or is allowed under language rules to be implicitly converted by compiler to legal type</li></ul><ul id="ff596a74-4100-46c1-be01-98521cc83414" class="bulleted-list"><li style="list-style-type:disc">Automatic conversion is called coercion</li></ul><ul id="8aac7b49-d930-4a56-8e02-64897775af1f" class="bulleted-list"><li style="list-style-type:disc">In java, int → float</li></ul><ul id="659e245d-ba4e-434c-b415-e26bc17cb922" class="bulleted-list"><li style="list-style-type:disc">Type checking at run time is called dynamic type checking</li></ul><ul id="17f18bd7-4f96-4df3-ae47-b24e52137cc0" class="bulleted-list"><li style="list-style-type:disc">It becomes complicated for unions</li></ul><h2 id="51a48138-979b-42ca-893a-133c787e5d3c" class="">Strong Typing</h2><ul id="35f0e4cb-f519-41fd-9578-ba705eece49d" class="bulleted-list"><li style="list-style-type:disc">It is strongly typed if type errors are always detected</li></ul><ul id="aee4495c-e3d5-409e-9935-0698b4c5b9f5" class="bulleted-list"><li style="list-style-type:disc">Ada is nearly strongly typed. Because the programmer can by pass type checking if needed</li></ul><ul id="206019f4-fc46-4eb1-b9c8-cdb986d351e1" class="bulleted-list"><li style="list-style-type:disc">C and C++ not strongly typed because of UNION types</li></ul><ul id="12bce79c-032b-42ed-9afe-1e61c1db7d4b" class="bulleted-list"><li style="list-style-type:disc">ML and F# are strongly typed</li></ul><ul id="af9f1a62-be2a-4b70-9914-fd7cc8cd402a" class="bulleted-list"><li style="list-style-type:disc">Java and C# are also same as Ada</li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

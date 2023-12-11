@@ -42,6 +42,10 @@ export default function Notes() {
             link: "/notes/DBMS/dbmslovesme.html"
         },
         {
+            name: "PoPL Notes",
+            link: "/notes/PoPL/PoPL.html"
+        },
+        {
             name: "C Programming - CP Notes",
             link: "/notes/CP/cp.html"
         },

@@ -1,0 +1,676 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>History of Programming Languages</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="cee31e6b-2392-4279-9621-fa4d22c31927" class="page sans"><header><h1 class="page-title">History of Programming Languages</h1><p class="page-description"></p></header><div class="page-body"><nav id="1e84cb1d-bab8-409c-87b7-7574d972da80" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4d240e73-5b8f-4e14-bd02-e3fc51d08524">Plankankul</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#f0086228-f3b1-406d-995b-0db69a295400">Pseudocode</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4782ccad-9483-4aad-9ea6-661da4b26e16">Short Code</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d74c6044-ec36-4671-8f37-db1751051092">Speed coding</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9e983be1-2b84-4536-a9f0-3c6742c638d2">IBM 704 and Fortran</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#52077838-025c-4fc3-a903-6f07be92d929">Fortran 2</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#261f627d-0cc6-4ebb-8856-a655a20502aa">Later Fortrans </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#59cff04e-3460-46e6-a91a-9816c887a34a">Effect of FORTRAN</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#798cbc81-96ae-4368-bc57-07cc38e723f6">Functional Programming and LISP</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f7cf3ad5-b6be-4635-8d3d-a0371b6cb8b2">Advantages</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7720cb61-bd1c-41d0-88ef-087f91d6b904">Disadvantages</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#28a62fce-d438-434e-8863-2fc58685335a">ALGOL 58</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4d726282-585e-4311-94ae-36e50f99751f">ALGOL 60</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#6240c576-bdc5-45e4-81ed-29234ec37f23">COBOL</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5ba1cc2e-f36f-404c-9afd-65b8a65fbe0f">BASIC 1971</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#6699a10d-9799-4ec4-9368-50430cd2f64d">PL/I Programming Language Interface</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b8a713c0-fcdd-4ebd-8f24-073758dda6da">Dynamic Languages</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#42cd8887-d059-402a-909b-8e01f9b236b2">APL</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0c028990-db97-407f-9419-a0bd7dbf7eb6">SNOBOL</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7cef0432-3e7a-4a23-a2e1-68e81c087f70">SIMULA 67</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#60759feb-0931-4b78-aa7c-69ba78d2a2bb">ALGOL 68</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9164d249-613f-4ac9-865b-d886e9e49ea7">PASCAL</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4b4e0a98-f7df-40a7-82ed-88b9e54d5534">C Language</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#8e6e9e59-5d67-4400-8dca-a629481042b9">Logic Programming</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#309872dd-f1e8-4306-b940-e15c48d41dd1">Prolog → Programming in Logic</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5d3c9d17-78de-48e0-a83f-6c4cae127954">Ada</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#41f73528-dc59-490a-a6e6-ef621ab62cb9">Small talk</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8b2bc570-e832-4536-ad87-ebc9d811b6cc">C++</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#732a68fd-5954-42f2-b4a5-5be4586153ff">Objective C</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7d6978a7-7c13-4dcc-91e6-d846bac2c079">Delphi </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fe78b442-ae58-46fd-ba57-bfb74a2f7102">Go</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3cae59c3-7f19-4695-8867-cc59b07f4112">Java</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a6d9b203-c6bd-432b-af89-d13cfa1a9a08">Scripting Languages</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1105f86c-5264-436a-aa25-efbfaf3408e9">Markup Languages</a></div></nav><h1 id="4d240e73-5b8f-4e14-bd02-e3fc51d08524" class="">Plankankul</h1><h1 id="f0086228-f3b1-406d-995b-0db69a295400" class="">Pseudocode</h1><ul id="fe64da64-42ed-434a-a604-ad6de329830a" class="bulleted-list"><li style="list-style-type:disc">Every code was written in machine code</li></ul><ul id="8d936d83-0de5-4fc4-a7ad-052891d24be3" class="bulleted-list"><li style="list-style-type:disc">To make an addition of instruction, all instructions that refer to addresses that follow the addition must be found and modified</li></ul><ul id="00697b88-f5b5-4d49-b31d-675ffc3671cc" class="bulleted-list"><li style="list-style-type:disc">For deletion → replace with no operation → nop</li></ul><h1 id="4782ccad-9483-4aad-9ea6-661da4b26e16" class="">Short Code</h1><ul id="5f1027ae-2e87-4d21-b97f-952a4b72033c" class="bulleted-list"><li style="list-style-type:disc">Was not translated to machine code</li></ul><ul id="bfb492be-a819-4876-a99e-d89c1f92d205" class="bulleted-list"><li style="list-style-type:disc">Implemented using pure interpreter</li></ul><ul id="b7134ac5-4d45-41e2-90ec-3cf3c1a5b9da" class="bulleted-list"><li style="list-style-type:disc">It was called automatic programming</li></ul><ul id="6ff5bc48-3da1-4cd5-8fd7-defed61a5bcf" class="bulleted-list"><li style="list-style-type:disc">50 times slower than machine code</li></ul><h1 id="d74c6044-ec36-4671-8f37-db1751051092" class="">Speed coding</h1><ul id="9c0be436-376a-4a89-a1bf-0ac113379d45" class="bulleted-list"><li style="list-style-type:disc">Add instruction took 4.2ms</li></ul><ul id="4c5ded8b-7b79-4957-97c6-a6f2cf534a15" class="bulleted-list"><li style="list-style-type:disc">After loading interpreter only 700 words spaca=³e left</li></ul><h1 id="9e983be1-2b84-4536-a9f0-3c6742c638d2" class="">IBM 704 and Fortran</h1><ul id="51e10df8-0fcb-441f-917a-1f8aa1d11726" class="bulleted-list"><li style="list-style-type:disc">All floating operations were simulated before</li></ul><ul id="14345cb4-1e3b-44e5-9dd7-2768801a2a64" class="bulleted-list"><li style="list-style-type:disc">Included indexing and floating point instructions in hardware(way faster than simulating in software)</li></ul><ul id="e91f70e0-c687-4766-b341-0ec98e0b7238" class="bulleted-list"><li style="list-style-type:disc">Formula Translation</li></ul><ul id="70b13cc1-e7fd-4a1b-96a1-1db087ccd1b2" class="bulleted-list"><li style="list-style-type:disc">FP</li></ul><ul id="f3028515-cbb5-486e-8d43-96e5bb80c313" class="bulleted-list"><li style="list-style-type:disc">First compiled high level language</li></ul><ul id="6b8f3091-d3e9-43b8-853b-23241c44693c" class="bulleted-list"><li style="list-style-type:disc">Environment in which fortran was developed<ul id="00f36abe-ac1f-4362-919a-551c1c66e607" class="bulleted-list"><li style="list-style-type:circle">Small memory, slow, unreliable</li></ul><ul id="9057e9d9-5cb1-4cef-ab8a-da77f6c810a3" class="bulleted-list"><li style="list-style-type:circle">Primary use was for scientific computations</li></ul><ul id="57ac1bb8-4140-4528-978e-6ae8e955a0b8" class="bulleted-list"><li style="list-style-type:circle">No existing effective and efficient programming languages</li></ul><ul id="3d36afe2-e9dd-47d4-abe0-c6ba53633fcb" class="bulleted-list"><li style="list-style-type:circle">Cost of HW was high</li></ul></li></ul><ul id="056996c3-6cb3-4a79-a2fa-fd555eb2a7b7" class="bulleted-list"><li style="list-style-type:disc">Fortran 1 has variable names upto 6 characters while it was just 2 in fortran 0</li></ul><ul id="1c60419e-cc16-4b08-92b1-e3b22c969ec8" class="bulleted-list"><li style="list-style-type:disc">Variable names that began with I, J, K, L, M, N were implicitly integer type and all others were implicitly floating point</li></ul><ul id="5503194a-a822-4832-83f7-9e1153916bba" class="bulleted-list"><li style="list-style-type:disc">FORTRAN 6 → ANSI 66</li></ul><h2 id="52077838-025c-4fc3-a903-6f07be92d929" class="">Fortran 2</h2><ul id="2ece0779-d7ef-41df-b303-5642c3629190" class="bulleted-list"><li style="list-style-type:disc">Added independent compilation of subroutines</li></ul><ul id="ae482b56-ae94-4670-a93a-f84f89e6c38c" class="bulleted-list"><li style="list-style-type:disc">Longer programs had a poor chance of being compiled completely before a machine failure occurred in fortran 1</li></ul><h2 id="261f627d-0cc6-4ebb-8856-a655a20502aa" class="">Later Fortrans </h2><ul id="71b89e23-9aed-4349-ba04-403e29d61592" class="bulleted-list"><li style="list-style-type:disc">Fortran 3 was lite</li></ul><ul id="762dd7fe-947c-4dc0-a72e-d013597b1af9" class="bulleted-list"><li style="list-style-type:disc">Fortran 4 very widely used</li></ul><ul id="e2e313a4-1ac1-47c1-a4f0-18562a4b415d" class="bulleted-list"><li style="list-style-type:disc">Fortran 77 came next<ul id="82ce2268-308f-4b1c-84b6-5e9cd92a0291" class="bulleted-list"><li style="list-style-type:circle">Character string handling</li></ul><ul id="f57cc84c-736e-4b66-b339-51dfc918125c" class="bulleted-list"><li style="list-style-type:circle">else also with if</li></ul></li></ul><ul id="2d293040-1c9f-4446-a997-dba44e2a4dfe" class="bulleted-list"><li style="list-style-type:disc">Fortran 90<ul id="fa510378-dbb0-43ec-9f5d-e28c65958e31" class="bulleted-list"><li style="list-style-type:circle">Had recursion also</li></ul><ul id="08a1e108-4cc6-4632-8d07-92ad2072aa3c" class="bulleted-list"><li style="list-style-type:circle">Dynamic Arrays</li></ul><ul id="4c36ddaa-c472-4ac1-9f13-9933b97aeb1c" class="bulleted-list"><li style="list-style-type:circle">Pointers</li></ul><ul id="a5574f55-f001-4cca-a8c3-8895c6b737cd" class="bulleted-list"><li style="list-style-type:circle">Records</li></ul><ul id="081dc307-d118-47c8-917d-7582f419512e" class="bulleted-list"><li style="list-style-type:circle">Multiple Selection Statements</li></ul><ul id="56dbd464-0c1a-44c2-a5f1-a05245eb8d08" class="bulleted-list"><li style="list-style-type:circle">Modules<ul id="2081b22c-f15c-45ba-8181-0e8854a7fb99" class="bulleted-list"><li style="list-style-type:square">FORTRAN became fortran</li></ul></li></ul></li></ul><ul id="85e8e320-a8d2-43a1-8479-f1617f0580db" class="bulleted-list"><li style="list-style-type:disc">Fortran 2003 → OOP</li></ul><h2 id="59cff04e-3460-46e6-a91a-9816c887a34a" class="">Effect of FORTRAN</h2><ul id="03b4a42e-05e0-4c0b-bc2f-45f073ee2d89" class="bulleted-list"><li style="list-style-type:disc">Type and storage of all variables is fixed before runtime. Hence allows optimizing compilers. </li></ul><ul id="4a808454-8de0-41b8-b16c-33b102496e76" class="bulleted-list"><li style="list-style-type:disc">No new variables or storage allocation at runtime, hence more efficient and less flexible</li></ul><ul id="5658c2d2-5e47-499c-aa6b-2b5a0796ad19" class="bulleted-list"><li style="list-style-type:disc">No recursion</li></ul><ul id="da8e7f5d-2740-4bcc-a719-37a7696ce67d" class="bulleted-list"><li style="list-style-type:disc">They start with program and end with end program followed by program name</li></ul><ul id="b8edd3e1-bf4d-4410-9579-09f7099781e2" class="bulleted-list"><li style="list-style-type:disc">We should always use implicit none that allows the compiler to check that all your variables types are declared properly</li></ul><ul id="361593b4-fee0-4c33-b48d-8b8d6034d5c7" class="bulleted-list"><li style="list-style-type:disc">Case Insensitive</li></ul><h1 id="798cbc81-96ae-4368-bc57-07cc38e723f6" class="">Functional Programming and LISP</h1><ul id="3d03e6e8-c878-4a0f-80bc-203ac37f3baa" class="bulleted-list"><li style="list-style-type:disc">List Processing → required some methods to allow computers to process symbolic data in linked lists. At that time most computations were on data in arrays</li></ul><ul id="41c6a6fb-d5dc-47e5-b133-505cc398f5df" class="bulleted-list"><li style="list-style-type:disc">1950s → It was based on applying functions to arguments</li></ul><ul id="a959b588-a30d-4d14-8c66-bc0b1634b0ba" class="bulleted-list"><li style="list-style-type:disc">Need came because of some methods to allow computers to process symbolic data in linked lists</li></ul><ul id="2140d28d-7c92-47fc-984d-8c643f660e70" class="bulleted-list"><li style="list-style-type:disc">Requirement → Recursion, Conditional expressions, Dynamic Allocation and Deallocation of linked list space</li></ul><ul id="861687bc-2eba-45eb-904c-b13a8476cc2e" class="bulleted-list"><li style="list-style-type:disc">Though fortran didn’t support these, FLFP → Fortran list processing language → did not have recursion</li></ul><ul id="419d10a2-72ef-49bd-a370-08a551541e2d" class="bulleted-list"><li style="list-style-type:disc">Functional Programming → bind everything in pure mathematical functions style</li></ul><ul id="4bf234e7-9a0b-4d37-9ba3-2d9aecb11dc7" class="bulleted-list"><li style="list-style-type:disc">Declarative type → you only focus on what should be done → Example: SQL</li></ul><ul id="b4b7d805-617a-4784-a870-c56246eef5f7" class="bulleted-list"><li style="list-style-type:disc">Variables are immutable</li></ul><ul id="7bd9107f-0365-4e4a-8340-c655457579c1" class="bulleted-list"><li style="list-style-type:disc">Loops of for and while were implemented through recursion</li></ul><ul id="4acb6973-8821-4bce-8a6b-b13c8c528190" class="bulleted-list"><li style="list-style-type:disc">Pure LISP → applying functions to arguments, has atoms and lists</li></ul><ul id="9ac7dd73-c210-4bee-bd3f-5d53b3486ceb" class="bulleted-list"><li style="list-style-type:disc">Each node has two pointers and represent a list element</li></ul><ul id="26a180b7-9745-49e6-9648-d07f9561a385" class="bulleted-list"><li style="list-style-type:disc">A node containing an atom has it’s first pointer pointing to some representation of that atom such as it’s symbol, numeric values or a pointer to a sublist</li></ul><ul id="63dc1a92-2029-43f7-acaa-15d03db0b087" class="bulleted-list"><li style="list-style-type:disc">Descendants of LISP<ul id="072fec2a-6ae7-4f9f-b106-abcef04d4be8" class="bulleted-list"><li style="list-style-type:circle">Scheme → treat functions as first class entities</li></ul><ul id="a7caf898-d97f-4185-99fe-3a365a0c5176" class="bulleted-list"><li style="list-style-type:circle">Common LISP → relatively large and complex</li></ul><ul id="392598cd-6309-447b-b84a-22331909c1c3" class="bulleted-list"><li style="list-style-type:circle">Other examples: haskell, caml, miranda, meta language</li></ul></li></ul><h3 id="f7cf3ad5-b6be-4635-8d3d-a0371b6cb8b2" class="">Advantages</h3><ul id="6e9318af-75e2-4bcc-9060-3d5fb63ef7e2" class="bulleted-list"><li style="list-style-type:disc">Easy to read, understand</li></ul><ul id="373a9c1f-47d3-49e9-bcc7-153e0d07d83e" class="bulleted-list"><li style="list-style-type:disc">parallelism since a function can’t change anything outside</li></ul><h3 id="7720cb61-bd1c-41d0-88ef-087f91d6b904" class="">Disadvantages</h3><ul id="31e1088f-bfc6-4987-82af-76a944d73028" class="bulleted-list"><li style="list-style-type:disc">Recursion can affect readability, performance</li></ul><ul id="4458788a-02ca-4145-a3e7-f3907e57269c" class="bulleted-list"><li style="list-style-type:disc">combining and IO is difficult</li></ul><ul id="c4e830b3-39e1-45f7-b515-ed4731586faf" class="bulleted-list"><li style="list-style-type:disc">Recursion is more costly because in the layers of program execution → code → heap → stack</li></ul><h1 id="28a62fce-d438-434e-8863-2fc58685335a" class="">ALGOL 58</h1><ul id="16aea8b8-1ccd-40bb-8513-8aee05371c44" class="bulleted-list"><li style="list-style-type:disc">Algorithmic Language</li></ul><ul id="e056e36d-ce76-420c-b3a5-12a9a6d6bf32" class="bulleted-list"><li style="list-style-type:disc">Descendant of fortran</li></ul><ul id="1342e47d-86cf-4af2-a89e-f4f9a36234d6" class="bulleted-list"><li style="list-style-type:disc">To introduce PL that is not tied to hardware, more flexible and powerful i.e. combination of simplicity and elegance</li></ul><ul id="e78f984f-8b60-4f6a-849c-e2052e77b7ff" class="bulleted-list"><li style="list-style-type:disc">Reason for failure → IBM and it’s scientific user group SHARE abandoned ALGOL 58</li></ul><h1 id="4d726282-585e-4311-94ae-36e50f99751f" class="">ALGOL 60</h1><ul id="45c85e4f-25d1-4456-81e3-45881d29e7a9" class="bulleted-list"><li style="list-style-type:disc">ALGOL 60 came into existence and used BNF → Backus Naur Form</li></ul><ul id="5ed50d69-a479-4f00-9b81-0c56a73a04b0" class="bulleted-list"><li style="list-style-type:disc">Concept of block structure, 2 different types of parameter passing</li></ul><ul id="5a5f99e9-199d-43cd-8296-0dfc6eb8a021" class="bulleted-list"><li style="list-style-type:disc">Declare space for arrays in the frame</li></ul><ul id="1e843205-2db8-41b2-b68e-b374f505dfbb" class="bulleted-list"><li style="list-style-type:disc">Descendants → PLI, C, PASCAL, Java, C#</li></ul><ul id="2f006d27-ceeb-485a-a50e-a3d7b650ec1b" class="bulleted-list"><li style="list-style-type:disc">Machine Independent</li></ul><ul id="c2e32a0a-b44d-4f6b-a183-f6ec5ae3d805" class="bulleted-list"><li style="list-style-type:disc">Too flexible → difficult to read and understand</li></ul><ul id="9c206056-1fbd-4ef4-9fde-50ddebff1910" class="bulleted-list"><li style="list-style-type:disc">Lack of input, output statements</li></ul><h1 id="6240c576-bdc5-45e4-81ed-29234ec37f23" class="">COBOL</h1><ul id="3db0f0f3-a46b-4dda-83df-ae37ec946c32" class="bulleted-list"><li style="list-style-type:disc">Common Business Orientated Language</li></ul><ul id="87efd5c6-921f-4193-9958-34159acd0cfa" class="bulleted-list"><li style="list-style-type:disc">Widely used and compiled language</li></ul><ul id="16a05a25-534a-413c-b8ef-7fce9c34d21a" class="bulleted-list"><li style="list-style-type:disc">Progenitor is FLOW MATIC → ancestor</li></ul><ul id="d24e6a3f-643d-429d-bd34-190a9749d209" class="bulleted-list"><li style="list-style-type:disc">Data processing programs must use english like words rather than math expressions</li></ul><ul id="bc6597df-a23d-4c8b-aa4c-f6f698a83e03" class="bulleted-list"><li style="list-style-type:disc">Preprocessor → define → first used in cobol</li></ul><ul id="dcad8dc0-462e-42f5-bfb0-a49344d9ee8d" class="bulleted-list"><li style="list-style-type:disc">First to use macros</li></ul><ul id="5c93b268-fe84-410f-ad3a-b8aea6217074" class="bulleted-list"><li style="list-style-type:disc">Hierarchical Data structures were introduced</li></ul><ul id="33f999d6-aaf6-43a0-8f7d-5c0c2108b616" class="bulleted-list"><li style="list-style-type:disc">Data division → 4 different divisions <ul id="56bda1cd-227a-4672-a96a-09dee3d708a0" class="bulleted-list"><li style="list-style-type:circle">Identification → name of program</li></ul><ul id="3ead5839-fee6-4198-9175-d89ed565edf3" class="bulleted-list"><li style="list-style-type:circle">Environment → from where you are taking input and output sources</li></ul><ul id="16b7451f-fac4-41a4-9490-ca0a202c9743" class="bulleted-list"><li style="list-style-type:circle">Data → declare all your variables</li></ul><ul id="01fed1cb-6a44-473c-9287-65867e7469ce" class="bulleted-list"><li style="list-style-type:circle">Procedural → statements that are executed</li></ul></li></ul><ul id="11469914-13f3-400e-92f6-d5ccc236fb47" class="bulleted-list"><li style="list-style-type:disc">Mandated by DOD</li></ul><ul id="3d2cae14-0eb6-44a1-8d09-81b7d459010e" class="bulleted-list"><li style="list-style-type:disc">Led to Electronic mechanization of accounting</li></ul><h1 id="5ba1cc2e-f36f-404c-9afd-65b8a65fbe0f" class="">BASIC 1971</h1><ul id="4ad49002-b28d-4640-93cd-24b85776cdda" class="bulleted-list"><li style="list-style-type:disc">Very little respect</li></ul><ul id="b22dca44-55b1-4ce5-9d5f-1e4990a20369" class="bulleted-list"><li style="list-style-type:disc">Ignored by Computer Scientists</li></ul><ul id="2d809ea5-ad8a-45fa-815e-fe039dddc3f0" class="bulleted-list"><li style="list-style-type:disc">Had a meager set of control statements</li></ul><ul id="22660d03-fafb-483d-bdad-aef7766bba6a" class="bulleted-list"><li style="list-style-type:disc">Very popular in microcomputers</li></ul><ul id="7297472f-897e-499e-b805-9ec6051b7773" class="bulleted-list"><li style="list-style-type:disc">Strong resurgence appeared in 1991 when visual basic (.NET) </li></ul><ul id="44cd55ee-9992-4446-8fc7-9f779a29f0b2" class="bulleted-list"><li style="list-style-type:disc">Easy for non CS students to learn and fast turnaround for homeworks</li></ul><ul id="6328c698-121c-478d-a462-ff8f2dacb078" class="bulleted-list"><li style="list-style-type:disc">Free and Private Access</li></ul><ul id="350aac36-5455-40c6-a4be-bb060ecd2073" class="bulleted-list"><li style="list-style-type:disc">Access and Activity of each user was private</li></ul><ul id="bd60aee2-c9c1-4fb2-a418-31a666f03eca" class="bulleted-list"><li style="list-style-type:disc">Early versions very small and non interactive → All data should be input before execution starts</li></ul><ul id="6637b974-a8f5-4ce2-a539-4d2a0240d0ac" class="bulleted-list"><li style="list-style-type:disc">First widely used language through terminals</li></ul><ul id="e8c3046c-3f66-450b-8038-d5885f92c4de" class="bulleted-list"><li style="list-style-type:disc">GUI applications</li></ul><h1 id="6699a10d-9799-4ec4-9368-50430cd2f64d" class="">PL/I Programming Language Interface</h1><ul id="cc9d931e-3eca-4ed9-a449-27ce6956a59a" class="bulleted-list"><li style="list-style-type:disc">First large scale attempt to design a language that could be used for broad spectrum of application areas</li></ul><ul id="f7455952-fc1c-484f-ae1c-69f0662d7341" class="bulleted-list"><li style="list-style-type:disc">Recursion + block structure → lisp</li></ul><ul id="a5d06404-03c0-4c81-9314-588df1ff7902" class="bulleted-list"><li style="list-style-type:disc">Report generation from cobol</li></ul><ul id="642f3b88-79a4-4615-96b4-c52df821a135" class="bulleted-list"><li style="list-style-type:disc">Communication through global data from fortran</li></ul><ul id="e1482299-879f-4115-a766-785ffbea7abb" class="bulleted-list"><li style="list-style-type:disc">Allow concurrent execution of subprograms</li></ul><ul id="2740a9ed-f1c7-4aab-817d-56502243314f" class="bulleted-list"><li style="list-style-type:disc">23 different types of exceptions</li></ul><ul id="30bdb4dc-3a16-4448-be2b-1603f813b051" class="bulleted-list"><li style="list-style-type:disc">Pointer data types were introduced</li></ul><ul id="6e1e1a1c-52e8-4777-8d2b-f2a48af833a9" class="bulleted-list"><li style="list-style-type:disc">Any construct which was useful came onto PLI → language became very large → misunderstanding and complex</li></ul><h1 id="b8a713c0-fcdd-4ebd-8f24-073758dda6da" class="">Dynamic Languages</h1><h2 id="42cd8887-d059-402a-909b-8e01f9b236b2" class="">APL</h2><ul id="a849a1e4-3852-40ab-910d-8764716e97f9" class="bulleted-list"><li style="list-style-type:disc">Started allowing dynamic typing</li></ul><ul id="12ac92f1-b75e-4b69-aa89-46b3377d20f1" class="bulleted-list"><li style="list-style-type:disc">Dynamic storage allocation</li></ul><ul id="c123d3b3-fcdf-4e4d-b42f-b515c31ae7b5" class="bulleted-list"><li style="list-style-type:disc"><code>A programming language</code></li></ul><ul id="c23b7a7c-0147-4414-8cef-489ad4f8c10b" class="bulleted-list"><li style="list-style-type:disc">Large number of operators and symbols</li></ul><ul id="d70cb9b7-5c55-4725-b682-5be30b11451d" class="bulleted-list"><li style="list-style-type:disc">Highly expressive</li></ul><h2 id="0c028990-db97-407f-9419-a0bd7dbf7eb6" class="">SNOBOL</h2><ul id="f259d1c2-f20c-40c6-8500-3e0db9596c02" class="bulleted-list"><li style="list-style-type:disc">String pattern matching</li></ul><ul id="e48eb0ae-e33b-4174-bce7-d45076f12f2b" class="bulleted-list"><li style="list-style-type:disc">Text Processing</li></ul><h1 id="7cef0432-3e7a-4a23-a2e1-68e81c087f70" class="">SIMULA 67</h1><ul id="f949487d-8a79-491e-bc67-beaa3b42b617" class="bulleted-list"><li style="list-style-type:disc">Extension of ALGOL 60</li></ul><ul id="b7883411-e7f5-414a-a142-7c207def0fe1" class="bulleted-list"><li style="list-style-type:disc">Concept of coroutines → all methods have similar status</li></ul><ul id="baf94c2f-31ef-4202-8a97-bb3cd70227cf" class="bulleted-list"><li style="list-style-type:disc">Restore execution of subprogram where it was left</li></ul><ul id="31565686-a898-47f0-99ec-a6aacecb63f9" class="bulleted-list"><li style="list-style-type:disc">First → Supported abstraction</li></ul><ul id="d7031a62-5feb-4b9a-8f3d-1ccb42e98f6b" class="bulleted-list"><li style="list-style-type:disc">Supported class in a limited way</li></ul><ul id="f2f178ff-e661-49b6-a083-3a2b3c973999" class="bulleted-list"><li style="list-style-type:disc">Led to <span style="border-bottom:0.05em solid">object oriented paradigm</span></li></ul><h1 id="60759feb-0931-4b78-aa7c-69ba78d2a2bb" class="">ALGOL 68</h1><ul id="387d5a38-92d7-49f2-81cb-26eb216b2b2c" class="bulleted-list"><li style="list-style-type:disc">Orthogonality</li></ul><ul id="cfe3ef3b-e8e6-48cd-b1f6-aa37bda476ed" class="bulleted-list"><li style="list-style-type:disc">Less constructs → multiple operations</li></ul><ul id="4f28d3d9-736c-4baf-85e5-d4ae583caf2f" class="bulleted-list"><li style="list-style-type:disc">Descendants → Pascal and C</li></ul><ul id="41c392e8-ae59-4089-820d-4c1b72ab22e3" class="bulleted-list"><li style="list-style-type:disc">User defined types are significant because they allowed users to design data abstraction that suits their problem solution</li></ul><h1 id="9164d249-613f-4ac9-865b-d886e9e49ea7" class="">PASCAL</h1><ul id="0e2f2a42-2cb9-43ef-a7d0-7d98053edafb" class="bulleted-list"><li style="list-style-type:disc">Simple, expressive and hence popular</li></ul><ul id="53f5b6a7-2375-47b3-a07d-f30dc91378f4" class="bulleted-list"><li style="list-style-type:disc">It was impossible to write subprograms which take array as argument</li></ul><ul id="980b085d-e2c2-42bc-acbd-a9f501d501e3" class="bulleted-list"><li style="list-style-type:disc">Designed for teaching</li></ul><h1 id="4b4e0a98-f7df-40a7-82ed-88b9e54d5534" class="">C Language</h1><ul id="43e61493-3e94-4fc5-b61d-18ca035399e9" class="bulleted-list"><li style="list-style-type:disc">CPL(1960) → BCPL(1967) → B(1970) → NB → C</li></ul><ul id="b90882e9-e4f9-4e4f-8b93-2d7a17c92cf5" class="bulleted-list"><li style="list-style-type:disc">ANSI and ISO standardized C</li></ul><ul id="6e5731c2-88d4-4f3b-8cbc-c37e2ce2568e" class="bulleted-list"><li style="list-style-type:disc">Adequate control statements and data structures</li></ul><ul id="b7e689ab-94eb-45de-a924-3abddc0fc9d7" class="bulleted-list"><li style="list-style-type:disc">Suits many application areas</li></ul><ul id="d42eb9c4-549d-4b74-b708-a91129051087" class="bulleted-list"><li style="list-style-type:disc">Rich set of operators provide good expressiveness</li></ul><ul id="dac787b9-55b0-4d4a-ad50-92759bedb8dd" class="bulleted-list"><li style="list-style-type:disc">It’s compiler was part of Unix in 1980 hence gained popularity</li></ul><h1 id="8e6e9e59-5d67-4400-8dca-a629481042b9" class="">Logic Programming</h1><ul id="0346bc75-20f0-4e8c-a874-ca48f8e0f7f3" class="bulleted-list"><li style="list-style-type:disc">Use of formal logic notation to communicate computational process to a computer</li></ul><ul id="63e93bf6-b44e-4c4d-892b-39182ec291aa" class="bulleted-list"><li style="list-style-type:disc">Predicate calculus is the notion used in current logic programming languages</li></ul><ul id="1aa446dd-f520-4ba7-818a-07ea21e3294e" class="bulleted-list"><li style="list-style-type:disc">These are non procedural</li></ul><ul id="63c6e11a-45de-4866-8e06-1c42249ec2c7" class="bulleted-list"><li style="list-style-type:disc">We supply:<ul id="41b50e3f-c01c-4f02-bd31-27121aea63d7" class="bulleted-list"><li style="list-style-type:circle">Relevant Information (facts)</li></ul><ul id="9866364c-4d16-4fae-896a-6e836958b671" class="bulleted-list"><li style="list-style-type:circle">Inferencing process (rules)</li></ul></li></ul><h2 id="309872dd-f1e8-4306-b940-e15c48d41dd1" class="">Prolog → Programming in Logic</h2><ul id="41b5d72f-9ff3-43d8-ba97-df515a1e9f2d" class="bulleted-list"><li style="list-style-type:disc">Fundamental design of prolog was done in 1970</li></ul><ul id="adc3f905-1a2d-48a4-929a-f6ec83ac86d3" class="bulleted-list"><li style="list-style-type:disc">Prolog interpreter developed in 1972</li></ul><ul id="37cbe526-f777-4888-90c9-bab6ee8d8a4a" class="bulleted-list"><li style="list-style-type:disc">Common use of a prolog is a kind of intelligent database</li></ul><ul id="0e2e4b70-e892-444a-bdd9-6ab71cd29773" class="bulleted-list"><li style="list-style-type:disc">Contains two kinds of statements: facts and rules</li></ul><ul id="94bf368d-dc79-409e-aa77-d696a3acae4f" class="bulleted-list"><li style="list-style-type:disc">Fact Statements<ul id="1b20de95-de9a-49c3-a803-00eecb910b78" class="bulleted-list"><li style="list-style-type:circle">mother(joanne, jake)</li></ul><ul id="dc5f4633-2b46-49a6-8881-757ba9224613" class="bulleted-list"><li style="list-style-type:circle">mother(vern, joanne)</li></ul><ul id="66d3633e-cc3a-4983-a500-5b2a30db6dfb" class="bulleted-list"><li style="list-style-type:circle">mother(x, y)</li></ul><ul id="3b82f233-c630-43ba-9e6e-c4ad9bb3d9de" class="bulleted-list"><li style="list-style-type:circle">father(m, n)</li></ul></li></ul><ul id="e301d4de-34da-4b6a-b3df-11d01ed31bfa" class="bulleted-list"><li style="list-style-type:disc">Rule statements<ul id="287449e6-35cf-4608-bb1a-4d4e443d9252" class="bulleted-list"><li style="list-style-type:circle">grandparent(a, c) :- parent(a, b), parent(b, c)</li></ul></li></ul><ul id="76052304-c8a4-4599-b000-1c1c502c9cc5" class="bulleted-list"><li style="list-style-type:disc">Prolog database can be interactively queried with goal statement</li></ul><ul id="82ec9fd9-f137-42cb-8357-c0b70e0d7d40" class="bulleted-list"><li style="list-style-type:disc">When such a query/goal is presented to the prolog system, it uses it’s resolution process to attempt to determine the truth of the statement</li></ul><ul id="fb1ab0d7-7295-4fe5-a100-adabfc19ffbc" class="bulleted-list"><li style="list-style-type:disc">If it can conclude the goal is true, it displays true else it displays false</li></ul><h2 id="5d3c9d17-78de-48e0-a83f-6c4cae127954" class="">Ada</h2><ul id="da10aab6-3311-4674-ad3a-04f133405ca5" class="bulleted-list"><li style="list-style-type:disc">Developed for DoD in 1975</li></ul><ul id="42e65fe0-92e9-44cf-b502-18741c6f5014" class="bulleted-list"><li style="list-style-type:disc">Packages of Ada provide encapsulation → data objects + procedures</li></ul><ul id="d1bba9fa-b0d3-4bbc-9e17-9cfd23ff81c4" class="bulleted-list"><li style="list-style-type:disc">This in turn supports abstraction</li></ul><ul id="1123d316-0629-476b-9571-2f4d2bc7813a" class="bulleted-list"><li style="list-style-type:disc">Supports exception handling</li></ul><ul id="18609da0-6ea0-47b4-ae14-9a69701b576a" class="bulleted-list"><li style="list-style-type:disc">Generic units can be written. This increases reusability</li></ul><ul id="07f59e7d-652c-4d0e-8d3e-02c7a20e3fa6" class="bulleted-list"><li style="list-style-type:disc">Allows concurrent execution of special program units called tasks</li></ul><ul id="037de894-c266-479e-ae27-480e56a672e0" class="bulleted-list"><li style="list-style-type:disc">Widely used in commercial. Defense, avionics etc.</li></ul><h2 id="41f73528-dc59-490a-a6e6-ef621ab62cb9" class="">Small talk</h2><ul id="7e64dd71-aaf7-47d6-8282-3c00de7d44f8" class="bulleted-list"><li style="list-style-type:disc">First full fledged OOPL</li></ul><ul id="d6b2aed8-a2e6-4bef-9f88-a44aef269e3e" class="bulleted-list"><li style="list-style-type:disc">Small talk world is populated by nothing but objects, integer constants to complex software systems</li></ul><ul id="c21f90dd-b203-4f3f-94e4-fe2d22880a49" class="bulleted-list"><li style="list-style-type:disc">All computations happen by sending messages</li></ul><ul id="2c9a4618-a3bc-434c-ae22-03de5a99c93b" class="bulleted-list"><li style="list-style-type:disc">We have object abstraction as class similar to Simula67</li></ul><ul id="6b959b82-61ea-45c9-a4d8-f1d037b48c4a" class="bulleted-list"><li style="list-style-type:disc">OO ideas came from simula but matured with small talk</li></ul><h2 id="8b2bc570-e832-4536-ad87-ebc9d811b6cc" class="">C++</h2><ul id="b0cf714d-6fac-4040-8a1a-68b13cd90d32" class="bulleted-list"><li style="list-style-type:disc">It is C with classes and is hybrid (procedural and OO)</li></ul><ul id="a56dd342-9a22-4ec2-a560-84fc1b803dab" class="bulleted-list"><li style="list-style-type:disc">It supports both functions and methods</li></ul><ul id="087a493c-adb4-4fff-84e2-009a89a0f483" class="bulleted-list"><li style="list-style-type:disc">Supports both procedural and OO programming</li></ul><ul id="01a06d68-5e5b-460b-a7c9-6543bc9d6f97" class="bulleted-list"><li style="list-style-type:disc">Operator overloading</li></ul><ul id="345f1aff-0e89-491e-a522-7008eb58903d" class="bulleted-list"><li style="list-style-type:disc">Has pointers. Dynamic binding supported</li></ul><ul id="52e6a911-26c0-4454-8519-c83c5ed4c11b" class="bulleted-list"><li style="list-style-type:disc">Supports multiple inheritance</li></ul><ul id="d365dd63-3f73-42a8-b3dc-3345d5754689" class="bulleted-list"><li style="list-style-type:disc">Classes and methods can be templated</li></ul><ul id="80eac581-d5f3-42e9-9f39-ef66dd6a5bbf" class="bulleted-list"><li style="list-style-type:disc">Supports multiple inheritance</li></ul><ul id="14366834-7e92-4f81-bdbe-376d36291282" class="bulleted-list"><li style="list-style-type:disc">Supports exception handling</li></ul><h2 id="732a68fd-5954-42f2-b4a5-5be4586153ff" class="">Objective C</h2><ul id="d13dc626-5c8b-492e-8878-75f38a597654" class="bulleted-list"><li style="list-style-type:disc">Dynamic binding of messages to objects, included garbage collection</li></ul><h2 id="7d6978a7-7c13-4dcc-91e6-d846bac2c079" class="">Delphi </h2><ul id="780d7e79-cb16-42e4-8641-6a3a9892ecff" class="bulleted-list"><li style="list-style-type:disc">Object oriented features added to Pascal and this was more elegant and safer than C/C++</li></ul><ul id="d8e25a3d-ce00-46dc-8fb9-72d6d811766a" class="bulleted-list"><li style="list-style-type:disc">No operator overloading</li></ul><h2 id="fe78b442-ae58-46fd-ba57-bfb74a2f7102" class="">Go</h2><ul id="fb260240-6336-499e-96c9-20d39bd56bfa" class="bulleted-list"><li style="list-style-type:disc">Borrows syntax from C,</li></ul><ul id="f977093d-8285-4af9-8949-a4c7114578e0" class="bulleted-list"><li style="list-style-type:disc">Faster compilation although does not support traditional OO as there is no form of inheritance</li></ul><ul id="439da505-7241-4980-a986-1029366f82dd" class="bulleted-list"><li style="list-style-type:disc">We can define methods for any type</li></ul><ul id="31cfcd7f-5f57-41c1-8644-30f23f205880" class="bulleted-list"><li style="list-style-type:disc">Supports pointers, goto, interfaces and concurrency</li></ul><h2 id="3cae59c3-7f19-4695-8867-cc59b07f4112" class="">Java</h2><ul id="1539e21d-08fd-436d-ad0c-02e87d7fa322" class="bulleted-list"><li style="list-style-type:disc">Java → Sun microsystems</li></ul><ul id="63691697-e610-4733-8bc8-c3d0c9baf724" class="bulleted-list"><li style="list-style-type:disc">Embedded consumer electronics</li></ul><ul id="a38ab9af-4fa3-4eac-bb52-91f6280c9096" class="bulleted-list"><li style="list-style-type:disc">Became popular with WWW</li></ul><h1 id="a6d9b203-c6bd-432b-af89-d13cfa1a9a08" class="">Scripting Languages</h1><ul id="a12e6652-7de2-4b8b-baef-33f3f4a8fe4a" class="bulleted-list"><li style="list-style-type:disc">Earlier used for putting list commands called scripts in a file to be interpreted</li></ul><ul id="b9691736-3b6d-4d5c-a5d4-e213eb5339d5" class="bulleted-list"><li style="list-style-type:disc">The first of this is called sh(shell) began as a collection of commands that were interpreted as calls to system subprograms that performed utility functions such as file management and simple filtering</li></ul><ul id="45824210-68eb-4a13-ad34-e3b2847936ab" class="bulleted-list"><li style="list-style-type:disc">To this were added variables, control flows, functions and other capabilities</li></ul><ul id="5ad9ade7-21e6-44cb-ab52-b95ad4e34a9d" class="bulleted-list"><li style="list-style-type:disc">Examples: ksh, awk etc.</li></ul><ul id="5dfbd010-a9bd-4078-a488-ebaf2cdc55cc" class="bulleted-list"><li style="list-style-type:disc">They are interpreted </li></ul><ul id="aa6288cf-185e-45eb-a364-7cbea8b76afe" class="bulleted-list"><li style="list-style-type:disc">Perl → combination of sh and awk</li></ul><ul id="2f9438a1-7bad-4da0-899f-1aa5ab731285" class="bulleted-list"><li style="list-style-type:disc">Java Script → related to java and dynamically creating html docs</li></ul><ul id="84d34b7e-aa72-4842-af80-d5b90a28650c" class="bulleted-list"><li style="list-style-type:disc">PHP: Hypertext Preprocessor → It is a server side scripting language. Code embedded in HTML es executed at server when the HTML is requested by the client. Similar java script syntax<ul id="178135dc-5af7-480e-8684-c2ace41bb54a" class="bulleted-list"><li style="list-style-type:circle">Used to write programs that need web access to databases</li></ul></li></ul><ul id="e69caa3f-5669-499e-aef8-7b78b93c2ed6" class="bulleted-list"><li style="list-style-type:disc">Python → OO interpreted scripted language. </li></ul><ul id="acfc4cea-074e-4769-9981-9a5b3ca461c7" class="bulleted-list"><li style="list-style-type:disc">Ruby</li></ul><ul id="e29b8713-b6fb-4066-ba4a-078c1213a3e7" class="bulleted-list"><li style="list-style-type:disc">C#</li></ul><h1 id="1105f86c-5264-436a-aa25-efbfaf3408e9" class="">Markup Languages</h1><ul id="60333e16-872c-414a-8d04-bb52abc6e02a" class="bulleted-list"><li style="list-style-type:disc">XML → Extensible Markup Language → used to define data docs</li></ul><ul id="826a1ce4-4e7c-4f53-8099-5c52bd21031f" class="bulleted-list"><li style="list-style-type:disc">XSLT → Extensible Stylesheet Transformation Language</li></ul><ul id="6af2c853-cb10-4128-9089-266782b3ca75" class="bulleted-list"><li style="list-style-type:disc">JSP → Java Server Pages</li></ul><figure id="0692b347-a158-461e-955a-82ea8c6f3860" class="image"><a href="History%20of%20Programming%20Languages%20cee31e6b239242799621fa4d22c31927/Untitled.png"><img style="width:1041px" src="History%20of%20Programming%20Languages%20cee31e6b239242799621fa4d22c31927/Untitled.png"/></a></figure></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

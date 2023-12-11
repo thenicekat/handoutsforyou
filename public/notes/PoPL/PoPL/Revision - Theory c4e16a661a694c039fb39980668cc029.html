@@ -1,0 +1,676 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Revision - Theory</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="c4e16a66-1a69-4c03-9fb3-9980668cc029" class="page sans"><header><h1 class="page-title">Revision - Theory</h1><p class="page-description"></p></header><div class="page-body"><nav id="1cad665f-f1ea-4f60-ad49-7c74ba880075" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0a74be06-71f7-4307-a128-4e110511c5fc">12. Functional Languages</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#8e360f70-8c4d-4c6f-8c94-bd8a2b880779">11. Logic Programming</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#bcd61f15-070f-4c2b-bc9e-8d181b9392a2">10. Exception Handling</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#abc07c70-e224-4bd2-9881-57a88efdcbb1">9. Concurrency</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#aea5c99d-8d59-4b80-a7b5-5b4159515c8a">8. Implementing Subprograms</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b3fe07f5-88da-4647-9e3f-5751cfc775cb">7. Subprograms</a></div></nav><h1 id="0a74be06-71f7-4307-a128-4e110511c5fc" class="">12. Functional Languages</h1><ul id="b60efd3f-e7bb-4594-93f3-ac8351941f32" class="bulleted-list"><li style="list-style-type:disc">Made to mimic mathematical functions to as much extent as possible</li></ul><ul id="1d5a6dda-6cf4-47f7-afdd-c716c53eeabf" class="bulleted-list"><li style="list-style-type:disc">There’s no concept of variables which implies that the programmer need not worry about allocating and deallocating space</li></ul><ul id="59cc539d-8fad-4444-be01-3bfa6ac7f69f" class="bulleted-list"><li style="list-style-type:disc">There’s no iterations and every loop has to happen in the form of recursion</li></ul><ul id="cfd66501-66c6-4044-8b90-6c737c13918b" class="bulleted-list"><li style="list-style-type:disc">Based on referential transparency which says that the same function for the same input will always give the same output</li></ul><ul id="3f74f6aa-dad1-442f-bdbe-5730991c4de8" class="bulleted-list"><li style="list-style-type:disc">This helps in testing cause we do not have to worry about the context of the function while testing</li></ul><ul id="4b864598-f5bc-4864-9709-2f5663861c2e" class="bulleted-list"><li style="list-style-type:disc">Haskell is pure functional</li></ul><ul id="2c858b97-082c-464d-9c03-7f9b054c272b" class="bulleted-list"><li style="list-style-type:disc">We have ML, OCaml, LISP also which has lists</li></ul><h1 id="8e360f70-8c4d-4c6f-8c94-bd8a2b880779" class="">11. Logic Programming</h1><ul id="7e7bef44-f9cc-4e2e-bbf4-8dc6394cbb68" class="bulleted-list"><li style="list-style-type:disc">Logic programming deals with the use of symbolic logic and inferences from propositions. Prolog is one example of a logic programming language</li></ul><ul id="3b5ea495-7e5e-4223-95cd-11d233824463" class="bulleted-list"><li style="list-style-type:disc">In prolog, the propositions have no intrinsic semantics and a variable can be a term</li></ul><ul id="a61cbe92-f2bb-4eac-b620-247e94e92f36" class="bulleted-list"><li style="list-style-type:disc">Goals are known as queries and if you have multiple goals, then the smaller ones are called subgoals</li></ul><ul id="2f28e111-7936-4b7f-bf2e-3b92be339496" class="bulleted-list"><li style="list-style-type:disc">Logic programming is used for defining propositions, defining relationships between propositions and inferencing answers for queries using these propositions</li></ul><ul id="e50e9a31-ac80-442e-8b76-8c34928e98b6" class="bulleted-list"><li style="list-style-type:disc">We have quantifiers as well which include, for all and there is</li></ul><ul id="56b396f1-21e0-40b3-b73a-9c82aca42d87" class="bulleted-list"><li style="list-style-type:disc">Headless horn clause → no LHS</li></ul><h1 id="bcd61f15-070f-4c2b-bc9e-8d181b9392a2" class="">10. Exception Handling</h1><ul id="2b8623e7-c2aa-4cac-9d98-1717d3258768" class="bulleted-list"><li style="list-style-type:disc">Exception handling is the process of finding unusual activity in the program, taking action against it and ensuring the program runs as usual</li></ul><ul id="4b021cfa-e5a4-44ac-bf9f-d76c9075f908" class="bulleted-list"><li style="list-style-type:disc">The code which processes all this is called the exception handler</li></ul><ul id="fe986372-0970-499e-8ab2-b749514b57f7" class="bulleted-list"><li style="list-style-type:disc">Program Language implementors have written instructions in the language for implicit as well as explicit exceptions. </li></ul><ul id="d92390a2-7229-412f-9f5a-98f3b60eb518" class="bulleted-list"><li style="list-style-type:disc">Implicit exceptions are raised by default while explicit exceptions or those defined by the user have to be triggered by the user</li></ul><ul id="3ca1d9ec-6ae8-4569-83d5-618f9036185b" class="bulleted-list"><li style="list-style-type:disc">In java all exceptions are part of throwable class</li></ul><ul id="902ddba2-9ff8-48f2-895a-f1b832aa92d6" class="bulleted-list"><li style="list-style-type:disc">We have checked as well as unchecked exceptions. Checked exceptions mostly get fixed after compilation but the unchecked ones occur at run time and the user has to deal with these</li></ul><ul id="a19a578a-3bf7-4756-bb07-28cee8df3e80" class="bulleted-list"><li style="list-style-type:disc">Ada has a lot of exception handling mechanism</li></ul><ul id="0a8041d7-1c60-4ca9-87f0-ef7d19541808" class="bulleted-list"><li style="list-style-type:disc">C++ has no inbuilt exception handling other than the one in the standard library</li></ul><ul id="6a01c8cd-ac04-4741-a9d9-41365c3c05d2" class="bulleted-list"><li style="list-style-type:disc">Whenever an exception occurs, the code can either decide to terminate or resume and continue</li></ul><ul id="8b2a7b1a-428c-4cd7-b335-a7c05bfbb70c" class="bulleted-list"><li style="list-style-type:disc">Java recently introduced the assert keyword. Using the assert key word the programmers can put built in checks in to the code. For example, say before dividing you want to check if the denominator is greater than 0 or not you can use the assertion there and if the assertion fails, an ASSERTIONERROR is thrown</li></ul><ul id="e8fbee7e-2dae-4998-8d0f-fab3e65b89be" class="bulleted-list"><li style="list-style-type:disc">Event is a notification that something has occurred, even handling is done using event listeners in java and these event listeners need to be told what event to look out for x </li></ul><h1 id="abc07c70-e224-4bd2-9881-57a88efdcbb1" class="">9. Concurrency</h1><ul id="5bdbb20e-1491-4abe-bddf-03c2b378263e" class="bulleted-list"><li style="list-style-type:disc">Concurrency is the process of running multiple processes or applications at the same time parallelly. There’s two types of concurrency, physical and logical. Physical concurrency is when there are multiple processors and each processor runs one process while logical concurrency is where you have only one process which is context switching between both the processes to give you the feel of concurrency</li></ul><ul id="382e7b9f-d6e5-4d38-9775-e9fe9faf81db" class="bulleted-list"><li style="list-style-type:disc">Heavy weight tasks have their own address space while light weight tasks run in the same address space</li></ul><ul id="cfbe9f74-fa49-4ff0-9ce1-e6aa7a8fe24a" class="bulleted-list"><li style="list-style-type:disc">Light Weight tasks have 3 advantages<ul id="d67a80c9-7f72-4f04-9622-f61255ccbc26" class="bulleted-list"><li style="list-style-type:circle">Easy to implement</li></ul><ul id="9552995c-ded2-4814-8ef3-23ba5d32ffd0" class="bulleted-list"><li style="list-style-type:circle">Easy to monitor their execution</li></ul><ul id="d6eaafbd-75d6-4c99-b3c5-91d0ef853ee7" class="bulleted-list"><li style="list-style-type:circle">IPC between these is easy through non local variables and if there is no tIPC then they are disjoint</li></ul></li></ul><ul id="02645b5d-83fc-4441-839e-533f493483ab" class="bulleted-list"><li style="list-style-type:disc">Motivation behind concurrency<ul id="905e72b1-fa60-413b-aa9c-3a88257dc02f" class="bulleted-list"><li style="list-style-type:circle">Running the same program on multiple processors concurrently can produce faster output</li></ul><ul id="b12b11f8-3842-41fd-8333-6cb17b42105b" class="bulleted-list"><li style="list-style-type:circle">Even if there is only one processor, we can use threads to run the program concurrently which might be faster than non concurrent</li></ul><ul id="538fd00f-8323-42ad-8ad8-2df31a3bb346" class="bulleted-list"><li style="list-style-type:circle">Multiprocessing helps as a new way of thinking for some problems similar to how recursion exists</li></ul><ul id="8552ccfe-931b-41d8-becf-727b0e28ae85" class="bulleted-list"><li style="list-style-type:circle">In distributing computing, we use multiprocessing to scale the processes to handle a lot of requests</li></ul></li></ul><ul id="3cce9872-7aba-4ba8-a502-3866332af190" class="bulleted-list"><li style="list-style-type:disc">Synchronization<ul id="c12c64b5-0187-4418-9b3e-1cde9fa7866f" class="bulleted-list"><li style="list-style-type:circle">The concept of handling multiple concurrent request without leading to loss in data integrity</li></ul><ul id="7feb1dba-ef63-4ae7-881f-471e143db950" class="bulleted-list"><li style="list-style-type:circle">We have two types of synchronization</li></ul><ul id="1bc05b6b-4a1c-4d6c-8869-40d1abec01c9" class="bulleted-list"><li style="list-style-type:circle">Cooperative → Where A is waiting for B to complete and then only will get to proceed</li></ul><ul id="66da8a5d-aaa1-454b-b471-7975d3e9fe87" class="bulleted-list"><li style="list-style-type:circle">Competitive → When A and B are trying to access the same resource but the resource can only be accessed by one process at one time</li></ul></li></ul><ul id="f2c3a9fb-41f5-4ee8-98bb-8d66531bc32a" class="bulleted-list"><li style="list-style-type:disc">Methods for Synchronization<ul id="4677e044-e8e3-410b-bfef-396591c90bd2" class="bulleted-list"><li style="list-style-type:circle">Monitors → Monitor is an encapsulation mechanism through which only the synchronized methods are available to the user such that only one process can access the object inside and modify it at one point of time</li></ul><ul id="15e328c0-c06b-4e48-85fb-3c069ffead32" class="bulleted-list"><li style="list-style-type:circle">Semaphores → It is a data structure that holds an integer and a queue of tasks which keeps track of when a task can be performed. Semaphores can be used for both coop and comp sync</li></ul><ul id="85b82788-b284-4fb0-9e2e-e7ce372873d0" class="bulleted-list"><li style="list-style-type:circle">Message Passing → It is used to send messages between processes to keep track of them and synchronize them</li></ul></li></ul><h1 id="aea5c99d-8d59-4b80-a7b5-5b4159515c8a" class="">8. Implementing Subprograms</h1><ul id="e9a3a955-8184-4e8c-ba5e-581aeeff7957" class="bulleted-list"><li style="list-style-type:disc">We have two types of stack diagrams.<ul id="3ab9dd4f-1e94-4c34-9dc3-2a103d3ebe1c" class="bulleted-list"><li style="list-style-type:circle">Without recursion → only main → return to main then dynamic link then parameters and variables</li></ul><ul id="830475db-e618-40c7-a31b-76fdafbb1a4f" class="bulleted-list"><li style="list-style-type:circle">With recursion → will have functional value</li></ul><ul id="98fd9720-ab99-4eb5-9c2f-cc1e2e396978" class="bulleted-list"><li style="list-style-type:circle">With static scoping → will add static link</li></ul></li></ul><ul id="32dd23e8-26bb-489d-97b7-4ac3e5b32865" class="bulleted-list"><li style="list-style-type:disc">Simple subprogram<ul id="49d6707a-97d6-431f-8103-2ca05d03933d" class="bulleted-list"><li style="list-style-type:circle">Create an Activation Record instance</li></ul><ul id="85e80b74-8e5f-4910-a4c1-310728fcad23" class="bulleted-list"><li style="list-style-type:circle">Save the execution status and the subprogram registers</li></ul><ul id="7c298db0-fb44-49e7-881b-fa24366f975f" class="bulleted-list"><li style="list-style-type:circle">Compute and pass the parameters</li></ul><ul id="c27d8858-e5de-4eb8-adee-0b81e1b806c5" class="bulleted-list"><li style="list-style-type:circle">Pass the return address to the called</li></ul><ul id="202e0e2e-01f8-4ac8-8453-34f1cfde4dee" class="bulleted-list"><li style="list-style-type:circle">Transfer control to the called</li></ul></li></ul><ul id="ee5fc0f6-0b24-47f4-8cb8-0ab5035a5c49" class="bulleted-list"><li style="list-style-type:disc">Local offset is the offset of the local variable from the environment pointer</li></ul><h1 id="b3fe07f5-88da-4647-9e3f-5751cfc775cb" class="">7. Subprograms</h1><ul id="7987ac0d-6ea7-4521-b61a-42a2ac942317" class="bulleted-list"><li style="list-style-type:disc">Subprograms are part of process abstraction where each subprogram <ul id="03984dbe-3a7a-4e7f-a3fa-30c88422758c" class="bulleted-list"><li style="list-style-type:circle">has one entry point</li></ul><ul id="03e81a88-2e53-4f03-880c-2087ed7be0db" class="bulleted-list"><li style="list-style-type:circle">caller is suspended when the subprogram is in suspension</li></ul><ul id="a98ab7fd-8d76-4866-9ade-7356d7e81770" class="bulleted-list"><li style="list-style-type:circle">control always returns to the caller once the execution of the called ends</li></ul></li></ul><ul id="d9077f0b-720e-4718-9c56-0470222967b7" class="bulleted-list"><li style="list-style-type:disc">Parameters<ul id="92f113ac-7fce-4693-aa36-20cb9ad950c1" class="bulleted-list"><li style="list-style-type:circle">Formal parameters - dummy parameters that only get binded once the subprogram is executed</li></ul><ul id="df27d582-2bb6-4e6a-b504-d2678470f1b4" class="bulleted-list"><li style="list-style-type:circle">Actual parameters - the list of the parameters bound to the formal ones</li></ul><ul id="0194f37d-9880-457f-b4c9-d58e3ae365b3" class="bulleted-list"><li style="list-style-type:circle">Positional parameters - When the binding between AP and FP has to happen in order of their passing, we call it positional parameters</li></ul><ul id="21cf63d5-287f-45a3-a5dc-a5ae0c4a0183" class="bulleted-list"><li style="list-style-type:circle">Keyword parameters - used when lists are wrong and it becomes hard to keep track of positions, python, perl support keyword</li></ul></li></ul><ul id="2a57759b-cc32-4e7f-923d-dff9bb58b2f4" class="bulleted-list"><li style="list-style-type:disc">Procedures don’t return anything while functions always return a value</li></ul><ul id="302780bc-5ca6-4a29-8aa3-8e5b6b15466a" class="bulleted-list"><li style="list-style-type:disc">Pass by value - IN </li></ul><ul id="55191186-b34b-4c7a-b1bc-dee3c47952fe" class="bulleted-list"><li style="list-style-type:disc">Pass by result - OUT</li></ul><ul id="89500900-9baa-4ee8-b686-ae8bc47dce9f" class="bulleted-list"><li style="list-style-type:disc">Pass by value-result - INOUT</li></ul><ul id="b445fda2-caf2-491e-af6c-b268c78944ab" class="bulleted-list"><li style="list-style-type:disc">Pass by reference - INOUT → address is passed</li></ul><ul id="c17bd561-975c-4426-a81f-29b81b645153" class="bulleted-list"><li style="list-style-type:disc">Pass by name - INOUT → we directly substitute name wise</li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

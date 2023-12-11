@@ -1,0 +1,678 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Subprograms</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1eeeac47-df03-4b24-b304-8b3b6ed569bc" class="page sans"><header><h1 class="page-title">Subprograms</h1><p class="page-description"></p></header><div class="page-body"><nav id="868cec6d-1482-4cf2-8c24-0e523641d76a" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e780c521-d9c1-43f3-a588-40a4dcf126b0">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9ea6d1cd-b5fa-417d-9fe8-3466cf017c35">Parameters</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#daf139f5-db16-4bfa-87dc-7202989c0865">How methods are different?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a5ca4615-f8fd-4a03-83b5-87632bd74b77">Categories of parameters</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#27c80c3c-e6ff-4155-b97e-65e3b7cee5f2">Procedures and Functions</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#6125dca2-f0b3-4a17-ba6e-32ebb3fec5b2">Local referencing environments</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5c695344-0568-4004-bfca-25a40443b76b">Parameter Passing</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#6a051a12-2591-4d37-bb3a-d346f6a50283">Overloaded subprograms</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e9067b2a-ecd8-419b-8ed8-042c26d4235d">Design Issues in functions</a></div></nav><h1 id="e780c521-d9c1-43f3-a588-40a4dcf126b0" class="">Introduction</h1><ul id="27b5aaf9-1bfd-4049-afc0-fd2bab669b8d" class="bulleted-list"><li style="list-style-type:disc">Programming languages support two sorts of abstractions<ul id="667b16ef-9087-46d7-8be4-40c28e0bb043" class="bulleted-list"><li style="list-style-type:circle">Data abstraction</li></ul><ul id="b8c6044f-97b8-4e1b-bf66-ff9fc00854ee" class="bulleted-list"><li style="list-style-type:circle">Process abstraction</li></ul></li></ul><ul id="92f6b8b2-4de5-499d-ac0f-f63cc3573385" class="bulleted-list"><li style="list-style-type:disc">Subprograms are the form of process abstraction</li></ul><ul id="d88d1120-562e-41a5-b535-47aa46aa53ad" class="bulleted-list"><li style="list-style-type:disc">They have a lot of general characteristics<ul id="5d6c3604-1aaf-43d7-8771-93f7380bd598" class="bulleted-list"><li style="list-style-type:circle">Each subprogram has a single entry point</li></ul><ul id="0e7523dd-d35a-461d-8335-5327871d17f0" class="bulleted-list"><li style="list-style-type:circle">Caller is suspended when the subprogram is under execution</li></ul><ul id="1cfab2a1-f5d0-4055-b4be-d58ed17a2381" class="bulleted-list"><li style="list-style-type:circle">Control always returns to the caller once the called subprogram execution is completed</li></ul></li></ul><ul id="b8a2192e-3fa2-4d4a-a003-6b9023b3ad2f" class="bulleted-list"><li style="list-style-type:disc">Subprogram definition describes the interface to and the actions of the subprogram abstraction</li></ul><ul id="d906d567-377e-4adc-b43d-309d48312974" class="bulleted-list"><li style="list-style-type:disc">Subprogram call is the explicit request to execute a specific subprogram</li></ul><ul id="0ec7db95-0109-4311-9e68-c9defe611a66" class="bulleted-list"><li style="list-style-type:disc">Active subprogram is one which is called - begun to execute - and yet to complete the execution</li></ul><ul id="76b41055-ee10-4db3-8e45-e6c47ec23030" class="bulleted-list"><li style="list-style-type:disc">Subprogram header is the first part of the definition and consists of the kind, name and the list of parameters<ul id="8a38d6a7-8eae-4877-9bc1-28ccf313a3a4" class="bulleted-list"><li style="list-style-type:circle">In C → void adder(parameter list)</li></ul><ul id="f06a4c51-4362-4de1-a924-f02475ae3fb4" class="bulleted-list"><li style="list-style-type:circle">In python → def adder(parameter list):</li></ul></li></ul><ul id="388c3eef-8882-4243-9c14-6439daca16d2" class="bulleted-list"><li style="list-style-type:disc">The parameter profile of a subprogram contains the number, order and the type of its formal parameters</li></ul><ul id="04a7d098-9b19-422a-9bbc-eb6b5e9d1ea9" class="bulleted-list"><li style="list-style-type:disc">The protocol of a subprogram is the <span style="border-bottom:0.05em solid">parameter profile plus the return type</span> of the subprogram</li></ul><h1 id="9ea6d1cd-b5fa-417d-9fe8-3466cf017c35" class="">Parameters</h1><ul id="925f05ef-dedf-4914-a7dd-b01ea3e446ff" class="bulleted-list"><li style="list-style-type:disc">Two ways a subprogram can gain access to data it is expected to process is<ul id="4ace4978-81cc-4dd8-9300-d21576b191c3" class="bulleted-list"><li style="list-style-type:circle">Non local variables → declared outside and visible in the subprogram</li></ul><ul id="5564aff2-3c00-4c0b-a132-97e126db2375" class="bulleted-list"><li style="list-style-type:circle">Through parameter passing</li></ul></li></ul><ul id="f20dcd17-b464-4c45-966e-a8adcda51a0f" class="bulleted-list"><li style="list-style-type:disc">The data passed to the subprogram is accessed through names and are local to subprograms</li></ul><ul id="9aef28bd-cb0e-4a67-be17-25d630161873" class="bulleted-list"><li style="list-style-type:disc">Extensive access to non locals can reduce reliability</li></ul><h2 id="daf139f5-db16-4bfa-87dc-7202989c0865" class="">How methods are different?</h2><ul id="406224ff-b571-4fc6-a3e2-b3ee4532fd0d" class="bulleted-list"><li style="list-style-type:disc">Though methods access external data through non local references, the primary data to be processed by a method is the members of the object through which the method is invoked</li></ul><ul id="7fd4bbbc-a08e-442a-bb7c-1d316a091757" class="bulleted-list"><li style="list-style-type:disc">Pure functional languages such as <span style="border-bottom:0.05em solid">Haskell do not have mutable data</span>, so functions cannot change memory in anyway</li></ul><ul id="89e1f36b-ebba-44b5-aeeb-e8a2ff496a5d" class="bulleted-list"><li style="list-style-type:disc">They simply perform computations and return the results</li></ul><h2 id="a5ca4615-f8fd-4a03-83b5-87632bd74b77" class="">Categories of parameters</h2><ul id="c71089d0-16a1-4969-bb45-fa0a0958a2c3" class="bulleted-list"><li style="list-style-type:disc">Formal parameters → appear in header and are thought of as dummy variables and these are bound to the storage only when the subprogram is called</li></ul><ul id="312d2f8b-cbc9-4321-8526-0020aac14a89" class="bulleted-list"><li style="list-style-type:disc">Actual parameters is the list of parameters to be bound to formal parameters</li></ul><ul id="d1b918be-32f9-4cd6-b80d-3332d5feecf9" class="bulleted-list"><li style="list-style-type:disc">Positional parameters is when binding between FP and AP is done by position, better when list is small</li></ul><ul id="a2ceb532-1840-4423-9832-8fc178bdc5fc" class="bulleted-list"><li style="list-style-type:disc">Keyword parameters is when the list is long, the programmer makes mistakes, to prevent this one solution is to provide keyword parameters, in which the name of the formal parameter to which the actual parameter is bound is specified in the function call, hence order is insignificant</li></ul><h1 id="27c80c3c-e6ff-4155-b97e-65e3b7cee5f2" class="">Procedures and Functions</h1><ul id="2f617c66-d127-470e-ab29-4df3c4009ff6" class="bulleted-list"><li style="list-style-type:disc">We have two distinct categories of subprograms</li></ul><ul id="b3cb25ce-a611-46cb-811d-9b85b3997fc4" class="bulleted-list"><li style="list-style-type:disc">Procedures and functions, both are collections of statements and have parameters</li></ul><ul id="046bceca-6920-4561-8bfc-dfd9b104664f" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">Procedures do not return anything</span></li></ul><ul id="1c3f2047-2572-4a99-923f-cc174e940d10" class="bulleted-list"><li style="list-style-type:disc">Functions can return a value</li></ul><ul id="4cfff782-d51b-4572-83d6-12580d8a2acc" class="bulleted-list"><li style="list-style-type:disc">Most languages do not include procedures</li></ul><ul id="b17eed8b-9406-427a-9f07-a3bea966f1ca" class="bulleted-list"><li style="list-style-type:disc">In place of a procedure, a function defined not to return value, can be used</li></ul><ul id="73b1b27f-78e0-4e5d-b4ca-414b44db48f7" class="bulleted-list"><li style="list-style-type:disc">The computations/statements of procedure can be enacted by a single call to the procedure</li></ul><ul id="4a8cab63-8087-4879-a663-7f95ca87890d" class="bulleted-list"><li style="list-style-type:disc">In ada, we have procedures and in <span style="border-bottom:0.05em solid">fortran we have subroutines</span></li></ul><ul id="e50fd98d-fb2b-4d8e-9ea5-e4d3dbd729a8" class="bulleted-list"><li style="list-style-type:disc">Procedure can produce result in the calling program in two ways<ul id="79e2faf7-2855-4faf-993d-d938256a3c7c" class="bulleted-list"><li style="list-style-type:circle">Variables which are not local to subprograms, visible to both caller and the subprogram, both can change them</li></ul><ul id="8a2c1051-9fb8-47d3-97d0-bd78f80eda59" class="bulleted-list"><li style="list-style-type:circle">If the procedure has formal parameters that can transfer the data to the caller: Out parameter</li></ul></li></ul><ul id="398a5339-aa7d-412e-a991-6c7cdb2fa6da" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background">Faithful functions will not modify its parameters nor modify outside data items, has no side effects and only compute some value and return it</mark></li></ul><h1 id="6125dca2-f0b3-4a17-ba6e-32ebb3fec5b2" class="">Local referencing environments</h1><ul id="6e705197-77f0-4d0f-93ae-0af6085a51f8" class="bulleted-list"><li style="list-style-type:disc">Local variables: defined inside subprogram either in static or stack dynamic</li></ul><ul id="2f6e5aa5-c4a7-4696-a6f5-ec23673af9f3" class="bulleted-list"><li style="list-style-type:disc">Stack dynamic variables allow recursion</li></ul><ul id="78cda483-6cb1-412d-b19b-59d0b283230b" class="bulleted-list"><li style="list-style-type:disc">Cost of allocation, deallocation, initialization</li></ul><ul id="e0c9f333-0ca6-40dd-9cfc-147b475ed0ee" class="bulleted-list"><li style="list-style-type:disc">Access is indirect and it’s not history sensitive</li></ul><ul id="34126f00-af73-4069-b6db-1be38bcda60a" class="bulleted-list"><li style="list-style-type:disc">Static local variables have direct access and hence no run time overhead</li></ul><ul id="b5929848-3803-40f4-becd-4c274f2f67e4" class="bulleted-list"><li style="list-style-type:disc">History sensitive but can’t support recursion</li></ul><ul id="33ce6be0-0928-4160-97d9-54610313955a" class="bulleted-list"><li style="list-style-type:disc">In many PLs, they are stack dynamic unless declared static</li></ul><ul id="5d40074f-7833-456d-889a-a710db460f8c" class="bulleted-list"><li style="list-style-type:disc">Closure is RE + nested subprogram</li></ul><h1 id="5c695344-0568-4004-bfca-25a40443b76b" class="">Parameter Passing</h1><ul id="eb2e5f66-19e0-424b-97a0-f102d22672b4" class="bulleted-list"><li style="list-style-type:disc">Semantic Models of parameter passing<ul id="41b83251-603d-4d5d-88b4-4433bd3e1404" class="bulleted-list"><li style="list-style-type:circle">Receive data from corresponding actual parameter - IN</li></ul><ul id="66ecf0af-e1d7-4af1-ae56-d2980f51c420" class="bulleted-list"><li style="list-style-type:circle">Transmit data to actual parameter - OUT</li></ul><ul id="b4148e4d-c702-4372-a1d4-1c40400c63af" class="bulleted-list"><li style="list-style-type:circle">Both - INOUT</li></ul><figure id="3e701eee-54c2-442b-bb4e-c7b2453f1ab0" class="image"><a href="Subprograms%201eeeac47df034b24b3048b3b6ed569bc/Untitled.png"><img style="width:1309px" src="Subprograms%201eeeac47df034b24b3048b3b6ed569bc/Untitled.png"/></a></figure></li></ul><ul id="ebe8aec8-8f6c-4543-a6d0-2d20e3bebfd3" class="bulleted-list"><li style="list-style-type:disc">Implementations of semantic models of parameter passing<h3 id="65846ddc-c997-42aa-81d3-e10d633f8bb3" class="">Pass by value → IN mode semantics</h3><ul id="50874bb5-bfcd-4d91-b4b5-ca3a9017e88c" class="bulleted-list"><li style="list-style-type:circle">Implemented by copy</li></ul><ul id="6c9cf97b-8e90-4782-8faf-7cbe06324bd5" class="bulleted-list"><li style="list-style-type:circle">C copied this from ALGOL 68</li></ul><ul id="336fe76b-844e-4a01-86e0-964fc9ac7377" class="bulleted-list"><li style="list-style-type:circle">It’s faster but it makes a new copy which leads to use of storage</li></ul><h3 id="8a10fe4f-c3a7-4c63-9356-b816d2a08c8a" class="">Pass by result → OUT mode semantics</h3><ul id="0f450a4c-c83a-4682-a8dd-9624215871f2" class="bulleted-list"><li style="list-style-type:circle">This method uses <em>out-mode</em> semantics. Just before control is transferred back to the caller, the value of the formal parameter is transmitted back to the actual parameter. This method is sometimes called <em>call by the result</em>. </li></ul><ul id="1b4f97d7-e653-41bb-b4ee-df4baebe93c8" class="bulleted-list"><li style="list-style-type:circle">In general, the pass-by-result technique is implemented by copying.</li></ul><h3 id="5aa08590-8cb0-42e0-af6b-654230d04e65" class="">Pass by value-result or Pass by Copy → INOUT mode semantics</h3><ul id="dc3c11f7-f63a-4ea2-9234-c3aeac1cf2fe" class="bulleted-list"><li style="list-style-type:circle">This method uses <em>in/out-mode</em> semantics. </li></ul><ul id="75ef4c4a-f58d-4656-9b78-03532d4bb4a2" class="bulleted-list"><li style="list-style-type:circle">It is a combination of Pass-by-Value and Pass-by-Result. Just before the control is transferred back to the caller, the value of the formal parameter is transmitted back to the actual parameter. This method is sometimes called <em>call by value-result.</em></li></ul><ul id="66dff2f6-ab05-40cb-a354-3a35e75b73d2" class="bulleted-list"><li style="list-style-type:circle">the actual parameter is copied to the formal parameter at subprogram entry and then
+copied back at subprogram termination</li></ul><ul id="e06e8089-ef4d-449b-868c-38c9ba6df641" class="bulleted-list"><li style="list-style-type:circle">It shares with pass-by-value and pass-by-result the disadvantages of requiring multiple  storage for parameters and time for copying values.</li></ul><ul id="817e46f9-c005-4665-baee-b1cea4d96ba9" class="bulleted-list"><li style="list-style-type:circle">It shares with pass-by-result the problems associated with the order in which actual  parameters are assigned</li></ul><h3 id="7bdc7715-69b1-4262-85f5-13d66c970285" class="">Pass by reference → INOUT mode</h3><ul id="1af314a7-971c-4ac8-b84e-ba5c9d173211" class="bulleted-list"><li style="list-style-type:circle">This transfers an access path and thus the calling subprogram is able to access the actual variable data path</li></ul><ul id="60ed782d-6489-4b82-8480-0e0c55693c5a" class="bulleted-list"><li style="list-style-type:circle">Duplicate space is not required but it might be slower</li></ul><ul id="0f28f6f5-0d3a-4c63-89d8-c39c3b372f63" class="bulleted-list"><li style="list-style-type:circle">One disadvantage is aliases are created</li></ul><h3 id="a61c17a3-d16f-4b53-80ee-58e54949e0df" class="">Pass by name → INOUT mode</h3><ul id="3c9b7cad-e1f0-43d2-bef2-19c66e835e2a" class="bulleted-list"><li style="list-style-type:circle">When parameters are passed by name, the actual parameter is, in effect, <span style="border-bottom:0.05em solid">textually substituted</span> for the corresponding formal parameter in all its occurrences in the subprogram.</li></ul><ul id="da6e635a-a6ab-40e9-99f7-4ffa84108a3e" class="bulleted-list"><li style="list-style-type:circle">This method is quite different from those discussed thus far; in which case, formal parameters are bound to actual values or addresses at the time of the subprogram call.</li></ul><ul id="714e53ef-8b70-4d5d-945f-b10c1ea54432" class="bulleted-list"><li style="list-style-type:circle">A pass-by-name formal parameter is bound to an access method at the time of the subprogram call, but the actual binding to a value or an address is delayed until the formal
+parameter is assigned or referenced</li></ul><ul id="bc9525dc-48da-4d57-8961-0fbf0287fec9" class="bulleted-list"><li style="list-style-type:circle">USED BY MACROS !!!</li></ul></li></ul><figure id="2b3037ff-c42d-4c98-ab83-40ff6f6b910b" class="image"><a href="Subprograms%201eeeac47df034b24b3048b3b6ed569bc/Untitled%201.png"><img style="width:1447px" src="Subprograms%201eeeac47df034b24b3048b3b6ed569bc/Untitled%201.png"/></a></figure><h1 id="6a051a12-2591-4d37-bb3a-d346f6a50283" class="">Overloaded subprograms</h1><ul id="61e85185-6f0c-4d8b-8b4e-1a36586b17db" class="bulleted-list"><li style="list-style-type:disc">An overloaded operator is one that has multiple meanings</li></ul><ul id="4f11cc27-d753-4338-8967-a0e515547156" class="bulleted-list"><li style="list-style-type:disc">Meaning is determined by the type of operands</li></ul><ul id="f8b3b9fa-5a91-4f1d-8410-7eb3f75a79fb" class="bulleted-list"><li style="list-style-type:disc">An overloaded subprogram is the one which has same name as another subprogram</li></ul><ul id="4cb4b74f-6ad8-442f-a394-e56e2b728093" class="bulleted-list"><li style="list-style-type:disc">Protocol must be unique even though name is same</li></ul><ul id="e801fb31-05c9-4cb8-8f3d-e37947a2f7df" class="bulleted-list"><li style="list-style-type:disc">Must differ in number of parameters, type and order</li></ul><ul id="73695c3c-831b-4298-80d0-73ec37905b9c" class="bulleted-list"><li style="list-style-type:disc">C++, Java, Ada, C# support method overloading</li></ul><ul id="97c52579-bfe4-4b7b-8e42-a9e1c5758567" class="bulleted-list"><li style="list-style-type:disc">C++, Java, C# also support constructor overloading</li></ul><ul id="31f8714f-ad47-4bb4-a7b8-0f903d4bd66a" class="bulleted-list"><li style="list-style-type:disc">In java, C# and C++ return type is not important</li></ul><h1 id="e9067b2a-ecd8-419b-8ed8-042c26d4235d" class="">Design Issues in functions</h1><figure id="91f56763-3166-41f2-b99b-3cc02195ef0d" class="image"><a href="Subprograms%201eeeac47df034b24b3048b3b6ed569bc/Untitled%202.png"><img style="width:1281px" src="Subprograms%201eeeac47df034b24b3048b3b6ed569bc/Untitled%202.png"/></a></figure></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
