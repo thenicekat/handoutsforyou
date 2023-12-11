@@ -1,0 +1,676 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Bindings</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="6ef0846c-d71f-4cbd-a2df-969019760dab" class="page sans"><header><h1 class="page-title">Bindings</h1><p class="page-description"></p></header><div class="page-body"><nav id="fedfebb6-54f5-4b0f-9f6c-faa5aecee02a" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b576a5ac-f0d6-4170-a75a-11b8a221b7bf">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#8c6461e9-5ab4-4593-b7ee-419f61599015">Names</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9fbccd6b-68f3-4128-9c25-f3541532b38b">Design Issues</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8e66c4be-d00e-448b-85b3-f349f4681ce3">Name Forms</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#55a439be-b940-44d5-a33c-770f1aabaae3">Special Words</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#464842ce-68df-4c12-895a-a6a5058ff00d">Reserved words</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4920662d-bc39-4b56-b579-395cec61521a">Keywords</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#6646d7e2-1662-425a-a7bd-91fc2859c1a4">Variables</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b620cd84-3cbb-4880-8b62-55800d9880f2">Name</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3eacdb47-4fbc-4aaa-aeb8-056f23399b23">Address</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#31361f76-d587-477f-96ec-b82f7b3ecc11">Type</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4cb06b4f-373d-4956-bd19-467d68d0802f">Values</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9e24a19f-6379-4cb6-bf7e-5757e28cc696">Binding</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4c7d249f-b36e-4323-9ef1-df97503a2b1d">Static Binding</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0045f15c-8f0e-4ac7-a993-dbf3de900066">Dynamic Binding</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a41423b9-1ba9-4239-ba28-79478d0137f8">Storage Binding and Lifetime</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#042c55b0-93c8-4d21-9e26-2f4d779bfcba">Categories of Variables</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#465249c9-f02c-449b-903f-a40cff9484c7">Static Variables</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4f2ab026-b3e0-48fd-b3ec-700a357a7b18">Stack Dynamic Variables</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3098428c-b2e9-41b9-a0e4-ed8d470557d3">Explicit Heap Dynamic Variables</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0eab56cb-c986-4742-bec6-e8ef465618d7">Implicit Heap Dynamic Variables</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a191c3be-9764-44fc-9a07-c6f233722dd7">Scope</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#14fe1842-1b24-43b8-bbb8-6cfca2a15cb8">Static Scoping</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7fb243c6-f328-44e7-ae8a-ef86cf2f8b9d">Dynamic Scoping</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#cb296f17-e679-43fe-bf11-80d2c6e3707b">Global Scope</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#935715d4-6d1c-4830-a15f-a0d81f032b8f">Scope and lifetime</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#826dd9eb-fe72-4d34-a207-8ed3b0096cca">Referencing Environment</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9fe66331-d2e0-40c5-8a7b-212a2c2880a1">Named Constant</a></div></nav><h1 id="b576a5ac-f0d6-4170-a75a-11b8a221b7bf" class="">Introduction</h1><ul id="8b871924-5fc4-4d69-9b64-2d920a491f09" class="bulleted-list"><li style="list-style-type:disc">In von-neumann architecture, the important components are <ul id="359d58da-acd6-4032-a2d8-9e465015d62b" class="bulleted-list"><li style="list-style-type:circle">Memory - to store data and instructions</li></ul><ul id="54ab99f1-699a-48fb-9da4-3a19c4db3651" class="bulleted-list"><li style="list-style-type:circle">CPU - performs operations to change the content of the memory cells</li></ul></li></ul><ul id="d7e46dab-2d3a-4339-b881-d05969848c1d" class="bulleted-list"><li style="list-style-type:disc">The abstractions in a language, for the memory cells of the machine are variables</li></ul><ul id="5fcfea30-debd-48b5-bd11-450c8001b64e" class="bulleted-list"><li style="list-style-type:disc">A variable can be characterized by collection of properties or attributes most important of which is type, a fundamental concept in a programming language</li></ul><ul id="bfca83a8-52e2-4d09-8651-f6f5afa1425e" class="bulleted-list"><li style="list-style-type:disc">They have a address, type, location, value it holds</li></ul><ul id="2ec0e1e5-bc94-4dc3-9dbd-bfa5449b0cd4" class="bulleted-list"><li style="list-style-type:disc">Designing types includes issues like scope and lifetime<ul id="288cf9d8-089f-46ce-bcd7-9675d6f9f2ce" class="bulleted-list"><li style="list-style-type:circle">Scope is where all we can access the variable</li></ul><ul id="755d976d-eb67-4a89-a2b2-8ccf49ade466" class="bulleted-list"><li style="list-style-type:circle">How long a variable exists</li></ul></li></ul><ul id="7ff79a4d-4528-419e-bd96-3df1aeff2ecb" class="bulleted-list"><li style="list-style-type:disc">Pure function oriented programming languages do not support names like imperative languages</li></ul><ul id="b6e06353-4868-40f9-8c78-5d8408d57cb2" class="bulleted-list"><li style="list-style-type:disc">C based languages - C, Objective C, C++, Java and C# Support</li></ul><h1 id="8c6461e9-5ab4-4593-b7ee-419f61599015" class="">Names</h1><ul id="d9a7e669-7b83-49be-9ba2-ba382940e2b2" class="bulleted-list"><li style="list-style-type:disc">Names are associated with variables</li></ul><ul id="651995d0-b543-406d-8f8f-ffb1dc7fc520" class="bulleted-list"><li style="list-style-type:disc">Names are also associated with subprograms, parameters, other program constructs</li></ul><ul id="387deece-7872-48cd-ac8d-7f4773b3c756" class="bulleted-list"><li style="list-style-type:disc">The term identifier is often used interchangeable with name</li></ul><h2 id="9fbccd6b-68f3-4128-9c25-f3541532b38b" class="">Design Issues</h2><ul id="6ec9c63a-75bd-4e42-afa4-5b66b28ea441" class="bulleted-list"><li style="list-style-type:disc">Are names case sensitive</li></ul><ul id="51c18237-18be-4d10-b024-c1917ac97ba3" class="bulleted-list"><li style="list-style-type:disc">Are the special words are reserved words or keywords</li></ul><h2 id="8e66c4be-d00e-448b-85b3-f349f4681ce3" class="">Name Forms</h2><ul id="19ad0cd0-6b5b-48b0-aa4c-fab0715b1b9d" class="bulleted-list"><li style="list-style-type:disc">Fortran95+ → 31 characters</li></ul><ul id="e3455046-b0b3-4892-939d-2015c3274879" class="bulleted-list"><li style="list-style-type:disc">C-99 → no limit but first 63 significant</li></ul><ul id="be4264e6-26c0-4fc5-864e-de0e0c1617d6" class="bulleted-list"><li style="list-style-type:disc">Java, C++, C# → no limit, all are significant</li></ul><ul id="e40aa5b9-85ee-4361-a5b0-1a84f6f012e0" class="bulleted-list"><li style="list-style-type:disc">Names mostly consist of letter/digit/underscore</li></ul><ul id="b30468fd-77f5-42c4-82a9-d0bc1d7ecebc" class="bulleted-list"><li style="list-style-type:disc">All C based use camel notation</li></ul><ul id="4ceb4895-5d9a-4787-afb2-afb9e7ce51ec" class="bulleted-list"><li style="list-style-type:disc">Use of underscore and mixed case is a programming style, not a programming language design issue</li></ul><ul id="449ee58a-b365-4715-a2d7-a3f906f59ddd" class="bulleted-list"><li style="list-style-type:disc">In PHP all names/variables start with $</li></ul><ul id="ac372a7b-cd24-4888-9868-079e3d7dd91f" class="bulleted-list"><li style="list-style-type:disc">In Perl, $ is used for int/string, @ for arrays, % for hash variables<ul id="0a968171-19bc-4e8e-bc1a-8277bdfdf793" class="bulleted-list"><li style="list-style-type:circle">Example: %rateof = (’Mango’ ⇒ 45, ‘Orange’ ⇒ 30, ‘Grapes’ ⇒ 40);</li></ul><ul id="f08fdded-9409-4c65-a119-e697515e584b" class="bulleted-list"><li style="list-style-type:circle">print “$rateof{’Mango’}\n”</li></ul></li></ul><ul id="3c32f814-d848-4be4-b330-00ec03501bec" class="bulleted-list"><li style="list-style-type:disc">In Ruby, @ and @@ indicate instance and class name</li></ul><ul id="3d9f87bc-57d8-4ebd-b957-f0a6b0905b17" class="bulleted-list"><li style="list-style-type:disc">C based languages are case sensitive</li></ul><ul id="478cfdff-085f-42d4-936a-fd6808fef4fa" class="bulleted-list"><li style="list-style-type:disc">SQL is not case sensitive</li></ul><h1 id="55a439be-b940-44d5-a33c-770f1aabaae3" class="">Special Words</h1><ul id="e314be36-c059-4849-be96-071a8b69d0e8" class="bulleted-list"><li style="list-style-type:disc">Used to make programs more readable by naming actions to be performed</li></ul><ul id="748e9453-ba3b-4680-ba4e-3cc9713cbe4d" class="bulleted-list"><li style="list-style-type:disc">They are also used to separate the syntactic parts of the statements and programs</li></ul><ul id="ca1f2e94-a990-489f-ad39-60a9b46a8cdc" class="bulleted-list"><li style="list-style-type:disc">In most of the languages special words are classified as</li></ul><h3 id="464842ce-68df-4c12-895a-a6a5058ff00d" class="">Reserved words</h3><ul id="7f11a54d-9509-4b1f-9afe-a56dcf58ef46" class="bulleted-list"><li style="list-style-type:disc">can not be re defined as variables</li></ul><ul id="32514846-f74d-43c6-b0b5-a1742049a0f6" class="bulleted-list"><li style="list-style-type:disc">better than keywords since we avoid confusion</li></ul><ul id="203a05b4-ea3a-40bd-adde-aa310312bf85" class="bulleted-list"><li style="list-style-type:disc">if we have large number of reserved words, then user will have problem making variables</li></ul><ul id="5b97bda5-eb52-4444-bf4b-21c9a7e047a8" class="bulleted-list"><li style="list-style-type:disc">In python kw = rw</li></ul><ul id="837fac4a-34ef-4b59-b088-8bdeddb9395e" class="bulleted-list"><li style="list-style-type:disc">in java kw is subset of rw</li></ul><h3 id="4920662d-bc39-4b56-b579-395cec61521a" class="">Keywords</h3><ul id="7c4e2e5f-f9ac-46d8-949f-f212a1c79b6f" class="bulleted-list"><li style="list-style-type:disc">Is special only in certain contexts</li></ul><ul id="f73d922c-003b-4ea3-be57-4dc7fbcf3dbf" class="bulleted-list"><li style="list-style-type:disc">Fortran is the language remaining still maintaining keywords</li></ul><ul id="f1f42b02-a919-480f-b6aa-47bbd9055963" class="bulleted-list"><li style="list-style-type:disc">Real Apple → declaration</li></ul><ul id="9c4ab648-df9d-427d-af64-0ba520cc7231" class="bulleted-list"><li style="list-style-type:disc">Real=3.4 → assignment</li></ul><ul id="70156657-c376-45d8-8704-687a452d97c3" class="bulleted-list"><li style="list-style-type:disc">We can also have<ul id="109e678a-8b35-4a3e-880c-eeb39f5b3734" class="bulleted-list"><li style="list-style-type:circle">Integer Real → Integer type but variable name Real</li></ul><ul id="2493e5a9-8f21-4696-9e3d-e97c2116b728" class="bulleted-list"><li style="list-style-type:circle">Real Integer → Real type but variable name Integer</li></ul></li></ul><ul id="fedb2794-39ef-49c6-be25-b97622885b73" class="bulleted-list"><li style="list-style-type:disc">These are valid in fortran. Distinguished based on context. But misleading</li></ul><h1 id="6646d7e2-1662-425a-a7bd-91fc2859c1a4" class="">Variables</h1><ul id="bb7a6057-867c-4d4f-8690-a382cf8e5497" class="bulleted-list"><li style="list-style-type:disc">Abstraction of computer memory cell</li></ul><ul id="743e78f0-7b95-416b-822a-e51efc0abe8a" class="bulleted-list"><li style="list-style-type:disc">There is much more to variable than just names</li></ul><ul id="ce466c60-279e-4260-80e4-b27b1855833e" class="bulleted-list"><li style="list-style-type:disc">In machine language, memory have binary addresses</li></ul><ul id="6aba7874-cf82-4059-8d41-6a33041b3545" class="bulleted-list"><li style="list-style-type:disc">In assembly, we can give names</li></ul><ul id="6d521a8a-3b05-4dea-8a1d-8ce6fe91b0de" class="bulleted-list"><li style="list-style-type:disc">A variable is characterized by following attributes:<ul id="14255f9c-62d6-4cb4-a484-9939619d7cf5" class="bulleted-list"><li style="list-style-type:circle">Name</li></ul><ul id="093aa2c5-112c-485c-b2b1-f6eb9c63ba73" class="bulleted-list"><li style="list-style-type:circle">Address - l value</li></ul><ul id="13e8c9a2-8e16-4937-8db8-462e1b901612" class="bulleted-list"><li style="list-style-type:circle">Content - r value</li></ul><ul id="fbe571cc-d7b4-439f-88dc-5ce4c84c357c" class="bulleted-list"><li style="list-style-type:circle">Type - range + operations</li></ul><ul id="97d5eeec-91e4-494f-a942-5b2439b92a56" class="bulleted-list"><li style="list-style-type:circle">Lifetime - time during which the variable is bound to memory location</li></ul><ul id="19685f34-bd3d-416b-a9c3-ac393a2a97d3" class="bulleted-list"><li style="list-style-type:circle">Scope - visibility</li></ul></li></ul><h3 id="b620cd84-3cbb-4880-8b62-55800d9880f2" class="">Name</h3><ul id="86d3c276-2c0f-4f41-8304-0b1b20b23b17" class="bulleted-list"><li style="list-style-type:disc">Names are associated with variables</li></ul><ul id="25ab7dfb-afb8-4e61-9e7b-4605e2e3be6e" class="bulleted-list"><li style="list-style-type:disc">Names can be bound to variables and variables bound to types</li></ul><ul id="c9e13c2e-b933-4f07-a0fc-f9a4c1bfbd78" class="bulleted-list"><li style="list-style-type:disc">Names are never bound to types</li></ul><h3 id="3eacdb47-4fbc-4aaa-aeb8-056f23399b23" class="">Address</h3><ul id="c5ecaaed-1469-4f68-9276-be7e74c86a69" class="bulleted-list"><li style="list-style-type:disc">Is the machine memory address with which it is associated</li></ul><ul id="1965c658-d565-44d6-b8ad-1563a3ab2910" class="bulleted-list"><li style="list-style-type:disc">Address of variable also known as l value because the address is what is required when the name of variable appears on the LHS of assignment</li></ul><ul id="03afdc24-79a8-45b7-bc53-02f8184a5e9e" class="bulleted-list"><li style="list-style-type:disc">sum = total</li></ul><ul id="a21fb296-651c-4d0a-9d7a-e60dadfe0961" class="bulleted-list"><li style="list-style-type:disc">It is possible to have multiple variables have same address → ALIASING</li></ul><ul id="76c5b8a7-981b-4edd-b369-fcf6b5af87a0" class="bulleted-list"><li style="list-style-type:disc">It can create problems and reduce readability</li></ul><ul id="7f1178cb-dcf7-4c86-ba59-858537acfb24" class="bulleted-list"><li style="list-style-type:disc">Ex: Unions, Pointers</li></ul><h3 id="31361f76-d587-477f-96ec-b82f7b3ecc11" class="">Type</h3><ul id="bf336004-ae85-4aea-b4f7-9a4ebf37b44e" class="bulleted-list"><li style="list-style-type:disc">Range of values</li></ul><ul id="c3d3ec42-c717-4993-b9a1-854dec36daec" class="bulleted-list"><li style="list-style-type:disc">Set of operations</li></ul><ul id="0bf6d26c-464c-4baa-b1af-ac9efd446017" class="bulleted-list"><li style="list-style-type:disc">In ruby, variables can refer any objects in contrast to in java</li></ul><figure id="1ac02df9-40ad-4f3c-8f5b-b1d3bdf735f5" class="image"><a href="Bindings%206ef0846cd71f4cbda2df969019760dab/Untitled.png"><img style="width:1382px" src="Bindings%206ef0846cd71f4cbda2df969019760dab/Untitled.png"/></a></figure><h3 id="4cb06b4f-373d-4956-bd19-467d68d0802f" class="">Values</h3><ul id="fc8c550b-c5cf-41f5-9bf5-ea01c007c3b1" class="bulleted-list"><li style="list-style-type:disc">Also known as r-value of the variable.</li></ul><ul id="13890b15-ecae-44ec-a6a8-0c6b75211db3" class="bulleted-list"><li style="list-style-type:disc">It is what is required when the name of the variable appears in the RHS</li></ul><ul id="801c858b-eec8-4917-8b55-9d5acf99aa09" class="bulleted-list"><li style="list-style-type:disc">It’s the content stored in the memory location</li></ul><h1 id="9e24a19f-6379-4cb6-bf7e-5757e28cc696" class="">Binding</h1><ul id="6e4e3bc3-fb75-4a53-a935-63a18f4a279e" class="bulleted-list"><li style="list-style-type:disc">Association between an attribute and an entity</li></ul><ul id="d7126c26-ca20-4b01-9681-32fa6b4f3bf7" class="bulleted-list"><li style="list-style-type:disc">The time at which binding takes place is called binding time</li></ul><ul id="add68a72-68bb-4c7d-b6b2-3deeaf4f0332" class="bulleted-list"><li style="list-style-type:disc">The binding and the binding time are the prominent features in the semantics of a programming language</li></ul><ul id="63864e14-608b-4122-9dc9-1a2753169c54" class="bulleted-list"><li style="list-style-type:disc">A binding can take place at<ul id="af10e274-639f-4df8-9734-cff0871778a3" class="bulleted-list"><li style="list-style-type:circle">Language design time (* → multiplication)</li></ul><ul id="7e54f6e8-6403-4500-8573-9a0444832922" class="bulleted-list"><li style="list-style-type:circle">Language implementation time (int → range)</li></ul><ul id="83105590-83c2-4573-8dfe-07d9784c9169" class="bulleted-list"><li style="list-style-type:circle">Compile Time (binding of variables to particular data)</li></ul><ul id="d88b451b-fdf9-433f-8204-03b781b54590" class="bulleted-list"><li style="list-style-type:circle">Load time (variable binding to memory location happens when program loaded to memory. Ex: Java)</li></ul><ul id="af33288c-c85b-4a4c-9920-c15377701776" class="bulleted-list"><li style="list-style-type:circle">Link time (library subprogram → binding to subprogram code happens at link time)</li></ul><ul id="217e3276-12a3-45b5-8a42-b4a3f8cf95ca" class="bulleted-list"><li style="list-style-type:circle">Run time</li></ul></li></ul><ul id="c2685f4b-a284-4718-8974-35cc546516f0" class="bulleted-list"><li style="list-style-type:disc">Example: count = count + 5<ul id="30f71c77-e217-4bbb-84f2-a7b735ad4e78" class="bulleted-list"><li style="list-style-type:circle">Type of count → compile time</li></ul><ul id="56fd7584-6685-4a3e-9d02-5ca4d4201782" class="bulleted-list"><li style="list-style-type:circle">Possible values of count → language design</li></ul><ul id="7cfc1edb-7dfb-49c6-86a8-5c41b803ee63" class="bulleted-list"><li style="list-style-type:circle">+ → compile time when the operands are known</li></ul><ul id="4621a4cc-aca4-4303-9b8b-76b0120e48f8" class="bulleted-list"><li style="list-style-type:circle">Internal representation of 5 → design time</li></ul><ul id="c3a326c1-3fac-4995-9089-b0f9e1cf4216" class="bulleted-list"><li style="list-style-type:circle">value of count → bound at execution time</li></ul></li></ul><h2 id="4c7d249f-b36e-4323-9ef1-df97503a2b1d" class="">Static Binding</h2><ul id="3dc83874-ad90-4aa2-bc1f-c64f7a4a4a4b" class="bulleted-list"><li style="list-style-type:disc">Occurs before runtime and remains unchanged throughout the program execution</li></ul><ul id="e41d0f7b-1cb1-4f07-88bb-2d8305d7d6cc" class="bulleted-list"><li style="list-style-type:disc">If it changes, it is dynamic binding</li></ul><ul id="36cc8183-f2f3-4c1f-89e8-ce7f0cbcf450" class="bulleted-list"><li style="list-style-type:disc">Example: type binding</li></ul><ul id="2e74f21d-dd2d-49aa-932e-8d0d6116e365" class="bulleted-list"><li style="list-style-type:disc">Before a variable is used in a program, it must be bound to some data type</li></ul><ul id="ae879c8d-0813-45b0-9951-15beb9226250" class="bulleted-list"><li style="list-style-type:disc">int a → example</li></ul><ul id="b262d3e6-756e-4543-8aff-f336a9d2ad8a" class="bulleted-list"><li style="list-style-type:disc">in fortran identifiers starting with i/j/k/l/m/n are integer type else real</li></ul><ul id="0b2fbfe1-4e7e-4306-bb9e-69ed351954fe" class="bulleted-list"><li style="list-style-type:disc">Type inference → implicit using context → in C# → var sum = 0, or sum = 0.0 or name = “Tom”</li></ul><h2 id="0045f15c-8f0e-4ac7-a993-dbf3de900066" class="">Dynamic Binding</h2><ul id="47f225a8-a424-4ef5-8b20-9b7cdf3cac8f" class="bulleted-list"><li style="list-style-type:disc">Type of variable is not specified by a declaration statement, rather a variable is bound to a type when it is assigned a value in assignment statement</li></ul><ul id="40cfea82-42ab-4163-a95b-3d24bf92a064" class="bulleted-list"><li style="list-style-type:disc">More flexible</li></ul><ul id="ec31148a-59ee-4fd2-a9d5-7fa76dd94564" class="bulleted-list"><li style="list-style-type:disc">Can’t be determined by name spelling etc.</li></ul><ul id="e26c773c-19b0-42cf-88a9-edaa12eb548f" class="bulleted-list"><li style="list-style-type:disc">Advantage is more generic programs can be written. Ex: we can write programs to handle any numeric data</li></ul><ul id="8ccaf4c2-392e-45b1-907f-9ab6d151712c" class="bulleted-list"><li style="list-style-type:disc">No strict checking of type</li></ul><ul id="0d00b2de-c40a-4ac2-a2ac-6b38d33d408e" class="bulleted-list"><li style="list-style-type:disc">JS, PHP, Python, Ruby → dynamic</li></ul><ul id="3881acfb-e48c-4f65-8c83-9eaa9f6a529d" class="bulleted-list"><li style="list-style-type:disc">Java has both dynamic and static</li></ul><ul id="722a8dac-6f16-4978-a643-5a0979a9f875" class="bulleted-list"><li style="list-style-type:disc">Issues with dynamic binding<ul id="d03c87b1-f7fe-40d1-a5b1-858868a9e251" class="bulleted-list"><li style="list-style-type:circle">i = x → x is an array</li></ul><ul id="5ae0f32b-80df-44b2-9df6-974608f13c3e" class="bulleted-list"><li style="list-style-type:circle">i = y → y is an int</li></ul></li></ul><ul id="474e2dd5-537d-4ffa-aa63-b6fc24dc131b" class="bulleted-list"><li style="list-style-type:disc">Later if we use computation involving i and expect an array, it might give an error if it’s using int</li></ul><h2 id="a41423b9-1ba9-4239-ba28-79478d0137f8" class="">Storage Binding and Lifetime</h2><ul id="a2920f3c-78df-4a60-9ea7-9bbe1f433bdb" class="bulleted-list"><li style="list-style-type:disc">The memory cell to which a variable is bound must be taken from pool of available memory</li></ul><ul id="063eecbf-02e4-406d-8c29-8fb27d8df0c6" class="bulleted-list"><li style="list-style-type:disc">When you acquire space → allocation</li></ul><ul id="a31d761e-7140-410d-b5cc-8d98a03d76ec" class="bulleted-list"><li style="list-style-type:disc">When you release space → deallocation</li></ul><ul id="937e70a0-ae71-422e-b5e3-e363e99fcb81" class="bulleted-list"><li style="list-style-type:disc">The lifetime of a variable is the time during which the variable is bound to a specific memory location</li></ul><ul id="31cfcabd-a3da-4617-805a-ad1a9ac18fc0" class="bulleted-list"><li style="list-style-type:disc">Lifetime → begins on allocation and ends on deallocation</li></ul><ul id="4d9eb161-27c6-44e5-b76a-2893d5bd1906" class="bulleted-list"><li style="list-style-type:disc">Dynamic memory allocation in C → <code>malloc(100 * sizeof(int))</code></li></ul><ul id="ddacb7ac-f50c-41b3-ade9-f008eb0c93e5" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">Static variable has lifetime of throughout the program but visibility will be within it’s scope only</span></li></ul><h1 id="042c55b0-93c8-4d21-9e26-2f4d779bfcba" class="">Categories of Variables</h1><ul id="e0e63b26-657c-4053-9010-a1536cb5913e" class="bulleted-list"><li style="list-style-type:disc">Every method invocation → it’s own frame</li></ul><ul id="39edb390-2832-4a9b-8aba-9b7164c283a7" class="bulleted-list"><li style="list-style-type:disc">Global variables cannot be deallocated</li></ul><figure id="f3c5484a-15f6-41b1-b5fb-667f5d08b1b6" class="image"><a href="Bindings%206ef0846cd71f4cbda2df969019760dab/Untitled%201.png"><img style="width:594px" src="Bindings%206ef0846cd71f4cbda2df969019760dab/Untitled%201.png"/></a></figure><h3 id="465249c9-f02c-449b-903f-a40cff9484c7" class="">Static Variables</h3><ul id="9ea9decd-53df-4173-9ecb-b10dc3a97661" class="bulleted-list"><li style="list-style-type:disc">Binding done before the execution starts</li></ul><ul id="4db8f28f-b970-41af-a738-7a6563f3a4e7" class="bulleted-list"><li style="list-style-type:disc">Lifetime is throughout the runtime of the program</li></ul><ul id="f2077a53-0746-4e46-9bc3-ffebcf5a0b4d" class="bulleted-list"><li style="list-style-type:disc">Usually global</li></ul><ul id="94980205-27cf-41e3-b690-b744b2a50c6b" class="bulleted-list"><li style="list-style-type:disc">Direct addressing → hence efficient</li></ul><ul id="bfae5e9f-1716-4fb7-9bf7-9b3633d16b55" class="bulleted-list"><li style="list-style-type:disc">Disadvantage is ki it has reduced flexibility → space can’t be used by two sub programs</li></ul><ul id="fc00d128-debf-4300-a4ba-8e65f14893f6" class="bulleted-list"><li style="list-style-type:disc">Example: static variable of the class</li></ul><ul id="82653a54-a3e8-4175-803b-52d5459b1276" class="bulleted-list"><li style="list-style-type:disc">Recursion is not possible on these types of variables</li></ul><h3 id="4f2ab026-b3e0-48fd-b3ec-700a357a7b18" class="">Stack Dynamic Variables</h3><ul id="833247d6-8f07-47d1-a860-bbf531c2b92e" class="bulleted-list"><li style="list-style-type:disc">Binding is done when their declaration statements are elaborated</li></ul><ul id="a4cf809f-e410-4d28-8c09-cbe7a4fbedbb" class="bulleted-list"><li style="list-style-type:disc">But types are statically bound</li></ul><ul id="f8f2904b-af1d-4b38-9dac-a7d218ef7a10" class="bulleted-list"><li style="list-style-type:disc">Space is allocated when method is called and space is deallocated when the method is exited</li></ul><ul id="2677cc9b-0243-4cd8-a7e1-3de16269d1d0" class="bulleted-list"><li style="list-style-type:disc">Recursion is possible and these are efficient</li></ul><ul id="f96ecb8f-1845-4d51-b514-5d0cd984a96c" class="bulleted-list"><li style="list-style-type:disc">But there’s overhead due to allocation and deallocation</li></ul><ul id="920c019c-3bd9-488c-bf8c-cafdeb26181f" class="bulleted-list"><li style="list-style-type:disc">They are implicitly deallocated when function is exited</li></ul><h3 id="3098428c-b2e9-41b9-a0e4-ed8d470557d3" class="">Explicit Heap Dynamic Variables</h3><ul id="49023a42-d08a-4c62-89c1-e2b3090d99eb" class="bulleted-list"><li style="list-style-type:disc">These are nameless - abstract memory cells - that are allocated and deallocated by explicit runtime instructions written by the programmer</li></ul><ul id="f5d1a1e7-15cf-482d-9773-f340a5ffed6c" class="bulleted-list"><li style="list-style-type:disc">Referenced through pointers or references only</li></ul><ul id="633fd74f-0a34-4c20-aeb9-c03e2311e10b" class="bulleted-list"><li style="list-style-type:disc">Basically I think the point is that we store the address to a space but there’s no name for the space itself</li></ul><ul id="8e79a78a-7329-4805-9e30-b0b9bc4ffa5c" class="bulleted-list"><li style="list-style-type:disc">Created explicitly using new keyword or call to system subprograms</li></ul><ul id="708d4a28-79ff-413e-9a4b-fcf8894dab01" class="bulleted-list"><li style="list-style-type:disc"><code>int *intNode; intNode = new int;</code></li></ul><ul id="d3890937-08ee-4cb0-a926-70cb5bf604c7" class="bulleted-list"><li style="list-style-type:disc">Explicit deallocation is done in some PLs like C++ <code>delete intNode</code></li></ul><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="04970123-b977-4a5f-b68a-2006c3e4d8f8"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Objects occupy space only in heap. Only class variables → heap. local variables of a method alone will be in stack</div></figure><ul id="d6f0df07-921f-4417-8352-f79ea78c9bd8" class="bulleted-list"><li style="list-style-type:disc">Heap is a collection of storage cells. Highly disorganized</li></ul><ul id="45e604ff-eb1d-41dd-8d9e-93e74a849b99" class="bulleted-list"><li style="list-style-type:disc">Often used to build dynamic structures such as trees</li></ul><ul id="8148324d-ae79-426d-8edc-64ec9a8a6a4e" class="bulleted-list"><li style="list-style-type:disc">Disadvantages<ul id="a7525d02-64b9-47c5-9c93-1d13880daff5" class="bulleted-list"><li style="list-style-type:circle">Difficulty in using pointers</li></ul><ul id="6e8080e0-e0de-429a-8874-9be1860af209" class="bulleted-list"><li style="list-style-type:circle">Cost induced due to references</li></ul><ul id="1cbaed1d-aa99-4420-bcfd-94da32b5fcfd" class="bulleted-list"><li style="list-style-type:circle">Complexity in storage management implementation</li></ul></li></ul><ul id="7a72d59e-2a7a-4831-a4e2-89a85a107405" class="bulleted-list"><li style="list-style-type:disc">Java has explicit heap dynamic objects but implicit garbage collection is used</li></ul><h3 id="0eab56cb-c986-4742-bec6-e8ef465618d7" class="">Implicit Heap Dynamic Variables</h3><ul id="b65466dd-e62c-47d2-881d-833dab4d2990" class="bulleted-list"><li style="list-style-type:disc">Variables are bound to heap storage only when they are assigned values</li></ul><ul id="0190d720-46ac-4260-bb2e-e5a7e90c7f7e" class="bulleted-list"><li style="list-style-type:disc">Java script → marks = [12.5, 59.5, 13.5]</li></ul><ul id="bbae0862-7313-44c7-909d-8524e62c143d" class="bulleted-list"><li style="list-style-type:disc">Highly flexible and generic code can be written</li></ul><ul id="a77c5b0f-c468-4c56-bb6b-891bf6c8a0e6" class="bulleted-list"><li style="list-style-type:disc">Location is same but at different times, it can store different value and types</li></ul><h1 id="a191c3be-9764-44fc-9a07-c6f233722dd7" class="">Scope</h1><ul id="18517903-c8c6-4161-bd99-6228cac9719c" class="bulleted-list"><li style="list-style-type:disc">Scope is the range of statements in which the variable is visible</li></ul><ul id="bbfc74bd-52e9-478f-8acb-61cbfaec65a5" class="bulleted-list"><li style="list-style-type:disc">Static scope means it’s determined before the execution only → lexical scope</li></ul><ul id="419fbd95-5c44-4119-ae18-c0699696aa12" class="bulleted-list"><li style="list-style-type:disc">Scope was introduced in ALGOL 60</li></ul><ul id="49171625-ac8c-4930-b8e8-7bcb7173e61e" class="bulleted-list"><li style="list-style-type:disc">Ada, JS, python supported nested subprograms</li></ul><ul id="63ce8ef7-27cb-410c-bcb2-7ab374ba65bc" class="bulleted-list"><li style="list-style-type:disc">Many new programming languages now support nested subprograms using curly brackets</li></ul><h3 id="14fe1842-1b24-43b8-bbb8-6cfca2a15cb8" class="">Static Scoping</h3><figure id="2a292f67-626c-4eba-acc3-cf19b58c8de3" class="image"><a href="Bindings%206ef0846cd71f4cbda2df969019760dab/Untitled%202.png"><img style="width:869px" src="Bindings%206ef0846cd71f4cbda2df969019760dab/Untitled%202.png"/></a></figure><ul id="4227d790-94ea-42e1-a3d3-b8bf1fcce157" class="bulleted-list"><li style="list-style-type:disc">It will first check in local scope and keep going outwards</li></ul><ul id="ef70a37d-fc30-4cd2-94e5-f67a4f0117cb" class="bulleted-list"><li style="list-style-type:disc">In static-scoped languages with nested subprograms, this process can be thought of in the following way. </li></ul><ul id="0c3d36e9-2d5d-470d-9ed0-5c1c74ad30a7" class="bulleted-list"><li style="list-style-type:disc">Suppose a reference is made to a variable x in subprogram sub1. </li></ul><ul id="311f50a0-ee8c-4c1d-afe7-9f8500a034b6" class="bulleted-list"><li style="list-style-type:disc">The correct declaration is found by first searching the declarations of subprogram sub1. </li></ul><ul id="77e0e45f-08e3-4baa-952d-cf38925f9148" class="bulleted-list"><li style="list-style-type:disc">If no declaration is found for the variable there, the search continues in the declarations of the subprogram that declared subprogram sub1, which is called its static parent. </li></ul><ul id="89c91dd0-1ab9-451b-b94b-49217266ae1a" class="bulleted-list"><li style="list-style-type:disc">If a declaration of x is not found there, the search continues to the next-larger enclosing unit (the unit that declared sub1’s parent), and so forth, until a declaration for x is found or the largest unit’s declarations have been searched without success.</li></ul><ul id="2689fbae-8329-4e7c-9745-476379355f84" class="bulleted-list"><li style="list-style-type:disc">In that case, an undeclared variable error is reported. The static parent of subprogram sub1, and its static parent, and so forth up to and including the largest enclosing subprogram, are called the static ancestors of sub1.</li></ul><h3 id="7fb243c6-f328-44e7-ae8a-ef86cf2f8b9d" class="">Dynamic Scoping</h3><ul id="ed8b99a3-a226-4d56-ae38-86c9230ba88b" class="bulleted-list"><li style="list-style-type:disc">Here it depends on the call sequence and not on which is inside which</li></ul><ul id="3f30eadc-910f-4b8e-b070-0d7154ceb817" class="bulleted-list"><li style="list-style-type:disc">big → sub1 → sub2 is the sequence here</li></ul><ul id="79a60b98-3d58-4bd3-a7a0-6959816b13c9" class="bulleted-list"><li style="list-style-type:disc">In static scoping sub2 will take x from big</li></ul><ul id="6773a156-0c54-4c07-9b65-ef5a2c52a28d" class="bulleted-list"><li style="list-style-type:disc">But in dynamic scoping sub2 will take x from sub1</li></ul><ul id="73cd4c3c-b5b0-4c29-82a7-6bbb5458ac61" class="bulleted-list"><li style="list-style-type:disc">If it’s nowhere → illegal access</li></ul><ul id="f2edf280-5ecf-409b-8421-00f9407a58bb" class="bulleted-list"><li style="list-style-type:disc">Not based on spatial relation</li></ul><ul id="1fd5719c-e4d3-4c93-9cc0-1313b8e03ff9" class="bulleted-list"><li style="list-style-type:disc">Scope can only be determined at runtime</li></ul><ul id="2211f6bd-13d0-4382-89d0-7fe1e5c486f4" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">Less reliable, hard to read and accessing non local integers also takes longer</span></li></ul><ul id="f7d4fab1-8792-40fa-b218-53737282a7d5" class="bulleted-list"><li style="list-style-type:disc">APL, Snobol, early versions of LISP</li></ul><ul id="726bbe9f-c16b-4679-981d-093020164fbb" class="bulleted-list"><li style="list-style-type:disc">Dynamic scoping also makes programs much more difficult to read, because the calling sequence of subprograms must be known to determine the meaning of references to nonlocal variables. This task can be virtually impossible for a human reader.</li></ul><figure id="59eed55d-41f2-449c-8370-b2468c211acb" class="image"><a href="Bindings%206ef0846cd71f4cbda2df969019760dab/Untitled%203.png"><img style="width:570px" src="Bindings%206ef0846cd71f4cbda2df969019760dab/Untitled%203.png"/></a></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1411fe50-07d2-44d0-ad66-12974c0afa9b"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">In general, a declaration of a variable effectively hides any declaration of the variable with the same name in a larger enclosing scope. This is valid in C and C++ but not in Java and C#</div></figure><h3 id="cb296f17-e679-43fe-bf11-80d2c6e3707b" class="">Global Scope</h3><ul id="af06043f-3f2d-4b04-8642-abc610f6a98d" class="bulleted-list"><li style="list-style-type:disc">Variables declared outside are global and are visible to all functions in general</li></ul><ul id="b371a853-3a12-43dc-9ab2-7c53043dabed" class="bulleted-list"><li style="list-style-type:disc">Not in PHP - why the fuck?</li></ul><figure id="8cc8e086-af12-4788-b943-92440d74a9e6" class="image"><a href="Bindings%206ef0846cd71f4cbda2df969019760dab/Untitled%204.png"><img style="width:824px" src="Bindings%206ef0846cd71f4cbda2df969019760dab/Untitled%204.png"/></a></figure><h3 id="935715d4-6d1c-4830-a15f-a0d81f032b8f" class="">Scope and lifetime</h3><figure id="d1cf5501-aa1d-4b1e-9b4a-2f74a5ac986b" class="image"><a href="Bindings%206ef0846cd71f4cbda2df969019760dab/Untitled%205.png"><img src="Bindings%206ef0846cd71f4cbda2df969019760dab/Untitled%205.png"/></a></figure><h1 id="826dd9eb-fe72-4d34-a207-8ed3b0096cca" class="">Referencing Environment</h1><ul id="62cb8e75-c01f-41a8-abac-864e0a696999" class="bulleted-list"><li style="list-style-type:disc">Collection of all variables visible to that particular statement at that point of time</li></ul><ul id="d18c7a82-5fe4-4f25-9228-721b883d2698" class="bulleted-list"><li style="list-style-type:disc">The referencing environment of a statement in a static-scoped language is the variables declared in its local scope plus the collection of all variables of its ancestor scopes that are visible</li></ul><ul id="fdd9d6c5-5054-4d7a-814b-1397480bb7ee" class="bulleted-list"><li style="list-style-type:disc">In Python, scopes can be created by function definitions. The referencing environment of a statement includes the local variables, plus all of the variables declared in the functions in which the statement is nested (excluding variables in nonlocal scopes that are hidden by declarations in nearer functions). Each function definition creates a new scope and thus a new environment</li></ul><figure id="99d6784f-e079-4e5d-a673-594544a97175" class="image"><a href="Bindings%206ef0846cd71f4cbda2df969019760dab/Untitled%206.png"><img style="width:693px" src="Bindings%206ef0846cd71f4cbda2df969019760dab/Untitled%206.png"/></a></figure><ul id="1d7391c7-666a-49c4-9e01-767ba71b58d9" class="bulleted-list"><li style="list-style-type:disc">here in sub1 also we can read g but you cannot assign a value to g</li></ul><ul id="db9681e1-a097-490a-890e-847779b70181" class="bulleted-list"><li style="list-style-type:disc">only after global-ing it can we assign it a new value</li></ul><figure id="09e387b7-7b0f-46e5-912c-1863a7a2a9c9" class="image"><a href="Bindings%206ef0846cd71f4cbda2df969019760dab/Untitled%207.png"><img style="width:1684px" src="Bindings%206ef0846cd71f4cbda2df969019760dab/Untitled%207.png"/></a></figure><figure id="857c139a-a2ae-468f-bc82-17802ee6ac93" class="image"><a href="Bindings%206ef0846cd71f4cbda2df969019760dab/Untitled%208.png"><img style="width:672px" src="Bindings%206ef0846cd71f4cbda2df969019760dab/Untitled%208.png"/></a></figure><h1 id="9fe66331-d2e0-40c5-8a7b-212a2c2880a1" class="">Named Constant</h1><ul id="f0f6730a-8d84-4968-964f-7febef95ef8f" class="bulleted-list"><li style="list-style-type:disc">Variable that is bound to a value once</li></ul><ul id="258899e4-4b55-4baf-a567-bf4d5e0f3a5a" class="bulleted-list"><li style="list-style-type:disc">They increase readability and reliability of programs</li></ul><ul id="711a3885-7a13-438c-9671-02b890413ec5" class="bulleted-list"><li style="list-style-type:disc">Using PI instead of 3.1415926</li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

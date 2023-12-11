@@ -1,0 +1,779 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Lexical and Syntax Analysis</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="5d2c2fef-2a4f-419a-9708-4e4a70535df9" class="page sans"><header><h1 class="page-title">Lexical and Syntax Analysis</h1><p class="page-description"></p></header><div class="page-body"><nav id="3e2ae1f7-0699-4d4d-9af8-d2ea520a9701" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#bb19e740-1211-4a1e-aa8a-65b221bca206">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#99089d57-a105-4d9f-bc83-56a3c0efc20a">Reasons for separating lexical analysis from syntax analysis</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ce3dccaa-0344-42d4-af08-09a1ea830251">Lexical Analysis</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#87e4cba0-7a78-42b2-8e23-49f1aaa656b7">Approaches for building Lexical Analyzer</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#dc2b6ab3-ee91-4ee5-a15d-3ffdcc0b3954">Parsing Problem</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1777a429-d879-4086-8147-e7b0136e4ce8">Top Down Parsers → LL</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#0b879372-ea79-4e88-a05d-843a17b711fb">Example 1</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#20083736-7a9c-4d9f-a67e-e17839593949">Example 2</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#849ee17c-4a13-4ade-8b68-3613c38b41be">Bottom Up Parsers → LR</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2009216b-f8ce-40e9-a578-0a1c4960fb9c">Example:</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1606dea7-52e4-4156-8251-7642113ab3c7">Recursive Descent Parsing (Top Down)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#90753680-9fa6-4009-b6e8-0e3c7e309187">Example</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c1bf0ac2-be0f-4f35-b81c-2b6be2b28d08">LL Grammar Class</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5b44f58d-284d-4534-9070-468f694d113d">Left Recursion</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b9d08a2a-ab17-4445-bd27-1f5a5744ca89">LEFT FACTORING</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#149a3f35-733d-46b8-9c28-00755e8d018d">LR Grammar Class</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9c6febae-95f0-4792-ad06-ba51eba289ac">Example 1</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c424f2a8-2cd8-4f17-8eae-75e56170d934">Example 2</a></div></nav><h1 id="bb19e740-1211-4a1e-aa8a-65b221bca206" class="">Introduction</h1><ul id="7999b55f-6d0d-41d6-a374-973d52f18a1a" class="bulleted-list"><li style="list-style-type:disc">We will look into<ul id="91e9daf4-aa87-4cfa-bb81-2141a8a898f8" class="bulleted-list"><li style="list-style-type:circle">Compilation</li></ul><ul id="4bd0ecd8-072d-4683-9356-fcd67ab64eab" class="bulleted-list"><li style="list-style-type:circle">Interpretation</li></ul><ul id="190c6b26-6db3-463b-a68e-f1e892088f1e" class="bulleted-list"><li style="list-style-type:circle">Hybrid Approach</li></ul></li></ul><ul id="cd5e8ac5-0bbe-49d9-8dd4-8ee7c1a4a6cd" class="bulleted-list"><li style="list-style-type:disc">All these implementation approaches use both lexical and syntax analyzers</li></ul><ul id="28713886-ed89-415a-ac77-3d15e712c81b" class="bulleted-list"><li style="list-style-type:disc">Syntax analyzers are based on a formal description of the syntax of the program</li></ul><ul id="112be498-0881-4a66-ac65-385a9ec28364" class="bulleted-list"><li style="list-style-type:disc">The most common → CFG and BNF<ul id="9e5fea95-cf3c-4780-8d26-95957a2072c5" class="bulleted-list"><li style="list-style-type:circle">BNFs of PLs are clear and concise</li></ul></li></ul><ul id="a5f1bd40-6d5c-452c-8a73-27a4325aea71" class="bulleted-list"><li style="list-style-type:disc">Analyzing syntax has two parts<ul id="99ad4889-730d-4f0f-b0f8-20ef6650bc5a" class="bulleted-list"><li style="list-style-type:circle">Lexical Analyzer deals with small scale language constructs such as names, numerical literals<ul id="ecf59209-251a-436f-8410-49c93272cccd" class="bulleted-list"><li style="list-style-type:square">Checks for validity of constructs such as variables, constants → lexemes</li></ul></li></ul><ul id="f8330d3f-48a7-4724-a6e2-eb39909d48f3" class="bulleted-list"><li style="list-style-type:circle">Syntax Analyzer deals with the large scale constructs such as expressions, statements and program units</li></ul></li></ul><h1 id="99089d57-a105-4d9f-bc83-56a3c0efc20a" class="">Reasons for separating lexical analysis from syntax analysis</h1><ul id="522cb808-e32e-4fab-9985-6d245d3563d7" class="bulleted-list"><li style="list-style-type:disc">Simplicity → lexical analysis techniques are not so complex</li></ul><ul id="9499e124-a1d4-4c92-bc9d-9bda5549c05d" class="bulleted-list"><li style="list-style-type:disc">Efficiency → Optimizations can be applied separately</li></ul><ul id="b048b02c-c121-4bef-8357-e9fb3f07dbfb" class="bulleted-list"><li style="list-style-type:disc">Portability → LA involves reading strings from files and storing buffers hence mostly platform dependent and not portable</li></ul><ul id="5c22ce5b-0d13-455f-8589-ec2643d490e3" class="bulleted-list"><li style="list-style-type:disc">Syntax analysis is not platform dependent</li></ul><h1 id="ce3dccaa-0344-42d4-af08-09a1ea830251" class="">Lexical Analysis</h1><ul id="820567e2-ea08-4bbc-b0bc-aa21539e9240" class="bulleted-list"><li style="list-style-type:disc">It is essentially pattern matching</li></ul><ul id="3894506f-ae9e-4371-ade4-aa153246e9c5" class="bulleted-list"><li style="list-style-type:disc">The process of pattern matching has been a traditional part of computing</li></ul><ul id="3f3a9f9b-67a3-42f6-b1d1-c9e7fb508dbd" class="bulleted-list"><li style="list-style-type:disc">A lexical analyzer serves as the frontend of the syntax analysis</li></ul><ul id="7df04d3c-528e-4a6f-9b7d-717cae67f6f1" class="bulleted-list"><li style="list-style-type:disc">Lexical Analyzer is part of syntax analyzer</li></ul><ul id="97c51f0e-da00-4648-8184-9e33b5983beb" class="bulleted-list"><li style="list-style-type:disc">The lexical analyzer collects characters and forms lexemes</li></ul><ul id="12bc57d4-3952-4f5b-b985-2c77d5101054" class="bulleted-list"><li style="list-style-type:disc">Each lexeme belongs to a category</li></ul><ul id="ab719a3f-a9c8-4161-b0df-9b6d3871dd65" class="bulleted-list"><li style="list-style-type:disc">LA extracts lexemes from the given input string and produces tokens</li></ul><ul id="a53fa2ca-8d6c-4864-87a7-7c06aacc2eda" class="bulleted-list"><li style="list-style-type:disc">SA calls LA and each call to LA by SA returns a <span style="border-bottom:0.05em solid">lexeme and it’s token</span></li></ul><ul id="622ae1a8-5b1c-4bfa-8f62-c85bcfbe2ba0" class="bulleted-list"><li style="list-style-type:disc">Lexical analysis process includes skipping comments and white spaces outside lexemes</li></ul><ul id="1c040b1f-9070-4dbc-8b82-5b6caf99f0eb" class="bulleted-list"><li style="list-style-type:disc">NOTE: Lexical analyzer detects syntactic errors in tokens - identifiers, numeric literals</li></ul><ul id="ff78e047-65a8-49df-9cc4-35d637e044a7" class="bulleted-list"><li style="list-style-type:disc"><code>= 45 int sum ;</code> is valid according to lexical analyzer</li></ul><figure id="e7886717-076d-4c67-99d0-ca8885f92a6c" class="image"><a href="Lexical%20and%20Syntax%20Analysis%205d2c2fef2a4f419a97084e4a70535df9/Untitled.png"><img style="width:1567px" src="Lexical%20and%20Syntax%20Analysis%205d2c2fef2a4f419a97084e4a70535df9/Untitled.png"/></a></figure><figure id="5afbf06e-7ee6-4df6-bb8e-02f8b163e6bc" class="image"><a href="Lexical%20and%20Syntax%20Analysis%205d2c2fef2a4f419a97084e4a70535df9/Untitled%201.png"><img style="width:1274px" src="Lexical%20and%20Syntax%20Analysis%205d2c2fef2a4f419a97084e4a70535df9/Untitled%201.png"/></a></figure><h2 id="87e4cba0-7a78-42b2-8e23-49f1aaa656b7" class="">Approaches for building Lexical Analyzer</h2><p id="3daa3457-5c18-44d6-bc96-3c148ae30947" class="">Write a formal description of the token patterns of the language using a descriptive language related to regular expressions</p><ul id="68126f84-30b2-4bb8-a3f1-918c93590464" class="bulleted-list"><li style="list-style-type:disc">These descriptions are used as input to a software tool that automatically generates a
+lexical analyzer. There are many such tools available for this. The oldest of these, named lex, is commonly included as part of UNIX systems.  (Gives .l files)</li></ul><ul id="450b4b55-ffaf-4c01-a40a-519356da4494" class="bulleted-list"><li style="list-style-type:disc">Advanced version of Lex is called Flex</li></ul><ul id="e7be6363-6973-4430-9f65-62b1a946087a" class="bulleted-list"><li style="list-style-type:disc">Design a state transition diagram that describes the token patterns of the language and write a program that implements the diagram.</li></ul><ul id="1a4ea28a-62b5-469b-9467-e9b41fb4a8c5" class="bulleted-list"><li style="list-style-type:disc">Design a state transition diagram that describes the token patterns of the language and hand-construct a table-driven implementation of the state diagram.</li></ul><figure id="12b9af24-2a5f-4d17-995a-c24de35356b4" class="image"><a href="Lexical%20and%20Syntax%20Analysis%205d2c2fef2a4f419a97084e4a70535df9/Untitled%202.png"><img style="width:1925px" src="Lexical%20and%20Syntax%20Analysis%205d2c2fef2a4f419a97084e4a70535df9/Untitled%202.png"/></a></figure><ul id="ca8aa668-237a-4250-97e3-172c0b33178d" class="bulleted-list"><li style="list-style-type:disc">Names(identifiers) and reserved words have same patterns</li></ul><ul id="9d016968-c9b0-4517-8ffa-299e40d6fb37" class="bulleted-list"><li style="list-style-type:disc">We can write state transitions separately to recognize for reserved words, but the size of the state diagram it becomes prohibitively large</li></ul><ul id="afb83cae-2b9a-4868-bab1-1fe9bb10fcc4" class="bulleted-list"><li style="list-style-type:disc">It is much simpler and faster to have LA to recognize names and reserved words with same pattern and use lookup in table of reserved words to determine which names are reserved words</li></ul><ul id="6e98337f-5886-4acf-85d9-48c3772fcc38" class="bulleted-list"><li style="list-style-type:disc">Lexical analyzer is often responsible for initial construction of symbol table to store info about user defined names</li></ul><ul id="27065bf8-5cb1-4c62-a386-b03b27542855" class="bulleted-list"><li style="list-style-type:disc">Attributes of names are filled by other parts of compiler later</li></ul><h1 id="dc2b6ab3-ee91-4ee5-a15d-3ffdcc0b3954" class="">Parsing Problem</h1><ul id="49e0b5eb-15a7-4342-a309-d0e83c9b4c2c" class="bulleted-list"><li style="list-style-type:disc">Syntax analysis is also called as parsing</li></ul><ul id="4ffeb7fc-6696-40ff-a750-155949203b16" class="bulleted-list"><li style="list-style-type:disc">We have two approaches: top down and bottom up parsing</li></ul><ul id="45e12639-7295-4608-89cc-3c11406c9c79" class="bulleted-list"><li style="list-style-type:disc">Parsers construct a parse tree</li></ul><ul id="d06628ba-65c9-4fe1-91f7-4a3bf47f9e7b" class="bulleted-list"><li style="list-style-type:disc">The process of derivation and parse tree include all syntactic information needed by the language</li></ul><ul id="47d8fac4-51fa-4c2c-81ca-f103573b826a" class="bulleted-list"><li style="list-style-type:disc">Goals of Syntax analysis<ul id="50cdfcba-e3ee-4527-a5b5-01e89a3752f2" class="bulleted-list"><li style="list-style-type:circle">Check to syntactic correctness</li></ul><ul id="0ebe1d2f-bbb3-4833-83b3-dcfd0a04445c" class="bulleted-list"><li style="list-style-type:circle">Produce a complete parse tree for the syntactically correct program. This parse tree is used as the bases for translation</li></ul></li></ul><ul id="cbedfccf-abad-4375-b870-2c75606381e6" class="bulleted-list"><li style="list-style-type:disc">Notations used:<ul id="69dce44d-f8c5-4644-af11-0262535a494c" class="bulleted-list"><li style="list-style-type:circle">Terminals: a,b,c</li></ul><ul id="06aa59a2-3699-4eb6-9f4b-c64358043aa5" class="bulleted-list"><li style="list-style-type:circle">Non-terminals: A,B,C</li></ul><ul id="4cde2615-d42e-4a2e-8491-21a0eb9b385c" class="bulleted-list"><li style="list-style-type:circle">Strings of terminals: x,y,z</li></ul><ul id="d1845db4-618c-4b94-858c-7ebbe12cb6e1" class="bulleted-list"><li style="list-style-type:circle">Mixed Strings: alpha, beta, gamma, delta</li></ul><ul id="598cf8d7-2a6a-4958-bb4e-64aec9d88e8f" class="bulleted-list"><li style="list-style-type:circle">Terminal or Non terminals: W,X,Y,Z uppercase at the end of alphabet</li></ul></li></ul><h2 id="1777a429-d879-4086-8147-e7b0136e4ce8" class="">Top Down Parsers → LL</h2><ul id="6ecccbe5-3b90-439f-a889-5d532bd95ea6" class="bulleted-list"><li style="list-style-type:disc">Builds a parse tree in preorder</li></ul><ul id="2b57f4ff-a13e-4191-957a-2f4cf0733397" class="bulleted-list"><li style="list-style-type:disc">Preorder traversal of parse tree begins with root → Each node is visited before it’s branches</li></ul><ul id="71b6ee0f-3e66-4e3f-b417-899045605b48" class="bulleted-list"><li style="list-style-type:disc">Branches from the particular node are followed in left-to-right order</li></ul><ul id="882e48d5-3b8c-4bf9-88d3-eb7d667edbaf" class="bulleted-list"><li style="list-style-type:disc">This corresponds to LMD</li></ul><ul id="c413c8e6-66bb-4c31-bf2b-21b30a21ba29" class="bulleted-list"><li style="list-style-type:disc">Given a sentential form that is part of the LMD, the parser’s task is to find the next sentential form in that LMD</li></ul><ul id="41440814-2b3f-4448-94be-825c8b754a02" class="bulleted-list"><li style="list-style-type:disc">General form of sentential form is</li></ul><ul id="c9009b55-5ce8-42f4-8176-972b909cfd11" class="bulleted-list"><li style="list-style-type:disc">Here A needs to be expanded using correct rule</li></ul><figure id="bdf662e5-a384-4949-bd64-41b36d3128ee" class="image"><a href="Lexical%20and%20Syntax%20Analysis%205d2c2fef2a4f419a97084e4a70535df9/Untitled%203.png"><img style="width:1340px" src="Lexical%20and%20Syntax%20Analysis%205d2c2fef2a4f419a97084e4a70535df9/Untitled%203.png"/></a></figure><ul id="ede358eb-e082-42f8-91f1-7aa69e508bdd" class="bulleted-list"><li style="list-style-type:disc">Determining the next sentential form is matter of choosing the correct rule that has A as LHS</li></ul><ul id="4a9907a8-e4eb-4924-ac18-a45c2496c57f" class="bulleted-list"><li style="list-style-type:disc">This is the decision problem for top down parser</li></ul><ul id="757b12b4-991f-4bfc-9ff9-0e01c32f4386" class="bulleted-list"><li style="list-style-type:disc">Most parsers choose the correct rule by comparing the next input symbol with the first symbol in the RHS. </li></ul><ul id="340a02bc-ef1c-440a-aa9a-8079c8d2a86e" class="bulleted-list"><li style="list-style-type:disc">Some times two RHS involving same NT as LHS may start with same symbol then it is difficult.</li></ul><ul id="ffee10d8-5374-4f9d-be4e-a0e7b1355c8c" class="bulleted-list"><li style="list-style-type:disc">A recursive descent parser is a coded version of a syntax analyzer based directly on the BNF descriptions of the syntax of the language </li></ul><ul id="6d70ec07-87b2-4aeb-94e2-7a7055ecc98e" class="bulleted-list"><li style="list-style-type:disc">An alternative approach is to use parsing table to implement BNF. They are both called as LL parsers</li></ul><h3 id="0b879372-ea79-4e88-a05d-843a17b711fb" class="">Example 1</h3><pre id="3e6d2ca8-0ecc-4403-82ff-32b556241a1f" class="code code-wrap"><code>- S→ aM and M → bMa | a and we have abbaaa
+- Stack is represented by BOTTOM —&gt; TOP
+- LMD: S → aM → abMa → abbMaa → abbaaa
+
+- We use stack → push down stack
+- Stack: S
+- Stack: M a
+- Stack: M (pop a cause matches with input’s first character)
+- Stack: a M b
+- Stack: a M (pop b)
+- Stack: a M
+- Stack: a a M b
+- Stack: a a M (pop b)
+- Stack: a a a
+- Stack: (pop a) x 3
+- Stack: EMPTY!!</code></pre><h3 id="20083736-7a9c-4d9f-a67e-e17839593949" class="">Example 2</h3><pre id="bcc8caae-619c-4c4e-ba99-e0dabb5fee97" class="code code-wrap"><code>- S → aAc and A → aA and A → b and we need aabc
+
+- Stack is represented by BOTTOM —&gt; TOP
+- Stack: S Input: aabc
+- Stack: c A a Input: aabc
+- Stack: c A Input: abc
+- Stack: c A a Input: abc
+- Stack: c A Input: bc
+- Stack: c b Input: bc
+- Stack: empty Input: empty</code></pre><p id="4eeae146-227e-46fb-95c6-6d032ee53446" class="">
+</p><h2 id="849ee17c-4a13-4ade-8b68-3613c38b41be" class="">Bottom Up Parsers → LR</h2><ul id="b07bb27e-9da3-4978-915c-e7b7303d5e38" class="bulleted-list"><li style="list-style-type:disc">Reverse of RMD: </li></ul><ul id="ea3dd2be-7b10-4ae1-8274-a8d121c62a69" class="bulleted-list"><li style="list-style-type:disc">S → aM → abMa → abbMaa → abbaaa</li></ul><ul id="6140ffff-a872-4c4b-8164-6b4d8e8afd34" class="bulleted-list"><li style="list-style-type:disc">Here we don’t use starting non terminal as the starting point</li></ul><ul id="3a6d16cf-cb52-433c-a990-32b9d45a111f" class="bulleted-list"><li style="list-style-type:disc">S→ aM and M → bMa | a</li></ul><ul id="d777ff6f-136d-45b7-8b4b-9d133ef44f28" class="bulleted-list"><li style="list-style-type:disc">Stack: a</li></ul><ul id="6e4e4962-39aa-4f8a-94a0-7e5b743c917a" class="bulleted-list"><li style="list-style-type:disc">Stack: a b → a b b → a b b a → a b b a → a b b M a → </li></ul><ul id="210eb57f-252b-4d4b-8efd-2355b052afd5" class="bulleted-list"><li style="list-style-type:disc">Here also we have the shift reduce conflict which is basically saying we cannot decide before hand</li></ul><ul id="4242ee4e-17ce-4383-97d1-64f43a71b04d" class="bulleted-list"><li style="list-style-type:disc">The process of finding the correct RHS to reduce is complicated by the fact that a given right sentential form may include more than one RHS from the grammar</li></ul><ul id="cf5f7445-a96a-4edf-959f-7bea6c7d536d" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">Note: Correct RHS is called the handle → It’s a substring in the sentential form</span></li></ul><ul id="dd551a83-5cf6-4800-8064-372dc50a0be7" class="bulleted-list"><li style="list-style-type:disc">Also called as shift reduce algorithms. A parser is a PDA</li></ul><ul id="2d2f4f6a-42ef-4940-afb8-0d4e85fafa8a" class="bulleted-list"><li style="list-style-type:disc">The input is examined from left to right, one symbol at a time.</li></ul><pre id="56c910ad-6331-46fc-8d3d-6151606ed673" class="code code-wrap"><code>- S → aAc and A → aA | b
+
+- S ⇒ aAc → aaAc → aabc
+
+- Stack: Empty (Shift a)
+- Stack: a → (Shift a)
+- Stack: a → a → (Shift b)
+- Stack: a → a → b → (Reduce b to A using A → b)
+- Stack: a → a → A → (Reduce aA to A using A → aA)
+- Stack: a → A → (Shift c)
+- Stack: a → A → c (Reduce aAc to S using S → aAc)
+- Stack: S</code></pre><h3 id="2009216b-f8ce-40e9-a578-0a1c4960fb9c" class="">Example:</h3><ul id="642d0798-9220-40da-afb6-aea1d062ebcd" class="bulleted-list"><li style="list-style-type:disc">S → bAB | aBA and A → aS | b and B → bS | a</li></ul><ul id="1ab882b0-0e66-4fdb-a295-a0f23ee83339" class="bulleted-list"><li style="list-style-type:disc">Use bottom up approach to use the valid string abbbab</li></ul><ul id="7ec5127b-fe75-4a05-b23d-0904e1f75671" class="bulleted-list"><li style="list-style-type:disc">Top Down Parsing<pre id="2cb0da92-5477-4bfa-ae36-f65cc1711827" class="code code-wrap"><code>- First we write LMD → S → aBA → abSA → abbABA → abbbBA → abbbaA → abbbab
+- Then we start with S
+
+- Stack: S Input: abbbab
+- Stack: A B a Input: abbbab
+- Stack: A B Input: bbbab
+- Stack:  A S b Input: bbbab
+- Stack: A S Input: bbab
+- Stack: A B A b Input: bbab
+- Stack: A B A Input: bab
+- Stack: A B b Input: bab
+- Stack: A B Input: ab
+- Stack: A Input: b
+- Stack: Empty Input; Empty
+</code></pre></li></ul><ul id="31061040-c26f-452c-9244-68d0eb45474d" class="bulleted-list"><li style="list-style-type:disc">Bottom Up:<pre id="9bb5cf04-ba47-4e03-a3c8-ff761579442c" class="code code-wrap"><code>- RMD → S → aBA → aBb → abSb → abbABb → abbAab → abbbab
+
+- Stack: a
+- Stack: a b
+- Stack: a b
+- Stack: a b b
+- Stack: a b b b
+- Stack: a b b A
+- Stack: a b b A a
+- Stack: a b b A B
+- Stack: a b S
+- Stack: a b S
+- Stack: a B
+- Stack: a B b
+- Stack: a B A
+- Stack: S</code></pre><figure id="8da2527e-e3c9-4da7-8695-98175f13871e" class="image"><a href="Lexical%20and%20Syntax%20Analysis%205d2c2fef2a4f419a97084e4a70535df9/Untitled%204.png"><img style="width:1774px" src="Lexical%20and%20Syntax%20Analysis%205d2c2fef2a4f419a97084e4a70535df9/Untitled%204.png"/></a></figure></li></ul><h1 id="1606dea7-52e4-4156-8251-7642113ab3c7" class="">Recursive Descent Parsing (Top Down)</h1><ul id="cd9074eb-8dc7-4705-bed6-fed25e8309da" class="bulleted-list"><li style="list-style-type:disc">As the name suggests, it consists of collection of subprograms many which are recursive in nature</li></ul><ul id="9d8bd4b1-16e0-45f8-954e-0309464b73b0" class="bulleted-list"><li style="list-style-type:disc">It produces parse tree in top-down order</li></ul><ul id="512aa677-2459-4597-b1a0-72d5591c25f7" class="bulleted-list"><li style="list-style-type:disc">This recursion is reflection of the nature of PLs which include several different kinds of nested structures</li></ul><ul id="7c258005-1995-47f5-ad64-baa9ee3b111b" class="bulleted-list"><li style="list-style-type:disc">And we see that the syntax is naturally described using recursive grammar rules</li></ul><ul id="b035e539-7ea5-43ee-85fe-a0e3517c20a4" class="bulleted-list"><li style="list-style-type:disc">Coded version of a syntax analyzer based directly on the BNF descriptions of the syntax of language</li></ul><ul id="98a424be-d8fb-4acf-9b1c-f01b0dfa8207" class="bulleted-list"><li style="list-style-type:disc">An alternative approach is to use parsing table to implement BNF</li></ul><ul id="ad55c4c9-3260-4ca6-b7ce-e02dbb6dfc75" class="bulleted-list"><li style="list-style-type:disc">They are both called as LL parsers → top down</li></ul><ul id="e983d32f-ed1b-40ef-badf-bab814c29f63" class="bulleted-list"><li style="list-style-type:disc">LR parsers → bottom up parsers</li></ul><ul id="1e1deb32-6c08-4de5-b416-4dca31ff8764" class="bulleted-list"><li style="list-style-type:disc">A RDP has a subprogram has a subprogram for each non terminal in it’s grammar</li></ul><ul id="c5afb2d5-8e30-4d66-9ebd-333c4a681bf8" class="bulleted-list"><li style="list-style-type:disc">A RDP subprogram for a rule with a single RHS is relatively simple</li></ul><ul id="41c29bf2-f81a-46e7-ba0e-5b332f1583a3" class="bulleted-list"><li style="list-style-type:disc">For each terminal symbol in the RHS, the terminal is compared with next token.<ul id="f33b5e61-4fc9-4164-bb4f-e654426fa4e0" class="bulleted-list"><li style="list-style-type:circle">If they do not match, it is syntax error. </li></ul><ul id="febd7eb8-35bc-4f33-9949-256e3f12a8b6" class="bulleted-list"><li style="list-style-type:circle">If they match, the lexical analyzer is called for the next input token.</li></ul></li></ul><figure id="4b34b68b-d20b-44f4-a2c5-78fb9a541b1d" class="image"><a href="Lexical%20and%20Syntax%20Analysis%205d2c2fef2a4f419a97084e4a70535df9/Untitled%205.png"><img style="width:1885px" src="Lexical%20and%20Syntax%20Analysis%205d2c2fef2a4f419a97084e4a70535df9/Untitled%205.png"/></a></figure><figure id="df8550be-a51c-482d-a0fb-0b9ea29e14fc" class="image"><a href="Lexical%20and%20Syntax%20Analysis%205d2c2fef2a4f419a97084e4a70535df9/Untitled%206.png"><img style="width:1770px" src="Lexical%20and%20Syntax%20Analysis%205d2c2fef2a4f419a97084e4a70535df9/Untitled%206.png"/></a></figure><p id="6c857865-b264-4793-837c-4e6caa473a5b" class="">NOTE: Syntax Analyzer → Sequence of tokens</p><p id="3edee3ca-aa5e-4115-885f-ceb3df72fde7" class="">NOTE: Lexical Analyzer → Sequence of symbols</p><h3 id="90753680-9fa6-4009-b6e8-0e3c7e309187" class="">Example</h3><ul id="513603d2-fbd6-4597-99d9-78f1eefab43c" class="bulleted-list"><li style="list-style-type:disc">Give recursive Descent Parser code for the following grammer: <code>S→aAb, A→bA | aB, B → c</code></li></ul><pre id="33d68ff8-dd3b-459c-8a1c-05f1341195f7" class="code code-wrap"><code>lexeme(){
+	returns the next input token
+}
+
+S(){
+	if(nextToken = &#x27;a&#x27;){
+		lexeme();
+		A();
+		lexeme();
+		if(nextToken = &#x27;b&#x27;){
+			Accepted
+		}else{
+			return error;
+		}
+	}
+}
+
+A(){
+	if(nextToken == &#x27;b&#x27;){
+		lexeme();
+		A();
+	}
+	else if(nextToken == &#x27;a&#x27;){
+		lexeme();
+		B();
+	}
+	else error;
+}
+
+B(){
+	if(nextToken == &#x27;c&#x27;){}
+	else error
+}
+
+parse(){
+	lexeme();
+	S();
+}</code></pre><h1 id="c1bf0ac2-be0f-4f35-b81c-2b6be2b28d08" class="">LL Grammar Class</h1><ul id="9ee953fd-d34e-4edb-8bf2-03899b003988" class="bulleted-list"><li style="list-style-type:disc">Top down parsers</li></ul><ul id="27c3da66-e426-4448-9ecf-ff67d3b6d59e" class="bulleted-list"><li style="list-style-type:disc">Let us understand the limitation of the recursive decent approach<ul id="f021969e-76bd-4d41-9d78-adf7ffc27ef8" class="bulleted-list"><li style="list-style-type:circle">Left recursion - Direct Recursion A → A + B</li></ul><ul id="b5f644e1-eb28-4830-a098-6452d7dbe04a" class="bulleted-list"><li style="list-style-type:circle">Indirect Recursion = A → BaA an B → Aa</li></ul></li></ul><h2 id="5b44f58d-284d-4534-9070-468f694d113d" class="">Left Recursion</h2><ul id="26b95013-8296-47aa-ab7c-7def241a79fa" class="bulleted-list"><li style="list-style-type:disc">E → E + T </li></ul><ul id="36436d51-c318-4480-b788-48867b16a7f4" class="bulleted-list"><li style="list-style-type:disc">Creates problems, this is known as left recursion</li></ul><ul id="6e99da44-a067-4e27-be14-763416138472" class="bulleted-list"><li style="list-style-type:disc">Whenever we have production of the form A → Aa1, A → Aa2 … A→Aan and A→ b1, A → b2, … A → bm</li></ul><ul id="785e6681-e555-42b9-86f7-3fab5a3a8de3" class="bulleted-list"><li style="list-style-type:disc">Replace these by<ul id="bfcd64e2-9923-4544-8867-a371a88dbf5a" class="bulleted-list"><li style="list-style-type:circle">A → b1A’, A → b2A’ … A→bmA’ and</li></ul><ul id="b3dd1d15-fe67-4591-8b0e-ddabc2049180" class="bulleted-list"><li style="list-style-type:circle">A → a1A’, A’ → a2A’… A’ → anA’ and</li></ul><ul id="6225d144-492e-4f68-9baa-9a0a8dd9468a" class="bulleted-list"><li style="list-style-type:circle">A’ → e</li></ul></li></ul><ul id="baf746e4-a142-4a57-b263-c54c66da82dd" class="bulleted-list"><li style="list-style-type:disc">Example:<ul id="2d07a6da-af81-4d52-8f7c-a34be48d156d" class="bulleted-list"><li style="list-style-type:circle">E → E + T and E → T</li></ul><ul id="a4ca4784-75e1-4154-9db1-13850bc4fa8a" class="bulleted-list"><li style="list-style-type:circle">Ans: E → TE’</li></ul><ul id="e1ca9571-2d6f-4981-8689-f40de924e688" class="bulleted-list"><li style="list-style-type:circle">E’ → +TE’</li></ul><ul id="669c2c70-11c0-4d93-b022-cc840fe2c26c" class="bulleted-list"><li style="list-style-type:circle">E’ → e</li></ul></li></ul><ul id="562e04af-d938-49e2-b623-e49c8f4d02ef" class="bulleted-list"><li style="list-style-type:disc">Example:<ul id="7e3efbf1-367e-4cdb-9aba-292c7cfcca71" class="bulleted-list"><li style="list-style-type:circle">S → SabA | Sc and S → a and  S → b and A → cA | c</li></ul><ul id="c2da326a-4606-4eb1-9358-50bc91aad53f" class="bulleted-list"><li style="list-style-type:circle">S → SabA we make abA as a1</li></ul><ul id="7d920226-ef35-4b92-aa94-59b355c97bd7" class="bulleted-list"><li style="list-style-type:circle">S → Sc we make c as a2</li></ul><ul id="c99ddf90-4d6d-43aa-b407-ab0f17e4538f" class="bulleted-list"><li style="list-style-type:circle">S → a we make a as b1</li></ul><ul id="5e3e0d27-8c1d-4181-b13d-19b02b4a70ce" class="bulleted-list"><li style="list-style-type:circle">S → b we make b as b2</li></ul><ul id="4bd9ad87-c7e9-4001-8e76-fd77553ed221" class="bulleted-list"><li style="list-style-type:circle">Ans: S → aS’ | bS’</li></ul><ul id="5886ca51-50a3-4777-bd3f-7a220dbe1e36" class="bulleted-list"><li style="list-style-type:circle">S’ → abAS’ | cS’ | e</li></ul></li></ul><h3 id="b9d08a2a-ab17-4445-bd27-1f5a5744ca89" class="">LEFT FACTORING</h3><ul id="931cba14-d63e-473f-9676-4c1865cd482b" class="bulleted-list"><li style="list-style-type:disc">Can a Recursive Descent Parser always choose a correct RHS based on the first symbol in RHS</li></ul><ul id="ef068432-ff79-4b87-aa0b-a23ca9a40f30" class="bulleted-list"><li style="list-style-type:disc">In first place, it must be non left recursive</li></ul><ul id="68b86f6e-5228-4598-8ec2-5c5539deb864" class="bulleted-list"><li style="list-style-type:disc">Test: Pairwise disjoint test</li></ul><ul id="8a750cff-e33f-477c-a9e1-7bec00b85453" class="bulleted-list"><li style="list-style-type:disc">Computer the FIRST(a) where a is the RHS<ul id="32817dc8-ef32-4270-b386-1f6f7e10a274" class="bulleted-list"><li style="list-style-type:circle">A → aB FIRST(aB) = {a}</li></ul><ul id="4fc584bc-c876-4c55-b4e6-56ee41588660" class="bulleted-list"><li style="list-style-type:circle">A → b FIRST(b) = {b}</li></ul><ul id="d3195be7-917a-4b1d-9b1e-3d62b89c7765" class="bulleted-list"><li style="list-style-type:circle">B → cd | e</li></ul></li></ul><ul id="13547a8c-a766-439c-806d-a1fe04ac5655" class="bulleted-list"><li style="list-style-type:disc">but in A → abb | acb. Here first(abb) = first(acb). Hence it is a problem. We can apply left factoring<ul id="02e77560-7b44-4460-8172-07aab306fb55" class="bulleted-list"><li style="list-style-type:circle">A → aM</li></ul><ul id="c5876fcb-18ae-46bb-a55b-d70b52347ac6" class="bulleted-list"><li style="list-style-type:circle">M → bb | cb</li></ul></li></ul><ul id="8aabcdbf-ac2e-4143-a194-25a2b98c22d9" class="bulleted-list"><li style="list-style-type:disc">This may not work always. In that case we will have to revise the grammar rules</li></ul><h1 id="149a3f35-733d-46b8-9c28-00755e8d018d" class="">LR Grammar Class</h1><ul id="1c25839c-d50c-4da0-aa4a-23689c21c394" class="bulleted-list"><li style="list-style-type:disc">Many bottom up parsing algorithms are variations of LR parsers</li></ul><ul id="5c474de4-cc62-4300-a662-1522d7ee0abd" class="bulleted-list"><li style="list-style-type:disc">LR parsers are relatively small programs and a parsing table is built for specific language</li></ul><ul id="fc2bec42-6e96-4d9d-8a30-4a63271ade98" class="bulleted-list"><li style="list-style-type:disc">Required large computational resources to build the table</li></ul><ul id="7694dc5b-f465-42e1-b1c6-8ff20f772bff" class="bulleted-list"><li style="list-style-type:disc">Many variants came up in 1975 which require less computational resources and work on small class of grammars</li></ul><ul id="e50e09d6-cdd0-46c7-9c44-4ebea9723235" class="bulleted-list"><li style="list-style-type:disc">LR parsing table can be constructed for a grammar using tool like yacc</li></ul><ul id="8c640b31-d0bb-4965-a57e-e6e77b5a1a32" class="bulleted-list"><li style="list-style-type:disc">LR parsers can handle a large class of context free grammars</li></ul><ul id="df2b39ca-023b-47ba-b8b2-4fe609e45bc9" class="bulleted-list"><li style="list-style-type:disc">LR parser can detect the syntax errors as soon as they can occur</li></ul><ul id="5b3065c6-073f-46f0-8a00-2598b4d85001" class="bulleted-list"><li style="list-style-type:disc">LR grammars can describe more languages than LL grammars</li></ul><ul id="04f925ca-76b3-4287-9afc-6a23d20cb089" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">LR parsing method is a most general non back tracking shift reduce parsing method</span></li></ul><ul id="090c1d69-5f73-4cae-9ed6-774848f5c838" class="bulleted-list"><li style="list-style-type:disc">Bottom up parsing process produces the reverse of RMD</li></ul><ul id="245c0d69-b43a-4f40-a841-2a4b7d9e9e59" class="bulleted-list"><li style="list-style-type:disc">There are 3 advantages to LR parsers<ul id="2d702c9f-e959-4252-b12d-c8fd7f8d32ad" class="bulleted-list"><li style="list-style-type:circle">They can be built for all programming languages</li></ul><ul id="d972e479-b957-4afd-96b3-3f57ea6a4144" class="bulleted-list"><li style="list-style-type:circle">Can detect syntax errors as soon as it is possible in a left to right scan</li></ul><ul id="fe45b075-043a-4454-a9be-b6a315a62dc1" class="bulleted-list"><li style="list-style-type:circle">LR class of grammars is a proper superset of the class parsable by the LL parser</li></ul></li></ul><ul id="cf323a6a-f002-4d38-8a6d-96f9ead472e7" class="bulleted-list"><li style="list-style-type:disc">Configuration is a pair of strings (stack, input) with the detailed form (S0X1S1X2…XmSm, aiai+1…an$)</li></ul><ul id="d1cbc3be-0006-42d9-b296-2cb49f790cc9" class="bulleted-list"><li style="list-style-type:disc">Parse Stack S0 X1 S1 … Xm Sm (Top)</li></ul><ul id="e9249dbb-8129-46a5-8a85-fc69189b058c" class="bulleted-list"><li style="list-style-type:disc">Input ai ai+1 … an $(Dollar is used to represent end of line)</li></ul><h3 id="9c6febae-95f0-4792-ad06-ba51eba289ac" class="">Example 1</h3><p id="26e5cb02-d88a-465e-872b-18e607da5ba2" class="">The following are the grammar rules</p><ul id="7d27d48c-7b1e-4d56-b3df-d09cc82f1590" class="bulleted-list"><li style="list-style-type:disc">E → E + T</li></ul><ul id="211ce258-2ea3-458a-9337-c53f5bbc4803" class="bulleted-list"><li style="list-style-type:disc">E → T</li></ul><ul id="9bf31ac3-5c93-4ae4-8a55-d4bec9a76aaa" class="bulleted-list"><li style="list-style-type:disc">T → T * F</li></ul><ul id="76115ecb-19b4-4a7b-83c7-3d34f78c2178" class="bulleted-list"><li style="list-style-type:disc">T → F</li></ul><ul id="c34d0adf-6cc1-44a2-8c36-39ae1a3d1599" class="bulleted-list"><li style="list-style-type:disc">F → (E)</li></ul><ul id="d7adb010-d894-45b2-97b9-715db1db09f7" class="bulleted-list"><li style="list-style-type:disc">F → id</li></ul><p id="61ec4192-4479-4b3d-97da-3cd087b57748" class="">We basically go one by one following the path given by the LR parsing table and go forward one by one.</p><p id="4a2445ca-b816-4ce3-9d24-2452cdb20d0a" class="">Reduce6 means use rule 6 to reduce the top of the stack</p><p id="7b09571a-d73a-46dd-b718-97a3a567a68e" class="">In bottom up parser, handle is always on top of stack</p><h3 id="c424f2a8-2cd8-4f17-8eae-75e56170d934" class="">Example 2</h3><p id="8f88d468-f69e-4da3-bd0a-2a0e08a3616e" class="">Grammar and for aadd</p><ul id="bee88afa-dd2c-4b82-9d42-612ef545395c" class="bulleted-list"><li style="list-style-type:disc">S → CC</li></ul><ul id="7bfc62d2-7499-40de-b157-312373161a7d" class="bulleted-list"><li style="list-style-type:disc">C → aC</li></ul><ul id="ce690aa6-ddb4-48fa-a69c-310bf7b1aa1b" class="bulleted-list"><li style="list-style-type:disc">C → d</li></ul><table id="5781e4a8-dd94-43fc-9c57-2b5bb07aabce" class="simple-table"><tbody><tr id="ebb0033a-928e-4b3b-b61c-2df9ce27aafa"><td id="d[ki" class="">State</td><td id="{BRb" class="">Action a</td><td id="r`}j" class="">Action d</td><td id="&lt;JjW" class="">Action $</td><td id="g;Fp" class="">Goto S</td><td id="Mj|p" class="">Goto C</td></tr><tr id="277e00a7-ee3d-4e02-91a2-e6766c3cfe4b"><td id="d[ki" class="">0</td><td id="{BRb" class="">s3</td><td id="r`}j" class="">s4</td><td id="&lt;JjW" class=""></td><td id="g;Fp" class="">1</td><td id="Mj|p" class="">2</td></tr><tr id="1364b907-86df-4673-847e-73daf4d5f55b"><td id="d[ki" class="">1</td><td id="{BRb" class=""></td><td id="r`}j" class=""></td><td id="&lt;JjW" class="">accc</td><td id="g;Fp" class=""></td><td id="Mj|p" class=""></td></tr><tr id="dda440a0-1d00-4b01-8f56-391d4d5ede3b"><td id="d[ki" class="">2</td><td id="{BRb" class="">s6</td><td id="r`}j" class="">s7</td><td id="&lt;JjW" class=""></td><td id="g;Fp" class=""></td><td id="Mj|p" class="">5</td></tr><tr id="f2890b50-49a3-49fa-9cc0-0b684fef13e5"><td id="d[ki" class="">3</td><td id="{BRb" class="">s3</td><td id="r`}j" class="">s4</td><td id="&lt;JjW" class=""></td><td id="g;Fp" class=""></td><td id="Mj|p" class="">8</td></tr><tr id="8fe637ae-adbf-4ff8-9d88-166fcf4563f9"><td id="d[ki" class="">4</td><td id="{BRb" class="">r3</td><td id="r`}j" class="">r3</td><td id="&lt;JjW" class=""></td><td id="g;Fp" class=""></td><td id="Mj|p" class=""></td></tr><tr id="58001494-8c2d-41c6-b561-f1071607e420"><td id="d[ki" class="">5</td><td id="{BRb" class=""></td><td id="r`}j" class=""></td><td id="&lt;JjW" class="">r1</td><td id="g;Fp" class=""></td><td id="Mj|p" class=""></td></tr><tr id="1ebbbdc3-1a4e-4739-b5e8-ae952db1dae5"><td id="d[ki" class="">6</td><td id="{BRb" class="">s6</td><td id="r`}j" class="">s7</td><td id="&lt;JjW" class=""></td><td id="g;Fp" class=""></td><td id="Mj|p" class="">9</td></tr><tr id="32706e4d-2a7b-4d37-a8ff-ef7be46565d3"><td id="d[ki" class="">7</td><td id="{BRb" class=""></td><td id="r`}j" class=""></td><td id="&lt;JjW" class="">r3</td><td id="g;Fp" class=""></td><td id="Mj|p" class=""></td></tr><tr id="c45ba67b-b31c-457a-a009-961a28dc8a14"><td id="d[ki" class="">8</td><td id="{BRb" class="">r2</td><td id="r`}j" class="">r2</td><td id="&lt;JjW" class=""></td><td id="g;Fp" class=""></td><td id="Mj|p" class=""></td></tr><tr id="155aedd6-823e-454c-b0ec-6ac9789b47e9"><td id="d[ki" class="">9</td><td id="{BRb" class=""></td><td id="r`}j" class=""></td><td id="&lt;JjW" class="">r2</td><td id="g;Fp" class=""></td><td id="Mj|p" class=""></td></tr></tbody></table><table id="99d505d9-6f4d-4653-bc00-793f9c61b0fe" class="simple-table"><tbody><tr id="e998655c-c522-4ee1-a453-e05dfd17c164"><td id="Nmf=" class="" style="width:278px">Stack</td><td id="X_H:" class="" style="width:283px">Input</td><td id="gPPV" class="" style="width:243px">Action</td></tr><tr id="f0822e26-9ad1-4c78-ae87-821256c61b0f"><td id="Nmf=" class="" style="width:278px">0</td><td id="X_H:" class="" style="width:283px">aadd$</td><td id="gPPV" class="" style="width:243px">Shift3</td></tr><tr id="f2da630f-185e-4c3f-984b-20d366f651d8"><td id="Nmf=" class="" style="width:278px">0a3</td><td id="X_H:" class="" style="width:283px">add$</td><td id="gPPV" class="" style="width:243px">Shift3</td></tr><tr id="59335492-4db3-4bde-bae0-605810fed25f"><td id="Nmf=" class="" style="width:278px">0a3a3</td><td id="X_H:" class="" style="width:283px">dd$</td><td id="gPPV" class="" style="width:243px">Shift4</td></tr><tr id="6d8e16e6-a516-410e-97e4-181e2e8f5415"><td id="Nmf=" class="" style="width:278px">0a3a3d4</td><td id="X_H:" class="" style="width:283px">d$</td><td id="gPPV" class="" style="width:243px">Reduce3[GoTo(3,C)]</td></tr><tr id="74c593a9-ba56-45a5-90f1-ec70cb569f1f"><td id="Nmf=" class="" style="width:278px">0a3a3C8</td><td id="X_H:" class="" style="width:283px">d$</td><td id="gPPV" class="" style="width:243px">Reduce2[GoTo(3,C)]</td></tr><tr id="a4d59e63-827e-4462-89f7-35e52d4f09f7"><td id="Nmf=" class="" style="width:278px">0a3C8</td><td id="X_H:" class="" style="width:283px">d$</td><td id="gPPV" class="" style="width:243px">Reduce2[GoTo(0,C)]</td></tr><tr id="6cf5ce7e-68bb-4307-96cd-9dc305df57ec"><td id="Nmf=" class="" style="width:278px">0C2</td><td id="X_H:" class="" style="width:283px">d$</td><td id="gPPV" class="" style="width:243px">Shift7</td></tr><tr id="d24b4b9d-e7cb-4963-9909-01113ba3b118"><td id="Nmf=" class="" style="width:278px">0C2d7</td><td id="X_H:" class="" style="width:283px">$</td><td id="gPPV" class="" style="width:243px">Reduce3[Goto(2, C)]</td></tr><tr id="100f70da-49b9-4c4d-9ca6-07c05c4a3ec3"><td id="Nmf=" class="" style="width:278px">0C2C5</td><td id="X_H:" class="" style="width:283px">$</td><td id="gPPV" class="" style="width:243px">Reduce1[Goto(0,S)]</td></tr><tr id="3badf8e0-a4f1-49aa-829a-e2d4b5cf49cd"><td id="Nmf=" class="" style="width:278px">0S1</td><td id="X_H:" class="" style="width:283px">$</td><td id="gPPV" class="" style="width:243px">Accept</td></tr></tbody></table><ul id="9ea67fbf-d92c-4a02-9484-daa41a421f21" class="bulleted-list"><li style="list-style-type:disc">For goto you check the last number in stack before adding C</li></ul><ul id="2e6030be-39e0-44d3-a483-4b824e54c8b9" class="bulleted-list"><li style="list-style-type:disc">For Action, we check next char and current stack number</li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

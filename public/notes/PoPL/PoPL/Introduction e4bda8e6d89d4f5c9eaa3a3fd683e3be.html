@@ -1,0 +1,677 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Introduction</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="e4bda8e6-d89d-4f5c-9eaa-3a3fd683e3be" class="page sans"><header><h1 class="page-title">Introduction</h1><p class="page-description"></p></header><div class="page-body"><nav id="473096eb-320a-41ed-95d3-e2dcfdeb17a6" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3c15c470-2022-4cf8-9217-89f0a56b041a">Reasons for Studying Concepts of Programming Languages</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9247a65d-d1aa-4267-bcd7-972193c46cf7">Increased capacity to express ideas</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#592a9ecf-b68d-4c55-a8bf-10916cf99a5b">Improved background for choosing appropriate languages</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9b2a3bbc-469d-41e9-af8c-80f453749f3f">Increase ability to learn new languages</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#75dde49d-646d-4a6e-9c28-0553cc79fd6e">Better understanding of the significance of implementation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a4419050-9336-4bdc-8c9c-b103a9422b7e">Better use of languages that are already known</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#45f451da-ee7c-488e-8c95-9688701e3487">Programming Domains</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2722bf82-33e6-473d-9703-537889fc379e">Language Evaluation Criteria</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ddbcd8e5-bbdb-47ef-bb39-22ba2a206268">Readability</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#140d8c4f-0131-4599-885b-8723a10fcd73">Overall Simplicity</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#5433bbfc-1dca-4ccc-8132-2e368afddfcb">Orthogonality</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#eb59a6b5-7b22-410d-94ef-987284f96221">Data Types</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#94c67000-ff01-4f86-8fd5-401cb2aac805">Syntax Design</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#21c43466-34ef-4bd1-8b8b-05e372e65c07">Writability</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#401ec64b-b6a5-456e-86f5-1d40bdbe49c2">Simplicity and Orthogonality</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#3a88fcb5-cec9-4476-9eb5-5d776cbf55a0">Support for Abstraction</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#68bfd7d8-b784-4180-833e-dcf7d872afd7">Expressivity</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#38244534-ab9b-48be-8133-15d0d61400de">Reliability</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#1279508a-615d-4113-809d-b1a8d0a4a244">Type Checking</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#6f75e9f6-ed21-4307-82ba-2bacebb7cb3e">Exception Handling</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#a2d99cb8-5822-4e99-bb7e-b40ac795e5b5">Aliasing</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#88c4a235-0238-4ba2-8725-d572041e40ad">Readability and Writability</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5e1c7a2e-64ef-4ef7-88f4-b61b05c99d8a">Cost</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e556b8c6-dbe3-4a30-9ee3-a3d17491f5b0">Language Design Tradeoffs</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#90d1c011-0b86-417e-a5c7-cd661a9db2a8">Implementation Methods</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7008c80d-30ad-46ca-9edb-7e2287527fff">Tutorial</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#33a7baf9-a68c-4ea1-9b35-f5d33574af3a">What arguments can you make for the idea of using a single programming language for all domains?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3554511e-e47a-4e93-923b-32ad25d1a022">What arguments can you make against the idea of using a single programming language for all domains?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b062b57f-3b76-4d6d-8a33-5e14903fe73d">Language Evaluation Criteria</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#86671d35-3b27-4b05-8f8a-5fad81ee6216">Name and explain another criteria by which languages can be judged</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7c17f759-45b4-49df-b1b1-18bb4458fa4a">What fragment ruins readability of a language?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b6ae671e-cf14-4945-848a-b9621b7666fc">Java uses right braces to end all compound statements, what are arguments that are for and against the design?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#77fcf268-9da8-40e6-adde-c08a640e4a82">Using uppercase and lower case letters in user defined names. What are advantages and disadvantages?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a8e3973a-c14a-49d8-8675-623106967261">Give any example of design tradeoff between safety and efficiency</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f728c2ac-f299-493a-a6f4-2a7d5ef81758">Give pros and cons of multi line comments and single line comments</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6a322c1a-bf16-476f-b547-56131203a88f">SDE Intern interview committee. What aspects you look for? What is your priority?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#280bf3d2-102f-4afd-b912-63e54981bf80">Computing Sum of two numbers in 6 Languages</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3b0f5790-b546-4336-9aa6-e66347bb361d">Why are all languages not very popular?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7d7ea5e1-6f44-4e22-be35-d4ac7b9ce061">Revising a Programming Language?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5d78deeb-d9a6-4dd7-8021-68f04a2d1f3a">You are programming using + - abs(a) and div(a, b). Write a function max of two variables and returns max of two numbers</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c16ac5ff-d37d-477d-b907-6fc85a853414">Solve the following problem using C and Java separately to write a program to copy the content from one file to another file which are in the same folder</a></div></nav><h1 id="3c15c470-2022-4cf8-9217-89f0a56b041a" class="">Reasons for Studying Concepts of Programming Languages</h1><h2 id="9247a65d-d1aa-4267-bcd7-972193c46cf7" class="">Increased capacity to express ideas</h2><ul id="dd319f73-b6d3-4736-b8f0-4dd2d49a4d01" class="bulleted-list"><li style="list-style-type:disc">It’s generally harder for people to conceptualize structure they cannot describe, verbally or in writing</li></ul><ul id="8abfab1f-1276-42ad-8d59-69dcc9e171e4" class="bulleted-list"><li style="list-style-type:disc">Programmers also are similarly constrained</li></ul><ul id="307160eb-30b6-45ef-b351-6f17933cacfe" class="bulleted-list"><li style="list-style-type:disc">Awareness of a wider variety of programming language features can reduce limitations in software development</li></ul><ul id="17a9bb53-b5f7-4a2b-a3a0-bf7fb4a92c03" class="bulleted-list"><li style="list-style-type:disc">A C programmer who had learned the structure and uses of associative arrays in Perl might design structures that simulate associative arrays in that language</li></ul><h2 id="592a9ecf-b68d-4c55-a8bf-10916cf99a5b" class="">Improved background for choosing appropriate languages</h2><ul id="4fc69c2c-d72f-4544-ab3b-962fc0704b9e" class="bulleted-list"><li style="list-style-type:disc">Most training programs limit instruction to one or two languages that are only relavant to their projects</li></ul><ul id="4e9f4031-6c95-4c75-b6d2-e3978cb0c828" class="bulleted-list"><li style="list-style-type:disc">Problem is that programmers will choose the language they know rather than the one that is suited for the project</li></ul><ul id="d0d536ab-893f-4751-b648-523691f1a318" class="bulleted-list"><li style="list-style-type:disc">If these programmers had access to more constructs, they would be better able to choose the language that best solves the problem</li></ul><h2 id="9b2a3bbc-469d-41e9-af8c-80f453749f3f" class="">Increase ability to learn new languages</h2><ul id="ba208f2f-0935-4d4f-90c8-e45f0ce00998" class="bulleted-list"><li style="list-style-type:disc">Once a thorough understanding of the fundamental concepts of a language is obtained, it becomes far easier to see how these concepts are incorporated into the design of the language being learned</li></ul><ul id="9caae0e4-7fad-44dc-9c22-2faf6adc0c5e" class="bulleted-list"><li style="list-style-type:disc">Programmers who understand OOP will have much easier time learning Java</li></ul><h2 id="75dde49d-646d-4a6e-9c28-0553cc79fd6e" class="">Better understanding of the significance of implementation</h2><ul id="73e6c709-f0db-486b-a6bb-df46cabbc334" class="bulleted-list"><li style="list-style-type:disc">In learning the concepts of programming languages, it is both interesting and necessary to touch on the implementation issues that affect those concepts</li></ul><ul id="16732ca2-d30b-4a48-800e-b405fee57f4a" class="bulleted-list"><li style="list-style-type:disc">In some cases understanding the implementation issues lead to an understanding of why that language was designed</li></ul><ul id="f6f5e6b1-17f4-4707-b0e4-346163dabad0" class="bulleted-list"><li style="list-style-type:disc">Certain bugs can be found and fixed only by a programmer who knows some related implementation details</li></ul><h2 id="a4419050-9336-4bdc-8c9c-b103a9422b7e" class="">Better use of languages that are already known</h2><ul id="5a07ba76-cf44-4bd1-95aa-f74333f4349d" class="bulleted-list"><li style="list-style-type:disc">By studying the concepts of programming languages, programmers can learn about previously unknown and unused parts of the languages they already use and begin to use those features.</li></ul><h1 id="45f451da-ee7c-488e-8c95-9688701e3487" class="">Programming Domains</h1><p id="0c1f58be-a7c7-4a1a-83cf-76ba06356390" class="">REFER TEXTBOOK</p><h1 id="2722bf82-33e6-473d-9703-537889fc379e" class="">Language Evaluation Criteria</h1><h2 id="ddbcd8e5-bbdb-47ef-bb39-22ba2a206268" class="">Readability</h2><ul id="f49d1564-2782-4c21-bc97-d6a53ba73948" class="bulleted-list"><li style="list-style-type:disc">The software life-cycle concept was developed and updated to give a smaller role to coding and maintenance was recognized as the large part of the cycle</li></ul><ul id="3bff7c9d-82fc-43de-bbee-c990b1a6017b" class="bulleted-list"><li style="list-style-type:disc">Readability has multiple characteristics that contribute to it’s readability</li></ul><ul id="a37bf5a1-7552-4800-add6-2af35c4bfac0" class="bulleted-list"><li style="list-style-type:disc">Readability must be considered in the context of the problem definition, for example, if a program that describes the computation is written in a language not meant for such use, the program will be unnatural and convoluted making it difficult to read</li></ul><h3 id="140d8c4f-0131-4599-885b-8723a10fcd73" class="">Overall Simplicity</h3><ul id="5d8641e8-94f8-46ce-9cc2-eea2672d7299" class="bulleted-list"><li style="list-style-type:disc">Language with a large number of basic constructs is more difficult to learn than the one with a smaller one</li></ul><ul id="f88c3a58-158e-4e37-9588-57f9e1cd04cb" class="bulleted-list"><li style="list-style-type:disc">Programmers tend to use only a subset of these constructs</li></ul><ul id="f1ccc2c3-f9ce-4255-b20b-026a1ec0dcb2" class="bulleted-list"><li style="list-style-type:disc">Feature multiplicity → having more than one way to accomplish a particular operation <ul id="61cba379-8a58-4d09-aceb-9c8ed0f33ecf" class="bulleted-list"><li style="list-style-type:circle">count = count + 1;</li></ul><ul id="ac2a149b-5c06-415e-bc19-b1b1d7e448cf" class="bulleted-list"><li style="list-style-type:circle">count += 1;</li></ul><ul id="5fb36c57-6274-4787-9ddd-b49b5ecfca57" class="bulleted-list"><li style="list-style-type:circle">count++;</li></ul><ul id="a990ed59-3c3a-4d39-a814-d2879a95a35c" class="bulleted-list"><li style="list-style-type:circle">++count;</li></ul></li></ul><ul id="389dd4fc-9049-4ba5-9c41-d5f48c3bd0fa" class="bulleted-list"><li style="list-style-type:disc">This decreases readability</li></ul><ul id="01d713e3-6d5d-4dc8-8241-520ca75cd3f3" class="bulleted-list"><li style="list-style-type:disc">Operator overloading<ul id="5beb1fc9-0cfe-4a52-ab89-c87a5acb691b" class="bulleted-list"><li style="list-style-type:circle">It is often useful but only if the overloading is done sensibly</li></ul><ul id="597a0f9a-e02c-4a70-82dc-2d17fa0cd16b" class="bulleted-list"><li style="list-style-type:circle">For example, overloading + to add floating point numbers and integers simplifies the language but defining + as the subtraction of two numbers over complicates the language</li></ul></li></ul><ul id="15c6c568-d5df-4fb1-8be1-1e58f021d450" class="bulleted-list"><li style="list-style-type:disc">Simplicity can go too far too, assembly language is supposed to be very simple but they lack more complex statements and this leads to lower readability due to the language being very simple</li></ul><h3 id="5433bbfc-1dca-4ccc-8132-2e368afddfcb" class="">Orthogonality</h3><ul id="c8e837cb-2c25-4e32-8dda-c023352621c8" class="bulleted-list"><li style="list-style-type:disc">This means that a relatively small set of primitive constructs can be combined in a relatively small number of ways to build the control and data structures of the language</li></ul><ul id="779bc297-0049-4449-bd63-228c2af10bbc" class="bulleted-list"><li style="list-style-type:disc">Every possible combination or primitives is legal and meaningful</li></ul><ul id="92a6b213-e0fe-4ba4-8e81-192ffabb5de0" class="bulleted-list"><li style="list-style-type:disc">For example, in C we have a predefined set of data types but through combination of int, float, double, char and array, pointer we can define further more data structures</li></ul><ul id="5b598689-5291-4916-aaa0-102dc1d3d5aa" class="bulleted-list"><li style="list-style-type:disc">The meaning of an orthogonal language feature is independent of the context of it’s appearance in a program</li></ul><ul id="70015051-3aa2-4e96-a9d0-322b2a6a0273" class="bulleted-list"><li style="list-style-type:disc">Lack of orthogonality leads to exceptions to the rules of the language</li></ul><figure id="3f0f6402-a7c1-4529-9484-538c618a0cc9" class="image"><a href="Introduction%20e4bda8e6d89d4f5c9eaa3a3fd683e3be/Untitled.png"><img style="width:1052px" src="Introduction%20e4bda8e6d89d4f5c9eaa3a3fd683e3be/Untitled.png"/></a></figure><ul id="a0170957-54f3-4fa4-8438-13a7808eea82" class="bulleted-list"><li style="list-style-type:disc">Orthogonality related to simplicity. More orthogonal the language, fewer exceptions the language requires and fewer exceptions leads to a higher degree of regularity in the design, which makes the language easy to learn, read and write</li></ul><ul id="19b39dbb-0705-4245-be59-026fbe3ff50f" class="bulleted-list"><li style="list-style-type:disc">Too much orthogonality also can cause problems</li></ul><ul id="db364100-00b7-4aff-8666-b5fd97c5cc45" class="bulleted-list"><li style="list-style-type:disc">Most orthogonal language is ALGOL 68 → every construct has a type and there are no restrictions on those types</li></ul><ul id="866ca89b-ade7-4300-ac4d-f494e3d8a876" class="bulleted-list"><li style="list-style-type:disc">Functional languages → combination of simplicity and orthogonality</li></ul><h3 id="eb59a6b5-7b22-410d-94ef-987284f96221" class="">Data Types</h3><ul id="fd8885b6-fff6-4966-af95-f537735c5d0c" class="bulleted-list"><li style="list-style-type:disc">Suppose a numeric type is used for an indicator flag because there is no boolean type, in such a language timeOut = 1 will be used</li></ul><ul id="13f5db80-4eda-41e2-8c86-39264380c35b" class="bulleted-list"><li style="list-style-type:disc">But if it exists, then timeOut = true will be used and the second statement gives a better view</li></ul><h3 id="94c67000-ff01-4f86-8fd5-401cb2aac805" class="">Syntax Design</h3><ul id="ec0daa39-9d49-4e68-81ce-bc4ec3059a9a" class="bulleted-list"><li style="list-style-type:disc">Special Words → <ul id="9c7ed541-1a27-46fe-b808-a3de1111554e" class="bulleted-list"><li style="list-style-type:circle">Fortran and Ada don’t have closing brackets which might not be clear as to what is ending, they have end if and end loop</li></ul><ul id="51b7258d-c53d-41cf-b565-4f9c13179c63" class="bulleted-list"><li style="list-style-type:circle">This is an example of the conflict between C++ which has simplicity compared to Ada which has better readability</li></ul><ul id="e0c5f281-aacc-416a-b794-c4e5fd6ed226" class="bulleted-list"><li style="list-style-type:circle">Another problem is whether the special words of a language can be used as names for variables, if so then the programs become very confusing</li></ul><ul id="08d5cf55-d0c1-4775-8a0e-63c0f88266d1" class="bulleted-list"><li style="list-style-type:circle">GREP comes from <code>g/regularexpression/p</code></li></ul></li></ul><ul id="caf178aa-c04a-4a43-b5fb-683b5fb687b3" class="bulleted-list"><li style="list-style-type:disc">Form and Meaning<ul id="4234ce80-4e32-4bf4-a414-e93022d4b85a" class="bulleted-list"><li style="list-style-type:circle">In C the meaning of static keyword depends on context of appearance</li></ul></li></ul><h2 id="21c43466-34ef-4bd1-8b8b-05e372e65c07" class="">Writability</h2><ul id="62b353a4-8217-4223-9ff5-ba61966abbb1" class="bulleted-list"><li style="list-style-type:disc">Measure of how easily a language can be used to create programs for a chose program domain</li></ul><ul id="ec8bc9cd-8461-4778-aa7c-8d097adc16fa" class="bulleted-list"><li style="list-style-type:disc">Writing a program requires reading it first</li></ul><h3 id="401ec64b-b6a5-456e-86f5-1d40bdbe49c2" class="">Simplicity and Orthogonality</h3><ul id="8ec6c3ed-5010-4f08-9eb9-c540c396f34d" class="bulleted-list"><li style="list-style-type:disc">Large number of constructs → programmers not familiar with all of them</li></ul><ul id="867bf1bb-41b8-49f9-813d-0c2d8f4eb0dc" class="bulleted-list"><li style="list-style-type:disc">Leads to misuse and disuse of others</li></ul><ul id="4a58428c-2c01-4642-a154-f88080d8fd38" class="bulleted-list"><li style="list-style-type:disc">Smaller number of primitive constructs and a consistent set of rules for combining them → better than simply having large number of primitives</li></ul><ul id="9e80fd74-b117-4c97-96f7-facebd135163" class="bulleted-list"><li style="list-style-type:disc">Too much orthogonality can decrease writability</li></ul><ul id="465ec3f5-799f-4d96-8540-c610c1c64f3d" class="bulleted-list"><li style="list-style-type:disc">Errors in programs go undetected</li></ul><h3 id="3a88fcb5-cec9-4476-9eb5-5d776cbf55a0" class="">Support for Abstraction</h3><ul id="1dd69a65-b06f-4edb-9a07-0e2603d0643a" class="bulleted-list"><li style="list-style-type:disc">Ability to define and then use complicated structures or operations in ways that allow many of the details to be ignored</li></ul><ul id="ced045d9-57b9-44d2-a9f8-b36b63191d0d" class="bulleted-list"><li style="list-style-type:disc">Process abstraction is the use of subprogram to implement a sort algorithm that is required multiple times in the program and if there was no subprogram we would have to replicate it in a lot of places</li></ul><ul id="0a717d71-b728-4798-87af-7b8f94d30442" class="bulleted-list"><li style="list-style-type:disc">Data abstraction is where we store binary trees in the form of integer arrays, for example, in Fortran 77 as 3 parallel integer arrays where 2 of the integers represent offspring nodes</li></ul><h3 id="68bfd7d8-b784-4180-833e-dcf7d872afd7" class="">Expressivity</h3><ul id="a0a1ed4b-65f8-4f3e-a5a7-c8077d56f57a" class="bulleted-list"><li style="list-style-type:disc">count++ more comfortable than count = count + 1</li></ul><ul id="e0c6e5c8-3529-40fc-acc2-d3b0ca350166" class="bulleted-list"><li style="list-style-type:disc">We have and then operator in Ada and is a convenient way of specifying short circuit evaluation of a boolean expression</li></ul><ul id="1445d8d4-bbb8-477b-827a-c97501289de1" class="bulleted-list"><li style="list-style-type:disc">Inclusion of for and while in java make writing loops easier</li></ul><h2 id="38244534-ab9b-48be-8133-15d0d61400de" class="">Reliability</h2><ul id="46ecd851-d661-4c82-8cf6-76a4d1a932f0" class="bulleted-list"><li style="list-style-type:disc">Performs to specifications under all conditions</li></ul><h3 id="1279508a-615d-4113-809d-b1a8d0a4a244" class="">Type Checking</h3><ul id="824de8c5-0c66-40ee-a409-adffd1ebbbb0" class="bulleted-list"><li style="list-style-type:disc">Testing for type errors in a given program by compiler or during execution</li></ul><ul id="547edc18-594e-443a-8865-d0288df1df6d" class="bulleted-list"><li style="list-style-type:disc">Run time type checking is expensive, compile time type checking is more desirable</li></ul><ul id="26913864-43df-4bac-97a7-dace0e0f1290" class="bulleted-list"><li style="list-style-type:disc">Earlier the errors detected, the less expensive it is to make the required changes</li></ul><ul id="ba7114ca-2d99-4700-b6e1-8cce1eeabb34" class="bulleted-list"><li style="list-style-type:disc">Java checks for all types</li></ul><ul id="965e2da7-639c-442d-8663-9abd35afbc12" class="bulleted-list"><li style="list-style-type:disc">In C we had issues where int could be used as a function parameter for a float variable</li></ul><h3 id="6f75e9f6-ed21-4307-82ba-2bacebb7cb3e" class="">Exception Handling</h3><ul id="a787c90d-e0f8-4ba1-a886-b5f3da027c03" class="bulleted-list"><li style="list-style-type:disc">Ability to intercept run time errors, take corrective measures and then continue → reliable</li></ul><ul id="28020dd0-937e-49b6-b843-3070e1055475" class="bulleted-list"><li style="list-style-type:disc">Ada, C++, Java and C# → extensive exception handling</li></ul><h3 id="a2d99cb8-5822-4e99-bb7e-b40ac795e5b5" class="">Aliasing</h3><ul id="b26302f8-252c-4856-a342-28890f87b08b" class="bulleted-list"><li style="list-style-type:disc">Two or more distinct names that can be used to access the same memory cell</li></ul><ul id="68939c07-165b-44f2-8e61-adcfc24f5ce7" class="bulleted-list"><li style="list-style-type:disc">Most languages allow some kind of aliasing</li></ul><h3 id="88c4a235-0238-4ba2-8725-d572041e40ad" class="">Readability and Writability</h3><ul id="828b0709-59e9-4e7d-9ec7-c7b185d5869a" class="bulleted-list"><li style="list-style-type:disc">Readability affects reliability in both the writing and maintenance phases of the life cycle</li></ul><h2 id="5e1c7a2e-64ef-4ef7-88f4-b61b05c99d8a" class="">Cost</h2><ul id="72067dd6-5508-4176-91a1-871645a7b07b" class="bulleted-list"><li style="list-style-type:disc">Cost of training programmers to use the language → simplicity and orthogonality</li></ul><ul id="f4e67a69-c7e2-45cc-a25b-7a8f8cd459d1" class="bulleted-list"><li style="list-style-type:disc">Cost of writing programs in the language → writability</li></ul><ul id="153d7385-7f7f-45c3-853b-ad62dcef169a" class="bulleted-list"><li style="list-style-type:disc">Cost of compiling programs → Ada compiling was very expensive which led to it not becoming a lot popular</li></ul><ul id="56a3d38d-5548-43ad-917a-61a6a8721549" class="bulleted-list"><li style="list-style-type:disc">Cost of executing programs → language design. Many run time checks prohibit fast code execution<ul id="fa3c2a1f-1ea0-42ea-a1d6-119181f4e07e" class="bulleted-list"><li style="list-style-type:circle">Simple trade off can be made between compilation cost and execution task</li></ul><ul id="fa806dbd-c810-4559-a1c8-b055372a1e3b" class="bulleted-list"><li style="list-style-type:circle">Optimization is the name given to the collection of techniques that compilers use to decrease the size or increase the execution speed of the compiled code</li></ul><ul id="091d533e-8d3a-4d0e-8422-672687429982" class="bulleted-list"><li style="list-style-type:circle">In beginner orientation → no optimization required but in production where we compile once and use the compiled program later → optimization is needed</li></ul></li></ul><ul id="7934b47f-6568-4a4a-9541-d02ae2aeeb2c" class="bulleted-list"><li style="list-style-type:disc">Cost of the language implementation system<ul id="67bcee07-5da8-4be1-8683-321c37d94890" class="bulleted-list"><li style="list-style-type:circle">Java had free compiler/interpreter systems </li></ul><ul id="57fa0c3b-540c-49c8-a1ad-f52971bc6220" class="bulleted-list"><li style="list-style-type:circle">Expensive language or languages which only work on expensive systems not a good choice</li></ul></li></ul><ul id="4e63d459-d3e1-423e-a09c-950b9dc7e877" class="bulleted-list"><li style="list-style-type:disc">Cost of poor reliability<ul id="09c16295-74c8-4bdd-af95-b27ded85ad9d" class="bulleted-list"><li style="list-style-type:circle">Software shouldn’t fail in critical systems</li></ul></li></ul><ul id="33e4fc4a-cc4d-413e-8948-ec6eb4d942f1" class="bulleted-list"><li style="list-style-type:disc">Cost of maintaining programs → corrections and modifications to add new functionality → primarily on readability</li></ul><ul id="6140c9b9-cd9e-4a0f-8bb1-654ff836ed6b" class="bulleted-list"><li style="list-style-type:disc">Portability → ease with which programs can be moved from one implementation to another<ul id="822132b9-dca3-408f-b54d-f5071349be6d" class="bulleted-list"><li style="list-style-type:circle">BASIC not standardized </li></ul></li></ul><ul id="922e012f-aaff-4be4-9aea-dc4747cfaba3" class="bulleted-list"><li style="list-style-type:disc">Generality → applicability to a wide range of applications</li></ul><ul id="cbb401dc-636a-4692-866d-d5f2a47c99a1" class="bulleted-list"><li style="list-style-type:disc">Well defined ness → completeness and precision of the languages official defining document</li></ul><h1 id="e556b8c6-dbe3-4a30-9ee3-a3d17491f5b0" class="">Language Design Tradeoffs</h1><ul id="cc6f78ad-a314-4ed1-82e5-0e6a3389815e" class="bulleted-list"><li style="list-style-type:disc">Java demands all references to array elements be checked but in C we don’t do index checking</li></ul><ul id="55b506d4-d06c-4e48-ab05-789a20d3ce6d" class="bulleted-list"><li style="list-style-type:disc">So C programs tend to be faster than Java although java is more reliable</li></ul><ul id="2ea3db9d-3120-4d56-b542-b9099e2ea391" class="bulleted-list"><li style="list-style-type:disc">APL → large number of symbols → more expressivity → increased writability but less readability</li></ul><ul id="8f339e09-3215-4689-b349-49dcc7bb86e6" class="bulleted-list"><li style="list-style-type:disc">The pointers of C++ can be manipulated in a variety of ways,
+which supports highly flexible addressing of data. Because of the potential reliability problems with pointers, they are not included in Java.</li></ul><h1 id="90d1c011-0b86-417e-a5c7-cd661a9db2a8" class="">Implementation Methods</h1><ul id="be052128-10d5-403b-9930-9dc1d45086cb" class="bulleted-list"><li style="list-style-type:disc">Language that a compiler translates is called the source language</li></ul><ul id="fd5a3755-7954-44b6-84e7-2b13794b5437" class="bulleted-list"><li style="list-style-type:disc">Lexical analyzer → gathers the characters of the source program into lexical units</li></ul><ul id="99f7d2aa-7c9d-4551-905e-0289ca09dc94" class="bulleted-list"><li style="list-style-type:disc">Lexical units are identifiers, special words, operators</li></ul><ul id="e10eacc2-ce01-4cb4-935b-11ec36e42168" class="bulleted-list"><li style="list-style-type:disc">Syntax analyzer takes the lexical units from lexical analyzer and uses them to construct parse trees</li></ul><h1 id="7008c80d-30ad-46ca-9edb-7e2287527fff" class="">Tutorial</h1><h2 id="33a7baf9-a68c-4ea1-9b35-f5d33574af3a" class="">What arguments can you make for the idea of using a single programming language for all domains?</h2><ul id="27b0dee2-6b6e-47bf-b836-67a742912c71" class="bulleted-list"><li style="list-style-type:disc">If answer is yes, the arguments would be you dont have to learn different languages </li></ul><ul id="2f59cf51-33da-4b99-b91c-9095422dc473" class="bulleted-list"><li style="list-style-type:disc">Finding people with that language knowledge will be easier than when there are a lot of languages </li></ul><ul id="2691a471-af55-4a63-95c0-c4798775f6dc" class="bulleted-list"><li style="list-style-type:disc">Easier access to developer tools since we have only one language</li></ul><ul id="5b2fcb65-a1fc-4888-99fa-dde73126307e" class="bulleted-list"><li style="list-style-type:disc">Maintenance also becomes easier because there&#x27;s only one language and it becomes universal</li></ul><h2 id="3554511e-e47a-4e93-923b-32ad25d1a022" class="">What arguments can you make against the idea of using a single programming language for all domains?</h2><ul id="532bb516-dae6-458a-9c0e-35677206ab8f" class="bulleted-list"><li style="list-style-type:disc">Programming language will be  too large and complex</li></ul><ul id="7c068427-7f29-413f-bdcc-e1ce42a26cb9" class="bulleted-list"><li style="list-style-type:disc">Compilers will be complex and costly and may not generate efficient code</li></ul><ul id="90449cdf-6253-4373-953c-2845ae6a6965" class="bulleted-list"><li style="list-style-type:disc">May not be suitable for all domains</li></ul><ul id="712e531c-1d63-4747-a208-d1902951c95b" class="bulleted-list"><li style="list-style-type:disc">Instead of concentrating on what needs to be done you&#x27;ll be looking at figuring out how the implementation and design is working on the language</li></ul><h2 id="b062b57f-3b76-4d6d-8a33-5e14903fe73d" class="">Language Evaluation Criteria</h2><ul id="c9e560c7-3228-4cb9-94fa-5c0fc94ef3c5" class="bulleted-list"><li style="list-style-type:disc">Readability </li></ul><ul id="23afce81-3244-4b2a-85e2-7283fbd1034b" class="bulleted-list"><li style="list-style-type:disc">Writability </li></ul><ul id="812e1a5d-c63f-4eb7-a60e-2e2f3ead0dd5" class="bulleted-list"><li style="list-style-type:disc">Reliability<ul id="0374b427-5fb5-45aa-bddf-00b1b54c5b66" class="bulleted-list"><li style="list-style-type:circle">Backward compatibility </li></ul><ul id="b358f44b-9c44-40f7-9b1d-50c42327d513" class="bulleted-list"><li style="list-style-type:circle">If outcomes are not deterministic</li></ul><ul id="df827272-0cc2-406f-ba98-c6bde601a7fb" class="bulleted-list"><li style="list-style-type:circle">Unstable implementations</li></ul><ul id="5e261296-8651-4229-81e7-bf735561a9cc" class="bulleted-list"><li style="list-style-type:circle">Different uses for same code</li></ul></li></ul><ul id="588e5e46-faeb-4e0c-82fd-a4b1b4d6274e" class="bulleted-list"><li style="list-style-type:disc">Cost</li></ul><ul id="d89a5df0-9aa3-45d8-8eb4-83082125868e" class="bulleted-list"><li style="list-style-type:disc">How will you improve readability of a poorly writable language<ul id="6c617a26-4b64-4d28-a707-096f8e99ea20" class="bulleted-list"><li style="list-style-type:circle">Better keywords say loop instead of for</li></ul></li></ul><h2 id="86671d35-3b27-4b05-8f8a-5fad81ee6216" class="">Name and explain another criteria by which languages can be judged</h2><ul id="13701ee0-6ca5-4251-827f-46910589273f" class="bulleted-list"><li style="list-style-type:disc">Portability </li></ul><ul id="1af0e8bc-3c5a-4381-9f2a-f73b366dae58" class="bulleted-list"><li style="list-style-type:disc">Reusability</li></ul><h2 id="7c17f759-45b4-49df-b1b1-18bb4458fa4a" class="">What fragment ruins readability of a language?</h2><ul id="9e3fb72b-baa5-456f-8885-158573c1c41f" class="bulleted-list"><li style="list-style-type:disc">GOTO</li></ul><ul id="c8da6d84-ca52-4575-9b4d-5fce2a9b2c54" class="bulleted-list"><li style="list-style-type:disc">Switch</li></ul><ul id="f24af839-e171-4f06-9150-b143cd5f6acd" class="bulleted-list"><li style="list-style-type:disc">Modular or monolithic → prefer modular</li></ul><ul id="9953eb72-0b15-4eee-9869-ecc26157e92a" class="bulleted-list"><li style="list-style-type:disc">Function calls</li></ul><ul id="ec9b7b90-68d2-421b-b557-b80b98e35adb" class="bulleted-list"><li style="list-style-type:disc">Break </li></ul><ul id="44be8eed-1814-4690-8af0-44e488d20299" class="bulleted-list"><li style="list-style-type:disc">Continue </li></ul><ul id="ef809994-ac4e-42c7-ad02-c2ccb496e0ae" class="bulleted-list"><li style="list-style-type:disc">Can cause infinite loops</li></ul><ul id="904a534d-78de-4e8b-aa5e-3c8135a13120" class="bulleted-list"><li style="list-style-type:disc">Readability and maintainability is affected</li></ul><ul id="8b1001fd-2623-451b-b9e7-ae3f039f518e" class="bulleted-list"><li style="list-style-type:disc">Difficult to read and understand </li></ul><h2 id="b6ae671e-cf14-4945-848a-b9621b7666fc" class="">Java uses right braces to end all compound statements, what are arguments that are for and against the design?</h2><ul id="0738f7f3-dea6-441d-b366-2bb1b4dae3e5" class="bulleted-list"><li style="list-style-type:disc">Pros are that we know where it starts and where it ends and improves simplicity </li></ul><ul id="46434f80-b4ac-4c3b-9592-1b764209e5ae" class="bulleted-list"><li style="list-style-type:disc">Cons is that we don&#x27;t know which statement ends where </li></ul><h2 id="77fcf268-9da8-40e6-adde-c08a640e4a82" class="">Using uppercase and lower case letters in user defined names. What are advantages and disadvantages?</h2><ul id="f0aea69e-a106-4ce7-9727-4e12c38f8b3f" class="bulleted-list"><li style="list-style-type:disc">We get confused is SUM and sum are different variables.</li></ul><ul id="5b8fbc10-87e8-4a75-bcb1-647de0536caf" class="bulleted-list"><li style="list-style-type:disc">It shouldn&#x27;t allow them to be different </li></ul><ul id="e5af5e8b-38b0-411f-96eb-1d192212d59c" class="bulleted-list"><li style="list-style-type:disc">After coding 100 lines you won&#x27;t know what is what</li></ul><h2 id="a8e3973a-c14a-49d8-8675-623106967261" class="">Give any example of design tradeoff between safety and efficiency</h2><ul id="3950f3a8-5968-4556-99cd-230237b2b051" class="bulleted-list"><li style="list-style-type:disc">Check Ariane 5G → spacecraft</li></ul><ul id="c530acc2-ee70-4b5e-a0a0-6d22e3479ef8" class="bulleted-list"><li style="list-style-type:disc">It crashed because of integer overflow</li></ul><ul id="0ab3bf49-1105-4e2b-a993-529d6490e1d2" class="bulleted-list"><li style="list-style-type:disc">Most infamous and expensive software bugs</li></ul><ul id="66c2ae1b-5392-4524-a22b-f283d7394027" class="bulleted-list"><li style="list-style-type:disc">If safety is good, reliability is high but it might be slower and not efficient </li></ul><ul id="83ffd177-36fc-4a70-b13b-3fc2d0137913" class="bulleted-list"><li style="list-style-type:disc">People write compilers from scratch </li></ul><ul id="5d65f237-0997-4ebd-acb4-362393646a73" class="bulleted-list"><li style="list-style-type:disc">Don&#x27;t import many more packages </li></ul><ul id="e0704fd4-d009-4cc7-9e63-04e86b5862c9" class="bulleted-list"><li style="list-style-type:disc">Array boundary check is an example</li></ul><ul id="66f2014c-bb5d-41de-acb2-33cc27a455dc" class="bulleted-list"><li style="list-style-type:disc">If we remove itll become faster</li></ul><h2 id="f728c2ac-f299-493a-a6f4-2a7d5ef81758" class="">Give pros and cons of multi line comments and single line comments</h2><ul id="1d9b6bc7-6761-45a3-bd17-bd51c4a8f9dd" class="bulleted-list"><li style="list-style-type:disc">Multi line comments can have better descriptions </li></ul><ul id="44cc61d0-3f0d-4952-ae25-2896b14a755d" class="bulleted-list"><li style="list-style-type:disc">Multi line one disadvantage is that we may forget the pair</li></ul><ul id="72621370-c682-457a-9121-6b9c314527d4" class="bulleted-list"><li style="list-style-type:disc">Potential lines of code may go inside the comments</li></ul><ul id="9cb60bbf-a255-4d39-96e4-aa6e2a1b1601" class="bulleted-list"><li style="list-style-type:disc">Diminished reliability</li></ul><ul id="88b56141-06de-4dd0-b528-f0b2123d9f38" class="bulleted-list"><li style="list-style-type:disc">Think of it from an interpreted language pov</li></ul><ul id="da78d2b5-8fa5-4899-a763-23212fdab918" class="bulleted-list"><li style="list-style-type:disc">It stops giving any output if we forget the comment closing</li></ul><ul id="ea536efc-ebf4-4714-9b32-11ba8e56286d" class="bulleted-list"><li style="list-style-type:disc">Disadvantages of single line comments is you have to write them multiple times</li></ul><h2 id="6a322c1a-bf16-476f-b547-56131203a88f" class="">SDE Intern interview committee. What aspects you look for? What is your priority?</h2><ul id="43d27608-386f-4797-9f3c-3f800683bdfe" class="bulleted-list"><li style="list-style-type:disc">Problem solving skills</li></ul><ul id="2c5ee7ae-ed0f-4d85-9eb5-10752864e0e4" class="bulleted-list"><li style="list-style-type:disc">Programming ability</li></ul><ul id="5d673027-944c-41f4-840c-8ccdc72e3fac" class="bulleted-list"><li style="list-style-type:disc">Number of languages not our concern<ul id="b73cee7b-4e24-46a5-a1c0-653afdc80faf" class="bulleted-list"><li style="list-style-type:circle">Maybe adapt to languages faster though</li></ul></li></ul><ul id="c8e09a20-0c5b-4adb-95e5-13fa1aabf38e" class="bulleted-list"><li style="list-style-type:disc">The paradigms he has worked it</li></ul><h1 id="280bf3d2-102f-4afd-b912-63e54981bf80" class="">Computing Sum of two numbers in 6 Languages</h1><ul id="1476bc64-a210-49da-bfc8-55a97cdb2ed3" class="bulleted-list"><li style="list-style-type:disc">C <ul id="b79e4355-7b02-4847-92aa-f20abc26eeca" class="bulleted-list"><li style="list-style-type:circle">procedural</li></ul><ul id="aab1ba46-7a36-4ab5-944c-e04af14b3b40" class="bulleted-list"><li style="list-style-type:circle">Simple → yes</li></ul><ul id="c9b6d940-8d22-4069-96df-6605a3c08cb2" class="bulleted-list"><li style="list-style-type:circle">Orthogonality → maybe not</li></ul><ul id="84fa771f-3428-42b9-b59c-79763512d81f" class="bulleted-list"><li style="list-style-type:circle">Data types → yes</li></ul><ul id="051f896d-3a25-4f4c-80fd-e17770a446d8" class="bulleted-list"><li style="list-style-type:circle">Syntactical fine</li></ul></li></ul><ul id="6821a94b-8389-4d65-9cc4-e5c5d6fa833f" class="bulleted-list"><li style="list-style-type:disc">Java<ul id="e94fe61a-5d5a-47af-a222-3a377aaf455c" class="bulleted-list"><li style="list-style-type:circle">Multiple classes</li></ul><ul id="4ba619b9-2c45-4b8a-8e21-4272d3c174fd" class="bulleted-list"><li style="list-style-type:circle">Every operation would require a class</li></ul><ul id="f9f1779b-341e-47d5-884c-8c2a4e6f0d2a" class="bulleted-list"><li style="list-style-type:circle">Too many constructs</li></ul><ul id="9034d598-5ec8-4cdb-88cc-bef58f9aca9d" class="bulleted-list"><li style="list-style-type:circle">We can create new functions to make it more readable</li></ul></li></ul><ul id="b2452e0b-62a0-4c3c-bdc2-a0086e59619f" class="bulleted-list"><li style="list-style-type:disc">Haskell<ul id="f422eef4-462a-4dc4-9145-317fbfb43541" class="bulleted-list"><li style="list-style-type:circle">getLine is very ambiguous</li></ul><ul id="349dfc6b-7269-43f3-8348-9a37527ce85f" class="bulleted-list"><li style="list-style-type:circle">putStrLn and print don’t have proper differences</li></ul><ul id="c6edafc3-56e6-4438-bdaf-cbc9b741d844" class="bulleted-list"><li style="list-style-type:circle">It starts with do but we don’t know where it ends</li></ul><ul id="541c8d1a-523d-4046-998b-9897768f0058" class="bulleted-list"><li style="list-style-type:circle">Some of the functions have () while some don’t</li></ul></li></ul><ul id="44ea55ac-bbff-4c25-b44a-fd272c91285e" class="bulleted-list"><li style="list-style-type:disc">PHP<ul id="596a4ddf-334f-4886-a0b9-a6daea11cb54" class="bulleted-list"><li style="list-style-type:circle">Operations are direct</li></ul><ul id="7d159943-5fc8-4fd4-a4af-9c825f5726c4" class="bulleted-list"><li style="list-style-type:circle">readable</li></ul></li></ul><ul id="7df3a03c-2b4b-47a9-a21a-e00000448a0e" class="bulleted-list"><li style="list-style-type:disc">Python<ul id="0d279873-4d81-43e8-a635-d334b73510d6" class="bulleted-list"><li style="list-style-type:circle">very short</li></ul><ul id="b3f9f432-ed9c-4400-ad65-2f61c4198aa0" class="bulleted-list"><li style="list-style-type:circle">datatypes not very strict</li></ul><ul id="47ba52b4-fc91-4863-8299-a2d322e4992d" class="bulleted-list"><li style="list-style-type:circle">not very sure if the word is keyword or if it’s a variable</li></ul></li></ul><ul id="3459a4b2-7139-4b32-b5b1-221839f5275e" class="bulleted-list"><li style="list-style-type:disc">Ruby<ul id="121b6416-a7f3-4f6d-9b52-a773c8b1f914" class="bulleted-list"><li style="list-style-type:circle">no main function</li></ul><ul id="971c1287-d94a-4339-9a5e-5e2397e767d3" class="bulleted-list"><li style="list-style-type:circle">not very clear if the words are functions or not</li></ul><ul id="37f6fa2e-5927-4e8b-9800-6eda22d0d804" class="bulleted-list"><li style="list-style-type:circle">no difference between variables or function</li></ul></li></ul><h1 id="3b0f5790-b546-4336-9aa6-e66347bb361d" class="">Why are all languages not very popular?</h1><ul id="759ea4f8-345e-42de-a0d6-62a665fed8e7" class="bulleted-list"><li style="list-style-type:disc">Adaptability is difficult</li></ul><ul id="94feeb92-9c8b-4338-bcd5-60d2761d7f6a" class="bulleted-list"><li style="list-style-type:disc">A lot of bugs</li></ul><ul id="fc1f949d-97cc-4711-ac5d-4a29e20d48eb" class="bulleted-list"><li style="list-style-type:disc">Too much sophisticated features</li></ul><ul id="932b50b4-6c80-41b4-ae30-6f84f24200a9" class="bulleted-list"><li style="list-style-type:disc">Poor documentation and community support</li></ul><ul id="097bbb34-929f-4971-a466-90cba98faa4f" class="bulleted-list"><li style="list-style-type:disc">When a programmer gets experienced, they are more committed to solving problems rather than learning new languages</li></ul><h1 id="7d7ea5e1-6f44-4e22-be35-d4ac7b9ce061" class="">Revising a Programming Language?</h1><ul id="0791f7b5-04eb-4a73-b1e5-da4cb6a0de30" class="bulleted-list"><li style="list-style-type:disc">Revision process will continually add new features so that the language grows more and more complex</li></ul><ul id="aaef76b1-3056-4e56-8b30-29742b54ad5b" class="bulleted-list"><li style="list-style-type:disc">Compounding the problem is the unwillingness to remove obsolete features because of existing software</li></ul><ul id="7bf179ff-a539-458d-a846-bb9f29de3d44" class="bulleted-list"><li style="list-style-type:disc">Backward compatibility</li></ul><ul id="a29c0105-a4f5-4d21-a43c-d89311eaad4a" class="bulleted-list"><li style="list-style-type:disc">User adaptability</li></ul><h1 id="5d78deeb-d9a6-4dd7-8021-68f04a2d1f3a" class="">You are programming using + - abs(a) and div(a, b). Write a function max of two variables and returns max of two numbers</h1><ul id="749cb3fe-1da2-4c47-abf8-ca8592a46449" class="bulleted-list"><li style="list-style-type:disc">Max(int a, int b): return div(((a + b) + abs(b - a)), 2);</li></ul><ul id="83b0c461-3c6b-448f-803f-6d120d07cbbd" class="bulleted-list"><li style="list-style-type:disc">readability and writability decreases</li></ul><h1 id="c16ac5ff-d37d-477d-b907-6fc85a853414" class="">Solve the following problem using C and Java separately to write a program to copy the content from one file to another file which are in the same folder</h1></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

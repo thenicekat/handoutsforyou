@@ -1,0 +1,677 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Exception Handling</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="766e02e4-2566-4b87-a62a-9fd9c84a1700" class="page sans"><header><h1 class="page-title">Exception Handling</h1><p class="page-description"></p></header><div class="page-body"><nav id="45c6e163-5a28-4e84-88ee-79d2583c6800" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#876f562f-49cf-423f-9002-b41f8a76ae23">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#cde9fdf6-966c-491a-99b4-92c84063397d">Advantages of Exception Handling at Language Design Level </a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#acfc327a-3f28-430b-8703-28223ba1a186">Design Issues</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#58f4fc85-a77f-46e3-8b2a-f3bb41cb79c6">Miscellaneous</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#931d7d62-b2d7-48ca-9d79-5aad7d47fa99">Using Assert in Java</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#6f3c9682-8714-45b4-a8b8-9c23cabcf750">Event Handling</a></div></nav><h1 id="876f562f-49cf-423f-9002-b41f8a76ae23" class="">Introduction</h1><ul id="bdc58776-d4a5-403f-925e-4b047915685f" class="bulleted-list"><li style="list-style-type:disc">Most computer HW systems are capable of detecting certain runtime error conditions.</li></ul><ul id="aa041d57-203f-4b68-a143-f0cbfca0ab38" class="bulleted-list"><li style="list-style-type:disc">Early programming languages were designed in such a way that the user program could neither detect nor attempt to deal with such errors. In these programs the occurrence of errors will simply cause the program to be terminated and transfer the control back to the OS and the OS’s reaction to this will be to display a diagnostic message which may be meaningful and useful, or very cryptic.</li></ul><ul id="4584abd5-23e1-4252-90bb-7ff02dee2b22" class="bulleted-list"><li style="list-style-type:disc">There is a category of serious errors that are not detected by HW but can be detected by code generated by the compiler. Ex: Array subscript range error.</li></ul><ul id="17326e19-8391-4559-ae20-26c7c65fc746" class="bulleted-list"><li style="list-style-type:disc">This detection sometimes required by the language design. Ex. Java compilers usually generate code to check the correctness of every subscript expression, and can be detected at compile time if they are literals. </li></ul><ul id="532f2ce0-ce7f-48f7-8719-d055d3fd2561" class="bulleted-list"><li style="list-style-type:disc">Else not possible at compile time. In C we don’t have such check. In some languages subscript range check is an optional facility and can be turned off if as desired</li></ul><ul id="18f09fc5-7e2a-487a-8b9a-cb0bc30a149c" class="bulleted-list"><li style="list-style-type:disc">The designers of most contemporary languages have included mechanisms that allow programs to react in a standard way to certain runtime errors, as well as other program detected unusual events. </li></ul><ul id="6374d6ed-46c3-4066-b45e-5604c21623c1" class="bulleted-list"><li style="list-style-type:disc">Programs may also be notified when certain events are detected by HW or OS so that they also can react to these events. </li></ul><ul id="961c2cfe-7b7a-4369-968b-a85c30579285" class="bulleted-list"><li style="list-style-type:disc">These mechanisms are collectively called as Exception Handling.</li></ul><ul id="3814f0a8-2c27-4dea-8525-b2c24f77038d" class="bulleted-list"><li style="list-style-type:disc">Because of the complexity this Exception Handling mechanism adds, some languages do not support this feature</li></ul><ul id="ad2b6f2b-b56f-4e45-bf5e-7ec023746bda" class="bulleted-list"><li style="list-style-type:disc">We consider both the errors detected by HW such as disk read error, and unusual conditions such as end-of-file to be Exceptions.</li></ul><ul id="7eb86e46-9fce-4681-be60-b1c680f44200" class="bulleted-list"><li style="list-style-type:disc">We define Exception to be <span style="border-bottom:0.05em solid">any unusual event</span>, erroneous or not that is detected by either HW or SW and that may be required special processing. </li></ul><ul id="41d61a87-7771-47dc-bbf3-c80b80f7168c" class="bulleted-list"><li style="list-style-type:disc">The special processing that may be required when an exception is detected is called Exception Handling.</li></ul><ul id="92ec5484-8a07-4896-b460-5beffb70111b" class="bulleted-list"><li style="list-style-type:disc">This processing is done by a code unit or segment called Exception Handler. Exceptions are said to be thrown or raised</li></ul><ul id="53b87543-fe74-4fcc-82c0-7540010d83f3" class="bulleted-list"><li style="list-style-type:disc">The absence of separate or specific exception-handling facility in a language does not hinder the handling errors of user-defined, software-detected exceptions </li></ul><ul id="736c5431-7956-4ebd-af09-581254033f84" class="bulleted-list"><li style="list-style-type:disc">Such an exception detected within a program unit is often handled by it’s caller or invoker</li></ul><h1 id="cde9fdf6-966c-491a-99b4-92c84063397d" class="">Advantages of Exception Handling at Language Design Level </h1><ul id="1098acac-9203-4225-b109-0606a6a2d614" class="bulleted-list"><li style="list-style-type:disc">Compiler can insert machine code for such checks greatly shortening and simplifying the source program.</li></ul><ul id="ad2a7d3b-852c-4010-a618-a636059d90cd" class="bulleted-list"><li style="list-style-type:disc">Exceptions can be propagated from program unit to other, thus allowing single exception handler to be used for any number of program units. Saving development time, cost, and reduced complexity.</li></ul><ul id="ffc79023-d210-4576-9a7d-60e933a3185a" class="bulleted-list"><li style="list-style-type:disc">Encourages its users to consider all of the events that could occur during the program execution and how they can be handled.</li></ul><ul id="646d18f0-cd8f-4ef1-a4cd-60fa4d5677f4" class="bulleted-list"><li style="list-style-type:disc">Predefined exceptions are implicitly raised.</li></ul><ul id="7ac44503-d24e-4cbb-85bd-6059c3d9da1a" class="bulleted-list"><li style="list-style-type:disc">Where as the user-defined exceptions must be explicitly raised by the user code.</li></ul><ul id="41ae2174-6284-4b3a-994c-240e21f12bd4" class="bulleted-list"><li style="list-style-type:disc">It should be possible to bind the exceptions that can be raised by particular statements to particular handlers, even though the same exception can be raised by many different
+statements.</li></ul><ul id="316a31e9-b449-4d48-b3c0-2286cb51511c" class="bulleted-list"><li style="list-style-type:disc">Issue related to binding is- whether the information about the exception is made available to the handler?</li></ul><ul id="cbc44636-2a8e-4936-af67-b4abfbf67540" class="bulleted-list"><li style="list-style-type:disc">Continuation- control continuation after handler is executed. Options- resumption or  termination</li></ul><figure id="68e8cb59-8677-46ce-abd3-2b3840741903" class="image"><a href="Exception%20Handling%20766e02e425664b87a62a9fd9c84a1700/Untitled.png"><img style="width:1810px" src="Exception%20Handling%20766e02e425664b87a62a9fd9c84a1700/Untitled.png"/></a></figure><h1 id="acfc327a-3f28-430b-8703-28223ba1a186" class="">Design Issues</h1><figure id="3585216f-65ae-441c-b0ee-985e07db9127" class="image"><a href="Exception%20Handling%20766e02e425664b87a62a9fd9c84a1700/Untitled%201.png"><img style="width:1882px" src="Exception%20Handling%20766e02e425664b87a62a9fd9c84a1700/Untitled%201.png"/></a></figure><h1 id="58f4fc85-a77f-46e3-8b2a-f3bb41cb79c6" class="">Miscellaneous</h1><ul id="a34f2c9e-c3c2-4245-bb04-f1d60a84d441" class="bulleted-list"><li style="list-style-type:disc">Ada provides extensive exception handling facilities and a small collection of built in exceptions</li></ul><ul id="d0ebb91a-5ba3-4f42-912b-bc85f08dd4d1" class="bulleted-list"><li style="list-style-type:disc">The handlers are attached to the program entities</li></ul><ul id="c9f435e7-4074-4349-9769-169101256b8a" class="bulleted-list"><li style="list-style-type:disc">But it possible to propagate exceptions implicitly or explicitly to other program units if no local handlers are available</li></ul><ul id="547f015b-ee2e-44c5-940d-1a6931db3342" class="bulleted-list"><li style="list-style-type:disc">C++ includes no predefined exceptions excepting those defined in standard library</li></ul><ul id="bed0aca7-6627-41c5-b018-ed82b6a494e5" class="bulleted-list"><li style="list-style-type:disc">C++ exceptions are objects of primitive type a predefined class or a user defined class</li></ul><ul id="00cd84f3-f0d9-408a-b5e1-b74e799ecf89" class="bulleted-list"><li style="list-style-type:disc">Exceptions are bound to handlers by connecting the type of the expression in the throw statement to that formal parameter of the handler</li></ul><ul id="6d733b15-6752-4beb-9ffa-aff8571908d9" class="bulleted-list"><li style="list-style-type:disc">Handlers have the same name - catch</li></ul><ul id="60234f71-7559-49a8-9820-1d84739113fa" class="bulleted-list"><li style="list-style-type:disc">The C++ throw clause of a method lists the types of exceptions the method could throw</li></ul><ul id="84007f1e-b5b4-4d57-a384-da02490ef2e1" class="bulleted-list"><li style="list-style-type:disc">Java exceptions are objects whose ancestry must trace back to a class that descends from the <span style="border-bottom:0.05em solid">Throwable class</span></li></ul><ul id="b47bfcc9-b641-4bc7-b223-c7e6b2a4d437" class="bulleted-list"><li style="list-style-type:disc">There are two categories of exceptions - checked and unchecked</li></ul><ul id="1625a83f-cc78-4fe4-a363-cad540c7d94a" class="bulleted-list"><li style="list-style-type:disc">Checked exceptions are a concern for the user program and the compiler while unchecked exceptions can occur anywhere and are often ignored by user programs</li></ul><ul id="5d6fec3d-acc0-4627-af14-9f1eabdface8" class="bulleted-list"><li style="list-style-type:disc">Clauses - throws, finally, try </li></ul><ul id="44cc3122-f152-43ee-99e5-e1152aad7370" class="bulleted-list"><li style="list-style-type:disc">Java now includes asserts statement which facilitate defensive programming</li></ul><h1 id="931d7d62-b2d7-48ca-9d79-5aad7d47fa99" class="">Using Assert in Java</h1><figure id="dffd9d82-f082-4a52-8fb9-f616d8dd0f98" class="image"><a href="Exception%20Handling%20766e02e425664b87a62a9fd9c84a1700/Untitled%202.png"><img style="width:1251px" src="Exception%20Handling%20766e02e425664b87a62a9fd9c84a1700/Untitled%202.png"/></a></figure><figure id="c4757ba9-e15c-4695-8887-10df8f4718a0" class="image"><a href="Exception%20Handling%20766e02e425664b87a62a9fd9c84a1700/Untitled%203.png"><img style="width:1167px" src="Exception%20Handling%20766e02e425664b87a62a9fd9c84a1700/Untitled%203.png"/></a></figure><h1 id="6f3c9682-8714-45b4-a8b8-9c23cabcf750" class="">Event Handling</h1><ul id="5b806c64-de51-4100-adc6-d0a75101b545" class="bulleted-list"><li style="list-style-type:disc">An event is a notification that something occurred that requires special processing</li></ul><ul id="03e486e6-0bdd-4431-899c-921b1fc28a55" class="bulleted-list"><li style="list-style-type:disc">Events are often created by user interactions with a program through a GUI</li></ul><ul id="0bbdf800-1cc5-425c-b893-0584db4c9a9e" class="bulleted-list"><li style="list-style-type:disc">Java event handlers are called through event listeners</li></ul><ul id="c4ea9564-1e9d-4f98-ba57-7be2ad92be36" class="bulleted-list"><li style="list-style-type:disc">An event listener must be registered for an event if it is to be notified when the event occurs</li></ul><ul id="8aa86234-2bf6-476d-9d39-cc90f72ef00b" class="bulleted-list"><li style="list-style-type:disc">Windows forms is the original approach to building GUI components and handling events in .NET languages</li></ul><ul id="f991a38f-da3d-4b0e-b3d1-303c0496e2c7" class="bulleted-list"><li style="list-style-type:disc">C# applications build a GUI in this approach by subclassing the Form class</li></ul><ul id="f4e11f21-83ca-4b3f-b022-354e870a91fb" class="bulleted-list"><li style="list-style-type:disc">All .NET event handlers are registered by creating an EventHandler object and assigning it to the predefined delegate associated with the GUI object that can raise the event</li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
