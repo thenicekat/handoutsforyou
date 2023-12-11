@@ -50,28 +50,21 @@ const Menu = (props: Props) => {
                     </button>
                 </Link>
                 {
-                    props.current != "home" && <Link className="m-3" href={"/"}>
-                        <button className="btn btn-outline w-full">
-                            Go Back to Home
-                        </button>
-                    </Link>
-                }
-                {
-                    props.current != "notes" && <Link className="m-3" href={"/notes"}>
+                    <Link className="m-3" href={"/notes"}>
                         <button className="btn btn-outline w-full">
                             Notes and Resources
                         </button>
                     </Link>
                 }
                 {
-                    props.current != "faqs" && <Link className="m-3" href={"/faqs"}>
+                    <Link className="m-3" href={"/faqs"}>
                         <button className="btn btn-outline w-full">
                             FAQs about Campus
                         </button>
                     </Link>
                 }
                 {
-                    props.current != "si" && <Link className="m-3" href={"/si"}>
+                    <Link className="m-3" href={"/si"}>
                         <button className="btn btn-outline w-full">
                             Summer Internships
                         </button>
@@ -85,7 +78,7 @@ const Menu = (props: Props) => {
                     </Link>
                 }
                 {
-                    props.current != "ps" && <Link className="m-3" href={"/ps"}>
+                    <Link className="m-3" href={"/ps"}>
                         <button className="btn btn-outline w-full">
                             Practice School
                         </button>
@@ -101,7 +94,14 @@ const Menu = (props: Props) => {
                             <p className='text-xl'>You will need to sign in to access these pages.</p>
                             <button className="btn btn-outline btn-primary m-3" onClick={() => signIn("google")}>Sign in</button>
                         </>
-                        : <button className="btn btn-outline btn-primary m-3" onClick={() => signOut()}>Sign Out</button>
+                        : <div>
+                            <button className="btn btn-outline btn-primary m-3" onClick={() => signOut()}>Sign Out</button>
+                            <Link className="m-3" href={"/"}>
+                                <button className="btn btn-outline btn-primary m-3">
+                                    Home
+                                </button>
+                            </Link>
+                        </div>
                 }
             </div>
         </>)
