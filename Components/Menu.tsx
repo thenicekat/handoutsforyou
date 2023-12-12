@@ -37,7 +37,7 @@ const Menu = (props: Props) => {
                     className="text-white underline"
                     href={"mailto:f20190441h@alumni.bits-pilani.ac.in"}
                 >
-                    Mahith
+                    Mahith T
                 </Link>
                 <br />
             </p>
