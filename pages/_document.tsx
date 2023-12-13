@@ -5,7 +5,6 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <link rel="manifest" href="/manifest.json" />
-        <title>Handouts for You.</title>
       </Head>
       <body>
         <Main />
