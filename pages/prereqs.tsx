@@ -33,9 +33,6 @@ export default function Prereqs({ prereqs }: { prereqs: PreReqGroup[] }) {
     const [search, setSearch] = useState("");
     const { data: session } = useSession()
 
-    console.log(prereqs.filter((d: PreReqGroup) => d.name.toLowerCase().includes(search.toLowerCase())))
-
-
     return (
         <>
             <Head>
@@ -67,7 +64,7 @@ export default function Prereqs({ prereqs }: { prereqs: PreReqGroup[] }) {
             {session && <div className='grid md:grid-cols-3 place-items-center p-5'>
                 {
                     prereqs.filter((d: PreReqGroup) => d.name.toLowerCase().includes(search.toLowerCase())).map((preqgroup: PreReqGroup) => (
-                        <div className="card w-96 bg-neutral text-neutral-content m-2" key={preqgroup.name}>
+                        <div className="card w-9/12 bg-neutral text-neutral-content m-2" key={preqgroup.name}>
                             <div className="card-body items-center text-center">
                                 <h2 className="card-title">{preqgroup.name}</h2>
                                 <div className="card-actions justify-end">
