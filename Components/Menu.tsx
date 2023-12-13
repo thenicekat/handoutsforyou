@@ -94,13 +94,19 @@ const Menu = (props: Props) => {
                             <p className='text-xl'>You will need to sign in to access these pages.</p>
                             <button className="btn btn-outline btn-primary m-3" onClick={() => signIn("google")}>Sign in</button>
                         </>
-                        : <div>
+                        :
+                        <div>
                             <button className="btn btn-outline btn-primary m-3" onClick={() => signOut()}>Sign Out</button>
-                            <Link className="m-3" href={"/"}>
+                            {props.current != "home" && <Link className="m-3" href={"/"}>
                                 <button className="btn btn-outline btn-primary m-3">
                                     Home
                                 </button>
-                            </Link>
+                            </Link>}
+                            {props.current == "home" && <Link className="m-3" href={"/prereqs"}>
+                                <button className="btn btn-outline btn-primary m-3">
+                                    Course Prerequisites
+                                </button>
+                            </Link>}
                         </div>
                 }
             </div>
