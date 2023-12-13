@@ -86,28 +86,29 @@ const Menu = (props: Props) => {
                 }
             </div>
 
-            <div className="grid place-items-center">
+            <div className="grid md:grid-cols-2 justify-around">
                 {
                     !session
                         ?
-                        <>
-                            <p className='text-xl'>You will need to sign in to access these pages.</p>
-                            <button className="btn btn-outline btn-primary m-3" onClick={() => signIn("google")}>Sign in</button>
-                        </>
+                        <div className='col-span-2'>
+                            <button className="btn btn-outline btn-primary m-3" onClick={() => signIn("google")}>Sign in to access</button>
+                        </div>
                         :
-                        <div>
+                        <>
                             <button className="btn btn-outline btn-primary m-3" onClick={() => signOut()}>Sign Out</button>
-                            {props.current != "home" && <Link className="m-3" href={"/"}>
+
+                            {props.current != "home" && <Link href={"/"}>
                                 <button className="btn btn-outline btn-primary m-3">
                                     Home
                                 </button>
                             </Link>}
-                            {props.current == "home" && <Link className="m-3" href={"/prereqs"}>
+
+                            {props.current == "home" && <Link href={"/prereqs"}>
                                 <button className="btn btn-outline btn-primary m-3">
                                     Course Prerequisites
                                 </button>
                             </Link>}
-                        </div>
+                        </>
                 }
             </div>
         </>)
