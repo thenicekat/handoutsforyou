@@ -1,0 +1,4979 @@
+[
+    {
+        "name": "BIO F110 BIOLOGICAL LABORATORY",
+        "prereqs": []
+    },
+    {
+        "name": "BIO F111 GENERAL BIOLOGY",
+        "prereqs": []
+    },
+    {
+        "name": "BIO F211 BIOLOGICAL CHEMISTRY",
+        "prereqs": [
+            {
+                "prereq_name": "BIO F111 GENERAL BIOLOGY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BIO F212 MICROBIOLOGY",
+        "prereqs": [
+            {
+                "prereq_name": "BIO F111 GENERAL BIOLOGY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BIO F213 CELL BIOLOGY",
+        "prereqs": [
+            {
+                "prereq_name": "BIO F111 GENERAL BIOLOGY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BIO F214 INTEGRATED BIOLOGY",
+        "prereqs": [
+            {
+                "prereq_name": "BIO F111 GENERAL BIOLOGY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BIO F215 BIOPHYSICS",
+        "prereqs": [
+            {
+                "prereq_name": "BIO F111 GENERAL BIOLOGY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BIO F241 ECOLOGY & ENVIRON SCI",
+        "prereqs": []
+    },
+    {
+        "name": "BIO F242 INTRO TO BIOINFORMATICS",
+        "prereqs": [
+            {
+                "prereq_name": "BIO F111 GENERAL BIOLOGY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BIO F243 GENETICS",
+        "prereqs": [
+            {
+                "prereq_name": "BIO F111 GENERAL BIOLOGY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BIO F244 INSTRU METHODS OF ANAL",
+        "prereqs": [
+            {
+                "prereq_name": "BIO F110 BIOLOGICAL LABORATORY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BIO F312 PLANT PHYSIOLOGY",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "BIO F211 BIOLOGICAL CHEMISTRY",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "BIO F111 GENERAL BIOLOGY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BIO F313 ANIMAL PHYSIOLOGY",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "BIO F211 BIOLOGICAL CHEMISTRY",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "BIO F111 GENERAL BIOLOGY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BIO F341 DEVELOPMENTAL BIOLOGY",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "BIO F243 GENETICS",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "BIO F213 CELL BIOLOGY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BIO F342 IMMUNOLOGY",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "BIO F212 MICROBIOLOGY",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "BIO F213 CELL BIOLOGY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BIO F352 CELL & TISSUE CULTR TECH",
+        "prereqs": []
+    },
+    {
+        "name": "BIO F413 MOLECULAR BIO OF CELL",
+        "prereqs": []
+    },
+    {
+        "name": "BIO F418 GENETIC ENGINEERING TECH",
+        "prereqs": []
+    },
+    {
+        "name": "BIO F419 MOLECULAR EVOLUTION",
+        "prereqs": [
+            {
+                "prereq_name": "BIO F111 GENERAL BIOLOGY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BIO F431 REPRODUCTIVE  PHYSIOLOGY",
+        "prereqs": [
+            {
+                "prereq_name": "BIO F313 ANIMAL PHYSIOLOGY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BIO F441 BIOCHEMICAL ENGINEERING",
+        "prereqs": []
+    },
+    {
+        "name": "BIO F451 BIOPROCESS TECHNOLOGY",
+        "prereqs": []
+    },
+    {
+        "name": "BIO G515 STEM CELL AND GENERATIBE BIOLOGY  ",
+        "prereqs": [
+            {
+                "prereq_name": "BIO F341 DEVELOPMENTAL BIOLOGY",
+                "pre_cop": "CO"
+            }
+        ]
+    },
+    {
+        "name": "BIO G526 CANCER BIOLOGY",
+        "prereqs": [
+            {
+                "prereq_name": "BIO F243 GENETICS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BIO G545 MOLECULAR PARASITOLOGY AND VECTOR BIOLOGY",
+        "prereqs": [
+            {
+                "prereq_name": "BIO F342 IMMUNOBIOLOGY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BIO G561 ADVANCES IN RECOMBINANT DNA TECH",
+        "prereqs": [
+            {
+                "prereq_name": "BIO F311 RECOMBINANT DNA TECH",
+                "pre_cop": "nan"
+            }
+        ]
+    },
+    {
+        "name": "BIO G561 ADVANCES IN RECOMBINANT DNA TECHNOLOGY",
+        "prereqs": [
+            {
+                "prereq_name": "BIO F311 RECOMBINANT DNA TECHNOLOGY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BIO G570 RECENT DEVELOPMENTS IN BIOLOGY",
+        "prereqs": []
+    },
+    {
+        "name": "BIO G612 HUMAN GENETICS",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "BIO F243 GENETICS",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "BIO F311 RECOMBINANT DNA TECH",
+                "pre_cop": "CO-REQ"
+            }
+        ]
+    },
+    {
+        "name": "BIOT F211 BIOLOGICAL CHEMISTRY",
+        "prereqs": [
+            {
+                "prereq_name": "BIO F111 GENERAL BIOLOGY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BIOT F212 MICROBIOLOGY",
+        "prereqs": [
+            {
+                "prereq_name": "BIO F111 GENERAL BIOLOGY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BIOT F213 CELL BIOLOGY",
+        "prereqs": []
+    },
+    {
+        "name": "BIOT F215 BIOPHYSICS",
+        "prereqs": [
+            {
+                "prereq_name": "BIO F111 GENERAL BIOLOGY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BIOT F241 GENETIC ENGINEERING TECH",
+        "prereqs": []
+    },
+    {
+        "name": "BIOT F242 INTRO TO BIOINFORMATICS",
+        "prereqs": [
+            {
+                "prereq_name": "BIO F111 GENERAL BIOLOGY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BIOT F243 GENETICS",
+        "prereqs": [
+            {
+                "prereq_name": "BIO F111 GENERAL BIOLOGY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BIOT F244 INSTRU METHODS OF ANAL",
+        "prereqs": [
+            {
+                "prereq_name": "BIO F110 BIOLOGICAL LABORATORY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BIOT F245 INTRO TO ENVIRON BIOTECH",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "BIO F111 GENERAL BIOLOGY",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "BIOT F212 MICROBIOLOGY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BIOT F311 RECOMBINANT DNA TECH",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "BIOT F211 BIOLOGICAL CHEMISTRY",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "BIOT F243 GENETICS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BIOT F314 INDUS MICROBIO & BIOPRO ENGG",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "BIO F111 GENERAL BIOLOGY",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "BIOT F212 MICROBIOLOGY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BIOT F342 IMMUNOLOGY",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "BIOT F212 MICROBIOLOGY",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "BIOT F213 CELL BIOLOGY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BIOT F343 EXPERIMENTS IN BIOTECH",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "BIOT F241 GENETIC ENGINEERING TECH",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BIOT F344 DOWNSTREAM PROCESSING",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "BIO F111 GENEARL BIOLOGY",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "BIOT F212 MICROBIOLOGY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BIOT F345 PROTEOMICS",
+        "prereqs": []
+    },
+    {
+        "name": "BIOT F346 GENOMICS",
+        "prereqs": []
+    },
+    {
+        "name": "BIOT F347 IMMUNOTECHNOLOGY",
+        "prereqs": [
+            {
+                "prereq_name": "BIOT F342 IMMUNOLOGY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BIOT F352 CELL & TISSUE CULTR TECH",
+        "prereqs": []
+    },
+    {
+        "name": "BIOT F413 MOLECULAR BIO OF CELL",
+        "prereqs": []
+    },
+    {
+        "name": "BIOT F416 INTRO TO PHARMA BIOTECH",
+        "prereqs": []
+    },
+    {
+        "name": "BIOT F417 BIOMOLECULAR MODELING",
+        "prereqs": [
+            {
+                "prereq_name": "BIOT F211 BIOLOGICAL CHEMISTRY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BIOT F420 INTRO TO PLANT BIOTECH",
+        "prereqs": []
+    },
+    {
+        "name": "BIOT F422 NANOBIOTECHNOLOGY",
+        "prereqs": [
+            {
+                "prereq_name": "BIO F111 GENERAL BIOLOGY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BIOT F423 DRUG DESIGN AND DELIVERY",
+        "prereqs": [
+            {
+                "prereq_name": "CHEM F111 GENERAL CHEMISTRY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BIOT F424 FOOD BIOTECHNOLOGY",
+        "prereqs": [
+            {
+                "prereq_name": "BIOT F212 MICROBIOLOGY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BITS F110 ENGINEERING GRAPHICS",
+        "prereqs": []
+    },
+    {
+        "name": "BITS F111 THERMODYNAMICS",
+        "prereqs": []
+    },
+    {
+        "name": "BITS F112 TECH REPORT WRITING",
+        "prereqs": []
+    },
+    {
+        "name": "BITS F113 GENERAL MATHEMATICS-I",
+        "prereqs": []
+    },
+    {
+        "name": "BITS F114 GENERAL MATHEMATICS-II",
+        "prereqs": []
+    },
+    {
+        "name": "BITS F214 SCIENCE, TECHNOLOGY AND MODERNITY",
+        "prereqs": []
+    },
+    {
+        "name": "BITS F218 GENERAL MATHEMATICS-III",
+        "prereqs": []
+    },
+    {
+        "name": "BITS F219 PROCESS ENGINEERING",
+        "prereqs": []
+    },
+    {
+        "name": "BITS F221 PRACTICE SCHOOL I",
+        "prereqs": []
+    },
+    {
+        "name": "BITS F223 OBJECT ORIENTED PROG",
+        "prereqs": []
+    },
+    {
+        "name": "BITS F311 IMAGE PROCESSING",
+        "prereqs": []
+    },
+    {
+        "name": "BITS F312 NEURAL NET & FUZZY LOGIC",
+        "prereqs": []
+    },
+    {
+        "name": "BITS F312 NEURAL NETWORKS AND FUZZY LOGIC",
+        "prereqs": []
+    },
+    {
+        "name": "BITS F313 MULTICRI DE MAK IN E & M",
+        "prereqs": []
+    },
+    {
+        "name": "BITS F316 NONLINEAR DYNA & CHAOS",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "MATH F111 MATHEMATICS-I",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "MATH F112 MATHEMATICS-II",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "MATH F211 MATHEMATICS III",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BITS F317 THEORETICAL NEUROSCIENCE",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "PHY F111 MECHANICS OSCILLATIONS AND WAVES",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "BIO F111 GENERAL BIOLOGY",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "MATH F211 MATHEMATICS III",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "MATH F113 PROBABILITY AND STATISTICS",
+                "pre_cop": "nan"
+            }
+        ]
+    },
+    {
+        "name": "BITS F341 SHORT FILM & VIDEO PROD",
+        "prereqs": []
+    },
+    {
+        "name": "BITS F342 HUMANITIES & DESIGN",
+        "prereqs": []
+    },
+    {
+        "name": "BITS F343 FUZZY LOGIC & APPL",
+        "prereqs": []
+    },
+    {
+        "name": "BITS F364 HUMAN COMP INTERACTION",
+        "prereqs": []
+    },
+    {
+        "name": "BITS F385 INTRO TO GENDER STUDIES",
+        "prereqs": []
+    },
+    {
+        "name": "BITS F386 QUANTUM INFO & COMPUTING",
+        "prereqs": []
+    },
+    {
+        "name": "BITS F399 HUMANISTIC THEORIES OF SCIENCE AND TECHNOLOGY",
+        "prereqs": []
+    },
+    {
+        "name": "BITS F412 PRACTICE SCHOOL II",
+        "prereqs": []
+    },
+    {
+        "name": "BITS F415 INTRODUCTION TO MEMS",
+        "prereqs": []
+    },
+    {
+        "name": "BITS F418 INTRODUCTION TO BIOMEDICAL ENGINEERING",
+        "prereqs": []
+    },
+    {
+        "name": "BITS F421 THESIS",
+        "prereqs": []
+    },
+    {
+        "name": "BITS F430 RENEWABLE ENERGY LABORATORY",
+        "prereqs": []
+    },
+    {
+        "name": "BITS F437 TECHNICAL COMMUNICATION",
+        "prereqs": []
+    },
+    {
+        "name": "BITS F463 CRYPTOGRAPHY",
+        "prereqs": []
+    },
+    {
+        "name": "BITS F464 MACHINE LEARNING",
+        "prereqs": []
+    },
+    {
+        "name": "BITS F467 BIOETHICS & BIOSAFETY",
+        "prereqs": []
+    },
+    {
+        "name": "CE F211 MECHANICS OF SOLIDS",
+        "prereqs": []
+    },
+    {
+        "name": "CE F212 TRANSPORT PHENOMENA",
+        "prereqs": []
+    },
+    {
+        "name": "CE F213 SURVEYING",
+        "prereqs": []
+    },
+    {
+        "name": "CE F214 CONSTRUCTION MATERIALS",
+        "prereqs": []
+    },
+    {
+        "name": "CE F241 ANALYSIS OF STRUCTURES",
+        "prereqs": [
+            {
+                "prereq_name": "CE F211 MECHANICS OF SOLIDS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CE F242 CONSTRUCTION PLAN & TECH",
+        "prereqs": []
+    },
+    {
+        "name": "CE F243 SOIL MECHANICS",
+        "prereqs": []
+    },
+    {
+        "name": "CE F244 HIGHWAY ENGINEERING",
+        "prereqs": []
+    },
+    {
+        "name": "CE F311 DES OF CONCRETE STRUCT",
+        "prereqs": [
+            {
+                "prereq_name": "CE F211 MECHANICS OF SOLIDS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CE F312 HYDRAULIC ENGINEERING",
+        "prereqs": [
+            {
+                "prereq_name": "CE F212 TRANSPORT PHENOMENA",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CE F313 FOUNDATION ENGINEERING",
+        "prereqs": [
+            {
+                "prereq_name": "CE F243 SOIL MECHANICS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CE F323 INTRO TO ENVIRN ENGG",
+        "prereqs": []
+    },
+    {
+        "name": "CE F324 NUMERICAL ANALYSIS",
+        "prereqs": []
+    },
+    {
+        "name": "CE F341 HYDRO & WATER RES ENGG",
+        "prereqs": [
+            {
+                "prereq_name": "CE F212 TRANSPORT PHENOMENA",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CE F342 WATER & WASTEWATER TREAT",
+        "prereqs": []
+    },
+    {
+        "name": "CE F343 DES OF STEEL STRUCTURES",
+        "prereqs": [
+            {
+                "prereq_name": "CE F211 MECHANICS OF SOLIDS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CE F345 COMPUTATIONAL GEOMECHANICS",
+        "prereqs": [
+            {
+                "prereq_name": "CE F211 MECHANICS OF SOLIDS",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "CE F243 SOIL MECHANICS",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "CE F313 FOUNDATION ENGINEERING",
+                "pre_cop": "nan"
+            }
+        ]
+    },
+    {
+        "name": "CE F411 OPER RESEARCH FOR ENGIN",
+        "prereqs": [
+            {
+                "prereq_name": "MATH F113 PROBABILITY & STATISTICS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CE F412 DISASTER MANAGEMENT",
+        "prereqs": []
+    },
+    {
+        "name": "CE F413 ADV STRUCTURAL DESIGN",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "CE F311 DES OF CONCRETE STRUCT",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "CE F343 DES OF STEEL STRUCTURES",
+                "pre_cop": "CO"
+            }
+        ]
+    },
+    {
+        "name": "CE F415 DES OF PREST CONC STRUCT",
+        "prereqs": [
+            {
+                "prereq_name": "CE F311 DES OF CONCRETE STRUCT",
+                "pre_cop": "CO"
+            }
+        ]
+    },
+    {
+        "name": "CE F416 COMP APPLI IN CIVIL ENGG",
+        "prereqs": []
+    },
+    {
+        "name": "CE F417 APP OF AI IN CIVIL ENGG",
+        "prereqs": []
+    },
+    {
+        "name": "CE F419 GEOTECH EQ ENG & MC FOUN",
+        "prereqs": [
+            {
+                "prereq_name": "CE F243 SOIL MECHANICS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CE F420 INTRO  TO BRIDGE ENGG",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "CE F311 DES OF CONCRETE STRUCT",
+                "pre_cop": "CO"
+            },
+            {
+                "prereq_name": "CE F343 DES OF STEEL STRUCTURES",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CE F421 A & D OF FRP REIN CON ST",
+        "prereqs": [
+            {
+                "prereq_name": "CE F311 DES OF CONCRETE STRUCT",
+                "pre_cop": "CO"
+            }
+        ]
+    },
+    {
+        "name": "CE F422 URBAN HYDROLOGY",
+        "prereqs": []
+    },
+    {
+        "name": "CE F423 GREEN BUILD & ENER CONSE",
+        "prereqs": []
+    },
+    {
+        "name": "CE F425 AIRPORT RAIL & WATERWAYS",
+        "prereqs": []
+    },
+    {
+        "name": "CE F426 GEOSYN & REIN SOIL STR",
+        "prereqs": [
+            {
+                "prereq_name": "CE F243 SOIL MECHANICS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CE F427 SYSTEM MODELING & ANAL",
+        "prereqs": []
+    },
+    {
+        "name": "CE F428 EARTHQUAKE RES DES & CON",
+        "prereqs": [
+            {
+                "prereq_name": "CE F311 DES OF CONCRETE STRUCT",
+                "pre_cop": "CO"
+            }
+        ]
+    },
+    {
+        "name": "CE F429 DES OF FOUNDATION SYSTEM",
+        "prereqs": [
+            {
+                "prereq_name": "CE F243 SOIL MECHANICS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CE F430 DES OF ADV CONC STRUCT",
+        "prereqs": [
+            {
+                "prereq_name": "CE F311 DES OF CONCRETE STRUCT",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CE F431 PRIN OF GEO INFO SYS",
+        "prereqs": []
+    },
+    {
+        "name": "CE F432 STRUCTURAL DYNAMICS",
+        "prereqs": [
+            {
+                "prereq_name": "CE F241 ANALYSIS OF STRUCTURES",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CE F433 REMOTE SENS & IMAGE PROC",
+        "prereqs": []
+    },
+    {
+        "name": "CE F434 ENV IMPACT ASSESSMENT",
+        "prereqs": []
+    },
+    {
+        "name": "CE F435 INTRODUCTION TO FEM",
+        "prereqs": [
+            {
+                "prereq_name": "CE F241 ANALYSIS OF STRUCTURES",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CE G544 FRACTURE MECHANICS OF CONCRETE STRUCTURES",
+        "prereqs": []
+    },
+    {
+        "name": "CE G562 ADVANCED CONCRETE TECHNOLOGY",
+        "prereqs": [
+            {
+                "prereq_name": "CE F214 CONSTRUCTION MATERIALS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHE F211 CHEMICAL PROCESS CALCULA",
+        "prereqs": []
+    },
+    {
+        "name": "CHE F212 FLUID MECHANICS",
+        "prereqs": []
+    },
+    {
+        "name": "CHE F213 CHEM ENGG THERMODYNAMICS",
+        "prereqs": [
+            {
+                "prereq_name": "BITS F111 THERMODYNAMICS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHE F214 ENGINEERING CHEMISTRY",
+        "prereqs": [
+            {
+                "prereq_name": "CHEM F111 GENERAL CHEMISTRY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHE F241 HEAT TRANSFER",
+        "prereqs": []
+    },
+    {
+        "name": "CHE F242 NUM METHOD FOR CHEM ENGG",
+        "prereqs": [
+            {
+                "prereq_name": "MATH F211 MATHEMATICS III",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHE F243 MATERIAL SCIENCE & ENGG",
+        "prereqs": []
+    },
+    {
+        "name": "CHE F244 SEPARATION PROCESSES I",
+        "prereqs": []
+    },
+    {
+        "name": "CHE F311 KINETICS & REACTOR DESIG",
+        "prereqs": []
+    },
+    {
+        "name": "CHE F312 CHEMICAL ENGG LAB I",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F214 ENGINEERING CHEMISTRY",
+                "pre_cop": "CO"
+            },
+            {
+                "prereq_name": "CHE F212 FLUID MECHANICS",
+                "pre_cop": "CO"
+            },
+            {
+                "prereq_name": "CHE F241 HEAT TRANSFER",
+                "pre_cop": "CO"
+            },
+            {
+                "prereq_name": "CHE F244 SEPARATION PROCESSES I",
+                "pre_cop": "CO"
+            }
+        ]
+    },
+    {
+        "name": "CHE F313 SEPARATION PROCESSES II",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F244 SEPARATION PROCESSES I",
+                "pre_cop": "nan"
+            }
+        ]
+    },
+    {
+        "name": "CHE F314 PROCESS DES PRINCIPLES I",
+        "prereqs": []
+    },
+    {
+        "name": "CHE F342 PROCESS DYN & CONTROL",
+        "prereqs": []
+    },
+    {
+        "name": "CHE F343 PROCESS DES PRINCIPLE II",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F314 PROCESS DES PRINCIPLES I",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "CHE F313 SEPARATION PROCESSES II",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHE F411 ENVIR POLLUTION CONTROL",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F244 SEPARATION PROCESSES I",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHE F412 PROCESS EQUIPMENT DESIGN",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F341 CHEMICAL ENGG LAB II",
+                "pre_cop": "CO"
+            }
+        ]
+    },
+    {
+        "name": "CHE F413 PROCESS PLANT SAFETY",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F341 CHEMICAL ENGG LAB II",
+                "pre_cop": "CO"
+            }
+        ]
+    },
+    {
+        "name": "CHE F414 TRANSPORT PHENOMENA",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F212 FLUID MECHANICS",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "CHE F241 HEAT TRANSFER",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "CHE F244 SEPARATION PROCESSES I",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHE F415 MOLEC & STAT THERMODYN",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F213 CHEM ENGG THERMODYNAMICS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHE F416 PROCESS PLANT DES PRO I",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F312 CHEMICAL ENGG LAB I",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHE F417 PROCESS PLANT DES PRO II",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F341 CHEMICAL ENGG LAB II",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHE F418 MODEL & SIMU IN CHE ENGG",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F242 NUMERICAL METHODS FOR CHEMICAL ENGINEERS",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "CHE F311 KINETICS AND REACTOR DESIGN",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHE F419 CHEMICAL PROCESS TECH",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F341 CHEMICAL ENGG LAB II",
+                "pre_cop": "CO"
+            }
+        ]
+    },
+    {
+        "name": "CHE F421 BIOCHEMICAL ENGINEERING",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F311 KINETICS & REACTOR DESIG",
+                "pre_cop": "CO"
+            }
+        ]
+    },
+    {
+        "name": "CHE F422 PETROLEUM REFINING TECHNOLOGY",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F244 SEPARATION PROCESSES I",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHE F433 CORROSION ENGINEERING",
+        "all_one": "One",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F243 MATERIAL SCIENCE & ENGINEERING",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "ME F213 MATERIAL SCIENCE AND ENGINEERING",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "MF F213 MATERIAL SCIENCE AND ENGINEERING",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHE F471 ADVANCE PROCESS CONTROL",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F342 PROCESS DYN & CONTROL",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHE F491 SPECIAL PROJECTS",
+        "prereqs": []
+    },
+    {
+        "name": "CHE G511 Fluidization Engineering",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F311 Kinetics & Reactor Design",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHE G512 Petroleum Refining and Petrochemicals",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F312 Chemical Engineering Lab \ufffd I",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHE G513 Environmental Management Systems",
+        "prereqs": []
+    },
+    {
+        "name": "CHE G522 Polymer Technology",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F311 Kinetics & Reactor Design",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHE G523 Mathematical Methods in Chemical Engineering",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F312 Chemical Engineering Lab \ufffd I",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHE G524 Introduction to Multiphase flow",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F414 Transport Phenomena",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHE G526 Nuclear Engineering",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F312 Chemical Engineering Lab \ufffd I",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHE G527 Energy Conservation and Management",
+        "prereqs": []
+    },
+    {
+        "name": "CHE G528 Introduction to Nanoscience & Technology",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F243 Material Science & Engineering",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHE G529 Paper and Pulp Technology",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F314 Process Design Principles I",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHE G532 Alternate Energy Resources",
+        "prereqs": []
+    },
+    {
+        "name": "CHE G533 Petroleum Product Characterization",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F312 Chemical Engineering Lab \ufffd I",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHE G551 Advanced Separation Technology",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F313 Separation Processes II",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHE G552 ADVANCED TRANSPORT PHENOMENA",
+        "prereqs": []
+    },
+    {
+        "name": "CHE G553 STATISTICAL THERMODYNAMICS",
+        "prereqs": []
+    },
+    {
+        "name": "CHE G554 COMPUTATIONAL FLUID DYNAMICS",
+        "prereqs": []
+    },
+    {
+        "name": "CHE G556 ELECTROCHEMICAL ENGINEERING",
+        "prereqs": []
+    },
+    {
+        "name": "CHE G557 ENERGY SYSTEMS ENGINEERING",
+        "prereqs": []
+    },
+    {
+        "name": "CHE G558 CHEMICAL PROCESS OPTIMIZATION",
+        "prereqs": []
+    },
+    {
+        "name": "CHE G559 REACTOR PHYSICS AND ENGINEERING",
+        "prereqs": []
+    },
+    {
+        "name": "CHE G560 NUCLEAR FUEL CYCLE AND WASTE MANAGEMENT",
+        "prereqs": []
+    },
+    {
+        "name": "CHE G561 NUCLEAR REACTOR CONTROL AND INSTRUMENTATION",
+        "prereqs": []
+    },
+    {
+        "name": "CHE G562 THERMAL HYDRAULICS AND HEAT TRANSFER",
+        "prereqs": []
+    },
+    {
+        "name": "CHE G563 NUCLEAR CHEMICAL ENGINEERING",
+        "prereqs": []
+    },
+    {
+        "name": "CHE G564 NUCLEAR MATERIALS AND RADIATION DAMAGE",
+        "prereqs": []
+    },
+    {
+        "name": "CHE G565 RADIATION AND RADIO ISOTOPES APPLICATIONS",
+        "prereqs": []
+    },
+    {
+        "name": "CHE G566 NUCLEAR SAFETY, SECURITY AND SAFEGUARDS",
+        "prereqs": []
+    },
+    {
+        "name": "CHE G567 NATURAL GAS PROCESSING",
+        "prereqs": []
+    },
+    {
+        "name": "CHE G568 MODELING AND SIMULATION IN PETROLEUM REFINING",
+        "prereqs": []
+    },
+    {
+        "name": "CHE G569 PETROLEUM PRODUCTION ECONOMICS",
+        "prereqs": []
+    },
+    {
+        "name": "CHE G613 Advanced Mass Transfer",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F244 Separation Processes I",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHE G614 Advanced Heat Transfer",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F312 Chemical Engineering Lab \ufffd I",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHE G616 Petroleum Reservoir Engineering",
+        "prereqs": []
+    },
+    {
+        "name": "CHE G617 Petroleum Refinery Engineering",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F341 Chemical Engineering Lab \ufffd II",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHE G618 Petroleum Downstream Processing",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F314 Process Design Principles I",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHE G619 Process Intensification",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F343 Process Design Principles II",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHE G620 Energy Integration Analysis",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F343 Process Design Principles II",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHE G622 Advanced Chemical Engineering Thermodynamics",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F213 Chemical Engineering Thermodynamics",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHE G641 Reaction Engineering",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F311 Kinetics & Reactor Design",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHEM F110 CHEMISTRY LABORATORY",
+        "prereqs": []
+    },
+    {
+        "name": "CHEM F111 GENERAL CHEMISTRY",
+        "prereqs": []
+    },
+    {
+        "name": "CHEM F211 PHYSICAL CHEMISTRY I",
+        "prereqs": []
+    },
+    {
+        "name": "CHEM F212 ORGANIC CHEMISTRY I",
+        "prereqs": []
+    },
+    {
+        "name": "CHEM F213 PHYSICAL CHEMISTRY II",
+        "prereqs": []
+    },
+    {
+        "name": "CHEM F214 INORGANIC CHEMISTRY I",
+        "prereqs": []
+    },
+    {
+        "name": "CHEM F223 COLLOID & SURFACE CHEM",
+        "prereqs": []
+    },
+    {
+        "name": "CHEM F241 INORGANIC CHEMISTRY II",
+        "prereqs": []
+    },
+    {
+        "name": "CHEM F242 CHEMICAL EXPERIMENTATION I",
+        "prereqs": []
+    },
+    {
+        "name": "CHEM F243 ORGANIC CHEMISTRY II",
+        "prereqs": []
+    },
+    {
+        "name": "CHEM F244 PHYSICAL CHEMISTRY III",
+        "prereqs": [
+            {
+                "prereq_name": "CHEM F213 PHYSICAL CHEMISTRY II",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHEM F311 ORGANIC CHEMISTRY III",
+        "prereqs": [
+            {
+                "prereq_name": "CHEM F212 ORGANIC CHEMISTRY I",
+                "pre_cop": "PRE/CO"
+            }
+        ]
+    },
+    {
+        "name": "CHEM F312 PHYSICAL CHEMISTRY IV",
+        "prereqs": []
+    },
+    {
+        "name": "CHEM F313 INSTRU METHODS OF ANAL",
+        "prereqs": []
+    },
+    {
+        "name": "CHEM F323 BIOPHYSICAL CHEMISTRY",
+        "prereqs": []
+    },
+    {
+        "name": "CHEM F324 NUMERICAL METHOD IN CHEM",
+        "prereqs": []
+    },
+    {
+        "name": "CHEM F325 POLYMER CHEMISTRY",
+        "prereqs": []
+    },
+    {
+        "name": "CHEM F326 SOLID STATE CHEMISTRY",
+        "prereqs": []
+    },
+    {
+        "name": "CHEM F327 ELECTROCHEM FUNDA & APPL",
+        "prereqs": []
+    },
+    {
+        "name": "CHEM F328 SUPRAMOLECULAR CHEMISTRY",
+        "prereqs": []
+    },
+    {
+        "name": "CHEM F329 ANALYTICAL CHEMISTRY",
+        "prereqs": []
+    },
+    {
+        "name": "CHEM F330 PHOTOPHYSICAL CHEMISTRY",
+        "prereqs": [
+            {
+                "prereq_name": "CHEM F213 PHYSICAL CHEMISTRY II",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHEM F333 CHEMISTRY OF MATERIALS",
+        "prereqs": []
+    },
+    {
+        "name": "CHEM F334 MAGNETIC RESONANCE",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "CHEM F213 PHYSICAL CHEMISTRY II",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "PHY F212 ELECTROMAGNETIC THEO I",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHEM F335 ORGANIC CHEM & DRUG DES",
+        "prereqs": [
+            {
+                "prereq_name": "CHEM F311 ORGANIC CHEMISTRY III",
+                "pre_cop": "PRE/CO"
+            }
+        ]
+    },
+    {
+        "name": "CHEM F336 NANOCHEMISTRY",
+        "prereqs": []
+    },
+    {
+        "name": "CHEM F337 GREEN CHEM & CATALYSIS",
+        "prereqs": []
+    },
+    {
+        "name": "CHEM F341 CHEMICAL EXPERIMENTATION II",
+        "prereqs": []
+    },
+    {
+        "name": "CHEM F342 ORGANIC CHEMISTRY IV",
+        "prereqs": []
+    },
+    {
+        "name": "CHEM F343 INORGANIC CHEMISTRY III",
+        "prereqs": []
+    },
+    {
+        "name": "CHEM F412 PHOTOCHEM & LASER SPECTR",
+        "prereqs": [
+            {
+                "prereq_name": "CHEM F213 PHYSICAL CHEMISTRY II",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHEM F413 E COREL IN ATOM & MOLEC",
+        "prereqs": [
+            {
+                "prereq_name": "CHEM F244 PHYSICAL CHEMISTRY III",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CHEM F414 BIO & CHEMICAL SENSORS",
+        "prereqs": []
+    },
+    {
+        "name": "CHEM F415 FRONTIERS IN ORGANIC SYN",
+        "prereqs": [
+            {
+                "prereq_name": "CHEM F311 ORGANIC CHEMISTRY III",
+                "pre_cop": "PRE/CO"
+            }
+        ]
+    },
+    {
+        "name": "CHEM F422 STATISTICAL THERMODYNAM",
+        "prereqs": [
+            {
+                "prereq_name": "CHEM F211 PHYSICAL CHEMISTRY I",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CS F111 COMPUTER PROGRAMMING",
+        "prereqs": []
+    },
+    {
+        "name": "CS F211 DATA STRUCTURES & ALGO",
+        "all_one": "One",
+        "prereqs": [
+            {
+                "prereq_name": "CS F222 DISCR STRUC FOR COMP SCI",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "MATH F213 DISCRETE MATHEMATICS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CS F212 DATABASE SYSTEMS",
+        "prereqs": []
+    },
+    {
+        "name": "CS F213 OBJECT ORIENTED PROG",
+        "prereqs": [
+            {
+                "prereq_name": "CS F111 COMPUTER PROGRAMMING",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CS F214 LOGIC IN COMPUTER SC",
+        "prereqs": []
+    },
+    {
+        "name": "CS F215 DIGITAL DESIGN",
+        "prereqs": []
+    },
+    {
+        "name": "CS F222 DISCR STRUC FOR COMP SCI",
+        "prereqs": []
+    },
+    {
+        "name": "CS F241 MICROPROC & INTERFACING",
+        "prereqs": []
+    },
+    {
+        "name": "CS F301 PRINCIPLES OF PROGG LANG",
+        "prereqs": [
+            {
+                "prereq_name": "CS F211 DATA STRUCTURES & ALGO",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CS F303 COMPUTER NETWORKS",
+        "prereqs": [
+            {
+                "prereq_name": "CS F372 OPERATING SYSTEMS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CS F314 SOFT DEV FOR PORT DEVICE",
+        "prereqs": []
+    },
+    {
+        "name": "CS F342 COMPUTER ARCHITECTURE",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "CS F241 MICROPROC & INTERFACING",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "CS F215 DIGITAL DESIGN",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CS F351 THEORY OF COMPUTATION",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "CS F222 DISCR STRUC FOR COMP SCI",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "CS F214 LOGIC IN COMPUTER SC",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CS F363 COMPILER CONSTRUCTION",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "CS F351 THEORY OF COMPUTATION",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "CS F301 PRINCIPLES OF PROGG LANG",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CS F364 DESIGN & ANAL OF ALGO",
+        "prereqs": [
+            {
+                "prereq_name": "CS F211 DATA STRUCTURES & ALGO",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CS F372 OPERATING SYSTEMS",
+        "prereqs": []
+    },
+    {
+        "name": "CS F401 MULTIMEDIA COMPUTING",
+        "prereqs": []
+    },
+    {
+        "name": "CS F407 ARTIFICIAL INTELLIGENCE",
+        "prereqs": []
+    },
+    {
+        "name": "CS F413 INTERNETWORKING TECHNOLOG",
+        "prereqs": []
+    },
+    {
+        "name": "CS F415 DATA MINING",
+        "prereqs": []
+    },
+    {
+        "name": "CS F422 PARALLEL COMPUTING",
+        "prereqs": []
+    },
+    {
+        "name": "CS F424 SOFTWARE FOR EMBEDED SYS",
+        "prereqs": []
+    },
+    {
+        "name": "CS F441 SEL TOPICS FROM COMP SC",
+        "prereqs": []
+    },
+    {
+        "name": "CS F446 DATA STORAGE TECH & NETW",
+        "prereqs": []
+    },
+    {
+        "name": "CS F469 INFORMATION RETRIEVAL",
+        "prereqs": []
+    },
+    {
+        "name": "ECE F211 ELECTRICAL MACHINES",
+        "prereqs": [
+            {
+                "prereq_name": "EEE F111 ELECTRICAL SCIENCES",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "ECE F212 ELECTROMAGNETIC THEO I",
+        "prereqs": []
+    },
+    {
+        "name": "ECE F214 ELECTRONIC DEVICES",
+        "prereqs": [
+            {
+                "prereq_name": "EEE F111 ELECTRICAL SCIENCES",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "ECE F215 DIGITAL DESIGN",
+        "prereqs": []
+    },
+    {
+        "name": "ECE F241 MICROPROC & INTERFACING",
+        "prereqs": []
+    },
+    {
+        "name": "ECE F242 CONTROL SYSTEMS",
+        "prereqs": []
+    },
+    {
+        "name": "ECE F243 SIGNALS & SYSTEMS",
+        "prereqs": []
+    },
+    {
+        "name": "ECE F244 MICROELECTRONIC CIRCUITS",
+        "prereqs": []
+    },
+    {
+        "name": "ECE F311 COMMUNICATION SYSTEMS",
+        "prereqs": [
+            {
+                "prereq_name": "ECE F243 SIGNALS & SYSTEMS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "ECE F312 EM FIELDS AND MICROWAVE ENGINEERING LABORATORY",
+        "all_one": "One",
+        "prereqs": [
+            {
+                "prereq_name": "EEE F212 ELECTROMAGNETIC THEORY",
+                "pre_cop": "CO/PRE"
+            },
+            {
+                "prereq_name": "ECE F212 ELECTROMAGNETIC THEORY",
+                "pre_cop": "CO/PRE"
+            },
+            {
+                "prereq_name": "INSTR F212 ELECTROMAGNETIC THEORY",
+                "pre_cop": "CO/PRE"
+            }
+        ]
+    },
+    {
+        "name": "ECE F314 EM FIELDS & MICRO ENGG",
+        "prereqs": []
+    },
+    {
+        "name": "ECE F341 ANALOG ELECTRONICS",
+        "prereqs": [
+            {
+                "prereq_name": "ECE F244 MICROELECTRONIC CIRCUITS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "ECE F344 INFO THEORY & CODING",
+        "prereqs": [
+            {
+                "prereq_name": "EEE F243 SIGNALS & SYSTEM",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "ECE F414 TELECOM SWIT SYS & NETWK",
+        "prereqs": []
+    },
+    {
+        "name": "ECE F416 DIGITAL COMMUNICATION",
+        "prereqs": []
+    },
+    {
+        "name": "ECE F418 MOD COMMUNICATION TECH",
+        "prereqs": [
+            {
+                "prereq_name": "ECE F243 SIGNALS & SYSTEMS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "ECE F431 MOBILE TELECOM NETWORKS",
+        "prereqs": [
+            {
+                "prereq_name": "ECE F243 SIGNALS & SYSTEMS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "ECE F434 DIGITAL SIGNAL PROCESS",
+        "prereqs": [
+            {
+                "prereq_name": "ECE F243 SIGNALS & SYSTEMS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "ECE F472 SATELLITE COMMUNICATION",
+        "prereqs": [
+            {
+                "prereq_name": "ECE F243 SIGNALS & SYSTEMS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "ECON F211 PRINCIPLES OF ECONOMICS",
+        "prereqs": []
+    },
+    {
+        "name": "ECON F212 FUNDA OF FIN AND ACCOUNT",
+        "prereqs": []
+    },
+    {
+        "name": "ECON F213 MATHEMATIC & STAT METHOD",
+        "prereqs": []
+    },
+    {
+        "name": "ECON F214 ECONOMIC ENV OF BUSINESS",
+        "prereqs": []
+    },
+    {
+        "name": "ECON F241 ECONOMETRIC METHODS",
+        "prereqs": []
+    },
+    {
+        "name": "ECON F242 MICROECONOMICS",
+        "prereqs": [
+            {
+                "prereq_name": "ECON F211 PRINCIPLES OF ECONOMICS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "ECON F243 MACROECONOMICS",
+        "prereqs": [
+            {
+                "prereq_name": "ECON F211 PRINCIPLES OF ECONOMICS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "ECON F244 ECONOMIC OF GROWTH & DEV",
+        "prereqs": [
+            {
+                "prereq_name": "ECON F211 PRINCIPLES OF ECONOMICS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "ECON F311 INTERNATIONAL ECONOMICS",
+        "prereqs": [
+            {
+                "prereq_name": "ECON F211 PRINCIPLES OF ECONOMICS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "ECON F312 MONEY BANK & FIN MARKETS",
+        "prereqs": [
+            {
+                "prereq_name": "ECON F211 PRINCIPLES OF ECONOMICS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "ECON F313 ISSUES IN ECONOMIC DEV",
+        "prereqs": [
+            {
+                "prereq_name": "ECON F211 PRINCIPLES OF ECONOMICS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "ECON F341 PUBLIC FIN THEO & POLICY",
+        "prereqs": [
+            {
+                "prereq_name": "ECON F211 PRINCIPLES OF ECONOMICS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "ECON F342 APPLIED ECONOMETRICS",
+        "prereqs": [
+            {
+                "prereq_name": "ECON F241 ECONOMETRIC METHODS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "ECON F343 ECONOMIC ANAL OF PUB POL",
+        "prereqs": []
+    },
+    {
+        "name": "ECON F344 MODELS IN OPERATIONS MANAGEMENT",
+        "prereqs": []
+    },
+    {
+        "name": "ECON F345 BEHAVIORAL ECONOMICS ",
+        "prereqs": []
+    },
+    {
+        "name": "ECON F351 INDIAN ECONOMIC DEV",
+        "prereqs": []
+    },
+    {
+        "name": "ECON F352 MGMT OF BANKS & FIN INST",
+        "prereqs": []
+    },
+    {
+        "name": "ECON F353 ENERGY ECONOMIC & POLICY",
+        "prereqs": []
+    },
+    {
+        "name": "ECON F354 DERIVATIVES &  RISK MGMT",
+        "prereqs": []
+    },
+    {
+        "name": "ECON F355 BUSS ANAL & VALUATION",
+        "prereqs": []
+    },
+    {
+        "name": "ECON F356 STRATEGIC FINANCIAL MGMT",
+        "prereqs": []
+    },
+    {
+        "name": "ECON F357 MGMT CONTROL SYSTEM",
+        "prereqs": []
+    },
+    {
+        "name": "ECON F411 PROJECT APPRAISAL",
+        "prereqs": []
+    },
+    {
+        "name": "ECON F412 SECUR ANAL & PORTFOL MGT",
+        "prereqs": []
+    },
+    {
+        "name": "ECON F413 FINANCIAL ENGINEERING",
+        "prereqs": [
+            {
+                "prereq_name": "ECON F354 DERIVATIVES &  RISK MGMT",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "ECON F414 CREAT & LEAD ENTREP ORGN",
+        "prereqs": []
+    },
+    {
+        "name": "ECON F415 NEW VENTURE CREATION",
+        "prereqs": []
+    },
+    {
+        "name": "ECON F416 REGIONAL ECONOMICS",
+        "prereqs": []
+    },
+    {
+        "name": "ECON F418 QUANTITATIVE ANALYSIS OF INTERNATIONAL TRADE",
+        "prereqs": []
+    },
+    {
+        "name": "ECON F422 FUNT & WORK STOCK EXCHAN",
+        "prereqs": []
+    },
+    {
+        "name": "ECON F471 RESOURCES & ENVIR ECON",
+        "prereqs": []
+    },
+    {
+        "name": "EEE F111 ELECTRICAL SCIENCES",
+        "prereqs": []
+    },
+    {
+        "name": "EEE F211 ELECTRICAL MACHINES",
+        "prereqs": [
+            {
+                "prereq_name": "EEE F111 ELECTRICAL SCIENCES",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "EEE F212 ELECTROMAGNETIC THEO I",
+        "prereqs": []
+    },
+    {
+        "name": "EEE F214 ELECTRONIC DEVICES",
+        "prereqs": [
+            {
+                "prereq_name": "EEE F111 ELECTRICAL SCIENCES",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "EEE F215 DIGITAL DESIGN",
+        "prereqs": []
+    },
+    {
+        "name": "EEE F241 MICROPROC & INTERFACING",
+        "prereqs": []
+    },
+    {
+        "name": "EEE F242 CONTROL SYSTEMS",
+        "prereqs": []
+    },
+    {
+        "name": "EEE F243 SIGNALS & SYSTEMS",
+        "prereqs": []
+    },
+    {
+        "name": "EEE F244 MICROELECTRONIC CIRCUITS",
+        "prereqs": []
+    },
+    {
+        "name": "EEE F245 CONTROL SYSTEM LABORARTORY",
+        "all_one": "One",
+        "prereqs": [
+            {
+                "prereq_name": "EEE F242 CONTROL SYSTEMS",
+                "pre_cop": "CO/PRE"
+            },
+            {
+                "prereq_name": "ECE F242 CONTROL SYSTEMS",
+                "pre_cop": "CO/PRE"
+            },
+            {
+                "prereq_name": "INSTR F242 CONTROL SYSTEMS",
+                "pre_cop": "CO/PRE"
+            }
+        ]
+    },
+    {
+        "name": "EEE F246 ELECTRIC & ELECTRONIC CIR LAB",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "EEE F243 SIGNALS & SYSTEMS",
+                "pre_cop": "CO/PRE"
+            },
+            {
+                "prereq_name": "EEE F244 MICROELECTRONIC CIRCUITS",
+                "pre_cop": "CO/PRE"
+            }
+        ]
+    },
+    {
+        "name": "EEE F311 COMMUNICATION SYSTEMS",
+        "prereqs": [
+            {
+                "prereq_name": "EEE F243 SIGNALS & SYSTEMS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "EEE F312 POWER SYSTEMS",
+        "prereqs": []
+    },
+    {
+        "name": "EEE F313 ANALOG & DIGIT VLSI DES",
+        "prereqs": [
+            {
+                "prereq_name": "EEE /ECE F244 MICROELECTRONIC CIRCUITS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "EEE F341 ANALOG ELECTRONICS",
+        "prereqs": [
+            {
+                "prereq_name": "EEE F244 MICROELECTRONIC CIRCUITS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "EEE F342 POWER ELECTRONICS",
+        "prereqs": []
+    },
+    {
+        "name": "EEE F345 POWER APPARATUS & NETWK",
+        "prereqs": [
+            {
+                "prereq_name": "EEE/ INSTR/ ECE F211 ELECTRICAL MACHINES",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "EEE F346 DATA COMMUNIC & NETWORKS",
+        "prereqs": []
+    },
+    {
+        "name": "EEE F347 COMMUNICATION NETWORKS LABORATORY",
+        "prereqs": []
+    },
+    {
+        "name": "EEE F348 FPGA BASED SYSTEM DESIGN LAB",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "EEE F215 DIGITAL DESIGN",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "EEE F243 SIGNALS & SYSTEMS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "EEE F414 TELECOM SWIT SYS & NETWK",
+        "prereqs": []
+    },
+    {
+        "name": "EEE F416 DIGITAL COMMUNICATION",
+        "prereqs": []
+    },
+    {
+        "name": "EEE F418 MOD COMMUNICATION TECH",
+        "prereqs": [
+            {
+                "prereq_name": "EEE/ INSTR F243 SIGNALS & SYSTEMS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "EEE F422 MODERN CONTROL SYSTEMS",
+        "prereqs": [
+            {
+                "prereq_name": "EEE/ ECE/ INSTR F242 CONTROL SYSTEMS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "EEE F425 POWER SYS ANAL & CONTROL",
+        "prereqs": []
+    },
+    {
+        "name": "EEE F426 FIBRE OPTICS & OPTOELECT",
+        "prereqs": []
+    },
+    {
+        "name": "EEE F427 ELEC POWER UTIL & ILLUM",
+        "prereqs": []
+    },
+    {
+        "name": "EEE F431 MOBILE TELECOM NETWORKS",
+        "prereqs": [
+            {
+                "prereq_name": "EEE/ INSTR F243 SIGNALS & SYSTEMS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "EEE F432 MEDICAL INSTRUMENTATION",
+        "prereqs": []
+    },
+    {
+        "name": "EEE F433 ELECTR MAG FIELD & WAVES",
+        "prereqs": [
+            {
+                "prereq_name": "EEE/ INSTR F212 ELECTROMAGNETIC THEO",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "PHY F212 ELECTROMAGNE\r\nTIC THEO I",
+                "pre_cop": "nan"
+            }
+        ]
+    },
+    {
+        "name": "EEE F434 DIGITAL SIGNAL PROCESS",
+        "prereqs": [
+            {
+                "prereq_name": "EEE F243 SIGNALS & SYSTEMS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "EEE F435 DIGITAL IMAGE PROCESSING",
+        "prereqs": []
+    },
+    {
+        "name": "EEE F472 SATELLITE COMMUNICATION",
+        "prereqs": [
+            {
+                "prereq_name": "EEE/ INSTR F243 SIGNALS & SYSTEMS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "EEE F473 WIND ELECTRICAL SYSTEMS",
+        "prereqs": []
+    },
+    {
+        "name": "EEE F474 ANTENNA THEORY AND DESIGN",
+        "prereqs": []
+    },
+    {
+        "name": "EEE F475 SPECIAL ELECTRICAL MACHINES",
+        "prereqs": []
+    },
+    {
+        "name": "EEE F476 SWITCHGEAR AND PROTECTION",
+        "prereqs": []
+    },
+    {
+        "name": "EEE F477 MODELING OF FIELD-EFFECT NANODEVICES",
+        "prereqs": []
+    },
+    {
+        "name": "EEE F478 POWER SYSTEMS LABORATORY",
+        "prereqs": [
+            {
+                "prereq_name": "EEE F312 POWER SYSTEMS",
+                "pre_cop": "CO/PRE"
+            }
+        ]
+    },
+    {
+        "name": "EEE G512 EMBEDDED SYSTEM DESIGN",
+        "all_one": "One",
+        "prereqs": [
+            {
+                "prereq_name": "ECE F241 MICROPROCESSORS AND INTERFACING",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "EEE F241 MICROPROCESSORS AND INTERFACING",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "INSTR F241 MICROPROCESSORS AND INTERFACING",
+                "pre_cop": "nan"
+            }
+        ]
+    },
+    {
+        "name": "EEE G547 DEVICE DRIVERS",
+        "prereqs": [
+            {
+                "prereq_name": "EEE G512 EMBEDDED SYSTEM DESIGN",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "EEE G593 POWER QUALITY",
+        "prereqs": []
+    },
+    {
+        "name": "EEE G594 ADVANCED VLSI DEVICES",
+        "prereqs": []
+    },
+    {
+        "name": "EEE G595 NANOELECTRONICS AND NANOPHOTONICS TECHNOLOGY",
+        "prereqs": []
+    },
+    {
+        "name": "FIN F212 FUNDA OF FIN AND ACCOUNT",
+        "prereqs": []
+    },
+    {
+        "name": "FIN F213 MATHEMATIC & STAT METHOD",
+        "prereqs": []
+    },
+    {
+        "name": "FIN F214 ECONOMIC ENV OF BUSINESS",
+        "prereqs": []
+    },
+    {
+        "name": "FIN F242 INTRO TO FINANCIAL MATH",
+        "prereqs": []
+    },
+    {
+        "name": "FIN F243 FUNT & WORK STOCK EXCHAN",
+        "prereqs": []
+    },
+    {
+        "name": "FIN F244 INDIAN FINANCIAL SYSTEM",
+        "prereqs": []
+    },
+    {
+        "name": "FIN F311 DERIVATIVES &  RISK MGMT",
+        "prereqs": []
+    },
+    {
+        "name": "FIN F312 FUND OF TAXATION & AUDIT",
+        "prereqs": []
+    },
+    {
+        "name": "FIN F313 SECUR ANAL & PORTFOL MGT",
+        "prereqs": []
+    },
+    {
+        "name": "FIN F314 INVEST BANK & FIN SERV",
+        "prereqs": []
+    },
+    {
+        "name": "FIN F315 FINANCIAL MANAGEMENT",
+        "prereqs": [
+            {
+                "prereq_name": "FIN F212 FUNDA OF FIN AND ACCOUNT",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "FIN F341 INTER FIN MARKETS & SER",
+        "prereqs": []
+    },
+    {
+        "name": "FIN F342 PROJECT FINANCE",
+        "prereqs": []
+    },
+    {
+        "name": "GS F211 MOD POLITICAL CONCEPTS",
+        "prereqs": []
+    },
+    {
+        "name": "GS F212 ENVIRON DEV & CLIMATE CH",
+        "prereqs": []
+    },
+    {
+        "name": "GS F213 DEVELOPMENT THEORIES",
+        "prereqs": []
+    },
+    {
+        "name": "GS F221 BUSINESS COMMUNICATION",
+        "prereqs": []
+    },
+    {
+        "name": "GS F222 LANGUAGE LAB PRACTICE",
+        "prereqs": []
+    },
+    {
+        "name": "GS F223 INTRO TO MASS COMM",
+        "prereqs": []
+    },
+    {
+        "name": "GS F224 PRINT & AUDIO- VISU ADVER",
+        "prereqs": []
+    },
+    {
+        "name": "GS F231 DYN OF SOCIAL CHANGE",
+        "prereqs": []
+    },
+    {
+        "name": "GS F232 INTRODUCTORY PSYCHOLOGY",
+        "prereqs": []
+    },
+    {
+        "name": "GS F233 PUBLIC POLICY",
+        "prereqs": []
+    },
+    {
+        "name": "GS F234 DEVELOPMENT ECONOMICS",
+        "prereqs": []
+    },
+    {
+        "name": "GS F241 CREATIVE WRITING",
+        "prereqs": []
+    },
+    {
+        "name": "GS F242 CULTURAL STUDIES",
+        "prereqs": []
+    },
+    {
+        "name": "GS F243 CURRENT AFFAIRS",
+        "prereqs": []
+    },
+    {
+        "name": "GS F244 REPORT & WRITE FOR MEDIA",
+        "prereqs": []
+    },
+    {
+        "name": "GS F245 EFFECTIVE PUBLIC SPEAK",
+        "prereqs": []
+    },
+    {
+        "name": "GS F311 INTRO TO CONFLICT MGMT",
+        "prereqs": []
+    },
+    {
+        "name": "GS F312 APPLIED PHILOSOPHY",
+        "prereqs": []
+    },
+    {
+        "name": "GS F321 MASS MEDIA & CONTENT DES",
+        "prereqs": []
+    },
+    {
+        "name": "GS F322 CRITI ANAL OF LIT & CINE",
+        "prereqs": []
+    },
+    {
+        "name": "GS F325 JOURNALISM",
+        "prereqs": []
+    },
+    {
+        "name": "GS F326 CREATIVE THINKING",
+        "prereqs": []
+    },
+    {
+        "name": "GS F327 SELECTED READING",
+        "prereqs": []
+    },
+    {
+        "name": "GS F331 TECH IN SOCIAL RESEARCH",
+        "prereqs": []
+    },
+    {
+        "name": "GS F332 CONTEMPORARY INDIA",
+        "prereqs": []
+    },
+    {
+        "name": "GS F333 PUBLIC ADMINISTRATION",
+        "prereqs": []
+    },
+    {
+        "name": "GS F334 GLOBAL BUSINESS TEC & KS",
+        "prereqs": []
+    },
+    {
+        "name": "GS F341 COPYWRITING",
+        "prereqs": []
+    },
+    {
+        "name": "GS F342 COMPUTER MEDIATED COMM",
+        "prereqs": []
+    },
+    {
+        "name": "GS F343 SHORT FILM & VIDEO PROD",
+        "prereqs": []
+    },
+    {
+        "name": "HIST F112 MAIN TRENDS IN IND HIST",
+        "prereqs": []
+    },
+    {
+        "name": "HIST F211 MAIN CURRENTS OF MOD HIST",
+        "prereqs": []
+    },
+    {
+        "name": "HSS F224 PRINT & AUDIO- VISU ADVER",
+        "prereqs": []
+    },
+    {
+        "name": "HSS F226 POST MODERNISM",
+        "prereqs": []
+    },
+    {
+        "name": "HSS F227 CROSS CULTURAL SKILLS",
+        "prereqs": []
+    },
+    {
+        "name": "HSS F237 CONTEMPORARY INDAIN ENGLISH FICTION",
+        "prereqs": []
+    },
+    {
+        "name": "HSS F238 SPORTS AND SOCIETY",
+        "prereqs": []
+    },
+    {
+        "name": "HSS F312 BUREAUCRACY",
+        "prereqs": []
+    },
+    {
+        "name": "HSS F315 SOCIETY, BUS, & POLITICS",
+        "prereqs": []
+    },
+    {
+        "name": "HSS F324 CREATIVE & CRITICAL THIN",
+        "prereqs": []
+    },
+    {
+        "name": "HSS F325 CINEMATIC ADAPTATION",
+        "prereqs": []
+    },
+    {
+        "name": "HSS F326 HUMANITIES & DESIGN",
+        "prereqs": []
+    },
+    {
+        "name": "HSS F327 CONTEMPORARY DRAMA",
+        "prereqs": []
+    },
+    {
+        "name": "HSS F341 COPY WRITING",
+        "prereqs": []
+    },
+    {
+        "name": "HSS F343 SHORT FILM & VIDEO PROD",
+        "prereqs": []
+    },
+    {
+        "name": "HSS F351 SOCIAL AND POLITICAL ECOLOGY",
+        "prereqs": []
+    },
+    {
+        "name": "HSS F352 TECHNOLOGY, WORK AND SOCIETY",
+        "prereqs": []
+    },
+    {
+        "name": "HSS F353 PHILOSOPHY OF AESTHETICS",
+        "prereqs": []
+    },
+    {
+        "name": "HSS F354 INTRODUCTION TO ISLAMIC ECONOMY",
+        "prereqs": []
+    },
+    {
+        "name": "HSS F355 DICTATORSHIP, DEMOCRACY & DEVELOPMENT",
+        "prereqs": []
+    },
+    {
+        "name": "HSS F356 SOCIAL MOVEMENTS AND PROTEST POLITICS",
+        "prereqs": []
+    },
+    {
+        "name": "HSS F399 INTRODUCTION TO AMERICAN LITERATURE",
+        "prereqs": []
+    },
+    {
+        "name": "HUM F411 PROFESSIONAL ETHICS",
+        "prereqs": []
+    },
+    {
+        "name": "HUM F412 HERITAGE OF INDIA",
+        "prereqs": []
+    },
+    {
+        "name": "INSTR F211 ELECTRICAL MACHINES",
+        "prereqs": [
+            {
+                "prereq_name": "EEE F111 ELECTRICAL SCIENCES",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "INSTR F212 ELECTROMAGNETIC THEO I",
+        "prereqs": []
+    },
+    {
+        "name": "INSTR F214 ELECTRONIC DEVICES",
+        "prereqs": [
+            {
+                "prereq_name": "EEE F111 ELECTRICAL SCIENCES",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "INSTR F215 DIGITAL DESIGN",
+        "prereqs": []
+    },
+    {
+        "name": "INSTR F241 MICROPROC & INTERFACING",
+        "prereqs": []
+    },
+    {
+        "name": "INSTR F242 CONTROL SYSTEMS",
+        "prereqs": []
+    },
+    {
+        "name": "INSTR F243 SIGNALS & SYSTEMS",
+        "prereqs": []
+    },
+    {
+        "name": "INSTR F244 MICROELECTRONIC CIRCUITS",
+        "prereqs": []
+    },
+    {
+        "name": "INSTR F311 ELECTRO INST & INST TECH",
+        "prereqs": []
+    },
+    {
+        "name": "INSTR F312 TRANSD & MEASUREMENT TEC",
+        "prereqs": []
+    },
+    {
+        "name": "INSTR F313 ANALOG & DIGIT VLSI DES",
+        "prereqs": [
+            {
+                "prereq_name": "INSTR F244 MICROELECTRONIC CIRCUITS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "INSTR F341 ANALOG ELECTRONICS",
+        "prereqs": [
+            {
+                "prereq_name": "INSTR F244 MICROELECTRONIC CIRCUITS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "INSTR F342 POWER ELECTRONICS",
+        "prereqs": []
+    },
+    {
+        "name": "INSTR F343 INDUS INSTRUMENT & CONT",
+        "prereqs": []
+    },
+    {
+        "name": "INSTR F411 OPTO ELECTRONIC INSTRU",
+        "prereqs": []
+    },
+    {
+        "name": "INSTR F412 ANALYSIS INSTRUMENTATION",
+        "prereqs": [
+            {
+                "prereq_name": "EEE F111 ELECTRICAL SCIENCES",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "INSTR F413 ADVANCE PROCESS CONTROL",
+        "prereqs": [
+            {
+                "prereq_name": "INSTR F343 INDUS INSTRUMENT & CONT",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "INSTR F414 TELECOM SWIT SYS & NETWK",
+        "prereqs": [
+            {
+                "prereq_name": "INSTR F243 SIGNALS & SYSTEMS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "INSTR F415 DIGITAL CONTROL",
+        "prereqs": [
+            {
+                "prereq_name": "INSTR F242 CONTROL SYSTEMS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "INSTR F419 VIRTUAL INSTRUMENTATION",
+        "prereqs": []
+    },
+    {
+        "name": "INSTR F420 DESIGN OF INSTRU SYSTEMS",
+        "prereqs": []
+    },
+    {
+        "name": "INSTR F422 INSTRU FOR PETROCHEM IND",
+        "prereqs": []
+    },
+    {
+        "name": "INSTR F432 MEDICAL INSTRUMENTATION",
+        "prereqs": []
+    },
+    {
+        "name": "INSTR F473 WIND ELECTRICAL SYSTEMS",
+        "prereqs": []
+    },
+    {
+        "name": "IS F211 DATA STRUCTURES & ALGO",
+        "prereqs": [
+            {
+                "prereq_name": "IS F222 DISCR STRUC FOR COMP SCI",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "IS F213 OBJECT ORIENTED PROG",
+        "prereqs": [
+            {
+                "prereq_name": "CS F111 COMPUTER PROGRAMMING",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "IS F214 LOGIC IN COMPUTER SC",
+        "prereqs": []
+    },
+    {
+        "name": "IS F222 DISCR STRUC FOR COMP SCI",
+        "prereqs": []
+    },
+    {
+        "name": "IS F241 DIGITAL ELECTRO & MICRO",
+        "prereqs": [
+            {
+                "prereq_name": "EEE F111 ELECTRICAL SCIENCES",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "IS F242 COMPUTER ORGANIZATION",
+        "prereqs": [
+            {
+                "prereq_name": "IS F241 DIGITAL ELECTRO & MICRO",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "IS F243 DATABASE SYSTEMS & APPL",
+        "prereqs": []
+    },
+    {
+        "name": "IS F301 PRINCIPLES OF PROGG LANG",
+        "prereqs": [
+            {
+                "prereq_name": "IS F211 DATA STRUCTURES & ALGO",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "IS F303 COMPUTER NETWORKS",
+        "prereqs": [
+            {
+                "prereq_name": "IS F372 OPERATING SYSTEMS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "IS F311 COMPUTER GRAPHICS",
+        "prereqs": []
+    },
+    {
+        "name": "IS F322 SOFTWARE TESTING",
+        "prereqs": [
+            {
+                "prereq_name": "IS F341 SOFTWARE ENGINEERING",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "IS F341 SOFTWARE ENGINEERING",
+        "prereqs": [
+            {
+                "prereq_name": "IS F213 OBJECT ORIENTED PROG",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "IS F342 COMPILER DESIGN",
+        "prereqs": [
+            {
+                "prereq_name": "IS F301 PRINCIPLES OF PROGG LANG",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "IS F372 OPERATING SYSTEMS",
+        "prereqs": []
+    },
+    {
+        "name": "IS F462 NETWORK PROGRAMMING",
+        "prereqs": []
+    },
+    {
+        "name": "MATH F111 MATHEMATICS-I",
+        "prereqs": []
+    },
+    {
+        "name": "MATH F112 MATHEMATICS-II",
+        "prereqs": []
+    },
+    {
+        "name": "MATH F113 PROBABILITY & STATISTICS",
+        "prereqs": []
+    },
+    {
+        "name": "MATH F211 MATHEMATICS III",
+        "prereqs": []
+    },
+    {
+        "name": "MATH F212 OPTIMIZATION",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "MATH F111 MATHEMATICS-I",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "MATH F112 MATHEMATICS-II",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "MATH F213 DISCRETE MATHEMATICS",
+        "prereqs": []
+    },
+    {
+        "name": "MATH F214 ELEMENTARY REAL ANALYSIS",
+        "prereqs": []
+    },
+    {
+        "name": "MATH F215 ALGEBRA I",
+        "prereqs": []
+    },
+    {
+        "name": "MATH F231 NUMBER THEORY",
+        "prereqs": []
+    },
+    {
+        "name": "MATH F241 MATHEMATICAL METHODS",
+        "prereqs": []
+    },
+    {
+        "name": "MATH F242 OPERATIONS RESEARCH",
+        "prereqs": [
+            {
+                "prereq_name": "MATH F113 PROBABILITY & STATISTICS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "MATH F243 GRAPHS AND NETWORKS",
+        "prereqs": []
+    },
+    {
+        "name": "MATH F244 MEASURE & INTEGRATION",
+        "prereqs": [
+            {
+                "prereq_name": "MATH F214 ELEMENTARY REAL ANALYSIS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "MATH F311 INTRODUCTION TO TOPOLOGY",
+        "prereqs": []
+    },
+    {
+        "name": "MATH F312 ORDINARY DIFF EQUATIONS",
+        "prereqs": [
+            {
+                "prereq_name": "MATH F211 MATHEMATICS III",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "MATH F313 NUMERICAL ANALYSIS",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "MATH F111 MATHEMATICS-I",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "MATH F112 MATHEMATICS-II",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "MATH F314 ALGEBRA-II",
+        "prereqs": [
+            {
+                "prereq_name": "MATH F215 ALGEBRA I",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "MATH F341 INTRO TO FUNCTIONAL ANAL",
+        "prereqs": [
+            {
+                "prereq_name": "MATH F214 ELEMENTARY REAL ANALYSIS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "MATH F342 DIFFERENTIAL GEOMETRY",
+        "prereqs": [
+            {
+                "prereq_name": "MATH F214 ELEMENTARY REAL ANALYSIS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "MATH F343 PARTIAL DIFF EQUATIONS",
+        "prereqs": [
+            {
+                "prereq_name": "MATH F211 MATHEMATICS III",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "MATH F344 MATHEMATICAL FLUID DYNAMICS",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "MATH F111 MATH-I",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "MATH F112 MATH-II",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "MATH F211 MATH-III",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "MATH F353 STATISTICAL INFER & APP",
+        "prereqs": [
+            {
+                "prereq_name": "MATH F113 PROBABILITY & STATISTICS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "MATH F354 COMPLEX ANALYSIS",
+        "prereqs": [
+            {
+                "prereq_name": "MATH F112 MATHEMATICS-II",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "MATH F378 ADVANCED PROBABILITY THEORY",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "MATH F113 PROBABILITY AND STATISTICS",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "MATH F244 MEASURE AND INTEGRATION",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "MATH F421 COMBINATORIAL MATHS",
+        "prereqs": []
+    },
+    {
+        "name": "MATH F431 DISTRIBUTION THEORY",
+        "prereqs": []
+    },
+    {
+        "name": "MATH F441 DISCRETE MATHS STRUC",
+        "prereqs": []
+    },
+    {
+        "name": "MATH F444 NUMERICAL SOLS OF ODE",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "MATH F211 MATHEMATICS III",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "MATH F313 nan",
+                "pre_cop": "nan"
+            }
+        ]
+    },
+    {
+        "name": "MATH F420 MATHEMATICAL MODELLING",
+        "prereqs": [
+            {
+                "prereq_name": "MATH F211 MATHEMATICS III",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "MATH F422 NUMERICAL METHODOLOGY FOR PARTIAL DIFFERENTIAL EQUATIONS",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "MATH F211 MATHEMATICS-III",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "MATH F313 NUMERICAL ANALYSIS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "MATH F423 INTRODUCTION TO ALGEBRAIC TOPOLOGY",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "MATH F215 ALGEBRA I",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "MATH F311 INTRODUCTION TO TOPOLOGY",
+                "pre_cop": "nan"
+            }
+        ]
+    },
+    {
+        "name": "MATH F424 APPLIED STOCHASTIC PROCESS",
+        "prereqs": [
+            {
+                "prereq_name": "MATH F113 PROBABILITY AND STATISTICS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "MATH F444 NUMERICAL SOLUTIONS OF ORDINARY DIFFERENTIAL EQUATIONS",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "MATH F211 MATHEMATICS-III",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "MATH F313 NUMERICAL ANALYSIS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "MATH F456 COSMOLOGY",
+        "prereqs": []
+    },
+    {
+        "name": "MATH F471 NONLINEAR OPTIMIZATION",
+        "prereqs": []
+    },
+    {
+        "name": "MATH F492 WEVELET ANALYSIS AND APPLICATIONS",
+        "prereqs": [
+            {
+                "prereq_name": "MATH F211 MATHEMATICS-III",
+                "pre_cop": "nan"
+            }
+        ]
+    },
+    {
+        "name": "MBA G553 ORGANIZATIONAL CHANGE AND DEVELOPMENT",
+        "prereqs": []
+    },
+    {
+        "name": "MBA G554 INNOVATIVE LEADERSHIP",
+        "prereqs": []
+    },
+    {
+        "name": "MBA G555 INTERNATIONAL HUMAN RESOURCE MANAGEMENT",
+        "prereqs": []
+    },
+    {
+        "name": "MBA G556 PERFORMANCE MANAGEMENT",
+        "prereqs": []
+    },
+    {
+        "name": "ME F110 WORKSHOP PRACTICE",
+        "prereqs": []
+    },
+    {
+        "name": "ME F211 MECHANICS OF SOLIDS",
+        "prereqs": []
+    },
+    {
+        "name": "ME F212 FLUID MECHANICS",
+        "prereqs": []
+    },
+    {
+        "name": "ME F213 MATERIALS SCIENCE & ENGG",
+        "prereqs": []
+    },
+    {
+        "name": "ME F214 APPLIED THERMODYNAMICS",
+        "prereqs": [
+            {
+                "prereq_name": "BITS F111 THERMODYNAMICS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "ME F215 MECHANICAL ENGG LAB",
+        "prereqs": []
+    },
+    {
+        "name": "ME F241 MACHINE DESIGN & DRAWING",
+        "prereqs": [
+            {
+                "prereq_name": "BITS F110 ENGINEERING GRAPHICS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "ME F242 IC ENGINES",
+        "prereqs": [
+            {
+                "prereq_name": "BITS F111 THERMODYNAMICS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "ME F243 PRODUCTION TECHNIQUES I",
+        "prereqs": [
+            {
+                "prereq_name": "ME F110 WORKSHOP PRACTICE",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "ME F244 KIN & DYN OF  MACHINES",
+        "prereqs": []
+    },
+    {
+        "name": "ME F311 HEAT TRANSFER",
+        "prereqs": [
+            {
+                "prereq_name": "ME F212 FLUID MECHANICS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "ME F312 ADV MECHANICS OF SOLIDS",
+        "prereqs": [
+            {
+                "prereq_name": "ME F211 MECHANICS OF SOLIDS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "ME F313 PRODUCTION TECHNIQUES II",
+        "prereqs": [
+            {
+                "prereq_name": "ME F110 WORKSHOP PRACTICE",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "ME F341 PRIMEMOVERS & FLUID MACH",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "ME F212 FLUID MECHANICS",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "ME F214 APPLIED THERMODYNAMICS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "ME F342 COMPUTER AIDED DESIGN",
+        "prereqs": []
+    },
+    {
+        "name": "ME F343 MECHANICAL VIBRATIONS",
+        "prereqs": []
+    },
+    {
+        "name": "ME F344 ENGINEERING OPTIMIZATION",
+        "prereqs": []
+    },
+    {
+        "name": "ME F411 FLUID POWER SYSTEMS",
+        "prereqs": []
+    },
+    {
+        "name": "ME F413 NONLINEAR VIBRATIONS",
+        "prereqs": []
+    },
+    {
+        "name": "ME F415 GAS DYNAMICS",
+        "prereqs": []
+    },
+    {
+        "name": "ME F416 REV ENG & RAPID PROTOTYP",
+        "prereqs": []
+    },
+    {
+        "name": "ME F417 ADVANCED METAL FORMING",
+        "prereqs": []
+    },
+    {
+        "name": "ME F418 ROCKET & SPACECRAFT PROP",
+        "prereqs": []
+    },
+    {
+        "name": "ME F419 TOTAL PRODUCT INTEG ENGG",
+        "prereqs": []
+    },
+    {
+        "name": "ME F420 POWER PLANT ENGINEERING",
+        "prereqs": []
+    },
+    {
+        "name": "ME F432 COMPUTER AIDED MANUFACT",
+        "prereqs": []
+    },
+    {
+        "name": "ME F441 AUTOMOTIVE VEHICLES",
+        "prereqs": []
+    },
+    {
+        "name": "ME F443 QUALI CONTRO ASSUR & REL",
+        "prereqs": []
+    },
+    {
+        "name": "ME F451 MECHANICAL EQUIPMENT DES",
+        "prereqs": []
+    },
+    {
+        "name": "ME F452 COMPOSITE MATERL &  DESIGN",
+        "prereqs": []
+    },
+    {
+        "name": "ME F461 REFRIGERATION & AIRCOND",
+        "prereqs": []
+    },
+    {
+        "name": "ME F472 PRECISION ENGINEERING",
+        "prereqs": []
+    },
+    {
+        "name": "ME F481 PROJECT APPRAISAL",
+        "prereqs": []
+    },
+    {
+        "name": "ME F482 COMBUSTION",
+        "prereqs": []
+    },
+    {
+        "name": "ME F483 WIND ENERGY",
+        "prereqs": []
+    },
+    {
+        "name": "ME F484 AUTOMOTIVE TECHNOLOGY",
+        "prereqs": []
+    },
+    {
+        "name": "ME F485 NUMERICAL TECHNIQUES FOR FLUID FLOW AND HEAT TRANSFER",
+        "prereqs": []
+    },
+    {
+        "name": "ME F491 SPECIAL PROJECTS",
+        "prereqs": []
+    },
+    {
+        "name": "ME G612 PLASTIC ENGINEERING",
+        "prereqs": []
+    },
+    {
+        "name": "MF F211 MECHANICS OF SOLIDS",
+        "prereqs": []
+    },
+    {
+        "name": "MF F212 FLUID MECHANICS",
+        "prereqs": []
+    },
+    {
+        "name": "MF F213 MATERIALS SCIENCE & ENGG",
+        "prereqs": []
+    },
+    {
+        "name": "MF F214 APPLIED THERMODYNAMICS",
+        "prereqs": [
+            {
+                "prereq_name": "BITS F111 THERMODYNAMICS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "MF F215 MECHANICAL ENGG LAB",
+        "prereqs": []
+    },
+    {
+        "name": "MF F241 MACHINE DESIGN & DRAWING",
+        "prereqs": [
+            {
+                "prereq_name": "BITS F110 ENGINEERING GRAPHICS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "MF F242 MANUFACTURING MANAGEMENT",
+        "prereqs": []
+    },
+    {
+        "name": "MF F243 MANUFACTURING PROCESSES",
+        "prereqs": [
+            {
+                "prereq_name": "ME F110 WORKSHOP PRACTICE",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "MF F244 KIN & DYN OF  MACHINES",
+        "prereqs": []
+    },
+    {
+        "name": "MF F311 MECHATRONICS & AUTOMAT",
+        "prereqs": []
+    },
+    {
+        "name": "MF F312 TOOL & FIXTURE DESIGN",
+        "prereqs": [
+            {
+                "prereq_name": "ME F110 WORKSHOP PRACTICE",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "MF F313 METAL FORMING & MACHINE",
+        "prereqs": [
+            {
+                "prereq_name": "ME F110 WORKSHOP PRACTICE",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "MF F341 DESIGN OF MACHINE TOOLS",
+        "prereqs": []
+    },
+    {
+        "name": "MF F342 COMPUTER AIDED DESIGN",
+        "prereqs": []
+    },
+    {
+        "name": "MF F343 CASTING & WELDING",
+        "prereqs": []
+    },
+    {
+        "name": "MF F344 ENGINEERING OPTIMIZATION",
+        "prereqs": []
+    },
+    {
+        "name": "MF F411 FLUID POWER SYSTEMS",
+        "prereqs": []
+    },
+    {
+        "name": "MF F412 AUTOMOTIVE SYSTEMS",
+        "prereqs": []
+    },
+    {
+        "name": "MF F413 MECH VIBRAT & ACOUSTICS",
+        "prereqs": []
+    },
+    {
+        "name": "MF F414 MANUFACTURING EXCELLENCE",
+        "prereqs": []
+    },
+    {
+        "name": "MF F418 LEAN MANUFACTURING",
+        "prereqs": []
+    },
+    {
+        "name": "MF F421 SUPPLY CHAIN MANAGEMENT",
+        "prereqs": []
+    },
+    {
+        "name": "MF F442 ADV IN MATERIALS SCIENCE",
+        "prereqs": []
+    },
+    {
+        "name": "MF F453 INDUSTRIAL RELATIONS",
+        "prereqs": []
+    },
+    {
+        "name": "MF F463 MAINTENANCE & SAFETY",
+        "prereqs": []
+    },
+    {
+        "name": "MF F471 INSTRU & CONTROL",
+        "prereqs": []
+    },
+    {
+        "name": "MF F472 PRECISION ENGINEERING",
+        "prereqs": []
+    },
+    {
+        "name": "MF F473 PRODUCT DESIGN & DEVELOP",
+        "prereqs": []
+    },
+    {
+        "name": "MF F474 PRODUCT DES & DEV PROJ",
+        "prereqs": []
+    },
+    {
+        "name": "MF F491 SPECIAL PROJECTS",
+        "prereqs": []
+    },
+    {
+        "name": "MGTS F211 PRINCIPLES OF MANAGEMENT",
+        "prereqs": []
+    },
+    {
+        "name": "MST F331 MATERIALS CHARACTERIZATION",
+        "prereqs": []
+    },
+    {
+        "name": "MST F332 MATERIALS PROCESSING ",
+        "prereqs": []
+    },
+    {
+        "name": "MST F333 INTRODUCTION TO BIOMATERIALS",
+        "prereqs": []
+    },
+    {
+        "name": "MST F334 MATERIALS FOR CATALYTIC APPLICATIONS",
+        "prereqs": []
+    },
+    {
+        "name": "MST F335 COATING AND THIN FILM TECHNOLOGY",
+        "prereqs": []
+    },
+    {
+        "name": "MST F336 GLASS TECHNOLOGY",
+        "prereqs": []
+    },
+    {
+        "name": "MST F337 MATERIALS FOR ENERGY APPLICATIONS",
+        "prereqs": []
+    },
+    {
+        "name": "MST F338 METALS AND ALLOYS",
+        "prereqs": []
+    },
+    {
+        "name": "MST F339 POLYMER MATERIALS",
+        "prereqs": []
+    },
+    {
+        "name": "PHA F211 PHARMACEUTICAL ANALYSIS",
+        "prereqs": []
+    },
+    {
+        "name": "PHA F212 DISPENSING PHARMACY",
+        "prereqs": []
+    },
+    {
+        "name": "PHA F213 MICROBIOLOGY",
+        "prereqs": []
+    },
+    {
+        "name": "PHA F214 ANATOMY PHYSIO & HYGIENE",
+        "prereqs": []
+    },
+    {
+        "name": "PHA F215 INTRODUCTION TO MOLECULAR BIOLOGY & IMMUNOLOGY",
+        "prereqs": []
+    },
+    {
+        "name": "PHA F241 PHARMACEUTICAL CHEMISTRY",
+        "prereqs": []
+    },
+    {
+        "name": "PHA F242 BIOLOGICAL CHEMISTRY",
+        "prereqs": []
+    },
+    {
+        "name": "PHA F243 INDUSTRIAL PHARMACY",
+        "prereqs": []
+    },
+    {
+        "name": "PHA F244 PHYSICAL PHARMACY",
+        "prereqs": []
+    },
+    {
+        "name": "PHA F311 PHARMACOLOGY I",
+        "prereqs": [
+            {
+                "prereq_name": "PHA F214 ANATOMY PHYSIO & HYGIENE",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHA F312 MEDICINAL CHEMISTRY I",
+        "prereqs": []
+    },
+    {
+        "name": "PHA F313 INSTRU METHODS OF ANAL",
+        "prereqs": []
+    },
+    {
+        "name": "PHA F314 PHARMA FORMUL & BIOPHARM",
+        "prereqs": []
+    },
+    {
+        "name": "PHA F341 PHARMACOLOGY II",
+        "prereqs": [
+            {
+                "prereq_name": "PHA F311 PHARMACOLOGY I",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHA F342 MEDICINAL CHEMISTRY II",
+        "prereqs": [
+            {
+                "prereq_name": "PHA F312 MEDICINAL CHEMISTRY I",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHA F343 FORENSIC PHARMACY",
+        "prereqs": []
+    },
+    {
+        "name": "PHA F344 NATURAL DRUGS",
+        "prereqs": []
+    },
+    {
+        "name": "PHA F413 PHARMA MANG & QUAL CONTR",
+        "prereqs": []
+    },
+    {
+        "name": "PHA F414 BIOPHARMACEUTICS",
+        "prereqs": [
+            {
+                "prereq_name": "PHA F314 PHARMA FORMUL & BIOPHARM",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHA F415 PATHOPHYSIOLOGY",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "PHA F214 ANATOMY PHYSIO & HYGIENE",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "PHA F242 BIOLOGICAL CHEMISTRY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHA F416 CHEM OF SYNTHETIC DRUGS",
+        "prereqs": [
+            {
+                "prereq_name": "PHA F241 PHARMACEUTICAL CHEMISTRY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHA F417 PHARMACOECONOMICS",
+        "prereqs": []
+    },
+    {
+        "name": "PHA F422 COSMETIC SCIENCE",
+        "prereqs": []
+    },
+    {
+        "name": "PHA F432 HOSPITAL PHARMACY",
+        "prereqs": []
+    },
+    {
+        "name": "PHA F441 BIOCHEMICAL ENGINEERING",
+        "prereqs": [
+            {
+                "prereq_name": "PHA F242 BIOLOGICAL CHEMISTRY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHA F442 APPLIED PHARMA CHEMISTRY",
+        "prereqs": [
+            {
+                "prereq_name": "PHA F241 PHARMACEUTICAL CHEMISTRY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHA F461 PHYTOCHEMISTRY",
+        "prereqs": [
+            {
+                "prereq_name": "PHA F344 NATURAL DRUGS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHIL F211 INTRODUCTORY PHILOSOPHY",
+        "prereqs": []
+    },
+    {
+        "name": "PHIL F221 SYMBOLIC LOGIC",
+        "prereqs": []
+    },
+    {
+        "name": "PHY F110 PHYSICS LABORATORY",
+        "prereqs": []
+    },
+    {
+        "name": "PHY F111 MECH OSCIL & WAVES",
+        "prereqs": []
+    },
+    {
+        "name": "PHY F112 GENERAL PHYSICS",
+        "prereqs": []
+    },
+    {
+        "name": "PHY F211 CLASSICAL MECHANICS",
+        "prereqs": [
+            {
+                "prereq_name": "PHY F111 MECH OSCIL & WAVES",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHY F212 ELECTROMAGNETIC THEO I",
+        "prereqs": [
+            {
+                "prereq_name": "PHY F111 MECH OSCIL & WAVES",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHY F213 OPTICS",
+        "prereqs": [
+            {
+                "prereq_name": "PHY F111 MECH OSCIL & WAVES",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHY F214 ELEC MAGNET & OPTICS LAB",
+        "prereqs": []
+    },
+    {
+        "name": "PHY F215 INTRO TO ASTRO & ASTROPH",
+        "prereqs": [
+            {
+                "prereq_name": "PHY F111 MECH OSCIL & WAVES",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHY F241 ELECTROMAGNETIC THEO II",
+        "prereqs": [
+            {
+                "prereq_name": "PHY F212 ELECTROMAGNETIC THEO I",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHY F242 QUANTUM MECHANICS I",
+        "prereqs": [
+            {
+                "prereq_name": "PHY F111 MECH OSCIL & WAVES",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHY F243 MATH METHODS OF  PHYSICS",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "MATH F111 MATHEMATICS-I",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "MATH F112 MATHEMATICS-II",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "MATH F211 MATHEMATICS III",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHY F244 MODERN PHYSICS LAB",
+        "prereqs": []
+    },
+    {
+        "name": "PHY F311 QUANTUM MECHANICS II",
+        "prereqs": [
+            {
+                "prereq_name": "PHY F242 QUANTUM MECHANICS I",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHY F312 STATISTICAL MECHANICS",
+        "prereqs": [
+            {
+                "prereq_name": "PHY F242 QUANTUM MECHANICS I",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHY F313 COMPUTATIONAL PHYSICS",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "MATH F111 MATHEMATICS-I",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "MATH F112 MATHEMATICS-II",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "MATH F211 MATHEMATICS III",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHY F315 THEORY OF RELATIVITY",
+        "prereqs": [
+            {
+                "prereq_name": "PHY F111 MECH OSCIL & WAVES",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHY F316 MUSICAL ACOUSTICS",
+        "prereqs": [
+            {
+                "prereq_name": "PHY F111 MECHANICS OSCILLATIONS AND WAVES",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHY F341 SOLID STATE PHYSICS",
+        "prereqs": [
+            {
+                "prereq_name": "PHY F312 STATISTICAL MECHANICS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHY F342 ATOMIC & MOLECULAR PHY",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "PHY F242 QUANTUM MECHANICS I",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "PHY F311 QUANTUM MECHANICS II",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHY F343 NUCLEAR & PARTICLE PHY",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "PHY F242 QUANTUM MECHANICS I",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "PHY F311 QUANTUM MECHANICS II",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "PHY F212 ELECTROMAGNETIC THEO I",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHY F344 ADVANCED PHYSICS LAB",
+        "prereqs": []
+    },
+    {
+        "name": "PHY F345 QUANTUM MECHANICS FOR ENGINEERS",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "PHY F111 MECHANICS, OSCILLATIONS AND WAVES",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "MATH F111 MATHEMATICS-I",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "MATH F112 MATHEMATICS-II",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "MATH F211 MATHEMATICS-III",
+                "pre_cop": "nan"
+            }
+        ]
+    },
+    {
+        "name": "PHY F378 PLASMA PHYSICS AND ITS APPLICATIONS",
+        "all_one": "One",
+        "prereqs": [
+            {
+                "prereq_name": "PHY F212 ELECTROMAGNETIC THEORY-I",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "EEE F212 ELECTROMAGNETIC THEORY",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "INSTR F212 ELECTROMAGNETIC THEORY",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "ECE F212 ELECTROMAGNETIC THEORY",
+                "pre_cop": "nan"
+            }
+        ]
+    },
+    {
+        "name": "PHY F412 INTRO TO QUAN FIELD THEO",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "PHY F211 CLASSICAL MECHANICS",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "PHY F242 QUANTUM MECHANICS I",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "PHY F311 QUANTUM MECHANICS II",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHY F413 PARTICLE PHYSICS",
+        "prereqs": [
+            {
+                "prereq_name": "PHY F242 QUANTUM MECHANICS I",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "PHY F311 QUANTUM MECHANICS II",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHY F414 PHYSICS OF ADV MATERIALS",
+        "prereqs": []
+    },
+    {
+        "name": "PHY F415 GEN THEO OF REL & COSMO",
+        "all_one": "One",
+        "prereqs": [
+            {
+                "prereq_name": "MATH F211 MATHEMATICS III",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "PHY F315 THEORY OF RELATIVITY",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "PHY F241 ELECTROMAGNETIC THEO II",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHY F416 SOFT CONDEN MATTER PHY",
+        "prereqs": []
+    },
+    {
+        "name": "PHY F417 EXPT METHODS OF  PHYSICS",
+        "prereqs": []
+    },
+    {
+        "name": "PHY F418 LASERS AND APPLICATIONS",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "PHY F242 QUANTUM MECHANICS I",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "PHY F212 ELECTROMAGNETIC THEO I",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHY F419 ADV SOLID STATE PHYSICS",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "PHY F311 QUANTUM MECHANICS II",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "PHY F341 SOLID STATE PHYSICS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHY F420 QUANTUM OPTICS",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "PHY F242 QUANTUM MECHANICS I",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "PHY F311 QUANTUM MECHANICS II",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHY F421 ADV QUANTUM MECHANICS",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "PHY F311 QUANTUM MECHANICS II",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "PHY F241 ELECTROMAGNETIC THEO II",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHY F422 GROUP THEORY & APPLI",
+        "prereqs": [
+            {
+                "prereq_name": "MATH F112 MATHEMATICS-II",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHY F423 SPECIAL TOP IN STAT MECH",
+        "prereqs": [
+            {
+                "prereq_name": "PHY F312 STATISTICAL MECHANICS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHY F424 ADVANCED ELECTRODYNAMICS",
+        "prereqs": [
+            {
+                "prereq_name": "PHY F243 MATH METHODS OF  PHYSICS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHY F425 ADV MATH METHODS OF PHY",
+        "prereqs": [
+            {
+                "prereq_name": "PHY F243 MATH METHODS OF  PHYSICS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHY F426 PHY OF SEMICONDUCTOR DEV",
+        "prereqs": []
+    },
+    {
+        "name": "PHY F427 ATMOSPHERIC PHYSICS",
+        "prereqs": [
+            {
+                "prereq_name": "PHY F111 MECH OSCIL & WAVES",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHY G512 ADVANCED QUANTUM FIELD THEORY",
+        "prereqs": [
+            {
+                "prereq_name": "PHY F412 INTRODUCTION TO QUANTUM FIELD THEORY",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "POL F311 GANDHIAN THOUGHTS",
+        "prereqs": []
+    },
+    {
+        "name": "POL F321 INTERNATIONAL RELATIONS",
+        "prereqs": []
+    },
+    {
+        "name": "MBA G538 MARKETING MODELS",
+        "prereqs": [
+            {
+                "prereq_name": "MBA G518 MARKETING",
+                "pre_cop": "nan"
+            }
+        ]
+    },
+    {
+        "name": "CS F402 COMPUTATIONAL GEOMETRY",
+        "prereqs": [
+            {
+                "prereq_name": "CS F111 COMPUTER PROGRAMMING",
+                "pre_cop": "nan"
+            },
+            {
+                "prereq_name": "CS F211 DATA STRUCTURE AND ALGORITHMS",
+                "pre_cop": "nan"
+            }
+        ]
+    },
+    {
+        "name": "FIN F414 FINANCIAL RISK ANALATICS AND MANAGEMENT",
+        "prereqs": [
+            {
+                "prereq_name": "FIN F311 DERIVATIVES AND RISK MANAGEMENT",
+                "pre_cop": "nan"
+            },
+            {
+                "prereq_name": "ECON F354 DERIVATIVES AND RISK MANAGEMENT",
+                "pre_cop": "nan"
+            }
+        ]
+    },
+    {
+        "name": "BIO F217 LABORATORY FOR WATER, SANITATION AND SOLID WASTE MANAGEMENT",
+        "prereqs": [
+            {
+                "prereq_name": "BITS F216 WATER, SANITATION AND SOLID WASTE MANAGEMENT",
+                "pre_cop": "nan"
+            }
+        ]
+    },
+    {
+        "name": "CS F320 FOUNDATIONS OF DATA SCIENCE",
+        "prereqs": [
+            {
+                "prereq_name": "MATH F113 PROBABILITY AND STATISTICS",
+                "pre_cop": "nan"
+            }
+        ]
+    },
+    {
+        "name": "EEE G641 APPLIED ESTIMATION THEORY",
+        "prereqs": [
+            {
+                "prereq_name": "EEE F311 COMMUNICATION SYSTEMS",
+                "pre_cop": "nan"
+            },
+            {
+                "prereq_name": "ECE F311 COMMUNICATION SYSTEMS",
+                "pre_cop": "nan"
+            }
+        ]
+    },
+    {
+        "name": "MATH F432 APPLIED STATISTICAL METHODS",
+        "prereqs": [
+            {
+                "prereq_name": "MATH F113 PROBABILITY AND STATISTICS",
+                "pre_cop": "nan"
+            }
+        ]
+    },
+    {
+        "name": "PHY F431 GEOMETRICAL METHODS IN PHYSICS",
+        "prereqs": [
+            {
+                "prereq_name": "PHY F243 MATHEMATICAL METHODS OF PHYSICS",
+                "pre_cop": "nan"
+            },
+            {
+                "prereq_name": "MATH F241 MATHEMATICAL METHODS",
+                "pre_cop": "nan"
+            }
+        ]
+    },
+    {
+        "name": "PHY F432 CLASSICAL THEORY OF FIELDS: A SYMMETRY PERSPECTIVE",
+        "prereqs": [
+            {
+                "prereq_name": "PHY F311 QUANTUM MECHANICS II",
+                "pre_cop": "nan"
+            }
+        ]
+    },
+    {
+        "name": "CHEM F320 INTRODUCTORY COMPUTATIONAL CHEMISTRY LABORATORY",
+        "prereqs": [
+            {
+                "prereq_name": "CHEM F244 PHYSICAL CHEMISTRY III",
+                "pre_cop": "nan"
+            }
+        ]
+    },
+    {
+        "name": "ME F414 FUEL CELL SCIENCE AND TECHNOLOGY",
+        "prereqs": [
+            {
+                "prereq_name": "BITS F111 THERMODYNAMICS",
+                "pre_cop": "nan"
+            }
+        ]
+    },
+    {
+        "name": "CE F325 FUNDAMENTALS OF ROCK MECHANICS",
+        "prereqs": [
+            {
+                "prereq_name": "CE F243 SOIL MECHANICS",
+                "pre_cop": "nan"
+            }
+        ]
+    },
+    {
+        "name": "CHE F423 MEMBRANE SCIENCE AND ENGINEERING",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F313 SEPARATION PROCESSES II",
+                "pre_cop": "nan"
+            }
+        ]
+    },
+    {
+        "name": "CHE F424 RHEOLOGY OF COMPLEX FLUIDS",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F212 FLUID MECHANICS",
+                "pre_cop": "nan"
+            }
+        ]
+    },
+    {
+        "name": "BITS F323 VENTURE FINANCE",
+        "prereqs": [
+            {
+                "prereq_name": "ECON F212 FUNDAMENTALS OF FINANCE & ACCOUNTING",
+                "pre_cop": "nan"
+            }
+        ]
+    },
+    {
+        "name": "PHY F317 INTRODUCTION TO RADIO ASTRONOMY",
+        "all_one": "One",
+        "prereqs": [
+            {
+                "prereq_name": "MATH F211 MATHEMATICS-III",
+                "pre_cop": "nan"
+            },
+            {
+                "prereq_name": "PHY F212 ELECTROMAGNETIC THEORY I",
+                "pre_cop": "nan"
+            },
+            {
+                "prereq_name": "EEE/INSTR/ECE F212 ELECTROMAGNETIC THEORY",
+                "pre_cop": "nan"
+            }
+        ]
+    },
+    {
+        "name": "PHY F428 QUANTUM INFORMATION THEORY",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "BITS F386 INTRODUCTION TO QUANTUM INFORMATION AND COMPUTATION",
+                "pre_cop": "nan"
+            },
+            {
+                "prereq_name": "PHY F242 QUANTUM MECHANICS 1",
+                "pre_cop": "nan"
+            }
+        ]
+    },
+    {
+        "name": "CE G564 STRUCTURAL HEALTH ASSESSMENT AND REHABILITATION",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "CE F311 DESIGN OF CONCRETE STRUCTURES",
+                "pre_cop": "nan"
+            },
+            {
+                "prereq_name": "CE F343 DESIGN OF STEEL STRUCTURES",
+                "pre_cop": "nan"
+            }
+        ]
+    },
+    {
+        "name": "MBA G578 GAME THEORY AND BUSINESS STRATEGY",
+        "prereqs": [
+            {
+                "prereq_name": "MBA G513 QUANTITATIVE METHODS",
+                "pre_cop": "nan"
+            }
+        ]
+    },
+    {
+        "name": "EEE F436 Electromagnetic Compatibility",
+        "prereqs": [
+            {
+                "prereq_name": "EEE/INSTR/ECE/PHY F212 ELECTROMAGNETIC THEORY",
+                "pre_cop": "nan"
+            }
+        ]
+    },
+    {
+        "name": "MATH F481 COMMUTATIVE ALGEBRA",
+        "prereqs": [
+            {
+                "prereq_name": "MATH F215 ALGEBRA-I",
+                "pre_cop": "nan"
+            }
+        ]
+    },
+    {
+        "name": "AN F311 Principles of Aerodynamics",
+        "all_one": "One",
+        "prereqs": [
+            {
+                "prereq_name": "CE F231 FLUID MECHANICS",
+                "pre_cop": "Pre"
+            },
+            {
+                "prereq_name": "CHE F212 FLUID MECHANICS",
+                "pre_cop": "Pre"
+            },
+            {
+                "prereq_name": "ME F212 FLUID MECHANICS",
+                "pre_cop": "Pre"
+            },
+            {
+                "prereq_name": "MF F218 Transport Phenomena in Manufacturing",
+                "pre_cop": "Pre"
+            }
+        ]
+    },
+    {
+        "name": "AN F312 Aircraft Propulsion",
+        "all_one": "One",
+        "prereqs": [
+            {
+                "prereq_name": "CE F231 FLUID MECHANICS",
+                "pre_cop": "Pre"
+            },
+            {
+                "prereq_name": "CHE F212 FLUID MECHANICS",
+                "pre_cop": "Pre"
+            },
+            {
+                "prereq_name": "ME F212 FLUID MECHANICS",
+                "pre_cop": "Pre"
+            },
+            {
+                "prereq_name": "MF F218 Transport Phenomena in Manufacturing",
+                "pre_cop": "Pre"
+            }
+        ]
+    },
+    {
+        "name": "AN F315 Aircraft Structures",
+        "all_one": "One",
+        "prereqs": [
+            {
+                "prereq_name": "ME F211 Mechanics of Solids",
+                "pre_cop": "Pre"
+            },
+            {
+                "prereq_name": "CE F211 Mechanics of Solids",
+                "pre_cop": "Pre"
+            }
+        ]
+    },
+    {
+        "name": "CS F316 Quantum Architecture and Programming",
+        "prereqs": [
+            {
+                "prereq_name": "CS F215 Digital Design",
+                "pre_cop": "Pre"
+            }
+        ]
+    },
+    {
+        "name": "CS F426 Graph Mining",
+        "prereqs": [
+            {
+                "prereq_name": "CS F211 Data Structure and Algorithms",
+                "pre_cop": "Pre"
+            }
+        ]
+    },
+    {
+        "name": "CS F427 Performance Analysis of Computer Networks",
+        "prereqs": [
+            {
+                "prereq_name": "CS F303 Computer Networks",
+                "pre_cop": "Pre"
+            }
+        ]
+    },
+    {
+        "name": "EEE F419 Flexible and Stretchable Electronics",
+        "all_one": "One",
+        "prereqs": [
+            {
+                "prereq_name": "EEE F214 Electronic Devices",
+                "pre_cop": "Pre"
+            },
+            {
+                "prereq_name": "INSTR F214 Electronic Devices",
+                "pre_cop": "Pre"
+            },
+            {
+                "prereq_name": "ECE F214 Electronic Devices",
+                "pre_cop": "Pre"
+            }
+        ]
+    },
+    {
+        "name": "EEE F420 Biomedical Signal Processing",
+        "all_one": "One",
+        "prereqs": [
+            {
+                "prereq_name": "EEE F434 Digital Signal Processing",
+                "pre_cop": "Pre"
+            },
+            {
+                "prereq_name": "ECE F434 Digital Signal Processing",
+                "pre_cop": "Pre"
+            }
+        ]
+    },
+    {
+        "name": "PHY F346 Laser Science and Technology",
+        "all_one": "One",
+        "prereqs": [
+            {
+                "prereq_name": "PHY F212 Electromagnetic Theory I",
+                "pre_cop": "Pre"
+            },
+            {
+                "prereq_name": "EEE F212 Electromagnetic Theory",
+                "pre_cop": "Pre"
+            },
+            {
+                "prereq_name": "INSTR F212 Electromagnetic Theory",
+                "pre_cop": "Pre"
+            },
+            {
+                "prereq_name": "ECE F212 Electromagnetic Theory",
+                "pre_cop": "Pre"
+            }
+        ]
+    },
+    {
+        "name": "CS G518 Internet of Things: Design and Development",
+        "all_one": "One",
+        "prereqs": [
+            {
+                "prereq_name": "CS F303 Computer Networks",
+                "pre_cop": "Co"
+            },
+            {
+                "prereq_name": "EEE F414 Telecommunication Switching Systems and Networks",
+                "pre_cop": "Co"
+            },
+            {
+                "prereq_name": "ECE F414 Telecommunication Switching Systems and Networks",
+                "pre_cop": "Co"
+            },
+            {
+                "prereq_name": "EEE F346 Data Communication Networks",
+                "pre_cop": "Co"
+            }
+        ]
+    },
+    {
+        "name": "CHE F341 CHEMICAL ENGG LAB II",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "CHE F311 KINETICS & REACTOR DESIG",
+                "pre_cop": "CO"
+            },
+            {
+                "prereq_name": "CHE F342 PROCESS DYN & CONTROL",
+                "pre_cop": "CO"
+            },
+            {
+                "prereq_name": "CHE F313 SEPARATION PROCESSES II",
+                "pre_cop": "CO"
+            }
+        ]
+    },
+    {
+        "name": "BIO F311 RECOMBINANT DNA TECH",
+        "all_one": "All",
+        "prereqs": [
+            {
+                "prereq_name": "BIO F211 BIOLOGICAL CHEMISTRY",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "PHA F242 BIOLOGICAL CHEMISTRY",
+                "pre_cop": "Pre"
+            },
+            {
+                "prereq_name": "BIO F243 GENETICS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BIO F421 ENZYMOLOGY",
+        "all_one": "One",
+        "prereqs": [
+            {
+                "prereq_name": "BIO F211 BIOLOGICAL CHEMISTRY",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "PHA F242 BIOLOGICAL CHEMISTRY",
+                "pre_cop": "Pre"
+            }
+        ]
+    },
+    {
+        "name": "BIO F417 BIOMOLECULAR MODELING",
+        "all_one": "One",
+        "prereqs": [
+            {
+                "prereq_name": "BIO F211 BIOLOGICAL CHEMISTRY",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "PHA F242 BIOLOGICAL CHEMISTRY",
+                "pre_cop": "Pre"
+            }
+        ]
+    },
+    {
+        "name": "ECE F216 Electronic Devices Simulation Laboratory",
+        "all_one": "One",
+        "prereqs": [
+            {
+                "prereq_name": "EEE F214 ELECTRONIC DEVICES",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "INSTR F214 ELECTRONIC DEVICES",
+                "pre_cop": "Pre"
+            },
+            {
+                "prereq_name": "ECE F214 ELECTRONIC DEVICES",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "ECE F423 Electronic Material Design and Simulations Laboratory",
+        "all_one": "One",
+        "prereqs": [
+            {
+                "prereq_name": "EEE F214 ELECTRONIC DEVICES",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "INSTR F214 ELECTRONIC DEVICES",
+                "pre_cop": "Pre"
+            },
+            {
+                "prereq_name": "ECE F214 ELECTRONIC DEVICES",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "ECE F424 Smart Grid for Sustainable Energy",
+        "all_one": "One",
+        "prereqs": [
+            {
+                "prereq_name": "EEE F242 CONTROL SYSTEMS",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "INSTR F242 CONTROL SYSTEMS",
+                "pre_cop": "Pre"
+            },
+            {
+                "prereq_name": "ECE F242 CONTROL SYSTEMS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "EEE F216 Electronic Devices Simulation Laboratory",
+        "all_one": "One",
+        "prereqs": [
+            {
+                "prereq_name": "EEE F214 ELECTRONIC DEVICES",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "INSTR F214 ELECTRONIC DEVICES",
+                "pre_cop": "Pre"
+            },
+            {
+                "prereq_name": "ECE F214 ELECTRONIC DEVICES",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "EEE F423 Electronic Material Design and Simulations Laboratory",
+        "all_one": "One",
+        "prereqs": [
+            {
+                "prereq_name": "EEE F214 ELECTRONIC DEVICES",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "INSTR F214 ELECTRONIC DEVICES",
+                "pre_cop": "Pre"
+            },
+            {
+                "prereq_name": "ECE F214 ELECTRONIC DEVICES",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "EEE F424 Smart Grid for Sustainable Energy",
+        "all_one": "One",
+        "prereqs": [
+            {
+                "prereq_name": "EEE F242 CONTROL SYSTEMS",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "INSTR F242 CONTROL SYSTEMS",
+                "pre_cop": "Pre"
+            },
+            {
+                "prereq_name": "ECE F242 CONTROL SYSTEMS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "EEE F430 Green Communications and Networks",
+        "prereqs": [
+            {
+                "prereq_name": "EEE F311 COMMUNICATION SYSTEMS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "INSTR F216 Electronic Devices Simulation Laboratory",
+        "all_one": "One",
+        "prereqs": [
+            {
+                "prereq_name": "EEE F214 ELECTRONIC DEVICES",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "INSTR F214 ELECTRONIC DEVICES",
+                "pre_cop": "Pre"
+            },
+            {
+                "prereq_name": "ECE F214 ELECTRONIC DEVICES",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "INSTR F423 Electronic Material Design and Simulations Laboratory",
+        "all_one": "One",
+        "prereqs": [
+            {
+                "prereq_name": "EEE F214 ELECTRONIC DEVICES",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "INSTR F214 ELECTRONIC DEVICES",
+                "pre_cop": "Pre"
+            },
+            {
+                "prereq_name": "ECE F214 ELECTRONIC DEVICES",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "INSTR F424 Smart Grid for Sustainable Energy",
+        "all_one": "One",
+        "prereqs": [
+            {
+                "prereq_name": "EEE F242 CONTROL SYSTEMS",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "INSTR F242 CONTROL SYSTEMS",
+                "pre_cop": "Pre"
+            },
+            {
+                "prereq_name": "ECE F242 CONTROL SYSTEMS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHA F315 Pharmaceutical Formulations II",
+        "prereqs": [
+            {
+                "prereq_name": "PHA F216 Pharmaceutical Formulations I",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHA F317 Safety Pharmacology and Toxicology",
+        "prereqs": [
+            {
+                "prereq_name": "PHA F311 PHARMACOLOGY I",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHA F419 Herbal Drug Technology  ",
+        "prereqs": [
+            {
+                "prereq_name": "PHA F344 NATURAL DRUGS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "BITS F429 NANOTECHNOGY FOR RENEWABLE ENERGY AND ENVIRONMENT",
+        "all_one": "One",
+        "prereqs": [
+            {
+                "prereq_name": "BITS / CHE / ME / MF F201 / F243 / F213 / F213 MATERIAL SCIENCE & ENGINEERING",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "CHEM F333 CHEMISTRY OF MATERIALS",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "PHY F414 PHYSICS OF ADVANCED MATRIALS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "EEE G614 Advanced Wireless Communications",
+        "prereqs": [
+            {
+                "prereq_name": "EEE F311 COMMUNICATION SYSTEMS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "EEE G514 Nanoelectronic Memories and Technology",
+        "all_one": "One",
+        "prereqs": [
+            {
+                "prereq_name": "EEE F214 ELECTRONIC DEVICES",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "EEE F313 ANALOG AND DIGITAL VLSI DESIGN",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "MEL G621 VLSI DESIGN",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "MEL G631 PHYSICS AND MODELLING OF MICROELECTRONIC DEVICES",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "MEL G514 Nanoelectronic Memories and Technology",
+        "all_one": "One",
+        "prereqs": [
+            {
+                "prereq_name": "EEE F214 ELECTRONIC DEVICES",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "EEE F313 ANALOG AND DIGITAL VLSI DESIGN",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "MEL G621 VLSI DESIGN",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "MEL G631 PHYSICS AND MODELLING OF MICROELECTRONIC DEVICES",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CS F430 Approximation Algorithms",
+        "prereqs": [
+            {
+                "prereq_name": "CS F364 DESIGN & ANAL OF ALGO",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CS F431 Combinatorial Optimization",
+        "prereqs": [
+            {
+                "prereq_name": "CS F211 DATA STRUCTURES & ALGO",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "MATH F425 Numerical Linear Algebra",
+        "prereqs": [
+            {
+                "prereq_name": "MATH F112 MATHEMATICS-II",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "ME G613 Advanced Finite Element Modelling & Analysis",
+        "all_one": "One",
+        "prereqs": [
+            {
+                "prereq_name": "CE F435 INTRODUCTION TO FEM",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "CE G619 FINITE ELEMENT ANALYSIS",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "ME G512 FINITE ELEMENT METHOD",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "MPBA G537 Data Structures and Algorithmic Thinking",
+        "prereqs": [
+            {
+                "prereq_name": "MPBA G507 Programming For Analytics",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "CE G576 Advanced Computational Modelling",
+        "all_one": "One",
+        "prereqs": [
+            {
+                "prereq_name": "CE F435 INTRODUCTION TO FEM",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "CE G619 FINITE ELEMENT ANALYSIS",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "ME G512 FINITE ELEMENT METHOD",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "ECON F419 Advanced Microeconomics",
+        "prereqs": [
+            {
+                "prereq_name": "ECON F242 MICROECONOMICS",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "ME F428 Smart Materials",
+        "all_one": "One",
+        "prereqs": [
+            {
+                "prereq_name": "ME F216 Materials Science and Engineering",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "MF F216 Materials Science and Engineering",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "CHE F243 MATERIAL SCIENCE & ENGG",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "ME F429 Micro-Nanoscale Heat Transport",
+        "all_one": "One",
+        "prereqs": [
+            {
+                "prereq_name": "ME F220 HEAT TRANSFER",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "CHE F241 HEAT TRANSFER",
+                "pre_cop": "PRE"
+            }
+        ]
+    },
+    {
+        "name": "PHY F433 Topics in Nonlinear Optics",
+        "all_one": "One",
+        "prereqs": [
+            {
+                "prereq_name": "PHY F212 ELECTROMAGNETIC THEO I",
+                "pre_cop": "PRE"
+            },
+            {
+                "prereq_name": "PHY F213 OPTICS",
+                "pre_cop": "PRE"
+            }
+        ]
+    }
+]
