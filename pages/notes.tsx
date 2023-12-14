@@ -116,7 +116,7 @@ export default function Notes() {
             </Head>
 
             <div className='grid place-items-center'>
-                <div className='w-[50vw] place-items-center flex flex-col justify-between'>
+                <div className='w-[70vw] place-items-center flex flex-col justify-between'>
                     <h1 className='text-6xl p-[35px]'>Notes and Resources.</h1>
                     <Menu current={"notes"} />
                     {session && <input type="text" placeholder="Search..." className="input input-bordered w-full max-w-xs" onChange={e => setInput(e.target.value)} />}
@@ -124,11 +124,11 @@ export default function Notes() {
             </div>
 
             {session && <div className='grid place-items-center p-5'>
-                <div className="w-100 place-items-center flex flex-col justify-between border border-primary-300 rounded-box">
+                <div className="w-100 place-items-center flex flex-col justify-between">
                     <div>
                         {
                             groupWiseResources.filter(d => d.name.toLowerCase().includes(input.toLowerCase())).map(data => (
-                                <div key={data.link} className='py-1'>
+                                <div key={data.link} className='m-2 py-1 border-solid border-[1px] border-white rounded-xl'>
                                     <div className="alert shadow-sm">
                                         <div>
                                             <svg className="flex-shrink-0 w-6 h-6 fill-current text-white" viewBox="0 0 20 20">
