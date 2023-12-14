@@ -37,12 +37,12 @@ export default function PS({ }: any) {
 
                     <Menu current={"si"} />
 
-                    <input
+                    {session && <input
                         type="text"
                         placeholder="Search..."
                         className="input input-bordered w-full max-w-xs"
                         onChange={(e) => setSearch(e.target.value)}
-                    />
+                    />}
                 </div>
             </div>
 
