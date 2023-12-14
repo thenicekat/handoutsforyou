@@ -8,7 +8,7 @@ import Menu from "../Components/Menu";
 const HandoutsPerYear = dynamic(() => import("./../Components/HandoutsPerYear"), {
   loading: () => (
     <div className="grid place-items-center">
-      <p className="text-xl">...</p>
+      <p className="text-xl"></p>
     </div>
   ),
 });
