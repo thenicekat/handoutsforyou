@@ -3,34 +3,39 @@ import Head from "next/head";
 import { useState } from "react";
 import Menu from "../Components/Menu";
 import { useSession } from "next-auth/react";
+import Link from "next/link";
 
-type PS_Individual = {
-    name: string
-    id: string
-    cgpa: number
-    term: string
+type CGPA = {
+    [key: string]: number
 }
 
 type PS_Station = {
     name: string
     last_paid_stipend: number
-    individuals: PS_Individual[]
+    min_cgpa: CGPA
+    max_cgpa: CGPA
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-    const fs = require("fs");
-    let ps_chronicles = fs.readdirSync("./public/ps/chronicles/");
-
-    return {
-        props: {
-            ps_chronicles,
+const sample: PS_Station[] = [
+    {
+        name: 'Google',
+        last_paid_stipend: 100000,
+        min_cgpa: {
+            '2021 Sem 1': 9,
         },
-    };
-};
+        max_cgpa: {
+            '2021 Sem 1': 10,
+        },
+    }
+]
 
 
-export default function PS({ ps_chronicles }: any) {
+export default function PS() {
     const [search, setSearch] = useState("");
+    const [cgpa, setCGPA] = useState(0);
+    const [yearRef, setYearRef] = useState("2021 Sem 1");
+    const yearReferences = ['2018 Sem 1', '2018 Sem 2', '2019 Sem 1', '2019 Sem 2', '2020 Sem 1', '2020 Sem 2', '2021 Sem 1', '2021 Sem 2', '2022 Sem 1', '2022 Sem 2', '2023 Sem 1', '2023 Sem 2']
+
     const { data: session } = useSession()
 
     return (
@@ -51,31 +56,64 @@ export default function PS({ ps_chronicles }: any) {
 
                     <Menu current={"ps"} />
 
-                    <input
-                        type="text"
-                        placeholder="Search..."
-                        className="input input-bordered w-full max-w-xs"
-                        onChange={(e) => setSearch(e.target.value)}
-                    />
+                    {session && <>
+                        <input
+                            type="text"
+                            placeholder="Search for Company..."
+                            className="input input-bordered w-full max-w-xs m-3"
+                            onChange={(e) => setSearch(e.target.value)}
+                        />
+
+                        OR
+
+                        <input
+                            type="text"
+                            placeholder="Enter your CGPA..."
+                            className="input input-bordered w-full max-w-xs m-3"
+                            onChange={(e) => setCGPA(parseFloat(e.target.value))}
+                        />
+
+                        <select className="select select-bordered w-full max-w-xs" onChange={(e) => setYearRef(e.target.value)}>
+                            <option disabled selected>Which year to use as reference?</option>
+                            {
+                                yearReferences.map((year) => (
+                                    <option value={year} key={year}>{year}</option>
+                                ))
+                            }
+                        </select>
+
+                        <Link className="m-3" href={"/pschron"}>
+                            <button className="btn btn-outline w-full">
+                                Are you looking for chronicles?
+                            </button>
+                        </Link>
+                    </>}
                 </div>
             </div>
 
-            {session && <div className='grid md:grid-cols-4 place-items-center p-5'>
-                {
-                    ps_chronicles.filter((d: string) => d.toLowerCase().includes(search.toLowerCase())).map((chron: string) => (
-                        <div className="card w-72 bg-neutral text-neutral-content m-2" key={chron}>
-                            <div className="card-body items-center text-center">
-                                <h2 className="card-title">PS Chronicles {chron.split(" ")[0]} Semester {chron.split(" ")[1]}</h2>
-                                <div className="card-actions justify-end">
-                                    <button className="btn btn-primary" onClick={
-                                        () => window.open("https://github.com/Divyateja04/handoutsforyou/raw/main/public/ps/chronicles/" + chron)
-                                    }>View</button>
-                                </div>
-                            </div>
-                        </div>
-                    ))
-                }
-            </div>}
+            {session &&
+                <div>
+                    <h1 className="text-3xl text-center my-3">PS Details</h1>
+                    <div className='px-2 md:px-20'>
+                        {
+                            sample
+                                .filter((d: PS_Station) => d.name.toLowerCase().includes(search.toLowerCase()))
+                                .map((station) => (
+                                    <div className="py-1 m-2 border-solid border-[1px] border-white rounded-xl">
+                                        <div className="alert shadow-sm">
+                                            <div>
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-info shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                                <span>{station.name.toUpperCase()}</span>
+                                            </div>
+                                            <div className="flex-none">
+                                                <button className="btn btn-sm btn-primary">Stipend: {station.last_paid_stipend}</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))
+                        }
+                    </div>
+                </div>}
 
         </>
     );
