@@ -1,0 +1,972 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Tutorial 09/10 - Scheduling Algorithms</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="13253fdf-4a61-4c90-adee-dc422fa77a34" class="page sans"><header><h1 class="page-title">Tutorial 09/10 - Scheduling Algorithms</h1><p class="page-description"></p></header><div class="page-body"><nav id="c020c82d-1879-4ef8-b09f-0eb099c1e202" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#8387eb5c-cdaf-484c-99d5-773998c860ee">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c8f50199-103c-404d-b2d0-f0a7895bdd0a">Print valid range of the policy and then change the scheduling policy and priority of the process provided</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e33dca39-983f-4f6b-bec1-3b8fefd691a7">Calculate timeslice allocated to a process running under RR scheduling policy and what happens when you run the process using FIFO scheduling policy</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b57476e9-d50b-4b25-adb0-df5874a91ff9">Print scheduling policy and priority of thread and modifies these</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4d93135f-c586-40cf-8556-130fd5be98a8">Other commands</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c48cd80e-370e-4ac4-a36b-d1dc17fee1b9">FIFO/RR</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e9ee9e01-54a9-4b7a-8c3f-27ad2e110b70">Priority Scheduling Solver</a></div></nav><h1 id="8387eb5c-cdaf-484c-99d5-773998c860ee" class="">Introduction</h1><ul id="5387f1bd-5012-42d6-951c-76542c7e4232" class="bulleted-list"><li style="list-style-type:disc"><code>chrt -m</code> gives you details of what all priorities</li></ul><figure id="e9a7583e-feaf-440c-a1cc-01960103f86b" class="image"><a href="Tutorial%2009%2010%20-%20Scheduling%20Algorithms%2013253fdf4a614c90adeedc422fa77a34/Untitled.png"><img style="width:1271px" src="Tutorial%2009%2010%20-%20Scheduling%20Algorithms%2013253fdf4a614c90adeedc422fa77a34/Untitled.png"/></a></figure><ul id="fa56366d-dd37-476e-9bb8-e6177fe69e8e" class="bulleted-list"><li style="list-style-type:disc"><code>chrt -p pid</code> shows the current scheduling policy and priority are for the process with process id = pid</li></ul><ul id="a6682010-056e-4a27-8ed7-dd4f41d3e658" class="bulleted-list"><li style="list-style-type:disc"><code>chrt [policy flag] -p priority pid</code> changes the scheduling policy of the policy of the process with the process id = pid with a priority value  = priority, to the scheduling policy represented by policy flag (-o for SCHED_OTHER, -f for SCHED_FIFO, -r for SCHED_RR, -b for SCHED_BATCH, -i for SCHED_IDLE)</li></ul><ul id="758ac3bc-e2ed-4a01-8b9f-ebe4c163fe27" class="bulleted-list"><li style="list-style-type:disc">Example: chrt -f -p 34 22885 - Changes the scheduling policy of the  process with process id 22885 to SCHED_FIFO, with a priority value of 34</li></ul><ul id="8218885c-f141-484b-a7b1-adf8f36d66d0" class="bulleted-list"><li style="list-style-type:disc">We notice that values of min, max for OTHER, IDLE and DEADLINE are 0 and 0. Basically all these processes have same priority, the only difference is in their nice value which range from -20 to 19. </li></ul><ul id="4e1c7487-5356-49ad-8117-7e25ecfab178" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">NOTE: Bigger the nice value, lower is it’s priority</span></li></ul><ul id="9554b367-b7a3-42cd-9d88-21915d4f35e6" class="bulleted-list"><li style="list-style-type:disc">Structs to be used with pthread and scheduling algorithms</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="3f5f95df-78d0-4315-9eb2-88c60a8a20d5" class="code code-wrap"><code class="language-C">struct sched_param {
+	int sched_priority;
+};
+
+struct timespec {
+	time_t tv_sec; // seconds
+	long tv_nsec; // nanoseconds
+}</code></pre><ul id="7f891738-24be-417c-8548-396070e6f695" class="bulleted-list"><li style="list-style-type:disc">We can use </li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="7ac51fa3-e373-40cc-a09d-d0cf9eed45da" class="code code-wrap"><code class="language-C">#include &lt;sched.h&gt;
+
+int sched_setscheduler(pid_t pid, int policy, const struct
+sched_param *param); -&gt; if pid = 0, the scheduling policy and parameters of the calling thread will be set
+
+int sched_getscheduler(pid_t pid); -&gt; if negative undefined
+
+int sched_setparam(pid_t pid, const struct sched_param *param); -&gt; sets scheduling parameters for the thread whose thread id is specified in pid
+
+int sched_getparam(pid_t pid, struct sched_param *param);
+
+int pthread_attr_setschedparam(pthread_attr_t *attr, struct
+sched_param *param); -&gt; The pthread_attr_setschedparam() function sets the scheduling parameter attributes of the thread attributes object referred to by attr to the values specified in the buffer pointed to by param.
+
+
+int pthread_attr_getschedparam(pthread_attr_t *attr, struct
+sched_param *param); -&gt; The pthread_attr_getschedparam() returns the scheduling parameter attributes of thethread attributes object attr in the buffer pointed to by param.
+
+int pthread_attr_setschedpolicy(pthread_attr_t *attr, int
+policy); -&gt; The pthread_attr_setschedpolicy() function sets the scheduling policy attribute of the thread attributes object referred to by attr to the value specified in policy
+
+int pthread_attr_getschedpolicy(const pthread_attr_t *attr, int *policy); -&gt; The pthread_attr_getschedpolicy() returns the scheduling policy attribute of the thread attributes object attr in the buffer pointed to by policy</code></pre><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="cd21e5f6-a4fa-40d4-a473-fda07d5ba7a7"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><code>#define _GNU_SOURCE</code> should be used if you want to use linux specific such as SCHED_BATCH, IDLE and DEADLINE<br/><br/><br/><p id="3f003387-9ff0-4b48-b158-09f0778b9010" class="">Use sudo to run your program if you are working with real-time scheduling policies(FIFO<br/>or RR).<br/></p></div></figure><h1 id="c8f50199-103c-404d-b2d0-f0a7895bdd0a" class="">Print valid range of the policy and then change the scheduling policy and priority of the process provided</h1><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="23074062-b112-4296-98f2-53f1d2823413" class="code code-wrap"><code class="language-C">#define _GNU_SOURCE
+
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;sched.h&gt;
+
+int main()
+{
+    // First print all the schedulers
+    printf(&quot;SCHED_OTHER: %d\n&quot;, SCHED_OTHER);
+    printf(&quot;SCHED_FIFO: %d\n&quot;, SCHED_FIFO);
+    printf(&quot;SCHED_RR: %d\n&quot;, SCHED_RR);
+    printf(&quot;SCHED_BATCH: %d\n&quot;, SCHED_BATCH);
+    printf(&quot;SCHED_IDLE: %d\n&quot;, SCHED_IDLE);
+    printf(&quot;SCHED_DEADLINE: %d\n&quot;, SCHED_DEADLINE);
+
+    printf(&quot;\nCurrent scheduler: %d\n&quot;, sched_getscheduler(0));
+    printf(&quot;Choose one: &quot;);
+
+    int scheduler;
+    scanf(&quot;%d&quot;, &amp;scheduler);
+
+    printf(&quot;Max priority: %d\n&quot;, sched_get_priority_max(scheduler));
+    printf(&quot;Min priority: %d\n&quot;, sched_get_priority_min(scheduler));
+
+    printf(&quot;Enter pid of the process to change: &quot;);
+    int pid;
+    scanf(&quot;%d&quot;, &amp;pid);
+
+    printf(&quot;Before Changing scheduler: %d\n&quot;, sched_getscheduler(pid));
+    struct sched_param param;
+    param.sched_priority = 0;
+    sched_setscheduler(pid, scheduler, &amp;param);
+    printf(&quot;After Changing scheduler: %d\n&quot;, sched_getscheduler(pid));
+}</code></pre><h1 id="e33dca39-983f-4f6b-bec1-3b8fefd691a7" class="">Calculate timeslice allocated to a process running under RR scheduling policy and what happens when you run the process using FIFO scheduling policy</h1><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="ac703bbc-058b-4467-8f0d-4de6cea1c291" class="code code-wrap"><code class="language-C">#define _GNU_SOURCE
+
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;sched.h&gt;
+
+int main()
+{
+    // First print all the schedulers
+    printf(&quot;SCHED_OTHER: %d\n&quot;, SCHED_OTHER);
+    printf(&quot;SCHED_FIFO: %d\n&quot;, SCHED_FIFO);
+    printf(&quot;SCHED_RR: %d\n&quot;, SCHED_RR);
+    printf(&quot;SCHED_BATCH: %d\n&quot;, SCHED_BATCH);
+    printf(&quot;SCHED_IDLE: %d\n&quot;, SCHED_IDLE);
+    printf(&quot;SCHED_DEADLINE: %d\n&quot;, SCHED_DEADLINE);
+
+    printf(&quot;Enter pid of the process: &quot;);
+    int pid;
+    scanf(&quot;%d&quot;, &amp;pid);
+
+    struct timespec ts;
+    sched_rr_get_interval(pid, &amp;ts);
+
+    printf(&quot;Timeslice: %ld\n&quot;, ts.tv_nsec);
+}</code></pre><h1 id="b57476e9-d50b-4b25-adb0-df5874a91ff9" class="">Print scheduling policy and priority of thread and modifies these</h1><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="3f887d0d-9e31-4b72-8293-1656681eba75" class="code code-wrap"><code class="language-C">#define _GNU_SOURCE
+
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;sched.h&gt;
+#include &lt;pthread.h&gt;
+
+void *threadFunction(void *arg)
+{
+    printf(&quot;Hello there :)&quot;);
+}
+
+int main()
+{
+    pthread_t thr;
+    pthread_attr_t attr;
+    pthread_attr_init(&amp;attr);
+
+    int policy;
+
+    pthread_attr_getschedpolicy(&amp;attr, &amp;policy);
+
+    printf(&quot;Thread created with default policy: %d\n&quot;, policy);
+
+    pthread_attr_setschedpolicy(&amp;attr, SCHED_FIFO);
+    pthread_attr_getschedpolicy(&amp;attr, &amp;policy);
+    printf(&quot;Thread created with FIFO policy: %d\n&quot;, policy);
+    pthread_create(&amp;thr, NULL, threadFunction, NULL);
+}</code></pre><h1 id="4d93135f-c586-40cf-8556-130fd5be98a8" class="">Other commands</h1><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="0c2adc03-f757-4994-8555-4e8145a2597c" class="code code-wrap"><code class="language-C">ps -eLo pid,ppid,class,pri -&gt; gives you list of processes with pid, ppid, class and priority
+
+top -H -p &lt;pid&gt; -&gt; we can view processes</code></pre><h1 id="c48cd80e-370e-4ac4-a36b-d1dc17fee1b9" class="">FIFO/RR</h1><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="c943f49b-c4f8-465e-a47d-c3b7377e3ad6" class="code code-wrap"><code class="language-C">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;sched.h&gt;
+#include &lt;pthread.h&gt;
+
+void *thread1(void *arg)
+{
+    for (int i = 0; i &lt; 10; i++)
+    {
+        printf(&quot;Thread 1 --&gt; %d\n&quot;, i);
+        sleep(5);
+    }
+    pthread_exit(NULL);
+}
+
+void *thread2(void *arg)
+{
+    for (int i = 0; i &lt; 10; i++)
+    {
+        printf(&quot;Thread 2 --&gt; %d\n&quot;, i);
+        sleep(5);
+    }
+    pthread_exit(NULL);
+}
+
+int main()
+{
+    pthread_t threads[2];
+    pthread_attr_t attr[2];
+    for (int i = 0; i &lt; 2; i++)
+    {
+        pthread_attr_init(&amp;attr[i]);
+    }
+
+    // Get current policy
+    int policy;
+
+    // Execute threads
+    for (int i = 0; i &lt; 2; i++)
+    {
+        pthread_attr_getschedpolicy(&amp;attr[i], &amp;policy);
+        printf(&quot;Current policy for %d = %d\n&quot;, i + 1, policy);
+
+        // Set policy for both to RR
+        pthread_attr_setschedpolicy(&amp;attr[i], SCHED_RR);
+        pthread_attr_getschedpolicy(&amp;attr[i], &amp;policy);
+        printf(&quot;Modified policy for %d = %d\n&quot;, i + 1, policy);
+
+        if (i == 0)
+            pthread_create(&amp;threads[i], NULL, thread1, NULL);
+        else
+            pthread_create(&amp;threads[i], NULL, thread2, NULL);
+    }
+
+    for (int i = 0; i &lt; 2; i++)
+        pthread_join(threads[i], NULL);
+}</code></pre><h1 id="e9ee9e01-54a9-4b7a-8c3f-27ad2e110b70" class="">Priority Scheduling Solver</h1><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="8e7ef49b-febe-47f9-aac4-739ad10720ed" class="code code-wrap"><code class="language-C">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main()
+{
+    printf(&quot;----PRIORITY SCHEDULING----\nEnter Number of Processes: &quot;);
+    FILE *fptr = fopen(&quot;b.txt&quot;, &quot;r&quot;);
+    int input;
+    fscanf(fptr, &quot;%d&quot;, &amp;input);
+
+    int arrival_time[input];
+    int burst_time[input];
+    int priority[input];
+
+    int total_time = 0;
+
+    for (int i = 0; i &lt; input; i++)
+    {
+        printf(&quot;Enter arrival time for process %d: &quot;, i + 1);
+        fscanf(fptr, &quot;%d&quot;, &amp;arrival_time[i]);
+        printf(&quot;Enter burst time for process %d: &quot;, i + 1);
+        fscanf(fptr, &quot;%d&quot;, &amp;burst_time[i]);
+        total_time += burst_time[i];
+        printf(&quot;Enter priority for process %d: &quot;, i + 1);
+        fscanf(fptr, &quot;%d&quot;, &amp;priority[i]);
+    }
+
+    int preemptive;
+    printf(&quot;Preemptive or Non-Preemptive (1/0):&quot;);
+    fscanf(fptr, &quot;%d&quot;, &amp;preemptive);
+
+    int gantt_chart[total_time];
+    int final_time[input];
+    int waiting_time[input];
+
+    for (int i = 0; i &lt; input; i++)
+        waiting_time[i] = 0;
+
+    if (preemptive == 1)
+    {
+        printf(&quot;\nYou have chosen preemptive scheduling :)\n&quot;);
+        for (int timestep = 0; timestep &lt; total_time; timestep++)
+        {
+            // We assume that the process with the lowest priority will be executed first
+            // We assume that index i corresponds to the second i to i+1
+            int min_priority_index = -1;
+
+            for (int i = 0; i &lt; input; i++)
+            {
+                if (arrival_time[i] &lt;= timestep &amp;&amp; burst_time[i] &gt; 0)
+                    if (priority[i] &lt; priority[min_priority_index])
+                    {
+                        min_priority_index = i;
+                    }
+            }
+
+            if (min_priority_index != -1)
+            {
+                gantt_chart[timestep] = min_priority_index + 1;
+                final_time[min_priority_index] = timestep + 1;
+                burst_time[min_priority_index]--;
+            }
+            else
+            {
+                gantt_chart[timestep] = -1;
+            }
+
+            for (int i = 0; i &lt; input; i++)
+            {
+                if (i != min_priority_index &amp;&amp; arrival_time[i] &lt;= timestep &amp;&amp; burst_time[i] &gt; 0)
+                {
+                    waiting_time[i]++;
+                }
+            }
+        }
+    }
+    else
+    {
+        printf(&quot;\nYou have chosen non-preemptive scheduling :)\n&quot;);
+        int timestep = 0;
+        while (timestep &lt; total_time)
+        {
+            int min_priority_index = -1;
+
+            for (int i = 0; i &lt; input; i++)
+            {
+                if (arrival_time[i] &lt;= timestep &amp;&amp; burst_time[i] &gt; 0)
+                    if (priority[i] &lt; priority[min_priority_index])
+                    {
+                        min_priority_index = i;
+                    }
+            }
+
+            if (min_priority_index != -1)
+            {
+                for (int k = 0; k &lt; burst_time[min_priority_index]; k++)
+                {
+                    gantt_chart[timestep + k] = min_priority_index + 1;
+                }
+                waiting_time[min_priority_index] = timestep - arrival_time[min_priority_index];
+                timestep += burst_time[min_priority_index];
+                final_time[min_priority_index] = timestep;
+                burst_time[min_priority_index] = 0;
+            }
+            else
+            {
+                gantt_chart[timestep] = -1;
+                timestep++;
+            }
+        }
+    }
+
+    printf(&quot;\n\n&quot;);
+    for (int i = 0; i &lt; total_time; i++)
+    {
+        printf(&quot;%d &quot;, gantt_chart[i]);
+    }
+    printf(&quot;\n&quot;);
+
+    for (int i = 0; i &lt; input; i++)
+    {
+        printf(&quot;Process %d: AT: %3d Priority: %3d FT: %3d WT: %3d TAT: %3d\n&quot;, i + 1, arrival_time[i], priority[i], final_time[i], waiting_time[i], final_time[i] - arrival_time[i]);
+    }
+}</code></pre><p id="96896ca7-9b57-4b76-b385-4a120977a03d" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

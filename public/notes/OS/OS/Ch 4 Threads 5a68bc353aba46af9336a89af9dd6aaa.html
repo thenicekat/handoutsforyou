@@ -1,0 +1,710 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Ch 4: Threads</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="5a68bc35-3aba-46af-9336-a89af9dd6aaa" class="page sans"><header><h1 class="page-title">Ch 4: Threads</h1><p class="page-description"></p></header><div class="page-body"><nav id="4fe838e7-6956-4225-bb48-79091b9f7076" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#eceb1717-09fc-4164-b330-f19d15c67be5">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d4290f5d-186e-40c9-8ab3-0040fb9fd221">Benefits</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#c2e91c1c-3060-40ba-8311-ef749528e25c">Responsiveness </a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d8e2f8d9-c3eb-4a19-96f7-7d699c70dd45">Resource Sharing</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#ad34cb3c-315e-4295-a089-0abd71abab8c">Economical Cheaper</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#58dfaf11-0195-4ba5-93ee-4e06f22a26da">Scalability</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#796bc3f1-7907-4f78-ad22-c50b94270171">Multicore Programming</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#65a3c211-7c77-4f11-844d-b2c7e40749ff">Parallelism </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5e5df9f5-d485-44ef-a0d9-2134f9277588">Concurrency → Fake Parallelism</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c7b0f0bd-d25f-4f4d-b34e-8d0967a4fe0d">Types of Parallelism</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c37fdf76-b084-4f81-8010-92ac4df058a4">User Threads and Kernel Threads</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#eab32672-2b8a-4209-96ba-de04fac28738">User Threads </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7705eb57-965d-4493-82f7-3eb27d951ee4">Kernel Threads</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4d437aab-8b6c-4e5d-88ba-bef207f94ab4">Multithreading Models</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0c1e09a5-035e-4daa-86de-69634da92a08">Many to One</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d3b8fb5c-79a8-4a74-a5da-5c4b6b24031f">One to One</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#21b7c108-70a8-46e8-a06b-63f6c8f3b7b0">Many to Many </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#039b1e6f-b3b5-4deb-b227-da2e3e3ba1c3">Two Level Model</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c0adc94a-8b59-4e95-8f46-a7de25fc7e60">Thread Libraries</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a18bdfc8-55cd-4a76-ad74-31e1aa3b48ee">P threads</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#cf25ae56-eb99-4f0c-98d1-795cca56e087">Wait for multiple Threads</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7593c2c6-ef6a-43c8-889e-ff54d2792d49">Issues with Threading</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3d879639-6a02-4295-8272-1e0680d91da0">fork() and exec()</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0424c0e8-8f37-4730-adf1-1e4e2755cff3">Signal Handling</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#43621a41-31b7-458b-ac1e-3391511abefd">Thread Cancelation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c5ede1d8-1494-4ecc-ac90-eb208c34514b">Thread Local Storage</a></div></nav><h1 id="eceb1717-09fc-4164-b330-f19d15c67be5" class="">Introduction</h1><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="ee081293-1932-43c0-b374-36c2042b23f7"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Light weight process - kernel thread</div></figure><ul id="db698c4d-bd65-4e98-8de4-9f34e08a5907" class="bulleted-list"><li style="list-style-type:disc">Whole process is blocked if it doesn’t support multithreading but in case of multithreading, entire application is not blocking</li></ul><ul id="5c8a2d6c-b749-4118-a0c3-57e963fe92c0" class="bulleted-list"><li style="list-style-type:disc">Multithreaded Server Architecture<ul id="007824d7-7d7d-4980-8d44-e084f51e5f44" class="bulleted-list"><li style="list-style-type:circle">Client —&gt; Server(Resume Listening for additional client requests) —&gt;(Create new thread to service the request)Thread</li></ul></li></ul><ul id="7e1de5c6-57e0-4fc0-a018-51100add2a85" class="bulleted-list"><li style="list-style-type:disc">Basic unit of CPU utilization</li></ul><ul id="f5d07dae-c9e2-4c9e-93bb-e1d63f799b23" class="bulleted-list"><li style="list-style-type:disc">Has a thread IP, Program Counter, Registers and Stack</li></ul><ul id="02729e63-31c5-4665-90fb-df7568490fe3" class="bulleted-list"><li style="list-style-type:disc">Shared Parts with all threads<ul id="b0702fe8-58bc-44e6-a668-2a938e411c4e" class="bulleted-list"><li style="list-style-type:circle">Code Section</li></ul><ul id="c4b5dfaf-14bd-4899-967f-262ebe9327b8" class="bulleted-list"><li style="list-style-type:circle">Data Section and OS files</li></ul></li></ul><figure id="60c8e986-bb50-4058-839f-0b5ac5c11fee" class="image"><a href="Ch%204%20Threads%205a68bc353aba46af9336a89af9dd6aaa/Untitled.png"><img style="width:1314px" src="Ch%204%20Threads%205a68bc353aba46af9336a89af9dd6aaa/Untitled.png"/></a></figure><h2 id="d4290f5d-186e-40c9-8ab3-0040fb9fd221" class="">Benefits</h2><h3 id="c2e91c1c-3060-40ba-8311-ef749528e25c" class="">Responsiveness </h3><ul id="1a209893-c4b6-4e98-82b0-2670e0e07f37" class="bulleted-list"><li style="list-style-type:disc">May allow continued execution if part of process is blocked, especially important for UI and IDEs</li></ul><h3 id="d8e2f8d9-c3eb-4a19-96f7-7d699c70dd45" class="">Resource Sharing</h3><ul id="4221dbc1-e8a2-4aa9-af98-b8036938dc90" class="bulleted-list"><li style="list-style-type:disc">Threads share resources of the process, easier than shared memory/message passing</li></ul><ul id="8baf28f7-04bc-43f5-b5f5-ede125f01da4" class="bulleted-list"><li style="list-style-type:disc">This is because two threads would belong to the same process and share the space for the same</li></ul><h3 id="ad34cb3c-315e-4295-a089-0abd71abab8c" class="">Economical Cheaper</h3><ul id="bfb7bce7-7604-4c0e-90e9-439705a772e4" class="bulleted-list"><li style="list-style-type:disc">Has lower overhead than context switching</li></ul><ul id="b6949f79-6806-4137-a4af-5cdc47bb90a0" class="bulleted-list"><li style="list-style-type:disc">Thread switching is very efficient and much cheaper because it involves switching out only identities and resources such as the program counter, registers and stack pointers.</li></ul><ul id="370974f9-b93b-4b2c-859d-6fe713eabf38" class="bulleted-list"><li style="list-style-type:disc">Process context switching involves switching of all the process resources with those needed by a new process. This means switching the memory address space. This includes memory addresses, page tables, and kernel resources, caches in the processor</li></ul><h3 id="58dfaf11-0195-4ba5-93ee-4e06f22a26da" class="">Scalability</h3><ul id="21f803d1-98d2-41ca-bfe1-ae1ca2024167" class="bulleted-list"><li style="list-style-type:disc">Multithreaded process can take advantage of multiprocessor</li></ul><h1 id="796bc3f1-7907-4f78-ad22-c50b94270171" class="">Multicore Programming</h1><h3 id="65a3c211-7c77-4f11-844d-b2c7e40749ff" class="">Parallelism </h3><ul id="4ace254b-d1bc-42bd-9c94-07b0d0703990" class="bulleted-list"><li style="list-style-type:disc">System can perform more than one task simultaneously</li></ul><ul id="5f515203-e309-4c34-9dea-9bec0643954c" class="bulleted-list"><li style="list-style-type:disc">Core1: T1 T3 T1</li></ul><ul id="840d89d1-32b5-4a15-bf40-895bb3638bf1" class="bulleted-list"><li style="list-style-type:disc">Core2: T2 T4 T2</li></ul><h3 id="5e5df9f5-d485-44ef-a0d9-2134f9277588" class="">Concurrency → Fake Parallelism</h3><ul id="9d856193-aed7-429b-a26b-12a0217c61c5" class="bulleted-list"><li style="list-style-type:disc">More than one task making progress </li></ul><ul id="5bc4af6e-70eb-4cc9-a9da-d91712afe4a6" class="bulleted-list"><li style="list-style-type:disc">Illusion of parallelism → need not be simultaneous</li></ul><ul id="73e65d65-105c-4156-86f3-d2affe9c3ca4" class="bulleted-list"><li style="list-style-type:disc">Example: Single Processor/Core scheduler is providing concurrency </li></ul><ul id="a32e132f-9c3a-4f03-a2fa-9486cf2b928d" class="bulleted-list"><li style="list-style-type:disc">Core: T1 T2 T3 T1 T2 T3</li></ul><h3 id="c7b0f0bd-d25f-4f4d-b34e-8d0967a4fe0d" class="">Types of Parallelism</h3><ul id="7f29a575-ce36-42aa-9659-e488368b3eff" class="bulleted-list"><li style="list-style-type:disc">Data Parallelism → distributes subsets of the same data across multiple cores, same operation on each subset</li></ul><ul id="6054db05-99c5-4a38-9520-4d3f874af69c" class="bulleted-list"><li style="list-style-type:disc">Task Parallelism → distributes tasks/threads across cores each thread performing unique operation, threads may be operating on same or different data</li></ul><h1 id="c37fdf76-b084-4f81-8010-92ac4df058a4" class="">User Threads and Kernel Threads</h1><h3 id="eab32672-2b8a-4209-96ba-de04fac28738" class="">User Threads </h3><ul id="4c96a1cd-5a67-405d-9287-b3e723772b08" class="bulleted-list"><li style="list-style-type:disc">Management done by user level threads library without kernel support<ul id="a6e0aa7b-d9d2-4ce0-a909-3c66d4d18666" class="bulleted-list"><li style="list-style-type:circle">POSIX Pthreads</li></ul><ul id="cc9409a5-8e30-4d34-8e62-22f9cf2a9ba9" class="bulleted-list"><li style="list-style-type:circle">Windows Threads</li></ul><ul id="3371069a-ae69-4421-b5ca-d48b1945d655" class="bulleted-list"><li style="list-style-type:circle">Java Threads</li></ul></li></ul><h3 id="7705eb57-965d-4493-82f7-3eb27d951ee4" class="">Kernel Threads</h3><ul id="3c3b1954-5d66-4cda-aa80-ce5437e26d65" class="bulleted-list"><li style="list-style-type:disc">Supported and managed by the kernel</li></ul><ul id="65ad7632-c61b-4670-8df3-1be5ad6e48f4" class="bulleted-list"><li style="list-style-type:disc">Virtually all general purpose OS support these</li></ul><ul id="7cc182d0-6a2d-413c-b9cf-65e3385f72ff" class="bulleted-list"><li style="list-style-type:disc">Windows/Solaris/Linux/Mac OS X</li></ul><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="5c882c3b-202e-46e8-99d9-e5bbe2ac22d5"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">If KT blocks, LWP(Light Weight Process) blocks, UT blocks.<br/>OS allocates LWPs and if UT blocks, LWP blocks → KT blocks<br/><br/>How many LWPs will be required for efficient execution = Number of concurrent blocking system calls<br/></div></figure><ul id="1aa28fdc-f580-4cc8-a64b-fc7e0b57575b" class="bulleted-list"><li style="list-style-type:disc">The user-level thread is also referred to as the many-to-one mapping thread, as the OS assigns each thread in a multithreaded process to an execution context. On the other hand, One-to-one thread mapping is supported at the kernel level. Each user thread must be assigned to a kernel thread. This mapping is handled by the OS</li></ul><h1 id="4d437aab-8b6c-4e5d-88ba-bef207f94ab4" class="">Multithreading Models</h1><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="db31f8df-abbe-4e38-95bf-d585cc4e03d5"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">A blocking system call is a system call that blocks the process execution until the requested operation is completed. The blocking system call can be used in synchronous I/O or asynchronous I/O.</div></figure><h2 id="0c1e09a5-035e-4daa-86de-69634da92a08" class="">Many to One</h2><ul id="e87c19ca-ee2f-4e51-9be0-8644108a6283" class="bulleted-list"><li style="list-style-type:disc">Many user level threads and a single kernel thread</li></ul><ul id="b0edc867-7f57-4682-861b-da4c2fe1f375" class="bulleted-list"><li style="list-style-type:disc">Thread management done by thread library in the user space</li></ul><ul id="e9609a08-1ecc-45ae-aece-9c5dd8a57742" class="bulleted-list"><li style="list-style-type:disc">Multiple threads may not run in parallel on multicore system because only one can access kernel at a time</li></ul><ul id="59c31b1f-5ef3-4508-a3e4-122c3e50f74f" class="bulleted-list"><li style="list-style-type:disc">Few systems currently use this model. Example: green threads</li></ul><ul id="fe18726f-e202-429c-9462-5522b1047ebf" class="bulleted-list"><li style="list-style-type:disc">Here if a blocking call is made all other processes are put on hold</li></ul><h2 id="d3b8fb5c-79a8-4a74-a5da-5c4b6b24031f" class="">One to One</h2><ul id="8643cbfa-babd-4f20-bce7-b3efb42032fe" class="bulleted-list"><li style="list-style-type:disc">Each user thread has one kernel thread</li></ul><ul id="417ff67c-3b11-4e15-b32a-2564890a35dd" class="bulleted-list"><li style="list-style-type:disc">Creating User threads creates a new kernel thread</li></ul><ul id="9ca2e6bd-1d6e-4056-8b4d-9d0e31150fec" class="bulleted-list"><li style="list-style-type:disc">More concurrency than many to one</li></ul><ul id="66c5b745-feab-4977-af2f-904932b29cd9" class="bulleted-list"><li style="list-style-type:disc">No of threads per process restricted due to overhead</li></ul><ul id="465621e7-d45c-465e-9047-efd5baac91a2" class="bulleted-list"><li style="list-style-type:disc">Example: Windows, Linux, Solaris 9</li></ul><h2 id="21b7c108-70a8-46e8-a06b-63f6c8f3b7b0" class="">Many to Many </h2><ul id="49985805-cb13-4259-9099-20dce17939fc" class="bulleted-list"><li style="list-style-type:disc">Many user threads → many kernel threads</li></ul><ul id="754a802b-b6f4-4baa-84e6-4c890881a910" class="bulleted-list"><li style="list-style-type:disc">Allows OS to create a sufficient number of kernel threads</li></ul><ul id="08ddf895-3059-4bcc-9e99-836e00ac239f" class="bulleted-list"><li style="list-style-type:disc">When a thread performs a blocking system call, the kernel can schedule another thread for execution</li></ul><ul id="59bc0a53-a4b1-47c8-92fa-710042a0c447" class="bulleted-list"><li style="list-style-type:disc">Here blocking system call means, it’s doing something else and not using the executable space say for example IO or something</li></ul><ul id="f66ad4bf-86f1-49bc-913d-e59e0c8223e8" class="bulleted-list"><li style="list-style-type:disc">Solaris before v9</li></ul><h2 id="039b1e6f-b3b5-4deb-b227-da2e3e3ba1c3" class="">Two Level Model</h2><ul id="ec74458d-2808-4360-9dcb-8ca746a646cb" class="bulleted-list"><li style="list-style-type:disc">Similar to many to many except it has some 1:1 models also</li></ul><figure id="be062911-e679-474a-b430-c70231fb2fee" class="image"><a href="Ch%204%20Threads%205a68bc353aba46af9336a89af9dd6aaa/Untitled%201.png"><img style="width:2008px" src="Ch%204%20Threads%205a68bc353aba46af9336a89af9dd6aaa/Untitled%201.png"/></a></figure><h1 id="c0adc94a-8b59-4e95-8f46-a7de25fc7e60" class="">Thread Libraries</h1><ul id="abeca41d-62b4-4701-9629-1df35928b1cc" class="bulleted-list"><li style="list-style-type:disc">Provides programmer with API for creating and managing threads</li></ul><ul id="f4fffa7c-0560-4de4-8c80-1ee41b440b02" class="bulleted-list"><li style="list-style-type:disc">Two primary ways:<ul id="2170f09f-66ff-4e84-bfe0-23b4934a6229" class="bulleted-list"><li style="list-style-type:circle">Library entirely in user space</li></ul><ul id="94bfc6fa-28c9-44b6-841d-216c9fb7b100" class="bulleted-list"><li style="list-style-type:circle">Kernel Level Library supported by the OS</li></ul></li></ul><h2 id="a18bdfc8-55cd-4a76-ad74-31e1aa3b48ee" class="">P threads</h2><ul id="dd5c6578-7785-451b-b1eb-77f3d8b8e493" class="bulleted-list"><li style="list-style-type:disc">User level/kernel level</li></ul><ul id="d9690285-8fd8-478e-aa6c-eddf12cf932f" class="bulleted-list"><li style="list-style-type:disc">Specification that defines the rules for using this BUT NOT implementation</li></ul><ul id="f82ecd3a-5773-4e7b-91f8-618ae20032a8" class="bulleted-list"><li style="list-style-type:disc">API specifies behavior of the thread library, implementation is up to development</li></ul><ul id="71eb8cb7-59b7-4a9e-9a48-7e35d4f79190" class="bulleted-list"><li style="list-style-type:disc">Common in UNIX OS</li></ul><ul id="7faa1e0f-00e1-4afb-b475-dc1e925c1e0c" class="bulleted-list"><li style="list-style-type:disc">Methods<ul id="d4ad109c-0233-43c0-b8c6-40c3884dd6b5" class="bulleted-list"><li style="list-style-type:circle"><code>int pthread_attr_init(pthread_attr_t *attr);</code></li></ul><ul id="36e78b15-b7c2-460f-9a05-fc137485ea31" class="bulleted-list"><li style="list-style-type:circle"><code>int pthread_create(pthread_t *tid, const pthread_attr_t *attr, void*(*start_routine) (void *), void *arg);</code></li></ul><ul id="8756ad2a-4baa-4767-a5cc-43ba11a8179a" class="bulleted-list"><li style="list-style-type:circle"><code>int pthread_equal(pthread_t tid1, pthread_t tid2);</code> -&gt;0 if unequal ids and gives 1 if their tids are same</li></ul><ul id="d7a32cb3-a00a-4229-bbdd-248f47509163" class="bulleted-list"><li style="list-style-type:circle"><code>int pthread_join(pthread_t tid, void **retval);</code> → waits for the thread and </li></ul><ul id="2ef3be7e-5531-445f-8479-233add147b4f" class="bulleted-list"><li style="list-style-type:circle"><code>void pthread_exit(void *ptr);</code></li></ul><ul id="c38594ae-3830-4cef-8dee-091875d8e93f" class="bulleted-list"><li style="list-style-type:circle"><code>pid_t gettid()</code></li></ul><ul id="19597f61-74b3-4557-90d5-7fece264b3dc" class="bulleted-list"><li style="list-style-type:circle"><code>int pthread_self()</code> → returns the thread ID</li></ul></li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2aaf2aa3-a03a-4fb4-9553-e8b5f26ced49" class="code code-wrap"><code class="language-C">#include &lt;pthread.h&gt;
+#include &lt;stdio.h&gt;
+
+int sum;                   /* this data is shared by the thread(s) */
+void *runner(void *param); /* threads call this function */
+
+int main(int argc, char *argv[])
+{
+    pthread_t tid;       /* the thread identifier */
+    pthread_attr_t attr; /* set of thread attributes */
+    if (argc != 2)
+    {
+        fprintf(stderr, &quot;usage: a.out &lt;integer value&gt;\n&quot;);
+        return -1;
+    }
+    if (atoi(argv[1]) &lt; 0)
+    {
+        fprintf(stderr, &quot;%d must be &gt;= 0\n&quot;, atoi(argv[1]));
+        return -1;
+    }
+    pthread_attr_init(&amp;attr);                     /* set the default attributes */
+    pthread_create(&amp;tid, &amp;attr, runner, argv[1]); /* create the thread */
+    pthread_join(tid, NULL);                      /* wait for the thread to exit */
+    printf(&quot;sum = %d\n&quot;, sum);
+}
+
+void *runner(void *param)
+{
+    int i, upper = atoi(param);
+    sum = 0;
+    for (i = 1; i &lt;= upper; i++)
+        sum += i;
+    pthread_exit(0);
+}</code></pre><ul id="da2dd5ec-af68-4661-b4fb-96cbaf7f1d21" class="bulleted-list"><li style="list-style-type:disc">Here, we have 2 threads and global variables are shared between threads</li></ul><ul id="69fc4433-68b7-4205-afd7-e98955d8a79d" class="bulleted-list"><li style="list-style-type:disc">This is synchronous multi threading → main thread should wait before all of it’s created threads are terminated → so essentially only one thread is executing at once</li></ul><ul id="18ff6ed4-3cdb-48e9-839f-5242a2d2f74a" class="bulleted-list"><li style="list-style-type:disc">In asynchronous threading, the creator also executes parallelly with the other thread also running</li></ul><ul id="9e086a30-b648-4345-82ae-c5e23a5a9443" class="bulleted-list"><li style="list-style-type:disc">Here pointer to the exit status is NULL because we are not bothered whether the thread terminated properly or not → we don’t care about the exit status</li></ul><ul id="1160357d-edd3-479e-bda7-1c44c4a3f44f" class="bulleted-list"><li style="list-style-type:disc">If creator thread is terminated → created threads are also terminated</li></ul><ul id="27d11c67-9b44-4c29-b3f9-4c0b0a4f2d25" class="bulleted-list"><li style="list-style-type:disc">We can only send in one parameter to the object → use structs if you need more</li></ul><h2 id="cf25ae56-eb99-4f0c-98d1-795cca56e087" class="">Wait for multiple Threads</h2><figure id="5066885c-1886-443e-9a4a-ab855b2ef642" class="image"><a href="Ch%204%20Threads%205a68bc353aba46af9336a89af9dd6aaa/Untitled%202.png"><img style="width:576px" src="Ch%204%20Threads%205a68bc353aba46af9336a89af9dd6aaa/Untitled%202.png"/></a></figure><h1 id="7593c2c6-ef6a-43c8-889e-ff54d2792d49" class="">Issues with Threading</h1><h2 id="3d879639-6a02-4295-8272-1e0680d91da0" class="">fork() and exec()</h2><ul id="c1ac2b0c-2ca6-46de-b923-ca36d27855b1" class="bulleted-list"><li style="list-style-type:disc">If one thread in a program calls fork(), does the new process duplicate all threads, or is<br/>the new process single-threaded<br/></li></ul><ul id="4259b193-9656-410b-ac3d-d59286f6c607" class="bulleted-list"><li style="list-style-type:disc">Some UNIX systems have chosen to have two versions of fork(), one that duplicates all threads and another that duplicates only the thread that invoked the fork() system call</li></ul><ul id="f36f1e10-fe66-4945-8053-5568665b11ef" class="bulleted-list"><li style="list-style-type:disc">Ubuntu Specific → you call fork(), it always creates one thread only in the child</li></ul><ul id="dfe53ea0-41b4-4101-b0c9-cf4b1b94dc07" class="bulleted-list"><li style="list-style-type:disc">main → create → runner → fork → below fork → all instructions get executed</li></ul><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="f451de15-c5ae-4db3-9340-efb688ddd32a"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">When you create a new process → output buffer always gets copied but the \n will replace them</div></figure><ul id="1bdf80aa-00b1-42a2-bdde-955f330613eb" class="bulleted-list"><li style="list-style-type:disc">The exec() system call works in the same way </li></ul><ul id="c6371f21-4e33-4173-a455-99a8a164ff88" class="bulleted-list"><li style="list-style-type:disc">if a thread invokes the exec() system call, the program specified in the parameter to exec() will <span style="border-bottom:0.05em solid">replace the entire process</span>—including all threads</li></ul><ul id="fdbb3d17-d305-4af6-9062-a5f7f34d209c" class="bulleted-list"><li style="list-style-type:disc">If exec() is called immediately after forking, then duplicating all threads is unnecessary, as the program specified in the parameters to exec() will replace the process</li></ul><ul id="1200d262-595d-4dc9-87d2-6a465687ee95" class="bulleted-list"><li style="list-style-type:disc">duplicating only the calling thread is appropriate</li></ul><ul id="0b764d1e-fe49-41e3-a1c5-e2b21d355be6" class="bulleted-list"><li style="list-style-type:disc">If the separate process does not call exec() after forking, the separate process should<br/>duplicate all threads<br/></li></ul><h2 id="0424c0e8-8f37-4730-adf1-1e4e2755cff3" class="">Signal Handling</h2><ul id="4709beac-e315-44dc-b710-201e3505ac98" class="bulleted-list"><li style="list-style-type:disc">Signals are used in UNIX systems to notify a process that a particular event has occurred</li></ul><ul id="af19d08f-1f08-450d-9e37-e2ac516b776c" class="bulleted-list"><li style="list-style-type:disc">The signal is delivered to a process</li></ul><ul id="a6803260-70dc-41f0-8952-f2d6965dc68c" class="bulleted-list"><li style="list-style-type:disc">When delivered, signal handler is used to process signals: Synchronous and asynchronous signals</li></ul><ul id="fcfb2a5a-4fe3-4669-b839-e44912c53cf5" class="bulleted-list"><li style="list-style-type:disc">Synchronous signals<ul id="aac8d16f-4c1a-452a-ac1a-981f91c98629" class="bulleted-list"><li style="list-style-type:circle">Illegal memory access, div. by 0</li></ul><ul id="4f9843f9-2146-419a-a7a9-10b6160f90cd" class="bulleted-list"><li style="list-style-type:circle">delivered to the same process that performed the operation generating the signal</li></ul></li></ul><ul id="076ce0b4-96c2-4f24-bb9b-0d4567ef4c7d" class="bulleted-list"><li style="list-style-type:disc">Asynchronous signals<ul id="5e5097d4-465d-4580-82a5-04d4a279dadf" class="bulleted-list"><li style="list-style-type:circle">generated by an event external to a running process</li></ul><ul id="c45afdd5-5321-491e-9e3b-60d0bce099ee" class="bulleted-list"><li style="list-style-type:circle">the running process receives the signal asynchronously</li></ul><ul id="0357f085-69ad-4713-b1f0-17a098f57bf4" class="bulleted-list"><li style="list-style-type:circle">Ctrl + C, timer expiration</li></ul></li></ul><ul id="40939dc2-752d-463a-9980-7ae07add0fc6" class="bulleted-list"><li style="list-style-type:disc">Signal Handlers → default(kernel runs), user defined(overrides default signal handler)</li></ul><ul id="dbca9b49-8e65-4dc7-a526-f537effec1dd" class="bulleted-list"><li style="list-style-type:disc">Single threaded → signal delivered to process</li></ul><ul id="996df1a7-31e1-4135-8969-866906a6af7b" class="bulleted-list"><li style="list-style-type:disc">Multi threaded<ul id="0b1f9627-f86c-45e6-ae64-b48499779d2c" class="bulleted-list"><li style="list-style-type:circle">only to thread which applies</li></ul><ul id="e1aa32e8-3280-4bff-b01e-0d5bc830d8d9" class="bulleted-list"><li style="list-style-type:circle">all threads to process</li></ul><ul id="93318fed-bf80-46d0-9d36-41c43a8a26f1" class="bulleted-list"><li style="list-style-type:circle">subset of process threads</li></ul><ul id="19729e29-2248-403d-92b0-072a3e83ab93" class="bulleted-list"><li style="list-style-type:circle">make a thread only for receiving signals</li></ul></li></ul><ul id="49acc8b2-f1f8-420d-95fe-2887ba41341e" class="bulleted-list"><li style="list-style-type:disc">This method depends on the type of signal<ul id="8fd0b972-51e2-4ce2-ac35-54b6ad722cb6" class="bulleted-list"><li style="list-style-type:circle">Synchronous → thread causing the signal and not to other threads in the process</li></ul><ul id="9c9d07f1-c0a3-4d4d-b419-17edfb623f41" class="bulleted-list"><li style="list-style-type:circle">Asynchronous → Ctrl + C → all threads</li></ul></li></ul><ul id="dc3a8547-eb93-42b5-9d18-cdf1945dca7f" class="bulleted-list"><li style="list-style-type:disc">In most cases, async signals may be delivered only to those threads that are not blocking it</li></ul><h2 id="43621a41-31b7-458b-ac1e-3391511abefd" class="">Thread Cancelation</h2><ul id="e0495d01-ebcc-4d7f-8566-123e2e8e93b6" class="bulleted-list"><li style="list-style-type:disc">Canceled before the target is reached</li></ul><ul id="d96bdd7f-0d89-4dfe-918a-edc00c55244e" class="bulleted-list"><li style="list-style-type:disc">Asynchronous Cancelation → one thread terminates the target thread immediately</li></ul><ul id="0d074559-6624-44b2-aea2-5f42e224d95b" class="bulleted-list"><li style="list-style-type:disc">Deferred Cancelation → allows target thread to periodically check if it should be cancelled and then the target thread can terminate itself in an orderly fashion giving it time to clean up properly</li></ul><ul id="04cd9895-e164-44df-9d0a-7f86b548d321" class="bulleted-list"><li style="list-style-type:disc">We choose deferred in cases where say we are accessing shared memory and we want them to close all connections before cancelation so we use defer</li></ul><ul id="0eeb7cf4-f8c6-478e-bed9-fb0e7308ce11" class="bulleted-list"><li style="list-style-type:disc"><code>pthread_cancel(tid)</code> → You cannot have a thread from P1 to cancel a thread from P2</li></ul><ul id="61cded60-cc35-45fd-bf42-d829b1e4e921" class="bulleted-list"><li style="list-style-type:disc">Any thread can cancel any other function or thread</li></ul><ul id="4bad2b16-24e1-438b-8b79-fdd8b31eff91" class="bulleted-list"><li style="list-style-type:disc">We have 3 modes<ul id="d4a6c7cc-414e-402e-ac56-05c28f4ecd96" class="bulleted-list"><li style="list-style-type:circle">Off<ul id="9d5e41c3-fd96-4d64-9987-4a67943a8b4a" class="bulleted-list"><li style="list-style-type:square">If thread cancellation is disabled, the cancelation will remain pending till the thread enables it again and cancelation occurs when the thread reaches cancelation point</li></ul></li></ul><ul id="a75a3d4d-a57c-4290-ba27-b112b947c670" class="bulleted-list"><li style="list-style-type:circle">Deferred (default)<ul id="02915945-5640-4177-a1a9-9564bf4db604" class="bulleted-list"><li style="list-style-type:square">Establish cancelation point by calling <code>pthread_testcancel()</code></li></ul><ul id="cce4de87-f15f-4b04-84da-9e87cec20f59" class="bulleted-list"><li style="list-style-type:square">This will be in the target thread and keep checking if there is any cancellation request for this</li></ul><ul id="5ad46451-425f-4ce8-bd6c-44ef5f58ad23" class="bulleted-list"><li style="list-style-type:square">When someone calls cancel, and then if the thread starts calling test cancel it will get info that it has to die and then it invokes the cleanup handler</li></ul><ul id="3d943cfb-7777-4dd2-b1ce-a418559adffc" class="bulleted-list"><li style="list-style-type:square">If cancellation request is pending, cleanup handler is invoked to release resources</li></ul></li></ul><ul id="f1ecc33a-06d0-4f82-82c2-e2874375a7c9" class="bulleted-list"><li style="list-style-type:circle">Asynchronous</li></ul></li></ul><h2 id="c5ede1d8-1494-4ecc-ac90-eb208c34514b" class="">Thread Local Storage</h2><ul id="8fe296a4-a91e-42e8-9d71-3c07cd17a070" class="bulleted-list"><li style="list-style-type:disc">Allows each thread to have it’s own copy of data</li></ul><ul id="0cd78d60-40a0-409a-9d28-59e165461dee" class="bulleted-list"><li style="list-style-type:disc">TLS data are unique to each thread</li></ul><ul id="080adfef-503c-4d1e-9fe2-b529e5cbb5ec" class="bulleted-list"><li style="list-style-type:disc">Different from local variables </li></ul><ul id="5b1debe8-c1c4-422a-b485-f8f4151fb9e2" class="bulleted-list"><li style="list-style-type:disc">Local variables visible only during single invocation</li></ul><ul id="6378c2c0-3efe-4bca-83ff-f0a368db231e" class="bulleted-list"><li style="list-style-type:disc">TLS visible across function invocations for the same thread</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="287adaf2-f7c7-4b95-ae4e-d86e1bde7fae" class="code code-wrap"><code class="language-C">__thread int i;
+// this is indication that it&#x27;s local to the thread</code></pre><ul id="b66af166-7aa9-47b7-9f25-ec799b521d10" class="bulleted-list"><li style="list-style-type:disc">static → scope of the program is throughout the program</li></ul><ul id="768cb9fd-caec-4897-8544-b03734b995de" class="bulleted-list"><li style="list-style-type:disc">const → constant values</li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

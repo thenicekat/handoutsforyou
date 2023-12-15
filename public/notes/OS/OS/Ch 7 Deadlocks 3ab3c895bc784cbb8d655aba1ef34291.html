@@ -1,0 +1,684 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Ch 7: Deadlocks</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="3ab3c895-bc78-4cbb-8d65-5aba1ef34291" class="page sans"><header><h1 class="page-title">Ch 7: Deadlocks</h1><p class="page-description"></p></header><div class="page-body"><nav id="16953690-bff4-445c-9016-048f8235ecce" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c9f23e38-6693-4c35-a57a-3cc06f6cea9b">System Model</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#acdf2cc5-e7b6-41fe-98d0-1bffe2ac23b4">Conditions for Deadlock</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#37743fe8-e62d-4d15-bc9e-8983a0becba6">Resource Allocation Graph</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d31379e8-dccd-40cd-ac6a-408db77261d3">How do you infer a deadlock?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#905fd270-6820-4b59-824a-38ca0c04e6c6">Deadlock Handling</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b2fe99b0-4472-403c-b2cd-641cb79317b6">A. Deadlock Prevention - Break atleast one condition</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d77e1e37-52f7-45ff-9225-fc88e36d3e7a">Mutual Exclusion</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c7c2c75e-4e33-472c-8415-3b680b40a630">Hold and wait</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f1d732b3-e522-4991-8f12-b04b4f4cc957">No Preemption</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fd5661fc-587a-4ba2-a337-2da53e453267">Circular Wait </a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#f216f719-537a-4c23-8eb5-669eca9aeb90">B. Deadlock Avoidance → Request Resources</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#cd4c6be4-943b-447e-b746-015808b4a668">Safe State</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d0b589da-9c54-4890-8b11-121b156b6f05">Inferences</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b64f6ce5-e710-4c8f-bdbe-8ef10804e9e8">Avoidance Algorithms</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#9a81356a-a71a-42ee-860e-1d0b72612b27">Single instance of a resource type</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#57050b18-fa6b-48f9-96dc-726e80f4c262">Multiple instances of a resource type</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#9241063e-daf5-4d77-a6ca-28d04c593b8e">Bankers - Safety Algorithm - O(mn^2)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#f4797d71-8796-4acf-9feb-37e50361f52d">Example:</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9bd89f2f-7ccf-484d-9388-f62f39661832">Resource Request Algorithm</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#be56fc12-6e2c-44ff-a6e1-72e0edfe82a8">C. Deadlock Detection</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4cecceff-080b-4841-bbde-97760f44e3fc">Single Instance of each Resource Type</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3a67c1eb-7b19-407f-8e9a-60ce5c3cf364">D. Deadlock Recovery</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#87e71d8c-78c8-4882-bc7a-5bb91e8cb733">Process Termination</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c8f1e3d0-1dfe-4e09-8d30-2ef4ec897619">Resource Preemption</a></div></nav><h1 id="c9f23e38-6693-4c35-a57a-3cc06f6cea9b" class="">System Model</h1><ul id="62bd40a2-c96c-432a-a4c8-3dfbeb636324" class="bulleted-list"><li style="list-style-type:disc">System consists of resources</li></ul><ul id="2177ac6d-3009-4668-8cbf-7ff025381b8c" class="bulleted-list"><li style="list-style-type:disc">Resource types: R1, R2, … Rm</li></ul><ul id="2eb7187b-98f1-4ded-bf6b-d5fec056834e" class="bulleted-list"><li style="list-style-type:disc">Each resource type Ri has Wi instances</li></ul><ul id="006afad7-902b-458c-88ee-ac5ff49fc036" class="bulleted-list"><li style="list-style-type:disc">Each process utilizes a resource as follows:<ul id="c920da0f-e25e-4be9-b8b3-6e7442e20955" class="bulleted-list"><li style="list-style-type:circle">request</li></ul><ul id="334ddbaf-abeb-4944-a3eb-ed6b6a486c44" class="bulleted-list"><li style="list-style-type:circle">use</li></ul><ul id="aaccaebb-e335-4056-b294-5d2bfe19606b" class="bulleted-list"><li style="list-style-type:circle">release → either it’s done with the resource or it terminates</li></ul></li></ul><ul id="73a96adf-2916-4a4c-8e23-56a10522db23" class="bulleted-list"><li style="list-style-type:disc">System throughput drops and the system actually freezes</li></ul><ul id="c4bef484-b67b-4079-bc4a-4ed59345506b" class="bulleted-list"><li style="list-style-type:disc">The only solution would be to restart the system</li></ul><ul id="e9c99715-87a4-4bc2-8cfb-47b63e481ffc" class="bulleted-list"><li style="list-style-type:disc">A deadlock does not imply all processes are blocked</li></ul><ul id="c788fa77-74d3-4988-ab2e-f3674cbd3321" class="bulleted-list"><li style="list-style-type:disc">Processes are not blocked and which are not part of deadlock → active processes</li></ul><ul id="ba8ec3fb-0560-42ef-a226-1a84b3c6b3e5" class="bulleted-list"><li style="list-style-type:disc">Resource type means a distinct type of resource</li></ul><ul id="b3a3dc5c-50e2-46a9-b634-d27b6caccc5d" class="bulleted-list"><li style="list-style-type:disc">Let’s say we have n distinct resource types</li></ul><ul id="33379be6-dd77-4464-b5e7-43744d56bf93" class="bulleted-list"><li style="list-style-type:disc">A process would require multiple resources</li></ul><ul id="a6531bfe-13b9-41cb-8557-3b05749cb476" class="bulleted-list"><li style="list-style-type:disc">If we dynamically allocate memory, it won’t be released until the process is terminated</li></ul><h1 id="acdf2cc5-e7b6-41fe-98d0-1bffe2ac23b4" class="">Conditions for Deadlock</h1><p id="f3568440-5d16-4f14-bd63-9db697607774" class="">Deadlock can arise if four conditions hold simultaneously</p><ul id="994b1d8d-4d2e-4a9f-a7e0-04980742ba21" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">Mutual Exclusion</span>: only one process at a time can use a resource</li></ul><ul id="27d7ac5b-95a5-4b07-99ab-21536d5dd4f3" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">Hold and wait</span>: a process holding at least one resource is waiting to acquire additional resources held by other processes</li></ul><ul id="0943b338-336a-42c0-ba1a-e4971475d2d3" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">No preemption</span>: a resource can be released only voluntarily by the process holding it, after that process has completed its task</li></ul><ul id="c8422b3a-5cbc-4dfe-a3b0-935e36fd1c6f" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">Circular wait</span>: there exists a set {P0, P1, … Pn} of waiting processes such that P0 is waiting for a resource that is held by P1, P1 is waiting for a resource that is held by P2,…Pn-1 is waiting for a resource that is held by Pn and Pn is waiting for a resource that is held by P0</li></ul><h1 id="37743fe8-e62d-4d15-bc9e-8983a0becba6" class="">Resource Allocation Graph</h1><ul id="f087309a-2d7c-47e7-b46f-fdb4ad83bbae" class="bulleted-list"><li style="list-style-type:disc">A set of vertices V and a set of edges E</li></ul><ul id="b511393f-8e59-4a15-9b7c-0ec6daee6e8d" class="bulleted-list"><li style="list-style-type:disc">V is partitioned into two types:<ul id="8c16bc91-2229-415a-8e8e-2f94f52e53a5" class="bulleted-list"><li style="list-style-type:circle">P = {P1, P2, … Pn} the set consisting of all the processes in the system</li></ul><ul id="11bba55b-f7ce-4386-b62a-884ee3147fd6" class="bulleted-list"><li style="list-style-type:circle">R = {R1, R2, … Rm} the set consisting of all resource types in the system</li></ul></li></ul><ul id="ba2d5afa-3e8a-475a-97e7-e08b79323cd3" class="bulleted-list"><li style="list-style-type:disc">Request Edge - directed edge Pi → Rj</li></ul><ul id="bf45964c-c1c2-4b58-91e0-cc1cc417562d" class="bulleted-list"><li style="list-style-type:disc">Assignment Edge - directed Edge Rj → Pi</li></ul><ul id="dde24fd1-6faa-47b0-a55f-b94f6c00135d" class="bulleted-list"><li style="list-style-type:disc">Process is a circle, Rectangle is a Resource (R-R). Dots represent instances</li></ul><figure id="c64a22ed-da54-4c1f-99a2-6e819c7a136d" class="image"><a href="Ch%207%20Deadlocks%203ab3c895bc784cbb8d655aba1ef34291/Untitled.png"><img style="width:1825px" src="Ch%207%20Deadlocks%203ab3c895bc784cbb8d655aba1ef34291/Untitled.png"/></a></figure><ul id="d500f992-65e8-4277-9020-255cb00f5bbe" class="bulleted-list"><li style="list-style-type:disc">All the instances are equivalent for a process. The request gets satisfied</li></ul><ul id="1f3012ff-3f18-4367-8725-8b0810a64c10" class="bulleted-list"><li style="list-style-type:disc">Request edge is not pinpointing to an instance and it doesn’t enter the rectangle</li></ul><ul id="5a0c560a-90b9-4c9c-9748-06b6a50062b8" class="bulleted-list"><li style="list-style-type:disc">Assignment edge pe you have to say which instance has been allocated for a process</li></ul><h2 id="d31379e8-dccd-40cd-ac6a-408db77261d3" class="">How do you infer a deadlock?</h2><ul id="0686b10f-20de-4d3f-8967-fd233b471cbc" class="bulleted-list"><li style="list-style-type:disc">We search for cycles. First one has cycle. Second also has cycle. We can’t conclude that if there’s a cycle there’s no deadlock</li></ul><ul id="1b5b26d0-49b0-4bd5-ab55-37a36f1bcbf9" class="bulleted-list"><li style="list-style-type:disc">If graph contains no cycles, no deadlock</li></ul><ul id="ff5a5b12-b01a-42ca-b55b-95977c857167" class="bulleted-list"><li style="list-style-type:disc">If graph contains cycle,<ul id="92e6b5a1-00da-4439-a56c-869db33d1e39" class="bulleted-list"><li style="list-style-type:circle">If only one instance is there, then deadlock</li></ul><ul id="6ebd187f-d577-4b3e-8b34-07b3c0f82655" class="bulleted-list"><li style="list-style-type:circle">If several instances per resource type, possibility of deadlock, look for knot</li></ul></li></ul><ul id="5cb70c2c-500e-49ed-92fb-075efdf6af93" class="bulleted-list"><li style="list-style-type:disc">Knot<ul id="71d73d11-a1ac-467d-9df8-31c3e3bc1944" class="bulleted-list"><li style="list-style-type:circle">A collection of vertices and edges such that every vertex in the knot has outgoing edges that terminate at other vertices in the knot</li></ul><ul id="d2e6c3d1-a6f5-4af6-b285-5da2d21eaccd" class="bulleted-list"><li style="list-style-type:circle">A strongly connected subgraph of a directed graph such that starting from any node in the subset it is impossible to leave the knot by following the edges of the graph</li></ul></li></ul><ul id="d4c14a1d-0ca9-40bd-8f11-fec1218db289" class="bulleted-list"><li style="list-style-type:disc">You should always terminate the cycle with the same vertex as what you started with</li></ul><h1 id="905fd270-6820-4b59-824a-38ca0c04e6c6" class="">Deadlock Handling</h1><ul id="fc199ed2-6c10-47a7-b790-6050ba6ea9c3" class="bulleted-list"><li style="list-style-type:disc">Ensure the system will never enter the deadlock state<ul id="b1c6d39d-1c96-4332-a2a9-09f36af66fef" class="bulleted-list"><li style="list-style-type:circle">Deadlock prevention → will try to make atleast one of the condition not true. stop the problem from happening</li></ul><ul id="eeaefe67-ea9e-436c-9446-8c83ff888ab6" class="bulleted-list"><li style="list-style-type:circle">Deadlock avoidance → you predict if there is a chance of deadlock. if yes, don’t give but if no then give the resource. if you don’t give maybe give it later</li></ul></li></ul><ul id="8fa52e7b-8783-4587-bc2a-d0a62492e203" class="bulleted-list"><li style="list-style-type:disc">Allow the system to enter a deadlock state and then recover</li></ul><ul id="14e4d9c7-e4d6-4f3c-886b-2915a736d52b" class="bulleted-list"><li style="list-style-type:disc">Ignore the problem and pretend that deadlocks never occur in the system</li></ul><h1 id="b2fe99b0-4472-403c-b2cd-641cb79317b6" class="">A. Deadlock Prevention - Break atleast one condition</h1><h3 id="d77e1e37-52f7-45ff-9225-fc88e36d3e7a" class="">Mutual Exclusion</h3><ul id="f1c4fd9b-1a4e-4e64-92af-d424cd61ce54" class="bulleted-list"><li style="list-style-type:disc">not required for sharable resources - read only files</li></ul><ul id="0f2bf304-203a-4c17-aef0-78ff172dd70d" class="bulleted-list"><li style="list-style-type:disc">must hold for non sharable resources</li></ul><h3 id="c7c2c75e-4e33-472c-8415-3b680b40a630" class="">Hold and wait</h3><ul id="1e1c67e1-ffe9-45ad-bbca-80d6d38f5d44" class="bulleted-list"><li style="list-style-type:disc">must guarantee that whenever a process requests a resource, it does not hold any other resources</li></ul><ul id="a8167aef-d075-4bd7-8245-df61007d2d6c" class="bulleted-list"><li style="list-style-type:disc">require process to request and be allocated all its resources before it begins execution</li></ul><ul id="0de1e550-6dcc-4a56-9fba-5d7e23bbe375" class="bulleted-list"><li style="list-style-type:disc">allow process to request resources only when the process has none allocated to it</li></ul><ul id="dbf9bc0a-5013-4af1-9fb1-4e70957657fb" class="bulleted-list"><li style="list-style-type:disc">Low resource utilization but starvation is possible </li></ul><ul id="5e577a0b-c2d8-4baa-96e4-135d63301b9e" class="bulleted-list"><li style="list-style-type:disc">Say P1 requires R1 and R2 in first half, but R2 and R3 in the second half. P1 has to drop both R1 and R2 before getting R2 and R3</li></ul><h3 id="f1d732b3-e522-4991-8f12-b04b4f4cc957" class="">No Preemption</h3><ul id="7f243304-de9f-4acd-ba8c-39c13754b78c" class="bulleted-list"><li style="list-style-type:disc">If a process that is holding some resources requests another resource that cannot be immediately allocated to it, then all resources currently being held are released</li></ul><ul id="05c07065-5cfd-454e-aa3d-8ba913cea02c" class="bulleted-list"><li style="list-style-type:disc">Preempted resources are added to the list of resources for which the process is waiting</li></ul><ul id="99525c75-4696-4b06-8420-bc5764863bd0" class="bulleted-list"><li style="list-style-type:disc">Process will be restarted only when it can regain its old resources as well as the new ones that it is requesting</li></ul><hr id="dbaddefe-aca3-42cd-9ca9-142414bd0f88"/><ul id="65faa3aa-81ee-48ba-b9c0-704d129bff39" class="bulleted-list"><li style="list-style-type:disc">When a process P1 requests some resources and they are allocated to some other waiting process P2, then preempt the desired resources from P2 and give them to P1</li></ul><ul id="f6753e4c-066d-42a0-a8dc-4d50e4ec23ce" class="bulleted-list"><li style="list-style-type:disc">If the resources are not allocated to a waiting process then P1 must wait </li></ul><ul id="b29ec931-a119-4aa2-b8ac-d69ed022b442" class="bulleted-list"><li style="list-style-type:disc">While waiting P1’s resources may be preempted</li></ul><h3 id="fd5661fc-587a-4ba2-a337-2da53e453267" class="">Circular Wait </h3><ul id="014bc2fe-dfb6-4f1c-819b-c65381d1801b" class="bulleted-list"><li style="list-style-type:disc">Impose a total ordering of all resource types, and require that each process requests resources in an increasing order of enumeration</li></ul><ul id="bfd8ee38-e7f7-487e-9607-145885597c21" class="bulleted-list"><li style="list-style-type:disc">define a 1:1 function F:R → N (N is a set of natural nos)</li></ul><ul id="c63b5481-9253-4d53-b490-db4c9012a538" class="bulleted-list"><li style="list-style-type:disc">Says a process Pi has requested a no of instances of Ri</li></ul><ul id="20c39816-11c3-40a7-805d-9f8d3ce8145c" class="bulleted-list"><li style="list-style-type:disc">Later Pi can request resources of type Rj iff F(Rj) &gt; F(Ri)</li></ul><ul id="2ed16124-7afe-4d37-af86-44a33aeb5fc1" class="bulleted-list"><li style="list-style-type:disc">Alternatively, if Pi requests an instance of Rj then Pi must have released all instances of Ri such that F(Ri) ≥ F(Rj)</li></ul><ul id="6bc0e916-fbff-4643-8d15-d9932a33e303" class="bulleted-list"><li style="list-style-type:disc">Several instances of same resource type must be requested for in a single request</li></ul><ul id="6a5c0cd3-c075-4888-87c8-b3cf9bc9a4a4" class="bulleted-list"><li style="list-style-type:disc">Proof by contradiction</li></ul><h1 id="f216f719-537a-4c23-8eb5-669eca9aeb90" class="">B. Deadlock Avoidance → Request Resources</h1><ul id="92478cf3-bac5-4c72-b80c-30a9dbf48627" class="bulleted-list"><li style="list-style-type:disc">Requires that the system has some additional a priori information</li></ul><ul id="8baf8698-504c-4a68-985e-5df22f67816d" class="bulleted-list"><li style="list-style-type:disc">A for avoidance → a for additional information required</li></ul><ul id="203fc199-7ece-488e-8669-bef7fe710c31" class="bulleted-list"><li style="list-style-type:disc">Requires that each process declare the max number of resources of each type that it may need</li></ul><ul id="fda6b17b-41c8-42a9-a228-0b70625196f6" class="bulleted-list"><li style="list-style-type:disc">Resource allocation state is defined by the number of available and allocated resources and the maximum demands of the processes</li></ul><ul id="9957ac37-2331-43a8-a74d-a1d87158c8eb" class="bulleted-list"><li style="list-style-type:disc">Deadlock avoidance algorithm dynamically examines the resource allocation state to ensure that there can never be a circular wait condition</li></ul><h2 id="cd4c6be4-943b-447e-b746-015808b4a668" class="">Safe State</h2><ul id="125014d6-666b-4c89-9b1c-3a81eb276e09" class="bulleted-list"><li style="list-style-type:disc">When a process requests an available resource, system must decide if immediate allocation leaves the system in a safe state</li></ul><ul id="2bb51ef3-78c9-45ed-8891-6b3bf61b9da2" class="bulleted-list"><li style="list-style-type:disc">System is in safe state if there exists a sequence &lt;P1, P2, …. Pn&gt; of all processes in the systems such that for each Pi, the resources that Pi can still request can be satisfied by currently available resources + resources held by all the Pj with j &lt; i</li></ul><ul id="72bba393-4136-4952-a134-a67e4412ba29" class="bulleted-list"><li style="list-style-type:disc">That is:<ul id="7842dae5-5ef5-482f-ba48-a7731d79a2c4" class="bulleted-list"><li style="list-style-type:circle">if resources needed by Pi are not immediately available then Pi can wait until all Pj have finished</li></ul><ul id="669391d9-8462-4e01-884e-96965afe2a1c" class="bulleted-list"><li style="list-style-type:circle">When Pj is finished, Pi can obtain needed resources, execute, return allocated resources and terminate</li></ul><ul id="0f7e6e84-08d5-454a-9ba5-5828e62709a7" class="bulleted-list"><li style="list-style-type:circle">When Pi terminates, Pi+1 can obtain it’s needed resources and so on</li></ul></li></ul><h2 id="d0b589da-9c54-4890-8b11-121b156b6f05" class="">Inferences</h2><ul id="f360ba07-4dc8-4cae-8798-aabb266b40d6" class="bulleted-list"><li style="list-style-type:disc">If a system is in safe state → no deadlock</li></ul><ul id="4053e0a9-30c6-41d2-adfc-1148c80581d4" class="bulleted-list"><li style="list-style-type:disc">If a system is in unsafe state → possibility of deadlock</li></ul><ul id="878103b9-6d1c-403c-928b-497df83239e8" class="bulleted-list"><li style="list-style-type:disc">Avoidance → ensure that a system will never enter an unsafe state</li></ul><hr id="2e4cdca4-7f98-4752-9a0d-bdd14e74df95"/><p id="e6f23d7f-0d83-4dc8-92bb-70630cdfa98b" class="">If we have 3 processes where</p><table id="508ce683-6736-46b2-a7f2-31fe8b4b4fb2" class="simple-table"><tbody><tr id="788430b3-17cb-47db-8c29-bf7ce321b4bf"><td id="c@:[" class=""></td><td id="QSbv" class="">Max</td><td id="Vr:~" class="">Current → (Need = Max - Current)</td></tr><tr id="5dd6367c-cb0b-45b5-9a2e-9bec6092a8df"><td id="c@:[" class="">P0</td><td id="QSbv" class="">10</td><td id="Vr:~" class="">5 → 5 (10-5)</td></tr><tr id="4d00ee5d-8051-4db0-b9ea-b7a5e8a7c3d7"><td id="c@:[" class="">P1</td><td id="QSbv" class="">4</td><td id="Vr:~" class="">2 → 2 (4-2)</td></tr><tr id="75337a48-4c70-4437-a42d-3c93e8c04539"><td id="c@:[" class="">P2</td><td id="QSbv" class="">9</td><td id="Vr:~" class="">2 → 7 (9-2)</td></tr></tbody></table><ul id="de879caf-64a7-4f09-9b6c-faefdb881ef5" class="bulleted-list"><li style="list-style-type:disc">Remaining = 3, now if we write the new resources</li></ul><ul id="fd867060-052e-41de-823f-8a39216ee00c" class="bulleted-list"><li style="list-style-type:disc">Safe sequence ⇒ &lt;P1, now after this total remaining = 3 + 2 = 5, P0, P2&gt;</li></ul><p id="47021b12-7cb5-4e8e-8e77-58aaac4c60cc" class="">If we change P2</p><table id="fa5dcb9f-1a93-4967-ac3a-2e5e4239bbe1" class="simple-table"><tbody><tr id="b5271ed8-372d-4c27-ae1b-e524e83ea7fb"><td id="c@:[" class=""></td><td id="QSbv" class="">Max</td><td id="Vr:~" class="">Current → (Need = Max - Current)</td></tr><tr id="615520f8-8120-4bc6-9175-46a13713943d"><td id="c@:[" class="">P0</td><td id="QSbv" class="">10</td><td id="Vr:~" class="">5 → 5 (10-5)</td></tr><tr id="7a900330-99d8-4241-abba-44c4e1c3ddf1"><td id="c@:[" class="">P1</td><td id="QSbv" class="">4</td><td id="Vr:~" class="">2 → 2 (4-2)</td></tr><tr id="ef3eb5b4-575c-4da4-a0cc-5b50b2eb34de"><td id="c@:[" class="">P2</td><td id="QSbv" class="">9</td><td id="Vr:~" class="">3 → 6 (9-3)</td></tr></tbody></table><ul id="c6fd1a3a-52ab-46c4-9f5e-165db02a1e1d" class="bulleted-list"><li style="list-style-type:disc">Remaining = 2, now if we write the new resources</li></ul><ul id="dc28507c-0791-4f65-9ca9-0a7c9d2f6f65" class="bulleted-list"><li style="list-style-type:disc">Safe sequence ⇒ &lt;P1, now after this total remaining = 2 + 2 = 4. Now nothing can execute, so there is no safe sequence</li></ul><h2 id="b64f6ce5-e710-4c8f-bdbe-8ef10804e9e8" class="">Avoidance Algorithms</h2><h3 id="9a81356a-a71a-42ee-860e-1d0b72612b27" class="">Single instance of a resource type</h3><ul id="713974f0-00cf-449e-aa61-035b8a68cbe0" class="bulleted-list"><li style="list-style-type:disc">Use resource allocation graph</li></ul><ul id="f4263e3c-e1e9-443e-a1da-a7796c60c2f7" class="bulleted-list"><li style="list-style-type:disc">Claim edge: Pi ⇒ Rj indicate that process Pi may request resource Rj in future; represented by a dashed line</li></ul><ul id="b5bbcc15-6dd2-4d65-b1a9-c27aca35922f" class="bulleted-list"><li style="list-style-type:disc">Claim edge converts to request edge when a process requests a resource</li></ul><ul id="1227c1b2-9cf2-4320-8a8d-e0302640d923" class="bulleted-list"><li style="list-style-type:disc">Request edge converted to an assignment edge when the resource is allocated to the process</li></ul><ul id="7fbcc3e8-32a8-4f42-a451-5cdf5e249f50" class="bulleted-list"><li style="list-style-type:disc">When a resource is released by a process, assignment edge reconverts to a claim edge</li></ul><ul id="7186a57e-2b2c-4946-b470-dbb1daea8d9c" class="bulleted-list"><li style="list-style-type:disc">Resources must be claimed a priori in the system</li></ul><ul id="fd58da1d-c6b1-4049-a215-72dcb5e79355" class="bulleted-list"><li style="list-style-type:disc">Request can be granted only if converting the request edge to an assignment edge does not result in the formation of a cycle in the RAG</li></ul><figure id="0aadc90a-7933-4d04-bde6-44339468e660" class="image"><a href="Ch%207%20Deadlocks%203ab3c895bc784cbb8d655aba1ef34291/Untitled%201.png"><img style="width:192px" src="Ch%207%20Deadlocks%203ab3c895bc784cbb8d655aba1ef34291/Untitled%201.png"/></a></figure><ul id="562d9ff3-8640-48f7-be9b-9b2e2732abe1" class="bulleted-list"><li style="list-style-type:disc">So basically we convert dotted lines to solid lines and try to figure out if we can get a cycle or not</li></ul><ul id="c60f3eb8-9fc8-4970-9499-ab2a183b264e" class="bulleted-list"><li style="list-style-type:disc">In the above picture, we have initial scenario as the first situation and then we give the requested resource to P2 and we observe we get a cycle (wrt claim edges) so this request should not be given</li></ul><h3 id="57050b18-fa6b-48f9-96dc-726e80f4c262" class="">Multiple instances of a resource type</h3><ul id="ce5428a0-d149-410e-abfd-acbd234507f2" class="bulleted-list"><li style="list-style-type:disc">Use the banker’s algorithm</li></ul><ul id="29347cee-d9fb-4e7c-a937-41ce0fc680ae" class="bulleted-list"><li style="list-style-type:disc">Each process must a priori declare maximum use</li></ul><ul id="98ed2164-5a6e-49cb-b7c1-d5c40a5f1121" class="bulleted-list"><li style="list-style-type:disc">When a process requests a resource it may have to wait</li></ul><ul id="ad49426d-7e32-4cd7-88f0-d7533418a6ce" class="bulleted-list"><li style="list-style-type:disc">When a process gets all its resources it must return them in a finite amount of time</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1bc0013b-c2ec-4a6a-aa8d-ca257cc74b6f" class="code code-wrap"><code class="language-Arduino">- n = number of processes and m = number of resource types
+- Available → vector of length m → available[j] = k
+- Max → nxm matrix where Max[i][j] = k
+- Allocation → nxm matrix where Allocation[i][j] = k
+- Need → nxm matrix where Need[i][j] = k
+- Need[i][j] = Max[i][j] - Allocation[i][j]
+- Each row of max, allocation and need can be treated as vectors
+- If X and Y are 2 vectors, then X ≤ Y iff X[i] ≤ Y[i] for all i = 1,2,… n
+- X &lt; Y implies X&lt;=Y and X!=Y</code></pre><h3 id="9241063e-daf5-4d77-a6ca-28d04c593b8e" class="">Bankers - Safety Algorithm - O(mn^2)</h3><ol type="1" id="3b869625-67dd-40d7-a85e-f22e0fd641e3" class="numbered-list" start="1"><li>Let work and finish be vectors of length m and n respectively and Initialize: Work = Available, Finish[i] = false for i = 0, 1, … n-1</li></ol><ol type="1" id="8c64214f-1016-45be-912e-3077a2c178bd" class="numbered-list" start="2"><li>Find an i(starting from 0 in each iteration) such that both:<ul id="3640eff4-8cbb-4c4b-88c8-ec863efdbb80" class="bulleted-list"><li style="list-style-type:disc">finish[i] == false</li></ul><ul id="23dc23b5-d051-4306-9d43-98deb795e1a4" class="bulleted-list"><li style="list-style-type:disc">Need_i ≤ Work</li></ul><ul id="1d91e563-e77a-415f-9064-89606aa02e38" class="bulleted-list"><li style="list-style-type:disc">If no such i exists, go to step 4</li></ul></li></ol><ol type="1" id="d576ff6f-79d7-41b2-973a-ed13b72f3615" class="numbered-list" start="3"><li>Work = work + allocation_i and finish[i] = true go to step 2</li></ol><ol type="1" id="bac449c3-5099-4168-8aec-573ea0d763b3" class="numbered-list" start="4"><li>If finish[i] == true for all i then the system is in a safe state</li></ol><h3 id="f4797d71-8796-4acf-9feb-37e50361f52d" class="">Example:</h3><ul id="cd3366d9-17e2-4764-bf4f-8b469c08149c" class="bulleted-list"><li style="list-style-type:disc">A 10 instances, B 5 instances, C 7 instances</li></ul><ul id="284209fb-ef6c-49a5-b4fc-ac286a391456" class="bulleted-list"><li style="list-style-type:disc">Snapshot at time T0 is given below</li></ul><table id="9f077d0b-ef24-489c-8228-f451461a5821" class="simple-table"><tbody><tr id="e38dfb15-e18a-45c9-b6df-c1c7eaa03ef9"><td id="zm@?" class=""><span style="border-bottom:0.05em solid"><strong>Process Matrix</strong></span></td><td id="lr{i" class=""><span style="border-bottom:0.05em solid">Allocation</span></td><td id="m_`|" class=""><span style="border-bottom:0.05em solid">Allocation</span></td><td id="IVOk" class=""><span style="border-bottom:0.05em solid">Allocation</span></td><td id="ZYlo" class=""><span style="border-bottom:0.05em solid">Max</span></td><td id="Cq=R" class=""><span style="border-bottom:0.05em solid">Max</span></td><td id="qL@e" class=""><span style="border-bottom:0.05em solid">Max</span></td></tr><tr id="c0de8520-a22d-4097-89c5-338c91111407"><td id="zm@?" class=""></td><td id="lr{i" class=""><span style="border-bottom:0.05em solid">A</span></td><td id="m_`|" class=""><span style="border-bottom:0.05em solid">B</span></td><td id="IVOk" class=""><span style="border-bottom:0.05em solid">C</span></td><td id="ZYlo" class=""><span style="border-bottom:0.05em solid">A</span></td><td id="Cq=R" class=""><span style="border-bottom:0.05em solid">B</span></td><td id="qL@e" class=""><span style="border-bottom:0.05em solid">C</span></td></tr><tr id="2971bc97-dbca-48af-84f5-6354340e3c41"><td id="zm@?" class=""><span style="border-bottom:0.05em solid">P0</span></td><td id="lr{i" class="">0</td><td id="m_`|" class="">1</td><td id="IVOk" class="">0</td><td id="ZYlo" class="">7</td><td id="Cq=R" class="">5</td><td id="qL@e" class="">3</td></tr><tr id="833440a9-cbd1-4780-acdd-82657ded3296"><td id="zm@?" class=""><span style="border-bottom:0.05em solid">P1</span></td><td id="lr{i" class="">2</td><td id="m_`|" class="">0</td><td id="IVOk" class="">0</td><td id="ZYlo" class="">3</td><td id="Cq=R" class="">2</td><td id="qL@e" class="">2</td></tr><tr id="f5c14f40-9637-438c-94bd-dd116bdde8d7"><td id="zm@?" class=""><span style="border-bottom:0.05em solid">P2</span></td><td id="lr{i" class="">3</td><td id="m_`|" class="">0</td><td id="IVOk" class="">2</td><td id="ZYlo" class="">9</td><td id="Cq=R" class="">0</td><td id="qL@e" class="">2</td></tr><tr id="70941bbe-b9b1-42b9-875f-deb639c8978b"><td id="zm@?" class=""><span style="border-bottom:0.05em solid">P3</span></td><td id="lr{i" class="">2</td><td id="m_`|" class="">1</td><td id="IVOk" class="">1</td><td id="ZYlo" class="">2</td><td id="Cq=R" class="">2</td><td id="qL@e" class="">2</td></tr><tr id="206ba457-5a6b-4b92-8f44-dff736b63c22"><td id="zm@?" class=""><span style="border-bottom:0.05em solid">P4</span></td><td id="lr{i" class="">0</td><td id="m_`|" class="">0</td><td id="IVOk" class="">2</td><td id="ZYlo" class="">4</td><td id="Cq=R" class="">3</td><td id="qL@e" class="">3</td></tr></tbody></table><ul id="08d0c75e-8885-41db-9430-65a0e9ffa14f" class="bulleted-list"><li style="list-style-type:disc">We have allocation vector as (7,2,5) and the total as (10, 5, 7)</li></ul><ul id="d2d5bb9a-00aa-4676-9049-2de815bbad63" class="bulleted-list"><li style="list-style-type:disc">So Available will be (3,3,2)</li></ul><table id="e65177e2-1107-45f2-8715-479290ae8645" class="simple-table"><tbody><tr id="4d4b2000-10bb-47ef-b1cb-23e618cd2890"><td id="MI}V" class=""><span style="border-bottom:0.05em solid"><strong>Need Matrix</strong></span></td><td id="hT}X" class=""><span style="border-bottom:0.05em solid">A</span></td><td id="SEWJ" class=""><span style="border-bottom:0.05em solid">B</span></td><td id="kMm]" class=""><span style="border-bottom:0.05em solid">C</span></td></tr><tr id="180236f7-9536-4d58-b586-58433eda1245"><td id="MI}V" class=""><del>P0</del></td><td id="hT}X" class=""><del>7</del></td><td id="SEWJ" class=""><del>4</del></td><td id="kMm]" class=""><del>3</del></td></tr><tr id="21c3fbee-2281-4f5e-9c90-ba390f1a042a"><td id="MI}V" class=""><del>P1</del></td><td id="hT}X" class=""><del>1</del></td><td id="SEWJ" class=""><del>2</del></td><td id="kMm]" class=""><del>2</del></td></tr><tr id="b14020cf-46ba-421c-8820-1ceb96db61f3"><td id="MI}V" class=""><del>P2</del></td><td id="hT}X" class=""><del>6</del></td><td id="SEWJ" class=""><del>0</del></td><td id="kMm]" class=""><del>0</del></td></tr><tr id="ab29d289-4089-4a47-881a-e7f995af53af"><td id="MI}V" class=""><del>P3</del></td><td id="hT}X" class=""><del>0</del></td><td id="SEWJ" class=""><del>1</del></td><td id="kMm]" class=""><del>1</del></td></tr><tr id="62b7e23d-20b5-44b2-8f9f-5543275416b1"><td id="MI}V" class="">P4</td><td id="hT}X" class="">4</td><td id="SEWJ" class="">3</td><td id="kMm]" class="">1</td></tr></tbody></table><ul id="c067dcf2-d0d2-45ea-b1af-df50464aa6ff" class="bulleted-list"><li style="list-style-type:disc">We take work as a copy as available → work = 3,3,2. <strong><span style="border-bottom:0.05em solid">We always iterate from 0</span></strong></li></ul><ul id="f20166ac-ecd2-4ab7-b165-2c0a5fb66e8b" class="bulleted-list"><li style="list-style-type:disc">P1 → Need ≤ Work → Work = (3,3,2) + (2,0,0)</li></ul><ul id="e670c1da-58c1-4c7f-a2e2-f6ccac03d3e2" class="bulleted-list"><li style="list-style-type:disc">P3 → Need ≤ Work → Work = 5,3,2 → 5,3,2 + 2,1,1 ⇒ 7,4,3</li></ul><ul id="553ea506-5fcf-4108-8c05-60766a96ba2b" class="bulleted-list"><li style="list-style-type:disc">P0 → Need ≤ Work → Work = 7,4,3 += 0,1,0 = 7,5,3</li></ul><ul id="b43f67a6-5f77-45a7-bfc5-05b1ded142db" class="bulleted-list"><li style="list-style-type:disc">P2 → Need ≤ Work → Work = 7,5,3 += 3,0,2 = 10,5,5</li></ul><ul id="d118668b-e670-49d4-84dd-84ec39dafbbc" class="bulleted-list"><li style="list-style-type:disc">P4 → Need ≤ Work → Work = 10,5,5 += 0,0,2 = 10,5,7 (<strong><span style="border-bottom:0.05em solid">SHOULD BE SAME AS TOTAL ALWAYS</span></strong>)</li></ul><ul id="54e7fd17-a0ed-4a3f-9716-3e62150739c1" class="bulleted-list"><li style="list-style-type:disc">Answer: ORDER → P1,P3,P0,P2,P4</li></ul><h2 id="9bd89f2f-7ccf-484d-9388-f62f39661832" class="">Resource Request Algorithm</h2><ul id="7b39da94-2cbd-4b4a-b081-ed5554dd9a4b" class="bulleted-list"><li style="list-style-type:disc">Request_i = request vector for process Pi. If request_i[j] = k then process Pi wants k instances of resource type Rj<ul id="9457a92c-fb3e-4865-a2b7-657e8d3d1eeb" class="bulleted-list"><li style="list-style-type:circle">If request_i ≤ need_i go to step 2. Otherwise raise error condition, since process has exceeded its maximum claim</li></ul><ul id="aa4d6766-7718-4865-80a3-c7ac063ce668" class="bulleted-list"><li style="list-style-type:circle">if request_i ≤ available_i go to step 3. Otherwise Pi must wait, since resources are not available</li></ul><ul id="4d59b706-4aa4-4d9d-bb72-514ea373d4b4" class="bulleted-list"><li style="list-style-type:circle">Pretend to allocate requested resources to Pi by modifying the state as follows<ul id="aa9942d6-6cf2-4a5a-86c3-a8e2b99f72e7" class="bulleted-list"><li style="list-style-type:square">Available = Available - Request_i</li></ul><ul id="cdf63bb5-8a8b-4bc6-bef2-4d8ba04e0aa2" class="bulleted-list"><li style="list-style-type:square">Allocation_i = Allocation_i + Request_i</li></ul><ul id="c4c026f4-99ef-4366-8a12-9a42980c60ba" class="bulleted-list"><li style="list-style-type:square">Need_i = Need_i - Request_i</li></ul></li></ul><ul id="927508f6-3fb1-4eb5-acc1-bb8480313101" class="bulleted-list"><li style="list-style-type:circle">If safe → the resources are allocated to Pi</li></ul><ul id="8aa605cb-8538-4a2d-8b20-83be84193fcf" class="bulleted-list"><li style="list-style-type:circle">If unsafe → Pi must wait and the old resource allocation state is restored</li></ul></li></ul><ul id="6a7abd03-c439-405b-8725-fb58721ac522" class="bulleted-list"><li style="list-style-type:disc">Basically here we do resource allocation then do banker’s algorithm</li></ul><h1 id="be56fc12-6e2c-44ff-a6e1-72e0edfe82a8" class="">C. Deadlock Detection</h1><ul id="1edbf09f-bbba-4faa-a81c-1e95c2dfb0fd" class="bulleted-list"><li style="list-style-type:disc">Allow system to enter deadlock state</li></ul><ul id="3e5142e9-0b2b-4054-ab6a-f8efa647c8a5" class="bulleted-list"><li style="list-style-type:disc">Detection algorithm</li></ul><ul id="0b466017-d06c-4bcd-ab87-1b37e378835b" class="bulleted-list"><li style="list-style-type:disc">Recovery Scheme</li></ul><h2 id="4cecceff-080b-4841-bbde-97760f44e3fc" class="">Single Instance of each Resource Type</h2><ul id="f3ee84ee-c1b5-4310-b5a7-e3ca8ea0b888" class="bulleted-list"><li style="list-style-type:disc">Maintain the wait-for graph<ul id="f3ca467b-61ab-4d9b-bab0-6e8c92876642" class="bulleted-list"><li style="list-style-type:circle">Nodes are processes</li></ul><ul id="2f7f352d-6132-45e0-bd99-d39ba1acf6c7" class="bulleted-list"><li style="list-style-type:circle">Pi → Pj if Pi is waiting for Pj</li></ul></li></ul><ul id="934f5d67-c08c-4f72-ab38-4db296be6945" class="bulleted-list"><li style="list-style-type:disc">Periodically invoke an algorithm that searches for a cycle in the graph</li></ul><ul id="02d5ddc5-500b-4107-b994-f8892a5c4d63" class="bulleted-list"><li style="list-style-type:disc">If there is a cycle there exists a deadlock</li></ul><figure id="01af1847-25b7-47ba-9e41-5d0b5343ae05" class="image"><a href="Ch%207%20Deadlocks%203ab3c895bc784cbb8d655aba1ef34291/Untitled%202.png"><img style="width:528px" src="Ch%207%20Deadlocks%203ab3c895bc784cbb8d655aba1ef34291/Untitled%202.png"/></a></figure><h1 id="3a67c1eb-7b19-407f-8e9a-60ce5c3cf364" class="">D. Deadlock Recovery</h1><h2 id="87e71d8c-78c8-4882-bc7a-5bb91e8cb733" class="">Process Termination</h2><ul id="c8b89ed0-aba7-4d13-8817-e6e41fc311d6" class="bulleted-list"><li style="list-style-type:disc">Abort all deadlocked processes</li></ul><ul id="68c9b97e-5240-48fa-a0e6-d570b43f8f1c" class="bulleted-list"><li style="list-style-type:disc">Abort one process at a time until the deadlock cycle is terminating</li></ul><ul id="e2112a3f-4c96-4cc8-9cda-bd8282fa09df" class="bulleted-list"><li style="list-style-type:disc">In which order we should abort processes<ul id="a4bd29be-05f3-42a8-aab3-3e773661e227" class="bulleted-list"><li style="list-style-type:circle">Priority of the process</li></ul><ul id="5fa5f288-8ecb-4225-bdd7-252dce7186fd" class="bulleted-list"><li style="list-style-type:circle">How long process has computed and how much longer to completion</li></ul><ul id="186497e1-6672-4fed-bcb8-00365b9ec57e" class="bulleted-list"><li style="list-style-type:circle">Resources the process has used</li></ul><ul id="daf86f98-3478-40f0-bf2c-4450bb1d01e8" class="bulleted-list"><li style="list-style-type:circle">Resources the process needs to complete</li></ul><ul id="7b6cd70c-c835-4668-9bd7-3ba5beff39b4" class="bulleted-list"><li style="list-style-type:circle">How many processes will need to be terminated</li></ul><ul id="91cdf2c5-d872-43dd-9840-8d5bc20bccd9" class="bulleted-list"><li style="list-style-type:circle">Is process interactive or batch</li></ul></li></ul><h2 id="c8f1e3d0-1dfe-4e09-8d30-2ef4ec897619" class="">Resource Preemption</h2><ul id="6fc0196d-1642-4f7e-92fa-3e483e9d3cff" class="bulleted-list"><li style="list-style-type:disc">Preempt some resources from processes and give these resources to other processes until the deadlock cycle is broken</li></ul><ul id="f565343b-0120-4a70-9d69-a436a38dcd4d" class="bulleted-list"><li style="list-style-type:disc">Selecting a victim - which resources and which processes, minimize cost by deciding order of preemption</li></ul><ul id="5df55fe9-ba3f-4bd7-8d46-36935b299d68" class="bulleted-list"><li style="list-style-type:disc">Roll back - return to some safe state, restart process for that state, total rollback or partials</li></ul><ul id="b1e313b4-d686-4a1b-8913-00a93e46b922" class="bulleted-list"><li style="list-style-type:disc">Starvation - some process may always be picked as victim, include number of rollback in cost factor</li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
