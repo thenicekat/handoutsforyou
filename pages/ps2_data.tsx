@@ -4,6 +4,7 @@ import { useState } from "react";
 import Menu from "../Components/Menu";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
+import { PS_Station } from "../types/PSData";
 
 export const getStaticProps: GetStaticProps = async () => {
     const fs = require("fs");
