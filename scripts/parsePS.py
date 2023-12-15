@@ -8,6 +8,11 @@ df = pd.read_csv('mastersheet.csv')
 companies = {}
 final_data = []
 
+# Convert all Year-Semester from 23-24 2 to 23-34 Sem 2 format
+for index, row in df.iterrows():
+    temp = row['Year-Semester']
+    df.at[index, 'Year-Semester'] = temp.split(' ')[0] + ' Sem ' + temp.split(' ')[1]
+
 # Go row by row and check if company already exists else create
 for index, row in df.iterrows():
     if row['Company'] not in companies:
@@ -32,6 +37,9 @@ for index, row in df.iterrows():
     
 for company in companies:
     final_data.append(companies[company])
+
+# Sort them based on mincgpa from highest to lowest using 23-24 2 as the key
+final_data.sort(key=lambda x: x['23-24 Sem 2']['mincgpa'], reverse=True)
     
 with open('../public/ps/ps2_data.json', 'w') as f:
     json.dump(final_data, f, indent=4)
