@@ -5,13 +5,6 @@ import Menu from "../Components/Menu";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 
-type PS_Station = {
-    name: string
-    last_paid_stipend: number
-    min_cgpa: number
-    max_cgpa: number
-}
-
 export const getStaticProps: GetStaticProps = async () => {
     const fs = require("fs");
     let ps2_chronicles = fs.readdirSync("./public/ps/ps2_chronicles/");
@@ -22,7 +15,6 @@ export const getStaticProps: GetStaticProps = async () => {
         },
     };
 };
-
 
 export default function PS({ ps2_chronicles }: any) {
     const [search, setSearch] = useState("");

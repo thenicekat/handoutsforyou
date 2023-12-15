@@ -3,11 +3,7 @@ import Link from 'next/link';
 import { useState } from 'react'
 import Menu from '../Components/Menu';
 import { useSession } from 'next-auth/react';
-
-type DataLinkType = {
-    name: string,
-    link: string
-}
+import { DataLinkType } from '../types/DataLinkType';
 
 export default function Notes() {
     const [input, setInput] = useState("");
