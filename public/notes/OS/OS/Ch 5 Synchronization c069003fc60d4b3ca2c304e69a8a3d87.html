@@ -1,0 +1,833 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Ch 5: Synchronization</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="c069003f-c60d-4b3c-a2c3-04e69a8a3d87" class="page sans"><header><h1 class="page-title">Ch 5: Synchronization</h1><p class="page-description"></p></header><div class="page-body"><nav id="d7c82679-7f9e-47fd-8f0b-84a8ca091830" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a3c2ad8f-d8b4-4f0e-ac04-185308fff69e">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fd054d45-32b1-4fe0-9479-0baf9959b930">Race Condition</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a225c208-b48a-4256-b513-36428fdf9ca7">Critical Section</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5b76ae6a-09c4-4cc1-a0e7-192ec3ef1dc9">Requirements</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#292a844a-0823-43ce-bc6c-3cb1ebe8d08c">Mutual Exclusion</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#60eee810-3f3f-4a84-8c23-57eccaf2d53c">Progress</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c337b855-2670-4dfc-a9d2-73220129e632">Bounded Waiting</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d3d5f47d-cd97-4006-9e30-1d3474d08cdb">Critical Section Handling in OS</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#81d815d7-8b0d-4a4b-93ae-88009edff626">Peterson’s Solution</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#842dfa98-a08c-422d-a239-d1b92fccf154">Algorithm for Pi/Pj</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#31de9a4c-ae18-4e46-aa1d-e7d8d582fbc7">Synchronization Hardware</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a17a42ce-1d4f-45a4-bdef-3f803f101b7c">test_and_set Instruction</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3c2e0975-5710-441b-9884-00f61d096ce8">compare_and_swap Instruction</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#72f3c6a0-8758-49c0-9303-08df1dc29dfe">Bounded Waiting Mutual Exclusion with test_and_set</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e8473f4d-b9f4-4484-9abc-959959a200f4">Mutex Locks</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c6190aff-0163-4c92-9cde-48e3e7116671">Semaphore</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8fb590ed-04ab-4bcf-8695-77f8b8993c06">Semaphore with busy waiting but without list of processes</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a854c20c-0a6c-4af9-bd73-fb1bd789d6f3">Semaphore Usage</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#38c3d299-b684-4751-8d0a-bba384a556e6">Semaphore without busy waiting</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#013317b8-838e-4d30-ba3a-6458cb8687b7">Semaphore with positive values but no busy waiting</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#6aa79587-3986-440c-8eeb-2a39d940f64b">Deadlock and Starvation</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9c5d2559-afb8-4465-9f7c-1d95a48d76bf">Classical Problems of Synchronization</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5b5cf279-8699-43bc-8e8e-1fa76db31463">Bounded Buffer Problem</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a5fb5e43-840d-4691-a891-49b6f9e41fed">Readers and Writers Problem</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#3100f169-bf97-4425-b6ea-ed10953c6f85">First Readers Writers Problem</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4afc61a4-33a5-49c5-bb89-86bb79eb89be">Dining Philosopher’s Problem</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#69ba4a38-a1ee-4753-9373-378ad8fed817">Deadlock Handling - 3 different solutions</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#89602b9c-32eb-41e6-bb41-0a9e41d4d859">Problems with Semaphores</a></div></nav><h1 id="a3c2ad8f-d8b4-4f0e-ac04-185308fff69e" class="">Introduction</h1><ul id="9e8c7211-6518-4f70-abc1-f290261791b0" class="bulleted-list"><li style="list-style-type:disc">One after another → serialized</li></ul><ul id="f693b35e-a969-424b-b5d8-f9352819bd30" class="bulleted-list"><li style="list-style-type:disc">Multiple processor together → multiprocessing</li></ul><ul id="7937d4fb-587d-4f7a-873f-683f937528d8" class="bulleted-list"><li style="list-style-type:disc">Multiple things are happening but we have to make sure they don’t cause issues with each other → Synchronization</li></ul><ul id="aff120dd-2a1e-46da-b1b7-cde35f89c62c" class="bulleted-list"><li style="list-style-type:disc">Processes can execute concurrently and can be interrupted at any time</li></ul><ul id="55eac2d5-db7b-4743-97be-1a572f217066" class="bulleted-list"><li style="list-style-type:disc">Concurrent access to shared data may result in data inconsistency</li></ul><ul id="343aaa1d-bb95-4334-adac-76f5bdaef991" class="bulleted-list"><li style="list-style-type:disc">Maintaining data consistency requires mechanisms to ensure the orderly execution of cooperating processes</li></ul><ul id="c24eff6b-e34a-4036-bc90-38f71c17fc64" class="bulleted-list"><li style="list-style-type:disc">Consider the producer - consumer problem</li></ul><h3 id="fd054d45-32b1-4fe0-9479-0baf9959b930" class="">Race Condition</h3><ul id="65af0645-1bc6-4534-8bdd-c24b65a57e45" class="bulleted-list"><li style="list-style-type:disc">We are updating the shared memory variables using 2 processes simultaneously at the same time which leads to the inconsistent state of the variable itself</li></ul><figure id="27d0ca2f-d329-48e5-959f-8f999bd85d9e" class="image"><a href="Ch%205%20Synchronization%20c069003fc60d4b3ca2c304e69a8a3d87/Untitled.png"><img style="width:1654px" src="Ch%205%20Synchronization%20c069003fc60d4b3ca2c304e69a8a3d87/Untitled.png"/></a></figure><h2 id="a225c208-b48a-4256-b513-36428fdf9ca7" class="">Critical Section</h2><ul id="81215ba6-44d9-40c3-96be-b2e10bb757fb" class="bulleted-list"><li style="list-style-type:disc">Consider system of n processes { p0, p1, p2…pn-1 }</li></ul><ul id="27b07b9c-1096-4e21-beae-2054f9403fb4" class="bulleted-list"><li style="list-style-type:disc">Each process has a critical section segment of the code<ul id="c62c286c-9eca-4075-93ac-ef2fcf1733dc" class="bulleted-list"><li style="list-style-type:circle">Process may be changing variables, updating table, writing to file</li></ul><ul id="4f409e7b-9a54-415d-95fa-793e3d4e84d1" class="bulleted-list"><li style="list-style-type:circle">When one process is in critical section, no other may be in it’s critical section</li></ul></li></ul><ul id="7e94d9af-7414-4db4-8177-d723295d53ee" class="bulleted-list"><li style="list-style-type:disc">This problem is to design protocol to solve this</li></ul><ul id="a7190049-ec15-4b60-b55c-dc0b1856cee3" class="bulleted-list"><li style="list-style-type:disc">Only one process can not be in the critical section problem regardless of the situation</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2b5cc937-7191-402d-afd7-34c0c864c37b" class="code code-wrap"><code class="language-C">do {
+	- Entry section (You have to lock here)
+	- Critical Section
+	- Exit Section (You release the lock here)
+	- Remainder Section
+} while(true);</code></pre><ul id="5c804ad8-fa9f-47dc-8563-2cb28c767473" class="bulleted-list"><li style="list-style-type:disc">In the exit section, you will provide facility that some other process can enter the critical section</li></ul><h1 id="5b76ae6a-09c4-4cc1-a0e7-192ec3ef1dc9" class="">Requirements</h1><h2 id="292a844a-0823-43ce-bc6c-3cb1ebe8d08c" class="">Mutual Exclusion</h2><ul id="66ffda8b-f961-45bc-b2e8-53659b0abf38" class="bulleted-list"><li style="list-style-type:disc">If process Pi is executing in it’s critical section, then no other processes can be executing in their critical sections</li></ul><h2 id="60eee810-3f3f-4a84-8c23-57eccaf2d53c" class="">Progress</h2><ul id="eabf1294-8b16-4720-80a1-a09a6f6fdad1" class="bulleted-list"><li style="list-style-type:disc">If no process is executing in it’s critical section and some processes wish to enter their critical sections, then only those processes that are not executing in their remainder section can participate in deciding which will enter it’s critical section next and this decision <span style="border-bottom:0.05em solid">cannot be postponed indefinitely</span></li></ul><ul id="3a170979-ab0a-47d1-94c7-0a3463040f02" class="bulleted-list"><li style="list-style-type:disc">If there is a process that does not want to enter the critical section, then it should not stop the other processes which want to critical section</li></ul><ul id="c9ab958e-dd3f-41d4-a55e-8f99e880b45d" class="bulleted-list"><li style="list-style-type:disc">More like if a process does not want to enter the critical section it has no role in deciding who gets to enter the critical section</li></ul><ul id="5c597796-dbb1-49cd-a2fa-a2d3b1ad6bc9" class="bulleted-list"><li style="list-style-type:disc">The following is one example where progress is not satisfied → if s1 ≠ s2 and P1 is not trying to enter, P2 can never enter sadly</li></ul><figure id="40b3f748-98d3-4337-b468-f5d6b8a8733d" class="image"><a href="Ch%205%20Synchronization%20c069003fc60d4b3ca2c304e69a8a3d87/Untitled%201.png"><img style="width:1206px" src="Ch%205%20Synchronization%20c069003fc60d4b3ca2c304e69a8a3d87/Untitled%201.png"/></a></figure><h2 id="c337b855-2670-4dfc-a9d2-73220129e632" class="">Bounded Waiting</h2><ul id="b029d014-d8bb-4056-89b2-571587e52757" class="bulleted-list"><li style="list-style-type:disc">A bound must exist on the number of times that other processes are allowed to enter their critical sections after a process has made a request to enter its critical section and before that request is granted</li></ul><ul id="6810ce02-76f0-415f-838c-9c94c4c83795" class="bulleted-list"><li style="list-style-type:disc">Otherwise same process might run for a long time</li></ul><h1 id="d3d5f47d-cd97-4006-9e30-1d3474d08cdb" class="">Critical Section Handling in OS</h1><ul id="560460a2-ba1f-45b5-968d-8987d79e7497" class="bulleted-list"><li style="list-style-type:disc">Two approaches depending on if kernel is preemptive or non preemptive</li></ul><ul id="70841466-8dd6-4032-8bf2-2bef68619c37" class="bulleted-list"><li style="list-style-type:disc">Preemptive → allows preemption of process when running in kernel mode</li></ul><ul id="56270133-0271-4db6-a2ed-ba75fb98cb0c" class="bulleted-list"><li style="list-style-type:disc">Non preemptive → runs until exits kernel mode, blocks or voluntarily yields CPU<ul id="05ce57d7-c158-460a-8d3a-939e663a841e" class="bulleted-list"><li style="list-style-type:circle">Essentially free of race conditions in kernel mode</li></ul></li></ul><ul id="d7af62c2-db7f-4dd8-ae9c-a1e012b393a9" class="bulleted-list"><li style="list-style-type:disc">Why would anyone prefer preemptive kernel?<ul id="07aad7f1-0b21-4d75-9f21-d25efcdcdaa7" class="bulleted-list"><li style="list-style-type:circle">You can have a scenario where higher priority should be given higher resources and faster</li></ul><ul id="7ed3fc67-96a1-4137-a7cb-e1a524cfc2d2" class="bulleted-list"><li style="list-style-type:circle">Real time operations → limit on output time</li></ul><ul id="35d2593f-729f-4765-8448-702069c33523" class="bulleted-list"><li style="list-style-type:circle">Preemptive is much more responsive</li></ul></li></ul><h1 id="81d815d7-8b0d-4a4b-93ae-88009edff626" class="">Peterson’s Solution</h1><ul id="207d8666-275f-4f27-8f50-53621bc399c9" class="bulleted-list"><li style="list-style-type:disc">Two process software based solution and <span style="border-bottom:0.05em solid">ONLY FOR TWO PROCESSES</span></li></ul><ul id="5311b220-b6a5-4986-8929-ee616977cab5" class="bulleted-list"><li style="list-style-type:disc">Assume that the <span style="border-bottom:0.05em solid">load</span> and <span style="border-bottom:0.05em solid">store</span> machine-language instructions are atomic, that is cannot be interrupted</li></ul><ul id="6369a655-6a02-4f9d-b5c2-599002108d6d" class="bulleted-list"><li style="list-style-type:disc">The two processes share two variables<ul id="b2f3707d-6526-4f66-9ff7-e0d205b79b4f" class="bulleted-list"><li style="list-style-type:circle"><code>int turn;</code> → which process’s turn it is to enter the process</li></ul><ul id="6ef0a0f4-17a0-4f7d-b065-e5ee7b73c1b3" class="bulleted-list"><li style="list-style-type:circle"><code>boolean flag[2]</code></li></ul></li></ul><ul id="02def449-9882-4ee0-a99c-01cd01618c31" class="bulleted-list"><li style="list-style-type:disc">The variable turn indicates whose <span style="border-bottom:0.05em solid">turn it is to enter</span> the critical section</li></ul><ul id="b34c78c1-8788-41c9-96a3-47a6597f1acc" class="bulleted-list"><li style="list-style-type:disc">The flag array is used to indicate if a <span style="border-bottom:0.05em solid">process is ready to enter the critical section</span>, <code>flag[i] = true</code> implies that process Pi is ready</li></ul><ul id="d558dca3-97c9-42d7-92e8-0317024d40b4" class="bulleted-list"><li style="list-style-type:disc">Basically conclusion is that we assume <code>counter++</code> is happening atomically the whole thing</li></ul><h2 id="842dfa98-a08c-422d-a239-d1b92fccf154" class="">Algorithm for Pi/Pj</h2><p id="e4260f11-4d97-4ecc-908a-bcf4483d79e0" class="">
+</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="f471ee6d-60df-49a8-956a-db4624db7e8d" class="code code-wrap"><code class="language-C">	do {
+	// It sets flag[i] to true
+	flag[i] = true;
+	// it will then set turn to j to restrict Pi from going again
+	turn = j;
+	// if flag[j] is true and turn = j, means Pj&#x27;s turn it 
+  // is to enter and the process is ready to critical section
+	// this is single line loop
+	while(flag[j] &amp;&amp; turn == j){}
+
+	/* critical section */
+
+	flag[i] = false;
+	
+	/* remainder section */
+
+} while (true);</code></pre><ul id="15cabaed-1213-476b-b9be-6acc33728d0d" class="bulleted-list"><li style="list-style-type:disc">We can prove that all the requirements satisfy these</li></ul><ul id="7e78f4d9-b32d-463c-9ebc-c20d65626590" class="bulleted-list"><li style="list-style-type:disc">Here the main part is turn = j</li></ul><ul id="fd129968-cc52-4068-bccc-a518c6a13b9a" class="bulleted-list"><li style="list-style-type:disc">Now we try to prove that they follow all the 3 principles</li></ul><ul id="8644b659-2022-46bd-a116-2540395d7954" class="bulleted-list"><li style="list-style-type:disc">Mutual Exclusion<ul id="24b14547-f765-4f63-a538-d62dbb96e07c" class="bulleted-list"><li style="list-style-type:circle">We start with array with F | F, then we start with Pi, then we make the array T | F and put turn = j</li></ul><ul id="673401c3-9c85-4c45-a27e-a26b18ff104e" class="bulleted-list"><li style="list-style-type:circle">It goes to Pi and Pi is in the critical section</li></ul><ul id="c5b7dc5c-5e73-45d2-a9e6-b34a65036d03" class="bulleted-list"><li style="list-style-type:circle">Now we go to Pj and make the array T | T and turn becomes i</li></ul><ul id="e9ea8a24-676b-47c7-a554-43b8997700d3" class="bulleted-list"><li style="list-style-type:circle">So it’s stuck in the while loop → Pj </li></ul><ul id="b5ded0cc-49fa-490a-8450-4e501058293b" class="bulleted-list"><li style="list-style-type:circle">Then once flag[i] = false → F | T </li></ul><ul id="6d907cfd-6803-488c-b57d-68b6b1f0faf6" class="bulleted-list"><li style="list-style-type:circle">Then we make Pj enter the critical section </li></ul></li></ul><ul id="edb59c5e-c4f2-4f64-a675-ce92773307e5" class="bulleted-list"><li style="list-style-type:disc">Progress<ul id="203dd719-c053-42d4-9bae-bc00fed7e77a" class="bulleted-list"><li style="list-style-type:circle">Say no process is in the critical section and there is one other process which wants to and that happens in this case</li></ul><ul id="a0efc094-d6c0-4966-b266-09b064c6c736" class="bulleted-list"><li style="list-style-type:circle">If none of the process are in critical section and if one of the process wants to enter the critical section, then it can without any restriction</li></ul></li></ul><ul id="b099d509-f4ce-4782-bb42-15ed3a475002" class="bulleted-list"><li style="list-style-type:disc">Bounded Waiting<ul id="2d918f61-3b21-4769-8937-0cdae6e72f0e" class="bulleted-list"><li style="list-style-type:circle">In this case, that won’t happen due to the fact that , we have the while loop and we make turn = j, so we give j the first chance by putting that while loop and then only we check for Pi </li></ul><ul id="90ac698c-6a80-49fe-abc9-28a780194185" class="bulleted-list"><li style="list-style-type:circle">Basically we try Pj before trying Pi</li></ul><ul id="f87f4583-c416-46f0-b568-660cf4901b9c" class="bulleted-list"><li style="list-style-type:circle">We start with Pi make turn = j, flag[i] = true, now the next time if Pi comes again, it will wait in the while loop since Pj also wants to enter due to the fact that turn == j and flag[j] = true</li></ul></li></ul><h1 id="31de9a4c-ae18-4e46-aa1d-e7d8d582fbc7" class="">Synchronization Hardware</h1><ul id="511f8d51-ec68-40d9-b132-09d44499b759" class="bulleted-list"><li style="list-style-type:disc">Many systems provide HW support for implementing critical section code</li></ul><ul id="325bf6e1-8d7a-4025-b3de-dad450bdef01" class="bulleted-list"><li style="list-style-type:disc">All solutions based on idea of locking → protecting critical regions via locks</li></ul><ul id="223864a9-ea87-4ab1-a22c-42a6b6d40d9e" class="bulleted-list"><li style="list-style-type:disc">Modern machines provide special atomic hardware instructions</li></ul><ul id="35a2691a-67a3-4f77-8737-6223a792c721" class="bulleted-list"><li style="list-style-type:disc">All should be: <code>Atomic - non interruptible</code><ul id="e49aa610-33ff-4223-a165-bddacf2e1504" class="bulleted-list"><li style="list-style-type:circle">Either test memory word and set value</li></ul><ul id="3d1a69a8-b159-469e-9c42-da806d17a369" class="bulleted-list"><li style="list-style-type:circle">Or swap contents of two memory words</li></ul></li></ul><h2 id="a17a42ce-1d4f-45a4-bdef-3f803f101b7c" class="">test_and_set Instruction</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="b30efaf2-ee4a-4b84-bca6-250bad28dafc" class="code code-wrap"><code class="language-C">/* THIS INSTRUCTION IS CONSIDERED ATOMIC */
+boolean test_and_set(boolean *target){
+	boolean rv = *target;
+	*target = true;
+	return rv
+}</code></pre><p id="fa7488a8-04c3-4ad5-8b5c-99ebfc932513" class="">Example using test_and_set</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="cf2321d2-03e9-422b-ba75-cae6efb17c31" class="code code-wrap"><code class="language-C">do{
+	while(test_and_set(&amp;lock));
+	/* do nothing */
+	
+	/* critical section */
+	lock = false;
+} while(true);</code></pre><ul id="b4db9f9f-eb6a-4f87-bfe3-e0b201d7cf8d" class="bulleted-list"><li style="list-style-type:disc">Bounded weighting is not satisfied by this solution</li></ul><ul id="80be5983-44a5-4b10-b840-3bf258e93d8f" class="bulleted-list"><li style="list-style-type:disc">If P1 is very fast and P2 is very slow, and P1 wants to write then P1 keeps going into the same loop</li></ul><h2 id="3c2e0975-5710-441b-9884-00f61d096ce8" class="">compare_and_swap Instruction</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="dec938fa-8508-4182-b4a6-74cff5a1d3b6" class="code code-wrap"><code class="language-C">/* THIS INSTRUCTION IS CONSIDERED ATOMIC */
+int compare_and_swap(int *value, int expected, int new_value){
+	int temp = *value;
+	if(*value == expected) *value = new_value;
+	return temp;
+}</code></pre><p id="04dbbf78-668b-4585-af5d-3e09ec5f9efe" class="">Example using compare_and_swap</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="f195fc5d-3b95-4098-b62d-9fa4f4dcbec2" class="code code-wrap"><code class="language-C">do{
+	while(compare_and_swap(&amp;lock, 0, 1) != 0);
+	/* do nothing */
+
+	/* critical section */
+	lock = 0;
+
+	/* remainder section */
+} while (true);</code></pre><ul id="9f1fb6a4-1773-4490-93ce-44564e5e3041" class="bulleted-list"><li style="list-style-type:disc">Progress requirement and Mutual exclusion are satisfied while bounded waiting isn’t</li></ul><ul id="ca9896d1-e50d-4b3b-92c1-1bd4881701d4" class="bulleted-list"><li style="list-style-type:disc">P1 comes to the exit section, sets lock to 0 and quickly goes back to the entry section and say this is happening very fast in comparison with P2. In this case, P1 will keep going inside the critical section</li></ul><p id="3b6deb6d-64bc-4316-a55d-b05039e06ac1" class="">NOTE: <strong>Test and set operates on a bit, compare and swap operates on a 32-bit field</strong></p><h2 id="72f3c6a0-8758-49c0-9303-08df1dc29dfe" class="">Bounded Waiting Mutual Exclusion with test_and_set</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="7e34c198-a55f-4ac5-a085-feb26fcd4e0f" class="code code-wrap"><code class="language-C">do {
+	waiting[i] = true;
+	key = true;
+	while (waiting[i] &amp;&amp; key){
+		key = test_and_set(&amp;lock);
+	}
+	waiting[i] = false;
+
+	/* critical section */
+
+	j = (i + 1) % n;
+	while((j != i) &amp;&amp; !waiting[j]) j = (j + 1) % n;
+	if(j == i) lock = false;
+	else waiting[j] = false;
+
+	/* remainder section */
+} while(true);</code></pre><h1 id="e8473f4d-b9f4-4484-9abc-959959a200f4" class="">Mutex Locks</h1><ul id="3205c9c4-5b55-49ac-9850-efb9b230052d" class="bulleted-list"><li style="list-style-type:disc">Hardware based solutions are complicated and inaccessible to application programmers</li></ul><ul id="49e1672c-47a0-4f94-95d6-8ea05685bbf4" class="bulleted-list"><li style="list-style-type:disc">OS designers build software tools to solve CS problem</li></ul><ul id="c41abfea-6cd4-40f3-a660-eab1db97268c" class="bulleted-list"><li style="list-style-type:disc"><code>acquire()</code> a lock then <code>release()</code> the lock<ul id="cf3e8349-c950-4a03-a804-afcd1c52a3a1" class="bulleted-list"><li style="list-style-type:circle">boolean variable available indicating if lock is available or not</li></ul><ul id="644974b8-1423-42a9-803b-a37e592cbba6" class="bulleted-list"><li style="list-style-type:circle">if available is true, the lock is available → this is different from the previous cases where lock signified it was locked or not</li></ul></li></ul><ul id="a3107466-543c-47c5-aa5d-fae2aa254ba2" class="bulleted-list"><li style="list-style-type:disc">Calls to <code>acquire()</code> and <code>release()</code> must be atomic - usually implemented via hardware atomic instructions</li></ul><ul id="2a4662eb-b75a-4c8e-bb39-401bc9b3f6dd" class="bulleted-list"><li style="list-style-type:disc">busy waiting, spinlock (spinning continuously in the while loop)</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="b2b6e42d-382c-4b29-84a8-ca255b3b60d6" class="code code-wrap"><code class="language-C">acquire(){
+	while(!available);
+	/* busy wait */
+
+	available = false;
+}</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="a58d6bae-a873-444f-bf53-961f3c3eed94" class="code code-wrap"><code class="language-C">release(){
+	available = true;
+}</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="911ec0e5-1500-4b36-b3db-3c81f61f41de" class="code code-wrap"><code class="language-C">do {
+	acquire lock
+		critical section
+	release lock
+		remainder section
+} while(true);</code></pre><ul id="f3f8c537-e66f-4008-ab3d-efab2e5af7ff" class="bulleted-list"><li style="list-style-type:disc">Here mutual exclusion is satisfied and progress is also satisfied but then it won’t satisfy the bounded waiting</li></ul><ul id="55c42e78-b684-401f-9c89-28d0ce459b09" class="bulleted-list"><li style="list-style-type:disc">Disadvantage: busy waiting → will keep calling acquire again and again → it is always in the executing state → which is using CPU cycle</li></ul><ul id="76821fd5-29c6-4a75-8787-a948927b3c4e" class="bulleted-list"><li style="list-style-type:disc">Advantage: If we would have wanted to block the process, we wouldn’t need context switching in this case</li></ul><ul id="d3f3f420-384e-4d94-8064-2bbb83cce5a1" class="bulleted-list"><li style="list-style-type:disc">If the locks are to be held for short durations of time, then it’s better to let it spin and have busy waiting</li></ul><h1 id="c6190aff-0163-4c92-9cde-48e3e7116671" class="">Semaphore</h1><ul id="fa740003-423f-46a2-af55-b9c20d9b6309" class="bulleted-list"><li style="list-style-type:disc">Provides more sophisticated ways for process to synchronize</li></ul><ul id="4bab72a5-3758-454c-ad7d-84f8eb88a56a" class="bulleted-list"><li style="list-style-type:disc">Semaphore S - integer variable</li></ul><ul id="7f4302b0-357b-464e-af72-3719ace7561c" class="bulleted-list"><li style="list-style-type:disc">Apart from initialization, can only be accessed via two indivisible ATOMIC operations, wait() and signal(), originally called P() and V()</li></ul><h3 id="8fb590ed-04ab-4bcf-8695-77f8b8993c06" class="">Semaphore with busy waiting but without list of processes</h3><ul id="09c86b7d-4324-4248-a06e-0e2d3fd66af8" class="bulleted-list"><li style="list-style-type:disc">Definition of the wait() operation<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="c76a8b34-3ac8-4fba-a44d-859184a29f4c" class="code code-wrap"><code class="language-C">wait(S) {
+	while(S &lt;= 0);
+	// busy wait
+
+	S--;
+}</code></pre></li></ul><ul id="2ab0ff97-0b4c-42dc-9fef-aeea84cb2b78" class="bulleted-list"><li style="list-style-type:disc">Definition of the signal() operation<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="71f14254-eb00-4d0b-8260-91c1f94aa025" class="code code-wrap"><code class="language-C">signal(S){
+	S++;
+}</code></pre></li></ul><h2 id="a854c20c-0a6c-4af9-bd73-fb1bd789d6f3" class="">Semaphore Usage</h2><ul id="c05a472e-4aeb-4968-93eb-80e4169a5ba6" class="bulleted-list"><li style="list-style-type:disc">Counting semaphore - integer value can range over an unrestricted domain</li></ul><ul id="ec44a4ed-5e57-4aba-af61-171da02aef6b" class="bulleted-list"><li style="list-style-type:disc">Binary semaphore - integer value can range between 0 and 1</li></ul><ul id="c318fdd9-f881-4b2c-a3b1-9b9440096e4c" class="bulleted-list"><li style="list-style-type:disc">Must guarantee that no two processes can execute the wait() and signal() on the same semaphore at the same time</li></ul><ul id="56528cc9-eeeb-451e-be06-1f6893122f67" class="bulleted-list"><li style="list-style-type:disc">Every semaphore which has<ul id="ec64ff3f-3e77-4662-9dce-c5f8a8e441f8" class="bulleted-list"><li style="list-style-type:circle">value(integer)</li></ul><ul id="399ca0c3-285b-4adb-a316-c51fc55d7eb2" class="bulleted-list"><li style="list-style-type:circle">queue of processes</li></ul></li></ul><ul id="a0fc59d3-4046-4f2a-9a0b-771e397f8906" class="bulleted-list"><li style="list-style-type:disc">We represent semaphore in a structure instead of the integer so as to ensure no busy waiting</li></ul><ul id="a91a561b-b4fa-42e8-bcff-1272d6374979" class="bulleted-list"><li style="list-style-type:disc">Two operations: <ul id="df68ec2b-fcfe-41d5-9d81-2b3619cfa193" class="bulleted-list"><li style="list-style-type:circle">block - place the process invoking the operation on the waiting queue. taken off the ready queue</li></ul><ul id="cbc15f2f-f58d-4bb5-a1c2-c703649d9416" class="bulleted-list"><li style="list-style-type:circle">wakeup - remove one of processes in the waiting queue and place it in the ready queue</li></ul></li></ul><h3 id="38c3d299-b684-4751-8d0a-bba384a556e6" class="">Semaphore without busy waiting</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="ee6ae62d-6647-40d5-9ad3-db69eaef2e1d" class="code code-wrap"><code class="language-C">typedef struct {
+	int value;
+	struct processs *list;
+} semaphore;</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="c08938ff-9e9c-49ed-baac-869e28165108" class="code code-wrap"><code class="language-C">wait(semaphore *S){
+	S-&gt;value--;
+	if(S-&gt;value &lt; 0){
+		add this process to S-&gt;list;
+		block();
+	}
+}</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="adc9d6d4-6a3f-42e8-abb7-ac5864c287e4" class="code code-wrap"><code class="language-C">signal(semaphore *S){
+	S-&gt;value++;
+	if(S-&gt;value &lt;= 0){
+		remove a process P from S-&gt;list;
+		wakeup(P);
+	}
+}</code></pre><ul id="9b68a2d5-bc1d-4b85-b9d9-32d1f9236c3e" class="bulleted-list"><li style="list-style-type:disc">If S→value = -4, then we have 4 in the waiting queue</li></ul><ul id="d818a5b2-856f-4056-8d93-3bce45fec018" class="bulleted-list"><li style="list-style-type:disc">Every block and wakeup will have a context switch</li></ul><h3 id="013317b8-838e-4d30-ba3a-6458cb8687b7" class="">Semaphore with positive values but no busy waiting</h3><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="3149f21c-e733-46e0-8897-7147bdaf93ed"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%">Incase you don’t want your value to go negative</div></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="6ae2ffca-8d2a-455f-8968-d0dd50f9d4a9" class="code code-wrap"><code class="language-C">wait(semaphore *S){
+	if(S-&gt;value == 1) S-&gt;value--;
+	else{
+		add this process to S-&gt;list;
+		block();
+	}
+}</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="c3a39d03-c0f8-4628-a494-a540839d724d" class="code code-wrap"><code class="language-C">signal(semaphore *S){
+	if(S-&gt;list is empty) s-&gt;value = 1;
+	else remove process P from S-&gt;list and wakeup(P);
+}</code></pre><ul id="e9d188c0-c652-4857-828f-825a17d6b1c7" class="bulleted-list"><li style="list-style-type:disc">Synchronization of threads → mutex</li></ul><ul id="85a6984d-4d05-4a46-905b-eb229c2a4f0b" class="bulleted-list"><li style="list-style-type:disc">Synchronization of processes → semaphore</li></ul><ul id="1b2ad836-7ec2-424c-b227-5b97fb60ac94" class="bulleted-list"><li style="list-style-type:disc">The list → FIFO</li></ul><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="d14e6d3c-9af9-44ed-83b7-555d5be65e7d"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Difference between binary semaphore and mutex<table id="d6c22239-e3f2-4ee8-ba74-310e923edcc7" class="simple-table"><tbody><tr id="44944bf3-37ef-4dad-b7d0-7de302aaaddf"><td id=":SJ@" class="" style="width:292px"><strong>Binary Semaphore</strong></td><td id="Lf:D" class="" style="width:321px"><strong>Mutex</strong></td></tr><tr id="0ebf6ab3-d51d-4fb5-ba2d-4b45dc09f489"><td id=":SJ@" class="" style="width:292px">Its functions based up on signaling mechanism</td><td id="Lf:D" class="" style="width:321px">Its functions based up on locking mechanism</td></tr><tr id="8f91b3f0-05e9-45e9-90fa-73ec6cdb2e1d"><td id=":SJ@" class="" style="width:292px">The thread which is having higher priority than current thread can also release binary semaphore and take lock.</td><td id="Lf:D" class="" style="width:321px">The thread which has acquired mutex can only release Mutex when it exits from critical section.</td></tr><tr id="6a3c80cf-f3cb-4e85-b745-9afc72619ce7"><td id=":SJ@" class="" style="width:292px">Semaphore value is changed according to wait () and signal () operations.</td><td id="Lf:D" class="" style="width:321px">Mutex values can be modified just as locked or unlocked.</td></tr><tr id="0a8ae699-8044-4367-b54f-fd63c696646d"><td id=":SJ@" class="" style="width:292px">Multiple number of threads can acquire binary semaphore at a time concurrently.</td><td id="Lf:D" class="" style="width:321px">Only one thread can acquire mutex at a time</td></tr><tr id="de48437f-be00-4e89-9413-fcda66ac5c95"><td id=":SJ@" class="" style="width:292px">Binary semaphore have no ownership.</td><td id="Lf:D" class="" style="width:321px">There is ownership associated with mutex because only owner can release the lock.</td></tr><tr id="0a2bb40b-4db5-44dc-b6c5-c119d9488136"><td id=":SJ@" class="" style="width:292px">They are faster than mutex because any other thread/process can unlock binary semaphore.</td><td id="Lf:D" class="" style="width:321px">They are slower than binary semaphores because only thread which has acquired must release the lock.</td></tr><tr id="8da50a31-a2cc-478f-a816-8767d328dc72"><td id=":SJ@" class="" style="width:292px">If you have number of instances for resource it is better to use Binary semaphore.</td><td id="Lf:D" class="" style="width:321px">If you have single instance for resource it is better to use mutex.</td></tr></tbody></table></div></figure><h1 id="6aa79587-3986-440c-8eeb-2a39d940f64b" class="">Deadlock and Starvation</h1><ul id="96f1dd0e-2861-49cf-902a-4771033acba7" class="bulleted-list"><li style="list-style-type:disc">Deadlock is two or more processes waiting indefinitely for an event that can be caused by only one of the waiting processes</li></ul><ul id="d4742c25-d3a6-4f47-a7a1-86af50f7c8ac" class="bulleted-list"><li style="list-style-type:disc">Let S and Q be two semaphores initialized to 1</li></ul><table id="445d3da8-aca8-4a2e-a387-6a2ece2a23fb" class="simple-table"><tbody><tr id="13ee712e-1ad1-44f4-b5e2-34c5b55e2d50"><td id="[dpv" class="">P0</td><td id="~pW&gt;" class="">P1</td></tr><tr id="2c08f908-09a4-4768-b3c5-60c3cc30eec4"><td id="[dpv" class="">wait(S)</td><td id="~pW&gt;" class="">wait(Q)</td></tr><tr id="1d04d17b-002c-4d03-bd80-ae7dc6eea5cb"><td id="[dpv" class="">wait(Q)</td><td id="~pW&gt;" class="">wait(S)</td></tr><tr id="aa50ab16-583a-42ac-89ec-c3ee89408fda"><td id="[dpv" class="">signal(S)</td><td id="~pW&gt;" class="">signal(Q)</td></tr><tr id="bbfb1238-8d55-4001-be34-5a2f0f1e3904"><td id="[dpv" class="">signal(Q)</td><td id="~pW&gt;" class="">signal(S)</td></tr></tbody></table><ul id="e5c11840-126a-4f68-8ff8-0c37f0a8ddb9" class="bulleted-list"><li style="list-style-type:disc">wait(S) will reduce S semaphore value to S→value=0 and wait(Q) will make Q→value = 0</li></ul><ul id="b784b6a9-d67e-4cd7-a5fd-8a04a7596fbb" class="bulleted-list"><li style="list-style-type:disc">Starvation - indefinite blocking, A process may never be removed from the semaphore queue in which it is suspended</li></ul><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="c4b28c32-4a1f-4f89-820c-d059a8492501"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">For deadlock-free invocation, X, Y and Z must access the semaphores in the same order so that there won&#x27;t be a case where one process is waiting for a semaphore while holding some other semaphore</div></figure><h1 id="9c5d2559-afb8-4465-9f7c-1d95a48d76bf" class="">Classical Problems of Synchronization</h1><h2 id="5b5cf279-8699-43bc-8e8e-1fa76db31463" class="">Bounded Buffer Problem</h2><ul id="d6776121-c904-4680-a4a4-1e99dce9f552" class="bulleted-list"><li style="list-style-type:disc">Buffer of length n, each length can hold one item - int n</li></ul><ul id="2a207ffc-d208-479d-9149-d89287d15a6c" class="bulleted-list"><li style="list-style-type:disc">Mutex = 1 → binary semaphore</li></ul><ul id="0894cdd7-e52f-4eb9-860c-bb6e0d89db0d" class="bulleted-list"><li style="list-style-type:disc">Full = 0 → counting semaphore → checks if queue has element or not → we wait for this before consuming</li></ul><ul id="f6c31e34-093a-4b01-8603-62680019fc30" class="bulleted-list"><li style="list-style-type:disc">Empty = n → counting semaphore → check if queue has place or not → we wait for this before producing</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="67000ca2-9f8a-4d9e-ad17-a47a4055ae16" class="code code-wrap"><code class="language-C">/* PRODUCER */
+do{
+	// produce item
+	wait(empty);
+	wait(mutex);
+	
+	// add next produced to buffer
+
+	signal(mutex)
+	signal(full);
+}while(true)</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="4232575f-37c6-41b2-a394-f76ed9a81774" class="code code-wrap"><code class="language-C">/* CONSUMER */
+do{
+	wait(full);
+	wait(mutex);
+
+	// remove item from buffer to next consumed
+	
+	signal(mutex)
+	signal(empty);
+	// consume the item in next_consumed
+}while(true)</code></pre><ul id="cc2b273a-0dd9-4a05-8c51-25a9c2312e65" class="bulleted-list"><li style="list-style-type:disc">Solution should ensure there is an empty slot → if not, it will block at the wait(Empty) only else it will lock and then check if slots are empty or not</li></ul><ul id="465b23e6-c0ea-4b14-8055-5e81db4dbcdd" class="bulleted-list"><li style="list-style-type:disc">Otherwise it’ll cause deadlock</li></ul><h2 id="a5fb5e43-840d-4691-a891-49b6f9e41fed" class="">Readers and Writers Problem</h2><ul id="87b54a36-88f6-4466-9ea2-f57d3b13500d" class="bulleted-list"><li style="list-style-type:disc">We have readers and writers, the general issue is that we allow multiple readers to read at the same time but allow only one single writer to access the shared data at the same time</li></ul><ul id="86d37da5-02b8-4c0b-bd1f-04fa13a81dc6" class="bulleted-list"><li style="list-style-type:disc">If one reader is there, readers can access it, but no writer can access it</li></ul><ul id="a5314928-2562-4112-ad07-82b42743c4f5" class="bulleted-list"><li style="list-style-type:disc">If one writer is there, nothing can access it</li></ul><ul id="5a2d4664-d60d-4804-b563-793ec9398c86" class="bulleted-list"><li style="list-style-type:disc">First readers-writers problem/scenario → no reader is kept waiting unless a writer has already obtained the permission to use the shared obj, writers may starve if a continuous stream of readers is coming</li></ul><ul id="f3abb366-aec6-4509-82f4-e043498f72e2" class="bulleted-list"><li style="list-style-type:disc">Second readers-writers problem/scenario → if a writer is waiting to access the shared object, no readers may start reading, readers may starve</li></ul><h3 id="3100f169-bf97-4425-b6ea-ed10953c6f85" class="">First Readers Writers Problem</h3><ul id="2aeb467e-372b-4ea2-b79d-4e1d28bd50c5" class="bulleted-list"><li style="list-style-type:disc">Shared Data<ul id="27156833-c8a4-4e71-851b-1e20a5600daf" class="bulleted-list"><li style="list-style-type:circle">rw_mutex = 1 (Binary) (choose between write mode or read mode)</li></ul><ul id="8ee0eac3-9547-4182-9bdb-e1ce8eedb6ff" class="bulleted-list"><li style="list-style-type:circle">read_count = 0 (Integer) → just to check if there’s any reader or not, if reader is more than 0, it will allow readers but not writers</li></ul><ul id="0a5e1f87-5495-46e4-8c1f-c3d9f3ff16e0" class="bulleted-list"><li style="list-style-type:circle">mutex = 1 (Binary) → used by reader processes to ensure only one reader is able to update read_count</li></ul></li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="eaecbed9-753e-44ff-bfb7-bee256a89be0" class="code code-wrap"><code class="language-C">/* WRITER PROCESS */
+
+do {
+	wait(rw_mutex);
+
+	/* writing is performed */
+	
+	signal(rw_mutex);
+} while(true);</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="dd1aad19-ca4e-4222-8bcb-2abe335008a9" class="code code-wrap"><code class="language-C">/* READER PROCESS */
+
+do {
+	// We first ensure no other reader is trying to increase read count
+	wait(mutex);
+	// Then we increase read count
+	read_count++;
+	// if read count becomes 1 that means it was 0 before and so now we have
+	// to wait for the read_write mutex which tells if a writer is there or not
+	if(read_count == 1) wait(rw_mutex);
+	signal(mutex);
+
+	/* reading is performed */
+	
+	wait(mutex);
+	readcount--;
+	if(read_count == 0) signal(rw_mutex);
+	signal(mutex);
+} while(true);</code></pre><h2 id="4afc61a4-33a5-49c5-bb89-86bb79eb89be" class="">Dining Philosopher’s Problem</h2><figure id="d09bf6db-9828-43d1-91e6-bc13a91b3efb" class="image"><a href="Ch%205%20Synchronization%20c069003fc60d4b3ca2c304e69a8a3d87/Untitled%202.png"><img style="width:442px" src="Ch%205%20Synchronization%20c069003fc60d4b3ca2c304e69a8a3d87/Untitled%202.png"/></a></figure><ul id="825935bb-b189-4c57-9638-0d9da4b0348e" class="bulleted-list"><li style="list-style-type:disc">We have a bowl of rice and we have self service going on. We have only 5 chopsticks, 5 people and 5 plates.</li></ul><ul id="ad3a33fc-a846-46e8-b05d-54fe682f5be1" class="bulleted-list"><li style="list-style-type:disc">Adjacent people cannot eat simultaneously</li></ul><ul id="16a61406-04dc-4313-9de9-b98b94a0bf1e" class="bulleted-list"><li style="list-style-type:disc">Philosophers only eating or not eating</li></ul><ul id="c28aee0a-eb45-453e-9f7b-e1e804cca150" class="bulleted-list"><li style="list-style-type:disc">If they want to eat → Share rice and chopsticks → we take left chopsticks, and then right chopsticks</li></ul><ul id="d6b8a220-5462-4ecd-b369-9d5ec4473e27" class="bulleted-list"><li style="list-style-type:disc">Shared Data: bowl of rice (data set), chopsticks (array of 5 semaphores initialized to 1)</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1e145b26-1b6e-4827-8e45-017ef4d27d00" class="code code-wrap"><code class="language-C">do {
+	wait(chopstick[i]);
+	wait(chopstick[ (i + 1) % 5 ]);
+	// eat
+	signal(chopstick[i]);
+	signal(chopstick[ (i + 1) % 5 ]);
+} while(TRUE);</code></pre><ul id="20604402-9186-434d-bf15-24ef1771752d" class="bulleted-list"><li style="list-style-type:disc">Solution is prone to starvation and deadlocks</li></ul><h3 id="69ba4a38-a1ee-4753-9373-378ad8fed817" class="">Deadlock Handling - 3 different solutions</h3><ul id="064b84e0-9e00-4c4c-9258-1fb6fb5a1902" class="bulleted-list"><li style="list-style-type:disc">Allow at most 4 philosophers to be sitting simultaneously at the table</li></ul><ul id="ea762ada-71e0-4d95-8ec8-f1bce2974c14" class="bulleted-list"><li style="list-style-type:disc">Allow a philosopher to pick up the chopsticks only if both are available</li></ul><ul id="0434c316-4072-44c3-a183-2f795a5e41bf" class="bulleted-list"><li style="list-style-type:disc">Use an asymmetric solution - an odd numbered philosopher picks up first the left chopstick and then the right chopstick. Even numbered philosopher picks up first the right chopstick and then the left chopstick</li></ul><h1 id="89602b9c-32eb-41e6-bb41-0a9e41d4d859" class="">Problems with Semaphores</h1><ul id="94f37645-7743-4767-934a-8756f1bc005c" class="bulleted-list"><li style="list-style-type:disc">Incorrect use of semaphore operations<ul id="ec36eb36-8a07-42b0-9480-547716295e89" class="bulleted-list"><li style="list-style-type:circle">signal(mutex) —- wait(mutex)</li></ul><ul id="81b80bb8-0b27-41e5-9af9-97ed785b5b54" class="bulleted-list"><li style="list-style-type:circle">wait(mutex) —- wait(mutex)</li></ul><ul id="f2e02c6f-bfcf-4020-8c19-7a57e6d91565" class="bulleted-list"><li style="list-style-type:circle">omitting of wait(mutex) or signal(mutex) or both</li></ul></li></ul><ul id="a326c0f9-61aa-4cfc-b4b2-d3fc20ddb1ed" class="bulleted-list"><li style="list-style-type:disc">Deadlock and starvation are possible</li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

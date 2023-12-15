@@ -1,0 +1,676 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Ch 6: CPU Scheduling</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="0bee1cf8-715d-4a9d-8848-8addf1585ee3" class="page sans"><header><h1 class="page-title">Ch 6: CPU Scheduling</h1><p class="page-description"></p></header><div class="page-body"><nav id="74dbfc1d-f45d-4368-ad03-98f280c9a85f" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0c8b808a-b521-4b5b-adfb-baca084d43b8">Basics</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d706b343-3fa7-4a4f-8f46-083f7d1efba8">CPU Scheduler</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#604f8f0e-676b-43f4-b5a0-37839783d5ea">Short Term/CPU Scheduler</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f88f00ae-c4a2-4eff-9b59-2e420df5b53e">Preemptive Scheduling</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5cd08b80-0e80-4a69-a934-61b5b6ea9707">Non Preemptive Scheduling</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d20b92d9-1026-41c4-80f0-1c6e736ebd6a">Dispatcher</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0d546bd7-10ff-4cc6-a2a4-9e093c0dabc3">Scheduling Criteria</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#80d96056-0b6b-4686-86b3-7fae447be5b5">Algo #1 - First Come First Serve Scheduling</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#096e408d-b19c-472f-a9cb-fae632201bb5">Example</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c4cb0be1-4342-415b-9142-497e706307a5">Example 2</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cdc5c3f-2f58-4544-acf1-5fc0df0df334">Example 3</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#25cc60ec-4144-4ee7-9620-64041a28a41b">Example 4</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9eaf20a4-46c3-4019-a1a9-92c7764b41c5">Algo #2 - Shortest Job First (SJF) Scheduling </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e7df204e-14a7-4a38-a108-846ca31c1b3f">Determining Length of Next CPU Burst</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fc856dfb-6941-471f-bced-2325630ed419">Prediction of Length of Next CPU Burst</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4989cd1d-e86c-4198-a730-4cecd9b68ab4">Example 1 - SJF</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d58fcd87-31b2-4139-a50b-d5733714df83">Example 2 - SRTF</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0f5b5c9b-ff22-4ac1-be9c-7753ac1bc803">Example 3 - SRTF with different Arrival Times</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8b5ab2d3-474a-42fa-bc37-2c9e5eff2edd">Example 4 - Non Preemptive SJF with IO</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ad4c73cf-db5e-4d24-b667-e581bd4a889b">Algo #3: Priority Scheduling</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5a48211d-b013-4717-a032-804fa660f4e3">Example 1: Non preemptive</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f97c4f2b-768f-4340-8d1d-3759a17b973d">Example 2: Preemptive</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#6b93c268-1cde-4093-8fa5-a7cf66737287">Algo #4: Round Robin Scheduling</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fda197de-7798-457d-b8fb-bf13478aec7b">Example 1</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#78536a93-9ab9-41ea-a7f5-727e989dece3">Example 2</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1809adaa-a2db-4094-8bec-7871743aff97">Algo #5: Multi level Queue Scheduling</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3c462a10-01df-4e30-8111-7fd62eef642d">Algo #6: Multilevel Feedback Queue</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e19a020f-1f94-446b-8ab6-7ee1e085818e">Thread Scheduling</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#727e8dd1-c3b7-401d-b2d2-0e7de2bf55a6">P thread Scheduling</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#bcbd1c9d-ae9b-4213-836f-2288569c157f">Completely Fair Scheduler - CFS</a></div></nav><h1 id="0c8b808a-b521-4b5b-adfb-baca084d43b8" class="">Basics</h1><ul id="f6335583-2ff9-403c-82dd-c39adef773c7" class="bulleted-list"><li style="list-style-type:disc">Maximum CPU utilization obtained with multiprogramming</li></ul><ul id="ee7c0f06-1e1d-499e-a778-7fbd815844f0" class="bulleted-list"><li style="list-style-type:disc">CPU - IO Burst Cycle → Process execution consists of a cycle of CPU execution and IO wait</li></ul><ul id="85b060bc-eddf-420d-8728-6b87b048fd7a" class="bulleted-list"><li style="list-style-type:disc">CPU burst followed by IO burst</li></ul><ul id="c38c82c1-182a-4e35-bb3c-a708c0bf181f" class="bulleted-list"><li style="list-style-type:disc">More number of short CPU bursts and less number of long CPU bursts </li></ul><h1 id="d706b343-3fa7-4a4f-8f46-083f7d1efba8" class="">CPU Scheduler</h1><h2 id="604f8f0e-676b-43f4-b5a0-37839783d5ea" class="">Short Term/CPU Scheduler</h2><ul id="6220c9d9-06cd-43b0-81db-852507a0eda7" class="bulleted-list"><li style="list-style-type:disc">Selects from among the processes in ready queue and allocates the CPU to one of them</li></ul><ul id="456e9030-49c2-403a-b0e4-d6d7671b78c8" class="bulleted-list"><li style="list-style-type:disc">CPU scheduling decisions may take place when a process<ul id="5e64c595-d097-47e4-8636-d17092372076" class="bulleted-list"><li style="list-style-type:circle">Switches from running to waiting state</li></ul><ul id="2c0f7dfe-22de-4409-acf3-44b980e09154" class="bulleted-list"><li style="list-style-type:circle">Switches from running to ready state → interrupt</li></ul><ul id="e40ceb71-c75c-494e-837f-66c750e49250" class="bulleted-list"><li style="list-style-type:circle">Switches from waiting to ready</li></ul><ul id="0eecedc8-2374-451c-a94f-14efbff1c845" class="bulleted-list"><li style="list-style-type:circle">Terminates</li></ul></li></ul><h2 id="f88f00ae-c4a2-4eff-9b59-2e420df5b53e" class="">Preemptive Scheduling</h2><ul id="62e32b8f-34fc-4cd3-a546-d54e70cb0c85" class="bulleted-list"><li style="list-style-type:disc">Done in situations 2 and 3</li></ul><ul id="fc9e41a1-8978-4936-b8f3-dfa826cfdbeb" class="bulleted-list"><li style="list-style-type:disc">Involuntary</li></ul><ul id="c3255bb1-3446-41cc-b110-15157c673c9f" class="bulleted-list"><li style="list-style-type:disc">Lets say we have a process P1 and it was supposed to execute only for 5s, then it’s paused and <ul id="de1a6df8-60a5-42ae-8737-e95f7755cdc0" class="bulleted-list"><li style="list-style-type:circle">[SITUATION 2] then P2 occurs</li></ul><ul id="6ded96a8-765b-481e-b067-37a3b9f44a8b" class="bulleted-list"><li style="list-style-type:circle">[SITUATION 3] other option is when P1 is busy, say P2 was doing something and when P1 gets ready again, P2 automatically is paused by force and P1 occurs</li></ul></li></ul><h2 id="5cd08b80-0e80-4a69-a934-61b5b6ea9707" class="">Non Preemptive Scheduling</h2><ul id="62a4919e-0b42-47ae-bf51-b2015b0f0f09" class="bulleted-list"><li style="list-style-type:disc">Once a process is allocated the CPU, it retains the CPU until termination or switching to waiting state</li></ul><ul id="58cf1038-40dd-4d26-a77a-ef1305471205" class="bulleted-list"><li style="list-style-type:disc">Voluntary</li></ul><h1 id="d20b92d9-1026-41c4-80f0-1c6e736ebd6a" class="">Dispatcher</h1><ul id="9890bdc6-950c-41d6-b645-43f71ba90ae6" class="bulleted-list"><li style="list-style-type:disc">Dispatcher module gives control of the CPU to the process selected by the short term scheduler, this involves<ul id="763e286b-8b33-49de-9e26-8f8889bb9f2f" class="bulleted-list"><li style="list-style-type:circle">switching context</li></ul><ul id="ba7f1108-94e5-4a13-8380-1286767ea1f0" class="bulleted-list"><li style="list-style-type:circle">switching to user mode</li></ul><ul id="5666d72f-dfc3-4eca-9d17-7a985577c4c1" class="bulleted-list"><li style="list-style-type:circle">jumping to the proper location in the user program to restart that program</li></ul></li></ul><ul id="1b6d0b7f-74b9-40e2-9c79-89c7036f4663" class="bulleted-list"><li style="list-style-type:disc">Dispatch latency → time it takes for the dispatcher to stop one process and start another running</li></ul><ul id="ba0be6ac-b27c-4703-a0d9-63926efdda2e" class="bulleted-list"><li style="list-style-type:disc">The job of the dispatcher should be done very very fast</li></ul><h1 id="0d546bd7-10ff-4cc6-a2a4-9e093c0dabc3" class="">Scheduling Criteria</h1><ul id="a2956922-5f9e-4bf2-8481-f3c011389815" class="bulleted-list"><li style="list-style-type:disc">CPU Utilization → keep the CPU as busy as possible</li></ul><ul id="0848e681-365e-4348-aa1d-c3e237bbe02b" class="bulleted-list"><li style="list-style-type:disc">Throughput → the number of processes that complete their execution per time unit → we need to maximize</li></ul><ul id="9b5bf2fb-b914-4f0c-a381-ea91ef1fc461" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">Turnaround time</span> → amount of time to execute a particular process, interval from submission time to completion time → we need to minimize</li></ul><ul id="d68cbc1f-f4cf-4a0f-9fdf-1b7d8f1240a4" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">Waiting time</span> → amount of time a process has been waiting in the ready queue → sum of durations, spent waiting to get into memory, waiting in ready queue, executing on CPU → we need to minimize</li></ul><ul id="6048cd7a-ab15-43c4-97d9-a6cb3d96c1fd" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">Response time</span> → amount of time it takes from when a request was submitted until the first response is produced not output (for time sharing environment), depends on the speed of output device. Sort of like acknowledgement</li></ul><h1 id="80d96056-0b6b-4686-86b3-7fae447be5b5" class="">Algo #1 - First Come First Serve Scheduling</h1><table id="1590aeef-c240-46fb-a6a7-fe99a624e842" class="simple-table"><tbody><tr id="32a5110d-44b8-4b1a-b804-bbb951fe7990"><td id="A^fq" class="">Process</td><td id="Cv;v" class="">Burst Time</td></tr><tr id="8704a439-eb98-4e89-b3b2-a1156fd8884b"><td id="A^fq" class="">P1</td><td id="Cv;v" class="">24</td></tr><tr id="ae97cf5e-8b1f-412d-8364-f4ad271c05cf"><td id="A^fq" class="">P2</td><td id="Cv;v" class="">3</td></tr><tr id="debfab58-2b58-401a-804e-837269378561"><td id="A^fq" class="">P3</td><td id="Cv;v" class="">3</td></tr></tbody></table><ul id="ae51979d-1d45-4f64-afa4-15ab92fd7528" class="bulleted-list"><li style="list-style-type:disc">Gantt Chart 🙂</li></ul><figure id="691fe61f-35c1-4b80-a143-70189335c9ab" class="image"><a href="Ch%206%20CPU%20Scheduling%200bee1cf8715d4a9d88488addf1585ee3/Untitled.png"><img style="width:637px" src="Ch%206%20CPU%20Scheduling%200bee1cf8715d4a9d88488addf1585ee3/Untitled.png"/></a></figure><ul id="818ab7ac-b90d-493c-8e6a-fda7d90402fd" class="bulleted-list"><li style="list-style-type:disc">Arrival Time is 0</li></ul><ul id="86c2b71b-1e0b-42d0-b9fe-c7b406b4c094" class="bulleted-list"><li style="list-style-type:disc">Waiting time for P1 → 0, P2 → 24, P3 → 27</li></ul><ul id="e8f2743c-083d-47ee-bdef-9ba608e9446d" class="bulleted-list"><li style="list-style-type:disc">Average Waiting Time = (0 + 24 + 24)/3 = 17</li></ul><ul id="41a0fcb0-100a-48f4-b956-5f76edc805d3" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">Non pre-emptive</span> in nature</li></ul><ul id="52b1b68d-4bd7-495e-be96-f5d358955b1f" class="bulleted-list"><li style="list-style-type:disc">Ready Queue is the FIFO queue → First in First out</li></ul><ul id="9c978c9f-088f-43e5-86d5-49cef0618f69" class="bulleted-list"><li style="list-style-type:disc">If order was P2, P3, P1</li></ul><figure id="34bc4644-9cbd-4838-a5fe-0df319fbf468" class="image"><a href="Ch%206%20CPU%20Scheduling%200bee1cf8715d4a9d88488addf1585ee3/Untitled%201.png"><img style="width:685px" src="Ch%206%20CPU%20Scheduling%200bee1cf8715d4a9d88488addf1585ee3/Untitled%201.png"/></a></figure><ul id="fd012526-f2d1-4fee-9419-797aab417e4e" class="bulleted-list"><li style="list-style-type:disc">Waiting time for P1 → 6, P2 → 0, P3 → 3</li></ul><ul id="89a065ec-ec53-4ab5-964c-8e1a49ae9c71" class="bulleted-list"><li style="list-style-type:disc">Average waiting time → (6+3)/3 = 3</li></ul><ul id="bde2575a-03b8-43f7-b18e-bd7f73cf984e" class="bulleted-list"><li style="list-style-type:disc">Much better than previous case</li></ul><ul id="bb033692-155c-4e06-aea0-cb6c6d1f5085" class="bulleted-list"><li style="list-style-type:disc">Not applicable for time sharing systems</li></ul><h2 id="096e408d-b19c-472f-a9cb-fae632201bb5" class="">Example</h2><ul id="3a26ce39-489b-4137-843d-dab97ec0e131" class="bulleted-list"><li style="list-style-type:disc">If they arrive at same time, order according to Process ID</li></ul><figure id="ae7af5ec-705f-4818-bea1-982dd1632873" class="image"><a href="Ch%206%20CPU%20Scheduling%200bee1cf8715d4a9d88488addf1585ee3/Untitled%202.png"><img style="width:789px" src="Ch%206%20CPU%20Scheduling%200bee1cf8715d4a9d88488addf1585ee3/Untitled%202.png"/></a></figure><table id="99a45e16-6056-43f2-b5fb-0e494b9d5912" class="simple-table"><tbody><tr id="3cf1d0c6-fb34-4a56-b821-5d25776a5c92"><td id=":Kll" class="">Process</td><td id="Fqly" class="">Arrival Time</td><td id="Pa|:" class="">Burst Time</td><td id="sJHw" class="">Final Time</td><td id="|XiS" class="">Turn Around Time</td><td id="\rFm" class="">Wait Time</td><td id="qm^C" class="">Response Time</td></tr><tr id="09500f9a-fe2e-4d61-9cbf-48aa86fa140c"><td id=":Kll" class="">P1</td><td id="Fqly" class="">0</td><td id="Pa|:" class="">7</td><td id="sJHw" class="">7</td><td id="|XiS" class="">7</td><td id="\rFm" class="">0</td><td id="qm^C" class="">0</td></tr><tr id="9f85a1ba-14f4-47b0-846e-c56af3d5ee10"><td id=":Kll" class="">P2</td><td id="Fqly" class="">0</td><td id="Pa|:" class="">3</td><td id="sJHw" class="">10</td><td id="|XiS" class="">10</td><td id="\rFm" class="">7</td><td id="qm^C" class="">7</td></tr><tr id="e0b0b8fd-6676-457f-9a03-193bc76fc80a"><td id=":Kll" class="">P3</td><td id="Fqly" class="">0</td><td id="Pa|:" class="">4</td><td id="sJHw" class="">14</td><td id="|XiS" class="">14</td><td id="\rFm" class="">10</td><td id="qm^C" class="">10</td></tr><tr id="dc43984f-ce2b-40f6-86d8-93106fb1ffdc"><td id=":Kll" class="">P4</td><td id="Fqly" class="">0</td><td id="Pa|:" class="">6</td><td id="sJHw" class="">20</td><td id="|XiS" class="">20</td><td id="\rFm" class="">14</td><td id="qm^C" class="">14</td></tr></tbody></table><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="ac931b59-6b8b-426e-bcfc-be550e0e181c"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">NOTE: Turnaround Time → Finish Time - Arrival Time</div></figure><h2 id="c4cb0be1-4342-415b-9142-497e706307a5" class="">Example 2</h2><table id="9a3ce78c-9826-4cbc-870a-00a04af2982e" class="simple-table"><tbody><tr id="88a699f3-a963-4ab3-8741-091274b2a861"><td id=":Kll" class="">Process</td><td id="Fqly" class="">Arrival Time</td><td id="Pa|:" class="">Burst Time</td><td id="sJHw" class="">Final Time</td><td id="|XiS" class="">Turn Around Time</td><td id="\rFm" class="">Wait Time</td><td id="qm^C" class="">Response Time</td></tr><tr id="a0eed50b-39c5-4ccf-a40d-454757fd58dc"><td id=":Kll" class="">P1</td><td id="Fqly" class="">0</td><td id="Pa|:" class="">7</td><td id="sJHw" class="">7</td><td id="|XiS" class="">7</td><td id="\rFm" class="">0</td><td id="qm^C" class="">0</td></tr><tr id="c400ff44-8afc-4b03-8881-195296f9c474"><td id=":Kll" class="">P2</td><td id="Fqly" class="">8</td><td id="Pa|:" class="">3</td><td id="sJHw" class="">20</td><td id="|XiS" class="">12</td><td id="\rFm" class="">9</td><td id="qm^C" class="">9</td></tr><tr id="7a82eb55-1ff6-47f7-b4ba-13dc29c2c2dc"><td id=":Kll" class="">P3</td><td id="Fqly" class="">3</td><td id="Pa|:" class="">4</td><td id="sJHw" class="">11</td><td id="|XiS" class="">8</td><td id="\rFm" class="">4</td><td id="qm^C" class="">4</td></tr><tr id="fa83fce3-2747-4421-9a6d-cc2e7e52eb02"><td id=":Kll" class="">P4</td><td id="Fqly" class="">5</td><td id="Pa|:" class="">6</td><td id="sJHw" class="">17</td><td id="|XiS" class="">12</td><td id="\rFm" class="">6</td><td id="qm^C" class="">6</td></tr></tbody></table><ul id="c12d8717-d144-4985-a693-cd7dc0b86f5b" class="bulleted-list"><li style="list-style-type:disc">Gantt: P1(0-7) → P3(7-11) → P4(11-17) → P2(17-20)</li></ul><ul id="052337c0-b8e8-4de6-a97e-f6b64fbd536c" class="bulleted-list"><li style="list-style-type:disc">Wait time → <ul id="05797837-36fb-4be9-933c-bf8df05a1304" class="bulleted-list"><li style="list-style-type:circle">0 - 0 = 0</li></ul><ul id="54e63937-eba0-40da-adba-207aa17a66e3" class="bulleted-list"><li style="list-style-type:circle">17-8 = 9</li></ul><ul id="bbe24da1-c434-41cc-9ad0-21fb3cc37af8" class="bulleted-list"><li style="list-style-type:circle">7-3 = 4</li></ul><ul id="a196d73b-8318-4af4-bbf9-5a272cd0e109" class="bulleted-list"><li style="list-style-type:circle">11-5 = 6</li></ul></li></ul><h2 id="2cdc5c3f-2f58-4544-acf1-5fc0df0df334" class="">Example 3</h2><table id="302858c4-f15e-4f1c-ae7d-8db058949f1d" class="simple-table"><tbody><tr id="b7a39371-b042-4459-800b-24e7fbf49386"><td id=":Kll" class="">Process</td><td id="Fqly" class="">Arrival Time</td><td id="Pa|:" class="">Burst Time</td><td id="sJHw" class="">Final Time</td><td id="|XiS" class="">Turn Around Time</td><td id="\rFm" class="">Wait Time</td><td id="qm^C" class="">Response Time</td></tr><tr id="92c4166f-e524-4721-80cc-08b9df46d646"><td id=":Kll" class="">P1</td><td id="Fqly" class="">0</td><td id="Pa|:" class="">2</td><td id="sJHw" class="">2</td><td id="|XiS" class="">2</td><td id="\rFm" class="">0</td><td id="qm^C" class="">0</td></tr><tr id="877b782e-b94d-4681-b8de-0aee7107ed26"><td id=":Kll" class="">P2</td><td id="Fqly" class="">3</td><td id="Pa|:" class="">1</td><td id="sJHw" class="">4</td><td id="|XiS" class="">1</td><td id="\rFm" class="">0</td><td id="qm^C" class="">0</td></tr><tr id="0def2c88-ccdd-404f-8d48-973116bc7c0b"><td id=":Kll" class="">P3</td><td id="Fqly" class="">5</td><td id="Pa|:" class="">5</td><td id="sJHw" class="">10</td><td id="|XiS" class="">5</td><td id="\rFm" class="">0</td><td id="qm^C" class="">0</td></tr></tbody></table><ul id="bdd7084c-7f99-439b-9d46-31005062dfd5" class="bulleted-list"><li style="list-style-type:disc">Gantt: P1(0-2) P2(3-4) P3(5-10)</li></ul><h2 id="25cc60ec-4144-4ee7-9620-64041a28a41b" class="">Example 4</h2><figure id="78e3fd8f-dccb-405d-ab71-2aa3762eaedd" class="image"><a href="Ch%206%20CPU%20Scheduling%200bee1cf8715d4a9d88488addf1585ee3/image-1696502027243.jpg8601726185753685579.jpg"><img style="width:3000px" src="Ch%206%20CPU%20Scheduling%200bee1cf8715d4a9d88488addf1585ee3/image-1696502027243.jpg8601726185753685579.jpg"/></a></figure><ul id="d8687794-b1e8-406e-bbfa-e5a01c70d29a" class="bulleted-list"><li style="list-style-type:disc">We don&#x27;t show IO time in Gantt chart</li></ul><ul id="1d1628a7-4a83-493f-956c-2554b0355018" class="bulleted-list"><li style="list-style-type:disc">Here we have P1(0-3) P2(3-7) P3(7-11) P4(11-14) P1(14-16) P2(16-19) P4(19-22)</li></ul><ul id="585524fa-766d-47fd-aac0-59d85f739145" class="bulleted-list"><li style="list-style-type:disc">NOTE: Here we need to draw queue and keep track of when a process is added into the waiting queue</li></ul><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="a359ce9c-d17d-49d8-995f-76103228f87c"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Response time is always same as waiting time unless specified otherwise</div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="7ff00abf-63a6-4fb4-8bd9-a5aa0ec653f7"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Convoy effect - there might always be a case where ready queue is empty or device queue would be empty<br/>The Convoy Effect is a phenomenon in which the entire Operating System slows down owing to a few slower processes in the system<br/></div></figure><table id="103d25b3-2fad-4bf2-893e-942e1b0499e2" class="simple-table"><tbody><tr id="f940b96a-362d-4429-828c-eceae1c7c899"><td id="_izF" class="">Process</td><td id="ukXM" class="">Arrival Time</td><td id=";z[P" class="">Burst Time and IO Time </td><td id="~lsv" class="">Finish Time</td><td id="oPgh" class="">Turnaround Time</td><td id="KGT?" class="">Waiting Time ( We subtract Device Time)</td><td id="efqK" class="">Response Time</td></tr><tr id="9f390f30-bdad-4b43-b80a-67d7a528a27a"><td id="_izF" class="">P1</td><td id="ukXM" class="">0</td><td id=";z[P" class=""><span style="border-bottom:0.05em solid">3</span>,5,<span style="border-bottom:0.05em solid">2</span></td><td id="~lsv" class="">16</td><td id="oPgh" class="">16</td><td id="KGT?" class="">0-0 + 14-3 - 5 = 6</td><td id="efqK" class=""></td></tr><tr id="6b4cb783-ee69-4552-95cf-b9b1e7305470"><td id="_izF" class="">P2</td><td id="ukXM" class="">2</td><td id=";z[P" class=""><span style="border-bottom:0.05em solid">4</span>,3,<span style="border-bottom:0.05em solid">3</span></td><td id="~lsv" class="">19</td><td id="oPgh" class="">17</td><td id="KGT?" class="">3-2 + 16-7 - 3 = 7</td><td id="efqK" class=""></td></tr><tr id="9ee632ce-4030-4355-8faf-619a5ea7aba7"><td id="_izF" class="">P3</td><td id="ukXM" class="">4</td><td id=";z[P" class=""><span style="border-bottom:0.05em solid">4</span></td><td id="~lsv" class="">11</td><td id="oPgh" class="">7</td><td id="KGT?" class="">7-4 = 3</td><td id="efqK" class=""></td></tr><tr id="c70e1cff-0b4b-48b7-adf2-a0951559bf05"><td id="_izF" class="">P4</td><td id="ukXM" class="">6</td><td id=";z[P" class=""><span style="border-bottom:0.05em solid">3</span>,2,<span style="border-bottom:0.05em solid">3</span></td><td id="~lsv" class="">22</td><td id="oPgh" class="">16</td><td id="KGT?" class="">11-6 + 19-14 - 2 = 8</td><td id="efqK" class=""></td></tr></tbody></table><ul id="b766ed7d-4507-4500-bf5b-dab2d50c200f" class="bulleted-list"><li style="list-style-type:disc">When a process encounters a IO burst, CPU is released. Underlined times are burst times of CPU</li></ul><ul id="0e244de5-17ca-49c7-888a-731f3a601c03" class="bulleted-list"><li style="list-style-type:disc">Draw the ready queue and Device Queue. We have the ready queue with P1 first, then it’ll go to device queue and we will execute P2 for 4ms and then by that time P3 and P4 will be in ready queue. Then we execute P3 for 4ms and then by now P1 is free and back in queue and P2 also is free. So we get P1 P2 P4 in the ready queue and they get execute </li></ul><ul id="c3989e5d-56fb-41df-8a71-6a0757e9b197" class="bulleted-list"><li style="list-style-type:disc">Gantt Chart:<ul id="9e04a547-c2cd-4a80-b71e-852fb0ebbb87" class="bulleted-list"><li style="list-style-type:circle">P1(0-3) → P2(3-7) → P3(7-11) → P4(11-14) → P1(14-16) → P2(16-19) → P4(19-22)</li></ul></li></ul><h1 id="9eaf20a4-46c3-4019-a1a9-92c7764b41c5" class="">Algo #2 - Shortest Job First (SJF) Scheduling </h1><ul id="1b7941f1-61d3-45cb-9a2a-52f486180bf8" class="bulleted-list"><li style="list-style-type:disc">Associate with each process the length of it’s next CPU burst</li></ul><ul id="70beae05-7bd4-4a6c-9304-37f59aea328d" class="bulleted-list"><li style="list-style-type:disc">Use these lengths to schedule the process with the shortest time</li></ul><ul id="7ff1f216-1c60-4f68-b905-8d1732f2c4e4" class="bulleted-list"><li style="list-style-type:disc">Use FCFS in case of tie </li></ul><ul id="24c1c6a3-acc2-4d0e-ad6a-a0d130720641" class="bulleted-list"><li style="list-style-type:disc">SJF is optimal → gives the minimum average waiting time for a given set of processes</li></ul><ul id="80059345-02d8-4a9c-aa54-f75f027e1523" class="bulleted-list"><li style="list-style-type:disc">The difficulty is knowing the length of the next CPU request</li></ul><ul id="48a32c69-402f-4a8d-b2c6-88bd8b9741e7" class="bulleted-list"><li style="list-style-type:disc">For long term scheduling in a batch system, use the process time limit that a user specifies when the job is submitted</li></ul><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="bb0bd0da-e18d-4479-a76c-23a26d23fd68"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">In SJF, there&#x27;s high case of starvation because if a processor has 12hrs time, and we send a stream of infinite processes less than 12hr then the 12hr process will never get executed</div></figure><h3 id="e7df204e-14a7-4a38-a108-846ca31c1b3f" class="">Determining Length of Next CPU Burst</h3><ul id="0ddbb549-a18e-47de-93fc-b12710ad6e5e" class="bulleted-list"><li style="list-style-type:disc">Not possible to implement for short term scheduling</li></ul><ul id="e3a71508-e468-4591-920b-54e7b539667f" class="bulleted-list"><li style="list-style-type:disc">Can only estimate the length and then we pick process with shortest predicted next CPU burst</li></ul><ul id="03798815-3950-4478-bb43-4bdc44e1cdf0" class="bulleted-list"><li style="list-style-type:disc">Can be done by using length of previous CPU bursts using exponential averaging<ul id="4846b58c-fa79-4b4c-bd40-42eb9ffc626c" class="bulleted-list"><li style="list-style-type:circle">t_n = actual length of nth CPU burst</li></ul><ul id="b74035d4-b524-4585-a61a-73dd3055b23f" class="bulleted-list"><li style="list-style-type:circle">Tou_n+1 = predicted value of the next CPU burst</li></ul><ul id="22f13dec-b4da-4c80-8438-fc996948a6c4" class="bulleted-list"><li style="list-style-type:circle">0 ≤ a ≤ 1 and Tou_0 is constant or overall system average</li></ul><ul id="14271bcc-06ac-4798-9543-3f13216d4c5f" class="bulleted-list"><li style="list-style-type:circle"><code>Tou_n+1 = at_n + (1-a)Tou_n</code></li></ul></li></ul><h3 id="fc856dfb-6941-471f-bced-2325630ed419" class="">Prediction of Length of Next CPU Burst</h3><ul id="130a90da-3b6b-4cc4-837b-9efa6610c91f" class="bulleted-list"><li style="list-style-type:disc">if a = 0, tou_n+1 = tou_n</li></ul><ul id="2428d758-04d5-4409-aa23-9245cd2da521" class="bulleted-list"><li style="list-style-type:disc">if a = 1, tou_n+1 = tn</li></ul><ul id="8b6a3143-3a5d-461c-a77d-fefe99e3b140" class="bulleted-list"><li style="list-style-type:disc">tou_0 is constant or system average</li></ul><ul id="0fe62393-8b1f-420e-8859-4f42586d3921" class="bulleted-list"><li style="list-style-type:disc">Commonly we put a = 1/2</li></ul><ul id="86056573-217c-480e-9902-4365a2de0f7e" class="bulleted-list"><li style="list-style-type:disc">Can be non-preemptive or preemptive</li></ul><ul id="da55fc28-9097-4381-b5bc-58b90e14506c" class="bulleted-list"><li style="list-style-type:disc">The next CPU burst of a newly arrived process may be shorter than what is left of the currently executing process → happens in preemptive</li></ul><ul id="305b45ed-34e9-493b-bd0f-01f93c6946aa" class="bulleted-list"><li style="list-style-type:disc">Preemptive version is called shortest remaining time first → SRTF</li></ul><h2 id="4989cd1d-e86c-4198-a730-4cecd9b68ab4" class="">Example 1 - SJF</h2><table id="525a56b8-e96f-42dc-bf44-7e1dde13d645" class="simple-table"><tbody><tr id="7a2c1948-bcca-46c9-a3d8-b053673fc70e"><td id="hAam" class="">Process</td><td id="jMv|" class="">Burst Time</td></tr><tr id="da935289-30d9-4676-be1c-3550c3a8afc4"><td id="hAam" class="">P1</td><td id="jMv|" class="">6</td></tr><tr id="2b5ec74b-e9f3-450e-8797-99126ad0e9ac"><td id="hAam" class="">P2</td><td id="jMv|" class="">8</td></tr><tr id="15f14fef-2b57-4079-aa7f-8d8e872273a8"><td id="hAam" class="">P3</td><td id="jMv|" class="">7</td></tr><tr id="97b02aca-95f9-43af-a780-3810943d0f64"><td id="hAam" class="">P4</td><td id="jMv|" class="">3</td></tr></tbody></table><ul id="d9bfd168-ce86-4d75-8364-ea78a1dc8eb2" class="bulleted-list"><li style="list-style-type:disc">Gantt Chart → P4(0-3) =⇒ P1(3-9) =⇒ P3(9-16) =⇒ P2(16-24)</li></ul><ul id="4669c892-e6cf-4ce6-a06f-1d71ebc2fc33" class="bulleted-list"><li style="list-style-type:disc">Average waiting time = 3+16+9+0/4 = 7ms</li></ul><h2 id="d58fcd87-31b2-4139-a50b-d5733714df83" class="">Example 2 - SRTF</h2><table id="d13db10d-aa0a-4529-bb66-9dec12c328ad" class="simple-table"><tbody><tr id="3dccb9f2-b4f9-4d3c-9c6c-a0506d7498d5"><td id="hAam" class="">Process</td><td id="jMv|" class="">Arrival Time</td><td id="^wZ}" class="">Burst Time</td></tr><tr id="b278e3a8-1684-4b2f-918d-a7cad648842c"><td id="hAam" class="">P1</td><td id="jMv|" class="">0</td><td id="^wZ}" class="">8</td></tr><tr id="09a8e19f-2b01-4f74-98f2-c8287fc133ad"><td id="hAam" class="">P2</td><td id="jMv|" class="">1</td><td id="^wZ}" class="">4</td></tr><tr id="3776472c-46b1-468a-8690-0f0dbcba8566"><td id="hAam" class="">P3</td><td id="jMv|" class="">2</td><td id="^wZ}" class="">9</td></tr><tr id="7aca8f65-28ba-452f-841b-c6f9df4a5799"><td id="hAam" class="">P4</td><td id="jMv|" class="">3</td><td id="^wZ}" class="">4</td></tr></tbody></table><figure id="bce82d6a-3bbc-45b4-9689-7d18a3290a67" class="image"><a href="Ch%206%20CPU%20Scheduling%200bee1cf8715d4a9d88488addf1585ee3/Untitled%203.png"><img style="width:966px" src="Ch%206%20CPU%20Scheduling%200bee1cf8715d4a9d88488addf1585ee3/Untitled%203.png"/></a></figure><ul id="1a6086e9-0104-431c-815c-a35e6b74c566" class="bulleted-list"><li style="list-style-type:disc">In this case waiting time for P1 = (0-0) + (10-1) we need to count both waiting times i.e. summation of individual chunks</li></ul><h2 id="0f5b5c9b-ff22-4ac1-be9c-7753ac1bc803" class="">Example 3 - SRTF with different Arrival Times</h2><table id="0150472f-c3d7-4a31-ba93-5436971624ef" class="simple-table"><tbody><tr id="117c7018-1432-4897-a0a9-94685759c86d"><td id="JZK^" class="">Process</td><td id="nS[;" class="">Arrival Time</td><td id="gh^]" class="">Burst Time</td><td id="\]y=" class="">Finish Time</td><td id="yNaR" class="">Turnaround Time</td><td id="~^d@" class="">Waiting Time</td><td id="ZZNm" class="">Response Time</td></tr><tr id="49d98f40-5557-42cf-af68-aff2cee0880b"><td id="JZK^" class="">P1</td><td id="nS[;" class="">0</td><td id="gh^]" class="">7→4→Done</td><td id="\]y=" class=""></td><td id="yNaR" class=""></td><td id="~^d@" class=""></td><td id="ZZNm" class=""></td></tr><tr id="e70844d5-e632-4924-9b86-b7cab0b770c7"><td id="JZK^" class="">P2</td><td id="nS[;" class="">8</td><td id="gh^]" class="">3</td><td id="\]y=" class=""></td><td id="yNaR" class=""></td><td id="~^d@" class=""></td><td id="ZZNm" class=""></td></tr><tr id="9b1bc5e4-c8c3-498f-b122-92790fa5e187"><td id="JZK^" class="">P3</td><td id="nS[;" class="">3</td><td id="gh^]" class="">2→Done</td><td id="\]y=" class=""></td><td id="yNaR" class=""></td><td id="~^d@" class=""></td><td id="ZZNm" class=""></td></tr><tr id="f525c481-0ade-47a7-8bd0-5756f6d4c602"><td id="JZK^" class="">P4</td><td id="nS[;" class="">5</td><td id="gh^]" class="">6</td><td id="\]y=" class=""></td><td id="yNaR" class=""></td><td id="~^d@" class=""></td><td id="ZZNm" class=""></td></tr></tbody></table><ul id="86464665-7ec7-49a4-a0ad-23fdf49a90af" class="bulleted-list"><li style="list-style-type:disc">P1(0→3) → P3(3→5)→P1(5→9)→P2(9→12)→P4(12→18)</li></ul><h2 id="8b5ab2d3-474a-42fa-bc37-2c9e5eff2edd" class="">Example 4 - Non Preemptive SJF with IO</h2><figure id="c9eca27b-694f-4c49-bfac-947890cc421f" class="image"><a href="Ch%206%20CPU%20Scheduling%200bee1cf8715d4a9d88488addf1585ee3/Untitled%204.png"><img style="width:1220px" src="Ch%206%20CPU%20Scheduling%200bee1cf8715d4a9d88488addf1585ee3/Untitled%204.png"/></a></figure><ul id="b58e26ca-8de7-4d72-a508-0b756e5aa4f3" class="bulleted-list"><li style="list-style-type:disc">Gantt Chart: P3(0-2) P1(2-6) P3(6-8) P1(8-12) P2(12-17) P2(19-24)</li></ul><ul id="d62119e0-b1bf-4b21-9f1e-988f93986787" class="bulleted-list"><li style="list-style-type:disc">NOTE: Wait time = Total Wait Time - IO time</li></ul><table id="2b597e83-ddc9-4720-b1d3-573d0c8294cc" class="simple-table"><tbody><tr id="5b05ea3c-d05b-46b2-a9e5-f064f80b4619"><td id="vLVP" class="">Process</td><td id="wRGe" class="">Arrival Time</td><td id="PRv|" class="">CPU and IO</td><td id="X@Ok" class="">Final Time</td><td id=";wsH" class="">Turn Around Time</td><td id="OdT[" class="">Waiting Time</td><td id="&gt;}V|" class="">Response Time</td></tr><tr id="f6b4ed4e-f45f-4e37-8a67-91f35b2df851"><td id="vLVP" class="">P1</td><td id="wRGe" class="">0</td><td id="PRv|" class="">4c 2i 4c</td><td id="X@Ok" class="">12</td><td id=";wsH" class="">12</td><td id="OdT[" class="">2-0 + 8-6 - 2= 2</td><td id="&gt;}V|" class="">2</td></tr><tr id="b64e1592-41c7-4f6b-a6bd-4c56461dc7e8"><td id="vLVP" class="">P2</td><td id="wRGe" class="">0</td><td id="PRv|" class="">5c 2i 5c</td><td id="X@Ok" class="">24</td><td id=";wsH" class="">24</td><td id="OdT[" class="">12-0 + 19-17 -2 = 12</td><td id="&gt;}V|" class="">12</td></tr><tr id="2ee2fa05-f688-4057-8d75-3b3000c199bd"><td id="vLVP" class="">P3</td><td id="wRGe" class="">0</td><td id="PRv|" class="">2c 2i 2i</td><td id="X@Ok" class="">8</td><td id=";wsH" class="">8</td><td id="OdT[" class="">0-0 + 6-2 -2 = 2</td><td id="&gt;}V|" class="">2</td></tr></tbody></table><h1 id="ad4c73cf-db5e-4d24-b667-e581bd4a889b" class="">Algo #3: Priority Scheduling</h1><ul id="16bbd5d9-ffbc-4b3c-b9d6-be75353ef54d" class="bulleted-list"><li style="list-style-type:disc">Priority number is associated with each process, generally starting from 0</li></ul><ul id="8bd4a981-6900-484f-987c-29bac62b3798" class="bulleted-list"><li style="list-style-type:disc">The CPU is allocated to the process with the highest priority(smallest integer = higher priority) </li></ul><ul id="b5961755-59e8-424e-8524-9a1c4f0984c4" class="bulleted-list"><li style="list-style-type:disc">Ties are broken using FCFS</li></ul><ul id="3cfc2eaf-ab8f-4cc6-9c21-543d8370a61c" class="bulleted-list"><li style="list-style-type:disc">SJF is priority scheduling where priority is the inverse of predicted next CPU burst time</li></ul><ul id="c9ecc2da-d3d7-467d-af3f-5efd3145ca6d" class="bulleted-list"><li style="list-style-type:disc">Problem = Starvation/Indefinite blocking = low priority processes may never execute</li></ul><ul id="08b82440-c762-4d98-b0e4-950169201342" class="bulleted-list"><li style="list-style-type:disc">Solution = Aging - as the time progresses, increase the priority of the process</li></ul><h2 id="5a48211d-b013-4717-a032-804fa660f4e3" class="">Example 1: Non preemptive</h2><table id="50d9282e-d549-46a1-82e6-1dc080670835" class="simple-table"><tbody><tr id="fdabe8af-f0a8-441c-a9ab-ba4dd64a5234"><td id="uiYE" class="">Process</td><td id=":wpC" class="">Burst Time</td><td id="OJ\P" class="">Priority</td></tr><tr id="40a30d4e-84bf-4bb2-bf02-c2242b67674c"><td id="uiYE" class="">P1</td><td id=":wpC" class="">10</td><td id="OJ\P" class="">3</td></tr><tr id="6dad4fb9-7576-497f-b95a-5c68c813ec43"><td id="uiYE" class="">P2</td><td id=":wpC" class="">1</td><td id="OJ\P" class="">1</td></tr><tr id="3a4083af-3251-426f-af79-20df16542774"><td id="uiYE" class="">P3</td><td id=":wpC" class="">2</td><td id="OJ\P" class="">4</td></tr><tr id="836ac143-7d48-45d5-8a34-e4109177d729"><td id="uiYE" class="">P4</td><td id=":wpC" class="">1</td><td id="OJ\P" class="">5</td></tr><tr id="0282e7cb-a642-42be-b9ac-202dda92f1eb"><td id="uiYE" class="">P5</td><td id=":wpC" class="">5</td><td id="OJ\P" class="">2</td></tr></tbody></table><ul id="5aa736b7-ef2d-497f-86f9-6b34170005c9" class="bulleted-list"><li style="list-style-type:disc">All of them arrive at the same time</li></ul><ul id="fad6e61d-2a16-4d1d-86cc-641ff68225f9" class="bulleted-list"><li style="list-style-type:disc">P2(0-1) → P5(1-6) → P1(6-16) → P3(16-18) → P4(18-19)</li></ul><ul id="f5da97b0-f299-4c44-9e99-f31a5cc41119" class="bulleted-list"><li style="list-style-type:disc">Waiting Time: P2-0, P3-16, P5-1, P1-6, P4-18</li></ul><h2 id="f97c4f2b-768f-4340-8d1d-3759a17b973d" class="">Example 2: Preemptive</h2><table id="788f512c-b229-4d81-bd9c-dab8d86851a8" class="simple-table"><tbody><tr id="f354c146-ffcc-41cc-940b-599a323b6a74"><td id="n{;h" class="">Priority</td><td id="T[Sv" class="">Arrival Time</td><td id="&gt;l_W" class="">Burst Time</td><td id="qFON" class="">Priority</td></tr><tr id="dbcbaea9-9bff-4606-8be1-e75bd4359604"><td id="n{;h" class="">P1</td><td id="T[Sv" class="">0</td><td id="&gt;l_W" class="">4</td><td id="qFON" class="">4</td></tr><tr id="612e45d9-87d2-4ec9-8067-2c5f26757c4e"><td id="n{;h" class="">P2</td><td id="T[Sv" class="">2</td><td id="&gt;l_W" class="">10</td><td id="qFON" class="">2</td></tr><tr id="aeb4821e-4a50-42f0-95d4-a0f35b3b2400"><td id="n{;h" class="">P3</td><td id="T[Sv" class="">4</td><td id="&gt;l_W" class="">2</td><td id="qFON" class="">1</td></tr><tr id="6069f0ec-e5e4-4fc3-b3f0-f8baa23b8311"><td id="n{;h" class="">P4</td><td id="T[Sv" class="">6</td><td id="&gt;l_W" class="">20</td><td id="qFON" class="">3</td></tr><tr id="1f7a6d60-2e63-46c3-878d-6f5af341c6d4"><td id="n{;h" class="">P5</td><td id="T[Sv" class="">8 </td><td id="&gt;l_W" class="">2</td><td id="qFON" class="">5</td></tr></tbody></table><figure id="f863fcde-8f52-443c-9632-23e054002c31" class="image"><a href="Ch%206%20CPU%20Scheduling%200bee1cf8715d4a9d88488addf1585ee3/Untitled%205.png"><img style="width:600px" src="Ch%206%20CPU%20Scheduling%200bee1cf8715d4a9d88488addf1585ee3/Untitled%205.png"/></a></figure><ul id="5d3e897d-36ad-4771-9e7d-9dcabf450db6" class="bulleted-list"><li style="list-style-type:disc">Here say waiting time for P1 → 0-0 + 34-2<ul id="8b6b1683-773b-4c38-9673-bc7b4800672c" class="bulleted-list"><li style="list-style-type:circle">P2→ 2-2 + 6-4</li></ul><ul id="ba081fbc-14bb-46f6-be83-0928898b2381" class="bulleted-list"><li style="list-style-type:circle">P3→ 4-4</li></ul><ul id="5a2c86e3-1a2a-45ba-aaf5-bab761cbe0ab" class="bulleted-list"><li style="list-style-type:circle">P4 → 14-6</li></ul><ul id="aa94b78a-b6d2-46af-8633-f08511a618c4" class="bulleted-list"><li style="list-style-type:circle">P5 → 36-8</li></ul><h2 id="178d16b0-a333-406d-b547-a12729568e9c" class="">Example 3:</h2></li></ul><table id="6ed1ee40-9552-4a63-acc2-4fd2a3b7a827" class="simple-table"><tbody><tr id="448237f8-7175-48b7-ab42-3e8f9fe3b2fc"><td id="A]qI" class="">Process</td><td id="tjGy" class="">Arrival Time</td><td id="}`B{" class="">Burst Time</td><td id="gOpT" class="">Priority</td><td id="hWxd" class="">Final Time</td><td id="saXn" class="">Turnaround Time = FT - AT</td><td id="[_V~" class="">Waiting Time</td><td id="M@w_" class="">Response Time</td></tr><tr id="d162e915-7546-4faa-ac46-96460ae88129"><td id="A]qI" class="">P1</td><td id="tjGy" class="">0</td><td id="}`B{" class="">3→1→0</td><td id="gOpT" class="">5</td><td id="hWxd" class="">15</td><td id="saXn" class="">15</td><td id="[_V~" class="">0-0 + 14-2 = 12</td><td id="M@w_" class="">12</td></tr><tr id="41c510a0-12ee-415e-a753-2c189068c902"><td id="A]qI" class="">P2</td><td id="tjGy" class="">2</td><td id="}`B{" class="">2→1→0</td><td id="gOpT" class="">3</td><td id="hWxd" class="">10</td><td id="saXn" class="">8</td><td id="[_V~" class="">2-2 + 9-3 = 6</td><td id="M@w_" class="">6</td></tr><tr id="d3bfc7a9-2696-4125-ac74-f4a9f4885456"><td id="A]qI" class="">P3</td><td id="tjGy" class="">3</td><td id="}`B{" class="">5→2→0</td><td id="gOpT" class="">2</td><td id="hWxd" class="">9</td><td id="saXn" class="">6</td><td id="[_V~" class="">3-3 + 7-6 = 1</td><td id="M@w_" class="">1</td></tr><tr id="8273a2e0-c3df-4dd9-aaaa-1c5a4964ffe7"><td id="A]qI" class="">P4</td><td id="tjGy" class="">4</td><td id="}`B{" class="">4→0</td><td id="gOpT" class="">4</td><td id="hWxd" class="">14</td><td id="saXn" class="">10</td><td id="[_V~" class="">10-4 = 6</td><td id="M@w_" class="">6</td></tr><tr id="1b5a1dac-15b6-467c-a62e-3e6dbd62ba3f"><td id="A]qI" class="">P5</td><td id="tjGy" class="">6</td><td id="}`B{" class="">1→0</td><td id="gOpT" class="">1</td><td id="hWxd" class="">7</td><td id="saXn" class="">1</td><td id="[_V~" class="">6-6 = 0</td><td id="M@w_" class="">0</td></tr></tbody></table><ul id="4d2d97d8-b06c-4160-b80d-2f0fc41bf37f" class="bulleted-list"><li style="list-style-type:disc">Non preemptive, just use priorities and fcfs<ul id="9c7be9ae-531f-4798-ad93-66b69233224c" class="bulleted-list"><li style="list-style-type:circle">P1(0-3) → P3(3→8) → P5(8→9) → P2(9→11) → P4(11→15)</li></ul></li></ul><ul id="ec53a294-8275-4a53-865d-0dee675f876e" class="bulleted-list"><li style="list-style-type:disc">Preemptive<ul id="1c2d24af-2771-44b0-a8f7-279adce3addd" class="bulleted-list"><li style="list-style-type:circle">P1(0-2) → P2(2-3) → P3(3-6) →P5(6-7) →P3(7→9) → P2(9-10) →P4(10→14)→P1(14-15)</li></ul></li></ul><h1 id="6b93c268-1cde-4093-8fa5-a7cf66737287" class="">Algo #4: Round Robin Scheduling</h1><ul id="7a9e0e8d-beef-45d7-ad9b-2fe2bdd4be81" class="bulleted-list"><li style="list-style-type:disc">Each process gets a small unit of CPU time → time quantum q → aka time slice</li></ul><ul id="88a407ff-9c5a-470c-95a8-01c6d60fb841" class="bulleted-list"><li style="list-style-type:disc">After this time, the process is preempted and added to the end of the ready queue</li></ul><ul id="e2e9c86a-a765-412a-a0f9-d95490650532" class="bulleted-list"><li style="list-style-type:disc">If there are n processes in the ready queue and the time quantum is q, then each process gets 1/n of the CPU time in chunks of at most q time units at once</li></ul><ul id="493a250d-4e47-4400-a3b6-94d183a9faf8" class="bulleted-list"><li style="list-style-type:disc">No process waits more than (n-1)q time units until it’s next time quantum</li></ul><ul id="5ca36735-fb9c-477c-8819-67d8dfa30fcc" class="bulleted-list"><li style="list-style-type:disc">Timer interrupts every quantum to schedule next process</li></ul><ul id="853cb0ed-16ea-40e8-9081-041996f969bb" class="bulleted-list"><li style="list-style-type:disc">Performance<ul id="f28dad18-66d8-48dd-be20-72238e7c5205" class="bulleted-list"><li style="list-style-type:circle">q very large → FCFS</li></ul><ul id="f2607c42-a3e9-439f-b46d-0433c268c097" class="bulleted-list"><li style="list-style-type:circle">q small → q must be large wrt to context switch, otherwise overhead is too high </li></ul></li></ul><ul id="6004ecb5-9395-4c1c-a8ec-a359e89c331d" class="bulleted-list"><li style="list-style-type:disc">Very important to draw the ready queue</li></ul><ul id="dc7f9720-fbbd-4055-8379-02e735d1ab4c" class="bulleted-list"><li style="list-style-type:disc">We assume preemption happens even if there’s only one process</li></ul><figure id="f1b8683b-d4bd-40fd-b6c5-95dea5fa0d58" class="image"><a href="Ch%206%20CPU%20Scheduling%200bee1cf8715d4a9d88488addf1585ee3/Untitled%206.png"><img style="width:2081px" src="Ch%206%20CPU%20Scheduling%200bee1cf8715d4a9d88488addf1585ee3/Untitled%206.png"/></a></figure><h2 id="fda197de-7798-457d-b8fb-bf13478aec7b" class="">Example 1</h2><table id="b933cd2c-0add-464b-8152-a4e5953f24b2" class="simple-table"><tbody><tr id="c45fb275-a0db-4cab-8140-8f7b1a63ffc8"><td id="JQEg" class="">Process</td><td id="]ccg" class="">Burst Time</td></tr><tr id="996ade11-4525-4201-88e3-2d3fc000e83a"><td id="JQEg" class="">P1</td><td id="]ccg" class="">24</td></tr><tr id="693ea36b-79a1-4021-b309-4e7a30b78bec"><td id="JQEg" class="">P2</td><td id="]ccg" class="">3</td></tr><tr id="87a60f62-4191-4d63-b8d3-b7c46bdc6faf"><td id="JQEg" class="">P3</td><td id="]ccg" class="">3</td></tr></tbody></table><ul id="1fbbefd1-4ec5-4066-bb96-3094a6ab54d7" class="bulleted-list"><li style="list-style-type:disc">Typically higher average turnaround time, but better response time</li></ul><ul id="4452b589-e552-4d14-a3cb-f903d1f39313" class="bulleted-list"><li style="list-style-type:disc">q should be large compared to context switch time</li></ul><ul id="9de854c2-a3ea-47a5-b2d2-c76124a813c6" class="bulleted-list"><li style="list-style-type:disc">q usually between 10ms to 100ms and context switch &lt;10 micro second</li></ul><ul id="f81b9ac4-4f61-4656-afbb-51b59085071b" class="bulleted-list"><li style="list-style-type:disc">If q = 4ms</li></ul><figure id="d69c3e5b-ee10-4b2b-87f2-9a1bd8ac3fe0" class="image"><a href="Ch%206%20CPU%20Scheduling%200bee1cf8715d4a9d88488addf1585ee3/Untitled%207.png"><img style="width:1050px" src="Ch%206%20CPU%20Scheduling%200bee1cf8715d4a9d88488addf1585ee3/Untitled%207.png"/></a></figure><h3 id="78536a93-9ab9-41ea-a7f5-727e989dece3" class="">Example 2</h3><figure id="d7efe0c4-16aa-489e-8731-99aa72e1764a" class="image"><a href="Ch%206%20CPU%20Scheduling%200bee1cf8715d4a9d88488addf1585ee3/1000064379.jpg"><img style="width:4000px" src="Ch%206%20CPU%20Scheduling%200bee1cf8715d4a9d88488addf1585ee3/1000064379.jpg"/></a></figure><h1 id="1809adaa-a2db-4094-8bec-7871743aff97" class="">Algo #5: Multi level Queue Scheduling</h1><ul id="76e9b57d-10ae-4fbb-b209-61f38d13fdea" class="bulleted-list"><li style="list-style-type:disc">Fix priority preemptive scheduling among queues</li></ul><ul id="98c31b3b-c60e-4a11-aba7-52a6b95e9c62" class="bulleted-list"><li style="list-style-type:disc">Reason for partitioning is that, we are going to classify the processes as well</li></ul><figure id="870b7460-a29c-44b6-9573-9b17a064310f" class="image"><a href="Ch%206%20CPU%20Scheduling%200bee1cf8715d4a9d88488addf1585ee3/Untitled%208.png"><img style="width:634px" src="Ch%206%20CPU%20Scheduling%200bee1cf8715d4a9d88488addf1585ee3/Untitled%208.png"/></a></figure><ul id="45fc7093-916a-4637-a39e-8dd3df430a47" class="bulleted-list"><li style="list-style-type:disc">For each queue, we can have multiple algorithms within themselves</li></ul><ul id="ed7b252c-0367-4b53-993d-f0e7cf19ffa3" class="bulleted-list"><li style="list-style-type:disc">But the con here is that there is no aging. Meaning this can lead to starvation</li></ul><ul id="fe320319-5163-48c6-a0c8-7aad20a9a565" class="bulleted-list"><li style="list-style-type:disc">Processes in student processes may never get the chance to execute themselves</li></ul><ul id="29d17c9d-1ee8-4056-90a6-8412ce0576c1" class="bulleted-list"><li style="list-style-type:disc">We can time slice among the queues → certain portion of the CPU time I will allocate to one o the queue</li></ul><h1 id="3c462a10-01df-4e30-8111-7fd62eef642d" class="">Algo #6: Multilevel Feedback Queue</h1><ul id="e258ac9d-0e73-4784-8bee-fd3a8cfd1b26" class="bulleted-list"><li style="list-style-type:disc">A process can move between the various queues, aging can be implemented this way</li></ul><ul id="8b966a32-8af5-4ec4-8baa-fa59e8582ba5" class="bulleted-list"><li style="list-style-type:disc">Separate processes according to the characteristics of their CPU bursts</li></ul><ul id="f0009320-a516-4168-a466-f21ac7703693" class="bulleted-list"><li style="list-style-type:disc">Multilevel feedback queue scheduler is defined by the following parameters<ul id="2d8e1f72-7a1e-4fb1-be29-42b74f024f63" class="bulleted-list"><li style="list-style-type:circle">Number of queues</li></ul><ul id="9787c0b5-9894-41a9-88b2-5b35fcb8b336" class="bulleted-list"><li style="list-style-type:circle">Scheduling algos for each queue</li></ul><ul id="811e83f1-4285-4a82-a4fd-5691de59c9cd" class="bulleted-list"><li style="list-style-type:circle">Method used to determine when to upgrade a process</li></ul><ul id="575198e1-749a-405d-b31b-9ca83c4d8c6b" class="bulleted-list"><li style="list-style-type:circle">Method used to determine when to demote a process</li></ul><ul id="7e65b408-18a0-480a-b02c-d7a09e8f9c31" class="bulleted-list"><li style="list-style-type:circle">Method used to determine which queue a process will enter when that process needs service</li></ul></li></ul><figure id="e73fea05-cb5a-4983-a1ef-c65f08d0fc2c" class="image"><a href="Ch%206%20CPU%20Scheduling%200bee1cf8715d4a9d88488addf1585ee3/Untitled%209.png"><img style="width:1053px" src="Ch%206%20CPU%20Scheduling%200bee1cf8715d4a9d88488addf1585ee3/Untitled%209.png"/></a></figure><ul id="a836bcd2-68d5-4a61-ac1d-356b0fed91e3" class="bulleted-list"><li style="list-style-type:disc">NOTE: Process goes from head of Q0 to TAIL of Q1</li></ul><ul id="c9a59cdb-83b9-47e2-99b3-52ebe5ce55ac" class="bulleted-list"><li style="list-style-type:disc">As long as there is any process in Q0, no process from Q1 and Q2 get executed</li></ul><ul id="4b42a6ff-78b6-4d9e-9310-c2847f5e94f8" class="bulleted-list"><li style="list-style-type:disc">The process will not execute anything in Q2 unless Q1 and Q0 are empty</li></ul><ul id="63c3e0e9-1d65-4fa8-adba-c513a1044256" class="bulleted-list"><li style="list-style-type:disc">If a process in Q2 is being executed and say we get a process in Q0, it gets preempted and Q0 executes first</li></ul><h1 id="e19a020f-1f94-446b-8ab6-7ee1e085818e" class="">Thread Scheduling</h1><ul id="0a429b39-8ae2-41f9-8c54-fff2614b34bf" class="bulleted-list"><li style="list-style-type:disc">Distinction between user level and kernel level threads</li></ul><ul id="c84d8ba6-1031-4f15-a8b7-af8d2b7ed20c" class="bulleted-list"><li style="list-style-type:disc">User level threads are not scheduled</li></ul><ul id="7df300ff-2e6f-4ef9-8238-2b6585a190d8" class="bulleted-list"><li style="list-style-type:disc">When threads supported, threads scheduled, not processes</li></ul><ul id="5ffa9928-11ad-4b14-b57f-53f4ff61f6f7" class="bulleted-list"><li style="list-style-type:disc">Many to one and many to many models, thread library schedules user level threads to run on LWP (Kernel Level Resource)<ul id="30caf1eb-b611-4bf0-abff-25c63d925000" class="bulleted-list"><li style="list-style-type:circle">Scheme is known as process contention scope since scheduling competition is within the process (local contention scope)</li></ul><ul id="93100310-c673-4fa5-abeb-f66e371a6251" class="bulleted-list"><li style="list-style-type:circle">Typically done via priority set by programmer</li></ul></li></ul><ul id="2b61bfa5-edc9-42b9-8d3d-8d95d021d66a" class="bulleted-list"><li style="list-style-type:disc">Kernel thread scheduled onto available CPU is system-contention scope (SCS) - competition among all threads in system</li></ul><h1 id="727e8dd1-c3b7-401d-b2d2-0e7de2bf55a6" class="">P thread Scheduling</h1><ul id="0d172ce8-4ae2-456a-85e0-0658da992e7c" class="bulleted-list"><li style="list-style-type:disc">Allows specifying either PCS or SCS during thread creation, contention and scope values</li></ul><ul id="5215219e-5c9f-48dd-8898-9b1cf42b0b28" class="bulleted-list"><li style="list-style-type:disc">PCS → PTHREAD_SCOPE_PROCESS</li></ul><ul id="b980f189-28fa-4e18-a6b4-b8d662d6c44a" class="bulleted-list"><li style="list-style-type:disc">SCS → PTHREAD_SCOPE_SYSTEM</li></ul><ul id="5c3dacde-4f81-412f-b50d-20a98aea2f95" class="bulleted-list"><li style="list-style-type:disc">Can be limited by OS - Linux and Mac only allow SCS</li></ul><ul id="7495f73e-9389-4709-a61c-c319389d8b82" class="bulleted-list"><li style="list-style-type:disc">On systems implementing M:M model, PCS policy schedules user level threads onto LWPs</li></ul><ul id="e37d4863-0f5d-4c65-8c66-8f73d60d1b13" class="bulleted-list"><li style="list-style-type:disc">SCS will create and bind an LWP for each user level thread effectively mapping a user level thread to a kernel level thread</li></ul><ul id="88d3a365-e46c-41a5-abaa-3484d70cd669" class="bulleted-list"><li style="list-style-type:disc"><code>pthread_attr_setscope(pthread_attr_t *attr, int scope)</code></li></ul><ul id="314a54c2-9bc6-4742-a4ea-2f0042ec46f6" class="bulleted-list"><li style="list-style-type:disc"><code>pthread_attr_getscope(pthread_attr_t </code><code><code><code><em><code>attr, int*</code></em></code></code></code><code> scope)</code></li></ul><ul id="e2abca80-7d12-41b8-b726-1f2ef3371a76" class="bulleted-list"><li style="list-style-type:disc">On success, these return 0 and on error return non zero error number </li></ul><ul id="c77acc2c-c258-4c65-885b-920ff2c7eacf" class="bulleted-list"><li style="list-style-type:disc">999 single threaded + 1 process with 1000 threads → you wouldn’t want the one process to starve out because of the others → very difficult</li></ul><figure id="b900de99-775f-46db-8250-412d1fb2301b" class="image"><a href="Ch%206%20CPU%20Scheduling%200bee1cf8715d4a9d88488addf1585ee3/Untitled%2010.png"><img style="width:2495px" src="Ch%206%20CPU%20Scheduling%200bee1cf8715d4a9d88488addf1585ee3/Untitled%2010.png"/></a></figure><h1 id="bcbd1c9d-ae9b-4213-836f-2288569c157f" class="">Completely Fair Scheduler - CFS</h1><ul id="1399b24f-d5ce-4578-af72-6b90423b9f56" class="bulleted-list"><li style="list-style-type:disc">Linux is one to one mapping</li></ul><ul id="72f729ab-3502-42d3-9903-aa4866f781b1" class="bulleted-list"><li style="list-style-type:disc">Default scheduler in Linux kernel</li></ul><ul id="8e08832b-a711-42e8-b27d-cf97a2dff53e" class="bulleted-list"><li style="list-style-type:disc">Red Black Tree</li></ul><ul id="47686de2-429d-40ba-9950-be395d134f0a" class="bulleted-list"><li style="list-style-type:disc">Processes are given a fair amount of processor time</li></ul><ul id="f20dce6c-bd8a-4c45-b40e-d910feaf0c9d" class="bulleted-list"><li style="list-style-type:disc">Keeps track of the amount of processor time provided to a process - virtual runtime</li></ul><ul id="983b5106-96cd-46ad-8669-7d94ef829168" class="bulleted-list"><li style="list-style-type:disc">Smaller a process’s virtual runtime implies the process has been permitted to access processor for a smaller amount of time, hence higher is the need for processor</li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

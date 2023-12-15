@@ -1,0 +1,936 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Ch 10: Mass Storage</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="0f9f7252-edb9-46ab-9ab9-72db8d131cef" class="page sans"><header><h1 class="page-title">Ch 10: Mass Storage</h1><p class="page-description"></p></header><div class="page-body"><nav id="934e7631-9e6a-408f-9394-d7dcc76698e2" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5daf5fe2-4991-4a1b-a1b2-5ac6cc3fd677">Magnetic Disks</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#aa9a3449-2a15-417d-a32e-b3dd2b284d7c">Disk Structure</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0cda9093-8d30-4134-9084-f04540b8dfee">Disk Scheduling</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8fca15de-6f2d-4e1a-91e0-698efbef9f32">FCFS</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5cf4ba12-6b11-4a08-a53c-c1b5e2fd83f3">Shortest Seek Time First</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#cbc99704-c784-449a-a3c4-861f44440f53">Scan/Elevator</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#868e0853-19fa-453f-9696-5e379f699c1a">C Scan</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7d4709b6-9476-4cba-87f5-3b3632a768b3">Disk Management</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#19ffe10d-baef-4b3c-ab23-87e9bb615eff">RAID</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f1e4c22f-8bbf-4de2-9973-1df8c1ac1dfd">RAID 0 → Non Redundant but data striping</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5cd6c505-0b8e-483e-91bb-9d614d16e77b">RAID 1 → Mirroring</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#21d99805-0a2a-4d22-9531-0804eb287b74">RAID 2 → Error correcting codes</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e414b74e-9f59-4b37-82b1-b7a7b982736e">RAID 3 → Bit Interleaved Parity</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8c900163-1777-4153-add1-46a3acee6c85">RAID 4 - Block Interleaved Parity</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9c37410b-52cb-42a7-9800-29b041a63794">RAID 5 - Block Interleaved Distributed Parity</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b0fa15a6-974c-4197-bd52-b485c1493d8c">RAID 6 - P+Q Redundancy Scheme</a></div></nav><h1 id="5daf5fe2-4991-4a1b-a1b2-5ac6cc3fd677" class="">Magnetic Disks</h1><figure id="c0d7068b-ebdd-4fda-9854-00a7fda5cd7f" class="image"><a href="Ch%2010%20Mass%20Storage%200f9f7252edb946ab9ab972db8d131cef/Untitled.png"><img style="width:1091px" src="Ch%2010%20Mass%20Storage%200f9f7252edb946ab9ab972db8d131cef/Untitled.png"/></a></figure><ul id="5ce73dcd-cddf-46f0-9855-b7b8915a2a4d" class="bulleted-list"><li style="list-style-type:disc">Provide bulk of secondary storage of modern computers </li></ul><ul id="d6cf32ef-bf07-42ca-bcb0-72d38b88d9a9" class="bulleted-list"><li style="list-style-type:disc">Disk in use rotates at 60 to 250 times per second</li></ul><ul id="55e75227-5b55-483a-947d-0f866243d646" class="bulleted-list"><li style="list-style-type:disc">Transfer rate is rate at which data flow between drive and computer </li></ul><ul id="1b9159ce-e305-4afc-bde8-be627d624d7d" class="bulleted-list"><li style="list-style-type:disc">Positioning time - random access time - is time to move disk arm to desired cylinder (seek time) and time for desired sector to rotate under the disk head (rotational latency)</li></ul><ul id="8f9a9d28-ed45-4c15-a2a0-22c5c421f370" class="bulleted-list"><li style="list-style-type:disc">Head crash results from disk head making contact with the disk surface</li></ul><ul id="eaa27991-7099-40da-8b36-d16f96ced1ff" class="bulleted-list"><li style="list-style-type:disc">Disks can be removable</li></ul><ul id="bd171fae-84a2-481a-9b86-d5e808d11d90" class="bulleted-list"><li style="list-style-type:disc">Disk drive is attached to computer via IO bus → buses vary including ATA, SATA, USB, Fibre Channel (FC) etc.</li></ul><ul id="0bcb13be-03e5-4553-b0d9-1b0e5945491f" class="bulleted-list"><li style="list-style-type:disc">ATA → Advanced Technology Attachment</li></ul><ul id="dbf1ade4-9b02-44be-ad91-fb0853323a3f" class="bulleted-list"><li style="list-style-type:disc">SATA → Serial Advanced Technology Attachment</li></ul><h1 id="aa9a3449-2a15-417d-a32e-b3dd2b284d7c" class="">Disk Structure</h1><ul id="c028fc04-b713-4c88-9e99-a99c09cd1317" class="bulleted-list"><li style="list-style-type:disc">Disk drives are addressed as large 1D arrays of logical blocks</li></ul><ul id="22be404b-37a8-4d65-a8e1-0c63d64c7770" class="bulleted-list"><li style="list-style-type:disc">Logical block is the smallest unit of transfer</li></ul><ul id="b0d53c90-d160-4bbf-b8f6-05dfe8d3a1ab" class="bulleted-list"><li style="list-style-type:disc">The 1D array of logical blocks is mapped into the sectors of the disk sequentially<ul id="404ea18b-6225-4a3a-9b0b-a2ed508f7a6e" class="bulleted-list"><li style="list-style-type:circle">Sector 0 is the first sector of the first track on the outermost cylinder</li></ul><ul id="46c25cdb-6318-4c99-aa90-0d6e6cc561e8" class="bulleted-list"><li style="list-style-type:circle">Mapping proceeds in order through that track, then the rest of the tracks in that cylinder and then through the rest of the cylinders from outermost to innermost</li></ul><ul id="12dfd805-9be9-4f91-b643-f4f336664903" class="bulleted-list"><li style="list-style-type:circle">Physical address - cylinder number, track number, sector number</li></ul></li></ul><h1 id="0cda9093-8d30-4134-9084-f04540b8dfee" class="">Disk Scheduling</h1><ul id="fc3b0fca-c20a-4208-a16a-1ad3a0b44c8f" class="bulleted-list"><li style="list-style-type:disc">Minimize Seek time</li></ul><ul id="0c9bde75-c185-4075-9022-a4afc40c72ac" class="bulleted-list"><li style="list-style-type:disc">Disk bandwidth - total no of bytes transferred divided by the total time between the first request for service and the completion of the last transfer</li></ul><ul id="56e5c092-ac08-4985-b254-7a5ef6b7e2af" class="bulleted-list"><li style="list-style-type:disc">OS maintain queue of IO requests, per disk or device</li></ul><ul id="7b4a7fe7-4de0-45b4-a537-bec12c36efdc" class="bulleted-list"><li style="list-style-type:disc">Idle disk can immediately work on IO request busy disk means request must be queued</li></ul><h2 id="8fca15de-6f2d-4e1a-91e0-698efbef9f32" class="">FCFS</h2><figure id="ddb2971e-d7ac-463f-a3f0-7957ab1ccfd7" class="image"><a href="Ch%2010%20Mass%20Storage%200f9f7252edb946ab9ab972db8d131cef/Untitled%201.png"><img style="width:1521px" src="Ch%2010%20Mass%20Storage%200f9f7252edb946ab9ab972db8d131cef/Untitled%201.png"/></a></figure><ul id="4d8c4a85-f1d8-483a-838f-79103adf5758" class="bulleted-list"><li style="list-style-type:disc">Here 640 comes from the differences between swings</li></ul><ul id="00073084-d4a7-4b43-b34d-684acb7f657d" class="bulleted-list"><li style="list-style-type:disc">Just do Sigma(abs(Y - X))</li></ul><h2 id="5cf4ba12-6b11-4a08-a53c-c1b5e2fd83f3" class="">Shortest Seek Time First</h2><figure id="bcd33f16-09f3-447f-8bf1-d01213e6019e" class="image"><a href="Ch%2010%20Mass%20Storage%200f9f7252edb946ab9ab972db8d131cef/Untitled%202.png"><img style="width:2232px" src="Ch%2010%20Mass%20Storage%200f9f7252edb946ab9ab972db8d131cef/Untitled%202.png"/></a></figure><h2 id="cbc99704-c784-449a-a3c4-861f44440f53" class="">Scan/Elevator</h2><figure id="532e3467-a69a-406d-9119-dd9b3f9ca7f8" class="image"><a href="Ch%2010%20Mass%20Storage%200f9f7252edb946ab9ab972db8d131cef/Untitled%203.png"><img style="width:2122px" src="Ch%2010%20Mass%20Storage%200f9f7252edb946ab9ab972db8d131cef/Untitled%203.png"/></a></figure><ul id="15d826c7-1c79-4772-96b8-04b2ad1e97fb" class="bulleted-list"><li style="list-style-type:disc">Direction of arm should be given</li></ul><ul id="f02e570b-6a43-4d4d-a438-4f80c3c73125" class="bulleted-list"><li style="list-style-type:disc">It doesn’t go to the boundary if the last request is over</li></ul><ul id="a0e877c0-518e-4a8e-b21f-454f60b56175" class="bulleted-list"><li style="list-style-type:disc">If there’s a new request at 14 after 183 → it’ll go 199 and then go to 14</li></ul><h2 id="868e0853-19fa-453f-9696-5e379f699c1a" class="">C Scan</h2><figure id="e2692d68-b78e-48bd-8443-27693a34c2c1" class="image"><a href="Ch%2010%20Mass%20Storage%200f9f7252edb946ab9ab972db8d131cef/Untitled%204.png"><img style="width:2120px" src="Ch%2010%20Mass%20Storage%200f9f7252edb946ab9ab972db8d131cef/Untitled%204.png"/></a></figure><ul id="2f566892-93c0-4060-95f3-46ded42664a5" class="bulleted-list"><li style="list-style-type:disc">In C-SCAN algorithm, the arm of the disk moves in a particular direction servicing requests until it reaches the last cylinder, then it jumps to the last cylinder of the opposite direction without servicing any request then it turns back and start moving in that direction servicing the remaining requests.</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="d244532f-eadc-4bab-9947-c0969c62dd7c" class="code"><code class="language-C">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+ 
+#define INT_MAX 100000
+ 
+void fcfs(int queue[], int head, int n)
+{
+    int seek = 0;
+    int diff;
+    for (int i = 0; i &lt; n; i++)
+    {
+        diff = abs(queue[i] - head);
+        seek += diff;
+        head = queue[i];
+    }
+    printf(&quot;\nTotal seek time: %d&quot;, seek);
+}
+ 
+void sst(int queue[], int head, int n)
+{
+    int curr = head;
+    int minelem = 0;
+    int seek = 0;
+ 
+    for (int i = 0; i &lt; n; i++)
+    {
+        int mindist = INT_MAX;
+        for (int j = 0; j &lt; n; j++)
+        {
+            if (queue[j] != INT_MAX &amp;&amp; abs(curr - queue[j]) &lt; mindist)
+            {
+                mindist = abs(curr - queue[j]);
+                minelem = j;
+            }
+        }
+        printf(&quot;\n::&gt; Choosing %d&quot;, queue[minelem]);
+        curr = queue[minelem];
+        queue[minelem] = INT_MAX;
+        seek += mindist;
+    }
+ 
+    printf(&quot;\nTotal seek time: %d\n&quot;, seek);
+}
+ 
+void scan(int queue[], int head, int n, int max)
+{
+    int seek = 0;
+    printf(&quot;\nEnter Direction (- = -1/+ = 1): &quot;);
+    int dir;
+    scanf(&quot;%d&quot;, &amp;dir);
+ 
+    int curr = head;
+    printf(&quot;\n::&gt; Choosing %d&quot;, head);
+ 
+    if (dir == 1)
+    {
+        // Going Right first till max
+        for (int i = curr; i &lt;= max; i++)
+        {
+            for (int j = 0; j &lt; n; j++)
+            {
+                if (queue[j] != INT_MAX &amp;&amp; queue[j] == i)
+                {
+                    seek += abs(i - curr);
+                    curr = i;
+                    printf(&quot;\n::&gt; Choosing %d&quot;, queue[j]);
+                    queue[j] = INT_MAX;
+                }
+            }
+        }
+ 
+        printf(&quot;\n::&gt; Choosing %d&quot;, max);
+        seek += abs(max - curr);
+        curr = max;
+        printf(&quot;\n%d&quot;, seek);
+ 
+        // Going left till the last one
+        for (int i = curr; i &gt;= 0; i--)
+        {
+            for (int j = 0; j &lt; n; j++)
+            {
+                if (queue[j] != INT_MAX &amp;&amp; queue[j] == i)
+                {
+                    seek += abs(i - curr);
+                    curr = i;
+                    printf(&quot;\n::&gt; Choosing %d&quot;, queue[j]);
+                    queue[j] = INT_MAX;
+                }
+            }
+        }
+ 
+        printf(&quot;\nTotal seek time: %d\n&quot;, seek);
+    }
+    else if (dir == -1)
+    {
+        // Going Left first till 0
+        for (int i = curr; i &gt;= 0; i--)
+        {
+            for (int j = 0; j &lt; n; j++)
+            {
+                if (queue[j] != INT_MAX &amp;&amp; queue[j] == i)
+                {
+                    seek += abs(i - curr);
+                    curr = i;
+                    printf(&quot;\n::&gt; Choosing %d&quot;, queue[j]);
+                    queue[j] = INT_MAX;
+                }
+            }
+        }
+        printf(&quot;\n::&gt; Choosing %d&quot;, 0);
+        seek += abs(curr);
+        curr = 0;
+        // Going right till the last one
+        for (int i = curr; i &lt;= max; i++)
+        {
+            for (int j = 0; j &lt; n; j++)
+            {
+                if (queue[j] != INT_MAX &amp;&amp; queue[j] == i)
+                {
+                    seek += abs(i - curr);
+                    curr = i;
+                    printf(&quot;\n::&gt; Choosing %d&quot;, queue[j]);
+                    queue[j] = INT_MAX;
+                }
+            }
+        }
+ 
+        printf(&quot;\nTotal seek time: %d\n&quot;, seek);
+    }
+}
+ 
+void cscan(int queue[], int head, int n, int max)
+{
+    int seek = 0;
+    printf(&quot;\nEnter Direction (- = -1/+ = 1): &quot;);
+    int dir;
+    scanf(&quot;%d&quot;, &amp;dir);
+ 
+    int curr = head;
+ 
+    if (dir == 1)
+    {
+        // Going right till the last one
+        for (int i = curr; i &lt;= max; i++)
+        {
+            for (int j = 0; j &lt; n; j++)
+            {
+                if (queue[j] != INT_MAX &amp;&amp; queue[j] == i)
+                {
+                    seek += abs(i - curr);
+                    curr = i;
+                    printf(&quot;\n::&gt; Choosing %d&quot;, queue[j]);
+                    queue[j] = INT_MAX;
+                }
+            }
+        }
+ 
+        // Then we go to max
+        printf(&quot;\n::&gt; Choosing %d&quot;, max);
+        seek += abs(max - curr);
+        curr = max;
+ 
+        // Then go to 0
+        printf(&quot;\n::&gt; Choosing %d&quot;, 0);
+        seek += abs(curr);
+        curr = 0;
+ 
+        // Going Left first till 0
+        for (int i = curr; i &lt;= max; i++)
+        {
+            for (int j = 0; j &lt; n; j++)
+            {
+                if (queue[j] != INT_MAX &amp;&amp; queue[j] == i)
+                {
+                    seek += abs(i - curr);
+                    curr = i;
+                    printf(&quot;\n::&gt; Choosing %d&quot;, queue[j]);
+                    queue[j] = INT_MAX;
+                }
+            }
+        }
+ 
+        printf(&quot;\nTotal seek time: %d\n&quot;, seek);
+    }
+    else if (dir == -1)
+    {
+        // Going Left first till 0
+        for (int i = curr; i &gt;= 0; i--)
+        {
+            for (int j = 0; j &lt; n; j++)
+            {
+                if (queue[j] != INT_MAX &amp;&amp; queue[j] == i)
+                {
+                    seek += abs(i - curr);
+                    curr = i;
+                    printf(&quot;\n::&gt; Choosing %d&quot;, queue[j]);
+                    queue[j] = INT_MAX;
+                }
+            }
+        }
+ 
+        printf(&quot;\n::&gt; Choosing %d&quot;, 0);
+        seek += abs(curr);
+        curr = 0;
+ 
+        // Then we go to the other end
+        printf(&quot;\n::&gt; Choosing %d&quot;, max);
+        seek += abs(max - curr);
+        curr = max;
+ 
+        // Going right till the last one
+        for (int i = curr; i &lt;= max; i++)
+        {
+            for (int j = 0; j &lt; n; j++)
+            {
+                if (queue[j] != INT_MAX &amp;&amp; queue[j] == i)
+                {
+                    seek += abs(i - curr);
+                    curr = i;
+                    printf(&quot;\n::&gt; Choosing %d&quot;, queue[j]);
+                    queue[j] = INT_MAX;
+                }
+            }
+        }
+ 
+        printf(&quot;\nTotal seek time: %d\n&quot;, seek);
+    }
+}
+ 
+int main()
+{
+    int queue[] = {2069, 1212, 2296, 2800, 544, 1618, 356, 1523, 4965, 3681};
+    int max = 4999;
+    int head = 2150;
+    int n = 10;
+ 
+    printf(&quot;\n1. FCFS\n2. Shortest Seek Time\n3. SCAN\n4. C SCAN\n&quot;);
+    int choice;
+    printf(&quot;Enter your choice: &quot;);
+    scanf(&quot;%d&quot;, &amp;choice);
+ 
+    switch (choice)
+    {
+    case 1:
+        fcfs(queue, head, n);
+        break;
+    case 2:
+        sst(queue, head, n);
+        break;
+    case 3:
+        scan(queue, head, n, max);
+        break;
+    case 4:
+        cscan(queue, head, n, max);
+        break;
+    default:
+        printf(&quot;Invalid choice\n&quot;);
+        break;
+    }
+}</code></pre><h1 id="7d4709b6-9476-4cba-87f5-3b3632a768b3" class="">Disk Management</h1><ul id="c860e021-9084-457e-b6b9-201abccb10e9" class="bulleted-list"><li style="list-style-type:disc">To use a disk to hold files, the OS still needs to record its own data structures on the disk</li></ul><ul id="bf965bcc-9ebc-4649-8bca-62ab698feb28" class="bulleted-list"><li style="list-style-type:disc">Partition the disk into one or more groups of cylinders, each treated as a logical disk</li></ul><ul id="3d9cabbf-aecd-4fad-abf6-0f20da327174" class="bulleted-list"><li style="list-style-type:disc">Logical formatting - creation of a file system, OS stores the initial file system Data Structures on the disk, data structures include maps of free and allocated space and an initial empty directory</li></ul><h1 id="19ffe10d-baef-4b3c-ab23-87e9bb615eff" class="">RAID</h1><ul id="6b19b239-c73e-4218-bd7f-f976be466ad3" class="bulleted-list"><li style="list-style-type:disc">Redundant array of independent disks - multiple disk drives provides reliability via redundancy</li></ul><ul id="eeb0c670-934f-47ee-8e9a-c9aff33d6393" class="bulleted-list"><li style="list-style-type:disc">Increases the mean time to failure</li></ul><ul id="ca39366c-43da-4361-befa-88b9e6e4d958" class="bulleted-list"><li style="list-style-type:disc">Mean time to repair - average time to replace a failed disk and restore the data on it</li></ul><ul id="7da427f6-8943-4165-b284-237575af9863" class="bulleted-list"><li style="list-style-type:disc">Mirrored Disk - Volume</li></ul><ul id="8a278da7-b634-4649-91e3-acb933df2d93" class="bulleted-list"><li style="list-style-type:disc">Data stripping - bit-level stripping, byte level stripping, block level stripping → basically ensures that concurrent read accesses can be done → increases throughput of multiple processes → final response time reduces</li></ul><ul id="eb6386aa-6d3e-47e5-a206-aa79e03a9fac" class="bulleted-list"><li style="list-style-type:disc">Write operations become very costly but read operations can be parallel so we get speed up</li></ul><ul id="bb5e68da-8636-465f-a5fd-d680c6fd573c" class="bulleted-list"><li style="list-style-type:disc">RAID 0, 1, 2, 3, 4, 5, 6</li></ul><h2 id="f1e4c22f-8bbf-4de2-9973-1df8c1ac1dfd" class="">RAID 0 → Non Redundant but data striping</h2><ul id="2cdb76f7-1731-4d38-8aa5-cee3ce0f759b" class="bulleted-list"><li style="list-style-type:disc">Data striping is used for increased performance but no redundant information is maintained</li></ul><ul id="1277ba13-30ee-4566-892f-bc8ef5e888e4" class="bulleted-list"><li style="list-style-type:disc">Striping is done at <span style="border-bottom:0.05em solid">block level</span> but without any redundancy</li></ul><ul id="96e55d28-eb8d-4d7f-a85f-c1120417d556" class="bulleted-list"><li style="list-style-type:disc">Writing performance is best in this level because due to absence of redundant information there is no need to update redundant information</li></ul><figure id="6bceaab6-c0a1-4c78-b64b-4a60a5b87a76" class="image"><a href="Ch%2010%20Mass%20Storage%200f9f7252edb946ab9ab972db8d131cef/Untitled%205.png"><img style="width:1266px" src="Ch%2010%20Mass%20Storage%200f9f7252edb946ab9ab972db8d131cef/Untitled%205.png"/></a></figure><h2 id="5cd6c505-0b8e-483e-91bb-9d614d16e77b" class="">RAID 1 → Mirroring</h2><ul id="282edb69-61ec-4987-828f-afa10221a1a4" class="bulleted-list"><li style="list-style-type:disc">Same data is copied on two different disks</li></ul><ul id="0f7e9b94-7f07-41b3-a190-14912307ce9e" class="bulleted-list"><li style="list-style-type:disc">This type of redundancy is called mirroring and it is the most expensive system. Because two copies of same data are available in two different disks, it allows parallel read</li></ul><ul id="20f49862-ea6b-439c-a780-c1272040f25c" class="bulleted-list"><li style="list-style-type:disc">Write operations are very costly</li></ul><figure id="07d2bea1-2a56-4c87-8b94-effe4fbb4774" class="image"><a href="Ch%2010%20Mass%20Storage%200f9f7252edb946ab9ab972db8d131cef/Untitled%206.png"><img style="width:2170px" src="Ch%2010%20Mass%20Storage%200f9f7252edb946ab9ab972db8d131cef/Untitled%206.png"/></a></figure><h2 id="21d99805-0a2a-4d22-9531-0804eb287b74" class="">RAID 2 → Error correcting codes</h2><ul id="7e147c87-f0fe-4cd3-8710-677526cb49c2" class="bulleted-list"><li style="list-style-type:disc">This level uses bit level data stripping in place of block level</li></ul><ul id="f99376cd-5f20-4f76-b83f-bde99c2de784" class="bulleted-list"><li style="list-style-type:disc">It is used with drives with no built in error detection technique. </li></ul><ul id="489384e8-b2b0-4afd-aafc-1f0dc05806d1" class="bulleted-list"><li style="list-style-type:disc">ECC - Error correcting codes store two or more extra bits and it is used for reconstruction of  the data if a single bit is damaged</li></ul><ul id="89240286-5345-42b7-b1a7-e575bf4aae18" class="bulleted-list"><li style="list-style-type:disc">3 Additional disks - store the parity information</li></ul><ul id="4c047a38-537b-4310-8c59-48382db89513" class="bulleted-list"><li style="list-style-type:disc">Disks should be spinning synchronously</li></ul><ul id="e5c4adce-15b0-4a21-8216-03d353d314fc" class="bulleted-list"><li style="list-style-type:disc">Data transfer rates are quite high</li></ul><ul id="49eea795-4a14-41e8-9463-b167efff28c6" class="bulleted-list"><li style="list-style-type:disc">Parity computation will use xor</li></ul><ul id="cf410e44-adad-4630-a097-0a12be5a543e" class="bulleted-list"><li style="list-style-type:disc">It can detect multibit error but can only correct 1 bit error</li></ul><ul id="47319adf-d4c7-4a97-8922-895e3a464928" class="bulleted-list"><li style="list-style-type:disc">Used at times when disk controller didn’t have error correcting facility</li></ul><figure id="2482f339-f4de-40da-beee-85daa17ae520" class="image"><a href="Ch%2010%20Mass%20Storage%200f9f7252edb946ab9ab972db8d131cef/Untitled%207.png"><img style="width:1289px" src="Ch%2010%20Mass%20Storage%200f9f7252edb946ab9ab972db8d131cef/Untitled%207.png"/></a></figure><figure id="4a0b545f-07bd-45ad-bcbe-cc96755443c9" class="image"><a href="Ch%2010%20Mass%20Storage%200f9f7252edb946ab9ab972db8d131cef/Untitled%208.png"><img style="width:2193px" src="Ch%2010%20Mass%20Storage%200f9f7252edb946ab9ab972db8d131cef/Untitled%208.png"/></a></figure><h2 id="e414b74e-9f59-4b37-82b1-b7a7b982736e" class="">RAID 3 → Bit Interleaved Parity</h2><ul id="5cd98224-628f-4530-8650-4f030857cbbf" class="bulleted-list"><li style="list-style-type:disc">Data stripping is used and a single parity bit is used for error correction as well as for detection</li></ul><ul id="6e01cdfe-0fbf-46a3-9d99-bf7e25892348" class="bulleted-list"><li style="list-style-type:disc">Systems have disk controller that detects which disk has failed</li></ul><ul id="1cc2cf3c-b2b9-4a56-9a2b-29990de71870" class="bulleted-list"><li style="list-style-type:disc">RAID level 3 has a single check disk with parity bit</li></ul><ul id="f194bc6b-4584-4440-8c20-eac757164ed1" class="bulleted-list"><li style="list-style-type:disc">Reduced the number of disks to store the parity information</li></ul><ul id="4dedce82-e18d-4a6d-8bd1-dc25d8696a3a" class="bulleted-list"><li style="list-style-type:disc">Detection of the error is done by disk controller but correction is done by raid</li></ul><figure id="baa841a0-e151-445f-ad3e-5f37c0356468" class="image"><a href="Ch%2010%20Mass%20Storage%200f9f7252edb946ab9ab972db8d131cef/Untitled%209.png"><img style="width:1900px" src="Ch%2010%20Mass%20Storage%200f9f7252edb946ab9ab972db8d131cef/Untitled%209.png"/></a></figure><h2 id="8c900163-1777-4153-add1-46a3acee6c85" class="">RAID 4 - Block Interleaved Parity</h2><ul id="b6d721f0-2d7d-46f2-a520-c94961544e16" class="bulleted-list"><li style="list-style-type:disc">RAID level 4 is similar as RAID level 3 but it has block interleaved parity instead of bit parity</li></ul><ul id="efbab9ff-fb03-4873-a838-cc3fa4e9d5b5" class="bulleted-list"><li style="list-style-type:disc">You can access data independently so read performance is high</li></ul><ul id="9703aad7-779f-4eb1-80d9-ea557f39d91c" class="bulleted-list"><li style="list-style-type:disc">You can read multiple blocks in parallel</li></ul><figure id="4c39d1f4-36f5-411b-af64-582753f906f8" class="image"><a href="Ch%2010%20Mass%20Storage%200f9f7252edb946ab9ab972db8d131cef/Untitled%2010.png"><img style="width:2085px" src="Ch%2010%20Mass%20Storage%200f9f7252edb946ab9ab972db8d131cef/Untitled%2010.png"/></a></figure><h2 id="9c37410b-52cb-42a7-9800-29b041a63794" class="">RAID 5 - Block Interleaved Distributed Parity</h2><ul id="45cc541d-ffcf-45f3-81bf-a5584a6a9656" class="bulleted-list"><li style="list-style-type:disc">RAID level 5 distributes the parity block and data on all disks</li></ul><ul id="23577757-bccc-4b95-8918-154e02e153d4" class="bulleted-list"><li style="list-style-type:disc">For each block, one of the disks stores the parity and the others store data</li></ul><ul id="e9c33d82-ebad-4524-9e2c-5cbf5512f1b6" class="bulleted-list"><li style="list-style-type:disc">RAID level 5 gives best performance for large read and write</li></ul><figure id="994bdfbb-09b0-462f-824a-6e8cdabc652d" class="image"><a href="Ch%2010%20Mass%20Storage%200f9f7252edb946ab9ab972db8d131cef/Untitled%2011.png"><img style="width:1944px" src="Ch%2010%20Mass%20Storage%200f9f7252edb946ab9ab972db8d131cef/Untitled%2011.png"/></a></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="44814efc-408c-4a50-b9d9-e234fc8064dc"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">We can only access one block of a particular disk → this is why this system becomes more reliable and better. Especially in cases of writes</div></figure><ul id="5d05a8b3-e548-4a23-be3d-b72b206c5a82" class="bulleted-list"><li style="list-style-type:disc">Parallel Write Operations, Parity is distributed</li></ul><ul id="a9cb0f5b-d08f-43ab-b6c0-eadd07c37ec5" class="bulleted-list"><li style="list-style-type:disc">For every write we need to write both to block and the corresponding parity block</li></ul><ul id="28ea2405-12fc-4b50-8f78-59fb39c47abd" class="bulleted-list"><li style="list-style-type:disc">On RAID 4 we can’t write 2 parities together because at one time e can only write one block of a disc</li></ul><h2 id="b0fa15a6-974c-4197-bd52-b485c1493d8c" class="">RAID 6 - P+Q Redundancy Scheme</h2><ul id="e0e3a91f-3e8a-427a-9896-9eb825fc8477" class="bulleted-list"><li style="list-style-type:disc">What happens if more than one disk fails at the same time</li></ul><ul id="d838860d-08d4-42bf-a6cd-3d5fe3c5cc6e" class="bulleted-list"><li style="list-style-type:disc">This level stores extra redundant information to save the data against multiple disk failures</li></ul><ul id="cc199db7-ed67-417d-b8fd-4492285ec417" class="bulleted-list"><li style="list-style-type:disc">It uses Reed Solomon Codes - ECC for data recovery</li></ul><ul id="379d93b7-a3bc-4bf9-a116-f68fb65e4b8a" class="bulleted-list"><li style="list-style-type:disc">Two different algorithms are employed</li></ul><figure id="1657cf29-ef51-474e-a7a4-f91dcbc49bd2" class="image"><a href="Ch%2010%20Mass%20Storage%200f9f7252edb946ab9ab972db8d131cef/Untitled%2012.png"><img style="width:2156px" src="Ch%2010%20Mass%20Storage%200f9f7252edb946ab9ab972db8d131cef/Untitled%2012.png"/></a></figure><p id="6311347d-a6ea-442f-993f-fc15f4ea04f1" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

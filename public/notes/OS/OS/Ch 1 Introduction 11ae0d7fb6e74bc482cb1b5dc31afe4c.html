@@ -1,0 +1,676 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Ch 1: Introduction</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="11ae0d7f-b6e7-4bc4-82cb-1b5dc31afe4c" class="page sans"><header><h1 class="page-title">Ch 1: Introduction</h1><p class="page-description"></p></header><div class="page-body"><nav id="cfde219a-79be-409f-8fcf-67775421d26d" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a744ead6-be6e-4598-bc75-3c3c05d7fdb8">OS vs Kernel</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ba141ccd-950f-49b3-b5f5-b812fa4d89c3">Bootstrap Program</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#dde3081b-8c75-4791-a769-7fdda587f199">Device Controller (HW)</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#8685c936-057f-4f9d-bcd3-2bf13562792c">Device Driver (SW)</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2720e50a-81b8-4195-8f1b-09f3f45b4e52">Interrupts</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a682aee3-f8f3-4d2d-9685-d95efe70a971">Types of Interrupts</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#be2699b9-e4dc-4476-b269-5049008eaa3a">Storage</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#bd95ca0a-28ce-4614-b422-bae6c1538fa6">Main Memory</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a9bbee87-34da-421a-872d-5875d213094c">Secondary Storage</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d957f129-2702-4368-8d6b-beacd54ee1c7">IO Operations</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#af0e4307-6670-426f-91aa-5c230ad63d43">Direct Memory Access</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#f1e43bd5-022b-42d8-835c-5a99bf5595db">OS Operations</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2568e44d-eaba-42b0-881e-05f20bacac13">Flow of the Process</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#6a2262d7-01bd-4e15-a06d-d6acdc025888">Types of Systems</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#43f00feb-f899-49a9-8301-4ffeec1013e8">OS Services</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e6fc23f2-bd90-43a6-a45e-ad0c43ccacbd">System Calls</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#304e1fcd-c7b5-42ee-b257-0518a8c23095">Types of System Calls</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#6e4e1cb1-0858-473f-ab25-f475062345f6">Process Control</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#6d48996a-7440-4ca4-920b-4fbe960d2ea4">File Management</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#a205820e-6566-43f4-917f-8e47ac1ff903">Device Management</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d7f038d2-7803-4a5c-917d-5bf91b80581f">Information maintenance</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#ceccbbc0-edad-4932-841e-9486efe7e832">Communication</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#238d1a05-8582-4c53-9975-59a58cad0602">Protection</a></div></nav><ul id="82136836-3c15-4859-86f8-3dac17966c58" class="bulleted-list"><li style="list-style-type:disc">Everything a vendor ships when you order an OS</li></ul><ul id="70448bf9-5e67-45c9-8df2-a17a933682a3" class="bulleted-list"><li style="list-style-type:disc">The one program running at all times on the computer</li></ul><ul id="52db9a6b-99db-4eac-97d9-2d6a6cd90a5b" class="bulleted-list"><li style="list-style-type:disc">CPU can only access RAM and cache directly</li></ul><ul id="dae28832-3320-43be-9bd7-fd15febd27c2" class="bulleted-list"><li style="list-style-type:disc">Secondary Storage IO is very slow</li></ul><ul id="f0860fb7-b9f8-451b-b29a-dfa7132bab9a" class="bulleted-list"><li style="list-style-type:disc">DMA → Direct Memory Access → No interrupts/bulk data but goes from device to memory without CPU</li></ul><h1 id="a744ead6-be6e-4598-bc75-3c3c05d7fdb8" class="">OS vs Kernel</h1><ul id="c50e3bf0-6f65-406f-ab00-09b43a20930b" class="bulleted-list"><li style="list-style-type:disc">Kernel is part of OS</li></ul><ul id="f06f8752-f388-4329-b68f-87a021eab38c" class="bulleted-list"><li style="list-style-type:disc">OS contains kernel, device drivers, utilities, system library and user interface</li></ul><ul id="43beb80d-8c54-40d5-896b-94e08061c28e" class="bulleted-list"><li style="list-style-type:disc">Kernel deals with memory management, disk management, process management and task management</li></ul><h1 id="ba141ccd-950f-49b3-b5f5-b812fa4d89c3" class="">Bootstrap Program</h1><ul id="44cb4872-13f2-4091-bf13-bfcd23c01988" class="bulleted-list"><li style="list-style-type:disc">Loaded at power up or reboot</li></ul><ul id="5b0edace-2a4b-4b38-b20f-ebfd196eb02d" class="bulleted-list"><li style="list-style-type:disc">Initial program and is stored in ROM or EEPROM</li></ul><ul id="182cbb1d-62ab-4414-b78b-61a3f25af0ec" class="bulleted-list"><li style="list-style-type:disc">Firmware → comes pre installed</li></ul><ul id="810f4fe2-95fd-4d43-9ace-c7fe9ab4dfbc" class="bulleted-list"><li style="list-style-type:disc">Initializes all aspects of system like CPU registers, device controllers, memory contents</li></ul><ul id="2e3d509f-6d88-4ab6-820a-94fc9ee8fefc" class="bulleted-list"><li style="list-style-type:disc">Locates and loads OS kernel and starts execution</li></ul><h1 id="dde3081b-8c75-4791-a769-7fdda587f199" class="">Device Controller (HW)</h1><ul id="a94ddee8-a292-4398-a331-604593688505" class="bulleted-list"><li style="list-style-type:disc">Bridge between hardware device and OS or application program</li></ul><ul id="13b1835a-15ad-4ff1-8cd9-2be817606e12" class="bulleted-list"><li style="list-style-type:disc">Maintains some local buffer storage and a set of special purpose registers</li></ul><ul id="06713ef8-acb2-4dea-90f8-dfc45980cfb6" class="bulleted-list"><li style="list-style-type:disc">Moves data between devices that it controls and it’s local buffer storage</li></ul><ul id="65308862-6510-42eb-a4e8-aab2157c912e" class="bulleted-list"><li style="list-style-type:disc">OS has a device driver for each device controller</li></ul><h1 id="8685c936-057f-4f9d-bcd3-2bf13562792c" class="">Device Driver (SW)</h1><ul id="2a4a646f-a0b2-48ff-8b68-7f9b1615ed8d" class="bulleted-list"><li style="list-style-type:disc">Understands device controller and provides the rest of the OS with a uniform interface with the device</li></ul><ul id="c27b5c49-e2ce-4549-898f-c3a4a55b333a" class="bulleted-list"><li style="list-style-type:disc">IO devices and CPU can execute concurrently. Each device controller has a local buffer. CPU moves data from/to main memory to/from local buffer. IO is from the device to local buffer of the controller. Device controller informs the CPU that it has finished it’s operation causing an interrupt</li></ul><ul id="26a18eaa-9c9e-47b4-927b-36168f9a8c71" class="bulleted-list"><li style="list-style-type:disc">Basically, local buffer has fast access time than real device, i.e. loading and extracting data<br/>from local buffer is faster than the device, and since CPU is really fast, local buffer were introduced to maintain efficiency of CPU<br/></li></ul><ul id="10b6e551-6437-40dd-97ea-c885db1d672c" class="bulleted-list"><li style="list-style-type:disc">Local buffer is the part of device controller</li></ul><h1 id="2720e50a-81b8-4195-8f1b-09f3f45b4e52" class="">Interrupts</h1><ul id="c269495f-4e24-4eb3-861f-2ac75f614cb9" class="bulleted-list"><li style="list-style-type:disc">IVT → Interrupt Vector Table → containing addresses of all service routines</li></ul><ul id="d0963240-a64c-49e0-948e-dc68263624d2" class="bulleted-list"><li style="list-style-type:disc">IVT controls transfer to Interrupt Service Routine and executes the ISR and goes back to the starting place</li></ul><h2 id="a682aee3-f8f3-4d2d-9685-d95efe70a971" class="">Types of Interrupts</h2><ul id="e9dd9e6a-d56e-4fb0-b54d-931bd0cb549e" class="bulleted-list"><li style="list-style-type:disc">Hardware Interrupts: Maskable and Non Maskable</li></ul><ul id="ca02cb2b-bee0-4306-9f9d-76b930101135" class="bulleted-list"><li style="list-style-type:disc">Software Interrupts: Normal and Exception/Trap</li></ul><h1 id="be2699b9-e4dc-4476-b269-5049008eaa3a" class="">Storage</h1><h2 id="bd95ca0a-28ce-4614-b422-bae6c1538fa6" class="">Main Memory</h2><ul id="8aa40003-956d-4ecc-ad30-c115f7841a98" class="bulleted-list"><li style="list-style-type:disc">Random Access Memory</li></ul><ul id="69c9a042-e5b4-4532-b2a7-b8b853c1205f" class="bulleted-list"><li style="list-style-type:disc">Only media, CPU can access directly</li></ul><ul id="c0cbc747-7473-422d-88a6-8d9a6fd89e72" class="bulleted-list"><li style="list-style-type:disc">Volatile</li></ul><ul id="75dfb9ef-6a67-4028-8c8f-099d952cd104" class="bulleted-list"><li style="list-style-type:disc">Instruction Execution</li></ul><ul id="59dd7103-a059-42ea-87c8-969b40a668ae" class="bulleted-list"><li style="list-style-type:disc">Any location can be accessed and that is why called random access</li></ul><h2 id="a9bbee87-34da-421a-872d-5875d213094c" class="">Secondary Storage</h2><ul id="6b4826e0-9d27-487a-965f-c9a933eb9013" class="bulleted-list"><li style="list-style-type:disc">Large, non volatile storage capacity</li></ul><ul id="667b96e1-1405-4a18-964e-70c73612f80f" class="bulleted-list"><li style="list-style-type:disc">Stores both programs and data</li></ul><ul id="d21eef57-21d2-4fbb-8b7a-1842ea03becb" class="bulleted-list"><li style="list-style-type:disc">Hard disk, Magnetic Disks<ul id="0bc9cdfe-dd4e-43fe-a5fe-182bee077891" class="bulleted-list"><li style="list-style-type:circle">Metal/glass platters covered with magnetic recording material</li></ul><ul id="28361fa6-173b-4dc3-9c68-0d2427d08be1" class="bulleted-list"><li style="list-style-type:circle">Logically Divided into tracks and sectors</li></ul><ul id="d59dcea2-2ee5-4a53-a8cf-9a8b033439f3" class="bulleted-list"><li style="list-style-type:circle">Disk controller determines the interaction between device and computer</li></ul></li></ul><ul id="07141af6-eb39-46c7-b775-3b0844ea0dbd" class="bulleted-list"><li style="list-style-type:disc">SSD<ul id="50f6ac34-1396-4d88-b058-429891346c7a" class="bulleted-list"><li style="list-style-type:circle">Faster than magnetic disks due to less moving components</li></ul></li></ul><h2 id="d957f129-2702-4368-8d6b-beacd54ee1c7" class="">IO Operations</h2><ul id="28920f12-6f95-42b3-beb4-96899db03f78" class="bulleted-list"><li style="list-style-type:disc">Device Driver loads registers within device controller</li></ul><ul id="8c3bd19f-f20b-4df4-894e-0a43a8370a1e" class="bulleted-list"><li style="list-style-type:disc">Device controller examines registers contents to determine what action to take</li></ul><ul id="2980c9e8-0f4f-42a9-b9dc-c5b38f3b7315" class="bulleted-list"><li style="list-style-type:disc">Controller starts transfer of data from device to local buffer</li></ul><ul id="7825b44c-a816-4265-88df-451b487f94be" class="bulleted-list"><li style="list-style-type:disc">Device controller informs the device driver via an interrupt that it has finished it’s operation</li></ul><ul id="1f1dc884-b197-45bc-a061-125aee73731b" class="bulleted-list"><li style="list-style-type:disc">Device driver returns control to OS</li></ul><h2 id="af0e4307-6670-426f-91aa-5c230ad63d43" class="">Direct Memory Access</h2><ul id="a14b10b7-4a2b-4df4-a067-e345ce9eb0fb" class="bulleted-list"><li style="list-style-type:disc">DC transfers an entire block of data directly to/from it’s own buffer to memory</li></ul><ul id="99885256-c262-43e0-82ce-2641f896a5fd" class="bulleted-list"><li style="list-style-type:disc">No intervention by CPU</li></ul><ul id="fc9c47d9-dce2-4eda-ae1f-a46016bf6f64" class="bulleted-list"><li style="list-style-type:disc">Only one interrupt is generated per block to tell the driver that the operation has been completed</li></ul><ul id="87e74e11-ffbb-40ee-a964-c34ead243391" class="bulleted-list"><li style="list-style-type:disc">No interrupt per byte is generated and so the CPU is available for other works</li></ul><h1 id="f1e43bd5-022b-42d8-835c-5a99bf5595db" class="">OS Operations</h1><ul id="aab47c42-e58e-4aee-8137-8616f84dea44" class="bulleted-list"><li style="list-style-type:disc">Dual Mode: allows OS to protect itself and protect users from one another</li></ul><ul id="6c4e0f59-c697-4c2e-808f-02d443868a95" class="bulleted-list"><li style="list-style-type:disc">User mode and kernel/supervisor/system/privileged mode</li></ul><ul id="4dc2be58-eb74-4e2c-acdb-9b9d1933f14c" class="bulleted-list"><li style="list-style-type:disc">Mode bit provided by hardware<ul id="3a980ef6-d346-42d7-af60-3dadbce55b8e" class="bulleted-list"><li style="list-style-type:circle">Provides ability to distinguish when system is running user code or kernel code</li></ul><ul id="c8520fbd-aa22-4dc8-9076-b309c50e2035" class="bulleted-list"><li style="list-style-type:circle">Some instructions - privileged and only executed in kernel mode</li></ul><ul id="9d6106fe-c852-42b3-b5d6-fa2e7cd48e42" class="bulleted-list"><li style="list-style-type:circle">System call → mode to kernel → return resets it to user</li></ul></li></ul><h2 id="2568e44d-eaba-42b0-881e-05f20bacac13" class="">Flow of the Process</h2><ul id="4c638715-9bf2-44a7-a738-4499c9ef5608" class="bulleted-list"><li style="list-style-type:disc">User process → calls system call → trap → mode bit 0 → execute system call → locates ISR using interrupt vector table and executes it → returns and makes mode bit 1</li></ul><ul id="8cc956f9-e8ef-41e0-89d2-a1181bb338a1" class="bulleted-list"><li style="list-style-type:disc">Boot is in kernel mode → Hardware starts up in kernel mode</li></ul><ul id="5d41b9f0-b298-47f9-9a71-6214460bc01b" class="bulleted-list"><li style="list-style-type:disc">OS, User applications are in user mode</li></ul><ul id="e69a630f-a577-4f50-9f01-71c2bc9524f8" class="bulleted-list"><li style="list-style-type:disc">When trap interrupt occurs, hardware switches from user mode to kernel mode</li></ul><ul id="8233ee54-64f0-4f7e-81b0-e2d7c3605d81" class="bulleted-list"><li style="list-style-type:disc">Examples of Privileged instructions<ul id="a5f662ac-0c17-464c-bfa1-583f8b60934d" class="bulleted-list"><li style="list-style-type:circle">IO Control</li></ul><ul id="b8155184-7cef-40b3-8c3a-613ef6aa38e3" class="bulleted-list"><li style="list-style-type:circle">Switching to kernel</li></ul><ul id="b3510803-861a-4683-b640-9b2bbd9bf24a" class="bulleted-list"><li style="list-style-type:circle">Timer management → Important for measuring infinite processes and loops for processes to get killed</li></ul><ul id="69ff406e-60f5-4df9-a1d9-5ed8fdf86f45" class="bulleted-list"><li style="list-style-type:circle">Interrupt management</li></ul></li></ul><h1 id="6a2262d7-01bd-4e15-a06d-d6acdc025888" class="">Types of Systems</h1><figure id="3868ac61-8615-4649-9cfd-280d159742e0" class="image"><a href="Ch%201%20Introduction%2011ae0d7fb6e74bc482cb1b5dc31afe4c/Untitled.png"><img style="width:1516px" src="Ch%201%20Introduction%2011ae0d7fb6e74bc482cb1b5dc31afe4c/Untitled.png"/></a></figure><figure id="69b97800-d5f0-40c9-bb20-23a9d1bda807" class="image"><a href="Ch%201%20Introduction%2011ae0d7fb6e74bc482cb1b5dc31afe4c/Untitled%201.png"><img style="width:1820px" src="Ch%201%20Introduction%2011ae0d7fb6e74bc482cb1b5dc31afe4c/Untitled%201.png"/></a></figure><p id="7aa51f23-0821-4f0c-833a-51bec59b184b" class="">NOTE: Interchip delay &gt;&gt; Intrachip delay</p><h1 id="43f00feb-f899-49a9-8301-4ffeec1013e8" class="">OS Services</h1><ul id="c9776301-3aee-44f8-8e6d-4bc7bd24cbc9" class="bulleted-list"><li style="list-style-type:disc">Error Detection</li></ul><ul id="f2ea28a2-5751-4c9f-b75d-5e02a548ab79" class="bulleted-list"><li style="list-style-type:disc">Program Execution</li></ul><ul id="b6f0268a-0ff7-409e-af14-be46fdb2f039" class="bulleted-list"><li style="list-style-type:disc">File System Manipulation</li></ul><ul id="801e145e-4e02-458f-8602-085f825107d5" class="bulleted-list"><li style="list-style-type:disc">User Interface</li></ul><ul id="65c4ea76-a2ad-477b-a5fe-e180ded16c71" class="bulleted-list"><li style="list-style-type:disc">IO Operations</li></ul><ul id="233cad73-9b90-4b2a-a890-62f61b290545" class="bulleted-list"><li style="list-style-type:disc">Communications</li></ul><ul id="e497c4df-a3b2-4a59-8a92-2bee4527bde5" class="bulleted-list"><li style="list-style-type:disc">Resource Allocation</li></ul><h2 id="e6fc23f2-bd90-43a6-a45e-ad0c43ccacbd" class="">System Calls</h2><ul id="d9f3dc5b-022d-4714-8f74-5a3b220eb50c" class="bulleted-list"><li style="list-style-type:disc">Interface to the services provided by the OS</li></ul><ul id="05de49dd-177b-4246-956d-b551b8778080" class="bulleted-list"><li style="list-style-type:disc">Typically these are written in C or C++ or some high level language</li></ul><ul id="f6e76127-16f5-4882-bf93-c511b827b65a" class="bulleted-list"><li style="list-style-type:disc">System calls are not directly used since these will not make code portable</li></ul><ul id="23c4a885-213b-409c-9e52-eb0457aae833" class="bulleted-list"><li style="list-style-type:disc">Mostly accessed by programs via high level API</li></ul><ul id="0f9e9e6f-523e-45c0-93f2-1bebcbc21c95" class="bulleted-list"><li style="list-style-type:disc">API specifies a set of functions that people can access through itself<ul id="44f63343-2f5b-4c0c-9a41-32a0cdb292b8" class="bulleted-list"><li style="list-style-type:circle">Win32 API</li></ul><ul id="743bd2dc-6807-4a91-bd6d-bd35bf963b1c" class="bulleted-list"><li style="list-style-type:circle">POSIX API → Portable OS Interface for UNIX</li></ul><ul id="57f90c09-aa23-40b1-9d98-8e1104e1428b" class="bulleted-list"><li style="list-style-type:circle">Java API → JVM</li></ul></li></ul><ul id="16ff7c06-da32-43e2-9cf3-23f84ba1a9d7" class="bulleted-list"><li style="list-style-type:disc">Each system call is a number and we have a <span style="border-bottom:0.05em solid">system call interface</span> which has an index for these numbers</li></ul><h2 id="304e1fcd-c7b5-42ee-b257-0518a8c23095" class="">Types of System Calls</h2><h3 id="6e4e1cb1-0858-473f-ab25-f475062345f6" class="">Process Control</h3><ul id="4e16f0b8-4f6c-4af5-a15e-2ea64d6fb013" class="bulleted-list"><li style="list-style-type:disc">Create process</li></ul><ul id="b26903d1-08cd-43c3-8767-1af32aad7720" class="bulleted-list"><li style="list-style-type:disc">Terminate Process</li></ul><ul id="08307f43-6a2d-4c96-8460-dba86ce965a4" class="bulleted-list"><li style="list-style-type:disc">End, Abort</li></ul><ul id="9bd220b1-2697-487c-8ecf-c030b9c87d6d" class="bulleted-list"><li style="list-style-type:disc">Load, execute</li></ul><h3 id="6d48996a-7440-4ca4-920b-4fbe960d2ea4" class="">File Management</h3><ul id="6efb5cba-d44f-4e26-b8c2-979e0fb2be1b" class="bulleted-list"><li style="list-style-type:disc">Create, delete, open, close, read, write files</li></ul><ul id="3fb488a5-3471-499d-8936-8122a807c8eb" class="bulleted-list"><li style="list-style-type:disc">Get and set file attributes</li></ul><h3 id="a205820e-6566-43f4-917f-8e47ac1ff903" class="">Device Management</h3><ul id="1cc72828-42b9-4c10-be3e-0261a60f105d" class="bulleted-list"><li style="list-style-type:disc">Request Device, Release device</li></ul><ul id="aaa678e2-576e-400e-8ba1-c2c48727edf2" class="bulleted-list"><li style="list-style-type:disc">Read, Write</li></ul><ul id="5f072d0b-fdd3-4181-b1a4-5b483391835f" class="bulleted-list"><li style="list-style-type:disc">Get/set device attributes</li></ul><ul id="b2105f63-f2ce-4f15-b7ad-672b70f1da97" class="bulleted-list"><li style="list-style-type:disc">Logically attach. detach</li></ul><h3 id="d7f038d2-7803-4a5c-917d-5bf91b80581f" class="">Information maintenance</h3><h3 id="ceccbbc0-edad-4932-841e-9486efe7e832" class="">Communication</h3><h3 id="238d1a05-8582-4c53-9975-59a58cad0602" class="">Protection</h3></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
