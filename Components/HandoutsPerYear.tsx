@@ -1,12 +1,7 @@
 import Link from "next/link";
+import { HandoutsPerYearProps } from "../types/HandoutsPerYearProps";
 
-type Props = {
-  handouts: any;
-  year: any;
-  searchWord: string;
-}
-
-export default function HandoutsPerYear({ handouts, year, searchWord }: Props) {
+export default function HandoutsPerYear({ handouts, year, searchWord }: HandoutsPerYearProps) {
   return (
     <div className="p-3 m-3">
       {

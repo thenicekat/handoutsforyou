@@ -1,11 +1,7 @@
 import { useState } from "react";
 import Menu from "../Components/Menu";
 import Head from "next/head";
-
-type FaqModel = {
-    question: string,
-    answer: string
-}
+import { FaqModel } from "../types/FaqModel";
 
 export default function Faqs() {
     const [input, setInput] = useState("");
