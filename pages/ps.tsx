@@ -5,37 +5,27 @@ import Menu from "../Components/Menu";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 
-type CGPA = {
-    [key: string]: number
-}
-
 type PS_Station = {
     name: string
     last_paid_stipend: number
-    min_cgpa: CGPA
-    max_cgpa: CGPA
+    min_cgpa: number
+    max_cgpa: number
 }
 
-const sample: PS_Station[] = [
-    {
-        name: 'Google',
-        last_paid_stipend: 100000,
-        min_cgpa: {
-            '2021 Sem 1': 9,
+export const getStaticProps: GetStaticProps = async () => {
+    const fs = require("fs");
+    let ps2_chronicles = fs.readdirSync("./public/ps/ps2_chronicles/");
+
+    return {
+        props: {
+            ps2_chronicles,
         },
-        max_cgpa: {
-            '2021 Sem 1': 10,
-        },
-    }
-]
+    };
+};
 
 
-export default function PS() {
+export default function PS({ ps2_chronicles }: any) {
     const [search, setSearch] = useState("");
-    const [cgpa, setCGPA] = useState(0);
-    const [yearRef, setYearRef] = useState("2021 Sem 1");
-    const yearReferences = ['2018 Sem 1', '2018 Sem 2', '2019 Sem 1', '2019 Sem 2', '2020 Sem 1', '2020 Sem 2', '2021 Sem 1', '2021 Sem 2', '2022 Sem 1', '2022 Sem 2', '2023 Sem 1', '2023 Sem 2']
-
     const { data: session } = useSession()
 
     return (
@@ -56,61 +46,47 @@ export default function PS() {
 
                     <Menu current={"ps"} />
 
-                    {session && <>
-                        <input
-                            type="text"
-                            placeholder="Search for Company..."
-                            className="input input-bordered w-full max-w-xs m-3"
-                            onChange={(e) => setSearch(e.target.value)}
-                        />
+                    <input
+                        type="text"
+                        placeholder="Search..."
+                        className="input input-bordered w-full max-w-xs"
+                        onChange={(e) => setSearch(e.target.value)}
+                    />
+                </div>
 
-                        OR
+                <div className="flex">
+                    <Link className="m-3" href={"/ps1_data"}>
+                        <button className="btn btn-outline w-full">
+                            PS1 Responses
+                        </button>
+                    </Link>
 
-                        <input
-                            type="text"
-                            placeholder="Enter your CGPA..."
-                            className="input input-bordered w-full max-w-xs m-3"
-                            onChange={(e) => setCGPA(parseFloat(e.target.value))}
-                        />
-
-                        <select className="select select-bordered w-full max-w-xs" onChange={(e) => setYearRef(e.target.value)}>
-                            <option disabled selected>Which year to use as reference?</option>
-                            {
-                                yearReferences.map((year) => (
-                                    <option value={year} key={year}>{year}</option>
-                                ))
-                            }
-                        </select>
-
-                        <Link className="m-3" href={"/pschron"}>
-                            <button className="btn btn-outline w-full">
-                                Are you looking for chronicles?
-                            </button>
-                        </Link>
-                    </>}
+                    <Link className="m-3" href={"/ps2_data"}>
+                        <button className="btn btn-outline w-full">
+                            PS2 Responses
+                        </button>
+                    </Link>
                 </div>
             </div>
 
+
             {session &&
                 <div>
-                    <h1 className="text-3xl text-center my-3">PS Details</h1>
-                    <div className='px-2 md:px-20'>
+                    <h1 className="text-3xl text-center my-3">PS2 Chronicles</h1>
+                    <div className='grid md:grid-cols-4 place-items-center p-5'>
                         {
-                            sample
-                                .filter((d: PS_Station) => d.name.toLowerCase().includes(search.toLowerCase()))
-                                .map((station) => (
-                                    <div className="py-1 m-2 border-solid border-[1px] border-white rounded-xl" key={station.name}>
-                                        <div className="alert shadow-sm">
-                                            <div>
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-info shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                                <span>{station.name.toUpperCase()}</span>
-                                            </div>
-                                            <div className="flex-none">
-                                                <button className="btn btn-sm btn-primary">Stipend: {station.last_paid_stipend}</button>
-                                            </div>
+                            ps2_chronicles.filter((d: string) => d.toLowerCase().includes(search.toLowerCase())).map((chron: string) => (
+                                <div className="card w-72 bg-neutral text-neutral-content m-2" key={chron}>
+                                    <div className="card-body items-center text-center">
+                                        <h2 className="card-title">PS2 Chronicles {chron.split(" ")[0]} Semester {chron.split(" ")[1]}</h2>
+                                        <div className="card-actions justify-end">
+                                            <button className="btn btn-primary" onClick={
+                                                () => window.open("https://github.com/Divyateja04/handoutsforyou/raw/main/public/ps/chronicles/" + chron)
+                                            }>View</button>
                                         </div>
                                     </div>
-                                ))
+                                </div>
+                            ))
                         }
                     </div>
                 </div>}
