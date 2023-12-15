@@ -1,9 +1,9 @@
-type CGPAGroup = {
+export type CGPAGroup = {
     mincgpa: number
     maxcgpa: number
 }
 
-type PS_Station = {
+export type PS_Station = {
     [key: string]: CGPAGroup | string
 }
 
