@@ -48,28 +48,26 @@ export default function PS2({ ps2_data }: { ps2_data: PS_Station[] }) {
                     {session && <>
                         <input
                             type="text"
+                            placeholder="Please enter your CGPA..."
+                            className="input input-bordered w-full max-w-xs m-3"
+                            onChange={(e) => setCGPA(parseFloat(e.target.value))}
+                        />
+
+                        <input
+                            type="text"
                             placeholder="Search for Company..."
                             className="input input-bordered w-full max-w-xs m-3"
                             onChange={(e) => setSearch(e.target.value)}
                         />
 
-                        OR
-
-                        <input
-                            type="text"
-                            placeholder="Enter your CGPA..."
-                            className="input input-bordered w-full max-w-xs m-3"
-                            onChange={(e) => setCGPA(parseFloat(e.target.value))}
-                        />
-
-                        <select className="select select-bordered w-full max-w-xs" onChange={(e) => setYearRef(e.target.value)}>
+                        {/* <select className="select select-bordered w-full max-w-xs" onChange={(e) => setYearRef(e.target.value)}>
                             <option disabled selected>Which year to use as reference?</option>
                             {
                                 yearReferences.map((year) => (
                                     <option value={year} key={year}>{year}</option>
                                 ))
                             }
-                        </select>
+                        </select> */}
 
                         <Link className="m-3" href={"/ps"}>
                             <button className="btn btn-outline w-full">
@@ -82,14 +80,13 @@ export default function PS2({ ps2_data }: { ps2_data: PS_Station[] }) {
 
             {session &&
                 <div>
-                    <h1 className="text-3xl text-center my-3">PS Details</h1>
                     <div className='px-2 md:px-20'>
                         {
                             ps2_data
                                 .filter((d: PS_Station) => (d.name as string).toLowerCase().includes(search.toLowerCase()))
                                 .map((station: PS_Station) => (
                                     Object.keys(station)
-                                        .filter(key => key != "name")
+                                        .filter(key => key != "name" && (station[key] as CGPAGroup).mincgpa <= cgpa)
                                         .map((key) => {
                                             return <div className="py-1 m-2 border-solid border-[1px] border-white rounded-xl" key={(station.name as string)}>
                                                 <div className="alert shadow-sm">
