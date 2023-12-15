@@ -3,17 +3,7 @@ import Head from "next/head";
 import { useState } from "react";
 import Menu from "../Components/Menu";
 import { useSession } from "next-auth/react";
-
-type PreReq = {
-    prereq_name: string,
-    pre_cop: string
-}
-
-type PreReqGroup = {
-    name: string,
-    all_one: string,
-    prereqs: PreReq[]
-};
+import { PreReqGroup } from "../types/PreReq";
 
 export const getStaticProps: GetStaticProps = async () => {
     const fs = require("fs");

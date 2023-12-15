@@ -5,32 +5,20 @@ import Menu from "../Components/Menu";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 
-type CGPA = {
-    [key: string]: number
-}
+export const getStaticProps: GetStaticProps = async () => {
+    const fs = require("fs");
 
-type PS_Station = {
-    name: string
-    last_paid_stipend: number
-    min_cgpa: CGPA
-    max_cgpa: CGPA
-}
+    let ps2_data = fs.readFileSync("./public/ps/ps2_data.json").toString();
+    ps2_data = JSON.parse(ps2_data)
 
-const sample: PS_Station[] = [
-    {
-        name: 'Google',
-        last_paid_stipend: 100000,
-        min_cgpa: {
-            '2021 Sem 1': 9,
+    return {
+        props: {
+            ps2_data,
         },
-        max_cgpa: {
-            '2021 Sem 1': 10,
-        },
-    }
-]
+    };
+};
 
-
-export default function PS2() {
+export default function PS2({ ps2_data }: { ps2_data: PS_Station[] }) {
     const [search, setSearch] = useState("");
     const [cgpa, setCGPA] = useState(0);
     const [yearRef, setYearRef] = useState("2021 Sem 1");
@@ -96,24 +84,31 @@ export default function PS2() {
                     <h1 className="text-3xl text-center my-3">PS Details</h1>
                     <div className='px-2 md:px-20'>
                         {
-                            sample
-                                .filter((d: PS_Station) => d.name.toLowerCase().includes(search.toLowerCase()))
-                                .map((station) => (
-                                    <div className="py-1 m-2 border-solid border-[1px] border-white rounded-xl" key={station.name}>
-                                        <div className="alert shadow-sm">
-                                            <div>
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-info shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                                <span>{station.name.toUpperCase()}</span>
+                            ps2_data
+                                .filter((d: PS_Station) => (d.name as string).toLowerCase().includes(search.toLowerCase()))
+                                .map((station: PS_Station) => (
+                                    Object.keys(station)
+                                        .filter(key => key != "name")
+                                        .map((key) => {
+                                            return <div className="py-1 m-2 border-solid border-[1px] border-white rounded-xl" key={(station.name as string)}>
+                                                <div className="alert shadow-sm">
+                                                    <div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-info shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                                        <span>{(station.name as string).toUpperCase()}</span>
+                                                    </div>
+                                                    <div className="flex-none">
+                                                        <button className="btn btn-sm btn-primary disabled">{key}</button>
+                                                        <button className="btn btn-sm btn-primary disabled">{(station[key] as CGPAGroup).mincgpa}</button>
+                                                        <button className="btn btn-sm btn-primary disabled">{(station[key] as CGPAGroup).maxcgpa}</button>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div className="flex-none">
-                                                <button className="btn btn-sm btn-primary">Stipend: {station.last_paid_stipend}</button>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        })
+
                                 ))
                         }
                     </div>
-                </div>}
+                </div >}
 
         </>
     );
