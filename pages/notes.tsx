@@ -42,8 +42,20 @@ export default function Notes() {
             link: "/notes/DBMS/dbmslovesme.html"
         },
         {
+            name: "OS Notes",
+            link: "/notes/OS/OS.html"
+        },
+        {
             name: "PoPL Notes",
             link: "/notes/PoPL/PoPL.html"
+        },
+        {
+            name: "Digital Design - DD Notes",
+            link: "https://github.com/Divyateja04/handoutsforyou/raw/main/public/notes/DD Notes.pdf"
+        },
+        {
+            name: "Machine Learning Notes",
+            link: "/notes/ML Notes.pdf"
         },
         {
             name: "C Programming - CP Notes",
@@ -66,10 +78,6 @@ export default function Notes() {
             link: "https://github.com/Divyateja04/handoutsforyou/raw/main/public/notes/M3 Compre Notes.pdf"
         },
         {
-            name: "Digital Design - DD Notes",
-            link: "https://github.com/Divyateja04/handoutsforyou/raw/main/public/notes/DD Notes.pdf"
-        },
-        {
             name: "Soham Barui's Principles of Economics - POE Notes",
             link: "https://github.com/Divyateja04/handoutsforyou/raw/main/public/notes/ext/poe_soham.pdf"
         },
@@ -84,10 +92,6 @@ export default function Notes() {
         {
             name: "Globalization Notes",
             link: "/notes/Glob/Glob.html"
-        },
-        {
-            name: "Machine Learning Notes",
-            link: "/notes/ML Notes.pdf"
         },
         {
             name: "Linguistics Incomplete Notes",
