@@ -9,10 +9,19 @@ type Props = {
 
 const Menu = (props: Props) => {
     const { data: session } = useSession()
+    const [menu, setMenu] = React.useState(false)
+
+    const toggleMenu = () => {
+        setMenu(!menu)
+    }
 
     return (
         <>
-            <div className="grid md:grid-cols-4 justify-around">
+            <button className="btn btn-outline w-1/4 m-3 md:hidden" onClick={() => toggleMenu()}>
+                Menu
+            </button>
+
+            <div className={`${menu ? 'grid' : 'hidden'} md:grid md:grid-cols-4 justify-around`}>
                 <Link className="m-3" href={"/minors.html"}>
                     <button className="btn btn-outline w-full">
                         Info. about Minors
