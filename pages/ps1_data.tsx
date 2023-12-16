@@ -9,7 +9,7 @@ import { CGPAGroup, PS_Station } from "../types/PSData";
 export const getStaticProps: GetStaticProps = async () => {
     const fs = require("fs");
 
-    let ps2_data = fs.readFileSync("./public/ps/ps2_data.json").toString();
+    let ps2_data = fs.readFileSync("./public/ps/ps1_data.json").toString();
     ps2_data = JSON.parse(ps2_data)
 
     return {
@@ -22,15 +22,12 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function PS2({ ps2_data }: { ps2_data: PS_Station[] }) {
     const [search, setSearch] = useState("");
     const [cgpa, setCGPA] = useState(10);
-    const [yearRef, setYearRef] = useState("2021 Sem 1");
-    const yearReferences = ['2018 Sem 1', '2018 Sem 2', '2019 Sem 1', '2019 Sem 2', '2020 Sem 1', '2020 Sem 2', '2021 Sem 1', '2021 Sem 2', '2022 Sem 1', '2022 Sem 2', '2023 Sem 1', '2023 Sem 2']
-
     const { data: session } = useSession()
 
     return (
         <>
             <Head>
-                <title>PS 2 Responses.</title>
+                <title>PS 1 Responses.</title>
                 <meta name="description" content="A website containing all bits pilani hyderabad campus handouts" />
                 <meta name="keywords" content="BITS Pilani, Handouts, BPHC, Hyderabad Campus, BITS Hyderabad, BITS, Pilani, Handouts for you, handouts, for, you, bits, birla, institute, bits hyd, academics" />
                 <meta name="robots" content="index, follow" />
