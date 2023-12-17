@@ -1,13 +1,5 @@
 [
     {
-        "name": "moveworks.ai",
-        "23-24 Sem 1": {
-            "mincgpa": 8.06,
-            "maxcgpa": 8.06,
-            "numberofstudents": 1
-        }
-    },
-    {
         "name": "iNaira Healthcare Technologies - Healthcare",
         "23-24 Sem 2": {
             "mincgpa": 8.5,
@@ -321,6 +313,11 @@
     },
     {
         "name": "UBS - Risk Methodology - Mumbai",
+        "23-24 Sem 2": {
+            "mincgpa": 7.37,
+            "maxcgpa": 7.95,
+            "numberofstudents": 4
+        },
         "23-24 Sem 1": {
             "mincgpa": 7.5,
             "maxcgpa": 7.97,
@@ -328,27 +325,16 @@
         }
     },
     {
-        "name": "UBS - Risk Methodology",
-        "23-24 Sem 2": {
-            "mincgpa": 7.37,
-            "maxcgpa": 7.95,
-            "numberofstudents": 4
-        }
-    },
-    {
         "name": "UBER - Software Engineer - Hyderabad",
-        "23-24 Sem 1": {
-            "mincgpa": 8.39,
-            "maxcgpa": 9.24,
-            "numberofstudents": 4
-        }
-    },
-    {
-        "name": "UBER - Software Engineer",
         "23-24 Sem 2": {
             "mincgpa": 8.89,
             "maxcgpa": 8.89,
             "numberofstudents": 1
+        },
+        "23-24 Sem 1": {
+            "mincgpa": 8.39,
+            "maxcgpa": 9.24,
+            "numberofstudents": 4
         }
     },
     {
@@ -369,18 +355,15 @@
     },
     {
         "name": "Thorogood - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 7.36,
-            "maxcgpa": 7.53,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Thorogood",
         "23-24 Sem 2": {
             "mincgpa": 7.3,
             "maxcgpa": 7.3,
             "numberofstudents": 1
+        },
+        "23-24 Sem 1": {
+            "mincgpa": 7.36,
+            "maxcgpa": 7.53,
+            "numberofstudents": 2
         }
     },
     {
@@ -473,17 +456,14 @@
     },
     {
         "name": "Synchrony - Hyderabad",
-        "23-24 Sem 1": {
-            "mincgpa": 6.71,
-            "maxcgpa": 6.99,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "Synchrony",
         "23-24 Sem 2": {
             "mincgpa": 6.87,
             "maxcgpa": 7.71,
+            "numberofstudents": 3
+        },
+        "23-24 Sem 1": {
+            "mincgpa": 6.71,
+            "maxcgpa": 6.99,
             "numberofstudents": 3
         }
     },
@@ -969,18 +949,15 @@
     },
     {
         "name": "PYOR Edge Inc - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 7.61,
-            "maxcgpa": 7.88,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "PYOR Edge Inc",
         "23-24 Sem 2": {
             "mincgpa": 7.96,
             "maxcgpa": 8.12,
             "numberofstudents": 2
+        },
+        "23-24 Sem 1": {
+            "mincgpa": 7.61,
+            "maxcgpa": 7.88,
+            "numberofstudents": 3
         }
     },
     {
@@ -1170,6 +1147,14 @@
         }
     },
     {
+        "name": "Moveworks AI",
+        "23-24 Sem 1": {
+            "mincgpa": 8.06,
+            "maxcgpa": 8.06,
+            "numberofstudents": 1
+        }
+    },
+    {
         "name": "Morning Star - Index New Product Development - Mumbai",
         "23-24 Sem 2": {
             "mincgpa": 7.87,
@@ -1216,18 +1201,15 @@
     },
     {
         "name": "Mercedes Benz - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 6.7,
-            "maxcgpa": 8.67,
-            "numberofstudents": 10
-        }
-    },
-    {
-        "name": "Mercedes Benz",
         "23-24 Sem 2": {
             "mincgpa": 7.9,
             "maxcgpa": 7.9,
             "numberofstudents": 1
+        },
+        "23-24 Sem 1": {
+            "mincgpa": 6.7,
+            "maxcgpa": 8.67,
+            "numberofstudents": 10
         }
     },
     {
@@ -1696,18 +1678,15 @@
     },
     {
         "name": "Indian Institute of Petroleum - Dehradun",
-        "23-24 Sem 1": {
-            "mincgpa": 6.61,
-            "maxcgpa": 6.61,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Indian Institute of Petroleum",
         "23-24 Sem 2": {
             "mincgpa": 6.28,
             "maxcgpa": 6.28,
             "numberofstudents": 1
+        },
+        "23-24 Sem 1": {
+            "mincgpa": 6.61,
+            "maxcgpa": 6.61,
+            "numberofstudents": 2
         }
     },
     {
@@ -2050,18 +2029,15 @@
     },
     {
         "name": "Flipkart Internet Pvt Ltd - Business Development - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 7.1,
-            "maxcgpa": 8.98,
-            "numberofstudents": 5
-        }
-    },
-    {
-        "name": "Flipkart Internet Pvt Ltd - Business Development",
         "23-24 Sem 2": {
             "mincgpa": 8.4,
             "maxcgpa": 8.56,
             "numberofstudents": 3
+        },
+        "23-24 Sem 1": {
+            "mincgpa": 7.1,
+            "maxcgpa": 8.98,
+            "numberofstudents": 5
         }
     },
     {
@@ -2073,19 +2049,11 @@
         }
     },
     {
-        "name": "Flipkart HealthPlus Analytics",
-        "23-24 Sem 1": {
-            "mincgpa": 8.69,
-            "maxcgpa": 8.69,
-            "numberofstudents": 1
-        }
-    },
-    {
         "name": "Flipkart Health Plus Analytics - Bengaluru",
         "23-24 Sem 1": {
             "mincgpa": 8.28,
-            "maxcgpa": 8.39,
-            "numberofstudents": 2
+            "maxcgpa": 8.69,
+            "numberofstudents": 3
         }
     },
     {
@@ -2474,18 +2442,15 @@
     },
     {
         "name": "Contlo - SDE (Tech) - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 7.96,
-            "maxcgpa": 8.45,
-            "numberofstudents": 5
-        }
-    },
-    {
-        "name": "Contlo - SDE (Tech)",
         "23-24 Sem 2": {
             "mincgpa": 8.15,
             "maxcgpa": 8.35,
             "numberofstudents": 3
+        },
+        "23-24 Sem 1": {
+            "mincgpa": 7.96,
+            "maxcgpa": 8.45,
+            "numberofstudents": 5
         }
     },
     {
@@ -2761,14 +2726,6 @@
         }
     },
     {
-        "name": "Apple India Pvt Limited",
-        "23-24 Sem 2": {
-            "mincgpa": 8.88,
-            "maxcgpa": 9.18,
-            "numberofstudents": 2
-        }
-    },
-    {
         "name": "Apple India Private Limited - Bengaluru",
         "23-24 Sem 1": {
             "mincgpa": 8.01,
@@ -2781,7 +2738,7 @@
         "23-24 Sem 2": {
             "mincgpa": 8.64,
             "maxcgpa": 9.77,
-            "numberofstudents": 5
+            "numberofstudents": 7
         }
     },
     {
@@ -2826,18 +2783,15 @@
     },
     {
         "name": "Amazon Development Center - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 7.31,
-            "maxcgpa": 8.47,
-            "numberofstudents": 45
-        }
-    },
-    {
-        "name": "Amazon Development Center",
         "23-24 Sem 2": {
             "mincgpa": 8.77,
             "maxcgpa": 9.09,
             "numberofstudents": 3
+        },
+        "23-24 Sem 1": {
+            "mincgpa": 7.31,
+            "maxcgpa": 8.47,
+            "numberofstudents": 45
         }
     },
     {
@@ -2922,18 +2876,15 @@
     },
     {
         "name": "ARM Embedded Technologies Private Limited - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 7.23,
-            "maxcgpa": 7.23,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "ARM Embedded Technologies Private Limited",
         "23-24 Sem 2": {
             "mincgpa": 7.25,
             "maxcgpa": 8.4,
             "numberofstudents": 3
+        },
+        "23-24 Sem 1": {
+            "mincgpa": 7.23,
+            "maxcgpa": 7.23,
+            "numberofstudents": 1
         }
     },
     {
