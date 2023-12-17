@@ -1,984 +1,38 @@
 [
     {
-        "name": "iNaira Healthcare Technologies - Healthcare",
+        "name": "1Clicktech Global Services Pvt. Ltd.",
         "23-24 Sem 2": {
-            "mincgpa": 8.5,
-            "maxcgpa": 8.5,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "iNaira Healthcare Technologies - Datascience",
-        "23-24 Sem 2": {
-            "mincgpa": 8.46,
-            "maxcgpa": 8.46,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "eBay - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 8.243,
-            "maxcgpa": 8.508,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "e6data - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 6.64,
-            "maxcgpa": 6.64,
-            "numberofstudents": 1
-        },
-        "23-24 Sem 1": {
-            "mincgpa": 6.91,
-            "maxcgpa": 7.12,
-            "numberofstudents": 7
-        }
-    },
-    {
-        "name": "e-con Systems India Pvt. Ltd.",
-        "23-24 Sem 2": {
-            "mincgpa": 7.58,
-            "maxcgpa": 7.58,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Zluri - Singapore",
-        "23-24 Sem 1": {
-            "mincgpa": 6.53,
-            "maxcgpa": 7.12,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Zeta (Better World Technologies Pvt. Ltd.)",
-        "23-24 Sem 2": {
-            "mincgpa": 8.27,
-            "maxcgpa": 8.52,
-            "numberofstudents": 7
-        }
-    },
-    {
-        "name": "Zeotap India Pvt. Ltd. - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 6.88,
-            "maxcgpa": 6.89,
-            "numberofstudents": 2
-        },
-        "22-23 Sem 2": {
-            "mincgpa": 6.99,
-            "maxcgpa": 6.99,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Zeotap India Pvt. Ltd.",
-        "23-24 Sem 2": {
-            "mincgpa": 8.27,
-            "maxcgpa": 8.33,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Zeo Auto",
-        "23-24 Sem 2": {
-            "mincgpa": 7.68,
-            "maxcgpa": 7.68,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Yugabyte - Bengaluru",
-        "23-24 Sem 2": {
-            "mincgpa": 8.4,
-            "maxcgpa": 9.04,
-            "numberofstudents": 2
-        },
-        "23-24 Sem 1": {
-            "mincgpa": 8.59,
-            "maxcgpa": 8.68,
-            "numberofstudents": 4
-        },
-        "22-23 Sem 2": {
-            "mincgpa": 8.89,
-            "maxcgpa": 8.89,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Xoxoday - Tech",
-        "23-24 Sem 2": {
-            "mincgpa": 7.492,
-            "maxcgpa": 7.492,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "William O Neil - Algorithm - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 7.27,
-            "maxcgpa": 7.62,
-            "numberofstudents": 4
-        }
-    },
-    {
-        "name": "Western Digital (SANDISK) - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 9.45,
-            "maxcgpa": 9.45,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Western Digital (SANDISK)",
-        "23-24 Sem 2": {
-            "mincgpa": 7.12,
-            "maxcgpa": 8.92,
-            "numberofstudents": 4
-        }
-    },
-    {
-        "name": "Wayfair Global Technology Pvt. Ltd.",
-        "23-24 Sem 2": {
-            "mincgpa": 8.68,
-            "maxcgpa": 8.944,
-            "numberofstudents": 10
-        }
-    },
-    {
-        "name": "Wavelabs Technologies - Hyderabad",
-        "23-24 Sem 1": {
-            "mincgpa": 6.16,
-            "maxcgpa": 6.97,
-            "numberofstudents": 7
-        }
-    },
-    {
-        "name": "Walmart Global Technology Services",
-        "23-24 Sem 2": {
-            "mincgpa": 7.8,
-            "maxcgpa": 8.58,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Wadhwani AI",
-        "23-24 Sem 2": {
-            "mincgpa": 7.46,
-            "maxcgpa": 8.52,
-            "numberofstudents": 4
-        }
-    },
-    {
-        "name": "WILP - Additive manufacturing - Hyderabad",
-        "23-24 Sem 1": {
-            "mincgpa": 6.49,
-            "maxcgpa": 6.49,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "WILP - ADAS , Artificial \\u0026 Computation - Hyderabad",
-        "23-24 Sem 1": {
-            "mincgpa": 6.5,
-            "maxcgpa": 6.5,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "WILP - ADAS , Artificial & Computation",
-        "23-24 Sem 2": {
-            "mincgpa": 6.02,
-            "maxcgpa": 6.02,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "WILP - ACS & Cyber Security",
-        "23-24 Sem 2": {
-            "mincgpa": 6.304,
-            "maxcgpa": 8.8,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Vidal Healthcare Services Pvt. Ltd.",
-        "23-24 Sem 2": {
-            "mincgpa": 7.46,
-            "maxcgpa": 7.66,
-            "numberofstudents": 4
-        }
-    },
-    {
-        "name": "Viacom DV Product - Mumbai",
-        "22-23 Sem 2": {
-            "mincgpa": 6.93,
-            "maxcgpa": 6.93,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Viacom DV Data Science \\u0026 Analytics - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 6.6,
-            "maxcgpa": 7.23,
-            "numberofstudents": 4
-        }
-    },
-    {
-        "name": "Viacom DV Business Planning - Mumbai",
-        "22-23 Sem 2": {
-            "mincgpa": 7.02,
-            "maxcgpa": 7.02,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Viacom DV Brand Solutions - Mumbai",
-        "22-23 Sem 2": {
-            "mincgpa": 7.53,
-            "maxcgpa": 7.53,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Viacom DV AVOD Marketing",
-        "23-24 Sem 2": {
-            "mincgpa": 7.67,
-            "maxcgpa": 7.67,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Viacom - Performance Marketing",
-        "23-24 Sem 2": {
-            "mincgpa": 6.98,
-            "maxcgpa": 6.98,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Viacom - DV Ad-Sales",
-        "23-24 Sem 2": {
-            "mincgpa": 7.19,
-            "maxcgpa": 7.75,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Viacom - DV Ad-Operations",
-        "23-24 Sem 2": {
-            "mincgpa": 7.02,
-            "maxcgpa": 7.03,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "VenueMonk Technologies Pvt. Ltd.",
-        "23-24 Sem 2": {
-            "mincgpa": 7.28,
-            "maxcgpa": 7.28,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Velankani Software Pvt Ltd",
-        "23-24 Sem 2": {
-            "mincgpa": 7.524,
-            "maxcgpa": 7.524,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Vehant Technologies Pvt. Ltd. - Noida",
-        "23-24 Sem 1": {
-            "mincgpa": 6.39,
-            "maxcgpa": 6.39,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Vehant Technologies Pvt. Ltd.",
-        "23-24 Sem 2": {
-            "mincgpa": 6.98,
-            "maxcgpa": 6.98,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Vegapay",
-        "23-24 Sem 2": {
-            "mincgpa": 7.81,
-            "maxcgpa": 7.91,
-            "numberofstudents": 4
-        }
-    },
-    {
-        "name": "VISA",
-        "23-24 Sem 2": {
-            "mincgpa": 7.08,
-            "maxcgpa": 8.15,
-            "numberofstudents": 4
-        }
-    },
-    {
-        "name": "Unity Growth Fund LLC",
-        "23-24 Sem 2": {
-            "mincgpa": 7.17,
-            "maxcgpa": 7.17,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Udaan - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 7.18,
-            "maxcgpa": 7.71,
-            "numberofstudents": 3
-        },
-        "22-23 Sem 2": {
-            "mincgpa": 7.61,
-            "maxcgpa": 7.77,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "UST Global- Trivandrum - Thiruvananthapuram",
-        "23-24 Sem 1": {
-            "mincgpa": 6.39,
-            "maxcgpa": 6.95,
-            "numberofstudents": 2
-        },
-        "22-23 Sem 2": {
-            "mincgpa": 6.32,
-            "maxcgpa": 6.32,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "UBS Business Solutions (India) Private Limited - RAS FINANCE - Pune",
-        "23-24 Sem 1": {
-            "mincgpa": 6.25,
-            "maxcgpa": 7.63,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "UBS - VALS - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 7.83,
-            "maxcgpa": 8.65,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "UBS - Risk Methodology - Mumbai",
-        "23-24 Sem 2": {
-            "mincgpa": 7.37,
-            "maxcgpa": 7.95,
-            "numberofstudents": 4
-        },
-        "23-24 Sem 1": {
-            "mincgpa": 7.5,
-            "maxcgpa": 7.97,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "UBS - Group RISK - Mumbai",
-        "22-23 Sem 2": {
-            "mincgpa": 6.3,
-            "maxcgpa": 6.3,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "UBS - Group Finance - Mumbai",
-        "22-23 Sem 2": {
-            "mincgpa": 6.68,
-            "maxcgpa": 6.96,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "UBER - Software Engineer - Hyderabad",
-        "23-24 Sem 2": {
-            "mincgpa": 8.89,
-            "maxcgpa": 8.89,
-            "numberofstudents": 1
-        },
-        "23-24 Sem 1": {
-            "mincgpa": 8.39,
-            "maxcgpa": 9.24,
-            "numberofstudents": 4
-        },
-        "22-23 Sem 2": {
-            "mincgpa": 8.26,
-            "maxcgpa": 9.5,
-            "numberofstudents": 10
-        }
-    },
-    {
-        "name": "UBER - Data Analytics - Hyderabad",
-        "22-23 Sem 2": {
-            "mincgpa": 7.69,
-            "maxcgpa": 8.364,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "UBER - Data Analytics",
-        "23-24 Sem 2": {
-            "mincgpa": 7.59,
-            "maxcgpa": 7.59,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Times Internet - ETMoney - Gurugram",
-        "22-23 Sem 2": {
-            "mincgpa": 8.3,
-            "maxcgpa": 8.42,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "Time Tooth - Noida",
-        "23-24 Sem 1": {
-            "mincgpa": 8.55,
-            "maxcgpa": 8.55,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Thorogood - Bengaluru",
-        "23-24 Sem 2": {
-            "mincgpa": 7.3,
-            "maxcgpa": 7.3,
-            "numberofstudents": 1
-        },
-        "23-24 Sem 1": {
-            "mincgpa": 7.36,
-            "maxcgpa": 7.53,
-            "numberofstudents": 2
-        },
-        "22-23 Sem 2": {
-            "mincgpa": 6.53,
-            "maxcgpa": 6.53,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Texas Instruments-Embedded Software - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 8.18,
-            "maxcgpa": 8.6,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "Texas Instruments - AI / ML - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 8.74,
-            "maxcgpa": 8.74,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Texas Instruments (I) Pvt. Ltd. -Digital - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 8.39,
-            "maxcgpa": 9.37,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Texas Instruments (I) Pvt. Ltd. -Analog - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 7.87,
-            "maxcgpa": 7.98,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Texas Instruments (I) Pvt. Ltd - Systems - Bengaluru",
-        "23-24 Sem 2": {
-            "mincgpa": 8.0,
-            "maxcgpa": 8.58,
-            "numberofstudents": 3
-        },
-        "23-24 Sem 1": {
-            "mincgpa": 7.59,
-            "maxcgpa": 7.82,
-            "numberofstudents": 5
-        }
-    },
-    {
-        "name": "Tenstorrent India Private Limited - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 8.5,
-            "maxcgpa": 8.5,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Tenstorrent",
-        "23-24 Sem 2": {
-            "mincgpa": 9.26,
-            "maxcgpa": 9.26,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Telus International AI - Software Engineering",
-        "23-24 Sem 2": {
-            "mincgpa": 8.8,
-            "maxcgpa": 8.8,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Telus International AI - Product Management",
-        "23-24 Sem 2": {
-            "mincgpa": 8.0,
-            "maxcgpa": 8.57,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Telus International AI - Machine Learning",
-        "23-24 Sem 2": {
-            "mincgpa": 8.57,
-            "maxcgpa": 8.57,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Telus International AI - Customer Success",
-        "23-24 Sem 2": {
-            "mincgpa": 7.98,
-            "maxcgpa": 7.98,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Technicolor India - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 7.92,
-            "maxcgpa": 7.92,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "TeamLease Services Limited - Hyderabad",
-        "23-24 Sem 1": {
-            "mincgpa": 6.67,
-            "maxcgpa": 6.67,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "TATA AIG - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 7.0,
-            "maxcgpa": 7.72,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Synechron Technologies Pvt. Ltd. - Pune",
-        "23-24 Sem 1": {
-            "mincgpa": 7.37,
-            "maxcgpa": 7.37,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Synechron Technologies Pvt. Ltd. - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 7.42,
-            "maxcgpa": 7.42,
-            "numberofstudents": 1
-        },
-        "22-23 Sem 2": {
             "mincgpa": 8.62,
             "maxcgpa": 8.62,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Synchrony - Hyderabad",
+        "name": "A.T. Kearney Consulting (India) Private Limited",
         "23-24 Sem 2": {
-            "mincgpa": 6.87,
-            "maxcgpa": 7.71,
-            "numberofstudents": 3
-        },
-        "23-24 Sem 1": {
-            "mincgpa": 6.71,
-            "maxcgpa": 6.99,
-            "numberofstudents": 3
-        },
-        "22-23 Sem 2": {
-            "mincgpa": 7.2,
-            "maxcgpa": 7.62,
+            "mincgpa": 8.2,
+            "maxcgpa": 8.907,
             "numberofstudents": 2
         }
     },
     {
-        "name": "Sundial Systems Pvt. Ltd. - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 8.49,
-            "maxcgpa": 8.99,
-            "numberofstudents": 3
-        },
+        "name": "A.T. Kearney Consulting (India) Private Limited - Gurugram",
         "22-23 Sem 2": {
-            "mincgpa": 9.1,
-            "maxcgpa": 9.1,
-            "numberofstudents": 1
+            "mincgpa": 8.1,
+            "maxcgpa": 8.91,
+            "numberofstudents": 5
         }
     },
     {
-        "name": "Sundial Systems Pvt. Ltd.",
-        "23-24 Sem 2": {
-            "mincgpa": 7.5,
-            "maxcgpa": 7.5,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "SunTec Business Solutions Pvt. Ltd.",
-        "23-24 Sem 2": {
-            "mincgpa": 6.67,
-            "maxcgpa": 6.72,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Stocklite Gemms Private Limited - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 7.311,
-            "maxcgpa": 7.311,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Statcon Electronics India Ltd. - Nontech - Noida",
+        "name": "Acceldata Technology Pvt. Ltd. - Bengaluru",
         "23-24 Sem 1": {
-            "mincgpa": 6.97,
-            "maxcgpa": 6.97,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Standard Chartered - Software Engineering - Chennai",
-        "23-24 Sem 1": {
-            "mincgpa": 6.73,
-            "maxcgpa": 6.73,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Standard Chartered - Software Engineering - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 6.75,
-            "maxcgpa": 7.08,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "Standard Chartered - Business Analyst - Chennai",
-        "23-24 Sem 1": {
-            "mincgpa": 7.83,
-            "maxcgpa": 7.83,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Standard Chartered - Business Analyst",
-        "23-24 Sem 2": {
-            "mincgpa": 7.97,
-            "maxcgpa": 7.97,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Spyne (Eventila Technologies) - Tech - Gurugram",
-        "23-24 Sem 1": {
-            "mincgpa": 7.63,
-            "maxcgpa": 7.63,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Spyne (Eventila Technologies) - Product - Gurugram",
-        "23-24 Sem 1": {
-            "mincgpa": 7.09,
-            "maxcgpa": 7.09,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Sprinklr",
-        "23-24 Sem 2": {
-            "mincgpa": 7.62,
-            "maxcgpa": 9.78,
-            "numberofstudents": 7
-        }
-    },
-    {
-        "name": "Spiralyze LLC - Atlanta, USA",
-        "22-23 Sem 2": {
-            "mincgpa": 8.53,
-            "maxcgpa": 8.53,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Spiralyze LLC",
-        "23-24 Sem 2": {
-            "mincgpa": 7.91,
-            "maxcgpa": 8.15,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "Singlestore India Pvt Ltd - Hyderabad",
-        "23-24 Sem 1": {
-            "mincgpa": 9.18,
-            "maxcgpa": 9.24,
-            "numberofstudents": 3
-        },
-        "22-23 Sem 2": {
-            "mincgpa": 9.22,
-            "maxcgpa": 9.28,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Simutopia (India) Private Limited",
-        "23-24 Sem 2": {
-            "mincgpa": 7.01,
-            "maxcgpa": 7.01,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Silverlabs India Private Limited",
-        "23-24 Sem 2": {
-            "mincgpa": 7.1,
-            "maxcgpa": 7.1,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Signode India Limited",
-        "23-24 Sem 2": {
-            "mincgpa": 6.575,
-            "maxcgpa": 6.575,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Signalchip Innovations Pvt. Ltd.",
-        "23-24 Sem 2": {
-            "mincgpa": 7.81,
-            "maxcgpa": 7.81,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Sigma Infosolutions Limited - Jodhpur",
-        "22-23 Sem 2": {
-            "mincgpa": 7.33,
-            "maxcgpa": 7.33,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Sigma Infosolutions Limited - Ahmedabad",
-        "22-23 Sem 2": {
-            "mincgpa": 7.82,
-            "maxcgpa": 7.82,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Siemens technology and Services Pvt ltd - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 7.12,
-            "maxcgpa": 7.37,
+            "mincgpa": 7.06,
+            "maxcgpa": 7.26,
             "numberofstudents": 4
         }
     },
     {
-        "name": "Siemens Technology - AI/ML - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 7.56,
-            "maxcgpa": 7.56,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Siemens Ltd - Aurangabad",
-        "23-24 Sem 1": {
-            "mincgpa": 6.4,
-            "maxcgpa": 7.84,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "Siemens Ltd",
-        "23-24 Sem 2": {
-            "mincgpa": 6.85,
-            "maxcgpa": 8.27,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Shopkirana E Trading Pvt Ltd - Indore",
-        "22-23 Sem 2": {
-            "mincgpa": 6.77,
-            "maxcgpa": 6.77,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Shell India Markets Pvt. Ltd.",
-        "23-24 Sem 2": {
-            "mincgpa": 8.07,
-            "maxcgpa": 8.07,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "ShareChat - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 9.45,
-            "maxcgpa": 9.45,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Scienaptic Systems Pvt. Ltd. - Software Development - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 7.79,
-            "maxcgpa": 7.79,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Scienaptic Systems Pvt. Ltd. - Data Science - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 7.85,
-            "maxcgpa": 7.85,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Schr\u00f6dinger India Pvt. Ltd.",
-        "23-24 Sem 2": {
-            "mincgpa": 9.4,
-            "maxcgpa": 9.4,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Schlumberger - Pune",
-        "23-24 Sem 2": {
-            "mincgpa": 8.43,
-            "maxcgpa": 8.78,
-            "numberofstudents": 4
-        },
-        "23-24 Sem 1": {
-            "mincgpa": 7.84,
-            "maxcgpa": 7.84,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Saras Analytics - Nontech - Hyderabad",
-        "23-24 Sem 1": {
-            "mincgpa": 7.16,
-            "maxcgpa": 7.16,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Samsung Semiconductor India Research -Software - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 6.89,
-            "maxcgpa": 8.66,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Samsung Semiconductor India RD Center-Hardware - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 7.58,
-            "maxcgpa": 8.95,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "Samsung R D Institute - - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 7.58,
-            "maxcgpa": 7.58,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Samsung R & D Institute -",
-        "23-24 Sem 2": {
-            "mincgpa": 8.05,
-            "maxcgpa": 8.17,
-            "numberofstudents": 4
-        }
-    },
-    {
-        "name": "SalarySe (Critical Path Technologies) - Tech",
-        "23-24 Sem 2": {
-            "mincgpa": 8.05,
-            "maxcgpa": 8.05,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "SalarySe (Critical Path Technologies) - Product",
-        "23-24 Sem 2": {
-            "mincgpa": 8.22,
-            "maxcgpa": 8.22,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Sainapse",
-        "23-24 Sem 2": {
-            "mincgpa": 8.523,
-            "maxcgpa": 8.523,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "SMARBL LTD",
-        "23-24 Sem 2": {
-            "mincgpa": 8.55,
-            "maxcgpa": 8.55,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "SG Analytics - Pune",
-        "23-24 Sem 1": {
-            "mincgpa": 5.9,
-            "maxcgpa": 6.06,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "SENSEI TECHNOLOGIES PVT LTD - Bengaluru",
+        "name": "Addverb Technologies Pvt Ltd - Noida",
         "23-24 Sem 1": {
             "mincgpa": 6.7,
             "maxcgpa": 6.7,
@@ -986,1175 +40,272 @@
         }
     },
     {
-        "name": "SAFERTEK IT Solutions Pvt. Ltd. - Hyderabad",
-        "22-23 Sem 2": {
-            "mincgpa": 8.32,
-            "maxcgpa": 8.32,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Rusk Media - Engineering - New Delhi",
+        "name": "Aditya Birla Science \\u0026 Technology Company Ltd. - Mumbai",
         "23-24 Sem 1": {
-            "mincgpa": 7.18,
-            "maxcgpa": 7.18,
-            "numberofstudents": 1
-        },
-        "22-23 Sem 2": {
-            "mincgpa": 7.86,
-            "maxcgpa": 7.86,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Rupifi - Growth - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 8.18,
-            "maxcgpa": 8.18,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Rupifi - Brands - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 8.24,
-            "maxcgpa": 8.24,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Rupifi - Analytics (Data/Business Analytics) - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 8.48,
-            "maxcgpa": 8.48,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Rubrik",
-        "23-24 Sem 2": {
-            "mincgpa": 8.63,
-            "maxcgpa": 9.79,
+            "mincgpa": 7.74,
+            "maxcgpa": 7.8,
             "numberofstudents": 2
         }
     },
     {
-        "name": "Rivigo Tech - Gurugram",
-        "23-24 Sem 1": {
-            "mincgpa": 7.28,
-            "maxcgpa": 7.3,
+        "name": "Adobe Systems",
+        "23-24 Sem 2": {
+            "mincgpa": 8.31,
+            "maxcgpa": 8.57,
             "numberofstudents": 2
         }
     },
     {
-        "name": "RetainIQ - IT - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 7.71,
-            "maxcgpa": 7.71,
+        "name": "AFour Technologies Pvt. Ltd. - Pune",
+        "23-24 Sem 1": {
+            "mincgpa": 6.31,
+            "maxcgpa": 6.31,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Reflections Info Systems Pvt. Ltd.",
-        "23-24 Sem 2": {
-            "mincgpa": 6.98,
-            "maxcgpa": 6.98,
+        "name": "AgileConnects Pvt. Ltd. - Nagpur",
+        "23-24 Sem 1": {
+            "mincgpa": 6.56,
+            "maxcgpa": 6.56,
             "numberofstudents": 1
         }
     },
     {
-        "name": "RIGI - IT",
-        "23-24 Sem 2": {
-            "mincgpa": 7.75,
-            "maxcgpa": 7.98,
+        "name": "AgNext Technologies - Mohali",
+        "23-24 Sem 1": {
+            "mincgpa": 6.18,
+            "maxcgpa": 6.18,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "AlmaConnect - Nontech - Gurugram",
+        "23-24 Sem 1": {
+            "mincgpa": 6.7,
+            "maxcgpa": 7.05,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Altair - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 6.2,
+            "maxcgpa": 7.15,
             "numberofstudents": 4
         }
     },
     {
-        "name": "Qure.ai Technologies Pvt. Ltd. - Product Management - Mumbai",
+        "name": "Altair - Hyderabad",
         "23-24 Sem 1": {
-            "mincgpa": 7.9,
-            "maxcgpa": 8.01,
-            "numberofstudents": 2
+            "mincgpa": 6.9,
+            "maxcgpa": 6.9,
+            "numberofstudents": 1
         }
     },
     {
-        "name": "Qure.ai Technologies Pvt. Ltd. - Product Management",
+        "name": "AltiusHub",
         "23-24 Sem 2": {
-            "mincgpa": 7.6,
-            "maxcgpa": 9.26,
-            "numberofstudents": 2
+            "mincgpa": 7.28,
+            "maxcgpa": 7.28,
+            "numberofstudents": 1
         }
     },
     {
-        "name": "Qure.ai Technologies Pvt. Ltd. - Client Success \\u0026 Operations - Mumbai",
+        "name": "ALW Lighting India Pvt. Ltd. - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 8.1,
+            "maxcgpa": 8.1,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Amazon Development Center - Bengaluru",
+        "23-24 Sem 2": {
+            "mincgpa": 8.77,
+            "maxcgpa": 9.09,
+            "numberofstudents": 3
+        },
+        "23-24 Sem 1": {
+            "mincgpa": 7.31,
+            "maxcgpa": 8.47,
+            "numberofstudents": 45
+        }
+    },
+    {
+        "name": "Amazon Development Center - Chennai",
+        "23-24 Sem 1": {
+            "mincgpa": 7.44,
+            "maxcgpa": 7.64,
+            "numberofstudents": 8
+        }
+    },
+    {
+        "name": "Amazon Development Center - Hyderabad",
         "23-24 Sem 1": {
             "mincgpa": 7.0,
-            "maxcgpa": 7.08,
+            "maxcgpa": 8.58,
+            "numberofstudents": 49
+        }
+    },
+    {
+        "name": "Amazon Development Center - New delhi",
+        "23-24 Sem 1": {
+            "mincgpa": 7.46,
+            "maxcgpa": 7.9,
             "numberofstudents": 2
         }
     },
     {
-        "name": "Qure.ai - Mumbai",
-        "22-23 Sem 2": {
-            "mincgpa": 8.49,
-            "maxcgpa": 8.49,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Quizizz Inc. - Bengaluru",
+        "name": "AMD India Pvt Ltd",
         "23-24 Sem 1": {
-            "mincgpa": 6.96,
-            "maxcgpa": 7.24,
-            "numberofstudents": 4
-        }
-    },
-    {
-        "name": "QualityKiosk Technologies India Pvt Ltd",
-        "23-24 Sem 2": {
-            "mincgpa": 6.74,
-            "maxcgpa": 8.3,
-            "numberofstudents": 5
-        }
-    },
-    {
-        "name": "Quality Coucil of India (QCI) (IT - Non CS) - Delhi",
-        "23-24 Sem 1": {
-            "mincgpa": 6.69,
-            "maxcgpa": 6.69,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Qualcomm India Pvt Ltd. - Hyderabad",
-        "22-23 Sem 2": {
-            "mincgpa": 8.8,
-            "maxcgpa": 8.9,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Qualcomm India Pvt Ltd - Bengaluru",
-        "23-24 Sem 2": {
-            "mincgpa": 7.68,
-            "maxcgpa": 9.83,
+            "mincgpa": 7.03,
+            "maxcgpa": 7.4,
             "numberofstudents": 9
         },
+        "23-24 Sem 2": {
+            "mincgpa": 7.223,
+            "maxcgpa": 7.84,
+            "numberofstudents": 6
+        }
+    },
+    {
+        "name": "AMD India Pvt Ltd - Bengaluru",
         "22-23 Sem 2": {
-            "mincgpa": 9.6,
-            "maxcgpa": 9.6,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "QDIT Labs Private Limited",
-        "23-24 Sem 2": {
-            "mincgpa": 7.41,
-            "maxcgpa": 7.41,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "PwC DIAC US Advisory",
-        "23-24 Sem 2": {
-            "mincgpa": 8.32,
-            "maxcgpa": 8.41,
+            "mincgpa": 6.18,
+            "maxcgpa": 8.5,
             "numberofstudents": 3
         }
     },
     {
-        "name": "ProteanTecs - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 6.93,
-            "maxcgpa": 6.98,
-            "numberofstudents": 2
+        "name": "American Express - AI Lab - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 9.5,
+            "maxcgpa": 9.5,
+            "numberofstudents": 1
         }
     },
     {
-        "name": "Project44 Software Services Pvt. Ltd. - Bengaluru",
+        "name": "American Express - AI Labs - Gurugram",
+        "22-23 Sem 2": {
+            "mincgpa": 8.87,
+            "maxcgpa": 8.87,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "American Express - Credit Fraud Risk (Capabilities) - Gurugram",
+        "22-23 Sem 2": {
+            "mincgpa": 8.97,
+            "maxcgpa": 8.97,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "American Express -Decision Science and Strategy - Gurugram",
         "23-24 Sem 1": {
-            "mincgpa": 8.42,
-            "maxcgpa": 9.49,
+            "mincgpa": 8.51,
+            "maxcgpa": 8.57,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "Analog Devices India Pvt. Ltd. - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 7.17,
+            "maxcgpa": 7.17,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "ANS Commerce - Non tech - Gurugram",
+        "23-24 Sem 1": {
+            "mincgpa": 5.9,
+            "maxcgpa": 6.96,
             "numberofstudents": 5
         }
     },
     {
-        "name": "Probe Information Services Pvt. Ltd.",
+        "name": "ANS Commerce - Tech - Gurugram",
+        "23-24 Sem 1": {
+            "mincgpa": 7.47,
+            "maxcgpa": 7.47,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Apple India Private Limited",
         "23-24 Sem 2": {
-            "mincgpa": 7.33,
-            "maxcgpa": 7.33,
-            "numberofstudents": 2
+            "mincgpa": 8.64,
+            "maxcgpa": 9.77,
+            "numberofstudents": 7
         }
     },
     {
-        "name": "PricewaterhouseCoopers (PWC) - Mumbai",
+        "name": "Apple India Private Limited - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 8.01,
+            "maxcgpa": 8.01,
+            "numberofstudents": 1
+        },
         "22-23 Sem 2": {
-            "mincgpa": 7.366,
-            "maxcgpa": 7.6,
-            "numberofstudents": 2
+            "mincgpa": 8.03,
+            "maxcgpa": 8.03,
+            "numberofstudents": 1
         }
     },
     {
-        "name": "PragmaticPlay India Pvt. Ltd. - Hyderabad",
+        "name": "Apple India Pvt Limited - Hyderabad",
         "22-23 Sem 2": {
-            "mincgpa": 7.11,
-            "maxcgpa": 7.97,
-            "numberofstudents": 5
+            "mincgpa": 8.48,
+            "maxcgpa": 9.27,
+            "numberofstudents": 3
         }
     },
     {
-        "name": "PragmaticPlay India Pvt. Ltd.",
+        "name": "Aptiv",
         "23-24 Sem 2": {
             "mincgpa": 7.71,
-            "maxcgpa": 7.85,
+            "maxcgpa": 7.8,
             "numberofstudents": 2
         }
     },
     {
-        "name": "Porter - Tech",
+        "name": "Aptos India Pvt. Ltd",
         "23-24 Sem 2": {
-            "mincgpa": 8.23,
-            "maxcgpa": 8.57,
+            "mincgpa": 7.44,
+            "maxcgpa": 7.56,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "Arista Networks India Private Limited",
+        "23-24 Sem 2": {
+            "mincgpa": 8.41,
+            "maxcgpa": 9.23,
             "numberofstudents": 4
         }
     },
     {
-        "name": "Porter - Product Management - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 9.12,
-            "maxcgpa": 9.12,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Pocket FM Private Limited",
+        "name": "ARM Embedded Technologies Private Limited - Bengaluru",
         "23-24 Sem 2": {
-            "mincgpa": 7.7,
-            "maxcgpa": 7.73,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "Playment Inc - Software Engineering for AI Tools - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 7.1,
-            "maxcgpa": 8.3,
+            "mincgpa": 7.25,
+            "maxcgpa": 8.4,
             "numberofstudents": 3
         },
+        "23-24 Sem 1": {
+            "mincgpa": 7.23,
+            "maxcgpa": 7.23,
+            "numberofstudents": 1
+        },
         "22-23 Sem 2": {
-            "mincgpa": 8.94,
-            "maxcgpa": 8.94,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Playment Inc - Machine Learning Engineers - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 8.27,
-            "maxcgpa": 8.27,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Playment Inc - Customer Success -Autonomous Vehicles - Bengaluru",
-        "23-24 Sem 1": {
             "mincgpa": 7.79,
             "maxcgpa": 7.79,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Piramal Group - Tech",
-        "23-24 Sem 2": {
-            "mincgpa": 8.15,
-            "maxcgpa": 8.405,
-            "numberofstudents": 7
-        }
-    },
-    {
-        "name": "Piramal Group - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 7.34,
-            "maxcgpa": 7.7,
-            "numberofstudents": 16
-        },
-        "22-23 Sem 2": {
-            "mincgpa": 8.3,
-            "maxcgpa": 8.5,
-            "numberofstudents": 7
-        }
-    },
-    {
-        "name": "Piramal Group - CPD & Critical Care",
-        "23-24 Sem 2": {
-            "mincgpa": 8.05,
-            "maxcgpa": 8.15,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "Piramal Group - BIU",
-        "23-24 Sem 2": {
-            "mincgpa": 8.006,
-            "maxcgpa": 8.11,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "PhonePe Private Limited",
-        "23-24 Sem 2": {
-            "mincgpa": 8.7,
-            "maxcgpa": 8.7,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "PYOR Edge Inc - Bengaluru",
-        "23-24 Sem 2": {
-            "mincgpa": 7.96,
-            "maxcgpa": 8.12,
-            "numberofstudents": 2
-        },
-        "23-24 Sem 1": {
-            "mincgpa": 7.61,
-            "maxcgpa": 7.88,
-            "numberofstudents": 3
-        },
-        "22-23 Sem 2": {
-            "mincgpa": 8.37,
-            "maxcgpa": 8.37,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Ontap Direct Pvt. Ltd. - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 6.77,
-            "maxcgpa": 6.77,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "OnSolve Technologies Pvt. Ltd. - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 7.38,
-            "maxcgpa": 8.15,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "OfBusiness",
-        "23-24 Sem 2": {
-            "mincgpa": 7.69,
-            "maxcgpa": 7.69,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Nvidia Graphics -Software - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 8.63,
-            "maxcgpa": 9.292,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "Nvidia Graphics -Software",
-        "23-24 Sem 2": {
-            "mincgpa": 8.53,
-            "maxcgpa": 9.02,
-            "numberofstudents": 12
-        }
-    },
-    {
-        "name": "Nvidia Graphics - Hardware - Bengaluru",
-        "23-24 Sem 2": {
-            "mincgpa": 8.16,
-            "maxcgpa": 8.65,
-            "numberofstudents": 7
-        },
-        "23-24 Sem 1": {
-            "mincgpa": 7.79,
-            "maxcgpa": 9.04,
-            "numberofstudents": 14
-        },
-        "22-23 Sem 2": {
-            "mincgpa": 8.191,
-            "maxcgpa": 9.26,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "Nutanix Technologies India Pvt. Ltd. - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 8.62,
-            "maxcgpa": 9.14,
-            "numberofstudents": 18
-        },
-        "23-24 Sem 2": {
-            "mincgpa": 8.71,
-            "maxcgpa": 9.86,
-            "numberofstudents": 8
-        },
-        "22-23 Sem 2": {
-            "mincgpa": 8.19,
-            "maxcgpa": 9.9,
-            "numberofstudents": 11
-        }
-    },
-    {
-        "name": "Nomura Information Technology Division - Mumbai",
-        "22-23 Sem 2": {
-            "mincgpa": 7.86,
-            "maxcgpa": 8.08,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Nomura Global Risk - Mumbai",
-        "22-23 Sem 2": {
-            "mincgpa": 8.1,
-            "maxcgpa": 8.1,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Nomura Global Markets - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 7.6,
-            "maxcgpa": 8.65,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "Nomura - Wholesale Strategy - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 8.06,
-            "maxcgpa": 8.74,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Nomura - Risk Management - RMG MRA - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 7.46,
-            "maxcgpa": 7.46,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Nomura - Risk Management - Market Risk Reporting - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 8.17,
-            "maxcgpa": 8.17,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Nomura - Information Technology GMIT - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 7.7,
-            "maxcgpa": 8.13,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Nomura - Finance FCR - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 8.51,
-            "maxcgpa": 8.51,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Nomura - Digital Transformation - Fintech - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 8.0,
-            "maxcgpa": 8.35,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Nirmaan Organization - Tech - Hyderabad",
-        "23-24 Sem 1": {
-            "mincgpa": 7.51,
-            "maxcgpa": 7.51,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Nirmaan Organization - Non Tech - Hyderabad",
-        "23-24 Sem 1": {
-            "mincgpa": 7.24,
-            "maxcgpa": 7.24,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Neufo Technologies Pvt. Ltd. - Tech - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 7.46,
-            "maxcgpa": 7.46,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Netradyne",
-        "23-24 Sem 2": {
-            "mincgpa": 7.21,
-            "maxcgpa": 7.45,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "National Instruments Systems (India) Pvt. Ltd. - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 7.0,
-            "maxcgpa": 7.0,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "National Chemical Laboratory - Pune",
-        "23-24 Sem 1": {
-            "mincgpa": 6.8,
-            "maxcgpa": 6.8,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "National Chemical Laboratory",
-        "23-24 Sem 2": {
-            "mincgpa": 7.15,
-            "maxcgpa": 7.15,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "National Aerospace Laboratories",
-        "23-24 Sem 2": {
-            "mincgpa": 7.97,
-            "maxcgpa": 7.97,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "MyHQ - Gurugram",
-        "23-24 Sem 1": {
-            "mincgpa": 7.59,
-            "maxcgpa": 7.59,
-            "numberofstudents": 1
-        },
-        "22-23 Sem 2": {
-            "mincgpa": 8.32,
-            "maxcgpa": 8.32,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Moveworks AI",
-        "23-24 Sem 1": {
-            "mincgpa": 8.06,
-            "maxcgpa": 8.06,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Morning Star - Index New Product Development - Mumbai",
-        "23-24 Sem 2": {
-            "mincgpa": 7.87,
-            "maxcgpa": 8.14,
-            "numberofstudents": 2
-        },
-        "23-24 Sem 1": {
-            "mincgpa": 7.58,
-            "maxcgpa": 8.06,
-            "numberofstudents": 4
-        }
-    },
-    {
-        "name": "Morning Star - Index Management and Analytics - Mumbai",
-        "22-23 Sem 2": {
-            "mincgpa": 7.18,
-            "maxcgpa": 7.71,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "Morning Star - Client Services and Implementation - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 7.73,
-            "maxcgpa": 7.73,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Morgan Stanley- Legal Compliance - Mumbai",
-        "22-23 Sem 2": {
-            "mincgpa": 9.52,
-            "maxcgpa": 9.52,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Morgan Stanley - Strats and Quant - Mumbai",
-        "22-23 Sem 2": {
-            "mincgpa": 9.05,
-            "maxcgpa": 9.16,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Morgan Stanley - Risk Analytics - Mumbai",
-        "22-23 Sem 2": {
-            "mincgpa": 7.52,
-            "maxcgpa": 8.55,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "Morgan Stanley - FID Research - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 9.3,
-            "maxcgpa": 9.3,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Monster India - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 8.04,
-            "maxcgpa": 8.13,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Micron Technology - Hyderabad",
-        "22-23 Sem 2": {
-            "mincgpa": 7.43,
-            "maxcgpa": 9.12,
-            "numberofstudents": 4
-        }
-    },
-    {
-        "name": "Micron Technology",
-        "23-24 Sem 2": {
-            "mincgpa": 8.01,
-            "maxcgpa": 8.42,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Mewt - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 8.28,
-            "maxcgpa": 8.44,
-            "numberofstudents": 7
-        }
-    },
-    {
-        "name": "Metaspatial Labs Pvt Ltd (Convrse.ai) - Tech - Gurugram",
-        "22-23 Sem 2": {
-            "mincgpa": 7.87,
-            "maxcgpa": 7.87,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Meritus Intelytics Private Limited (Merilytics) - Hyderabad",
-        "22-23 Sem 2": {
-            "mincgpa": 6.65,
-            "maxcgpa": 6.65,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Merilytics - Tech - Hyderabad",
-        "23-24 Sem 1": {
-            "mincgpa": 7.52,
-            "maxcgpa": 7.52,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Mercedes Benz - Bengaluru",
-        "23-24 Sem 2": {
-            "mincgpa": 7.9,
-            "maxcgpa": 7.9,
-            "numberofstudents": 1
-        },
-        "23-24 Sem 1": {
-            "mincgpa": 6.7,
-            "maxcgpa": 8.67,
-            "numberofstudents": 10
-        },
-        "22-23 Sem 2": {
-            "mincgpa": 7.13,
-            "maxcgpa": 8.78,
-            "numberofstudents": 7
-        }
-    },
-    {
-        "name": "Meesho",
-        "23-24 Sem 2": {
-            "mincgpa": 7.53,
-            "maxcgpa": 8.04,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "MediaTek Bangalore Pvt. Ltd.",
-        "23-24 Sem 2": {
-            "mincgpa": 9.87,
-            "maxcgpa": 9.87,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "MediBuddy - Software Development/Data Science - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 8.2,
-            "maxcgpa": 8.2,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Masterclass Space LLP",
-        "23-24 Sem 2": {
-            "mincgpa": 6.88,
-            "maxcgpa": 6.88,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Mantys - Tech",
-        "23-24 Sem 2": {
-            "mincgpa": 8.64,
-            "maxcgpa": 8.64,
-            "numberofstudents": 1
-        },
-        "23-24 Sem 1": {
-            "mincgpa": 8.36,
-            "maxcgpa": 8.36,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Mantys - Nontech - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 7.88,
-            "maxcgpa": 7.88,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Mahindra Logistics limited - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 6.79,
-            "maxcgpa": 6.79,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "MagicStudio.com (aarzoo, Inc.) - Nontech - Usa",
-        "23-24 Sem 1": {
-            "mincgpa": 7.5,
-            "maxcgpa": 7.5,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "MSCI (NPD \u00e2\u20ac\u201c Index Research) - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 6.53,
-            "maxcgpa": 7.58,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "MLL Express Services Pvt. Ltd. (Rivigo) Tech",
-        "23-24 Sem 2": {
-            "mincgpa": 7.66,
-            "maxcgpa": 7.66,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "MIPS Embedded Technologies Pvt. Ltd - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 7.7,
-            "maxcgpa": 7.7,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "MIPS Embedded Technologies Pvt. Ltd",
-        "23-24 Sem 2": {
-            "mincgpa": 8.13,
-            "maxcgpa": 8.55,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "MBB Labs Private Limited (Maybank) - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 7.44,
-            "maxcgpa": 7.88,
-            "numberofstudents": 3
-        },
-        "22-23 Sem 2": {
-            "mincgpa": 7.63,
-            "maxcgpa": 7.95,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "M2P Fintech - Chennai",
-        "23-24 Sem 1": {
-            "mincgpa": 6.54,
-            "maxcgpa": 6.59,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "M2P Fintech - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 7.68,
-            "maxcgpa": 7.68,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Lyearn Software Development India Pvt. Ltd. - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 8.01,
-            "maxcgpa": 8.23,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "Lohum Cleantech Pvt. Ltd - Tech - Greater Noida",
-        "23-24 Sem 1": {
-            "mincgpa": 8.1,
-            "maxcgpa": 8.1,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Lohum Cleantech Pvt. Ltd - Nontech - Greater Noida",
-        "23-24 Sem 1": {
-            "mincgpa": 7.56,
-            "maxcgpa": 7.56,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Lohum Cleantech Pvt. Ltd - Commodities price modeling",
-        "23-24 Sem 2": {
-            "mincgpa": 7.47,
-            "maxcgpa": 7.47,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Lohum Cleantech Pvt. Ltd - Chemical Metallurgy",
-        "23-24 Sem 2": {
-            "mincgpa": 8.38,
-            "maxcgpa": 8.38,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "LightSpeed Photonics Pte Ltd - Secunderabad",
-        "23-24 Sem 1": {
-            "mincgpa": 6.5,
-            "maxcgpa": 6.5,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Level-Field Tech Private Limited",
-        "23-24 Sem 2": {
-            "mincgpa": 7.52,
-            "maxcgpa": 7.52,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Lenskart Solutions Private Limited",
-        "23-24 Sem 2": {
-            "mincgpa": 7.47,
-            "maxcgpa": 7.47,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "LV Prasad Eye Institute",
-        "23-24 Sem 2": {
-            "mincgpa": 6.65,
-            "maxcgpa": 6.65,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "LTIMindtree",
-        "23-24 Sem 2": {
-            "mincgpa": 7.3,
-            "maxcgpa": 7.3,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Klinik Everywhere Technologies Pvt. Ltd. - Chennai",
-        "23-24 Sem 1": {
-            "mincgpa": 6.66,
-            "maxcgpa": 6.66,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "KiranaKart Technologies (Zepto) - Mumbai",
-        "22-23 Sem 2": {
-            "mincgpa": 8.22,
-            "maxcgpa": 8.22,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Kinar AI Pvt. Ltd. - Hyderabad",
-        "22-23 Sem 2": {
-            "mincgpa": 6.99,
-            "maxcgpa": 7.48,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Karza Technologies Private Limited - Mumbai",
-        "22-23 Sem 2": {
-            "mincgpa": 8.37,
-            "maxcgpa": 8.4,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "KPMG - Gurugram",
-        "23-24 Sem 1": {
-            "mincgpa": 8.0,
-            "maxcgpa": 8.26,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "KPMG - Chennai",
-        "23-24 Sem 1": {
-            "mincgpa": 7.97,
-            "maxcgpa": 7.97,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "KFin Technologies Private Limited - Hyderabad",
-        "23-24 Sem 1": {
-            "mincgpa": 6.81,
-            "maxcgpa": 7.83,
-            "numberofstudents": 5
-        }
-    },
-    {
-        "name": "John F Welch Technology Center (GE) - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 8.2,
-            "maxcgpa": 8.2,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Jivox",
-        "23-24 Sem 2": {
-            "mincgpa": 8.121,
-            "maxcgpa": 8.33,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "Jarvis Technology Strategy Consulting Pvt. Ltd. - IT - New delhi",
-        "22-23 Sem 2": {
-            "mincgpa": 7.12,
-            "maxcgpa": 7.12,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "JPMS GR&C CTC Risk - Interest Rate Risk Management",
-        "23-24 Sem 2": {
-            "mincgpa": 8.04,
-            "maxcgpa": 8.04,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "JPMS CIB R\\u0026A Markets-Trading - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 7.99,
-            "maxcgpa": 9.13,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "JPMS CIB R\\u0026A Banking(CRG)-Banking - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 7.574,
-            "maxcgpa": 8.55,
-            "numberofstudents": 13
-        }
-    },
-    {
-        "name": "JPMS CIB R\\u0026A Banking (CRG) - Fintech - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 7.75,
-            "maxcgpa": 9.03,
-            "numberofstudents": 4
-        }
-    },
-    {
-        "name": "JPMS CIB RA Banking(CRG)-Banking - Mumbai",
-        "22-23 Sem 2": {
-            "mincgpa": 7.2,
-            "maxcgpa": 9.09,
-            "numberofstudents": 6
-        }
-    },
-    {
-        "name": "JPMS CIB RA Banking (CRG) - Fintech - Mumbai",
-        "22-23 Sem 2": {
-            "mincgpa": 6.92,
-            "maxcgpa": 6.92,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "JPMS CIB R&A Data Science",
-        "23-24 Sem 2": {
-            "mincgpa": 8.49,
-            "maxcgpa": 8.49,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "JPMS CIB R&A Banking(CRG)-Banking",
-        "23-24 Sem 2": {
-            "mincgpa": 7.87,
-            "maxcgpa": 9.19,
-            "numberofstudents": 5
-        }
-    },
-    {
-        "name": "JPMC GR\\u0026C \u00e2\u20ac\u201c WM Risk - AWM Risk innovation - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 7.13,
-            "maxcgpa": 7.13,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "JPMC GR\\u0026C \u00e2\u20ac\u201c WCS Data Science \u00e2\u20ac\u201c Counter Party Risk - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 6.81,
-            "maxcgpa": 6.81,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "JPMC GR\\u0026C \u00e2\u20ac\u201c WCS Data Science - Wholesale Portfolio Analytics \u00e2\u20ac\u201cStrategic Analytics - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 8.69,
-            "maxcgpa": 8.69,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "JPMC GR\\u0026C \u00e2\u20ac\u201c WCS Data Science - Wholesale Portfolio Analytics \u00e2\u20ac\u201c Climate Risk - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 8.52,
-            "maxcgpa": 8.52,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "JPMC GR\\u0026C \u00e2\u20ac\u201c WCS Data Science - Product \u00e2\u20ac\u201c Data management - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 7.34,
-            "maxcgpa": 8.59,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "JPMC GR\\u0026C \u00e2\u20ac\u201c WCS Data Science - Product \u00e2\u20ac\u201c Client Risk management - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 7.53,
-            "maxcgpa": 8.59,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "JPMC GR\\u0026C \u00e2\u20ac\u201c MRGR CIB Ex Trading (Quant Modelling) - Mumbai/Bangalore",
-        "23-24 Sem 1": {
-            "mincgpa": 8.6,
-            "maxcgpa": 8.6,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "JPMC GR\\u0026C \u00e2\u20ac\u201c MRGR AWM CTC - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 7.47,
-            "maxcgpa": 9.05,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "JPMC GR\\u0026C \u00e2\u20ac\u201c Corporate Risk - Solutions - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 7.14,
-            "maxcgpa": 7.14,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "JPMC GR\\u0026C \u00e2\u20ac\u201c Corporate Risk - Controllers - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 7.51,
-            "maxcgpa": 7.51,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "JPMC GR\\u0026C \u00e2\u20ac\u201c AM Risk - Market Risk Coverage - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 8.05,
-            "maxcgpa": 8.05,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "JPMC GR\\u0026C Market Risk - Mumbai / Bangalore",
-        "23-24 Sem 1": {
-            "mincgpa": 6.76,
-            "maxcgpa": 8.47,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "JPMC GR\\u0026C CCB Risk - Strategy Analytics - Analyst - Mumbai/Bangalore",
-        "23-24 Sem 1": {
-            "mincgpa": 7.67,
-            "maxcgpa": 8.72,
-            "numberofstudents": 4
-        }
-    },
-    {
-        "name": "JPMC GRC Wholesale Credit Solutions - Product Ownership - Ispresso, Credit Navigator - Mumbai",
+        "name": "Asanify Technologies Pvt. Ltd._Full Stack Software Engineering - Kolkata",
         "22-23 Sem 2": {
             "mincgpa": 8.01,
             "maxcgpa": 8.01,
@@ -2162,349 +313,190 @@
         }
     },
     {
-        "name": "JPMC GRC Wholesale Credit Solutions - Counterparty Credit risk - Mumbai",
+        "name": "Atlan - Delhi",
         "22-23 Sem 2": {
-            "mincgpa": 8.03,
-            "maxcgpa": 8.97,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "JPMC GRC Market Risk - Mumbai / Bangalore",
-        "22-23 Sem 2": {
-            "mincgpa": 8.02,
-            "maxcgpa": 8.02,
+            "mincgpa": 7.97,
+            "maxcgpa": 7.97,
             "numberofstudents": 1
         }
     },
     {
-        "name": "JPMC GRC CTC Risk - Mumbai",
+        "name": "Atomicwork Incorporation",
+        "23-24 Sem 2": {
+            "mincgpa": 7.63,
+            "maxcgpa": 7.85,
+            "numberofstudents": 4
+        }
+    },
+    {
+        "name": "Aurigo Software Technologies",
+        "23-24 Sem 2": {
+            "mincgpa": 7.647,
+            "maxcgpa": 7.99,
+            "numberofstudents": 7
+        }
+    },
+    {
+        "name": "Aurigo Software Technologies - Bengaluru",
         "22-23 Sem 2": {
-            "mincgpa": 8.68,
-            "maxcgpa": 8.68,
+            "mincgpa": 8.024,
+            "maxcgpa": 8.024,
             "numberofstudents": 1
         }
     },
     {
-        "name": "JPMC GRC CTC Risk - Innovation / Automation - Mumbai",
-        "22-23 Sem 2": {
-            "mincgpa": 7.76,
-            "maxcgpa": 8.13,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "JPMC GRC CCB Risk - Strategy Analytics - Analyst - Mumbai/Bangalore",
-        "22-23 Sem 2": {
-            "mincgpa": 7.52,
-            "maxcgpa": 7.52,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "JPMC CIB R\\u0026A Markets - Sales - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 7.81,
-            "maxcgpa": 7.81,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "JPMC CIB R\\u0026A Global Research - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 7.311,
-            "maxcgpa": 9.62,
-            "numberofstudents": 6
-        }
-    },
-    {
-        "name": "JPMC CIB RA Markets - Sales - Mumbai",
-        "22-23 Sem 2": {
+        "name": "AuxoAI",
+        "23-24 Sem 2": {
             "mincgpa": 7.61,
-            "maxcgpa": 8.43,
+            "maxcgpa": 7.83,
             "numberofstudents": 2
         }
     },
     {
-        "name": "JPMC CIB R&A Markets - Sales",
-        "23-24 Sem 2": {
-            "mincgpa": 8.14,
-            "maxcgpa": 9.59,
+        "name": "Avaamo - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 6.98,
+            "maxcgpa": 6.98,
+            "numberofstudents": 1
+        },
+        "22-23 Sem 2": {
+            "mincgpa": 8.57,
+            "maxcgpa": 8.59,
             "numberofstudents": 2
         }
     },
     {
-        "name": "JPMC CIB R&A Markets - MANSART, EDG Structuring and PST",
+        "name": "Avalara Technologies",
         "23-24 Sem 2": {
-            "mincgpa": 8.5,
-            "maxcgpa": 9.24,
-            "numberofstudents": 4
-        }
-    },
-    {
-        "name": "JPMC - GRC WCS Wholesale Transformation Strategy - Mumbai",
-        "22-23 Sem 2": {
-            "mincgpa": 7.9,
-            "maxcgpa": 7.9,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "JPMC - GR&C - AWM Investment Risk Analytics",
-        "23-24 Sem 2": {
-            "mincgpa": 8.3,
-            "maxcgpa": 8.94,
+            "mincgpa": 7.59,
+            "maxcgpa": 7.67,
             "numberofstudents": 2
         }
     },
     {
-        "name": "JPMC - CIB RA Wholesale Payments - Mumbai",
-        "22-23 Sem 2": {
-            "mincgpa": 7.81,
-            "maxcgpa": 7.81,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Intuit India",
+        "name": "Avlinq Solutions & Services Pvt Ltd.,",
         "23-24 Sem 2": {
-            "mincgpa": 9.48,
-            "maxcgpa": 9.48,
+            "mincgpa": 7.19,
+            "maxcgpa": 7.19,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Intellect Design Arena Ltd",
+        "name": "Awen",
         "23-24 Sem 2": {
-            "mincgpa": 7.15,
-            "maxcgpa": 7.24,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Infinera - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 7.45,
-            "maxcgpa": 7.45,
+            "mincgpa": 8.11,
+            "maxcgpa": 8.11,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Infineon",
-        "23-24 Sem 2": {
-            "mincgpa": 8.7,
-            "maxcgpa": 8.7,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Indus Insights and Analytical Services Pvt Ltd - Gurugram",
+        "name": "Azalp Technologies Pvt. Ltd. - IT - Bengaluru",
         "22-23 Sem 2": {
-            "mincgpa": 7.75,
-            "maxcgpa": 8.58,
+            "mincgpa": 8.04,
+            "maxcgpa": 8.1,
             "numberofstudents": 3
         }
     },
     {
-        "name": "Indus Insights and Analytical Services Pvt Ltd",
-        "23-24 Sem 2": {
-            "mincgpa": 7.53,
-            "maxcgpa": 8.52,
-            "numberofstudents": 4
-        }
-    },
-    {
-        "name": "Indira Gandhi Centre for Atomic Research",
-        "23-24 Sem 2": {
-            "mincgpa": 7.04,
-            "maxcgpa": 7.04,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Indian Institute of Petroleum - Dehradun",
-        "23-24 Sem 2": {
-            "mincgpa": 6.28,
-            "maxcgpa": 6.28,
-            "numberofstudents": 1
-        },
+        "name": "Badho Tech Pvt. Ltd - Tech - Gurugram",
         "23-24 Sem 1": {
-            "mincgpa": 6.61,
-            "maxcgpa": 6.61,
+            "mincgpa": 7.28,
+            "maxcgpa": 7.28,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Bento Labs Pvt. Ltd. - Hyderabad",
+        "23-24 Sem 1": {
+            "mincgpa": 6.33,
+            "maxcgpa": 6.33,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Bharat Forge -Manufacturing - Pune",
+        "23-24 Sem 1": {
+            "mincgpa": 6.34,
+            "maxcgpa": 6.34,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Bharosepe Technology Services Privated Limited (Known as Jodo) - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 7.61,
+            "maxcgpa": 7.75,
             "numberofstudents": 2
         },
         "22-23 Sem 2": {
-            "mincgpa": 7.84,
-            "maxcgpa": 7.84,
+            "mincgpa": 8.12,
+            "maxcgpa": 8.12,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "BlokTrek",
+        "23-24 Sem 2": {
+            "mincgpa": 7.93,
+            "maxcgpa": 7.93,
             "numberofstudents": 1
         }
     },
     {
-        "name": "InMobi- Business Analyst - Bengaluru",
+        "name": "BlokTrek - Bengaluru",
         "23-24 Sem 1": {
-            "mincgpa": 7.54,
-            "maxcgpa": 8.66,
-            "numberofstudents": 13
+            "mincgpa": 6.66,
+            "maxcgpa": 6.67,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Bloomreach Technologies Pvt. Ltd - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 8.34,
+            "maxcgpa": 8.738,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Blue Jeans Network India Pvt. Ltd. - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 6.56,
+            "maxcgpa": 6.65,
+            "numberofstudents": 3
         },
         "22-23 Sem 2": {
-            "mincgpa": 7.53,
-            "maxcgpa": 7.87,
+            "mincgpa": 8.23,
+            "maxcgpa": 8.23,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Bolt.Earth - Android/IOS",
+        "23-24 Sem 2": {
+            "mincgpa": 7.43,
+            "maxcgpa": 7.43,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Cadence Design Systems",
+        "23-24 Sem 2": {
+            "mincgpa": 8.36,
+            "maxcgpa": 8.36,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Cantilever Labs",
+        "23-24 Sem 2": {
+            "mincgpa": 7.41,
+            "maxcgpa": 7.43,
             "numberofstudents": 2
         }
     },
     {
-        "name": "Immensitas Pvt. Ltd. (Lemnisk)",
-        "23-24 Sem 1": {
-            "mincgpa": 6.4,
-            "maxcgpa": 6.4,
-            "numberofstudents": 1
-        },
-        "23-24 Sem 2": {
-            "mincgpa": 8.06,
-            "maxcgpa": 8.09,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "Imagine Marketing Ltd (boAt)",
-        "23-24 Sem 2": {
-            "mincgpa": 7.24,
-            "maxcgpa": 7.24,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "IUDX Program Unit, Indian Institute of science - Data Kaveri - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 6.95,
-            "maxcgpa": 6.95,
-            "numberofstudents": 2
-        },
-        "22-23 Sem 2": {
-            "mincgpa": 7.33,
-            "maxcgpa": 7.33,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "IUDX Program Unit, Indian Institute of science - Data Kaveri",
-        "23-24 Sem 2": {
-            "mincgpa": 7.44,
-            "maxcgpa": 7.77,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "ISRO Inertial Systems Unit - Thiruvananthapuram",
-        "23-24 Sem 1": {
-            "mincgpa": 0,
-            "maxcgpa": 0,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "IIFL Home Finance Ltd. - Insta_Retail - Technical - Gurugram",
-        "23-24 Sem 1": {
-            "mincgpa": 6.69,
-            "maxcgpa": 6.69,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "IIFL Home Finance Ltd. - Digital Property Services - Gurugram",
-        "23-24 Sem 1": {
-            "mincgpa": 6.52,
-            "maxcgpa": 6.52,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "IFP Petro Products (P) Ltd. - Nontech - Ghaziabad",
-        "23-24 Sem 1": {
-            "mincgpa": 7.0,
-            "maxcgpa": 7.0,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "IFB Industries - Goa",
-        "23-24 Sem 1": {
-            "mincgpa": 7.4,
-            "maxcgpa": 7.4,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "IFB Industries",
-        "23-24 Sem 2": {
-            "mincgpa": 7.94,
-            "maxcgpa": 7.94,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "IDFC First Bank - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 8.31,
-            "maxcgpa": 8.4,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "ICIMS",
-        "23-24 Sem 2": {
-            "mincgpa": 8.25,
-            "maxcgpa": 8.34,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "HyperVerge Technologies Pvt. Ltd.",
-        "23-24 Sem 2": {
-            "mincgpa": 7.42,
-            "maxcgpa": 7.46,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "Hindustan Unilever Research Centre - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 6.5,
-            "maxcgpa": 7.74,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Highway Delite - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 7.26,
-            "maxcgpa": 7.26,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Hevo Technologies India Pvt. Ltd. - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 8.39,
-            "maxcgpa": 8.56,
-            "numberofstudents": 2
-        },
-        "22-23 Sem 2": {
-            "mincgpa": 8.67,
-            "maxcgpa": 8.92,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "Hevo Technologies India Pvt. Ltd.",
-        "23-24 Sem 2": {
-            "mincgpa": 8.8,
-            "maxcgpa": 8.8,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Heaps Health Solutions Pvt. Ltd. - Non Tech",
+        "name": "CASHe",
         "23-24 Sem 2": {
             "mincgpa": 7.27,
             "maxcgpa": 7.27,
@@ -2512,497 +504,168 @@
         }
     },
     {
-        "name": "Harness",
-        "23-24 Sem 2": {
-            "mincgpa": 8.55,
-            "maxcgpa": 8.62,
-            "numberofstudents": 3
-        },
-        "22-23 Sem 2": {
-            "mincgpa": 8.61,
-            "maxcgpa": 8.67,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Hamilton Research Technology Pvt. Ltd - Kolkata",
-        "22-23 Sem 2": {
-            "mincgpa": 7.17,
-            "maxcgpa": 7.17,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "HERE Technologies India Pvt. Ltd - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 7.23,
-            "maxcgpa": 8.27,
-            "numberofstudents": 6
-        }
-    },
-    {
-        "name": "HAPPAY (VA Tech Ventures Pvt Ltd.) - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 8.57,
-            "maxcgpa": 8.57,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Growth Jockey Pvt. Ltd - Gurugram",
-        "23-24 Sem 1": {
-            "mincgpa": 6.57,
-            "maxcgpa": 6.57,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Grid Dynamics - Hyderabad",
-        "22-23 Sem 2": {
-            "mincgpa": 7.15,
-            "maxcgpa": 7.66,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "GreyOrange Ltd",
-        "23-24 Sem 2": {
-            "mincgpa": 7.23,
-            "maxcgpa": 7.23,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Greenland Investment Management",
-        "23-24 Sem 2": {
-            "mincgpa": 8.09,
-            "maxcgpa": 8.68,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Greaves Electric Mobility",
-        "23-24 Sem 2": {
-            "mincgpa": 7.39,
-            "maxcgpa": 7.39,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Grasim Industries Ltd. - Nagda",
-        "23-24 Sem 1": {
-            "mincgpa": 7.018,
-            "maxcgpa": 7.018,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Google India - Hardware",
-        "23-24 Sem 2": {
-            "mincgpa": 6.91,
-            "maxcgpa": 6.91,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Goodera Growth Strategy,Customer Experience(Business Analyst) - Bengaluru",
+        "name": "CASHe - Hyderabad",
         "23-24 Sem 1": {
             "mincgpa": 7.19,
-            "maxcgpa": 7.48,
-            "numberofstudents": 5
-        },
-        "22-23 Sem 2": {
-            "mincgpa": 7.2,
-            "maxcgpa": 7.2,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Goodera - Engineering - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 8.81,
-            "maxcgpa": 8.89,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Goodera - Engineering",
-        "23-24 Sem 2": {
-            "mincgpa": 8.84,
-            "maxcgpa": 8.84,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Goldman Sachs - IT (Project 2)",
-        "23-24 Sem 2": {
-            "mincgpa": 8.42,
-            "maxcgpa": 9.01,
+            "maxcgpa": 7.9,
             "numberofstudents": 3
         }
     },
     {
-        "name": "GoSwift - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 7.5,
-            "maxcgpa": 7.5,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "GoKwik - Gurugram",
+        "name": "CASHe - Mumbai",
         "22-23 Sem 2": {
-            "mincgpa": 7.15,
-            "maxcgpa": 7.94,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "Glance (An InMobi Group Company) - Product - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 8.29,
-            "maxcgpa": 8.29,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "GeoIQ (Quantduo Technologies Pvt. Ltd. - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 7.55,
-            "maxcgpa": 7.55,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "GeoIQ (Quantduo Technologies Pvt. Ltd.",
-        "23-24 Sem 2": {
-            "mincgpa": 7.62,
-            "maxcgpa": 7.62,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Genpact - Gurugram",
-        "23-24 Sem 2": {
-            "mincgpa": 7.21,
-            "maxcgpa": 7.6,
-            "numberofstudents": 2
-        },
-        "23-24 Sem 1": {
-            "mincgpa": 7.11,
-            "maxcgpa": 7.11,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Gameskraft - Product Research, Analytics Project Execution - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 8.84,
-            "maxcgpa": 8.84,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Gameskraft - Product Management Analytics - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 7.67,
-            "maxcgpa": 7.67,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Futures First Info Services Pvt Ltd. - Gurugram",
-        "23-24 Sem 1": {
-            "mincgpa": 6.99,
-            "maxcgpa": 7.69,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "Futures First - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 7.48,
-            "maxcgpa": 7.64,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "Frontier Tower Associates Philippines Inc.",
-        "23-24 Sem 2": {
-            "mincgpa": 8.51,
-            "maxcgpa": 8.51,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Fortanix",
-        "23-24 Sem 2": {
-            "mincgpa": 8.01,
-            "maxcgpa": 8.13,
+            "mincgpa": 7.95,
+            "maxcgpa": 8.11,
             "numberofstudents": 2
         }
     },
     {
-        "name": "Flipkart Internet Pvt Ltd - UI",
-        "23-24 Sem 2": {
-            "mincgpa": 8.36,
-            "maxcgpa": 8.57,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Flipkart Internet Pvt Ltd - Site Reliability Engineering - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 8.61,
-            "maxcgpa": 8.63,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Flipkart Internet Pvt Ltd - Site Reliability Engineering",
-        "23-24 Sem 2": {
-            "mincgpa": 8.63,
-            "maxcgpa": 8.63,
+        "name": "Central Electronics Engineering Research Institute - Pilani",
+        "23-24 Sem 1": {
+            "mincgpa": 6.18,
+            "maxcgpa": 6.18,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Flipkart Internet Pvt Ltd - Product Management",
+        "name": "ChangeJar Technologies Pvt. Ltd.",
         "23-24 Sem 2": {
-            "mincgpa": 8.16,
-            "maxcgpa": 8.46,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Flipkart Internet Pvt Ltd - Data Engineering - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 8.63,
-            "maxcgpa": 9.23,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "Flipkart Internet Pvt Ltd - Data Engineering",
-        "23-24 Sem 2": {
-            "mincgpa": 8.66,
-            "maxcgpa": 8.91,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "Flipkart Internet Pvt Ltd - Corporate Strategy - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 8.66,
-            "maxcgpa": 8.66,
-            "numberofstudents": 2
-        },
-        "22-23 Sem 2": {
-            "mincgpa": 8.47,
-            "maxcgpa": 8.47,
+            "mincgpa": 7.53,
+            "maxcgpa": 7.53,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Flipkart Internet Pvt Ltd - Business Development - Bengaluru",
+        "name": "ChargePoint",
         "23-24 Sem 2": {
-            "mincgpa": 8.4,
-            "maxcgpa": 8.56,
-            "numberofstudents": 3
-        },
-        "23-24 Sem 1": {
-            "mincgpa": 7.1,
-            "maxcgpa": 8.98,
-            "numberofstudents": 5
-        },
-        "22-23 Sem 2": {
-            "mincgpa": 7.8,
-            "maxcgpa": 8.12,
-            "numberofstudents": 4
-        }
-    },
-    {
-        "name": "Flipkart Internet Pvt Ltd - Business Analyst - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 7.89,
-            "maxcgpa": 8.156,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Flipkart Internet Pvt Ltd - Business Analyst",
-        "23-24 Sem 2": {
-            "mincgpa": 8.4,
-            "maxcgpa": 8.4,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Flipkart Health Plus Analytics - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 8.28,
-            "maxcgpa": 8.69,
+            "mincgpa": 7.09,
+            "maxcgpa": 7.525,
             "numberofstudents": 3
         }
     },
     {
-        "name": "Flipkart - Planning Analysts - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 8.91,
-            "maxcgpa": 8.91,
+        "name": "CISCO - Business Analyst - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 7.68,
+            "maxcgpa": 7.68,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Flipkart (Software Development)",
+        "name": "Cisco Systems (India) Pvt. Ltd - Software Engineering - Bengaluru",
         "23-24 Sem 2": {
-            "mincgpa": 8.81,
+            "mincgpa": 7.43,
             "maxcgpa": 8.9,
             "numberofstudents": 5
         },
         "22-23 Sem 2": {
-            "mincgpa": 8.0,
-            "maxcgpa": 9.58,
-            "numberofstudents": 7
+            "mincgpa": 6.8,
+            "maxcgpa": 8.89,
+            "numberofstudents": 9
         }
     },
     {
-        "name": "FlexiLoans Technologies Pvt. Ltd. - Mumbai",
+        "name": "CityMall - Nontech - Gurugram",
         "23-24 Sem 1": {
-            "mincgpa": 8.17,
-            "maxcgpa": 8.35,
-            "numberofstudents": 2
-        },
-        "22-23 Sem 2": {
-            "mincgpa": 8.32,
-            "maxcgpa": 8.32,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "First Meridian \u201a\u00c4\u00ec OnSolve LLC - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 7.98,
-            "maxcgpa": 8.04,
+            "mincgpa": 7.0,
+            "maxcgpa": 7.28,
             "numberofstudents": 4
         }
     },
     {
-        "name": "Fintech Blue Solutions Pvt Ltd (Turtlemint) - Goa",
-        "22-23 Sem 2": {
-            "mincgpa": 8.14,
-            "maxcgpa": 8.14,
-            "numberofstudents": 1
+        "name": "CloudFiles - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 7.23,
+            "maxcgpa": 7.29,
+            "numberofstudents": 2
         }
     },
     {
-        "name": "Feedback Advisory Services Private Limited - Delhi",
-        "22-23 Sem 2": {
-            "mincgpa": 7.667,
-            "maxcgpa": 7.667,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Everwell Health Solution",
+        "name": "Cohesity Storage Solutions India Pvt. Ltd.",
         "23-24 Sem 2": {
-            "mincgpa": 7.82,
-            "maxcgpa": 7.82,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Ernst \\u0026 Young L.L.P. - Gurugram",
-        "23-24 Sem 1": {
-            "mincgpa": 6.5,
-            "maxcgpa": 6.5,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Ericsson Global India Pvt. Ltd. - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 7.33,
-            "maxcgpa": 7.46,
+            "mincgpa": 8.95,
+            "maxcgpa": 9.12,
             "numberofstudents": 5
-        }
-    },
-    {
-        "name": "Equal Identity Pvt. Ltd. - Hyderabad",
-        "23-24 Sem 1": {
-            "mincgpa": 7.2,
-            "maxcgpa": 7.24,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Eltropy - Product Development",
-        "23-24 Sem 2": {
-            "mincgpa": 7.81,
-            "maxcgpa": 7.81,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Eltropy - Engineering - Bengaluru",
+        },
         "22-23 Sem 2": {
-            "mincgpa": 8.63,
-            "maxcgpa": 8.7,
-            "numberofstudents": 2
+            "mincgpa": 8.83,
+            "maxcgpa": 9.05,
+            "numberofstudents": 3
         }
     },
     {
-        "name": "Eltropy - Engineering",
-        "23-24 Sem 2": {
-            "mincgpa": 7.77,
+        "name": "CommerceIQ - Software Development - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 7.58,
             "maxcgpa": 8.1,
-            "numberofstudents": 4
-        }
-    },
-    {
-        "name": "Eltropy - Customer Success Analyst - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 8.667,
-            "maxcgpa": 8.667,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Electronic Arts Games Pvt Ltd",
-        "23-24 Sem 2": {
-            "mincgpa": 8.7,
-            "maxcgpa": 8.7,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Eightfold AI India Pvt Ltd",
-        "23-24 Sem 2": {
-            "mincgpa": 8.86,
-            "maxcgpa": 9.13,
-            "numberofstudents": 4
-        }
-    },
-    {
-        "name": "ESH Value Technologies - Mohali",
-        "23-24 Sem 1": {
-            "mincgpa": 6.77,
-            "maxcgpa": 6.79,
             "numberofstudents": 2
         },
         "22-23 Sem 2": {
-            "mincgpa": 7.59,
-            "maxcgpa": 7.59,
+            "mincgpa": 8.36,
+            "maxcgpa": 8.36,
             "numberofstudents": 1
         }
     },
     {
-        "name": "EConsystems (VIS AI Labs) - Chennai",
-        "23-24 Sem 1": {
-            "mincgpa": 6.642,
-            "maxcgpa": 7.06,
-            "numberofstudents": 5
+        "name": "Commvault Systems",
+        "23-24 Sem 2": {
+            "mincgpa": 8.54,
+            "maxcgpa": 8.54,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Confluent India Pvt Ltd.",
+        "23-24 Sem 2": {
+            "mincgpa": 8.46,
+            "maxcgpa": 9.71,
+            "numberofstudents": 8
         },
+        "22-23 Sem 2": {
+            "mincgpa": 8.84,
+            "maxcgpa": 9.42,
+            "numberofstudents": 5
+        }
+    },
+    {
+        "name": "Continental Device India Pvt. Ltd. - Mohali",
+        "23-24 Sem 1": {
+            "mincgpa": 6.3,
+            "maxcgpa": 6.3,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Contlo - AI Engineer",
+        "23-24 Sem 2": {
+            "mincgpa": 8.39,
+            "maxcgpa": 8.39,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Contlo - SDE (Tech) - Bengaluru",
+        "23-24 Sem 2": {
+            "mincgpa": 8.15,
+            "maxcgpa": 8.35,
+            "numberofstudents": 3
+        },
+        "23-24 Sem 1": {
+            "mincgpa": 7.96,
+            "maxcgpa": 8.45,
+            "numberofstudents": 5
+        }
+    },
+    {
+        "name": "Credit Suisse - Corporate Citizenship and Foundation - Mumbai",
+        "22-23 Sem 2": {
+            "mincgpa": 7.92,
+            "maxcgpa": 7.92,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Credit Suisse - Equity Research - Mumbai (Worli)",
         "22-23 Sem 2": {
             "mincgpa": 7.71,
             "maxcgpa": 7.71,
@@ -3010,77 +673,240 @@
         }
     },
     {
-        "name": "Dreamplug Technologies",
-        "23-24 Sem 2": {
-            "mincgpa": 7.8,
-            "maxcgpa": 7.8,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Dr. Reddys Laboratories",
-        "23-24 Sem 2": {
-            "mincgpa": 7.26,
-            "maxcgpa": 7.278,
+        "name": "Credit Suisse - Finance Change - Pune",
+        "23-24 Sem 1": {
+            "mincgpa": 7.28,
+            "maxcgpa": 7.35,
             "numberofstudents": 2
         }
     },
     {
-        "name": "Dozer Data Pte Ltd - Pan India",
+        "name": "Credit Suisse - Global Market Risk Management - Mumbai",
         "23-24 Sem 1": {
+            "mincgpa": 6.83,
+            "maxcgpa": 7.31,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Credit Suisse - Model Risk Management - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 6.96,
+            "maxcgpa": 6.96,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Credit Suisse - Non-Financial Risk Management - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 7.97,
+            "maxcgpa": 8.43,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Credit Suisse - Product Control - Pune",
+        "23-24 Sem 1": {
+            "mincgpa": 7.41,
+            "maxcgpa": 7.42,
+            "numberofstudents": 2
+        },
+        "22-23 Sem 2": {
+            "mincgpa": 8.38,
+            "maxcgpa": 8.38,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Credit Suisse - Quantitative Analysis \\u0026 Technology - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 6.87,
+            "maxcgpa": 7.2,
+            "numberofstudents": 4
+        }
+    },
+    {
+        "name": "Credit Suisse - Quantitative Analysis Technology - Mumbai",
+        "22-23 Sem 2": {
+            "mincgpa": 7.25,
+            "maxcgpa": 8.18,
+            "numberofstudents": 5
+        }
+    },
+    {
+        "name": "Credit Suisse - Risk \\u0026 Finance Data Analytics, Reporting - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 7.25,
+            "maxcgpa": 7.7,
+            "numberofstudents": 5
+        }
+    },
+    {
+        "name": "Credit Suisse - Risk \\u0026 Finance Data Analytics, Reporting - Pune",
+        "23-24 Sem 1": {
+            "mincgpa": 6.89,
+            "maxcgpa": 8.37,
+            "numberofstudents": 6
+        }
+    },
+    {
+        "name": "Credit Suisse - Risk Finance Data Analytics, Reporting - Pune",
+        "22-23 Sem 2": {
             "mincgpa": 7.04,
-            "maxcgpa": 7.04,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Dozer Data Pte Ltd",
-        "23-24 Sem 2": {
-            "mincgpa": 8.16,
-            "maxcgpa": 8.16,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Divgi TorqTransfer Systems Pvt. Ltd. - Bhosari (New) - Pune",
-        "23-24 Sem 1": {
-            "mincgpa": 6.9,
-            "maxcgpa": 6.9,
+            "maxcgpa": 9.05,
             "numberofstudents": 2
         }
     },
     {
-        "name": "Disney+ Hotstar",
+        "name": "Credit Suisse - Trade Analysis Team - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 7.45,
+            "maxcgpa": 7.45,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Credit Suisse - Treasury - Pune",
+        "22-23 Sem 2": {
+            "mincgpa": 7.37,
+            "maxcgpa": 7.37,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Credit Suisse -Non Financial Risk Management",
+        "23-24 Sem 1": {
+            "mincgpa": 8.29,
+            "maxcgpa": 8.29,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Cropin Technology Solutions - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 6.53,
+            "maxcgpa": 6.53,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "D. E. Shaw India Private Limited - Project 1",
         "23-24 Sem 2": {
-            "mincgpa": 8.69,
-            "maxcgpa": 9.14,
-            "numberofstudents": 7
-        },
-        "22-23 Sem 2": {
-            "mincgpa": 9.29,
-            "maxcgpa": 9.29,
+            "mincgpa": 8.02,
+            "maxcgpa": 9.11,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "D. E. Shaw India Private Limited - Project 2",
+        "23-24 Sem 2": {
+            "mincgpa": 9.5,
+            "maxcgpa": 9.5,
             "numberofstudents": 1
         }
     },
     {
-        "name": "DigiCert Security India Pvt Ltd - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 6.38,
-            "maxcgpa": 6.38,
-            "numberofstudents": 1
-        },
-        "22-23 Sem 2": {
-            "mincgpa": 7.99,
-            "maxcgpa": 7.99,
+        "name": "D. E. Shaw India Private Limited - Project 3",
+        "23-24 Sem 2": {
+            "mincgpa": 9.71,
+            "maxcgpa": 9.71,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Dezerv Investments Pvt. Ltd - Mumbai",
+        "name": "DBOI - Accounting Domain - Pune",
         "23-24 Sem 1": {
-            "mincgpa": 8.2,
-            "maxcgpa": 8.47,
-            "numberofstudents": 8
+            "mincgpa": 7.26,
+            "maxcgpa": 7.26,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "DBOI - Business Finance - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 6.56,
+            "maxcgpa": 7.89,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "DBOI - Counterparty Credit Ratings - Mumbai",
+        "22-23 Sem 2": {
+            "mincgpa": 8.79,
+            "maxcgpa": 8.79,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "DBOI - Global Reporting - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 8.22,
+            "maxcgpa": 8.22,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "DBOI - IB CFO - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 7.42,
+            "maxcgpa": 7.42,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "DBOI - Market Risk - Mumbai",
+        "22-23 Sem 2": {
+            "mincgpa": 6.77,
+            "maxcgpa": 7.34,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "DBOI - MRM - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 7.74,
+            "maxcgpa": 7.74,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "DBOI - MVRM-Valuation Control team - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 6.96,
+            "maxcgpa": 8.65,
+            "numberofstudents": 6
+        }
+    },
+    {
+        "name": "DBOI - Ops. IB CB",
+        "23-24 Sem 2": {
+            "mincgpa": 7.2,
+            "maxcgpa": 8.3,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "DBOI - Valuation Control",
+        "23-24 Sem 2": {
+            "mincgpa": 8.88,
+            "maxcgpa": 8.88,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Delightful Gourmet Pvt Ltd (Licious)",
+        "23-24 Sem 2": {
+            "mincgpa": 7.56,
+            "maxcgpa": 7.56,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Delightful Gourmet Pvt Ltd (Licious) - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 7.78,
+            "maxcgpa": 7.78,
+            "numberofstudents": 1
         }
     },
     {
@@ -3105,26 +931,76 @@
         }
     },
     {
-        "name": "Delightful Gourmet Pvt Ltd (Licious) - Bengaluru",
+        "name": "Dezerv Investments Pvt. Ltd - Mumbai",
         "23-24 Sem 1": {
-            "mincgpa": 7.78,
-            "maxcgpa": 7.78,
+            "mincgpa": 8.2,
+            "maxcgpa": 8.47,
+            "numberofstudents": 8
+        }
+    },
+    {
+        "name": "DigiCert Security India Pvt Ltd - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 6.38,
+            "maxcgpa": 6.38,
+            "numberofstudents": 1
+        },
+        "22-23 Sem 2": {
+            "mincgpa": 7.99,
+            "maxcgpa": 7.99,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Delightful Gourmet Pvt Ltd (Licious)",
+        "name": "Disney+ Hotstar",
         "23-24 Sem 2": {
-            "mincgpa": 7.56,
-            "maxcgpa": 7.56,
+            "mincgpa": 8.69,
+            "maxcgpa": 9.14,
+            "numberofstudents": 7
+        },
+        "22-23 Sem 2": {
+            "mincgpa": 9.29,
+            "maxcgpa": 9.29,
             "numberofstudents": 1
         }
     },
     {
-        "name": "DXC Technology - Bengaluru",
+        "name": "Divgi TorqTransfer Systems Pvt. Ltd. - Bhosari (New) - Pune",
         "23-24 Sem 1": {
-            "mincgpa": 6.91,
-            "maxcgpa": 6.91,
+            "mincgpa": 6.9,
+            "maxcgpa": 6.9,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Dozer Data Pte Ltd",
+        "23-24 Sem 2": {
+            "mincgpa": 8.16,
+            "maxcgpa": 8.16,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Dozer Data Pte Ltd - Pan India",
+        "23-24 Sem 1": {
+            "mincgpa": 7.04,
+            "maxcgpa": 7.04,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Dr. Reddys Laboratories",
+        "23-24 Sem 2": {
+            "mincgpa": 7.26,
+            "maxcgpa": 7.278,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Dreamplug Technologies",
+        "23-24 Sem 2": {
+            "mincgpa": 7.8,
+            "maxcgpa": 7.8,
             "numberofstudents": 1
         }
     },
@@ -3137,228 +1013,49 @@
         }
     },
     {
-        "name": "DBOI - Valuation Control",
+        "name": "DXC Technology - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 6.91,
+            "maxcgpa": 6.91,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "e-con Systems India Pvt. Ltd.",
         "23-24 Sem 2": {
-            "mincgpa": 8.88,
-            "maxcgpa": 8.88,
+            "mincgpa": 7.58,
+            "maxcgpa": 7.58,
             "numberofstudents": 1
         }
     },
     {
-        "name": "DBOI - Ops. IB CB",
-        "23-24 Sem 2": {
-            "mincgpa": 7.2,
-            "maxcgpa": 8.3,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "DBOI - Market Risk - Mumbai",
+        "name": "e6data - Bengaluru",
         "22-23 Sem 2": {
-            "mincgpa": 6.77,
-            "maxcgpa": 7.34,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "DBOI - MVRM-Valuation Control team - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 6.96,
-            "maxcgpa": 8.65,
-            "numberofstudents": 6
-        }
-    },
-    {
-        "name": "DBOI - MRM - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 7.74,
-            "maxcgpa": 7.74,
+            "mincgpa": 6.64,
+            "maxcgpa": 6.64,
             "numberofstudents": 1
-        }
-    },
-    {
-        "name": "DBOI - IB CFO - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 7.42,
-            "maxcgpa": 7.42,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "DBOI - Global Reporting - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 8.22,
-            "maxcgpa": 8.22,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "DBOI - Counterparty Credit Ratings - Mumbai",
-        "22-23 Sem 2": {
-            "mincgpa": 8.79,
-            "maxcgpa": 8.79,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "DBOI - Business Finance - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 6.56,
-            "maxcgpa": 7.89,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "DBOI - Accounting Domain - Pune",
-        "23-24 Sem 1": {
-            "mincgpa": 7.26,
-            "maxcgpa": 7.26,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "D. E. Shaw India Private Limited - Project 3",
-        "23-24 Sem 2": {
-            "mincgpa": 9.71,
-            "maxcgpa": 9.71,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "D. E. Shaw India Private Limited - Project 2",
-        "23-24 Sem 2": {
-            "mincgpa": 9.5,
-            "maxcgpa": 9.5,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "D. E. Shaw India Private Limited - Project 1",
-        "23-24 Sem 2": {
-            "mincgpa": 8.02,
-            "maxcgpa": 9.11,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "Cropin Technology Solutions - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 6.53,
-            "maxcgpa": 6.53,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Credit Suisse -Non Financial Risk Management",
-        "23-24 Sem 1": {
-            "mincgpa": 8.29,
-            "maxcgpa": 8.29,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Credit Suisse - Treasury - Pune",
-        "22-23 Sem 2": {
-            "mincgpa": 7.37,
-            "maxcgpa": 7.37,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Credit Suisse - Trade Analysis Team - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 7.45,
-            "maxcgpa": 7.45,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Credit Suisse - Risk \\u0026 Finance Data Analytics, Reporting - Pune",
-        "23-24 Sem 1": {
-            "mincgpa": 6.89,
-            "maxcgpa": 8.37,
-            "numberofstudents": 6
-        }
-    },
-    {
-        "name": "Credit Suisse - Risk \\u0026 Finance Data Analytics, Reporting - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 7.25,
-            "maxcgpa": 7.7,
-            "numberofstudents": 5
-        }
-    },
-    {
-        "name": "Credit Suisse - Risk Finance Data Analytics, Reporting - Pune",
-        "22-23 Sem 2": {
-            "mincgpa": 7.04,
-            "maxcgpa": 9.05,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Credit Suisse - Quantitative Analysis \\u0026 Technology - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 6.87,
-            "maxcgpa": 7.2,
-            "numberofstudents": 4
-        }
-    },
-    {
-        "name": "Credit Suisse - Quantitative Analysis Technology - Mumbai",
-        "22-23 Sem 2": {
-            "mincgpa": 7.25,
-            "maxcgpa": 8.18,
-            "numberofstudents": 5
-        }
-    },
-    {
-        "name": "Credit Suisse - Product Control - Pune",
-        "23-24 Sem 1": {
-            "mincgpa": 7.41,
-            "maxcgpa": 7.42,
-            "numberofstudents": 2
         },
+        "23-24 Sem 1": {
+            "mincgpa": 6.91,
+            "maxcgpa": 7.12,
+            "numberofstudents": 7
+        }
+    },
+    {
+        "name": "eBay - Bengaluru",
         "22-23 Sem 2": {
-            "mincgpa": 8.38,
-            "maxcgpa": 8.38,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Credit Suisse - Non-Financial Risk Management - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 7.97,
-            "maxcgpa": 8.43,
+            "mincgpa": 8.243,
+            "maxcgpa": 8.508,
             "numberofstudents": 2
         }
     },
     {
-        "name": "Credit Suisse - Model Risk Management - Mumbai",
+        "name": "EConsystems (VIS AI Labs) - Chennai",
         "23-24 Sem 1": {
-            "mincgpa": 6.96,
-            "maxcgpa": 6.96,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Credit Suisse - Global Market Risk Management - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 6.83,
-            "maxcgpa": 7.31,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Credit Suisse - Finance Change - Pune",
-        "23-24 Sem 1": {
-            "mincgpa": 7.28,
-            "maxcgpa": 7.35,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Credit Suisse - Equity Research - Mumbai (Worli)",
+            "mincgpa": 6.642,
+            "maxcgpa": 7.06,
+            "numberofstudents": 5
+        },
         "22-23 Sem 2": {
             "mincgpa": 7.71,
             "maxcgpa": 7.71,
@@ -3366,184 +1063,484 @@
         }
     },
     {
-        "name": "Credit Suisse - Corporate Citizenship and Foundation - Mumbai",
-        "22-23 Sem 2": {
-            "mincgpa": 7.92,
-            "maxcgpa": 7.92,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Contlo - SDE (Tech) - Bengaluru",
+        "name": "Eightfold AI India Pvt Ltd",
         "23-24 Sem 2": {
-            "mincgpa": 8.15,
-            "maxcgpa": 8.35,
-            "numberofstudents": 3
-        },
-        "23-24 Sem 1": {
-            "mincgpa": 7.96,
-            "maxcgpa": 8.45,
-            "numberofstudents": 5
-        }
-    },
-    {
-        "name": "Contlo - AI Engineer",
-        "23-24 Sem 2": {
-            "mincgpa": 8.39,
-            "maxcgpa": 8.39,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Continental Device India Pvt. Ltd. - Mohali",
-        "23-24 Sem 1": {
-            "mincgpa": 6.3,
-            "maxcgpa": 6.3,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Confluent India Pvt Ltd.",
-        "23-24 Sem 2": {
-            "mincgpa": 8.46,
-            "maxcgpa": 9.71,
-            "numberofstudents": 8
-        },
-        "22-23 Sem 2": {
-            "mincgpa": 8.84,
-            "maxcgpa": 9.42,
-            "numberofstudents": 5
-        }
-    },
-    {
-        "name": "Commvault Systems",
-        "23-24 Sem 2": {
-            "mincgpa": 8.54,
-            "maxcgpa": 8.54,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "CommerceIQ - Software Development - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 7.58,
-            "maxcgpa": 8.1,
-            "numberofstudents": 2
-        },
-        "22-23 Sem 2": {
-            "mincgpa": 8.36,
-            "maxcgpa": 8.36,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Cohesity Storage Solutions India Pvt. Ltd.",
-        "23-24 Sem 2": {
-            "mincgpa": 8.95,
-            "maxcgpa": 9.12,
-            "numberofstudents": 5
-        },
-        "22-23 Sem 2": {
-            "mincgpa": 8.83,
-            "maxcgpa": 9.05,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "CloudFiles - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 7.23,
-            "maxcgpa": 7.29,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "CityMall - Nontech - Gurugram",
-        "23-24 Sem 1": {
-            "mincgpa": 7.0,
-            "maxcgpa": 7.28,
+            "mincgpa": 8.86,
+            "maxcgpa": 9.13,
             "numberofstudents": 4
         }
     },
     {
-        "name": "Cisco Systems (India) Pvt. Ltd - Software Engineering - Bengaluru",
+        "name": "Electronic Arts Games Pvt Ltd",
         "23-24 Sem 2": {
-            "mincgpa": 7.43,
+            "mincgpa": 8.7,
+            "maxcgpa": 8.7,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Eltropy - Customer Success Analyst - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 8.667,
+            "maxcgpa": 8.667,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Eltropy - Engineering",
+        "23-24 Sem 2": {
+            "mincgpa": 7.77,
+            "maxcgpa": 8.1,
+            "numberofstudents": 4
+        }
+    },
+    {
+        "name": "Eltropy - Engineering - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 8.63,
+            "maxcgpa": 8.7,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Eltropy - Product Development",
+        "23-24 Sem 2": {
+            "mincgpa": 7.81,
+            "maxcgpa": 7.81,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Equal Identity Pvt. Ltd. - Hyderabad",
+        "23-24 Sem 1": {
+            "mincgpa": 7.2,
+            "maxcgpa": 7.24,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Ericsson Global India Pvt. Ltd. - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 7.33,
+            "maxcgpa": 7.46,
+            "numberofstudents": 5
+        }
+    },
+    {
+        "name": "Ernst \\u0026 Young L.L.P. - Gurugram",
+        "23-24 Sem 1": {
+            "mincgpa": 6.5,
+            "maxcgpa": 6.5,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "ESH Value Technologies - Mohali",
+        "23-24 Sem 1": {
+            "mincgpa": 6.77,
+            "maxcgpa": 6.79,
+            "numberofstudents": 2
+        },
+        "22-23 Sem 2": {
+            "mincgpa": 7.59,
+            "maxcgpa": 7.59,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Everwell Health Solution",
+        "23-24 Sem 2": {
+            "mincgpa": 7.82,
+            "maxcgpa": 7.82,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Feedback Advisory Services Private Limited - Delhi",
+        "22-23 Sem 2": {
+            "mincgpa": 7.667,
+            "maxcgpa": 7.667,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Fintech Blue Solutions Pvt Ltd (Turtlemint) - Goa",
+        "22-23 Sem 2": {
+            "mincgpa": 8.14,
+            "maxcgpa": 8.14,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "First Meridian \u201a\u00c4\u00ec OnSolve LLC - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 7.98,
+            "maxcgpa": 8.04,
+            "numberofstudents": 4
+        }
+    },
+    {
+        "name": "FlexiLoans Technologies Pvt. Ltd. - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 8.17,
+            "maxcgpa": 8.35,
+            "numberofstudents": 2
+        },
+        "22-23 Sem 2": {
+            "mincgpa": 8.32,
+            "maxcgpa": 8.32,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Flipkart (Software Development)",
+        "23-24 Sem 2": {
+            "mincgpa": 8.81,
             "maxcgpa": 8.9,
             "numberofstudents": 5
         },
         "22-23 Sem 2": {
-            "mincgpa": 6.8,
-            "maxcgpa": 8.89,
-            "numberofstudents": 9
+            "mincgpa": 8.0,
+            "maxcgpa": 9.58,
+            "numberofstudents": 7
         }
     },
     {
-        "name": "ChargePoint",
-        "23-24 Sem 2": {
-            "mincgpa": 7.09,
-            "maxcgpa": 7.525,
+        "name": "Flipkart - Planning Analysts - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 8.91,
+            "maxcgpa": 8.91,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Flipkart Health Plus Analytics - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 8.28,
+            "maxcgpa": 8.69,
             "numberofstudents": 3
         }
     },
     {
-        "name": "ChangeJar Technologies Pvt. Ltd.",
+        "name": "Flipkart Internet Pvt Ltd - Business Analyst",
         "23-24 Sem 2": {
-            "mincgpa": 7.53,
-            "maxcgpa": 7.53,
+            "mincgpa": 8.4,
+            "maxcgpa": 8.4,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Central Electronics Engineering Research Institute - Pilani",
-        "23-24 Sem 1": {
-            "mincgpa": 6.18,
-            "maxcgpa": 6.18,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Cantilever Labs",
-        "23-24 Sem 2": {
-            "mincgpa": 7.41,
-            "maxcgpa": 7.43,
+        "name": "Flipkart Internet Pvt Ltd - Business Analyst - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 7.89,
+            "maxcgpa": 8.156,
             "numberofstudents": 2
         }
     },
     {
-        "name": "Cadence Design Systems",
+        "name": "Flipkart Internet Pvt Ltd - Business Development - Bengaluru",
+        "23-24 Sem 2": {
+            "mincgpa": 8.4,
+            "maxcgpa": 8.56,
+            "numberofstudents": 3
+        },
+        "23-24 Sem 1": {
+            "mincgpa": 7.1,
+            "maxcgpa": 8.98,
+            "numberofstudents": 5
+        },
+        "22-23 Sem 2": {
+            "mincgpa": 7.8,
+            "maxcgpa": 8.12,
+            "numberofstudents": 4
+        }
+    },
+    {
+        "name": "Flipkart Internet Pvt Ltd - Corporate Strategy - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 8.66,
+            "maxcgpa": 8.66,
+            "numberofstudents": 2
+        },
+        "22-23 Sem 2": {
+            "mincgpa": 8.47,
+            "maxcgpa": 8.47,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Flipkart Internet Pvt Ltd - Data Engineering",
+        "23-24 Sem 2": {
+            "mincgpa": 8.66,
+            "maxcgpa": 8.91,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "Flipkart Internet Pvt Ltd - Data Engineering - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 8.63,
+            "maxcgpa": 9.23,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "Flipkart Internet Pvt Ltd - Product Management",
+        "23-24 Sem 2": {
+            "mincgpa": 8.16,
+            "maxcgpa": 8.46,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Flipkart Internet Pvt Ltd - Site Reliability Engineering",
+        "23-24 Sem 2": {
+            "mincgpa": 8.63,
+            "maxcgpa": 8.63,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Flipkart Internet Pvt Ltd - Site Reliability Engineering - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 8.61,
+            "maxcgpa": 8.63,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Flipkart Internet Pvt Ltd - UI",
         "23-24 Sem 2": {
             "mincgpa": 8.36,
-            "maxcgpa": 8.36,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "CISCO - Business Analyst - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 7.68,
-            "maxcgpa": 7.68,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "CASHe - Mumbai",
-        "22-23 Sem 2": {
-            "mincgpa": 7.95,
-            "maxcgpa": 8.11,
+            "maxcgpa": 8.57,
             "numberofstudents": 2
         }
     },
     {
-        "name": "CASHe - Hyderabad",
+        "name": "Fortanix",
+        "23-24 Sem 2": {
+            "mincgpa": 8.01,
+            "maxcgpa": 8.13,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Frontier Tower Associates Philippines Inc.",
+        "23-24 Sem 2": {
+            "mincgpa": 8.51,
+            "maxcgpa": 8.51,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Futures First - Bengaluru",
         "23-24 Sem 1": {
-            "mincgpa": 7.19,
-            "maxcgpa": 7.9,
+            "mincgpa": 7.48,
+            "maxcgpa": 7.64,
             "numberofstudents": 3
         }
     },
     {
-        "name": "CASHe",
+        "name": "Futures First Info Services Pvt Ltd. - Gurugram",
+        "23-24 Sem 1": {
+            "mincgpa": 6.99,
+            "maxcgpa": 7.69,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "Gameskraft - Product Management Analytics - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 7.67,
+            "maxcgpa": 7.67,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Gameskraft - Product Research, Analytics Project Execution - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 8.84,
+            "maxcgpa": 8.84,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Genpact - Gurugram",
+        "23-24 Sem 2": {
+            "mincgpa": 7.21,
+            "maxcgpa": 7.6,
+            "numberofstudents": 2
+        },
+        "23-24 Sem 1": {
+            "mincgpa": 7.11,
+            "maxcgpa": 7.11,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "GeoIQ (Quantduo Technologies Pvt. Ltd.",
+        "23-24 Sem 2": {
+            "mincgpa": 7.62,
+            "maxcgpa": 7.62,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "GeoIQ (Quantduo Technologies Pvt. Ltd. - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 7.55,
+            "maxcgpa": 7.55,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Glance (An InMobi Group Company) - Product - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 8.29,
+            "maxcgpa": 8.29,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "GoKwik - Gurugram",
+        "22-23 Sem 2": {
+            "mincgpa": 7.15,
+            "maxcgpa": 7.94,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "Goldman Sachs - IT (Project 2)",
+        "23-24 Sem 2": {
+            "mincgpa": 8.42,
+            "maxcgpa": 9.01,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "Goodera - Engineering",
+        "23-24 Sem 2": {
+            "mincgpa": 8.84,
+            "maxcgpa": 8.84,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Goodera - Engineering - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 8.81,
+            "maxcgpa": 8.89,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Goodera Growth Strategy,Customer Experience(Business Analyst) - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 7.19,
+            "maxcgpa": 7.48,
+            "numberofstudents": 5
+        },
+        "22-23 Sem 2": {
+            "mincgpa": 7.2,
+            "maxcgpa": 7.2,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Google India - Hardware",
+        "23-24 Sem 2": {
+            "mincgpa": 6.91,
+            "maxcgpa": 6.91,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "GoSwift - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 7.5,
+            "maxcgpa": 7.5,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Grasim Industries Ltd. - Nagda",
+        "23-24 Sem 1": {
+            "mincgpa": 7.018,
+            "maxcgpa": 7.018,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Greaves Electric Mobility",
+        "23-24 Sem 2": {
+            "mincgpa": 7.39,
+            "maxcgpa": 7.39,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Greenland Investment Management",
+        "23-24 Sem 2": {
+            "mincgpa": 8.09,
+            "maxcgpa": 8.68,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "GreyOrange Ltd",
+        "23-24 Sem 2": {
+            "mincgpa": 7.23,
+            "maxcgpa": 7.23,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Grid Dynamics - Hyderabad",
+        "22-23 Sem 2": {
+            "mincgpa": 7.15,
+            "maxcgpa": 7.66,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Growth Jockey Pvt. Ltd - Gurugram",
+        "23-24 Sem 1": {
+            "mincgpa": 6.57,
+            "maxcgpa": 6.57,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Hamilton Research Technology Pvt. Ltd - Kolkata",
+        "22-23 Sem 2": {
+            "mincgpa": 7.17,
+            "maxcgpa": 7.17,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "HAPPAY (VA Tech Ventures Pvt Ltd.) - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 8.57,
+            "maxcgpa": 8.57,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Harness",
+        "23-24 Sem 2": {
+            "mincgpa": 8.55,
+            "maxcgpa": 8.62,
+            "numberofstudents": 3
+        },
+        "22-23 Sem 2": {
+            "mincgpa": 8.61,
+            "maxcgpa": 8.67,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Heaps Health Solutions Pvt. Ltd. - Non Tech",
         "23-24 Sem 2": {
             "mincgpa": 7.27,
             "maxcgpa": 7.27,
@@ -3551,402 +1548,1642 @@
         }
     },
     {
-        "name": "Bolt.Earth - Android/IOS",
+        "name": "HERE Technologies India Pvt. Ltd - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 7.23,
+            "maxcgpa": 8.27,
+            "numberofstudents": 6
+        }
+    },
+    {
+        "name": "Hevo Technologies India Pvt. Ltd.",
         "23-24 Sem 2": {
-            "mincgpa": 7.43,
-            "maxcgpa": 7.43,
+            "mincgpa": 8.8,
+            "maxcgpa": 8.8,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Blue Jeans Network India Pvt. Ltd. - Bengaluru",
+        "name": "Hevo Technologies India Pvt. Ltd. - Bengaluru",
         "23-24 Sem 1": {
-            "mincgpa": 6.56,
-            "maxcgpa": 6.65,
-            "numberofstudents": 3
+            "mincgpa": 8.39,
+            "maxcgpa": 8.56,
+            "numberofstudents": 2
         },
         "22-23 Sem 2": {
-            "mincgpa": 8.23,
-            "maxcgpa": 8.23,
+            "mincgpa": 8.67,
+            "maxcgpa": 8.92,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "Highway Delite - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 7.26,
+            "maxcgpa": 7.26,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Bloomreach Technologies Pvt. Ltd - Bengaluru",
+        "name": "Hindustan Unilever Research Centre - Bengaluru",
         "22-23 Sem 2": {
-            "mincgpa": 8.34,
-            "maxcgpa": 8.738,
+            "mincgpa": 6.5,
+            "maxcgpa": 7.74,
             "numberofstudents": 2
         }
     },
     {
-        "name": "BlokTrek - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 6.66,
-            "maxcgpa": 6.67,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "BlokTrek",
+        "name": "HyperVerge Technologies Pvt. Ltd.",
         "23-24 Sem 2": {
-            "mincgpa": 7.93,
-            "maxcgpa": 7.93,
+            "mincgpa": 7.42,
+            "maxcgpa": 7.46,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "ICIMS",
+        "23-24 Sem 2": {
+            "mincgpa": 8.25,
+            "maxcgpa": 8.34,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "IDFC First Bank - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 8.31,
+            "maxcgpa": 8.4,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "IFB Industries",
+        "23-24 Sem 2": {
+            "mincgpa": 7.94,
+            "maxcgpa": 7.94,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Bharosepe Technology Services Privated Limited (Known as Jodo) - Bengaluru",
+        "name": "IFB Industries - Goa",
         "23-24 Sem 1": {
+            "mincgpa": 7.4,
+            "maxcgpa": 7.4,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "IFP Petro Products (P) Ltd. - Nontech - Ghaziabad",
+        "23-24 Sem 1": {
+            "mincgpa": 7.0,
+            "maxcgpa": 7.0,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "IIFL Home Finance Ltd. - Digital Property Services - Gurugram",
+        "23-24 Sem 1": {
+            "mincgpa": 6.52,
+            "maxcgpa": 6.52,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "IIFL Home Finance Ltd. - Insta_Retail - Technical - Gurugram",
+        "23-24 Sem 1": {
+            "mincgpa": 6.69,
+            "maxcgpa": 6.69,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Imagine Marketing Ltd (boAt)",
+        "23-24 Sem 2": {
+            "mincgpa": 7.24,
+            "maxcgpa": 7.24,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Immensitas Pvt. Ltd. (Lemnisk)",
+        "23-24 Sem 1": {
+            "mincgpa": 6.4,
+            "maxcgpa": 6.4,
+            "numberofstudents": 1
+        },
+        "23-24 Sem 2": {
+            "mincgpa": 8.06,
+            "maxcgpa": 8.09,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "iNaira Healthcare Technologies - Datascience",
+        "23-24 Sem 2": {
+            "mincgpa": 8.46,
+            "maxcgpa": 8.46,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "iNaira Healthcare Technologies - Healthcare",
+        "23-24 Sem 2": {
+            "mincgpa": 8.5,
+            "maxcgpa": 8.5,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Indian Institute of Petroleum - Dehradun",
+        "23-24 Sem 2": {
+            "mincgpa": 6.28,
+            "maxcgpa": 6.28,
+            "numberofstudents": 1
+        },
+        "23-24 Sem 1": {
+            "mincgpa": 6.61,
+            "maxcgpa": 6.61,
+            "numberofstudents": 2
+        },
+        "22-23 Sem 2": {
+            "mincgpa": 7.84,
+            "maxcgpa": 7.84,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Indira Gandhi Centre for Atomic Research",
+        "23-24 Sem 2": {
+            "mincgpa": 7.04,
+            "maxcgpa": 7.04,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Indus Insights and Analytical Services Pvt Ltd",
+        "23-24 Sem 2": {
+            "mincgpa": 7.53,
+            "maxcgpa": 8.52,
+            "numberofstudents": 4
+        }
+    },
+    {
+        "name": "Indus Insights and Analytical Services Pvt Ltd - Gurugram",
+        "22-23 Sem 2": {
+            "mincgpa": 7.75,
+            "maxcgpa": 8.58,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "Infineon",
+        "23-24 Sem 2": {
+            "mincgpa": 8.7,
+            "maxcgpa": 8.7,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Infinera - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 7.45,
+            "maxcgpa": 7.45,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "InMobi- Business Analyst - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 7.54,
+            "maxcgpa": 8.66,
+            "numberofstudents": 13
+        },
+        "22-23 Sem 2": {
+            "mincgpa": 7.53,
+            "maxcgpa": 7.87,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Intellect Design Arena Ltd",
+        "23-24 Sem 2": {
+            "mincgpa": 7.15,
+            "maxcgpa": 7.24,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Intuit India",
+        "23-24 Sem 2": {
+            "mincgpa": 9.48,
+            "maxcgpa": 9.48,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "ISRO Inertial Systems Unit - Thiruvananthapuram",
+        "23-24 Sem 1": {
+            "mincgpa": 0,
+            "maxcgpa": 0,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "IUDX Program Unit, Indian Institute of science - Data Kaveri",
+        "23-24 Sem 2": {
+            "mincgpa": 7.44,
+            "maxcgpa": 7.77,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "IUDX Program Unit, Indian Institute of science - Data Kaveri - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 6.95,
+            "maxcgpa": 6.95,
+            "numberofstudents": 2
+        },
+        "22-23 Sem 2": {
+            "mincgpa": 7.33,
+            "maxcgpa": 7.33,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Jarvis Technology Strategy Consulting Pvt. Ltd. - IT - New delhi",
+        "22-23 Sem 2": {
+            "mincgpa": 7.12,
+            "maxcgpa": 7.12,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Jivox",
+        "23-24 Sem 2": {
+            "mincgpa": 8.121,
+            "maxcgpa": 8.33,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "John F Welch Technology Center (GE) - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 8.2,
+            "maxcgpa": 8.2,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "JPMC - CIB RA Wholesale Payments - Mumbai",
+        "22-23 Sem 2": {
+            "mincgpa": 7.81,
+            "maxcgpa": 7.81,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "JPMC - GR&C - AWM Investment Risk Analytics",
+        "23-24 Sem 2": {
+            "mincgpa": 8.3,
+            "maxcgpa": 8.94,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "JPMC - GRC WCS Wholesale Transformation Strategy - Mumbai",
+        "22-23 Sem 2": {
+            "mincgpa": 7.9,
+            "maxcgpa": 7.9,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "JPMC CIB R&A Markets - MANSART, EDG Structuring and PST",
+        "23-24 Sem 2": {
+            "mincgpa": 8.5,
+            "maxcgpa": 9.24,
+            "numberofstudents": 4
+        }
+    },
+    {
+        "name": "JPMC CIB R&A Markets - Sales",
+        "23-24 Sem 2": {
+            "mincgpa": 8.14,
+            "maxcgpa": 9.59,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "JPMC CIB R\\u0026A Global Research - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 7.311,
+            "maxcgpa": 9.62,
+            "numberofstudents": 6
+        }
+    },
+    {
+        "name": "JPMC CIB R\\u0026A Markets - Sales - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 7.81,
+            "maxcgpa": 7.81,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "JPMC CIB RA Markets - Sales - Mumbai",
+        "22-23 Sem 2": {
             "mincgpa": 7.61,
-            "maxcgpa": 7.75,
-            "numberofstudents": 2
-        },
-        "22-23 Sem 2": {
-            "mincgpa": 8.12,
-            "maxcgpa": 8.12,
+            "maxcgpa": 8.43,
             "numberofstudents": 2
         }
     },
     {
-        "name": "Bharat Forge -Manufacturing - Pune",
+        "name": "JPMC GR\\u0026C CCB Risk - Strategy Analytics - Analyst - Mumbai/Bangalore",
         "23-24 Sem 1": {
-            "mincgpa": 6.34,
-            "maxcgpa": 6.34,
-            "numberofstudents": 1
+            "mincgpa": 7.67,
+            "maxcgpa": 8.72,
+            "numberofstudents": 4
         }
     },
     {
-        "name": "Bento Labs Pvt. Ltd. - Hyderabad",
+        "name": "JPMC GR\\u0026C Market Risk - Mumbai / Bangalore",
         "23-24 Sem 1": {
-            "mincgpa": 6.33,
-            "maxcgpa": 6.33,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Badho Tech Pvt. Ltd - Tech - Gurugram",
-        "23-24 Sem 1": {
-            "mincgpa": 7.28,
-            "maxcgpa": 7.28,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Azalp Technologies Pvt. Ltd. - IT - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 8.04,
-            "maxcgpa": 8.1,
+            "mincgpa": 6.76,
+            "maxcgpa": 8.47,
             "numberofstudents": 3
         }
     },
     {
-        "name": "Awen",
-        "23-24 Sem 2": {
-            "mincgpa": 8.11,
-            "maxcgpa": 8.11,
+        "name": "JPMC GR\\u0026C \u00e2\u20ac\u201c AM Risk - Market Risk Coverage - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 8.05,
+            "maxcgpa": 8.05,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Avlinq Solutions & Services Pvt Ltd.,",
-        "23-24 Sem 2": {
-            "mincgpa": 7.19,
-            "maxcgpa": 7.19,
+        "name": "JPMC GR\\u0026C \u00e2\u20ac\u201c Corporate Risk - Controllers - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 7.51,
+            "maxcgpa": 7.51,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Avalara Technologies",
-        "23-24 Sem 2": {
-            "mincgpa": 7.59,
-            "maxcgpa": 7.67,
+        "name": "JPMC GR\\u0026C \u00e2\u20ac\u201c Corporate Risk - Solutions - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 7.14,
+            "maxcgpa": 7.14,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "JPMC GR\\u0026C \u00e2\u20ac\u201c MRGR AWM CTC - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 7.47,
+            "maxcgpa": 9.05,
             "numberofstudents": 2
         }
     },
     {
-        "name": "Avaamo - Bengaluru",
+        "name": "JPMC GR\\u0026C \u00e2\u20ac\u201c MRGR CIB Ex Trading (Quant Modelling) - Mumbai/Bangalore",
         "23-24 Sem 1": {
-            "mincgpa": 6.98,
-            "maxcgpa": 6.98,
+            "mincgpa": 8.6,
+            "maxcgpa": 8.6,
             "numberofstudents": 1
-        },
-        "22-23 Sem 2": {
-            "mincgpa": 8.57,
+        }
+    },
+    {
+        "name": "JPMC GR\\u0026C \u00e2\u20ac\u201c WCS Data Science - Product \u00e2\u20ac\u201c Client Risk management - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 7.53,
             "maxcgpa": 8.59,
             "numberofstudents": 2
         }
     },
     {
-        "name": "AuxoAI",
-        "23-24 Sem 2": {
-            "mincgpa": 7.61,
-            "maxcgpa": 7.83,
-            "numberofstudents": 2
+        "name": "JPMC GR\\u0026C \u00e2\u20ac\u201c WCS Data Science - Product \u00e2\u20ac\u201c Data management - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 7.34,
+            "maxcgpa": 8.59,
+            "numberofstudents": 3
         }
     },
     {
-        "name": "Aurigo Software Technologies - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 8.024,
-            "maxcgpa": 8.024,
+        "name": "JPMC GR\\u0026C \u00e2\u20ac\u201c WCS Data Science - Wholesale Portfolio Analytics \u00e2\u20ac\u201c Climate Risk - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 8.52,
+            "maxcgpa": 8.52,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Aurigo Software Technologies",
-        "23-24 Sem 2": {
-            "mincgpa": 7.647,
-            "maxcgpa": 7.99,
-            "numberofstudents": 7
+        "name": "JPMC GR\\u0026C \u00e2\u20ac\u201c WCS Data Science - Wholesale Portfolio Analytics \u00e2\u20ac\u201cStrategic Analytics - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 8.69,
+            "maxcgpa": 8.69,
+            "numberofstudents": 1
         }
     },
     {
-        "name": "Atomicwork Incorporation",
+        "name": "JPMC GR\\u0026C \u00e2\u20ac\u201c WCS Data Science \u00e2\u20ac\u201c Counter Party Risk - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 6.81,
+            "maxcgpa": 6.81,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "JPMC GR\\u0026C \u00e2\u20ac\u201c WM Risk - AWM Risk innovation - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 7.13,
+            "maxcgpa": 7.13,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "JPMC GRC CCB Risk - Strategy Analytics - Analyst - Mumbai/Bangalore",
+        "22-23 Sem 2": {
+            "mincgpa": 7.52,
+            "maxcgpa": 7.52,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "JPMC GRC CTC Risk - Innovation / Automation - Mumbai",
+        "22-23 Sem 2": {
+            "mincgpa": 7.76,
+            "maxcgpa": 8.13,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "JPMC GRC CTC Risk - Mumbai",
+        "22-23 Sem 2": {
+            "mincgpa": 8.68,
+            "maxcgpa": 8.68,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "JPMC GRC Market Risk - Mumbai / Bangalore",
+        "22-23 Sem 2": {
+            "mincgpa": 8.02,
+            "maxcgpa": 8.02,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "JPMC GRC Wholesale Credit Solutions - Counterparty Credit risk - Mumbai",
+        "22-23 Sem 2": {
+            "mincgpa": 8.03,
+            "maxcgpa": 8.97,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "JPMC GRC Wholesale Credit Solutions - Product Ownership - Ispresso, Credit Navigator - Mumbai",
+        "22-23 Sem 2": {
+            "mincgpa": 8.01,
+            "maxcgpa": 8.01,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "JPMS CIB R&A Banking(CRG)-Banking",
         "23-24 Sem 2": {
-            "mincgpa": 7.63,
-            "maxcgpa": 7.85,
+            "mincgpa": 7.87,
+            "maxcgpa": 9.19,
+            "numberofstudents": 5
+        }
+    },
+    {
+        "name": "JPMS CIB R&A Data Science",
+        "23-24 Sem 2": {
+            "mincgpa": 8.49,
+            "maxcgpa": 8.49,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "JPMS CIB R\\u0026A Banking (CRG) - Fintech - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 7.75,
+            "maxcgpa": 9.03,
             "numberofstudents": 4
         }
     },
     {
-        "name": "Atlan - Delhi",
+        "name": "JPMS CIB R\\u0026A Banking(CRG)-Banking - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 7.574,
+            "maxcgpa": 8.55,
+            "numberofstudents": 13
+        }
+    },
+    {
+        "name": "JPMS CIB R\\u0026A Markets-Trading - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 7.99,
+            "maxcgpa": 9.13,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "JPMS CIB RA Banking (CRG) - Fintech - Mumbai",
         "22-23 Sem 2": {
+            "mincgpa": 6.92,
+            "maxcgpa": 6.92,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "JPMS CIB RA Banking(CRG)-Banking - Mumbai",
+        "22-23 Sem 2": {
+            "mincgpa": 7.2,
+            "maxcgpa": 9.09,
+            "numberofstudents": 6
+        }
+    },
+    {
+        "name": "JPMS GR&C CTC Risk - Interest Rate Risk Management",
+        "23-24 Sem 2": {
+            "mincgpa": 8.04,
+            "maxcgpa": 8.04,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Karza Technologies Private Limited - Mumbai",
+        "22-23 Sem 2": {
+            "mincgpa": 8.37,
+            "maxcgpa": 8.4,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "KFin Technologies Private Limited - Hyderabad",
+        "23-24 Sem 1": {
+            "mincgpa": 6.81,
+            "maxcgpa": 7.83,
+            "numberofstudents": 5
+        }
+    },
+    {
+        "name": "Kinar AI Pvt. Ltd. - Hyderabad",
+        "22-23 Sem 2": {
+            "mincgpa": 6.99,
+            "maxcgpa": 7.48,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "KiranaKart Technologies (Zepto) - Mumbai",
+        "22-23 Sem 2": {
+            "mincgpa": 8.22,
+            "maxcgpa": 8.22,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Klinik Everywhere Technologies Pvt. Ltd. - Chennai",
+        "23-24 Sem 1": {
+            "mincgpa": 6.66,
+            "maxcgpa": 6.66,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "KPMG - Chennai",
+        "23-24 Sem 1": {
             "mincgpa": 7.97,
             "maxcgpa": 7.97,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Asanify Technologies Pvt. Ltd._Full Stack Software Engineering - Kolkata",
-        "22-23 Sem 2": {
-            "mincgpa": 8.01,
-            "maxcgpa": 8.01,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Arista Networks India Private Limited",
-        "23-24 Sem 2": {
-            "mincgpa": 8.41,
-            "maxcgpa": 9.23,
-            "numberofstudents": 4
-        }
-    },
-    {
-        "name": "Aptos India Pvt. Ltd",
-        "23-24 Sem 2": {
-            "mincgpa": 7.44,
-            "maxcgpa": 7.56,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "Aptiv",
-        "23-24 Sem 2": {
-            "mincgpa": 7.71,
-            "maxcgpa": 7.8,
+        "name": "KPMG - Gurugram",
+        "23-24 Sem 1": {
+            "mincgpa": 8.0,
+            "maxcgpa": 8.26,
             "numberofstudents": 2
         }
     },
     {
-        "name": "Apple India Pvt Limited - Hyderabad",
+        "name": "Lenskart Solutions Private Limited",
+        "23-24 Sem 2": {
+            "mincgpa": 7.47,
+            "maxcgpa": 7.47,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Level-Field Tech Private Limited",
+        "23-24 Sem 2": {
+            "mincgpa": 7.52,
+            "maxcgpa": 7.52,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "LightSpeed Photonics Pte Ltd - Secunderabad",
+        "23-24 Sem 1": {
+            "mincgpa": 6.5,
+            "maxcgpa": 6.5,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Lohum Cleantech Pvt. Ltd - Chemical Metallurgy",
+        "23-24 Sem 2": {
+            "mincgpa": 8.38,
+            "maxcgpa": 8.38,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Lohum Cleantech Pvt. Ltd - Commodities price modeling",
+        "23-24 Sem 2": {
+            "mincgpa": 7.47,
+            "maxcgpa": 7.47,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Lohum Cleantech Pvt. Ltd - Nontech - Greater Noida",
+        "23-24 Sem 1": {
+            "mincgpa": 7.56,
+            "maxcgpa": 7.56,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Lohum Cleantech Pvt. Ltd - Tech - Greater Noida",
+        "23-24 Sem 1": {
+            "mincgpa": 8.1,
+            "maxcgpa": 8.1,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "LTIMindtree",
+        "23-24 Sem 2": {
+            "mincgpa": 7.3,
+            "maxcgpa": 7.3,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "LV Prasad Eye Institute",
+        "23-24 Sem 2": {
+            "mincgpa": 6.65,
+            "maxcgpa": 6.65,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Lyearn Software Development India Pvt. Ltd. - Bengaluru",
         "22-23 Sem 2": {
-            "mincgpa": 8.48,
-            "maxcgpa": 9.27,
+            "mincgpa": 8.01,
+            "maxcgpa": 8.23,
             "numberofstudents": 3
         }
     },
     {
-        "name": "Apple India Private Limited - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 8.01,
-            "maxcgpa": 8.01,
-            "numberofstudents": 1
-        },
+        "name": "M2P Fintech - Bengaluru",
         "22-23 Sem 2": {
-            "mincgpa": 8.03,
-            "maxcgpa": 8.03,
+            "mincgpa": 7.68,
+            "maxcgpa": 7.68,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Apple India Private Limited",
+        "name": "M2P Fintech - Chennai",
+        "23-24 Sem 1": {
+            "mincgpa": 6.54,
+            "maxcgpa": 6.59,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "MagicStudio.com (aarzoo, Inc.) - Nontech - Usa",
+        "23-24 Sem 1": {
+            "mincgpa": 7.5,
+            "maxcgpa": 7.5,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Mahindra Logistics limited - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 6.79,
+            "maxcgpa": 6.79,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Mantys - Nontech - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 7.88,
+            "maxcgpa": 7.88,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Mantys - Tech",
         "23-24 Sem 2": {
             "mincgpa": 8.64,
-            "maxcgpa": 9.77,
+            "maxcgpa": 8.64,
+            "numberofstudents": 1
+        },
+        "23-24 Sem 1": {
+            "mincgpa": 8.36,
+            "maxcgpa": 8.36,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Masterclass Space LLP",
+        "23-24 Sem 2": {
+            "mincgpa": 6.88,
+            "maxcgpa": 6.88,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "MBB Labs Private Limited (Maybank) - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 7.44,
+            "maxcgpa": 7.88,
+            "numberofstudents": 3
+        },
+        "22-23 Sem 2": {
+            "mincgpa": 7.63,
+            "maxcgpa": 7.95,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "MediaTek Bangalore Pvt. Ltd.",
+        "23-24 Sem 2": {
+            "mincgpa": 9.87,
+            "maxcgpa": 9.87,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "MediBuddy - Software Development/Data Science - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 8.2,
+            "maxcgpa": 8.2,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Meesho",
+        "23-24 Sem 2": {
+            "mincgpa": 7.53,
+            "maxcgpa": 8.04,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Mercedes Benz - Bengaluru",
+        "23-24 Sem 2": {
+            "mincgpa": 7.9,
+            "maxcgpa": 7.9,
+            "numberofstudents": 1
+        },
+        "23-24 Sem 1": {
+            "mincgpa": 6.7,
+            "maxcgpa": 8.67,
+            "numberofstudents": 10
+        },
+        "22-23 Sem 2": {
+            "mincgpa": 7.13,
+            "maxcgpa": 8.78,
             "numberofstudents": 7
         }
     },
     {
-        "name": "Analog Devices India Pvt. Ltd. - Bengaluru",
+        "name": "Merilytics - Tech - Hyderabad",
         "23-24 Sem 1": {
-            "mincgpa": 7.17,
-            "maxcgpa": 7.17,
+            "mincgpa": 7.52,
+            "maxcgpa": 7.52,
             "numberofstudents": 1
         }
     },
     {
-        "name": "American Express -Decision Science and Strategy - Gurugram",
-        "23-24 Sem 1": {
-            "mincgpa": 8.51,
-            "maxcgpa": 8.57,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "American Express - Credit Fraud Risk (Capabilities) - Gurugram",
+        "name": "Meritus Intelytics Private Limited (Merilytics) - Hyderabad",
         "22-23 Sem 2": {
-            "mincgpa": 8.97,
-            "maxcgpa": 8.97,
+            "mincgpa": 6.65,
+            "maxcgpa": 6.65,
             "numberofstudents": 1
         }
     },
     {
-        "name": "American Express - AI Labs - Gurugram",
+        "name": "Metaspatial Labs Pvt Ltd (Convrse.ai) - Tech - Gurugram",
         "22-23 Sem 2": {
-            "mincgpa": 8.87,
-            "maxcgpa": 8.87,
+            "mincgpa": 7.87,
+            "maxcgpa": 7.87,
             "numberofstudents": 1
         }
     },
     {
-        "name": "American Express - AI Lab - Bengaluru",
+        "name": "Mewt - Bengaluru",
         "22-23 Sem 2": {
-            "mincgpa": 9.5,
-            "maxcgpa": 9.5,
-            "numberofstudents": 1
+            "mincgpa": 8.28,
+            "maxcgpa": 8.44,
+            "numberofstudents": 7
         }
     },
     {
-        "name": "Amazon Development Center - New delhi",
-        "23-24 Sem 1": {
-            "mincgpa": 7.46,
-            "maxcgpa": 7.9,
+        "name": "Micron Technology",
+        "23-24 Sem 2": {
+            "mincgpa": 8.01,
+            "maxcgpa": 8.42,
             "numberofstudents": 2
         }
     },
     {
-        "name": "Amazon Development Center - Hyderabad",
+        "name": "Micron Technology - Hyderabad",
+        "22-23 Sem 2": {
+            "mincgpa": 7.43,
+            "maxcgpa": 9.12,
+            "numberofstudents": 4
+        }
+    },
+    {
+        "name": "MIPS Embedded Technologies Pvt. Ltd",
+        "23-24 Sem 2": {
+            "mincgpa": 8.13,
+            "maxcgpa": 8.55,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "MIPS Embedded Technologies Pvt. Ltd - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 7.7,
+            "maxcgpa": 7.7,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "MLL Express Services Pvt. Ltd. (Rivigo) Tech",
+        "23-24 Sem 2": {
+            "mincgpa": 7.66,
+            "maxcgpa": 7.66,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Monster India - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 8.04,
+            "maxcgpa": 8.13,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Morgan Stanley - FID Research - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 9.3,
+            "maxcgpa": 9.3,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Morgan Stanley - Risk Analytics - Mumbai",
+        "22-23 Sem 2": {
+            "mincgpa": 7.52,
+            "maxcgpa": 8.55,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "Morgan Stanley - Strats and Quant - Mumbai",
+        "22-23 Sem 2": {
+            "mincgpa": 9.05,
+            "maxcgpa": 9.16,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Morgan Stanley- Legal Compliance - Mumbai",
+        "22-23 Sem 2": {
+            "mincgpa": 9.52,
+            "maxcgpa": 9.52,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Morning Star - Client Services and Implementation - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 7.73,
+            "maxcgpa": 7.73,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Morning Star - Index Management and Analytics - Mumbai",
+        "22-23 Sem 2": {
+            "mincgpa": 7.18,
+            "maxcgpa": 7.71,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "Morning Star - Index New Product Development - Mumbai",
+        "23-24 Sem 2": {
+            "mincgpa": 7.87,
+            "maxcgpa": 8.14,
+            "numberofstudents": 2
+        },
+        "23-24 Sem 1": {
+            "mincgpa": 7.58,
+            "maxcgpa": 8.06,
+            "numberofstudents": 4
+        }
+    },
+    {
+        "name": "Moveworks AI",
+        "23-24 Sem 1": {
+            "mincgpa": 8.06,
+            "maxcgpa": 8.06,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "MSCI (NPD \u00e2\u20ac\u201c Index Research) - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 6.53,
+            "maxcgpa": 7.58,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "MyHQ - Gurugram",
+        "23-24 Sem 1": {
+            "mincgpa": 7.59,
+            "maxcgpa": 7.59,
+            "numberofstudents": 1
+        },
+        "22-23 Sem 2": {
+            "mincgpa": 8.32,
+            "maxcgpa": 8.32,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "National Aerospace Laboratories",
+        "23-24 Sem 2": {
+            "mincgpa": 7.97,
+            "maxcgpa": 7.97,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "National Chemical Laboratory",
+        "23-24 Sem 2": {
+            "mincgpa": 7.15,
+            "maxcgpa": 7.15,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "National Chemical Laboratory - Pune",
+        "23-24 Sem 1": {
+            "mincgpa": 6.8,
+            "maxcgpa": 6.8,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "National Instruments Systems (India) Pvt. Ltd. - Bengaluru",
         "23-24 Sem 1": {
             "mincgpa": 7.0,
-            "maxcgpa": 8.58,
-            "numberofstudents": 49
+            "maxcgpa": 7.0,
+            "numberofstudents": 1
         }
     },
     {
-        "name": "Amazon Development Center - Chennai",
+        "name": "Netradyne",
+        "23-24 Sem 2": {
+            "mincgpa": 7.21,
+            "maxcgpa": 7.45,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Neufo Technologies Pvt. Ltd. - Tech - Mumbai",
         "23-24 Sem 1": {
-            "mincgpa": 7.44,
-            "maxcgpa": 7.64,
+            "mincgpa": 7.46,
+            "maxcgpa": 7.46,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Nirmaan Organization - Non Tech - Hyderabad",
+        "23-24 Sem 1": {
+            "mincgpa": 7.24,
+            "maxcgpa": 7.24,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Nirmaan Organization - Tech - Hyderabad",
+        "23-24 Sem 1": {
+            "mincgpa": 7.51,
+            "maxcgpa": 7.51,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Nomura - Digital Transformation - Fintech - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 8.0,
+            "maxcgpa": 8.35,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Nomura - Finance FCR - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 8.51,
+            "maxcgpa": 8.51,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Nomura - Information Technology GMIT - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 7.7,
+            "maxcgpa": 8.13,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Nomura - Risk Management - Market Risk Reporting - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 8.17,
+            "maxcgpa": 8.17,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Nomura - Risk Management - RMG MRA - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 7.46,
+            "maxcgpa": 7.46,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Nomura - Wholesale Strategy - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 8.06,
+            "maxcgpa": 8.74,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Nomura Global Markets - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 7.6,
+            "maxcgpa": 8.65,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "Nomura Global Risk - Mumbai",
+        "22-23 Sem 2": {
+            "mincgpa": 8.1,
+            "maxcgpa": 8.1,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Nomura Information Technology Division - Mumbai",
+        "22-23 Sem 2": {
+            "mincgpa": 7.86,
+            "maxcgpa": 8.08,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Nutanix Technologies India Pvt. Ltd. - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 8.62,
+            "maxcgpa": 9.14,
+            "numberofstudents": 18
+        },
+        "23-24 Sem 2": {
+            "mincgpa": 8.71,
+            "maxcgpa": 9.86,
             "numberofstudents": 8
+        },
+        "22-23 Sem 2": {
+            "mincgpa": 8.19,
+            "maxcgpa": 9.9,
+            "numberofstudents": 11
         }
     },
     {
-        "name": "Amazon Development Center - Bengaluru",
+        "name": "Nvidia Graphics - Hardware - Bengaluru",
         "23-24 Sem 2": {
-            "mincgpa": 8.77,
-            "maxcgpa": 9.09,
-            "numberofstudents": 3
+            "mincgpa": 8.16,
+            "maxcgpa": 8.65,
+            "numberofstudents": 7
         },
         "23-24 Sem 1": {
-            "mincgpa": 7.31,
-            "maxcgpa": 8.47,
-            "numberofstudents": 45
+            "mincgpa": 7.79,
+            "maxcgpa": 9.04,
+            "numberofstudents": 14
+        },
+        "22-23 Sem 2": {
+            "mincgpa": 8.191,
+            "maxcgpa": 9.26,
+            "numberofstudents": 3
         }
     },
     {
-        "name": "AltiusHub",
+        "name": "Nvidia Graphics -Software",
         "23-24 Sem 2": {
-            "mincgpa": 7.28,
-            "maxcgpa": 7.28,
+            "mincgpa": 8.53,
+            "maxcgpa": 9.02,
+            "numberofstudents": 12
+        }
+    },
+    {
+        "name": "Nvidia Graphics -Software - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 8.63,
+            "maxcgpa": 9.292,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "OfBusiness",
+        "23-24 Sem 2": {
+            "mincgpa": 7.69,
+            "maxcgpa": 7.69,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Altair - Hyderabad",
+        "name": "OnSolve Technologies Pvt. Ltd. - Bengaluru",
         "23-24 Sem 1": {
-            "mincgpa": 6.9,
-            "maxcgpa": 6.9,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Altair - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 6.2,
-            "maxcgpa": 7.15,
-            "numberofstudents": 4
-        }
-    },
-    {
-        "name": "AlmaConnect - Nontech - Gurugram",
-        "23-24 Sem 1": {
-            "mincgpa": 6.7,
-            "maxcgpa": 7.05,
+            "mincgpa": 7.38,
+            "maxcgpa": 8.15,
             "numberofstudents": 2
         }
     },
     {
-        "name": "AgileConnects Pvt. Ltd. - Nagpur",
+        "name": "Ontap Direct Pvt. Ltd. - Bengaluru",
         "23-24 Sem 1": {
-            "mincgpa": 6.56,
-            "maxcgpa": 6.56,
+            "mincgpa": 6.77,
+            "maxcgpa": 6.77,
             "numberofstudents": 1
         }
     },
     {
-        "name": "AgNext Technologies - Mohali",
-        "23-24 Sem 1": {
-            "mincgpa": 6.18,
-            "maxcgpa": 6.18,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Adobe Systems",
+        "name": "PhonePe Private Limited",
         "23-24 Sem 2": {
-            "mincgpa": 8.31,
+            "mincgpa": 8.7,
+            "maxcgpa": 8.7,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Piramal Group - BIU",
+        "23-24 Sem 2": {
+            "mincgpa": 8.006,
+            "maxcgpa": 8.11,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Piramal Group - CPD & Critical Care",
+        "23-24 Sem 2": {
+            "mincgpa": 8.05,
+            "maxcgpa": 8.15,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "Piramal Group - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 7.34,
+            "maxcgpa": 7.7,
+            "numberofstudents": 16
+        },
+        "22-23 Sem 2": {
+            "mincgpa": 8.3,
+            "maxcgpa": 8.5,
+            "numberofstudents": 7
+        }
+    },
+    {
+        "name": "Piramal Group - Tech",
+        "23-24 Sem 2": {
+            "mincgpa": 8.15,
+            "maxcgpa": 8.405,
+            "numberofstudents": 7
+        }
+    },
+    {
+        "name": "Playment Inc - Customer Success -Autonomous Vehicles - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 7.79,
+            "maxcgpa": 7.79,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Playment Inc - Machine Learning Engineers - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 8.27,
+            "maxcgpa": 8.27,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Playment Inc - Software Engineering for AI Tools - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 7.1,
+            "maxcgpa": 8.3,
+            "numberofstudents": 3
+        },
+        "22-23 Sem 2": {
+            "mincgpa": 8.94,
+            "maxcgpa": 8.94,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Pocket FM Private Limited",
+        "23-24 Sem 2": {
+            "mincgpa": 7.7,
+            "maxcgpa": 7.73,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "Porter - Product Management - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 9.12,
+            "maxcgpa": 9.12,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Porter - Tech",
+        "23-24 Sem 2": {
+            "mincgpa": 8.23,
             "maxcgpa": 8.57,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Aditya Birla Science \\u0026 Technology Company Ltd. - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 7.74,
-            "maxcgpa": 7.8,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Addverb Technologies Pvt Ltd - Noida",
-        "23-24 Sem 1": {
-            "mincgpa": 6.7,
-            "maxcgpa": 6.7,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Acceldata Technology Pvt. Ltd. - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 7.06,
-            "maxcgpa": 7.26,
             "numberofstudents": 4
         }
     },
     {
-        "name": "ARM Embedded Technologies Private Limited - Bengaluru",
+        "name": "PragmaticPlay India Pvt. Ltd.",
         "23-24 Sem 2": {
-            "mincgpa": 7.25,
-            "maxcgpa": 8.4,
+            "mincgpa": 7.71,
+            "maxcgpa": 7.85,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "PragmaticPlay India Pvt. Ltd. - Hyderabad",
+        "22-23 Sem 2": {
+            "mincgpa": 7.11,
+            "maxcgpa": 7.97,
+            "numberofstudents": 5
+        }
+    },
+    {
+        "name": "PricewaterhouseCoopers (PWC) - Mumbai",
+        "22-23 Sem 2": {
+            "mincgpa": 7.366,
+            "maxcgpa": 7.6,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Probe Information Services Pvt. Ltd.",
+        "23-24 Sem 2": {
+            "mincgpa": 7.33,
+            "maxcgpa": 7.33,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Project44 Software Services Pvt. Ltd. - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 8.42,
+            "maxcgpa": 9.49,
+            "numberofstudents": 5
+        }
+    },
+    {
+        "name": "ProteanTecs - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 6.93,
+            "maxcgpa": 6.98,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "PwC DIAC US Advisory",
+        "23-24 Sem 2": {
+            "mincgpa": 8.32,
+            "maxcgpa": 8.41,
             "numberofstudents": 3
+        }
+    },
+    {
+        "name": "PYOR Edge Inc - Bengaluru",
+        "23-24 Sem 2": {
+            "mincgpa": 7.96,
+            "maxcgpa": 8.12,
+            "numberofstudents": 2
         },
         "23-24 Sem 1": {
-            "mincgpa": 7.23,
-            "maxcgpa": 7.23,
+            "mincgpa": 7.61,
+            "maxcgpa": 7.88,
+            "numberofstudents": 3
+        },
+        "22-23 Sem 2": {
+            "mincgpa": 8.37,
+            "maxcgpa": 8.37,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "QDIT Labs Private Limited",
+        "23-24 Sem 2": {
+            "mincgpa": 7.41,
+            "maxcgpa": 7.41,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Qualcomm India Pvt Ltd - Bengaluru",
+        "23-24 Sem 2": {
+            "mincgpa": 7.68,
+            "maxcgpa": 9.83,
+            "numberofstudents": 9
+        },
+        "22-23 Sem 2": {
+            "mincgpa": 9.6,
+            "maxcgpa": 9.6,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Qualcomm India Pvt Ltd. - Hyderabad",
+        "22-23 Sem 2": {
+            "mincgpa": 8.8,
+            "maxcgpa": 8.9,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Quality Coucil of India (QCI) (IT - Non CS) - Delhi",
+        "23-24 Sem 1": {
+            "mincgpa": 6.69,
+            "maxcgpa": 6.69,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "QualityKiosk Technologies India Pvt Ltd",
+        "23-24 Sem 2": {
+            "mincgpa": 6.74,
+            "maxcgpa": 8.3,
+            "numberofstudents": 5
+        }
+    },
+    {
+        "name": "Quizizz Inc. - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 6.96,
+            "maxcgpa": 7.24,
+            "numberofstudents": 4
+        }
+    },
+    {
+        "name": "Qure.ai - Mumbai",
+        "22-23 Sem 2": {
+            "mincgpa": 8.49,
+            "maxcgpa": 8.49,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Qure.ai Technologies Pvt. Ltd. - Client Success \\u0026 Operations - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 7.0,
+            "maxcgpa": 7.08,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Qure.ai Technologies Pvt. Ltd. - Product Management",
+        "23-24 Sem 2": {
+            "mincgpa": 7.6,
+            "maxcgpa": 9.26,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Qure.ai Technologies Pvt. Ltd. - Product Management - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 7.9,
+            "maxcgpa": 8.01,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Reflections Info Systems Pvt. Ltd.",
+        "23-24 Sem 2": {
+            "mincgpa": 6.98,
+            "maxcgpa": 6.98,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "RetainIQ - IT - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 7.71,
+            "maxcgpa": 7.71,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "RIGI - IT",
+        "23-24 Sem 2": {
+            "mincgpa": 7.75,
+            "maxcgpa": 7.98,
+            "numberofstudents": 4
+        }
+    },
+    {
+        "name": "Rivigo Tech - Gurugram",
+        "23-24 Sem 1": {
+            "mincgpa": 7.28,
+            "maxcgpa": 7.3,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Rubrik",
+        "23-24 Sem 2": {
+            "mincgpa": 8.63,
+            "maxcgpa": 9.79,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Rupifi - Analytics (Data/Business Analytics) - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 8.48,
+            "maxcgpa": 8.48,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Rupifi - Brands - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 8.24,
+            "maxcgpa": 8.24,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Rupifi - Growth - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 8.18,
+            "maxcgpa": 8.18,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Rusk Media - Engineering - New Delhi",
+        "23-24 Sem 1": {
+            "mincgpa": 7.18,
+            "maxcgpa": 7.18,
             "numberofstudents": 1
         },
+        "22-23 Sem 2": {
+            "mincgpa": 7.86,
+            "maxcgpa": 7.86,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "SAFERTEK IT Solutions Pvt. Ltd. - Hyderabad",
+        "22-23 Sem 2": {
+            "mincgpa": 8.32,
+            "maxcgpa": 8.32,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Sainapse",
+        "23-24 Sem 2": {
+            "mincgpa": 8.523,
+            "maxcgpa": 8.523,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "SalarySe (Critical Path Technologies) - Product",
+        "23-24 Sem 2": {
+            "mincgpa": 8.22,
+            "maxcgpa": 8.22,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "SalarySe (Critical Path Technologies) - Tech",
+        "23-24 Sem 2": {
+            "mincgpa": 8.05,
+            "maxcgpa": 8.05,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Samsung R & D Institute -",
+        "23-24 Sem 2": {
+            "mincgpa": 8.05,
+            "maxcgpa": 8.17,
+            "numberofstudents": 4
+        }
+    },
+    {
+        "name": "Samsung R D Institute - - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 7.58,
+            "maxcgpa": 7.58,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Samsung Semiconductor India RD Center-Hardware - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 7.58,
+            "maxcgpa": 8.95,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "Samsung Semiconductor India Research -Software - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 6.89,
+            "maxcgpa": 8.66,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Saras Analytics - Nontech - Hyderabad",
+        "23-24 Sem 1": {
+            "mincgpa": 7.16,
+            "maxcgpa": 7.16,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Schlumberger - Pune",
+        "23-24 Sem 2": {
+            "mincgpa": 8.43,
+            "maxcgpa": 8.78,
+            "numberofstudents": 4
+        },
+        "23-24 Sem 1": {
+            "mincgpa": 7.84,
+            "maxcgpa": 7.84,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Schr\u00f6dinger India Pvt. Ltd.",
+        "23-24 Sem 2": {
+            "mincgpa": 9.4,
+            "maxcgpa": 9.4,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Scienaptic Systems Pvt. Ltd. - Data Science - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 7.85,
+            "maxcgpa": 7.85,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Scienaptic Systems Pvt. Ltd. - Software Development - Bengaluru",
         "22-23 Sem 2": {
             "mincgpa": 7.79,
             "maxcgpa": 7.79,
@@ -3954,80 +3191,843 @@
         }
     },
     {
-        "name": "ANS Commerce - Tech - Gurugram",
+        "name": "SENSEI TECHNOLOGIES PVT LTD - Bengaluru",
         "23-24 Sem 1": {
-            "mincgpa": 7.47,
-            "maxcgpa": 7.47,
+            "mincgpa": 6.7,
+            "maxcgpa": 6.7,
             "numberofstudents": 1
         }
     },
     {
-        "name": "ANS Commerce - Non tech - Gurugram",
+        "name": "SG Analytics - Pune",
         "23-24 Sem 1": {
             "mincgpa": 5.9,
-            "maxcgpa": 6.96,
-            "numberofstudents": 5
-        }
-    },
-    {
-        "name": "AMD India Pvt Ltd - Bengaluru",
-        "22-23 Sem 2": {
-            "mincgpa": 6.18,
-            "maxcgpa": 8.5,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "AMD India Pvt Ltd",
-        "23-24 Sem 1": {
-            "mincgpa": 7.03,
-            "maxcgpa": 7.4,
-            "numberofstudents": 9
-        },
-        "23-24 Sem 2": {
-            "mincgpa": 7.223,
-            "maxcgpa": 7.84,
-            "numberofstudents": 6
-        }
-    },
-    {
-        "name": "ALW Lighting India Pvt. Ltd. - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 8.1,
-            "maxcgpa": 8.1,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "AFour Technologies Pvt. Ltd. - Pune",
-        "23-24 Sem 1": {
-            "mincgpa": 6.31,
-            "maxcgpa": 6.31,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "A.T. Kearney Consulting (India) Private Limited - Gurugram",
-        "22-23 Sem 2": {
-            "mincgpa": 8.1,
-            "maxcgpa": 8.91,
-            "numberofstudents": 5
-        }
-    },
-    {
-        "name": "A.T. Kearney Consulting (India) Private Limited",
-        "23-24 Sem 2": {
-            "mincgpa": 8.2,
-            "maxcgpa": 8.907,
+            "maxcgpa": 6.06,
             "numberofstudents": 2
         }
     },
     {
-        "name": "1Clicktech Global Services Pvt. Ltd.",
+        "name": "ShareChat - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 9.45,
+            "maxcgpa": 9.45,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Shell India Markets Pvt. Ltd.",
         "23-24 Sem 2": {
+            "mincgpa": 8.07,
+            "maxcgpa": 8.07,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Shopkirana E Trading Pvt Ltd - Indore",
+        "22-23 Sem 2": {
+            "mincgpa": 6.77,
+            "maxcgpa": 6.77,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Siemens Ltd",
+        "23-24 Sem 2": {
+            "mincgpa": 6.85,
+            "maxcgpa": 8.27,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Siemens Ltd - Aurangabad",
+        "23-24 Sem 1": {
+            "mincgpa": 6.4,
+            "maxcgpa": 7.84,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "Siemens Technology - AI/ML - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 7.56,
+            "maxcgpa": 7.56,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Siemens technology and Services Pvt ltd - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 7.12,
+            "maxcgpa": 7.37,
+            "numberofstudents": 4
+        }
+    },
+    {
+        "name": "Sigma Infosolutions Limited - Ahmedabad",
+        "22-23 Sem 2": {
+            "mincgpa": 7.82,
+            "maxcgpa": 7.82,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Sigma Infosolutions Limited - Jodhpur",
+        "22-23 Sem 2": {
+            "mincgpa": 7.33,
+            "maxcgpa": 7.33,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Signalchip Innovations Pvt. Ltd.",
+        "23-24 Sem 2": {
+            "mincgpa": 7.81,
+            "maxcgpa": 7.81,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Signode India Limited",
+        "23-24 Sem 2": {
+            "mincgpa": 6.575,
+            "maxcgpa": 6.575,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Silverlabs India Private Limited",
+        "23-24 Sem 2": {
+            "mincgpa": 7.1,
+            "maxcgpa": 7.1,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Simutopia (India) Private Limited",
+        "23-24 Sem 2": {
+            "mincgpa": 7.01,
+            "maxcgpa": 7.01,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Singlestore India Pvt Ltd - Hyderabad",
+        "23-24 Sem 1": {
+            "mincgpa": 9.18,
+            "maxcgpa": 9.24,
+            "numberofstudents": 3
+        },
+        "22-23 Sem 2": {
+            "mincgpa": 9.22,
+            "maxcgpa": 9.28,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "SMARBL LTD",
+        "23-24 Sem 2": {
+            "mincgpa": 8.55,
+            "maxcgpa": 8.55,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Spiralyze LLC",
+        "23-24 Sem 2": {
+            "mincgpa": 7.91,
+            "maxcgpa": 8.15,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "Spiralyze LLC - Atlanta, USA",
+        "22-23 Sem 2": {
+            "mincgpa": 8.53,
+            "maxcgpa": 8.53,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Sprinklr",
+        "23-24 Sem 2": {
+            "mincgpa": 7.62,
+            "maxcgpa": 9.78,
+            "numberofstudents": 7
+        }
+    },
+    {
+        "name": "Spyne (Eventila Technologies) - Product - Gurugram",
+        "23-24 Sem 1": {
+            "mincgpa": 7.09,
+            "maxcgpa": 7.09,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Spyne (Eventila Technologies) - Tech - Gurugram",
+        "23-24 Sem 1": {
+            "mincgpa": 7.63,
+            "maxcgpa": 7.63,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Standard Chartered - Business Analyst",
+        "23-24 Sem 2": {
+            "mincgpa": 7.97,
+            "maxcgpa": 7.97,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Standard Chartered - Business Analyst - Chennai",
+        "23-24 Sem 1": {
+            "mincgpa": 7.83,
+            "maxcgpa": 7.83,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Standard Chartered - Software Engineering - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 6.75,
+            "maxcgpa": 7.08,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "Standard Chartered - Software Engineering - Chennai",
+        "23-24 Sem 1": {
+            "mincgpa": 6.73,
+            "maxcgpa": 6.73,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Statcon Electronics India Ltd. - Nontech - Noida",
+        "23-24 Sem 1": {
+            "mincgpa": 6.97,
+            "maxcgpa": 6.97,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Stocklite Gemms Private Limited - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 7.311,
+            "maxcgpa": 7.311,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Sundial Systems Pvt. Ltd.",
+        "23-24 Sem 2": {
+            "mincgpa": 7.5,
+            "maxcgpa": 7.5,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Sundial Systems Pvt. Ltd. - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 8.49,
+            "maxcgpa": 8.99,
+            "numberofstudents": 3
+        },
+        "22-23 Sem 2": {
+            "mincgpa": 9.1,
+            "maxcgpa": 9.1,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "SunTec Business Solutions Pvt. Ltd.",
+        "23-24 Sem 2": {
+            "mincgpa": 6.67,
+            "maxcgpa": 6.72,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Synchrony - Hyderabad",
+        "23-24 Sem 2": {
+            "mincgpa": 6.87,
+            "maxcgpa": 7.71,
+            "numberofstudents": 3
+        },
+        "23-24 Sem 1": {
+            "mincgpa": 6.71,
+            "maxcgpa": 6.99,
+            "numberofstudents": 3
+        },
+        "22-23 Sem 2": {
+            "mincgpa": 7.2,
+            "maxcgpa": 7.62,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Synechron Technologies Pvt. Ltd. - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 7.42,
+            "maxcgpa": 7.42,
+            "numberofstudents": 1
+        },
+        "22-23 Sem 2": {
             "mincgpa": 8.62,
             "maxcgpa": 8.62,
             "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Synechron Technologies Pvt. Ltd. - Pune",
+        "23-24 Sem 1": {
+            "mincgpa": 7.37,
+            "maxcgpa": 7.37,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "TATA AIG - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 7.0,
+            "maxcgpa": 7.72,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "TeamLease Services Limited - Hyderabad",
+        "23-24 Sem 1": {
+            "mincgpa": 6.67,
+            "maxcgpa": 6.67,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Technicolor India - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 7.92,
+            "maxcgpa": 7.92,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Telus International AI - Customer Success",
+        "23-24 Sem 2": {
+            "mincgpa": 7.98,
+            "maxcgpa": 7.98,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Telus International AI - Machine Learning",
+        "23-24 Sem 2": {
+            "mincgpa": 8.57,
+            "maxcgpa": 8.57,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Telus International AI - Product Management",
+        "23-24 Sem 2": {
+            "mincgpa": 8.0,
+            "maxcgpa": 8.57,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Telus International AI - Software Engineering",
+        "23-24 Sem 2": {
+            "mincgpa": 8.8,
+            "maxcgpa": 8.8,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Tenstorrent",
+        "23-24 Sem 2": {
+            "mincgpa": 9.26,
+            "maxcgpa": 9.26,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Tenstorrent India Private Limited - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 8.5,
+            "maxcgpa": 8.5,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Texas Instruments (I) Pvt. Ltd - Systems - Bengaluru",
+        "23-24 Sem 2": {
+            "mincgpa": 8.0,
+            "maxcgpa": 8.58,
+            "numberofstudents": 3
+        },
+        "23-24 Sem 1": {
+            "mincgpa": 7.59,
+            "maxcgpa": 7.82,
+            "numberofstudents": 5
+        }
+    },
+    {
+        "name": "Texas Instruments (I) Pvt. Ltd. -Analog - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 7.87,
+            "maxcgpa": 7.98,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Texas Instruments (I) Pvt. Ltd. -Digital - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 8.39,
+            "maxcgpa": 9.37,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Texas Instruments - AI / ML - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 8.74,
+            "maxcgpa": 8.74,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Texas Instruments-Embedded Software - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 8.18,
+            "maxcgpa": 8.6,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "Thorogood - Bengaluru",
+        "23-24 Sem 2": {
+            "mincgpa": 7.3,
+            "maxcgpa": 7.3,
+            "numberofstudents": 1
+        },
+        "23-24 Sem 1": {
+            "mincgpa": 7.36,
+            "maxcgpa": 7.53,
+            "numberofstudents": 2
+        },
+        "22-23 Sem 2": {
+            "mincgpa": 6.53,
+            "maxcgpa": 6.53,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Time Tooth - Noida",
+        "23-24 Sem 1": {
+            "mincgpa": 8.55,
+            "maxcgpa": 8.55,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Times Internet - ETMoney - Gurugram",
+        "22-23 Sem 2": {
+            "mincgpa": 8.3,
+            "maxcgpa": 8.42,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "UBER - Data Analytics",
+        "23-24 Sem 2": {
+            "mincgpa": 7.59,
+            "maxcgpa": 7.59,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "UBER - Data Analytics - Hyderabad",
+        "22-23 Sem 2": {
+            "mincgpa": 7.69,
+            "maxcgpa": 8.364,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "UBER - Software Engineer - Hyderabad",
+        "23-24 Sem 2": {
+            "mincgpa": 8.89,
+            "maxcgpa": 8.89,
+            "numberofstudents": 1
+        },
+        "23-24 Sem 1": {
+            "mincgpa": 8.39,
+            "maxcgpa": 9.24,
+            "numberofstudents": 4
+        },
+        "22-23 Sem 2": {
+            "mincgpa": 8.26,
+            "maxcgpa": 9.5,
+            "numberofstudents": 10
+        }
+    },
+    {
+        "name": "UBS - Group Finance - Mumbai",
+        "22-23 Sem 2": {
+            "mincgpa": 6.68,
+            "maxcgpa": 6.96,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "UBS - Group RISK - Mumbai",
+        "22-23 Sem 2": {
+            "mincgpa": 6.3,
+            "maxcgpa": 6.3,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "UBS - Risk Methodology - Mumbai",
+        "23-24 Sem 2": {
+            "mincgpa": 7.37,
+            "maxcgpa": 7.95,
+            "numberofstudents": 4
+        },
+        "23-24 Sem 1": {
+            "mincgpa": 7.5,
+            "maxcgpa": 7.97,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "UBS - VALS - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 7.83,
+            "maxcgpa": 8.65,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "UBS Business Solutions (India) Private Limited - RAS FINANCE - Pune",
+        "23-24 Sem 1": {
+            "mincgpa": 6.25,
+            "maxcgpa": 7.63,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Udaan - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 7.18,
+            "maxcgpa": 7.71,
+            "numberofstudents": 3
+        },
+        "22-23 Sem 2": {
+            "mincgpa": 7.61,
+            "maxcgpa": 7.77,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "Unity Growth Fund LLC",
+        "23-24 Sem 2": {
+            "mincgpa": 7.17,
+            "maxcgpa": 7.17,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "UST Global- Trivandrum - Thiruvananthapuram",
+        "23-24 Sem 1": {
+            "mincgpa": 6.39,
+            "maxcgpa": 6.95,
+            "numberofstudents": 2
+        },
+        "22-23 Sem 2": {
+            "mincgpa": 6.32,
+            "maxcgpa": 6.32,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Vegapay",
+        "23-24 Sem 2": {
+            "mincgpa": 7.81,
+            "maxcgpa": 7.91,
+            "numberofstudents": 4
+        }
+    },
+    {
+        "name": "Vehant Technologies Pvt. Ltd.",
+        "23-24 Sem 2": {
+            "mincgpa": 6.98,
+            "maxcgpa": 6.98,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Vehant Technologies Pvt. Ltd. - Noida",
+        "23-24 Sem 1": {
+            "mincgpa": 6.39,
+            "maxcgpa": 6.39,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Velankani Software Pvt Ltd",
+        "23-24 Sem 2": {
+            "mincgpa": 7.524,
+            "maxcgpa": 7.524,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "VenueMonk Technologies Pvt. Ltd.",
+        "23-24 Sem 2": {
+            "mincgpa": 7.28,
+            "maxcgpa": 7.28,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Viacom - DV Ad-Operations",
+        "23-24 Sem 2": {
+            "mincgpa": 7.02,
+            "maxcgpa": 7.03,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Viacom - DV Ad-Sales",
+        "23-24 Sem 2": {
+            "mincgpa": 7.19,
+            "maxcgpa": 7.75,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Viacom - Performance Marketing",
+        "23-24 Sem 2": {
+            "mincgpa": 6.98,
+            "maxcgpa": 6.98,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Viacom DV AVOD Marketing",
+        "23-24 Sem 2": {
+            "mincgpa": 7.67,
+            "maxcgpa": 7.67,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Viacom DV Brand Solutions - Mumbai",
+        "22-23 Sem 2": {
+            "mincgpa": 7.53,
+            "maxcgpa": 7.53,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Viacom DV Business Planning - Mumbai",
+        "22-23 Sem 2": {
+            "mincgpa": 7.02,
+            "maxcgpa": 7.02,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Viacom DV Data Science \\u0026 Analytics - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 6.6,
+            "maxcgpa": 7.23,
+            "numberofstudents": 4
+        }
+    },
+    {
+        "name": "Viacom DV Product - Mumbai",
+        "22-23 Sem 2": {
+            "mincgpa": 6.93,
+            "maxcgpa": 6.93,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Vidal Healthcare Services Pvt. Ltd.",
+        "23-24 Sem 2": {
+            "mincgpa": 7.46,
+            "maxcgpa": 7.66,
+            "numberofstudents": 4
+        }
+    },
+    {
+        "name": "VISA",
+        "23-24 Sem 2": {
+            "mincgpa": 7.08,
+            "maxcgpa": 8.15,
+            "numberofstudents": 4
+        }
+    },
+    {
+        "name": "Wadhwani AI",
+        "23-24 Sem 2": {
+            "mincgpa": 7.46,
+            "maxcgpa": 8.52,
+            "numberofstudents": 4
+        }
+    },
+    {
+        "name": "Walmart Global Technology Services",
+        "23-24 Sem 2": {
+            "mincgpa": 7.8,
+            "maxcgpa": 8.58,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Wavelabs Technologies - Hyderabad",
+        "23-24 Sem 1": {
+            "mincgpa": 6.16,
+            "maxcgpa": 6.97,
+            "numberofstudents": 7
+        }
+    },
+    {
+        "name": "Wayfair Global Technology Pvt. Ltd.",
+        "23-24 Sem 2": {
+            "mincgpa": 8.68,
+            "maxcgpa": 8.944,
+            "numberofstudents": 10
+        }
+    },
+    {
+        "name": "Western Digital (SANDISK)",
+        "23-24 Sem 2": {
+            "mincgpa": 7.12,
+            "maxcgpa": 8.92,
+            "numberofstudents": 4
+        }
+    },
+    {
+        "name": "Western Digital (SANDISK) - Bengaluru",
+        "22-23 Sem 2": {
+            "mincgpa": 9.45,
+            "maxcgpa": 9.45,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "William O Neil - Algorithm - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 7.27,
+            "maxcgpa": 7.62,
+            "numberofstudents": 4
+        }
+    },
+    {
+        "name": "WILP - ACS & Cyber Security",
+        "23-24 Sem 2": {
+            "mincgpa": 6.304,
+            "maxcgpa": 8.8,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "WILP - ADAS , Artificial & Computation",
+        "23-24 Sem 2": {
+            "mincgpa": 6.02,
+            "maxcgpa": 6.02,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "WILP - ADAS , Artificial \\u0026 Computation - Hyderabad",
+        "23-24 Sem 1": {
+            "mincgpa": 6.5,
+            "maxcgpa": 6.5,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "WILP - Additive manufacturing - Hyderabad",
+        "23-24 Sem 1": {
+            "mincgpa": 6.49,
+            "maxcgpa": 6.49,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Xoxoday - Tech",
+        "23-24 Sem 2": {
+            "mincgpa": 7.492,
+            "maxcgpa": 7.492,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Yugabyte - Bengaluru",
+        "23-24 Sem 2": {
+            "mincgpa": 8.4,
+            "maxcgpa": 9.04,
+            "numberofstudents": 2
+        },
+        "23-24 Sem 1": {
+            "mincgpa": 8.59,
+            "maxcgpa": 8.68,
+            "numberofstudents": 4
+        },
+        "22-23 Sem 2": {
+            "mincgpa": 8.89,
+            "maxcgpa": 8.89,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Zeo Auto",
+        "23-24 Sem 2": {
+            "mincgpa": 7.68,
+            "maxcgpa": 7.68,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Zeotap India Pvt. Ltd.",
+        "23-24 Sem 2": {
+            "mincgpa": 8.27,
+            "maxcgpa": 8.33,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Zeotap India Pvt. Ltd. - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 6.88,
+            "maxcgpa": 6.89,
+            "numberofstudents": 2
+        },
+        "22-23 Sem 2": {
+            "mincgpa": 6.99,
+            "maxcgpa": 6.99,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Zeta (Better World Technologies Pvt. Ltd.)",
+        "23-24 Sem 2": {
+            "mincgpa": 8.27,
+            "maxcgpa": 8.52,
+            "numberofstudents": 7
+        }
+    },
+    {
+        "name": "Zluri - Singapore",
+        "23-24 Sem 1": {
+            "mincgpa": 6.53,
+            "maxcgpa": 7.12,
+            "numberofstudents": 2
         }
     }
 ]

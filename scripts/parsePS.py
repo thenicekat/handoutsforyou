@@ -52,8 +52,8 @@ for index, row in df.iterrows():
 for company in companies:
     final_data.append(companies[company])
 
-# Sort them based on mincgpa from highest to lowest using 23-24 2 as the key
-final_data.sort(key=lambda x: x['name'], reverse=True)
+# Sort them based on name in lowercase
+final_data.sort(key=lambda x: x['name'].lower())
     
 with open('../public/ps/ps2_data.json', 'w') as f:
     json.dump(final_data, f, indent=4)
