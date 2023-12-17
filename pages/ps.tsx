@@ -24,8 +24,8 @@ export default function PS({ ps2_chronicles }: any) {
         <>
             <Head>
                 <title>Practice School.</title>
-                <meta name="description" content="A website containing all bits pilani hyderabad campus handouts" />
-                <meta name="keywords" content="BITS Pilani, Handouts, BPHC, Hyderabad Campus, BITS Hyderabad, BITS, Pilani, Handouts for you, handouts, for, you, bits, birla, institute, bits hyd, academics" />
+                <meta name="description" content="One stop place for your PS queries, handouts, and much more" />
+                <meta name="keywords" content="BITS Pilani, Handouts, BPHC, Hyderabad Campus, BITS Hyderabad, BITS, Pilani, Handouts for you, handouts, for, you, bits, birla, institute, bits hyd, academics, practice school, ps, queries, ps cutoffs, ps2, ps1" />
                 <meta name="robots" content="index, follow" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
