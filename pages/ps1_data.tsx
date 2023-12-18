@@ -57,6 +57,8 @@ export default function PS2({ ps2_data }: { ps2_data: PS_Station[] }) {
                             onChange={(e) => setSearch(e.target.value)}
                         />
 
+                        <p>NOTE: This data is crowdsourced and might not be accuracte.</p>
+
                         {/* <select className="select select-bordered w-full max-w-xs" onChange={(e) => setYearRef(e.target.value)}>
                             <option disabled selected>Which year to use as reference?</option>
                             {
