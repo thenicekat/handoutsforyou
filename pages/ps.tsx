@@ -49,13 +49,13 @@ export default function PS({ ps2_chronicles }: any) {
                 <div className="flex">
                     <Link className="m-3" href={"/ps1_data"}>
                         <button className="btn btn-outline w-full">
-                            PS1 Responses
+                            PS1 CGPA Cutoffs
                         </button>
                     </Link>
 
                     <Link className="m-3" href={"/ps2_data"}>
                         <button className="btn btn-outline w-full">
-                            PS2 Responses
+                            PS2 CGPA Cutoffs
                         </button>
                     </Link>
                 </div>
@@ -73,7 +73,7 @@ export default function PS({ ps2_chronicles }: any) {
                                         <h2 className="card-title">PS2 Chronicles {chron.split(" ")[0]} Semester {chron.split(" ")[1]}</h2>
                                         <div className="card-actions justify-end">
                                             <button className="btn btn-primary" onClick={
-                                                () => window.open("https://github.com/Divyateja04/handoutsforyou/raw/main/public/ps/chronicles/" + chron)
+                                                () => window.open("https://github.com/Divyateja04/handoutsforyou/raw/main/public/ps/ps2_chronicles/" + chron)
                                             }>View</button>
                                         </div>
                                     </div>
