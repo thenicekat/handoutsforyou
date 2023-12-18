@@ -68,6 +68,8 @@ export default function PS2({ ps2_data }: { ps2_data: PS_Station[] }) {
                             }
                         </select>
 
+                        <p>NOTE: This data is crowdsourced and might not be accuracte.</p>
+
                         <Link className="m-3" href={"/ps"}>
                             <button className="btn btn-outline w-full">
                                 Are you looking for chronicles?
