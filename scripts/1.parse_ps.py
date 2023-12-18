@@ -3,7 +3,7 @@ import pandas as pd
 import json
 
 # Read csv file
-df = pd.read_csv('PS2_master.csv')
+df = pd.read_csv('PS1_master.csv')
 
 # Create a dictionary of companies
 companies = {}
@@ -55,5 +55,5 @@ for company in companies:
 # Sort them based on name in lowercase
 final_data.sort(key=lambda x: x['name'].lower())
     
-with open('../public/ps/ps2_data.json', 'w') as f:
+with open('../public/ps/ps1_data.json', 'w') as f:
     json.dump(final_data, f, indent=4)
