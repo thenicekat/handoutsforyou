@@ -5,7 +5,7 @@
 import json
 
 FILTERED_FILE = 'soundex_filter.txt'
-JSON_FILE = 'ps1_data.json'
+JSON_FILE = '../public/ps/ps1_data.json'
 OUTPUT_FILE = 'final.json'
 
 # Getting the original file data for cg data
@@ -30,7 +30,7 @@ for group in filtered_data:
             # BUG FIX: 2021 Batch might not exist
             max_num = max(max_num, item["2021 Batch"]["maxcgpa"])
             min_num = min(min_num, item["2021 Batch"]["mincgpa"])
-    output_json.append({"station_name": main_name, "maxcgpa": max_num, "mincgpa": min_num})
+    output_json.append({"name": main_name, "2021 Batch": {"maxcgpa": max_num, "mincgpa": min_num}})
 
 with open(OUTPUT_FILE, 'w') as f:
     json.dump(output_json, f, indent=4)
