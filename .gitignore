@@ -43,5 +43,6 @@ next-env.d.ts
 **/public/workbox-*.js.map
 **/public/worker-*.js.map
 
-# CSV Files
+# Scripts spare Files
 **/scripts/*.csv
+**/scripts/*.txt

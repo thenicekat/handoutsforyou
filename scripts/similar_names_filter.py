@@ -8,7 +8,7 @@ import jellyfish
 import json
 
 # Defining the constants
-JSON_FILE = 'ps2_data.json'
+JSON_FILE = '../public/ps/ps2_data.json'
 OUTPUT_FILE = 'soundex_filter.txt'
 
 # Getting the PS station names, putting in set for avoiding repetition
