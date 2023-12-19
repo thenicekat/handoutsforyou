@@ -14,9 +14,14 @@ with open(JSON_FILE, 'r') as f:
 
 # Getting the grouped names data
 with open(FILTERED_FILE, 'r') as f:
-    filtered_data = [item.strip().split(',') for item in f.readlines()]
+    filtered_data = [item.strip().split('|') for item in f.readlines()]
 
 output_json = []
+original_number_students = 0
+changed_number_students = 0
+
+for x in json_data:
+    original_number_students += x["2021 Batch"]["numberofstudents"]
 
 for group in filtered_data:
     # Taking first element as station name in json
@@ -24,13 +29,20 @@ for group in filtered_data:
 
     max_num = -1
     min_num = 11
+    no_of_students = 0
 
     for item in json_data:
         if item['name'] in group:
             # BUG FIX: 2021 Batch might not exist
             max_num = max(max_num, item["2021 Batch"]["maxcgpa"])
             min_num = min(min_num, item["2021 Batch"]["mincgpa"])
-    output_json.append({"name": main_name, "2021 Batch": {"maxcgpa": max_num, "mincgpa": min_num}})
+            no_of_students += item["2021 Batch"]["numberofstudents"]
+    output_json.append({"name": main_name, "2021 Batch": {"maxcgpa": max_num, "mincgpa": min_num, "numberofstudents":  no_of_students}})
+    
+    changed_number_students += no_of_students
+    
+
+assert(original_number_students == changed_number_students)
 
 with open(OUTPUT_FILE, 'w') as f:
     json.dump(output_json, f, indent=4)
