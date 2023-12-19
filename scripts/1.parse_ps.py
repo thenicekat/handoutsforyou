@@ -4,7 +4,7 @@ import json
 
 # Read csv file
 df = pd.read_csv('PS1_master.csv')
-
+df['Company'] = df['Company'].apply(lambda x: x.strip())
 # Create a dictionary of companies
 companies = {}
 # Create a list of final data which will be dumped to json

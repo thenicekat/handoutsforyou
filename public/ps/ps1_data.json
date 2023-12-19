@@ -1,2521 +1,1545 @@
 [
     {
-        "name": "ABC Consultants",
+        "name": "North Eastern Space Applications Center",
         "2021 Batch": {
-            "mincgpa": 7.07,
-            "maxcgpa": 7.76,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "ABC Consultants ",
-        "2021 Batch": {
-            "mincgpa": 7.79,
-            "maxcgpa": 7.86,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Act Now (Non-Tech) ",
-        "2021 Batch": {
-            "mincgpa": 7.48,
-            "maxcgpa": 7.48,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Act Now Delhi(Non Tech)",
-        "2021 Batch": {
-            "mincgpa": 7.25,
-            "maxcgpa": 7.25,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Act Now India - Tech",
-        "2021 Batch": {
-            "mincgpa": 7.93,
-            "maxcgpa": 7.93,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "AERB CHEMICAL ",
-        "2021 Batch": {
-            "mincgpa": 7.33,
-            "maxcgpa": 7.33,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "AERB MECH",
-        "2021 Batch": {
-            "mincgpa": 8.0,
-            "maxcgpa": 8.0,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Agrix",
-        "2021 Batch": {
-            "mincgpa": 7.97,
-            "maxcgpa": 8.14,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Agromach Engineering Pvt. Ltd.",
-        "2021 Batch": {
-            "mincgpa": 7.24,
-            "maxcgpa": 7.24,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "AIoT Blocks",
-        "2021 Batch": {
-            "mincgpa": 8.14,
-            "maxcgpa": 8.14,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "AIOTBlocks Pvt Ltd ",
-        "2021 Batch": {
+            "maxcgpa": 9.25,
             "mincgpa": 8.3,
-            "maxcgpa": 8.3,
-            "numberofstudents": 1
+            "numberofstudents": 4
         }
     },
     {
-        "name": "Airdash Tech Pvt. Ltd.",
+        "name": "Northcorp Software Pvt. Ltd.",
         "2021 Batch": {
-            "mincgpa": 8.9,
-            "maxcgpa": 8.9,
-            "numberofstudents": 1
+            "maxcgpa": 8.583,
+            "mincgpa": 7.75,
+            "numberofstudents": 3
         }
     },
     {
-        "name": "Algouniversity",
+        "name": "Yashodha Hospitals Hyderabad (Online)",
         "2021 Batch": {
-            "mincgpa": 7.1,
-            "maxcgpa": 7.1,
-            "numberofstudents": 1
+            "maxcgpa": 8.14,
+            "mincgpa": 7.41,
+            "numberofstudents": 10
         }
     },
     {
-        "name": "Allos AI Limited - Web Development",
+        "name": "UST GLOBAL",
         "2021 Batch": {
-            "mincgpa": 8.48,
-            "maxcgpa": 8.48,
-            "numberofstudents": 1
+            "maxcgpa": 7.8,
+            "mincgpa": 7.04,
+            "numberofstudents": 6
         }
     },
     {
-        "name": "Allos AI Limited - Web Development ",
+        "name": "Harman",
         "2021 Batch": {
-            "mincgpa": 9.23,
-            "maxcgpa": 9.23,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Allos Ai- Market research",
-        "2021 Batch": {
-            "mincgpa": 8.46,
-            "maxcgpa": 8.46,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Alltronix ",
-        "2021 Batch": {
-            "mincgpa": 8.31,
-            "maxcgpa": 8.31,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Alltronix International Inc - IIOT",
-        "2021 Batch": {
-            "mincgpa": 7.8,
-            "maxcgpa": 7.9,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Almaconnect ",
-        "2021 Batch": {
-            "mincgpa": 7.7,
-            "maxcgpa": 7.7,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Amazon",
-        "2021 Batch": {
-            "mincgpa": 9.83,
-            "maxcgpa": 9.83,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Amazon Applied Science",
-        "2021 Batch": {
-            "mincgpa": 9.92,
-            "maxcgpa": 9.92,
-            "numberofstudents": 1
+            "maxcgpa": 9.7,
+            "mincgpa": 8.74,
+            "numberofstudents": 5
         }
     },
     {
         "name": "Amazon Software",
         "2021 Batch": {
+            "maxcgpa": 9.92,
             "mincgpa": 9.73,
-            "maxcgpa": 9.73,
-            "numberofstudents": 1
+            "numberofstudents": 5
         }
     },
     {
-        "name": "Amazon-Applied Science",
+        "name": "Tata motors, pune",
         "2021 Batch": {
-            "mincgpa": 9.83,
-            "maxcgpa": 9.9,
-            "numberofstudents": 2
+            "maxcgpa": 7.76,
+            "mincgpa": 6.9,
+            "numberofstudents": 3
         }
     },
     {
-        "name": "Americana resturant ",
+        "name": "Titan-DANLAW TECHNOLOGIES INDIA LTD,GOA",
         "2021 Batch": {
-            "mincgpa": 6.0,
-            "maxcgpa": 6.0,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "APC Technologies",
-        "2021 Batch": {
-            "mincgpa": 7.82,
-            "maxcgpa": 7.82,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Apisero",
-        "2021 Batch": {
-            "mincgpa": 8.33,
-            "maxcgpa": 8.53,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Apisero ",
-        "2021 Batch": {
-            "mincgpa": 8.51,
-            "maxcgpa": 8.51,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Apisero - NTT data",
-        "2021 Batch": {
-            "mincgpa": 8.702,
-            "maxcgpa": 8.702,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Apisero-an NTT Data company",
-        "2021 Batch": {
-            "mincgpa": 8.72,
-            "maxcgpa": 8.72,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Apollo Tyres Ltd.",
-        "2021 Batch": {
-            "mincgpa": 6.56,
-            "maxcgpa": 6.56,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Arbunize digital ",
-        "2021 Batch": {
-            "mincgpa": 6.7,
-            "maxcgpa": 6.7,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Arbunize digital media ",
-        "2021 Batch": {
-            "mincgpa": 7.1,
-            "maxcgpa": 7.1,
+            "maxcgpa": 6.98,
+            "mincgpa": 6.98,
             "numberofstudents": 1
         }
     },
     {
         "name": "Arbunize digital media delhi",
         "2021 Batch": {
-            "mincgpa": 6.38,
-            "maxcgpa": 6.38,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Ascent Cyber Solutions",
-        "2021 Batch": {
-            "mincgpa": 7.84,
-            "maxcgpa": 8.77,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Ascent cyber solutions",
-        "2021 Batch": {
-            "mincgpa": 8.65,
-            "maxcgpa": 8.65,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Avidia Labs",
-        "2021 Batch": {
-            "mincgpa": 8.0,
-            "maxcgpa": 8.426,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "Avidia labs",
-        "2021 Batch": {
-            "mincgpa": 8.033,
-            "maxcgpa": 8.51,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Avricus",
-        "2021 Batch": {
-            "mincgpa": 7.18,
-            "maxcgpa": 7.28,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Avricus pvt ltd ",
-        "2021 Batch": {
-            "mincgpa": 7.0,
-            "maxcgpa": 7.0,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Bhaskaracharya Institute for Space Applications and Geo-informatics",
-        "2021 Batch": {
-            "mincgpa": 6.491,
-            "maxcgpa": 6.491,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Birla Fibre Optics",
-        "2021 Batch": {
-            "mincgpa": 6.12,
-            "maxcgpa": 6.12,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Birla polyfibers, harihara",
-        "2021 Batch": {
-            "mincgpa": 5.62,
-            "maxcgpa": 5.62,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Blu Feather Innovations",
-        "2021 Batch": {
-            "mincgpa": 7.8,
-            "maxcgpa": 7.8,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Blu feather Innovations ",
-        "2021 Batch": {
-            "mincgpa": 7.7,
-            "maxcgpa": 7.7,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "BluFeather",
-        "2021 Batch": {
-            "mincgpa": 7.7,
-            "maxcgpa": 7.7,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "CDAC",
-        "2021 Batch": {
-            "mincgpa": 8.9,
-            "maxcgpa": 9.23,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "CDAC-PUNE",
-        "2021 Batch": {
-            "mincgpa": 9.05,
-            "maxcgpa": 9.05,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "CEERI",
-        "2021 Batch": {
-            "mincgpa": 9.45,
-            "maxcgpa": 9.45,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "CEERI ",
-        "2021 Batch": {
-            "mincgpa": 7.02,
-            "maxcgpa": 7.2,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "CEERI Pilani",
-        "2021 Batch": {
-            "mincgpa": 7.4,
-            "maxcgpa": 8.81,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "CEERI Pilani ",
-        "2021 Batch": {
-            "mincgpa": 7.56,
-            "maxcgpa": 7.56,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Ceeri-pilani",
-        "2021 Batch": {
-            "mincgpa": 6.85,
-            "maxcgpa": 6.85,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Centre for Railway Information Systems - Data Analytics",
-        "2021 Batch": {
-            "mincgpa": 8.8,
-            "maxcgpa": 8.8,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Chaob Carscan.ai",
-        "2021 Batch": {
-            "mincgpa": 8.19,
-            "maxcgpa": 8.19,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Chaob Technologies",
-        "2021 Batch": {
-            "mincgpa": 8.22,
-            "maxcgpa": 8.22,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Cleareye.ai India Pvt.Ltd",
-        "2021 Batch": {
-            "mincgpa": 7.09,
-            "maxcgpa": 7.09,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Coditation Systems",
-        "2021 Batch": {
-            "mincgpa": 8.74,
-            "maxcgpa": 8.74,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Coditation Systems ",
-        "2021 Batch": {
-            "mincgpa": 8.26,
-            "maxcgpa": 8.26,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Cognix",
-        "2021 Batch": {
-            "mincgpa": 7.14,
-            "maxcgpa": 7.14,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Cognix Pilani",
-        "2021 Batch": {
-            "mincgpa": 7.03,
-            "maxcgpa": 7.03,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Commvault Systems",
-        "2021 Batch": {
-            "mincgpa": 7.4,
-            "maxcgpa": 7.72,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "COMMVAULT SYSTEMS",
-        "2021 Batch": {
-            "mincgpa": 7.72,
-            "maxcgpa": 7.72,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Consulting and beyond ",
-        "2021 Batch": {
-            "mincgpa": 7.12,
-            "maxcgpa": 7.12,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Contenterra Software",
-        "2021 Batch": {
-            "mincgpa": 8.58,
-            "maxcgpa": 8.58,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Coral Clinic Systems",
-        "2021 Batch": {
-            "mincgpa": 6.0,
-            "maxcgpa": 6.0,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Couture AI",
-        "2021 Batch": {
-            "mincgpa": 8.78,
-            "maxcgpa": 8.78,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "CRIS",
-        "2021 Batch": {
-            "mincgpa": 8.7,
-            "maxcgpa": 8.7,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Crossbar talent",
-        "2021 Batch": {
-            "mincgpa": 7.09,
-            "maxcgpa": 7.09,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Crossbar Talent",
-        "2021 Batch": {
-            "mincgpa": 7.1,
-            "maxcgpa": 7.3,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "crri",
-        "2021 Batch": {
-            "mincgpa": 6.5,
-            "maxcgpa": 6.5,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "CRRI",
-        "2021 Batch": {
-            "mincgpa": 7.76,
-            "maxcgpa": 7.76,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "CSIR CDRI",
-        "2021 Batch": {
-            "mincgpa": 7.26,
-            "maxcgpa": 7.26,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "CSIR Iindian Institute of Petroleum ",
-        "2021 Batch": {
-            "mincgpa": 6.89,
-            "maxcgpa": 6.89,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "CSIR- Indian Institute of Petroleum (CSIR-IIP)",
-        "2021 Batch": {
-            "mincgpa": 6.9,
-            "maxcgpa": 6.9,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "CSIR-CDRI",
-        "2021 Batch": {
-            "mincgpa": 6.79,
-            "maxcgpa": 6.79,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "CSIR-IMTech Chandigarh",
-        "2021 Batch": {
-            "mincgpa": 6.36,
-            "maxcgpa": 6.36,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "CSIR-NAL (National Aerospace Laboratories)",
-        "2021 Batch": {
-            "mincgpa": 8.17,
-            "maxcgpa": 8.17,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "CT Software Solutions, Gurugram",
-        "2021 Batch": {
-            "mincgpa": 6.35,
-            "maxcgpa": 6.35,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Datamatics ",
-        "2021 Batch": {
-            "mincgpa": 8.0,
-            "maxcgpa": 8.0,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Delhi Metro Rail Corp",
-        "2021 Batch": {
-            "mincgpa": 7.0,
-            "maxcgpa": 7.9,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Dhatvik ",
-        "2021 Batch": {
-            "mincgpa": 6.3,
-            "maxcgpa": 6.3,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Dhatvik India Pvt Ltd",
-        "2021 Batch": {
-            "mincgpa": 5.68,
-            "maxcgpa": 5.68,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "District Administration",
-        "2021 Batch": {
-            "mincgpa": 5.56,
-            "maxcgpa": 5.56,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "District Administration ",
-        "2021 Batch": {
-            "mincgpa": 5.9,
-            "maxcgpa": 5.9,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Drdo Advanced Systems Lab",
-        "2021 Batch": {
-            "mincgpa": 9.44,
-            "maxcgpa": 9.44,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Dynamatic Technologies",
-        "2021 Batch": {
-            "mincgpa": 7.7,
-            "maxcgpa": 7.7,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Dynamatic technology",
-        "2021 Batch": {
-            "mincgpa": 7.1,
             "maxcgpa": 7.1,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "DYSL-CT DRDO",
-        "2021 Batch": {
-            "mincgpa": 8.64,
-            "maxcgpa": 8.64,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "E&Y",
-        "2021 Batch": {
-            "mincgpa": 9.073,
-            "maxcgpa": 9.073,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "E-Sutra non tech",
-        "2021 Batch": {
-            "mincgpa": 7.41,
-            "maxcgpa": 7.41,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Eclipse instrumentation Mumbai online ",
-        "2021 Batch": {
-            "mincgpa": 8.02,
-            "maxcgpa": 8.02,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Eclipse Instrumentation Pvt. Ltd. Onsite , Thane",
-        "2021 Batch": {
-            "mincgpa": 7.05,
-            "maxcgpa": 7.05,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Electrono Solutions",
-        "2021 Batch": {
-            "mincgpa": 8.07,
-            "maxcgpa": 8.07,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Electrono Solutions ",
-        "2021 Batch": {
-            "mincgpa": 8.1,
-            "maxcgpa": 8.1,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "eShipz.com",
-        "2021 Batch": {
-            "mincgpa": 8.54,
-            "maxcgpa": 8.78,
+            "mincgpa": 6.38,
             "numberofstudents": 3
         }
     },
     {
-        "name": "Farmer's pride",
+        "name": "AERB MECH",
         "2021 Batch": {
-            "mincgpa": 7.57,
-            "maxcgpa": 7.57,
+            "maxcgpa": 8.0,
+            "mincgpa": 8.0,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Farmers pride bilaspur",
+        "name": "Futures First Info Services",
         "2021 Batch": {
-            "mincgpa": 7.47,
-            "maxcgpa": 7.47,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Findernest software services",
-        "2021 Batch": {
-            "mincgpa": 7.29,
-            "maxcgpa": 7.29,
+            "maxcgpa": 8.7,
+            "mincgpa": 8.55,
             "numberofstudents": 2
-        }
-    },
-    {
-        "name": "findernest software services pvt ltd",
-        "2021 Batch": {
-            "mincgpa": 7.34,
-            "maxcgpa": 7.34,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "FinMapp",
-        "2021 Batch": {
-            "mincgpa": 8.05,
-            "maxcgpa": 8.29,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "FinMapp ",
-        "2021 Batch": {
-            "mincgpa": 8.05,
-            "maxcgpa": 8.05,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "FINMAPP INFINITY",
-        "2021 Batch": {
-            "mincgpa": 8.2,
-            "maxcgpa": 8.2,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "FINMAPP-TECH",
-        "2021 Batch": {
-            "mincgpa": 8.2,
-            "maxcgpa": 8.2,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Flamingos Technologies Inc.",
-        "2021 Batch": {
-            "mincgpa": 7.15,
-            "maxcgpa": 7.15,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Flamingos Technology Bengaluru ",
-        "2021 Batch": {
-            "mincgpa": 6.51,
-            "maxcgpa": 6.51,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Forbes Marshall Pune",
-        "2021 Batch": {
-            "mincgpa": 6.61,
-            "maxcgpa": 6.61,
-            "numberofstudents": 1
         }
     },
     {
         "name": "Future generali",
         "2021 Batch": {
-            "mincgpa": 7.16,
             "maxcgpa": 7.16,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Future Generali India Life Insurance",
-        "2021 Batch": {
             "mincgpa": 6.35,
-            "maxcgpa": 6.35,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Futures First ",
-        "2021 Batch": {
-            "mincgpa": 8.7,
-            "maxcgpa": 8.7,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Futures First Info Services ",
-        "2021 Batch": {
-            "mincgpa": 8.55,
-            "maxcgpa": 8.55,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "GMR VARALAKSHMI FOUNDATION",
-        "2021 Batch": {
-            "mincgpa": 5.782,
-            "maxcgpa": 5.782,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Goa",
-        "2021 Batch": {
-            "mincgpa": 6.19,
-            "maxcgpa": 6.19,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Grad Capital Advisors",
-        "2021 Batch": {
-            "mincgpa": 7.59,
-            "maxcgpa": 7.59,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "GradCapital",
-        "2021 Batch": {
-            "mincgpa": 7.8,
-            "maxcgpa": 7.8,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Grasim Industries ",
-        "2021 Batch": {
-            "mincgpa": 5.11,
-            "maxcgpa": 5.11,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Hacker4Help",
-        "2021 Batch": {
-            "mincgpa": 7.82,
-            "maxcgpa": 7.82,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Hacker4help ",
-        "2021 Batch": {
-            "mincgpa": 8.0,
-            "maxcgpa": 8.0,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Harman",
-        "2021 Batch": {
-            "mincgpa": 9.54,
-            "maxcgpa": 9.54,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Harman (non-tech)",
-        "2021 Batch": {
-            "mincgpa": 8.8,
-            "maxcgpa": 8.8,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Harman International ",
-        "2021 Batch": {
-            "mincgpa": 9.7,
-            "maxcgpa": 9.7,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Harman Non-tech ",
-        "2021 Batch": {
-            "mincgpa": 8.74,
-            "maxcgpa": 8.74,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Harman Tech",
-        "2021 Batch": {
-            "mincgpa": 9.57,
-            "maxcgpa": 9.57,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "HPCL",
-        "2021 Batch": {
-            "mincgpa": 6.0,
-            "maxcgpa": 7.05,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "HPCL ",
-        "2021 Batch": {
-            "mincgpa": 6.0,
-            "maxcgpa": 6.0,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Hyphen SCS",
-        "2021 Batch": {
-            "mincgpa": 6.4,
-            "maxcgpa": 6.4,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "I care foundation ",
-        "2021 Batch": {
-            "mincgpa": 7.41,
-            "maxcgpa": 7.41,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "i-care foundation mexico",
-        "2021 Batch": {
-            "mincgpa": 7.6,
-            "maxcgpa": 7.6,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "i-exceed technology solutions private limited",
-        "2021 Batch": {
-            "mincgpa": 8.04,
-            "maxcgpa": 8.04,
             "numberofstudents": 2
         }
     },
     {
-        "name": "IDS INFOTECH MOHALI",
+        "name": "Palmtree Infotech",
         "2021 Batch": {
-            "mincgpa": 8.68,
-            "maxcgpa": 8.68,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "IGCAR",
-        "2021 Batch": {
-            "mincgpa": 6.5,
-            "maxcgpa": 7.65,
-            "numberofstudents": 4
-        }
-    },
-    {
-        "name": "IGCAR Kalpakkam",
-        "2021 Batch": {
-            "mincgpa": 7.07,
-            "maxcgpa": 7.07,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "IGCAR, Kalpakkam",
-        "2021 Batch": {
-            "mincgpa": 7.8,
-            "maxcgpa": 7.8,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "IIRS",
-        "2021 Batch": {
-            "mincgpa": 9.53,
-            "maxcgpa": 9.53,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "IIRS Dehradun",
-        "2021 Batch": {
-            "mincgpa": 9.27,
-            "maxcgpa": 9.27,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "iLink",
-        "2021 Batch": {
-            "mincgpa": 9.23,
-            "maxcgpa": 9.23,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Imd ,pune",
-        "2021 Batch": {
-            "mincgpa": 7.34,
-            "maxcgpa": 7.34,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "IMD PUNE",
-        "2021 Batch": {
-            "mincgpa": 6.6,
-            "maxcgpa": 6.6,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "IMD Pune",
-        "2021 Batch": {
-            "mincgpa": 7.43,
-            "maxcgpa": 7.5,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Immensitas Pvt. Ltd. (Lemnisk) , Bengaluru",
-        "2021 Batch": {
-            "mincgpa": 8.07,
             "maxcgpa": 8.07,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Indian Institute of Remote Sensing",
-        "2021 Batch": {
-            "mincgpa": 9.32,
-            "maxcgpa": 9.32,
-            "numberofstudents": 1
+            "mincgpa": 7.94,
+            "numberofstudents": 3
         }
     },
     {
         "name": "Indian Red Cross Society Gujarat State Branch",
         "2021 Batch": {
+            "maxcgpa": 6.14,
             "mincgpa": 5.8,
-            "maxcgpa": 5.8,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Indian Red Cross Society Mumbai",
-        "2021 Batch": {
-            "mincgpa": 6.14,
-            "maxcgpa": 6.14,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "INFLIBNET centre",
-        "2021 Batch": {
-            "mincgpa": 5.88,
-            "maxcgpa": 5.88,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Institute of Seismological Research (Onsite) ",
-        "2021 Batch": {
-            "mincgpa": 6.26,
-            "maxcgpa": 6.26,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Integrated active monitoring",
-        "2021 Batch": {
-            "mincgpa": 7.0,
-            "maxcgpa": 7.0,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Integrated Active Monitoring",
-        "2021 Batch": {
-            "mincgpa": 7.0,
-            "maxcgpa": 7.0,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Integrity data services ",
-        "2021 Batch": {
-            "mincgpa": 7.52,
-            "maxcgpa": 7.52,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "IOCL - information service, Mumbai",
-        "2021 Batch": {
-            "mincgpa": 8.74,
-            "maxcgpa": 8.74,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "IOCL - Mumbai",
-        "2021 Batch": {
-            "mincgpa": 7.0,
-            "maxcgpa": 7.0,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "IOCL Delhi ",
-        "2021 Batch": {
-            "mincgpa": 6.5,
-            "maxcgpa": 6.5,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "IOCL Mumbai",
-        "2021 Batch": {
-            "mincgpa": 6.4,
-            "maxcgpa": 6.4,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "IOCL Vadodara",
-        "2021 Batch": {
-            "mincgpa": 6.5,
-            "maxcgpa": 6.5,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "iQuadra",
-        "2021 Batch": {
-            "mincgpa": 8.4,
-            "maxcgpa": 8.49,
             "numberofstudents": 2
         }
     },
     {
-        "name": "IRCS ",
+        "name": "Indian Institute of Remote Sensing",
         "2021 Batch": {
-            "mincgpa": 6.83,
-            "maxcgpa": 6.83,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "IRCS Bhopal",
-        "2021 Batch": {
-            "mincgpa": 6.77,
-            "maxcgpa": 6.77,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "IRCS Mumbai",
-        "2021 Batch": {
-            "mincgpa": 6.14,
-            "maxcgpa": 6.14,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "IRCS, Dehradun",
-        "2021 Batch": {
-            "mincgpa": 6.98,
-            "maxcgpa": 6.98,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Jio",
-        "2021 Batch": {
-            "mincgpa": 8.9,
-            "maxcgpa": 9.2,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Jio ",
-        "2021 Batch": {
-            "mincgpa": 9.07,
-            "maxcgpa": 9.22,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Jio Hyderabad",
-        "2021 Batch": {
-            "mincgpa": 8.9,
-            "maxcgpa": 8.9,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Jio Mumbai",
-        "2021 Batch": {
-            "mincgpa": 9.3,
-            "maxcgpa": 9.3,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "JIO Plaforms",
-        "2021 Batch": {
-            "mincgpa": 9.02,
-            "maxcgpa": 9.02,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Jio Platforms",
-        "2021 Batch": {
-            "mincgpa": 9.02,
-            "maxcgpa": 9.55,
-            "numberofstudents": 3
-        }
-    },
-    {
-        "name": "Jio Platforms ",
-        "2021 Batch": {
-            "mincgpa": 9.5,
-            "maxcgpa": 9.5,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Jio Platforms Ltd.",
-        "2021 Batch": {
-            "mincgpa": 9.12,
-            "maxcgpa": 9.12,
+            "maxcgpa": 9.32,
+            "mincgpa": 9.32,
             "numberofstudents": 1
         }
     },
     {
         "name": "Jio Platforms, Hyderabad",
         "2021 Batch": {
+            "maxcgpa": 9.55,
             "mincgpa": 8.9,
-            "maxcgpa": 8.9,
-            "numberofstudents": 1
+            "numberofstudents": 6
         }
     },
     {
-        "name": "Johnson Controls",
+        "name": "Verse innovations",
         "2021 Batch": {
-            "mincgpa": 8.13,
-            "maxcgpa": 8.13,
-            "numberofstudents": 1
+            "maxcgpa": 8.73,
+            "mincgpa": 8.31,
+            "numberofstudents": 3
         }
     },
     {
-        "name": "JSW STEEL",
+        "name": "CRRI",
         "2021 Batch": {
-            "mincgpa": 6.95,
-            "maxcgpa": 6.95,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "JSW Steel",
-        "2021 Batch": {
-            "mincgpa": 7.1,
-            "maxcgpa": 7.2,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "JSW Steels",
-        "2021 Batch": {
-            "mincgpa": 7.91,
-            "maxcgpa": 7.91,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Kairos Integrated solutions Pvt Ltd ",
-        "2021 Batch": {
-            "mincgpa": 7.88,
-            "maxcgpa": 7.88,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "KDK Software ",
-        "2021 Batch": {
-            "mincgpa": 7.9,
-            "maxcgpa": 7.9,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Kerala Infrastructure (KITE)",
-        "2021 Batch": {
-            "mincgpa": 7.83,
-            "maxcgpa": 7.83,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "KITE",
-        "2021 Batch": {
-            "mincgpa": 8.63,
-            "maxcgpa": 8.63,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Kotak Education Foundation ",
-        "2021 Batch": {
-            "mincgpa": 7.2,
-            "maxcgpa": 7.2,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "L V Prasad eye Institute",
-        "2021 Batch": {
-            "mincgpa": 6.0,
-            "maxcgpa": 6.0,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "L&T Defence , Powai",
-        "2021 Batch": {
-            "mincgpa": 7.81,
-            "maxcgpa": 7.81,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "L&T Defence, Powai",
-        "2021 Batch": {
-            "mincgpa": 8.02,
-            "maxcgpa": 8.02,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "L&T Defence,Talegaon",
-        "2021 Batch": {
-            "mincgpa": 6.34,
-            "maxcgpa": 6.34,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Lakshyam NGO (Hauz Khas)",
-        "2021 Batch": {
-            "mincgpa": 5.56,
-            "maxcgpa": 6.0,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Legalpay Technology Ltd.",
-        "2021 Batch": {
-            "mincgpa": 6.74,
-            "maxcgpa": 6.74,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "lenest ",
-        "2021 Batch": {
-            "mincgpa": 6.46,
-            "maxcgpa": 6.46,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Lightspeed Photonics ",
-        "2021 Batch": {
+            "maxcgpa": 7.76,
             "mincgpa": 6.5,
-            "maxcgpa": 6.5,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "CEERI",
+        "2021 Batch": {
+            "maxcgpa": 9.45,
+            "mincgpa": 7.02,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "CSIR-IMTech Chandigarh",
+        "2021 Batch": {
+            "maxcgpa": 6.36,
+            "mincgpa": 6.36,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Lime.ai",
+        "name": "CSIR Iindian Institute of Petroleum",
         "2021 Batch": {
-            "mincgpa": 7.83,
-            "maxcgpa": 8.2,
+            "maxcgpa": 6.9,
+            "mincgpa": 6.89,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "SimpleWorks Solutions Pvt. Ltd. (SimpleCRM))",
+        "2021 Batch": {
+            "maxcgpa": 7.02,
+            "mincgpa": 6.4,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "Apisero-an NTT Data company",
+        "2021 Batch": {
+            "maxcgpa": 8.72,
+            "mincgpa": 8.33,
             "numberofstudents": 5
         }
     },
     {
-        "name": "Log9 Materials",
+        "name": "MASTH- Machine Learning",
         "2021 Batch": {
-            "mincgpa": 7.7,
-            "maxcgpa": 8.5,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Log9 Materials ",
-        "2021 Batch": {
-            "mincgpa": 7.3,
-            "maxcgpa": 7.3,
+            "maxcgpa": 8.28,
+            "mincgpa": 8.28,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Log9 Materials Scientific Pvt Ltd",
+        "name": "MASTH Mobile App development",
         "2021 Batch": {
-            "mincgpa": 8.33,
-            "maxcgpa": 8.33,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Log9 Materials Scientific Pvt. Ltd.",
-        "2021 Batch": {
-            "mincgpa": 8.33,
-            "maxcgpa": 8.33,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Loop Reality ",
-        "2021 Batch": {
-            "mincgpa": 8.46,
-            "maxcgpa": 8.64,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Macquarie ",
-        "2021 Batch": {
-            "mincgpa": 8.85,
-            "maxcgpa": 8.85,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Manodyam ",
-        "2021 Batch": {
-            "mincgpa": 6.98,
-            "maxcgpa": 6.98,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Map my India",
-        "2021 Batch": {
-            "mincgpa": 5.6,
-            "maxcgpa": 5.6,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Mapmyindia",
-        "2021 Batch": {
-            "mincgpa": 6.17,
-            "maxcgpa": 6.17,
+            "maxcgpa": 7.93,
+            "mincgpa": 7.93,
             "numberofstudents": 1
         }
     },
     {
         "name": "MASTH - ML",
         "2021 Batch": {
-            "mincgpa": 8.3,
             "maxcgpa": 8.3,
+            "mincgpa": 8.3,
             "numberofstudents": 1
         }
     },
     {
-        "name": "MASTH hyd digital marketing ",
+        "name": "Act Now India - Tech",
         "2021 Batch": {
-            "mincgpa": 7.27,
-            "maxcgpa": 7.27,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "MASTH Mobile App development ",
-        "2021 Batch": {
-            "mincgpa": 7.93,
             "maxcgpa": 7.93,
-            "numberofstudents": 1
+            "mincgpa": 7.25,
+            "numberofstudents": 3
         }
     },
     {
-        "name": "MASTH- Machine Learning ",
+        "name": "IOCL - information service, Mumbai",
         "2021 Batch": {
-            "mincgpa": 8.28,
-            "maxcgpa": 8.28,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Medsupervision ",
-        "2021 Batch": {
-            "mincgpa": 8.12,
-            "maxcgpa": 8.35,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Mel Systems",
-        "2021 Batch": {
+            "maxcgpa": 8.74,
             "mincgpa": 6.4,
-            "maxcgpa": 6.4,
-            "numberofstudents": 1
+            "numberofstudents": 3
         }
     },
     {
-        "name": "Melux Control Gears",
+        "name": "JSW STEEL",
         "2021 Batch": {
-            "mincgpa": 6.09,
-            "maxcgpa": 6.09,
-            "numberofstudents": 1
+            "maxcgpa": 7.91,
+            "mincgpa": 6.95,
+            "numberofstudents": 4
         }
     },
     {
-        "name": "Military College of Electronics and Mechanical Engineering , Secunderabad ",
+        "name": "Integrity data services",
         "2021 Batch": {
-            "mincgpa": 6.97,
-            "maxcgpa": 6.97,
-            "numberofstudents": 1
+            "maxcgpa": 7.52,
+            "mincgpa": 7.0,
+            "numberofstudents": 3
         }
     },
     {
-        "name": "Military College of Electronics and Mechanical Engineering, Secunderabad ",
+        "name": "Log9 Materials Scientific Pvt. Ltd.",
         "2021 Batch": {
-            "mincgpa": 7.26,
-            "maxcgpa": 7.26,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Ministry of Health and Family Welfare",
-        "2021 Batch": {
-            "mincgpa": 7.31,
-            "maxcgpa": 7.31,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "NAL ",
-        "2021 Batch": {
-            "mincgpa": 9.13,
-            "maxcgpa": 9.13,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Nandi Pipes",
-        "2021 Batch": {
-            "mincgpa": 4.27,
-            "maxcgpa": 4.27,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "National Atmospheric Research Laboratory",
-        "2021 Batch": {
-            "mincgpa": 5.98,
-            "maxcgpa": 5.98,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "National Centre for Polar and Ocean Research - Goa, Onsite",
-        "2021 Batch": {
-            "mincgpa": 8.07,
-            "maxcgpa": 8.07,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "National Institute of Oceanography ",
-        "2021 Batch": {
-            "mincgpa": 7.61,
-            "maxcgpa": 7.61,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Navork innovations ",
-        "2021 Batch": {
-            "mincgpa": 6.59,
-            "maxcgpa": 6.59,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "NCAER",
-        "2021 Batch": {
-            "mincgpa": 7.55,
-            "maxcgpa": 8.397,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "NCAER ",
-        "2021 Batch": {
-            "mincgpa": 8.397,
-            "maxcgpa": 8.397,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "NESAC ",
-        "2021 Batch": {
-            "mincgpa": 8.66,
-            "maxcgpa": 8.66,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "NESAC onsite",
-        "2021 Batch": {
-            "mincgpa": 8.5,
             "maxcgpa": 8.5,
-            "numberofstudents": 1
+            "mincgpa": 7.3,
+            "numberofstudents": 5
         }
     },
     {
-        "name": "NHPC FARIDABAD",
+        "name": "Imd ,pune",
         "2021 Batch": {
-            "mincgpa": 7.07,
-            "maxcgpa": 7.07,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Nirmaan Organization, Madhapur",
-        "2021 Batch": {
-            "mincgpa": 6.35,
-            "maxcgpa": 6.35,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "North Eastern Space Application Centre",
-        "2021 Batch": {
-            "mincgpa": 9.25,
-            "maxcgpa": 9.25,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "North Eastern Space Applications Center",
-        "2021 Batch": {
-            "mincgpa": 8.3,
-            "maxcgpa": 8.3,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "North eastern space applications centre",
-        "2021 Batch": {
-            "mincgpa": 8.38,
-            "maxcgpa": 8.38,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "North Eastern Space Research Application ",
-        "2021 Batch": {
-            "mincgpa": 8.3,
-            "maxcgpa": 8.3,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Northcorp",
-        "2021 Batch": {
-            "mincgpa": 8.0,
-            "maxcgpa": 8.0,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Northcorp Software Pvt. Ltd.",
-        "2021 Batch": {
-            "mincgpa": 7.75,
-            "maxcgpa": 8.583,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "ODE Holdings",
-        "2021 Batch": {
-            "mincgpa": 8.55,
-            "maxcgpa": 8.75,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "ODE Holdings ",
-        "2021 Batch": {
-            "mincgpa": 8.38,
-            "maxcgpa": 8.38,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "OnFinance ( Non Tech )",
-        "2021 Batch": {
-            "mincgpa": 7.83,
-            "maxcgpa": 7.83,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "OnFinance - IT",
-        "2021 Batch": {
-            "mincgpa": 8.07,
-            "maxcgpa": 8.07,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "OnFinance-IT ",
-        "2021 Batch": {
-            "mincgpa": 8.05,
-            "maxcgpa": 8.05,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "P2F semi pvt ltd",
-        "2021 Batch": {
-            "mincgpa": 6.981,
-            "maxcgpa": 6.981,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "P2P microfinance",
-        "2021 Batch": {
+            "maxcgpa": 7.5,
             "mincgpa": 6.6,
-            "maxcgpa": 6.6,
+            "numberofstudents": 4
+        }
+    },
+    {
+        "name": "Blu feather Innovations",
+        "2021 Batch": {
+            "maxcgpa": 7.8,
+            "mincgpa": 7.7,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "OnFinance-IT",
+        "2021 Batch": {
+            "maxcgpa": 8.07,
+            "mincgpa": 7.83,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "National Institute of Oceanography",
+        "2021 Batch": {
+            "maxcgpa": 8.07,
+            "mincgpa": 5.98,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "Vidcentum R&D",
+        "2021 Batch": {
+            "maxcgpa": 8.47,
+            "mincgpa": 8.03,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "L&T Defence , Powai",
+        "2021 Batch": {
+            "maxcgpa": 8.02,
+            "mincgpa": 6.34,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "IRCS, Dehradun",
+        "2021 Batch": {
+            "maxcgpa": 9.27,
+            "mincgpa": 6.98,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Military College of Electronics and Mechanical Engineering , Secunderabad",
+        "2021 Batch": {
+            "maxcgpa": 7.26,
+            "mincgpa": 6.97,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Phillip Capital India Pvt. Ltd",
+        "2021 Batch": {
+            "maxcgpa": 8.6,
+            "mincgpa": 8.03,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Allos Ai- Market research",
+        "2021 Batch": {
+            "maxcgpa": 8.46,
+            "mincgpa": 8.46,
             "numberofstudents": 1
         }
     },
     {
-        "name": "P2P microfinance ",
+        "name": "Algouniversity",
         "2021 Batch": {
-            "mincgpa": 6.47,
-            "maxcgpa": 6.47,
+            "maxcgpa": 7.1,
+            "mincgpa": 7.1,
             "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Grad Capital Advisors",
+        "2021 Batch": {
+            "maxcgpa": 7.8,
+            "mincgpa": 7.59,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "YK Innosoft",
+        "2021 Batch": {
+            "maxcgpa": 8.08,
+            "mincgpa": 7.85,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "Flamingos Technologies Inc.",
+        "2021 Batch": {
+            "maxcgpa": 7.15,
+            "mincgpa": 6.51,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "AIOTBlocks Pvt Ltd",
+        "2021 Batch": {
+            "maxcgpa": 8.3,
+            "mincgpa": 8.14,
+            "numberofstudents": 2
         }
     },
     {
         "name": "Pacify Medical Tech, IIT Bombay",
         "2021 Batch": {
-            "mincgpa": 6.3,
             "maxcgpa": 6.3,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Pacify Medical Technologies Pvt Ltd",
-        "2021 Batch": {
             "mincgpa": 6.25,
-            "maxcgpa": 6.25,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Ceeri-pilani",
+        "2021 Batch": {
+            "maxcgpa": 8.81,
+            "mincgpa": 6.85,
+            "numberofstudents": 5
+        }
+    },
+    {
+        "name": "IIRS",
+        "2021 Batch": {
+            "maxcgpa": 9.53,
+            "mincgpa": 6.83,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "PNT robotics",
+        "2021 Batch": {
+            "maxcgpa": 7.068,
+            "mincgpa": 6.52,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Rourkela Steel Plant",
+        "2021 Batch": {
+            "maxcgpa": 7.35,
+            "mincgpa": 5.86,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "I care foundation",
+        "2021 Batch": {
+            "maxcgpa": 7.6,
+            "mincgpa": 7.41,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Farmer's pride",
+        "2021 Batch": {
+            "maxcgpa": 7.57,
+            "mincgpa": 7.47,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "CDAC-PUNE",
+        "2021 Batch": {
+            "maxcgpa": 9.05,
+            "mincgpa": 6.35,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Mapmyindia",
+        "2021 Batch": {
+            "maxcgpa": 6.17,
+            "mincgpa": 5.6,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Wiliam O Neil",
+        "2021 Batch": {
+            "maxcgpa": 9.51,
+            "mincgpa": 8.89,
+            "numberofstudents": 5
+        }
+    },
+    {
+        "name": "Hacker4Help",
+        "2021 Batch": {
+            "maxcgpa": 8.0,
+            "mincgpa": 7.82,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Wadia Institute of Himalayan Geology",
+        "2021 Batch": {
+            "maxcgpa": 7.14,
+            "mincgpa": 6.78,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Dhatvik India Pvt Ltd",
+        "2021 Batch": {
+            "maxcgpa": 6.3,
+            "mincgpa": 5.68,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Ascent Cyber Solutions",
+        "2021 Batch": {
+            "maxcgpa": 8.77,
+            "mincgpa": 7.84,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "Findernest software services",
+        "2021 Batch": {
+            "maxcgpa": 7.34,
+            "mincgpa": 7.29,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "Shris infotech",
+        "2021 Batch": {
+            "maxcgpa": 7.64,
+            "mincgpa": 7.58,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Melux Control Gears",
+        "2021 Batch": {
+            "maxcgpa": 6.09,
+            "mincgpa": 6.09,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Palmtree Infotech",
+        "name": "Mel Systems",
         "2021 Batch": {
-            "mincgpa": 7.97,
-            "maxcgpa": 7.97,
+            "maxcgpa": 6.4,
+            "mincgpa": 6.4,
             "numberofstudents": 1
         }
     },
     {
-        "name": "PalmTree Infotech",
+        "name": "SatSure Analytics Pvt Ltd",
         "2021 Batch": {
-            "mincgpa": 8.07,
-            "maxcgpa": 8.07,
-            "numberofstudents": 1
+            "maxcgpa": 8.69,
+            "mincgpa": 8.33,
+            "numberofstudents": 3
         }
     },
     {
-        "name": "Palmtree,Chennai",
+        "name": "IGCAR Kalpakkam",
         "2021 Batch": {
-            "mincgpa": 7.94,
-            "maxcgpa": 7.94,
-            "numberofstudents": 1
+            "maxcgpa": 7.8,
+            "mincgpa": 7.07,
+            "numberofstudents": 2
         }
     },
     {
-        "name": "Parallel Dots",
+        "name": "SNS Technosys, Pune",
         "2021 Batch": {
+            "maxcgpa": 8.42,
+            "mincgpa": 8.42,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Eclipse instrumentation Mumbai online",
+        "2021 Batch": {
+            "maxcgpa": 8.02,
+            "mincgpa": 7.05,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Wakao Foods",
+        "2021 Batch": {
+            "maxcgpa": 6.84,
+            "mincgpa": 6.03,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "Sardar Patel Renewable Energy Research Institute",
+        "2021 Batch": {
+            "maxcgpa": 5.9,
+            "mincgpa": 5.9,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Commvault Systems",
+        "2021 Batch": {
+            "maxcgpa": 7.72,
+            "mincgpa": 7.4,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "Birla Fibre Optics",
+        "2021 Batch": {
+            "maxcgpa": 6.12,
+            "mincgpa": 5.62,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "CSIR-CDRI",
+        "2021 Batch": {
+            "maxcgpa": 7.26,
+            "mincgpa": 6.79,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Cognix",
+        "2021 Batch": {
+            "maxcgpa": 7.14,
+            "mincgpa": 7.03,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "VoiceQube",
+        "2021 Batch": {
+            "maxcgpa": 8.63,
+            "mincgpa": 7.5,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "Avricus",
+        "2021 Batch": {
+            "maxcgpa": 7.28,
+            "mincgpa": 7.0,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "Dynamatic technology",
+        "2021 Batch": {
+            "maxcgpa": 7.7,
+            "mincgpa": 7.1,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Alltronix",
+        "2021 Batch": {
+            "maxcgpa": 8.31,
             "mincgpa": 7.8,
-            "maxcgpa": 8.4,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "Crossbar Talent",
+        "2021 Batch": {
+            "maxcgpa": 7.3,
+            "mincgpa": 7.09,
+            "numberofstudents": 4
+        }
+    },
+    {
+        "name": "Avidia labs",
+        "2021 Batch": {
+            "maxcgpa": 8.51,
+            "mincgpa": 8.0,
+            "numberofstudents": 5
+        }
+    },
+    {
+        "name": "RI Equation",
+        "2021 Batch": {
+            "maxcgpa": 7.68,
+            "mincgpa": 7.6,
             "numberofstudents": 2
         }
     },
     {
         "name": "Petasense Technologies - Web Dev",
         "2021 Batch": {
-            "mincgpa": 7.68,
             "maxcgpa": 7.68,
+            "mincgpa": 7.68,
             "numberofstudents": 1
         }
     },
     {
         "name": "Petasense Technologies Pvt Ltd - Analytics",
         "2021 Batch": {
-            "mincgpa": 8.5,
             "maxcgpa": 8.5,
+            "mincgpa": 8.5,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Phillip Capital",
+        "name": "P2F semi pvt ltd",
         "2021 Batch": {
-            "mincgpa": 8.6,
-            "maxcgpa": 8.6,
+            "maxcgpa": 6.981,
+            "mincgpa": 6.981,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Phillip Capital India Pvt. Ltd",
+        "name": "IOCL Vadodara",
         "2021 Batch": {
-            "mincgpa": 8.03,
-            "maxcgpa": 8.03,
+            "maxcgpa": 6.5,
+            "mincgpa": 6.5,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Pieds pilani",
+        "name": "District Administration",
         "2021 Batch": {
-            "mincgpa": 7.0,
-            "maxcgpa": 7.0,
+            "maxcgpa": 5.9,
+            "mincgpa": 5.56,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Lakshyam NGO (Hauz Khas)",
+        "2021 Batch": {
+            "maxcgpa": 6.0,
+            "mincgpa": 5.56,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "MASTH hyd digital marketing",
+        "2021 Batch": {
+            "maxcgpa": 7.27,
+            "mincgpa": 7.27,
             "numberofstudents": 1
         }
     },
     {
-        "name": "PNT robotics",
+        "name": "Grasim Industries",
         "2021 Batch": {
-            "mincgpa": 6.52,
-            "maxcgpa": 6.52,
+            "maxcgpa": 5.11,
+            "mincgpa": 5.11,
             "numberofstudents": 1
         }
     },
     {
-        "name": "PNT Robotics",
+        "name": "Cleareye.ai India Pvt.Ltd",
         "2021 Batch": {
-            "mincgpa": 7.068,
-            "maxcgpa": 7.068,
+            "maxcgpa": 7.09,
+            "mincgpa": 7.09,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Pockvue ",
+        "name": "Pockvue",
         "2021 Batch": {
-            "mincgpa": 6.7,
             "maxcgpa": 6.7,
+            "mincgpa": 6.7,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Pockvue solutions",
+        "name": "CRIS",
         "2021 Batch": {
-            "mincgpa": 7.29,
-            "maxcgpa": 7.29,
+            "maxcgpa": 8.7,
+            "mincgpa": 8.7,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Preto tooling systems ",
+        "name": "Goa",
         "2021 Batch": {
-            "mincgpa": 6.45,
-            "maxcgpa": 6.45,
+            "maxcgpa": 6.19,
+            "mincgpa": 6.19,
             "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Prompt Equipments Pvt. Ltd. ",
-        "2021 Batch": {
-            "mincgpa": 8.43,
-            "maxcgpa": 8.43,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Public works department ",
-        "2021 Batch": {
-            "mincgpa": 6.9,
-            "maxcgpa": 6.9,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Race2Cloud Technologies Pvt. Ltd. , Bengaluru",
-        "2021 Batch": {
-            "mincgpa": 6.33,
-            "maxcgpa": 6.33,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "RI Equation ",
-        "2021 Batch": {
-            "mincgpa": 7.68,
-            "maxcgpa": 7.68,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "RI Equations",
-        "2021 Batch": {
-            "mincgpa": 7.6,
-            "maxcgpa": 7.6,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Roads and Buildings Department - Govt of Telangana",
-        "2021 Batch": {
-            "mincgpa": 6.12,
-            "maxcgpa": 6.12,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Rourkela Steel Plant",
-        "2021 Batch": {
-            "mincgpa": 5.86,
-            "maxcgpa": 6.23,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Rourkela Steel Plant (RSP)",
-        "2021 Batch": {
-            "mincgpa": 7.35,
-            "maxcgpa": 7.35,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Sardar Patel Renewable Energy Research Institute ",
-        "2021 Batch": {
-            "mincgpa": 5.9,
-            "maxcgpa": 5.9,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Sardar Patel Renewable Energy Research Institute (SPRERI)",
-        "2021 Batch": {
-            "mincgpa": 5.9,
-            "maxcgpa": 5.9,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "SatSure Analytics",
-        "2021 Batch": {
-            "mincgpa": 8.65,
-            "maxcgpa": 8.69,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "SatSure Analytics Pvt Ltd",
-        "2021 Batch": {
-            "mincgpa": 8.33,
-            "maxcgpa": 8.33,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Shipyard Goa",
-        "2021 Batch": {
-            "mincgpa": 69.0,
-            "maxcgpa": 69.0,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Shris infotech ",
-        "2021 Batch": {
-            "mincgpa": 7.58,
-            "maxcgpa": 7.58,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Shris Infotech Services Pvt Ltd , Secunderabad",
-        "2021 Batch": {
-            "mincgpa": 7.64,
-            "maxcgpa": 7.64,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Siemens",
-        "2021 Batch": {
-            "mincgpa": 7.2,
-            "maxcgpa": 7.33,
-            "numberofstudents": 2
-        }
-    },
-    {
-        "name": "Siemens ",
-        "2021 Batch": {
-            "mincgpa": 7.78,
-            "maxcgpa": 7.78,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Simple CRM",
-        "2021 Batch": {
-            "mincgpa": 7.02,
-            "maxcgpa": 7.02,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "SimpleWorks Solutions Pvt. Ltd. (SimpleCRM))",
-        "2021 Batch": {
-            "mincgpa": 6.4,
-            "maxcgpa": 6.4,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Simpleworks Solutions(SimpleCRM)",
-        "2021 Batch": {
-            "mincgpa": 6.6,
-            "maxcgpa": 6.6,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Smart link Holdings, Symegra EMS",
-        "2021 Batch": {
-            "mincgpa": 7.16,
-            "maxcgpa": 7.16,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Sns technosys pune",
-        "2021 Batch": {
-            "mincgpa": 8.42,
-            "maxcgpa": 8.42,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "SNS Technosys, Pune",
-        "2021 Batch": {
-            "mincgpa": 8.42,
-            "maxcgpa": 8.42,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Solutionec.pvt.ltd",
-        "2021 Batch": {
-            "mincgpa": 6.89,
-            "maxcgpa": 6.89,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Stem4all",
-        "2021 Batch": {
-            "mincgpa": 7.74,
-            "maxcgpa": 7.91,
-            "numberofstudents": 2
         }
     },
     {
         "name": "Survey of india",
         "2021 Batch": {
-            "mincgpa": 7.0,
             "maxcgpa": 7.0,
+            "mincgpa": 7.0,
             "numberofstudents": 1
         }
     },
     {
-        "name": "T-Works",
+        "name": "iLink",
         "2021 Batch": {
-            "mincgpa": 8.7,
-            "maxcgpa": 8.7,
+            "maxcgpa": 9.23,
+            "mincgpa": 9.23,
             "numberofstudents": 1
         }
     },
     {
-        "name": "T-Works ",
+        "name": "Macquarie",
         "2021 Batch": {
-            "mincgpa": 7.95,
-            "maxcgpa": 7.95,
+            "maxcgpa": 8.85,
+            "mincgpa": 8.85,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Tamil nadu medical services corporation ",
+        "name": "CDAC",
         "2021 Batch": {
-            "mincgpa": 5.62,
+            "maxcgpa": 9.23,
+            "mincgpa": 8.9,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Jio Hyderabad",
+        "2021 Batch": {
+            "maxcgpa": 8.9,
+            "mincgpa": 8.9,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Prompt Equipments Pvt. Ltd.",
+        "2021 Batch": {
+            "maxcgpa": 8.43,
+            "mincgpa": 8.43,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Agrix",
+        "2021 Batch": {
+            "maxcgpa": 8.14,
+            "mincgpa": 7.97,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Preto tooling systems",
+        "2021 Batch": {
+            "maxcgpa": 6.45,
+            "mincgpa": 6.45,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Apollo Tyres Ltd.",
+        "2021 Batch": {
+            "maxcgpa": 6.56,
+            "mincgpa": 6.56,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Agromach Engineering Pvt. Ltd.",
+        "2021 Batch": {
+            "maxcgpa": 7.24,
+            "mincgpa": 7.24,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Chaob Carscan.ai",
+        "2021 Batch": {
+            "maxcgpa": 8.19,
+            "mincgpa": 8.19,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Hyphen SCS",
+        "2021 Batch": {
+            "maxcgpa": 6.4,
+            "mincgpa": 6.4,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "FINMAPP-TECH",
+        "2021 Batch": {
+            "maxcgpa": 8.2,
+            "mincgpa": 8.2,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Tamil nadu medical services corporation",
+        "2021 Batch": {
             "maxcgpa": 5.62,
+            "mincgpa": 5.62,
             "numberofstudents": 1
         }
     },
     {
-        "name": "TATA Motors",
+        "name": "Medsupervision",
         "2021 Batch": {
-            "mincgpa": 6.9,
-            "maxcgpa": 6.9,
+            "maxcgpa": 8.35,
+            "mincgpa": 8.12,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Smart link Holdings, Symegra EMS",
+        "2021 Batch": {
+            "maxcgpa": 7.16,
+            "mincgpa": 7.16,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Tata Motors Pimpri - Pune",
+        "name": "Johnson Controls",
         "2021 Batch": {
-            "mincgpa": 6.9,
-            "maxcgpa": 6.9,
+            "maxcgpa": 8.13,
+            "mincgpa": 8.13,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Tata motors, pune",
+        "name": "FINMAPP INFINITY",
         "2021 Batch": {
-            "mincgpa": 7.76,
-            "maxcgpa": 7.76,
+            "maxcgpa": 8.2,
+            "mincgpa": 8.2,
             "numberofstudents": 1
         }
     },
     {
-        "name": "TerraServe Engineers and contractors",
+        "name": "Immensitas Pvt. Ltd. (Lemnisk) , Bengaluru",
         "2021 Batch": {
-            "mincgpa": 7.3,
-            "maxcgpa": 7.3,
+            "maxcgpa": 8.07,
+            "mincgpa": 8.07,
             "numberofstudents": 1
         }
     },
     {
-        "name": "TEVA - MIS Dashboard ",
+        "name": "Chaob Technologies",
         "2021 Batch": {
-            "mincgpa": 8.02,
-            "maxcgpa": 8.02,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Titan-DANLAW TECHNOLOGIES INDIA LTD,GOA",
-        "2021 Batch": {
-            "mincgpa": 6.98,
-            "maxcgpa": 6.98,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "TNSTC",
-        "2021 Batch": {
-            "mincgpa": 6.96,
-            "maxcgpa": 6.96,
+            "maxcgpa": 8.22,
+            "mincgpa": 8.22,
             "numberofstudents": 1
         }
     },
     {
         "name": "Unibic Foods",
         "2021 Batch": {
-            "mincgpa": 7.6,
             "maxcgpa": 7.6,
+            "mincgpa": 7.6,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "KITE",
+        "2021 Batch": {
+            "maxcgpa": 8.63,
+            "mincgpa": 8.63,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "IRCS Bhopal",
+        "2021 Batch": {
+            "maxcgpa": 6.77,
+            "mincgpa": 6.77,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "E&Y",
+        "2021 Batch": {
+            "maxcgpa": 9.073,
+            "mincgpa": 9.073,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "NESAC",
+        "2021 Batch": {
+            "maxcgpa": 8.66,
+            "mincgpa": 8.66,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Parallel Dots",
+        "2021 Batch": {
+            "maxcgpa": 8.4,
+            "mincgpa": 7.8,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Pockvue solutions",
+        "2021 Batch": {
+            "maxcgpa": 7.29,
+            "mincgpa": 7.29,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "ABC Consultants",
+        "2021 Batch": {
+            "maxcgpa": 7.86,
+            "mincgpa": 7.07,
+            "numberofstudents": 4
+        }
+    },
+    {
+        "name": "Solutionec.pvt.ltd",
+        "2021 Batch": {
+            "maxcgpa": 6.89,
+            "mincgpa": 6.89,
             "numberofstudents": 1
         }
     },
     {
         "name": "Unicloud",
         "2021 Batch": {
-            "mincgpa": 7.17,
             "maxcgpa": 7.91,
+            "mincgpa": 7.03,
+            "numberofstudents": 4
+        }
+    },
+    {
+        "name": "Variable Energy Cyclotron Centre",
+        "2021 Batch": {
+            "maxcgpa": 7.32,
+            "mincgpa": 7.32,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Kairos Integrated solutions Pvt Ltd",
+        "2021 Batch": {
+            "maxcgpa": 7.88,
+            "mincgpa": 7.88,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Jio Mumbai",
+        "2021 Batch": {
+            "maxcgpa": 9.3,
+            "mincgpa": 9.3,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "T-Works",
+        "2021 Batch": {
+            "maxcgpa": 8.7,
+            "mincgpa": 7.95,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Siemens",
+        "2021 Batch": {
+            "maxcgpa": 7.78,
+            "mincgpa": 7.2,
             "numberofstudents": 3
         }
     },
     {
-        "name": "Unicloud ",
+        "name": "Allos AI Limited - Web Development",
         "2021 Batch": {
-            "mincgpa": 7.03,
-            "maxcgpa": 7.03,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "UST Global",
-        "2021 Batch": {
-            "mincgpa": 7.8,
-            "maxcgpa": 7.8,
+            "maxcgpa": 9.23,
+            "mincgpa": 8.48,
             "numberofstudents": 2
         }
     },
     {
-        "name": "UST GLOBAL ",
+        "name": "iQuadra",
         "2021 Batch": {
-            "mincgpa": 7.04,
-            "maxcgpa": 7.04,
+            "maxcgpa": 8.49,
+            "mincgpa": 8.4,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "CSIR-NAL (National Aerospace Laboratories)",
+        "2021 Batch": {
+            "maxcgpa": 8.17,
+            "mincgpa": 8.17,
             "numberofstudents": 1
         }
     },
     {
-        "name": "UST global infinity labs",
+        "name": "TNSTC",
         "2021 Batch": {
-            "mincgpa": 7.35,
-            "maxcgpa": 7.35,
+            "maxcgpa": 6.96,
+            "mincgpa": 6.96,
             "numberofstudents": 1
         }
     },
     {
-        "name": "UST global, Chennai ",
+        "name": "IDS INFOTECH MOHALI",
         "2021 Batch": {
-            "mincgpa": 7.32,
-            "maxcgpa": 7.32,
+            "maxcgpa": 8.68,
+            "mincgpa": 8.68,
             "numberofstudents": 1
         }
     },
     {
-        "name": "UST-Global",
+        "name": "E-Sutra non tech",
         "2021 Batch": {
-            "mincgpa": 7.7,
+            "maxcgpa": 7.41,
+            "mincgpa": 7.41,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Pieds pilani",
+        "2021 Batch": {
+            "maxcgpa": 7.0,
+            "mincgpa": 7.0,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Institute of Seismological Research (Onsite)",
+        "2021 Batch": {
+            "maxcgpa": 6.26,
+            "mincgpa": 6.26,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "NAL",
+        "2021 Batch": {
+            "maxcgpa": 9.13,
+            "mincgpa": 9.13,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Bhaskaracharya Institute for Space Applications and Geo-informatics",
+        "2021 Batch": {
+            "maxcgpa": 6.491,
+            "mincgpa": 6.491,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Almaconnect",
+        "2021 Batch": {
             "maxcgpa": 7.7,
+            "mincgpa": 7.7,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Variable Energy Cyclotron Centre ",
+        "name": "Drdo Advanced Systems Lab",
         "2021 Batch": {
-            "mincgpa": 7.32,
-            "maxcgpa": 7.32,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Verse Innovation ",
-        "2021 Batch": {
-            "mincgpa": 8.39,
-            "maxcgpa": 8.39,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Verse Innovation Private Limited",
-        "2021 Batch": {
-            "mincgpa": 8.73,
-            "maxcgpa": 8.73,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Verse innovations",
-        "2021 Batch": {
-            "mincgpa": 8.31,
-            "maxcgpa": 8.31,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Vidcentum R & D",
-        "2021 Batch": {
-            "mincgpa": 8.03,
-            "maxcgpa": 8.03,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Vidcentum R & D Pvt. Ltd., Hyderabad",
-        "2021 Batch": {
-            "mincgpa": 8.47,
-            "maxcgpa": 8.47,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Vidcentum R&D",
-        "2021 Batch": {
-            "mincgpa": 8.03,
-            "maxcgpa": 8.03,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "VoiceQube",
-        "2021 Batch": {
-            "mincgpa": 7.5,
-            "maxcgpa": 8.63,
+            "maxcgpa": 9.44,
+            "mincgpa": 9.44,
             "numberofstudents": 2
         }
     },
     {
-        "name": "Voiceqube",
+        "name": "Consulting and beyond",
         "2021 Batch": {
-            "mincgpa": 8.1,
-            "maxcgpa": 8.1,
+            "maxcgpa": 7.12,
+            "mincgpa": 7.12,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "eShipz.com",
+        "2021 Batch": {
+            "maxcgpa": 8.78,
+            "mincgpa": 8.54,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "INFLIBNET centre",
+        "2021 Batch": {
+            "maxcgpa": 5.88,
+            "mincgpa": 5.88,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Kotak Education Foundation",
+        "2021 Batch": {
+            "maxcgpa": 7.2,
+            "mincgpa": 7.2,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Couture AI",
+        "2021 Batch": {
+            "maxcgpa": 8.78,
+            "mincgpa": 8.78,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "ODE Holdings",
+        "2021 Batch": {
+            "maxcgpa": 8.75,
+            "mincgpa": 8.38,
+            "numberofstudents": 3
+        }
+    },
+    {
+        "name": "L V Prasad eye Institute",
+        "2021 Batch": {
+            "maxcgpa": 6.0,
+            "mincgpa": 6.0,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Contenterra Software",
+        "2021 Batch": {
+            "maxcgpa": 8.58,
+            "mincgpa": 8.58,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "lenest",
+        "2021 Batch": {
+            "maxcgpa": 6.46,
+            "mincgpa": 6.46,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Race2Cloud Technologies Pvt. Ltd. , Bengaluru",
+        "2021 Batch": {
+            "maxcgpa": 6.33,
+            "mincgpa": 6.33,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Coditation Systems",
+        "2021 Batch": {
+            "maxcgpa": 8.74,
+            "mincgpa": 8.26,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Coral Clinic Systems",
+        "2021 Batch": {
+            "maxcgpa": 6.0,
+            "mincgpa": 6.0,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Kerala Infrastructure (KITE)",
+        "2021 Batch": {
+            "maxcgpa": 7.83,
+            "mincgpa": 7.83,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "P2P microfinance",
+        "2021 Batch": {
+            "maxcgpa": 6.6,
+            "mincgpa": 6.47,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "FinMapp",
+        "2021 Batch": {
+            "maxcgpa": 8.29,
+            "mincgpa": 8.05,
+            "numberofstudents": 4
+        }
+    },
+    {
+        "name": "IGCAR",
+        "2021 Batch": {
+            "maxcgpa": 7.65,
+            "mincgpa": 6.5,
+            "numberofstudents": 4
+        }
+    },
+    {
+        "name": "Delhi Metro Rail Corp",
+        "2021 Batch": {
+            "maxcgpa": 7.9,
+            "mincgpa": 7.0,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "NESAC onsite",
+        "2021 Batch": {
+            "maxcgpa": 8.5,
+            "mincgpa": 8.5,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "JIO Plaforms",
+        "2021 Batch": {
+            "maxcgpa": 9.02,
+            "mincgpa": 9.02,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Americana resturant",
+        "2021 Batch": {
+            "maxcgpa": 6.0,
+            "mincgpa": 6.0,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Datamatics",
+        "2021 Batch": {
+            "maxcgpa": 8.0,
+            "mincgpa": 8.0,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Forbes Marshall Pune",
+        "2021 Batch": {
+            "maxcgpa": 6.61,
+            "mincgpa": 6.61,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "IRCS Mumbai",
+        "2021 Batch": {
+            "maxcgpa": 6.14,
+            "mincgpa": 6.14,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Lime.ai",
+        "2021 Batch": {
+            "maxcgpa": 8.2,
+            "mincgpa": 7.83,
+            "numberofstudents": 5
+        }
+    },
+    {
+        "name": "Loop Reality",
+        "2021 Batch": {
+            "maxcgpa": 8.64,
+            "mincgpa": 8.46,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Airdash Tech Pvt. Ltd.",
+        "2021 Batch": {
+            "maxcgpa": 8.9,
+            "mincgpa": 8.9,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "NHPC FARIDABAD",
+        "2021 Batch": {
+            "maxcgpa": 7.07,
+            "mincgpa": 7.07,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Ministry of Health and Family Welfare",
+        "2021 Batch": {
+            "maxcgpa": 7.31,
+            "mincgpa": 7.31,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Manodyam",
+        "2021 Batch": {
+            "maxcgpa": 6.98,
+            "mincgpa": 6.98,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "KDK Software",
+        "2021 Batch": {
+            "maxcgpa": 7.9,
+            "mincgpa": 7.9,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Centre for Railway Information Systems - Data Analytics",
+        "2021 Batch": {
+            "maxcgpa": 8.8,
+            "mincgpa": 8.8,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Navork innovations",
+        "2021 Batch": {
+            "maxcgpa": 6.59,
+            "mincgpa": 6.59,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "TEVA - MIS Dashboard",
+        "2021 Batch": {
+            "maxcgpa": 8.02,
+            "mincgpa": 8.02,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Public works department",
+        "2021 Batch": {
+            "maxcgpa": 6.9,
+            "mincgpa": 6.9,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "DYSL-CT DRDO",
+        "2021 Batch": {
+            "maxcgpa": 8.64,
+            "mincgpa": 8.64,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Roads and Buildings Department - Govt of Telangana",
+        "2021 Batch": {
+            "maxcgpa": 6.12,
+            "mincgpa": 6.12,
             "numberofstudents": 1
         }
     },
     {
         "name": "Volofin Services Pvt Ltd",
         "2021 Batch": {
-            "mincgpa": 7.83,
             "maxcgpa": 7.83,
+            "mincgpa": 7.83,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Wadia institute ",
+        "name": "AERB CHEMICAL",
         "2021 Batch": {
-            "mincgpa": 6.78,
-            "maxcgpa": 6.78,
+            "maxcgpa": 7.33,
+            "mincgpa": 7.33,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Wadia Institute of Himalayan Geology",
+        "name": "Stem4all",
         "2021 Batch": {
-            "mincgpa": 7.14,
-            "maxcgpa": 7.14,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Wakao Foods",
-        "2021 Batch": {
-            "mincgpa": 6.03,
-            "maxcgpa": 6.6,
+            "maxcgpa": 7.91,
+            "mincgpa": 7.74,
             "numberofstudents": 2
         }
     },
     {
-        "name": "Wakao foods",
+        "name": "Electrono Solutions",
         "2021 Batch": {
-            "mincgpa": 6.84,
-            "maxcgpa": 6.84,
+            "maxcgpa": 8.1,
+            "mincgpa": 8.07,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "TerraServe Engineers and contractors",
+        "2021 Batch": {
+            "maxcgpa": 7.3,
+            "mincgpa": 7.3,
             "numberofstudents": 1
         }
     },
     {
-        "name": "Wiliam O Neil",
+        "name": "HPCL",
         "2021 Batch": {
-            "mincgpa": 9.19,
-            "maxcgpa": 9.19,
+            "maxcgpa": 7.05,
+            "mincgpa": 6.0,
+            "numberofstudents": 4
+        }
+    },
+    {
+        "name": "Legalpay Technology Ltd.",
+        "2021 Batch": {
+            "maxcgpa": 6.74,
+            "mincgpa": 6.74,
             "numberofstudents": 1
         }
     },
     {
-        "name": "William O Neil",
+        "name": "IOCL Delhi",
         "2021 Batch": {
-            "mincgpa": 9.0,
-            "maxcgpa": 9.51,
+            "maxcgpa": 6.5,
+            "mincgpa": 6.5,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Lightspeed Photonics",
+        "2021 Batch": {
+            "maxcgpa": 6.5,
+            "mincgpa": 6.5,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Nirmaan Organization, Madhapur",
+        "2021 Batch": {
+            "maxcgpa": 6.35,
+            "mincgpa": 6.35,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "Shipyard Goa",
+        "2021 Batch": {
+            "maxcgpa": 69.0,
+            "mincgpa": 11,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "i-exceed technology solutions private limited",
+        "2021 Batch": {
+            "maxcgpa": 8.04,
+            "mincgpa": 8.04,
+            "numberofstudents": 2
+        }
+    },
+    {
+        "name": "Nandi Pipes",
+        "2021 Batch": {
+            "maxcgpa": 4.27,
+            "mincgpa": 4.27,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "GMR VARALAKSHMI FOUNDATION",
+        "2021 Batch": {
+            "maxcgpa": 5.782,
+            "mincgpa": 5.782,
+            "numberofstudents": 1
+        }
+    },
+    {
+        "name": "NCAER",
+        "2021 Batch": {
+            "maxcgpa": 8.397,
+            "mincgpa": 7.55,
             "numberofstudents": 3
         }
     },
     {
-        "name": "William O Neil ",
+        "name": "Jio",
         "2021 Batch": {
-            "mincgpa": 8.89,
-            "maxcgpa": 8.89,
-            "numberofstudents": 1
+            "maxcgpa": 9.22,
+            "mincgpa": 8.9,
+            "numberofstudents": 4
         }
     },
     {
-        "name": "Yashoda hospital",
+        "name": "APC Technologies",
         "2021 Batch": {
-            "mincgpa": 7.47,
-            "maxcgpa": 7.47,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Yashoda Hospital ",
-        "2021 Batch": {
-            "mincgpa": 7.41,
-            "maxcgpa": 7.41,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Yashoda Hospitals",
-        "2021 Batch": {
-            "mincgpa": 7.42,
-            "maxcgpa": 8.14,
-            "numberofstudents": 5
-        }
-    },
-    {
-        "name": "Yashodha Hospital ",
-        "2021 Batch": {
-            "mincgpa": 7.41,
-            "maxcgpa": 7.41,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Yashodha hospitals",
-        "2021 Batch": {
-            "mincgpa": 7.47,
-            "maxcgpa": 7.47,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Yashodha Hospitals Hyderabad (Online)",
-        "2021 Batch": {
-            "mincgpa": 7.42,
-            "maxcgpa": 7.42,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "YK Innosoft",
-        "2021 Batch": {
-            "mincgpa": 7.87,
-            "maxcgpa": 7.87,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "Yk innosoft",
-        "2021 Batch": {
-            "mincgpa": 8.08,
-            "maxcgpa": 8.08,
-            "numberofstudents": 1
-        }
-    },
-    {
-        "name": "YK Innosoft ",
-        "2021 Batch": {
-            "mincgpa": 7.85,
-            "maxcgpa": 7.85,
+            "maxcgpa": 7.82,
+            "mincgpa": 7.82,
             "numberofstudents": 1
         }
     }
