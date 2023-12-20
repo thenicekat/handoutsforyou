@@ -13,7 +13,7 @@ df = pd.read_csv(CSV_FILE)
 
 # Getting the grouped names data
 with open(FILTERED_FILE, 'r') as f:
-    filtered_data = [item.strip().split('|') for item in f.readlines()]
+    filtered_data = [item.strip().split('<|>') for item in f.readlines()]
     
 # Creating a new dataframe with the filtered data
 for entry in filtered_data:
