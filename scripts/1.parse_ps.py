@@ -2,20 +2,17 @@
 import pandas as pd
 import json
 
+# Constants
+MASTER_FILE = 'PS2_master.csv'
+OUTPUT_FILE = '../public/ps/ps2_data.json'
+
 # Read csv file
-df = pd.read_csv('PS2_master.csv')
+df = pd.read_csv(MASTER_FILE)
 df['Company'] = df['Company'].apply(lambda x: x.strip())
 
 # Create a dictionary of companies
 companies = {}
-
-# Create a list of final data which will be dumped to json read from json file
-with open('../public/ps/ps2_data.json', 'r') as f:
-    final_data = json.load(f)
-
-# Add them to the dictionary
-for item in final_data:
-    companies[item['name']] = item
+final_data = []
 
 # Go row by row and check if company already exists else create
 for index, row in df.iterrows():
@@ -60,12 +57,11 @@ for index, row in df.iterrows():
             print(f"Error in {row['Company']} {row['Year-Semester']} {row['CGPA']}")
             continue
 
-final_data = []
 for company in companies:
     final_data.append(companies[company])
 
 # Sort them based on name in lowercase
 final_data.sort(key=lambda x: x['name'].lower())
     
-with open('../public/ps/ps2_data.json', 'w') as f:
+with open(OUTPUT_FILE, 'w') as f:
     json.dump(final_data, f, indent=4, default=list)
