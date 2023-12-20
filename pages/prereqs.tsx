@@ -50,6 +50,7 @@ export default function Prereqs({ prereqs }: { prereqs: PreReqGroup[] }) {
                 </div>
             </div>
 
+            <p className="text-center">NOTE: Here PRE means you will have to complete before hand while CO means you can do them parallelly</p>
 
             {session && <div className='grid md:grid-cols-3 place-items-center p-5'>
                 {
@@ -58,7 +59,13 @@ export default function Prereqs({ prereqs }: { prereqs: PreReqGroup[] }) {
                             <div className="card-body items-center text-center">
                                 <h2 className="card-title">{preqgroup.name}</h2>
                                 <div className="card-actions justify-end">
-                                    {preqgroup.prereqs.length > 0 ? preqgroup.prereqs.map((preq) => <p key={preq.prereq_name}>{preq.prereq_name}</p>) : <p>No Prerequisites</p>}
+                                    {
+                                        preqgroup.prereqs.length > 0
+                                            ?
+                                            preqgroup.prereqs.map((preq) => <p key={preq.prereq_name}>{preq.prereq_name} ({preq.pre_cop})</p>)
+                                            :
+                                            <p>No Prerequisites</p>
+                                    }
                                 </div>
                             </div>
                         </div>
