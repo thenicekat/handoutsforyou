@@ -50,3 +50,8 @@ National Instruments<|>National Instruments (Bangalore)<|>National Instruments S
 5. Now the next step is to run `data_consolidator` script which consolidates all the stations of same name into one station.
    NOTE: Incase you want to ignore two completely dissimilar companies add it to scripts/ignore.txt
 6. In the end run `parse_ps` to generate json from csv
+
+## Pre-requisite Courses Script
+
+-   Use this to convert the excel TTD puts out on cms regarding prereqs to a json format
+-   I don't think you'll need to use this for a long long time :)
