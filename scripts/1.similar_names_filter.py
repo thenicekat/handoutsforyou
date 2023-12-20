@@ -1,6 +1,7 @@
 """
 @author: Saphereye
-@about: The script using soundex algorithm to cluster similar texts together, the output is a txt file with each line containing the similar PS stations
+@about: The script using soundex algorithm to cluster similar texts together, the output is a 
+txt file with each line containing the similar PS stations
 """
 # Importing the libraries
 from collections import defaultdict
@@ -31,4 +32,5 @@ grs = {k: v for k, v in sorted(grs.items(), key=lambda item: len(item[1]))}
 # Writing the output to output file
 with open(OUTPUT_FILE, 'w') as f:
     for i, j in grs.items():
-        f.write('|'.join(j) + '\n')
+        if len(j) > 1:
+            f.write('<|>'.join(sorted(j)) + '\n')
