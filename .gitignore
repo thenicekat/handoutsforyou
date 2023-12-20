@@ -45,4 +45,4 @@ next-env.d.ts
 
 # Scripts spare Files
 **/scripts/*.csv
-**/scripts/*.txt
+**/scripts/soundex_filter.txt
