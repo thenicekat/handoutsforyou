@@ -11,12 +11,18 @@ import pandas as pd
 # Defining the constants
 CSV_FILE = 'PS2_master.csv'
 OUTPUT_FILE = 'soundex_filter.txt'
+IGNORE_FILE = 'ignore.txt'
 
 # Getting the PS station names, putting in set for avoiding repetition
 # Replace all company names which have \u0026 with &
 df = pd.read_csv(CSV_FILE)
 df['Company'] = df['Company'].apply(lambda x: x.replace(r'\u0026', '&'))
 df.to_csv(CSV_FILE, index=False)
+
+# Read the ignore file
+with open(IGNORE_FILE, 'r') as f:
+    IGNORE_FILE = f.read().split('\n')
+    
 
 # Get all companies
 data = set(df['Company'].apply(lambda x: x.strip())) 
@@ -33,4 +39,6 @@ grs = {k: v for k, v in sorted(grs.items(), key=lambda item: len(item[1]))}
 with open(OUTPUT_FILE, 'w') as f:
     for i, j in grs.items():
         if len(j) > 1:
-            f.write('<|>'.join(sorted(j)) + '\n')
+            data_to_write = '<|>'.join(sorted(j))
+            if data_to_write not in IGNORE_FILE:
+                f.write(data_to_write + '\n')
