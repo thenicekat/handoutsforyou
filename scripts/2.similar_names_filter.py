@@ -8,7 +8,7 @@ import jellyfish
 import json
 
 # Defining the constants
-JSON_FILE = '../public/ps/ps1_data.json'
+JSON_FILE = '../public/ps/ps2_data.json'
 OUTPUT_FILE = 'soundex_filter.txt'
 
 # Getting the PS station names, putting in set for avoiding repetition
@@ -21,7 +21,7 @@ for name in data:
     grs[jellyfish.soundex(name)].append(name)
     
 # Sort dict based on size of value which is an array
-grs = {k: v for k, v in sorted(grs.items(), key=lambda item: len(item[1]), reverse=True)}
+grs = {k: v for k, v in sorted(grs.items(), key=lambda item: len(item[1]))}
 
 # Writing the output to output file
 with open(OUTPUT_FILE, 'w') as f:
