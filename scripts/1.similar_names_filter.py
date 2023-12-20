@@ -14,7 +14,7 @@ OUTPUT_FILE = 'soundex_filter.txt'
 # Getting the PS station names, putting in set for avoiding repetition
 # Replace all company names which have \u0026 with &
 df = pd.read_csv(CSV_FILE)
-df['Company'] = df['Company'].apply(lambda x: x.replace('\u0026', '&'))
+df['Company'] = df['Company'].apply(lambda x: x.replace(r'\u0026', '&'))
 df.to_csv(CSV_FILE, index=False)
 
 # Get all companies
