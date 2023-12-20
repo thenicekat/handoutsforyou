@@ -40,7 +40,7 @@ for index, row in df.iterrows():
                 'maxcgpa': float(row['CGPA']),
                 'students': set()
             }
-            companies[row['Company']][row['Year-Semester']]['students'].add(row['ID Number'])
+            # companies[row['Company']][row['Year-Semester']]['students'].add(row['ID Number'])
         except:
             print(f"Error in {row['Company']} {row['Year-Semester']} {row['CGPA']}")
             continue
@@ -52,7 +52,7 @@ for index, row in df.iterrows():
             if float(row['CGPA']) > companies[row['Company']][row['Year-Semester']]['maxcgpa']:
                 companies[row['Company']][row['Year-Semester']]['maxcgpa'] = float(row['CGPA'])
                 
-            companies[row['Company']][row['Year-Semester']]['students'].add(row['ID Number'])
+            # companies[row['Company']][row['Year-Semester']]['students'].add(row['ID Number'])
         except:
             print(f"Error in {row['Company']} {row['Year-Semester']} {row['CGPA']}")
             continue
