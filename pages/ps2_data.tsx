@@ -23,7 +23,7 @@ export default function PS2({ ps2_data }: { ps2_data: PS_Station[] }) {
     const [search, setSearch] = useState("");
     const [cgpa, setCGPA] = useState(10);
     const [yearRef, setYearRef] = useState("All");
-    const yearReferences = ["All", "23-24 Sem 2", "23-24 Sem 1", "22-23 Sem 2", "22-23 Sem 1", "21-22 Sem 2", "21-22 Sem 1", "20-21 Sem 2", "20-21 Sem 1", "19-20 Sem 2", "19-20 Sem 1", "18-19 Sem 2", "18-19 Sem 1", "17-18 Sem 2", "17-18 Sem 1"]
+    const yearReferences = ["All", "23-24 Sem 2", "23-24 Sem 1", "22-23 Sem 2", "22-23 Sem 1", "20-21 Sem 2", "20-21 Sem 1", "19-20 Sem 2", "19-20 Sem 1"]
     const { data: session } = useSession()
 
     return (
