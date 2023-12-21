@@ -1,5 +1,13 @@
 [
     {
+        "name": "- Stellar Software Technologies Pvt. Ltd(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 5.52,
+            "maxcgpa": 5.75,
+            "students": []
+        }
+    },
+    {
         "name": "10dem Education, Delhi",
         "20-21 Sem 1": {
             "mincgpa": 6.639,
@@ -53,6 +61,14 @@
         }
     },
     {
+        "name": "Adani power",
+        "19-20 Sem 2": {
+            "mincgpa": 8.46,
+            "maxcgpa": 8.46,
+            "students": []
+        }
+    },
+    {
         "name": "Addverb Technologies Pvt Ltd - Noida",
         "23-24 Sem 1": {
             "mincgpa": 6.7,
@@ -87,6 +103,22 @@
         }
     },
     {
+        "name": "Adobe",
+        "19-20 Sem 2": {
+            "mincgpa": 9.33,
+            "maxcgpa": 9.33,
+            "students": []
+        }
+    },
+    {
+        "name": "Adobe Noida",
+        "19-20 Sem 2": {
+            "mincgpa": 9.51,
+            "maxcgpa": 9.51,
+            "students": []
+        }
+    },
+    {
         "name": "Adobe Systems",
         "23-24 Sem 2": {
             "mincgpa": 8.31,
@@ -96,6 +128,14 @@
         "20-21 Sem 2": {
             "mincgpa": 9.65,
             "maxcgpa": 9.65,
+            "students": []
+        }
+    },
+    {
+        "name": "Adobe Systems, Noida",
+        "19-20 Sem 2": {
+            "mincgpa": 9.8,
+            "maxcgpa": 9.8,
             "students": []
         }
     },
@@ -131,6 +171,11 @@
             "mincgpa": 6.31,
             "maxcgpa": 6.31,
             "students": []
+        },
+        "19-20 Sem 2": {
+            "mincgpa": 7.25,
+            "maxcgpa": 8.8,
+            "students": []
         }
     },
     {
@@ -154,6 +199,19 @@
         "20-21 Sem 2": {
             "mincgpa": 6.74,
             "maxcgpa": 7.28,
+            "students": []
+        },
+        "19-20 Sem 2": {
+            "mincgpa": 8.23,
+            "maxcgpa": 8.23,
+            "students": []
+        }
+    },
+    {
+        "name": "Agrostar",
+        "19-20 Sem 2": {
+            "mincgpa": 8.58,
+            "maxcgpa": 8.58,
             "students": []
         }
     },
@@ -242,6 +300,14 @@
         }
     },
     {
+        "name": "Altair Engineering India Pvt. Ltd. - Software Division",
+        "19-20 Sem 2": {
+            "mincgpa": 8.52,
+            "maxcgpa": 8.52,
+            "students": []
+        }
+    },
+    {
         "name": "AltiusHub",
         "23-24 Sem 2": {
             "mincgpa": 7.28,
@@ -279,10 +345,26 @@
         }
     },
     {
+        "name": "Amazon",
+        "19-20 Sem 2": {
+            "mincgpa": 8.35,
+            "maxcgpa": 8.35,
+            "students": []
+        }
+    },
+    {
         "name": "Amazon (Non-Tech)",
         "20-21 Sem 2": {
             "mincgpa": 6.96,
             "maxcgpa": 9.26,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon (operations manager)",
+        "19-20 Sem 2": {
+            "mincgpa": 7.1,
+            "maxcgpa": 7.1,
             "students": []
         }
     },
@@ -300,10 +382,119 @@
         }
     },
     {
+        "name": "Amazon - Operation Manager",
+        "19-20 Sem 2": {
+            "mincgpa": 8.98,
+            "maxcgpa": 8.98,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon - Operations Manager",
+        "19-20 Sem 2": {
+            "mincgpa": 7.03,
+            "maxcgpa": 8.62,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon - Operations manager",
+        "19-20 Sem 2": {
+            "mincgpa": 8.58,
+            "maxcgpa": 8.58,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon - Operations Manager ,Mumbai",
+        "19-20 Sem 2": {
+            "mincgpa": 7.57,
+            "maxcgpa": 7.57,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon Area Manager",
+        "19-20 Sem 2": {
+            "mincgpa": 8.8,
+            "maxcgpa": 8.8,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon Area Manager Delhi",
+        "19-20 Sem 2": {
+            "mincgpa": 7.13,
+            "maxcgpa": 7.13,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon Area Manager, Bangalore",
+        "19-20 Sem 2": {
+            "mincgpa": 7.87,
+            "maxcgpa": 9.0,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon Bangalore - ML Profile",
+        "19-20 Sem 2": {
+            "mincgpa": 8.68,
+            "maxcgpa": 8.68,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon Dev Center",
+        "19-20 Sem 2": {
+            "mincgpa": 8.51,
+            "maxcgpa": 8.51,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon Dev Centre, Bangalore",
+        "19-20 Sem 2": {
+            "mincgpa": 8.42,
+            "maxcgpa": 8.42,
+            "students": []
+        }
+    },
+    {
         "name": "Amazon Development Center",
         "20-21 Sem 2": {
             "mincgpa": 7.92,
             "maxcgpa": 10.0,
+            "students": []
+        },
+        "19-20 Sem 2": {
+            "mincgpa": 7.22,
+            "maxcgpa": 8.73,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon development center",
+        "19-20 Sem 2": {
+            "mincgpa": 8.57,
+            "maxcgpa": 8.57,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon Development Center , Hyderabad",
+        "19-20 Sem 2": {
+            "mincgpa": 8.18,
+            "maxcgpa": 8.23,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon Development center ,New Delhi",
+        "19-20 Sem 2": {
+            "mincgpa": 7.4,
+            "maxcgpa": 7.4,
             "students": []
         }
     },
@@ -360,10 +551,151 @@
         }
     },
     {
+        "name": "Amazon Development Center Bangalore",
+        "19-20 Sem 2": {
+            "mincgpa": 8.66,
+            "maxcgpa": 8.68,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon Development Center Hyderabad",
+        "19-20 Sem 2": {
+            "mincgpa": 9.02,
+            "maxcgpa": 9.02,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon Development Center New Delhi",
+        "19-20 Sem 2": {
+            "mincgpa": 8.09,
+            "maxcgpa": 8.09,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon Development Center Software",
+        "19-20 Sem 2": {
+            "mincgpa": 8.58,
+            "maxcgpa": 8.58,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon Development Center Taurus-2",
+        "19-20 Sem 2": {
+            "mincgpa": 7.44,
+            "maxcgpa": 7.44,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon Development Center, Bangalore",
+        "19-20 Sem 2": {
+            "mincgpa": 8.57,
+            "maxcgpa": 8.57,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon Development Center, New Delhi",
+        "19-20 Sem 2": {
+            "mincgpa": 7.18,
+            "maxcgpa": 7.18,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon Development Centre",
+        "19-20 Sem 2": {
+            "mincgpa": 7.43,
+            "maxcgpa": 8.59,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon Development centre",
+        "19-20 Sem 2": {
+            "mincgpa": 8.5,
+            "maxcgpa": 8.5,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon Development Centre(ADC)",
+        "19-20 Sem 2": {
+            "mincgpa": 8.57,
+            "maxcgpa": 8.57,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon Development Centre, Bangalore",
+        "19-20 Sem 2": {
+            "mincgpa": 8.36,
+            "maxcgpa": 8.37,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon Development Centre, New Delhi",
+        "19-20 Sem 2": {
+            "mincgpa": 7.55,
+            "maxcgpa": 7.72,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon development centre,Delhi",
+        "19-20 Sem 2": {
+            "mincgpa": 7.76,
+            "maxcgpa": 7.76,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon IDC",
+        "19-20 Sem 2": {
+            "mincgpa": 8.23,
+            "maxcgpa": 8.23,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon IDC, Bangalore",
+        "19-20 Sem 2": {
+            "mincgpa": 8.43,
+            "maxcgpa": 8.43,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon Machine Learning",
+        "19-20 Sem 2": {
+            "mincgpa": 9.35,
+            "maxcgpa": 9.35,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon ML",
+        "19-20 Sem 2": {
+            "mincgpa": 8.67,
+            "maxcgpa": 9.49,
+            "students": []
+        }
+    },
+    {
         "name": "Amazon ML Bangalore",
         "20-21 Sem 1": {
             "mincgpa": 9.277,
             "maxcgpa": 9.277,
+            "students": []
+        },
+        "19-20 Sem 2": {
+            "mincgpa": 8.92,
+            "maxcgpa": 8.92,
             "students": []
         }
     },
@@ -372,6 +704,86 @@
         "20-21 Sem 1": {
             "mincgpa": 8.761,
             "maxcgpa": 8.761,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon Operations",
+        "19-20 Sem 2": {
+            "mincgpa": 7.2,
+            "maxcgpa": 9.63,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon operations",
+        "19-20 Sem 2": {
+            "mincgpa": 8.4,
+            "maxcgpa": 8.4,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon Operations (Goa)",
+        "19-20 Sem 2": {
+            "mincgpa": 8.99,
+            "maxcgpa": 8.99,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon Operations Manager",
+        "19-20 Sem 2": {
+            "mincgpa": 7.69,
+            "maxcgpa": 9.02,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon Operations manager Bangalore",
+        "19-20 Sem 2": {
+            "mincgpa": 8.16,
+            "maxcgpa": 8.16,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon operations manager pune",
+        "19-20 Sem 2": {
+            "mincgpa": 8.74,
+            "maxcgpa": 8.74,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon Operations Manager- Pune",
+        "19-20 Sem 2": {
+            "mincgpa": 9.26,
+            "maxcgpa": 9.26,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon Operations, Mumbai",
+        "19-20 Sem 2": {
+            "mincgpa": 8.55,
+            "maxcgpa": 8.55,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon operations, Mumbai",
+        "19-20 Sem 2": {
+            "mincgpa": 7.57,
+            "maxcgpa": 7.57,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon Ops",
+        "19-20 Sem 2": {
+            "mincgpa": 7.27,
+            "maxcgpa": 7.27,
             "students": []
         }
     },
@@ -385,6 +797,30 @@
         "20-21 Sem 1": {
             "mincgpa": 8.32,
             "maxcgpa": 8.445,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon's Development Center",
+        "19-20 Sem 2": {
+            "mincgpa": 8.51,
+            "maxcgpa": 8.51,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon- ML",
+        "19-20 Sem 2": {
+            "mincgpa": 8.35,
+            "maxcgpa": 8.35,
+            "students": []
+        }
+    },
+    {
+        "name": "Amazon-Operations Manager",
+        "19-20 Sem 2": {
+            "mincgpa": 7.02,
+            "maxcgpa": 7.02,
             "students": []
         }
     },
@@ -425,6 +861,14 @@
         }
     },
     {
+        "name": "American Express - Credit & Fraud Risk",
+        "19-20 Sem 2": {
+            "mincgpa": 9.62,
+            "maxcgpa": 9.62,
+            "students": []
+        }
+    },
+    {
         "name": "American Express - Credit & Fraud Risk (Capabilities)",
         "22-23 Sem 1": {
             "mincgpa": 7.9,
@@ -438,6 +882,14 @@
         }
     },
     {
+        "name": "American Express - Credit & Fraud Risk (Capabilities)(Gurgaon)",
+        "19-20 Sem 2": {
+            "mincgpa": 8.4,
+            "maxcgpa": 8.4,
+            "students": []
+        }
+    },
+    {
         "name": "American Express -Decision Science and Strategy - Gurugram",
         "23-24 Sem 1": {
             "mincgpa": 8.51,
@@ -446,10 +898,34 @@
         }
     },
     {
+        "name": "American Express Big Data Labs",
+        "19-20 Sem 2": {
+            "mincgpa": 9.12,
+            "maxcgpa": 9.44,
+            "students": []
+        }
+    },
+    {
         "name": "American Express CFR Marketing Decision Science",
         "22-23 Sem 1": {
             "mincgpa": 8.31,
             "maxcgpa": 8.31,
+            "students": []
+        }
+    },
+    {
+        "name": "AMEX Gurgaon",
+        "19-20 Sem 2": {
+            "mincgpa": 8.45,
+            "maxcgpa": 8.45,
+            "students": []
+        }
+    },
+    {
+        "name": "Analog Devices",
+        "19-20 Sem 2": {
+            "mincgpa": 8.51,
+            "maxcgpa": 8.51,
             "students": []
         }
     },
@@ -503,6 +979,11 @@
         "20-21 Sem 1": {
             "mincgpa": 8.88,
             "maxcgpa": 8.88,
+            "students": []
+        },
+        "19-20 Sem 2": {
+            "mincgpa": 7.31,
+            "maxcgpa": 8.89,
             "students": []
         }
     },
@@ -609,6 +1090,14 @@
         }
     },
     {
+        "name": "ARM Embedded Technology",
+        "19-20 Sem 2": {
+            "mincgpa": 7.31,
+            "maxcgpa": 7.31,
+            "students": []
+        }
+    },
+    {
         "name": "ASA Industries",
         "20-21 Sem 1": {
             "mincgpa": 6.02,
@@ -675,6 +1164,14 @@
         }
     },
     {
+        "name": "Aurigo",
+        "19-20 Sem 2": {
+            "mincgpa": 7.49,
+            "maxcgpa": 7.49,
+            "students": []
+        }
+    },
+    {
         "name": "Aurigo Software",
         "20-21 Sem 1": {
             "mincgpa": 7.638,
@@ -689,6 +1186,22 @@
         "22-23 Sem 2": {
             "mincgpa": 8.024,
             "maxcgpa": 8.024,
+            "students": []
+        }
+    },
+    {
+        "name": "Aurigo Software Technologies",
+        "19-20 Sem 2": {
+            "mincgpa": 6.7,
+            "maxcgpa": 6.7,
+            "students": []
+        }
+    },
+    {
+        "name": "Aurigo software Technology",
+        "19-20 Sem 2": {
+            "mincgpa": 7.6,
+            "maxcgpa": 7.6,
             "students": []
         }
     },
@@ -710,6 +1223,11 @@
         "20-21 Sem 2": {
             "mincgpa": 8.45,
             "maxcgpa": 8.59,
+            "students": []
+        },
+        "19-20 Sem 2": {
+            "mincgpa": 8.44,
+            "maxcgpa": 8.9,
             "students": []
         }
     },
@@ -751,6 +1269,14 @@
         }
     },
     {
+        "name": "Axxela Capital Advisors",
+        "19-20 Sem 2": {
+            "mincgpa": 6.19,
+            "maxcgpa": 6.19,
+            "students": []
+        }
+    },
+    {
         "name": "Azalp Technologies Pvt. Ltd. - IT - Bengaluru",
         "22-23 Sem 2": {
             "mincgpa": 8.04,
@@ -763,6 +1289,30 @@
         "23-24 Sem 1": {
             "mincgpa": 7.28,
             "maxcgpa": 7.28,
+            "students": []
+        }
+    },
+    {
+        "name": "Bajaj Auto Pune",
+        "19-20 Sem 2": {
+            "mincgpa": 7.2,
+            "maxcgpa": 7.2,
+            "students": []
+        }
+    },
+    {
+        "name": "Bajaj Auto, Pune",
+        "19-20 Sem 2": {
+            "mincgpa": 8.3,
+            "maxcgpa": 8.3,
+            "students": []
+        }
+    },
+    {
+        "name": "Baldor Technologies",
+        "19-20 Sem 2": {
+            "mincgpa": 9.77,
+            "maxcgpa": 9.77,
             "students": []
         }
     },
@@ -877,6 +1427,14 @@
         }
     },
     {
+        "name": "Blue Jeans Network",
+        "19-20 Sem 2": {
+            "mincgpa": 7.1,
+            "maxcgpa": 7.1,
+            "students": []
+        }
+    },
+    {
         "name": "BLUE Yonder, bangalore",
         "20-21 Sem 2": {
             "mincgpa": 6.73,
@@ -899,6 +1457,14 @@
         "20-21 Sem 2": {
             "mincgpa": 7.87,
             "maxcgpa": 8.44,
+            "students": []
+        }
+    },
+    {
+        "name": "BNY Mellon Technology",
+        "19-20 Sem 2": {
+            "mincgpa": 8.45,
+            "maxcgpa": 8.55,
             "students": []
         }
     },
@@ -978,6 +1544,9 @@
             "maxcgpa": 7.45,
             "students": []
         }
+    },
+    {
+        "name": "Bundl Tech Pvt. Ltd. (Non tech) (Swiggy)"
     },
     {
         "name": "Cadence Design Systems",
@@ -1115,10 +1684,50 @@
         }
     },
     {
+        "name": "Chemical - Hindustan Unilever Research Centre(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 5.9,
+            "maxcgpa": 6.54,
+            "students": []
+        }
+    },
+    {
+        "name": "Chemical - Shell Technology Center(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.78,
+            "maxcgpa": 6.78,
+            "students": []
+        }
+    },
+    {
         "name": "Christensen Investor Relations (I) Pvt. Ltd. , Mumbai",
         "20-21 Sem 1": {
             "mincgpa": 6.57,
             "maxcgpa": 6.57,
+            "students": []
+        }
+    },
+    {
+        "name": "Cisco",
+        "19-20 Sem 2": {
+            "mincgpa": 7.68,
+            "maxcgpa": 8.26,
+            "students": []
+        }
+    },
+    {
+        "name": "Cisco (Software)",
+        "19-20 Sem 2": {
+            "mincgpa": 8.42,
+            "maxcgpa": 8.42,
+            "students": []
+        }
+    },
+    {
+        "name": "Cisco (SW development)",
+        "19-20 Sem 2": {
+            "mincgpa": 8.4,
+            "maxcgpa": 8.4,
             "students": []
         }
     },
@@ -1131,10 +1740,42 @@
         }
     },
     {
+        "name": "Cisco Software",
+        "19-20 Sem 2": {
+            "mincgpa": 8.21,
+            "maxcgpa": 8.21,
+            "students": []
+        }
+    },
+    {
         "name": "Cisco Software, Bangalore",
         "20-21 Sem 1": {
             "mincgpa": 8.6,
             "maxcgpa": 8.6,
+            "students": []
+        }
+    },
+    {
+        "name": "Cisco System",
+        "19-20 Sem 2": {
+            "mincgpa": 7.91,
+            "maxcgpa": 7.91,
+            "students": []
+        }
+    },
+    {
+        "name": "Cisco Systems",
+        "19-20 Sem 2": {
+            "mincgpa": 8.59,
+            "maxcgpa": 8.59,
+            "students": []
+        }
+    },
+    {
+        "name": "Cisco Systems (India) Pvt Ltd. Software Engineering",
+        "19-20 Sem 2": {
+            "mincgpa": 8.61,
+            "maxcgpa": 8.61,
             "students": []
         }
     },
@@ -1159,6 +1800,19 @@
             "mincgpa": 8.581,
             "maxcgpa": 8.581,
             "students": []
+        },
+        "19-20 Sem 2": {
+            "mincgpa": 8.25,
+            "maxcgpa": 8.33,
+            "students": []
+        }
+    },
+    {
+        "name": "Cisco Systems (India) Pvt. Ltd - Software Engineering ,Bangalore",
+        "19-20 Sem 2": {
+            "mincgpa": 7.64,
+            "maxcgpa": 7.64,
+            "students": []
         }
     },
     {
@@ -1175,6 +1829,38 @@
         }
     },
     {
+        "name": "Cisco Systems - Software",
+        "19-20 Sem 2": {
+            "mincgpa": 8.17,
+            "maxcgpa": 8.17,
+            "students": []
+        }
+    },
+    {
+        "name": "Cisco systems-Software",
+        "19-20 Sem 2": {
+            "mincgpa": 7.63,
+            "maxcgpa": 7.63,
+            "students": []
+        }
+    },
+    {
+        "name": "Cisco(Software)",
+        "19-20 Sem 2": {
+            "mincgpa": 7.6,
+            "maxcgpa": 7.6,
+            "students": []
+        }
+    },
+    {
+        "name": "Cisco(SW Development)",
+        "19-20 Sem 2": {
+            "mincgpa": 8.16,
+            "maxcgpa": 8.16,
+            "students": []
+        }
+    },
+    {
         "name": "CityFlo",
         "20-21 Sem 1": {
             "mincgpa": 8.0,
@@ -1183,10 +1869,26 @@
         }
     },
     {
+        "name": "Cityflo",
+        "19-20 Sem 2": {
+            "mincgpa": 8.31,
+            "maxcgpa": 8.31,
+            "students": []
+        }
+    },
+    {
         "name": "CityMall - Nontech - Gurugram",
         "23-24 Sem 1": {
             "mincgpa": 7.0,
             "maxcgpa": 7.28,
+            "students": []
+        }
+    },
+    {
+        "name": "CL Educate , Delhi",
+        "19-20 Sem 2": {
+            "mincgpa": 3.89,
+            "maxcgpa": 3.89,
             "students": []
         }
     },
@@ -1239,10 +1941,50 @@
         }
     },
     {
+        "name": "Clumio",
+        "19-20 Sem 2": {
+            "mincgpa": 9.08,
+            "maxcgpa": 9.08,
+            "students": []
+        }
+    },
+    {
+        "name": "Clumio India",
+        "19-20 Sem 2": {
+            "mincgpa": 9.0,
+            "maxcgpa": 9.0,
+            "students": []
+        }
+    },
+    {
+        "name": "Clumio India LLP",
+        "19-20 Sem 2": {
+            "mincgpa": 9.07,
+            "maxcgpa": 9.07,
+            "students": []
+        }
+    },
+    {
+        "name": "Clumio Tech.",
+        "19-20 Sem 2": {
+            "mincgpa": 9.06,
+            "maxcgpa": 9.06,
+            "students": []
+        }
+    },
+    {
         "name": "CoffeeBeans Consulting",
         "20-21 Sem 1": {
             "mincgpa": 7.03,
             "maxcgpa": 7.15,
+            "students": []
+        }
+    },
+    {
+        "name": "Cogoport (Non-Tech)",
+        "19-20 Sem 2": {
+            "mincgpa": 6.77,
+            "maxcgpa": 6.77,
             "students": []
         }
     },
@@ -1263,6 +2005,9 @@
         }
     },
     {
+        "name": "Cohesity"
+    },
+    {
         "name": "Cohesity Storage Solutions India Pvt. Ltd.",
         "23-24 Sem 2": {
             "mincgpa": 8.95,
@@ -1277,6 +2022,22 @@
         "20-21 Sem 2": {
             "mincgpa": 9.16,
             "maxcgpa": 9.16,
+            "students": []
+        }
+    },
+    {
+        "name": "Collegedunia",
+        "19-20 Sem 2": {
+            "mincgpa": 7.31,
+            "maxcgpa": 7.31,
+            "students": []
+        }
+    },
+    {
+        "name": "Collegeduniya",
+        "19-20 Sem 2": {
+            "mincgpa": 7.14,
+            "maxcgpa": 7.14,
             "students": []
         }
     },
@@ -1302,6 +2063,14 @@
         }
     },
     {
+        "name": "Confluent",
+        "19-20 Sem 2": {
+            "mincgpa": 9.11,
+            "maxcgpa": 9.15,
+            "students": []
+        }
+    },
+    {
         "name": "Confluent India Pvt Ltd.",
         "23-24 Sem 2": {
             "mincgpa": 8.46,
@@ -1316,6 +2085,11 @@
         "20-21 Sem 2": {
             "mincgpa": 9.48,
             "maxcgpa": 9.54,
+            "students": []
+        },
+        "19-20 Sem 2": {
+            "mincgpa": 9.34,
+            "maxcgpa": 9.34,
             "students": []
         }
     },
@@ -1370,10 +2144,34 @@
         }
     },
     {
+        "name": "Credit suisse",
+        "19-20 Sem 2": {
+            "mincgpa": 7.51,
+            "maxcgpa": 7.51,
+            "students": []
+        }
+    },
+    {
+        "name": "Credit Suisse",
+        "19-20 Sem 2": {
+            "mincgpa": 7.68,
+            "maxcgpa": 7.68,
+            "students": []
+        }
+    },
+    {
         "name": "Credit Suisse - Corporate Citizenship and Foundation - Mumbai",
         "22-23 Sem 2": {
             "mincgpa": 7.92,
             "maxcgpa": 7.92,
+            "students": []
+        }
+    },
+    {
+        "name": "Credit Suisse - Credit Analytics, Mumbai",
+        "19-20 Sem 2": {
+            "mincgpa": 6.5,
+            "maxcgpa": 7.63,
             "students": []
         }
     },
@@ -1406,6 +2204,11 @@
         "20-21 Sem 2": {
             "mincgpa": 6.84,
             "maxcgpa": 7.62,
+            "students": []
+        },
+        "19-20 Sem 2": {
+            "mincgpa": 8.32,
+            "maxcgpa": 8.74,
             "students": []
         }
     },
@@ -1502,6 +2305,11 @@
             "mincgpa": 6.62,
             "maxcgpa": 8.54,
             "students": []
+        },
+        "19-20 Sem 2": {
+            "mincgpa": 7.37,
+            "maxcgpa": 7.37,
+            "students": []
         }
     },
     {
@@ -1517,6 +2325,22 @@
         "23-24 Sem 1": {
             "mincgpa": 6.89,
             "maxcgpa": 8.37,
+            "students": []
+        }
+    },
+    {
+        "name": "Credit Suisse - Risk & Finance Data Analytics, Reporting, Mumbai",
+        "19-20 Sem 2": {
+            "mincgpa": 7.21,
+            "maxcgpa": 7.21,
+            "students": []
+        }
+    },
+    {
+        "name": "Credit Suisse - Risk & Finance Data Analytics, Reporting, Pune",
+        "19-20 Sem 2": {
+            "mincgpa": 6.91,
+            "maxcgpa": 6.91,
             "students": []
         }
     },
@@ -1561,6 +2385,38 @@
         }
     },
     {
+        "name": "Credit Suisse GMRM",
+        "19-20 Sem 2": {
+            "mincgpa": 7.57,
+            "maxcgpa": 7.57,
+            "students": []
+        }
+    },
+    {
+        "name": "Credit Suisse Prime Services",
+        "19-20 Sem 2": {
+            "mincgpa": 7.24,
+            "maxcgpa": 7.24,
+            "students": []
+        }
+    },
+    {
+        "name": "Credit Suisse Pune",
+        "19-20 Sem 2": {
+            "mincgpa": 7.3,
+            "maxcgpa": 7.46,
+            "students": []
+        }
+    },
+    {
+        "name": "Credit Suisse- Global Market Risk Management, Mumbai",
+        "19-20 Sem 2": {
+            "mincgpa": 7.4,
+            "maxcgpa": 7.4,
+            "students": []
+        }
+    },
+    {
         "name": "Credit Suisse- Investment Banking and Capital Markets",
         "22-23 Sem 1": {
             "mincgpa": 7.68,
@@ -1570,6 +2426,22 @@
         "20-21 Sem 2": {
             "mincgpa": 8.7,
             "maxcgpa": 8.9,
+            "students": []
+        }
+    },
+    {
+        "name": "Credit suisse- non financial risk management",
+        "19-20 Sem 2": {
+            "mincgpa": 8.3,
+            "maxcgpa": 8.3,
+            "students": []
+        }
+    },
+    {
+        "name": "Credit Suisse-Equity Research",
+        "19-20 Sem 2": {
+            "mincgpa": 7.3,
+            "maxcgpa": 7.3,
             "students": []
         }
     },
@@ -1635,6 +2507,14 @@
         }
     },
     {
+        "name": "Cypress semiconductor",
+        "19-20 Sem 2": {
+            "mincgpa": 8.35,
+            "maxcgpa": 8.35,
+            "students": []
+        }
+    },
+    {
         "name": "D. E. Shaw India Private Limited - Project 1",
         "23-24 Sem 2": {
             "mincgpa": 8.02,
@@ -1649,6 +2529,9 @@
             "maxcgpa": 6.48,
             "students": []
         }
+    },
+    {
+        "name": "DBOI"
     },
     {
         "name": "DBOI (Counterparty credit risk)",
@@ -1763,6 +2646,14 @@
         }
     },
     {
+        "name": "DBOI - GVG",
+        "19-20 Sem 2": {
+            "mincgpa": 6.48,
+            "maxcgpa": 6.48,
+            "students": []
+        }
+    },
+    {
         "name": "DBOI - IB CFO - Mumbai",
         "23-24 Sem 1": {
             "mincgpa": 7.42,
@@ -1831,6 +2722,19 @@
             "mincgpa": 7.1,
             "maxcgpa": 7.67,
             "students": []
+        },
+        "19-20 Sem 2": {
+            "mincgpa": 5.3,
+            "maxcgpa": 5.3,
+            "students": []
+        }
+    },
+    {
+        "name": "DBOI Mumbai",
+        "19-20 Sem 2": {
+            "mincgpa": 6.44,
+            "maxcgpa": 6.44,
+            "students": []
         }
     },
     {
@@ -1867,6 +2771,22 @@
         "23-24 Sem 1": {
             "mincgpa": 7.78,
             "maxcgpa": 7.78,
+            "students": []
+        }
+    },
+    {
+        "name": "Dell R&D",
+        "19-20 Sem 2": {
+            "mincgpa": 6.8,
+            "maxcgpa": 6.8,
+            "students": []
+        }
+    },
+    {
+        "name": "Dell R&D (PS lock)",
+        "19-20 Sem 2": {
+            "mincgpa": 6.7,
+            "maxcgpa": 6.7,
             "students": []
         }
     },
@@ -2023,6 +2943,22 @@
         }
     },
     {
+        "name": "Dreamplug technologies (CRED), Bangalore",
+        "19-20 Sem 2": {
+            "mincgpa": 8.55,
+            "maxcgpa": 8.55,
+            "students": []
+        }
+    },
+    {
+        "name": "Dreamplug Technologies(IT),Bangalore",
+        "19-20 Sem 2": {
+            "mincgpa": 8.53,
+            "maxcgpa": 8.53,
+            "students": []
+        }
+    },
+    {
         "name": "Dristi Technologies",
         "20-21 Sem 2": {
             "mincgpa": 7.72,
@@ -2102,6 +3038,14 @@
         }
     },
     {
+        "name": "E-govrrnment foundation",
+        "19-20 Sem 2": {
+            "mincgpa": 5.3,
+            "maxcgpa": 5.3,
+            "students": []
+        }
+    },
+    {
         "name": "e2open",
         "20-21 Sem 1": {
             "mincgpa": 7.923,
@@ -2147,6 +3091,14 @@
         }
     },
     {
+        "name": "Ecom Express - BA",
+        "19-20 Sem 2": {
+            "mincgpa": 6.1,
+            "maxcgpa": 6.1,
+            "students": []
+        }
+    },
+    {
         "name": "Ecom Express Pvt. Ltd. - Data Science",
         "23-24 Sem 2": {
             "mincgpa": 7.58,
@@ -2156,6 +3108,14 @@
         "20-21 Sem 1": {
             "mincgpa": 7.78,
             "maxcgpa": 7.9,
+            "students": []
+        }
+    },
+    {
+        "name": "eGovernment Foundation",
+        "19-20 Sem 2": {
+            "mincgpa": 7.32,
+            "maxcgpa": 7.38,
             "students": []
         }
     },
@@ -2181,10 +3141,130 @@
         }
     },
     {
+        "name": "eKincare",
+        "19-20 Sem 2": {
+            "mincgpa": 6.91,
+            "maxcgpa": 6.91,
+            "students": []
+        }
+    },
+    {
+        "name": "Ekincare",
+        "19-20 Sem 2": {
+            "mincgpa": 5.85,
+            "maxcgpa": 5.85,
+            "students": []
+        }
+    },
+    {
+        "name": "eKincare Hyderabad",
+        "19-20 Sem 2": {
+            "mincgpa": 6.41,
+            "maxcgpa": 6.41,
+            "students": []
+        }
+    },
+    {
         "name": "Electronic Arts Games Pvt Ltd",
         "23-24 Sem 2": {
             "mincgpa": 8.7,
             "maxcgpa": 8.7,
+            "students": []
+        }
+    },
+    {
+        "name": "Electronics - ARM Embedded Technologies Private Limited(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 7.38,
+            "maxcgpa": 7.76,
+            "students": []
+        }
+    },
+    {
+        "name": "Electronics - Infinera(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 7.86,
+            "maxcgpa": 7.94,
+            "students": []
+        }
+    },
+    {
+        "name": "Electronics - Intel India Technology (Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 7.0,
+            "maxcgpa": 7.9,
+            "students": []
+        }
+    },
+    {
+        "name": "Electronics - Mentor Graphics(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 7.34,
+            "maxcgpa": 7.34,
+            "students": []
+        }
+    },
+    {
+        "name": "Electronics - Micron Technology operation India(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.71,
+            "maxcgpa": 6.71,
+            "students": []
+        }
+    },
+    {
+        "name": "Electronics - National Instruments Systems (India) Pvt. Ltd.(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 7.69,
+            "maxcgpa": 7.69,
+            "students": []
+        }
+    },
+    {
+        "name": "Electronics - Nvidia Graphics - Hardware(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 7.86,
+            "maxcgpa": 9.06,
+            "students": []
+        }
+    },
+    {
+        "name": "Electronics - Samsung Semiconductor India R&D Center(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 7.62,
+            "maxcgpa": 8.53,
+            "students": []
+        }
+    },
+    {
+        "name": "Electronics - Texas Instruments (I) Pvt. Ltd - Systems(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 8.7,
+            "maxcgpa": 8.97,
+            "students": []
+        }
+    },
+    {
+        "name": "Electronics - Texas Instruments (I) Pvt. Ltd. -Analog(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 8.36,
+            "maxcgpa": 8.36,
+            "students": []
+        }
+    },
+    {
+        "name": "Electronics - Texas Instruments (I) Pvt. Ltd. -Digital(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 8.08,
+            "maxcgpa": 8.08,
+            "students": []
+        }
+    },
+    {
+        "name": "Electronics - Thinkerbell Labs - Electronics(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.07,
+            "maxcgpa": 7.16,
             "students": []
         }
     },
@@ -2266,6 +3346,14 @@
         }
     },
     {
+        "name": "Ernst & Young Global Delivery Services",
+        "19-20 Sem 2": {
+            "mincgpa": 7.34,
+            "maxcgpa": 7.34,
+            "students": []
+        }
+    },
+    {
         "name": "Ernst & Young L.L.P. - Gurugram",
         "23-24 Sem 1": {
             "mincgpa": 6.5,
@@ -2324,10 +3412,186 @@
         }
     },
     {
+        "name": "EY GDS",
+        "19-20 Sem 2": {
+            "mincgpa": 6.54,
+            "maxcgpa": 6.54,
+            "students": []
+        }
+    },
+    {
         "name": "Feedback Advisory Services Private Limited - Delhi",
         "22-23 Sem 2": {
             "mincgpa": 7.667,
             "maxcgpa": 7.667,
+            "students": []
+        }
+    },
+    {
+        "name": "Finance and Mgmt - Bundl Technologies Private Limited (Swiggy) - Nontech(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 7.59,
+            "maxcgpa": 8.46,
+            "students": []
+        }
+    },
+    {
+        "name": "Finance and Mgmt - Ernst & Young Global Delivery Services(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.3,
+            "maxcgpa": 6.7,
+            "students": []
+        }
+    },
+    {
+        "name": "Finance and Mgmt - Fidelity Investments(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 7.4,
+            "maxcgpa": 8.11,
+            "students": []
+        }
+    },
+    {
+        "name": "Finance and Mgmt - Genpact(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.23,
+            "maxcgpa": 6.68,
+            "students": []
+        }
+    },
+    {
+        "name": "Finance and Mgmt - Goldman Sachs - Investment Banking(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 7.96,
+            "maxcgpa": 9.21,
+            "students": []
+        }
+    },
+    {
+        "name": "Finance and Mgmt - Goldman Sachs - Operations(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.55,
+            "maxcgpa": 6.98,
+            "students": []
+        }
+    },
+    {
+        "name": "Finance and Mgmt - Groww - Business Analyst(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 7.33,
+            "maxcgpa": 7.64,
+            "students": []
+        }
+    },
+    {
+        "name": "Finance and Mgmt - InMobi - Software Development(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 7.87,
+            "maxcgpa": 8.01,
+            "students": []
+        }
+    },
+    {
+        "name": "Finance and Mgmt - InMobi- Business Development(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 7.14,
+            "maxcgpa": 8.61,
+            "students": []
+        }
+    },
+    {
+        "name": "Finance and Mgmt - JP Morgan Services - GKN Model Risk Governance & Review  Finance(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 7.0,
+            "maxcgpa": 7.0,
+            "students": []
+        }
+    },
+    {
+        "name": "Finance and Mgmt - JP Morgan Services - GKN Risk Analytics  Finance(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 8.12,
+            "maxcgpa": 8.12,
+            "students": []
+        }
+    },
+    {
+        "name": "Finance and Mgmt - Lowe Services India Pvt. Ltd.(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 7.35,
+            "maxcgpa": 7.47,
+            "students": []
+        }
+    },
+    {
+        "name": "Finance and Mgmt - Maybank Labs Pvt. Ltd.(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 7.1,
+            "maxcgpa": 7.6,
+            "students": []
+        }
+    },
+    {
+        "name": "Finance and Mgmt - PricewaterhouseCoopers (PWC)(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 7.06,
+            "maxcgpa": 7.06,
+            "students": []
+        }
+    },
+    {
+        "name": "Finance and Mgmt - TESCO Hindustan Service Centre(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.9,
+            "maxcgpa": 7.222,
+            "students": []
+        }
+    },
+    {
+        "name": "Finance and Mgmt - Thinkerbell Labs - Partnerships (Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.43,
+            "maxcgpa": 6.43,
+            "students": []
+        }
+    },
+    {
+        "name": "Finance and Mgmt - Thorogood(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 7.4,
+            "maxcgpa": 7.96,
+            "students": []
+        }
+    },
+    {
+        "name": "Finance and Mgmt - Udaan(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 4.4,
+            "maxcgpa": 8.16,
+            "students": []
+        }
+    },
+    {
+        "name": "Finance and Mgmt - UnitedLex(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.52,
+            "maxcgpa": 6.76,
+            "students": []
+        }
+    },
+    {
+        "name": "Finance and Mgmt - Wealth India Financial Services Pvt. Ltd(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.76,
+            "maxcgpa": 6.76,
+            "students": []
+        }
+    },
+    {
+        "name": "Finance and Mgmt - Zinnov Management Consulting Pvt. Ltd.,(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 5.9,
+            "maxcgpa": 6.33,
             "students": []
         }
     },
@@ -2345,7 +3609,7 @@
         }
     },
     {
-        "name": "First Meridian  OnSolve LLC - Bengaluru",
+        "name": "First Meridian OnSolve LLC - Bengaluru",
         "22-23 Sem 2": {
             "mincgpa": 7.98,
             "maxcgpa": 8.04,
@@ -2362,6 +3626,14 @@
         "22-23 Sem 2": {
             "mincgpa": 8.32,
             "maxcgpa": 8.32,
+            "students": []
+        }
+    },
+    {
+        "name": "Flipkart",
+        "19-20 Sem 2": {
+            "mincgpa": 7.98,
+            "maxcgpa": 8.11,
             "students": []
         }
     },
@@ -2491,6 +3763,9 @@
         }
     },
     {
+        "name": "Flipkart, Bangalore"
+    },
+    {
         "name": "Fortanix",
         "23-24 Sem 2": {
             "mincgpa": 8.01,
@@ -2523,6 +3798,14 @@
         }
     },
     {
+        "name": "Futures First Gurgaon",
+        "19-20 Sem 2": {
+            "mincgpa": 6.0,
+            "maxcgpa": 6.0,
+            "students": []
+        }
+    },
+    {
         "name": "Futures First Info Services Pvt Ltd",
         "20-21 Sem 2": {
             "mincgpa": 5.15,
@@ -2536,10 +3819,34 @@
         }
     },
     {
+        "name": "G.E. digital",
+        "19-20 Sem 2": {
+            "mincgpa": 8.92,
+            "maxcgpa": 8.92,
+            "students": []
+        }
+    },
+    {
         "name": "Gameskraft - Product Management Analytics - Bengaluru",
         "22-23 Sem 2": {
             "mincgpa": 7.67,
             "maxcgpa": 8.84,
+            "students": []
+        }
+    },
+    {
+        "name": "GE Digital",
+        "19-20 Sem 2": {
+            "mincgpa": 6.95,
+            "maxcgpa": 6.95,
+            "students": []
+        }
+    },
+    {
+        "name": "GE Digital Hyderabad",
+        "19-20 Sem 2": {
+            "mincgpa": 6.83,
+            "maxcgpa": 6.83,
             "students": []
         }
     },
@@ -2583,6 +3890,22 @@
         }
     },
     {
+        "name": "Get my parking",
+        "19-20 Sem 2": {
+            "mincgpa": 7.3,
+            "maxcgpa": 7.3,
+            "students": []
+        }
+    },
+    {
+        "name": "Get My Parking, Bangalore",
+        "19-20 Sem 2": {
+            "mincgpa": 6.34,
+            "maxcgpa": 6.34,
+            "students": []
+        }
+    },
+    {
         "name": "Give Foundation, Bangalore",
         "20-21 Sem 1": {
             "mincgpa": 6.9,
@@ -2607,6 +3930,14 @@
         }
     },
     {
+        "name": "Goldman Sach operations",
+        "19-20 Sem 2": {
+            "mincgpa": 6.6,
+            "maxcgpa": 6.6,
+            "students": []
+        }
+    },
+    {
         "name": "Goldman Sachs - Investment Banking",
         "20-21 Sem 2": {
             "mincgpa": 7.82,
@@ -2619,6 +3950,22 @@
         "23-24 Sem 2": {
             "mincgpa": 8.42,
             "maxcgpa": 9.01,
+            "students": []
+        }
+    },
+    {
+        "name": "Goldman Sachs - Operations",
+        "19-20 Sem 2": {
+            "mincgpa": 6.59,
+            "maxcgpa": 7.84,
+            "students": []
+        }
+    },
+    {
+        "name": "Goldman sachs operation",
+        "19-20 Sem 2": {
+            "mincgpa": 7.33,
+            "maxcgpa": 7.33,
             "students": []
         }
     },
@@ -2765,6 +4112,22 @@
         }
     },
     {
+        "name": "Groww Software Development",
+        "19-20 Sem 2": {
+            "mincgpa": 7.23,
+            "maxcgpa": 7.23,
+            "students": []
+        }
+    },
+    {
+        "name": "Groww-Software Development",
+        "19-20 Sem 2": {
+            "mincgpa": 7.77,
+            "maxcgpa": 7.77,
+            "students": []
+        }
+    },
+    {
         "name": "Hamilton Research Technology Pvt. Ltd - Kolkata",
         "22-23 Sem 2": {
             "mincgpa": 7.17,
@@ -2796,6 +4159,11 @@
             "mincgpa": 8.63,
             "maxcgpa": 9.07,
             "students": []
+        },
+        "19-20 Sem 2": {
+            "mincgpa": 8.81,
+            "maxcgpa": 8.96,
+            "students": []
         }
     },
     {
@@ -2803,6 +4171,22 @@
         "20-21 Sem 1": {
             "mincgpa": 7.64,
             "maxcgpa": 7.811,
+            "students": []
+        }
+    },
+    {
+        "name": "Health Care - IMS Health(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 0.0,
+            "maxcgpa": 0.0,
+            "students": []
+        }
+    },
+    {
+        "name": "Health Care - National Centre for Biological Sciences(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.71,
+            "maxcgpa": 7.1,
             "students": []
         }
     },
@@ -3055,6 +4439,14 @@
         }
     },
     {
+        "name": "In mobi",
+        "19-20 Sem 2": {
+            "mincgpa": 7.5,
+            "maxcgpa": 7.5,
+            "students": []
+        }
+    },
+    {
         "name": "iNaira Healthcare Technologies - Datascience",
         "23-24 Sem 2": {
             "mincgpa": 8.46,
@@ -3183,6 +4575,14 @@
         }
     },
     {
+        "name": "Inmobi - Business Development",
+        "19-20 Sem 2": {
+            "mincgpa": 7.87,
+            "maxcgpa": 7.87,
+            "students": []
+        }
+    },
+    {
         "name": "InMobi- Business Analyst",
         "20-21 Sem 2": {
             "mincgpa": 7.14,
@@ -3222,6 +4622,14 @@
         }
     },
     {
+        "name": "Intel India Technology",
+        "19-20 Sem 2": {
+            "mincgpa": 7.4,
+            "maxcgpa": 7.4,
+            "students": []
+        }
+    },
+    {
         "name": "Intellect Design Arena Ltd",
         "23-24 Sem 2": {
             "mincgpa": 7.15,
@@ -3254,6 +4662,14 @@
         }
     },
     {
+        "name": "ION Energy",
+        "19-20 Sem 2": {
+            "mincgpa": 8.56,
+            "maxcgpa": 8.56,
+            "students": []
+        }
+    },
+    {
         "name": "IQVIA",
         "20-21 Sem 2": {
             "mincgpa": 5.88,
@@ -3266,6 +4682,406 @@
         "23-24 Sem 1": {
             "mincgpa": 0,
             "maxcgpa": 0,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Aditya Birla Group -Data and Analytics(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 7.25,
+            "maxcgpa": 7.25,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Adobe Systems(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 8.29,
+            "maxcgpa": 8.44,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Amazon Development Center(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 7.14,
+            "maxcgpa": 8.73,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Amazon Professional Services(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.99,
+            "maxcgpa": 7.7,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - American Express - Big Data Labs (BDL)(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 8.35,
+            "maxcgpa": 8.75,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - American Express - Technology(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 7.8,
+            "maxcgpa": 8.05,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - AmericanExpress-RiskInformation-Management-Capabilities(RIM-C)(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.685,
+            "maxcgpa": 6.95,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Aurigo Software Technologies(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.23,
+            "maxcgpa": 6.23,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Avaamo(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 7.17,
+            "maxcgpa": 8.44,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - belong.co(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.53,
+            "maxcgpa": 6.9,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Blue Jeans Network India Pvt. Ltd.(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.89,
+            "maxcgpa": 6.95,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Bosch Research and Technology center(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 5.57,
+            "maxcgpa": 7.0,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Capillary Technologies - Testing Automation(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.76,
+            "maxcgpa": 7.52,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Cisco Systems (India) Pvt. Ltd - Software Engineering(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 8.06,
+            "maxcgpa": 8.06,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Cloudcherry Analytics Pvt Ltd(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.62,
+            "maxcgpa": 6.62,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Cohesity Storage Solutions India Pvt. Ltd.(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 8.713,
+            "maxcgpa": 8.718,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Couture AI(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 7.49,
+            "maxcgpa": 8.2,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Dell R&D(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.09,
+            "maxcgpa": 8.4,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - eGovernments Foundation(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.0,
+            "maxcgpa": 7.0,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Groww - Software Development(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 7.1,
+            "maxcgpa": 7.36,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - HAPPAY (VA Tech Ventures Pvt Ltd.)(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.6,
+            "maxcgpa": 7.06,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - IBM Security - Fiberlink(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.24,
+            "maxcgpa": 6.44,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - JDA Software Solutions(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 5.32,
+            "maxcgpa": 5.85,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - JP Morgan Chase - Technology(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 7.6,
+            "maxcgpa": 7.87,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Kaarvan Services Pvt. Ltd.(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.15,
+            "maxcgpa": 6.15,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Kristal.AI(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 7.55,
+            "maxcgpa": 7.69,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Kruzr Mobility Technology Solutions Pvt. Ltd.(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 5.85,
+            "maxcgpa": 6.74,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Lenskart(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.46,
+            "maxcgpa": 6.46,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - MapMyIndia(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.8,
+            "maxcgpa": 6.8,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Mech Mocha Internet Pvt. Ltd.(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.8,
+            "maxcgpa": 7.45,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - MiQ Digital India Pvt. Ltd.(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 7.3,
+            "maxcgpa": 7.7,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Nreach Online Services Pvt. Ltd.(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.29,
+            "maxcgpa": 6.67,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Nutanix Technologies India Pvt. Ltd.(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 8.2,
+            "maxcgpa": 9.19,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Nvidia Graphics -Software(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 7.7,
+            "maxcgpa": 7.7,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Oyo Rooms (Tech)(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 7.14,
+            "maxcgpa": 8.12,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Petasense - Services & App Development(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.9,
+            "maxcgpa": 7.31,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Publicis Sapient (Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.2,
+            "maxcgpa": 7.4,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Quantiphi Analytics(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.66,
+            "maxcgpa": 7.92,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Qubole(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 8.51,
+            "maxcgpa": 8.6,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Sun Mobility(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.67,
+            "maxcgpa": 6.67,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Swift(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 5.98,
+            "maxcgpa": 5.98,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Symantec Software Solutions Pvt. Ltd.(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.74,
+            "maxcgpa": 6.85,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - TapChief(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.85,
+            "maxcgpa": 6.85,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Think and learn(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.7,
+            "maxcgpa": 6.84,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Thinkerbell Labs - Developer (Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.3,
+            "maxcgpa": 6.3,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Vedantu(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.04,
+            "maxcgpa": 6.04,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Vitor Healthsciences Pvt. Ltd.(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 4.81,
+            "maxcgpa": 5.4,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - VMware Software India Pvt. Ltd.(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 6.9,
+            "maxcgpa": 6.9,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Zendrive India Pvt Ltd(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 7.55,
+            "maxcgpa": 7.7,
+            "students": []
+        }
+    },
+    {
+        "name": "IT - Zeotap India Pvt. Ltd.(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 7.54,
+            "maxcgpa": 7.88,
             "students": []
         }
     },
@@ -3340,6 +5156,14 @@
         "20-21 Sem 1": {
             "mincgpa": 7.09,
             "maxcgpa": 7.93,
+            "students": []
+        }
+    },
+    {
+        "name": "JP Morgan, GR&C Market Risk",
+        "19-20 Sem 2": {
+            "mincgpa": 9.18,
+            "maxcgpa": 9.18,
             "students": []
         }
     },
@@ -3448,90 +5272,10 @@
         }
     },
     {
-        "name": "JPMC GR&C  AM Risk - Market Risk Coverage - Bengaluru",
+        "name": "JPMC GR&C AM Risk - Market Risk Coverage - Bengaluru",
         "23-24 Sem 1": {
             "mincgpa": 8.05,
             "maxcgpa": 8.05,
-            "students": []
-        }
-    },
-    {
-        "name": "JPMC GR&C  Corporate Risk - Controllers - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 7.51,
-            "maxcgpa": 7.51,
-            "students": []
-        }
-    },
-    {
-        "name": "JPMC GR&C  Corporate Risk - Solutions - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 7.14,
-            "maxcgpa": 7.14,
-            "students": []
-        }
-    },
-    {
-        "name": "JPMC GR&C  MRGR AWM CTC - Bengaluru",
-        "23-24 Sem 1": {
-            "mincgpa": 7.47,
-            "maxcgpa": 9.05,
-            "students": []
-        }
-    },
-    {
-        "name": "JPMC GR&C  MRGR CIB Ex Trading (Quant Modelling) - Mumbai/Bangalore",
-        "23-24 Sem 1": {
-            "mincgpa": 8.6,
-            "maxcgpa": 8.6,
-            "students": []
-        }
-    },
-    {
-        "name": "JPMC GR&C  WCS Data Science  Counter Party Risk - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 6.81,
-            "maxcgpa": 6.81,
-            "students": []
-        }
-    },
-    {
-        "name": "JPMC GR&C  WCS Data Science - Product  Client Risk management - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 7.53,
-            "maxcgpa": 8.59,
-            "students": []
-        }
-    },
-    {
-        "name": "JPMC GR&C  WCS Data Science - Product  Data management - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 7.34,
-            "maxcgpa": 8.59,
-            "students": []
-        }
-    },
-    {
-        "name": "JPMC GR&C  WCS Data Science - Wholesale Portfolio Analytics  Climate Risk - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 8.52,
-            "maxcgpa": 8.52,
-            "students": []
-        }
-    },
-    {
-        "name": "JPMC GR&C  WCS Data Science - Wholesale Portfolio Analytics Strategic Analytics - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 8.69,
-            "maxcgpa": 8.69,
-            "students": []
-        }
-    },
-    {
-        "name": "JPMC GR&C  WM Risk - AWM Risk innovation - Mumbai",
-        "23-24 Sem 1": {
-            "mincgpa": 7.13,
-            "maxcgpa": 7.13,
             "students": []
         }
     },
@@ -3544,10 +5288,90 @@
         }
     },
     {
+        "name": "JPMC GR&C Corporate Risk - Controllers - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 7.51,
+            "maxcgpa": 7.51,
+            "students": []
+        }
+    },
+    {
+        "name": "JPMC GR&C Corporate Risk - Solutions - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 7.14,
+            "maxcgpa": 7.14,
+            "students": []
+        }
+    },
+    {
         "name": "JPMC GR&C Market Risk - Mumbai / Bangalore",
         "23-24 Sem 1": {
             "mincgpa": 6.76,
             "maxcgpa": 8.47,
+            "students": []
+        }
+    },
+    {
+        "name": "JPMC GR&C MRGR AWM CTC - Bengaluru",
+        "23-24 Sem 1": {
+            "mincgpa": 7.47,
+            "maxcgpa": 9.05,
+            "students": []
+        }
+    },
+    {
+        "name": "JPMC GR&C MRGR CIB Ex Trading (Quant Modelling) - Mumbai/Bangalore",
+        "23-24 Sem 1": {
+            "mincgpa": 8.6,
+            "maxcgpa": 8.6,
+            "students": []
+        }
+    },
+    {
+        "name": "JPMC GR&C WCS Data Science - Product Client Risk management - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 7.53,
+            "maxcgpa": 8.59,
+            "students": []
+        }
+    },
+    {
+        "name": "JPMC GR&C WCS Data Science - Product Data management - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 7.34,
+            "maxcgpa": 8.59,
+            "students": []
+        }
+    },
+    {
+        "name": "JPMC GR&C WCS Data Science - Wholesale Portfolio Analytics Climate Risk - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 8.52,
+            "maxcgpa": 8.52,
+            "students": []
+        }
+    },
+    {
+        "name": "JPMC GR&C WCS Data Science - Wholesale Portfolio Analytics Strategic Analytics - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 8.69,
+            "maxcgpa": 8.69,
+            "students": []
+        }
+    },
+    {
+        "name": "JPMC GR&C WCS Data Science Counter Party Risk - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 6.81,
+            "maxcgpa": 6.81,
+            "students": []
+        }
+    },
+    {
+        "name": "JPMC GR&C WM Risk - AWM Risk innovation - Mumbai",
+        "23-24 Sem 1": {
+            "mincgpa": 7.13,
+            "maxcgpa": 7.13,
             "students": []
         }
     },
@@ -3600,10 +5424,26 @@
         }
     },
     {
+        "name": "JPMC tech",
+        "19-20 Sem 2": {
+            "mincgpa": 7.01,
+            "maxcgpa": 7.01,
+            "students": []
+        }
+    },
+    {
         "name": "JPMS (CRG) - Banking",
         "20-21 Sem 2": {
             "mincgpa": 8.1,
             "maxcgpa": 8.1,
+            "students": []
+        }
+    },
+    {
+        "name": "JPMS (Finance) CIB R&A Banking (CRG)",
+        "19-20 Sem 2": {
+            "mincgpa": 8.86,
+            "maxcgpa": 8.86,
             "students": []
         }
     },
@@ -3613,6 +5453,11 @@
             "mincgpa": 7.62,
             "maxcgpa": 8.39,
             "students": []
+        },
+        "19-20 Sem 2": {
+            "mincgpa": 9.3,
+            "maxcgpa": 9.3,
+            "students": []
         }
     },
     {
@@ -3620,6 +5465,30 @@
         "20-21 Sem 1": {
             "mincgpa": 7.206,
             "maxcgpa": 7.206,
+            "students": []
+        }
+    },
+    {
+        "name": "JPMS (Technology - IT) GR&C Quantitative Research - Fintech , Mumbai",
+        "19-20 Sem 2": {
+            "mincgpa": 8.62,
+            "maxcgpa": 8.62,
+            "students": []
+        }
+    },
+    {
+        "name": "JPMS (Technology - IT) GR&C Wholesale Credit Solutions - Data Science - Fintech , Mumbai",
+        "19-20 Sem 2": {
+            "mincgpa": 8.08,
+            "maxcgpa": 8.08,
+            "students": []
+        }
+    },
+    {
+        "name": "JPMS (Technology-IT) GR&C Model Risk Governance and Review - Ongoing Performance Management , Mumbai",
+        "19-20 Sem 2": {
+            "mincgpa": 8.02,
+            "maxcgpa": 8.02,
             "students": []
         }
     },
@@ -3636,6 +5505,14 @@
         "20-21 Sem 1": {
             "mincgpa": 8.454,
             "maxcgpa": 8.73,
+            "students": []
+        }
+    },
+    {
+        "name": "JPMS - GR&C Credit Risk  Counterparty Credit Infrastructure & Capital",
+        "19-20 Sem 2": {
+            "mincgpa": 7.57,
+            "maxcgpa": 7.57,
             "students": []
         }
     },
@@ -3728,6 +5605,22 @@
         }
     },
     {
+        "name": "JPMS CIB R&A Banking CRG",
+        "19-20 Sem 2": {
+            "mincgpa": 7.71,
+            "maxcgpa": 7.71,
+            "students": []
+        }
+    },
+    {
+        "name": "JPMS CIB R&A Banking(CRG)",
+        "19-20 Sem 2": {
+            "mincgpa": 7.35,
+            "maxcgpa": 7.35,
+            "students": []
+        }
+    },
+    {
         "name": "JPMS CIB R&A Banking(CRG)-Banking",
         "23-24 Sem 2": {
             "mincgpa": 7.87,
@@ -3783,22 +5676,6 @@
         }
     },
     {
-        "name": "JPMS CIB R&A Markets  Sales",
-        "20-21 Sem 2": {
-            "mincgpa": 6.89,
-            "maxcgpa": 6.89,
-            "students": []
-        }
-    },
-    {
-        "name": "JPMS CIB R&A Markets  Trading",
-        "20-21 Sem 2": {
-            "mincgpa": 8.39,
-            "maxcgpa": 8.39,
-            "students": []
-        }
-    },
-    {
         "name": "JPMS CIB R&A Markets - Trading",
         "22-23 Sem 1": {
             "mincgpa": 8.44,
@@ -3811,6 +5688,22 @@
         "20-21 Sem 1": {
             "mincgpa": 9.12,
             "maxcgpa": 9.12,
+            "students": []
+        }
+    },
+    {
+        "name": "JPMS CIB R&A Markets Sales",
+        "20-21 Sem 2": {
+            "mincgpa": 6.89,
+            "maxcgpa": 6.89,
+            "students": []
+        }
+    },
+    {
+        "name": "JPMS CIB R&A Markets Trading",
+        "20-21 Sem 2": {
+            "mincgpa": 8.39,
+            "maxcgpa": 8.39,
             "students": []
         }
     },
@@ -3871,14 +5764,6 @@
         }
     },
     {
-        "name": "JPMS GR&C  MRGR  Risk , Strategy & Execution",
-        "20-21 Sem 2": {
-            "mincgpa": 8.21,
-            "maxcgpa": 8.21,
-            "students": []
-        }
-    },
-    {
         "name": "JPMS GR&C - WCS Data Science",
         "20-21 Sem 2": {
             "mincgpa": 9.31,
@@ -3932,7 +5817,7 @@
         }
     },
     {
-        "name": "JPMS GR&C Corporate Risk  Firm wide Risk Reporting",
+        "name": "JPMS GR&C Corporate Risk Firm wide Risk Reporting",
         "20-21 Sem 2": {
             "mincgpa": 8.3,
             "maxcgpa": 8.3,
@@ -4001,10 +5886,10 @@
         }
     },
     {
-        "name": "JPMS GR&C Quantitative Research  Fintech",
+        "name": "JPMS GR&C MRGR Risk , Strategy & Execution",
         "20-21 Sem 2": {
-            "mincgpa": 8.44,
-            "maxcgpa": 8.96,
+            "mincgpa": 8.21,
+            "maxcgpa": 8.21,
             "students": []
         }
     },
@@ -4013,6 +5898,14 @@
         "22-23 Sem 1": {
             "mincgpa": 9.13,
             "maxcgpa": 9.13,
+            "students": []
+        }
+    },
+    {
+        "name": "JPMS GR&C Quantitative Research Fintech",
+        "20-21 Sem 2": {
+            "mincgpa": 8.44,
+            "maxcgpa": 8.96,
             "students": []
         }
     },
@@ -4037,6 +5930,14 @@
         "20-21 Sem 1": {
             "mincgpa": 8.64,
             "maxcgpa": 8.64,
+            "students": []
+        }
+    },
+    {
+        "name": "JPMS Quant",
+        "19-20 Sem 2": {
+            "mincgpa": 8.68,
+            "maxcgpa": 8.68,
             "students": []
         }
     },
@@ -4069,6 +5970,14 @@
         "20-21 Sem 1": {
             "mincgpa": 9.62,
             "maxcgpa": 9.62,
+            "students": []
+        }
+    },
+    {
+        "name": "JPMS- GR&C Market risk",
+        "19-20 Sem 2": {
+            "mincgpa": 8.75,
+            "maxcgpa": 8.75,
             "students": []
         }
     },
@@ -4257,6 +6166,30 @@
         }
     },
     {
+        "name": "Lowe's",
+        "19-20 Sem 2": {
+            "mincgpa": 8.69,
+            "maxcgpa": 8.69,
+            "students": []
+        }
+    },
+    {
+        "name": "Lowe's Services Pvt. ltd.",
+        "19-20 Sem 2": {
+            "mincgpa": 8.11,
+            "maxcgpa": 8.11,
+            "students": []
+        }
+    },
+    {
+        "name": "Lowe's Services Pvt. td.",
+        "19-20 Sem 2": {
+            "mincgpa": 8.77,
+            "maxcgpa": 8.77,
+            "students": []
+        }
+    },
+    {
         "name": "LTIMindtree",
         "23-24 Sem 2": {
             "mincgpa": 7.3,
@@ -4374,6 +6307,14 @@
         }
     },
     {
+        "name": "Mathworks",
+        "19-20 Sem 2": {
+            "mincgpa": 7.61,
+            "maxcgpa": 7.61,
+            "students": []
+        }
+    },
+    {
         "name": "MathWorks India Private Limited",
         "20-21 Sem 2": {
             "mincgpa": 8.65,
@@ -4404,6 +6345,22 @@
         "20-21 Sem 2": {
             "mincgpa": 7.3,
             "maxcgpa": 7.3,
+            "students": []
+        }
+    },
+    {
+        "name": "Mechanical - John F Welch Technology Center (GE)(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 7.19,
+            "maxcgpa": 8.99,
+            "students": []
+        }
+    },
+    {
+        "name": "Mechanical - Mercedes Benz(Bangalore)",
+        "19-20 Sem 1": {
+            "mincgpa": 7.87,
+            "maxcgpa": 8.44,
             "students": []
         }
     },
@@ -4468,6 +6425,51 @@
             "mincgpa": 7.13,
             "maxcgpa": 8.78,
             "students": []
+        },
+        "19-20 Sem 2": {
+            "mincgpa": 9.09,
+            "maxcgpa": 9.15,
+            "students": []
+        }
+    },
+    {
+        "name": "Mercedes Benz R&D",
+        "19-20 Sem 2": {
+            "mincgpa": 9.04,
+            "maxcgpa": 9.74,
+            "students": []
+        }
+    },
+    {
+        "name": "Mercedes Benz R&D India",
+        "19-20 Sem 2": {
+            "mincgpa": 8.2,
+            "maxcgpa": 8.2,
+            "students": []
+        }
+    },
+    {
+        "name": "Mercedes Benz(double sem extension)",
+        "19-20 Sem 2": {
+            "mincgpa": 8.18,
+            "maxcgpa": 8.18,
+            "students": []
+        }
+    },
+    {
+        "name": "Mercedes- Benz",
+        "19-20 Sem 2": {
+            "mincgpa": 8.91,
+            "maxcgpa": 8.91,
+            "students": []
+        }
+    },
+    {
+        "name": "Mercedes-benz",
+        "19-20 Sem 2": {
+            "mincgpa": 9.25,
+            "maxcgpa": 9.25,
+            "students": []
         }
     },
     {
@@ -4503,6 +6505,14 @@
         }
     },
     {
+        "name": "Micron",
+        "19-20 Sem 2": {
+            "mincgpa": 8.5,
+            "maxcgpa": 8.61,
+            "students": []
+        }
+    },
+    {
         "name": "Micron Technology",
         "23-24 Sem 2": {
             "mincgpa": 8.01,
@@ -4517,6 +6527,11 @@
         "20-21 Sem 2": {
             "mincgpa": 7.69,
             "maxcgpa": 9.5,
+            "students": []
+        },
+        "19-20 Sem 2": {
+            "mincgpa": 9.11,
+            "maxcgpa": 9.11,
             "students": []
         }
     },
@@ -4634,10 +6649,26 @@
         }
     },
     {
+        "name": "Morgan Stanley Advantage Services ,Mumbai",
+        "19-20 Sem 2": {
+            "mincgpa": 8.06,
+            "maxcgpa": 8.06,
+            "students": []
+        }
+    },
+    {
         "name": "Morgan Stanley- Legal Compliance - Mumbai",
         "22-23 Sem 2": {
             "mincgpa": 9.52,
             "maxcgpa": 9.52,
+            "students": []
+        }
+    },
+    {
+        "name": "Morning Star",
+        "19-20 Sem 2": {
+            "mincgpa": 7.62,
+            "maxcgpa": 7.62,
             "students": []
         }
     },
@@ -4687,6 +6718,14 @@
         }
     },
     {
+        "name": "Morningstar",
+        "19-20 Sem 2": {
+            "mincgpa": 6.85,
+            "maxcgpa": 6.85,
+            "students": []
+        }
+    },
+    {
         "name": "Morningstar - Index data calculation",
         "20-21 Sem 2": {
             "mincgpa": 6.87,
@@ -4699,6 +6738,11 @@
         "22-23 Sem 1": {
             "mincgpa": 6.76,
             "maxcgpa": 7.04,
+            "students": []
+        },
+        "19-20 Sem 2": {
+            "mincgpa": 5.64,
+            "maxcgpa": 5.64,
             "students": []
         }
     },
@@ -4735,7 +6779,7 @@
         }
     },
     {
-        "name": "MSCI (NPD  Index Research)",
+        "name": "MSCI (NPD Index Research)",
         "22-23 Sem 1": {
             "mincgpa": 6.94,
             "maxcgpa": 7.43,
@@ -4940,6 +6984,19 @@
             "mincgpa": 7.85,
             "maxcgpa": 7.85,
             "students": []
+        },
+        "19-20 Sem 2": {
+            "mincgpa": 8.0,
+            "maxcgpa": 8.0,
+            "students": []
+        }
+    },
+    {
+        "name": "NetApp (PS lock)",
+        "19-20 Sem 2": {
+            "mincgpa": 7.9,
+            "maxcgpa": 7.9,
+            "students": []
         }
     },
     {
@@ -5012,6 +7069,19 @@
             "mincgpa": 8.46,
             "maxcgpa": 8.46,
             "students": []
+        },
+        "19-20 Sem 2": {
+            "mincgpa": 7.18,
+            "maxcgpa": 7.41,
+            "students": []
+        }
+    },
+    {
+        "name": "NoBroker",
+        "19-20 Sem 2": {
+            "mincgpa": 8.1,
+            "maxcgpa": 8.1,
+            "students": []
         }
     },
     {
@@ -5035,6 +7105,22 @@
         "23-24 Sem 1": {
             "mincgpa": 8.0,
             "maxcgpa": 8.35,
+            "students": []
+        }
+    },
+    {
+        "name": "Nomura - Finance ( Corporate & Business Advisory)",
+        "19-20 Sem 2": {
+            "mincgpa": 8.02,
+            "maxcgpa": 8.02,
+            "students": []
+        }
+    },
+    {
+        "name": "Nomura - Finance - Structured Deal Review , Mumbai",
+        "19-20 Sem 2": {
+            "mincgpa": 7.96,
+            "maxcgpa": 7.96,
             "students": []
         }
     },
@@ -5086,6 +7172,14 @@
         }
     },
     {
+        "name": "Nomura - RMO - Risk Middle Office",
+        "19-20 Sem 2": {
+            "mincgpa": 8.48,
+            "maxcgpa": 8.48,
+            "students": []
+        }
+    },
+    {
         "name": "Nomura - Wholesale Strategy",
         "22-23 Sem 1": {
             "mincgpa": 8.01,
@@ -5132,6 +7226,19 @@
             "mincgpa": 7.6,
             "maxcgpa": 8.65,
             "students": []
+        },
+        "19-20 Sem 2": {
+            "mincgpa": 7.22,
+            "maxcgpa": 7.22,
+            "students": []
+        }
+    },
+    {
+        "name": "Nomura Global markets",
+        "19-20 Sem 2": {
+            "mincgpa": 8.15,
+            "maxcgpa": 8.47,
+            "students": []
         }
     },
     {
@@ -5154,6 +7261,11 @@
         "22-23 Sem 2": {
             "mincgpa": 8.1,
             "maxcgpa": 8.1,
+            "students": []
+        },
+        "19-20 Sem 2": {
+            "mincgpa": 7.59,
+            "maxcgpa": 8.8,
             "students": []
         }
     },
@@ -5179,6 +7291,14 @@
         }
     },
     {
+        "name": "Novartis",
+        "19-20 Sem 2": {
+            "mincgpa": 7.22,
+            "maxcgpa": 7.989,
+            "students": []
+        }
+    },
+    {
         "name": "Nucleus Noida",
         "20-21 Sem 1": {
             "mincgpa": 6.693,
@@ -5198,6 +7318,25 @@
             "maxcgpa": 8.26,
             "students": []
         }
+    },
+    {
+        "name": "Nutanix",
+        "19-20 Sem 2": {
+            "mincgpa": 9.19,
+            "maxcgpa": 9.45,
+            "students": []
+        }
+    },
+    {
+        "name": "Nutanix India Private Limited",
+        "19-20 Sem 2": {
+            "mincgpa": 9.902,
+            "maxcgpa": 9.902,
+            "students": []
+        }
+    },
+    {
+        "name": "Nutanix Technologies"
     },
     {
         "name": "Nutanix Technologies India Pvt Ltd.",
@@ -5244,10 +7383,31 @@
         }
     },
     {
+        "name": "Nvidia Bangalore",
+        "19-20 Sem 2": {
+            "mincgpa": 8.23,
+            "maxcgpa": 8.23,
+            "students": []
+        }
+    },
+    {
         "name": "Nvidia Graphics - Hardware",
         "20-21 Sem 2": {
             "mincgpa": 7.68,
             "maxcgpa": 9.69,
+            "students": []
+        },
+        "19-20 Sem 2": {
+            "mincgpa": 8.03,
+            "maxcgpa": 9.02,
+            "students": []
+        }
+    },
+    {
+        "name": "NVIDIA Graphics - Hardware",
+        "19-20 Sem 2": {
+            "mincgpa": 8.46,
+            "maxcgpa": 8.61,
             "students": []
         }
     },
@@ -5328,10 +7488,58 @@
         }
     },
     {
+        "name": "Nvidia graphics- Hardware",
+        "19-20 Sem 2": {
+            "mincgpa": 8.33,
+            "maxcgpa": 8.33,
+            "students": []
+        }
+    },
+    {
+        "name": "Nvidia Hardware",
+        "19-20 Sem 2": {
+            "mincgpa": 8.05,
+            "maxcgpa": 9.5,
+            "students": []
+        }
+    },
+    {
+        "name": "NVidia Hardware",
+        "19-20 Sem 2": {
+            "mincgpa": 8.84,
+            "maxcgpa": 8.84,
+            "students": []
+        }
+    },
+    {
         "name": "Nvidia Hardware Hyderabad",
         "20-21 Sem 1": {
             "mincgpa": 8.664,
             "maxcgpa": 8.664,
+            "students": []
+        }
+    },
+    {
+        "name": "NVIDIA Software",
+        "19-20 Sem 2": {
+            "mincgpa": 8.17,
+            "maxcgpa": 8.17,
+            "students": []
+        }
+    },
+    {
+        "name": "Nvidia Software",
+        "19-20 Sem 2": {
+            "mincgpa": 7.37,
+            "maxcgpa": 8.95,
+            "students": []
+        }
+    },
+    {
+        "name": "Nvidia-Hardware Bangalore",
+        "19-20 Sem 2": {
+            "mincgpa": 8.79,
+            "maxcgpa": 8.79,
             "students": []
         }
     },
@@ -5356,6 +7564,30 @@
         "20-21 Sem 1": {
             "mincgpa": 7.51,
             "maxcgpa": 7.82,
+            "students": []
+        }
+    },
+    {
+        "name": "OLX Group",
+        "19-20 Sem 2": {
+            "mincgpa": 8.99,
+            "maxcgpa": 8.99,
+            "students": []
+        }
+    },
+    {
+        "name": "OLX Group, Gurgaon",
+        "19-20 Sem 2": {
+            "mincgpa": 7.6,
+            "maxcgpa": 7.6,
+            "students": []
+        }
+    },
+    {
+        "name": "OLX group, Gurgaon",
+        "19-20 Sem 2": {
+            "mincgpa": 7.3,
+            "maxcgpa": 7.3,
             "students": []
         }
     },
@@ -5400,10 +7632,66 @@
         }
     },
     {
+        "name": "Oyo",
+        "19-20 Sem 2": {
+            "mincgpa": 7.85,
+            "maxcgpa": 7.85,
+            "students": []
+        }
+    },
+    {
+        "name": "Oyo Hyderabad",
+        "19-20 Sem 2": {
+            "mincgpa": 7.2,
+            "maxcgpa": 7.2,
+            "students": []
+        }
+    },
+    {
+        "name": "Oyo hyderabad",
+        "19-20 Sem 2": {
+            "mincgpa": 9.39,
+            "maxcgpa": 9.39,
+            "students": []
+        }
+    },
+    {
+        "name": "Oyo Rooms",
+        "19-20 Sem 2": {
+            "mincgpa": 7.59,
+            "maxcgpa": 7.59,
+            "students": []
+        }
+    },
+    {
+        "name": "Oyo rooms",
+        "19-20 Sem 2": {
+            "mincgpa": 7.15,
+            "maxcgpa": 7.15,
+            "students": []
+        }
+    },
+    {
         "name": "Oyo Rooms (Tech)",
         "20-21 Sem 2": {
             "mincgpa": 7.37,
             "maxcgpa": 7.83,
+            "students": []
+        }
+    },
+    {
+        "name": "Oyo rooms (Tech)",
+        "19-20 Sem 2": {
+            "mincgpa": 7.67,
+            "maxcgpa": 7.67,
+            "students": []
+        }
+    },
+    {
+        "name": "Oyo Rooms (Tech), Bangalore",
+        "19-20 Sem 2": {
+            "mincgpa": 7.9,
+            "maxcgpa": 7.9,
             "students": []
         }
     },
@@ -5416,10 +7704,55 @@
         }
     },
     {
+        "name": "Oyo tech",
+        "19-20 Sem 2": {
+            "mincgpa": 7.55,
+            "maxcgpa": 8.12,
+            "students": []
+        }
+    },
+    {
+        "name": "Oyo Tech",
+        "19-20 Sem 2": {
+            "mincgpa": 7.62,
+            "maxcgpa": 8.26,
+            "students": []
+        }
+    },
+    {
+        "name": "OYO TECH GURGAON",
+        "19-20 Sem 2": {
+            "mincgpa": 7.86,
+            "maxcgpa": 7.86,
+            "students": []
+        }
+    },
+    {
         "name": "PAYPAL",
         "20-21 Sem 2": {
             "mincgpa": 7.55,
             "maxcgpa": 9.17,
+            "students": []
+        },
+        "19-20 Sem 2": {
+            "mincgpa": 7.56,
+            "maxcgpa": 7.56,
+            "students": []
+        }
+    },
+    {
+        "name": "PayPal",
+        "19-20 Sem 2": {
+            "mincgpa": 7.25,
+            "maxcgpa": 8.23,
+            "students": []
+        }
+    },
+    {
+        "name": "Paypal",
+        "19-20 Sem 2": {
+            "mincgpa": 7.79,
+            "maxcgpa": 7.97,
             "students": []
         }
     },
@@ -5526,6 +7859,19 @@
         "20-21 Sem 2": {
             "mincgpa": 7.92,
             "maxcgpa": 8.18,
+            "students": []
+        },
+        "19-20 Sem 2": {
+            "mincgpa": 7.49,
+            "maxcgpa": 7.49,
+            "students": []
+        }
+    },
+    {
+        "name": "Piramal group",
+        "19-20 Sem 2": {
+            "mincgpa": 7.61,
+            "maxcgpa": 7.61,
             "students": []
         }
     },
@@ -5723,6 +8069,14 @@
         }
     },
     {
+        "name": "Publicis Sapient",
+        "19-20 Sem 2": {
+            "mincgpa": 6.7,
+            "maxcgpa": 6.7,
+            "students": []
+        }
+    },
+    {
         "name": "PwC DIAC US Advisory",
         "23-24 Sem 2": {
             "mincgpa": 8.32,
@@ -5766,6 +8120,14 @@
         "23-24 Sem 2": {
             "mincgpa": 7.41,
             "maxcgpa": 7.41,
+            "students": []
+        }
+    },
+    {
+        "name": "Qualcomm Bangalore",
+        "19-20 Sem 2": {
+            "mincgpa": 6.94,
+            "maxcgpa": 6.94,
             "students": []
         }
     },
@@ -5817,6 +8179,11 @@
             "mincgpa": 8.544,
             "maxcgpa": 8.55,
             "students": []
+        },
+        "19-20 Sem 2": {
+            "mincgpa": 8.89,
+            "maxcgpa": 8.89,
+            "students": []
         }
     },
     {
@@ -5825,6 +8192,11 @@
             "mincgpa": 8.29,
             "maxcgpa": 8.44,
             "students": []
+        },
+        "19-20 Sem 2": {
+            "mincgpa": 8.85,
+            "maxcgpa": 8.85,
+            "students": []
         }
     },
     {
@@ -5832,6 +8204,14 @@
         "20-21 Sem 1": {
             "mincgpa": 6.78,
             "maxcgpa": 6.78,
+            "students": []
+        }
+    },
+    {
+        "name": "Quick Heal",
+        "19-20 Sem 2": {
+            "mincgpa": 8.5,
+            "maxcgpa": 8.5,
             "students": []
         }
     },
@@ -5946,6 +8326,14 @@
         "20-21 Sem 1": {
             "mincgpa": 6.82,
             "maxcgpa": 6.82,
+            "students": []
+        }
+    },
+    {
+        "name": "Rivigo Tech",
+        "19-20 Sem 2": {
+            "mincgpa": 7.81,
+            "maxcgpa": 7.81,
             "students": []
         }
     },
@@ -6077,6 +8465,14 @@
         }
     },
     {
+        "name": "Samsung R & D",
+        "19-20 Sem 2": {
+            "mincgpa": 7.2,
+            "maxcgpa": 7.2,
+            "students": []
+        }
+    },
+    {
         "name": "Samsung R & D Institute",
         "20-21 Sem 2": {
             "mincgpa": 8.23,
@@ -6105,6 +8501,62 @@
         }
     },
     {
+        "name": "Samsung R and D",
+        "19-20 Sem 2": {
+            "mincgpa": 7.45,
+            "maxcgpa": 7.45,
+            "students": []
+        }
+    },
+    {
+        "name": "Samsung R&D",
+        "19-20 Sem 2": {
+            "mincgpa": 7.31,
+            "maxcgpa": 8.76,
+            "students": []
+        }
+    },
+    {
+        "name": "Samsung R&D Institute",
+        "19-20 Sem 2": {
+            "mincgpa": 7.45,
+            "maxcgpa": 8.75,
+            "students": []
+        }
+    },
+    {
+        "name": "Samsung R&D institute",
+        "19-20 Sem 2": {
+            "mincgpa": 7.44,
+            "maxcgpa": 7.44,
+            "students": []
+        }
+    },
+    {
+        "name": "Samsung R&D Noida",
+        "19-20 Sem 2": {
+            "mincgpa": 8.3,
+            "maxcgpa": 8.3,
+            "students": []
+        }
+    },
+    {
+        "name": "Samsung semiconductor",
+        "19-20 Sem 2": {
+            "mincgpa": 8.87,
+            "maxcgpa": 8.87,
+            "students": []
+        }
+    },
+    {
+        "name": "Samsung Semiconductor",
+        "19-20 Sem 2": {
+            "mincgpa": 8.2,
+            "maxcgpa": 8.2,
+            "students": []
+        }
+    },
+    {
         "name": "Samsung Semiconductor - Software",
         "20-21 Sem 1": {
             "mincgpa": 7.158,
@@ -6124,6 +8576,51 @@
         "22-23 Sem 2": {
             "mincgpa": 6.89,
             "maxcgpa": 8.95,
+            "students": []
+        },
+        "19-20 Sem 2": {
+            "mincgpa": 8.19,
+            "maxcgpa": 8.19,
+            "students": []
+        }
+    },
+    {
+        "name": "Samsung Semiconductor Hardware",
+        "19-20 Sem 2": {
+            "mincgpa": 9.15,
+            "maxcgpa": 9.15,
+            "students": []
+        }
+    },
+    {
+        "name": "Samsung Semiconductor India R&D Center-Hardware",
+        "19-20 Sem 2": {
+            "mincgpa": 8.3,
+            "maxcgpa": 8.3,
+            "students": []
+        }
+    },
+    {
+        "name": "Samsung Semiconductor India Research",
+        "19-20 Sem 2": {
+            "mincgpa": 8.3,
+            "maxcgpa": 8.3,
+            "students": []
+        }
+    },
+    {
+        "name": "Samsung Semiconductor R &D",
+        "19-20 Sem 2": {
+            "mincgpa": 9.23,
+            "maxcgpa": 9.23,
+            "students": []
+        }
+    },
+    {
+        "name": "Samsung semiconductor R&D center",
+        "19-20 Sem 2": {
+            "mincgpa": 9.4,
+            "maxcgpa": 9.4,
             "students": []
         }
     },
@@ -6145,6 +8642,27 @@
         "20-21 Sem 1": {
             "mincgpa": 8.39,
             "maxcgpa": 8.89,
+            "students": []
+        },
+        "19-20 Sem 2": {
+            "mincgpa": 7.69,
+            "maxcgpa": 8.06,
+            "students": []
+        }
+    },
+    {
+        "name": "SAP LABS",
+        "19-20 Sem 2": {
+            "mincgpa": 7.93,
+            "maxcgpa": 7.93,
+            "students": []
+        }
+    },
+    {
+        "name": "SAP Labs, Bangalore",
+        "19-20 Sem 2": {
+            "mincgpa": 8.11,
+            "maxcgpa": 8.11,
             "students": []
         }
     },
@@ -6257,6 +8775,30 @@
         }
     },
     {
+        "name": "Servicenow",
+        "19-20 Sem 2": {
+            "mincgpa": 7.68,
+            "maxcgpa": 7.68,
+            "students": []
+        }
+    },
+    {
+        "name": "ServiceNow",
+        "19-20 Sem 2": {
+            "mincgpa": 8.26,
+            "maxcgpa": 8.26,
+            "students": []
+        }
+    },
+    {
+        "name": "ServiceNow Hyderabad",
+        "19-20 Sem 2": {
+            "mincgpa": 6.96,
+            "maxcgpa": 6.96,
+            "students": []
+        }
+    },
+    {
         "name": "SG Analytics - Pune",
         "23-24 Sem 1": {
             "mincgpa": 5.9,
@@ -6277,6 +8819,14 @@
         "23-24 Sem 2": {
             "mincgpa": 8.07,
             "maxcgpa": 8.07,
+            "students": []
+        }
+    },
+    {
+        "name": "Shell Technology Centre",
+        "19-20 Sem 2": {
+            "mincgpa": 9.77,
+            "maxcgpa": 9.77,
             "students": []
         }
     },
@@ -6466,10 +9016,42 @@
         }
     },
     {
+        "name": "SRF ltd",
+        "19-20 Sem 2": {
+            "mincgpa": 6.43,
+            "maxcgpa": 6.43,
+            "students": []
+        }
+    },
+    {
+        "name": "SRF Ltd.",
+        "19-20 Sem 2": {
+            "mincgpa": 6.45,
+            "maxcgpa": 6.45,
+            "students": []
+        }
+    },
+    {
         "name": "SSIR Software",
         "20-21 Sem 1": {
             "mincgpa": 7.78,
             "maxcgpa": 7.96,
+            "students": []
+        }
+    },
+    {
+        "name": "ST Microelectronics",
+        "19-20 Sem 2": {
+            "mincgpa": 7.34,
+            "maxcgpa": 7.34,
+            "students": []
+        }
+    },
+    {
+        "name": "ST-Microelectronics",
+        "19-20 Sem 2": {
+            "mincgpa": 7.93,
+            "maxcgpa": 7.93,
             "students": []
         }
     },
@@ -6569,6 +9151,46 @@
         }
     },
     {
+        "name": "Swiggy (nontech)",
+        "19-20 Sem 2": {
+            "mincgpa": 7.38,
+            "maxcgpa": 7.38,
+            "students": []
+        }
+    },
+    {
+        "name": "Swiggy (Tech)",
+        "19-20 Sem 2": {
+            "mincgpa": 7.72,
+            "maxcgpa": 7.72,
+            "students": []
+        }
+    },
+    {
+        "name": "Swiggy Non-Tech",
+        "19-20 Sem 2": {
+            "mincgpa": 7.96,
+            "maxcgpa": 7.96,
+            "students": []
+        }
+    },
+    {
+        "name": "Swiggy tech",
+        "19-20 Sem 2": {
+            "mincgpa": 8.19,
+            "maxcgpa": 8.19,
+            "students": []
+        }
+    },
+    {
+        "name": "Swiggy- Non Tech",
+        "19-20 Sem 2": {
+            "mincgpa": 7.41,
+            "maxcgpa": 7.41,
+            "students": []
+        }
+    },
+    {
         "name": "Symphony Fintech Solutions Pvt. Ltd.",
         "20-21 Sem 2": {
             "mincgpa": 5.22,
@@ -6618,6 +9240,14 @@
         }
     },
     {
+        "name": "Synopsys",
+        "19-20 Sem 2": {
+            "mincgpa": 7.53,
+            "maxcgpa": 7.53,
+            "students": []
+        }
+    },
+    {
         "name": "Takshila Learning",
         "20-21 Sem 1": {
             "mincgpa": 6.9,
@@ -6646,6 +9276,30 @@
         "20-21 Sem 1": {
             "mincgpa": 7.5,
             "maxcgpa": 8.62,
+            "students": []
+        }
+    },
+    {
+        "name": "TATA Digital Health",
+        "19-20 Sem 2": {
+            "mincgpa": 7.59,
+            "maxcgpa": 7.59,
+            "students": []
+        }
+    },
+    {
+        "name": "Tata motors",
+        "19-20 Sem 2": {
+            "mincgpa": 7.0,
+            "maxcgpa": 7.0,
+            "students": []
+        }
+    },
+    {
+        "name": "Tata motors Ltd",
+        "19-20 Sem 2": {
+            "mincgpa": 6.7,
+            "maxcgpa": 6.7,
             "students": []
         }
     },
@@ -6766,6 +9420,14 @@
         }
     },
     {
+        "name": "Texas Instruments Pvt. Ltd. - (Systems)",
+        "19-20 Sem 2": {
+            "mincgpa": 9.01,
+            "maxcgpa": 9.01,
+            "students": []
+        }
+    },
+    {
         "name": "Texas Instruments-Analog",
         "20-21 Sem 1": {
             "mincgpa": 8.97,
@@ -6778,6 +9440,14 @@
         "22-23 Sem 2": {
             "mincgpa": 8.18,
             "maxcgpa": 8.6,
+            "students": []
+        }
+    },
+    {
+        "name": "Thornton Tomasetti",
+        "19-20 Sem 2": {
+            "mincgpa": 10.0,
+            "maxcgpa": 10.0,
             "students": []
         }
     },
@@ -6846,6 +9516,14 @@
         "22-23 Sem 1": {
             "mincgpa": 8.15,
             "maxcgpa": 8.15,
+            "students": []
+        }
+    },
+    {
+        "name": "Toshiba Software India Pvt Ltd",
+        "19-20 Sem 2": {
+            "mincgpa": 6.86,
+            "maxcgpa": 6.86,
             "students": []
         }
     },
@@ -6947,6 +9625,14 @@
         }
     },
     {
+        "name": "UBS",
+        "19-20 Sem 2": {
+            "mincgpa": 6.814,
+            "maxcgpa": 6.814,
+            "students": []
+        }
+    },
+    {
         "name": "UBS - Group Compliance , Mumbai",
         "20-21 Sem 1": {
             "mincgpa": 7.98,
@@ -7032,6 +9718,14 @@
         }
     },
     {
+        "name": "UBS Business Solutions (India) Private Limited - Group Operations , Pune",
+        "19-20 Sem 2": {
+            "mincgpa": 6.13,
+            "maxcgpa": 6.13,
+            "students": []
+        }
+    },
+    {
         "name": "UBS Business Solutions (India) Private Limited - RAS FINANCE , Pune",
         "23-24 Sem 1": {
             "mincgpa": 6.25,
@@ -7097,6 +9791,14 @@
         "20-21 Sem 1": {
             "mincgpa": 7.42,
             "maxcgpa": 7.45,
+            "students": []
+        }
+    },
+    {
+        "name": "UBS Mumbai, Group risk",
+        "19-20 Sem 2": {
+            "mincgpa": 7.5,
+            "maxcgpa": 7.5,
             "students": []
         }
     },
@@ -7180,6 +9882,11 @@
             "mincgpa": 8.47,
             "maxcgpa": 9.132,
             "students": []
+        },
+        "19-20 Sem 2": {
+            "mincgpa": 6.03,
+            "maxcgpa": 8.61,
+            "students": []
         }
     },
     {
@@ -7201,6 +9908,25 @@
         }
     },
     {
+        "name": "Udaan, Banglore",
+        "19-20 Sem 2": {
+            "mincgpa": 6.93,
+            "maxcgpa": 6.93,
+            "students": []
+        }
+    },
+    {
+        "name": "Udaan, Delhi",
+        "19-20 Sem 2": {
+            "mincgpa": 6.33,
+            "maxcgpa": 6.33,
+            "students": []
+        }
+    },
+    {
+        "name": "Udaan-Delhi"
+    },
+    {
         "name": "Unity Growth Fund LLC",
         "23-24 Sem 2": {
             "mincgpa": 7.17,
@@ -7213,6 +9939,11 @@
         "20-21 Sem 1": {
             "mincgpa": 7.05,
             "maxcgpa": 7.857,
+            "students": []
+        },
+        "19-20 Sem 2": {
+            "mincgpa": 6.28,
+            "maxcgpa": 8.08,
             "students": []
         }
     },
@@ -7249,6 +9980,14 @@
         }
     },
     {
+        "name": "UST Global",
+        "19-20 Sem 2": {
+            "mincgpa": 5.4,
+            "maxcgpa": 5.4,
+            "students": []
+        }
+    },
+    {
         "name": "UST Global- Trivandrum - Thiruvananthapuram",
         "23-24 Sem 1": {
             "mincgpa": 6.39,
@@ -7262,10 +10001,23 @@
         }
     },
     {
+        "name": "Valorem Stack (FloBiz)",
+        "19-20 Sem 2": {
+            "mincgpa": 8.3,
+            "maxcgpa": 8.3,
+            "students": []
+        }
+    },
+    {
         "name": "Valorem Stack Pvt. Ltd. (FloBiz)",
         "20-21 Sem 2": {
             "mincgpa": 6.64,
             "maxcgpa": 6.667,
+            "students": []
+        },
+        "19-20 Sem 2": {
+            "mincgpa": 7.14,
+            "maxcgpa": 7.14,
             "students": []
         }
     },
@@ -7323,6 +10075,14 @@
         }
     },
     {
+        "name": "Viacom - Corporate Strategy",
+        "19-20 Sem 2": {
+            "mincgpa": 7.05,
+            "maxcgpa": 7.05,
+            "students": []
+        }
+    },
+    {
         "name": "Viacom - DV Ad-Operations",
         "23-24 Sem 2": {
             "mincgpa": 7.02,
@@ -7343,6 +10103,14 @@
         "23-24 Sem 2": {
             "mincgpa": 6.98,
             "maxcgpa": 6.98,
+            "students": []
+        }
+    },
+    {
+        "name": "Viacom 18",
+        "19-20 Sem 2": {
+            "mincgpa": 8.23,
+            "maxcgpa": 8.23,
             "students": []
         }
     },
@@ -7424,6 +10192,11 @@
             "mincgpa": 8.09,
             "maxcgpa": 8.09,
             "students": []
+        },
+        "19-20 Sem 2": {
+            "mincgpa": 7.45,
+            "maxcgpa": 7.68,
+            "students": []
         }
     },
     {
@@ -7431,6 +10204,14 @@
         "20-21 Sem 1": {
             "mincgpa": 8.1,
             "maxcgpa": 8.46,
+            "students": []
+        }
+    },
+    {
+        "name": "VMWARE SOFTWARE",
+        "19-20 Sem 2": {
+            "mincgpa": 7.63,
+            "maxcgpa": 7.63,
             "students": []
         }
     },
@@ -7453,6 +10234,14 @@
         }
     },
     {
+        "name": "VMware Software India Pvt. Ltd.",
+        "19-20 Sem 2": {
+            "mincgpa": 7.38,
+            "maxcgpa": 7.56,
+            "students": []
+        }
+    },
+    {
         "name": "VOZIQ INDIA Pvt Ltd",
         "20-21 Sem 1": {
             "mincgpa": 7.26,
@@ -7462,6 +10251,30 @@
         "20-21 Sem 2": {
             "mincgpa": 5.02,
             "maxcgpa": 5.02,
+            "students": []
+        }
+    },
+    {
+        "name": "Vuclip",
+        "19-20 Sem 2": {
+            "mincgpa": 8.43,
+            "maxcgpa": 8.43,
+            "students": []
+        }
+    },
+    {
+        "name": "Vuclip India Pvt. Ltd. , Pune",
+        "19-20 Sem 2": {
+            "mincgpa": 8.56,
+            "maxcgpa": 8.56,
+            "students": []
+        }
+    },
+    {
+        "name": "Vuclip, Pune",
+        "19-20 Sem 2": {
+            "mincgpa": 8.18,
+            "maxcgpa": 8.18,
             "students": []
         }
     },
@@ -7482,6 +10295,22 @@
         }
     },
     {
+        "name": "Walmart",
+        "19-20 Sem 2": {
+            "mincgpa": 7.72,
+            "maxcgpa": 8.38,
+            "students": []
+        }
+    },
+    {
+        "name": "Walmart Bangalore",
+        "19-20 Sem 2": {
+            "mincgpa": 7.74,
+            "maxcgpa": 7.74,
+            "students": []
+        }
+    },
+    {
         "name": "Walmart Global Technology Services",
         "23-24 Sem 2": {
             "mincgpa": 7.8,
@@ -7491,6 +10320,11 @@
         "20-21 Sem 2": {
             "mincgpa": 8.73,
             "maxcgpa": 9.01,
+            "students": []
+        },
+        "19-20 Sem 2": {
+            "mincgpa": 8.78,
+            "maxcgpa": 8.78,
             "students": []
         }
     },
@@ -7537,6 +10371,22 @@
         }
     },
     {
+        "name": "WickedRide (Bounce)",
+        "19-20 Sem 2": {
+            "mincgpa": 8.42,
+            "maxcgpa": 9.21,
+            "students": []
+        }
+    },
+    {
+        "name": "Wickedride (Bounce)",
+        "19-20 Sem 2": {
+            "mincgpa": 9.14,
+            "maxcgpa": 9.14,
+            "students": []
+        }
+    },
+    {
         "name": "WILLIAM O NEIL",
         "20-21 Sem 1": {
             "mincgpa": 8.11,
@@ -7551,6 +10401,14 @@
         "20-21 Sem 2": {
             "mincgpa": 6.17,
             "maxcgpa": 6.17,
+            "students": []
+        }
+    },
+    {
+        "name": "William O'Neil",
+        "19-20 Sem 2": {
+            "mincgpa": 7.3,
+            "maxcgpa": 7.3,
             "students": []
         }
     },
@@ -7618,6 +10476,11 @@
             "mincgpa": 7.62,
             "maxcgpa": 7.79,
             "students": []
+        },
+        "19-20 Sem 2": {
+            "mincgpa": 6.07,
+            "maxcgpa": 6.9,
+            "students": []
         }
     },
     {
@@ -7684,6 +10547,14 @@
         }
     },
     {
+        "name": "Zendrive",
+        "19-20 Sem 2": {
+            "mincgpa": 8.34,
+            "maxcgpa": 9.04,
+            "students": []
+        }
+    },
+    {
         "name": "Zendrive India Pvt Ltd",
         "20-21 Sem 2": {
             "mincgpa": 8.15,
@@ -7704,6 +10575,11 @@
         "20-21 Sem 1": {
             "mincgpa": 8.168,
             "maxcgpa": 8.204,
+            "students": []
+        },
+        "19-20 Sem 2": {
+            "mincgpa": 8.49,
+            "maxcgpa": 8.59,
             "students": []
         }
     },
@@ -7772,6 +10648,14 @@
         "20-21 Sem 1": {
             "mincgpa": 7.86,
             "maxcgpa": 8.07,
+            "students": []
+        }
+    },
+    {
+        "name": "Zinnov Management",
+        "19-20 Sem 2": {
+            "mincgpa": 6.22,
+            "maxcgpa": 6.22,
             "students": []
         }
     },
