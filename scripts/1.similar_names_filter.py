@@ -11,12 +11,21 @@ import pandas as pd
 # Defining the constants
 CSV_FILE = 'PS2_master.csv'
 OUTPUT_FILE = 'soundex_filter.txt'
-IGNORE_FILE = 'ignore.txt'
+IGNORE_FILE = 'ignore_PS2.txt'
 
 # Getting the PS station names, putting in set for avoiding repetition
 # Replace all company names which have \u0026 with &
 df = pd.read_csv(CSV_FILE)
+
+# Replace all company names which have \u0026 with &
 df['Company'] = df['Company'].apply(lambda x: x.replace(r'\u0026', '&'))
+# Remove all weird characters from company names
+df['Company'] = df['Company'].apply(lambda x: x.encode('ascii', 'ignore').decode('ascii'))
+# Remove double quotes from company names
+df['Company'] = df['Company'].apply(lambda x: x.replace('"', ''))
+# Remove leading and trailing spaces
+df['Company'] = df['Company'].apply(lambda x: x.strip())
+
 df.to_csv(CSV_FILE, index=False)
 
 # Read the ignore file

@@ -65,4 +65,23 @@ Apple India Private Limited<|>Apple India Pvt Limited - Hyderabad<|>Avlinq Solut
 Central Electronics Engineering Research Institute - Pilani<|>Central Leather Research Institute (CLRI)<|>Centre For Development Of Imaging Technology , Trivandrum<|>Centre for Artificial Intelligence & Robotics
 Indian Electrical & Electronics Manufacturers� Association(New Delhi)<|>Indian Institute Of Remote Sensing<|>Indian Institute of Petroleum<|>Indian School of Business
 Morning Star - Client Services and Implementation - Mumbai<|>Morning Star - Index Management and Analytics - Mumbai<|>Morning Star - Index New Product Development<|>Morning Star - Index New Product Development - Mumbai<|>Morning Star- Index Data Calculation<|>MorningStar Index Sales and Operations<|>Morningstar - Index data calculation<|>Morningstar - Quantitative Research<|>Morningstar-Indexes-Data and Content
-
+Aditya Birla D&A<|>Aditya Birla Insulators, Halol
+First Meridian  OnSolve LLC - Bengaluru<|>Freight Deck - Non Tech
+My Smart Price (Tech), Hyderabad
+Indian Electrical & Electronics Manufacturers Association(New Delhi)<|>Indian Institute Of Remote Sensing<|>Indian Institute of Petroleum<|>Indian School of Business
+Cantilever Labs<|>Contlo - AI Engineer<|>Contlo - SDE (Tech) - Bengaluru<|>CueMath Learn
+American Express - AI Lab<|>American Express - Credit & Fraud Risk (Capabilities)<|>American Express -Decision Science and Strategy - Gurugram<|>American Express CFR Marketing Decision Science
+Viacom - DV Ad-Operations<|>Viacom - DV Ad-Sales<|>Viacom 18 - Digital Ventures<|>Viacom DV AVOD Marketing<|>Viacom DV Brand Solutions - Mumbai<|>Viacom DV Business Planning - Mumbai<|>Viacom DV Data Science & Analytics - Mumbai<|>Viacom DV Product - Mumbai
+Morgan Stanley - FID Research - Mumbai<|>Morgan Stanley - Risk Analytics<|>Morgan Stanley - Strats and Quant - Mumbai<|>Morgan Stanley Advantage Services<|>Morgan Stanley- Legal Compliance - Mumbai
+EGovernments Foundation, Banglore.<|>Experian<|>Express Stores - Non tech
+DBOI - MRAC and MDSA<|>DBOI - MRM - Mumbai<|>DBOI - Market Risk
+E-connect solutions<|>Ecom Express<|>Ecom Express Pvt. Ltd. - Data Science<|>e-connect , udaipur
+Samsung Hardware<|>Samsung R & D Institute<|>Samsung Semiconductor - Software<|>Samsung Software (SSIR)
+National Aerospace Lab<|>National Chemical Laboratory<|>National Council for Cement and Building Materials<|>National Instruments
+Nomura - Change Management Team<|>Nomura - Group Data Office<|>Nomura Global Finance<|>Nomura Global Markets<|>Nomura Global Risk<|>Nomura- Change Management Team
+UBS - RAS FINANCE<|>UBS - Risk Methodology - Mumbai<|>UBS RAF FINANCE<|>UPGRAD<|>UpGrad - Data<|>UpGrad - Management<|>UpGrad - Tech
+NVIDIA Graphics Bangalore<|>NVIDIA Graphics Hardware (Bangalore)<|>Neufo Technologies Pvt. Ltd. - Tech - Mumbai<|>Nvidia - Software<|>Nvidia Graphics - Hardware<|>Nvidia Graphics - Hardware - Bengaluru<|>Nvidia Graphics - Software<|>Nvidia Graphics - Software, Bangalore<|>Nvidia Graphics Hardware, Banglore<|>Nvidia Graphics, Hardware- Bangalore
+Amazon (Non-Tech)<|>Amazon - Machine Learning<|>Amazon Development Center<|>Amazon Development Center - Bengaluru<|>Amazon Development Center - Chennai<|>Amazon Development Center - Hyderabad<|>Amazon Development Center - New delhi<|>Amazon ML Bangalore<|>Amazon ML, Hyderabad<|>Amazon Professional Services
+Flipkart (Software Development)<|>Flipkart - Planning Analysts - Bengaluru<|>Flipkart Health Plus Analytics - Bengaluru<|>Flipkart Internet Pvt Ltd - Business Analyst<|>Flipkart Internet Pvt Ltd - Business Development - Bengaluru<|>Flipkart Internet Pvt Ltd - Corporate Strategy - Bengaluru<|>Flipkart Internet Pvt Ltd - Data Engineering<|>Flipkart Internet Pvt Ltd - Product Management<|>Flipkart Internet Pvt Ltd - Site Reliability Engineering<|>Flipkart Internet Pvt Ltd - UI
+UBS - VALS - Mumbai<|>UBS BUSINESS SOLUTIONS- OPS GROUP MUMBAI<|>UBS Business Solutions (India) Private Limited - Group Operations<|>UBS Business Solutions (India) Private Limited - RAS FINANCE , Pune<|>UBS Business Solutions Finance group, Pune<|>UBS Business Solutions Group Operations Mumbai<|>UBS Operations Pune<|>UBS Operations- Mumbai<|>UBS finance group Mumbai<|>Ubs Finance Group, Pune
+UBS - Group Compliance , Mumbai<|>UBS - Group Compliance, Pune<|>UBS - Group Finance<|>UBS - Group Finance - Mumbai<|>UBS - Group RISK<|>UBS - Group RISK - Mumbai<|>UBS Group Operations, Pune<|>UBS, Group Finance - Hyderabad<|>UBS- Group Compliance, Mumbai<|>UBS- Group Compliance, Pune<|>UBS- Group Operations, Hyderabad<|>UBS-Group Finance, Hyderabad<|>Ubs group operations, Mumbai
