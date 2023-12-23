@@ -46,14 +46,14 @@ export default function PS({ ps2_chronicles }: any) {
                     />
                 </div>
 
-                <div className="flex">
-                    <Link className="m-3" href={"/ps1_data"}>
+                <div className="flex w-1/2 justify-center">
+                    <Link className="m-3 w-full" href={"/ps1_data"}>
                         <button className="btn btn-outline w-full">
                             PS1 CGPA Cutoffs
                         </button>
                     </Link>
 
-                    <Link className="m-3" href={"/ps2_data"}>
+                    <Link className="m-3 w-full" href={"/ps2_data"}>
                         <button className="btn btn-outline w-full">
                             PS2 CGPA Cutoffs
                         </button>
