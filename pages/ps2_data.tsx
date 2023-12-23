@@ -68,7 +68,7 @@ export default function PS2({ ps2_data }: { ps2_data: PS_Station[] }) {
                             }
                         </select>
 
-                        <p>NOTE: This data is crowdsourced and might not be accuracte.</p>
+                        <p className="m-2">NOTE: This data is crowdsourced and might not be accurate.</p>
 
                         <Link className="m-3" href={"/ps"}>
                             <button className="btn btn-outline w-full">
@@ -92,13 +92,14 @@ export default function PS2({ ps2_data }: { ps2_data: PS_Station[] }) {
                                             station[year] && <div className="py-1 m-2 border-solid border-[1px] border-white rounded-xl" key={(station.name as string) + year}>
                                                 <div className="alert shadow-sm">
                                                     <div>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-info shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                                         <span>{(station.name as string).toUpperCase()}</span>
                                                     </div>
-                                                    <div className="flex-none">
-                                                        <button className="btn btn-sm btn-primary disabled">{year}</button>
-                                                        <button className="btn btn-sm btn-primary disabled">{(station[year] as CGPAGroup).mincgpa}</button>
-                                                        <button className="btn btn-sm btn-primary disabled">{(station[year] as CGPAGroup).maxcgpa}</button>
+
+                                                    <div className="flex-wrap">
+                                                        <div className="tooltip" data-tip="Year"><button className="btn btn-sm btn-primary disabled">{year}</button></div>
+                                                        <div className="tooltip" data-tip="Min. CGPA"><button className="btn btn-sm btn-primary disabled">{(station[year] as CGPAGroup).mincgpa}</button></div>
+                                                        <div className="tooltip" data-tip="Max. CGPA"><button className="btn btn-sm btn-primary disabled">{(station[year] as CGPAGroup).maxcgpa}</button></div>
+                                                        <div className="tooltip" data-tip="Number of Students"><button className="btn btn-sm btn-primary disabled">{(station[year] as CGPAGroup).students.length}</button></div>
                                                     </div>
                                                 </div>
                                             </div>

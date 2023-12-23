@@ -57,7 +57,7 @@ export default function PS2({ ps2_data }: { ps2_data: PS_Station[] }) {
                             onChange={(e) => setSearch(e.target.value)}
                         />
 
-                        <p>NOTE: This data is crowdsourced and might not be accuracte.</p>
+                        <p className="m-2">NOTE: This data is crowdsourced and might not be accurate.</p>
 
                         {/* <select className="select select-bordered w-full max-w-xs" onChange={(e) => setYearRef(e.target.value)}>
                             <option disabled selected>Which year to use as reference?</option>
@@ -90,7 +90,6 @@ export default function PS2({ ps2_data }: { ps2_data: PS_Station[] }) {
                                             return <div className="py-1 m-2 border-solid border-[1px] border-white rounded-xl" key={(station.name as string)}>
                                                 <div className="alert shadow-sm">
                                                     <div>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-info shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                                         <span>{(station.name as string).toUpperCase()}</span>
                                                     </div>
                                                     <div className="flex-none">
