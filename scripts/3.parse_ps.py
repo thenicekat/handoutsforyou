@@ -1,6 +1,7 @@
 # This script converts a csv to custom json format
 import pandas as pd
 import json
+import base64
 
 # Constants
 MASTER_FILE = 'PS2_master.csv'
@@ -31,8 +32,7 @@ for index, row in df.iterrows():
         }
     
     # Now check if the year is there in the company
-    # If it's there update mincgpa and maxcgpa
-    # Else create the year
+    # If it's there update mincgpa and maxcgpa else create the year
     if row['Year-Semester'] not in companies[row['Company']]:
         try:
             companies[row['Company']][row['Year-Semester']] = {
@@ -40,9 +40,9 @@ for index, row in df.iterrows():
                 'maxcgpa': float(row['CGPA']),
                 'students': set()
             }
-            # companies[row['Company']][row['Year-Semester']]['students'].add(row['ID Number'])
+            companies[row['Company']][row['Year-Semester']]['students'].add(base64.b64encode(row['ID Number'].encode('ascii')).decode('ascii'))
         except:
-            print(f"Error in {row['Company']} {row['Year-Semester']} {row['CGPA']}")
+            print(f"Error in {row['Company']}||{row['Year-Semester']}||{row['CGPA']}||{row['ID Number']}")
             continue
     # If it is there, check if the cgpa is less than mincgpa or greater than maxcgpa
     else:
@@ -51,13 +51,12 @@ for index, row in df.iterrows():
                 companies[row['Company']][row['Year-Semester']]['mincgpa'] = float(row['CGPA'])
             if float(row['CGPA']) > companies[row['Company']][row['Year-Semester']]['maxcgpa']:
                 companies[row['Company']][row['Year-Semester']]['maxcgpa'] = float(row['CGPA'])
-                
-            # companies[row['Company']][row['Year-Semester']]['students'].add(row['ID Number'])
+            companies[row['Company']][row['Year-Semester']]['students'].add(base64.b64encode(row['ID Number'].encode('ascii')).decode('ascii'))
         except:
-            print(f"Error in {row['Company']} {row['Year-Semester']} {row['CGPA']}")
+            print(f"Error in {row['Company']}||{row['Year-Semester']}||{row['CGPA']}||{row['ID Number']}")
             continue
 
-for company in companies:
+for company in companies:        
     final_data.append(companies[company])
 
 # Sort them based on name in lowercase
