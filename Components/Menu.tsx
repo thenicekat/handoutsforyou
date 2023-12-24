@@ -52,7 +52,7 @@ const Menu = (props: Props) => {
                     </button>
                 </Link>
 
-                <Link className="m-3" href={"https://forms.gle/eTtfHgthEUZtr5GW6"} target='_blank'>
+                <Link className="m-3" href={"mailto:f20210075@hyderabad.bits-pilani.ac.in"} target='_blank'>
                     <button className="btn btn-outline w-full">
                         Add your Content
                     </button>
