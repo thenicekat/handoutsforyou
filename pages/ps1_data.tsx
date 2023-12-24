@@ -87,7 +87,7 @@ export default function PS2({ ps2_data }: { ps2_data: PS_Station[] }) {
                                     Object.keys(station)
                                         .filter(key => key != "name" && (station[key] as CGPAGroup).mincgpa <= cgpa)
                                         .map((key) => {
-                                            return <div className="py-1 m-2 border-solid border-[1px] border-white rounded-xl" key={(station.name as string)}>
+                                            return <div className="py-1 m-2 rounded-xl" key={(station.name as string)}>
                                                 <div className="alert shadow-sm">
                                                     <div>
                                                         <span>{(station.name as string).toUpperCase()}</span>

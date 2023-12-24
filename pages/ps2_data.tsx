@@ -89,7 +89,7 @@ export default function PS2({ ps2_data }: { ps2_data: PS_Station[] }) {
                                     ps2_data
                                         .filter((d: PS_Station) => (d.name as string).toLowerCase().includes(search.toLowerCase()) && d[year] && (d[year] as CGPAGroup).mincgpa <= cgpa)
                                         .map((station: PS_Station) => (
-                                            station[year] && <div className="py-1 m-2 border-solid border-[1px] border-white rounded-xl" key={(station.name as string) + year}>
+                                            station[year] && <div className="py-1 m-2 rounded-xl" key={(station.name as string) + year}>
                                                 <div className="alert shadow-sm">
                                                     <div>
                                                         <span>{(station.name as string).toUpperCase()}</span>
