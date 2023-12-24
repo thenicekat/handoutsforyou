@@ -6,7 +6,7 @@ export default function HandoutsPerYear({ handouts, year, searchWord }: Handouts
     <div className="p-3 m-3">
       {
         handouts.filter((handout: any) => handout.toLowerCase().includes(searchWord.toLowerCase())).map((handout: any) => (
-          <div key={handout} className='m-2 py-1 border-solid border-[1px] border-white rounded-xl'>
+          <div key={handout} className='m-2 py-1 rounded-xl'>
             <div className="alert shadow-sm">
               <div>
                 <svg className="flex-shrink-0 w-6 h-6 fill-current text-white" viewBox="0 0 20 20">
