@@ -62,11 +62,17 @@ export default function Prereqs({ prereqs }: { prereqs: PreReqGroup[] }) {
                                     {
                                         preqgroup.prereqs.length > 0
                                             ?
-                                            preqgroup.prereqs.map((preq) => <p key={preq.prereq_name}>{preq.prereq_name} ({preq.pre_cop})</p>)
+                                            preqgroup.prereqs.map((preq) =>
+                                                <>
+                                                    <p key={preq.prereq_name}>{preq.prereq_name} ({preq.pre_cop})</p>
+                                                </>
+                                            )
                                             :
                                             <p>No Prerequisites</p>
                                     }
+                                    <br />
                                 </div>
+                                {preqgroup.all_one && preqgroup.all_one.length > 0 && <button className="btn btn-sm disabled btn-outline">Have to do: {preqgroup.all_one}</button>}
                             </div>
                         </div>
                     ))
