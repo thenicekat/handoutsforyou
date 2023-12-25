@@ -50,21 +50,21 @@ export default function Prereqs({ prereqs }: { prereqs: PreReqGroup[] }) {
                 </div>
             </div>
 
-            <p className="text-center">NOTE: Here PRE means you will have to complete before hand while CO means you can do them parallelly</p>
+            <p className="text-center m-2">NOTE: Here PRE means you will have to complete before hand while CO means you can do them parallelly</p>
 
             {session && <div className='grid md:grid-cols-3 place-items-center p-5'>
                 {
                     prereqs.filter((d: PreReqGroup) => d.name.toLowerCase().includes(search.toLowerCase())).map((preqgroup: PreReqGroup) => (
-                        <div className="card w-9/12 bg-neutral text-neutral-content m-2" key={preqgroup.name}>
-                            <div className="card-body items-center text-center">
+                        <div className="card w-11/12 bg-neutral text-neutral-content m-2" key={preqgroup.name}>
+                            <div className="card-body items-center">
                                 <h2 className="card-title">{preqgroup.name}</h2>
-                                <div className="card-actions justify-end">
+                                <div className="card-actions justify-begin">
                                     {
                                         preqgroup.prereqs.length > 0
                                             ?
                                             preqgroup.prereqs.map((preq) =>
                                                 <>
-                                                    <p key={preq.prereq_name}>{preq.prereq_name} ({preq.pre_cop})</p>
+                                                    <li key={preq.prereq_name}>{preq.prereq_name} ({preq.pre_cop})</li>
                                                 </>
                                             )
                                             :
@@ -72,7 +72,7 @@ export default function Prereqs({ prereqs }: { prereqs: PreReqGroup[] }) {
                                     }
                                     <br />
                                 </div>
-                                {preqgroup.all_one && preqgroup.all_one.length > 0 && <button className="btn btn-sm disabled btn-outline">Have to do: {preqgroup.all_one}</button>}
+                                {preqgroup.all_one && preqgroup.all_one.length > 0 && <button className="btn btn-sm disabled btn-info">Have to do: {preqgroup.all_one}</button>}
                             </div>
                         </div>
                     ))
