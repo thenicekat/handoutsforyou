@@ -18,21 +18,48 @@ export default function Reviews({ }: {}) {
     const { data: session } = useSession()
 
     const fetchReviews = async () => {
-        if (course == "" || prof == "") {
-            alert("Please choose course and professor!")
-            return
+        if (course == "" && prof == "") {
+            const { data, error } = await supabase
+                .from('reviews')
+                .select('*')
+            if (error) console.log(error)
+            else {
+                setReviews(data)
+            }
         }
+        else if (course == "") {
+            const { data, error } = await supabase
+                .from('reviews')
+                .select('*')
+                .eq('prof', prof)
 
-        const { data, error } = await supabase
-            .from('reviews')
-            .select('*')
-            .eq('course', course)
-            .eq('prof', prof)
+            if (error) console.log(error)
+            else {
+                setReviews(data)
+            }
+        }
+        else if (prof == "") {
+            const { data, error } = await supabase
+                .from('reviews')
+                .select('*')
+                .eq('course', course)
 
-        if (error) console.log(error)
+            if (error) console.log(error)
+            else {
+                setReviews(data)
+            }
+        }
         else {
-            setReviews(data)
-            console.log(reviews)
+            const { data, error } = await supabase
+                .from('reviews')
+                .select('*')
+                .eq('course', course)
+                .eq('prof', prof)
+
+            if (error) console.log(error)
+            else {
+                setReviews(data)
+            }
         }
     }
 
@@ -79,14 +106,19 @@ export default function Reviews({ }: {}) {
                 <div>
                     <div className='px-2 md:px-20'>
                         {
-                            reviews.map((review) => (
+                            reviews.length > 0 ? reviews.map((review) => (
                                 <div className="card shadow-lg compact bg-base-100 text-base-content mt-5" key={review.id}>
                                     <div className="card-body">
                                         <h2 className="card-title text-center">Course Name: {review.course} by Professor: {review.prof}</h2>
                                         <p>{review.review}</p>
                                     </div>
                                 </div>
-                            ))
+                            )) :
+                                <div className="card shadow-lg compact bg-base-100 text-base-content mt-5">
+                                    <div className="card-body">
+                                        <h2 className="card-title text-center">No Reviews Found!</h2>
+                                    </div>
+                                </div>
                         }
                     </div>
                 </div>
