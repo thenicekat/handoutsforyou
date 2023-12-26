@@ -21,8 +21,16 @@ export default function AddReview({ }: {}) {
     const { data: session } = useSession()
 
     const AddReview = async () => {
-        if (course == "" || prof == "" || review == "") {
-            alert("Please fill all the fields!")
+        if (course == "") {
+            alert("Please fill course!")
+            return
+        }
+        if (prof == "") {
+            alert("Please fill professor!")
+            return
+        }
+        if (review == "") {
+            alert("Please fill review!")
             return
         }
 
