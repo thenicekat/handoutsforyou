@@ -9,7 +9,7 @@ import { CGPAGroup, PS_Station } from "../../types/PSData";
 export const getStaticProps: GetStaticProps = async () => {
     const fs = require("fs");
 
-    let ps2_data = fs.readFileSync("./public/ps/ps2_data.json").toString();
+    let ps2_data = fs.readFileSync("./data/ps2_data.json").toString();
     ps2_data = JSON.parse(ps2_data)
 
     return {
