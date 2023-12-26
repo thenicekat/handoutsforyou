@@ -5,15 +5,15 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { supabase } from '../api/supabase';
 import { CourseReview } from "../../types/CourseReview";
+import { courses } from "../../data/courses";
+import { profs } from "../../data/profs";
 
 
 export default function AddReview({ }: {}) {
     const [crsSearch, setCrsSearch] = useState("");
-    const courses = ["OS", "MPi", "DD"]
     const [course, setCourse] = useState("");
 
     const [profSearch, setProfSearch] = useState("");
-    const profs = ["Prof1", "Prof2", "Prof3"]
     const [prof, setProf] = useState("");
 
     const [review, setReview] = useState("");
