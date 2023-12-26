@@ -116,7 +116,10 @@ export default function Reviews({ }: {}) {
                             )) :
                                 <div className="card shadow-lg compact bg-base-100 text-base-content mt-5">
                                     <div className="card-body">
-                                        <h2 className="card-title text-center">No Reviews Found!</h2>
+                                        <h2 className="card-title text-center">
+                                            Please enter criteria! Supports only prof based search and only course based search as well.
+                                            If you see this message even after entering criteria, it means that there are no reviews for the entered criteria
+                                        </h2>
                                     </div>
                                 </div>
                         }
