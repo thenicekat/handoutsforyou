@@ -40,9 +40,9 @@ const Menu = (props: Props) => {
                     </button>
                 </Link>
 
-                <Link className="m-3" href={"/faqs"}>
+                <Link className="m-3" href={"/courses/reviews"}>
                     <button className="btn btn-outline w-full">
-                        FAQs about Campus
+                        Course Reviews
                     </button>
                 </Link>
 
@@ -64,7 +64,7 @@ const Menu = (props: Props) => {
                     </button>
                 </Link>
 
-                <Link className="m-3" href={"/prereqs"}>
+                <Link className="m-3" href={"/courses/prereqs"}>
                     <button className="btn btn-outline w-full">
                         Course Prereqs
                     </button>
