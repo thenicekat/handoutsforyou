@@ -66,7 +66,7 @@ export default function Reviews({ }: {}) {
                             />
 
                             <select className="select select-bordered w-full max-w-xs" onChange={(e) => setCourse(e.target.value)}>
-                                <option disabled selected>Select Course</option>
+                                {crsSearch.length == 0 && <option disabled selected>Select Course</option>}
                                 {
                                     courses.filter(crs => (crs.toLowerCase().includes(crsSearch.toLowerCase()))).map((course) => (
                                         <option value={course} key={course}>{course}</option>
@@ -83,7 +83,7 @@ export default function Reviews({ }: {}) {
                             />
 
                             <select className="select select-bordered w-full max-w-xs" onChange={(e) => setProf(e.target.value)}>
-                                <option disabled selected>Select Prof</option>
+                                {profSearch.length == 0 && <option disabled selected>Select Prof</option>}
                                 {
                                     profs.filter(prs => (prs.toLowerCase().includes(profSearch.toLowerCase()))).map((prof) => (
                                         <option value={prof} key={prof}>{prof}</option>
