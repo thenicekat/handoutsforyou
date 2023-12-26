@@ -7,12 +7,10 @@ import { supabase } from '../api/supabase';
 import { CourseReview } from "../../types/CourseReview";
 import { courses } from "../../data/courses";
 import { profs } from "../../data/profs";
+import AutoCompleter from "../../Components/AutoCompleter";
 
 export default function Reviews({ }: {}) {
-    const [crsSearch, setCrsSearch] = useState("");
     const [course, setCourse] = useState("");
-
-    const [profSearch, setProfSearch] = useState("");
     const [prof, setProf] = useState("");
 
     const [reviews, setReviews] = useState([] as CourseReview[]);
@@ -57,40 +55,9 @@ export default function Reviews({ }: {}) {
                     <Menu current={"reviews"} />
 
                     {session && <>
-                        <div className="text-center flex-wrap w-3/4 justify-between m-2">
-                            <input
-                                type="text"
-                                placeholder="Search for Courses..."
-                                className="input input-bordered w-full max-w-xs"
-                                onChange={(e) => setCrsSearch(e.target.value)}
-                            />
+                        <AutoCompleter name={"Course"} items={courses} value={course} onChange={(val) => setCourse(val)} />
 
-                            <select className="select select-bordered w-full max-w-xs" onChange={(e) => setCourse(e.target.value)}>
-                                {crsSearch.length == 0 && <option disabled selected>Select Course</option>}
-                                {
-                                    courses.filter(crs => (crs.toLowerCase().includes(crsSearch.toLowerCase()))).map((course) => (
-                                        <option value={course} key={course}>{course}</option>
-                                    ))
-                                }
-                            </select>
-                        </div>
-                        <div className="text-center flex-wrap w-3/4 justify-between m-2">
-                            <input
-                                type="text"
-                                placeholder="Search for Profs..."
-                                className="input input-bordered w-full max-w-xs"
-                                onChange={(e) => setProfSearch(e.target.value)}
-                            />
-
-                            <select className="select select-bordered w-full max-w-xs" onChange={(e) => setProf(e.target.value)}>
-                                {profSearch.length == 0 && <option disabled selected>Select Prof</option>}
-                                {
-                                    profs.filter(prs => (prs.toLowerCase().includes(profSearch.toLowerCase()))).map((prof) => (
-                                        <option value={prof} key={prof}>{prof}</option>
-                                    ))
-                                }
-                            </select>
-                        </div>
+                        <AutoCompleter name={"Prof"} items={profs} value={prof} onChange={(val) => setProf(val)} />
 
 
                         <Link className="m-3" href={"/courses/addreview"}>
