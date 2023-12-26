@@ -107,14 +107,21 @@ export default function Reviews({ }: {}) {
                 <div>
                     <div className='px-2 md:px-20 p-2'>
                         {
-                            reviews.length > 0 ? reviews.map((review) => (
-                                <div className="card shadow-lg bg-base-100 text-base-content mt-5" key={review.id}>
-                                    <div className="card-body">
-                                        <h2 className="card-title text-center">Course Name: {review.course} by Professor: {review.prof}</h2>
-                                        <p>{review.review}</p>
-                                    </div>
-                                </div>
-                            )) :
+                            reviews.length > 0 ?
+                                reviews
+                                    .sort((a, b) => {
+                                        if (a.course > b.course) return 1
+                                        else if (a.course < b.course) return -1
+                                        else return 0
+                                    })
+                                    .map((review) => (
+                                        <div className="card shadow-lg bg-base-100 text-base-content mt-5" key={review.id}>
+                                            <div className="card-body">
+                                                <h2 className="card-title text-center">Course Name: {review.course} by Professor: {review.prof}</h2>
+                                                <p>{review.review}</p>
+                                            </div>
+                                        </div>
+                                    )) :
                                 <div className="card shadow-lg bg-base-100 text-base-content mt-5 w-full">
                                     <div className="card-body">
                                         <h2 className="card-title text-center">
