@@ -86,38 +86,39 @@ export default function Reviews({ }: {}) {
                         <span className="m-2"></span>
                         <AutoCompleter name={"Prof"} items={profs} value={prof} onChange={(val) => setProf(val)} />
 
+                        <div className="flex w-1/2 justify-center">
+                            <Link className="m-3 w-full" href={"/courses/addreview"}>
+                                <button className="btn btn-outline w-full">
+                                    Add a Review
+                                </button>
+                            </Link>
 
-                        <Link className="m-3" href={"/courses/addreview"}>
-                            <button className="btn btn-outline w-full">
-                                Add a Review
-                            </button>
-                        </Link>
-
-                        <Link className="m-3" href={"#"}>
-                            <button className="btn btn-outline w-full" onClick={fetchReviews}>
-                                Fetch Reviews
-                            </button>
-                        </Link>
+                            <Link className="m-3 w-full" href={""}>
+                                <button className="btn btn-outline w-full" onClick={fetchReviews}>
+                                    Fetch Reviews
+                                </button>
+                            </Link>
+                        </div>
                     </>}
                 </div>
             </div>
 
             {session &&
                 <div>
-                    <div className='px-2 md:px-20'>
+                    <div className='px-2 md:px-20 p-2'>
                         {
                             reviews.length > 0 ? reviews.map((review) => (
-                                <div className="card shadow-lg compact bg-base-100 text-base-content mt-5" key={review.id}>
+                                <div className="card shadow-lg bg-base-100 text-base-content mt-5" key={review.id}>
                                     <div className="card-body">
                                         <h2 className="card-title text-center">Course Name: {review.course} by Professor: {review.prof}</h2>
                                         <p>{review.review}</p>
                                     </div>
                                 </div>
                             )) :
-                                <div className="card shadow-lg compact bg-base-100 text-base-content mt-5">
+                                <div className="card shadow-lg bg-base-100 text-base-content mt-5 w-full">
                                     <div className="card-body">
                                         <h2 className="card-title text-center">
-                                            Please enter criteria! Supports only prof based search and only course based search as well.
+                                            Please enter criteria! Supports prof based search and course based search as well.
                                             If you see this message even after entering criteria, it means that there are no reviews for the entered criteria
                                         </h2>
                                     </div>
