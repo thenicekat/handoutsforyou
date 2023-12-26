@@ -5,8 +5,8 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { supabase } from '../api/supabase';
 import { CourseReview } from "../../types/CourseReview";
-import { courses } from "./data_courses";
-import { profs } from "./data_profs";
+import { courses } from "../../data/courses";
+import { profs } from "../../data/profs";
 
 export default function Reviews({ }: {}) {
     const [crsSearch, setCrsSearch] = useState("");
