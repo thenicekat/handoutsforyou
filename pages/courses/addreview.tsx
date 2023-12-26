@@ -46,7 +46,7 @@ export default function AddReview({ }: {}) {
             alert("Review Added!")
             setCourse("")
             setProf("")
-
+            setReview("")
         }
     }
 
