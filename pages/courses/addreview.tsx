@@ -73,16 +73,16 @@ export default function AddReview({ }: {}) {
                         <span className="m-2"></span>
                         <AutoCompleter name={"Prof"} items={profs} value={prof} onChange={(val) => setProf(val)} />
 
-                        <div className="text-center w-full h-52 m-2">
-                            <input
-                                type="textarea"
+                        <div className="text-center w-full m-2">
+                            <textarea
+                                className="textarea textarea-primary w-full max-w-xl"
                                 placeholder="Enter your Review..."
-                                className="input input-bordered w-full max-w-xs h-full"
                                 onChange={(e) => setReview(e.target.value)}
-                            />
+                                value={review}
+                            ></textarea>
                         </div>
 
-                        <div className="text-center flex-wrap w-3/4 justify-between m-2">
+                        <div className="text-center flex-wrap w-3/4 justify-between m-1">
                             <button className="btn btn-primary" onClick={AddReview}>Add Review</button>
                         </div>
                     </>}
