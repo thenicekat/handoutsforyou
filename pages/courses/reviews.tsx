@@ -20,7 +20,11 @@ export default function Reviews({ }: {}) {
     const { data: session } = useSession()
 
     const fetchReviews = async () => {
-        console.log(`Fetching Reviews for: ${course} by ${prof}`)
+        if (course == "" || prof == "") {
+            alert("Please choose course and professor!")
+            return
+        }
+
         const { data, error } = await supabase
             .from('reviews')
             .select('*')

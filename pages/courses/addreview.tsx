@@ -21,6 +21,11 @@ export default function AddReview({ }: {}) {
     const { data: session } = useSession()
 
     const AddReview = async () => {
+        if (course == "" || prof == "" || review == "") {
+            alert("Please fill all the fields!")
+            return
+        }
+
         const { error } = await supabase
             .from('reviews')
             .insert([
