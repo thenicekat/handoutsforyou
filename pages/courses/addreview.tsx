@@ -41,7 +41,9 @@ export default function AddReview({ }: {}) {
                 { course: course, prof: prof, review: review, created_by: session?.user?.email }
             ])
 
-        if (error) console.log(error)
+        if (error) {
+            alert("Error adding review!")
+        }
         else {
             alert("Review Added!")
             setCourse("")
