@@ -22,12 +22,6 @@ const Menu = (props: Props) => {
             </button>
 
             <div className={`${menu ? 'grid' : 'hidden'} md:grid md:grid-cols-4 justify-around`}>
-                <Link className="m-3" href={"/minors.html"}>
-                    <button className="btn btn-outline w-full">
-                        Info. about Minors
-                    </button>
-                </Link>
-
                 <Link className="m-3" href={"/"}>
                     <button className="btn btn-outline w-full">
                         Handouts
@@ -70,6 +64,11 @@ const Menu = (props: Props) => {
                     </button>
                 </Link>
 
+                <Link className="m-3" href={"/minors.html"}>
+                    <button className="btn btn-outline w-full">
+                        Info. about Minors
+                    </button>
+                </Link>
             </div>
 
             <div className="grid md:grid-cols-3 justify-around">
