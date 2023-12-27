@@ -104,7 +104,7 @@ export default function Reviews({ }: {}) {
 
                             <Link className="m-3 w-full" href={""}>
                                 <button className="btn btn-outline w-full" onClick={fetchReviews}>
-                                    Filter Reviews
+                                    Fetch Reviews
                                 </button>
                             </Link>
                         </div>
