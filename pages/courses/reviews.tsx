@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Menu from "../../Components/Menu";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
@@ -63,6 +63,11 @@ export default function Reviews({ }: {}) {
         }
     }
 
+    useEffect(() => {
+        localStorage.setItem("h4u_course", course)
+        localStorage.setItem("h4u_prof", prof)
+    })
+
     return (
         <>
             <Head>
@@ -95,7 +100,7 @@ export default function Reviews({ }: {}) {
 
                             <Link className="m-3 w-full" href={""}>
                                 <button className="btn btn-outline w-full" onClick={fetchReviews}>
-                                    Fetch Reviews
+                                    Filter Reviews
                                 </button>
                             </Link>
                         </div>

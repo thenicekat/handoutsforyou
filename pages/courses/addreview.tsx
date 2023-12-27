@@ -1,10 +1,8 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Menu from "../../Components/Menu";
 import { useSession } from "next-auth/react";
-import Link from "next/link";
 import { supabase } from '../api/supabase';
-import { CourseReview } from "../../types/CourseReview";
 import { courses } from "../../data/courses";
 import { profs } from "../../data/profs";
 import AutoCompleter from "../../Components/AutoCompleter";
@@ -49,8 +47,23 @@ export default function AddReview({ }: {}) {
             setCourse("")
             setProf("")
             setReview("")
+            if (localStorage.getItem("h4u_course")) {
+                localStorage.removeItem("h4u_course")
+            }
+            if (localStorage.getItem("h4u_prof")) {
+                localStorage.removeItem("h4u_prof")
+            }
         }
     }
+
+    useEffect(() => {
+        if (localStorage.getItem("h4u_course")) {
+            setCourse(localStorage.getItem("h4u_course")!)
+        }
+        if (localStorage.getItem("h4u_prof")) {
+            setProf(localStorage.getItem("h4u_prof")!)
+        }
+    }, [])
 
     return (
         <>
@@ -75,9 +88,9 @@ export default function AddReview({ }: {}) {
                         <span className="m-2"></span>
                         <AutoCompleter name={"Prof"} items={profs} value={prof} onChange={(val) => setProf(val)} />
 
-                        <div className="text-center w-full m-2">
+                        <div className="text-center w-full m-2 h-60">
                             <textarea
-                                className="textarea textarea-primary w-full max-w-xl"
+                                className="textarea textarea-primary w-full max-w-xl h-full"
                                 placeholder="Enter your Review..."
                                 onChange={(e) => setReview(e.target.value)}
                                 value={review}
