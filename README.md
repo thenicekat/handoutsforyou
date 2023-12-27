@@ -9,6 +9,7 @@ The main goal of this project was to collate handouts at a place where everyone 
 3. Vashisth Choudhari
 4. Ruban Srirambabu
 5. Mahith Tunuguntula
+6. Namit Bhutani
 
 ## Development
 
