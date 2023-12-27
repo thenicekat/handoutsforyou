@@ -13,11 +13,14 @@ export default function Reviews({ }: {}) {
     const [course, setCourse] = useState("");
     const [prof, setProf] = useState("");
 
+    const [isLoading, setIsLoading] = useState(false);
+
     const [reviews, setReviews] = useState([] as CourseReview[]);
 
     const { data: session } = useSession()
 
     const fetchReviews = async () => {
+        setIsLoading(true)
         if (course == "" && prof == "") {
             const { data, error } = await supabase
                 .from('reviews')
@@ -61,6 +64,7 @@ export default function Reviews({ }: {}) {
                 setReviews(data)
             }
         }
+        setIsLoading(false)
     }
 
     useEffect(() => {
@@ -114,9 +118,14 @@ export default function Reviews({ }: {}) {
                     <div className="flex justify-center">
                         <h1 className="text-3xl text-primary">Total Reviews: {reviews.length}</h1>
                     </div>
+                    <div className="flex justify-center">
+                        <h3>
+                            Please enter your criteria! Supports prof based search and course based search as well.
+                        </h3>
+                    </div>
                     <div className='px-2 md:px-20 p-2'>
                         {
-                            reviews.length > 0 ?
+                            !isLoading ?
                                 reviews
                                     .sort((a, b) => {
                                         if (a.course > b.course) return 1
@@ -131,13 +140,8 @@ export default function Reviews({ }: {}) {
                                             </div>
                                         </div>
                                     )) :
-                                <div className="card shadow-lg bg-base-100 text-base-content mt-5 w-full">
-                                    <div className="card-body">
-                                        <h2 className="card-title text-center">
-                                            Please enter criteria! Supports prof based search and course based search as well.
-                                            If you see this message even after entering criteria, it means that there are no reviews for the entered criteria
-                                        </h2>
-                                    </div>
+                                <div className="flex justify-center">
+                                    <h1 className="text-3xl text-primary">Loading...</h1>
                                 </div>
                         }
                     </div>
