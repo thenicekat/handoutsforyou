@@ -10,6 +10,10 @@ export default function PS({ }: any) {
 
     const chronicles = [
         {
+            name: "2020-2021",
+            link: "https://github.com/Divyateja04/handoutsforyou/raw/main/public/si/20-21.pdf"
+        },
+        {
             name: "2021-2022",
             link: "https://github.com/Divyateja04/handoutsforyou/raw/main/public/si/21-22.pdf"
         },
