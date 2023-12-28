@@ -5,7 +5,7 @@ import base64
 
 # Constants
 MASTER_FILE = 'PS2_master.csv'
-OUTPUT_FILE = '../public/ps/ps2_data.json'
+OUTPUT_FILE = '../../public/ps/ps2_data.json'
 
 # Read csv file
 df = pd.read_csv(MASTER_FILE)
