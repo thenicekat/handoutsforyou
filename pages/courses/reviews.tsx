@@ -118,7 +118,7 @@ export default function Reviews({ }: {}) {
                     <div className="flex justify-center">
                         <h1 className="text-3xl text-primary">Total Reviews: {reviews.length}</h1>
                     </div>
-                    <div className="flex justify-center">
+                    <div className="flex justify-center m-3">
                         <h3>
                             Please enter your criteria! Supports prof based search and course based search as well.
                         </h3>
