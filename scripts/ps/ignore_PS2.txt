@@ -85,3 +85,34 @@ Amazon (Non-Tech)<|>Amazon - Machine Learning<|>Amazon Development Center<|>Amaz
 Flipkart (Software Development)<|>Flipkart - Planning Analysts - Bengaluru<|>Flipkart Health Plus Analytics - Bengaluru<|>Flipkart Internet Pvt Ltd - Business Analyst<|>Flipkart Internet Pvt Ltd - Business Development - Bengaluru<|>Flipkart Internet Pvt Ltd - Corporate Strategy - Bengaluru<|>Flipkart Internet Pvt Ltd - Data Engineering<|>Flipkart Internet Pvt Ltd - Product Management<|>Flipkart Internet Pvt Ltd - Site Reliability Engineering<|>Flipkart Internet Pvt Ltd - UI
 UBS - VALS - Mumbai<|>UBS BUSINESS SOLUTIONS- OPS GROUP MUMBAI<|>UBS Business Solutions (India) Private Limited - Group Operations<|>UBS Business Solutions (India) Private Limited - RAS FINANCE , Pune<|>UBS Business Solutions Finance group, Pune<|>UBS Business Solutions Group Operations Mumbai<|>UBS Operations Pune<|>UBS Operations- Mumbai<|>UBS finance group Mumbai<|>Ubs Finance Group, Pune
 UBS - Group Compliance , Mumbai<|>UBS - Group Compliance, Pune<|>UBS - Group Finance<|>UBS - Group Finance - Mumbai<|>UBS - Group RISK<|>UBS - Group RISK - Mumbai<|>UBS Group Operations, Pune<|>UBS, Group Finance - Hyderabad<|>UBS- Group Compliance, Mumbai<|>UBS- Group Compliance, Pune<|>UBS- Group Operations, Hyderabad<|>UBS-Group Finance, Hyderabad<|>Ubs group operations, Mumbai
+Bento Labs Pvt. Ltd. - Hyderabad<|>Bundl Tech Pvt. Ltd. (Non tech) (Swiggy)
+Baldor Technologies<|>Bolt.Earth - Android/IOS
+IT - MapMyIndia(Bangalore)<|>IT - Nvidia Graphics -Software(Bangalore)
+IT - HAPPAY (VA Tech Ventures Pvt Ltd.)(Bangalore)<|>IT - Publicis Sapient (Bangalore)
+AgileConnects Pvt. Ltd. - Nagpur<|>Axxela Capital Advisors
+IT - Cisco Systems (India) Pvt. Ltd - Software Engineering(Bangalore)<|>IT - Cohesity Storage Solutions India Pvt. Ltd.(Bangalore)
+Sainapse<|>Synopsys
+IDFC First Bank - Mumbai<|>IT - Bosch Research and Technology center(Bangalore)
+First Meridian OnSolve LLC - Bengaluru<|>Freight Deck - Non Tech
+IT - Blue Jeans Network India Pvt. Ltd.(Bangalore)<|>IT - belong.co(Bangalore)
+IT - Think and learn(Bangalore)<|>IT - Thinkerbell Labs - Developer (Bangalore)
+IT - Adobe Systems(Bangalore)<|>IT - TapChief(Bangalore)
+Chemical - Hindustan Unilever Research Centre(Bangalore)<|>Chemical - Shell Technology Center(Bangalore)
+Health Care - IMS Health(Bangalore)<|>Health Care - National Centre for Biological Sciences(Bangalore)
+Mechanical - John F Welch Technology Center (GE)(Bangalore)<|>Mechanical - Mercedes Benz(Bangalore)
+IT - Petasense - Services & App Development(Bangalore)<|>IT - Vedantu(Bangalore)<|>IT - Vitor Healthsciences Pvt. Ltd.(Bangalore)
+IT - Couture AI(Bangalore)<|>IT - JDA Software Solutions(Bangalore)<|>IT - Zeotap India Pvt. Ltd.(Bangalore)
+JP Morgan CIB R&A Global Research<|>JP Morgan Global Research Mumbai<|>JP Morgan, GR&C Market Risk
+IT - Amazon Development Center(Bangalore)<|>IT - Amazon Professional Services(Bangalore)<|>IT - Mech Mocha Internet Pvt. Ltd.(Bangalore)<|>IT - MiQ Digital India Pvt. Ltd.(Bangalore)
+IT - Quantiphi Analytics(Bangalore)<|>IT - Sun Mobility(Bangalore)<|>IT - Symantec Software Solutions Pvt. Ltd.(Bangalore)<|>IT - Zendrive India Pvt Ltd(Bangalore)
+AMEX Gurgaon<|>ANS Commerce - Business Growth & Product<|>ANS Commerce - Non tech<|>ANS Commerce - Non tech - Gurugram<|>ANS Commerce - Tech - Gurugram
+Experian<|>Express Stores - Non tech<|>eGovernment Foundation
+Morgan Stanley - FID Research - Mumbai<|>Morgan Stanley - Risk Analytics<|>Morgan Stanley - Strats and Quant - Mumbai<|>Morgan Stanley Advantage Services<|>Morgan Stanley Advantage Services ,Mumbai<|>Morgan Stanley- Legal Compliance - Mumbai
+Piramal Group - BIU<|>Piramal Group - CPD & Critical Care<|>Piramal Group - Mumbai<|>Piramal Group - Tech
+CASHe<|>Cisco
+Commvault Systems<|>Confluent
+Western Digital (SANDISK)<|>WickedRide (Bounce)
+SEDEMAC Mechatronics<|>ST Microelectronics
+COGOS IT<|>Cisco (SW development)
+Altair - Bengaluru<|>Altair - Hyderabad<|>Altruism Solutions Pvt. Ltd, Kolkata
+IT - Avaamo(Bangalore)<|>IT - IBM Security - Fiberlink(Bangalore)
