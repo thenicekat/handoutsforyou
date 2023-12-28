@@ -13,7 +13,7 @@
 
 ## Development
 
-First, run the development server and for the pages you are making changes to, replace `{session &&` with `{true &&`. This lets you overcome the auth temporarily locally. 
+First, run the development server and for the pages you are making changes to, replace `{session &&` with `{true &&`. This lets you overcome the auth temporarily locally.
 
 ```bash
 npm run dev
@@ -24,6 +24,7 @@ yarn dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Course Reviews Scripts
+
 There is only one script which pushed directly to the database
 
 ## Practice School Scripts
