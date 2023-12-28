@@ -1,19 +1,19 @@
 # Handouts For You.
 
-The main goal of this project was to collate handouts at a place where everyone can access it and search easily. This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Features
 
-## Contributors
-
-1. Divyateja Pasupuleti
-2. Adarsh Das
-3. Vashisth Choudhari
-4. Ruban Srirambabu
-5. Mahith Tunuguntula
-6. Namit Bhutani
+1. Search for handouts
+2. Course prerequisites
+3. Course Reviews
+4. Practice School Cutoffs
+5. Practice School Chronicles
+6. Summer Internship Chronicles (Might become hard to find lmao)
+7. Minors on Campus
+8. Notes and Resources
 
 ## Development
 
-First, run the development server:
+First, run the development server and for the pages you are making changes to, replace `{session &&` with `{true &&`. This lets you overcome the auth temporarily locally. 
 
 ```bash
 npm run dev
@@ -22,6 +22,9 @@ yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Course Reviews Scripts
+There is only one script which pushed directly to the database
 
 ## Practice School Scripts
 
@@ -56,3 +59,12 @@ National Instruments<|>National Instruments (Bangalore)<|>National Instruments S
 
 -   Use this to convert the excel TTD puts out on cms regarding prereqs to a json format
 -   I don't think you'll need to use this for a long long time :)
+
+## Contributors
+
+1. Divyateja Pasupuleti
+2. Adarsh Das
+3. Vashisth Choudhari
+4. Ruban Srirambabu
+5. Mahith Tunuguntula
+6. Namit Bhutani
