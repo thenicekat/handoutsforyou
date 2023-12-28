@@ -44,5 +44,5 @@ next-env.d.ts
 **/public/worker-*.js.map
 
 # Scripts spare Files
-**/scripts/*.csv
-**/scripts/soundex_filter.txt
+**/scripts/ps/*.csv
+**/scripts/ps/soundex_filter.txt
