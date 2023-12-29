@@ -53,9 +53,9 @@ export default function PS({ }: any) {
             {session && <div className='grid md:grid-cols-2 place-items-center p-5'>
                 {
                     chronicles.filter(d => d.name.toLowerCase().includes(search.toLowerCase())).map(chronicle => (
-                        <div className="card w-96 bg-neutral text-neutral-content m-2" key={chronicle.name}>
+                        <div className="card w-96 bg-secondary text-neutral-content m-2" key={chronicle.name}>
                             <div className="card-body items-center text-center">
-                                <h2 className="card-title">SI Chronicles {chronicle.name}</h2>
+                                <h2 className="card-title text-primary">SI Chronicles {chronicle.name}</h2>
                                 <div className="card-actions justify-end">
                                     <button className="btn btn-primary" onClick={
                                         () => window.open(chronicle.link)
