@@ -2,10 +2,20 @@
 import pandas as pd
 import json
 import base64
+import os
+import os
+from supabase import create_client, Client
+import dotenv
+
+dotenv.load_dotenv(dotenv_path="./../../.env.local")
+
+url: str = os.environ.get("SUPABASE_URL")
+key: str = os.environ.get("SUPABASE_SERVICE_KEY")
+supabase: Client = create_client(url, key)
 
 # Constants
-MASTER_FILE = 'PS2_master.csv'
-OUTPUT_FILE = '../../public/ps/ps2_data.json'
+MASTER_FILE = 'PS1_master.csv'
+TABLE_NAME = 'ps1'
 
 # Read csv file
 df = pd.read_csv(MASTER_FILE)
@@ -33,6 +43,7 @@ for index, row in df.iterrows():
     
     # Now check if the year is there in the company
     # If it's there update mincgpa and maxcgpa else create the year
+    # Set float to 4 decinal places
     if row['Year-Semester'] not in companies[row['Company']]:
         try:
             companies[row['Company']][row['Year-Semester']] = {
@@ -40,7 +51,7 @@ for index, row in df.iterrows():
                 'maxcgpa': float(row['CGPA']),
                 'students': set()
             }
-            companies[row['Company']][row['Year-Semester']]['students'].add(base64.b64encode(row['ID Number'].encode('ascii')).decode('ascii'))
+            # companies[row['Company']][row['Year-Semester']]['students'].add(base64.b64encode(row['ID Number'].encode('ascii')).decode('ascii'))
         except:
             print(f"Error in {row['Company']}||{row['Year-Semester']}||{row['CGPA']}||{row['ID Number']}")
             continue
@@ -51,16 +62,20 @@ for index, row in df.iterrows():
                 companies[row['Company']][row['Year-Semester']]['mincgpa'] = float(row['CGPA'])
             if float(row['CGPA']) > companies[row['Company']][row['Year-Semester']]['maxcgpa']:
                 companies[row['Company']][row['Year-Semester']]['maxcgpa'] = float(row['CGPA'])
-            companies[row['Company']][row['Year-Semester']]['students'].add(base64.b64encode(row['ID Number'].encode('ascii')).decode('ascii'))
+            # companies[row['Company']][row['Year-Semester']]['students'].add(base64.b64encode(row['ID Number'].encode('ascii')).decode('ascii'))
         except:
             print(f"Error in {row['Company']}||{row['Year-Semester']}||{row['CGPA']}||{row['ID Number']}")
             continue
 
-for company in companies:        
-    final_data.append(companies[company])
-
-# Sort them based on name in lowercase
-final_data.sort(key=lambda x: x['name'].lower())
-    
-with open(OUTPUT_FILE, 'w') as f:
-    json.dump(final_data, f, indent=4, default=list)
+for company in companies:      
+    for year in companies[company]:
+        if year == 'name':
+            continue
+        # push to supabase
+        data = supabase.table(TABLE_NAME).insert({
+            "name": company,
+            "year": year,
+            "min_cgpa": companies[company][year]['mincgpa'],
+            "max_cgpa": companies[company][year]['maxcgpa'],
+        }).execute()
+        assert len(data.data) > 0
