@@ -68,14 +68,25 @@ export default function PS({ ps2_chronicles }: any) {
                     <div className='grid md:grid-cols-4 place-items-center p-5'>
                         {
                             ps2_chronicles.filter((d: string) => d.toLowerCase().includes(search.toLowerCase())).map((chron: string) => (
-                                <div className="card w-72 bg-black text-neutral-content m-2" key={chron}>
-                                    <div className="card-body items-center text-center">
-                                        <h2 className="card-title text-white">PS2 Chronicles {chron.split(" ")[0]} Semester {chron.split(" ")[1]}</h2>
-                                        <div className="card-actions justify-end">
+                                // <div className="card w-72 bg-secondary text-neutral-content m-2" key={chron}>
+                                //     <div className="card-body items-center text-center">
+                                //         <h2 className="card-title text-primary">PS2 Chronicles {chron.split(" ")[0]} Semester {chron.split(" ")[1]}</h2>
+                                //         <div className="card-actions justify-end">
+                                //             <button className="btn btn-primary" onClick={
+                                //                 () => window.open("https://github.com/Divyateja04/handoutsforyou/raw/main/public/ps/ps2_chronicles/" + chron)
+                                //             }>View</button>
+                                //         </div>
+                                //     </div>
+                                // </div>
+                                <div key={chron} className='m-2 py-1 rounded-xl'>
+                                    <div className="alert shadow-sm">
+                                        <div>
+                                            <span>PS2 Chronicles {chron.split(" ")[0]} Semester {chron.split(" ")[1]}</span>
+                                        </div>
+                                        <div className="flex-none">
                                             <button className="btn btn-primary" onClick={
                                                 () => window.open("https://github.com/Divyateja04/handoutsforyou/raw/main/public/ps/ps2_chronicles/" + chron)
-                                            }>View</button>
-                                        </div>
+                                            }>View</button></div>
                                     </div>
                                 </div>
                             ))
