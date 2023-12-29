@@ -8,12 +8,12 @@ html {
     background: -webkit-linear-gradient(
         to left,
         #208a9a,
-        #000000
+        #16505d
     ); /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(
         to left,
         #208a9a,
-        #000000
+        #16505d
     ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     min-height: 100%;
 }
