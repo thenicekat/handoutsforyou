@@ -1,0 +1,676 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Appraisals</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="d4a2253b-a10a-4818-8f18-d4f6b708dab7" class="page sans"><header><h1 class="page-title">Appraisals</h1><p class="page-description"></p></header><div class="page-body"><nav id="29c38820-6aa4-4b8f-a4a5-52f98909a48e" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#87d79ca4-b5ed-4a84-9a76-496c15422bcd">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2f25554a-cbce-470f-aad3-68e7e588a922">Identifying and Measuring Employee Performance</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#773a7ead-4c55-416f-98a8-873476ecbab7">Information Types</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#795dd92a-42a9-4ec8-b525-47778d1b8d77">Potential Criteria Problems</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ae7319db-eca8-4a69-8be6-a72655fb1a53">Performance Standards</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#74942693-9f5b-4332-9775-bd71ec115670">Informal vs Systematic Appraisal</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#917ebf9a-896a-491c-a666-4c861cd83b2e">Who Conducts Appraisals?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4d7d35c2-5412-4b81-86bc-9c8e8588df9b">Methods of Appraising Performance</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b1959e6b-5102-40c6-bb4e-507dd7cd2b47">Rater Errors</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c95453ba-0e64-4f18-b9cb-df137a66785b">Appraisal Feedback Interview</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#76169379-f204-435f-bb65-a6a5e5b1ffb8">Evaluating an appraisal interview - At the beginning</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#703fe59c-db45-4b9d-a928-48ed70da5f1e">During the Interview</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#55e9dbff-e2f6-4aef-9c3e-83289d58ee36">Appraisal Outcomes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#355e693c-1e6a-44d9-856a-8d007139d3fa">Prereqs for Success</a></div></nav><h1 id="87d79ca4-b5ed-4a84-9a76-496c15422bcd" class="">Introduction</h1><ul id="c14c4a6d-a721-4422-b837-3688eb1f1800" class="bulleted-list"><li style="list-style-type:disc">Periodically evaluate the performance of employees. Organizations can have a formal system for performance appraisals. There’s a set template, timelines, etc.</li></ul><ul id="71cb1a05-5604-4bb8-9479-1bbbb9bd88e5" class="bulleted-list"><li style="list-style-type:disc">Regardless of the formal system, you should provide the employee with a feedback on your own</li></ul><ul id="bd634def-ac25-4600-a476-a939ae4f8181" class="bulleted-list"><li style="list-style-type:disc">It’s a very complex area. It is the process of evaluating how well employees perform their jobs when compared to a set of standards and then communicating that information to those employees</li></ul><ul id="d4aef2c3-2cac-4f33-89f3-5bb9259f4bc3" class="bulleted-list"><li style="list-style-type:disc">Personnel/Potential Appraisal implies a stock taking of the quality and quantity of the potential performance of an employee → this is a confidential exercise</li></ul><ul id="76730a49-372c-4cef-982a-e4917531b11a" class="bulleted-list"><li style="list-style-type:disc">Objectives of appraisal<ul id="0046fe0a-6ce2-4178-a9bc-097fe3291c65" class="bulleted-list"><li style="list-style-type:circle">Measurement of Performance → what they have done</li></ul><ul id="7db8d88b-f598-46f0-b8ff-20d660e496f9" class="bulleted-list"><li style="list-style-type:circle">Measure of Potential → </li></ul><ul id="b1cc8ad7-372b-40b7-a72f-dddb7d2f33b1" class="bulleted-list"><li style="list-style-type:circle">Basis for rewards</li></ul></li></ul><ul id="df5bd273-e8bb-4d9a-a42f-52bff1c7fd7f" class="bulleted-list"><li style="list-style-type:disc">Helps the manager to make certain decisions → promotions, succession planning</li></ul><ul id="4e54345e-3465-4dbb-ada4-40729aeec621" class="bulleted-list"><li style="list-style-type:disc">Once I know strength and weakness → career development and training parts</li></ul><h1 id="2f25554a-cbce-470f-aad3-68e7e588a922" class="">Identifying and Measuring Employee Performance</h1><h2 id="773a7ead-4c55-416f-98a8-873476ecbab7" class="">Information Types</h2><ul id="37de040e-5ddd-4a28-99dd-72b3533faf9f" class="bulleted-list"><li style="list-style-type:disc">Job knowledge, work output, sense of responsibility</li></ul><ul id="e58085a5-15aa-4fb4-9e1f-ddf01d56fa48" class="bulleted-list"><li style="list-style-type:disc">Ability to learn, Interpersonal relations, leadership</li></ul><ul id="6d4ed114-2b99-4c29-ac8c-92a096c77454" class="bulleted-list"><li style="list-style-type:disc">Team player, ability to take decisions, ability to develop subordinates</li></ul><ul id="3e04b836-47a5-4d9a-8926-dc5c0e759d17" class="bulleted-list"><li style="list-style-type:disc">Communication skill, Ability to plan and organize</li></ul><ul id="8c56600e-cc93-4f9b-bdf6-9f3a5ef07466" class="bulleted-list"><li style="list-style-type:disc">Initiative, Creative, Emotionally Stable, Personal get up, Attendance</li></ul><h2 id="795dd92a-42a9-4ec8-b525-47778d1b8d77" class="">Potential Criteria Problems</h2><ul id="1af1b46f-18e3-41c1-b476-3c31047b02c8" class="bulleted-list"><li style="list-style-type:disc">Deficient → you leave the variable which is actually important in that job role</li></ul><ul id="eb59902c-1d9c-4141-84fc-0fda58fb55d9" class="bulleted-list"><li style="list-style-type:disc">Contaminated → you use irrelevant information with respect to that job</li></ul><ul id="8e48c000-b9fc-4452-9944-ed75a3ebda7f" class="bulleted-list"><li style="list-style-type:disc">Objective → you are only using that information which is measurable</li></ul><ul id="40fac169-91f4-4cf3-b30a-de474d98ac62" class="bulleted-list"><li style="list-style-type:disc">Subjective → intangible measures</li></ul><h2 id="ae7319db-eca8-4a69-8be6-a72655fb1a53" class="">Performance Standards</h2><ul id="e4203164-f3a6-4a2d-ab4a-f3d3dd869228" class="bulleted-list"><li style="list-style-type:disc">They define the expected levels of performance and are benchmarks, goals or targets</li></ul><ul id="98fe90f0-e5a9-467f-b1df-5717486c6ade" class="bulleted-list"><li style="list-style-type:disc">They should be realistic, measurable</li></ul><ul id="6d55f54b-93b4-47e6-9486-b793e9f51428" class="bulleted-list"><li style="list-style-type:disc">Employees should know what is being used</li></ul><ul id="891782ed-55d0-487f-9a2a-8518ed778d97" class="bulleted-list"><li style="list-style-type:disc">Ratings<ul id="b6f2e890-1ba9-427c-95f2-b4e119dd9d37" class="bulleted-list"><li style="list-style-type:circle">A → outstanding, consistently high performer, indeed rare</li></ul><ul id="8564e5c1-fe4c-4536-b850-c669a22a4283" class="bulleted-list"><li style="list-style-type:circle">B → above average, meets job requirements much more than can be expected</li></ul><ul id="87207a5b-4d02-43cf-a7f3-4765a4f3b548" class="bulleted-list"><li style="list-style-type:circle">C → adequate, meets job requirements as expected</li></ul><ul id="e26d65f1-7a27-40a5-ab08-e596b2766076" class="bulleted-list"><li style="list-style-type:circle">D → </li></ul></li></ul><ul id="7a8aa198-ff6e-461b-8dfb-5d780cf29806" class="bulleted-list"><li style="list-style-type:disc">There will be some committee which calibrates all these grades for uniformity</li></ul><ul id="db908ea5-04b1-425a-af26-5ea8263d62f4" class="bulleted-list"><li style="list-style-type:disc">Biases also can always be there, there can be unconscious and conscious → if unconscious, the boss can tell the manager and can check</li></ul><h1 id="74942693-9f5b-4332-9775-bd71ec115670" class="">Informal vs Systematic Appraisal</h1><ul id="e9127b88-46a3-48a3-bbd2-2803eb1fd3fd" class="bulleted-list"><li style="list-style-type:disc">Informal → necessary to provide someone with feedback you do, else you don’t → day to day working relationship → communicating daily → very useful in order to avoid surprises in the formal appraisal</li></ul><ul id="102c6792-6ec0-4438-a49c-fcbc9c662805" class="bulleted-list"><li style="list-style-type:disc">Most companies have annual appraisal</li></ul><h1 id="917ebf9a-896a-491c-a666-4c861cd83b2e" class="">Who Conducts Appraisals?</h1><ul id="4ace2075-d0d4-4ed1-9092-dee0e9cb6585" class="bulleted-list"><li style="list-style-type:disc">Supervisor rating of subordinates</li></ul><ul id="19b8c757-163c-44ea-a6dc-6707c54060ca" class="bulleted-list"><li style="list-style-type:disc">Employee rating of managers</li></ul><ul id="7e1d10ca-8fc1-4d1b-ba7d-7d8ca358371e" class="bulleted-list"><li style="list-style-type:disc">Team or Peer Ratings (For development purposes)<ul id="c9b7001d-a55b-406c-b5b4-bc8b587f12a7" class="bulleted-list"><li style="list-style-type:circle">In group assignments, the prof won’t know how the group is working and this group is evaluated on the basis of the output in general</li></ul></li></ul><ul id="2dde9bbb-2c24-44ae-8d0a-c7a00c96f834" class="bulleted-list"><li style="list-style-type:disc">Self Ratings → how do you rate yourself. In most of these you will find that the person is not honest. Who will know where they are weak and where they are strong</li></ul><ul id="91ddd27e-a0ff-435c-89bc-c520342d6913" class="bulleted-list"><li style="list-style-type:disc">Outside Raters</li></ul><h1 id="4d7d35c2-5412-4b81-86bc-9c8e8588df9b" class="">Methods of Appraising Performance</h1><ul id="f029ff04-374d-4ba9-b083-5915d7c1a97b" class="bulleted-list"><li style="list-style-type:disc">Category Rating Methods<ul id="c5f20ad9-cc16-4c44-a237-2c6d16e3537b" class="bulleted-list"><li style="list-style-type:circle">Performance related categories </li></ul><ul id="5b593b76-32c9-495f-81a9-02b5ada4dbe1" class="bulleted-list"><li style="list-style-type:circle">Say planning, delegation, are some of these categories</li></ul><ul id="dad14a3f-e9fb-4035-b136-8dfdff105e5d" class="bulleted-list"><li style="list-style-type:circle">Time management → we use graphic rating scales</li></ul><ul id="b96cb572-e20c-4596-9e26-2c500314f2fe" class="bulleted-list"><li style="list-style-type:circle">Checklists also are part of category rating</li></ul></li></ul><ul id="71dd85af-372f-4ff0-88a8-28903448ceca" class="bulleted-list"><li style="list-style-type:disc">Comparative Methods<ul id="b4ff33dc-78ba-413f-b15d-5b245a15cafc" class="bulleted-list"><li style="list-style-type:circle">Ranking</li></ul><ul id="5722387a-d102-41d6-8483-91273c2571a1" class="bulleted-list"><li style="list-style-type:circle">Forced Distribution → bell shaped curve → General Electric developed this</li></ul></li></ul><ul id="a0563a59-3d56-46b4-9c32-c181496abac4" class="bulleted-list"><li style="list-style-type:disc">Behavioral or Objective methods<ul id="2b2ffacc-79e1-4f62-81ff-978d564a65b2" class="bulleted-list"><li style="list-style-type:circle">Behavioral Rating Approaches → Behaviorally Anchored Rating Scales - BARS <ul id="cae9b005-a66f-475d-851e-dc8e80de343c" class="bulleted-list"><li style="list-style-type:square">Anything should be measurable → cannot be like “hard working”</li></ul></li></ul><ul id="ac2c7432-6ac0-4551-a80c-da3c0865c299" class="bulleted-list"><li style="list-style-type:circle">Management by Objectives → MBO</li></ul></li></ul><ul id="c2f2286d-855c-49da-b126-790fb0fa6db1" class="bulleted-list"><li style="list-style-type:disc">Narrative<ul id="85b5b548-01bb-420b-8040-dda69764f3e5" class="bulleted-list"><li style="list-style-type:circle">Critical Incident → Incident + how the employee responded to it</li></ul><ul id="c2e2cd9d-4743-4bf9-8e61-45c013b4c71c" class="bulleted-list"><li style="list-style-type:circle">Essay → descriptive answer with open ended questions</li></ul><ul id="8512b928-c314-4652-a368-71cc527d49f8" class="bulleted-list"><li style="list-style-type:circle">Field Review → primarily you get info from who are external to your organization</li></ul></li></ul><h1 id="b1959e6b-5102-40c6-bb4e-507dd7cd2b47" class="">Rater Errors</h1><ul id="35305335-bd4f-450b-a9bf-7b2bb77652bb" class="bulleted-list"><li style="list-style-type:disc">Problems of varying standards<ul id="a4cd6b66-cb18-43ba-a28f-fb80af34c017" class="bulleted-list"><li style="list-style-type:circle">If rater varies the standard of measure for different people</li></ul></li></ul><ul id="31b39e8a-0954-4868-a32f-2cbf12157240" class="bulleted-list"><li style="list-style-type:disc">Recency Effect<ul id="9ff10e02-e4a2-4037-9ecb-4bb0f2ef135a" class="bulleted-list"><li style="list-style-type:circle">Rater tends to give more weightage to those things that have happened in the recent times</li></ul></li></ul><ul id="2d32e018-7586-42e6-93e9-461ddda6ea03" class="bulleted-list"><li style="list-style-type:disc">Central tendency, leniency and strictness errors<ul id="85e8b951-67d5-4889-968b-92923e8d5cba" class="bulleted-list"><li style="list-style-type:circle">central tendency is when a lot of reviews and ratings are in a small range</li></ul><ul id="105fcb62-d65a-445c-9150-8172d0a17141" class="bulleted-list"><li style="list-style-type:circle">leniency is everyone is good </li></ul><ul id="b198c1d5-4a74-4701-ba23-ffd96915f163" class="bulleted-list"><li style="list-style-type:circle">strictness is opposite and everyone is bad</li></ul></li></ul><ul id="db46e842-3825-4c4e-b407-6b2293962b1b" class="bulleted-list"><li style="list-style-type:disc">Rater bias</li></ul><ul id="532487f7-e816-4a32-a380-73543634f602" class="bulleted-list"><li style="list-style-type:disc">Halo effect<ul id="d67861f9-bc24-4fcb-806a-18614e41a9fc" class="bulleted-list"><li style="list-style-type:circle">rating and reviewing just because of one characteristic</li></ul></li></ul><ul id="61f6b253-70b2-417e-9493-3043bf76c467" class="bulleted-list"><li style="list-style-type:disc">Contrast error<ul id="b0b09b5c-5e03-4b03-bda1-75abdc02e33c" class="bulleted-list"><li style="list-style-type:circle">Comparing with others but it is not by design</li></ul><ul id="a2233377-e6a5-4fe7-bc64-92319018b2a9" class="bulleted-list"><li style="list-style-type:circle">It has to be by design </li></ul></li></ul><h1 id="c95453ba-0e64-4f18-b9cb-df137a66785b" class="">Appraisal Feedback Interview</h1><p id="16c56a89-67d4-4d51-97ef-37c472335a47" class="">Not only talking about the good part </p><ul id="02b116e4-e371-4177-a409-9dbdf17b3bb9" class="bulleted-list"><li style="list-style-type:disc">Tell and Sell<ul id="499cdada-6440-42a6-91cf-00c985090278" class="bulleted-list"><li style="list-style-type:circle">The rater is competent</li></ul><ul id="b9038f70-249b-41c0-b8c1-639724b54644" class="bulleted-list"><li style="list-style-type:circle">The ratee is willing to change their behavior and accept</li></ul></li></ul><ul id="209789e9-79eb-4871-9276-77b428194058" class="bulleted-list"><li style="list-style-type:disc">Tell and Listen<ul id="aa8e6425-18ef-444d-bc39-1b09bbc7d80f" class="bulleted-list"><li style="list-style-type:circle">As a rater I will share why I have given that kind of rating</li></ul><ul id="cced829f-07fc-4970-ac5c-a26d71c23afc" class="bulleted-list"><li style="list-style-type:circle">You also provide an opportunity to share their views</li></ul><ul id="4cbea8d2-ae42-4cb2-be80-c667521a97c4" class="bulleted-list"><li style="list-style-type:circle">You allow them to respond to the rating or evaluation → this will drain out negative emotions</li></ul></li></ul><ul id="0b61ed5b-b267-4981-81fc-525bd523173f" class="bulleted-list"><li style="list-style-type:disc">Problem - Solving<ul id="ca2f8dd7-cecc-4d1f-9b78-742dc85ebefa" class="bulleted-list"><li style="list-style-type:circle">Here the boss will be a facilitator</li></ul><ul id="8d0aedce-ef31-4660-a1a5-7964899fd768" class="bulleted-list"><li style="list-style-type:circle">He is like a helper</li></ul><ul id="90ec4027-71ad-4220-b57e-8bc4047e6df5" class="bulleted-list"><li style="list-style-type:circle">He will simulate the employee to think on his own</li></ul></li></ul><ul id="31b27ad2-e39f-48b7-966b-c35759c52279" class="bulleted-list"><li style="list-style-type:disc">Mixed Model</li></ul><h3 id="76169379-f204-435f-bb65-a6a5e5b1ffb8" class="">Evaluating an appraisal interview - At the beginning</h3><ul id="6043ce01-2dd1-4f98-aa29-a396da9118d4" class="bulleted-list"><li style="list-style-type:disc">Did the supervisor create open and acceptant climate</li></ul><ul id="91b36247-b5c6-4a4b-96a6-042657b796af" class="bulleted-list"><li style="list-style-type:disc">Was there agreement on purpose and process of interview</li></ul><ul id="b3af2eca-417c-486b-8a38-524957f2d710" class="bulleted-list"><li style="list-style-type:disc">Were both parties equally prepared? - for evaluator: notes etc.</li></ul><h3 id="703fe59c-db45-4b9d-a928-48ed70da5f1e" class="">During the Interview</h3><ul id="41638445-10ec-4a0b-99aa-0bea9d53535d" class="bulleted-list"><li style="list-style-type:disc">To what extent did supervisor try to understand employee</li></ul><ul id="fae82f85-c0c9-48ca-8603-006f7bde79e2" class="bulleted-list"><li style="list-style-type:disc">Were broad and general questions used at outset?</li></ul><ul id="b91df320-c17d-4039-97e5-2d7f2c151a62" class="bulleted-list"><li style="list-style-type:disc">We need to understand why the employee has fallen short</li></ul><ul id="c74d89e7-9630-4df1-9612-650659355500" class="bulleted-list"><li style="list-style-type:disc">Was supervisor’s feedback clear and specific</li></ul><ul id="e11e015d-0a21-4bc2-a6ff-1eb351d99434" class="bulleted-list"><li style="list-style-type:disc">Did supervisor learn some new things-particularly about deep feelings and values of subordinate</li></ul><ul id="d7dfef25-596d-43d3-b1db-96606e5f2248" class="bulleted-list"><li style="list-style-type:disc">Did subordinate disagree and confront supervisor</li></ul><ul id="0d0ed03c-a948-43a9-b8d9-215a93322f9b" class="bulleted-list"><li style="list-style-type:disc">Did interview end with mutual agreement and understanding about problems and goals for improvement?</li></ul><h3 id="55e9dbff-e2f6-4aef-9c3e-83289d58ee36" class="">Appraisal Outcomes</h3><ul id="d977f660-6588-415f-b86f-68145fcafcd7" class="bulleted-list"><li style="list-style-type:disc">Did the session motivate the subordinate</li></ul><ul id="04db96dc-a95d-46b7-ab4f-7ef4c564893a" class="bulleted-list"><li style="list-style-type:disc">Did it build a better relationship</li></ul><ul id="fe21061c-076d-4a04-b986-5f0eb18865c2" class="bulleted-list"><li style="list-style-type:disc">Did he or she come out with a clear idea of where he or she stood?</li></ul><ul id="a175f53b-7ff8-4df5-a150-01bd9ea95a1d" class="bulleted-list"><li style="list-style-type:disc">Did supervisor arrive at fairer assessment of subordinate?</li></ul><ul id="a947bfb4-0939-4bca-aafd-2f23128297cb" class="bulleted-list"><li style="list-style-type:disc">Did subordinate learn something new about supervisor?</li></ul><ul id="b80b61cc-a036-4f1e-b33d-d10dc2473881" class="bulleted-list"><li style="list-style-type:disc">Did subordinate have clear idea of what actions to take to improve performance</li></ul><ul id="a9ec820b-76f1-4b87-b466-011b570e36c2" class="bulleted-list"><li style="list-style-type:disc">IDP - individual development plan</li></ul><h1 id="355e693c-1e6a-44d9-856a-8d007139d3fa" class="">Prereqs for Success</h1><ul id="21cf4a30-3845-4052-9d9d-2a597c96c832" class="bulleted-list"><li style="list-style-type:disc">Top management support</li></ul><ul id="326ac0e5-d7f7-4376-abad-92dafc9e3124" class="bulleted-list"><li style="list-style-type:disc">Climate of mutual trust</li></ul><ul id="22c7a46f-5078-430d-a5de-cd53355bd892" class="bulleted-list"><li style="list-style-type:disc">Alignment with corporate objectives</li></ul><ul id="89b78fee-dc70-4ac4-b1f7-675cdf52f414" class="bulleted-list"><li style="list-style-type:disc">Well thought out systems</li></ul><ul id="b70abd3e-9ce8-481b-acdb-7bc5fb0ac649" class="bulleted-list"><li style="list-style-type:disc">Involvement of line personnel</li></ul><ul id="db358310-4f6c-4b16-beaa-17bde6bc41f8" class="bulleted-list"><li style="list-style-type:disc">Appraisal Training<ul id="d6eee16c-2a5e-4225-b32c-fa7204581688" class="bulleted-list"><li style="list-style-type:circle">Elements of the system</li></ul><ul id="65ab29a0-4590-4816-97d3-71288488ecc6" class="bulleted-list"><li style="list-style-type:circle">Guidelines</li></ul><ul id="9ef014ec-cec5-4ab5-ab76-ad7582551eb7" class="bulleted-list"><li style="list-style-type:circle">Appraisal Skills</li></ul><ul id="3368de2f-0285-403b-824b-3738751eda70" class="bulleted-list"><li style="list-style-type:circle">Appraisal Interviews</li></ul></li></ul><ul id="cb3afc4b-c42a-4f81-bc3f-2c708b1e132e" class="bulleted-list"><li style="list-style-type:disc">System for uniformity in application</li></ul><ul id="9b9f74f9-1585-4382-9986-899f8b4b872d" class="bulleted-list"><li style="list-style-type:disc">System for moderation</li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

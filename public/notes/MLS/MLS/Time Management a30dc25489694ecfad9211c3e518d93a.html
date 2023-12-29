@@ -1,0 +1,676 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Time Management</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="a30dc254-8969-4ecf-ad92-11c3e518d93a" class="page sans"><header><h1 class="page-title">Time Management</h1><p class="page-description"></p></header><div class="page-body"><nav id="d83b8ca4-2c3d-4afa-abec-a719b79df521" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#667f9096-b6ad-428d-b83b-a426e0866b08">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4a4c1151-42b3-4ca1-8e05-d1739ff3a475">Perkinson’s Law</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c910f9a9-cfd9-4ce2-acf8-3dadc1a48072">Murphy’s Law</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#aef5d6c0-0bf5-4825-b0cd-0ba718a6dfee">Peter Principle</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f4ca7fba-5b9c-4935-a937-180c82011b6d">Pareto Principle </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#08c25a12-fbdb-4437-a6b3-80392fce5a2d">Principle of Calculated Neglect</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1f8b49aa-5208-4689-8115-0646e68b8e28">Approaches to Time Management</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4434d725-4bb9-4919-8c8e-abb7c378c4bb">Increase amount of available time each day</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#db849b99-e23f-4a2d-a9df-90ed9bfbdc39">Do more work in available time - pack more work in your day</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#baae73e9-cf8e-4094-9319-d9afaa3eea83">Do only the important work in the time you have available</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2b164fbc-b21e-4165-8f67-4c3aba494107">Setting the Objectives</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#dfa6417a-d97b-4ec5-86e9-e512fb6a75b7">Prioritizing </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e1f922a1-e0e3-4f4b-a8a7-f8c4649cf9fa">Urgency</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#475ec697-77c4-4da2-a477-c35e273c91b5">Importance</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c3b6c422-ab20-498b-b543-3c56ddd2fea9">Real Crisis</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c9f533d9-3b70-4fa0-8929-449fa4034c6d">Can wait but certainly needs to be done</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#84b6cb2a-424d-4b52-96cf-5f11a4e89c2d">Other People’s work</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6023764c-ac76-4abc-91b2-1bb4bba1fcf8">Not important not urgent</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#003acda5-2629-428c-af57-c4c83127c03d">Ideal Composition</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#097fd331-5f39-4349-8390-f83db5c289de">Procrastination</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#91702290-88c5-4f7b-a7eb-b0ee0b0bdafe">How to beat procrastination</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#90ae044b-6235-4410-9bbf-7606a42afe99">Time Wasters</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d3e6d132-583c-402b-a461-5ee7bc2386f1">Resisting Interruptions</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#41e98379-59b8-4e1d-94a0-8d23d9a6bba7">Time management Systems</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2dd29868-e8dc-478b-b18e-7e6396fed705">Summary</a></div></nav><h1 id="667f9096-b6ad-428d-b83b-a426e0866b08" class="">Introduction</h1><ul id="ae1e0197-e896-4217-b8be-b2a7cd426f23" class="bulleted-list"><li style="list-style-type:disc">Two major objectives<ul id="e8761f48-d0f5-4457-b444-03b7ac714c3d" class="bulleted-list"><li style="list-style-type:circle">Increase productivity</li></ul><ul id="f7747cd0-d998-4bfc-831a-1cfed9ae08d4" class="bulleted-list"><li style="list-style-type:circle">Increase quality of life</li></ul></li></ul><ul id="359054db-b488-4daa-b01c-d51f8a544307" class="bulleted-list"><li style="list-style-type:disc">Life is not only about work</li></ul><ul id="fec37128-2253-4119-8553-91e33ef4e2f9" class="bulleted-list"><li style="list-style-type:disc">What do you do in your life? Where do you put your priorities are important for you?</li></ul><h2 id="4a4c1151-42b3-4ca1-8e05-d1739ff3a475" class="">Perkinson’s Law</h2><ul id="62c48209-2cb0-4577-96d6-fa05916bef7a" class="bulleted-list"><li style="list-style-type:disc">Work expands to fill the time available</li></ul><ul id="4b1ca879-048d-48e2-a2ce-579454be6197" class="bulleted-list"><li style="list-style-type:disc">Managers tend to spend time in amounts inversely related to the importance of their tasks</li></ul><h2 id="c910f9a9-cfd9-4ce2-acf8-3dadc1a48072" class="">Murphy’s Law</h2><ul id="9e8d6229-662b-4fab-90fb-a692f08c0a3e" class="bulleted-list"><li style="list-style-type:disc">If anything can go wrong, it will</li></ul><ul id="7096bde6-d557-487b-b113-4086a6ee4263" class="bulleted-list"><li style="list-style-type:disc">Nothing is as simple as it seems</li></ul><ul id="affdeef3-e545-48cc-9fbc-f107371ae3f5" class="bulleted-list"><li style="list-style-type:disc">Everything takes longer than you think</li></ul><ul id="bb2f16ff-81c9-440b-a906-a68612b0cc9a" class="bulleted-list"><li style="list-style-type:disc">Always assume everything will go wrong and plan accordingly</li></ul><h2 id="aef5d6c0-0bf5-4825-b0cd-0ba718a6dfee" class="">Peter Principle</h2><ul id="f72d6e61-9907-4a3d-9034-794059595c35" class="bulleted-list"><li style="list-style-type:disc">People tend to rise to their level of incompetence</li></ul><h2 id="f4ca7fba-5b9c-4935-a937-180c82011b6d" class="">Pareto Principle </h2><ul id="b872c3f9-89b7-4a93-83a1-06e3830c0f85" class="bulleted-list"><li style="list-style-type:disc">80% time expended yields 20% of the results</li></ul><h2 id="08c25a12-fbdb-4437-a6b3-80392fce5a2d" class="">Principle of Calculated Neglect</h2><ul id="e89676b9-de44-4614-8589-2de1e2f01ebf" class="bulleted-list"><li style="list-style-type:disc">Despite their apparent urgency, some problems if left alone, will go away</li></ul><h1 id="1f8b49aa-5208-4689-8115-0646e68b8e28" class="">Approaches to Time Management</h1><h3 id="4434d725-4bb9-4919-8c8e-abb7c378c4bb" class="">Increase amount of available time each day</h3><ul id="93d63420-39b0-4b14-b299-1dd8a0e2b6fc" class="bulleted-list"><li style="list-style-type:disc">Can lead to fatigue</li></ul><h3 id="db849b99-e23f-4a2d-a9df-90ed9bfbdc39" class="">Do more work in available time - pack more work in your day</h3><ul id="c0159253-1c88-4a0d-b3c2-4e03bc5cd6b5" class="bulleted-list"><li style="list-style-type:disc">Burnout</li></ul><ul id="cc4ecf6b-dc56-4152-acda-e464d7b749d1" class="bulleted-list"><li style="list-style-type:disc">Stress</li></ul><h3 id="baae73e9-cf8e-4094-9319-d9afaa3eea83" class="">Do only the important work in the time you have available</h3><ul id="b3e1b357-5a22-4ba7-9754-70557002e411" class="bulleted-list"><li style="list-style-type:disc">you prioritize based on what is important and what is not important</li></ul><ul id="4b69033d-eb02-4429-a994-c8aca4c7b987" class="bulleted-list"><li style="list-style-type:disc">Ones which are important are what you need to do</li></ul><h1 id="2b164fbc-b21e-4165-8f67-4c3aba494107" class="">Setting the Objectives</h1><ul id="6be7e76f-8e99-4425-b416-d14123c03b2b" class="bulleted-list"><li style="list-style-type:disc">Work: objectives given by the boss</li></ul><ul id="a1da2acf-f586-4b09-9d00-02981cd0567c" class="bulleted-list"><li style="list-style-type:disc">Work: own personal agenda at work</li></ul><ul id="bb5afe6b-bd3d-4ba2-bd54-43d857b2cad2" class="bulleted-list"><li style="list-style-type:disc">Home: family and one’s self</li></ul><ul id="20893c16-5193-4d03-bdf3-8c3653324083" class="bulleted-list"><li style="list-style-type:disc">Write your goals down</li></ul><ul id="4d3792d4-5154-4071-a384-f14b69c21593" class="bulleted-list"><li style="list-style-type:disc">Refresh them everyday</li></ul><ul id="71dd0bf3-86e5-4d20-b97f-96e9531a2fe8" class="bulleted-list"><li style="list-style-type:disc">Set dates for your goals</li></ul><ul id="27e44abb-880b-479a-bbcc-fa103562c017" class="bulleted-list"><li style="list-style-type:disc">Have a plan of how to get there</li></ul><ul id="bcd7c2b2-753a-4b28-a36f-f4c74c944250" class="bulleted-list"><li style="list-style-type:disc">Enjoy the process</li></ul><h1 id="dfa6417a-d97b-4ec5-86e9-e512fb6a75b7" class="">Prioritizing </h1><h3 id="e1f922a1-e0e3-4f4b-a8a7-f8c4649cf9fa" class="">Urgency</h3><ul id="0d3be67a-56b5-4591-a762-ff83f6312175" class="bulleted-list"><li style="list-style-type:disc">Defined by other people’s need for the completion of that job</li></ul><ul id="f9c0d183-bc6c-476a-a166-0e35424ab15f" class="bulleted-list"><li style="list-style-type:disc">When is the task to be done</li></ul><h3 id="475ec697-77c4-4da2-a477-c35e273c91b5" class="">Importance</h3><ul id="8c96f31d-4453-4d57-88e4-d52081a59262" class="bulleted-list"><li style="list-style-type:disc">How much time should be allocated to the task?</li></ul><ul id="89d7bbce-3053-4b85-945b-fc87cbf84918" class="bulleted-list"><li style="list-style-type:disc">independent of urgency</li></ul><ul id="dc32f903-b9b5-4dc9-b434-d5f992ffd92f" class="bulleted-list"><li style="list-style-type:disc">Often, importance is defined by our internal judgement</li></ul><table id="17ed0213-5d97-4cf3-91a1-2a3a17a79745" class="simple-table"><tbody><tr id="abc78c21-3a0b-4449-bee9-6a4645326417"><td id="[eoc" class=""></td><td id="z&gt;xS" class=""><span style="border-bottom:0.05em solid"><strong>URGENT</strong></span></td><td id="_HST" class=""><span style="border-bottom:0.05em solid"><strong>NOT URGENT</strong></span></td></tr><tr id="9f0ce443-c312-488f-b76f-311a70d0797d"><td id="[eoc" class=""><span style="border-bottom:0.05em solid"><strong>IMPORTANT</strong></span></td><td id="z&gt;xS" class="">Real Crisis</td><td id="_HST" class="">Can wait but certainly needs to be done</td></tr><tr id="41775048-392b-4382-adfa-4e4f2e3a0f45"><td id="[eoc" class=""><span style="border-bottom:0.05em solid"><strong>NOT IMPORTANT</strong></span></td><td id="z&gt;xS" class="">Other peoples work. Done to avoid trouble</td><td id="_HST" class="">Tempting, easy and irrelevant jobs. Checking whatsapp messages </td></tr></tbody></table><h2 id="c3b6c422-ab20-498b-b543-3c56ddd2fea9" class="">Real Crisis</h2><ul id="8920a474-2cdb-4ae0-9626-a14ae34778b6" class="bulleted-list"><li style="list-style-type:disc">Need to be done now and done thoroughly</li></ul><ul id="f9f243fb-b8be-4af6-bc2e-b95140b483e5" class="bulleted-list"><li style="list-style-type:disc">These type of jobs should be rare</li></ul><ul id="5414b167-1d11-4551-9db5-a460625f03a0" class="bulleted-list"><li style="list-style-type:disc">If they are more → you have problem of time management</li></ul><ul id="960afd94-873c-4e3b-ae3d-f49d6afdf1bd" class="bulleted-list"><li style="list-style-type:disc">If they are more it would be because of your inability to distinguish what is important</li></ul><h2 id="c9f533d9-3b70-4fa0-8929-449fa4034c6d" class="">Can wait but certainly needs to be done</h2><ul id="1f5f57fb-525f-4d3d-8b12-c63996fdb09c" class="bulleted-list"><li style="list-style-type:disc">These are self development tasks</li></ul><ul id="31e11aa9-67c5-4cec-bf6f-bb39ee3b25cb" class="bulleted-list"><li style="list-style-type:disc">These are most easily neglected and procrastinated</li></ul><ul id="34d737dc-6c1f-4f32-af57-b656f2f24646" class="bulleted-list"><li style="list-style-type:disc">Almost real crisis could have been handled as this type</li></ul><ul id="9f96b649-d22a-4cfa-bf53-b654e3e4fef2" class="bulleted-list"><li style="list-style-type:disc">Action: put these jobs into routine so that they get their share of time</li></ul><h2 id="84b6cb2a-424d-4b52-96cf-5f11a4e89c2d" class="">Other People’s work</h2><ul id="e3e349be-0faa-4e38-81e5-ad30b4796c4e" class="bulleted-list"><li style="list-style-type:disc">The tasks that land on our desk each day</li></ul><ul id="fd0471a0-15eb-4e1e-b297-0043ba66ae7e" class="bulleted-list"><li style="list-style-type:disc">Helpful on maintenance of our lives</li></ul><ul id="fd97d215-464c-4ccd-b4a6-424d360cab1c" class="bulleted-list"><li style="list-style-type:disc">Give the feeling of importance though they are not</li></ul><ul id="c016fa24-4c3e-4788-a2aa-396bb95b16e9" class="bulleted-list"><li style="list-style-type:disc">Action: Spending minimum time or delegate them</li></ul><h2 id="6023764c-ac76-4abc-91b2-1bb4bba1fcf8" class="">Not important not urgent</h2><ul id="1f5eab50-f189-4903-b70e-be759c232eb3" class="bulleted-list"><li style="list-style-type:disc">Irrelevant jobs</li></ul><ul id="196fbe1a-ab18-4aa6-a6f2-797da0df8b33" class="bulleted-list"><li style="list-style-type:disc">Action: Should only be done when everything else is finished</li></ul><ul id="4c698339-6edd-4c20-a09a-2ffe849e07c4" class="bulleted-list"><li style="list-style-type:disc">Exception: fun jobs → because some fun is necessary if you need to remain effective the rest of the time</li></ul><ul id="cad8ea67-c08a-4daf-b47f-da45e151de50" class="bulleted-list"><li style="list-style-type:disc">Take a nap → 15min</li></ul><h2 id="003acda5-2629-428c-af57-c4c83127c03d" class="">Ideal Composition</h2><figure id="8833d678-710f-4ea5-8975-7bd08309205f" class="image"><a href="Time%20Management%20a30dc25489694ecfad9211c3e518d93a/Untitled.png"><img style="width:885px" src="Time%20Management%20a30dc25489694ecfad9211c3e518d93a/Untitled.png"/></a></figure><h1 id="097fd331-5f39-4349-8390-f83db5c289de" class="">Procrastination</h1><ul id="39389dcc-9594-4dce-9aff-731d6c4a121f" class="bulleted-list"><li style="list-style-type:disc">Understand what and why of your procrastination tendency</li></ul><ul id="b79d6f61-118c-42b6-8def-952b01fd5684" class="bulleted-list"><li style="list-style-type:disc">Remember last time what was the gain to do it in time → gives us the motivation</li></ul><ul id="fb63d246-7b86-48db-af64-bf830b4137e5" class="bulleted-list"><li style="list-style-type:disc">Understand how much time it takes to do a task</li></ul><ul id="37de014f-0c66-41c8-8e27-35725ee69f14" class="bulleted-list"><li style="list-style-type:disc">Do not be a last minute decision taker</li></ul><ul id="fad26e08-ca16-41bb-a624-fa8b613fcacb" class="bulleted-list"><li style="list-style-type:disc">Gather information for a task in advance</li></ul><ul id="5068f770-77f3-4784-866b-cc212143560c" class="bulleted-list"><li style="list-style-type:disc">Majority do only closer to deadline</li></ul><h2 id="91702290-88c5-4f7b-a7eb-b0ee0b0bdafe" class="">How to beat procrastination</h2><ul id="751a3d6e-ea99-423d-a5d5-68832c247358" class="bulleted-list"><li style="list-style-type:disc">Write a list of all major jobs and put it on the wall</li></ul><ul id="2c91645c-f9b8-4a53-9fb4-c2a8e033c8c5" class="bulleted-list"><li style="list-style-type:disc">Break large jobs into chunks</li></ul><ul id="511ab05e-0a3c-4143-980a-dcd18aa9bee2" class="bulleted-list"><li style="list-style-type:disc">Write a daily jobs-to-do list on the previous evening</li></ul><ul id="68377e57-f237-478e-a038-bb50e4a10fb6" class="bulleted-list"><li style="list-style-type:disc">Put the unpleasant jobs at the top of jobs to do list</li></ul><ul id="04e935e4-81ce-4ae0-a071-89c7c7ad0207" class="bulleted-list"><li style="list-style-type:disc">You can also combine jobs which are close to each other</li></ul><ul id="3552e585-e1ea-4c44-a536-1b501cd60f3f" class="bulleted-list"><li style="list-style-type:disc">Set a deadline and declare it or promise it</li></ul><ul id="2649ccf3-e300-4a33-a524-285e1ed0dab7" class="bulleted-list"><li style="list-style-type:disc">Consider delegating the job → if it’s hard for you to start things, delegate it and carry on their work. This does not mean you give the whole thing to someone</li></ul><ul id="58cc92c5-f3be-417a-89f5-7860f7614d97" class="bulleted-list"><li style="list-style-type:disc">Plunge in and get started</li></ul><ul id="af7af6f4-5aca-4bc8-8f6d-dc471eb3bd3b" class="bulleted-list"><li style="list-style-type:disc">Visualize taking action and completing the task</li></ul><ul id="5424274f-286d-4b6b-8c35-bcbc027b08c7" class="bulleted-list"><li style="list-style-type:disc">Reward yourself → drastic reinforcement</li></ul><ul id="d7418407-5faf-4320-b823-59161b12db81" class="bulleted-list"><li style="list-style-type:disc">Self talk → say to yourself ‘I love doing the tough jobs first’</li></ul><ul id="672391af-771d-4e84-bb83-74ab565cbf59" class="bulleted-list"><li style="list-style-type:disc">You figure out what makes you not start or delay things</li></ul><h1 id="90ae044b-6235-4410-9bbf-7606a42afe99" class="">Time Wasters</h1><ul id="fd33a67e-855d-4c30-b279-dab10100c6d8" class="bulleted-list"><li style="list-style-type:disc">Being too much of a perfectionist</li></ul><ul id="013c0f89-7882-4e29-b255-591c4c50b31e" class="bulleted-list"><li style="list-style-type:disc">Chatting or drinking coffee</li></ul><ul id="b85f023d-e271-4759-98e6-51b4c7884d65" class="bulleted-list"><li style="list-style-type:disc">Distractions - Can happen but should not go too far</li></ul><ul id="1d776f18-817e-4594-a9a5-6ae5af65cecb" class="bulleted-list"><li style="list-style-type:disc">Having to do other people’s jobs</li></ul><ul id="d1aebb75-5b2c-4fbb-ae65-fe4e4b76de52" class="bulleted-list"><li style="list-style-type:disc">Irrelevant tasks for the boss<ul id="530b99ee-51dc-48dc-b9ea-6942051ffb4e" class="bulleted-list"><li style="list-style-type:circle">Handling boss is one of the hardest tasks</li></ul></li></ul><ul id="ab197914-a606-4b91-bc22-9a3b8eeb5027" class="bulleted-list"><li style="list-style-type:disc">Long telephone calls</li></ul><ul id="a2d298fb-53a0-4c0a-a41f-53c7ea2fd59d" class="bulleted-list"><li style="list-style-type:disc">Talkative people</li></ul><ul id="0289e292-9e0a-47cc-82e6-bba43ca6fb03" class="bulleted-list"><li style="list-style-type:disc">Waiting for people who are late</li></ul><ul id="26c0ecf7-96e6-4d5a-99fe-29fc211b8f58" class="bulleted-list"><li style="list-style-type:disc">Walking from place to place → depends on size of organization</li></ul><ul id="a1ffccd1-67cd-4bf0-b91e-b1e06cb27dbe" class="bulleted-list"><li style="list-style-type:disc">Checking mails, checking messages → fixed time</li></ul><h1 id="d3e6d132-583c-402b-a461-5ee7bc2386f1" class="">Resisting Interruptions</h1><ul id="01208619-80bc-49ab-8ad1-cd5cfbcd6940" class="bulleted-list"><li style="list-style-type:disc">Make yourself harder to interrupt</li></ul><ul id="6f2047f9-b455-4923-bd69-fb29e1169984" class="bulleted-list"><li style="list-style-type:disc">Stop them before they start</li></ul><ul id="fcefd42a-ac6d-4c38-96d9-9724746fa6b0" class="bulleted-list"><li style="list-style-type:disc">Reduce their duration</li></ul><ul id="e910f8a4-17b0-4e80-9eb2-be48612c4529" class="bulleted-list"><li style="list-style-type:disc">If you know someone is trying to take your time → say ki you are busy and you are going somewhere and tell ki we can discuss later</li></ul><ul id="7f09ca0a-398b-4290-bc6c-0ffdb578f1fe" class="bulleted-list"><li style="list-style-type:disc">Telephone ringing shouldn’t distract you completely</li></ul><ul id="c9b86a41-c805-4ccf-844f-c1b74cffab07" class="bulleted-list"><li style="list-style-type:disc">You will lose the flow and focus</li></ul><h1 id="41e98379-59b8-4e1d-94a0-8d23d9a6bba7" class="">Time management Systems</h1><ul id="1bebca57-6e3e-41cd-9af4-f2745c07660b" class="bulleted-list"><li style="list-style-type:disc">Action list</li></ul><ul id="05654dd7-7db8-4f0b-bc10-7d7de8460cc7" class="bulleted-list"><li style="list-style-type:disc">Reminder notes → kumar pro management</li></ul><ul id="7d6b462f-f1ac-47e2-a02b-ad21af50f576" class="bulleted-list"><li style="list-style-type:disc">Reward yourself</li></ul><ul id="d271e21f-4f85-43e4-90c3-f20595fb67a0" class="bulleted-list"><li style="list-style-type:disc">Get a friend to help you</li></ul><ul id="1330f2bd-ae6d-42e8-a06a-a399bc3ec33a" class="bulleted-list"><li style="list-style-type:disc">Use the diary as a reminder</li></ul><h1 id="2dd29868-e8dc-478b-b18e-7e6396fed705" class="">Summary</h1><ul id="60545c77-079b-4e7e-ab31-01b80291a9b9" class="bulleted-list"><li style="list-style-type:disc">Plan the day</li></ul><ul id="698beacf-da9e-41c0-a511-b3a2bea478df" class="bulleted-list"><li style="list-style-type:disc">Set goals and work towards achieving them</li></ul><ul id="9a637043-0775-437c-b1cb-4734ea19ee93" class="bulleted-list"><li style="list-style-type:disc">Do not postpone them</li></ul><ul id="e0460e19-7b91-47bd-a23f-2dfeb4c53dd4" class="bulleted-list"><li style="list-style-type:disc">Identify the time waster and resolve to eliminate them</li></ul><ul id="d6ca3b49-e466-4f68-8dcf-5b92d46d7be4" class="bulleted-list"><li style="list-style-type:disc">When feasible, delegate</li></ul><ul id="eccc7cde-e35d-4577-b550-770e753faf11" class="bulleted-list"><li style="list-style-type:disc">Don’t let paperwork pile up</li></ul><ul id="8e0ab71a-b118-40b5-a896-156171ae5ec1" class="bulleted-list"><li style="list-style-type:disc">Add times for relaxation and recreation in your schedule</li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

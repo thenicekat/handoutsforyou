@@ -1,0 +1,676 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Mentoring</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="c5d8e218-db6e-4ab0-bb24-0c2a88d866cb" class="page sans"><header><h1 class="page-title">Mentoring</h1><p class="page-description"></p></header><div class="page-body"><nav id="93780f51-5792-413b-a8d1-11e14f05c51a" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2443921a-d0b4-48b3-9b91-8222332b49fd">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#f49bcba6-d488-4dbf-be47-5d88adbf5229">Types of Mentoring</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f6912ea9-e509-4091-95d7-a9c1c8ec9779">One to one Mentoring</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#67c8c828-a0bb-4fd2-94cc-6ede552dca89">Group Mentoring</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#aa369010-e66f-4505-9941-64df6d882928">Training based Mentoring</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fb8ed790-2721-4355-9ebe-e7e09882f087">Executive Mentoring</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b788f98d-2581-4fbe-90cb-a7b9aa5a2ab8">What is Coaching?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#04a8d141-3e0a-4d4e-a67e-a57fe0f9d2af">Types of Coaching</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#452f9c10-31d5-472a-b385-538fb2929e97">Mentoring vs Coaching</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e18876df-3f57-42e5-9e5c-18297a9f92e3">Competencies for Mentoring and Coaching</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#18379c83-7ef6-4b6d-944d-01beaab5df39">Coaching Models</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#bdcf8d07-8b5c-4a7a-b3e0-b5d078d55162">Grow Coaching Model</a></div></nav><h1 id="2443921a-d0b4-48b3-9b91-8222332b49fd" class="">Introduction</h1><ul id="5623e157-45b0-43d3-aafa-c8ee7475992c" class="bulleted-list"><li style="list-style-type:disc">A process where someone with more experience helps guide the learning and growth of someone with less experience </li></ul><ul id="2e0354cd-831d-416f-ae2a-e234c003495f" class="bulleted-list"><li style="list-style-type:disc">A mentor is someone who has a combination of experience, knowledge, and skills, and who answers questions, shares ideas, and helps guide someone with less experience or knowledge</li></ul><ul id="0e40b9a1-be8b-449f-ae6a-5006f148a2bd" class="bulleted-list"><li style="list-style-type:disc">Mentoring can be formal or informal</li></ul><ul id="2277c739-0e40-4b28-93ac-1a5dfabb7ff2" class="bulleted-list"><li style="list-style-type:disc">What is it → advising, teaching, showing</li></ul><ul id="39ab2bd9-6452-47d8-bb1f-d6b3cc0b0bf2" class="bulleted-list"><li style="list-style-type:disc">What it is not → “I will do it for you”</li></ul><h1 id="f49bcba6-d488-4dbf-be47-5d88adbf5229" class="">Types of Mentoring</h1><h2 id="f6912ea9-e509-4091-95d7-a9c1c8ec9779" class="">One to one Mentoring</h2><ul id="fd46dd6a-8628-47da-9abd-8ecf9e7084a7" class="bulleted-list"><li style="list-style-type:disc">Develop a personal relationship between the mentor and mentee</li></ul><ul id="ff8f8c9d-e368-41b7-be14-435c31de7b3e" class="bulleted-list"><li style="list-style-type:disc">You need a lot of mentors for this though</li></ul><h2 id="67c8c828-a0bb-4fd2-94cc-6ede552dca89" class="">Group Mentoring</h2><ul id="5a67aa50-f40f-40ed-89de-7bcb7afaabac" class="bulleted-list"><li style="list-style-type:disc">Learn from mentor as well as the peer group</li></ul><h2 id="aa369010-e66f-4505-9941-64df6d882928" class="">Training based Mentoring</h2><ul id="5484bfbd-33a5-4a9d-a892-e1253d59fa3e" class="bulleted-list"><li style="list-style-type:disc">Develop the skill needed for that particular position</li></ul><h2 id="fb8ed790-2721-4355-9ebe-e7e09882f087" class="">Executive Mentoring</h2><ul id="ee12367a-6bff-4af2-8a7e-75bc3f661e37" class="bulleted-list"><li style="list-style-type:disc">Create a culture of Mentoring in the organization</li></ul><ul id="72dfeb3e-8ae7-4650-82f2-ab0ac04591ba" class="bulleted-list"><li style="list-style-type:disc">Developing a set of managers to follow mentoring</li></ul><ul id="3581674a-fb0e-4a65-9d09-c28e4b917c0d" class="bulleted-list"><li style="list-style-type:disc">But for this they need to be trained and this needs mentoring too</li></ul><h1 id="b788f98d-2581-4fbe-90cb-a7b9aa5a2ab8" class="">What is Coaching?</h1><ul id="e493b2f2-0aad-46a5-bfdf-be079e7129b9" class="bulleted-list"><li style="list-style-type:disc">It is unlocking a person’s potential to maximize their own performance</li></ul><ul id="d699b1ae-2c58-4959-8915-f042001e1f92" class="bulleted-list"><li style="list-style-type:disc">It is helping them to learn rather than teaching them</li></ul><ul id="2bbba336-cfb9-4861-a032-61e0e636e2c0" class="bulleted-list"><li style="list-style-type:disc">A coach is not necessarily an expert in the staff’s speciality</li></ul><ul id="c868cf95-792a-4a39-99b3-50b01f887653" class="bulleted-list"><li style="list-style-type:disc">What it is → facilitating, guiding, feedback, synthesis</li></ul><ul id="db3e157a-77be-4295-a483-d90f37652b66" class="bulleted-list"><li style="list-style-type:disc">What it is not → advising, therapy, fixing </li></ul><h1 id="04a8d141-3e0a-4d4e-a67e-a57fe0f9d2af" class="">Types of Coaching</h1><ul id="e82397a5-3acb-4b64-8e25-4ba8d62049c7" class="bulleted-list"><li style="list-style-type:disc">Career Coaching</li></ul><ul id="86cd8c8f-0438-4f34-938f-ff655ebf6117" class="bulleted-list"><li style="list-style-type:disc">Performance Coaching</li></ul><ul id="851c1ccc-6947-485b-81a8-2e4ee1deafb0" class="bulleted-list"><li style="list-style-type:disc">Skills coaching</li></ul><ul id="230a5a5c-0581-4061-bbb5-ac3a7de6698b" class="bulleted-list"><li style="list-style-type:disc">Newly assigned leader coaching → coaching for a newly assigned leader so that he’s on par with the details generally in key positions to tell them their responsibilities → CXO level</li></ul><ul id="1554d757-dadc-463e-9ce5-94b8b8ca72a5" class="bulleted-list"><li style="list-style-type:disc">High potential or developmental coaching</li></ul><ul id="c52cd4a3-6ad5-4fb5-910f-e9749cfdd586" class="bulleted-list"><li style="list-style-type:disc">Coaching to provide feedback debriefing and development planning</li></ul><ul id="0babe259-db33-4862-ac82-eb00fe107751" class="bulleted-list"><li style="list-style-type:disc">Target behavioral coaching</li></ul><ul id="59c2aeb9-de2d-49ce-964f-3c52e9b7dda2" class="bulleted-list"><li style="list-style-type:disc">Legacy coaching → CXO level → they will leave in some time, coach them to ensure they make a good imprint or impression</li></ul><ul id="865153a1-9f1d-4ab6-b8e7-2a5614ac8831" class="bulleted-list"><li style="list-style-type:disc">Succession Coaching → when people leave in key positions → looking for replacement from within the organization → they have potential to come up to the new position</li></ul><ul id="73db543e-e2de-43c6-90a0-ab8e3bd978b1" class="bulleted-list"><li style="list-style-type:disc">Business Coaching → you are going to help organization to do their business better</li></ul><ul id="b93d4bb8-1ef3-4a12-b4b3-f28f8e856641" class="bulleted-list"><li style="list-style-type:disc">Executive Coaching → middle and above </li></ul><ul id="fbf8b976-b057-47df-a9a9-9ea3046bc3a0" class="bulleted-list"><li style="list-style-type:disc">Team Coaching → for a group of people in order to build a team that is highly collaborative and effective</li></ul><ul id="2de7b195-17ed-49f8-a3f3-63a6f3762833" class="bulleted-list"><li style="list-style-type:disc">Group Coaching → improvement in leadership</li></ul><h1 id="452f9c10-31d5-472a-b385-538fb2929e97" class="">Mentoring vs Coaching</h1><figure id="36142ea5-a6b9-410e-a9c1-b0686594cdfe" class="image"><a href="Mentoring%20c5d8e218db6e4ab0bb240c2a88d866cb/Untitled.png"><img style="width:850px" src="Mentoring%20c5d8e218db6e4ab0bb240c2a88d866cb/Untitled.png"/></a></figure><ul id="fe805002-7d75-4d17-a11e-9c1c61acf92f" class="bulleted-list"><li style="list-style-type:disc">Coaching is a subset of mentoring</li></ul><h1 id="e18876df-3f57-42e5-9e5c-18297a9f92e3" class="">Competencies for Mentoring and Coaching</h1><table id="185bc0c2-e68b-48d2-832b-50309c4699a1" class="simple-table"><tbody><tr id="148eaea4-e3c8-4053-b4d0-dfd296843a38"><td id="KQO;" class="" style="width:309.90625px"><span style="border-bottom:0.05em solid"><strong>Mindset</strong></span></td><td id="aJa:" class="" style="width:349.6875px"><span style="border-bottom:0.05em solid"><strong>Skills</strong></span></td></tr><tr id="878c3b9f-4e7d-40ee-b664-e8085779c9a0"><td id="KQO;" class="" style="width:309.90625px">Trust</td><td id="aJa:" class="" style="width:349.6875px">Listening</td></tr><tr id="d924c72c-9345-45d9-a7f5-aa34cc5c8503"><td id="KQO;" class="" style="width:309.90625px">Confidentiality</td><td id="aJa:" class="" style="width:349.6875px">Asking good questions</td></tr><tr id="6f5bd081-c69b-4336-b004-33918c52cfb3"><td id="KQO;" class="" style="width:309.90625px">Responsibility</td><td id="aJa:" class="" style="width:349.6875px">Focused</td></tr><tr id="8834496a-2789-47a1-843a-b1edd261ef91"><td id="KQO;" class="" style="width:309.90625px">Accountability</td><td id="aJa:" class="" style="width:349.6875px">Action</td></tr><tr id="e800c3e4-82c7-42fe-aa04-97bb5c127b4f"><td id="KQO;" class="" style="width:309.90625px">Open and Curious</td><td id="aJa:" class="" style="width:349.6875px">Intentional Connection</td></tr></tbody></table><h1 id="18379c83-7ef6-4b6d-944d-01beaab5df39" class="">Coaching Models</h1><div id="46a80f32-8605-4b03-bb9b-cee172c0b2f0" class="column-list"><div id="65bf3ab2-16ec-4736-b01a-307e59e46d95" style="width:50%" class="column"><ul id="1cdf0a9e-dd63-453b-b6fc-6691d5e92f41" class="bulleted-list"><li style="list-style-type:disc">Grow</li></ul><ul id="9011db53-e0b3-40d0-8ae8-cf308bb57dff" class="bulleted-list"><li style="list-style-type:disc">Solve</li></ul><ul id="f3463104-49df-45ee-8a53-d658ec6459b0" class="bulleted-list"><li style="list-style-type:disc">Achieve</li></ul></div><div id="ea7ff491-29fe-4d4d-a52c-b82c0c01c599" style="width:50%" class="column"><ul id="b64ac17a-a035-4c0f-a055-3a55fe267eff" class="bulleted-list"><li style="list-style-type:disc">Clear</li></ul><ul id="8432fca8-16fa-4ca8-a099-22b77f12cb9b" class="bulleted-list"><li style="list-style-type:disc">Fuel</li></ul><ul id="145fdd01-e67b-479b-a0db-3e9319b745de" class="bulleted-list"><li style="list-style-type:disc">Oskar</li></ul></div></div><figure id="5397137b-158d-4aee-9620-bf503d33e871" class="image"><a href="Mentoring%20c5d8e218db6e4ab0bb240c2a88d866cb/Untitled%201.png"><img style="width:805px" src="Mentoring%20c5d8e218db6e4ab0bb240c2a88d866cb/Untitled%201.png"/></a></figure><figure id="71eb13df-811a-43e9-8498-0df3cd21b370" class="image"><a href="Mentoring%20c5d8e218db6e4ab0bb240c2a88d866cb/Untitled%202.png"><img style="width:806px" src="Mentoring%20c5d8e218db6e4ab0bb240c2a88d866cb/Untitled%202.png"/></a></figure><figure id="9bcce628-5371-442a-8c21-2efd40f5039e" class="image"><a href="Mentoring%20c5d8e218db6e4ab0bb240c2a88d866cb/Untitled%203.png"><img style="width:479px" src="Mentoring%20c5d8e218db6e4ab0bb240c2a88d866cb/Untitled%203.png"/></a></figure><h2 id="bdcf8d07-8b5c-4a7a-b3e0-b5d078d55162" class="">Grow Coaching Model</h2><ul id="b61a01fa-926a-4eea-92b4-018f58459edd" class="bulleted-list"><li style="list-style-type:disc">Goal - Where do you want to go and what’s your goal</li></ul><ul id="091d8857-6ad1-42bf-ba8f-44c41e1e479c" class="bulleted-list"><li style="list-style-type:disc">Reality - What’s the reality and where are you right now?</li></ul><ul id="118818d4-4328-449b-b3ec-88b0672cad3f" class="bulleted-list"><li style="list-style-type:disc">Options - What are your options to bridge the gap between your goal and reality</li></ul><ul id="4fd8fbdd-035c-496f-9d67-6bf4eef18f6e" class="bulleted-list"><li style="list-style-type:disc">Will - What will you do to plan your next steps</li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

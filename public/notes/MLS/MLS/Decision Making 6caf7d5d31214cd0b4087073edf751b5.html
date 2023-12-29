@@ -1,0 +1,676 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Decision Making</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="6caf7d5d-3121-4cd0-b408-7073edf751b5" class="page sans"><header><h1 class="page-title">Decision Making</h1><p class="page-description"></p></header><div class="page-body"><nav id="90d66a20-5631-456d-9360-eefc144ee155" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#97664ef4-5c74-4c9a-8dc7-f597508c84f2">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#23d9d641-0010-4640-a3c6-2cba4e2fbcfc">Decision Making Conditions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a3e45673-0b9d-4b83-8bc1-73d8f6ff46ca">Certainty</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4ad99b1f-d066-4d43-93b6-23074324f839">Risk</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2743666d-1579-46f7-b846-74e398a108e9">Uncertainty</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#18f809cd-a74f-4434-a933-d5bdd8ce4097">Ambiguity (Wicked Problem)</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0cd76929-0b05-41fc-b1e7-6bf248559a11">Steps for Making Decisions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#94970810-3d4b-46c2-8dd4-4d64205029b9">Pre Steps</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8c5273fc-4676-45d8-93da-d0b270dc3f5b">Step 1: Identify the Problem</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#bd607e03-19a8-467c-b918-958fb2ceb2cf">Step 2: Identify Decision Criteria</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8f116fc0-95f7-42b8-86d6-63889f0206d2">Step 3: How the Decision should be Made</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#720c7533-a37b-46fb-a794-098c891b0b98">Step 4: Collect Facts</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1d537d02-7e77-4b0c-9880-2548df09ccdc">Step 5: State the boundaries</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3f8a0790-f7fc-45fc-8a9b-38df53481426">Step 6: Develop Alternatives</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a08de1fc-368b-4774-a45e-cf149584cb4a">Step 7: </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e1659bec-6f87-447e-bd13-394b37762d00">Step 8: Select the Best alternative</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#239223b0-6f35-447b-b1d4-b6fac3076172">Step 9: Implement the Alternative</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#dbbe3f65-4b04-437f-8da5-1c1bb593b7c3">Step 10: Evaluating the Decision Effectiveness</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#f65df2ba-03ce-4c61-862a-308167ba1abc">Group Decision Making</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#bf7a29c4-afd3-4609-9039-0a4a5a4f3505">When to involve?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#bec67b61-bb09-4d43-80ff-93828eeb9372">Degrees of Involvement</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e138ae1f-ecd2-411a-9300-78ad1118c84f">Methods and Techniques</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4b735ea4-a508-4cd2-99a4-8700765c8a6c">Intuitive Decision Making</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d12094cb-c4a5-4426-8c28-1eb1c75540a8">Decision Making Biases and Errors</a></div></nav><h1 id="97664ef4-5c74-4c9a-8dc7-f597508c84f2" class="">Introduction</h1><ul id="20aae48f-3577-4022-8b63-7eb442643812" class="bulleted-list"><li style="list-style-type:disc">The single most important activity of a manager is making decisions</li></ul><ul id="45eabe2e-b683-418a-ab0f-25d65e94fefb" class="bulleted-list"><li style="list-style-type:disc">Decision is a<ul id="d2788d02-95c6-4cf4-bf37-8898dc0ba34f" class="bulleted-list"><li style="list-style-type:circle">Choice among two or more alternatives</li></ul><ul id="0c92f696-45a6-4a0a-ad1a-05e56b8f718d" class="bulleted-list"><li style="list-style-type:circle">Rarely a choice between right and wrong</li></ul></li></ul><ul id="d8de45a9-2e1e-4047-8915-8520f0debe52" class="bulleted-list"><li style="list-style-type:disc">Decision maker is whoever makes such a choice</li></ul><ul id="ca24eb15-e0a8-4ab9-82e9-6bbb10387812" class="bulleted-list"><li style="list-style-type:disc">Decisions can be made instantly or systematically</li></ul><ul id="2be1f567-e78e-45ba-9f1c-418224f01f26" class="bulleted-list"><li style="list-style-type:disc">Decision making is the process of identifying problems and opportunities and resolving them</li></ul><ul id="66075902-56dd-40ef-86c2-e5d1a5e5a456" class="bulleted-list"><li style="list-style-type:disc">Decisions<ul id="145324a3-a324-40a0-b826-45c2f030bdcc" class="bulleted-list"><li style="list-style-type:circle">Some of them need less time, some of them need more time</li></ul><ul id="fbc66c70-c993-461a-8719-45ea8a667823" class="bulleted-list"><li style="list-style-type:circle">Some of them are right and some of them are wrong</li></ul></li></ul><ul id="bb05b43b-2c95-48c2-b5ac-eaa7a76bcf6f" class="bulleted-list"><li style="list-style-type:disc">Unless you implement, you will never know if the decision you are choosing is right or wrong. Only after the results will you realize if the decision was a right one or a wrong one</li></ul><ul id="5afc6ec1-b518-4dfe-b3da-42eb16e31de1" class="bulleted-list"><li style="list-style-type:disc">Manager should strive to make prompt and correct decisions under given situations</li></ul><ul id="9e38046d-22af-4469-9b42-ecdcff298769" class="bulleted-list"><li style="list-style-type:disc">It has nothing to do with age</li></ul><ul id="2a57fae3-8c1a-4701-9f24-0fe81f2a46dd" class="bulleted-list"><li style="list-style-type:disc">Managers make decisions even though if they don’t have experience</li></ul><ul id="f32a65db-fbca-4095-969a-4d73022d4205" class="bulleted-list"><li style="list-style-type:disc">Practice, Perception and ability to grasp helps in making decisions and not age</li></ul><ul id="d8f358ca-acaf-4e8d-aaa0-b1adbe522c49" class="bulleted-list"><li style="list-style-type:disc">Make decisions whenever we confront situations that warrant decision making</li></ul><ul id="0b0ed9f2-e101-4af5-89c0-37c8325e0961" class="bulleted-list"><li style="list-style-type:disc">Indecision → unable to make decision because of capability and skills</li></ul><ul id="cf4d84c4-b05f-4a5c-b76c-d1ab946ff926" class="bulleted-list"><li style="list-style-type:disc">Deflecting the decision making is not good</li></ul><ul id="4c154154-632f-4fd0-bf89-f7a5b365ef40" class="bulleted-list"><li style="list-style-type:disc">No information vs all information</li></ul><ul id="07042b13-5dbc-47e2-85e1-5e7463c5e4bc" class="bulleted-list"><li style="list-style-type:disc">Making a wrong decision is better than indecision<ul id="8b65e630-6ccf-4385-8839-815521c75f9d" class="bulleted-list"><li style="list-style-type:circle">You won’t know it’s outcome until it’s implemented</li></ul><ul id="da85c9b5-9492-475d-b317-4d6659347d6a" class="bulleted-list"><li style="list-style-type:circle">If there’s no decision → no implementation → no outcome → no learning</li></ul><ul id="a2a2b8d3-49e5-455f-b2fa-413b47181258" class="bulleted-list"><li style="list-style-type:circle">Rather fail and learn from the mistakes</li></ul></li></ul><ul id="d12a2340-164d-4a11-894b-7ba65ec00dce" class="bulleted-list"><li style="list-style-type:disc">In most cases you must take risk to make the decisions</li></ul><ul id="e5fd8df6-2cfb-4e93-a9fa-bd6ecc015f4c" class="bulleted-list"><li style="list-style-type:disc">Decisions by themselves are not important, they are valuable only when they are implemented and lead to results</li></ul><table id="d017aca4-a1b4-4fad-a57a-2f423293670a" class="simple-table"><tbody><tr id="6bba5cd8-cf6d-4e96-9239-dd674a0e6e2d"><td id="_w_Y" class="">Decision Making</td><td id="r=ms" class="">Decision Implementation</td><td id="M|D|" class="">Results?</td></tr><tr id="40d34fd6-9159-41f2-9130-4a2fef5296ba"><td id="_w_Y" class="">1</td><td id="r=ms" class="">1</td><td id="M|D|" class="">1</td></tr><tr id="be84bda0-347f-4507-bbde-11b54c322daa"><td id="_w_Y" class="">0</td><td id="r=ms" class="">0</td><td id="M|D|" class="">0</td></tr><tr id="afa3203d-fd6f-4248-9778-988c170b418d"><td id="_w_Y" class="">1 </td><td id="r=ms" class="">0</td><td id="M|D|" class="">0</td></tr><tr id="167a620e-d0f6-4972-93ca-f938e69f478b"><td id="_w_Y" class="">0</td><td id="r=ms" class="">1</td><td id="M|D|" class="">0</td></tr></tbody></table><ul id="4f6f5969-33d8-4912-8c0f-335af30ede97" class="bulleted-list"><li style="list-style-type:disc">Good idea to involve others in decision making</li></ul><ul id="5cf17f1f-ecee-4f02-b000-857da6d559af" class="bulleted-list"><li style="list-style-type:disc">At all times, our decisions have to be fair to our clients, organization, department, boss and finally ourselves. Why?</li></ul><ul id="dbc06025-e7a0-4630-a351-381d98f3e9de" class="bulleted-list"><li style="list-style-type:disc">Any decisions made must meet certain criteria<ul id="0d2ba7ae-07fd-4b22-9c42-22885a880009" class="bulleted-list"><li style="list-style-type:circle">It must address the issue at hand</li></ul><ul id="fb51517f-eb93-4546-8db5-830239a39199" class="bulleted-list"><li style="list-style-type:circle">Fair to all concerned</li></ul><ul id="2bc847f1-9179-4dc8-8e6c-7c90c870c785" class="bulleted-list"><li style="list-style-type:circle">It must not lead to problems in the future</li></ul><ul id="1babde6c-adaa-40bc-959a-65b2223d0675" class="bulleted-list"><li style="list-style-type:circle">If you make a decision, you have to defend it</li></ul></li></ul><ul id="26e53f61-cf65-4ced-8d77-9f252551d64b" class="bulleted-list"><li style="list-style-type:disc">In an organization, there might be situations where you have to implement a decision you haven’t taken</li></ul><h1 id="23d9d641-0010-4640-a3c6-2cba4e2fbcfc" class="">Decision Making Conditions</h1><h2 id="a3e45673-0b9d-4b83-8bc1-73d8f6ff46ca" class="">Certainty</h2><ul id="c3864569-816e-4b0c-98e2-d188075e1e4b" class="bulleted-list"><li style="list-style-type:disc">Information is there but outcomes are not sure</li></ul><h2 id="4ad99b1f-d066-4d43-93b6-23074324f839" class="">Risk</h2><ul id="4836985f-b8a8-4819-b4db-b9b3007bf5db" class="bulleted-list"><li style="list-style-type:disc">Able to define the problem</li></ul><ul id="1d26f38e-4e42-4dd6-b148-d4d7e3d21b4d" class="bulleted-list"><li style="list-style-type:disc">Alternatives are known but the outcome of these alternatives is not known</li></ul><ul id="aadd12d5-8691-4284-b3f7-35cd862c3739" class="bulleted-list"><li style="list-style-type:disc">Objective probability → historical data</li></ul><ul id="55ea06a1-33f8-4d03-905f-33005c233f9d" class="bulleted-list"><li style="list-style-type:disc">Subjective probability → intuition and experience of the manager</li></ul><h2 id="2743666d-1579-46f7-b846-74e398a108e9" class="">Uncertainty</h2><ul id="54e4342e-be95-4d52-9325-c7c02894cd69" class="bulleted-list"><li style="list-style-type:disc">Information is not available</li></ul><ul id="f99b0d18-477e-484a-bd8d-294658e451d4" class="bulleted-list"><li style="list-style-type:disc">We don’t know if data is accurate</li></ul><ul id="41d6c9a4-6574-4302-92bf-c7f7e33f10a0" class="bulleted-list"><li style="list-style-type:disc">Outcomes are unknown</li></ul><ul id="86c81a08-6f7b-4e73-a25b-98e652ee97ad" class="bulleted-list"><li style="list-style-type:disc">Managers use creativity</li></ul><ul id="bce4695e-a832-485a-9b02-486cc12f3659" class="bulleted-list"><li style="list-style-type:disc">Example: Probability of someone being in a relationship</li></ul><ul id="ac951b8f-2e45-4fa6-b6dd-135fedb3fe49" class="bulleted-list"><li style="list-style-type:disc">Example: Masters in US, looking at various universities, information about all unis are not correct (uncertainty)</li></ul><ul id="b39e3051-d0cb-4f33-8ad1-7d767162c9fc" class="bulleted-list"><li style="list-style-type:disc">Information is there but not reliable</li></ul><h2 id="18f809cd-a74f-4434-a933-d5bdd8ce4097" class="">Ambiguity (Wicked Problem)</h2><ul id="10ea11e9-9994-49af-b5e5-448592a350b4" class="bulleted-list"><li style="list-style-type:disc">Not clear with the problem</li></ul><ul id="1f3368bd-1542-4648-bc85-fd1df911df20" class="bulleted-list"><li style="list-style-type:disc">All kinds of issues → Problem Level, Alternatives</li></ul><ul id="831e392d-bb4b-40ff-891a-c45d91f4787a" class="bulleted-list"><li style="list-style-type:disc">Dynamic Environment</li></ul><ul id="f256f9eb-ac46-451d-880d-0d35f41ec9e1" class="bulleted-list"><li style="list-style-type:disc">Even if I know the problem, am not able to look for a solution</li></ul><ul id="a348fdec-2da0-45b7-b0be-6c9e78ed2f27" class="bulleted-list"><li style="list-style-type:disc">Example: There might be a local bund → you don’t know if it’ll happen or not. Like the problem itself might happen or might not happen</li></ul><h1 id="0cd76929-0b05-41fc-b1e7-6bf248559a11" class="">Steps for Making Decisions</h1><h2 id="94970810-3d4b-46c2-8dd4-4d64205029b9" class="">Pre Steps</h2><ul id="945bda11-6cfe-4524-8d72-9fae72813059" class="bulleted-list"><li style="list-style-type:disc">Existing of a problem or opportunity</li></ul><ul id="9d7650e0-2c20-4948-b84c-24cf0ff408cc" class="bulleted-list"><li style="list-style-type:disc">Have willingness to decide and implement</li></ul><h2 id="8c5273fc-4676-45d8-93da-d0b270dc3f5b" class="">Step 1: Identify the Problem</h2><ul id="314c580d-8bc1-48e4-85a7-ad1d6ca4d089" class="bulleted-list"><li style="list-style-type:disc">Problem is a discrepancy between existing and desired connection</li></ul><ul id="a14a7cb2-41b9-4d3a-a474-896aac2880c8" class="bulleted-list"><li style="list-style-type:disc">Problem identification is subjective (One’s Problem is Other’s Opportunity)</li></ul><ul id="24cabf86-f4d8-495e-8891-5b308b625894" class="bulleted-list"><li style="list-style-type:disc">Effectively identifying, defining, framing the problems is important but not easy</li></ul><ul id="d8cd730d-31fd-4eef-bab8-0b58b6e9c014" class="bulleted-list"><li style="list-style-type:disc">Make sure it’s a problem and not just a symptom of a problem</li></ul><ul id="a63fd7da-278f-4670-981f-8bf9de27daf2" class="bulleted-list"><li style="list-style-type:disc">Define the problem i.e. limit the problem</li></ul><ul id="1b9b4258-3e65-4264-b1b7-a45398b1b4d7" class="bulleted-list"><li style="list-style-type:disc">Determine the objectives</li></ul><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1c15f83c-a0a1-44b0-b6f5-01ab50e8f685"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">In airports, constant complaint is to wait for luggage. They tried to increase manpower to get luggage, didn’t help. But what helped is that they put a long way between the place where you get down and the place where you get your luggage, so the passengers are not idle so they actually don’t feel the time waste</div></figure><h2 id="bd607e03-19a8-467c-b918-958fb2ceb2cf" class="">Step 2: Identify Decision Criteria</h2><ul id="bc734565-2a59-4f8e-bcbe-4ad07f21a8e7" class="bulleted-list"><li style="list-style-type:disc">Used for evaluating alternatives</li></ul><ul id="14a8178e-0430-457a-9bc6-e315c7d190c2" class="bulleted-list"><li style="list-style-type:disc">Define what is important or relevant to resolving a problem</li></ul><ul id="287ec687-73c0-49e6-b9b6-a87afb72409c" class="bulleted-list"><li style="list-style-type:disc">Some criteria may be more important to you than others, therefore assign weightage</li></ul><h2 id="8f116fc0-95f7-42b8-86d6-63889f0206d2" class="">Step 3: How the Decision should be Made</h2><ul id="ef4a7b02-632b-414a-88c8-a322d88ace91" class="bulleted-list"><li style="list-style-type:disc">Make decision by yourself<ul id="20b44394-0fb5-45df-88a0-734f041ffbdc" class="bulleted-list"><li style="list-style-type:circle">With whatever information is available</li></ul><ul id="21c0549d-2423-4ab2-a7cf-22f01aa5c206" class="bulleted-list"><li style="list-style-type:circle">Collect information but the need is not shared and then make decision</li></ul><ul id="279eba0e-cd63-45a2-91ee-9486f3d355ec" class="bulleted-list"><li style="list-style-type:circle">Collect information, tell them the need and ask them recommendations but you take the final call</li></ul></li></ul><ul id="6e13be05-0246-4828-a486-b82ee9042727" class="bulleted-list"><li style="list-style-type:disc">Group Decision Making<ul id="91a96317-1185-4d64-ae9a-dcc75cb6bc42" class="bulleted-list"><li style="list-style-type:circle">Be part of the group and make the decision</li></ul><ul id="0b01ec1c-663f-4392-88f6-ffda67675832" class="bulleted-list"><li style="list-style-type:circle">Allow the group to take a decision and go by the same</li></ul><ul id="70cd70b2-a24c-409c-8a1a-a4acbf8507f7" class="bulleted-list"><li style="list-style-type:circle">Generally in those decisions where there is a huge impact</li></ul><ul id="111413c4-c7d1-4dc5-9648-6e9b5fd04ecf" class="bulleted-list"><li style="list-style-type:circle">Within group decision making we should put some norms just incase no one goes overboard</li></ul></li></ul><h2 id="720c7533-a37b-46fb-a794-098c891b0b98" class="">Step 4: Collect Facts</h2><ul id="7f7f9e63-7007-44ac-ba32-9b33c13e6700" class="bulleted-list"><li style="list-style-type:disc">What facts we need? Who has it? Segregate opinions from facts and make assumptions if needed</li></ul><ul id="eac1690c-4e18-4166-8d72-2ecbb534c019" class="bulleted-list"><li style="list-style-type:disc">Filter Opinions → based on your experience</li></ul><ul id="a757786f-bccc-4660-b339-7e6361f761fe" class="bulleted-list"><li style="list-style-type:disc">Decision making should be based on facts but your decision implementation can be based on opinions as well</li></ul><ul id="3ef1b047-9d78-43d0-b778-afcaaf758bb0" class="bulleted-list"><li style="list-style-type:disc">Our Opinion should not be biased </li></ul><ul id="2f7bcc09-957c-4a80-a23c-b5d84cf7fcaa" class="bulleted-list"><li style="list-style-type:disc">A lot of time, information is always incomplete→ sources also might be there<ul id="b67b3839-66b1-481c-a0f7-ec5732ece855" class="bulleted-list"><li style="list-style-type:circle">Don’t complain and not make a decision → then get the information</li></ul></li></ul><ul id="882411bf-f129-421a-9125-a6410e2c91f7" class="bulleted-list"><li style="list-style-type:disc">Try to make assumptions by extrapolating assumptions and ensure it is not very far from reality</li></ul><ul id="660fd974-c8a5-4d56-8e47-2725c0e467f9" class="bulleted-list"><li style="list-style-type:disc">Don’t make an assumption which is convenient to you → Also don’t make conditional assumptions</li></ul><h2 id="1d537d02-7e77-4b0c-9880-2548df09ccdc" class="">Step 5: State the boundaries</h2><ul id="a06d96da-ba20-47d9-b601-6d5f7aa18522" class="bulleted-list"><li style="list-style-type:disc">Constraints and Limiting Factors</li></ul><ul id="50587a39-45ba-4854-a6b9-fa073e401c81" class="bulleted-list"><li style="list-style-type:disc">Constraints are known → have to operate within these</li></ul><ul id="a171e23e-b477-4521-98ed-3d84f5f62eaa" class="bulleted-list"><li style="list-style-type:disc">Limiting factor is forcing you at obstacles → all possible obstacles</li></ul><ul id="5a3e9295-e0ff-4862-b573-7614a9ed2e0b" class="bulleted-list"><li style="list-style-type:disc">Overcome limiting factors but should be within the constraints</li></ul><h2 id="3f8a0790-f7fc-45fc-8a9b-38df53481426" class="">Step 6: Develop Alternatives</h2><ul id="fbeae34a-4bf9-42b9-b9a0-3e7ba90106fc" class="bulleted-list"><li style="list-style-type:disc">List all possible options</li></ul><ul id="9660a6fa-95b8-4625-88d6-5263d003072b" class="bulleted-list"><li style="list-style-type:disc">Don’t exclude alternatives based on probability meaning don’t exclude those which might show up later on</li></ul><ul id="f88a10c5-87d6-40f3-9ee3-0fbcaba42919" class="bulleted-list"><li style="list-style-type:disc">Do nothing or taking no action is itself an alternative</li></ul><ul id="50aa70f9-33c0-4b23-8f7d-589b37e8ee12" class="bulleted-list"><li style="list-style-type:disc">Always include 2 additional alternatives<ul id="15162a2f-7537-42fd-812f-588f9bfe61ad" class="bulleted-list"><li style="list-style-type:circle">Maintain status quo → continue to do what you are doing now → maintain current position</li></ul><ul id="52771b8c-d31f-478b-95d5-4381ab3cbb8a" class="bulleted-list"><li style="list-style-type:circle">Do nothing → don’t bother with competition</li></ul></li></ul><h2 id="a08de1fc-368b-4774-a45e-cf149584cb4a" class="">Step 7: </h2><ul id="ecea5339-17b2-4402-8f40-c3e9091cf2b8" class="bulleted-list"><li style="list-style-type:disc">Analyze each against the given criteria</li></ul><ul id="687a581f-4ea6-4a3d-a6ec-16dba9ac631a" class="bulleted-list"><li style="list-style-type:disc">Write down arguments for and against</li></ul><ul id="20af1991-c67f-437f-89de-af3d2a58d49e" class="bulleted-list"><li style="list-style-type:disc">Assess the potential consequences of choosing each alternative</li></ul><ul id="f7f37374-1340-433b-a036-6d46da2521bf" class="bulleted-list"><li style="list-style-type:disc">Consider both qualitative and quantitative analysis</li></ul><ul id="e2e10cb3-fc67-4c68-bc50-3850ece5a8f9" class="bulleted-list"><li style="list-style-type:disc">There could be an objective or a subjective approach</li></ul><h2 id="e1659bec-6f87-447e-bd13-394b37762d00" class="">Step 8: Select the Best alternative</h2><ul id="9504cf9f-82bf-41e0-9ac8-19a8e7f8326b" class="bulleted-list"><li style="list-style-type:disc">Choose the best alternatives</li></ul><ul id="daa3592d-ba6d-417d-9d6a-661dd8f2710a" class="bulleted-list"><li style="list-style-type:disc">Review the process to ensure flawlessness</li></ul><ul id="ecdb21fb-7ffb-4c4f-b259-9c9892143b8b" class="bulleted-list"><li style="list-style-type:disc">Ask what can go wrong</li></ul><ul id="cd779619-7bf1-4e0a-8382-f2145e7adc1c" class="bulleted-list"><li style="list-style-type:disc">Identify a contingent decision → second best alternative</li></ul><ul id="704e4f52-58d0-4a27-884d-d8c0ee7fbc42" class="bulleted-list"><li style="list-style-type:disc">Ensure not to pass the buck → don’t pass on the accountability to someone else</li></ul><h2 id="239223b0-6f35-447b-b1d4-b6fac3076172" class="">Step 9: Implement the Alternative</h2><ul id="31965017-c71c-47ee-9e46-017d1b5862d0" class="bulleted-list"><li style="list-style-type:disc">Very few books talk about this</li></ul><ul id="a6e5d3be-80bd-492c-b6a5-817feb67ebe5" class="bulleted-list"><li style="list-style-type:disc">Reassess the environment for any changes</li></ul><ul id="5cd61d9d-08c3-4905-a7cd-52055d1942a3" class="bulleted-list"><li style="list-style-type:disc">Develop an implementation plan (Plan for action)<ul id="63d95a6e-bba9-4fd6-b028-52b50f6c651e" class="bulleted-list"><li style="list-style-type:circle">List of activities to be performed</li></ul><ul id="14941ed5-d093-431e-8e70-16d3defc8bec" class="bulleted-list"><li style="list-style-type:circle">Sequence of activities is important </li></ul><ul id="86df5769-0151-4690-9326-029b1ffad961" class="bulleted-list"><li style="list-style-type:circle">Also take into consideration → other resource requirements or implementors</li></ul></li></ul><ul id="cb9fdc7e-e84d-44ba-a3ef-42a2dca5d09b" class="bulleted-list"><li style="list-style-type:disc">Develop criteria for evaluation<ul id="dcb9717e-cab5-4d8c-93c9-bfc411c06001" class="bulleted-list"><li style="list-style-type:circle">How to test your plan</li></ul></li></ul><ul id="3ecb62de-097b-46fb-98f6-538e8398b9d9" class="bulleted-list"><li style="list-style-type:disc">Organize execution of plan</li></ul><ul id="18f6e088-368e-45bf-8fd5-59398311fb3b" class="bulleted-list"><li style="list-style-type:disc">Take note of the timing<ul id="397c1ac3-cd53-4e3b-99fb-04111a25f14c" class="bulleted-list"><li style="list-style-type:circle">Providing necessary resources</li></ul><ul id="7885a55f-d5cf-47c5-8300-a825e0e4f31c" class="bulleted-list"><li style="list-style-type:circle">Giving motivation to your team</li></ul></li></ul><ul id="a798ecda-db4b-43b6-a125-45a70ce00035" class="bulleted-list"><li style="list-style-type:disc">Activate the plan</li></ul><ul id="87c14f68-414e-4932-b42e-de25c165f871" class="bulleted-list"><li style="list-style-type:disc">Evaluate results</li></ul><ul id="9c6ea2d4-75d7-4f24-a48e-51d8c03feefe" class="bulleted-list"><li style="list-style-type:disc">Recognize performance<ul id="6ef11a45-1765-45f6-a179-b63511b1157c" class="bulleted-list"><li style="list-style-type:circle">People who helped implement it should be given the deserved credits</li></ul></li></ul><h2 id="dbbe3f65-4b04-437f-8da5-1c1bb593b7c3" class="">Step 10: Evaluating the Decision Effectiveness</h2><ul id="59ed3a9f-2a8f-47ce-afb5-8efb63f4040a" class="bulleted-list"><li style="list-style-type:disc">See whether the problem is resolved or not</li></ul><ul id="0a969aa8-2572-4704-b87d-9606b97859f9" class="bulleted-list"><li style="list-style-type:disc">If the problem still exists, then assess what went wrong<ul id="49dafcc0-9467-4349-b098-635aa7fec6a1" class="bulleted-list"><li style="list-style-type:circle">Was the problem incorrectly defined</li></ul><ul id="3b5520cb-cb74-4b61-b107-8c6ad4587cc3" class="bulleted-list"><li style="list-style-type:circle">Were errors made when evaluating alternatives<ul id="e6d5ad4c-39de-45c7-b009-bb90ee5557ff" class="bulleted-list"><li style="list-style-type:square">Used wrong data</li></ul><ul id="5c9f70fd-9178-478c-b641-f863baa2fd2a" class="bulleted-list"><li style="list-style-type:square">Took a wrong time stamp</li></ul><ul id="81dde71d-b81c-48a9-a953-ea841922c012" class="bulleted-list"><li style="list-style-type:square">Wrong resources were used</li></ul></li></ul><ul id="35f17e8c-2fbd-45cb-84cc-f333fb6f7f4e" class="bulleted-list"><li style="list-style-type:circle">Was the right alternative selected but poorly implemented?<ul id="96def2f6-b1df-4692-b1ee-efb0f65a9adf" class="bulleted-list"><li style="list-style-type:square">Resources were not given</li></ul></li></ul></li></ul><h1 id="f65df2ba-03ce-4c61-862a-308167ba1abc" class="">Group Decision Making</h1><h3 id="bf7a29c4-afd3-4609-9039-0a4a5a4f3505" class="">When to involve?</h3><ul id="0eb6e6da-276d-4ca8-acec-56f769208c4c" class="bulleted-list"><li style="list-style-type:disc">When you need them to accept and understand it</li></ul><ul id="5044782f-1b5b-40df-9b99-e383c12a429f" class="bulleted-list"><li style="list-style-type:disc">When it affects the group itself</li></ul><ul id="fc25fa45-929b-4e2f-a5d1-8e36de8cc84a" class="bulleted-list"><li style="list-style-type:disc">When they will be involved in implementing it</li></ul><ul id="4640bfac-ac23-4869-94c6-890a87b3f314" class="bulleted-list"><li style="list-style-type:disc">The group is able and willing to become involved</li></ul><h3 id="bec67b61-bb09-4d43-80ff-93828eeb9372" class="">Degrees of Involvement</h3><ul id="9c598b1f-8587-47f1-ac7b-2f847b852656" class="bulleted-list"><li style="list-style-type:disc">The teams comes to you with a problem and proposed solution</li></ul><ul id="5b9cfc32-b0cb-4d62-8f7a-bfdbfd30ea99" class="bulleted-list"><li style="list-style-type:disc">Outline the problem and constraints and hand it over to the team to solve</li></ul><ul id="fa9a0eb9-155e-4552-b97d-fa51753f1711" class="bulleted-list"><li style="list-style-type:disc">Make the decision with your team</li></ul><ul id="73b6b835-0c18-4007-9288-24230ce2dceb" class="bulleted-list"><li style="list-style-type:disc">Ask for the opinion from the team and then make the decision</li></ul><ul id="05773cbf-0243-4d06-8ae4-aa5a9916b131" class="bulleted-list"><li style="list-style-type:disc">Make the decision and inform the team</li></ul><p id="e48fb06e-c46f-415f-a0a6-48358cf308af" class="">NOTE: Bottom to top, involvement of the group increases</p><h3 id="e138ae1f-ecd2-411a-9300-78ad1118c84f" class="">Methods and Techniques</h3><ul id="4d3ca690-84a5-4f18-a592-e69529f0dae4" class="bulleted-list"><li style="list-style-type:disc">Engage in Rigorous Debate<ul id="7d984daa-6b2f-4f64-9068-dd7e9ea1e511" class="bulleted-list"><li style="list-style-type:circle">Devil’s advocate → Did you check that, did you miss that part</li></ul><ul id="42601a41-3e7d-4cd0-83a7-4dde34d75ce8" class="bulleted-list"><li style="list-style-type:circle">Point - Counter Point → Here both of them are exact opposites of each other</li></ul></li></ul><ul id="fce0735e-991a-496c-b31c-9d7c7885365f" class="bulleted-list"><li style="list-style-type:disc">Dialectical inquiry<ul id="efb7165a-7f7f-4638-ac07-8b067feb60f9" class="bulleted-list"><li style="list-style-type:circle">Multiple groups → each will present one solution</li></ul><ul id="327c7d55-cd5c-4e53-b055-254692b30d72" class="bulleted-list"><li style="list-style-type:circle">All other groups will listen and argue and present their views</li></ul><ul id="2da365ff-73cd-4984-ac86-9342c2679124" class="bulleted-list"><li style="list-style-type:circle">Small sub groups → more divergent views</li></ul></li></ul><ul id="3f8b44f7-c8e3-4a67-bdfb-896ac6ba1fdb" class="bulleted-list"><li style="list-style-type:disc">Brainstorming<ul id="05db5b66-293e-4eee-a609-dc7bcdf2d3fe" class="bulleted-list"><li style="list-style-type:circle">No criticism</li></ul><ul id="e9dedf52-968d-45f3-844d-9fdc1f043914" class="bulleted-list"><li style="list-style-type:circle">Don’t leave until you come up with alternatives</li></ul></li></ul><ul id="f14ba4e0-4f7d-4a27-80ca-3fc56230eeaa" class="bulleted-list"><li style="list-style-type:disc">Delphi Technique<ul id="dff4f0ec-bc63-411c-a3b4-a72d5e91d960" class="bulleted-list"><li style="list-style-type:circle">Identify experts</li></ul><ul id="fa7f2f59-8841-408d-b3c8-8a7ad3557e90" class="bulleted-list"><li style="list-style-type:circle">Go through multiple rounds and none of the experts know each other</li></ul><ul id="71d2f13e-a849-42ef-a29c-30524ab9710c" class="bulleted-list"><li style="list-style-type:circle">In first round, we collate information</li></ul><ul id="7d82bcc0-0a81-4156-94b3-a3c377f27e5b" class="bulleted-list"><li style="list-style-type:circle">In second round, we give these info to these experts and they give you arguments</li></ul></li></ul><h1 id="4b735ea4-a508-4cd2-99a4-8700765c8a6c" class="">Intuitive Decision Making</h1><ul id="8d2c409e-a32f-400c-a476-7c27c3cbf4e6" class="bulleted-list"><li style="list-style-type:disc">Making the decision on the basis of experience, feelings and accumulated judgement but without conscious thought</li></ul><ul id="84d19339-e032-4b47-9a1b-37c20213eb7f" class="bulleted-list"><li style="list-style-type:disc">Enable managers to quickly identify solutions without going through painstaking computations</li></ul><ul id="0c52a048-6b83-47e5-be2e-e0d07266f7d5" class="bulleted-list"><li style="list-style-type:disc">Based on an ability to recognize patterns at lightning speed</li></ul><ul id="04125cb8-4766-47a5-ba0c-08bb933ddfff" class="bulleted-list"><li style="list-style-type:disc">Based on yours of practice and hands on experience</li></ul><ul id="f5928d7f-fedf-4f1a-a248-c93318476cbe" class="bulleted-list"><li style="list-style-type:disc">Like profs know where to find mistakes and where to find solutions for the same</li></ul><h1 id="d12094cb-c4a5-4426-8c28-1eb1c75540a8" class="">Decision Making Biases and Errors</h1><ul id="049c6af3-a9b6-4bf0-98ef-3cea5c0dedd0" class="bulleted-list"><li style="list-style-type:disc">Overconfidence</li></ul><ul id="5f6c04d9-f7ae-4cee-ae7a-0bb0eee40af6" class="bulleted-list"><li style="list-style-type:disc">Immediate Gratification</li></ul><ul id="d2689d34-ecce-4b33-a294-796a0f360e6f" class="bulleted-list"><li style="list-style-type:disc">Anchoring Effect<ul id="794c0351-f8da-4e53-aefd-4c639ab90326" class="bulleted-list"><li style="list-style-type:circle">First information, first idea → you prefer this only and not the actual data</li></ul></li></ul><ul id="fa7fdc47-e756-4e90-a069-b5b07d0c438e" class="bulleted-list"><li style="list-style-type:disc">Confirmation Bias<ul id="0574b48e-96b1-4c32-a73e-cfb1fe86d953" class="bulleted-list"><li style="list-style-type:circle">You would want to support your beliefs rather than evaluating it</li></ul></li></ul><ul id="94776726-5378-4c00-8fa2-e9848b1e154d" class="bulleted-list"><li style="list-style-type:disc">Framing<ul id="28e5bf97-e8eb-4154-a78f-9514a01bfa84" class="bulleted-list"><li style="list-style-type:circle">What you want to see and what you don’t want to see</li></ul><ul id="d480b23e-35a5-423c-9af2-88dd77318fff" class="bulleted-list"><li style="list-style-type:circle">How do you perceive things</li></ul></li></ul><ul id="600909eb-7374-4fff-9666-b795230024e6" class="bulleted-list"><li style="list-style-type:disc">Availability<ul id="e2ff656f-4685-4865-bf31-f3d3a642b785" class="bulleted-list"><li style="list-style-type:circle">Recent events influence your decision</li></ul></li></ul><ul id="93af3d23-eed0-49ce-95bc-afb30502d055" class="bulleted-list"><li style="list-style-type:disc">Representation<ul id="2b48607a-6c20-4d90-9c89-1fdd2999c747" class="bulleted-list"><li style="list-style-type:circle">Analogy, comparison with some situation which is incorrect or you fail to compare with some situation that is correct</li></ul></li></ul><ul id="483c86bf-6a02-40b6-b3b8-00e70e6c8235" class="bulleted-list"><li style="list-style-type:disc">Randomness<ul id="9607e324-4e9c-40ac-9496-aa65f35de5e3" class="bulleted-list"><li style="list-style-type:circle">Superstition or misinterpretation → inferences</li></ul></li></ul><ul id="daa5f253-adf8-402b-b321-cdd71379997d" class="bulleted-list"><li style="list-style-type:disc">Sunk Costs<ul id="17623586-ac14-4982-b0d8-23ad7c4b9acc" class="bulleted-list"><li style="list-style-type:circle">You don’t want to pull out but want to justify what you already spent</li></ul></li></ul><ul id="793851d4-1c32-40f9-bac7-3c4c631628d2" class="bulleted-list"><li style="list-style-type:disc">Self serving<ul id="8dc002e9-75ef-458c-b621-b12aeca1033d" class="bulleted-list"><li style="list-style-type:circle">Claiming yourself if it’s a success but if it fails you blame others</li></ul></li></ul><ul id="83fab861-37a8-4fad-9cf9-c175de30b086" class="bulleted-list"><li style="list-style-type:disc">Hindsight<ul id="ab4137eb-64df-4b07-9c1e-9a8648525f03" class="bulleted-list"><li style="list-style-type:circle">You believe you are able to predict an event and based on this you make the decision</li></ul></li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,0 +1,677 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Role of a Manager and Leader</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="ef248b6c-fb46-4573-bff2-726540ee4a87" class="page sans"><header><h1 class="page-title">Role of a Manager and Leader</h1><p class="page-description"></p></header><div class="page-body"><nav id="b3df8b2f-3cfd-47bf-98d7-c5f2c648ecae" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#786908f2-3adc-4e87-b488-6f492f50c7cb">Role of a Manager</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#06c35c81-7579-4d28-aef0-198605b036b9">Managing the job</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fa1c7818-ec49-42c9-99bd-0faf34df8a47">Managing Operations</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8748b3db-799b-4b47-ae6d-dc3a79c35f1b">Managing Finances</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#390472f0-2e04-4a17-bf9f-0f2a76af4993">Managing People</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1cca2f94-32c0-4c4a-818d-40d5825410c4">Managing Information</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3490444d-08a0-4018-aa4d-6536357afc32">Managing the Career</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ff24172a-f159-4ce0-8917-e3f64801f292">Role of a Leader</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#77bb4d98-efe5-418d-a94a-396ea8f8f337">What is Leadership? (Clearly not Political Leaders)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6ac8105f-d721-4c32-b3cc-10005e93eaef">Manager vs leader</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#52c36a2e-39c5-433f-9a0d-7ec04cec75b0">What followers want from a Leader?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c2ac425e-c616-44c3-8fb9-c84d68b6565f">Can Leadership be learnt?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#43ae164a-335e-46bd-b7a9-ca0983d77290">Principles of Leadership</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c1ba5d3a-f429-4d39-90f5-3d9d8cef3988">Leadership Styles → Kurt Lewin</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#cd8444e9-d794-414e-9c68-cb1c9bda820c">Autocratic</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#bce4f0bf-9afc-4e50-8a9c-f7bc3fb5354c">Democratic</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#0037955f-bb70-4778-9224-48a19b8391ab">Delegative</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#80bbdc4f-f2d2-4171-8002-657b72db3e57">About the Styles</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#bdbd121f-dcad-4259-ac89-51e89d95178f">LITMUS TEST FOR LEADERSHIP</a></div></nav><h1 id="786908f2-3adc-4e87-b488-6f492f50c7cb" class="">Role of a Manager</h1><ul id="43f6d1d5-788c-4460-af74-483598137de3" class="bulleted-list"><li style="list-style-type:disc">Responsible for managing his own as well as his subordinates’ time</li></ul><ul id="eb8eb152-7260-4c13-8e7a-17104eb57789" class="bulleted-list"><li style="list-style-type:disc">A good manager anticipates work</li></ul><ul id="8ef0fd83-2c71-43ea-852e-826b67ce0335" class="bulleted-list"><li style="list-style-type:disc">Managers are also required to react and responsible for producing results</li></ul><ul id="2a9324d5-4947-46dd-8caa-830061857328" class="bulleted-list"><li style="list-style-type:disc">Manager interacts with people</li></ul><ul id="9f36a2e4-66da-4aea-afa1-6bd76c19bcfa" class="bulleted-list"><li style="list-style-type:disc">Need to work hard → manager → long hours of work</li></ul><ul id="10d44aee-0821-4772-af8a-7e83c875d76f" class="bulleted-list"><li style="list-style-type:disc">Enjoyment comes because you are able to manage complex situations and solve them</li></ul><ul id="53256607-1277-4259-adea-b54687eb5b6c" class="bulleted-list"><li style="list-style-type:disc">Manager means energy, high integrity</li></ul><ul id="f9727676-3228-489e-9f2e-b9bfbab86c1e" class="bulleted-list"><li style="list-style-type:disc">Great managers → balance discipline and empathy → need to complete both </li></ul><ul id="cfc66e13-4763-48a4-b1df-da77fac655e8" class="bulleted-list"><li style="list-style-type:disc">Loyalty to subordinates, managers → Trust, Loyalty, Integrity come first</li></ul><h2 id="06c35c81-7579-4d28-aef0-198605b036b9" class="">Managing the job</h2><ul id="c1975293-8e8b-4496-9cb5-14aa5b66b112" class="bulleted-list"><li style="list-style-type:disc">Analyzing the job</li></ul><ul id="25c0be5e-3c4f-4bcf-8b5d-e578f8deff5c" class="bulleted-list"><li style="list-style-type:disc">Managing vs Operating</li></ul><ul id="4016fa86-350e-435a-bab6-c6d8d0828786" class="bulleted-list"><li style="list-style-type:disc">Managing time</li></ul><ul id="df8c0c55-d28a-49e6-b157-691b6578dcbb" class="bulleted-list"><li style="list-style-type:disc">Delegating</li></ul><ul id="5d9d494f-fb1c-4360-9b9e-29f97833152b" class="bulleted-list"><li style="list-style-type:disc">Understanding the organization</li></ul><ul id="794b4b3d-12e3-4241-9f7d-18deda4050df" class="bulleted-list"><li style="list-style-type:disc">Mastering the politics</li></ul><ul id="19ce016e-a564-49bd-a1e7-5461f3d1abb7" class="bulleted-list"><li style="list-style-type:disc">Thinking on feet in negotiations</li></ul><ul id="7dd82592-df76-47cf-a503-b5d6d5c46970" class="bulleted-list"><li style="list-style-type:disc">Managing Stress</li></ul><h2 id="fa1c7818-ec49-42c9-99bd-0faf34df8a47" class="">Managing Operations</h2><ul id="4d36d274-4e2d-4228-af47-4ead94ffb790" class="bulleted-list"><li style="list-style-type:disc">Satisfying Customer Needs</li></ul><ul id="fa155365-539b-4ae7-b6d6-8924be1d0a12" class="bulleted-list"><li style="list-style-type:disc">Managing for quality</li></ul><ul id="ad525c99-ed03-4476-8cac-e6e1043bedc1" class="bulleted-list"><li style="list-style-type:disc">Planning</li></ul><ul id="ac3fd6dd-c7d1-4473-807a-7dae045d5a63" class="bulleted-list"><li style="list-style-type:disc">Setting Objectives</li></ul><ul id="2308a628-fa72-4a01-803f-8218aece68bc" class="bulleted-list"><li style="list-style-type:disc">Supervising</li></ul><ul id="4efc0e52-6e7d-47e3-9998-4354cd3adabc" class="bulleted-list"><li style="list-style-type:disc">Decision making</li></ul><ul id="4d141bac-d063-47ab-a79f-669bac938b57" class="bulleted-list"><li style="list-style-type:disc">Using committees</li></ul><ul id="a3f64267-545d-4e1a-8e3a-9c83bf05f078" class="bulleted-list"><li style="list-style-type:disc">Managing Equal opportunities</li></ul><ul id="a5601053-24fc-4731-a348-16b6314ab0a7" class="bulleted-list"><li style="list-style-type:disc">Managing change</li></ul><ul id="01e6f604-9806-4f7a-9e26-28165521dad6" class="bulleted-list"><li style="list-style-type:disc">Developing leadership</li></ul><h2 id="8748b3db-799b-4b47-ae6d-dc3a79c35f1b" class="">Managing Finances</h2><ul id="0ccc7f82-9f1d-4c01-8dbd-a34a6a795610" class="bulleted-list"><li style="list-style-type:disc">Preparing a budget</li></ul><ul id="5dfc1e37-8742-4b08-99a1-155973783e69" class="bulleted-list"><li style="list-style-type:disc">Negotiating and agreeing</li></ul><ul id="c8360c19-7a7f-4b26-be22-ce1d2dad1237" class="bulleted-list"><li style="list-style-type:disc">Monitoring the budget<ul id="310f7a0d-93e5-41fb-afd5-5251bc642e4f" class="bulleted-list"><li style="list-style-type:circle">Ensure that the budget is not going to waste and also ensure that it is being used up</li></ul></li></ul><ul id="214b915d-41a0-4155-9c4e-fdf49fc25150" class="bulleted-list"><li style="list-style-type:disc">Controlling costs</li></ul><h2 id="390472f0-2e04-4a17-bf9f-0f2a76af4993" class="">Managing People</h2><ul id="7179e5ce-324a-4636-8c36-51dd9293e1e2" class="bulleted-list"><li style="list-style-type:disc">Knowing the team<ul id="b37aeb82-6add-4fe1-9677-d71360a8e88a" class="bulleted-list"><li style="list-style-type:circle">Understanding your team, personalities etc.</li></ul></li></ul><ul id="7fc58e58-25c0-4c17-8985-9144e39810e0" class="bulleted-list"><li style="list-style-type:disc">Planning for new staff<ul id="4ba30e90-6c36-4c63-9fe8-5f8d5d867ee2" class="bulleted-list"><li style="list-style-type:circle">Manpower planning</li></ul><ul id="5a7a3a3b-eb7b-47d1-9dcc-c88c9417a28b" class="bulleted-list"><li style="list-style-type:circle">What skills you’ll need</li></ul><ul id="04c81f9e-f991-4e91-a1f8-d07bd564f44c" class="bulleted-list"><li style="list-style-type:circle">Experience needed</li></ul></li></ul><ul id="08480a31-625f-49c8-b13a-c72f5be7f7a8" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">Selection Interviewing (Job interviews)</span><ul id="fcca1182-7ad3-471a-97b6-d6b7ae812bd2" class="bulleted-list"><li style="list-style-type:circle">Counselling</li></ul><ul id="01cc22ab-dad7-494e-bc24-7c664d1a2faa" class="bulleted-list"><li style="list-style-type:circle">Performance Appraisal</li></ul><ul id="cc07145b-010a-44dc-88b7-2828ed4873a6" class="bulleted-list"><li style="list-style-type:circle">Exit Interviews</li></ul><ul id="08fb7584-3d5f-4c4d-8e30-e3e552533296" class="bulleted-list"><li style="list-style-type:circle">Most of them don’t know how to conduct an interview <ul id="4506444d-31ee-4622-abfd-ba524ce9bedb" class="bulleted-list"><li style="list-style-type:square">Interviewer comes to the interview and then reads the resume</li></ul><ul id="dfb6744b-d3dd-4e6f-a203-1b623cc27067" class="bulleted-list"><li style="list-style-type:square">Questions will come through there</li></ul></li></ul></li></ul><ul id="cde8b0bd-3003-424f-9a09-8f66437e5684" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">Inducting or Orienting New Staff</span><ul id="66fcad7e-9254-4402-8d4b-e5347d2a2676" class="bulleted-list"><li style="list-style-type:circle">No point of talking about campus life in online orientation</li></ul><ul id="213a724b-cbbd-48e7-9af2-e50ca1db7111" class="bulleted-list"><li style="list-style-type:circle">Can kill people cause it’s the first bond between employee and employer</li></ul><ul id="a02fd0fd-a5b0-4686-af41-617b3966a263" class="bulleted-list"><li style="list-style-type:circle">Also guidance about the organization and how it works cause people tend to be blank</li></ul></li></ul><ul id="7e29fdda-438d-47bb-932e-3e37a5cb4066" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">Training the team</span><ul id="a7b86dc9-48d4-4ca7-a459-bdc84249572a" class="bulleted-list"><li style="list-style-type:circle">Identify training needs of your employees and where they are falling short</li></ul></li></ul><ul id="1b8d3674-8e22-4d20-b386-696b9ec162a9" class="bulleted-list"><li style="list-style-type:disc">Improving People’s jobs<ul id="3244810c-571b-4ffe-a8ba-544443e3b7a2" class="bulleted-list"><li style="list-style-type:circle">It’s a manager’s role to design jobs and these should be worthwhile and challenging</li></ul><ul id="5260a78d-31b3-4e2d-b5d6-e85f2d634c89" class="bulleted-list"><li style="list-style-type:circle">Job design → doesn’t require much of a money but rather depends on how you define their autonomy and other perks and work duties</li></ul></li></ul><ul id="3e9f8dfe-79d8-452e-a2c2-5f7c48ccc6e7" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">Motivating the team</span><ul id="00ae813e-5416-490c-8ab9-fb48e08ca5a1" class="bulleted-list"><li style="list-style-type:circle">Need to satisfy their needs</li></ul><ul id="b8d144f1-9f88-463d-879c-5b54b4f8e305" class="bulleted-list"><li style="list-style-type:circle">Otherwise they will just put in their bare minimum</li></ul><ul id="d0e4bb4b-712b-42cf-9c43-34a76a2f4606" class="bulleted-list"><li style="list-style-type:circle">We cannot ensure motivation but we should trigger that particular stimuli with the hope that they respond to that</li></ul><ul id="49232c8d-465a-42e5-b73e-0955a79ab6a0" class="bulleted-list"><li style="list-style-type:circle">For example, the classrooms are fantastic lmao → you should not be worried about classroom being hot or uncomfortable or even think about engaging it</li></ul></li></ul><ul id="0a56c0fa-70db-4cad-8ab7-aefe81e5ee61" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">Managing conflict</span><ul id="a2ea58a7-97ae-4c72-8c7a-d980550a1b40" class="bulleted-list"><li style="list-style-type:circle">Difference of opinions</li></ul><ul id="25c0535c-87c4-4b5d-afbd-26be17ec786e" class="bulleted-list"><li style="list-style-type:circle">Thomas Killmen modal → 5 strategies for solving conflicts</li></ul></li></ul><ul id="407cf1ee-6712-4fc3-9c45-d651cee1e8f8" class="bulleted-list"><li style="list-style-type:disc">Counseling the staff<ul id="d76ec797-fea0-40ba-8f9e-7c60ca78fcbb" class="bulleted-list"><li style="list-style-type:circle">Most managers are not good at counseling</li></ul><ul id="ed2172b5-5b4d-4723-a03c-fa1d13dd51c9" class="bulleted-list"><li style="list-style-type:circle">Either you do it correctly or you refer them to a specialist</li></ul><ul id="d348aa11-814c-46df-a2d9-4b0f40a9ca53" class="bulleted-list"><li style="list-style-type:circle">Requires maturity and ability</li></ul><ul id="ac5a4c67-c91b-41ed-b438-9f28592c2926" class="bulleted-list"><li style="list-style-type:circle">Personal problems → do not try to take up responsibility unnecessarily</li></ul><ul id="e32ff038-5368-4126-9859-902377eddb3c" class="bulleted-list"><li style="list-style-type:circle">If someone comes to you saying <ul id="065b725f-3d14-4f4c-a062-50fe3659c274" class="bulleted-list"><li style="list-style-type:square">salary less → you can’t say i will increase salary nor say anything</li></ul><ul id="229bd1f3-7503-44a3-ba92-abb3a421f54c" class="bulleted-list"><li style="list-style-type:square">addicted to gambling</li></ul></li></ul></li></ul><ul id="b5a8e8ae-df5c-40ec-a2c2-3a7651b5c3d1" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">Appraising Staff</span><ul id="2ac5dbeb-27a6-4961-ba0f-8c8f55139fec" class="bulleted-list"><li style="list-style-type:circle">Performance appraising</li></ul><ul id="a11590f0-72ec-4e8d-8c95-839a3bad9dce" class="bulleted-list"><li style="list-style-type:circle">Most organizations → twice an year</li></ul><ul id="54a00660-6f14-4f1b-9b4d-c7a107dbd3b1" class="bulleted-list"><li style="list-style-type:circle">You have to tell on their face that what they have done is not good enough</li></ul><ul id="88f3ef52-6328-41fd-b0ce-5d3530f502d9" class="bulleted-list"><li style="list-style-type:circle">Indian culture → always be nice to others and good to others</li></ul><ul id="e25ed373-4a6c-4ca8-9532-facbdc3c5476" class="bulleted-list"><li style="list-style-type:circle">Try to help them out before hand rather than pointing it out later</li></ul><ul id="21cd5b61-d49b-4a5e-a974-7e765c3f6e4f" class="bulleted-list"><li style="list-style-type:circle">Biasing is also possible → consciously work on biasing</li></ul></li></ul><h2 id="1cca2f94-32c0-4c4a-818d-40d5825410c4" class="">Managing Information</h2><ul id="f03304f0-7dc2-42e8-857c-33a7b1dcdd95" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">Communicating</span><ul id="02146644-d239-4e31-9e7c-3291d03dd365" class="bulleted-list"><li style="list-style-type:circle">Communicate in a crisis</li></ul><ul id="c8edf1dd-2dbe-4111-964b-e10671d5c350" class="bulleted-list"><li style="list-style-type:circle">Layoffs → you should know how to communicate</li></ul><ul id="481ece21-776a-49e8-9385-4a29b065d1c8" class="bulleted-list"><li style="list-style-type:circle">don’t be like ELON and kick everyone, otherwise a lot of chaos</li></ul></li></ul><ul id="49cd84b7-d88e-4df0-9174-d5fc5b8b630f" class="bulleted-list"><li style="list-style-type:disc">Reading<ul id="74deaae9-e9d9-4d01-b250-919cc77f10ff" class="bulleted-list"><li style="list-style-type:circle">We need to develop strategy for reading as well since we cannot read everything all the time</li></ul><ul id="3ddf916d-0103-4a00-aefc-6a4fc510413c" class="bulleted-list"><li style="list-style-type:circle">Scan, Skim, Careful reading</li></ul><ul id="62573adc-def2-4b7f-96dd-25ea060b273b" class="bulleted-list"><li style="list-style-type:circle">Get crux of the report and be aware of where to look at it for the depth of the report</li></ul></li></ul><ul id="6de48d14-e3ae-4bcc-9f84-f7c0cfdcc36b" class="bulleted-list"><li style="list-style-type:disc">Writing<ul id="cec5652d-528c-441d-90b6-340d08ca6f84" class="bulleted-list"><li style="list-style-type:circle">Not in terms of command of a language</li></ul><ul id="ee709904-d932-4772-be83-9d19dabbdaa8" class="bulleted-list"><li style="list-style-type:circle">Are you able to convey to the other person what you want clearly and without any further issues</li></ul><ul id="8519a18a-f3ba-42fc-a708-858ce9f07184" class="bulleted-list"><li style="list-style-type:circle">Don’t beat around the bush</li></ul><ul id="bf5a3384-8a54-41e4-8b0d-12d7a53a6531" class="bulleted-list"><li style="list-style-type:circle">Managers don’t have time</li></ul></li></ul><ul id="5b139bd5-b96c-4241-8329-5cfe507ea0e6" class="bulleted-list"><li style="list-style-type:disc">Listening<ul id="ce9e0c6d-3859-4eee-8671-a3224cb2207b" class="bulleted-list"><li style="list-style-type:circle">Very important to listen to your subordinates</li></ul></li></ul><ul id="4c7b7721-53d1-4176-970f-475db3c36dde" class="bulleted-list"><li style="list-style-type:disc">Telephoning</li></ul><ul id="0026f2e7-256a-4c20-ad48-ea7f9a03c131" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">Managing meetings</span><ul id="d70dc5fc-43bc-4e11-8d2e-3dab6623c6fa" class="bulleted-list"><li style="list-style-type:circle">Either you are the chairperson of the meeting or you are the participant of the meeting</li></ul><ul id="2c8ad1e1-277f-468c-b168-0ba24c3c269c" class="bulleted-list"><li style="list-style-type:circle">You normally never get information about how long the meeting because they think it is not important for the participant  → Not a good practice</li></ul><ul id="1c5e773f-a82a-4a9a-a38d-f2949d52b0d7" class="bulleted-list"><li style="list-style-type:circle">You need to tell the agenda of the meet 24hr before → how will the participant come prepared</li></ul><ul id="0191103d-7884-433b-b843-acf0688857d5" class="bulleted-list"><li style="list-style-type:circle">Meets are mostly to decide when the next meet will happen </li></ul><ul id="09f5b930-6a13-4924-a838-8036d18928ec" class="bulleted-list"><li style="list-style-type:circle">Meets can become boring, irrelevant and you are probably not even needed in the meet and absolute time waste</li></ul><ul id="b8f3745c-1eb4-437f-874e-67b62c62e151" class="bulleted-list"><li style="list-style-type:circle">Meeting should be done efficiently</li></ul><ul id="a6fb1818-e339-4165-b2e6-b2cb7ac53c39" class="bulleted-list"><li style="list-style-type:circle">Best place to sit is the CONFRONTATIONAL POSITION → right in front of the chairperson for arguing with him more</li></ul><ul id="8fc4536d-99f1-45c3-83ac-3ce58fe5403e" class="bulleted-list"><li style="list-style-type:circle">You keep quiet there’s no point of your existence → participating will have a great opportunity → people notice you → doesn’t mean you do RR also and get infamous for all the reasons (me)</li></ul></li></ul><ul id="44422047-45fe-4a58-8500-6466a4ce8ebe" class="bulleted-list"><li style="list-style-type:disc">Speaking in public<ul id="2fc9d5e7-394e-4a56-aacc-04b51527c6e4" class="bulleted-list"><li style="list-style-type:circle">Speaking with an employee one to one is not same as speaking in public</li></ul></li></ul><ul id="b7659aa1-dbe8-4f16-8635-ed7cab6cc665" class="bulleted-list"><li style="list-style-type:disc">Managing with IT</li></ul><h2 id="3490444d-08a0-4018-aa4d-6536357afc32" class="">Managing the Career</h2><ul id="929eee73-552d-4b9d-9a92-d24b1fa1cf00" class="bulleted-list"><li style="list-style-type:disc">Planning the Career<ul id="5477530f-bd80-4628-ad18-aa60f721854d" class="bulleted-list"><li style="list-style-type:circle">Your own career also matters and you need to concentrate on it</li></ul><ul id="16322199-b0dc-4a62-884c-0d231042d00e" class="bulleted-list"><li style="list-style-type:circle">Climb the career → it’s not easy but you should always concentrate on what you want and get it done</li></ul><ul id="3ead2d67-0720-4870-b4c9-26676d3cdea3" class="bulleted-list"><li style="list-style-type:circle">Work will be fun and there won’t be lack of motivation</li></ul><ul id="c96f0bc8-d68d-4d36-bba0-c512718010bc" class="bulleted-list"><li style="list-style-type:circle">Some will say they are good with quant but they don’t happen to realize quant has a lot of elements and they end up saying this is not they are interested in</li></ul></li></ul><ul id="966155dd-8ec9-403b-bf91-4f4037b0eaf7" class="bulleted-list"><li style="list-style-type:disc">Getting on with the job<ul id="013619bc-ef46-4484-b75c-368bcc6d2599" class="bulleted-list"><li style="list-style-type:circle">How often have you heard the statement that you worked so much but didn’t get the results</li></ul><ul id="f7e834fe-8d04-4e75-984b-3808d5b5ef0a" class="bulleted-list"><li style="list-style-type:circle">Why is it happening?</li></ul><ul id="f4b10d25-7224-4982-b59e-672e1f175969" class="bulleted-list"><li style="list-style-type:circle">Others should see that you are contributing</li></ul><ul id="6816e552-0617-483a-9630-9a06efd08b03" class="bulleted-list"><li style="list-style-type:circle">Doing well is not good enough but others should notice you</li></ul></li></ul><ul id="f813b684-3436-41ce-a6e0-0e5a75e46a25" class="bulleted-list"><li style="list-style-type:disc">Managing the boss<ul id="9f8f89eb-a12b-4f52-a3f7-2b6c5a886e79" class="bulleted-list"><li style="list-style-type:circle">You should manage your boss → single most factor who acts as the obstacle in your career growth</li></ul><ul id="f1812a05-69c5-41d8-81d0-83cf40361e57" class="bulleted-list"><li style="list-style-type:circle">We never have option to choose our boss</li></ul><ul id="e28f4562-4007-4559-9392-69383e260d94" class="bulleted-list"><li style="list-style-type:circle">Bosses can be Toxic, Intolerable, Biasing</li></ul><ul id="91e97945-80ea-45e6-b2ad-334e15fab22b" class="bulleted-list"><li style="list-style-type:circle">Picking a fight is different from disagreeing with the same</li></ul></li></ul><ul id="07a2ebd4-86aa-452b-b4e6-492fb7bd545d" class="bulleted-list"><li style="list-style-type:disc">Developing traits and competences</li></ul><h1 id="ff24172a-f159-4ce0-8917-e3f64801f292" class="">Role of a Leader</h1><h2 id="77bb4d98-efe5-418d-a94a-396ea8f8f337" class="">What is Leadership? (Clearly not Political Leaders)</h2><ul id="3a95f750-6de5-43c7-8114-bf097d6422ff" class="bulleted-list"><li style="list-style-type:disc">Is the ability to inspire confidence and support among the people who are needed to achieve organizational goals</li></ul><ul id="b5b39852-fd10-4b1b-83e8-a829098156f1" class="bulleted-list"><li style="list-style-type:disc">Is defined as influencing people so that they will strive willingly and enthusiastically towards the achievement of group goals</li></ul><ul id="1b1e5eed-aba1-4952-9c02-82f7cd3b7d7d" class="bulleted-list"><li style="list-style-type:disc">Also should influence only when there is a need for them to do it else no</li></ul><ul id="39e583dc-cba3-4873-9773-57c4a8bb57ee" class="bulleted-list"><li style="list-style-type:disc">Willingness to work with zeal and confidence</li></ul><ul id="245cda96-0f73-4b8b-b36c-9102fbf17964" class="bulleted-list"><li style="list-style-type:disc">Is the initiative or ability of a person to mobilize and/or influence internal and external stakeholders to achieve desired results <ul id="6441ae75-f76e-4b98-908e-96fbb58597ec" class="bulleted-list"><li style="list-style-type:circle">within the organization</li></ul><ul id="841de1de-1bd9-430e-912f-c3ac29b3424f" class="bulleted-list"><li style="list-style-type:circle">external to the organization</li></ul></li></ul><ul id="d40b03f9-33c7-4faf-a78f-48ccc9766067" class="bulleted-list"><li style="list-style-type:disc">It is action, not a position</li></ul><ul id="20dbd38c-3595-4f50-ae17-b65af25dae37" class="bulleted-list"><li style="list-style-type:disc">Matter of how to be and not how to do</li></ul><ul id="f61c7bf6-3ab6-4494-9425-e56cf6a67898" class="bulleted-list"><li style="list-style-type:disc">Leader has a capacity to make a compelling vision → by definition, leader has a vision</li></ul><ul id="31408e90-6156-4acc-906b-11c8b156e405" class="bulleted-list"><li style="list-style-type:disc">Leader is character and is someone who influences others<ul id="63a3035e-9327-4fc2-a515-91a4c2561e96" class="bulleted-list"><li style="list-style-type:circle">Highest order of integrity</li></ul><ul id="4cb238ac-7b2d-44c4-b8cd-f3d9ea3421ba" class="bulleted-list"><li style="list-style-type:circle">Less self triumph → will not flex but if need comes they will show their capabilities</li></ul><ul id="55128455-ea2d-4b5b-b9e7-b8a8898e6aed" class="bulleted-list"><li style="list-style-type:circle">Making them to believe that it’s possible to make something happen</li></ul><ul id="ca9725af-d2bf-4230-8680-dd84e2682670" class="bulleted-list"><li style="list-style-type:circle">Having vision is not the issue, but making people believe in it is where the difference comes into picture</li></ul></li></ul><ul id="79355b77-9a55-4abd-a871-5bb0c7f4fbc3" class="bulleted-list"><li style="list-style-type:disc">Leaders pull rather than push followers away</li></ul><ul id="863a7669-49fb-4a8d-ab00-3488b9729dfe" class="bulleted-list"><li style="list-style-type:disc">Punishment is not the way to go about it</li></ul><ul id="1fb2f6a9-25d1-4975-98ff-c4113a5a8a39" class="bulleted-list"><li style="list-style-type:disc">Leaders inspire people and <span style="border-bottom:0.05em solid">empower</span> them and have the courage to accept responsibility</li></ul><ul id="b0d0dc88-6d91-40b1-a8a3-458bd0f90cdc" class="bulleted-list"><li style="list-style-type:disc">Charismatic relation: ability to attract people based on your vision</li></ul><ul id="2af8942e-afdf-416e-8e7f-0e3f4e7b85af" class="bulleted-list"><li style="list-style-type:disc">You are not only responsible for yourself but for a lot of others</li></ul><h2 id="6ac8105f-d721-4c32-b3cc-10005e93eaef" class="">Manager vs leader</h2><ul id="a889f35a-ee49-44ae-89b2-df7f1c774ce3" class="bulleted-list"><li style="list-style-type:disc">Manager → structured, controlled, analytical, orderly and rule oriented → stable </li></ul><ul id="9ae475c3-7df8-4047-9245-1268f885467b" class="bulleted-list"><li style="list-style-type:disc">Leader → experimental, visionary, unstructured, flexible</li></ul><ul id="bab437f9-0743-4560-b71c-8116e35fd5d3" class="bulleted-list"><li style="list-style-type:disc">Manager → Administers, Maintains, Accepts reality, focuses on systems, relies on control, focus on the bottom line (profits), imitates (some other company, department is doing)</li></ul><ul id="3890e836-0926-473a-b9cd-059b5314eb0f" class="bulleted-list"><li style="list-style-type:disc">Leader → innovates, develops, investigates, focuses on people, inspires trust, focus on the horizon (future - long term), originates → looking for growth</li></ul><ul id="48148949-4985-4b12-b4c5-f5835ac9f766" class="bulleted-list"><li style="list-style-type:disc">Devil’s Advocate :) → why it cannot be done?</li></ul><ul id="a193d506-995a-49c3-928d-2d7926dd86b9" class="bulleted-list"><li style="list-style-type:disc">System → SOPs, Structure</li></ul><ul id="3f3bc4be-e4a6-4890-9eaf-efad20877fe7" class="bulleted-list"><li style="list-style-type:disc">What else? → focus on people, ideas, utilization</li></ul><h2 id="52c36a2e-39c5-433f-9a0d-7ec04cec75b0" class="">What followers want from a Leader?</h2><ul id="032dd850-ae46-437c-af3a-0b0f89e2703e" class="bulleted-list"><li style="list-style-type:disc">Competence<ul id="d337c513-09b0-4546-a7f5-d38b5e48de34" class="bulleted-list"><li style="list-style-type:circle">He should know everything he is dealing with</li></ul><ul id="644124fe-e1b9-4ac4-baca-34c76d00b6be" class="bulleted-list"><li style="list-style-type:circle">Or they will know where to look for the solution</li></ul><ul id="8311e47e-0cbe-4479-ad6e-d22196eb0ed2" class="bulleted-list"><li style="list-style-type:circle">You need to have a clue on whatever industry you are in</li></ul></li></ul><ul id="dd4965ae-20e7-4ea6-8996-ba03bc587898" class="bulleted-list"><li style="list-style-type:disc">Vision<ul id="ef2930ee-859e-4412-a974-67f273843d51" class="bulleted-list"><li style="list-style-type:circle">Mission statements, goals</li></ul><ul id="f37e8b48-f454-447b-9e81-ac8f947ffe6f" class="bulleted-list"><li style="list-style-type:circle">BITS Pilani → people don’t know the vision of their own campus :trol: </li></ul><ul id="9f0cb182-04e5-4519-9ef2-579adf1d64e1" class="bulleted-list"><li style="list-style-type:circle">Top 3 in asia apparently → nahi hoga → intime 11pm karega</li></ul><ul id="4d3eea20-698e-485a-b9c1-099eeb4524a2" class="bulleted-list"><li style="list-style-type:circle">Go to pilani campus → CR mitra → architect of BITS Pilani → other directors → chutiya → true hai → MIT guy → got PS, Dual degree</li></ul><ul id="eb8998c2-e4ae-4fce-a9c4-d539cefd43f6" class="bulleted-list"><li style="list-style-type:circle">After first year → degree given → bro this sad</li></ul></li></ul><ul id="778201e4-f6e4-4cec-8b3e-0ce0fa806ab8" class="bulleted-list"><li style="list-style-type:disc">Congruity<ul id="fa6a618a-7aac-45e0-a9ed-e2ba9464b9c4" class="bulleted-list"><li style="list-style-type:circle">Integrity → should be consistent with his vision</li></ul></li></ul><ul id="ab9cf1c1-1b89-4a50-819e-3550914ad468" class="bulleted-list"><li style="list-style-type:disc">Consistency</li></ul><ul id="957d7488-7921-4b36-b4d0-e40ba4de7d0a" class="bulleted-list"><li style="list-style-type:disc">Optimistic<ul id="d5ea0c70-0d76-4ee1-9e85-9a1d60769475" class="bulleted-list"><li style="list-style-type:circle">Never accept failure </li></ul><ul id="4e8b03d1-a4e1-453f-9c91-1e72671dfa1c" class="bulleted-list"><li style="list-style-type:circle">Doesn’t mean always successful</li></ul><ul id="1b0389ef-6891-411f-9942-ec3d8fc5dd10" class="bulleted-list"><li style="list-style-type:circle">Attribute failure for some reasons</li></ul></li></ul><ul id="a9654e9d-83c3-4278-bab9-e1e7155393dd" class="bulleted-list"><li style="list-style-type:disc">Action<ul id="f96f24c2-1f31-4972-9899-a42b17ac7938" class="bulleted-list"><li style="list-style-type:circle">They have this vision to see things happening → this needs to be converted into actual actions</li></ul><ul id="d464cb87-00c3-47d6-bf08-2ce478a7eb2a" class="bulleted-list"><li style="list-style-type:circle">Pragmatic dreams and practical idealists</li></ul></li></ul><ul id="1d1eae85-5a56-41b0-9a04-96d97808be9f" class="bulleted-list"><li style="list-style-type:disc">Trust<ul id="402792f2-1223-41c8-aece-0cd36f6c54cb" class="bulleted-list"><li style="list-style-type:circle">Critical for leaders</li></ul><ul id="afce8942-607c-4061-a3a1-56ca90521dd1" class="bulleted-list"><li style="list-style-type:circle">Generating and sustaining </li></ul><ul id="0ea5fbb1-3359-44dc-a05c-eeeb1939106b" class="bulleted-list"><li style="list-style-type:circle">Encourage openness</li></ul><ul id="5200f1de-90ee-47c2-87d7-8b26ee95f401" class="bulleted-list"><li style="list-style-type:circle">Dissent → disagreement → leads to better decisions</li></ul><ul id="4439f67d-554b-48f8-b47b-eca20029dc4a" class="bulleted-list"><li style="list-style-type:circle">Take care of the people</li></ul></li></ul><h2 id="c2ac425e-c616-44c3-8fb9-c84d68b6565f" class="">Can Leadership be learnt?</h2><ul id="4a812ca6-549d-40de-802b-35342902287a" class="bulleted-list"><li style="list-style-type:disc">Leaders are made, not born unlike in movies like KGF and RRR</li></ul><ul id="5b7136b6-cf5c-45d6-be2d-d839fbff218c" class="bulleted-list"><li style="list-style-type:disc">Leadership qualities can be developed with <span style="border-bottom:0.05em solid">practice and experience</span></li></ul><ul id="66e198ae-c8ee-4134-8633-8942ca002f1c" class="bulleted-list"><li style="list-style-type:disc">Each one of us has <span style="border-bottom:0.05em solid">hidden talent</span> within us</li></ul><ul id="5c5eff9c-794e-48b5-97a4-c7f18d9df0fa" class="bulleted-list"><li style="list-style-type:disc">Talent has to be a accompanied by motivation, opportunity and maturity </li></ul><ul id="4fc997da-e3ad-4f01-8c3c-831a64602895" class="bulleted-list"><li style="list-style-type:disc">Networking skills :) → create opportunities </li></ul><ul id="6a80f12f-4bf1-47be-bb8f-47ee2d48a25b" class="bulleted-list"><li style="list-style-type:disc">Need to be open in terms of self analysis → you have to have <span style="border-bottom:0.05em solid">self critical examination</span> and exhilaration of <span style="border-bottom:0.05em solid">taking risks</span> → putting time and effort for things you don’t know will happen</li></ul><ul id="95b7bc6a-bf2a-4e5f-b519-0673e0438f24" class="bulleted-list"><li style="list-style-type:disc">Time ripens all things, no man is born wise</li></ul><ul id="e5c52a95-c220-4a65-9117-dec0176597f3" class="bulleted-list"><li style="list-style-type:disc">We can’t force someone to become integral or energetic</li></ul><h2 id="43ae164a-335e-46bd-b7a9-ca0983d77290" class="">Principles of Leadership</h2><ul id="4642690c-866b-4de1-b11c-a73a83e88663" class="bulleted-list"><li style="list-style-type:disc">What motivates their followers?</li></ul><ul id="73934431-702a-4610-bc82-92cd0e1a5617" class="bulleted-list"><li style="list-style-type:disc">How these motivations operate?</li></ul><h2 id="c1ba5d3a-f429-4d39-90f5-3d9d8cef3988" class="">Leadership Styles → Kurt Lewin</h2><figure id="65dc5565-5d74-47a8-a6ac-da643a22fd06" class="image"><a href="Role%20of%20a%20Manager%20and%20Leader%20ef248b6cfb464573bff2726540ee4a87/Untitled.png"><img style="width:889px" src="Role%20of%20a%20Manager%20and%20Leader%20ef248b6cfb464573bff2726540ee4a87/Untitled.png"/></a></figure><h3 id="cd8444e9-d794-414e-9c68-cb1c9bda820c" class="">Autocratic</h3><figure id="9b508864-b6df-4573-acc9-240cb25489be" class="image"><a href="Role%20of%20a%20Manager%20and%20Leader%20ef248b6cfb464573bff2726540ee4a87/Untitled%201.png"><img style="width:950px" src="Role%20of%20a%20Manager%20and%20Leader%20ef248b6cfb464573bff2726540ee4a87/Untitled%201.png"/></a></figure><ul id="0a39bc5c-4350-4689-9488-276dba6b336b" class="bulleted-list"><li style="list-style-type:disc">Concerned on their future</li></ul><ul id="c39215e5-b0e7-4196-b188-54a6f7547910" class="bulleted-list"><li style="list-style-type:disc">Only focus on results</li></ul><ul id="eaa512ed-3181-4bfd-b690-818319532115" class="bulleted-list"><li style="list-style-type:disc">PDC → Planning, Directing, Controlling</li></ul><h3 id="bce4f0bf-9afc-4e50-8a9c-f7bc3fb5354c" class="">Democratic</h3><figure id="3d9ab6a0-e6f7-41ee-a75b-72d32366b3d2" class="image"><a href="Role%20of%20a%20Manager%20and%20Leader%20ef248b6cfb464573bff2726540ee4a87/Untitled%202.png"><img style="width:953px" src="Role%20of%20a%20Manager%20and%20Leader%20ef248b6cfb464573bff2726540ee4a87/Untitled%202.png"/></a></figure><ul id="7dec3e10-f1cd-457f-aadf-39d809787e69" class="bulleted-list"><li style="list-style-type:disc">Very positive → their needs and their wants are being taken care of</li></ul><ul id="608b48ab-b13a-49e4-9ac2-7a8173f7a2d3" class="bulleted-list"><li style="list-style-type:disc">Taking input ≠ agreeing with them → still a form of democracy</li></ul><ul id="c79bfe10-802d-4805-a979-08912dc65c6f" class="bulleted-list"><li style="list-style-type:disc">Conflicts are not suppressed → rather manage these conflicts</li></ul><ul id="ca7088e6-8906-42f4-8ab4-d8e4e98c6f34" class="bulleted-list"><li style="list-style-type:disc">Not about pin pointing problems → rather search for solution</li></ul><h3 id="0037955f-bb70-4778-9224-48a19b8391ab" class="">Delegative</h3><figure id="f954d52f-e83f-4e94-9246-51817f83fc32" class="image"><a href="Role%20of%20a%20Manager%20and%20Leader%20ef248b6cfb464573bff2726540ee4a87/Untitled%203.png"><img style="width:975px" src="Role%20of%20a%20Manager%20and%20Leader%20ef248b6cfb464573bff2726540ee4a87/Untitled%203.png"/></a></figure><ul id="866c88aa-7902-4eae-a9a9-bb4e4f0898c0" class="bulleted-list"><li style="list-style-type:disc">Neither bothered about results nor bother about people</li></ul><ul id="b4f5113f-4711-4a86-864d-6b190084565e" class="bulleted-list"><li style="list-style-type:disc">Complete freedom to the followers and subordinates in the team</li></ul><ul id="b997d91e-3c5c-49f4-aba4-6792d7c25c7b" class="bulleted-list"><li style="list-style-type:disc">You decide what is to be done, you decide how it should be done</li></ul><ul id="e6a4427e-0f0d-4aba-9bde-cbb48929ad14" class="bulleted-list"><li style="list-style-type:disc">Follower goes with a problem → he will make the follower think through and let him get the solution himself → will act as facilitator</li></ul><ul id="4ff681c5-b7ef-4b76-8444-1b6ff8b4af5e" class="bulleted-list"><li style="list-style-type:disc">Empowerment → the follower will take responsibility</li></ul><ul id="6742976b-a954-4882-9a59-4840604103d7" class="bulleted-list"><li style="list-style-type:disc">Build bridges between teams </li></ul><h2 id="80bbdc4f-f2d2-4171-8002-657b72db3e57" class="">About the Styles</h2><ul id="fb51fec0-5da9-4eed-9cce-df223105c791" class="bulleted-list"><li style="list-style-type:disc">No particular style is the best</li></ul><ul id="5f505e43-76a8-49b1-9dae-92d622f5e69c" class="bulleted-list"><li style="list-style-type:disc">In case of fire → democratic will not work → in crisis → autocratic style way better</li></ul><ul id="b9c8c360-121b-4f7e-86af-0e7117917383" class="bulleted-list"><li style="list-style-type:disc">Delegative is applicable when you know your subordinates are highly experienced </li></ul><ul id="ee3a8da9-2ed0-4d77-bdbe-a4ffb9c15ae5" class="bulleted-list"><li style="list-style-type:disc">We all have predominant leadership styles</li></ul><ul id="d417882b-f23f-462e-8ee3-c59757f1fb21" class="bulleted-list"><li style="list-style-type:disc">Some of us are autocratic, democratic or delegative</li></ul><ul id="2081f39e-fbe7-41c6-b35d-ce629bcca8c9" class="bulleted-list"><li style="list-style-type:disc">How to move from one style to another style effectively </li></ul><ul id="55c949ab-2d22-40b8-8d74-86b8b7ffda62" class="bulleted-list"><li style="list-style-type:disc">You should effectively use all of them </li></ul><h1 id="bdbd121f-dcad-4259-ac89-51e89d95178f" class="">LITMUS TEST FOR LEADERSHIP</h1><ul id="75e3722f-84e3-4763-b4e0-355d38d2c0f6" class="bulleted-list"><li style="list-style-type:disc">Leadership is the ability to get people to do what they don’t like to do and yet like it<ul id="1082129e-9802-495f-8a7f-60910e334e3a" class="bulleted-list"><li style="list-style-type:circle">ITS NOT EASY</li></ul></li></ul><p id="ae392535-4c8a-4cc8-ae65-dac33675a1fc" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,0 +1,676 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Delegation</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="170ef0e5-22e7-4e36-afc4-f9509e3768e0" class="page sans"><header><h1 class="page-title">Delegation</h1><p class="page-description"></p></header><div class="page-body"><nav id="13348ab1-3ddc-4afb-af0a-24b3b0bcaba0" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4deeb6f8-7e47-4e16-bbb6-cafe0ead7cbd">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#069b9484-3a7c-4dad-ab8b-4d029766ef1b">What is Delegation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#16aa6c7d-3257-4ff2-9ba9-88db2887625f">Authority vs Responsibility vs Accountability</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4a366caa-6cff-4d9d-bac1-332c6771860e">What should one delegate?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#df5c6ba5-003d-4642-89b6-71d31967ccc4">Delegation Chart</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#f0b3315c-97e2-4887-8980-81b99ab04946">Delegation Process</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3d39c049-a56e-467e-aa7f-7252862298a8">What to delegate?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#596ac540-08b5-442d-a950-cf931230a50f">Who to delegate to?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5308e579-f35a-4727-8456-0ba5cd27ebff">Delegate</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#248a1ee2-20ee-4c3e-90a7-ddb1311328e2">How does one tell what they should do</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#0abd9318-8d6e-47c3-91e0-06d8ddd10808">Deciding how to assign</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4aecef44-5782-4da9-867f-b967f6e8177c">Monitor Results</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#867bfdda-8018-4418-b23a-88b05926e97c">What should one not delegate?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#82f9336e-960a-4e53-81fa-6026fb3a6f11">Why are managers shy of delegating?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a0981314-845b-412c-a73f-0f60c06223ef">Why employees may not welcome delegation?</a></div></nav><h1 id="4deeb6f8-7e47-4e16-bbb6-cafe0ead7cbd" class="">Introduction</h1><ul id="b4293785-f3f0-4f49-930f-6ee26ed03d29" class="bulleted-list"><li style="list-style-type:disc">Work at all levels has 3 components<ul id="7f85c815-c5ee-45f8-8c38-c9044a0d5b75" class="bulleted-list"><li style="list-style-type:circle">Planning</li></ul><ul id="b5036e01-9b19-4311-9547-18575ffaaf4a" class="bulleted-list"><li style="list-style-type:circle">Doing</li></ul><ul id="cda73c71-706a-48bd-8372-fd24b0c4c6fe" class="bulleted-list"><li style="list-style-type:circle">Controlling</li></ul></li></ul><ul id="87daa0c3-1f4c-4e7d-a501-dbae4eb72a71" class="bulleted-list"><li style="list-style-type:disc">Amount of time to be applied for each increases/decreases with movements across levels</li></ul><ul id="bdf0b185-6d00-4668-b81e-571f03ae5202" class="bulleted-list"><li style="list-style-type:disc">At the last levels, high levels of doing takes place → managing intervention comes down and SOPs are implemented</li></ul><ul id="bdcbf1ed-527b-4d73-a8e4-753ab7be1955" class="bulleted-list"><li style="list-style-type:disc">At the top first level, we have a lot more control → There’s no specific SOP</li></ul><h1 id="069b9484-3a7c-4dad-ab8b-4d029766ef1b" class="">What is Delegation</h1><ul id="46b2a56c-ff19-4bac-a487-c8af8b27ff6e" class="bulleted-list"><li style="list-style-type:disc">It is entrusting authority and responsibility to someone to complete a clearly defined and agreed task under one’s supervision while retaining his overall authority and responsibility for the success of the work.</li></ul><ul id="c1581efc-9446-4bf8-a9c0-6319b5e50785" class="bulleted-list"><li style="list-style-type:disc">Assigning tasks to subordinates</li></ul><ul id="0a2d5182-64c1-4223-a68a-621a0d5338fb" class="bulleted-list"><li style="list-style-type:disc">One reason for not delegating → insecurity and fear that junior becomes senior</li></ul><ul id="d62c6ade-d58b-44ca-9027-85c094cc110a" class="bulleted-list"><li style="list-style-type:disc">Always downwards</li></ul><ul id="37bb8684-4f45-4497-8fd5-87ca128b551f" class="bulleted-list"><li style="list-style-type:disc">We delegate task and authority → responsibility comes automatically</li></ul><h2 id="16aa6c7d-3257-4ff2-9ba9-88db2887625f" class="">Authority vs Responsibility vs Accountability</h2><ul id="a730904a-1e52-4012-88e6-39eb54a3c4e8" class="bulleted-list"><li style="list-style-type:disc">Authority without responsibility has no meaning → leads to arrogance</li></ul><ul id="5a42971f-2f9a-4786-b059-576ca9e2a83f" class="bulleted-list"><li style="list-style-type:disc">Parity Principle - Authority and responsibility should be equal</li></ul><ul id="b07e3770-4a65-4f33-835f-2c8bfa91cba3" class="bulleted-list"><li style="list-style-type:disc">Authority never diminishes - Even after giving authority, you won’t lose your current authority</li></ul><ul id="962c1f05-1e69-4675-97db-68b5c0274cb7" class="bulleted-list"><li style="list-style-type:disc">Flow of delegation is always downwards</li></ul><ul id="311e8278-a59c-4e62-8646-c98ffc0aedc7" class="bulleted-list"><li style="list-style-type:disc">Delegation is not passing the buck</li></ul><ul id="1d9f3d2c-8903-4ccc-8994-24beae8864a9" class="bulleted-list"><li style="list-style-type:disc">Accountability flows upwards → subordinate is accountable to his or her superior</li></ul><h1 id="4a366caa-6cff-4d9d-bac1-332c6771860e" class="">What should one delegate?</h1><ul id="05d89647-1929-4181-b09d-c868d7e4a805" class="bulleted-list"><li style="list-style-type:disc">Routine, recurring and occasional</li></ul><ul id="a03b8109-133c-4287-861f-0a6e43e9929b" class="bulleted-list"><li style="list-style-type:disc">Other team members can do as well or even better</li></ul><ul id="e69b7959-b6f3-4e20-b1d1-e897fa98586b" class="bulleted-list"><li style="list-style-type:disc">Develop the skills and knowledge of team members</li></ul><ul id="2b19c807-57a7-4359-84ac-2d06244cce61" class="bulleted-list"><li style="list-style-type:disc">Provide a challenge that will train and extend a team member’s skills and experience that increase the delegate’s job interest</li></ul><ul id="ff89288d-7f51-4ee7-ab7d-620e76070bf3" class="bulleted-list"><li style="list-style-type:disc">Tasks that need a special skill that you don’t have but someone does or can develop easily</li></ul><ul id="d3920dda-461a-4ffe-96f0-3ac3850ea465" class="bulleted-list"><li style="list-style-type:disc">Things that don’t require your personal input, provided they are not the boring tasks</li></ul><h2 id="df5c6ba5-003d-4642-89b6-71d31967ccc4" class="">Delegation Chart</h2><ol type="1" id="d74b94b0-d7e5-4c64-a71a-edadb16772a0" class="numbered-list" start="1"><li>You must do<ol type="a" id="d9617177-75ad-4bfa-93cd-fb0c355792dc" class="numbered-list" start="1"><li>Personal </li></ol><ol type="a" id="c6e8903b-eeb9-42b3-a3b3-acd732532245" class="numbered-list" start="2"><li>You cannot delegate this</li></ol><ol type="a" id="58b8c47e-8449-429f-8a91-3477a319df59" class="numbered-list" start="3"><li>Signatory powers</li></ol><ol type="a" id="4c73c144-84a6-48e1-bd09-897256be161e" class="numbered-list" start="4"><li>Disciplinary Actions</li></ol></li></ol><ol type="1" id="0d84ab6e-71c8-4b27-a3d8-75486ba7d36e" class="numbered-list" start="2"><li>You should do but someone else could help you<ol type="a" id="68738c26-3f09-4349-a27e-da5672a9dd2c" class="numbered-list" start="1"><li>Same level as you</li></ol></li></ol><ol type="1" id="6c89d6cc-c2dc-4d3d-b0e5-0b4b95798dd5" class="numbered-list" start="3"><li>You could do but others could do if given an opportunity</li></ol><ol type="1" id="8342f6ab-5b76-4c71-8949-44fab3c9e319" class="numbered-list" start="4"><li>Others should do but you can help out in an emergency</li></ol><ol type="1" id="a6bc590e-1e38-4b20-9b9c-12f2bcc1f71c" class="numbered-list" start="5"><li>Others must do</li></ol><h1 id="f0b3315c-97e2-4887-8980-81b99ab04946" class="">Delegation Process</h1><h2 id="3d39c049-a56e-467e-aa7f-7252862298a8" class="">What to delegate?</h2><ul id="be60b266-4e81-43dc-b18d-e48137a2cf89" class="bulleted-list"><li style="list-style-type:disc">What skills are needed for this job</li></ul><ul id="cbcacd7d-9ce8-4513-b5cc-3ddada541b4b" class="bulleted-list"><li style="list-style-type:disc">What resources are needed</li></ul><h2 id="596ac540-08b5-442d-a950-cf931230a50f" class="">Who to delegate to?</h2><ul id="97be60d6-a621-4175-89dc-864bf7aec0fe" class="bulleted-list"><li style="list-style-type:disc">Previously expressed desires by staff</li></ul><ul id="50a8d400-928f-485a-87a7-91b7b7cfa753" class="bulleted-list"><li style="list-style-type:disc">Staff member’s availability</li></ul><ul id="a3984227-31f9-45f6-8fe3-0d572c436054" class="bulleted-list"><li style="list-style-type:disc">Level of assistance a staff member will need from you</li></ul><ul id="7a9bd598-872f-49c8-a4d3-d530032c68a0" class="bulleted-list"><li style="list-style-type:disc">How long the staff member has been on the job</li></ul><ul id="05fb4e3c-1082-4a3d-bb24-f26103480796" class="bulleted-list"><li style="list-style-type:disc">The number of previous assignments you have delegate to that person</li></ul><ul id="fdf3c71b-5bcf-4e9d-ba18-85a504ec999b" class="bulleted-list"><li style="list-style-type:disc">Possibility of diving the tasks between 2 or more people</li></ul><ul id="c495b79c-205e-47c3-9376-51e1189f7615" class="bulleted-list"><li style="list-style-type:disc">Who wants to learn it</li></ul><ul id="85414ef9-a976-43b6-ab4a-3ec03751b3a1" class="bulleted-list"><li style="list-style-type:disc">You want to prepare for promotion or to be your successor</li></ul><ul id="b129bda0-5f58-4ec8-8245-0ff3ef93eada" class="bulleted-list"><li style="list-style-type:disc">Who is already able and willing to do it</li></ul><figure id="d29e2a04-f5ae-4c0b-9b13-326f2eb01eec" class="image"><a href="Delegation%20170ef0e522e74e36afc4f9509e3768e0/Untitled.png"><img style="width:908px" src="Delegation%20170ef0e522e74e36afc4f9509e3768e0/Untitled.png"/></a></figure><figure id="7d8aa912-03ad-4c0c-9643-cd358a88f2f2" class="image"><a href="Delegation%20170ef0e522e74e36afc4f9509e3768e0/Untitled%201.png"><img style="width:843px" src="Delegation%20170ef0e522e74e36afc4f9509e3768e0/Untitled%201.png"/></a></figure><ul id="d866f33d-8e63-4c0e-93f3-e3cb49ae6639" class="bulleted-list"><li style="list-style-type:disc">Delegation must be done in a level wise manner</li></ul><h2 id="5308e579-f35a-4727-8456-0ba5cd27ebff" class="">Delegate</h2><h3 id="248a1ee2-20ee-4c3e-90a7-ddb1311328e2" class="">How does one tell what they should do</h3><ul id="99fbc416-d5e2-4108-b5d2-00f594043190" class="bulleted-list"><li style="list-style-type:disc">Background</li></ul><ul id="838c7ac8-d61f-4c92-9ce2-888a93deb1aa" class="bulleted-list"><li style="list-style-type:disc">Objectives</li></ul><ul id="45bd5e68-1b2e-4d55-916e-76815e892b57" class="bulleted-list"><li style="list-style-type:disc">Reason</li></ul><ul id="89e12bb7-be31-4ec3-835d-530c8e8c3728" class="bulleted-list"><li style="list-style-type:disc">Time frames/Timings</li></ul><ul id="644ca66d-0f2d-446e-bb7e-cc0af38c2cb7" class="bulleted-list"><li style="list-style-type:disc">Resources and Administration</li></ul><ul id="ca8df179-7b3b-4d26-bf4d-dd9f8ddbd264" class="bulleted-list"><li style="list-style-type:disc">Progress</li></ul><ul id="093a6248-bebb-4473-94a5-cf09d6a4401b" class="bulleted-list"><li style="list-style-type:disc">Always ask if there</li></ul><h3 id="0abd9318-8d6e-47c3-91e0-06d8ddd10808" class="">Deciding how to assign</h3><ul id="a5d0c6ba-fd83-4db7-8c1b-dc290f3e990b" class="bulleted-list"><li style="list-style-type:disc">Explicit Assignments - be specific</li></ul><ul id="893f2b5f-57cd-4679-beb4-829824001c08" class="bulleted-list"><li style="list-style-type:disc">Outcome Assignments  - just tell what you want as outcome</li></ul><ul id="1abe7e42-69aa-4240-8602-32ca78ecae66" class="bulleted-list"><li style="list-style-type:disc">Requests</li></ul><ul id="f25cbf6a-5ada-4999-9fef-0278676cbede" class="bulleted-list"><li style="list-style-type:disc">Implied Requests (Indirect -  maybe in the case of seniors or something)</li></ul><ul id="cf190b84-303a-47de-a666-1ef75d0082b8" class="bulleted-list"><li style="list-style-type:disc">Open Requests</li></ul><h1 id="4aecef44-5782-4da9-867f-b967f6e8177c" class="">Monitor Results</h1><ul id="f075bd8e-95f2-4ce5-9ce9-a389aa4f491f" class="bulleted-list"><li style="list-style-type:disc">Level 5 → I’ll walk you through it</li></ul><ul id="88b57b1f-3a9e-4033-be41-f7fbc1186b82" class="bulleted-list"><li style="list-style-type:disc">Level 4 → Let’s talk it through first<ul id="6f2e861d-aa4c-40d1-bc98-cf5af2ef1aaf" class="bulleted-list"><li style="list-style-type:circle">Everything should be checked with the supervisor</li></ul></li></ul><ul id="8279d229-be52-411d-9b60-2704beae07af" class="bulleted-list"><li style="list-style-type:disc">Level 3 → Check back first<ul id="5fb1f1cd-c9f0-474a-b849-e0046cb2b802" class="bulleted-list"><li style="list-style-type:circle">Only important things will be checked by the supervisor</li></ul></li></ul><ul id="0e9145da-2c65-438c-a76d-93fad2197d85" class="bulleted-list"><li style="list-style-type:disc">Level 2 → Keep me informed<ul id="f6a7dc09-7132-42da-a043-a3f2c1720545" class="bulleted-list"><li style="list-style-type:circle">Delegate can do what he wants but keep the manager posted</li></ul></li></ul><ul id="a96c4868-b815-4ec6-ac44-101ccde5f08b" class="bulleted-list"><li style="list-style-type:disc">Level 1 → Just do it<ul id="e6559028-0dc5-4092-9708-9522d82402e2" class="bulleted-list"><li style="list-style-type:circle">There’s nothing to be informed to the supervisor </li></ul><ul id="1ba50bd0-98a9-4ed8-b260-90da308b4a10" class="bulleted-list"><li style="list-style-type:circle">High amount of trust and responsibility in the delegatee</li></ul></li></ul><h2 id="867bfdda-8018-4418-b23a-88b05926e97c" class="">What should one not delegate?</h2><ul id="7de64efb-ee36-4b83-a14d-9606a7b15bf9" class="bulleted-list"><li style="list-style-type:disc">Tasks that are difficult to perform</li></ul><ul id="c0176d02-bdc6-408b-88a7-32126455ebba" class="bulleted-list"><li style="list-style-type:disc">Tasks that are unpleasant to perform</li></ul><ul id="781a1625-a647-4504-be73-15ada9372058" class="bulleted-list"><li style="list-style-type:disc">Tasks that are to be performed for the first time<ul id="628d9343-1ad7-4c19-bded-1f3994411892" class="bulleted-list"><li style="list-style-type:circle">Caution: have the right kind of support system and expectations</li></ul></li></ul><ul id="fd7d4f49-5e37-42f3-9b88-ef02da1c20fc" class="bulleted-list"><li style="list-style-type:disc">Tasks that involve high risk</li></ul><ul id="e4a4727c-7427-421d-8c9d-074212d6ac84" class="bulleted-list"><li style="list-style-type:disc">Tasks that are confidential</li></ul><ul id="a90baf94-8975-4a80-880f-b148353432a2" class="bulleted-list"><li style="list-style-type:disc">Tasks that need one’s special authority</li></ul><ul id="9feed5da-1724-47b9-b87c-b6fd3888fc5f" class="bulleted-list"><li style="list-style-type:disc">Tasks that are personal responsibility</li></ul><h2 id="82f9336e-960a-4e53-81fa-6026fb3a6f11" class="">Why are managers shy of delegating?</h2><ul id="40823570-27fd-4def-8daf-8f28f9bca5fb" class="bulleted-list"><li style="list-style-type:disc">They believe it takes longer</li></ul><ul id="3fd45a7b-d4e3-493b-af9d-24fe105f4c54" class="bulleted-list"><li style="list-style-type:disc">They do not want to lose some jobs that they enjoy</li></ul><ul id="ec969158-fccc-441c-8a4e-d1a715f7a654" class="bulleted-list"><li style="list-style-type:disc">The next level lacks capability experience</li></ul><ul id="2fe21ad9-8791-4265-8a76-b8ffea546787" class="bulleted-list"><li style="list-style-type:disc">They fear risk of losing control</li></ul><h2 id="a0981314-845b-412c-a73f-0f60c06223ef" class="">Why employees may not welcome delegation?</h2><ul id="cbed6e51-0de3-4ecb-be33-15c0de59cfb4" class="bulleted-list"><li style="list-style-type:disc">They do not want to assume ambiguous or unclear duties and responsibilities</li></ul><ul id="cd5757da-e480-4120-bc7d-f59d8a196da6" class="bulleted-list"><li style="list-style-type:disc">They are afraid of failure</li></ul><ul id="35c18903-2ca8-4650-a5a9-02bc34d1d7d0" class="bulleted-list"><li style="list-style-type:disc">They want to increase job stress</li></ul><ul id="66eb2c41-1b06-462c-a694-16a8007bc00c" class="bulleted-list"><li style="list-style-type:disc">Delegators responsibility to ensure you do well</li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
