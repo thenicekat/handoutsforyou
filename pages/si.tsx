@@ -50,13 +50,13 @@ export default function PS({ }: any) {
                 </div>
             </div>
 
-            {session && <div className='grid md:grid-cols-3 place-items-center p-5'>
+            {session && <div className='place-items-center p-5'>
                 {
                     chronicles.filter(d => d.name.toLowerCase().includes(search.toLowerCase())).map(chronicle => (
                         <div key={chronicle.link} className='m-2 py-1 rounded-xl'>
                             <div className="alert shadow-sm">
                                 <div>
-                                    <span>{chronicle.name}</span>
+                                    <span>SI Chronicles {chronicle.name}</span>
                                 </div>
                                 <div className="flex-none">
                                     <button className="btn btn-primary" onClick={
