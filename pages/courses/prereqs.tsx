@@ -4,6 +4,7 @@ import { useState } from "react";
 import Menu from "../../Components/Menu";
 import { useSession } from "next-auth/react";
 import { PreReqGroup } from "../../types/PreReq";
+import Modal from "../../Components/Modal";
 
 export const getStaticProps: GetStaticProps = async () => {
     const fs = require("fs");
@@ -22,6 +23,12 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function Prereqs({ prereqs }: { prereqs: PreReqGroup[] }) {
     const [search, setSearch] = useState("");
     const { data: session } = useSession()
+    const [open, setOpen] = useState(false);
+    const [prereq, setPrereq] = useState<PreReqGroup | null>(null);
+
+    const toggleModal = () => {
+        setOpen(!open);
+    };
 
     return (
         <>
@@ -53,26 +60,38 @@ export default function Prereqs({ prereqs }: { prereqs: PreReqGroup[] }) {
             <p className="text-center m-2">NOTE: Here PRE means you will have to complete before hand while CO means you can do them parallelly</p>
 
             {session && <div className='grid md:grid-cols-3 place-items-center p-5'>
+                <Modal open={open}>
+                    <h3 className="font-bold text-lg">
+                        {prereq?.name}
+                    </h3>
+                    <div className="card-actions justify-begin text-primary my-3">
+                        {
+                            prereq && prereq.prereqs.length > 0
+                                ?
+                                prereq.prereqs.map((preq) =>
+                                    <>
+                                        <li key={preq.prereq_name}>{preq.prereq_name} ({preq.pre_cop})</li>
+                                    </>
+                                )
+                                :
+                                <p>No Prerequisites</p>
+                        }
+                        Note: You will have to do <b>{prereq?.all_one.toLowerCase()}</b> of the above courses
+                        <br />
+                    </div>
+                    <div className="modal-action">
+                        <label className="btn btn-primary" onClick={() => toggleModal()}>Close</label>
+                    </div>
+                </Modal>
+
                 {
                     prereqs.filter((d: PreReqGroup) => d.name.toLowerCase().includes(search.toLowerCase())).map((preqgroup: PreReqGroup) => (
-                        <div className="card w-11/12 bg-black text-neutral-content m-2" key={preqgroup.name}>
+                        <div className="card w-11/12 bg-secondary text-neutral-content m-2 cursor-grab" key={preqgroup.name} onClick={() => {
+                            toggleModal()
+                            setPrereq(preqgroup)
+                        }}>
                             <div className="card-body items-center">
-                                <h2 className="card-title text-white">{preqgroup.name}</h2>
-                                <div className="card-actions justify-begin text-white">
-                                    {
-                                        preqgroup.prereqs.length > 0
-                                            ?
-                                            preqgroup.prereqs.map((preq) =>
-                                                <>
-                                                    <li key={preq.prereq_name}>{preq.prereq_name} ({preq.pre_cop})</li>
-                                                </>
-                                            )
-                                            :
-                                            <p>No Prerequisites</p>
-                                    }
-                                    <br />
-                                </div>
-                                {preqgroup.all_one && preqgroup.all_one.length > 0 && <button className="btn btn-sm disabled">Have to do: {preqgroup.all_one}</button>}
+                                <h2 className="card-title text-primary">{preqgroup.name}</h2>
                             </div>
                         </div>
                     ))
