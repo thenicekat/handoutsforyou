@@ -9,10 +9,7 @@ import AutoCompleter from "../../Components/AutoCompleter";
 
 
 export default function AddReview({ }: {}) {
-    const [crsSearch, setCrsSearch] = useState("");
     const [course, setCourse] = useState("");
-
-    const [profSearch, setProfSearch] = useState("");
     const [prof, setProf] = useState("");
 
     const [review, setReview] = useState("");
@@ -33,14 +30,14 @@ export default function AddReview({ }: {}) {
             return
         }
 
-        const { error } = await supabase
-            .from('reviews')
-            .insert([
-                { course: course, prof: prof, review: review, created_by: session?.user?.email }
-            ])
-
-        if (error) {
-            alert("Error adding review!")
+        const data = await fetch("/api/reviews/addreview", {
+            method: "POST",
+            body: JSON.stringify({ course: course, prof: prof, review: review, created_by: session?.user?.email }),
+            headers: { "Content-Type": "application/json" }
+        })
+        const res = await data.json()
+        if (res.error) {
+            alert(res.message)
         }
         else {
             alert("Review Added!")

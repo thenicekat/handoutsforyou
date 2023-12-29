@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import Menu from "../../Components/Menu";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { supabase } from '../api/supabase';
 import { CourseReview } from "../../types/CourseReview";
 import { courses } from "../../data/courses";
 import { profs } from "../../data/profs";
@@ -21,49 +20,13 @@ export default function Reviews({ }: {}) {
 
     const fetchReviews = async () => {
         setIsLoading(true)
-        if (course == "" && prof == "") {
-            const { data, error } = await supabase
-                .from('reviews')
-                .select('course, prof, review, created_at')
-            if (error) console.log(error)
-            else {
-                setReviews(data)
-            }
-        }
-        else if (course == "") {
-            const { data, error } = await supabase
-                .from('reviews')
-                .select('course, prof, review, created_at')
-                .eq('prof', prof)
-
-            if (error) console.log(error)
-            else {
-                setReviews(data)
-            }
-        }
-        else if (prof == "") {
-            const { data, error } = await supabase
-                .from('reviews')
-                .select('course, prof, review, created_at')
-                .eq('course', course)
-
-            if (error) console.log(error)
-            else {
-                setReviews(data)
-            }
-        }
-        else {
-            const { data, error } = await supabase
-                .from('reviews')
-                .select('course, prof, review, created_at')
-                .eq('course', course)
-                .eq('prof', prof)
-
-            if (error) console.log(error)
-            else {
-                setReviews(data)
-            }
-        }
+        const data = await fetch("/api/reviews/getreviews", {
+            method: "POST",
+            body: JSON.stringify({ course: course, prof: prof }),
+            headers: { "Content-Type": "application/json" }
+        })
+        const reviews = await data.json()
+        setReviews(reviews.data as CourseReview[])
         setIsLoading(false)
     }
 
