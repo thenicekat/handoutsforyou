@@ -46,3 +46,4 @@ next-env.d.ts
 # Scripts spare Files
 **/scripts/ps/*.csv
 **/scripts/ps/soundex_filter.txt
+**/scripts/ps/ignore.txt

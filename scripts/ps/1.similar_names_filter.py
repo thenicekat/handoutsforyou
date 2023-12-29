@@ -9,9 +9,9 @@ import jellyfish
 import pandas as pd
 
 # Defining the constants
-CSV_FILE = 'PS2_master.csv'
+CSV_FILE = 'PS1_master.csv'
 OUTPUT_FILE = 'soundex_filter.txt'
-IGNORE_FILE = 'ignore_PS2.txt'
+IGNORE_FILE = 'ignore.txt'
 
 # Getting the PS station names, putting in set for avoiding repetition
 # Replace all company names which have \u0026 with &
