@@ -1,5 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '../supabase'
+import { getServerSession } from "next-auth/next"
+import { authOptions } from "../auth/[...nextauth]"
 
 type ResponseData = {
     message: string,
@@ -10,6 +12,14 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
 ) {
+    const session = await getServerSession(req, res, authOptions)
+    if (!session) {
+        res.status(400).json({
+            message: 'Unauthorized',
+            error: true
+        })
+    }
+
     const { course, prof, review, created_by } = req.body
 
     if (!course) {
