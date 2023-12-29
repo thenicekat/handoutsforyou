@@ -24,7 +24,7 @@ export default function Reviews({ }: {}) {
         if (course == "" && prof == "") {
             const { data, error } = await supabase
                 .from('reviews')
-                .select('*')
+                .select('course, prof, review, created_at')
             if (error) console.log(error)
             else {
                 setReviews(data)
@@ -33,7 +33,7 @@ export default function Reviews({ }: {}) {
         else if (course == "") {
             const { data, error } = await supabase
                 .from('reviews')
-                .select('*')
+                .select('course, prof, review, created_at')
                 .eq('prof', prof)
 
             if (error) console.log(error)
@@ -44,7 +44,7 @@ export default function Reviews({ }: {}) {
         else if (prof == "") {
             const { data, error } = await supabase
                 .from('reviews')
-                .select('*')
+                .select('course, prof, review, created_at')
                 .eq('course', course)
 
             if (error) console.log(error)
@@ -55,7 +55,7 @@ export default function Reviews({ }: {}) {
         else {
             const { data, error } = await supabase
                 .from('reviews')
-                .select('*')
+                .select('course, prof, review, created_at')
                 .eq('course', course)
                 .eq('prof', prof)
 
@@ -133,7 +133,7 @@ export default function Reviews({ }: {}) {
                                         else return 0
                                     })
                                     .map((review) => (
-                                        <div className="card shadow-lg bg-base-100 text-base-content mt-5" key={review.id}>
+                                        <div className="card shadow-lg bg-base-100 text-base-content mt-5" key={review.created_at}>
                                             <div className="card-body">
                                                 <h2 className="card-title text-center">Course Name: {review.course} by Professor: {review.prof}</h2>
                                                 <p>{review.review}</p>
