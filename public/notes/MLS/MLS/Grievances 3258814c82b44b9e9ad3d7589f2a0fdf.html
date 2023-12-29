@@ -1,0 +1,676 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Grievances</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="3258814c-82b4-4b9e-9ad3-d7589f2a0fdf" class="page sans"><header><h1 class="page-title">Grievances</h1><p class="page-description"></p></header><div class="page-body"><nav id="bed6a926-cb16-42ee-badb-4029c37ab7ef" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#915e89e8-fb3c-445b-8629-3352bdb57458">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d8d45c3a-9f88-42b5-86c7-dc704b442dfc">Effect of Unsolved Grievances</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c8336f4f-854b-4139-8941-3d4d62675070">Sources of Grievance</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#6728d2a1-54c3-457c-bd13-f95738ded1eb">Steps for Informal Grievance Handling</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#05ba1ae7-7fcd-4d20-b54b-79ef4ec569d4">Some Pertinent Issues</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d7a7d975-1474-4229-8165-14b1534c02b7">Do(s) in Handling Grievances</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#30073f3d-a552-49ba-a661-8e31582ef419">Don’t(s) in Handling Grievances</a></div></nav><h1 id="915e89e8-fb3c-445b-8629-3352bdb57458" class="">Introduction</h1><ul id="3d585294-8d30-40c9-bb8e-98ad720e4d80" class="bulleted-list"><li style="list-style-type:disc">A grievance is anything that a person resents</li></ul><ul id="217fe514-84c1-4103-a890-9039d750a473" class="bulleted-list"><li style="list-style-type:disc">You should know how to prevent and how to handle</li></ul><ul id="c5785e86-5148-4961-9344-7e02bc485d6e" class="bulleted-list"><li style="list-style-type:disc">Strike - higher level of complaint</li></ul><ul id="adbf1872-93ce-4a11-82ca-987bfc7afd7b" class="bulleted-list"><li style="list-style-type:disc">If you want to resolve grievance, you need to know the cause of it</li></ul><ul id="004defa2-cbbe-4ec3-a22c-bafbda9c6a87" class="bulleted-list"><li style="list-style-type:disc">Any grievance - first try informally</li></ul><ul id="630871b1-eb5b-42ce-b170-5517ccc56b1e" class="bulleted-list"><li style="list-style-type:disc">Never take an unhappy employee for granted</li></ul><h1 id="d8d45c3a-9f88-42b5-86c7-dc704b442dfc" class="">Effect of Unsolved Grievances</h1><ul id="06599585-c73d-41d8-9141-97f99a571217" class="bulleted-list"><li style="list-style-type:disc">Lower morale</li></ul><ul id="247e0242-222d-4225-a21b-804b6c0a159d" class="bulleted-list"><li style="list-style-type:disc">Lack of interest in the job</li></ul><ul id="68c244ad-ba60-4f19-aae1-b38dd38ceea1" class="bulleted-list"><li style="list-style-type:disc">Increase in absenteeism</li></ul><ul id="1caf2274-9379-45bb-8c4c-0bb0490bfd58" class="bulleted-list"><li style="list-style-type:disc">Wastage of time</li></ul><ul id="8c8f4dd6-3e62-4d08-af90-d32e3b19e09f" class="bulleted-list"><li style="list-style-type:disc">Fall of quality</li></ul><ul id="96063e25-58ff-454f-993e-c25e34fc925a" class="bulleted-list"><li style="list-style-type:disc">Lower productivity</li></ul><ul id="d6546851-5da8-41b7-bbdc-23e5afdcc771" class="bulleted-list"><li style="list-style-type:disc">Bickering and quarrels</li></ul><ul id="b9cbe9ef-b623-4d08-8429-6d98edbad069" class="bulleted-list"><li style="list-style-type:disc">Poor employee relations</li></ul><ul id="e98567b6-3477-4895-bebb-2eba91d61b36" class="bulleted-list"><li style="list-style-type:disc">Extension of ambit</li></ul><ul id="c22ad8e9-92fb-4f85-972f-e59d244ef373" class="bulleted-list"><li style="list-style-type:disc">Sprouting → different groups in the organization</li></ul><h1 id="c8336f4f-854b-4139-8941-3d4d62675070" class="">Sources of Grievance</h1><ul id="ab63aaae-9891-4646-8716-e6829656ace2" class="bulleted-list"><li style="list-style-type:disc">Contract related</li></ul><ul id="f864b9de-1028-41bd-b4c0-d68dded11c5e" class="bulleted-list"><li style="list-style-type:disc">Job related - getting bullied, working conditions</li></ul><ul id="3cb598c6-b30d-45c9-806d-f76ac45fc162" class="bulleted-list"><li style="list-style-type:disc">Off the job conditions - not giving resources, fatigue, lack of patience, error in performance</li></ul><h1 id="6728d2a1-54c3-457c-bd13-f95738ded1eb" class="">Steps for Informal Grievance Handling</h1><ul id="6547462f-6e37-4657-89ff-baf0f98645dc" class="bulleted-list"><li style="list-style-type:disc">Locate the grievance</li></ul><ul id="232c136a-4614-4223-a05b-7b07e50f7673" class="bulleted-list"><li style="list-style-type:disc">hear the complaint<ul id="e05aeedb-e9eb-4c3f-b237-695ef35c22b0" class="bulleted-list"><li style="list-style-type:circle">Be non judgmental and find out frustrations etc. and listen to multiple sides of the story</li></ul></li></ul><ul id="e8d5dbb0-e09f-4da2-8542-7a0e475c72c2" class="bulleted-list"><li style="list-style-type:disc">Interview<ul id="644d7fa1-7d53-4d80-ad9b-9138e935b939" class="bulleted-list"><li style="list-style-type:circle">Tell them you are willing to listen</li></ul><ul id="e0343aae-56f8-46fd-9454-15df564780d3" class="bulleted-list"><li style="list-style-type:circle">You should not be reactive</li></ul></li></ul><ul id="b0a78317-6e20-4e89-b4ab-40527bc495a7" class="bulleted-list"><li style="list-style-type:disc">Get the facts<ul id="69258f02-a320-4799-be0e-148db75fc863" class="bulleted-list"><li style="list-style-type:circle">Don’t assume anything</li></ul><ul id="17166a49-3151-4e07-aeee-bbcb45ca427a" class="bulleted-list"><li style="list-style-type:circle">Check your understanding</li></ul><ul id="9557a825-c3ec-4fcc-8fdc-dbb15f2fb11d" class="bulleted-list"><li style="list-style-type:circle">tell when you will get back to them also in terms of when is the response</li></ul></li></ul><ul id="945a64b8-1a2d-4c53-b373-0d1b758c9e39" class="bulleted-list"><li style="list-style-type:disc">Diagnose the cause<ul id="89ed1c2b-f974-4ee3-85ec-b3df9f7e1d9f" class="bulleted-list"><li style="list-style-type:circle">Agree completely with the complainant</li></ul><ul id="00f78892-5ae4-410f-a990-d1ed0b91d54a" class="bulleted-list"><li style="list-style-type:circle">Do not agree to the employee completely</li></ul><ul id="195f965d-2256-47f3-8fe2-7df946a9e329" class="bulleted-list"><li style="list-style-type:circle">Need to be Investigate properly</li></ul><ul id="b421f03a-5406-45bf-a58d-b8500e0ced28" class="bulleted-list"><li style="list-style-type:circle">Agree to some parts but not all parts</li></ul></li></ul><ul id="300f9c14-b537-4a81-b290-3d428dcf819d" class="bulleted-list"><li style="list-style-type:disc">Plan the solution</li></ul><ul id="79b19c41-5043-42f8-a387-05455a25f10c" class="bulleted-list"><li style="list-style-type:disc">Apply the solution </li></ul><ul id="d79468df-d7aa-4673-ac10-fa50b1f75b2d" class="bulleted-list"><li style="list-style-type:disc">Check results</li></ul><h1 id="05ba1ae7-7fcd-4d20-b54b-79ef4ec569d4" class="">Some Pertinent Issues</h1><ul id="889a3c54-8ce9-4ede-a62d-2161b5af34e2" class="bulleted-list"><li style="list-style-type:disc">Training and delegated authority</li></ul><ul id="2df78b0b-2c7f-427b-8c2e-3da956482b4c" class="bulleted-list"><li style="list-style-type:disc">Importance of early settlement → quicker response always better</li></ul><ul id="26be125a-2e8c-4698-bdb0-d2483b4da4d6" class="bulleted-list"><li style="list-style-type:disc">Regarding grievances as opportunities</li></ul><ul id="57f420fd-5a4b-4b62-ada5-9c35eb907145" class="bulleted-list"><li style="list-style-type:disc">Watching for warning signs</li></ul><ul id="1e506f05-5669-4eea-b6b2-81285b554bb0" class="bulleted-list"><li style="list-style-type:disc">Learning from grievances</li></ul><ul id="b03ce3cc-3994-4bbc-bafe-e0a7b99ac785" class="bulleted-list"><li style="list-style-type:disc">Understanding the Union Representative’s role → more legal implications for the opponent → formal mechanism</li></ul><h1 id="d7a7d975-1474-4229-8165-14b1534c02b7" class="">Do(s) in Handling Grievances</h1><ul id="4ecf93a9-9deb-45c6-af96-57240cd56459" class="bulleted-list"><li style="list-style-type:disc">Investigate as if it will result in an arbitration</li></ul><ul id="1a3d3f4e-dd12-4fe5-8c4e-4a6fc2eae0ca" class="bulleted-list"><li style="list-style-type:disc">Discuss and give a full hearing</li></ul><ul id="dc5f1943-e1da-4969-a57b-10809bfb4504" class="bulleted-list"><li style="list-style-type:disc">Determine if the grievant was the proper individual to have filled the grievance</li></ul><ul id="d3530827-37ab-42a8-9f0c-2190ca59afab" class="bulleted-list"><li style="list-style-type:disc">Visit the work area of the grievant</li></ul><ul id="b62495a7-f956-4a28-878a-eee7571409b7" class="bulleted-list"><li style="list-style-type:disc">Determine if there were any witnesses</li></ul><ul id="7f87334e-1a36-47d5-a2b4-558e98cba58c" class="bulleted-list"><li style="list-style-type:disc">Determine if the company has been consistent</li></ul><ul id="4c44e2ca-94ff-4f78-b423-f424a4824587" class="bulleted-list"><li style="list-style-type:disc">Determine if there has been equal treatment of employees</li></ul><ul id="81b50cba-214d-4116-8296-a0afd1067920" class="bulleted-list"><li style="list-style-type:disc">Examine the grievant’s personal record</li></ul><ul id="6cd12180-f91c-466d-8c08-40708a06598b" class="bulleted-list"><li style="list-style-type:disc">Evaluate any political connotations of the grievance</li></ul><ul id="c79b137c-395b-48b1-a648-5edefb83a51a" class="bulleted-list"><li style="list-style-type:disc">Permit a full hearing of the issues</li></ul><ul id="ffbce655-9a11-4654-aa87-689f0e732937" class="bulleted-list"><li style="list-style-type:disc">Admin your errors and take corrective action</li></ul><ul id="94dc7850-c460-42df-8885-a750b3a1f879" class="bulleted-list"><li style="list-style-type:disc">Advise the grievant of your corrective action</li></ul><ul id="806b1d94-7d75-4092-9a12-574fa52e4dcf" class="bulleted-list"><li style="list-style-type:disc">Hold your grievance discussions privately</li></ul><ul id="f68fff78-fb51-4113-9b5f-76689bb3b153" class="bulleted-list"><li style="list-style-type:disc">Use grievance settlements to reinforce your relationships</li></ul><ul id="7fa4b5bf-ae5b-41dd-9197-3806e2c52ef8" class="bulleted-list"><li style="list-style-type:disc">Use the grievance meeting as another avenue of communication</li></ul><ul id="8185f083-b543-4860-ba96-212e8e3fc920" class="bulleted-list"><li style="list-style-type:disc">Treat union reps and employees as people</li></ul><ul id="75949d15-c6dc-42b5-88d2-e3a436b39bf0" class="bulleted-list"><li style="list-style-type:disc">Help employees understand economic realities</li></ul><ul id="39bd28a6-db79-43a5-822f-ca37b64cf599" class="bulleted-list"><li style="list-style-type:disc">Know your employees as individuals. Demonstrate qualities of leadership to your subordinates</li></ul><ul id="2f7404d1-3ef7-451d-aef5-093db4d22871" class="bulleted-list"><li style="list-style-type:disc">Handle discipline situations correctly from beginning to end</li></ul><ul id="893f7a9c-842d-46d7-b2fc-64ebcf98898a" class="bulleted-list"><li style="list-style-type:disc">Control your emotions, your remarks, your behavior</li></ul><ul id="1c1b6453-1434-43a0-a8f8-09b593c050f0" class="bulleted-list"><li style="list-style-type:disc">Fully inform your own supervisor of grievance matters</li></ul><h1 id="30073f3d-a552-49ba-a661-8e31582ef419" class="">Don’t(s) in Handling Grievances</h1><ul id="b54ee80a-ffd6-4b2d-a4e4-c6168c832bea" class="bulleted-list"><li style="list-style-type:disc">Argue the merits of the grievance first if the grievance is untimely</li></ul><ul id="91b18c70-bcfd-4e05-b42d-c8e99f4ec522" class="bulleted-list"><li style="list-style-type:disc">Make agreements with individuals that are inconsistent with the labor agreement</li></ul><ul id="d754cde2-6f4b-4b4e-89ca-3ec24ec1d7d3" class="bulleted-list"><li style="list-style-type:disc">Apply the grievance remedy to an improper grievant</li></ul><ul id="74b6b0f8-bf74-47a7-ae66-fc4e409ccfbf" class="bulleted-list"><li style="list-style-type:disc">Hold back the remedy if the company is wrong</li></ul><ul id="c44dd9ec-6633-4854-9193-5fdda64b32a7" class="bulleted-list"><li style="list-style-type:disc">Admit to the binding effect of a past practice</li></ul><ul id="03caad87-390f-4b83-99b0-9d30350937c3" class="bulleted-list"><li style="list-style-type:disc">Settle grievance based on what is fair</li></ul><ul id="6222ce41-2fe1-485a-951a-5e9a7717e62e" class="bulleted-list"><li style="list-style-type:disc">Make mutual consent agreements regarding future actions</li></ul><ul id="9b820ef5-d443-4f06-b3d7-8f23a3909cba" class="bulleted-list"><li style="list-style-type:disc">Argue grievance issues off work premises</li></ul><ul id="ff56cb7c-1941-449b-93ce-0c85be7a8319" class="bulleted-list"><li style="list-style-type:disc">Commit the company in areas beyond your limits of responsibility or familiarity</li></ul><ul id="5df5af35-6dc2-4cbb-9f09-983cc017a7e5" class="bulleted-list"><li style="list-style-type:disc">Give away your copy of the written grievance</li></ul><ul id="e40667a7-fa79-4959-be72-db041b47fe2f" class="bulleted-list"><li style="list-style-type:disc">Settle a grievance while in doubt</li></ul><ul id="85d0ab7f-f227-4af1-9130-2305dbd19b3b" class="bulleted-list"><li style="list-style-type:disc">Support another supervisor in a hopeless case</li></ul><ul id="0f954174-2665-4fb3-a786-a6df4f34703c" class="bulleted-list"><li style="list-style-type:disc">Refer the grievant to a different forum of adjudication</li></ul><ul id="6b3afe34-bbc1-4358-bf57-429e6977191b" class="bulleted-list"><li style="list-style-type:disc">Overlook the precedent value of prior grievance settlements</li></ul><ul id="f2898fce-0d3c-4ed6-ab9d-7cb0c9a2e541" class="bulleted-list"><li style="list-style-type:disc">Give long written grievance answers</li></ul><ul id="b1874b25-8881-4bf7-a551-fed1694b4bfe" class="bulleted-list"><li style="list-style-type:disc">Trade a grievance settlement for a grievance withdrawal</li></ul><ul id="95651f7c-a950-4632-baf3-acc8cca51c14" class="bulleted-list"><li style="list-style-type:disc">Inconvenience production operations to facilitate grievance handling</li></ul><ul id="04dbd679-9207-4116-88c2-11acffcb245f" class="bulleted-list"><li style="list-style-type:disc">Deny grievances on the premise that the management has tied your hands</li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
