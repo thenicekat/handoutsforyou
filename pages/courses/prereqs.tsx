@@ -76,7 +76,7 @@ export default function Prereqs({ prereqs }: { prereqs: PreReqGroup[] }) {
                                 :
                                 <p>No Prerequisites</p>
                         }
-                        Note: You will have to do <b>{prereq?.all_one.toLowerCase()}</b> of the above courses
+                        {prereq?.all_one && <>Note: You will have to do <b>{prereq?.all_one.toLowerCase()}</b> of the above courses</>}
                         <br />
                     </div>
                     <div className="modal-action">
