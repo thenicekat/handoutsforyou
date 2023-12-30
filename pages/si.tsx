@@ -10,6 +10,10 @@ export default function PS({ }: any) {
 
     const chronicles = [
         {
+            name: "Summer Internship Guide: Harshit Juneja",
+            link: "https://docs.google.com/document/d/1q6i_IVYwhOSpt8IpyrT4n5N4DfDi4oq0r-pBTsWebjE/edit?usp=sharing"
+        },
+        {
             name: "2020-2021",
             link: "https://github.com/Divyateja04/handoutsforyou/raw/main/public/si/20-21.pdf"
         },
