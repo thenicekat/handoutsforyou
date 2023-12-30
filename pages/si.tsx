@@ -14,15 +14,15 @@ export default function PS({ }: any) {
             link: "https://docs.google.com/document/d/1q6i_IVYwhOSpt8IpyrT4n5N4DfDi4oq0r-pBTsWebjE/edit?usp=sharing"
         },
         {
-            name: "2020-2021",
+            name: "SI Chronicles 2020-2021",
             link: "https://github.com/Divyateja04/handoutsforyou/raw/main/public/si/20-21.pdf"
         },
         {
-            name: "2021-2022",
+            name: "SI Chronicles 2021-2022",
             link: "https://github.com/Divyateja04/handoutsforyou/raw/main/public/si/21-22.pdf"
         },
         {
-            name: "2022-2023",
+            name: "SI Chronicles 2022-2023",
             link: "https://github.com/Divyateja04/handoutsforyou/raw/main/public/si/22-23.pdf"
         }
     ]
@@ -60,7 +60,7 @@ export default function PS({ }: any) {
                         <div key={chronicle.link} className='m-2 py-1 rounded-xl'>
                             <div className="alert shadow-sm">
                                 <div>
-                                    <span>SI Chronicles {chronicle.name}</span>
+                                    <span>{chronicle.name}</span>
                                 </div>
                                 <div className="flex-none">
                                     <button className="btn btn-primary" onClick={
