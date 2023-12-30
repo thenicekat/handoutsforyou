@@ -53,6 +53,8 @@ export default function Home({ handoutsMap }: any) {
           <Menu current={"home"} />
           {session && <input type="text" placeholder="Search..." className="input input-bordered w-full max-w-xs" onChange={e => setSearch(e.target.value)} />}
         </div>
+
+        <div className="w-[70vw] place-items-center flex flex-col justify-between m-2">Please note, the handouts might not open in jio network. You might have to change your dns settings</div>
       </div>
 
       {/* Handouts List */}
