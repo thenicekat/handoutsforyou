@@ -58,7 +58,7 @@ export default function Reviews({ }: {}) {
                         <span className="m-2"></span>
                         <AutoCompleter name={"Prof"} items={profs} value={prof} onChange={(val) => setProf(val)} />
 
-                        <div className="flex w-1/2 justify-center">
+                        <div className="flex flex-col md:flex-row w-1/2 justify-center">
                             <Link className="m-3 w-full" href={"/courses/addreview"}>
                                 <button className="btn btn-outline w-full">
                                     Add a Review
