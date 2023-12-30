@@ -46,7 +46,7 @@ export default function PS({ ps2_chronicles }: any) {
                     />
                 </div>
 
-                <div className="flex w-1/2 justify-center">
+                <div className="flex flex-col md:flex-row w-1/2 justify-center">
                     <Link className="m-3 w-full" href={"/ps/ps1_data"}>
                         <button className="btn btn-outline w-full">
                             PS1 CGPA Cutoffs
