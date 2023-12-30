@@ -61,11 +61,14 @@ National Instruments<|>National Instruments (Bangalore)<|>National Instruments S
 -   Use this to convert the excel TTD puts out on cms regarding prereqs to a json format
 -   I don't think you'll need to use this for a long long time :)
 
-## Contributors
+## Contributors - Developers
 
 1. Divyateja Pasupuleti
 2. Adarsh Das
-3. Vashisth Choudhari
-4. Ruban Srirambabu
-5. Mahith Tunuguntula
-6. Namit Bhutani
+3. Namit Bhutani
+
+## Contributors - Content
+
+1. Vashisth Choudhari
+2. Ruban Srirambabu
+3. Mahith Tunuguntula
