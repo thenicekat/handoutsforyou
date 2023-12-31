@@ -27,7 +27,7 @@ const Autocomplete = (props: Props) => {
         >
             <input
                 type="text"
-                className="input input-bordered w-full"
+                className="input input-secondary w-full"
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
                 placeholder={`Search for ${name}...`}
