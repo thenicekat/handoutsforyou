@@ -119,7 +119,7 @@ export default function Notes() {
                 <div className='w-[70vw] place-items-center flex flex-col justify-between'>
                     <h1 className='text-6xl pt-[50px] pb-[20px] px-[35px] text-primary'>Notes and Resources.</h1>
                     <Menu current={"notes"} />
-                    {session && <input type="text" placeholder="Search..." className="input input-bordered w-full max-w-xs" onChange={e => setInput(e.target.value)} />}
+                    {session && <input type="text" placeholder="Search..." className="input input-secondary w-full max-w-xs" onChange={e => setInput(e.target.value)} />}
                 </div>
             </div>
 

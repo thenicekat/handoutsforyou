@@ -161,7 +161,7 @@ export default function Faqs() {
 
                     <Menu current={"faqs"} />
 
-                    <input type="text" placeholder="Search the faqs..." className="input input-bordered w-full max-w-xs" onChange={e => setInput(e.target.value)} />
+                    <input type="text" placeholder="Search the faqs..." className="input input-secondary w-full max-w-xs" onChange={e => setInput(e.target.value)} />
                 </div>
             </div>
 

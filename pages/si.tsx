@@ -48,7 +48,7 @@ export default function PS({ }: any) {
                     {session && <input
                         type="text"
                         placeholder="Search..."
-                        className="input input-bordered w-full max-w-xs"
+                        className="input input-secondary w-full max-w-xs"
                         onChange={(e) => setSearch(e.target.value)}
                     />}
                 </div>
