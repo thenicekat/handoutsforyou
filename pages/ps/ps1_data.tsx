@@ -63,14 +63,14 @@ export default function PS2() {
                         <input
                             type="text"
                             placeholder="Filter using CGPA..."
-                            className="input input-bordered w-full max-w-xs m-3"
+                            className="input input-secondary w-full max-w-xs m-3"
                             onChange={(e) => setCGPA(parseFloat(e.target.value))}
                         />
 
                         <input
                             type="text"
                             placeholder="Search for Company..."
-                            className="input input-bordered w-full max-w-xs m-3"
+                            className="input input-secondary w-full max-w-xs m-3"
                             onChange={(e) => setSearch(e.target.value)}
                         />
 
