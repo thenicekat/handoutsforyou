@@ -31,6 +31,10 @@ export default function Reviews({ }: {}) {
     }
 
     useEffect(() => {
+        fetchReviews()
+    }, [])
+
+    useEffect(() => {
         localStorage.setItem("h4u_course", course)
         localStorage.setItem("h4u_prof", prof)
     })
@@ -81,11 +85,11 @@ export default function Reviews({ }: {}) {
                     <div className="flex justify-center">
                         <h1 className="text-3xl text-primary">Total Reviews: {reviews.length}</h1>
                     </div>
-                    <div className="flex justify-center m-3">
+                    {/* <div className="flex justify-center m-3">
                         <h3>
                             Please enter your criteria! Supports prof based search and course based search as well.
                         </h3>
-                    </div>
+                    </div> */}
                     <div className='px-2 md:px-20 p-2'>
                         {
                             !isLoading ?
