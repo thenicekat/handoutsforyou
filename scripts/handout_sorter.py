@@ -2,10 +2,10 @@
 18 19 Sem 2 Done
 19 20 Sem 1 Done
 19 20 Sem 2 Done
-20 21 Sem 1 lite
-20 21 Sem 2 lite
-21 22 Sem 1 lite
-21 22 Sem 2 lite
+20 21 Sem 1 
+20 21 Sem 2 
+21 22 Sem 1 Done
+21 22 Sem 2 Done
 22 23 Sem 1 Done
 22 23 Sem 2 Done
 23 24 Sem 1
