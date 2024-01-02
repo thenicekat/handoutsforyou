@@ -1,5 +1,6 @@
 """
-Script to add reviews to the database
+@author: Divyateja Pasupuleti
+@about: Script to add reviews to the database
 """
 import os
 from supabase import create_client, Client
@@ -7,8 +8,8 @@ import dotenv
 
 dotenv.load_dotenv(dotenv_path="./../.env.local")
 
-url: str = os.environ.get("NEXT_PUBLIC_SUPABASE_URL")
-key: str = os.environ.get("NEXT_PUBLIC_SUPABASE_API_KEY")
+url: str = os.environ.get("SUPABASE_URL")
+key: str = os.environ.get("SUPABASE_API_KEY")
 supabase: Client = create_client(url, key)
 
 course = ""

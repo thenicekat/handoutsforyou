@@ -1,3 +1,8 @@
+"""
+@author: Divyateja Pasupuleti
+@about: Convert prereqs.csv to prereqs.json
+"""
+
 import math
 import pandas as pd
 
