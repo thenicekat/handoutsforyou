@@ -93,7 +93,7 @@ export default function SICompanies() {
                                 SIData
                                     .filter((d: SI_Company) => d.name.toLowerCase().includes(search.toLowerCase()) || d.roles.toLowerCase().includes(search.toLowerCase()))
                                     .map((station: SI_Company) => (
-                                        <div className="collapse collapse-plus py-1 m-2 rounded-xl bg-secondary">
+                                        <div className="collapse collapse-plus py-1 m-2 rounded-xl bg-secondary" key={station.name + station.roles}>
                                             <input type="checkbox" className="peer" />
                                             <div className="collapse-title bg-secondary text-primary">
                                                 {station.name.toUpperCase()}: {station.roles.toUpperCase()}
