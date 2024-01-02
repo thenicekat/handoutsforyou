@@ -1,4 +1,7 @@
-# This script converts a csv to custom json format
+"""
+@author: Divyateja Pasupuleti
+@about: Converts a csv file containing PS data into necessary format and pushes it to supabase 
+"""
 import pandas as pd
 import json
 import base64

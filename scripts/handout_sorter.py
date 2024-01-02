@@ -1,4 +1,7 @@
 """
+@author: Divyateja Pasupuleti
+@about: Sort handouts from the cms rips folder into a handout folder
+
 18 19 Sem 2 Done
 19 20 Sem 1 Done
 19 20 Sem 2 Done
