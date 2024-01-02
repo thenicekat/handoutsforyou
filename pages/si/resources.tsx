@@ -1,10 +1,10 @@
 import { GetStaticProps } from "next";
 import Head from "next/head";
 import { useState } from "react";
-import Menu from "../Components/Menu";
+import Menu from "../../Components/Menu";
 import { useSession } from "next-auth/react";
 
-export default function PS({ }: any) {
+export default function SI({ }: any) {
     const [search, setSearch] = useState("");
     const { data: session } = useSession()
 
