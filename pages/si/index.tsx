@@ -99,7 +99,7 @@ export default function SICompanies() {
                                                 {station.name.toUpperCase()}: {station.roles.toUpperCase()}
                                             </div>
                                             <div className="collapse-content bg-secondary text-primary">
-                                                <ul className="m-1">
+                                                <ul className="m-1 list-disc">
                                                     <li>CGPA Cutoff: {station.cgpa_cutoff}</li>
                                                     <li>Roles: {station.roles}</li>
                                                     <li>Stipend: {station.stipend}</li>
