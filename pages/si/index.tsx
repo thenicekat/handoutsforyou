@@ -95,7 +95,7 @@ export default function SICompanies() {
                                     .map((station: SI_Company) => (
                                         <div className="collapse collapse-plus py-1 m-2 rounded-xl bg-secondary" key={station.name + station.roles}>
                                             <input type="checkbox" className="peer" />
-                                            <div className="collapse-title bg-secondary text-primary">
+                                            <div className="collapse-title bg-secondary text-primary font-bold text-lg">
                                                 {station.name.toUpperCase()}: {station.roles.toUpperCase()}
                                             </div>
                                             <div className="collapse-content bg-secondary text-primary">
