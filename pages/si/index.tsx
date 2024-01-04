@@ -83,6 +83,8 @@ export default function SICompanies() {
                         </Link>
                     </>}
                 </div>
+
+                <div className="w-[70vw] place-items-center flex flex-col justify-between m-2">NOTE: This content was scrapped from SI Chronicles and belongs to Placement Unit</div>
             </div>
 
             {session &&
