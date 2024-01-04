@@ -8,3 +8,9 @@ export type SI_Company = {
     selection_rounds: string,
     year: string
 }
+
+export type SI_Chronicle = {
+    name: string,
+    cgpa: string,
+    text: string
+}
