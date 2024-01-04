@@ -110,11 +110,14 @@ export default function SICompanies() {
                                                     <li>Selects: {station.selects}</li>
                                                 </ul>
 
-                                                {/* <div className="my-4">
-                                                    <button className="btn btn-outline" onClick={
-                                                        () => window.open(station.link)
-                                                    }>View Chronicles</button>
-                                                </div> */}
+                                                <div className="my-4">
+                                                    <button className="btn btn-outline"
+                                                        onClick={() => {
+                                                            window.location.href = `/si/chronicles/${yearRef}_${station.name}`
+                                                        }}>
+                                                        View Chronicles
+                                                    </button>
+                                                </div>
                                             </div>
 
                                         </div>
