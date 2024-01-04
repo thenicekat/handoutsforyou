@@ -6,13 +6,25 @@ import os
 from supabase import create_client, Client
 import dotenv
 import json
+import argparse
+
+parser = argparse.ArgumentParser(description="Add SI chronicles to the database")
+parser.add_argument("--insert", action="store_true", help="Insert data into the database")
+args = parser.parse_args()
+
+if args.insert:
+    insert = True
+else:
+    insert = False
+    
+print(f"Inserting data: {insert}")
 
 dotenv.load_dotenv(dotenv_path="../.env.local")
 
 url: str = os.environ.get("SUPABASE_URL")
 key: str = os.environ.get("SUPABASE_SERVICE_KEY")
 supabase: Client = create_client(url, key)
-year: str = "2020-2021"
+year: str = "2021-2022"
 
 with open("SI.json", "r") as f:
     si_chronicles = json.load(f)
@@ -37,13 +49,16 @@ for company in si_chronicles.keys():
             cgpa_cutoff = si_chronicles[company]["CGPA cutoff"].strip()
         except:
             try:
-                cgpa_cutoff = si_chronicles[company]["CGPA cut off"].strip()
+                cgpa_cutoff = si_chronicles[company]["CGPA Cutoff"].strip()
             except:
                 try:
                     cgpa_cutoff = si_chronicles[company]["CGPA"].strip()
                 except:
-                    print(f"Error with cutoff: {company}")
-                    cgpa_cutoff = "NA"
+                    try:
+                        cgpa_cutoff = si_chronicles[company]["CGPA Cut-off "].strip()
+                    except:
+                        print(f"Error with cutoff: {company}")
+                        cgpa_cutoff = "NA"
             
     # Get roles
     try:
@@ -74,16 +89,17 @@ for company in si_chronicles.keys():
                 print(f"Error: {company}")
                 break
     
-    # supabase.table("si_companies").insert({
-    #     "name": name,
-    #     "eligibility": eligibility,
-    #     "cgpa_cutoff": cgpa_cutoff,
-    #     "roles": roles,
-    #     "selects": selects,
-    #     "selection_rounds": selection_rounds,
-    #     "stipend": stipend,
-    #     "year": year
-    # }).execute()
+    if insert:
+        supabase.table("si_companies").insert({
+            "name": name,
+            "eligibility": eligibility,
+            "cgpa_cutoff": cgpa_cutoff,
+            "roles": roles,
+            "selects": selects,
+            "selection_rounds": selection_rounds,
+            "stipend": stipend,
+            "year": year
+        }).execute()
     
     chronicles = si_chronicles[company]["data"]
     for chronicle in chronicles:
@@ -104,5 +120,6 @@ for company in si_chronicles.keys():
                 chronicle_data["role"] = chronicle[key]["Role"].strip()
                 
             chronicle_data["text"] = chronicle[key]["Text"].strip()
-            
-        # supabase.table("si_chronicles").insert(chronicle_data).execute()
+        
+        if insert:  
+            supabase.table("si_chronicles").insert(chronicle_data).execute()
