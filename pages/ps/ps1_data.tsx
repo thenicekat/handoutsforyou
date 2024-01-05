@@ -104,7 +104,7 @@ export default function PS2() {
                                     .sort((a: PS_Station, b: PS_Station) => b.min_cgpa - a.min_cgpa)
                                     .map((station: PS_Station) => (
                                         <div className="py-1 m-2 rounded-xl" key={(station.name as string) + station.year}>
-                                            <div className="alert shadow-sm">
+                                            <div className="alert ">
                                                 <div>
                                                     <span>{(station.name as string).toUpperCase()}</span>
                                                 </div>

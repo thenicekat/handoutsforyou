@@ -69,7 +69,7 @@ export default function PS({ ps2_chronicles }: any) {
                         {
                             ps2_chronicles.filter((d: string) => d.toLowerCase().includes(search.toLowerCase())).map((chron: string) => (
                                 <div key={chron} className='m-2 py-1 rounded-xl'>
-                                    <div className="alert shadow-sm">
+                                    <div className="alert ">
                                         <div>
                                             <span>PS2 Chronicles {chron.split(" ")[0]} Semester {chron.split(" ")[1]}</span>
                                         </div>
