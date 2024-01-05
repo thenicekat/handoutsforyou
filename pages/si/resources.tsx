@@ -58,7 +58,7 @@ export default function SI({ }: any) {
                 {
                     chronicles.filter(d => d.name.toLowerCase().includes(search.toLowerCase())).map(chronicle => (
                         <div key={chronicle.link} className='m-2 py-1 rounded-xl'>
-                            <div className="alert shadow-sm">
+                            <div className="alert ">
                                 <div>
                                     <span>{chronicle.name}</span>
                                 </div>
