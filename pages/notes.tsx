@@ -30,6 +30,10 @@ export default function Notes() {
             link: "https://drive.google.com/drive/u/1/folders/1bwrDhP2x5CgUouikrFy9u95-qvKuwrBu"
         },
         {
+            name: "Applied Statistical Methods - ASM Notes",
+            link: "https://drive.google.com/file/d/1GZivXmSxGs3vkOyBnhwc2RxM4CGJ5Ovn/view?usp=sharing"
+        },
+        {
             name: "Object Oriented Programming - OOPL Notes",
             link: "/notes/OOP/ooplovesyou.html"
         },
