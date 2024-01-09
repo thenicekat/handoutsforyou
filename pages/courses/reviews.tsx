@@ -104,6 +104,7 @@ export default function Reviews({ }: {}) {
                                             <div className="card-body">
                                                 <h2 className="card-title text-center">Course Name: {review.course} by Professor: {review.prof}</h2>
                                                 <p>{review.review}</p>
+                                                <p className="italic">Submitted at: {new Date(review.created_at).toLocaleString("en-IN", {})}</p>
                                             </div>
                                         </div>
                                     )) :
