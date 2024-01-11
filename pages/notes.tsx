@@ -18,16 +18,21 @@ export default function Notes() {
             link: "https://hyderabadbitspilaniacin0-my.sharepoint.com/:f:/g/personal/f20210075_hyderabad_bits-pilani_ac_in/EjmBjVxy6AJDh3ZAIgaiMsUBqr8bEQp1r3IPdI4PtD5ZkA?e=sgO558"
         },
         {
-            name: "Sudhanshu's 2-1 Phoenix Resources - EM, EMT, ED, DD, Intro to Dev Studies, EVS",
+            name: "All Semester - ECE Course Resources",
+            link: "https://hyderabadbitspilaniacin0-my.sharepoint.com/:f:/g/personal/f20210564_hyderabad_bits-pilani_ac_in/EuVYwVBzBxxGvdJmu0TEcnUBnrC0IbcVbz9fUtEWrlxU8Q?e=fA5Kuv"
+        },
+        {
+            name: "All - Semester - Mechanical Course Resources",
+            link: "https://drive.google.com/drive/u/1/folders/1bwrDhP2x5CgUouikrFy9u95-qvKuwrBu"
+        },
+
+        {
+            name: "2-1 Phoenix Resources - EM, EMT, ED, DD, Intro to Dev Studies, EVS",
             link: "https://drive.google.com/drive/folders/1YWAHsJySYLsQVkQtS-B45JoWUFcuCjBc?usp=share_link"
         },
         {
-            name: "Sudhanshu's 2-2 Phoenix Resources - Consys, Mass Comm, MEC, MPi, POE, Pop Lit",
+            name: "2-2 Phoenix Resources - Consys, Mass Comm, MEC, MPi, POE, Pop Lit",
             link: "https://drive.google.com/drive/folders/1_f1yZnfg1ATSluRBBwNu6hnPyyGX0sVz?usp=drive_link"
-        },
-        {
-            name: "Mahith's Mechanical Resources",
-            link: "https://drive.google.com/drive/u/1/folders/1bwrDhP2x5CgUouikrFy9u95-qvKuwrBu"
         },
         {
             name: "Applied Statistical Methods - ASM Notes",
