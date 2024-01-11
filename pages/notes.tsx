@@ -25,7 +25,6 @@ export default function Notes() {
             name: "All - Semester - Mechanical Course Resources",
             link: "https://drive.google.com/drive/u/1/folders/1bwrDhP2x5CgUouikrFy9u95-qvKuwrBu"
         },
-
         {
             name: "2-1 Phoenix Resources - EM, EMT, ED, DD, Intro to Dev Studies, EVS",
             link: "https://drive.google.com/drive/folders/1YWAHsJySYLsQVkQtS-B45JoWUFcuCjBc?usp=share_link"
@@ -60,7 +59,7 @@ export default function Notes() {
         },
         {
             name: "Machine Learning - ML Notes",
-            link: "/notes/ML Notes.pdf"
+            link: "https://github.com/Divyateja04/handoutsforyou/raw/main/public/notes/ML Notes.pdf"
         },
         {
             name: "C Programming - CP Notes",
