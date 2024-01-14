@@ -8,7 +8,7 @@ import Menu from "../Components/Menu";
 const HandoutsPerYear = dynamic(() => import("./../Components/HandoutsPerYear"), {
   loading: () => (
     <div className="grid place-items-center">
-      <p className="text-xl"></p>
+      <p className="text-xl m-3"><span className="loading loading-bars loading-md"></span></p>
     </div>
   ),
 });
@@ -46,15 +46,14 @@ export default function Home({ handoutsMap }: any) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+
       {/* Search box */}
       <div className="grid place-items-center">
         <div className="w-[70vw] place-items-center flex flex-col justify-between">
-          <h1 className="text-6xl pt-[50px] pb-[20px] px-[35px] text-primary">Handouts For You.</h1>
+          <h1 className="text-6xl pt-[50px] pb-[20px] px-[35px] text-primary">Handouts.</h1>
           <Menu current={"home"} />
           {session && <input type="text" placeholder="Search..." className="input input-secondary w-full max-w-xs" onChange={e => setSearch(e.target.value)} />}
         </div>
-
-        <div className="w-[70vw] place-items-center flex flex-col justify-between m-2">NOTE: Handouts do not open in jio. You have to change your dns settings</div>
       </div>
 
       {/* Handouts List */}
