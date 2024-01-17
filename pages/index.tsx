@@ -68,7 +68,7 @@ export default function Home({ handoutsMap }: any) {
               <input type="text" placeholder="Search..." className="input input-secondary w-full max-w-xs" onChange={e => setSearch(e.target.value)} />
               <Link className="m-3 w-full max-w-xs" href={""}>
                 <button className="btn btn-outline w-full" onClick={fetchHandouts}>
-                  Fetch Handouts
+                  Filter Handouts
                 </button>
               </Link>
             </>}
