@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import Link from 'next/link'
 import { signIn, signOut, useSession } from 'next-auth/react'
 import Footer from './Footer'
+import AutoCompleter from './AutoCompleter'
+import classNames from 'classnames'
 
 type Props = {
     current: String
@@ -9,69 +11,78 @@ type Props = {
 
 const Menu = (props: Props) => {
     const { data: session } = useSession()
-    const [menu, setMenu] = React.useState(false)
+    const [open, setOpen] = React.useState(false);
+    const ref = useRef<HTMLDivElement>(null);
 
-    const toggleMenu = () => {
-        setMenu(!menu)
+    const menuItems: any = {
+        "Handouts": "/",
+        "Notes and Resources": "/notes",
+        "Course Reviews": "/courses/reviews",
+        "Summer Internships": "/si",
+        "Add your Content": "https://forms.gle/5Q2Ek3TNGmAx2Rn46",
+        "Practice School": "/ps",
+        "Course Prereqs": "/courses/prereqs",
+        "Info. about Minors": "/minors.html"
     }
+
 
     return (
         <>
-            <button className="btn btn-outline w-1/4 m-3 md:hidden" onClick={() => toggleMenu()}>
-                Menu
-            </button>
+            <div
+                // use classnames here to easily toggle dropdown open 
+                className={classNames({
+                    "dropdown w-1/2": true,
+                    "dropdown-open": open,
+                })}
+                ref={ref}
+            >
+                <input
+                    type="text"
+                    className="input input-secondary w-full"
+                    placeholder={`Where do you want to go?`}
+                    tabIndex={0}
+                />
 
-            <div className={`${menu ? 'grid' : 'hidden'} md:grid md:grid-cols-4 justify-around`}>
-                <Link className="m-3" href={"/"}>
-                    <button className="btn btn-outline w-full">
-                        Handouts
-                    </button>
-                </Link>
-
-                <Link className="m-3" href={"/notes"}>
-                    <button className="btn btn-outline w-full">
-                        Notes and Resources
-                    </button>
-                </Link>
-
-                <Link className="m-3" href={"/courses/reviews"}>
-                    <button className="btn btn-outline w-full">
-                        Course Reviews
-                    </button>
-                </Link>
-
-                <Link className="m-3" href={"/si"}>
-                    <button className="btn btn-outline w-full">
-                        Summer Internships
-                    </button>
-                </Link>
-
-                <Link className="m-3" href={"https://forms.gle/5Q2Ek3TNGmAx2Rn46"} target='_blank'>
-                    <button className="btn btn-outline w-full">
-                        Add your Content
-                    </button>
-                </Link>
-
-                <Link className="m-3" href={"/ps"}>
-                    <button className="btn btn-outline w-full">
-                        Practice School
-                    </button>
-                </Link>
-
-                <Link className="m-3" href={"/courses/prereqs"}>
-                    <button className="btn btn-outline w-full">
-                        Course Prereqs
-                    </button>
-                </Link>
-
-                <Link className="m-3" href={"/minors.html"}>
-                    <button className="btn btn-outline w-full">
-                        Info. about Minors
-                    </button>
-                </Link>
+                {/* add this part */}
+                <div className="dropdown-content bg-base-200 z-50 top-14 max-h-96 overflow-auto flex-col rounded-md">
+                    <ul
+                        className="menu menu-compact "
+                        // use ref to calculate the width of parent
+                        style={{ width: ref.current?.clientWidth }}
+                    >
+                        {Object.keys(menuItems)
+                            .filter((item) => item.toLowerCase())
+                            .map((item, index) => {
+                                return (
+                                    <li
+                                        key={index}
+                                        tabIndex={index + 1}
+                                        onClick={() => {
+                                            window.open(menuItems[item], "_blank")
+                                        }}
+                                        className="border-b border-b-base-content/10 w-full"
+                                    >
+                                        <button className="uppercase">{item}</button>
+                                    </li>
+                                );
+                            })}
+                    </ul>
+                    {/* add this part */}
+                </div>
             </div>
 
-            <div className="grid md:grid-cols-3 justify-around">
+            {/* <div className={`${menu ? 'grid' : 'hidden'} md:grid md:grid-cols-4 justify-around`}>
+                {Object.keys(menuItems).map(
+                    (menuItem) =>
+                        <Link className="m-3" href={menuItems[menuItem]} target='_blank'>
+                            <button className="btn btn-outline w-full">
+                                {menuItem}
+                            </button>
+                        </Link>
+                )}
+            </div> */}
+
+            < div className="grid md:grid-cols-3 justify-around" >
                 {
                     !session
                         ?
@@ -81,9 +92,10 @@ const Menu = (props: Props) => {
                         :
                         <Link href={"#"} className={`m-3 col-span-3`}>
                             <button className="btn btn-outline w-full" onClick={() => signOut()}>Sign Out</button>
+
                         </Link>
                 }
-            </div>
+            </div >
         </>)
 }
 
