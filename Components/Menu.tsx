@@ -31,7 +31,7 @@ const Menu = (props: Props) => {
             <div
                 // use classnames here to easily toggle dropdown open 
                 className={classNames({
-                    "dropdown w-1/2": true,
+                    "dropdown w-full md:w-1/2": true,
                     "dropdown-open": open,
                 })}
                 ref={ref}
@@ -60,7 +60,7 @@ const Menu = (props: Props) => {
                                         onClick={() => {
                                             window.open(menuItems[item])
                                         }}
-                                        className="border-b border-b-base-content/10 w-full"
+                                        className="border-b border-b-base-content/10 w-full p-2"
                                     >
                                         <button className="uppercase">{item}</button>
                                     </li>
