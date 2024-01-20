@@ -58,7 +58,7 @@ const Menu = (props: Props) => {
                                         key={index}
                                         tabIndex={index + 1}
                                         onClick={() => {
-                                            window.open(menuItems[item], "_blank")
+                                            window.open(menuItems[item])
                                         }}
                                         className="border-b border-b-base-content/10 w-full"
                                     >
