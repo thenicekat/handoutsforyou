@@ -37,7 +37,7 @@ const Menu = (props: Props) => {
             <div className={`${menu ? 'grid' : 'hidden'} md:grid md:grid-cols-4 justify-around`}>
                 {Object.keys(menuItems).map(
                     (menuItem) =>
-                        <Link className="m-3" href={menuItems[menuItem]} target='_blank'>
+                        <Link className="m-3" href={menuItems[menuItem]}>
                             <button className="btn btn-outline w-full">
                                 {menuItem}
                             </button>
