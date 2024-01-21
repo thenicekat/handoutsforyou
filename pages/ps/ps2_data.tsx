@@ -104,12 +104,14 @@ export default function PS2() {
                                     .sort((a: PS_Station, b: PS_Station) => b.min_cgpa - a.min_cgpa)
                                     .map((station: PS_Station) => (
                                         <div className="py-1 m-2 rounded-xl" key={(station.name as string) + station.year}>
-                                            <div className="alert ">
-                                                <div>
-                                                    <span>{(station.name as string).toUpperCase()}</span>
-                                                </div>
+                                            <div role="alert" className="alert">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-info shrink-0 w-6 h-6">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                                </svg>
 
-                                                <div className="flex-wrap">
+                                                <span>{(station.name as string).toUpperCase()}</span>
+
+                                                <div>
                                                     {/* <div className="tooltip" data-tip="Year"><button className="btn btn-sm btn-primary disabled">{year}</button></div> */}
                                                     <div className="tooltip" data-tip="Min. CGPA"><button className="btn btn-sm btn-primary disabled">Min: {station.min_cgpa.toFixed(3)}</button></div>
                                                     <div className="tooltip" data-tip="Max. CGPA"><button className="btn btn-sm btn-primary disabled">Max: {station.max_cgpa.toFixed(3)}</button></div>
