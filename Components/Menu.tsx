@@ -11,8 +11,7 @@ type Props = {
 
 const Menu = (props: Props) => {
     const { data: session } = useSession()
-    const [open, setOpen] = React.useState(false);
-    const ref = useRef<HTMLDivElement>(null);
+    const [menu, setMenu] = React.useState(false)
 
     const menuItems: any = {
         "Handouts": "/",
@@ -25,53 +24,17 @@ const Menu = (props: Props) => {
         "Info. about Minors": "/minors.html"
     }
 
+    const toggleMenu = () => {
+        setMenu(!menu)
+    }
 
     return (
         <>
-            <div
-                // use classnames here to easily toggle dropdown open 
-                className={classNames({
-                    "dropdown w-full md:w-1/2": true,
-                    "dropdown-open": open,
-                })}
-                ref={ref}
-            >
-                <input
-                    type="text"
-                    className="input input-secondary w-full"
-                    placeholder={`Where do you want to go?`}
-                    tabIndex={0}
-                />
+            <button className="btn btn-outline w-1/4 m-3 md:hidden" onClick={() => toggleMenu()}>
+                Menu
+            </button>
 
-                {/* add this part */}
-                <div className="dropdown-content bg-base-200 z-50 top-14 max-h-96 overflow-auto flex-col rounded-md">
-                    <ul
-                        className="menu menu-compact "
-                        // use ref to calculate the width of parent
-                        style={{ width: ref.current?.clientWidth }}
-                    >
-                        {Object.keys(menuItems)
-                            .filter((item) => item.toLowerCase())
-                            .map((item, index) => {
-                                return (
-                                    <li
-                                        key={index}
-                                        tabIndex={index + 1}
-                                        onClick={() => {
-                                            window.open(menuItems[item])
-                                        }}
-                                        className="border-b border-b-base-content/10 w-full p-2"
-                                    >
-                                        <button className="uppercase">{item}</button>
-                                    </li>
-                                );
-                            })}
-                    </ul>
-                    {/* add this part */}
-                </div>
-            </div>
-
-            {/* <div className={`${menu ? 'grid' : 'hidden'} md:grid md:grid-cols-4 justify-around`}>
+            <div className={`${menu ? 'grid' : 'hidden'} md:grid md:grid-cols-4 justify-around`}>
                 {Object.keys(menuItems).map(
                     (menuItem) =>
                         <Link className="m-3" href={menuItems[menuItem]} target='_blank'>
@@ -80,7 +43,7 @@ const Menu = (props: Props) => {
                             </button>
                         </Link>
                 )}
-            </div> */}
+            </div>
 
             < div className="grid md:grid-cols-3 justify-around" >
                 {
