@@ -1,6 +1,7 @@
 """
 @author: Divyateja Pasupuleti
-@about: Converts a csv file containing PS data into necessary format and pushes it to supabase 
+@about: Converts a csv file containing PS data into necessary format and pushes it to supabase
+CSV Format: Company,CGPA,Year-Semester,ID Number 
 """
 import pandas as pd
 import json
@@ -17,8 +18,8 @@ key: str = os.environ.get("SUPABASE_SERVICE_KEY")
 supabase: Client = create_client(url, key)
 
 # Constants
-MASTER_FILE = 'PS1_master.csv'
-TABLE_NAME = 'ps1'
+MASTER_FILE = 'ps2.csv'
+TABLE_NAME = 'ps2_cutoffs'
 
 # Read csv file
 df = pd.read_csv(MASTER_FILE)
