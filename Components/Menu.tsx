@@ -38,7 +38,7 @@ const Menu = (props: Props) => {
                 {Object.keys(menuItems).map(
                     (menuItem) =>
                         <Link className="m-3" href={menuItems[menuItem]}>
-                            <button className="btn btn-outline w-full">
+                            <button className="btn btn-outline w-full uppercase">
                                 {menuItem}
                             </button>
                         </Link>

@@ -9,6 +9,8 @@ module.exports = {
         themes: [
             {
                 mytheme: {
+                    fontFamily:
+                        "ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace",
                     primary: "#ffffff",
                     secondary: "#1a1a1a",
                     accent: "#2dd4bf",
