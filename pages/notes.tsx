@@ -22,7 +22,7 @@ export default function Notes() {
             link: "https://hyderabadbitspilaniacin0-my.sharepoint.com/:f:/g/personal/f20210564_hyderabad_bits-pilani_ac_in/EuVYwVBzBxxGvdJmu0TEcnUBnrC0IbcVbz9fUtEWrlxU8Q?e=fA5Kuv"
         },
         {
-            name: "All - Semester - Mechanical Course Resources",
+            name: "All Semester - Mechanical Course Resources",
             link: "https://drive.google.com/drive/u/1/folders/1bwrDhP2x5CgUouikrFy9u95-qvKuwrBu"
         },
         {
@@ -83,7 +83,7 @@ export default function Notes() {
         },
         {
             name: "Soham Barui's Principles of Economics - POE Notes",
-            link: "https://github.com/Divyateja04/handoutsforyou/raw/main/public/notes/ext/poe_soham.pdf"
+            link: "https://github.com/Divyateja04/handoutsforyou/raw/main/public/ext/poe_soham.pdf"
         },
         {
             name: "Principles of Economics - POE Notes",
@@ -105,6 +105,10 @@ export default function Notes() {
             name: "FoFa Incomplete Notes",
             link: "/notes/FoFa/FoFa.html"
         },
+        {
+            name: "HSS F251 Discourse Notes",
+            link: "https://github.com/Divyateja04/handoutsforyou/raw/main/public/ext/HSSF251/parta.docx"
+        }
     ];
 
     return (
