@@ -29,6 +29,10 @@ export default function AddReview({ }: {}) {
             alert("Please fill review!")
             return
         }
+        if (courses.includes(course) == false) {
+            alert("Please select a course from the list!")
+            return
+        }
 
         const data = await fetch("/api/reviews/addreview", {
             method: "POST",
