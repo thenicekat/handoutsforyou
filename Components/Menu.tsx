@@ -15,13 +15,17 @@ const Menu = (props: Props) => {
 
     const menuItems: any = {
         "Handouts": "/",
-        "Notes and Resources": "/notes",
+        "Academic Resources": "/notes",
         "Course Reviews": "/courses/reviews",
-        "Summer Internships": "/si",
-        "Add your Content": "https://forms.gle/5Q2Ek3TNGmAx2Rn46",
-        "Practice School": "/ps",
+        "SI Companies": "/si",
+        "SI Resources": "/si/resources",
+        "PS Chronicles": "/ps",
+        "PS Companies": "/ps",
+        "PS 1 Cutoffs": "/ps/ps1_data",
+        "PS 2 Cutoffs": "/ps/ps2_data",
         "Course Prereqs": "/courses/prereqs",
-        "Info. about Minors": "/minors.html"
+        "Minor Courses": "/minors.html",
+        "Add your Content": "https://forms.gle/5Q2Ek3TNGmAx2Rn46",
     }
 
     const toggleMenu = () => {
