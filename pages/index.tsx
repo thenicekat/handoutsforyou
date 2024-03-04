@@ -5,6 +5,9 @@ import dynamic from "next/dynamic";
 import { signIn, signOut, useSession } from 'next-auth/react';
 import Menu from "../Components/Menu";
 import Link from "next/link";
+import DisableDevtool from 'disable-devtool';
+
+DisableDevtool();
 
 const HandoutsPerYear = dynamic(() => import("./../Components/HandoutsPerYear"), {
   loading: () => (
