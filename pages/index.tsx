@@ -6,6 +6,17 @@ import { signIn, signOut, useSession } from 'next-auth/react';
 import Menu from "../Components/Menu";
 import Link from "next/link";
 
+if (
+  typeof window !== "undefined" &&
+  typeof window.navigator !== "undefined" &&
+  typeof navigator !== "undefined" &&
+  navigator.userAgent
+) {
+  const disableDevtool = require("disable-devtool");
+  disableDevtool();
+}
+
+
 const HandoutsPerYear = dynamic(() => import("./../Components/HandoutsPerYear"), {
   loading: () => (
     <div className="grid place-items-center">
