@@ -64,7 +64,7 @@ export default function PS2() {
                             type="text"
                             placeholder="Filter using CGPA..."
                             className="input input-secondary w-full max-w-xs m-3"
-                            onChange={(e) => setCGPA(parseFloat(e.target.value))}
+                            onChange={(e) => setCGPA(parseFloat(e.target.value) || 10)}
                         />
 
                         <input
