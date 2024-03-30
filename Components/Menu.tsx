@@ -40,7 +40,7 @@ const Menu = (props: Props) => {
             </button>
 
             <GitHubButton href="https://github.com/divyateja04/handoutsforyou"
-                data-color-scheme="no-preference: light; light: light; dark: dark;"
+                data-color-scheme="no-preference: light; light: light; dark: light;"
                 data-icon="octicon-star"
                 data-size="large"
                 data-show-count="true"
