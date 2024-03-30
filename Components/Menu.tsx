@@ -1,3 +1,4 @@
+import GitHubButton from 'react-github-btn'
 import React, { useRef } from 'react'
 import Link from 'next/link'
 import { signIn, signOut, useSession } from 'next-auth/react'
@@ -37,6 +38,16 @@ const Menu = (props: Props) => {
             <button className="btn btn-outline w-1/4 m-3 md:hidden" onClick={() => toggleMenu()}>
                 Menu
             </button>
+
+            <GitHubButton href="https://github.com/divyateja04/handoutsforyou"
+                data-color-scheme="no-preference: light; light: light; dark: dark;"
+                data-icon="octicon-star"
+                data-size="large"
+                data-show-count="true"
+                aria-label="Star divyateja04/handoutsforyou on GitHub">
+                Star
+            </GitHubButton>
+
 
             <div className={`${menu ? 'grid' : 'hidden'} md:grid md:grid-cols-4 justify-around`}>
                 {Object.keys(menuItems).map(
