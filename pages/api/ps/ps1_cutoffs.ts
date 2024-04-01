@@ -33,12 +33,11 @@ export default async function handler(
     }
     else {
         const { data, error } = await supabase
-            .from('ps1_cutoffs')
-            .select('*')
-            .eq('year', year)
+            .from('ps1_responses')
+            .select('station, cgpa.min(), cgpa.max()')
+            .eq('year_and_sem', year)
 
         if (error) {
-            console.log(error)
             res.status(500).json({ message: error.message, data: [], error: true })
             return
         }

@@ -1,7 +1,6 @@
 export type PS_Station = {
-    name: string
+    station: string
     year: string
-    min_cgpa: number
-    max_cgpa: number
-    students: string[]
+    min: number
+    max: number
 }
