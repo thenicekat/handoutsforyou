@@ -32,12 +32,16 @@ export default function AddPS2Response({ }: {}) {
     const [offshootTotal, setOffshootTotal] = useState(0);
     const [offshootType, setOffshootType] = useState("");
 
+    const [isLoading, setIsLoading] = useState(false)
+
     const { data: session } = useSession()
 
     const AddResponse = async () => {
+        setIsLoading(true)
         const data = await fetch("/api/ps/addresponse", {
             method: "POST",
             body: JSON.stringify({
+                typeOfPS: "ps2",
                 idNumber: idNumber,
                 yearAndSem: yearAndSem,
                 allotmentRound: allotmentRound,
@@ -66,6 +70,7 @@ export default function AddPS2Response({ }: {}) {
             setOffshootTotal(0)
             setOffshootType("")
         }
+        setIsLoading(false)
     }
 
     useEffect(() => {
@@ -93,58 +98,67 @@ export default function AddPS2Response({ }: {}) {
 
                     <Menu current={"ps"} />
 
-                    {session && <>
-                        {/* Take input */}
-                        <div className="flex flex-col w-3/4 justify-between m-1">
-                            <label htmlFor="idNumber" className="text-primary">ID Number</label>
-                            <input type="text" id="idNumber" className="input input-secondary" value={idNumber} onChange={(e) => setIdNumber(e.target.value)} />
-                        </div>
+                    {session &&
+                        isLoading ?
+                        <>
+                            <div className="flex flex-col w-3/4 justify-between m-1">
+                                <label className="text-primary">Loading...</label>
+                            </div>
+                        </>
+                        :
+                        <>
+                            {/* Take input */}
+                            <div className="flex flex-col w-3/4 justify-between m-1">
+                                <label htmlFor="idNumber" className="text-primary">ID Number</label>
+                                <input type="text" id="idNumber" className="input input-secondary" value={idNumber} onChange={(e) => setIdNumber(e.target.value)} />
+                            </div>
 
-                        <div className="flex flex-col w-3/4 justify-between m-1">
-                            <label htmlFor="yearAndSem" className="text-primary">Year and Sem</label>
-                            <input disabled type="text" id="yearAndSem" className="input input-secondary" value={yearAndSem} onChange={(e) => setYearAndSem(e.target.value)} />
-                        </div>
+                            <div className="flex flex-col w-3/4 justify-between m-1">
+                                <label htmlFor="yearAndSem" className="text-primary">Year and Sem</label>
+                                <input disabled type="text" id="yearAndSem" className="input input-secondary" value={yearAndSem} onChange={(e) => setYearAndSem(e.target.value)} />
+                            </div>
 
-                        <div className="flex flex-col w-3/4 justify-between m-1">
-                            <label htmlFor="allotmentRound" className="text-primary">Allotment Round</label>
-                            <input type="text" id="allotmentRound" className="input input-secondary" value={allotmentRound} onChange={(e) => setAllotmentRound(e.target.value)} />
-                        </div>
+                            <div className="flex flex-col w-3/4 justify-between m-1">
+                                <label htmlFor="allotmentRound" className="text-primary">Allotment Round</label>
+                                <input type="text" id="allotmentRound" className="input input-secondary" value={allotmentRound} onChange={(e) => setAllotmentRound(e.target.value)} />
+                            </div>
 
-                        <div className="flex flex-col w-3/4 justify-between m-1">
-                            <label htmlFor="station" className="text-primary">Station</label>
-                            <input type="text" id="station" className="input input-secondary" value={station} onChange={(e) => setStation(e.target.value)} />
-                        </div>
+                            <div className="flex flex-col w-3/4 justify-between m-1">
+                                <label htmlFor="station" className="text-primary">Station</label>
+                                <input type="text" id="station" className="input input-secondary" value={station} onChange={(e) => setStation(e.target.value)} />
+                            </div>
 
-                        <div className="flex flex-col w-3/4 justify-between m-1">
-                            <label htmlFor="cgpa" className="text-primary">CGPA</label>
-                            <input type="number" id="cgpa" className="input input-secondary" value={cgpa} onChange={(e) => setCGPA(parseFloat(e.target.value) || 0)} />
-                        </div>
+                            <div className="flex flex-col w-3/4 justify-between m-1">
+                                <label htmlFor="cgpa" className="text-primary">CGPA</label>
+                                <input type="number" id="cgpa" className="input input-secondary" value={cgpa} onChange={(e) => setCGPA(parseFloat(e.target.value) || 0)} />
+                            </div>
 
 
-                        <div className="flex flex-col w-3/4 justify-between m-1">
-                            <label htmlFor="preference" className="text-primary">Preference</label>
-                            <input type="number" id="preference" className="input input-secondary" value={preference} onChange={(e) => setPreference(parseFloat(e.target.value) || 0)} />
-                        </div>
+                            <div className="flex flex-col w-3/4 justify-between m-1">
+                                <label htmlFor="preference" className="text-primary">Preference</label>
+                                <input type="number" id="preference" className="input input-secondary" value={preference} onChange={(e) => setPreference(parseFloat(e.target.value) || 0)} />
+                            </div>
 
-                        <div className="flex flex-col w-3/4 justify-between m-1">
-                            <label htmlFor="offshoot" className="text-primary">Offshoot</label>
-                            <input type="number" id="offshoot" className="input input-secondary" value={offshoot} onChange={(e) => setOffshoot(parseFloat(e.target.value) || 0)} />
-                        </div>
+                            <div className="flex flex-col w-3/4 justify-between m-1">
+                                <label htmlFor="offshoot" className="text-primary">Offshoot</label>
+                                <input type="number" id="offshoot" className="input input-secondary" value={offshoot} onChange={(e) => setOffshoot(parseFloat(e.target.value) || 0)} />
+                            </div>
 
-                        <div className="flex flex-col w-3/4 justify-between m-1">
-                            <label htmlFor="offshootTotal" className="text-primary">Offshoot Total</label>
-                            <input type="number" id="offshootTotal" className="input input-secondary" value={offshootTotal} onChange={(e) => setOffshootTotal(parseFloat(e.target.value) || 0)} />
-                        </div>
+                            <div className="flex flex-col w-3/4 justify-between m-1">
+                                <label htmlFor="offshootTotal" className="text-primary">Offshoot Total</label>
+                                <input type="number" id="offshootTotal" className="input input-secondary" value={offshootTotal} onChange={(e) => setOffshootTotal(parseFloat(e.target.value) || 0)} />
+                            </div>
 
-                        <div className="flex flex-col w-3/4 justify-between m-1">
-                            <label htmlFor="offshootType" className="text-primary">Offshoot Type</label>
-                            <input type="text" id="offshootType" className="input input-secondary" value={offshootType} onChange={(e) => setOffshootType(e.target.value)} />
-                        </div>
+                            <div className="flex flex-col w-3/4 justify-between m-1">
+                                <label htmlFor="offshootType" className="text-primary">Offshoot Type</label>
+                                <input type="text" id="offshootType" className="input input-secondary" value={offshootType} onChange={(e) => setOffshootType(e.target.value)} />
+                            </div>
 
-                        <div className="text-center flex-wrap w-3/4 justify-between m-1">
-                            <button className="btn btn-primary" onClick={AddResponse}>Add Response</button>
-                        </div>
-                    </>}
+                            <div className="text-center flex-wrap w-3/4 justify-between m-1">
+                                <button className="btn btn-primary" onClick={AddResponse}>Add Response</button>
+                            </div>
+                        </>
+                    }
                 </div>
             </div>
 
