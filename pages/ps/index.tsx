@@ -7,16 +7,18 @@ import Link from "next/link";
 
 export const getStaticProps: GetStaticProps = async () => {
     const fs = require("fs");
+    let ps1_chronicles = fs.readdirSync("./public/ps/ps1_chronicles/");
     let ps2_chronicles = fs.readdirSync("./public/ps/ps2_chronicles/");
 
     return {
         props: {
+            ps1_chronicles,
             ps2_chronicles,
         },
     };
 };
 
-export default function PS({ ps2_chronicles }: any) {
+export default function PS({ ps1_chronicles, ps2_chronicles }: any) {
     const [search, setSearch] = useState("");
     const { data: session } = useSession()
 
@@ -64,6 +66,25 @@ export default function PS({ ps2_chronicles }: any) {
 
             {session &&
                 <div>
+                    <h1 className="text-3xl text-center my-3">PS1 Chronicles</h1>
+                    <div className='grid md:grid-cols-4 place-items-center p-5'>
+                        {
+                            ps1_chronicles.filter((d: string) => d.toLowerCase().includes(search.toLowerCase())).map((chron: string) => (
+                                <div key={chron} className='m-2 py-1 rounded-xl'>
+                                    <div className="alert ">
+                                        <div>
+                                            <span>PS1 {chron}</span>
+                                        </div>
+                                        <div className="flex-none">
+                                            <button className="btn btn-primary" onClick={
+                                                () => window.open("https://github.com/Divyateja04/handoutsforyou/raw/main/public/ps/ps1_chronicles/" + chron)
+                                            }>View</button></div>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+
                     <h1 className="text-3xl text-center my-3">PS2 Chronicles</h1>
                     <div className='grid md:grid-cols-4 place-items-center p-5'>
                         {
