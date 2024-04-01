@@ -1,15 +1,15 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import Menu from "../../Components/Menu";
+import Menu from "../../../Components/Menu";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { PS_Station } from "../../types/PSData";
+import { PS_Station } from "../../../types/PSData";
 
 export default function PS2() {
     const [search, setSearch] = useState("");
     const [cgpa, setCGPA] = useState(10);
 
-    const yearReferences = ["2021 Batch"]
+    const yearReferences = ["23-24 Sem 2", "23-24 Sem 1", "22-23 Sem 2", "22-23 Sem 1", "21-22 Sem 1", "20-21 Sem 2", "20-21 Sem 1", "19-20 Sem 2", "19-20 Sem 1"]
     const [yearRef, setYearRef] = useState(yearReferences[0]);
 
     const [isLoading, setIsLoading] = useState(false);
@@ -19,7 +19,7 @@ export default function PS2() {
 
     const fetchData = async () => {
         setIsLoading(true);
-        const res = await fetch("/api/ps/ps1_cutoffs", {
+        const res = await fetch("/api/ps/ps2_cutoffs", {
             method: "POST",
             body: JSON.stringify({
                 year: yearRef
@@ -38,13 +38,14 @@ export default function PS2() {
     }
 
     useEffect(() => {
+        localStorage.setItem("h4u_ps2_yearRef", yearRef);
         fetchData();
     }, [yearRef])
 
     return (
         <>
             <Head>
-                <title>PS 1 Cutoffs.</title>
+                <title>PS 2 Cutoffs.</title>
                 <meta name="description" content="One stop place for your PS queries, handouts, and much more" />
                 <meta name="keywords" content="BITS Pilani, Handouts, BPHC, Hyderabad Campus, BITS Hyderabad, BITS, Pilani, Handouts for you, handouts, for, you, bits, birla, institute, bits hyd, academics, practice school, ps, queries, ps cutoffs, ps2, ps1" />
                 <meta name="robots" content="index, follow" />
@@ -60,6 +61,18 @@ export default function PS2() {
                     <Menu current={"ps"} />
 
                     {session && <>
+                        <Link className="m-3" href={"/ps/ps2/add"}>
+                            <button className="btn btn-outline w-full">
+                                Add your own response?
+                            </button>
+                        </Link>
+
+                        <Link className="m-3" href={"/ps"}>
+                            <button className="btn btn-outline w-full">
+                                Are you looking for chronicles?
+                            </button>
+                        </Link>
+
                         <input
                             type="text"
                             placeholder="Filter using CGPA..."
@@ -84,12 +97,6 @@ export default function PS2() {
                         </select>
 
                         <p className="m-2">NOTE: This data is crowdsourced and might not be accurate.</p>
-
-                        <Link className="m-3" href={"/ps"}>
-                            <button className="btn btn-outline w-full">
-                                Are you looking for chronicles?
-                            </button>
-                        </Link>
                     </>}
                 </div>
             </div>
@@ -100,22 +107,20 @@ export default function PS2() {
                         {
                             !isLoading ?
                                 ps2Data
-                                    .filter((d: PS_Station) => (d.name as string).toLowerCase().includes(search.toLowerCase()) && d.min_cgpa <= cgpa)
-                                    .sort((a: PS_Station, b: PS_Station) => b.min_cgpa - a.min_cgpa)
+                                    .filter((d: PS_Station) => (d.station as string).toLowerCase().includes(search.toLowerCase()) && d.min <= cgpa)
+                                    .sort((a: PS_Station, b: PS_Station) => b.min - a.min)
                                     .map((station: PS_Station) => (
-                                        <div className="py-1 m-2 rounded-xl" key={(station.name as string) + station.year}>
-                                            <div className="alert">
+                                        <div className="py-1 m-2 rounded-xl" key={(station.station as string) + station.year}>
+                                            <div role="alert" className="alert">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-info shrink-0 w-6 h-6">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                                 </svg>
 
-                                                <span>{(station.name as string).toUpperCase()}</span>
+                                                <span>{(station.station as string).toUpperCase()}</span>
 
                                                 <div>
-                                                    {/* <div className="tooltip" data-tip="Year"><button className="btn btn-sm btn-primary disabled">{year}</button></div> */}
-                                                    <div className="tooltip" data-tip="Min. CGPA"><button className="btn btn-sm btn-primary disabled">Min: {station.min_cgpa.toFixed(3)}</button></div>
-                                                    <div className="tooltip" data-tip="Max. CGPA"><button className="btn btn-sm btn-primary disabled">Max: {station.max_cgpa.toFixed(3)}</button></div>
-                                                    {/* <div className="tooltip" data-tip="Number of Students"><button className="btn btn-sm btn-primary disabled">{(station[year] as CGPAGroup).students.length}</button></div> */}
+                                                    <div className="tooltip" data-tip="Min. CGPA"><button className="btn btn-sm btn-primary disabled mx-1">Min: {station.min.toFixed(3)}</button></div>
+                                                    <div className="tooltip" data-tip="Max. CGPA"><button className="btn btn-sm btn-primary disabled mx-1">Max: {station.max.toFixed(3)}</button></div>
                                                 </div>
                                             </div>
                                         </div>

@@ -49,13 +49,13 @@ export default function PS({ ps1_chronicles, ps2_chronicles }: any) {
                 </div>
 
                 <div className="flex flex-col md:flex-row w-1/2 justify-center">
-                    <Link className="m-3 w-full" href={"/ps/ps1_data"}>
+                    <Link className="m-3 w-full" href={"/ps/ps1/data"}>
                         <button className="btn btn-outline w-full">
                             PS1 CGPA Cutoffs
                         </button>
                     </Link>
 
-                    <Link className="m-3 w-full" href={"/ps/ps2_data"}>
+                    <Link className="m-3 w-full" href={"/ps/ps2/data"}>
                         <button className="btn btn-outline w-full">
                             PS2 CGPA Cutoffs
                         </button>
