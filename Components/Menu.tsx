@@ -20,10 +20,8 @@ const Menu = (props: Props) => {
         "Course Reviews": "/courses/reviews",
         "SI Companies": "/si",
         "SI Resources": "/si/resources",
-        "RI Resources": "https://pollen-box-786.notion.site/Research-Chronicles-894bcac1266d4e5fac2f4cd76ff29750",
-        "PS Chronicles": "/ps",
-        "PS 1 Cutoffs": "/ps/ps1_data",
-        "PS 2 Cutoffs": "/ps/ps2_data",
+        "Research Internships": "https://pollen-box-786.notion.site/Research-Chronicles-894bcac1266d4e5fac2f4cd76ff29750",
+        "Practice School": "/ps",
         "Course Prereqs": "/courses/prereqs",
         "Minor Courses": "/minors.html",
         "Add your Content": "https://forms.gle/5Q2Ek3TNGmAx2Rn46",
@@ -49,7 +47,7 @@ const Menu = (props: Props) => {
             </GitHubButton>
 
 
-            <div className={`${menu ? 'grid' : 'hidden'} md:grid md:grid-cols-4 justify-around`}>
+            <div className={`${menu ? 'grid' : 'hidden'} md:grid md:grid-cols-5 justify-around`}>
                 {Object.keys(menuItems).map(
                     (menuItem) =>
                         <Link className="m-3" href={menuItems[menuItem]} key={menuItems[menuItem]}>
@@ -69,8 +67,7 @@ const Menu = (props: Props) => {
                         </div>
                         :
                         <Link href={"#"} className={`m-3 col-span-3`}>
-                            <button className="btn btn-outline w-full" onClick={() => signOut()}>Sign Out</button>
-
+                            <button className="btn btn-error btn-outline w-full" onClick={() => signOut()}>Sign Out</button>
                         </Link>
                 }
             </div >
