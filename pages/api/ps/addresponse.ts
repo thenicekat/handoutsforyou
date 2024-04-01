@@ -65,9 +65,6 @@ export default async function handler(
                         station: reqBody.station,
                         cgpa: reqBody.cgpa,
                         preference: reqBody.preference,
-                        offshoot: reqBody.offshoot,
-                        offshoot_total: reqBody.offshootTotal,
-                        offshoot_type: reqBody.offshootType
                     }
                 ])
 
