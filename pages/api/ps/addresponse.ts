@@ -56,7 +56,7 @@ export default async function handler(
         if (reqBody.typeOfPS === 'ps1') {
             const { data, error } = await supabase
                 .from('ps1_responses')
-                .insert([
+                .upsert([
                     {
                         email: email,
                         id_number: reqBody.idNumber,
@@ -66,7 +66,7 @@ export default async function handler(
                         cgpa: reqBody.cgpa,
                         preference: reqBody.preference,
                     }
-                ])
+                ], { onConflict: 'email' })
 
             if (error) {
                 res.status(500).json({ message: error.message, data: [], error: true })
@@ -84,7 +84,7 @@ export default async function handler(
         else if (reqBody.typeOfPS === 'ps2') {
             const { data, error } = await supabase
                 .from('ps2_responses')
-                .insert([
+                .upsert([
                     {
                         email: email,
                         id_number: reqBody.idNumber,
@@ -97,7 +97,7 @@ export default async function handler(
                         offshoot_total: reqBody.offshootTotal,
                         offshoot_type: reqBody.offshootType
                     }
-                ])
+                ], { onConflict: 'email' })
 
             if (error) {
                 res.status(500).json({ message: error.message, data: [], error: true })
