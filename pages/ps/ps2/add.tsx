@@ -20,7 +20,6 @@ type PSDataRes = {
     offshootType: string,
 }
 
-
 export default function AddPS2Response({ }: {}) {
     const [idNumber, setIdNumber] = useState("");
     const [yearAndSem, setYearAndSem] = useState("");
