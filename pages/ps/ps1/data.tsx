@@ -9,11 +9,11 @@ export default function PS2() {
     const [search, setSearch] = useState("");
     const [cgpa, setCGPA] = useState(10);
 
-    const yearReferences = ["2021 Batch"]
+    const yearReferences = ["2022 Batch", "2021 Batch"]
     const [yearRef, setYearRef] = useState(yearReferences[0]);
 
     const [isLoading, setIsLoading] = useState(false);
-    const [ps2Data, setPS2Data] = useState([]);
+    const [ps1Data, setPS1Data] = useState([]);
 
     const { data: session } = useSession()
 
@@ -32,7 +32,7 @@ export default function PS2() {
             alert(data.message);
             return
         } else {
-            setPS2Data(data.data);
+            setPS1Data(data.data);
         }
         setIsLoading(false);
     }
@@ -106,7 +106,7 @@ export default function PS2() {
                     <div className='px-2 md:px-20'>
                         {
                             !isLoading ?
-                                ps2Data
+                                ps1Data
                                     .filter((d: PS_Station) => (d.station as string).toLowerCase().includes(search.toLowerCase()) && d.min <= cgpa)
                                     .sort((a: PS_Station, b: PS_Station) => b.min - a.min)
                                     .map((station: PS_Station) => (
