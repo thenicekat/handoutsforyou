@@ -47,3 +47,7 @@ next-env.d.ts
 **/scripts/ps/*.csv
 **/scripts/ps/soundex_filter.txt
 **/scripts/ps/ignore.txt
+**/scripts/ps/config.json
+**/scripts/ps/format.py
+**/scripts/ps/scraper.py
+**/scripts/ps/skill.py
