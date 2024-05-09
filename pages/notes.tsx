@@ -43,19 +43,19 @@ export default function Notes() {
         },
         {
             name: "Object Oriented Programming - OOPL Notes",
-            link: "/notes/OOP/ooplovesyou.html"
+            link: "https://thenicecat.notion.site/BITS-Notes-c839c70e5de84e6ea727bd2ae6183f5e"
         },
         {
             name: "Database Management System - DBMS Notes",
-            link: "/notes/DBMS/dbmslovesme.html"
+            link: "https://thenicecat.notion.site/BITS-Notes-c839c70e5de84e6ea727bd2ae6183f5e"
         },
         {
             name: "Operating System - OS Notes",
-            link: "/notes/OS/OS.html"
+            link: "https://thenicecat.notion.site/BITS-Notes-c839c70e5de84e6ea727bd2ae6183f5e"
         },
         {
             name: "Principles of Programming Languages - PoPL Notes",
-            link: "/notes/PoPL/PoPL.html"
+            link: "https://thenicecat.notion.site/BITS-Notes-c839c70e5de84e6ea727bd2ae6183f5e"
         },
         {
             name: "Digital Design - DD Notes",
@@ -67,7 +67,7 @@ export default function Notes() {
         },
         {
             name: "C Programming - CP Notes",
-            link: "/notes/CP/cp.html"
+            link: "https://thenicecat.notion.site/BITS-Notes-c839c70e5de84e6ea727bd2ae6183f5e"
         },
         {
             name: "Probability and Statistics - PnS Notes",
@@ -79,7 +79,7 @@ export default function Notes() {
         },
         {
             name: "Technical Report Writing - TRW Notes",
-            link: "/notes/TRW/trw.html"
+            link: "https://thenicecat.notion.site/BITS-Notes-c839c70e5de84e6ea727bd2ae6183f5e"
         },
         {
             name: "Mathematics 3 - M3 Notes",
@@ -91,15 +91,15 @@ export default function Notes() {
         },
         {
             name: "Principles of Economics - POE Notes",
-            link: "/notes/POE/poe.html"
+            link: "https://thenicecat.notion.site/BITS-Notes-c839c70e5de84e6ea727bd2ae6183f5e"
         },
         {
             name: "Computer Mediated Communications - CMC Notes",
-            link: "/notes/CMC/cmc.html"
+            link: "https://thenicecat.notion.site/BITS-Notes-c839c70e5de84e6ea727bd2ae6183f5e"
         },
         {
             name: "Globalization Notes",
-            link: "/notes/Glob/Glob.html"
+            link: "https://thenicecat.notion.site/BITS-Notes-c839c70e5de84e6ea727bd2ae6183f5e"
         },
         {
             name: "Linguistics Incomplete Notes",
