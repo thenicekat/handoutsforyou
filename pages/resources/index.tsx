@@ -50,7 +50,7 @@ export default function Notes() {
                     <div className='grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center'>
                         {
                             resources.filter(d => d.name.toLowerCase().includes(input.toLowerCase())).map(data => (
-                                <div className="card w-72 h-72 bg-primary text-primary-content m-2">
+                                <div className="card w-72 h-72 bg-primary text-primary-content m-2" key={data.name}>
                                     <div className="card-body">
                                         <h2 className="card-title">{data.name.toUpperCase()}</h2>
                                         <p>{data.created_by}</p>
