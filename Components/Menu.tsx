@@ -33,7 +33,7 @@ const Menu = (props: Props) => {
 
     return (
         <>
-            <button className="btn btn-outline w-1/4 m-3 md:hidden" onClick={() => toggleMenu()}>
+            <button className="btn btn-outline w-1/4 m-3 sm:hidden" onClick={() => toggleMenu()}>
                 Menu
             </button>
 
@@ -47,7 +47,7 @@ const Menu = (props: Props) => {
             </GitHubButton>
 
 
-            <div className={`${menu ? 'grid' : 'hidden'} md:grid md:grid-cols-5 justify-around`}>
+            <div className={`${menu ? 'grid' : 'hidden'} sm:grid md:grid-cols-5 sm:grid-cols-3 justify-around`}>
                 {Object.keys(menuItems).map(
                     (menuItem) =>
                         <Link className="m-3" href={menuItems[menuItem]} key={menuItems[menuItem]}>
