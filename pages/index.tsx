@@ -13,7 +13,7 @@ if (
   navigator.userAgent
 ) {
   const disableDevtool = require("disable-devtool");
-  disableDevtool();
+  // disableDevtool();
 }
 
 
