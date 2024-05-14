@@ -3,18 +3,6 @@ import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import Menu from "../../Components/Menu";
 
-type PSDataRes = {
-    typeOfPS: string,
-    idNumber: string,
-    yearAndSem: string,
-    allotmentRound: string,
-    station: string,
-    cgpa: number,
-    preference: number,
-    offshoot: number,
-    offshootTotal: number,
-    offshootType: string,
-}
 
 export default function AddPS2Response({ }: {}) {
     const [name, setName] = useState("");
@@ -63,7 +51,7 @@ export default function AddPS2Response({ }: {}) {
             {/* Search box */}
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
-                    <h1 className="text-6xl pt-[50px] pb-[20px] px-[35px] text-primary">Practice School.</h1>
+                    <h1 className="text-6xl pt-[50px] pb-[20px] px-[35px] text-primary">Academic Resources.</h1>
 
                     <Menu current={"notes"} />
 
