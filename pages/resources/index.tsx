@@ -39,7 +39,7 @@ export default function Notes() {
 
             <div className='grid place-items-center'>
                 <div className='w-[70vw] place-items-center flex flex-col justify-between'>
-                    <h1 className='text-6xl pt-[50px] pb-[20px] px-[35px] text-primary'>Notes and Resources.</h1>
+                    <h1 className='text-6xl pt-[50px] pb-[20px] px-[35px] text-primary'>Resources.</h1>
                     <Menu current={"notes"} />
                     {session && <input type="text" placeholder="Search..." className="input input-secondary w-full max-w-xs" onChange={e => setInput(e.target.value)} />}
                 </div>
@@ -47,7 +47,7 @@ export default function Notes() {
 
             {session &&
                 <div className="max-w-7xl mx-auto">
-                    <div className='grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center'>
+                    <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center'>
                         {
                             resources.filter(d => d.name.toLowerCase().includes(input.toLowerCase())).map(data => (
                                 <div className="card w-72 h-72 bg-primary text-primary-content m-2" key={data.name}>
