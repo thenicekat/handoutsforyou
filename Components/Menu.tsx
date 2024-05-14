@@ -16,7 +16,7 @@ const Menu = (props: Props) => {
 
     const menuItems: any = {
         "Handouts": "/",
-        "Academic Resources": "/resources",
+        "Resources": "/resources",
         "Course Reviews": "/courses/reviews",
         "SI Companies": "/si",
         "SI Resources": "/si/resources",
@@ -24,7 +24,7 @@ const Menu = (props: Props) => {
         "Practice School": "/ps",
         "Course Prereqs": "/courses/prereqs",
         "Minor Courses": "/minors.html",
-        "Add your Content": "/resources/add",
+        "Add resources": "/resources/add",
     }
 
     const toggleMenu = () => {
