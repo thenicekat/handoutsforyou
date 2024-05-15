@@ -52,10 +52,10 @@ export default function Notes() {
                             resources.filter(d => d.name.toLowerCase().includes(input.toLowerCase())).map(data => (
                                 <div className="card w-72 h-72 bg-primary text-primary-content m-2" key={data.name}>
                                     <div className="card-body">
-                                        <h2 className="card-title">{data.name.toUpperCase()}</h2>
-                                        <p>{data.created_by}</p>
+                                        <h2 className="text-sm font-bold uppercase">{data.created_by}</h2>
+                                        <p className='text-lg'>{data.name.toUpperCase()}</p>
                                         <div className="flex-none">
-                                            <Link href={data.link} target='_blank'><button className="btn btn-sm">View</button></Link>
+                                            <Link href={data.link} target='_blank'><button className="btn btn-sm">View this Resource</button></Link>
                                         </div>
                                     </div>
                                 </div>
