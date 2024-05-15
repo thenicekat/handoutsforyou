@@ -6,8 +6,8 @@ export default function Document() {
     <Html lang="en">
       <Head>
       </Head>
-      {/* <body>
-        <div className="h-screen w-full bg-white relative flex overflow-hidden">
+      <body className="mb-20">
+        {/* <div className="h-screen w-full bg-white relative flex overflow-hidden">
           <aside className="h-full w-16 flex flex-col space-y-10 items-center justify-center relative bg-gray-800 text-white">
             <div className="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:text-gray-800 hover:bg-white  hover:duration-300 hover:ease-linear focus:bg-white">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" /></svg>
@@ -31,8 +31,8 @@ export default function Document() {
             </div>
           </aside> */}
 
-      <Main />
-      {/* <div className="w-full h-full flex flex-col justify-between">
+        <Main />
+        {/* <div className="w-full h-full flex flex-col justify-between">
         <main
           className="max-w-full h-full flex relative overflow-auto"
           style={{
@@ -40,8 +40,8 @@ export default function Document() {
       }}>
     </main>
       </div > 
-      </div>
-    </body> */}
+      </div> */}
+      </body>
       < NextScript />
       < Footer />
     </Html >
