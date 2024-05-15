@@ -8,7 +8,7 @@ import { SI_Company } from "../../types/SIData";
 export default function SICompanies() {
     const [search, setSearch] = useState("");
 
-    const yearReferences = ["2022-2023", "2021-2022", "2020-2021"]
+    const yearReferences = ["2023-2024", "2022-2023", "2021-2022", "2020-2021"]
     const [yearRef, setYearRef] = useState(yearReferences[0]);
 
     const [isLoading, setIsLoading] = useState(false);
