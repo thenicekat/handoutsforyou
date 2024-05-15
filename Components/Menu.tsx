@@ -2,12 +2,19 @@ import GitHubButton from 'react-github-btn'
 import React, { useRef } from 'react'
 import Link from 'next/link'
 import { signIn, signOut, useSession } from 'next-auth/react'
-import Footer from './Footer'
-import AutoCompleter from './AutoCompleter'
-import classNames from 'classnames'
 
 type Props = {
     current: String
+}
+
+if (
+    typeof window !== "undefined" &&
+    typeof window.navigator !== "undefined" &&
+    typeof navigator !== "undefined" &&
+    navigator.userAgent
+) {
+    const disableDevtool = require("disable-devtool");
+    disableDevtool();
 }
 
 const Menu = (props: Props) => {
