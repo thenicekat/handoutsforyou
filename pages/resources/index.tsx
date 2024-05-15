@@ -47,6 +47,10 @@ export default function Notes() {
 
             {session &&
                 <div className="max-w-7xl mx-auto">
+                    <div className="flex justify-center">
+                        <h1 className="text-3xl text-primary">Total Resources: {resources.length}</h1>
+                    </div>
+
                     <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center'>
                         {
                             resources.filter(d => d.name.toLowerCase().includes(input.toLowerCase())).map(data => (
