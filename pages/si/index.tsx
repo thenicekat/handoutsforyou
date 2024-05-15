@@ -108,6 +108,7 @@ export default function SICompanies() {
                                                     <li>Selection Rounds: {station.selection_rounds}</li>
                                                     <li>Eligibility: {station.eligibility}</li>
                                                     <li>Selects: {station.selects}</li>
+                                                    {station.otherdetails && <li>Other Details: {station.otherdetails}</li>}
                                                 </ul>
 
                                                 <div className="my-4">

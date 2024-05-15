@@ -6,7 +6,8 @@ export type SI_Company = {
     stipend: string,
     selects: string,
     selection_rounds: string,
-    year: string
+    year: string,
+    otherdetails: string
 }
 
 export type SI_Chronicle = {
