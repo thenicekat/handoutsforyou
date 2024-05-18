@@ -52,7 +52,7 @@ export default function ChroniclePage() {
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
                     <h1 className="text-6xl pt-[50px] pb-[20px] px-[35px] text-primary">Summer Internships.</h1>
 
-                    <Menu current={"si"} />
+                    <Menu />
                 </div>
                 <div className="w-[70vw] place-items-center flex flex-col justify-between m-2">NOTE: This content was scrapped from SI Chronicles and belongs to Placement Unit</div>
             </div>

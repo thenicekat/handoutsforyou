@@ -46,7 +46,7 @@ export default function Prereqs({ prereqs }: { prereqs: PreReqGroup[] }) {
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
                     <h1 className="text-6xl pt-[50px] pb-[20px] px-[35px] text-primary">Course Prerequisites.</h1>
 
-                    <Menu current={"ps"} />
+                    <Menu />
 
                     {session && <input
                         type="text"

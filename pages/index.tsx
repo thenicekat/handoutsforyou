@@ -63,7 +63,7 @@ export default function Home({ handoutsMap }: any) {
       <div className="grid place-items-center">
         <div className="w-[70vw] place-items-center flex flex-col justify-between">
           <h1 className="text-6xl pt-[50px] pb-[20px] px-[35px] text-primary">Handouts for You.</h1>
-          <Menu current={"home"} />
+          <Menu />
           {session &&
             <>
               <input type="text" placeholder="Search..." className="input input-secondary w-full max-w-xs" onChange={e => setSearch(e.target.value)} />
