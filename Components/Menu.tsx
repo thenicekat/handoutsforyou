@@ -3,10 +3,6 @@ import React, { useRef } from 'react'
 import Link from 'next/link'
 import { signIn, signOut, useSession } from 'next-auth/react'
 
-type Props = {
-    current: String
-}
-
 if (
     typeof window !== "undefined" &&
     typeof window.navigator !== "undefined" &&
@@ -17,18 +13,18 @@ if (
     disableDevtool();
 }
 
-const Menu = (props: Props) => {
+const Menu = () => {
     const { data: session } = useSession()
     const [menu, setMenu] = React.useState(false)
 
     const menuItems: any = {
         "Handouts": "/",
         "Resources": "/resources",
-        "Add resources": "/resources/add",
         "Course Reviews": "/courses/reviews",
-        "SI Companies": "/si",
-        "SI Resources": "/si/resources",
+        "Summer Internships": "/si",
         "Research Internships": "https://pollen-box-786.notion.site/Research-Chronicles-894bcac1266d4e5fac2f4cd76ff29750",
+        "SI Resources": "/si/resources",
+        "Placements": "/placement",
         "Practice School": "/ps",
         "Course Prereqs": "/courses/prereqs",
         "Minor Courses": "/minors.html",

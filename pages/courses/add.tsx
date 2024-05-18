@@ -34,7 +34,7 @@ export default function AddReview({ }: {}) {
             return
         }
 
-        const data = await fetch("/api/reviews/addreview", {
+        const data = await fetch("/api/reviews/add", {
             method: "POST",
             body: JSON.stringify({ course: course, prof: prof, review: review, created_by: session?.user?.email }),
             headers: { "Content-Type": "application/json" }
@@ -82,7 +82,7 @@ export default function AddReview({ }: {}) {
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
                     <h1 className="text-6xl pt-[50px] pb-[20px] px-[35px] text-primary">Course Reviews.</h1>
 
-                    <Menu current={"reviews"} />
+                    <Menu />
 
                     {session && <>
                         <AutoCompleter name={"Course"} items={courses} value={course} onChange={(val) => setCourse(val)} />

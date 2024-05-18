@@ -159,7 +159,7 @@ export default function Faqs() {
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
                     <h1 className="text-6xl pt-[50px] pb-[20px] px-[35px]">FAQs.</h1>
 
-                    <Menu current={"faqs"} />
+                    <Menu />
 
                     <input type="text" placeholder="Search the faqs..." className="input input-secondary w-full max-w-xs" onChange={e => setInput(e.target.value)} />
                 </div>

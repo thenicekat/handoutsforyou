@@ -40,7 +40,7 @@ export default function Notes() {
             <div className='grid place-items-center'>
                 <div className='w-[70vw] place-items-center flex flex-col justify-between'>
                     <h1 className='text-6xl pt-[50px] pb-[20px] px-[35px] text-primary'>Resources.</h1>
-                    <Menu current={"notes"} />
+                    <Menu />
                     {session && <input type="text" placeholder="Search..." className="input input-secondary w-full max-w-xs" onChange={e => setInput(e.target.value)} />}
                 </div>
             </div>
@@ -51,11 +51,11 @@ export default function Notes() {
                         <h1 className="text-3xl text-primary">Total Resources: {resources.length}</h1>
                     </div>
 
-                    <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center'>
+                    <div className='px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center'>
                         {
                             resources.filter(d => d.name.toLowerCase().includes(input.toLowerCase())).map(data => (
-                                <div className="card w-72 h-72 bg-primary text-primary-content m-2" key={data.name}>
-                                    <div className="card-body">
+                                <div className="card w-72 h-96 bg-primary text-primary-content m-2" key={data.name}>
+                                    <div className="card-body overflow-y-auto">
                                         <h2 className="text-sm font-bold uppercase">{data.created_by}</h2>
                                         <p className='text-lg'>{data.name.toUpperCase()}</p>
                                         <div className="flex-none">
