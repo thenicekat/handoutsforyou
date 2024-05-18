@@ -53,7 +53,7 @@ export default function AddPS2Response({ }: {}) {
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
                     <h1 className="text-6xl pt-[50px] pb-[20px] px-[35px] text-primary">Resources.</h1>
 
-                    <Menu current={"notes"} />
+                    <Menu />
 
                     {session &&
                         isLoading ?

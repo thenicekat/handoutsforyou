@@ -20,7 +20,7 @@ export default function Reviews({ }: {}) {
 
     const fetchReviews = async () => {
         setIsLoading(true)
-        const data = await fetch("/api/reviews/getreviews", {
+        const data = await fetch("/api/reviews/get", {
             method: "POST",
             body: JSON.stringify({ course: course, prof: prof }),
             headers: { "Content-Type": "application/json" }
@@ -55,7 +55,7 @@ export default function Reviews({ }: {}) {
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
                     <h1 className="text-6xl pt-[50px] pb-[20px] px-[35px] text-primary">Course Reviews.</h1>
 
-                    <Menu current={"reviews"} />
+                    <Menu />
 
                     {session && <>
                         <AutoCompleter name={"Course"} items={courses} value={course} onChange={(val) => setCourse(val)} />
@@ -63,7 +63,7 @@ export default function Reviews({ }: {}) {
                         <AutoCompleter name={"Prof"} items={profs} value={prof} onChange={(val) => setProf(val)} />
 
                         <div className="flex flex-col md:flex-row w-1/2 justify-center">
-                            <Link className="m-3 w-full" href={"/courses/addreview"}>
+                            <Link className="m-3 w-full" href={"/courses/add"}>
                                 <button className="btn btn-outline w-full">
                                     Add a Review
                                 </button>
@@ -85,11 +85,7 @@ export default function Reviews({ }: {}) {
                     <div className="flex justify-center">
                         <h1 className="text-3xl text-primary">Total Reviews: {reviews.length}</h1>
                     </div>
-                    {/* <div className="flex justify-center m-3">
-                        <h3>
-                            Please enter your criteria! Supports prof based search and course based search as well.
-                        </h3>
-                    </div> */}
+
                     <div className='px-2 md:px-20 p-2'>
                         {
                             !isLoading ?

@@ -58,7 +58,7 @@ export default function PS2() {
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
                     <h1 className="text-6xl pt-[50px] pb-[20px] px-[35px] text-primary">Practice School.</h1>
 
-                    <Menu current={"ps"} />
+                    <Menu />
 
                     {session && <>
                         <Link className="m-3" href={"/ps/ps1/add"}>
