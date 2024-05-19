@@ -41,7 +41,18 @@ export default function Notes() {
                 <div className='w-[70vw] place-items-center flex flex-col justify-between'>
                     <h1 className='text-6xl pt-[50px] pb-[20px] px-[35px] text-primary'>Resources.</h1>
                     <Menu />
-                    {session && <input type="text" placeholder="Search..." className="input input-secondary w-full max-w-xs" onChange={e => setInput(e.target.value)} />}
+                    {session &&
+                        <>
+                            <input type="text" placeholder="Search..." className="input input-secondary w-full max-w-xs" onChange={e => setInput(e.target.value)} />
+                            <div className="flex flex-col md:flex-row w-1/3 justify-center">
+                                <Link className="m-3 w-full" href={"/resources/add"}>
+                                    <button className="btn btn-outline w-full">
+                                        Add a Resource
+                                    </button>
+                                </Link>
+                            </div>
+                        </>
+                    }
                 </div>
             </div>
 
