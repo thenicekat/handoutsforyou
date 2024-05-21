@@ -65,12 +65,15 @@ export default function Notes() {
                     <div className='px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center'>
                         {
                             resources.filter(d => d.name.toLowerCase().includes(input.toLowerCase())).map(data => (
-                                <div className="card w-72 h-96 bg-primary text-primary-content m-2" key={data.name}>
-                                    <div className="card-body overflow-y-auto">
+                                <div className="card w-72 h-96 bg-base-100 text-base-content m-2" key={data.name}>
+                                    <div className="card-body">
                                         <h2 className="text-sm font-bold uppercase">{data.created_by}</h2>
                                         <p className='text-lg'>{data.name.toUpperCase()}</p>
+
                                         <div className="flex-none">
-                                            <Link href={data.link} target='_blank'><button className="btn btn-sm">View this Resource</button></Link>
+                                            <Link href={data.link} target='_blank'>
+                                                <button className="btn btn-sm btn-primary">View this Resource</button>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
