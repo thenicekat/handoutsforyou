@@ -1,11 +1,10 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
-import Menu from "../../Components/Menu";
+import Menu from "../../../Components/Menu";
 import { useSession } from "next-auth/react";
-import { supabase } from '../api/supabase';
-import { courses } from "../../data/courses";
-import { profs } from "../../data/profs";
-import AutoCompleter from "../../Components/AutoCompleter";
+import { courses } from "../../../data/courses";
+import { profs } from "../../../data/profs";
+import AutoCompleter from "../../../Components/AutoCompleter";
 
 
 export default function AddReview({ }: {}) {

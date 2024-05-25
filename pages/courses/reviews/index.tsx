@@ -1,12 +1,12 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import Menu from "../../Components/Menu";
+import Menu from "../../../Components/Menu";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { CourseReview } from "../../types/CourseReview";
-import { courses } from "../../data/courses";
-import { profs } from "../../data/profs";
-import AutoCompleter from "../../Components/AutoCompleter";
+import { CourseReview } from "../../../types/CourseReview";
+import { courses } from "../../../data/courses";
+import { profs } from "../../../data/profs";
+import AutoCompleter from "../../../Components/AutoCompleter";
 
 export default function Reviews({ }: {}) {
     const [course, setCourse] = useState("");
@@ -63,7 +63,7 @@ export default function Reviews({ }: {}) {
                         <AutoCompleter name={"Prof"} items={profs} value={prof} onChange={(val) => setProf(val)} />
 
                         <div className="flex flex-col md:flex-row w-1/2 justify-center">
-                            <Link className="m-3 w-full" href={"/courses/add"}>
+                            <Link className="m-3 w-full" href={"/courses/reviews/add"}>
                                 <button className="btn btn-outline w-full">
                                     Add a Review
                                 </button>
