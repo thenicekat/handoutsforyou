@@ -17,6 +17,17 @@ export default function Notes() {
         setResources(res.data)
     }
 
+    const incrementScore = async (id: number) => {
+        const data = await fetch(`/api/resources/score?id=${id}`)
+        const res = await data.json()
+        if (res.error) {
+            alert(res.message)
+        }
+        else {
+            window.open(res.data[0].link, '_blank')
+        }
+    }
+
     React.useEffect(() => {
         fetchResources()
     }, [])
@@ -71,9 +82,8 @@ export default function Notes() {
                                         <p className='text-lg'>{data.name.toUpperCase()}</p>
 
                                         <div className="flex-none">
-                                            <Link href={data.link} target='_blank'>
-                                                <button className="btn btn-sm btn-primary">View this Resource</button>
-                                            </Link>
+                                            <button className="btn btn-sm btn-primary m-1" onClick={() => incrementScore(data.id)}>View this Resource</button>
+                                            <button className="btn btn-sm btn-primary m-1">{data.score}</button>
                                         </div>
                                     </div>
                                 </div>
