@@ -1,24 +1,25 @@
 # Handouts For You.
 
 ## Features
-
-1. Search for handouts
+1. Handouts
 2. Course prerequisites
 3. Course Reviews
 4. Practice School Cutoffs
 5. Practice School Chronicles
 6. Summer Internship Chronicles (Might become hard to find lmao)
-7. Minors on Campus
-8. Notes and Resources
+7. Placement Chronicles
+8. Minors on Campus
+9. Academic Resources
 
 ## Development
-
 First, run the development server and for the pages you are making changes to, replace `{session &&` with `{true &&`. This lets you overcome the auth temporarily locally.
 
 ```bash
 npm run dev
 # or
 yarn dev
+# or
+pnpm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -72,6 +73,7 @@ National Instruments<|>National Instruments (Bangalore)<|>National Instruments S
 1. Vashisth Choudhari
 2. Ruban Srirambabu
 3. Mahith Tunuguntula
+4. Dev Gala
 
 ## Contributing Guidelines
 We aim to follow the following standards for commits
