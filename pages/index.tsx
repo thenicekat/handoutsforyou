@@ -55,6 +55,7 @@ export default function Home({ handoutsMap }: any) {
         <meta name="keywords" content="BITS Pilani, Handouts, BPHC, Hyderabad Campus, BITS Hyderabad, BITS, Pilani, Handouts for you, handouts, for, you, bits, birla, institute, bits hyd, academics" />
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="google-adsense-account" content="ca-pub-8538529975248100" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
