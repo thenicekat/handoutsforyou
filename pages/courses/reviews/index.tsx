@@ -21,11 +21,11 @@ export default function Reviews({ }: {}) {
     const { data: session } = useSession()
 
     const fetchReviews = async () => {
-        if (courses.includes(course) == false) {
+        if (courses.includes(course) == false && course !== "") {
             alert("Please select a course from the given list!")
             return
         }
-        if (profs.includes(prof) == false) {
+        if (profs.includes(prof) == false && prof !== "") {
             alert("Please select a professor from the given list!")
             return
         }
