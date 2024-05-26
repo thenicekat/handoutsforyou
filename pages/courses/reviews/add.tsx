@@ -2,8 +2,8 @@ import Head from "next/head";
 import { useState, useEffect } from "react";
 import Menu from "../../../Components/Menu";
 import { useSession } from "next-auth/react";
-import { courses } from "../../../data/courses";
-import { profs } from "../../../data/profs";
+import { courses } from "./data/courses";
+import { profs } from "./data/profs";
 import AutoCompleter from "../../../Components/AutoCompleter";
 
 
