@@ -4,10 +4,10 @@ import Menu from "../../../Components/Menu";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { CourseReview } from "../../../types/CourseReview";
-import { courses } from "./data/courses";
-import { profs } from "./data/profs";
+import { courses } from "../../../data/courses";
+import { profs } from "../../../data/profs";
 import AutoCompleter from "../../../Components/AutoCompleter";
-import { departments } from "./data/departments";
+import { departments } from "../../../data/departments";
 
 export default function Reviews({ }: {}) {
     const [course, setCourse] = useState("");
