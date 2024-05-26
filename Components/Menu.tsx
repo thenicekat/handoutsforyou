@@ -10,7 +10,7 @@ if (
     navigator.userAgent
 ) {
     const disableDevtool = require("disable-devtool");
-    disableDevtool();
+    if (process.env.NEXT_PUBLIC_PRODUCTION === "1") disableDevtool();
 }
 
 const Menu = () => {
@@ -36,8 +36,8 @@ const Menu = () => {
 
     return (
         <>
-            <button className="btn btn-outline w-1/4 m-3 sm:hidden" onClick={() => toggleMenu()}>
-                Menu
+            <button className="btn btn-outline w-1/2 m-3 sm:hidden" onClick={() => toggleMenu()}>
+                Toggle Menu
             </button>
 
             <GitHubButton href="https://github.com/divyateja04/handoutsforyou"
