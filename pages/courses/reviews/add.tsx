@@ -28,8 +28,13 @@ export default function AddReview({ }: {}) {
             alert("Please fill review!")
             return
         }
+
         if (courses.includes(course) == false) {
-            alert("Please select a course from the list!")
+            alert("Please select a course from the given list!")
+            return
+        }
+        if (profs.includes(prof) == false) {
+            alert("Please select a professor from the given list!")
             return
         }
 
