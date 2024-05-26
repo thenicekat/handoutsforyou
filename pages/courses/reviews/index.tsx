@@ -4,13 +4,15 @@ import Menu from "../../../Components/Menu";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { CourseReview } from "../../../types/CourseReview";
-import { courses } from "../../../data/courses";
-import { profs } from "../../../data/profs";
+import { courses } from "./data/courses";
+import { profs } from "./data/profs";
 import AutoCompleter from "../../../Components/AutoCompleter";
+import { departments } from "./data/departments";
 
 export default function Reviews({ }: {}) {
     const [course, setCourse] = useState("");
     const [prof, setProf] = useState("");
+    const [dept, setDept] = useState("");
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -28,6 +30,19 @@ export default function Reviews({ }: {}) {
         const reviews = await data.json()
         setReviews(reviews.data as CourseReview[])
         setIsLoading(false)
+        filterByDept(departments[dept])
+    }
+
+    const filterByDept = (dept: string) => {
+        if (dept === "" || dept === undefined) return;
+        let deptsToCheck = dept.split("/").map((d) => d.trim())
+        let filteredReviews = new Set();
+        reviews.forEach((review) => {
+            deptsToCheck.forEach((d) => {
+                if (review.course.split(" ")[0].includes(d)) filteredReviews.add(review)
+            })
+        })
+        setReviews(Array.from(filteredReviews) as CourseReview[])
     }
 
     useEffect(() => {
@@ -61,6 +76,10 @@ export default function Reviews({ }: {}) {
                         <AutoCompleter name={"Course"} items={courses} value={course} onChange={(val) => setCourse(val)} />
                         <span className="m-2"></span>
                         <AutoCompleter name={"Prof"} items={profs} value={prof} onChange={(val) => setProf(val)} />
+                        <span className="m-2"></span>
+                        <AutoCompleter name={"Department"} items={Object.keys(departments)} value={dept} onChange={(val) => {
+                            setDept(val)
+                        }} />
 
                         <div className="flex flex-col md:flex-row w-1/2 justify-center">
                             <Link className="m-3 w-full" href={"/courses/reviews/add"}>
