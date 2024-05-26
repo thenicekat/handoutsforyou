@@ -157,7 +157,7 @@ export default function Faqs() {
             </Head>
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
-                    <h1 className="text-6xl pt-[50px] pb-[20px] px-[35px]">FAQs.</h1>
+                    <h1 className="text-5xl pt-[50px] pb-[20px] px-[35px]">FAQs.</h1>
 
                     <Menu />
 
