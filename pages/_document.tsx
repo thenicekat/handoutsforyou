@@ -1,10 +1,17 @@
 import { Html, Head, Main, NextScript } from 'next/document'
 import Footer from '../Components/Footer'
+import Script from 'next/script'
 
 export default function Document() {
   return (
     <Html lang="en">
       <Head>
+        <Script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8538529975248100`}
+          strategy="lazyOnload"
+          crossOrigin="anonymous"
+        />
       </Head>
       <body className="mb-20">
         {/* <div className="h-screen w-full bg-white relative flex overflow-hidden">
