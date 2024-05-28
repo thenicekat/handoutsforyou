@@ -16,7 +16,7 @@ export default async function handler(
     const session = await getServerSession(req, res, authOptions)
     if (!session) {
         res.status(400).json({
-            message: 'Unauthorized',
+            message: 'Unauthorized, This shall be reported',
             error: true,
             data: []
         })
