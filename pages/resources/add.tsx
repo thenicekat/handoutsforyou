@@ -15,7 +15,7 @@ export default function AddPS2Response({ }: {}) {
 
     const AddResponse = async () => {
         setIsLoading(true)
-        const data = await fetch("/api/resources/add", {
+        const res = await fetch("/api/resources/add", {
             method: "POST",
             body: JSON.stringify({
                 name: name,
@@ -24,9 +24,9 @@ export default function AddPS2Response({ }: {}) {
             }),
             headers: { "Content-Type": "application/json" }
         })
-        const res = await data.json()
-        if (res.error) {
-            alert(res.message)
+        const data = await res.json()
+        if (data.error) {
+            alert(data.message)
         }
         else {
             alert("Resource Added!")

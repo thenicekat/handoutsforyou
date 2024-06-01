@@ -25,14 +25,15 @@ export default function SICompanies() {
             }),
             headers: { "Content-Type": "application/json" }
         });
-        const data = await res.json();
-        console.log(data)
 
-        if (data.error) {
-            alert(data.message);
-            return
-        } else {
-            setSIData(data.data);
+        if (res.status !== 400) {
+            const data = await res.json();
+            if (data.error) {
+                alert(data.message);
+                return
+            } else {
+                setSIData(data.data);
+            }
         }
         setIsLoading(false);
     }

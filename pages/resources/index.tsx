@@ -12,19 +12,21 @@ export default function Notes() {
     const [resources, setResources] = useState<DataLinkType[]>([])
 
     const fetchResources = async () => {
-        const data = await fetch("/api/resources/get")
-        const res = await data.json()
-        setResources(res.data)
+        const res = await fetch("/api/resources/get")
+        if (res.status !== 400) {
+            const data = await res.json()
+            setResources(data.data)
+        }
     }
 
     const incrementScore = async (id: number) => {
-        const data = await fetch(`/api/resources/score?id=${id}`)
-        const res = await data.json()
-        if (res.error) {
-            alert(res.message)
+        const res = await fetch(`/api/resources/score?id=${id}`)
+        const data = await res.json()
+        if (data.error) {
+            alert(data.message)
         }
         else {
-            window.open(res.data[0].link, '_blank')
+            window.open(data.data[0].link, '_blank')
         }
     }
 

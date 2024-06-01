@@ -18,6 +18,7 @@ export default async function handler(
             message: 'Unauthorized, Please login and try again',
             error: true
         })
+        return
     }
 
     const { course, prof, review, created_by } = req.body

@@ -2,10 +2,6 @@ import Head from "next/head";
 import { useState, useEffect } from "react";
 import Menu from "../../../Components/Menu";
 import { useSession } from "next-auth/react";
-import { supabase } from '../../api/supabase';
-import { courses } from "../../../data/courses";
-import { profs } from "../../../data/profs";
-import AutoCompleter from "../../../Components/AutoCompleter";
 
 type PSDataRes = {
     typeOfPS: string,
@@ -40,7 +36,7 @@ export default function AddPS1Response({ }: {}) {
             return
         }
 
-        const data = await fetch("/api/ps/addresponse", {
+        const res = await fetch("/api/ps/addresponse", {
             method: "POST",
             body: JSON.stringify({
                 typeOfPS: "ps1",
@@ -53,9 +49,9 @@ export default function AddPS1Response({ }: {}) {
             }),
             headers: { "Content-Type": "application/json" }
         })
-        const res = await data.json()
-        if (res.error) {
-            alert(res.message)
+        const data = await res.json()
+        if (data.error) {
+            alert(data.message)
         }
         else {
             alert("Response Added!")

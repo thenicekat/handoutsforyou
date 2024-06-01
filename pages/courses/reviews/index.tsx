@@ -31,15 +31,22 @@ export default function Reviews({ }: {}) {
         }
 
         setIsLoading(true)
-        const data = await fetch("/api/reviews/get", {
+        const res = await fetch("/api/reviews/get", {
             method: "POST",
             body: JSON.stringify({ course: course, prof: prof }),
             headers: { "Content-Type": "application/json" }
         })
-        const reviews = await data.json()
-        setReviews(reviews.data as CourseReview[])
-        setIsLoading(false)
-        filterByDept(departments[dept])
+        if (res.status !== 400) {
+            const reviews = await res.json()
+            if (reviews.error && reviews.status !== 400) {
+                alert(reviews.message)
+                setIsLoading(false)
+            } else {
+                setReviews(reviews.data as CourseReview[])
+                setIsLoading(false)
+                filterByDept(departments[dept])
+            }
+        }
     }
 
     const filterByDept = (dept: string) => {
