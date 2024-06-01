@@ -20,6 +20,7 @@ export default async function handler(
             error: true,
             data: []
         })
+        return;
     }
 
     const { year } = req.body
@@ -30,6 +31,7 @@ export default async function handler(
             error: true,
             data: []
         })
+        return
     }
     else {
         const { data, error } = await supabase
