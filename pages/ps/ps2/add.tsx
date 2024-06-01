@@ -64,6 +64,9 @@ export default function AddPS2Response({ }: {}) {
             setOffshoot(0)
             setOffshootTotal(0)
             setOffshootType("")
+
+            localStorage.removeItem("h4u_ps2_yearRef")
+            window.location.href = "/ps/ps2/data"
         }
         setIsLoading(false)
     }
@@ -72,6 +75,10 @@ export default function AddPS2Response({ }: {}) {
         let yearNSem = localStorage.getItem("h4u_ps2_yearRef");
         if (yearNSem) {
             setYearAndSem(yearNSem);
+            setAllotmentRound("Round 1")
+        } else {
+            alert("Please select year and sem from the menu")
+            window.location.href = "/ps/ps2/data"
         }
     }, [])
 

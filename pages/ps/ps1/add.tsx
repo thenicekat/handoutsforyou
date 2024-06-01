@@ -20,7 +20,6 @@ type PSDataRes = {
     offshootType: string,
 }
 
-
 export default function AddPS1Response({ }: {}) {
     const [idNumber, setIdNumber] = useState("");
     const [yearAndSem, setYearAndSem] = useState("");
@@ -66,6 +65,9 @@ export default function AddPS1Response({ }: {}) {
             setStation("")
             setCGPA(0)
             setPreference(0)
+
+            localStorage.removeItem("h4u_ps1_yearRef")
+            window.location.href = "/ps/ps1/data"
         }
         setIsLoading(false)
     }
@@ -74,6 +76,10 @@ export default function AddPS1Response({ }: {}) {
         let yearNSem = localStorage.getItem("h4u_ps1_yearRef");
         if (yearNSem) {
             setYearAndSem(yearNSem);
+            setAllotmentRound("Round 1")
+        } else {
+            alert("Please select year and sem from the menu")
+            window.location.href = "/ps/ps1/data"
         }
     }, [])
 
