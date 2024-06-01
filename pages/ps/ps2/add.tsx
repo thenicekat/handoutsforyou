@@ -33,7 +33,7 @@ export default function AddPS2Response({ }: {}) {
 
     const AddResponse = async () => {
         setIsLoading(true)
-        const data = await fetch("/api/ps/addresponse", {
+        const res = await fetch("/api/ps/addresponse", {
             method: "POST",
             body: JSON.stringify({
                 typeOfPS: "ps2",
@@ -49,9 +49,9 @@ export default function AddPS2Response({ }: {}) {
             }),
             headers: { "Content-Type": "application/json" }
         })
-        const res = await data.json()
-        if (res.error) {
-            alert(res.message)
+        const data = await res.json()
+        if (data.error) {
+            alert(data.message)
         }
         else {
             alert("Response Added!")

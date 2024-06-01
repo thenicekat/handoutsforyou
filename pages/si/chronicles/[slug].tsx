@@ -23,12 +23,14 @@ export default function ChroniclePage() {
                 "Content-Type": "application/json"
             }
         })
-        const data = await res.json()
-        if (data.error) {
-            alert(data.message)
-            return
-        } else
-            setChronicles(data.data)
+        if (res.status !== 400) {
+            const data = await res.json()
+            if (data.error) {
+                alert(data.message)
+                return
+            } else
+                setChronicles(data.data)
+        }
     }
 
     useEffect(() => {

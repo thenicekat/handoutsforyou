@@ -26,13 +26,14 @@ export default function PS2() {
             }),
             headers: { "Content-Type": "application/json" }
         });
-        const data = await res.json();
-
-        if (data.error) {
-            alert(data.message);
-            return
-        } else {
-            setPS2Data(data.data);
+        if (res.status !== 400) {
+            const data = await res.json();
+            if (data.error) {
+                alert(data.message);
+                return
+            } else {
+                setPS2Data(data.data);
+            }
         }
         setIsLoading(false);
     }
