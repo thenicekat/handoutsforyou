@@ -3,21 +3,7 @@ import { useState, useEffect } from "react";
 import Menu from "../../../Components/Menu";
 import { useSession } from "next-auth/react";
 
-type PSDataRes = {
-    typeOfPS: string,
-    idNumber: string,
-    yearAndSem: string,
-    allotmentRound: string,
-    station: string,
-    cgpa: number,
-    preference: number,
-    offshoot: number,
-    offshootTotal: number,
-    offshootType: string,
-}
-
 export default function AddPS1Response({ }: {}) {
-    const [idNumber, setIdNumber] = useState("");
     const [yearAndSem, setYearAndSem] = useState("");
     const [allotmentRound, setAllotmentRound] = useState("");
     const [station, setStation] = useState("");
@@ -30,7 +16,7 @@ export default function AddPS1Response({ }: {}) {
 
     const AddResponse = async () => {
         setIsLoading(true)
-        if (!idNumber || !yearAndSem || !allotmentRound || !station) {
+        if (!yearAndSem || !allotmentRound || !station) {
             alert("Please fill all the fields!")
             setIsLoading(false)
             return
@@ -40,7 +26,6 @@ export default function AddPS1Response({ }: {}) {
             method: "POST",
             body: JSON.stringify({
                 typeOfPS: "ps1",
-                idNumber: idNumber,
                 yearAndSem: yearAndSem,
                 allotmentRound: allotmentRound,
                 station: station,
@@ -55,7 +40,6 @@ export default function AddPS1Response({ }: {}) {
         }
         else {
             alert("Response Added!")
-            setIdNumber("")
             setYearAndSem("")
             setAllotmentRound("")
             setStation("")
@@ -107,11 +91,6 @@ export default function AddPS1Response({ }: {}) {
                         :
                         <>
                             {/* Take input */}
-                            <div className="flex flex-col w-3/4 justify-between m-1">
-                                <label htmlFor="idNumber" className="text-primary">ID Number</label>
-                                <input type="text" id="idNumber" className="input input-secondary" value={idNumber} onChange={(e) => setIdNumber(e.target.value)} />
-                            </div>
-
                             <div className="flex flex-col w-3/4 justify-between m-1">
                                 <label htmlFor="yearAndSem" className="text-primary">Year and Sem</label>
                                 <input disabled type="text" id="yearAndSem" className="input input-secondary" value={yearAndSem} onChange={(e) => setYearAndSem(e.target.value)} />
