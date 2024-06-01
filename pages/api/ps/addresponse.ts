@@ -53,7 +53,8 @@ export default async function handler(
         })
     }
     else {
-        // First check if existing record exists
+        reqBody.station = reqBody.station.toUpperCase()
+
         if (reqBody.typeOfPS === 'ps1') {
             const { data: existingData, error: existingError } = await supabase.
                 from('ps1_responses')
