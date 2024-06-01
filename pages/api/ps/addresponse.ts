@@ -66,7 +66,7 @@ export default async function handler(
                         cgpa: reqBody.cgpa,
                         preference: reqBody.preference,
                     }
-                ], { onConflict: 'email' })
+                ], { onConflict: 'email,year_and_sem' })
 
             if (error) {
                 res.status(500).json({ message: error.message, data: [], error: true })
