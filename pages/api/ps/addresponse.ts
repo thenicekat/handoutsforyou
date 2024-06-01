@@ -45,7 +45,7 @@ export default async function handler(
             data: []
         })
     }
-    if (!reqBody) {
+    if (!reqBody || !reqBody.typeOfPS || !reqBody.idNumber || !reqBody.yearAndSem || !reqBody.allotmentRound || !reqBody.station || !reqBody.cgpa) {
         res.status(422).json({
             message: 'Missing required fields',
             error: true,
@@ -53,10 +53,20 @@ export default async function handler(
         })
     }
     else {
+        // First check if existing record exists
         if (reqBody.typeOfPS === 'ps1') {
+            const { data: existingData, error: existingError } = await supabase.
+                from('ps1_responses')
+                .select('*')
+                .eq('email', email)
+                .eq('allotment_round', reqBody.allotmentRound)
+            if (existingData && existingData?.length > 0) {
+                res.status(500).json({ message: "You have already submitted a response with this email and allotment round", data: [], error: true })
+                return
+            }
             const { data, error } = await supabase
                 .from('ps1_responses')
-                .upsert([
+                .insert([
                     {
                         email: email,
                         id_number: reqBody.idNumber,
@@ -66,7 +76,7 @@ export default async function handler(
                         cgpa: reqBody.cgpa,
                         preference: reqBody.preference,
                     }
-                ], { onConflict: 'email,year_and_sem' })
+                ])
 
             if (error) {
                 res.status(500).json({ message: error.message, data: [], error: true })
@@ -82,9 +92,18 @@ export default async function handler(
             }
         }
         else if (reqBody.typeOfPS === 'ps2') {
+            const { data: existingData, error: existingError } = await supabase.
+                from('ps2_responses')
+                .select('*')
+                .eq('email', email)
+                .eq('allotment_round', reqBody.allotmentRound)
+            if (existingData && existingData?.length > 0) {
+                res.status(500).json({ message: "You have already submitted a response with this email and allotment round", data: [], error: true })
+                return
+            }
             const { data, error } = await supabase
                 .from('ps2_responses')
-                .upsert([
+                .insert([
                     {
                         email: email,
                         id_number: reqBody.idNumber,
@@ -97,7 +116,7 @@ export default async function handler(
                         offshoot_total: reqBody.offshootTotal,
                         offshoot_type: reqBody.offshootType
                     }
-                ], { onConflict: 'email' })
+                ])
 
             if (error) {
                 res.status(500).json({ message: error.message, data: [], error: true })
