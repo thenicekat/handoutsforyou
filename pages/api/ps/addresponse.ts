@@ -11,7 +11,7 @@ type ResponseData = {
 
 type RequestData = {
     typeOfPS: string,
-    idNumber: string,
+    idNumber: string | undefined,
     yearAndSem: string,
     allotmentRound: string,
     station: string,
@@ -53,7 +53,8 @@ export default async function handler(
         })
     }
     else {
-        reqBody.station = reqBody.station.toUpperCase()
+        // Trim and convert to uppercase to avoid duplicates
+        reqBody.station = reqBody.station.toUpperCase().trim()
 
         if (reqBody.typeOfPS === 'ps1') {
             const { data: existingData, error: existingError } = await supabase.
@@ -65,12 +66,12 @@ export default async function handler(
                 res.status(500).json({ message: "You have already submitted a response with this email and allotment round", data: [], error: true })
                 return
             }
+
             const { data, error } = await supabase
                 .from('ps1_responses')
                 .insert([
                     {
                         email: email,
-                        id_number: reqBody.idNumber,
                         allotment_round: reqBody.allotmentRound,
                         year_and_sem: reqBody.yearAndSem,
                         station: reqBody.station,
@@ -93,6 +94,12 @@ export default async function handler(
             }
         }
         else if (reqBody.typeOfPS === 'ps2') {
+            // Check if email and ID Number match, this is only doing for PS2
+            if ("f" + reqBody.idNumber.slice(0, 4) + reqBody.idNumber.slice(8, 12) !== email?.split("@")[0]) {
+                res.status(500).json({ message: "Email and ID Number do not match", data: [], error: true })
+                return
+            }
+
             const { data: existingData, error: existingError } = await supabase.
                 from('ps2_responses')
                 .select('*')
@@ -102,6 +109,7 @@ export default async function handler(
                 res.status(500).json({ message: "You have already submitted a response with this email and allotment round", data: [], error: true })
                 return
             }
+
             const { data, error } = await supabase
                 .from('ps2_responses')
                 .insert([
