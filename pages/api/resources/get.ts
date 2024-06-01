@@ -20,6 +20,7 @@ export default async function handler(
             error: true,
             data: []
         })
+        return;
     }
 
     const { data, error } = await supabase

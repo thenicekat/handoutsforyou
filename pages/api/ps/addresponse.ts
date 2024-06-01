@@ -33,6 +33,7 @@ export default async function handler(
             error: true,
             data: []
         })
+        return;
     }
 
     const email = session?.user?.email
@@ -44,6 +45,7 @@ export default async function handler(
             error: true,
             data: []
         })
+        return;
     }
     if (!reqBody || !reqBody.typeOfPS || !reqBody.idNumber || !reqBody.yearAndSem || !reqBody.allotmentRound || !reqBody.station || !reqBody.cgpa) {
         res.status(422).json({
@@ -63,7 +65,7 @@ export default async function handler(
                 .eq('email', email)
                 .eq('allotment_round', reqBody.allotmentRound)
             if (existingData && existingData?.length > 0) {
-                res.status(500).json({ message: "You have already submitted a response with this email and allotment round", data: [], error: true })
+                res.status(500).json({ message: "You have already submitted a response with this email and allotment round. Please do not try to enter fake data because this is not monitored.", data: [], error: true })
                 return
             }
 
