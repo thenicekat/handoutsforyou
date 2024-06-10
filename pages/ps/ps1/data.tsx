@@ -106,7 +106,7 @@ export default function PS2() {
                 <div>
                     {/* Show the count of reviews */}
                     <div className="flex justify-center">
-                        <h1 className="text-3xl text-primary">Total Responses: {ps1Data.length}</h1>
+                        <h1 className="text-3xl text-primary">Total Companies: {ps1Data.length}</h1>
                     </div>
 
                     <div className='px-2 md:px-20'>
