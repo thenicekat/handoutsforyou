@@ -40,12 +40,12 @@ const Menu = () => {
                 Toggle Menu
             </button>
 
-            <GitHubButton href="https://github.com/divyateja04/handoutsforyou"
+            <GitHubButton href="https://github.com/thenicekat/handoutsforyou"
                 data-color-scheme="no-preference: light; light: light; dark: light;"
                 data-icon="octicon-star"
                 data-size="large"
                 data-show-count="true"
-                aria-label="Star divyateja04/handoutsforyou on GitHub">
+                aria-label="Star thenicekat/handoutsforyou on GitHub">
                 Star
             </GitHubButton>
 

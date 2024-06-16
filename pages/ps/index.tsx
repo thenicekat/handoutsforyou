@@ -77,7 +77,7 @@ export default function PS({ ps1_chronicles, ps2_chronicles }: any) {
                                         </div>
                                         <div className="flex-none">
                                             <button className="btn btn-primary" onClick={
-                                                () => window.open("https://github.com/Divyateja04/handoutsforyou/raw/main/public/ps/ps1_chronicles/" + chron)
+                                                () => window.open("https://github.com/thenicekat/handoutsforyou/raw/main/public/ps/ps1_chronicles/" + chron)
                                             }>View</button></div>
                                     </div>
                                 </div>
@@ -96,7 +96,7 @@ export default function PS({ ps1_chronicles, ps2_chronicles }: any) {
                                         </div>
                                         <div className="flex-none">
                                             <button className="btn btn-primary" onClick={
-                                                () => window.open("https://github.com/Divyateja04/handoutsforyou/raw/main/public/ps/ps2_chronicles/" + chron)
+                                                () => window.open("https://github.com/thenicekat/handoutsforyou/raw/main/public/ps/ps2_chronicles/" + chron)
                                             }>View</button></div>
                                     </div>
                                 </div>

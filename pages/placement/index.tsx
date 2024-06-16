@@ -61,7 +61,7 @@ export default function Placement({ pu_chronicles }: any) {
                                         </div>
                                         <div className="flex-none">
                                             <button className="btn btn-primary" onClick={
-                                                () => window.open("https://github.com/Divyateja04/handoutsforyou/raw/main/public/placements/chronicles/" + chron)
+                                                () => window.open("https://github.com/thenicekat/handoutsforyou/raw/main/public/placements/chronicles/" + chron)
                                             }>View</button></div>
                                     </div>
                                 </div>
