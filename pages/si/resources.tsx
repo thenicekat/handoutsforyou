@@ -15,15 +15,15 @@ export default function SI({ }: any) {
         },
         {
             name: "SI Chronicles 2020-2021",
-            link: "https://github.com/Divyateja04/handoutsforyou/raw/main/public/si/20-21.pdf"
+            link: "https://github.com/thenicekat/handoutsforyou/raw/main/public/si/20-21.pdf"
         },
         {
             name: "SI Chronicles 2021-2022",
-            link: "https://github.com/Divyateja04/handoutsforyou/raw/main/public/si/21-22.pdf"
+            link: "https://github.com/thenicekat/handoutsforyou/raw/main/public/si/21-22.pdf"
         },
         {
             name: "SI Chronicles 2022-2023",
-            link: "https://github.com/Divyateja04/handoutsforyou/raw/main/public/si/22-23.pdf"
+            link: "https://github.com/thenicekat/handoutsforyou/raw/main/public/si/22-23.pdf"
         }
     ]
 
