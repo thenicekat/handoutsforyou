@@ -5,7 +5,7 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { PS_Station } from "../../../types/PSData";
 
-export default function PS2() {
+export default function PS1Data() {
     const [search, setSearch] = useState("");
     const [cgpa, setCGPA] = useState(10);
 
