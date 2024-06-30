@@ -120,7 +120,7 @@ export default function PS() {
                                             <div className='text-lg font-semibold'>Year and Semester: {item.year_and_sem}</div>
                                         </div>
                                     )
-                                }) : <div className='text-lg font-semibold'>No Data found, <Link href="/ps/ps1/add">
+                                }) : <div className='text-lg font-semibold'>No Data found, <Link href="/ps/ps1/add" className="text-blue-900">
                                     Please enter data</Link></div>}
                             </div>
 
@@ -139,7 +139,7 @@ export default function PS() {
                                             <div className='text-lg font-semibold'>Offshoot Type: {item.offshoot_type}</div>
                                         </div>
                                     )
-                                }) : <div className='text-lg font-semibold'>No Data found, <Link href="/ps/ps2/add">
+                                }) : <div className='text-lg font-semibold'>No Data found, <Link href="/ps/ps2/add" className="text-blue-900">
                                     Please enter data</Link></div>}
                             </div>
                         </>
