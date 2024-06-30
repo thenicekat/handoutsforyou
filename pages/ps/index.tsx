@@ -2,9 +2,56 @@ import { useSession } from "next-auth/react";
 import Head from "next/head";
 import Link from "next/link";
 import Menu from "../../Components/Menu";
+import { useEffect, useState } from "react";
+
+type PS1Item = {
+    created_at: string;
+    email: string;
+    allotment_round: string;
+    year_and_sem: string;
+    station: string;
+    cgpa: number;
+    preference: number;
+    id: number;
+}
+
+type PS2Item = {
+    id_number: string | undefined,
+    year_and_sem: string,
+    allotment_round: string,
+    station: string,
+    cgpa: number,
+    preference: number,
+    offshoot: number,
+    offshoot_total: number,
+    offshoot_type: string,
+}
 
 export default function PS() {
     const { data: session } = useSession()
+
+    const [isLoading, setIsLoading] = useState(false);
+    const [data, setData] = useState<any>({});
+
+    const fetchData = async () => {
+        setIsLoading(true);
+        const response = await fetch("/api/ps/me", {
+            method: "GET",
+            headers: { "Content-Type": "application/json" }
+        });
+        if (response.status !== 400) {
+            const res = await response.json();
+            if (res.error) {
+                alert(res.message);
+                return
+            } else {
+                setData(res.data);
+            }
+        }
+        setIsLoading(false);
+    }
+
+    useEffect(() => { fetchData() }, []);
 
     return (
         <>
@@ -56,11 +103,49 @@ export default function PS() {
 
             {session &&
                 <div>
-                    <h1 className="text-3xl text-center my-3">PS Dashboard</h1>
-                    <div className='grid md:grid-cols-4 place-items-center p-5'>
+                    <h1 className="text-3xl text-center my-3">Your PS Dashboard</h1>
+                    <h1 className="text-xl text-center my-3">Please contribute to this project by sharing your PS details</h1>
 
-                    </div>
-                </div>}
+                    {!isLoading ?
+                        <>
+                            <h1 className="text-2xl text-center my-3">Your PS1 Data</h1>
+                            <div className='grid md:grid-cols-2 place-items-center p-5'>
+                                {data.ps1.length > 0 ? data.ps1.map((item: PS1Item, index: number) => {
+                                    return (
+                                        <div key={index} className='p-3 border border-gray-300 rounded-md'>
+                                            <div className='text-lg font-semibold'>Station: {item.station}</div>
+                                            <div className='text-lg font-semibold'>CGPA: {item.cgpa}</div>
+                                            <div className='text-lg font-semibold'>Preference: {item.preference}</div>
+                                            <div className='text-lg font-semibold'>Allotment Round: {item.allotment_round}</div>
+                                            <div className='text-lg font-semibold'>Year and Semester: {item.year_and_sem}</div>
+                                        </div>
+                                    )
+                                }) : <div className='text-lg font-semibold'>No data found</div>}
+                            </div>
+
+                            <h1 className="text-2xl text-center my-3">Your PS2 Data</h1>
+                            <div className='grid md:grid-cols-2 place-items-center p-5'>
+                                {data.ps2.length > 0 ? data.ps2.map((item: PS2Item, index: number) => {
+                                    return (
+                                        <div key={index} className='p-3 border border-gray-300 rounded-md'>
+                                            <div className='text-lg font-semibold'>Station: {item.station}</div>
+                                            <div className='text-lg font-semibold'>CGPA: {item.cgpa}</div>
+                                            <div className='text-lg font-semibold'>Preference: {item.preference}</div>
+                                            <div className='text-lg font-semibold'>Allotment Round: {item.allotment_round}</div>
+                                            <div className='text-lg font-semibold'>Year and Semester: {item.year_and_sem}</div>
+                                            <div className='text-lg font-semibold'>Offshoot: {item.offshoot}</div>
+                                            <div className='text-lg font-semibold'>Offshoot Total: {item.offshoot_total}</div>
+                                            <div className='text-lg font-semibold'>Offshoot Type: {item.offshoot_type}</div>
+                                        </div>
+                                    )
+                                }) : <div className='text-lg font-semibold'>No Data found</div>}
+                            </div>
+                        </>
+                        :
+                        <div className='text-lg text-center font-semibold'>Loading...</div>
+                    }
+                </div>
+            }
 
         </>
     );
