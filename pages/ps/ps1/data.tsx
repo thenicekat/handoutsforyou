@@ -4,13 +4,13 @@ import Menu from "../../../Components/Menu";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { PS_Station } from "../../../types/PSData";
+import { years } from "./years";
 
 export default function PS1Data() {
     const [search, setSearch] = useState("");
     const [cgpa, setCGPA] = useState(10);
 
-    const yearReferences = ["2022 Batch", "2021 Batch"]
-    const [yearRef, setYearRef] = useState(yearReferences[0]);
+    const [yearRef, setYearRef] = useState(years[0]);
 
     const [isLoading, setIsLoading] = useState(false);
     const [ps1Data, setPS1Data] = useState([]);
@@ -39,7 +39,6 @@ export default function PS1Data() {
     }
 
     useEffect(() => {
-        localStorage.setItem("h4u_ps1_yearRef", yearRef);
         fetchData();
     }, [yearRef])
 
@@ -91,7 +90,7 @@ export default function PS1Data() {
                         <select className="select select-bordered w-full max-w-xs" onChange={(e) => setYearRef(e.target.value)}>
                             <option disabled selected>Which year to use as reference?</option>
                             {
-                                yearReferences.map((year) => (
+                                years.map((year) => (
                                     <option value={year} key={year} selected={yearRef == year}>{year}</option>
                                 ))
                             }
