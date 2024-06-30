@@ -55,6 +55,15 @@ export default async function handler(
         })
     }
     else {
+        if (reqBody.cgpa < 0 || reqBody.cgpa > 10) {
+            res.status(422).json({ message: "CGPA should be between 0 and 10", data: [], error: true })
+            return
+        }
+        if (reqBody.preference < 0) {
+            res.status(422).json({ message: "Preference should be a positive number", data: [], error: true })
+            return
+        }
+
         // Trim and convert to uppercase to avoid duplicates
         reqBody.station = reqBody.station.toUpperCase().trim()
 
@@ -96,13 +105,17 @@ export default async function handler(
             }
         }
         else if (reqBody.typeOfPS === 'ps2') {
-             if(!reqBody.idNumber || (reqBody && reqBody.idNumber && reqBody.idNumber?.length < 12)){
-                 res.status(500).json({ message: "ID number format is not correct", data: [], error: true });
-                 return;
-             }
+            if (reqBody.offshoot < 0 || reqBody.offshootTotal < 0 || reqBody.offshoot < reqBody.offshootTotal) {
+                res.status(422).json({ message: "Please enter valid data for offshoot.", data: [], error: true });
+                return;
+            }
+            if (!reqBody.idNumber || (reqBody && reqBody.idNumber && reqBody.idNumber?.length < 12)) {
+                res.status(422).json({ message: "ID number format is not correct.", data: [], error: true });
+                return;
+            }
             // Check if email and ID Number match, this is only doing for PS2
             if ("f" + reqBody.idNumber.slice(0, 4) + reqBody.idNumber.slice(8, 12) !== email?.split("@")[0]) {
-                res.status(500).json({ message: "Email and ID Number do not match", data: [], error: true })
+                res.status(422).json({ message: "Email and ID Number do not match.", data: [], error: true })
                 return
             }
 

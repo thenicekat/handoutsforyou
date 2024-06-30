@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useState } from "react";
 import Menu from "../../../Components/Menu";
 import { useSession } from "next-auth/react";
-import { years } from "./years";
+import { years } from "../../../data/ps2_years";
 import AutoCompleter from "../../../Components/AutoCompleter";
 
 type PSDataRes = {
