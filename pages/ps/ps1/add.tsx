@@ -2,10 +2,12 @@ import Head from "next/head";
 import { useState, useEffect } from "react";
 import Menu from "../../../Components/Menu";
 import { useSession } from "next-auth/react";
+import AutoCompleter from "../../../Components/AutoCompleter";
+import { years } from "./years";
 
 export default function AddPS1Response({ }: {}) {
     const [yearAndSem, setYearAndSem] = useState("");
-    const [allotmentRound, setAllotmentRound] = useState("");
+    const [allotmentRound, setAllotmentRound] = useState("Round 1");
     const [station, setStation] = useState("");
     const [cgpa, setCGPA] = useState(0);
     const [preference, setPreference] = useState(0);
@@ -18,6 +20,12 @@ export default function AddPS1Response({ }: {}) {
         setIsLoading(true)
         if (!yearAndSem || !allotmentRound || !station) {
             alert("Please fill all the fields!")
+            setIsLoading(false)
+            return
+        }
+
+        if (years.indexOf(yearAndSem) === -1) {
+            alert("Invalid Year and Sem, Please select from the dropdown!")
             setIsLoading(false)
             return
         }
@@ -46,22 +54,10 @@ export default function AddPS1Response({ }: {}) {
             setCGPA(0)
             setPreference(0)
 
-            localStorage.removeItem("h4u_ps1_yearRef")
             window.location.href = "/ps/ps1/data"
         }
         setIsLoading(false)
     }
-
-    useEffect(() => {
-        let yearNSem = localStorage.getItem("h4u_ps1_yearRef");
-        if (yearNSem) {
-            setYearAndSem(yearNSem);
-            setAllotmentRound("Round 1")
-        } else {
-            alert("Please select year and sem from the menu")
-            window.location.href = "/ps/ps1/data"
-        }
-    }, [])
 
     return (
         <>
@@ -93,7 +89,7 @@ export default function AddPS1Response({ }: {}) {
                             {/* Take input */}
                             <div className="flex flex-col w-3/4 justify-between m-1">
                                 <label htmlFor="yearAndSem" className="text-primary">Year and Sem</label>
-                                <input disabled type="text" id="yearAndSem" className="input input-secondary" value={yearAndSem} onChange={(e) => setYearAndSem(e.target.value)} />
+                                <AutoCompleter items={years} onChange={(e) => setYearAndSem(e)} name="Year and Sem" value={yearAndSem} />
                             </div>
 
                             <div className="flex flex-col w-3/4 justify-between m-1">

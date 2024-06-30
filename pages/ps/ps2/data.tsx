@@ -4,13 +4,14 @@ import Menu from "../../../Components/Menu";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { PS_Station } from "../../../types/PSData";
+import { years } from "./years";
 
 export default function PS2Data() {
     const [search, setSearch] = useState("");
     const [cgpa, setCGPA] = useState(10);
 
-    const yearReferences = ["24-25 Sem 1", "23-24 Sem 2", "23-24 Sem 1", "22-23 Sem 2", "22-23 Sem 1", "21-22 Sem 1", "20-21 Sem 2", "20-21 Sem 1", "19-20 Sem 2", "19-20 Sem 1"]
-    const [yearRef, setYearRef] = useState(yearReferences[0]);
+
+    const [yearRef, setYearRef] = useState(years[0]);
 
     const [isLoading, setIsLoading] = useState(false);
     const [ps2Data, setPS2Data] = useState([]);
@@ -39,7 +40,6 @@ export default function PS2Data() {
     }
 
     useEffect(() => {
-        localStorage.setItem("h4u_ps2_yearRef", yearRef);
         fetchData();
     }, [yearRef])
 
@@ -91,7 +91,7 @@ export default function PS2Data() {
                         <select className="select select-bordered w-full max-w-xs" onChange={(e) => setYearRef(e.target.value)}>
                             <option disabled selected>Which year to use as reference?</option>
                             {
-                                yearReferences.map((year) => (
+                                years.map((year) => (
                                     <option value={year} key={year} selected={yearRef == year}>{year}</option>
                                 ))
                             }

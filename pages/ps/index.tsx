@@ -110,7 +110,7 @@ export default function PS() {
                         <>
                             <h1 className="text-2xl text-center my-3">Your PS1 Data</h1>
                             <div className='grid md:grid-cols-2 place-items-center p-5'>
-                                {data.ps1.length > 0 ? data.ps1.map((item: PS1Item, index: number) => {
+                                {data.ps1 && data.ps1.length > 0 ? data.ps1.map((item: PS1Item, index: number) => {
                                     return (
                                         <div key={index} className='p-3 border border-gray-300 rounded-md'>
                                             <div className='text-lg font-semibold'>Station: {item.station}</div>
@@ -125,7 +125,7 @@ export default function PS() {
 
                             <h1 className="text-2xl text-center my-3">Your PS2 Data</h1>
                             <div className='grid md:grid-cols-2 place-items-center p-5'>
-                                {data.ps2.length > 0 ? data.ps2.map((item: PS2Item, index: number) => {
+                                {data.ps2 && data.ps2.length > 0 ? data.ps2.map((item: PS2Item, index: number) => {
                                     return (
                                         <div key={index} className='p-3 border border-gray-300 rounded-md'>
                                             <div className='text-lg font-semibold'>Station: {item.station}</div>
