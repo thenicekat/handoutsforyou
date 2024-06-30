@@ -4,7 +4,7 @@ import Menu from "../../../Components/Menu";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { PS_Station } from "../../../types/PSData";
-import { years } from "./years";
+import { years } from "../../../data/ps1_years";
 
 export default function PS1Data() {
     const [search, setSearch] = useState("");

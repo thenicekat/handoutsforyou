@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Menu from "../../../Components/Menu";
 import { useSession } from "next-auth/react";
 import AutoCompleter from "../../../Components/AutoCompleter";
-import { years } from "./years";
+import { years } from "../../../data/ps1_years";
 
 export default function AddPS1Response({ }: {}) {
     const [yearAndSem, setYearAndSem] = useState("");
