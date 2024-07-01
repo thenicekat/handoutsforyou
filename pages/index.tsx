@@ -1,8 +1,8 @@
-import { useSession } from & apos; next - auth / react & apos;;
+import { useSession } from 'next-auth/react';
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import Menu from "../Components/Menu";
-import CountUp from & apos; react - countup & apos;;
+import CountUp from 'react-countup';
 
 export default function Home() {
   const { data: session } = useSession()
@@ -16,7 +16,7 @@ export default function Home() {
 
   const fetchSummaryData = async () => {
     setIsLoading(true);
-    let response = await fetch(& apos; /api/summary / data & apos;);
+    let response = await fetch('/api/summary/data');
     let res = await response.json();
     if (res.error) {
       console.log(res.message);
