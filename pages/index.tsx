@@ -1,51 +1,38 @@
-import { GetStaticProps } from "next";
+import { useSession } from 'next-auth/react';
 import Head from "next/head";
-import { useState } from "react";
-import dynamic from "next/dynamic";
-import { signIn, signOut, useSession } from 'next-auth/react';
+import { useEffect, useState } from "react";
 import Menu from "../Components/Menu";
-import Link from "next/link";
+import CountUp from 'react-countup';
 
-
-const HandoutsPerYear = dynamic(() => import("./../Components/HandoutsPerYear"), {
-  loading: () => (
-    <div className="grid place-items-center">
-      <p className="text-xl m-3">
-        Loading...
-      </p>
-    </div >
-  ),
-});
-
-export const getStaticProps: GetStaticProps = async () => {
-  const fs = require("fs");
-  const handoutsMap: any = {};
-
-  const semsWithYears = fs.readdirSync("./public/handouts/");
-
-  semsWithYears.forEach((sem: string) => {
-    const semWiseHandouts = fs.readdirSync("./public/handouts/" + sem);
-    handoutsMap[sem] = semWiseHandouts;
+export default function Home() {
+  const { data: session } = useSession()
+  const [isLoading, setIsLoading] = useState(false);
+  const [summaryData, setSummaryData] = useState({ ps1: 0, ps2: 0, reviews: 0, resources: 0 } as {
+    ps1: number,
+    ps2: number,
+    reviews: number,
+    resources: number
   });
 
-  return {
-    props: {
-      handoutsMap,
-    },
-  };
-};
-
-export default function Home({ handoutsMap }: any) {
-  const { data: session } = useSession()
-  const [search, setSearch] = useState("");
-  const [actualSearch, setActualSearch] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-
-  const fetchHandouts = () => {
-    setIsLoading(true)
-    setActualSearch(search)
-    setIsLoading(false)
+  const fetchSummaryData = async () => {
+    setIsLoading(true);
+    let response = await fetch('/api/summary/data');
+    let res = await response.json();
+    if (res.error) {
+      console.log(res.message);
+    } else {
+      let result = summaryData;
+      result.ps1 = res.data.ps1.count;
+      result.ps2 = res.data.ps2.count;
+      result.reviews = res.data.reviews.count;
+      result.resources = res.data.resources.count;
+      setSummaryData(result);
+    }
+    setIsLoading(false);
   }
+
+  useEffect(() => { fetchSummaryData() }, []);
+
 
   return (
     <>
@@ -64,37 +51,37 @@ export default function Home({ handoutsMap }: any) {
       <div className="grid place-items-center">
         <div className="w-[70vw] place-items-center flex flex-col justify-between">
           <h1 className="text-5xl pt-[50px] pb-[20px] px-[35px] text-primary">Handouts for You.</h1>
+
           <Menu />
-          {session &&
-            <>
-              <input type="text" placeholder="Search..." className="input input-secondary w-full max-w-xs" onChange={e => setSearch(e.target.value)} />
-              <Link className="m-3 w-full max-w-xs" href={""}>
-                <button className="btn btn-outline w-full" onClick={fetchHandouts}>
-                  Filter Handouts
-                </button>
-              </Link>
-            </>}
         </div>
       </div>
 
       {/* Handouts List */}
-      {session && !isLoading && <div className="px-2 md:px-20">
-        {Object.keys(handoutsMap)
-          .reverse()
-          .map((handoutMap: any) => {
-            return (
-              <>
-                <HandoutsPerYear
-                  handouts={handoutsMap[handoutMap]}
-                  year={handoutMap}
-                  key={handoutMap}
-                  searchWord={actualSearch}
-                />
-                <hr />
-              </>
-            );
-          })}
-      </div>}
+      {session &&
+        !isLoading &&
+        <div className="px-2 md:px-20 text-center">
+          It all started out small with me and vashi, doing a lot of RR about how we weren't able to find handouts. If you don't know, back then we used to have a google drive with all the handouts. But, it was a mess. So, we thought of making a website where we could easily find handouts. And, here we are...
+          <br />
+
+          <span className="text-3xl text-primary"><CountUp end={3200} duration={5} />+ Handouts</span>
+          <br />
+
+          <span className="text-3xl text-primary"><CountUp end={summaryData.reviews} duration={5} /> Course Reviews</span>
+          <br />
+
+          <span className="text-3xl text-primary"><CountUp end={summaryData.resources} duration={5} /> Resources</span>
+          <br />
+
+          <span className="text-3xl text-primary"><CountUp end={summaryData.ps1} duration={5} /> PS1 Responses</span>
+          <br />
+
+          <span className="text-3xl text-primary"><CountUp end={summaryData.ps2} duration={5} /> PS2 Responses</span>
+          <br />
+          Thank you! For making this project a huge success. We wouldn't be here without your support.
+          <br /><br />
+          Anagha G, Ruban SriramBabu, Nishith Kumar, Srikant Tangirala, Mahith Tunuguntla, Anubhab Khanra, Adarsh Das, Manan Gupta, Aman Ranjan, Soham Barui, Aarsh Kulkarni, Manish Vasireddy, Sai Charan, Santrupti Behera, Varad Gorantyal, Sudhanshu Patil, Aditya Kumarm Harshit Juneja, Anirudh Agarwal, Ashna, Shubham Agrawal, Shubh Badjate, Areen Raj, Dev Gala, Dhairya Agarwal, Jason Aaron Goveas.
+        </div>
+      }
 
       {
         isLoading && <div className="grid place-items-center">
