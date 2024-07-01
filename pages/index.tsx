@@ -1,8 +1,8 @@
-import { useSession } from 'next-auth/react';
+import { useSession } from & apos; next - auth / react & apos;;
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import Menu from "../Components/Menu";
-import CountUp from 'react-countup';
+import CountUp from & apos; react - countup & apos;;
 
 export default function Home() {
   const { data: session } = useSession()
@@ -16,7 +16,7 @@ export default function Home() {
 
   const fetchSummaryData = async () => {
     setIsLoading(true);
-    let response = await fetch('/api/summary/data');
+    let response = await fetch(& apos; /api/summary / data & apos;);
     let res = await response.json();
     if (res.error) {
       console.log(res.message);
@@ -60,7 +60,7 @@ export default function Home() {
       {session &&
         !isLoading &&
         <div className="px-2 md:px-20 text-center">
-          It all started out small with me and vashi, doing a lot of RR about how we weren't able to find handouts. If you don't know, back then we used to have a google drive with all the handouts. But, it was a mess. So, we thought of making a website where we could easily find handouts. And, here we are...
+          It all started out small with me and vashi, doing a lot of RR about how we weren&apos;t able to find handouts. If you don&apos;t know, back then we used to have a google drive with all the handouts. But, it was a mess. So, we thought of making a website where we could easily find handouts. And, here we are...
           <br />
 
           <span className="text-3xl text-primary"><CountUp end={3200} duration={5} />+ Handouts</span>
@@ -77,7 +77,7 @@ export default function Home() {
 
           <span className="text-3xl text-primary"><CountUp end={summaryData.ps2} duration={5} /> PS2 Responses</span>
           <br />
-          Thank you! For making this project a huge success. We wouldn't be here without your support.
+          Thank you! For making this project a huge success. We wouldn&apos;t be here without your support.
           <br /><br />
           Anagha G, Ruban SriramBabu, Nishith Kumar, Srikant Tangirala, Mahith Tunuguntla, Anubhab Khanra, Adarsh Das, Manan Gupta, Aman Ranjan, Soham Barui, Aarsh Kulkarni, Manish Vasireddy, Sai Charan, Santrupti Behera, Varad Gorantyal, Sudhanshu Patil, Aditya Kumarm Harshit Juneja, Anirudh Agarwal, Ashna, Shubham Agrawal, Shubh Badjate, Areen Raj, Dev Gala, Dhairya Agarwal, Jason Aaron Goveas.
         </div>
