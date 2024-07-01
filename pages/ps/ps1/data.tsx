@@ -122,7 +122,7 @@ export default function PS1Data() {
                                                 </svg>
 
                                                 <span>{(station.station as string).toUpperCase()}</span>
-                                                <span>{(station.allotment_round as string).toUpperCase()}</span>
+                                                <span>{station.allotment_round && (station.allotment_round as string).toUpperCase()}</span>
 
                                                 <div>
                                                     <div className="tooltip" data-tip="Min. CGPA"><button className="btn btn-sm btn-primary disabled mx-1">Min: {station.min.toFixed(3)}</button></div>
