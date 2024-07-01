@@ -1,7 +1,7 @@
 """
 @author: Divyateja Pasupuleti
 @about: Converts a csv file containing PS data into necessary format and pushes it to supabase
-CSV Format: Email,Company,CGPA,Year-Semester,Preference
+PS1 CSV Format: Email,Company,CGPA,Year-Semester,Preference
 """
 import pandas as pd
 import os
