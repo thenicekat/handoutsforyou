@@ -61,25 +61,26 @@ export default function Home() {
         !isLoading &&
         <div className="px-2 md:px-20 text-center">
           It all started out small with me and vashi, doing a lot of RR about how we weren&apos;t able to find handouts. If you don&apos;t know, back then we used to have a google drive with all the handouts. But, it was a mess. So, we thought of making a website where we could easily find handouts. And, here we are...
-          <br />
+
+          <br /><br />
 
           <span className="text-3xl text-primary"><CountUp end={3200} duration={5} />+ Handouts</span>
           <br />
-
           <span className="text-3xl text-primary"><CountUp end={summaryData.reviews} duration={5} /> Course Reviews</span>
           <br />
-
           <span className="text-3xl text-primary"><CountUp end={summaryData.resources} duration={5} /> Resources</span>
           <br />
-
           <span className="text-3xl text-primary"><CountUp end={summaryData.ps1} duration={5} /> PS1 Responses</span>
           <br />
-
           <span className="text-3xl text-primary"><CountUp end={summaryData.ps2} duration={5} /> PS2 Responses</span>
-          <br />
-          Thank you! For making this project a huge success. We wouldn&apos;t be here without your support.
+
           <br /><br />
-          Anagha G, Ruban SriramBabu, Nishith Kumar, Srikant Tangirala, Mahith Tunuguntla, Anubhab Khanra, Adarsh Das, Manan Gupta, Aman Ranjan, Soham Barui, Aarsh Kulkarni, Manish Vasireddy, Sai Charan, Santrupti Behera, Varad Gorantyal, Sudhanshu Patil, Aditya Kumarm Harshit Juneja, Anirudh Agarwal, Ashna, Shubham Agrawal, Shubh Badjate, Areen Raj, Dev Gala, Dhairya Agarwal, Jason Aaron Goveas.
+
+          Thank you! For making this project a huge success. We wouldn&apos;t be here without your support.
+
+          <br /><br />
+
+          Anagha G, Ruban SriramBabu, Nishith Kumar, Srikant Tangirala, Mahith Tunuguntla, Anubhab Khanra, Adarsh Das, Manan Gupta, Aman Ranjan, Soham Barui, Aarsh Kulkarni, Manish Vasireddy, Sai Charan, Santrupti Behera, Varad Gorantyal, Sudhanshu Patil, Aditya Kumar, Harshit Juneja, Anirudh Agarwal, Ashna, Shubham Agrawal, Shubh Badjate, Areen Raj, Dev Gala, Dhairya Agarwal, Jason Aaron Goveas and everyone else...
         </div>
       }
 
