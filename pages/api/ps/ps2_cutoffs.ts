@@ -35,7 +35,7 @@ export default async function handler(
     else {
         const { data, error } = await supabase
             .from('ps2_responses')
-            .select('station, cgpa.min(), cgpa.max()')
+            .select('station, cgpa.min(), cgpa.max(), allotment_round')
             .eq('year_and_sem', year)
 
         if (error) {
