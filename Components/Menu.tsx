@@ -18,7 +18,7 @@ const Menu = () => {
     const [menu, setMenu] = React.useState(false)
 
     const menuItems: any = {
-        "Handouts": "/",
+        "Handouts": "/handouts",
         "Resources": "/resources",
         "Course Reviews": "/courses/reviews",
         "Summer Internships": "/si",
