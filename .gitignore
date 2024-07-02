@@ -51,3 +51,6 @@ next-env.d.ts
 **/scripts/ps/format.py
 **/scripts/ps/scraper.py
 **/scripts/ps/skill.py
+
+# Python scripting
+venv/

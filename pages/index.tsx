@@ -3,6 +3,7 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import Menu from "../Components/Menu";
 import CountUp from 'react-countup';
+import Image from 'next/image';
 
 export default function Home() {
   const { data: session } = useSession()
@@ -60,6 +61,10 @@ export default function Home() {
       {session &&
         !isLoading &&
         <div className="px-2 md:px-20 text-center">
+          <div className="grid place-items-center">
+            <Image src="/logo.svg" width={150} height={150} alt="H4U logo" />
+          </div>
+
           It all started out small with me and vashi, doing a lot of RR about how we weren&apos;t able to find handouts. If you don&apos;t know, back then we used to have a google drive with all the handouts. But, it was a mess. So, we thought of making a website where we could easily find handouts. And, here we are...
 
           <br /><br />
