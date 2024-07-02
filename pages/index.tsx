@@ -61,24 +61,28 @@ export default function Home() {
       {session &&
         !isLoading &&
         <div className="px-2 md:px-20 text-center">
-          <div className="grid place-items-center">
-            <Image src="/logo.svg" width={150} height={150} alt="H4U logo" />
-          </div>
-
           It all started out small with me and vashi, doing a lot of RR about how we weren&apos;t able to find handouts. If you don&apos;t know, back then we used to have a google drive with all the handouts. But, it was a mess. So, we thought of making a website where we could easily find handouts. And, here we are...
 
           <br /><br />
 
-          <span className="text-3xl text-primary"><CountUp end={3200} duration={5} />+ Handouts</span>
-          <br />
-          <span className="text-3xl text-primary"><CountUp end={summaryData.reviews} duration={5} /> Course Reviews</span>
-          <br />
-          <span className="text-3xl text-primary"><CountUp end={summaryData.resources} duration={5} /> Resources</span>
-          <br />
-          <span className="text-3xl text-primary"><CountUp end={summaryData.ps1} duration={5} /> PS1 Responses</span>
-          <br />
-          <span className="text-3xl text-primary"><CountUp end={summaryData.ps2} duration={5} /> PS2 Responses</span>
-
+          <div className='grid grid-cols-2'>
+            <div>
+              <div className="grid place-items-center">
+                <Image src="/logo.svg" width={200} height={200} alt="H4U logo" />
+              </div>
+            </div>
+            <div>
+              <span className="text-3xl text-primary"><CountUp end={3200} duration={3} />+ Handouts</span>
+              <br />
+              <span className="text-3xl text-primary"><CountUp end={summaryData.reviews} duration={3} /> Course Reviews</span>
+              <br />
+              <span className="text-3xl text-primary"><CountUp end={summaryData.resources} duration={3} /> Resources</span>
+              <br />
+              <span className="text-3xl text-primary"><CountUp end={summaryData.ps1} duration={3} /> PS1 Responses</span>
+              <br />
+              <span className="text-3xl text-primary"><CountUp end={summaryData.ps2} duration={3} /> PS2 Responses</span>
+            </div>
+          </div>
           <br /><br />
 
           Thank you! For making this project a huge success. We wouldn&apos;t be here without your support.
