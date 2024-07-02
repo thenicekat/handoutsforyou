@@ -1,0 +1,33 @@
+<svg width="100" height="100" viewBox="30 15 40 60" xmlns="http://www.w3.org/2000/svg">
+    <metadata>
+        <title>H4U Logo</title>
+        <desc>Author: Saphereye</desc>
+        <!-- I tried my best ;-; -->
+    </metadata>
+    <!-- White background -->
+    <!-- <rect x="0" y="0" width="100" height="100" fill="white" /> -->
+    
+    <!-- Head -->
+    <circle cx="50" cy="30" r="10" stroke="black" stroke-width="2" fill="none" />
+
+    <!-- Body -->
+    <path d="M50 40 Q45 55 50 70 Q55 55 50 40" stroke="black" stroke-width="2" fill="none" />
+
+    <!-- Documents in a fan style -->
+    <g transform="rotate(15 50 50)">
+        <rect x="41" y="45" width="20" height="25" stroke="black" stroke-width="2" fill="white" />
+        <text x="43" y="50" font-family="Arial" font-size="3" fill="black">&#8226; Handouts</text>
+        <text x="43" y="55" font-family="Arial" font-size="3" fill="black">&#8226; Reviews</text>
+        <text x="43" y="60" font-family="Arial" font-size="3" fill="black">&#8226; Notes</text>
+        <text x="43" y="65" font-family="Arial" font-size="3" fill="black">&#8226; Life</text>
+    </g>
+
+    <!-- Arms hugging the documents, further apart and curving to show embrace, with rotation -->
+    <path d="M40 45 Q27 55 45 65" stroke="black" stroke-width="2" fill="none" transform="rotate(10 32 55)" />
+    <path d="M59 45 Q73 55 56 65" stroke="black" stroke-width="2" fill="none" transform="rotate(-10 68 55)" />
+
+    <!-- Face -->
+    <circle cx="47" cy="28" r="1.5" fill="black" />
+    <circle cx="53" cy="28" r="1.5" fill="black" />
+    <path d="M47 32 Q50 35 53 32" stroke="black" stroke-width="1" fill="none" />
+</svg>
