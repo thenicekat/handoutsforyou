@@ -12,13 +12,14 @@
 9. Academic Resources
 
 ## Development
-First, run the development server and for the pages you are making changes to, replace `{session &&` with `{true &&`. This lets you overcome the auth temporarily locally.
+- First install the dependencies by using [pnpm](https://pnpm.io/installation)
+```bash
+pnpm install
+```
+
+- Then, run the development server and for the pages you are making changes to, replace `{session &&` with `{true &&`. This lets you overcome the auth temporarily locally.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
 pnpm run dev
 ```
 
