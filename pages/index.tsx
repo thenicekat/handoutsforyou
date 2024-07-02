@@ -65,7 +65,7 @@ export default function Home() {
 
           <br /><br />
 
-          <div className='grid grid-cols-2'>
+          <div className='grid md:grid-cols-2'>
             <div>
               <div className="grid place-items-center">
                 <Image src="/logo.svg" width={200} height={200} alt="H4U logo" />
