@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+package-lock.json
 
 # testing
 /coverage
@@ -51,3 +52,9 @@ next-env.d.ts
 **/scripts/ps/format.py
 **/scripts/ps/scraper.py
 **/scripts/ps/skill.py
+
+# Python scripting
+venv/
+
+# VS Code editor
+.vscode/
