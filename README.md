@@ -12,7 +12,7 @@
 9. Academic Resources
 
 ## Development
-- First install the dependencies by using [pnpm](https://pnpm.io/installation)
+- First install the dependencies by using pnpm after installing [pnpm](https://pnpm.io/installation)
 ```bash
 pnpm install
 ```
@@ -25,11 +25,24 @@ pnpm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Course Reviews Scripts
+## Folder Structure
+- `api` - Contains the backend routes for handoutsforyou.
+- `courses/prereqs` - Contains code for course prereqs.
+- `courses` - Contains code for the course reviews page.
+- `handouts` - Contains code for the handouts page.
+- `ps` - Contains code for the ps pages. Each ps folder has one page for `add`-ing responses, one page for `chronicles` and one page for `data`.
+- `resources` - Contains code for resources which you can share publicly to others.
 
-There is only one script which pushed directly to the database
+## Scripts
+### Course Reviews.
+- `add_reviews.py` -> There is only one script which pushed directly to the database.
 
-## Practice School Scripts
+### Course Prereqs.
+- `prereqs.py` -> This is the script which parses data from course prereqs excel.
+- Use this to convert the excel TTD puts out on cms regarding prereqs to a json format
+- I don't think you'll need to use this for a long long time :)
+
+### Practice School.
 
 1. Download the most up to date copy of **PS2_master.csv**
 2. Add the new year to be added to the end of the CSV
@@ -44,13 +57,9 @@ should become
 
 ```
 National Aerospace Lab<|>National Aerospace Laboratories<|>National Aerospace Laboratory
-
 National Chemical Laboratory<|>National Chemical Laboratory (NCL), Pune<|>National Chemical Laboratory - Pune<|>National Chemical Laboratory, Pune
-
 National Council for Cement and Building Materials
-
 National Council of Applied Economic Research
-
 National Instruments<|>National Instruments (Bangalore)<|>National Instruments Systems (India) Pvt. Ltd. - Bengaluru<|>National Instruments, Bangalore
 ```
 
@@ -58,27 +67,17 @@ National Instruments<|>National Instruments (Bangalore)<|>National Instruments S
    NOTE: Incase you want to ignore two completely dissimilar companies add it to scripts/ignore.txt
 6. In the end run `parse_ps` to generate json from csv
 
-## Pre-requisite Courses Script
-
--   Use this to convert the excel TTD puts out on cms regarding prereqs to a json format
--   I don't think you'll need to use this for a long long time :)
-
 ## Contributors - Developers
-
 1. Divyateja Pasupuleti
 2. Adarsh Das
 3. Namit Bhutani
+4. Anirudh Agarwal
 
 ## Contributors - Content
+Redirected to [https://handoutsforyou.vercel.app](https://handoutsforyou.vercel.app)
 
-1. Vashisth Choudhari
-2. Ruban Srirambabu
-3. Mahith Tunuguntula
-4. Dev Gala
-
-## Contributing Guidelines
-We aim to follow the following standards for commits
-
+## Pull Request Guidelines
+We aim to follow the following standards for PRs
   1. build: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
   2. ci: Changes to CI configuration files and scripts
   3. docs: Documentation only changes
