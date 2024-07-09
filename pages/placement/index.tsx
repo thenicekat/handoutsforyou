@@ -7,7 +7,17 @@ import Link from "next/link";
 
 export const getStaticProps: GetStaticProps = async () => {
     const fs = require("fs");
-    let pu_chronicles = fs.readdirSync("./public/placements/chronicles/");
+    let pu_chronicles: {
+        [key: string]: string[]
+    } = {}
+    let dirs = fs.readdirSync("./public/placements/chronicles/");
+    for (let dir of dirs) {
+        pu_chronicles[dir] = []
+        let files = fs.readdirSync("./public/placements/chronicles/" + dir)
+        for (let file in files) {
+            pu_chronicles[dir].push(files[file])
+        }
+    }
 
     return {
         props: {
@@ -51,23 +61,35 @@ export default function Placement({ pu_chronicles }: any) {
             {session &&
                 <div>
                     <h1 className="text-3xl text-center my-3">Placement Chronicles</h1>
-                    <div className='grid md:grid-cols-4 place-items-center p-5'>
-                        {
-                            pu_chronicles.filter((d: string) => d.toLowerCase().includes(search.toLowerCase())).map((chron: string) => (
-                                <div key={chron} className='m-2 py-1 rounded-xl'>
-                                    <div className="alert ">
-                                        <div>
-                                            <span>Placement Season {chron}</span>
-                                        </div>
-                                        <div className="flex-none">
-                                            <button className="btn btn-primary" onClick={
-                                                () => window.open("https://github.com/thenicekat/handoutsforyou/raw/main/public/placements/chronicles/" + chron)
-                                            }>View</button></div>
-                                    </div>
+                    {
+                        Object.keys(pu_chronicles).map((campus: string) => (
+                            <>
+                                <h1 key={campus} className="text-2xl text-center my-3">{campus}</h1>
+                                <div className='grid md:grid-cols-3 place-items-center p-5'>
+                                    {
+                                        pu_chronicles[campus]
+                                            .filter((d: string) => d.toLowerCase().includes(search.toLowerCase()))
+                                            .map((chron: string) => (
+                                                <div key={chron} className='m-2 p-1 rounded-xl w-full'>
+                                                    <div className="bg-secondary flex border-2 border-secondary rounded-xl p-2 align-middle justify-between">
+                                                        <div>
+                                                            <span>Placement Season {chron}</span>
+                                                        </div>
+                                                        <div>
+                                                            <button className="btn btn-primary" onClick={
+                                                                () => window.open("https://github.com/thenicekat/handoutsforyou/raw/main/public/placements/chronicles/" + campus + "/" + chron)
+                                                            }>
+                                                                View
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            ))
+                                    }
                                 </div>
-                            ))
-                        }
-                    </div>
+                            </>
+                        ))
+                    }
                 </div>}
 
         </>
