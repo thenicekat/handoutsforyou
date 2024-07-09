@@ -58,3 +58,6 @@ venv/
 
 # VS Code editor
 .vscode/
+
+# Logs
+**.log
