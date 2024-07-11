@@ -72,7 +72,7 @@ export default function Placement({ pu_chronicles }: any) {
                                             .map((chron: string) => (
                                                 <div key={chron} className='m-2 p-1 rounded-xl w-full'>
                                                     <div className="bg-secondary flex border-2 border-secondary rounded-xl p-2 align-middle justify-between">
-                                                        <div>
+                                                        <div className="flex items-center">
                                                             <span>Placement Season {chron}</span>
                                                         </div>
                                                         <div>
