@@ -9,8 +9,11 @@ import os
 from supabase import create_client, Client
 import dotenv
 from tqdm import tqdm
+import pathlib
 
-assert (dotenv.load_dotenv(dotenv_path="../../.env.local")), "Error loading .env file"
+ENV_PATH = pathlib.Path(__file__).parent.parent.parent / ".env.local"
+
+assert (dotenv.load_dotenv(dotenv_path=ENV_PATH)), "Error loading .env file"
 
 url: str = os.environ.get("SUPABASE_URL")
 key: str = os.environ.get("SUPABASE_SERVICE_KEY")
@@ -18,9 +21,9 @@ key: str = os.environ.get("SUPABASE_SERVICE_KEY")
 supabase: Client = create_client(url, key)
 
 # Constants
-MASTER_FILE = '19-20 Sem 2.csv'
+MASTER_FILE = pathlib.Path(__file__).parent / '24-25 Sem 1.csv'
 TABLE_NAME = 'ps2_responses'
-YEAR_AND_SEM = '19-20 Sem 2'
+YEAR_AND_SEM = '24-25 Sem 1'
 
 # Read csv file
 df = pd.read_csv(MASTER_FILE)
@@ -39,7 +42,7 @@ for index, row in tqdm(df.iterrows()):
             "preference": int(row["PreferenceNumber"]) if not pd.isna(row["PreferenceNumber"]) else 1,
             "offshoot": int(row["OffshootScore"]) if not pd.isna(row["OffshootScore"]) else 0,
             "offshoot_total": int(row["OffshootTotal"]) if not pd.isna(row["OffshootTotal"]) else 0,
-            "offshoot_type": str(row["OffshootType"]) if not pd.isna(row["OffshootType"]) else "",
+            "offshoot_type": str(row["Type"]) if not pd.isna(row["Type"]) else "",
         }  
         supabase.table(TABLE_NAME).insert(data).execute()
         success += 1
