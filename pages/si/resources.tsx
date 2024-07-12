@@ -103,7 +103,7 @@ export default function SI({ siChronicles }: any) {
                                                             </div>
                                                             <div>
                                                                 <button className="btn btn-primary" onClick={
-                                                                    () => window.open("https://github.com/thenicekat/handoutsforyou/raw/main/public/placements/chronicles/" + campus + "/" + chron)
+                                                                    () => window.open("https://github.com/thenicekat/handoutsforyou/raw/main/public/si/chronicles/" + campus + "/" + chron)
                                                                 }>
                                                                     View
                                                                 </button>
