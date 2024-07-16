@@ -8,6 +8,8 @@ import { courses } from "../../../data/courses";
 import { profs } from "../../../data/profs";
 import AutoCompleter from "../../../Components/AutoCompleter";
 import { departments } from "../../../data/departments";
+import CustomToastContainer from "../../../Components/ToastContainer";
+import { toast } from "react-toastify";
 
 export default function Reviews({ }: {}) {
     const [course, setCourse] = useState("");
@@ -22,11 +24,11 @@ export default function Reviews({ }: {}) {
 
     const fetchReviews = async () => {
         if (courses.includes(course) == false && course !== "") {
-            alert("Please select a course from the given list!")
+            toast.error("Please select a course from the given list!")
             return
         }
         if (profs.includes(prof) == false && prof !== "") {
-            alert("Please select a professor from the given list!")
+            toast.error("Please select a professor from the given list!")
             return
         }
 
@@ -39,7 +41,7 @@ export default function Reviews({ }: {}) {
         if (res.status !== 400) {
             const reviews = await res.json()
             if (reviews.error && reviews.status !== 400) {
-                alert(reviews.message)
+                toast.error(reviews.message)
                 setIsLoading(false)
             } else {
                 setReviews(reviews.data as CourseReview[])
@@ -146,6 +148,7 @@ export default function Reviews({ }: {}) {
                     </div>
                 </div>
             }
+            <CustomToastContainer containerId="courseReviews" />
         </>
     )
 }

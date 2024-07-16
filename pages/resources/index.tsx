@@ -6,7 +6,7 @@ import { useSession } from 'next-auth/react';
 import { DataLinkType } from '../../types/DataLinkType';
 import React from 'react';
 
-export default function Notes() {
+export default function Resources() {
     const [input, setInput] = useState("");
     const { data: session } = useSession()
     const [resources, setResources] = useState<DataLinkType[]>([])

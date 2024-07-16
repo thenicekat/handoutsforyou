@@ -1,10 +1,12 @@
 import Head from "next/head";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSession } from "next-auth/react";
 import Menu from "../../Components/Menu";
+import { toast } from "react-toastify";
+import CustomToastContainer from "../../Components/ToastContainer";
 
 
-export default function AddPS2Response({ }: {}) {
+export default function AddResources({ }: {}) {
     const [name, setName] = useState("");
     const [link, setLink] = useState("");
     const [created_by, setCreatedBy] = useState("");
@@ -13,7 +15,7 @@ export default function AddPS2Response({ }: {}) {
 
     const { data: session } = useSession()
 
-    const AddResponse = async () => {
+    const addResource = async () => {
         setIsLoading(true)
         const res = await fetch("/api/resources/add", {
             method: "POST",
@@ -26,10 +28,10 @@ export default function AddPS2Response({ }: {}) {
         })
         const data = await res.json()
         if (data.error) {
-            alert(data.message)
+            toast.error(data.message)
         }
         else {
-            alert("Resource Added!")
+            toast.success("Resource Added!")
             setName("")
             setLink("")
             setCreatedBy("")
@@ -81,13 +83,13 @@ export default function AddPS2Response({ }: {}) {
                             </div>
 
                             <div className="text-center flex-wrap w-3/4 justify-between m-1">
-                                <button className="btn btn-primary" onClick={AddResponse}>Submit</button>
+                                <button className="btn btn-primary" onClick={addResource}>Submit</button>
                             </div>
                         </>
                     }
                 </div>
             </div>
-
+            <CustomToastContainer containerId="addResources" />
         </>
     )
 }

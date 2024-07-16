@@ -4,6 +4,8 @@ import Menu from "../../../Components/Menu";
 import { useSession } from "next-auth/react";
 import { years } from "../../../data/ps2_years";
 import AutoCompleter from "../../../Components/AutoCompleter";
+import { toast } from "react-toastify";
+import CustomToastContainer from "../../../Components/ToastContainer";
 
 type PSDataRes = {
     typeOfPS: string,
@@ -37,7 +39,7 @@ export default function AddPS2Response({ }: {}) {
         setIsLoading(true)
 
         if (years.indexOf(yearAndSem) === -1) {
-            alert("Invalid Year and Sem, Please select from the dropdown!")
+            toast.error("Invalid Year and Sem, Please select from the dropdown!")
             setIsLoading(false)
             return
         }
@@ -60,10 +62,10 @@ export default function AddPS2Response({ }: {}) {
         })
         const data = await res.json()
         if (data.error) {
-            alert(data.message)
+            toast.error(data.message)
         }
         else {
-            alert("Response Added!")
+            toast.success("Response Added!")
             setIdNumber("")
             setYearAndSem("")
             setAllotmentRound("")
@@ -160,7 +162,7 @@ export default function AddPS2Response({ }: {}) {
                     }
                 </div>
             </div>
-
+            <CustomToastContainer containerId="addPS2Response" />
         </>
     )
 }
