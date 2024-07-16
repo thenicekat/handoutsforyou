@@ -44,7 +44,7 @@ export default function AddPS2Response({ }: {}) {
             return
         }
 
-        const res = await fetch("/api/ps/addresponse", {
+        const res = await fetch("/api/ps/add", {
             method: "POST",
             body: JSON.stringify({
                 typeOfPS: "ps2",
