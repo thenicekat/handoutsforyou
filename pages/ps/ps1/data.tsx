@@ -19,7 +19,7 @@ export default function PS1Data() {
 
     const fetchData = async () => {
         setIsLoading(true);
-        const res = await fetch("/api/ps/ps1_cutoffs", {
+        const res = await fetch("/api/ps/ps1Cutoffs", {
             method: "POST",
             body: JSON.stringify({
                 year: yearRef

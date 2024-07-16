@@ -23,6 +23,16 @@ export default async function handler(
         return;
     }
 
+    const email = session?.user?.email
+    if (!email?.includes('hyderabad')) {
+        res.status(403).json({
+            message: 'Course reviews are only available for BITS Hyderabad students',
+            error: true,
+            data: []
+        })
+        return;
+    }
+
     const { course, prof } = req.body
 
     if (!course && !prof) {
