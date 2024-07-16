@@ -5,6 +5,8 @@ import { useSession } from "next-auth/react";
 import { courses } from "../../../data/courses";
 import { profs } from "../../../data/profs";
 import AutoCompleter from "../../../Components/AutoCompleter";
+import CustomToastContainter from "../../../Components/ToastContainer"
+import { toast } from "react-toastify";
 
 
 export default function AddReview({ }: {}) {
@@ -17,24 +19,24 @@ export default function AddReview({ }: {}) {
 
     const AddReview = async () => {
         if (course == "") {
-            alert("Please fill course!")
+            toast.error("Please fill course!")
             return
         }
         if (prof == "") {
-            alert("Please fill professor!")
+            toast.error("Please fill professor!")
             return
         }
         if (review == "") {
-            alert("Please fill review!")
+            toast.error("Please fill review!")
             return
         }
 
         if (courses.includes(course) == false) {
-            alert("Please select a course from the given list!")
+            toast.error("Please select a course from the given list!")
             return
         }
         if (profs.includes(prof) == false) {
-            alert("Please select a professor from the given list!")
+            toast.error("Please select a professor from the given list!")
             return
         }
 
@@ -45,10 +47,10 @@ export default function AddReview({ }: {}) {
         })
         const res = await data.json()
         if (res.error) {
-            alert(res.message)
+            toast.error(res.message)
         }
         else {
-            alert("Review Added!")
+            toast.success("Review Added!")
             setCourse("")
             setProf("")
             setReview("")
@@ -109,6 +111,7 @@ export default function AddReview({ }: {}) {
                 </div>
             </div>
 
+            <CustomToastContainter containerId="addReview" />
         </>
     )
 }

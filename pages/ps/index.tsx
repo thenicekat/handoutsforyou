@@ -3,6 +3,8 @@ import Head from "next/head";
 import Link from "next/link";
 import Menu from "../../Components/Menu";
 import { useEffect, useState } from "react";
+import CustomToastContainer from "../../Components/ToastContainer";
+import { toast } from "react-toastify";
 
 type PS1Item = {
     created_at: string;
@@ -42,7 +44,7 @@ export default function PS() {
         if (response.status !== 400) {
             const res = await response.json();
             if (res.error) {
-                alert(res.message);
+                toast.error(res.message);
                 return
             } else {
                 setData(res.data);
@@ -158,7 +160,7 @@ export default function PS() {
                     }
                 </div>
             }
-
+            <CustomToastContainer containerId="ps" />
         </>
     );
 }
