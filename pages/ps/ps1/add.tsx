@@ -4,6 +4,8 @@ import Menu from "../../../Components/Menu";
 import { useSession } from "next-auth/react";
 import AutoCompleter from "../../../Components/AutoCompleter";
 import { years } from "../../../data/ps1_years";
+import { toast } from "react-toastify";
+import CustomToastContainer from "../../../Components/ToastContainer";
 
 export default function AddPS1Response({ }: {}) {
     const [yearAndSem, setYearAndSem] = useState("");
@@ -19,13 +21,13 @@ export default function AddPS1Response({ }: {}) {
     const AddResponse = async () => {
         setIsLoading(true)
         if (!yearAndSem || !allotmentRound || !station) {
-            alert("Please fill all the fields!")
+            toast.error("Please fill all the fields!")
             setIsLoading(false)
             return
         }
 
         if (years.indexOf(yearAndSem) === -1) {
-            alert("Invalid Year and Sem, Please select from the dropdown!")
+            toast.error("Invalid Year and Sem, Please select from the dropdown!")
             setIsLoading(false)
             return
         }
@@ -44,10 +46,10 @@ export default function AddPS1Response({ }: {}) {
         })
         const data = await res.json()
         if (data.error) {
-            alert(data.message)
+            toast.error(data.message)
         }
         else {
-            alert("Response Added!")
+            toast.success("Response Added!")
             setYearAndSem("")
             setAllotmentRound("")
             setStation("")
@@ -118,7 +120,7 @@ export default function AddPS1Response({ }: {}) {
                         </>}
                 </div>
             </div>
-
+            <CustomToastContainer containerId="addPS1Response" />
         </>
     )
 }
