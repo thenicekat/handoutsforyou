@@ -3,7 +3,6 @@ import Head from "next/head";
 import { useState } from "react";
 import Menu from "../../Components/Menu";
 import { useSession } from "next-auth/react";
-import Link from "next/link";
 
 export const getStaticProps: GetStaticProps = async () => {
     const fs = require("fs");
