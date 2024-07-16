@@ -20,7 +20,7 @@ export default function PS2Data() {
 
     const fetchData = async () => {
         setIsLoading(true);
-        const res = await fetch("/api/ps/ps2_cutoffs", {
+        const res = await fetch("/api/ps/ps2Cutoffs", {
             method: "POST",
             body: JSON.stringify({
                 year: yearRef
