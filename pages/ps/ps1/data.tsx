@@ -16,7 +16,7 @@ export default function PS1Data() {
 
     const [isLoading, setIsLoading] = useState(false);
     const [ps1Data, setPS1Data] = useState([]);
-    const [filteredPS1Data, setFilteredPS2Data] = useState([]);
+    const [filteredPS1Data, setFilteredPS1Data] = useState([]);
 
     const { data: session } = useSession()
 
