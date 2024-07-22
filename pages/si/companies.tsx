@@ -4,6 +4,8 @@ import Menu from "../../Components/Menu";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { SI_Company } from "../../types/SIData";
+import { toast } from "react-toastify";
+import CustomToastContainer from "../../Components/ToastContainer";
 
 export default function SICompanies() {
     const [search, setSearch] = useState("");
@@ -29,7 +31,7 @@ export default function SICompanies() {
         if (res.status !== 400) {
             const data = await res.json();
             if (data.error) {
-                alert(data.message);
+                toast(data.message);
                 return
             } else {
                 setSIData(data.data);
@@ -132,6 +134,7 @@ export default function SICompanies() {
                     </div>
                 </div>
             }
+            <CustomToastContainer containerId="siCompanies" />
         </>
     )
 }
