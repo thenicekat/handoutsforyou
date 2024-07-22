@@ -5,6 +5,8 @@ import Menu from '../../Components/Menu';
 import { useSession } from 'next-auth/react';
 import { DataLinkType } from '../../types/DataLinkType';
 import React from 'react';
+import { toast } from 'react-toastify';
+import CustomToastContainer from '../../Components/ToastContainer';
 
 export default function Resources() {
     const [input, setInput] = useState("");
@@ -23,7 +25,7 @@ export default function Resources() {
         const res = await fetch(`/api/resources/score?id=${id}`)
         const data = await res.json()
         if (data.error) {
-            alert(data.message)
+            toast(data.message)
         }
         else {
             window.open(data.data[0].link, '_blank')
@@ -94,6 +96,7 @@ export default function Resources() {
                         }
                     </div >
                 </div >}
+            <CustomToastContainer containerId="resources" />
         </>
     )
 }
