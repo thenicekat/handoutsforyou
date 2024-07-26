@@ -44,7 +44,7 @@ export default function AddPS2Response({ }: {}) {
             return
         }
 
-        const res = await fetch("/api/ps/add", {
+        const res = await fetch("/api/ps/cutoffs/add", {
             method: "POST",
             body: JSON.stringify({
                 typeOfPS: "ps2",

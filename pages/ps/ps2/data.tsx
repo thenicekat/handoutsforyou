@@ -23,7 +23,7 @@ export default function PS2Data() {
     const updateData = async () => {
         setIsLoading(true);
         if (yearRef == cachedYear) return
-        const res = await fetch("/api/ps/ps2Cutoffs", {
+        const res = await fetch("/api/ps/cutoffs/ps2Cutoffs", {
             method: "POST",
             body: JSON.stringify({
                 year: yearRef
