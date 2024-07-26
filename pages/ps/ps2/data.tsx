@@ -1,12 +1,12 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import Menu from "../../../Components/Menu";
+import Menu from "@/Components/Menu";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { PS_Station } from "../../../types/PSData";
-import { years } from "../../../data/ps2_years";
+import { PS_Station } from "@/types/PSData";
+import { years } from "@/data/ps2_years";
 import { toast } from "react-toastify";
-import CustomToastContainer from "../../../Components/ToastContainer";
+import CustomToastContainer from "@/Components/ToastContainer";
 
 export default function PS2Data() {
     const [search, setSearch] = useState("");
@@ -23,7 +23,7 @@ export default function PS2Data() {
     const updateData = async () => {
         setIsLoading(true);
         if (yearRef == cachedYear) return
-        const res = await fetch("/api/ps/ps2Cutoffs", {
+        const res = await fetch("/api/ps/cutoffs/ps2", {
             method: "POST",
             body: JSON.stringify({
                 year: yearRef

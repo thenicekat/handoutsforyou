@@ -1,9 +1,9 @@
 import Head from "next/head";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
-import Menu from "../../Components/Menu";
+import Menu from "@/Components/Menu";
 import { toast } from "react-toastify";
-import CustomToastContainer from "../../Components/ToastContainer";
+import CustomToastContainer from "@/Components/ToastContainer";
 
 
 export default function AddResources({ }: {}) {

@@ -1,14 +1,14 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import Menu from "../../../Components/Menu";
+import Menu from "@/Components/Menu";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { CourseReview } from "../../../types/CourseReview";
-import { courses } from "../../../data/courses";
-import { profs } from "../../../data/profs";
-import AutoCompleter from "../../../Components/AutoCompleter";
-import { departments } from "../../../data/departments";
-import CustomToastContainer from "../../../Components/ToastContainer";
+import { CourseReview } from "@/types/CourseReview";
+import { courses } from "@/data/courses";
+import { profs } from "@/data/profs";
+import AutoCompleter from "@/Components/AutoCompleter";
+import { departments } from "@/data/departments";
+import CustomToastContainer from "@/Components/ToastContainer";
 import { toast } from "react-toastify";
 
 export default function Reviews({ }: {}) {
@@ -33,7 +33,7 @@ export default function Reviews({ }: {}) {
         }
 
         setIsLoading(true)
-        const res = await fetch("/api/reviews/get", {
+        const res = await fetch("/api/courses/reviews/get", {
             method: "POST",
             body: JSON.stringify({ course: course, prof: prof }),
             headers: { "Content-Type": "application/json" }

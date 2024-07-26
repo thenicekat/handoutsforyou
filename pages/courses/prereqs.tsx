@@ -1,10 +1,10 @@
 import { GetStaticProps } from "next";
 import Head from "next/head";
 import { useState } from "react";
-import Menu from "../../Components/Menu";
+import Menu from "@/Components/Menu";
 import { useSession } from "next-auth/react";
-import { PreReqGroup } from "../../types/PreReq";
-import Modal from "../../Components/Modal";
+import { PreReqGroup } from "@/types/PreReq";
+import Modal from "@/Components/Modal";
 
 export const getStaticProps: GetStaticProps = async () => {
     const fs = require("fs");
