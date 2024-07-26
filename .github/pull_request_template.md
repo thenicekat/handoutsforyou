@@ -17,6 +17,7 @@ well-known, it would be helpful to add a link to an article explaining it with m
   - [ ] Adding new / updating notes
   - [ ] Adding new / updating handouts
   - [ ] Adding new / updating chronicles
+  - [ ] Adding new / updating reviews
 - [ ] Misc (explain in description)
 
 ## Checklist:
