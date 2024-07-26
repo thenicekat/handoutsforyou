@@ -149,6 +149,19 @@ export default function PS() {
                                             <div className='text-lg font-semibold'>Offshoot: {item.offshoot}</div>
                                             <div className='text-lg font-semibold'>Offshoot Total: {item.offshoot_total}</div>
                                             <div className='text-lg font-semibold'>Offshoot Type: {item.offshoot_type}</div>
+
+                                            <div className="m-3 w-full text-center">
+                                                <button className="btn btn-outline w-1/2" onClick={() => {
+                                                    localStorage.setItem("h4u_ps_review_data", JSON.stringify({
+                                                        type: "PS2",
+                                                        batch: item.year_and_sem,
+                                                        station: item.station,
+                                                    }))
+                                                    window.location.href = "/ps/reviews/add"
+                                                }}>
+                                                    Add Review.
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 )
