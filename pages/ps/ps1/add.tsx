@@ -1,11 +1,11 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
-import Menu from "../../../Components/Menu";
+import Menu from "@/Components/Menu";
 import { useSession } from "next-auth/react";
-import AutoCompleter from "../../../Components/AutoCompleter";
-import { years } from "../../../data/ps1_years";
+import AutoCompleter from "@/Components/AutoCompleter";
+import { years } from "@/data/ps1_years";
 import { toast } from "react-toastify";
-import CustomToastContainer from "../../../Components/ToastContainer";
+import CustomToastContainer from "@/Components/ToastContainer";
 
 export default function AddPS1Response({ }: {}) {
     const [yearAndSem, setYearAndSem] = useState("");
