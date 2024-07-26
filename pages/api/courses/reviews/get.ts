@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { supabase } from '../supabase'
+import { supabase } from '../../supabase'
 import { getServerSession } from "next-auth/next"
-import { authOptions } from "../auth/[...nextauth]"
+import { authOptions } from "../../auth/[...nextauth]"
 
 type ResponseData = {
     message: string,
@@ -41,7 +41,6 @@ export default async function handler(
             .select('course, prof, review, created_at')
 
         if (error) {
-            console.log(error)
             res.status(500).json({ message: error.message, data: [], error: true })
             return
         }

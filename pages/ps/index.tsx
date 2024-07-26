@@ -1,33 +1,11 @@
 import { useSession } from "next-auth/react";
 import Head from "next/head";
 import Link from "next/link";
-import Menu from "../../Components/Menu";
+import Menu from "@/Components/Menu";
 import { useEffect, useState } from "react";
-import CustomToastContainer from "../../Components/ToastContainer";
+import CustomToastContainer from "@/Components/ToastContainer";
 import { toast } from "react-toastify";
-
-type PS1Item = {
-    created_at: string;
-    email: string;
-    allotment_round: string;
-    year_and_sem: string;
-    station: string;
-    cgpa: number;
-    preference: number;
-    id: number;
-}
-
-type PS2Item = {
-    id_number: string | undefined,
-    year_and_sem: string,
-    allotment_round: string,
-    station: string,
-    cgpa: number,
-    preference: number,
-    offshoot: number,
-    offshoot_total: number,
-    offshoot_type: string,
-}
+import { PS1Item, PS2Item, PS_Review } from "@/types/PSData";
 
 export default function PS() {
     const { data: session } = useSession()
@@ -74,9 +52,29 @@ export default function PS() {
                 </div>
 
                 <div className="flex flex-col md:flex-row w-1/2 justify-center">
+                    <Link className="m-3 w-full" href={"/ps/ps1/chronicles"}>
+                        <button className="btn btn-outline w-full">
+                            PS1 Chronicles
+                        </button>
+                    </Link>
+
                     <Link className="m-3 w-full" href={"/ps/ps1/data"}>
                         <button className="btn btn-outline w-full">
                             PS1 CGPA Cutoffs
+                        </button>
+                    </Link>
+
+                    <Link className="m-3 w-full" href={"/ps/ps1/reviews"}>
+                        <button className="btn btn-outline w-full">
+                            PS1 Reviews
+                        </button>
+                    </Link>
+                </div>
+
+                <div className="flex flex-col md:flex-row w-1/2 justify-center">
+                    <Link className="m-3 w-full" href={"/ps/ps2/chronicles"}>
+                        <button className="btn btn-outline w-full">
+                            PS2 Chronicles
                         </button>
                     </Link>
 
@@ -85,18 +83,10 @@ export default function PS() {
                             PS2 CGPA Cutoffs
                         </button>
                     </Link>
-                </div>
 
-                <div className="flex flex-col md:flex-row w-1/2 justify-center">
-                    <Link className="m-3 w-full" href={"/ps/ps1/chronicles"}>
+                    <Link className="m-3 w-full" href={"/ps/ps2/reviews"}>
                         <button className="btn btn-outline w-full">
-                            PS1 Chronicles
-                        </button>
-                    </Link>
-
-                    <Link className="m-3 w-full" href={"/ps/ps2/chronicles"}>
-                        <button className="btn btn-outline w-full">
-                            PS2 Chronicles
+                            PS2 Reviews
                         </button>
                     </Link>
                 </div>
@@ -111,31 +101,46 @@ export default function PS() {
                     {!isLoading ?
                         <>
                             <h1 className="text-2xl text-center my-3">Your PS1 Data</h1>
-                            <div className='grid md:grid-cols-2 place-items-center p-5'>
-                                {data.ps1 && data.ps1.length > 0 ? data.ps1.map((item: PS1Item, index: number) => {
-                                    return (
-                                        <div key={index} className='p-3 border border-gray-300 rounded-md'>
+                            {data.ps1 && data.ps1.length > 0 ? data.ps1.map((item: PS1Item, index: number) => {
+                                return (
+                                    <div key={index} className='grid md:grid-cols-2 place-items-center p-5'>
+                                        <div className='p-3 border border-gray-300 rounded-md w-3/4'>
                                             <div className='text-lg font-semibold'>Station: {item.station}</div>
                                             <div className='text-lg font-semibold'>CGPA: {item.cgpa}</div>
                                             <div className='text-lg font-semibold'>Preference: {item.preference}</div>
                                             <div className='text-lg font-semibold'>Allotment Round: {item.allotment_round}</div>
                                             <div className='text-lg font-semibold'>Year and Semester: {item.year_and_sem}</div>
+
+                                            <div className="m-3 w-full text-center">
+                                                <button className="btn btn-outline w-1/2" onClick={() => {
+                                                    localStorage.setItem("h4u_ps_review_data", JSON.stringify({
+                                                        type: "PS1",
+                                                        batch: item.year_and_sem,
+                                                        station: item.station,
+                                                    }))
+                                                    window.location.href = "/ps/reviews/add"
+                                                }}>
+                                                    Add Review.
+                                                </button>
+                                            </div>
                                         </div>
-                                    )
-                                }) :
-                                    <div className='text-lg font-semibold'>
-                                        No Data found,
-                                        <Link href="/ps/ps1/add" className="text-white underline">
-                                            Please enter data
-                                        </Link>
-                                    </div>}
-                            </div>
+                                    </div>
+                                )
+                            }) :
+                                <div className="m-3 w-full text-center">
+                                    <Link href={"/ps/ps1/add"}>
+                                        <button className="btn btn-outline w-1/2">
+                                            Uh oh! No Data Found! Click here to add data.
+                                        </button>
+                                    </Link>
+                                </div>
+                            }
 
                             <h1 className="text-2xl text-center my-3">Your PS2 Data</h1>
-                            <div className='grid md:grid-cols-2 place-items-center p-5'>
-                                {data.ps2 && data.ps2.length > 0 ? data.ps2.map((item: PS2Item, index: number) => {
-                                    return (
-                                        <div key={index} className='p-3 border border-gray-300 rounded-md'>
+                            {data.ps2 && data.ps2.length > 0 ? data.ps2.map((item: PS2Item, index: number) => {
+                                return (
+                                    <div key={index} className='grid md:grid-cols-2 place-items-center p-5'>
+                                        <div className='p-3 border border-gray-300 rounded-md w-3/4'>
                                             <div className='text-lg font-semibold'>Station: {item.station}</div>
                                             <div className='text-lg font-semibold'>CGPA: {item.cgpa}</div>
                                             <div className='text-lg font-semibold'>Preference: {item.preference}</div>
@@ -144,16 +149,31 @@ export default function PS() {
                                             <div className='text-lg font-semibold'>Offshoot: {item.offshoot}</div>
                                             <div className='text-lg font-semibold'>Offshoot Total: {item.offshoot_total}</div>
                                             <div className='text-lg font-semibold'>Offshoot Type: {item.offshoot_type}</div>
+
+                                            <div className="m-3 w-full text-center">
+                                                <button className="btn btn-outline w-1/2" onClick={() => {
+                                                    localStorage.setItem("h4u_ps_review_data", JSON.stringify({
+                                                        type: "PS2",
+                                                        batch: item.year_and_sem,
+                                                        station: item.station,
+                                                    }))
+                                                    window.location.href = "/ps/reviews/add"
+                                                }}>
+                                                    Add Review.
+                                                </button>
+                                            </div>
                                         </div>
-                                    )
-                                }) :
-                                    <div className='text-lg font-semibold'>
-                                        No Data found,
-                                        <Link href="/ps/ps2/add" className="text-white underline">
-                                            Please enter data
-                                        </Link>
-                                    </div>}
-                            </div>
+                                    </div>
+                                )
+                            }) :
+                                <div className="m-3 w-full text-center">
+                                    <Link href={"/ps/ps2/add"}>
+                                        <button className="btn btn-outline w-1/2">
+                                            Uh oh! No Data Found! Click here to add data.
+                                        </button>
+                                    </Link>
+                                </div>
+                            }
                         </>
                         :
                         <div className='text-lg text-center font-semibold'>Loading...</div>
