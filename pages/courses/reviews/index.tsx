@@ -33,7 +33,7 @@ export default function Reviews({ }: {}) {
         }
 
         setIsLoading(true)
-        const res = await fetch("/api/reviews/get", {
+        const res = await fetch("/api/courses/reviews/get", {
             method: "POST",
             body: JSON.stringify({ course: course, prof: prof }),
             headers: { "Content-Type": "application/json" }
