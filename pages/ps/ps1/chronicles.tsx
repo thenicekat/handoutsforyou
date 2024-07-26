@@ -1,7 +1,7 @@
 import { GetStaticProps } from "next";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
-import Menu from "../../../Components/Menu";
+import Menu from "@/Components/Menu";
 
 
 export const getStaticProps: GetStaticProps = async () => {
