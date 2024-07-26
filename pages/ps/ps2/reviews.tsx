@@ -8,7 +8,7 @@ import CustomToastContainer from "@/Components/ToastContainer";
 import { toast } from "react-toastify";
 import { PS_Review } from "@/types/PSData";
 
-export default function PS1Reviews({ }: {}) {
+export default function PS2Reviews({ }: {}) {
     const [station, setStation] = useState("");
 
     const [isLoading, setIsLoading] = useState(false);
@@ -21,7 +21,7 @@ export default function PS1Reviews({ }: {}) {
         setIsLoading(true)
         const response = await fetch("/api/ps/reviews/get", {
             method: "POST",
-            body: JSON.stringify({ type: "PS1" }),
+            body: JSON.stringify({ type: "PS2" }),
             headers: { "Content-Type": "application/json" }
         })
         if (response.status !== 400) {
@@ -60,7 +60,7 @@ export default function PS1Reviews({ }: {}) {
             {/* Search box */}
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
-                    <h1 className="text-5xl pt-[50px] pb-[20px] px-[35px] text-primary">PS1 Reviews.</h1>
+                    <h1 className="text-5xl pt-[50px] pb-[20px] px-[35px] text-primary">PS2 Reviews.</h1>
 
                     <Menu />
 
@@ -99,7 +99,7 @@ export default function PS1Reviews({ }: {}) {
                     </div>
                 </div>
             }
-            <CustomToastContainer containerId="ps1Reviews" />
+            <CustomToastContainer containerId="ps2Reviews" />
         </>
     )
 }
