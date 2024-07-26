@@ -17,6 +17,14 @@ export default function AddReview({ }: {}) {
     const { data: session } = useSession()
 
     const AddReview = async () => {
+        if (!PSReviewData) {
+            toast.error("Invalid Request - PS Data missing")
+            return
+        }
+        if (!review) {
+            toast.error("Review cannot be empty!")
+            return
+        }
         const data = await fetch("/api/ps/reviews/add", {
             method: "POST",
             body: JSON.stringify({ ...PSReviewData, review: review, created_by: session?.user?.email }),
@@ -32,6 +40,7 @@ export default function AddReview({ }: {}) {
             if (localStorage.getItem("h4u_ps_review_data")) {
                 localStorage.removeItem("h4u_ps_review_data")
             }
+            window.location.href = '/ps'
         }
     }
 
