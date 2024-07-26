@@ -1,11 +1,11 @@
 import Head from "next/head";
 import { useState } from "react";
-import Menu from "../../../Components/Menu";
+import Menu from "@/Components/Menu";
 import { useSession } from "next-auth/react";
-import { years } from "../../../data/ps2_years";
-import AutoCompleter from "../../../Components/AutoCompleter";
+import { years } from "@/data/ps2_years";
+import AutoCompleter from "@/Components/AutoCompleter";
 import { toast } from "react-toastify";
-import CustomToastContainer from "../../../Components/ToastContainer";
+import CustomToastContainer from "@/Components/ToastContainer";
 
 type PSDataRes = {
     typeOfPS: string,
