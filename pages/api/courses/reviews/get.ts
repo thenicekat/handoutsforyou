@@ -37,7 +37,7 @@ export default async function handler(
 
     if (!course && !prof) {
         const { data, error } = await supabase
-            .from('reviews')
+            .from('course_reviews')
             .select('course, prof, review, created_at')
 
         if (error) {
@@ -55,7 +55,7 @@ export default async function handler(
     }
     else if (!course) {
         const { data, error } = await supabase
-            .from('reviews')
+            .from('course_reviews')
             .select('course, prof, review, created_at')
             .eq('prof', prof)
 
@@ -73,7 +73,7 @@ export default async function handler(
         }
     } else if (!prof) {
         const { data, error } = await supabase
-            .from('reviews')
+            .from('course_reviews')
             .select('course, prof, review, created_at')
             .eq('course', course)
 
@@ -92,7 +92,7 @@ export default async function handler(
         }
     } else {
         const { data, error } = await supabase
-            .from('reviews')
+            .from('course_reviews')
             .select('course, prof, review, created_at')
             .eq('course', course)
             .eq('prof', prof)
