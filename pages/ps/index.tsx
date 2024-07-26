@@ -103,8 +103,8 @@ export default function PS() {
                             <h1 className="text-2xl text-center my-3">Your PS1 Data</h1>
                             {data.ps1 && data.ps1.length > 0 ? data.ps1.map((item: PS1Item, index: number) => {
                                 return (
-                                    <div className='grid md:grid-cols-2 place-items-center p-5'>
-                                        <div key={index} className='p-3 border border-gray-300 rounded-md w-3/4'>
+                                    <div key={index} className='grid md:grid-cols-2 place-items-center p-5'>
+                                        <div className='p-3 border border-gray-300 rounded-md w-3/4'>
                                             <div className='text-lg font-semibold'>Station: {item.station}</div>
                                             <div className='text-lg font-semibold'>CGPA: {item.cgpa}</div>
                                             <div className='text-lg font-semibold'>Preference: {item.preference}</div>
@@ -139,8 +139,8 @@ export default function PS() {
                             <h1 className="text-2xl text-center my-3">Your PS2 Data</h1>
                             {data.ps2 && data.ps2.length > 0 ? data.ps2.map((item: PS2Item, index: number) => {
                                 return (
-                                    <div className='grid md:grid-cols-2 place-items-center p-5'>
-                                        <div key={index} className='p-3 border border-gray-300 rounded-md w-3/4'>
+                                    <div key={index} className='grid md:grid-cols-2 place-items-center p-5'>
+                                        <div className='p-3 border border-gray-300 rounded-md w-3/4'>
                                             <div className='text-lg font-semibold'>Station: {item.station}</div>
                                             <div className='text-lg font-semibold'>CGPA: {item.cgpa}</div>
                                             <div className='text-lg font-semibold'>Preference: {item.preference}</div>
