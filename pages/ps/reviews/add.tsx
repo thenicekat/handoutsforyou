@@ -2,47 +2,24 @@ import Head from "next/head";
 import { useState, useEffect } from "react";
 import Menu from "@/Components/Menu";
 import { useSession } from "next-auth/react";
-import { courses } from "@/data/courses";
-import { profs } from "@/data/profs";
-import AutoCompleter from "@/Components/AutoCompleter";
 import CustomToastContainter from "@/Components/ToastContainer"
 import { toast } from "react-toastify";
 
 
 export default function AddReview({ }: {}) {
-    const [course, setCourse] = useState("");
-    const [prof, setProf] = useState("");
-
+    const [PSReviewData, setPSReviewData] = useState<{
+        type: string,
+        batch: string,
+        station: string,
+    }>();
     const [review, setReview] = useState("");
 
     const { data: session } = useSession()
 
     const AddReview = async () => {
-        if (course == "") {
-            toast.error("Please fill course!")
-            return
-        }
-        if (prof == "") {
-            toast.error("Please fill professor!")
-            return
-        }
-        if (review == "") {
-            toast.error("Please fill review!")
-            return
-        }
-
-        if (courses.includes(course) == false) {
-            toast.error("Please select a course from the given list!")
-            return
-        }
-        if (profs.includes(prof) == false) {
-            toast.error("Please select a professor from the given list!")
-            return
-        }
-
-        const data = await fetch("/api/reviews/add", {
+        const data = await fetch("/api/ps/reviews/add", {
             method: "POST",
-            body: JSON.stringify({ course: course, prof: prof, review: review, created_by: session?.user?.email }),
+            body: JSON.stringify({ ...PSReviewData, review: review, created_by: session?.user?.email }),
             headers: { "Content-Type": "application/json" }
         })
         const res = await data.json()
@@ -51,24 +28,16 @@ export default function AddReview({ }: {}) {
         }
         else {
             toast.success("Review Added!")
-            setCourse("")
-            setProf("")
             setReview("")
-            if (localStorage.getItem("h4u_course")) {
-                localStorage.removeItem("h4u_course")
-            }
-            if (localStorage.getItem("h4u_prof")) {
-                localStorage.removeItem("h4u_prof")
+            if (localStorage.getItem("h4u_ps_review_data")) {
+                localStorage.removeItem("h4u_ps_review_data")
             }
         }
     }
 
     useEffect(() => {
-        if (localStorage.getItem("h4u_course")) {
-            setCourse(localStorage.getItem("h4u_course")!)
-        }
-        if (localStorage.getItem("h4u_prof")) {
-            setProf(localStorage.getItem("h4u_prof")!)
+        if (localStorage.getItem("h4u_ps_review_data")) {
+            setPSReviewData(JSON.parse(localStorage.getItem("h4u_ps_review_data")!))
         }
     }, [])
 
@@ -91,9 +60,9 @@ export default function AddReview({ }: {}) {
                     <Menu />
 
                     {session && <>
-                        <AutoCompleter name={"Course"} items={courses} value={course} onChange={(val) => setCourse(val)} />
-                        <span className="m-2"></span>
-                        <AutoCompleter name={"Prof"} items={profs} value={prof} onChange={(val) => setProf(val)} />
+                        You are submitting a review for {PSReviewData?.type}:
+                        <span className="text-primary">Station: {PSReviewData?.station}</span>
+                        <span className="text-primary">Batch: {PSReviewData?.batch}</span>
 
                         <div className="text-center w-full m-2 h-60">
                             <textarea
@@ -111,7 +80,7 @@ export default function AddReview({ }: {}) {
                 </div>
             </div>
 
-            <CustomToastContainter containerId="addReview" />
+            <CustomToastContainter containerId="addPSReview" />
         </>
     )
 }

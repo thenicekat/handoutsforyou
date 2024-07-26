@@ -5,29 +5,7 @@ import Menu from "@/Components/Menu";
 import { useEffect, useState } from "react";
 import CustomToastContainer from "@/Components/ToastContainer";
 import { toast } from "react-toastify";
-
-type PS1Item = {
-    created_at: string;
-    email: string;
-    allotment_round: string;
-    year_and_sem: string;
-    station: string;
-    cgpa: number;
-    preference: number;
-    id: number;
-}
-
-type PS2Item = {
-    id_number: string | undefined,
-    year_and_sem: string,
-    allotment_round: string,
-    station: string,
-    cgpa: number,
-    preference: number,
-    offshoot: number,
-    offshoot_total: number,
-    offshoot_type: string,
-}
+import { PS1Item, PS2Item, PS_Review } from "@/types/PSData";
 
 export default function PS() {
     const { data: session } = useSession()
@@ -132,6 +110,19 @@ export default function PS() {
                                             <div className='text-lg font-semibold'>Preference: {item.preference}</div>
                                             <div className='text-lg font-semibold'>Allotment Round: {item.allotment_round}</div>
                                             <div className='text-lg font-semibold'>Year and Semester: {item.year_and_sem}</div>
+
+                                            <div className="m-3 w-full text-center">
+                                                <button className="btn btn-outline w-1/2" onClick={() => {
+                                                    localStorage.setItem("h4u_ps_review_data", JSON.stringify({
+                                                        type: "PS1",
+                                                        batch: item.year_and_sem,
+                                                        station: item.station,
+                                                    }))
+                                                    window.location.href = "/ps/reviews/add"
+                                                }}>
+                                                    Add Review.
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 )
@@ -163,7 +154,7 @@ export default function PS() {
                                 )
                             }) :
                                 <div className="m-3 w-full text-center">
-                                    <Link href={"/ps/ps1/add"}>
+                                    <Link href={"/ps/ps2/add"}>
                                         <button className="btn btn-outline w-1/2">
                                             Uh oh! No Data Found! Click here to add data.
                                         </button>

@@ -32,7 +32,7 @@ export default function AddPS1Response({ }: {}) {
             return
         }
 
-        const res = await fetch("/api/ps/add", {
+        const res = await fetch("/api/ps/cutoffs/add", {
             method: "POST",
             body: JSON.stringify({
                 typeOfPS: "ps1",

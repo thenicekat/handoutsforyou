@@ -40,7 +40,7 @@ export default function AddReview({ }: {}) {
             return
         }
 
-        const data = await fetch("/api/reviews/add", {
+        const data = await fetch("/api/courses/reviews/add", {
             method: "POST",
             body: JSON.stringify({ course: course, prof: prof, review: review, created_by: session?.user?.email }),
             headers: { "Content-Type": "application/json" }

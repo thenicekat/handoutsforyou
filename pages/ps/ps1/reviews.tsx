@@ -3,39 +3,25 @@ import { useEffect, useState } from "react";
 import Menu from "@/Components/Menu";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { CourseReview } from "@/types/CourseReview";
-import { courses } from "@/data/courses";
-import { profs } from "@/data/profs";
 import AutoCompleter from "@/Components/AutoCompleter";
-import { departments } from "@/data/departments";
 import CustomToastContainer from "@/Components/ToastContainer";
 import { toast } from "react-toastify";
+import { PS_Review } from "@/types/PSData";
 
-export default function Reviews({ }: {}) {
-    const [course, setCourse] = useState("");
-    const [prof, setProf] = useState("");
-    const [dept, setDept] = useState("");
+export default function PS1Reviews({ }: {}) {
+    const [station, setStation] = useState("");
 
     const [isLoading, setIsLoading] = useState(false);
 
-    const [reviews, setReviews] = useState([] as CourseReview[]);
+    const [reviews, setReviews] = useState([] as PS_Review[]);
 
     const { data: session } = useSession()
 
     const fetchReviews = async () => {
-        if (courses.includes(course) == false && course !== "") {
-            toast.error("Please select a course from the given list!")
-            return
-        }
-        if (profs.includes(prof) == false && prof !== "") {
-            toast.error("Please select a professor from the given list!")
-            return
-        }
-
         setIsLoading(true)
-        const res = await fetch("/api/reviews/get", {
+        const res = await fetch("/api/ps/reviews/get", {
             method: "POST",
-            body: JSON.stringify({ course: course, prof: prof }),
+            body: JSON.stringify({ type: "ps1" }),
             headers: { "Content-Type": "application/json" }
         })
         if (res.status !== 400) {
@@ -44,33 +30,15 @@ export default function Reviews({ }: {}) {
                 toast.error(reviews.message)
                 setIsLoading(false)
             } else {
-                setReviews(reviews.data as CourseReview[])
+                setReviews(reviews.data as PS_Review[])
                 setIsLoading(false)
-                filterByDept(departments[dept])
             }
         }
-    }
-
-    const filterByDept = (dept: string) => {
-        if (dept === "" || dept === undefined) return;
-        let deptsToCheck = dept.split("/").map((d) => d.trim())
-        let filteredReviews = new Set();
-        reviews.forEach((review) => {
-            deptsToCheck.forEach((d) => {
-                if (review.course.split(" ")[0].includes(d)) filteredReviews.add(review)
-            })
-        })
-        setReviews(Array.from(filteredReviews) as CourseReview[])
     }
 
     useEffect(() => {
         fetchReviews()
     }, [])
-
-    useEffect(() => {
-        localStorage.setItem("h4u_course", course)
-        localStorage.setItem("h4u_prof", prof)
-    })
 
     return (
         <>
@@ -86,33 +54,22 @@ export default function Reviews({ }: {}) {
             {/* Search box */}
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
-                    <h1 className="text-5xl pt-[50px] pb-[20px] px-[35px] text-primary">Course Reviews.</h1>
+                    <h1 className="text-5xl pt-[50px] pb-[20px] px-[35px] text-primary">PS1 Reviews.</h1>
 
                     <Menu />
 
-                    {session && <>
-                        <AutoCompleter name={"Course"} items={courses} value={course} onChange={(val) => setCourse(val)} />
+                    {/* {session && <>
+                        <AutoCompleter name={"PS stations"} items={courses} value={course} onChange={(val) => setCourse(val)} />
                         <span className="m-2"></span>
-                        <AutoCompleter name={"Prof"} items={profs} value={prof} onChange={(val) => setProf(val)} />
-                        <span className="m-2"></span>
-                        <AutoCompleter name={"Department"} items={Object.keys(departments)} value={dept} onChange={(val) => {
-                            setDept(val)
-                        }} />
 
                         <div className="flex flex-col md:flex-row w-1/2 justify-center">
-                            <Link className="m-3 w-full" href={"/courses/reviews/add"}>
-                                <button className="btn btn-outline w-full">
-                                    Add a Review
-                                </button>
-                            </Link>
-
                             <Link className="m-3 w-full" href={""}>
                                 <button className="btn btn-outline w-full" onClick={fetchReviews}>
                                     Filter Reviews
                                 </button>
                             </Link>
                         </div>
-                    </>}
+                    </>} */}
                 </div>
             </div>
 
@@ -128,14 +85,14 @@ export default function Reviews({ }: {}) {
                             !isLoading ?
                                 reviews
                                     .sort((a, b) => {
-                                        if (a.course > b.course) return 1
-                                        else if (a.course < b.course) return -1
+                                        if (a.station > b.station) return 1
+                                        else if (a.station < b.station) return -1
                                         else return 0
                                     })
                                     .map((review) => (
                                         <div className="card shadow-lg bg-base-100 text-base-content mt-5" key={review.created_at}>
                                             <div className="card-body">
-                                                <h2 className="card-title text-center">Course Name: {review.course} by Professor: {review.prof}</h2>
+                                                <h2 className="card-title text-center">Station Name: {review.station} Batch: {review.batch}</h2>
                                                 <p>{review.review}</p>
                                                 <p className="italic">Submitted at: {new Date(review.created_at).toLocaleString("en-IN", {})}</p>
                                             </div>
@@ -148,7 +105,7 @@ export default function Reviews({ }: {}) {
                     </div>
                 </div>
             }
-            <CustomToastContainer containerId="courseReviews" />
+            <CustomToastContainer containerId="ps1Reviews" />
         </>
     )
 }
