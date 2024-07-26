@@ -26,7 +26,7 @@ export default async function handler(
     const { type } = req.body
 
     if (type) {
-        if (type === 'ps1') {
+        if (type === 'PS1') {
             const { data, error } = await supabase
                 .from('ps1_reviews')
                 .select('station, batch, review, created_at')
@@ -43,7 +43,7 @@ export default async function handler(
                 })
                 return
             }
-        } else if (type === 'ps2') {
+        } else if (type === 'PS2') {
             const { data, error } = await supabase
                 .from('ps2_reviews')
                 .select('station, batch, review, created_at')
