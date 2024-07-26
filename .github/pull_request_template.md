@@ -1,14 +1,13 @@
-# Pull Request Template
-
 ## Description
 
-Please include a summary of the change and which issue (if any) is fixed.
+<pre>
+Include summary of change here.
+
 A brief description of the your implementation method can be helpful too. If the implemented method/algorithm is not so
 well-known, it would be helpful to add a link to an article explaining it with more details.
+</pre>
 
 ## Type of change
-
-Please delete options that are not relevant.
 
 - [ ] Bug fix (non-breaking change which fixes an issue)
 - [ ] New website feature (non-breaking change which adds functionality)
@@ -18,6 +17,7 @@ Please delete options that are not relevant.
   - [ ] Adding new / updating notes
   - [ ] Adding new / updating handouts
   - [ ] Adding new / updating chronicles
+  - [ ] Adding new / updating reviews
 - [ ] Misc (explain in description)
 
 ## Checklist:
