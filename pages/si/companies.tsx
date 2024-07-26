@@ -1,11 +1,11 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import Menu from "../../Components/Menu";
+import Menu from "@/Components/Menu";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { SI_Company } from "../../types/SIData";
+import { SI_Company } from "@/types/SIData";
 import { toast } from "react-toastify";
-import CustomToastContainer from "../../Components/ToastContainer";
+import CustomToastContainer from "@/Components/ToastContainer";
 
 export default function SICompanies() {
     const [search, setSearch] = useState("");

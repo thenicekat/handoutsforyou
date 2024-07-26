@@ -1,7 +1,7 @@
 import { useSession } from 'next-auth/react';
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import Menu from "../Components/Menu";
+import Menu from "@/Components/Menu";
 import CountUp from 'react-countup';
 import Image from 'next/image';
 

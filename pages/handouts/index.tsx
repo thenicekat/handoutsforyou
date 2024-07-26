@@ -3,7 +3,7 @@ import Head from "next/head";
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import { signIn, signOut, useSession } from 'next-auth/react';
-import Menu from "../../Components/Menu";
+import Menu from "@/Components/Menu";
 import Link from "next/link";
 
 
