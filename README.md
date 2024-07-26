@@ -6,10 +6,11 @@
 3. Course Reviews
 4. Practice School Cutoffs
 5. Practice School Chronicles
-6. Summer Internship Chronicles (Might become hard to find lmao)
-7. Placement Chronicles
-8. Minors on Campus
-9. Academic Resources
+6. Practice School Reviews
+7. Summer Internship Chronicles (Might become hard to find lmao)
+8. Placement Chronicles
+9. Minors on Campus
+10. Academic Resources
 
 ## Development
 - First install the dependencies by using pnpm after installing [pnpm](https://pnpm.io/installation)
@@ -30,7 +31,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - `courses/prereqs` - Contains code for course prereqs.
 - `courses` - Contains code for the course reviews page.
 - `handouts` - Contains code for the handouts page.
-- `ps` - Contains code for the ps pages. Each ps folder has one page for `add`-ing responses, one page for `chronicles` and one page for `data`.
+- `ps` - Contains code for the ps pages. Each ps folder has one page for `add`-ing responses, one page for `chronicles` and one page for `data` and one page for `reviews`.
 - `resources` - Contains code for resources which you can share publicly to others.
 
 ## Scripts
