@@ -130,7 +130,7 @@ export default function PS() {
                                 <div className="m-3 w-full text-center">
                                     <Link href={"/ps/ps1/add"}>
                                         <button className="btn btn-outline w-1/2">
-                                            Uh oh! No Data Found! Click here to add data.
+                                            Uh oh! No Data Found! Click here to add data or submit review.
                                         </button>
                                     </Link>
                                 </div>
@@ -169,7 +169,7 @@ export default function PS() {
                                 <div className="m-3 w-full text-center">
                                     <Link href={"/ps/ps2/add"}>
                                         <button className="btn btn-outline w-1/2">
-                                            Uh oh! No Data Found! Click here to add data.
+                                            Uh oh! No Data Found! Click here to add data or submit review.
                                         </button>
                                     </Link>
                                 </div>
