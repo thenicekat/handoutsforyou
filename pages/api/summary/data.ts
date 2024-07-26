@@ -32,7 +32,7 @@ export default async function handler(
         .select('created_at.count()')
         .single()
     const { data: reviews_data, error: reviews_error } = await supabase
-        .from('reviews')
+        .from('course_reviews')
         .select('created_at.count()')
         .single()
     const { data: resources_data, error: resources_error } = await supabase
