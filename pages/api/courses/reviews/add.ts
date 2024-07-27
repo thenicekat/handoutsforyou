@@ -41,7 +41,7 @@ export default async function handler(
     }
 
     const { error } = await supabase
-        .from('reviews')
+        .from('course_reviews')
         .insert([
             { course: course, prof: prof, review: review, created_by: created_by }
         ])
