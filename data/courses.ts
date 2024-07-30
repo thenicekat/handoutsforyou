@@ -275,6 +275,7 @@ export const courses = [
     "CS F429 NATURAL LANGUAGE PROCESSING",
     "CS F431 Combinatorial Optimization",
     "CS F433 COMPUTATIONAL NEUROSCIENCE",
+    "CS F437 GENERATIVE AI",
     "CS F441 Selective Topics in Computer Science",
     "CS F469 INFORMATION RETRIEVAL",
     "CS F491 SPECIAL PROJECT",
