@@ -21,7 +21,7 @@ export default function PS1Chronicles({ ps2_chronicles }: { ps2_chronicles: stri
     return (
         <>
             <Head>
-                <title>PS 1 Chronicles.</title>
+                <title>PS 2 Chronicles.</title>
                 <meta name="description" content="One stop place for your PS queries, handouts, and much more" />
                 <meta name="keywords" content="BITS Pilani, Handouts, BPHC, Hyderabad Campus, BITS Hyderabad, BITS, Pilani, Handouts for you, handouts, for, you, bits, birla, institute, bits hyd, academics, practice school, ps, queries, ps cutoffs, ps2, ps1" />
                 <meta name="robots" content="index, follow" />
@@ -40,14 +40,14 @@ export default function PS1Chronicles({ ps2_chronicles }: { ps2_chronicles: stri
 
             {session &&
                 <div>
-                    <h1 className="text-3xl text-center my-3">PS1 Chronicles</h1>
+                    <h1 className="text-3xl text-center my-3">PS2 Chronicles</h1>
                     <div className='grid md:grid-cols-4 place-items-center p-5'>
                         {
                             ps2_chronicles.map((chron: string) => (
                                 <div key={chron} className='m-2 py-1 rounded-xl'>
                                     <div className="alert ">
                                         <div>
-                                            <span>PS1 {chron}</span>
+                                            <span>PS2 {chron}</span>
                                         </div>
                                         <div className="flex-none">
                                             <button className="btn btn-primary" onClick={
