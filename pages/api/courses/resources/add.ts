@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { supabase } from '../supabase'
+import { supabase } from '../../supabase'
 import { getServerSession } from "next-auth/next"
-import { authOptions } from "../auth/[...nextauth]"
+import { authOptions } from "../../auth/[...nextauth]"
 
 type ResponseData = {
     message: string,
@@ -20,7 +20,7 @@ export default async function handler(
         })
     }
 
-    const { name, link, created_by } = req.body
+    const { name, link, created_by, category } = req.body
 
     if (!name) {
         res.status(422).json({ message: 'Invalid Request - Name missing', error: true })
@@ -34,11 +34,15 @@ export default async function handler(
         res.status(422).json({ message: 'Invalid Request - User missing', error: true })
         return
     }
+    if (!category) {
+        res.status(422).json({ message: 'Invalid Request - Category missing', error: true })
+        return
+    }
 
     const { error } = await supabase
         .from('resources')
         .insert([
-            { name: name, link: link, created_by: created_by, email: session?.user?.email }
+            { name: name, link: link, created_by: created_by, email: session?.user?.email, category: category }
         ])
 
     if (error) {

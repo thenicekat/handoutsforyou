@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { supabase } from '../supabase'
+import { supabase } from '../../supabase'
 import { getServerSession } from "next-auth/next"
-import { authOptions } from "../auth/[...nextauth]"
+import { authOptions } from "../../auth/[...nextauth]"
 
 type ResponseData = {
     message: string,
