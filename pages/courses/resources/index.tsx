@@ -88,13 +88,14 @@ export default function Resources() {
             {session &&
                 <div className="max-w-7xl mx-auto">
 
-                    <div className='px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center'>
-                        {
-                            Object.keys(resources).map((key) => {
-                                return (
-                                    <>
-                                        <h1 className="text-5xl pt-[50px] pb-[20px] px-[35px] text-primary">{key}</h1>
-
+                    {
+                        Object.keys(resources).map((key) => {
+                            return (
+                                <>
+                                    <div className="flex w-full justify-center">
+                                        <h1 className="text-3xl text-primary">{key}</h1>
+                                    </div>
+                                    <div className='px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center'>
                                         {
                                             resources[key].map((resource) => (
                                                 <div className="card w-72 h-96 bg-base-100 text-base-content m-2" key={resource.name}>
@@ -110,13 +111,13 @@ export default function Resources() {
                                                 </div>
                                             ))
                                         }
+                                    </div >
 
-                                        <br />
-                                    </>
-                                )
-                            })
-                        }
-                    </div >
+                                    <br />
+                                </>
+                            )
+                        })
+                    }
                 </div >}
             <CustomToastContainer containerId="resources" />
         </>
