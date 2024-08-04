@@ -84,7 +84,7 @@ export default function Resources() {
                     {session &&
                         <>
 
-                            <div className="flex flex-col md:flex-row w-1/2 justify-center">
+                            <div className="flex flex-col md:flex-row w-full md:w-1/2 justify-center">
                                 <input type="text" placeholder="Search..." className="input input-secondary w-full max-w-xs m-3" onChange={e => setInput(e.target.value)} />
 
                                 <button className="btn btn-outline m-3" onClick={filterResources}>
