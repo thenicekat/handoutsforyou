@@ -108,7 +108,13 @@ export default function Resources() {
                 <div className="max-w-7xl mx-auto">
 
                     {
-                        Object.keys(resources).map((key) => {
+                        Object.keys(resources).sort((a, b) => {
+                            if (a == 'General') return -1
+                            else if (b == 'General') return 1
+                            else if (a > b) return 1
+                            else if (a < b) return -1
+                            else return 0
+                        }).map((key) => {
                             return (
                                 <>
                                     <div className="collapse collapse-plus">
