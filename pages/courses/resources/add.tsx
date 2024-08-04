@@ -4,12 +4,15 @@ import { useSession } from "next-auth/react";
 import Menu from "@/Components/Menu";
 import { toast } from "react-toastify";
 import CustomToastContainer from "@/Components/ToastContainer";
+import AutoCompleter from "@/Components/AutoCompleter";
+import { departments } from "@/data/departments";
 
 
 export default function AddResources({ }: {}) {
     const [name, setName] = useState("");
     const [link, setLink] = useState("");
     const [created_by, setCreatedBy] = useState("");
+    const [category, setCategory] = useState("");
 
     const [isLoading, setIsLoading] = useState(false)
 
@@ -17,12 +20,18 @@ export default function AddResources({ }: {}) {
 
     const addResource = async () => {
         setIsLoading(true)
-        const res = await fetch("/api/resources/add", {
+        if (departments[category] == undefined) {
+            toast.error("Please select a valid category!")
+            setIsLoading(false)
+            return
+        }
+        const res = await fetch("/api/courses/resources/add", {
             method: "POST",
             body: JSON.stringify({
                 name: name,
                 link: link,
-                created_by: created_by
+                created_by: created_by,
+                category: category
             }),
             headers: { "Content-Type": "application/json" }
         })
@@ -35,6 +44,7 @@ export default function AddResources({ }: {}) {
             setName("")
             setLink("")
             setCreatedBy("")
+            setCategory("")
         }
         setIsLoading(false)
     }
@@ -78,8 +88,13 @@ export default function AddResources({ }: {}) {
                             </div>
 
                             <div className="flex flex-col w-3/4 justify-between m-1">
-                                <label htmlFor="allotmentRound" className="text-primary">Created By</label>
+                                <label htmlFor="createdBy" className="text-primary">Created By</label>
                                 <input type="text" id="allotmentRound" className="input input-secondary" value={created_by} onChange={(e) => setCreatedBy(e.target.value)} />
+                            </div>
+
+                            <div className="flex flex-col w-3/4 justify-between m-1">
+                                <label htmlFor="category" className="text-primary">Category</label>
+                                <AutoCompleter name="category" items={Object.keys(departments)} value={category} onChange={(val) => setCategory(val)} />
                             </div>
 
                             <div className="text-center flex-wrap w-3/4 justify-between m-1">
