@@ -11,10 +11,10 @@ export const departments: DeptType = {
     "Computer Science": "CS/IS",
     "Economics and Finance": "ECON/FIN",
     "Electrical and Electronics Engineering": "EEE/ECE/INSTR/MEL",
+    "General": "BITS",
     "Humanities and Management": "HSS/GS/MGTS",
     "Mathematics": "MATH",
     "Mechanical Engineering": "ME/MF/SS",
     "Pharmacy": "PHA",
     "Physics": "PHY",
-    "Others": "BITS"
 }
