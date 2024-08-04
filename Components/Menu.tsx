@@ -19,7 +19,7 @@ const Menu = () => {
 
     const menuItems: any = {
         "Handouts": "/handouts",
-        "Resources": "/resources",
+        "Resources": "/courses/resources",
         "Course Reviews": "/courses/reviews",
         "Summer Internships": "/si",
         "Research Chronicles": "https://pollen-box-786.notion.site/Research-Chronicles-894bcac1266d4e5fac2f4cd76ff29750",

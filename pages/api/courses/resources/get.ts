@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { supabase } from '../supabase'
+import { supabase } from '../../supabase'
 import { getServerSession } from "next-auth/next"
-import { authOptions } from "../auth/[...nextauth]"
+import { authOptions } from "../../auth/[...nextauth]"
 
 type ResponseData = {
     message: string,
@@ -25,7 +25,7 @@ export default async function handler(
 
     const { data, error } = await supabase
         .from('resources')
-        .select('id, name, link, created_by, score')
+        .select('id, name, link, created_by, score, category')
         .order('score', { ascending: false })
 
     if (error) {
