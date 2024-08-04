@@ -35,6 +35,17 @@ export default function Resources() {
         }
     }
 
+    const filterResources = () => {
+        let filteredResources: ResourceByDept = {}
+        for (let key in resources) {
+            let filtered = resources[key].filter((resource) => resource.name.toLowerCase().includes(input.toLowerCase()))
+            if (filtered.length > 0) {
+                filteredResources[key] = filtered
+            }
+        }
+        setResources(filteredResources)
+    }
+
     const incrementScore = async (id: number) => {
         const res = await fetch(`/api/courses/resources/score?id=${id}`)
         const data = await res.json()
@@ -72,7 +83,15 @@ export default function Resources() {
                     <Menu />
                     {session &&
                         <>
-                            <input type="text" placeholder="Search..." className="input input-secondary w-full max-w-xs" onChange={e => setInput(e.target.value)} />
+
+                            <div className="flex flex-col md:flex-row w-1/2 justify-center">
+                                <input type="text" placeholder="Search..." className="input input-secondary w-full max-w-xs m-3" onChange={e => setInput(e.target.value)} />
+
+                                <button className="btn btn-outline m-3" onClick={filterResources}>
+                                    Filter
+                                </button>
+                            </div>
+
                             <div className="flex flex-col md:flex-row w-1/3 justify-center">
                                 <Link className="m-3 w-full" href={"/courses/resources/add"}>
                                     <button className="btn btn-outline w-full">
@@ -92,26 +111,30 @@ export default function Resources() {
                         Object.keys(resources).map((key) => {
                             return (
                                 <>
-                                    <div className="flex w-full justify-center">
-                                        <h1 className="text-3xl text-primary">{key}</h1>
-                                    </div>
-                                    <div className='px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center'>
-                                        {
-                                            resources[key].map((resource) => (
-                                                <div className="card w-72 h-96 bg-base-100 text-base-content m-2" key={resource.name}>
-                                                    <div className="card-body">
-                                                        <h2 className="text-sm font-bold uppercase">{resource.created_by}</h2>
-                                                        <p className='text-lg'>{resource.name.toUpperCase()}</p>
+                                    <div className="collapse collapse-plus">
+                                        <input type="checkbox" />
+                                        <div className="collapse-title text-xl font-medium">{key} x {resources[key].length}</div>
 
-                                                        <div className="flex-none">
-                                                            <button className="btn btn-sm btn-primary m-1" onClick={() => incrementScore(resource.id)}>View this Resource</button>
-                                                            <button className="btn btn-sm btn-primary m-1">{resource.score} <CursorArrowRippleIcon className='w-5 h-5' /></button>
+                                        <div className="collapse-content">
+                                            <div className='px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center'>
+                                                {
+                                                    resources[key].map((resource) => (
+                                                        <div className="card w-72 h-96 bg-base-100 text-base-content m-2" key={resource.name}>
+                                                            <div className="card-body">
+                                                                <h2 className="text-sm font-bold uppercase">{resource.created_by}</h2>
+                                                                <p className='text-lg'>{resource.name.toUpperCase()}</p>
+
+                                                                <div className="flex-none">
+                                                                    <button className="btn btn-sm btn-primary m-1" onClick={() => incrementScore(resource.id)}>View this Resource</button>
+                                                                    <button className="btn btn-sm btn-primary m-1">{resource.score} <CursorArrowRippleIcon className='w-5 h-5' /></button>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            ))
-                                        }
-                                    </div >
+                                                    ))
+                                                }
+                                            </div>
+                                        </div >
+                                    </div>
 
                                     <br />
                                 </>
