@@ -6,6 +6,7 @@ import Link from "next/link";
 import CustomToastContainer from "@/Components/ToastContainer";
 import { toast } from "react-toastify";
 import { Rant } from "@/types/Rant";
+import { PlusCircleIcon } from "@heroicons/react/24/solid";
 
 export default function Reviews({ }: {}) {
     const [isLoading, setIsLoading] = useState(false);
@@ -59,11 +60,21 @@ export default function Reviews({ }: {}) {
                         <span className="m-2"></span>
 
                         <div className="flex flex-col md:flex-row w-1/2 justify-center">
-                            <Link className="m-3 w-full" href={"/rants/add"}>
+                            <Link className="w-full hidden md:block" href={"/rants/add"}>
                                 <button className="btn btn-outline w-full">
                                     Add a Rant
                                 </button>
                             </Link>
+                        </div>
+
+                        <div
+                            className="z-10 w-14 fixed bottom-0 right-0 my-10 mx-3 text-cyan-300 cursor-pointer md:hidden"
+                            onClick={
+                                () => {
+                                    window.location.href = "/rants/add";
+                                }
+                            }>
+                            <PlusCircleIcon />
                         </div>
                     </>}
                 </div>
@@ -73,7 +84,7 @@ export default function Reviews({ }: {}) {
                 <div>
                     {/* Show the count of reviews */}
                     <div className="flex justify-center">
-                        <h1 className="text-3xl text-primary">Rants in the last 24hrs: {rants.length}</h1>
+                        <h1 className="text-3xl text-primary m-3 text-center">Rants in the last 24hrs: {rants.length}</h1>
                     </div>
 
                     <div className='px-2 md:px-20 p-2'>
