@@ -27,7 +27,7 @@ export default function Reviews({ }: {}) {
                 toast.error(rants.message)
                 setIsLoading(false)
             } else {
-                setRants(rants.data)
+                setRants(rants.data.reverse())
                 setIsLoading(false)
             }
         }
