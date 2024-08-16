@@ -10,6 +10,7 @@ import AutoCompleter from "@/Components/AutoCompleter";
 import { departments } from "@/data/departments";
 import CustomToastContainer from "@/Components/ToastContainer";
 import { toast } from "react-toastify";
+import { PlusCircleIcon } from '@heroicons/react/24/solid'
 
 export default function Reviews({ }: {}) {
     const [course, setCourse] = useState("");
@@ -100,7 +101,7 @@ export default function Reviews({ }: {}) {
                         }} />
 
                         <div className="flex flex-col md:flex-row w-1/2 justify-center">
-                            <Link className="m-3 w-full" href={"/courses/reviews/add"}>
+                            <Link className="m-3 w-full hidden md:block" href={"/courses/reviews/add"}>
                                 <button className="btn btn-outline w-full">
                                     Add a Review
                                 </button>
@@ -110,6 +111,11 @@ export default function Reviews({ }: {}) {
                                 <button className="btn btn-outline w-full" onClick={fetchReviews}>
                                     Filter Reviews
                                 </button>
+                            </Link>
+                        </div>
+                        <div className="z-10 w-14 fixed bottom-5 right-0 m-4 cursor-pointer md:hidden">
+                            <Link className="m-3 w-full" href={"/courses/resources/add"}>
+                                <PlusCircleIcon />
                             </Link>
                         </div>
                     </>}
