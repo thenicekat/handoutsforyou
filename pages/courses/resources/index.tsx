@@ -7,7 +7,7 @@ import { Resource } from '@/types/Resource';
 import React from 'react';
 import { toast } from 'react-toastify';
 import CustomToastContainer from '@/Components/ToastContainer';
-import { CursorArrowRippleIcon } from '@heroicons/react/24/solid'
+import { CursorArrowRippleIcon, PlusCircleIcon } from '@heroicons/react/24/solid'
 
 interface ResourceByDept {
     [key: string]: Resource[]
@@ -92,13 +92,18 @@ export default function Resources() {
                                 </button>
                             </div>
 
-                            <div className="flex flex-col md:flex-row w-1/3 justify-center">
+                            <div className="flex flex-col hidden md:block md:flex-row w-1/3 justify-center">
                                 <Link className="m-3 w-full" href={"/courses/resources/add"}>
                                     <button className="btn btn-outline w-full">
                                         Add a Resource
                                     </button>
                                 </Link>
                             </div>
+                            <div className="z-10 w-14 fixed bottom-5 right-0 m-4 cursor-pointer md:hidden">
+                                <Link className="m-3 w-full" href={"/courses/resources/add"}>
+                                    <PlusCircleIcon />
+                                </Link>
+							</div>
                         </>
                     }
                 </div>
