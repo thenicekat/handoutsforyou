@@ -61,5 +61,3 @@ venv/
 
 # Logs
 **.log
-
-.env
