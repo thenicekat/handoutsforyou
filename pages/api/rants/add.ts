@@ -21,7 +21,7 @@ export default async function handler(
         return
     }
 
-    const { rant } = req.body
+    const { rant, isPublic } = req.body
 
     if (!rant) {
         res.status(422).json({ message: 'Invalid Request - Rant missing', error: true })
@@ -31,7 +31,7 @@ export default async function handler(
     const { error } = await supabase
         .from('rants')
         .insert([
-            { rant, created_by: session?.user?.email, created_at: Date.now() }
+            { rant, created_by: session?.user?.email, created_at: Date.now(), public: isPublic ? 1 : 0 }
         ])
 
     if (error) {
