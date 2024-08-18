@@ -1,12 +1,16 @@
 import Head from "next/head";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Menu from "@/Components/Menu";
 import { useSession } from "next-auth/react";
-import { courses } from "@/data/courses";
-import { profs } from "@/data/profs";
-import AutoCompleter from "@/Components/AutoCompleter";
 import CustomToastContainter from "@/Components/ToastContainer"
 import { toast } from "react-toastify";
+import {
+    RegExpMatcher,
+    TextCensor,
+    englishDataset,
+    englishRecommendedTransformers,
+} from 'obscenity';
+
 
 
 export default function AddReview({ }: {}) {
@@ -14,9 +18,18 @@ export default function AddReview({ }: {}) {
 
     const { data: session } = useSession()
 
+    const matcher = new RegExpMatcher({
+        ...englishDataset.build(),
+        ...englishRecommendedTransformers,
+    });
+
     const AddRant = async () => {
         if (rant == "") {
             toast.error("Please fill rant!")
+            return
+        }
+        if (matcher.hasMatch(rant)) {
+            toast.warn("Your rant contains profanities!")
             return
         }
 
