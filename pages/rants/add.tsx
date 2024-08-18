@@ -6,7 +6,6 @@ import CustomToastContainter from "@/Components/ToastContainer"
 import { toast } from "react-toastify";
 import {
     RegExpMatcher,
-    TextCensor,
     englishDataset,
     englishRecommendedTransformers,
 } from 'obscenity';
@@ -15,6 +14,7 @@ import {
 
 export default function AddReview({ }: {}) {
     const [rant, setRant] = useState("");
+    const [isPublic, setIsPublic] = useState(true);
 
     const { data: session } = useSession()
 
@@ -35,7 +35,7 @@ export default function AddReview({ }: {}) {
 
         const data = await fetch("/api/rants/add", {
             method: "POST",
-            body: JSON.stringify({ rant: rant }),
+            body: JSON.stringify({ rant: rant, isPublic: isPublic }),
             headers: { "Content-Type": "application/json" }
         })
         const res = await data.json()
@@ -79,7 +79,15 @@ export default function AddReview({ }: {}) {
                         </div>
 
                         <div className="text-center flex-wrap w-3/4 justify-between m-1">
-                            <button className="btn btn-primary" onClick={AddRant}>Add Rant</button>
+                            <label className="text-primary">Public</label>
+                            <input
+                                type="checkbox"
+                                onChange={(e) => setIsPublic(e.target.checked)}
+                                checked={isPublic}
+                            />
+                            <br />
+
+                            <button className="btn btn-primary my-2" onClick={AddRant}>Add Rant</button>
                         </div>
                     </>}
                 </div>
