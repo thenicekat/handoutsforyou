@@ -94,7 +94,7 @@ export default function Reviews({ }: {}) {
                                     .map((rant) => (
                                         <div className="card shadow-lg bg-base-100 text-base-content mt-5" key={rant.created_at}>
                                             <div className="card-body">
-                                                <div className="badge badge-outline my-3 px-3">Rant #{rant.id} | {rant.public ? "Public" : "Private"}</div>
+                                                <div className="badge badge-outline my-3 px-3">Rant #{rant.id} | {rant.public == 1 ? "Public" : "Private"}</div>
                                                 <p>{rant.rant}</p>
                                                 <p className="italic">Submitted at: {new Date(rant.created_at).toLocaleString("en-IN", {})}</p>
                                             </div>
