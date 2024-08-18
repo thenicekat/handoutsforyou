@@ -35,7 +35,7 @@ export default async function handler(
     // Get public rants from last 24 hours.
     const { data, error } = await supabase
         .from('rants')
-        .select('id, rant, created_at')
+        .select('id, rant, created_at, public')
         .gte('created_at', Date.now() - 24 * 60 * 60 * 1000)
         .eq('public', 1)
 
