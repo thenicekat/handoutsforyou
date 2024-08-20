@@ -53,6 +53,7 @@ export default async function handler(
     const { data: privateRants, error: privateError } = await supabase
         .from('rants')
         .select('id, rant, created_at, public')
+        .gte('created_at', Date.now() - 24 * 60 * 60 * 1000)
         .eq('created_by', session?.user?.email)
         .eq('public', 0)
 
