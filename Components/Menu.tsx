@@ -23,7 +23,7 @@ const Menu = () => {
         "Course Reviews": "/courses/reviews",
         "Summer Internships": "/si",
         "Research Chronicles": "https://pollen-box-786.notion.site/Research-Chronicles-894bcac1266d4e5fac2f4cd76ff29750",
-        "SI Companies": "/si/companies",
+        "Rants": "/rants",
         "Placements": "/placement",
         "Practice School": "/ps",
         "Course Prereqs": "/courses/prereqs",
