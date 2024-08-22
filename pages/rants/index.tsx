@@ -92,7 +92,7 @@ export default function Reviews({ }: {}) {
                             !isLoading ?
                                 rants
                                     .map((rant) => (
-                                        <div className="card shadow-lg bg-base-100 text-base-content mt-5" key={rant.created_at}>
+                                        <div className="card shadow-lg bg-base-100 break-words text-base-content mt-5" key={rant.created_at}>
                                             <div className="card-body">
                                                 <div className="badge badge-outline my-3 px-3">Rant #{rant.id} | {rant.public == 1 ? "Public" : "Private"}</div>
                                                 <p>{rant.rant}</p>
