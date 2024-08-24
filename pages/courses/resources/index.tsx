@@ -92,7 +92,7 @@ export default function Resources() {
                                 </button>
                             </div>
 
-                            <div className="flex flex-col hidden md:block md:flex-row w-1/3 justify-center">
+                            <div className="flex-col hidden md:block md:flex-row w-1/3 justify-center">
                                 <Link className="m-3 w-full" href={"/courses/resources/add"}>
                                     <button className="btn btn-outline w-full">
                                         Add a Resource
@@ -103,14 +103,18 @@ export default function Resources() {
                                 <Link className="m-3 w-full" href={"/courses/resources/add"}>
                                     <PlusCircleIcon />
                                 </Link>
-							</div>
+                            </div>
                         </>
                     }
                 </div>
             </div>
 
             {session &&
+
                 <div className="max-w-7xl mx-auto">
+                    <h1 className='text-md max-w-6xl text-center'>
+                        NOTE: To access the onedrive links you might have to create an account with your BITS email ID over at: <Link className="underline" href="https://www.microsoft.com/en-us/education/products/office">Microsoft Education</Link>
+                    </h1>
 
                     {
                         Object.keys(resources).sort((a, b) => {

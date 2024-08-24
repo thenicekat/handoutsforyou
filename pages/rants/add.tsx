@@ -72,14 +72,14 @@ export default function AddReview({ }: {}) {
                         <div className="text-center w-full m-2 h-60">
                             <textarea
                                 className="textarea textarea-primary w-full max-w-xl h-full"
-                                placeholder="Gg, do rr..."
+                                placeholder="Do rr..."
                                 onChange={(e) => setRant(e.target.value)}
                                 value={rant}
                             ></textarea>
                         </div>
 
                         <div className="text-center flex-wrap w-3/4 justify-between m-1">
-                            <label className="text-primary">Public</label>
+                            <label className="text-primary">Make it Public? </label>
                             <input
                                 type="checkbox"
                                 onChange={(e) => setIsPublic(e.target.checked)}

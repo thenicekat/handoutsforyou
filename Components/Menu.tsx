@@ -19,12 +19,12 @@ const Menu = () => {
 
     const menuItems: any = {
         "Handouts": "/handouts",
-        "Resources": "/courses/resources",
+        "Course Resources": "/courses/resources",
         "Course Reviews": "/courses/reviews",
         "Summer Internships": "/si",
         "Research Chronicles": "https://pollen-box-786.notion.site/Research-Chronicles-894bcac1266d4e5fac2f4cd76ff29750",
         "Rants": "/rants",
-        "Placements": "/placement",
+        "Placements": "/placements",
         "Practice School": "/ps",
         "Course Prereqs": "/courses/prereqs",
         "Minor Courses": "/minors.html",
