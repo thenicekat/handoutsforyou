@@ -30,6 +30,16 @@ export default async function handler(
         return;
     }
 
+    const email = session?.user?.email
+    if (!email?.includes('hyderabad')) {
+        res.status(403).json({
+            message: 'Course reviews are only available for BITS Hyderabad students',
+            error: true,
+            data: []
+        })
+        return;
+    }
+
     let rants: Rant[] = []
 
     // Get public rants from last 48 hours.
