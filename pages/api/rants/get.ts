@@ -32,11 +32,11 @@ export default async function handler(
 
     let rants: Rant[] = []
 
-    // Get public rants from last 24 hours.
+    // Get public rants from last 48 hours.
     const { data, error } = await supabase
         .from('rants')
         .select('id, rant, created_at, public')
-        .gte('created_at', Date.now() - 24 * 60 * 60 * 1000)
+        .gte('created_at', Date.now() - 48 * 60 * 60 * 1000)
         .eq('public', 1)
 
     if (error) {
@@ -53,7 +53,7 @@ export default async function handler(
     const { data: privateRants, error: privateError } = await supabase
         .from('rants')
         .select('id, rant, created_at, public')
-        .gte('created_at', Date.now() - 24 * 60 * 60 * 1000)
+        .gte('created_at', Date.now() - 48 * 60 * 60 * 1000)
         .eq('created_by', session?.user?.email)
         .eq('public', 0)
 
