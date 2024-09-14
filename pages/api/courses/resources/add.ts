@@ -40,7 +40,7 @@ export default async function handler(
     }
 
     const { error } = await supabase
-        .from('resources')
+        .from('course_resources')
         .insert([
             { name: name, link: link, created_by: created_by, email: session?.user?.email, category: category }
         ])
