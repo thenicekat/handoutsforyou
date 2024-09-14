@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '../../supabase'
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "../../auth/[...nextauth]"
+import { PLACEMENT_CTCS } from '../../constants'
 
 type ResponseData = {
     message: string,
@@ -24,7 +25,7 @@ export default async function handler(
     }
 
     const { data, error } = await supabase
-        .from('placement_ctcs')
+        .from(PLACEMENT_CTCS)
         .select('company, base, joining_bonus, relocation_bonus, variable_bonus, monetary_value_of_benefits, description')
         .order('company', { ascending: true })
 

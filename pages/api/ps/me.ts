@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '../supabase'
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "../auth/[...nextauth]"
+import { PS1_RESPONSES, PS2_RESPONSES } from '../constants'
 
 type ResponseData = {
     message: string,
@@ -35,11 +36,11 @@ export default async function handler(
     else {
         // First find PS1 responses
         const { data: ps1_data, error: ps1_error } = await supabase
-            .from('ps1_responses')
+            .from(PS1_RESPONSES)
             .select('*')
             .eq('email', email)
         const { data: ps2_data, error: ps2_error } = await supabase
-            .from('ps2_responses')
+            .from(PS2_RESPONSES)
             .select('*')
             .eq('email', email)
         if (ps1_error || ps2_error) {

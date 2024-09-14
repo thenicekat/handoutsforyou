@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '../../supabase'
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "../../auth/[...nextauth]"
+import { admins, PLACEMENT_CTCS } from '../../constants'
 
 type ResponseData = {
     message: string,
@@ -16,6 +17,15 @@ export default async function handler(
     if (!session) {
         res.status(400).json({
             message: 'Unauthorized, Please login and try again',
+            error: true
+        })
+        return
+    }
+
+    const email = session?.user?.email
+    if (!email || !admins.includes(email)) {
+        res.status(403).json({
+            message: 'Unauthorized, you are not eligible to add CTCs.',
             error: true
         })
         return
@@ -53,7 +63,7 @@ export default async function handler(
     }
 
     const { error } = await supabase
-        .from('placement_ctcs')
+        .from(PLACEMENT_CTCS)
         .insert([
             { company: company, base: base, joining_bonus: joiningBonus, relocation_bonus: relocationBonus, variable_bonus: variableBonus, monetary_value_of_benefits: monetaryValueOfBenefits, description: description, created_by: session?.user?.email }
         ])
