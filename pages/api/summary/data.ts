@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '../supabase'
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "../auth/[...nextauth]"
+import { COURSE_RESOURCES, COURSE_REVIEWS, PS1_RESPONSES, PS2_RESPONSES } from '../constants'
 
 type ResponseData = {
     message: string,
@@ -24,19 +25,19 @@ export default async function handler(
     }
 
     const { data: ps1_data, error: ps1_error } = await supabase
-        .from('ps1_responses')
+        .from(PS1_RESPONSES)
         .select('created_at.count()')
         .single()
     const { data: ps2_data, error: ps2_error } = await supabase
-        .from('ps2_responses')
+        .from(PS2_RESPONSES)
         .select('created_at.count()')
         .single()
     const { data: reviews_data, error: reviews_error } = await supabase
-        .from('course_reviews')
+        .from(COURSE_REVIEWS)
         .select('created_at.count()')
         .single()
     const { data: resources_data, error: resources_error } = await supabase
-        .from('course_resources')
+        .from(COURSE_RESOURCES)
         .select('created_at.count()')
         .single()
 

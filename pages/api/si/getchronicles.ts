@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '../supabase'
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "../auth/[...nextauth]"
+import { SI_CHRONICLES } from '../constants'
 
 type ResponseData = {
     message: string,
@@ -37,7 +38,7 @@ export default async function handler(
         const company = slug.split('_')[1]
 
         const { data, error } = await supabase
-            .from('si_chronicles')
+            .from(SI_CHRONICLES)
             .select('*')
             .eq('year', year)
             .eq('company', company)

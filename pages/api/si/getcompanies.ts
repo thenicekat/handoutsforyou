@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '../supabase'
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "../auth/[...nextauth]"
+import { SI_COMPANIES } from '../constants'
 
 type ResponseData = {
     message: string,
@@ -34,7 +35,7 @@ export default async function handler(
     }
     else {
         const { data, error } = await supabase
-            .from('si_companies')
+            .from(SI_COMPANIES)
             .select('*')
             .eq('year', year)
 

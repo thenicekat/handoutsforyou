@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '../../supabase'
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "../../auth/[...nextauth]"
+import { COURSE_REVIEWS } from '../../constants'
 
 type ResponseData = {
     message: string,
@@ -37,7 +38,7 @@ export default async function handler(
 
     if (!course && !prof) {
         const { data, error } = await supabase
-            .from('course_reviews')
+            .from(COURSE_REVIEWS)
             .select('course, prof, review, created_at')
 
         if (error) {
@@ -55,7 +56,7 @@ export default async function handler(
     }
     else if (!course) {
         const { data, error } = await supabase
-            .from('course_reviews')
+            .from(COURSE_REVIEWS)
             .select('course, prof, review, created_at')
             .eq('prof', prof)
 
@@ -73,7 +74,7 @@ export default async function handler(
         }
     } else if (!prof) {
         const { data, error } = await supabase
-            .from('course_reviews')
+            .from(COURSE_REVIEWS)
             .select('course, prof, review, created_at')
             .eq('course', course)
 
@@ -92,7 +93,7 @@ export default async function handler(
         }
     } else {
         const { data, error } = await supabase
-            .from('course_reviews')
+            .from(COURSE_REVIEWS)
             .select('course, prof, review, created_at')
             .eq('course', course)
             .eq('prof', prof)
