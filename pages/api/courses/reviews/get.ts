@@ -78,7 +78,7 @@ export default async function handler(
             .eq('course', course)
 
         if (error) {
-            console.log(error)
+            console.error(error)
             res.status(500).json({ message: error.message, data: [], error: true })
             return
         }
@@ -98,7 +98,7 @@ export default async function handler(
             .eq('prof', prof)
 
         if (error) {
-            console.log(error)
+            console.error(error)
             res.status(500).json({ message: error.message, data: [], error: true })
             return
         }
