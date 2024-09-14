@@ -84,7 +84,7 @@ export default function Reviews({ }: {}) {
                 <div>
                     {/* Show the count of reviews */}
                     <div className="flex justify-center">
-                        <h1 className="text-3xl text-primary m-3 text-center">Rants: {rants.length}</h1>
+                        <h1 className="text-3xl text-primary m-3 text-center">Rants in the last week: {rants.length}</h1>
                     </div>
 
                     <div className='px-2 md:px-20 p-2'>
