@@ -36,7 +36,7 @@ export default async function handler(
         .select('created_at.count()')
         .single()
     const { data: resources_data, error: resources_error } = await supabase
-        .from('resources')
+        .from('course_resources')
         .select('created_at.count()')
         .single()
 
