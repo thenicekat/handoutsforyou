@@ -50,7 +50,7 @@ export default async function handler(
         .eq('public', 1)
 
     if (error) {
-        console.log(error)
+        console.error(error)
         res.status(500).json({ message: error.message, data: [], error: true })
         return
     }

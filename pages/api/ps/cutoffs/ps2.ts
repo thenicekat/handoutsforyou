@@ -39,7 +39,7 @@ export default async function handler(
             .eq('year_and_sem', year)
 
         if (error) {
-            console.log(error)
+            console.error(error)
             res.status(500).json({ message: error.message, data: [], error: true })
             return
         }
