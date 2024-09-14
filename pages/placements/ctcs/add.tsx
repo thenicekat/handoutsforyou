@@ -1,0 +1,137 @@
+import Head from "next/head";
+import { useState } from "react";
+import { useSession } from "next-auth/react";
+import Menu from "@/Components/Menu";
+import { toast } from "react-toastify";
+import CustomToastContainer from "@/Components/ToastContainer";
+import AutoCompleter from "@/Components/AutoCompleter";
+import { departments } from "@/data/departments";
+
+
+export default function AddPlacementCTCs({ }: {}) {
+    const [name, setName] = useState("");
+    const [base, setBase] = useState(0);
+    const [joiningBonus, setJoiningBonus] = useState(0);
+    const [relocationBonus, setRelocationBonus] = useState(0);
+    const [variableBonus, setVariableBonus] = useState(0);
+    const [monetaryValueOfBenefits, setMonetaryValueOfBenefits] = useState(0);
+    const [description, setDescription] = useState("");
+
+    const [isLoading, setIsLoading] = useState(false)
+
+    const { data: session } = useSession()
+
+    const addPlacementCTC = async () => {
+        setIsLoading(true)
+
+        const res = await fetch("/api/placements/ctcs/add", {
+            method: "POST",
+            body: JSON.stringify({
+                company: name,
+                base: base,
+                joiningBonus: joiningBonus,
+                relocationBonus: relocationBonus,
+                variableBonus: variableBonus,
+                monetaryValueOfBenefits: monetaryValueOfBenefits,
+                description: description
+            }),
+            headers: { "Content-Type": "application/json" }
+        })
+        const data = await res.json()
+        if (data.error) {
+            toast.error(data.message)
+        }
+        else {
+            toast.success("Placement CTC Added!")
+            setName("")
+            setBase(0)
+            setJoiningBonus(0)
+            setRelocationBonus(0)
+            setVariableBonus(0)
+            setMonetaryValueOfBenefits(0)
+            setDescription("")
+        }
+        setIsLoading(false)
+    }
+
+    return (
+        <>
+            <Head>
+                <title>Placement CTCs.</title>
+                <meta name="description" content="One stop place for your PS queries, handouts, and much more" />
+                <meta name="keywords" content="BITS Pilani, Handouts, BPHC, Hyderabad Campus, BITS Hyderabad, BITS, Pilani, Handouts for you, handouts, for, you, bits, birla, institute, bits hyd, academics, practice school, ps, queries, ps cutoffs, ps2, ps1" />
+                <meta name="robots" content="index, follow" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
+
+            {/* Search box */}
+            <div className="grid place-items-center">
+                <div className="w-[70vw] place-items-center flex flex-col justify-between">
+                    <h1 className="text-5xl pt-[50px] pb-[20px] px-[35px] text-primary">Placement CTCs.</h1>
+
+                    <Menu />
+
+                    {session &&
+                        isLoading ?
+                        <>
+                            <div className="flex flex-col w-3/4 justify-between m-1">
+                                <label className="text-primary">Loading...</label>
+                            </div>
+                        </>
+                        :
+                        <>
+                            {/* Take input */}
+                            <div className="flex flex-col w-3/4 justify-between m-1">
+                                <label htmlFor="name" className="text-primary">Name of the Company</label>
+                                <input type="text" id="name" className="input input-secondary" value={name} onChange={(e) => setName(e.target.value)} />
+                            </div>
+
+                            <div className="flex flex-col w-3/4 justify-between m-1">
+                                <label htmlFor="base" className="text-primary">Base</label>
+                                <input type="text" id="base" className="input input-secondary" value={base} onChange={(e) => setBase(parseInt(e.target.value))} />
+                            </div>
+
+                            <div className="flex flex-col w-3/4 justify-between m-1">
+                                <label htmlFor="joiningBonus" className="text-primary">Joining Bonus</label>
+                                <input type="text" id="joiningBonus" className="input input-secondary" value={joiningBonus} onChange={(e) => setJoiningBonus(parseInt(e.target.value))} />
+                            </div>
+
+                            <div className="flex flex-col w-3/4 justify-between m-1">
+                                <label htmlFor="relocationBonus" className="text-primary">Relocation Bonus</label>
+                                <input type="text" id="relocationBonus" className="input input-secondary" value={relocationBonus} onChange={(e) => setRelocationBonus(parseInt(e.target.value))} />
+                            </div>
+
+                            <div className="flex flex-col w-3/4 justify-between m-1">
+                                <label htmlFor="variableBonus" className="text-primary">Variable Bonus</label>
+                                <input type="text" id="variableBonus" className="input input-secondary" value={variableBonus} onChange={(e) => setVariableBonus(parseInt(e.target.value))} />
+                            </div>
+
+                            <div className="flex flex-col w-3/4 justify-between m-1">
+                                <label htmlFor="monetaryValueOfBenefits" className="text-primary">Monetary Value of Benefits</label>
+                                <input type="text" id="monetaryValueOfBenefits" className="input input-secondary" value={monetaryValueOfBenefits} onChange={(e) => setMonetaryValueOfBenefits(parseInt(e.target.value))} />
+                            </div>
+
+                            <div className="flex flex-col w-3/4 justify-between m-1">
+                                <label htmlFor="description" className="text-primary">Description</label>
+                                <div className="text-center w-full m-2 h-60">
+                                    <textarea
+                                        className="textarea w-full h-full"
+                                        placeholder="Enter your Description..."
+                                        onChange={(e) => setDescription(e.target.value)}
+                                        value={description}
+                                    ></textarea>
+                                </div>
+                            </div>
+
+                            <div className="text-center flex-wrap w-3/4 justify-between m-1">
+                                <button className="btn btn-primary" onClick={addPlacementCTC}>Submit</button>
+                            </div>
+                        </>
+                    }
+                </div>
+            </div>
+            <CustomToastContainer containerId="addPlacementCTC" />
+        </>
+    )
+}
