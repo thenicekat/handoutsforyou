@@ -24,7 +24,7 @@ export default async function handler(
     }
 
     const { data, error } = await supabase
-        .from('resources')
+        .from('course_resources')
         .select('id, name, link, created_by, score, category')
         .order('score', { ascending: false })
 
