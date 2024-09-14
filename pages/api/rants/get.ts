@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '../supabase'
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "../auth/[...nextauth]"
+import { RANTS } from '../constants'
 
 type ResponseData = {
     message: string,
@@ -44,7 +45,7 @@ export default async function handler(
 
     // Get public rants from last 7 days.
     const { data, error } = await supabase
-        .from('rants')
+        .from(RANTS)
         .select('id, rant, created_at, public')
         .gte('created_at', Date.now() - 7 * 24 * 60 * 60 * 1000)
         .eq('public', 1)
@@ -61,14 +62,14 @@ export default async function handler(
     }
     // Get private rants of the user.
     const { data: privateRants, error: privateError } = await supabase
-        .from('rants')
+        .from(RANTS)
         .select('id, rant, created_at, public')
         .gte('created_at', Date.now() - 7 * 24 * 60 * 60 * 1000)
         .eq('created_by', session?.user?.email)
         .eq('public', 0)
 
     if (privateError) {
-        console.log(privateError)
+        console.error(privateError)
         res.status(500).json({ message: privateError.message, data: [], error: true })
         return
     } else {

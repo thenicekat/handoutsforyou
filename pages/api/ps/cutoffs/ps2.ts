@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '../../supabase'
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "../../auth/[...nextauth]"
+import { PS2_RESPONSES } from '../../constants'
 
 type ResponseData = {
     message: string,
@@ -34,7 +35,7 @@ export default async function handler(
     }
     else {
         const { data, error } = await supabase
-            .from('ps2_responses')
+            .from(PS2_RESPONSES)
             .select('station, cgpa.min(), cgpa.max(), allotment_round')
             .eq('year_and_sem', year)
 

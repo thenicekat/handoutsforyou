@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '../../supabase'
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "../../auth/[...nextauth]"
+import { PS1_REVIEWS, PS2_REVIEWS } from '../../constants'
 
 type ResponseData = {
     message: string,
@@ -28,7 +29,7 @@ export default async function handler(
         return
     } else if (type === 'PS1') {
         const { error } = await supabase
-            .from('ps1_reviews')
+            .from(PS1_REVIEWS)
             .insert([
                 { batch: batch, station: station, review: review, created_by: created_by }
             ])
@@ -45,7 +46,7 @@ export default async function handler(
         }
     } else if (type === 'PS2') {
         const { error } = await supabase
-            .from('ps2_reviews')
+            .from(PS2_REVIEWS)
             .insert([
                 { batch: batch, station: station, review: review, created_by: created_by }
             ])

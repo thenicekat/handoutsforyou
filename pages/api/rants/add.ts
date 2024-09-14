@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '../supabase'
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "../auth/[...nextauth]"
+import { RANTS } from '../constants'
 
 type ResponseData = {
     message: string,
@@ -29,7 +30,7 @@ export default async function handler(
     }
 
     const { error } = await supabase
-        .from('rants')
+        .from(RANTS)
         .insert([
             { rant, created_by: session?.user?.email, created_at: Date.now(), public: isPublic ? 1 : 0 }
         ])

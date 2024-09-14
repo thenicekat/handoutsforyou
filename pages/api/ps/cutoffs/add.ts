@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '../../supabase'
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "../../auth/[...nextauth]"
+import { PS1_RESPONSES, PS2_RESPONSES } from '../../constants'
 
 type ResponseData = {
     message: string,
@@ -69,7 +70,7 @@ export default async function handler(
 
         if (reqBody.typeOfPS === 'ps1') {
             const { data: existingData, error: existingError } = await supabase.
-                from('ps1_responses')
+                from(PS1_RESPONSES)
                 .select('*')
                 .eq('email', email)
                 .eq('allotment_round', reqBody.allotmentRound)
@@ -120,7 +121,7 @@ export default async function handler(
             }
 
             const { data: existingData, error: existingError } = await supabase.
-                from('ps2_responses')
+                from(PS2_RESPONSES)
                 .select('*')
                 .eq('email', email)
                 .eq('allotment_round', reqBody.allotmentRound)
@@ -130,7 +131,7 @@ export default async function handler(
             }
 
             const { data, error } = await supabase
-                .from('ps2_responses')
+                .from(PS2_RESPONSES)
                 .insert([
                     {
                         email: email,

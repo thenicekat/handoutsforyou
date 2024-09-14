@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '../../supabase'
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "../../auth/[...nextauth]"
+import { COURSE_RESOURCES } from '../../constants'
 
 type ResponseData = {
     message: string,
@@ -31,7 +32,7 @@ export default async function handler(
         return
     }
     else {
-        const { data: updatedData, error: updatedError } = await supabase.from('course_resources').update({ score: data[0].score + 1 }).eq('id', resource_id).select('*')
+        const { data: updatedData, error: updatedError } = await supabase.from(COURSE_RESOURCES).update({ score: data[0].score + 1 }).eq('id', resource_id).select('*')
         if (updatedError) {
             res.status(500).json({ message: updatedError.message, data: [], error: true })
             return
