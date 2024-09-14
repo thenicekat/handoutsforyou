@@ -24,14 +24,14 @@ export default async function handler(
     }
 
     const resource_id = req.query.id as string;
-    const { data, error } = await supabase.from('resources').select('*').eq('id', resource_id)
+    const { data, error } = await supabase.from('course_resources').select('*').eq('id', resource_id)
 
     if (error) {
         res.status(500).json({ message: error.message, data: [], error: true })
         return
     }
     else {
-        const { data: updatedData, error: updatedError } = await supabase.from('resources').update({ score: data[0].score + 1 }).eq('id', resource_id).select('*')
+        const { data: updatedData, error: updatedError } = await supabase.from('course_resources').update({ score: data[0].score + 1 }).eq('id', resource_id).select('*')
         if (updatedError) {
             res.status(500).json({ message: updatedError.message, data: [], error: true })
             return
