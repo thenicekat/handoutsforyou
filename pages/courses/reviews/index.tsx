@@ -139,7 +139,7 @@ export default function Reviews({ }: {}) {
                                         else return 0
                                     })
                                     .map((review) => (
-                                        <div className="card shadow-lg bg-base-100 text-base-content mt-5" key={review.created_at}>
+                                        <div className="card shadow-lg bg-base-100 break-words text-base-content mt-5" key={review.created_at}>
                                             <div className="card-body">
                                                 <h2 className="card-title text-center">Course Name: {review.course} by Professor: {review.prof}</h2>
                                                 <p>{review.review}</p>
