@@ -1,5 +1,6 @@
 export const admins = [
-    "f20210075@hyderabad.bits-pilani.ac.in"
+    "f20210075@hyderabad.bits-pilani.ac.in",
+    "f20211511@hyderabad.bits-pilani.ac.in"
 ]
 
 export const PS1_RESPONSES = "ps1_responses"
