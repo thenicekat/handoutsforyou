@@ -31,7 +31,7 @@ export default async function handler(
         return
     }
 
-    const { company, base, joiningBonus, relocationBonus, variableBonus, monetaryValueOfBenefits, description } = req.body
+    let { company, base, joiningBonus, relocationBonus, variableBonus, monetaryValueOfBenefits, description } = req.body
 
     if (!company) {
         res.status(422).json({ message: 'Invalid Request - Company missing', error: true })
@@ -45,6 +45,11 @@ export default async function handler(
         res.status(422).json({ message: 'Invalid Request - Description missing', error: true })
         return
     }
+
+    company = company.trim()
+    description = description.trim()
+
+    company = company.split(' ').map((word: string) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
 
     const { error } = await supabase
         .from(PLACEMENT_CTCS)
