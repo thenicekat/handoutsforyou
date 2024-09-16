@@ -41,22 +41,6 @@ export default async function handler(
         res.status(422).json({ message: 'Invalid Request - Base missing', error: true })
         return
     }
-    if (!joiningBonus) {
-        res.status(422).json({ message: 'Invalid Request - Joining Bonus missing', error: true })
-        return
-    }
-    if (!relocationBonus) {
-        res.status(422).json({ message: 'Invalid Request - Relocation Bonus missing', error: true })
-        return
-    }
-    if (!variableBonus) {
-        res.status(422).json({ message: 'Invalid Request - Variable Bonus missing', error: true })
-        return
-    }
-    if (!monetaryValueOfBenefits) {
-        res.status(422).json({ message: 'Invalid Request - Monetary Value of Benefits missing', error: true })
-        return
-    }
     if (!description) {
         res.status(422).json({ message: 'Invalid Request - Description missing', error: true })
         return
