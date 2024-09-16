@@ -50,7 +50,7 @@ export default function AddReview({ }: {}) {
             toast.error(res.message)
         }
         else {
-            toast.success("Review Added!")
+            toast.success("Thank you! Your review was added successfully!")
             setCourse("")
             setProf("")
             setReview("")

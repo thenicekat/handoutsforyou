@@ -49,7 +49,7 @@ export default function AddPS1Response({ }: {}) {
             toast.error(data.message)
         }
         else {
-            toast.success("Response Added!")
+            toast.success("Thank you! Your response was added successfully!")
             setYearAndSem("")
             setAllotmentRound("")
             setStation("")

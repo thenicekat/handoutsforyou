@@ -65,7 +65,7 @@ export default function AddPS2Response({ }: {}) {
             toast.error(data.message)
         }
         else {
-            toast.success("Response Added!")
+            toast.success("Thank you! Your response was added successfully!")
             setIdNumber("")
             setYearAndSem("")
             setAllotmentRound("")

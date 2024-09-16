@@ -40,7 +40,7 @@ export default function AddResources({ }: {}) {
             toast.error(data.message)
         }
         else {
-            toast.success("Resource Added!")
+            toast.success("Thank you! Your resource was added successfully!")
             setName("")
             setLink("")
             setCreatedBy("")
