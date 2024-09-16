@@ -4,8 +4,6 @@ import { useSession } from "next-auth/react";
 import Menu from "@/Components/Menu";
 import { toast } from "react-toastify";
 import CustomToastContainer from "@/Components/ToastContainer";
-import AutoCompleter from "@/Components/AutoCompleter";
-import { departments } from "@/data/departments";
 
 
 export default function AddPlacementCTCs({ }: {}) {
@@ -42,7 +40,7 @@ export default function AddPlacementCTCs({ }: {}) {
             toast.error(data.message)
         }
         else {
-            toast.success("Placement CTC Added!")
+            toast.success("Thank you! CTC was added successfully!")
             setName("")
             setBase(0)
             setJoiningBonus(0)
@@ -89,27 +87,27 @@ export default function AddPlacementCTCs({ }: {}) {
 
                             <div className="flex flex-col w-3/4 justify-between m-1">
                                 <label htmlFor="base" className="text-primary">Base</label>
-                                <input type="text" id="base" className="input input-secondary" value={base} onChange={(e) => setBase(parseInt(e.target.value))} />
+                                <input type="number" id="base" className="input input-secondary" value={base} onChange={(e) => setBase(parseInt(e.target.value))} />
                             </div>
 
                             <div className="flex flex-col w-3/4 justify-between m-1">
                                 <label htmlFor="joiningBonus" className="text-primary">Joining Bonus</label>
-                                <input type="text" id="joiningBonus" className="input input-secondary" value={joiningBonus} onChange={(e) => setJoiningBonus(parseInt(e.target.value))} />
+                                <input type="number" id="joiningBonus" className="input input-secondary" value={joiningBonus} onChange={(e) => setJoiningBonus(parseInt(e.target.value))} />
                             </div>
 
                             <div className="flex flex-col w-3/4 justify-between m-1">
                                 <label htmlFor="relocationBonus" className="text-primary">Relocation Bonus</label>
-                                <input type="text" id="relocationBonus" className="input input-secondary" value={relocationBonus} onChange={(e) => setRelocationBonus(parseInt(e.target.value))} />
+                                <input type="number" id="relocationBonus" className="input input-secondary" value={relocationBonus} onChange={(e) => setRelocationBonus(parseInt(e.target.value))} />
                             </div>
 
                             <div className="flex flex-col w-3/4 justify-between m-1">
                                 <label htmlFor="variableBonus" className="text-primary">Variable Bonus</label>
-                                <input type="text" id="variableBonus" className="input input-secondary" value={variableBonus} onChange={(e) => setVariableBonus(parseInt(e.target.value))} />
+                                <input type="number" id="variableBonus" className="input input-secondary" value={variableBonus} onChange={(e) => setVariableBonus(parseInt(e.target.value))} />
                             </div>
 
                             <div className="flex flex-col w-3/4 justify-between m-1">
                                 <label htmlFor="monetaryValueOfBenefits" className="text-primary">Monetary Value of Benefits</label>
-                                <input type="text" id="monetaryValueOfBenefits" className="input input-secondary" value={monetaryValueOfBenefits} onChange={(e) => setMonetaryValueOfBenefits(parseInt(e.target.value))} />
+                                <input type="number" id="monetaryValueOfBenefits" className="input input-secondary" value={monetaryValueOfBenefits} onChange={(e) => setMonetaryValueOfBenefits(parseInt(e.target.value))} />
                             </div>
 
                             <div className="flex flex-col w-3/4 justify-between m-1">

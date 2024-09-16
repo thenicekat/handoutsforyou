@@ -35,7 +35,7 @@ export default function AddReview({ }: {}) {
             toast.error(res.message)
         }
         else {
-            toast.success("Review Added!")
+            toast.success("Thank you! Your review was added successfully!")
             setReview("")
             if (localStorage.getItem("h4u_ps_review_data")) {
                 localStorage.removeItem("h4u_ps_review_data")
