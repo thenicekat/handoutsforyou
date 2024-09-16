@@ -56,7 +56,7 @@ export default function AddPS1Response({ }: {}) {
             setCGPA(0)
             setPreference(0)
 
-            window.location.href = "/ps/ps1/data"
+            window.location.href = "/ps/ps1/"
         }
         setIsLoading(false)
     }
