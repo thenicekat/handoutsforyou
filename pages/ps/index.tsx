@@ -58,7 +58,7 @@ export default function PS() {
                         </button>
                     </Link>
 
-                    <Link className="m-3 w-full" href={"/ps/ps1/data"}>
+                    <Link className="m-3 w-full" href={"/ps/ps1/"}>
                         <button className="btn btn-outline w-full">
                             PS1 CGPA Cutoffs
                         </button>
@@ -78,7 +78,7 @@ export default function PS() {
                         </button>
                     </Link>
 
-                    <Link className="m-3 w-full" href={"/ps/ps2/data"}>
+                    <Link className="m-3 w-full" href={"/ps/ps2/"}>
                         <button className="btn btn-outline w-full">
                             PS2 CGPA Cutoffs
                         </button>

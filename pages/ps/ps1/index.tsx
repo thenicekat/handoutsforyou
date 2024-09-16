@@ -95,13 +95,15 @@ export default function PS1Data() {
                                 }}
                             />
 
+
                             <input
                                 type="text"
                                 placeholder="Search for Company..."
                                 className="input input-secondary w-full max-w-xs m-3"
                                 onChange={(e) => setSearch(e.target.value)}
                             />
-
+                        </div>
+                        <div className="flex flex-col md:flex-row w-full justify-center">
                             <select className="select select-bordered w-full max-w-xs m-3" onChange={(e) => setYearRef(e.target.value)}>
                                 <option disabled selected>Which year to use as reference?</option>
                                 {
@@ -110,18 +112,18 @@ export default function PS1Data() {
                                     ))
                                 }
                             </select>
+
+                            <Link className="m-3 w-full max-w-xs" href={""}>
+                                <button className="btn btn-outline w-full" onClick={updateData}>
+                                    Update Year
+                                </button>
+                            </Link>
                         </div>
 
                         <div className="flex flex-col md:flex-row w-1/2 justify-center">
                             <Link className="m-3 w-full" href={"/ps/ps1/add"}>
                                 <button className="btn btn-outline w-full">
                                     Add your response?
-                                </button>
-                            </Link>
-
-                            <Link className="m-3 w-full" href={""}>
-                                <button className="btn btn-outline w-full" onClick={updateData}>
-                                    Update Results
                                 </button>
                             </Link>
                         </div>

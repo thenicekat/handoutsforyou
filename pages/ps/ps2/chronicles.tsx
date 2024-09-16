@@ -41,13 +41,13 @@ export default function PS1Chronicles({ ps2_chronicles }: { ps2_chronicles: stri
             {session &&
                 <div>
                     <h1 className="text-3xl text-center my-3">PS2 Chronicles</h1>
-                    <div className='grid md:grid-cols-4 place-items-center p-5'>
+                    <div className='grid md:grid-cols-3 place-items-center p-5'>
                         {
                             ps2_chronicles.map((chron: string) => (
-                                <div key={chron} className='m-2 py-1 rounded-xl'>
-                                    <div className="alert ">
+                                <div key={chron} className='m-2 p-1 rounded-xl'>
+                                    <div className="alert">
                                         <div>
-                                            <span>PS2 {chron}</span>
+                                            <span>PS2 Chronicles {chron}</span>
                                         </div>
                                         <div className="flex-none">
                                             <button className="btn btn-primary" onClick={

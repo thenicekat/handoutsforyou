@@ -41,7 +41,7 @@ export default function PS1Chronicles({ ps1_chronicles }: { ps1_chronicles: stri
             {session &&
                 <div>
                     <h1 className="text-3xl text-center my-3">PS1 Chronicles</h1>
-                    <div className='grid md:grid-cols-4 place-items-center p-5'>
+                    <div className='grid md:grid-cols-3 place-items-center p-5'>
                         {
                             ps1_chronicles.map((chron: string) => (
                                 <div key={chron} className='m-2 py-1 rounded-xl'>
