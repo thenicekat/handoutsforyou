@@ -75,7 +75,7 @@ export default function PlacementCTCs() {
             {session &&
                 <div className="max-w-7xl mx-auto">
                     {/* Mobile UI */}
-                    <div className='px-2 p-2 grid mdç:hidden sm:grid-cols-2 grid-cols-1 place-items-center'>
+                    <div className='px-2 p-2 grid md:hidden sm:grid-cols-2 grid-cols-1 place-items-center'>
                         {
                             placementCTCs.filter((placementCTC) => placementCTC.company.toLowerCase().includes(input.toLowerCase())).map((placementCTC) => (
                                 <div className="card w-72 h-96 bg-base-100 text-base-content m-2" key={placementCTC.company}>
@@ -101,6 +101,7 @@ export default function PlacementCTCs() {
                             <thead className='table-header-group'>
                                 <tr>
                                     <td>Company</td>
+                                    <td>Base</td>
                                     <td>Joining Bonus</td>
                                     <td>Relocation Bonus</td>
                                     <td>Variable Bonus</td>
@@ -112,6 +113,7 @@ export default function PlacementCTCs() {
                                 {placementCTCs.filter((placementCTC) => placementCTC.company.toLowerCase().includes(input.toLowerCase())).map((placementCTC) => (
                                     <tr key={placementCTC.company}>
                                         <td>{placementCTC.company}</td>
+                                        <td>{placementCTC.base}</td>
                                         <td>{placementCTC.joining_bonus}</td>
                                         <td>{placementCTC.relocation_bonus}</td>
                                         <td>{placementCTC.variable_bonus}</td>
