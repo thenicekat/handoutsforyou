@@ -74,7 +74,8 @@ export default function PlacementCTCs() {
 
             {session &&
                 <div className="max-w-7xl mx-auto">
-                    <div className='px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center'>
+                    {/* Mobile UI */}
+                    <div className='px-2 p-2 grid mdç:hidden sm:grid-cols-2 grid-cols-1 place-items-center'>
                         {
                             placementCTCs.filter((placementCTC) => placementCTC.company.toLowerCase().includes(input.toLowerCase())).map((placementCTC) => (
                                 <div className="card w-72 h-96 bg-base-100 text-base-content m-2" key={placementCTC.company}>
@@ -92,6 +93,34 @@ export default function PlacementCTCs() {
                                     </div>
                                 </div>))
                         }
+                    </div>
+
+                    {/* Web UI */}
+                    <div className="overflow-x-auto m-2 rounded-md hidden md:block">
+                        <table className="table table-sm table-pin-rows bg-base-100">
+                            <thead className='table-header-group'>
+                                <tr>
+                                    <td>Company</td>
+                                    <td>Joining Bonus</td>
+                                    <td>Relocation Bonus</td>
+                                    <td>Variable Bonus</td>
+                                    <td>Monetary Value of Benefits</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {placementCTCs.filter((placementCTC) => placementCTC.company.toLowerCase().includes(input.toLowerCase())).map((placementCTC) => (
+                                    <tr key={placementCTC.company}>
+                                        <td>{placementCTC.company}</td>
+                                        <td>{placementCTC.joining_bonus}</td>
+                                        <td>{placementCTC.relocation_bonus}</td>
+                                        <td>{placementCTC.variable_bonus}</td>
+                                        <td>{placementCTC.monetary_value_of_benefits}</td>
+                                        <td>{placementCTC.description}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
                     </div>
                 </div >
             }
