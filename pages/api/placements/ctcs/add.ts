@@ -22,15 +22,6 @@ export default async function handler(
         return
     }
 
-    const email = session?.user?.email
-    if (!email || !admins.includes(email)) {
-        res.status(403).json({
-            message: 'Unauthorized, you are not eligible to add CTCs.',
-            error: true
-        })
-        return
-    }
-
     let { company, base, joiningBonus, relocationBonus, variableBonus, monetaryValueOfBenefits, description } = req.body
 
     if (!company) {

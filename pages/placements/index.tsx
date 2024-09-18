@@ -3,6 +3,7 @@ import Head from "next/head";
 import { useState } from "react";
 import Menu from "@/Components/Menu";
 import { useSession } from "next-auth/react";
+import { LinkIcon } from "@heroicons/react/24/solid";
 
 export const getStaticProps: GetStaticProps = async () => {
     const fs = require("fs");
@@ -28,6 +29,11 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function Placement({ pu_chronicles }: any) {
     const [search, setSearch] = useState("");
     const { data: session } = useSession()
+
+    const resources = [{
+        name: "Placements CTC Data",
+        link: "/placements/ctcs"
+    },]
 
     return (
         <>
@@ -58,38 +64,64 @@ export default function Placement({ pu_chronicles }: any) {
 
 
             {session &&
-                <div>
-                    <h1 className="text-3xl text-center my-3">Placement Chronicles</h1>
+                <div className='place-items-center p-5 max-w-7xl mx-auto'>
+                    <h1 className="text-3xl text-center my-3">Placement Resources</h1>
+
+                    <div className="collapse collapse-plus">
+                        <input type="checkbox" />
+                        <h1 className="collapse-title text-xl font-medium">General Resources</h1>
+
+                        <div className="collapse-content">
+                            <div className='px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center'>
+                                {
+                                    resources.filter(d => d.name.toLowerCase().includes(search.toLowerCase())).map(resource => (
+                                        <div className="card w-72 h-96 bg-base-100 text-base-content m-2" key={resource.name}>
+                                            <div className="card-body">
+                                                <h2 className="text-sm font-bold uppercase">General</h2>
+                                                <p className='text-lg'>{resource.name.toUpperCase()}</p>
+
+                                                <div className="flex-none">
+                                                    <button className="btn btn-sm btn-primary m-1" onClick={() => window.open(resource.link)}>Know more<LinkIcon className='w-5 h-5' /></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))
+                                }
+                            </div>
+                        </div >
+                    </div>
+
                     {
                         Object.keys(pu_chronicles).map((campus: string) => (
-                            <>
-                                <h1 key={campus} className="text-2xl text-center my-3">{campus}</h1>
-                                <div className='grid md:grid-cols-3 place-items-center p-5'>
-                                    {
-                                        pu_chronicles[campus]
-                                            .filter((d: string) => d.toLowerCase().includes(search.toLowerCase()))
-                                            .map((chron: string) => (
-                                                <div key={chron} className='m-2 p-1 rounded-xl w-full'>
-                                                    <div className="bg-secondary flex border-2 border-secondary rounded-xl p-2 align-middle justify-between">
-                                                        <div className="flex items-center">
-                                                            <span>Placement Season {chron}</span>
-                                                        </div>
-                                                        <div>
-                                                            <button className="btn btn-primary" onClick={
-                                                                () => window.open("https://github.com/thenicekat/handoutsforyou/raw/main/public/placements/chronicles/" + campus + "/" + chron)
-                                                            }>
-                                                                View
-                                                            </button>
+                            <div className="collapse collapse-plus" key={campus}>
+                                <input type="checkbox" />
+                                <h1 className="collapse-title text-xl font-medium">Placement Chronicles - {campus}</h1>
+
+                                <div className="collapse-content">
+                                    <div className='px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center'>
+                                        {
+                                            pu_chronicles[campus].filter((d: string) => d.toLowerCase().includes(search.toLowerCase())).map((chron: string) => (
+                                                <div className="card w-72 h-96 bg-base-100 text-base-content m-2" key={campus + "/" + chron}>
+                                                    <div className="card-body">
+                                                        <h2 className="text-sm font-bold uppercase">Placement Chronicles</h2>
+                                                        <p className='text-lg'>Placement Chronicles {chron.toUpperCase()}</p>
+
+                                                        <div className="flex-none">
+                                                            <button className="btn btn-sm btn-primary m-1" onClick={() => {
+                                                                window.open("https://github.com/thenicekat/handoutsforyou/raw/main/public/placements/chronicles/" + campus + "/" + chron, "_blank")
+                                                            }}>Know more<LinkIcon className='w-5 h-5' /></button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             ))
-                                    }
-                                </div>
-                            </>
+                                        }
+                                    </div>
+                                </div >
+                            </div>
                         ))
                     }
-                </div>}
+                </div>
+            }
 
         </>
     );
