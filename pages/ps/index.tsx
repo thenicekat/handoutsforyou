@@ -5,7 +5,7 @@ import Menu from "@/Components/Menu";
 import { useEffect, useState } from "react";
 import CustomToastContainer from "@/Components/ToastContainer";
 import { toast } from "react-toastify";
-import { PS1Item, PS2Item, PS_Review } from "@/types/PSData";
+import { PS1Item, PS2Item } from "@/types/PSData";
 
 export default function PS() {
     const { data: session } = useSession()
