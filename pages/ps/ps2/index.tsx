@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Menu from "@/Components/Menu";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { PS_Station } from "@/types/PSData";
+import { PS2Item } from "@/types/PSData";
 import { years } from "@/data/ps2_years";
 import { toast } from "react-toastify";
 import CustomToastContainer from "@/Components/ToastContainer";
@@ -49,9 +49,9 @@ export default function PS2Data() {
 
     useEffect(() => {
         setIsLoading(true);
-        let filteredPS2Data = ps2Data.filter((d: PS_Station) => d.min <= cgpa)
-        filteredPS2Data = filteredPS2Data.filter((d: PS_Station) => d.station.toLowerCase().includes(search.toLowerCase()))
-        filteredPS2Data = filteredPS2Data.sort((a: PS_Station, b: PS_Station) => b.min - a.min)
+        let filteredPS2Data = ps2Data.filter((d: PS2Item) => d.cgpa <= cgpa)
+        filteredPS2Data = filteredPS2Data.filter((d: PS2Item) => d.station.toLowerCase().includes(search.toLowerCase()))
+        filteredPS2Data = filteredPS2Data.sort((a: PS2Item, b: PS2Item) => b.cgpa - a.cgpa)
         setFilteredPS2Data(filteredPS2Data);
         setIsLoading(false);
     }, [ps2Data, cgpa, search])
@@ -138,29 +138,62 @@ export default function PS2Data() {
                 <div>
                     {/* Show the count of reviews */}
                     <div className="flex justify-center">
-                        <h1 className="text-3xl text-primary">Total Companies: {isLoading ? "Loading..." : filteredPS2Data.length}</h1>
+                        <h1 className="text-3xl text-primary">Total Responses: {isLoading ? "Loading..." : filteredPS2Data.length}</h1>
                     </div>
 
                     <div className='px-2 md:px-20'>
                         {
                             !isLoading ?
-                                filteredPS2Data.map((station: PS_Station) => (
-                                    <div className="py-1 m-2 rounded-xl" key={(station.station as string) + station.year + station.allotment_round}>
-                                        <div role="alert" className="alert">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-info shrink-0 w-6 h-6">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                            </svg>
+                                <>
+                                    {/* Mobile UI */}
+                                    <div className='px-2 p-2 grid md:hidden sm:grid-cols-2 grid-cols-1 place-items-center'>
+                                        {
+                                            filteredPS2Data.map((ps2Item: PS2Item) => (
+                                                <div className="card w-72 h-96 bg-base-100 text-base-content m-2" key={ps2Item.id}>
+                                                    <div className="card-body">
+                                                        <p className='text-lg'>{ps2Item.station.toUpperCase()}</p>
 
-                                            <span>{(station.station as string).toUpperCase()}</span>
-                                            <span>{station.allotment_round && (station.allotment_round as string).toUpperCase()}</span>
-
-                                            <div>
-                                                <div className="tooltip" data-tip="Min. CGPA"><button className="btn btn-sm btn-primary disabled mx-1">Min: {station.min.toFixed(3)}</button></div>
-                                                <div className="tooltip" data-tip="Max. CGPA"><button className="btn btn-sm btn-primary disabled mx-1">Max: {station.max.toFixed(3)}</button></div>
-                                            </div>
-                                        </div>
+                                                        <div className="flex-none">
+                                                            <p className="m-1">CGPA: {ps2Item.cgpa}</p>
+                                                            <p className="m-1">Allotment Round: {ps2Item.allotment_round}</p>
+                                                            <p className="m-1">Offshoot: {ps2Item.offshoot}</p>
+                                                            <p className="m-1">Offshoot Total: {ps2Item.offshoot_total}</p>
+                                                            <p className="m-1">Offshoot Type: {ps2Item.offshoot_type ? ps2Item.offshoot_type : "NA"}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>))
+                                        }
                                     </div>
-                                ))
+
+                                    {/* Web UI */}
+                                    <div className="overflow-x-auto m-2 rounded-md hidden md:block">
+                                        <table className="table table-sm table-pin-rows bg-base-100">
+                                            <thead className='table-header-group'>
+                                                <tr>
+                                                    <td>Company</td>
+                                                    <td>CGPA</td>
+                                                    <td>Allotment Round</td>
+                                                    <td>Offshoot</td>
+                                                    <td>Offshoot Total</td>
+                                                    <td>Offshoot Type</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {filteredPS2Data.map((ps2Item: PS2Item) => (
+                                                    <tr key={ps2Item.id}>
+                                                        <td>{ps2Item.station}</td>
+                                                        <td>{ps2Item.cgpa}</td>
+                                                        <td>{ps2Item.allotment_round}</td>
+                                                        <td>{ps2Item.offshoot}</td>
+                                                        <td>{ps2Item.offshoot_total}</td>
+                                                        <td>{ps2Item.offshoot_type ? ps2Item.offshoot_type : "NA"}</td>
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </>
                                 :
                                 <div className="flex justify-center">
                                     <h1 className="text-3xl text-primary">Loading...</h1>
