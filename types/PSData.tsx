@@ -27,6 +27,7 @@ export type PS1Item = {
 }
 
 export type PS2Item = {
+    id: number
     id_number: string | undefined,
     year_and_sem: string,
     allotment_round: string,
