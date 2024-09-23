@@ -32,6 +32,7 @@ export type PS2Item = {
     year_and_sem: string,
     allotment_round: string,
     station: string,
+    stipend: string,
     cgpa: number,
     preference: number,
     offshoot: number,

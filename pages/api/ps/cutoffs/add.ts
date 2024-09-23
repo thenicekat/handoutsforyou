@@ -14,6 +14,7 @@ type RequestData = {
     typeOfPS: string,
     idNumber: string | undefined,
     yearAndSem: string,
+    stipend: number,
     allotmentRound: string,
     station: string,
     cgpa: number,
@@ -120,6 +121,11 @@ export default async function handler(
                 return
             }
 
+            if (reqBody.stipend < 0 || reqBody.stipend > 200000) {
+                res.status(422).json({ message: "Stipend should be between 0 and 200000", data: [], error: true })
+                return
+            }
+
             const { data: existingData, error: existingError } = await supabase.
                 from(PS2_RESPONSES)
                 .select('*')
@@ -137,6 +143,7 @@ export default async function handler(
                         email: email,
                         id_number: reqBody.idNumber,
                         allotment_round: reqBody.allotmentRound,
+                        stipend: reqBody.stipend,
                         year_and_sem: reqBody.yearAndSem,
                         station: reqBody.station,
                         cgpa: reqBody.cgpa,
