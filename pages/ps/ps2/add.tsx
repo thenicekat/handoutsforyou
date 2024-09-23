@@ -25,6 +25,7 @@ export default function AddPS2Response({ }: {}) {
     const [yearAndSem, setYearAndSem] = useState("");
     const [allotmentRound, setAllotmentRound] = useState("Round 1");
     const [station, setStation] = useState("");
+    const [stipend, setStipend] = useState(0);
     const [cgpa, setCGPA] = useState(0);
     const [preference, setPreference] = useState(0);
     const [offshoot, setOffshoot] = useState(0);
@@ -52,6 +53,7 @@ export default function AddPS2Response({ }: {}) {
                 yearAndSem: yearAndSem,
                 allotmentRound: allotmentRound,
                 station: station,
+                stipend: stipend,
                 cgpa: cgpa,
                 preference: preference,
                 offshoot: offshoot,
@@ -127,6 +129,11 @@ export default function AddPS2Response({ }: {}) {
                             <div className="flex flex-col w-3/4 justify-between m-1">
                                 <label htmlFor="station" className="text-primary">Station</label>
                                 <input type="text" id="station" className="input input-secondary" value={station} onChange={(e) => setStation(e.target.value)} />
+                            </div>
+
+                            <div className="flex flex-col w-3/4 justify-between m-1">
+                                <label htmlFor="cgpa" className="text-primary">Stipend</label>
+                                <input type="number" id="stipend" className="input input-secondary" value={stipend} onChange={(e) => setStipend(parseFloat(e.target.value))} />
                             </div>
 
                             <div className="flex flex-col w-3/4 justify-between m-1">
