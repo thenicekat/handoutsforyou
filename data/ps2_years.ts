@@ -1,4 +1,5 @@
 export const years = [
+    "24-25 Sem 2",
     "24-25 Sem 1",
     "23-24 Sem 2",
     "23-24 Sem 1",

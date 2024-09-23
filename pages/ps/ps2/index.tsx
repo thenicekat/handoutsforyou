@@ -155,6 +155,7 @@ export default function PS2Data() {
 
                                                         <div className="flex-none">
                                                             <p className="m-1">CGPA: {ps2Item.cgpa}</p>
+                                                            <p className="m-1">Stipend: {ps2Item.stipend}</p>
                                                             <p className="m-1">Allotment Round: {ps2Item.allotment_round}</p>
                                                             <p className="m-1">Offshoot: {ps2Item.offshoot}</p>
                                                             <p className="m-1">Offshoot Total: {ps2Item.offshoot_total}</p>
@@ -172,6 +173,7 @@ export default function PS2Data() {
                                                 <tr>
                                                     <td>Company</td>
                                                     <td>CGPA</td>
+                                                    <td>Stipend</td>
                                                     <td>Allotment Round</td>
                                                     <td>Offshoot</td>
                                                     <td>Offshoot Total</td>
@@ -183,6 +185,7 @@ export default function PS2Data() {
                                                     <tr key={ps2Item.id}>
                                                         <td>{ps2Item.station}</td>
                                                         <td>{ps2Item.cgpa}</td>
+                                                        <td>{ps2Item.stipend}</td>
                                                         <td>{ps2Item.allotment_round}</td>
                                                         <td>{ps2Item.offshoot}</td>
                                                         <td>{ps2Item.offshoot_total}</td>
