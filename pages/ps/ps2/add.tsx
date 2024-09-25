@@ -2,28 +2,15 @@ import Head from "next/head";
 import { useState } from "react";
 import Menu from "@/Components/Menu";
 import { useSession } from "next-auth/react";
-import { years } from "@/data/ps2_years";
+import { years, allotmentRounds } from "@/data/ps2";
 import AutoCompleter from "@/Components/AutoCompleter";
 import { toast } from "react-toastify";
 import CustomToastContainer from "@/Components/ToastContainer";
 
-type PSDataRes = {
-    typeOfPS: string,
-    idNumber: string,
-    yearAndSem: string,
-    allotmentRound: string,
-    station: string,
-    cgpa: number,
-    preference: number,
-    offshoot: number,
-    offshootTotal: number,
-    offshootType: string,
-}
-
 export default function AddPS2Response({ }: {}) {
     const [idNumber, setIdNumber] = useState("");
     const [yearAndSem, setYearAndSem] = useState("");
-    const [allotmentRound, setAllotmentRound] = useState("Round 1");
+    const [allotmentRound, setAllotmentRound] = useState("");
     const [station, setStation] = useState("");
     const [stipend, setStipend] = useState(0);
     const [cgpa, setCGPA] = useState(0);
@@ -123,7 +110,7 @@ export default function AddPS2Response({ }: {}) {
 
                             <div className="flex flex-col w-3/4 justify-between m-1">
                                 <label htmlFor="allotmentRound" className="text-primary">Allotment Round</label>
-                                <input type="text" id="allotmentRound" className="input input-secondary" value={allotmentRound} onChange={(e) => setAllotmentRound(e.target.value)} />
+                                <AutoCompleter name="allotment round" items={allotmentRounds} value={allotmentRound} onChange={(val) => setAllotmentRound(val)} />
                             </div>
 
                             <div className="flex flex-col w-3/4 justify-between m-1">

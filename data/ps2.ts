@@ -11,3 +11,13 @@ export const years = [
     "19-20 Sem 2",
     "19-20 Sem 1"
 ]
+
+export const allotmentRounds = [
+    "Round 1",
+    "Round 2",
+    "Round 3",
+    "Round 4",
+    "Grievance",
+    "Interaction Role",
+    "PS Lock"
+]

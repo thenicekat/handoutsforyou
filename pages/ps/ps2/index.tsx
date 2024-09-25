@@ -4,7 +4,7 @@ import Menu from "@/Components/Menu";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { PS2Item } from "@/types/PSData";
-import { years } from "@/data/ps2_years";
+import { years } from "@/data/ps2";
 import { toast } from "react-toastify";
 import CustomToastContainer from "@/Components/ToastContainer";
 
@@ -154,6 +154,7 @@ export default function PS2Data() {
                                                         <p className='text-lg'>{ps2Item.station.toUpperCase()}</p>
 
                                                         <div className="flex-none">
+                                                            <p className="m-1">ID Number: {ps2Item.id_number}</p>
                                                             <p className="m-1">CGPA: {ps2Item.cgpa}</p>
                                                             <p className="m-1">Stipend: {ps2Item.stipend}</p>
                                                             <p className="m-1">Allotment Round: {ps2Item.allotment_round}</p>
@@ -171,6 +172,7 @@ export default function PS2Data() {
                                         <table className="table table-sm table-pin-rows bg-base-100">
                                             <thead className='table-header-group'>
                                                 <tr>
+                                                    <td>ID Number</td>
                                                     <td>Company</td>
                                                     <td>CGPA</td>
                                                     <td>Stipend</td>
@@ -183,6 +185,7 @@ export default function PS2Data() {
                                             <tbody>
                                                 {filteredPS2Data.map((ps2Item: PS2Item) => (
                                                     <tr key={ps2Item.id}>
+                                                        <td>{ps2Item.id_number}</td>
                                                         <td>{ps2Item.station}</td>
                                                         <td>{ps2Item.cgpa}</td>
                                                         <td>{ps2Item.stipend}</td>
