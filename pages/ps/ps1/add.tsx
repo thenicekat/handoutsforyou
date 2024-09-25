@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Menu from "@/Components/Menu";
 import { useSession } from "next-auth/react";
 import AutoCompleter from "@/Components/AutoCompleter";
-import { years } from "@/data/ps1_years";
+import { years } from "@/data/ps1";
 import { toast } from "react-toastify";
 import CustomToastContainer from "@/Components/ToastContainer";
 
