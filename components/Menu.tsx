@@ -1,5 +1,4 @@
-import GitHubButton from 'react-github-btn'
-import React, { useRef } from 'react'
+import React from 'react'
 import Link from 'next/link'
 import { signIn, signOut, useSession } from 'next-auth/react'
 
@@ -16,6 +15,7 @@ if (
 const Menu = () => {
     const { data: session } = useSession()
     const [menu, setMenu] = React.useState(false)
+    const [starCount, setStarCount] = React.useState(0)
 
     const menuItems: any = {
         "Handouts": "/handouts",
@@ -34,21 +34,23 @@ const Menu = () => {
         setMenu(!menu)
     }
 
+    const getStarCount = async () => {
+        const response = await fetch("https://api.github.com/repos/thenicekat/handoutsforyou")
+        const res = await response.json()
+        return res.stargazers_count
+    }
+
+    React.useEffect(() => {
+        getStarCount().then((count) => setStarCount(count))
+    }, [])
+
     return (
         <>
-            <button className="btn btn-outline w-1/2 m-3 sm:hidden" onClick={() => toggleMenu()}>
-                Toggle Menu
-            </button>
-
-            <GitHubButton href="https://github.com/thenicekat/handoutsforyou"
-                data-color-scheme="no-preference: light; light: light; dark: light;"
-                data-icon="octicon-star"
-                data-size="large"
-                data-show-count="true"
-                aria-label="Star thenicekat/handoutsforyou on GitHub">
-                Star
-            </GitHubButton>
-
+            <Link className="m-3 grid grid-cols-1 justify-around" href={"#"}>
+                <button className="btn btn-outline w-full sm:hidden" onClick={() => toggleMenu()}>
+                    {!menu ? "Open" : "Close"} the menu
+                </button>
+            </Link>
 
             <div className={`${menu ? 'grid' : 'hidden'} sm:grid md:grid-cols-5 sm:grid-cols-3 justify-around`}>
                 {Object.keys(menuItems).map(
@@ -61,18 +63,26 @@ const Menu = () => {
                 )}
             </div>
 
-            < div className="grid md:grid-cols-3 justify-around" >
-                {
-                    !session
-                        ?
-                        <div className='col-span-3'>
-                            <button className="btn btn-outline m-3" onClick={() => signIn("google")}>Sign in to access</button>
-                        </div>
-                        :
-                        <Link href={"#"} className={`m-3 col-span-3`}>
-                            <button className="btn btn-error btn-outline w-full" onClick={() => signOut()}>Sign Out</button>
-                        </Link>
-                }
+            <div className="grid md:grid-cols-2 justify-around" >
+                <>
+                    <Link className="m-3" href="https://github.com/thenicekat/handoutsforyou">
+                        <button className="btn btn-outline btn-accent w-full">
+                            Star on GitHub! ({starCount})
+                        </button>
+                    </Link>
+
+                    {
+                        !session ?
+                            <Link className="m-3" href={"#"}>
+                                <button className="btn btn-warning btn-outline w-full" onClick={() => signIn("google")}>Sign In</button>
+                            </Link>
+                            :
+                            <Link className="m-3" href={"#"}>
+                                <button className="btn btn-warning btn-outline w-full" onClick={() => signOut()}>Sign Out</button>
+                            </Link>
+                    }
+                </>
+
             </div >
         </>)
 }
