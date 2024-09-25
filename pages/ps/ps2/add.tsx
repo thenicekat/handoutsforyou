@@ -1,11 +1,11 @@
 import Head from "next/head";
 import { useState } from "react";
-import Menu from "@/Components/Menu";
+import Menu from "@/components/Menu";
 import { useSession } from "next-auth/react";
 import { years, allotmentRounds } from "@/data/ps2";
-import AutoCompleter from "@/Components/AutoCompleter";
+import AutoCompleter from "@/components/AutoCompleter";
 import { toast } from "react-toastify";
-import CustomToastContainer from "@/Components/ToastContainer";
+import CustomToastContainer from "@/components/ToastContainer";
 
 export default function AddPS2Response({ }: {}) {
     const [idNumber, setIdNumber] = useState("");

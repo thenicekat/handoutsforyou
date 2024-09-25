@@ -1,11 +1,11 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
-import Menu from "@/Components/Menu";
+import Menu from "@/components/Menu";
 import { useSession } from "next-auth/react";
 import { courses } from "@/data/courses";
 import { profs } from "@/data/profs";
-import AutoCompleter from "@/Components/AutoCompleter";
-import CustomToastContainter from "@/Components/ToastContainer"
+import AutoCompleter from "@/components/AutoCompleter";
+import CustomToastContainter from "@/components/ToastContainer"
 import { toast } from "react-toastify";
 
 

@@ -1,10 +1,10 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import Menu from "@/Components/Menu";
+import Menu from "@/components/Menu";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import AutoCompleter from "@/Components/AutoCompleter";
-import CustomToastContainer from "@/Components/ToastContainer";
+import AutoCompleter from "@/components/AutoCompleter";
+import CustomToastContainer from "@/components/ToastContainer";
 import { toast } from "react-toastify";
 import { PS_Review } from "@/types/PSData";
 

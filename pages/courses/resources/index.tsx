@@ -1,12 +1,12 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { useState } from 'react'
-import Menu from '@/Components/Menu';
+import Menu from '@/components/Menu';
 import { useSession } from 'next-auth/react';
 import { Resource } from '@/types/Resource';
 import React from 'react';
 import { toast } from 'react-toastify';
-import CustomToastContainer from '@/Components/ToastContainer';
+import CustomToastContainer from '@/components/ToastContainer';
 import { CursorArrowRippleIcon, PlusCircleIcon } from '@heroicons/react/24/solid'
 
 interface ResourceByDept {

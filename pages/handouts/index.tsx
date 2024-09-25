@@ -3,11 +3,11 @@ import Head from "next/head";
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import { signIn, signOut, useSession } from 'next-auth/react';
-import Menu from "@/Components/Menu";
+import Menu from "@/components/Menu";
 import Link from "next/link";
 
 
-const HandoutsPerYear = dynamic(() => import("./../../Components/HandoutsPerYear"), {
+const HandoutsPerYear = dynamic(() => import("./../../components/HandoutsPerYear"), {
     loading: () => (
         <div className="grid place-items-center">
             <p className="text-xl m-3">
