@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Menu from "@/Components/Menu";
+import Menu from "@/components/Menu";
 import Head from "next/head";
 import { FaqModel } from "@/types/FaqModel";
 

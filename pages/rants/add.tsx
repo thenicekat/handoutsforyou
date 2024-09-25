@@ -1,8 +1,8 @@
 import Head from "next/head";
 import { useState } from "react";
-import Menu from "@/Components/Menu";
+import Menu from "@/components/Menu";
 import { useSession } from "next-auth/react";
-import CustomToastContainter from "@/Components/ToastContainer"
+import CustomToastContainter from "@/components/ToastContainer"
 import { toast } from "react-toastify";
 import {
     RegExpMatcher,

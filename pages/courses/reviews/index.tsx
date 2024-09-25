@@ -1,14 +1,14 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import Menu from "@/Components/Menu";
+import Menu from "@/components/Menu";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { CourseReview } from "@/types/CourseReview";
 import { courses } from "@/data/courses";
 import { profs } from "@/data/profs";
-import AutoCompleter from "@/Components/AutoCompleter";
+import AutoCompleter from "@/components/AutoCompleter";
 import { departments } from "@/data/departments";
-import CustomToastContainer from "@/Components/ToastContainer";
+import CustomToastContainer from "@/components/ToastContainer";
 import { toast } from "react-toastify";
 import { PlusCircleIcon } from '@heroicons/react/24/solid'
 
