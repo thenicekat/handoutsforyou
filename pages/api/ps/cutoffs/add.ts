@@ -24,6 +24,17 @@ type RequestData = {
     offshootType: string,
 }
 
+const validateEmailIDNumber = (email: string, idNumber: string) => {
+    if (email[0] == "f" && "f" + idNumber.slice(0, 4) + idNumber.slice(8, 12) !== email?.split("@")[0]) {
+        return false
+    }
+    // TODO: Add validation for HD students.
+    if (email[0] == "h") {
+        return true
+    }
+    return true
+}
+
 export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
@@ -107,22 +118,24 @@ export default async function handler(
             }
         }
         else if (reqBody.typeOfPS === 'ps2') {
+            // Validate offshoot.
             if (reqBody.offshoot < 0 || reqBody.offshootTotal < 0 || reqBody.offshoot < reqBody.offshootTotal) {
                 res.status(422).json({ message: "Please enter valid data for offshoot.", data: [], error: true });
                 return;
             }
-            if (!reqBody.idNumber || (reqBody && reqBody.idNumber && reqBody.idNumber?.length < 12)) {
+            // Validate ID Number.
+            if (!reqBody.idNumber || (reqBody && reqBody.idNumber && reqBody.idNumber?.length < 14)) {
                 res.status(422).json({ message: "ID number format is not correct.", data: [], error: true });
                 return;
             }
             // Check if email and ID Number match, this is only doing for PS2
-            if ("f" + reqBody.idNumber.slice(0, 4) + reqBody.idNumber.slice(8, 12) !== email?.split("@")[0]) {
+            if (!validateEmailIDNumber(email, reqBody.idNumber)) {
                 res.status(422).json({ message: "Email and ID Number do not match.", data: [], error: true })
                 return
             }
-
-            if (reqBody.stipend < 0 || reqBody.stipend > 200000) {
-                res.status(422).json({ message: "Stipend should be between 0 and 200000", data: [], error: true })
+            // Validate stipend.
+            if (reqBody.stipend < 0 || reqBody.stipend > 400000) {
+                res.status(422).json({ message: "Stipend should be between 0 and 400000. If your stipend is higher, please reach out to the developers to add your response.", data: [], error: true })
                 return
             }
 
@@ -131,6 +144,7 @@ export default async function handler(
                 .select('*')
                 .eq('email', email)
                 .eq('allotment_round', reqBody.allotmentRound)
+
             if (existingData && existingData?.length > 0) {
                 res.status(500).json({ message: "You have already submitted a response with this email and allotment round", data: [], error: true })
                 return
