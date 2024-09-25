@@ -1,11 +1,11 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { useState } from 'react'
-import Menu from '@/Components/Menu';
+import Menu from '@/components/Menu';
 import { useSession } from 'next-auth/react';
 import React from 'react';
 import { toast } from 'react-toastify';
-import CustomToastContainer from '@/Components/ToastContainer';
+import CustomToastContainer from '@/components/ToastContainer';
 import { PlusCircleIcon } from '@heroicons/react/24/solid'
 import { PlacementCTC } from '@/types/PlacementData';
 

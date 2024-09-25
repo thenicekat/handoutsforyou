@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import { GetStaticProps } from "next";
 import Head from "next/head";
 import { use, useEffect, useState } from "react";
-import Menu from "@/Components/Menu";
+import Menu from "@/components/Menu";
 import { useSession } from "next-auth/react";
 import { SI_Chronicle } from '../../../types/SIData';
 

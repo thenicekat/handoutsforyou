@@ -1,9 +1,9 @@
 import { useSession } from "next-auth/react";
 import Head from "next/head";
 import Link from "next/link";
-import Menu from "@/Components/Menu";
+import Menu from "@/components/Menu";
 import { useEffect, useState } from "react";
-import CustomToastContainer from "@/Components/ToastContainer";
+import CustomToastContainer from "@/components/ToastContainer";
 import { toast } from "react-toastify";
 import { PS1Item, PS2Item } from "@/types/PSData";
 
