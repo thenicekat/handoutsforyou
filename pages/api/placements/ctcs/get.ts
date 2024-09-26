@@ -28,7 +28,7 @@ export default async function handler(
 
     const { data, error } = await supabase
         .from(PLACEMENT_CTCS)
-        .select('company, campus, academic_year, base, joining_bonus, relocation_bonus, variable_bonus, monetary_value_of_benefits, description')
+        .select('company, campus, base, joining_bonus, relocation_bonus, variable_bonus, monetary_value_of_benefits, description')
         .order('company', { ascending: true })
         .eq('academic_year', year)
 

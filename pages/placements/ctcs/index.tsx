@@ -110,7 +110,6 @@ export default function PlacementCTCs() {
                                         <p className='text-lg'>{placementCTC?.company.toUpperCase()}</p>
 
                                         <div className="flex-none">
-                                            <p className="m-1">Academic Year: {placementCTC.academic_year}</p>
                                             <p className="m-1">Base: {placementCTC.base}</p>
                                             <p className="m-1">Joining Bonus: {placementCTC.joining_bonus}</p>
                                             <p className="m-1">Relocation Bonus: {placementCTC.relocation_bonus}</p>
