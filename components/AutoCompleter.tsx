@@ -21,7 +21,7 @@ const Autocomplete = (props: Props) => {
             // use classnames here to easily toggle dropdown open 
             className={classNames({
                 "dropdown w-full": true,
-                "dropdown-open": open,
+                "dropdown-open w-full": open,
             })}
             ref={ref}
         >
