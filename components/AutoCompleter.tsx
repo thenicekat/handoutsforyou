@@ -37,7 +37,7 @@ const Autocomplete = (props: Props) => {
             {/* add this part */}
             <div className="dropdown-content bg-base-200 z-50 top-14 max-h-96 overflow-auto flex-col rounded-md">
                 <ul
-                    className="menu menu-compact "
+                    className="menu menu-compact w-full"
                     // use ref to calculate the width of parent
                     style={{ width: ref.current?.clientWidth }}
                 >
