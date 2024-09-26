@@ -8,15 +8,23 @@ import { toast } from 'react-toastify';
 import CustomToastContainer from '@/components/ToastContainer';
 import { PlusCircleIcon } from '@heroicons/react/24/solid'
 import { PlacementCTC } from '@/types/PlacementData';
+import { years } from '@/data/placements';
 
 export default function PlacementCTCs() {
     const [input, setInput] = useState("");
     const { data: session } = useSession();
     const [placementCTCs, setPlacementCTCs] = useState([] as PlacementCTC[]);
+    const [yearRef, setYearRef] = useState(years[0])
 
     const fetchPlacementCTCs = async () => {
-        const res = await fetch("/api/placements/ctcs/get")
-        const resp = await res.json()
+        const res = await fetch("/api/placements/ctcs/get", {
+            method: "POST",
+            body: JSON.stringify({
+                year: yearRef
+            }),
+            headers: { "Content-Type": "application/json" }
+        });
+        const resp = await res.json();
         if (!resp.error) {
             setPlacementCTCs(resp.data)
         } else {
@@ -48,6 +56,7 @@ export default function PlacementCTCs() {
                 <div className='w-[70vw] place-items-center flex flex-col justify-between'>
                     <h1 className='text-5xl pt-[50px] pb-[20px] px-[35px] text-primary'>Placement CTCs.</h1>
                     <Menu />
+
                     {session &&
                         <>
 
@@ -67,6 +76,23 @@ export default function PlacementCTCs() {
                                     <PlusCircleIcon />
                                 </Link>
                             </div>
+
+                            <div className="flex flex-col md:flex-row w-full justify-center">
+                                <select className="select select-bordered w-full max-w-xs m-3" onChange={(e) => setYearRef(e.target.value)}>
+                                    <option disabled selected>Which year to use as reference?</option>
+                                    {
+                                        years.map((year) => (
+                                            <option value={year} key={year} selected={yearRef == year}>{year}</option>
+                                        ))
+                                    }
+                                </select>
+
+                                <Link className="m-3 w-full max-w-xs" href={""}>
+                                    <button className="btn btn-outline w-full" onClick={fetchPlacementCTCs}>
+                                        Update Year
+                                    </button>
+                                </Link>
+                            </div>
                         </>
                     }
                 </div>
@@ -80,9 +106,11 @@ export default function PlacementCTCs() {
                             placementCTCs.filter((placementCTC) => placementCTC.company.toLowerCase().includes(input.toLowerCase())).map((placementCTC) => (
                                 <div className="card w-72 h-96 bg-base-100 text-base-content m-2" key={placementCTC.company}>
                                     <div className="card-body">
+                                        <h2 className="text-sm font-bold uppercase">{placementCTC.campus}</h2>
                                         <p className='text-lg'>{placementCTC?.company.toUpperCase()}</p>
 
                                         <div className="flex-none">
+                                            <p className="m-1">Academic Year: {placementCTC.academic_year}</p>
                                             <p className="m-1">Base: {placementCTC.base}</p>
                                             <p className="m-1">Joining Bonus: {placementCTC.joining_bonus}</p>
                                             <p className="m-1">Relocation Bonus: {placementCTC.relocation_bonus}</p>
@@ -101,6 +129,7 @@ export default function PlacementCTCs() {
                             <thead className='table-header-group'>
                                 <tr>
                                     <td>Company</td>
+                                    <td>Campus</td>
                                     <td>Base</td>
                                     <td>Joining Bonus</td>
                                     <td>Relocation Bonus</td>
@@ -113,6 +142,7 @@ export default function PlacementCTCs() {
                                 {placementCTCs.filter((placementCTC) => placementCTC.company.toLowerCase().includes(input.toLowerCase())).map((placementCTC) => (
                                     <tr key={placementCTC.company}>
                                         <td>{placementCTC.company}</td>
+                                        <td>{placementCTC.campus}</td>
                                         <td>{placementCTC.base}</td>
                                         <td>{placementCTC.joining_bonus}</td>
                                         <td>{placementCTC.relocation_bonus}</td>

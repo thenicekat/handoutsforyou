@@ -4,10 +4,14 @@ import { useSession } from "next-auth/react";
 import Menu from "@/components/Menu";
 import { toast } from "react-toastify";
 import CustomToastContainer from "@/components/ToastContainer";
+import AutoCompleter from "@/components/AutoCompleter";
+import { years } from "@/data/placements";
 
 
 export default function AddPlacementCTCs({ }: {}) {
     const [name, setName] = useState("");
+    const [campus, setCampus] = useState("");
+    const [academicYear, setAcademicYear] = useState("");
     const [base, setBase] = useState(0);
     const [joiningBonus, setJoiningBonus] = useState(0);
     const [relocationBonus, setRelocationBonus] = useState(0);
@@ -26,6 +30,8 @@ export default function AddPlacementCTCs({ }: {}) {
             method: "POST",
             body: JSON.stringify({
                 company: name,
+                campus: campus,
+                academicYear: academicYear,
                 base: base,
                 joiningBonus: joiningBonus,
                 relocationBonus: relocationBonus,
@@ -42,6 +48,8 @@ export default function AddPlacementCTCs({ }: {}) {
         else {
             toast.success("Thank you! CTC was added successfully!")
             setName("")
+            setCampus("")
+            setAcademicYear("")
             setBase(0)
             setJoiningBonus(0)
             setRelocationBonus(0)
@@ -83,6 +91,16 @@ export default function AddPlacementCTCs({ }: {}) {
                             <div className="flex flex-col w-3/4 justify-between m-1">
                                 <label htmlFor="name" className="text-primary">Name of the Company</label>
                                 <input type="text" id="name" className="input input-secondary" value={name} onChange={(e) => setName(e.target.value)} />
+                            </div>
+
+                            <div className="flex flex-col w-3/4 justify-between m-1">
+                                <label htmlFor="campus" className="text-primary">Campus</label>
+                                <AutoCompleter name="campus" items={['Hyderabad', 'Pilani', 'Goa']} value={campus} onChange={(val) => setCampus(val)} />
+                            </div>
+
+                            <div className="flex flex-col w-3/4 justify-between m-1">
+                                <label htmlFor="academic year" className="text-primary">Academic Year</label>
+                                <AutoCompleter name="academic year" items={years} value={academicYear} onChange={(val) => setAcademicYear(val)} />
                             </div>
 
                             <div className="flex flex-col w-3/4 justify-between m-1">
