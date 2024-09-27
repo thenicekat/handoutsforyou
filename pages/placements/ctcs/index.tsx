@@ -104,7 +104,7 @@ export default function PlacementCTCs() {
                     <div className='px-2 p-2 grid md:hidden sm:grid-cols-2 grid-cols-1 place-items-center'>
                         {
                             placementCTCs.filter((placementCTC) => placementCTC.company.toLowerCase().includes(input.toLowerCase())).map((placementCTC) => (
-                                <div className="card w-72 h-96 bg-base-100 text-base-content m-2" key={placementCTC.company}>
+                                <div className="card w-72 h-96 bg-base-100 text-base-content m-2" key={placementCTC.company + "/" + placementCTC.campus}>
                                     <div className="card-body">
                                         <h2 className="text-sm font-bold uppercase">{placementCTC.campus}</h2>
                                         <p className='text-lg'>{placementCTC?.company.toUpperCase()}</p>
@@ -139,7 +139,7 @@ export default function PlacementCTCs() {
                             </thead>
                             <tbody>
                                 {placementCTCs.filter((placementCTC) => placementCTC.company.toLowerCase().includes(input.toLowerCase())).map((placementCTC) => (
-                                    <tr key={placementCTC.company}>
+                                    <tr key={placementCTC.company + "/" + placementCTC.campus}>
                                         <td>{placementCTC.company}</td>
                                         <td>{placementCTC.campus}</td>
                                         <td>{placementCTC.base}</td>
