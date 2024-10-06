@@ -36,7 +36,7 @@ export default async function handler(
     else {
         const { data, error } = await supabase
             .from(PS2_RESPONSES)
-            .select('id, id_number, station, cgpa, stipend, allotment_round, offshoot, offshoot_total, offshoot_type')
+            .select('id, id_number, station, cgpa, stipend, allotment_round, offshoot, offshoot_total, offshoot_type, public')
             .eq('year_and_sem', year)
 
         if (error) {
@@ -45,9 +45,20 @@ export default async function handler(
             return
         }
         else {
+            let concealedData = data.map((item: any) => {
+                if (item.public) {
+                    return item
+                }
+                else {
+                    return {
+                        ...item,
+                        id_number: item.id_number.slice(0, 8) + 'XXXX' + item.id_number.slice(12, 13)
+                    }
+                }
+            })
             res.status(200).json({
                 message: 'success',
-                data: data,
+                data: concealedData,
                 error: false
             })
             return

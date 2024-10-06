@@ -22,6 +22,7 @@ type RequestData = {
     offshoot: number,
     offshootTotal: number,
     offshootType: string,
+    public: number
 }
 
 const validateEmailIDNumber = (email: string, idNumber: string) => {
@@ -77,7 +78,7 @@ export default async function handler(
             return
         }
 
-        // Trim and convert to uppercase to avoid duplicates
+        // Trim and convert to uppercase to avoid duplicates.
         reqBody.station = reqBody.station.toUpperCase().trim()
 
         if (reqBody.typeOfPS === 'ps1') {
@@ -124,8 +125,8 @@ export default async function handler(
                 return;
             }
             // Validate ID Number.
-            if (!reqBody.idNumber || (reqBody && reqBody.idNumber && reqBody.idNumber?.length < 14)) {
-                res.status(422).json({ message: "ID number format is not correct.", data: [], error: true });
+            if (!reqBody.idNumber || (reqBody && reqBody.idNumber && reqBody.idNumber?.length != 13)) {
+                res.status(422).json({ message: "ID number should be 13 characters, if your id number is not of this format, please reach out to the developers to add your response.", data: [], error: true });
                 return;
             }
             // Check if email and ID Number match, this is only doing for PS2
@@ -164,7 +165,8 @@ export default async function handler(
                         preference: reqBody.preference,
                         offshoot: reqBody.offshoot,
                         offshoot_total: reqBody.offshootTotal,
-                        offshoot_type: reqBody.offshootType
+                        offshoot_type: reqBody.offshootType,
+                        public: reqBody.public
                     }
                 ])
 
