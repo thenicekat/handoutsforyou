@@ -18,6 +18,7 @@ export default function AddPS2Response({ }: {}) {
     const [offshoot, setOffshoot] = useState(0);
     const [offshootTotal, setOffshootTotal] = useState(0);
     const [offshootType, setOffshootType] = useState("");
+    const [isPublic, setIsPublic] = useState(true)
 
     const [isLoading, setIsLoading] = useState(false)
 
@@ -46,6 +47,7 @@ export default function AddPS2Response({ }: {}) {
                 offshoot: offshoot,
                 offshootTotal: offshootTotal,
                 offshootType: offshootType,
+                public: isPublic ? 1 : 0
             }),
             headers: { "Content-Type": "application/json" }
         })
@@ -128,24 +130,33 @@ export default function AddPS2Response({ }: {}) {
                                 <input type="number" id="cgpa" className="input input-secondary" value={cgpa} onChange={(e) => setCGPA(parseFloat(e.target.value) || 0)} />
                             </div>
 
-
                             <div className="flex flex-col w-3/4 justify-between m-1">
                                 <label htmlFor="preference" className="text-primary">Preference</label>
                                 <input type="number" id="preference" className="input input-secondary" value={preference} onChange={(e) => setPreference(parseFloat(e.target.value) || 0)} />
                             </div>
 
+                            <div className="text-center flex-wrap w-3/4 justify-between m-1">
+                                <label className="text-primary">Make your id number public? </label>
+                                <input
+                                    type="checkbox"
+                                    onChange={(e) => setIsPublic(e.target.checked)}
+                                    checked={isPublic}
+                                />
+                                <br />
+                            </div>
+
                             <div className="flex flex-col w-3/4 justify-between m-1">
-                                <label htmlFor="offshoot" className="text-primary">Offshoot</label>
+                                <label htmlFor="offshoot" className="text-primary">Offshoot (Ignore if not relevant)</label>
                                 <input type="number" id="offshoot" className="input input-secondary" value={offshoot} onChange={(e) => setOffshoot(parseFloat(e.target.value) || 0)} />
                             </div>
 
                             <div className="flex flex-col w-3/4 justify-between m-1">
-                                <label htmlFor="offshootTotal" className="text-primary">Offshoot Total</label>
+                                <label htmlFor="offshootTotal" className="text-primary">Offshoot Total (Ignore if not relevant)</label>
                                 <input type="number" id="offshootTotal" className="input input-secondary" value={offshootTotal} onChange={(e) => setOffshootTotal(parseFloat(e.target.value) || 0)} />
                             </div>
 
                             <div className="flex flex-col w-3/4 justify-between m-1">
-                                <label htmlFor="offshootType" className="text-primary">Offshoot Type</label>
+                                <label htmlFor="offshootType" className="text-primary">Offshoot Type (Ignore if not relevant)</label>
                                 <input type="text" id="offshootType" className="input input-secondary" value={offshootType} onChange={(e) => setOffshootType(e.target.value)} />
                             </div>
 
