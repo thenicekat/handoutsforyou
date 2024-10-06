@@ -14,7 +14,7 @@ export default function AddPS2Response({ }: {}) {
     const [station, setStation] = useState("");
     const [stipend, setStipend] = useState(0);
     const [cgpa, setCGPA] = useState(0);
-    const [preference, setPreference] = useState(0);
+    const [preference, setPreference] = useState(1);
     const [offshoot, setOffshoot] = useState(0);
     const [offshootTotal, setOffshootTotal] = useState(0);
     const [offshootType, setOffshootType] = useState("");
@@ -29,6 +29,12 @@ export default function AddPS2Response({ }: {}) {
 
         if (years.indexOf(yearAndSem) === -1) {
             toast.error("Invalid Year and Sem, Please select from the dropdown!")
+            setIsLoading(false)
+            return
+        }
+
+        if (allotmentRounds.indexOf(allotmentRound) === -1) {
+            toast.error("Invalid Allotment Round, Please select from the dropdown!")
             setIsLoading(false)
             return
         }
@@ -127,12 +133,12 @@ export default function AddPS2Response({ }: {}) {
 
                             <div className="flex flex-col w-3/4 justify-between m-1">
                                 <label htmlFor="cgpa" className="text-primary">CGPA</label>
-                                <input type="number" id="cgpa" className="input input-secondary" value={cgpa} onChange={(e) => setCGPA(parseFloat(e.target.value) || 0)} />
+                                <input type="number" id="cgpa" className="input input-secondary" value={cgpa} onChange={(e) => setCGPA(parseFloat(e.target.value))} />
                             </div>
 
                             <div className="flex flex-col w-3/4 justify-between m-1">
                                 <label htmlFor="preference" className="text-primary">Preference</label>
-                                <input type="number" id="preference" className="input input-secondary" value={preference} onChange={(e) => setPreference(parseFloat(e.target.value) || 0)} />
+                                <input type="number" id="preference" className="input input-secondary" value={preference} onChange={(e) => setPreference(parseFloat(e.target.value))} />
                             </div>
 
                             <div className="text-center flex-wrap w-3/4 justify-between m-1">
@@ -147,12 +153,12 @@ export default function AddPS2Response({ }: {}) {
 
                             <div className="flex flex-col w-3/4 justify-between m-1">
                                 <label htmlFor="offshoot" className="text-primary">Offshoot (Ignore if not relevant)</label>
-                                <input type="number" id="offshoot" className="input input-secondary" value={offshoot} onChange={(e) => setOffshoot(parseFloat(e.target.value) || 0)} />
+                                <input type="number" id="offshoot" className="input input-secondary" value={offshoot} onChange={(e) => setOffshoot(parseFloat(e.target.value))} />
                             </div>
 
                             <div className="flex flex-col w-3/4 justify-between m-1">
                                 <label htmlFor="offshootTotal" className="text-primary">Offshoot Total (Ignore if not relevant)</label>
-                                <input type="number" id="offshootTotal" className="input input-secondary" value={offshootTotal} onChange={(e) => setOffshootTotal(parseFloat(e.target.value) || 0)} />
+                                <input type="number" id="offshootTotal" className="input input-secondary" value={offshootTotal} onChange={(e) => setOffshootTotal(parseFloat(e.target.value))} />
                             </div>
 
                             <div className="flex flex-col w-3/4 justify-between m-1">
