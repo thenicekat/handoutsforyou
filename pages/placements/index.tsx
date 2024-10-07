@@ -30,10 +30,36 @@ export default function Placement({ pu_chronicles }: any) {
     const [search, setSearch] = useState("");
     const { data: session } = useSession()
 
-    const resources = [{
-        name: "Placements CTC Data",
-        link: "/placements/ctcs"
-    },]
+    const resources = [
+        {
+            name: "Placements CTC Data",
+            link: "/placements/ctcs"
+        },
+        {
+            name: "Company Wise OA Questions",
+            link: "https://drive.google.com/drive/folders/1NlbJI1MAfb4UfL5h5AoaeO6-UlA3hF22?usp=sharing"
+        },
+        {
+            name: "All IIT, NIT, IIIT Placement and Intern OAs",
+            link: "https://drive.google.com/drive/folders/1Siv1g-kRqmiwArvivAKikZL9DQd2mGPV?usp=sharing"
+        },
+        {
+            name: "Placement OA Questions - ET - 2020",
+            link: "https://drive.google.com/drive/u/0/folders/1F-k4zWAesz2LbP1qeNccaSi3Zrh-0pT7"
+        },
+        {
+            name: "Placement OA Questions - ET - 2019",
+            link: "https://drive.google.com/drive/folders/19ztdWFDLxKTyNrrxgSLjm3MHRo4nqVo8?usp=drive_link"
+        },
+        {
+            name: "Placement OA Questions - ET - 2018",
+            link: "https://drive.google.com/drive/folders/1I4OA8WiwrA9I1cBuFSy_vMRwXQCiWAZE?usp=drive_link"
+        },
+        {
+            name: "Placement OA Questions - EE - 2018",
+            link: "https://drive.google.com/drive/folders/1AkF0xiK2eXH6o24k_32ziOB6pdkBrfHp?usp=drive_link"
+        },
+    ]
 
     return (
         <>
