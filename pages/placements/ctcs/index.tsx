@@ -96,6 +96,10 @@ export default function PlacementCTCs() {
     });
     const headers = table.getFlatHeaders();
     const rows = table.getRowModel().rows;
+    const arrow: any = {
+        asc: "🔼",
+        desc: "🔽",
+    };
 
 
     React.useEffect(() => {
@@ -197,15 +201,22 @@ export default function PlacementCTCs() {
                             <thead className='table-header-group'>
                                 <tr>
                                     {headers.map((header) => {
+                                        const direction = header.column.getIsSorted()
+                                        const sort_indicator = direction && arrow[direction];
+
                                         return (
                                             <th key={header.id}>
                                                 {header.isPlaceholder ? null : (
-                                                    <span>
+                                                    <div
+                                                        onClick={header.column.getToggleSortingHandler()}
+                                                        className="cursor-pointer flex gap-4"
+                                                    >
                                                         {flexRender(
                                                             header.column.columnDef.header,
                                                             header.getContext()
                                                         )}
-                                                    </span>
+                                                        {direction && <span>{sort_indicator}</span>}
+                                                    </div>
                                                 )}
                                             </th>
                                         );
