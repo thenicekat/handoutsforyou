@@ -114,7 +114,7 @@ export default function PS2Data() {
                             </select>
 
                             <Link className="m-3 w-full max-w-xs" href={""}>
-                                <button className="btn btn-outline w-full" onClick={updateData}>
+                                <button className="btn btn-outline w-full" onClick={updateData} tabIndex={-1}>
                                     Update Year
                                 </button>
                             </Link>
@@ -123,7 +123,7 @@ export default function PS2Data() {
 
                         <div className="flex flex-col md:flex-row w-1/2 justify-center">
                             <Link className="m-3 w-full" href={"/ps/ps2/add"}>
-                                <button className="btn btn-outline w-full">
+                                <button className="btn btn-outline w-full" tabIndex={-1}>
                                     Add your response?
                                 </button>
                             </Link>
