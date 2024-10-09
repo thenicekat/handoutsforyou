@@ -100,11 +100,12 @@ export default function PS() {
 
                     {!isLoading ?
                         <>
-                            <h1 className="text-2xl text-center my-3">Your PS1 Data</h1>
-                            {data.ps1 && data.ps1.length > 0 ? data.ps1.map((item: PS1Item, index: number) => {
-                                return (
-                                    <div key={index} className='grid md:grid-cols-2 place-items-center p-5'>
-                                        <div className='p-3 border border-gray-300 rounded-md w-3/4'>
+
+                            <div className='grid md:grid-cols-2 place-items-center p-3'>
+                                {data.ps1 && data.ps1.length > 0 ? data.ps1.map((item: PS1Item, index: number) => {
+                                    return (
+                                        <div key={index} className='p-3 border border-gray-300 rounded-md w-3/4'>
+                                            <div className='text-xl text-center'>PS1</div>
                                             <div className='text-lg font-semibold'>Station: {item.station}</div>
                                             <div className='text-lg font-semibold'>CGPA: {item.cgpa}</div>
                                             <div className='text-lg font-semibold'>Preference: {item.preference}</div>
@@ -124,24 +125,23 @@ export default function PS() {
                                                 </button>
                                             </div>
                                         </div>
+                                    )
+                                }) :
+                                    <div className="m-3 w-full text-center">
+                                        <Link href={"/ps/ps1/add"}>
+                                            <button className="btn btn-outline w-1/2">
+                                                No PS 1 Data Found! Click here to add.
+                                            </button>
+                                        </Link>
                                     </div>
-                                )
-                            }) :
-                                <div className="m-3 w-full text-center">
-                                    <Link href={"/ps/ps1/add"}>
-                                        <button className="btn btn-outline w-1/2">
-                                            Uh oh! No Data Found! Click here to add data or submit review.
-                                        </button>
-                                    </Link>
-                                </div>
-                            }
+                                }
 
-                            <h1 className="text-2xl text-center my-3">Your PS2 Data</h1>
-                            {data.ps2 && data.ps2.length > 0 ? data.ps2.map((item: PS2Item, index: number) => {
-                                return (
-                                    <div key={index} className='grid md:grid-cols-2 place-items-center p-5'>
-                                        <div className='p-3 border border-gray-300 rounded-md w-3/4'>
+                                {data.ps2 && data.ps2.length > 0 ? data.ps2.map((item: PS2Item, index: number) => {
+                                    return (
+                                        <div key={index} className='p-3 border border-gray-300 rounded-md w-3/4'>
+                                            <div className='text-xl text-center'>PS2</div>
                                             <div className='text-lg font-semibold'>Station: {item.station}</div>
+                                            <div className='text-lg font-semibold'>Stipend: {item.stipend}</div>
                                             <div className='text-lg font-semibold'>CGPA: {item.cgpa}</div>
                                             <div className='text-lg font-semibold'>Preference: {item.preference}</div>
                                             <div className='text-lg font-semibold'>Allotment Round: {item.allotment_round}</div>
@@ -163,17 +163,17 @@ export default function PS() {
                                                 </button>
                                             </div>
                                         </div>
+                                    )
+                                }) :
+                                    <div className="m-3 w-full text-center">
+                                        <Link href={"/ps/ps2/add"}>
+                                            <button className="btn btn-outline w-1/2">
+                                                No PS 2 Data Found! Click here to add.
+                                            </button>
+                                        </Link>
                                     </div>
-                                )
-                            }) :
-                                <div className="m-3 w-full text-center">
-                                    <Link href={"/ps/ps2/add"}>
-                                        <button className="btn btn-outline w-1/2">
-                                            Uh oh! No Data Found! Click here to add data or submit review.
-                                        </button>
-                                    </Link>
-                                </div>
-                            }
+                                }
+                            </div>
                         </>
                         :
                         <div className='text-lg text-center font-semibold'>Loading...</div>
