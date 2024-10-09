@@ -107,7 +107,7 @@ export default function Placement({ pu_chronicles }: any) {
                                                 <p className='text-lg'>{resource.name.toUpperCase()}</p>
 
                                                 <div className="flex-none">
-                                                    <button className="btn btn-sm btn-primary m-1" onClick={() => window.open(resource.link)}>Know more<LinkIcon className='w-5 h-5' /></button>
+                                                    <button className="btn btn-sm btn-primary m-1" tabIndex={-1} onClick={() => window.open(resource.link)}>Know more<LinkIcon className='w-5 h-5' /></button>
                                                 </div>
                                             </div>
                                         </div>
