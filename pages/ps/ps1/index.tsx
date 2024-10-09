@@ -76,7 +76,7 @@ export default function PS1Data() {
 
                     {session && <>
                         <Link className="m-3" href={"/ps"}>
-                            <button className="btn btn-outline w-full">
+                            <button className="btn btn-outline w-full" tabIndex={-1}>
                                 Are you looking for chronicles?
                             </button>
                         </Link>
