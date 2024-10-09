@@ -7,6 +7,8 @@ import { PS2Item } from "@/types/PSData";
 import { years } from "@/data/ps2";
 import { toast } from "react-toastify";
 import CustomToastContainer from "@/components/ToastContainer";
+import React from 'react';
+import { createColumnHelper, flexRender, getCoreRowModel, getSortedRowModel, SortingState, useReactTable } from '@tanstack/react-table';
 
 export default function PS2Data() {
     const [search, setSearch] = useState("");
@@ -15,8 +17,8 @@ export default function PS2Data() {
     const [cachedYear, setCachedYear] = useState("");
 
     const [isLoading, setIsLoading] = useState(false);
-    const [ps2Data, setPS2Data] = useState([]);
-    const [filteredPS2Data, setFilteredPS2Data] = useState([]);
+    const [ps2Data, setPS2Data] = useState<PS2Item[]>([]);
+    const [filteredPS2Data, setFilteredPS2Data] = useState<PS2Item[]>([]);
 
     const { data: session } = useSession()
 
@@ -51,10 +53,73 @@ export default function PS2Data() {
         setIsLoading(true);
         let filteredPS2Data = ps2Data.filter((d: PS2Item) => d.cgpa <= cgpa)
         filteredPS2Data = filteredPS2Data.filter((d: PS2Item) => d.station.toLowerCase().includes(search.toLowerCase()))
-        filteredPS2Data = filteredPS2Data.sort((a: PS2Item, b: PS2Item) => b.cgpa - a.cgpa)
         setFilteredPS2Data(filteredPS2Data);
         setIsLoading(false);
     }, [ps2Data, cgpa, search])
+
+    const columnHelper = createColumnHelper<PS2Item>();
+
+    const columnDefs = [
+        columnHelper.accessor((row) => row.id_number, {
+            id: "ID Number",
+            cell: (info) => info.getValue(),
+            header: "ID Number",
+        }),
+        columnHelper.accessor((row) => row.station, {
+            id: "Company",
+            cell: (info) => info.getValue(),
+            header: "Company",
+        }),
+        columnHelper.accessor((row) => row.cgpa, {
+            id: "CGPA",
+            cell: (info) => info.getValue(),
+            header: "CGPA",
+        }),
+        columnHelper.accessor((row) => row.stipend, {
+            id: "Stipend",
+            cell: (info) => info.getValue(),
+            header: "Stipend",
+        }),
+        columnHelper.accessor((row) => row.allotment_round, {
+            id: "Allotment Round",
+            cell: (info) => info.getValue(),
+            header: "Allotment Round",
+        }),
+        columnHelper.accessor((row) => row.offshoot, {
+            id: "Offshoot",
+            cell: (info) => info.getValue(),
+            header: "Offshoot",
+        }),
+        columnHelper.accessor((row) => row.offshoot_total, {
+            id: "Offshoot Total",
+            cell: (info) => info.getValue(),
+            header: "Offshoot Total",
+        }),
+        columnHelper.accessor((row) => row.offshoot_type, {
+            id: "Offshoot Type",
+            cell: (info) => info.getValue() || "NA",
+            header: "Offshoot Type",
+        }),
+    ]
+
+    const [sorting, setSorting] = React.useState<SortingState>([]);
+    const table = useReactTable({
+        columns: columnDefs,
+        data: filteredPS2Data ?? [],
+        getCoreRowModel: getCoreRowModel(),
+        getSortedRowModel: getSortedRowModel(),
+        state: {
+            sorting,
+        },
+        onSortingChange: setSorting,
+    });
+    const headers = table.getFlatHeaders();
+    const rows = table.getRowModel().rows;
+    const arrow: any = {
+        asc: "↑",
+        desc: "↓",
+        unsorted: "⇅",
+    };
 
     return (
         <>
@@ -172,33 +237,42 @@ export default function PS2Data() {
                                         <table className="table table-sm table-pin-rows bg-base-100">
                                             <thead className='table-header-group'>
                                                 <tr>
-                                                    <td>ID Number</td>
-                                                    <td>Company</td>
-                                                    <td>CGPA</td>
-                                                    <td>Stipend</td>
-                                                    <td>Allotment Round</td>
-                                                    <td>Offshoot</td>
-                                                    <td>Offshoot Total</td>
-                                                    <td>Offshoot Type</td>
+                                                    {headers.map((header) => {
+                                                        const direction = header.column.getIsSorted()
+                                                        const sort_indicator = (direction) ? arrow[direction] : arrow["unsorted"]
+
+                                                        return (
+                                                            <th key={header.id}>
+                                                                {header.isPlaceholder ? null : (
+                                                                    <div
+                                                                        onClick={header.column.getToggleSortingHandler()}
+                                                                        className="cursor-pointer flex gap-2"
+                                                                    >
+                                                                        {flexRender(
+                                                                            header.column.columnDef.header,
+                                                                            header.getContext()
+                                                                        )}
+                                                                        <span className={`inline-block text-center ${direction ? '' : 'opacity-50'}`}>{sort_indicator}</span>
+                                                                    </div>
+                                                                )}
+                                                            </th>
+                                                        );
+                                                    })}
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {filteredPS2Data.map((ps2Item: PS2Item) => (
-                                                    <tr key={ps2Item.id}>
-                                                        <td>{ps2Item.id_number}</td>
-                                                        <td>{ps2Item.station}</td>
-                                                        <td>{ps2Item.cgpa}</td>
-                                                        <td>{ps2Item.stipend}</td>
-                                                        <td>{ps2Item.allotment_round}</td>
-                                                        <td>{ps2Item.offshoot}</td>
-                                                        <td>{ps2Item.offshoot_total}</td>
-                                                        <td>{ps2Item.offshoot_type ? ps2Item.offshoot_type : "NA"}</td>
+                                                {rows.map((row) => (
+                                                    <tr key={row.id}>
+                                                        {row.getVisibleCells().map((cell) => (
+                                                            <td key={cell.id}>
+                                                                {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                                            </td>
+                                                        ))}
                                                     </tr>
                                                 ))}
                                             </tbody>
                                         </table>
                                     </div>
-
                                 </>
                                 :
                                 <div className="flex justify-center">
