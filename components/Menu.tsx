@@ -56,7 +56,7 @@ const Menu = () => {
                 {Object.keys(menuItems).map(
                     (menuItem) =>
                         <Link className="m-3" href={menuItems[menuItem]} key={menuItems[menuItem]}>
-                            <button className="btn btn-outline w-full uppercase">
+                            <button className="btn btn-outline w-full uppercase" tabIndex={-1}>
                                 {menuItem}
                             </button>
                         </Link>
@@ -66,7 +66,7 @@ const Menu = () => {
             <div className="grid md:grid-cols-2 justify-around" >
                 <>
                     <Link className="m-3" href="https://github.com/thenicekat/handoutsforyou">
-                        <button className="btn btn-outline btn-accent w-full">
+                        <button className="btn btn-outline btn-accent w-full" tabIndex={-1}>
                             Star on GitHub! ({starCount})
                         </button>
                     </Link>
@@ -74,11 +74,11 @@ const Menu = () => {
                     {
                         !session ?
                             <Link className="m-3" href={"#"}>
-                                <button className="btn btn-warning btn-outline w-full" onClick={() => signIn("google")}>Sign In</button>
+                                <button className="btn btn-warning btn-outline w-full" onClick={() => signIn("google")} tabIndex={-1}>Sign In</button>
                             </Link>
                             :
                             <Link className="m-3" href={"#"}>
-                                <button className="btn btn-warning btn-outline w-full" onClick={() => signOut()}>Sign Out</button>
+                                <button className="btn btn-warning btn-outline w-full" onClick={() => signOut()} tabIndex={-1}>Sign Out</button>
                             </Link>
                     }
                 </>

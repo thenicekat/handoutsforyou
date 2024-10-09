@@ -53,19 +53,19 @@ export default function PS() {
 
                 <div className="flex flex-col md:flex-row w-1/2 justify-center">
                     <Link className="m-3 w-full" href={"/ps/ps1/chronicles"}>
-                        <button className="btn btn-outline w-full">
+                        <button className="btn btn-outline w-full" tabIndex={-1}>
                             PS1 Chronicles
                         </button>
                     </Link>
 
                     <Link className="m-3 w-full" href={"/ps/ps1/"}>
-                        <button className="btn btn-outline w-full">
+                        <button className="btn btn-outline w-full" tabIndex={-1}>
                             PS1 CGPA Cutoffs
                         </button>
                     </Link>
 
                     <Link className="m-3 w-full" href={"/ps/ps1/reviews"}>
-                        <button className="btn btn-outline w-full">
+                        <button className="btn btn-outline w-full" tabIndex={-1}>
                             PS1 Reviews
                         </button>
                     </Link>
@@ -73,19 +73,19 @@ export default function PS() {
 
                 <div className="flex flex-col md:flex-row w-1/2 justify-center">
                     <Link className="m-3 w-full" href={"/ps/ps2/chronicles"}>
-                        <button className="btn btn-outline w-full">
+                        <button className="btn btn-outline w-full" tabIndex={-1}>
                             PS2 Chronicles
                         </button>
                     </Link>
 
                     <Link className="m-3 w-full" href={"/ps/ps2/"}>
-                        <button className="btn btn-outline w-full">
+                        <button className="btn btn-outline w-full" tabIndex={-1}>
                             PS2 CGPA Cutoffs
                         </button>
                     </Link>
 
                     <Link className="m-3 w-full" href={"/ps/ps2/reviews"}>
-                        <button className="btn btn-outline w-full">
+                        <button className="btn btn-outline w-full" tabIndex={-1}>
                             PS2 Reviews
                         </button>
                     </Link>
@@ -129,7 +129,7 @@ export default function PS() {
                                 }) :
                                     <div className="m-3 w-full text-center">
                                         <Link href={"/ps/ps1/add"}>
-                                            <button className="btn btn-outline w-1/2">
+                                            <button className="btn btn-outline w-1/2" tabIndex={-1}>
                                                 No PS 1 Data Found! Click here to add.
                                             </button>
                                         </Link>
@@ -167,7 +167,7 @@ export default function PS() {
                                 }) :
                                     <div className="m-3 w-full text-center">
                                         <Link href={"/ps/ps2/add"}>
-                                            <button className="btn btn-outline w-1/2">
+                                            <button className="btn btn-outline w-1/2" tabIndex={-1}>
                                                 No PS 2 Data Found! Click here to add.
                                             </button>
                                         </Link>

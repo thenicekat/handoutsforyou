@@ -61,7 +61,7 @@ export default function Reviews({ }: {}) {
 
                         <div className="flex flex-col md:flex-row w-1/2 justify-center">
                             <Link className="w-full hidden md:block" href={"/rants/add"}>
-                                <button className="btn btn-outline w-full">
+                                <button className="btn btn-outline w-full" tabIndex={-1}>
                                     Add a Rant
                                 </button>
                             </Link>

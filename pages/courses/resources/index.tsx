@@ -95,7 +95,7 @@ export default function Resources() {
 
                             <div className="flex-col hidden md:block md:flex-row w-1/3 justify-center">
                                 <Link className="m-3 w-full" href={"/courses/resources/add"}>
-                                    <button className="btn btn-outline w-full">
+                                    <button className="btn btn-outline w-full" tabIndex={-1}>
                                         Add a Resource
                                     </button>
                                 </Link>
