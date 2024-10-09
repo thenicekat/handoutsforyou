@@ -9,6 +9,7 @@ import CustomToastContainer from '@/components/ToastContainer';
 import { PlusCircleIcon } from '@heroicons/react/24/solid'
 import { PlacementCTC } from '@/types/PlacementData';
 import { years } from '@/data/placements';
+import { createColumnHelper, flexRender, getCoreRowModel, getSortedRowModel, SortingState, useReactTable } from '@tanstack/react-table';
 
 export default function PlacementCTCs() {
     const [input, setInput] = useState("");
@@ -31,6 +32,71 @@ export default function PlacementCTCs() {
             toast.error("Error fetching placement details")
         }
     }
+
+    const columnHelper = createColumnHelper<PlacementCTC>();
+
+    const columnDefs = [
+        columnHelper.accessor((row) => row.company, {
+            id: "Company",
+            cell: (info) => info.getValue(),
+            header: "Company",
+        }),
+        columnHelper.accessor((row) => row.campus, {
+            id: "Campus",
+            cell: (info) => info.getValue(),
+            header: "Campus",
+        }),
+        columnHelper.accessor((row) => row.base, {
+            id: "Base",
+            cell: (info) => info.getValue(),
+            header: "Base",
+        }),
+        columnHelper.accessor((row) => row.joining_bonus, {
+            id: "Joining Bonus",
+            cell: (info) => info.getValue(),
+            header: "Joining Bonus",
+        }),
+        columnHelper.accessor((row) => row.relocation_bonus, {
+            id: "Relocation Bonus",
+            cell: (info) => info.getValue(),
+            header: "Relocation Bonus",
+        }),
+        columnHelper.accessor((row) => row.variable_bonus, {
+            id: "Variable Bonus",
+            cell: (info) => info.getValue(),
+            header: "Variable Bonus",
+        }),
+        columnHelper.accessor((row) => row.monetary_value_of_benefits, {
+            id: "Other",
+            cell: (info) => info.getValue(),
+            header: "Other",
+        }),
+        columnHelper.accessor((row) => row.description, {
+            id: "Description",
+            cell: (info) => info.getValue(),
+            header: "Description",
+        }),
+        columnHelper.accessor((row) => row.base + row.joining_bonus + row.relocation_bonus + row.variable_bonus + row.monetary_value_of_benefits, {
+            id: "Total CTC",
+            cell: (info) => info.getValue(),
+            header: "Total CTC",
+        }),
+    ]
+
+    const [sorting, setSorting] = React.useState<SortingState>([]);
+    const table = useReactTable({
+        columns: columnDefs,
+        data: placementCTCs ?? [],
+        getCoreRowModel: getCoreRowModel(),
+        getSortedRowModel: getSortedRowModel(),
+        state: {
+            sorting,
+        },
+        onSortingChange: setSorting,
+    });
+    const headers = table.getFlatHeaders();
+    const rows = table.getRowModel().rows;
+
 
     React.useEffect(() => {
         fetchPlacementCTCs()
@@ -116,6 +182,9 @@ export default function PlacementCTCs() {
                                             <p className="m-1">Variable Bonus: {placementCTC.variable_bonus}</p>
                                             <p className="m-1">Monetary Value of Benefits: {placementCTC.monetary_value_of_benefits}</p>
                                             <p className="m-1">Desc: {placementCTC.description}</p>
+                                            <p className="m-1">Total CTC: {
+                                                placementCTC.base + placementCTC.joining_bonus + placementCTC.relocation_bonus + placementCTC.variable_bonus + placementCTC.monetary_value_of_benefits
+                                            }</p>
                                         </div>
                                     </div>
                                 </div>))
@@ -127,27 +196,30 @@ export default function PlacementCTCs() {
                         <table className="table table-sm table-pin-rows bg-base-100">
                             <thead className='table-header-group'>
                                 <tr>
-                                    <td>Company</td>
-                                    <td>Campus</td>
-                                    <td>Base</td>
-                                    <td>Joining Bonus</td>
-                                    <td>Relocation Bonus</td>
-                                    <td>Variable Bonus</td>
-                                    <td>Monetary Value of Benefits</td>
-                                    <td>Description</td>
+                                    {headers.map((header) => {
+                                        return (
+                                            <th key={header.id}>
+                                                {header.isPlaceholder ? null : (
+                                                    <span>
+                                                        {flexRender(
+                                                            header.column.columnDef.header,
+                                                            header.getContext()
+                                                        )}
+                                                    </span>
+                                                )}
+                                            </th>
+                                        );
+                                    })}
                                 </tr>
                             </thead>
                             <tbody>
-                                {placementCTCs.filter((placementCTC) => placementCTC.company.toLowerCase().includes(input.toLowerCase())).map((placementCTC) => (
-                                    <tr key={placementCTC.company + "/" + placementCTC.campus}>
-                                        <td>{placementCTC.company}</td>
-                                        <td>{placementCTC.campus}</td>
-                                        <td>{placementCTC.base}</td>
-                                        <td>{placementCTC.joining_bonus}</td>
-                                        <td>{placementCTC.relocation_bonus}</td>
-                                        <td>{placementCTC.variable_bonus}</td>
-                                        <td>{placementCTC.monetary_value_of_benefits}</td>
-                                        <td>{placementCTC.description}</td>
+                                {rows.map((row) => (
+                                    <tr key={row.id}>
+                                        {row.getVisibleCells().map((cell) => (
+                                            <td key={cell.id}>
+                                                {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                            </td>
+                                        ))}
                                     </tr>
                                 ))}
                             </tbody>
