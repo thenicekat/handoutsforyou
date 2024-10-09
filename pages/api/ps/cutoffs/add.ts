@@ -25,15 +25,20 @@ type RequestData = {
     public: number
 }
 
-const validateEmailIDNumber = (email: string, idNumber: string) => {
-    if (email[0] == "f" && "f" + idNumber.slice(0, 4) + idNumber.slice(8, 12) !== email?.split("@")[0]) {
-        return false
+const matchEmailIDNumber = (email: string, idNumber: string): string => {
+    let uid = email.split("@")[0]
+    let campus = email.split("@")[1].split(".")[0]
+    if (campus[0].toUpperCase() !== idNumber[12]) {
+        return "Please enter correct campus in your ID number."
     }
-    // TODO: Add validation for HD students.
-    if (email[0] == "h") {
-        return true
+    if (uid[0] == "f" && "f" + idNumber.slice(0, 4) + idNumber.slice(8, 12) !== uid) {
+        return "Your email and your ID number do not match. Please enter the correct ID number."
     }
-    return true
+    // TODO: Add more checks for HD users.
+    if (uid[0] == "h") {
+        return ""
+    }
+    return ""
 }
 
 export default async function handler(
@@ -126,12 +131,13 @@ export default async function handler(
             }
             // Validate ID Number.
             if (!reqBody.idNumber || (reqBody && reqBody.idNumber && reqBody.idNumber?.length != 13)) {
-                res.status(422).json({ message: "ID number should be 13 characters, if your id number is not of this format, please reach out to the developers to add your response.", data: [], error: true });
+                res.status(422).json({ message: "ID number should be 13 characters. For any queries, please reach out to the developers.", data: [], error: true });
                 return;
             }
             // Check if email and ID Number match, this is only doing for PS2
-            if (!validateEmailIDNumber(email, reqBody.idNumber)) {
-                res.status(422).json({ message: "Email and ID Number do not match.", data: [], error: true })
+            const matchingCheckResponse = matchEmailIDNumber(email, reqBody.idNumber)
+            if (matchingCheckResponse !== "") {
+                res.status(422).json({ message: matchingCheckResponse, data: [], error: true })
                 return
             }
             // Validate stipend.
