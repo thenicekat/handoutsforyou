@@ -76,7 +76,7 @@ export default function SummerInternships({ siChronicles }: any) {
 
                     <div className="collapse collapse-plus">
                         <input type="checkbox" />
-                        <h1 className="collapse-title text-xl font-medium">General Resources</h1>
+                        <h1 className="collapse-title text-xl font-medium">General Resources x {resources.length}</h1>
 
                         <div className="collapse-content">
                             <div className='px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center'>
@@ -102,7 +102,7 @@ export default function SummerInternships({ siChronicles }: any) {
                         Object.keys(siChronicles).map((campus: string) => (
                             <div className="collapse collapse-plus" key={campus}>
                                 <input type="checkbox" />
-                                <h1 className="collapse-title text-xl font-medium">SI Chronicles - {campus}</h1>
+                                <h1 className="collapse-title text-xl font-medium">SI Chronicles - {campus} x {siChronicles[campus].length}</h1>
 
                                 <div className="collapse-content">
                                     <div className='px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center'>
@@ -115,7 +115,7 @@ export default function SummerInternships({ siChronicles }: any) {
 
                                                         <div className="flex-none">
                                                             <button className="btn btn-sm btn-primary m-1" onClick={() => {
-                                                                window.open("https://github.com/thenicekat/handoutsforyou/raw/main/public/placements/chronicles/" + campus + "/" + chron, "_blank")
+                                                                window.open("https://github.com/thenicekat/handoutsforyou/raw/main/public/si/" + campus + "/" + chron, "_blank")
                                                             }}>Know more<LinkIcon className='w-5 h-5' /></button>
                                                         </div>
                                                     </div>
