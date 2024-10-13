@@ -95,7 +95,7 @@ export default function Placement({ pu_chronicles }: any) {
 
                     <div className="collapse collapse-plus">
                         <input type="checkbox" />
-                        <h1 className="collapse-title text-xl font-medium">General Resources</h1>
+                        <h1 className="collapse-title text-xl font-medium">General Resources x {resources.length}</h1>
 
                         <div className="collapse-content">
                             <div className='px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center'>
@@ -121,7 +121,7 @@ export default function Placement({ pu_chronicles }: any) {
                         Object.keys(pu_chronicles).map((campus: string) => (
                             <div className="collapse collapse-plus" key={campus}>
                                 <input type="checkbox" />
-                                <h1 className="collapse-title text-xl font-medium">Placement Chronicles - {campus}</h1>
+                                <h1 className="collapse-title text-xl font-medium">Placement Chronicles - {campus} x {pu_chronicles[campus].length}</h1>
 
                                 <div className="collapse-content">
                                     <div className='px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center'>
