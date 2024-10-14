@@ -13,11 +13,11 @@ export const years = [
 ]
 
 export const allotmentRounds = [
+    "Interaction Role",
+    "PS Lock",
     "Round 1",
     "Round 2",
     "Round 3",
     "Round 4",
     "Grievance",
-    "Interaction Role",
-    "PS Lock"
 ]
