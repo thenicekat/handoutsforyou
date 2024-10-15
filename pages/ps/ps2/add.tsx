@@ -39,6 +39,12 @@ export default function AddPS2Response({ }: {}) {
             return
         }
 
+        if (offshoot > offshootTotal) {
+            toast.error("Offshoot cannot be greater than Offshoot Total!")
+            setIsLoading(false)
+            return
+        }
+
         const res = await fetch("/api/ps/cutoffs/add", {
             method: "POST",
             body: JSON.stringify({
