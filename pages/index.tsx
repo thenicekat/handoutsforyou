@@ -65,7 +65,7 @@ export default function Home() {
 
       <div className="grid place-items-center">
         <div className="w-[70vw] place-items-center flex flex-col justify-between">
-          <h1 className="text-5xl pt-[25px] pb-[15px] text-primary">Handouts4U.</h1>
+          <h1 className="text-5xl pt-[50px] pb-[25px] text-primary">Handouts4U.</h1>
         </div>
       </div>
 

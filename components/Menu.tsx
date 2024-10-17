@@ -26,6 +26,7 @@ const Menu = () => {
         "Research Chronicles": "https://pollen-box-786.notion.site/Research-Chronicles-894bcac1266d4e5fac2f4cd76ff29750",
         "Rants": "/rants",
         "Placements": "/placements",
+        "Placement CTCs": "/placements/ctcs",
         "Practice School": "/ps",
         "Course Prereqs": "/courses/prereqs",
         "Minor Courses": "/minors.html",
@@ -49,7 +50,7 @@ const Menu = () => {
         <>
             {/* Mobile Menu */}
             <div
-                className="z-50 w-14 fixed bottom-9 right-0 m-4 cursor-pointer text-white md:hidden"
+                className="z-50 w-14 fixed bottom-9 md:top-0 right-0 m-4 cursor-pointer text-white"
                 onClick={() => {
                     toggleMobileMenu()
                 }}>
@@ -57,9 +58,9 @@ const Menu = () => {
             </div>
             <div>
                 {mobileMenu && (
-                    <div className="sm:hidden fixed top-0 left-0 w-full h-full text-white bg-black z-30 text-center">
+                    <div className="fixed top-0 left-0 w-full h-full text-white bg-black z-30 text-center">
                         <h1 className="text-2xl text-center p-3 uppercase">Menu</h1>
-                        <div className="grid grid-cols-1 justify-around">
+                        <div className="grid grid-cols-1 md:grid-cols-2 justify-around">
                             {Object.keys(menuItems).map(
                                 (menuItem) =>
                                     <Link className="m-3" href={menuItems[menuItem]} key={menuItems[menuItem]}>
@@ -68,18 +69,6 @@ const Menu = () => {
                             )}
                         </div>
                     </div>
-                )}
-            </div>
-
-            {/* Desktop Menu */}
-            <div className={`hidden sm:grid md:grid-cols-5 sm:grid-cols-3 justify-around`}>
-                {Object.keys(menuItems).map(
-                    (menuItem) =>
-                        <Link className="m-3" href={menuItems[menuItem]} key={menuItems[menuItem]}>
-                            <button className="btn btn-outline w-full uppercase" tabIndex={-1}>
-                                {menuItem}
-                            </button>
-                        </Link>
                 )}
             </div>
 
