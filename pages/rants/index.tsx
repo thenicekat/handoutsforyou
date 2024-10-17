@@ -66,16 +66,12 @@ export default function Reviews({ }: {}) {
                                 </button>
                             </Link>
                         </div>
-
-                        <div
-                            className="z-10 w-14 fixed bottom-0 right-0 my-10 mx-3 text-cyan-300 cursor-pointer md:hidden"
-                            onClick={
-                                () => {
-                                    window.location.href = "/rants/add";
-                                }
-                            }>
-                            <PlusCircleIcon />
+                        <div className="z-10 w-14 fixed bottom-3 left-0 m-4 cursor-pointer text-white md:hidden">
+                            <Link className="m-3 w-full" href={"/rants/add"}>
+                                <PlusCircleIcon />
+                            </Link>
                         </div>
+
                     </>}
                 </div>
             </div>
