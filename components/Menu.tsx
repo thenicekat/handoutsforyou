@@ -58,12 +58,16 @@ const Menu = () => {
             </div>
             <div>
                 {mobileMenu && (
-                    <div className="fixed top-0 left-0 w-full h-full text-white bg-black z-30 text-center">
-                        <h1 className="text-2xl text-center p-3 uppercase">Menu</h1>
-                        <div className="grid grid-cols-1 md:grid-cols-2 justify-around">
+                    <div className="fixed overflow-y-scroll top-0 left-0 w-full h-full text-white bg-black z-30 text-center">
+                        <h1 className="text-5xl pt-[50px] pb-[25px] text-primary">Menu.</h1>
+                        <div className="grid grid-cols-1 md:grid-cols-2 justify-around text-2xl">
                             {Object.keys(menuItems).map(
                                 (menuItem) =>
-                                    <Link className="m-3" href={menuItems[menuItem]} key={menuItems[menuItem]}>
+                                    <Link
+                                        className="m-3 transition ease-in-out delay-150 hover:scale-110 duration-200"
+                                        href={menuItems[menuItem]}
+                                        key={menuItems[menuItem]}
+                                    >
                                         {menuItem}
                                     </Link>
                             )}
