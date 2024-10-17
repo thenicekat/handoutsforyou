@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { signIn, signOut, useSession } from 'next-auth/react'
+import { Bars2Icon, EllipsisHorizontalCircleIcon, XCircleIcon } from '@heroicons/react/24/solid';
 
 if (
     typeof window !== "undefined" &&
@@ -14,7 +15,7 @@ if (
 
 const Menu = () => {
     const { data: session } = useSession()
-    const [menu, setMenu] = React.useState(false)
+    const [mobileMenu, setMobileMenu] = React.useState(false)
     const [starCount, setStarCount] = React.useState(0)
 
     const menuItems: any = {
@@ -30,8 +31,8 @@ const Menu = () => {
         "Minor Courses": "/minors.html",
     }
 
-    const toggleMenu = () => {
-        setMenu(!menu)
+    const toggleMobileMenu = () => {
+        setMobileMenu(!mobileMenu)
     }
 
     const getStarCount = async () => {
@@ -46,13 +47,32 @@ const Menu = () => {
 
     return (
         <>
-            <Link className="m-3 grid grid-cols-1 justify-around" href={"#"}>
-                <button className="btn btn-outline w-full sm:hidden" onClick={() => toggleMenu()}>
-                    {!menu ? "Open" : "Close"} the menu
-                </button>
-            </Link>
+            {/* Mobile Menu */}
+            <div
+                className="z-50 w-14 fixed bottom-9 right-0 m-4 cursor-pointer text-white md:hidden"
+                onClick={() => {
+                    toggleMobileMenu()
+                }}>
+                {!mobileMenu ? <EllipsisHorizontalCircleIcon /> : <XCircleIcon />}
+            </div>
+            <div>
+                {mobileMenu && (
+                    <div className="sm:hidden fixed top-0 left-0 w-full h-full text-white bg-black z-30 text-center">
+                        <h1 className="text-2xl text-center p-3 uppercase">Menu</h1>
+                        <div className="grid grid-cols-1 justify-around">
+                            {Object.keys(menuItems).map(
+                                (menuItem) =>
+                                    <Link className="m-3" href={menuItems[menuItem]} key={menuItems[menuItem]}>
+                                        {menuItem}
+                                    </Link>
+                            )}
+                        </div>
+                    </div>
+                )}
+            </div>
 
-            <div className={`${menu ? 'grid' : 'hidden'} sm:grid md:grid-cols-5 sm:grid-cols-3 justify-around`}>
+            {/* Desktop Menu */}
+            <div className={`hidden sm:grid md:grid-cols-5 sm:grid-cols-3 justify-around`}>
                 {Object.keys(menuItems).map(
                     (menuItem) =>
                         <Link className="m-3" href={menuItems[menuItem]} key={menuItems[menuItem]}>

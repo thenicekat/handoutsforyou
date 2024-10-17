@@ -63,21 +63,20 @@ export default function Home() {
       </Head>
 
 
-      {/* Search box */}
       <div className="grid place-items-center">
         <div className="w-[70vw] place-items-center flex flex-col justify-between">
-          <h1 className="text-5xl pt-[50px] pb-[20px] px-[35px] text-primary">Handouts for You.</h1>
-
-          <Menu />
+          <h1 className="text-5xl pt-[25px] pb-[15px] text-primary">Handouts4U.</h1>
         </div>
       </div>
 
       {session &&
         !isLoading &&
-        <div className="px-2 md:px-20 text-center">
+        <div className="px-2 md:px-20 text-center place-items-center">
           Thank you! For making this project a huge success. We wouldn&apos;t be here without your support.
 
-          <br /><br />
+          <div className="">
+            <Menu />
+          </div>
 
           <div className='grid md:grid-cols-2'>
             <div>

@@ -100,7 +100,7 @@ export default function Resources() {
                                     </button>
                                 </Link>
                             </div>
-                            <div className="z-10 w-14 fixed bottom-5 right-0 m-4 cursor-pointer text-cyan-300 md:hidden">
+                            <div className="z-10 w-14 fixed bottom-3 left-0 m-4 cursor-pointer text-white md:hidden">
                                 <Link className="m-3 w-full" href={"/courses/resources/add"}>
                                     <PlusCircleIcon />
                                 </Link>
