@@ -66,6 +66,8 @@ export default function Home() {
       <div className="grid place-items-center">
         <div className="w-[70vw] place-items-center flex flex-col justify-between">
           <h1 className="text-5xl pt-[50px] pb-[25px] text-primary">Handouts4U.</h1>
+
+          <Menu />
         </div>
       </div>
 
@@ -73,10 +75,6 @@ export default function Home() {
         !isLoading &&
         <div className="px-2 md:px-20 text-center place-items-center">
           Thank you! For making this project a huge success. We wouldn&apos;t be here without your support.
-
-          <div className="">
-            <Menu />
-          </div>
 
           <div className='grid md:grid-cols-2'>
             <div>
