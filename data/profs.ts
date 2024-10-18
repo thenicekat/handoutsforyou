@@ -264,4 +264,5 @@ export const profs = [
   "Souri Banerjee .",
   "ACV Subramaniam",
   "Akanksha Rathore",
+  "Krishnanunni Hari"
 ];
