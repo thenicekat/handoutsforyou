@@ -3,5 +3,4 @@ export type CourseGrading = {
     semester: string;
     image: string;
     created_by: string;
-    is_midsem: boolean;
 }

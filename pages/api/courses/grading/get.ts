@@ -26,7 +26,7 @@ export default async function handler(
 
     const { data, error } = await supabase
         .from(COURSE_GRADING)
-        .select('id, course, created_by, semester, image, is_midsem')
+        .select('id, course, created_by, semester, image')
 
     if (error) {
         console.error(error)

@@ -1,11 +1,12 @@
 import { GetStaticProps } from "next";
 import Head from "next/head";
-import { useState } from "react";
+import React, { useState } from "react";
 import Menu from "@/components/Menu";
 import { useSession } from "next-auth/react";
 import { PreReqGroup } from "@/types/PreReq";
 import Modal from "@/components/Modal";
 import { toast } from 'react-toastify';
+import { CourseGrading } from "@/types/CourseGrading";
 
 export const getStaticProps: GetStaticProps = async () => {
     const fs = require("fs");
@@ -14,7 +15,7 @@ export const getStaticProps: GetStaticProps = async () => {
     prereqs = JSON.parse(prereqs)
     let courses: GradingProps = {};
     prereqs.forEach((prereq: PreReqGroup) => {
-        courses[prereq.name] = {"name": prereq.name, "images": []};
+        courses[prereq.name] = [];
     });
     return {
         props: {
@@ -23,30 +24,47 @@ export const getStaticProps: GetStaticProps = async () => {
     };
 };
 
-interface ImageItem {
-    image: string;
-    created_by: string;
-    isMidsem: boolean;
-}
-
-interface CourseGrading {
-    name: string;
-    images: ImageItem[];
-}
-
 interface GradingProps {
-    [name: string]: CourseGrading;
+    [name: string]: CourseGrading[];
 }
 
 export default function Grading({ courses }: { courses: GradingProps }) {
     const [search, setSearch] = useState("");
     const { data: session } = useSession()
     const [open, setOpen] = useState(false);
-    const [course, setCourse] = useState<CourseGrading | null>(null);
+    const [course, setCourse] = useState<string | null>(null);
 
     const toggleModal = () => {
         setOpen(!open);
     };
+
+    const fetchGrading = async () => {
+        const res = await fetch("/api/courses/grading/get")
+        const data = await res.json()
+        if (!data.error) {
+            console.log(data.data)
+            for (let i = 0; i < data.data.length; i++) {
+                courses[data.data[i].category].push(data.data[i])
+            }
+        } else {
+            toast.error("Error fetching course grading")
+        }
+    }
+
+    const groupBySemester = (courseGradings: CourseGrading[]) => {
+        return courseGradings.reduce((acc, courseGrading) => {
+            const { semester } = courseGrading;
+            if (!acc[semester]) {
+                acc[semester] = [];
+            }
+            acc[semester].push(courseGrading);
+            return acc;
+        }, {} as Record<string, CourseGrading[]>);
+    };
+
+    React.useEffect(() => {
+        fetchGrading()
+    }, [])
 
     return (
         <>
@@ -78,15 +96,44 @@ export default function Grading({ courses }: { courses: GradingProps }) {
             {session && <div className='grid md:grid-cols-3 place-items-center p-5'>
                 <Modal open={open}>
                     <h3 className="font-bold text-lg">
-                        {course?.name}
+                        {course}
                     </h3>
                     <div className="card-actions justify-begin text-primary my-3">
                         {
-                            course && course.images.length > 0
+                            course && courses[course].length > 0
                                 ?
-                                course.images.map((imageItem) =>
-                                    <li key={imageItem.image}>{imageItem.image} (By: {imageItem.created_by})</li>
-                                )
+                                (() => {
+                                    const groupedBySemester = courses[course].reduce((acc, courseGrading) => {
+                                        const { semester } = courseGrading;
+                                        if (!acc[semester]) {
+                                            acc[semester] = [];
+                                        }
+                                        acc[semester].push(courseGrading);
+                                        return acc;
+                                    }, {} as Record<string, CourseGrading[]>);
+            
+                                    return (
+                                        <div style={{ maxHeight: '400px', overflowY: 'auto' }}>
+                                            {Object.keys(groupedBySemester).map(semester => (
+                                                <div key={semester}>
+                                                    <h3>Semester {semester}</h3>
+                                                    <ul>
+                                                        {groupedBySemester[semester].map((courseGrading: CourseGrading) => (
+                                                            <li key={courseGrading.image}>
+                                                                <img 
+                                                                    src={`data:image/jpeg;base64,${courseGrading.image}`} 
+                                                                    alt={`Grading by ${courseGrading.created_by}`} 
+                                                                    style={{ width: '100%' }} 
+                                                                />
+                                                                <p>By: {courseGrading.created_by}</p>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    );
+                                })()
                                 :
                                 <p>No images. Be the first to upload one!</p>
                         }
@@ -96,12 +143,13 @@ export default function Grading({ courses }: { courses: GradingProps }) {
                         <label className="btn btn-primary" onClick={() => toggleModal()}>Close</label>
                     </div>
                 </Modal>
-
+            
                 {
                     Array.from(Object.keys(courses)).filter((name) => name.toLowerCase().includes(search.toLowerCase())).map((name) => (
                         <div className="card w-11/12 bg-secondary text-neutral-content m-2 cursor-grab" key={name} onClick={() => {
                             toggleModal()
-                            setCourse(courses[name])
+                            setCourse(name)
+                            console.log(name)
                         }}>
                             <div className="card-body items-center">
                                 <h2 className="card-title text-primary">{name}</h2>
@@ -109,7 +157,7 @@ export default function Grading({ courses }: { courses: GradingProps }) {
                         </div>
                     ))
                 }
-            </div >}
+            </div>}
 
         </>
     );
