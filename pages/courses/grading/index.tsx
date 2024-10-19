@@ -103,14 +103,7 @@ export default function Grading({ courses }: { courses: GradingProps }) {
                             course && courses[course].length > 0
                                 ?
                                 (() => {
-                                    const groupedBySemester = courses[course].reduce((acc, courseGrading) => {
-                                        const { semester } = courseGrading;
-                                        if (!acc[semester]) {
-                                            acc[semester] = [];
-                                        }
-                                        acc[semester].push(courseGrading);
-                                        return acc;
-                                    }, {} as Record<string, CourseGrading[]>);
+                                    const groupedBySemester = groupBySemester(courses[course]);
             
                                     return (
                                         <div style={{ maxHeight: '400px', overflowY: 'auto' }}>
