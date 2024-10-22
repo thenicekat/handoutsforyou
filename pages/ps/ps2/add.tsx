@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useState } from "react";
 import Menu from "@/components/Menu";
 import { useSession } from "next-auth/react";
-import { years, allotmentRounds } from "@/data/ps2";
+import { semesters, allotmentRounds } from "@/data/years_sems";
 import AutoCompleter from "@/components/AutoCompleter";
 import { toast } from "react-toastify";
 import CustomToastContainer from "@/components/ToastContainer";
@@ -27,7 +27,7 @@ export default function AddPS2Response({ }: {}) {
     const AddResponse = async () => {
         setIsLoading(true)
 
-        if (years.indexOf(yearAndSem) === -1) {
+        if (semesters.indexOf(yearAndSem) === -1) {
             toast.error("Invalid Year and Sem, Please select from the dropdown!")
             setIsLoading(false)
             return
@@ -119,7 +119,7 @@ export default function AddPS2Response({ }: {}) {
 
                             <div className="flex flex-col w-3/4 justify-between m-1">
                                 <label htmlFor="yearAndSem" className="text-primary">Year and Sem</label>
-                                <AutoCompleter name="Year and Sem" value={yearAndSem} items={years} onChange={(e) => setYearAndSem(e)} />
+                                <AutoCompleter name="Year and Sem" value={yearAndSem} items={semesters} onChange={(e) => setYearAndSem(e)} />
                             </div>
 
                             <div className="flex flex-col w-3/4 justify-between m-1">

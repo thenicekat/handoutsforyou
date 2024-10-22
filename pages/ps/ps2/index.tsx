@@ -4,7 +4,7 @@ import Menu from "@/components/Menu";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { PS2Item } from "@/types/PSData";
-import { years } from "@/data/ps2";
+import { semesters } from "@/data/years_sems";
 import { toast } from "react-toastify";
 import CustomToastContainer from "@/components/ToastContainer";
 import React from 'react';
@@ -13,7 +13,7 @@ import { createColumnHelper, flexRender, getCoreRowModel, getSortedRowModel, Sor
 export default function PS2Data() {
     const [search, setSearch] = useState("");
     const [cgpa, setCGPA] = useState(10);
-    const [yearRef, setYearRef] = useState(years[0]);
+    const [yearRef, setYearRef] = useState(semesters[0]);
     const [cachedYear, setCachedYear] = useState("");
 
     const [isLoading, setIsLoading] = useState(false);
@@ -172,8 +172,8 @@ export default function PS2Data() {
                             <select className="select select-bordered w-full max-w-xs m-3" onChange={(e) => setYearRef(e.target.value)}>
                                 <option disabled selected>Which year to use as reference?</option>
                                 {
-                                    years.map((year) => (
-                                        <option value={year} key={year} selected={yearRef == year}>{year}</option>
+                                    semesters.map((semester) => (
+                                        <option value={semester} key={semester} selected={yearRef == semester}>{semester}</option>
                                     ))
                                 }
                             </select>

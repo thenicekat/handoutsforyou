@@ -20,7 +20,7 @@ export default function Grading() {
     const [prof, setProf] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [gradings, setGradings] = useState<GradingBySemester>({});
-    
+
     const { data: session } = useSession();
 
     const parseCSVToTable = (csv: string) => {
@@ -74,7 +74,6 @@ export default function Grading() {
             if (response.error && response.status !== 400) {
                 toast.error(response.message);
             } else {
-                // Group by semester
                 const gradingsBySemester: GradingBySemester = {};
                 response.data.forEach((grading: CourseGrading) => {
                     if (!gradingsBySemester[grading.sem]) {
