@@ -8,7 +8,7 @@ import AutoCompleter from "@/components/AutoCompleter";
 import CustomToastContainer from "@/components/ToastContainer";
 import { toast } from "react-toastify";
 import { GradeRow } from "@/types/CourseGrading";
-import { semesters } from "@/data/years_sems";
+import { gradedSemesters } from "@/data/years_sems";
 
 export default function AddGrading() {
     const [course, setCourse] = useState("");
@@ -134,14 +134,14 @@ export default function AddGrading() {
             if (result.error) {
                 toast.error(result.message);
             } else {
-                toast.success("Grading data added successfully!");
-                // Reset all states
+                toast.success("Grading data added successfully! Thank you!");
+
                 setCourse("");
                 setProf("");
                 setSemester("");
                 setGradingData("");
                 setParsedData(null);
-                // Clear localStorage
+
                 localStorage.removeItem("h4u_grading_course");
                 localStorage.removeItem("h4u_grading_prof");
             }
@@ -184,7 +184,6 @@ export default function AddGrading() {
                     {session && (
                         <>
                             {parsedData === null ? (
-                                // Initial State
                                 <>
                                     <AutoCompleter
                                         name={"Course"}
@@ -192,19 +191,22 @@ export default function AddGrading() {
                                         value={course}
                                         onChange={(val) => setCourse(val)}
                                     />
+
                                     <span className="m-2"></span>
+
                                     <AutoCompleter
                                         name={"Prof"}
                                         items={profs}
                                         value={prof}
                                         onChange={(val) => setProf(val)}
                                     />
+
                                     <span className="m-2"></span>
 
                                     <div className="w-full max-w-xl">
                                         <AutoCompleter
                                             name={"Semester"}
-                                            items={semesters}
+                                            items={gradedSemesters}
                                             value={semester}
                                             onChange={(val) => setSemester(val)}
                                         />
