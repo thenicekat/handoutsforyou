@@ -1,153 +1,179 @@
-import Head from 'next/head';
-import Link from 'next/link';
-import { useState, useEffect } from 'react';
-import Menu from '@/components/Menu';
-import { useSession } from 'next-auth/react';
-import React from 'react';
-import { toast } from 'react-toastify';
-import CustomToastContainer from '@/components/ToastContainer';
-import { CourseGrading } from '@/types/CourseGrading';
-import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table';
+import Head from "next/head";
+import { useEffect, useState } from "react";
+import Menu from "@/components/Menu";
+import { useSession } from "next-auth/react";
+import Link from "next/link";
+import { CourseGrading } from "@/types/CourseGrading";
+import { courses } from "@/data/courses";
+import { profs } from "@/data/profs";
+import AutoCompleter from "@/components/AutoCompleter";
+import CustomToastContainer from "@/components/ToastContainer";
+import { toast } from "react-toastify";
+import { PlusCircleIcon } from '@heroicons/react/24/solid';
 
-interface GradeDataTable {
-    grade: string,
-    min?: number,
-    max?: number,
-    num?: number
+interface GradingBySemester {
+    [key: string]: CourseGrading[]
 }
 
-function Grading() {
-    const [courseGradings, setCourseGradings] = useState<CourseGrading[]>([]);
+export default function Grading() {
+    const [course, setCourse] = useState("");
+    const [prof, setProf] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
+    const [gradings, setGradings] = useState<GradingBySemester>({});
+    
     const { data: session } = useSession();
 
-    const fetchCourseGradings = async () => {
-        const res = await fetch("/api/courses/grading/get", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" }
-        });
-        const resp = await res.json();
-        if (!resp.error) {
-            setCourseGradings(resp.data);
-        } else {
-            toast.error("Error fetching grading details");
-        }
+    const parseCSVToTable = (csv: string) => {
+        const rows = csv.trim().split('\n');
+        const headers = rows[0].split(',');
+        const data = rows.slice(1);
+
+        return (
+            <div className="overflow-x-auto">
+                <table className="table table-zebra">
+                    <thead>
+                        <tr>
+                            {headers.map((header, index) => (
+                                <th key={index}>{header}</th>
+                            ))}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {data.map((row, rowIndex) => (
+                            <tr key={rowIndex}>
+                                {row.split(',').map((cell, cellIndex) => (
+                                    <td key={cellIndex}>{cell}</td>
+                                ))}
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        );
     };
 
-    const columnHelper = createColumnHelper<GradeDataTable>();
-    const columnDefs = [
-        columnHelper.accessor('grade', {
-            id: 'Grade',
-            cell: (info) => info.getValue(),
-            header: 'Grade',
-        }),
-        columnHelper.accessor('min', {
-            id: 'Min',
-            cell: (info) => info.getValue(),
-            header: 'Min',
-        }),
-        columnHelper.accessor('max', {
-            id: 'Max',
-            cell: (info) => info.getValue(),
-            header: 'Max',
-        }),
-        columnHelper.accessor('num', {
-            id: 'Number',
-            cell: (info) => info.getValue(),
-            header: 'Number',
-        }),
-    ];
+    const fetchGradings = async () => {
+        if (courses.includes(course) === false && course !== "") {
+            toast.error("Please select a course from the given list!");
+            return;
+        }
+        if (profs.includes(prof) === false && prof !== "") {
+            toast.error("Please select a professor from the given list!");
+            return;
+        }
+
+        setIsLoading(true);
+        const res = await fetch("/api/courses/grading/get", {
+            method: "POST",
+            body: JSON.stringify({ course: course, prof: prof }),
+            headers: { "Content-Type": "application/json" }
+        });
+
+        if (res.status !== 400) {
+            const response = await res.json();
+            if (response.error && response.status !== 400) {
+                toast.error(response.message);
+            } else {
+                // Group by semester
+                const gradingsBySemester: GradingBySemester = {};
+                response.data.forEach((grading: CourseGrading) => {
+                    if (!gradingsBySemester[grading.sem]) {
+                        gradingsBySemester[grading.sem] = [];
+                    }
+                    gradingsBySemester[grading.sem].push(grading);
+                });
+                setGradings(gradingsBySemester);
+            }
+        }
+        setIsLoading(false);
+    };
 
     useEffect(() => {
-        fetchCourseGradings();
+        fetchGradings();
     }, []);
+
+    useEffect(() => {
+        localStorage.setItem("h4u_grading_course", course);
+        localStorage.setItem("h4u_grading_prof", prof);
+    });
 
     return (
         <>
             <Head>
                 <title>Course Grading.</title>
-                <meta name="description" content="Course grading details" />
+                <meta name="description" content="Course grading information and statistics" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <div className='grid place-items-center'>
-                <div className='w-[70vw] place-items-center flex flex-col justify-between'>
-                    <h1 className='text-5xl pt-[50px] pb-[20px] px-[35px] text-primary'>Course Grading.</h1>
+
+            <div className="grid place-items-center">
+                <div className="w-[70vw] place-items-center flex flex-col justify-between">
+                    <h1 className="text-5xl pt-[50px] pb-[20px] px-[35px] text-primary">Course Grading.</h1>
+
                     <Menu />
-                    {session && (
-                        <div className="max-w-7xl mx-auto">
-                            <div className='px-2 p-2 grid sm:grid-cols-2 grid-cols-1 place-items-center'>
-                                {courseGradings.map((courseGrading) => {
-                                    const data = [
-                                        { grade: 'A', ...courseGrading.A },
-                                        { grade: 'A-', ...courseGrading.Am },
-                                        { grade: 'B', ...courseGrading.B },
-                                        { grade: 'B-', ...courseGrading.Bm },
-                                        { grade: 'C', ...courseGrading.C },
-                                        { grade: 'C-', ...courseGrading.Cm },
-                                        { grade: 'D', ...courseGrading.D },
-                                        { grade: 'E', ...courseGrading.E },
-                                        { grade: 'W', ...courseGrading.W },
-                                        { grade: 'I', ...courseGrading.I },
-                                    ];
 
-                                    const table = useReactTable({
-                                        columns: columnDefs,
-                                        data: data,
-                                        getCoreRowModel: getCoreRowModel(),
-                                    });
+                    {session && <>
+                        <AutoCompleter name={"Course"} items={courses} value={course} onChange={(val) => setCourse(val)} />
+                        <span className="m-2"></span>
+                        <AutoCompleter name={"Prof"} items={profs} value={prof} onChange={(val) => setProf(val)} />
 
-                                    const headers = table.getFlatHeaders();
-                                    const rows = table.getRowModel().rows;
+                        <div className="flex flex-col md:flex-row w-1/2 justify-center">
+                            <Link className="m-3 w-full hidden md:block" href={"/courses/grading/add"}>
+                                <button className="btn btn-outline w-full">
+                                    Add Grading
+                                </button>
+                            </Link>
 
-                                    return (
-                                        <div className="card w-72 h-auto bg-base-100 text-base-content m-2" key={courseGrading.id}>
-                                            <div className="card-body">
-                                                <h2 className="text-sm font-bold uppercase">{courseGrading.course}</h2>
-                                                <p className='text-lg'>{courseGrading.prof}</p>
-                                                <p className='text-md'>{courseGrading.sem}</p>
-                                                <div className="overflow-x-auto m-2 rounded-md">
-                                                    <table className="table table-sm bg-base-100">
-                                                        <thead className='table-header-group'>
-                                                            <tr>
-                                                                {headers.map((header) => (
-                                                                    <th key={header.id}>
-                                                                        {header.isPlaceholder ? null : (
-                                                                            <div className="flex gap-4">
-                                                                                {flexRender(
-                                                                                    header.column.columnDef.header,
-                                                                                    header.getContext()
-                                                                                )}
-                                                                            </div>
-                                                                        )}
-                                                                    </th>
-                                                                ))}
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            {rows.map((row) => (
-                                                                <tr key={row.id}>
-                                                                    {row.getVisibleCells().map((cell) => (
-                                                                        <td key={cell.id}>
-                                                                            {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                                                        </td>
-                                                                    ))}
-                                                                </tr>
-                                                            ))}
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    );
-                                })}
-                            </div>
+                            <Link className="m-3 w-full" href={""}>
+                                <button className="btn btn-outline w-full" onClick={fetchGradings}>
+                                    Filter Grading
+                                </button>
+                            </Link>
                         </div>
-                    )}
+                        <div className="z-10 w-14 fixed bottom-5 right-0 m-4 cursor-pointer text-cyan-300 md:hidden">
+                            <Link className="m-3 w-full" href={"/courses/grading/add"}>
+                                <PlusCircleIcon />
+                            </Link>
+                        </div>
+                    </>}
                 </div>
             </div>
-            <CustomToastContainer containerId="courseGradings" />
+
+            {session && (
+                <div className="max-w-7xl mx-auto p-4">
+                    {isLoading ? (
+                        <div className="flex justify-center">
+                            <h1 className="text-3xl text-primary">Loading...</h1>
+                        </div>
+                    ) : (
+                        <>
+                            {Object.keys(gradings).sort((a, b) => b.localeCompare(a)).map((semester) => (
+                                <div key={semester} className="mb-4">
+                                    <div className="collapse collapse-plus">
+                                        <input type="checkbox" />
+                                        <div className="collapse-title text-xl font-medium">
+                                            {semester} ({gradings[semester].length} entries)
+                                        </div>
+                                        <div className="collapse-content">
+                                            {gradings[semester].map((grading) => (
+                                                <div className="card bg-base-100 shadow-xl mb-4" key={grading.id}>
+                                                    <div className="card-body">
+                                                        <h2 className="card-title">
+                                                            {grading.course} - Prof. {grading.prof}
+                                                        </h2>
+                                                        {parseCSVToTable(grading.data)}
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </>
+                    )}
+                </div>
+            )}
+            <CustomToastContainer containerId="courseGrading" />
         </>
     );
 }
-
-export default Grading;
