@@ -243,6 +243,7 @@ export const profs = [
   "Asrarul Haque",
   "Prasant Kumar Samantray",
   "Swastik Bhattacharya",
+  "Madhushree Chakrabarty",
   "Davuluri Subrahmanya Bhima Sankar",
   "Subhadeep Roy",
   "Rickmoy Samanta",
