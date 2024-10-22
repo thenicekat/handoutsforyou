@@ -102,18 +102,18 @@ export default function Reviews({ }: {}) {
 
                         <div className="flex flex-col md:flex-row w-1/2 justify-center">
                             <Link className="m-3 w-full hidden md:block" href={"/courses/reviews/add"}>
-                                <button className="btn btn-outline w-full">
+                                <button className="btn btn-outline w-full" tabIndex={-1}>
                                     Add a Review
                                 </button>
                             </Link>
 
                             <Link className="m-3 w-full" href={""}>
-                                <button className="btn btn-outline w-full" onClick={fetchReviews}>
+                                <button className="btn btn-outline w-full" tabIndex={-1} onClick={fetchReviews}>
                                     Filter Reviews
                                 </button>
                             </Link>
                         </div>
-                        <div className="z-10 w-14 fixed bottom-5 right-0 m-4 cursor-pointer text-cyan-300 md:hidden">
+                        <div className="z-10 w-14 fixed bottom-3 left-0 m-4 cursor-pointer text-white md:hidden">
                             <Link className="m-3 w-full" href={"/courses/resources/add"}>
                                 <PlusCircleIcon />
                             </Link>

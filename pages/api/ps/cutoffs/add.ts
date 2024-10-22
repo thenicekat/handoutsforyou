@@ -125,8 +125,12 @@ export default async function handler(
         }
         else if (reqBody.typeOfPS === 'ps2') {
             // Validate offshoot.
-            if (reqBody.offshoot < 0 || reqBody.offshootTotal < 0 || reqBody.offshoot < reqBody.offshootTotal) {
-                res.status(422).json({ message: "Please enter valid data for offshoot.", data: [], error: true });
+            if (reqBody.offshoot < 0 || reqBody.offshootTotal < 0 || reqBody.offshoot > reqBody.offshootTotal) {
+                res.status(422).json({
+                    message: "Please enter valid data for offshoot.",
+                    data: [],
+                    error: true
+                });
                 return;
             }
             // Validate ID Number.

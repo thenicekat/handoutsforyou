@@ -97,8 +97,9 @@ export default function PlacementCTCs() {
     const headers = table.getFlatHeaders();
     const rows = table.getRowModel().rows;
     const arrow: any = {
-        asc: "🔼",
-        desc: "🔽",
+        asc: "↑",
+        desc: "↓",
+        unsorted: "⇅",
     };
 
 
@@ -136,12 +137,12 @@ export default function PlacementCTCs() {
 
                             <div className="flex-col hidden md:block md:flex-row w-1/3 justify-center">
                                 <Link className="m-3 w-full" href={"/placements/ctcs/add"}>
-                                    <button className="btn btn-outline w-full">
+                                    <button className="btn btn-outline w-full" tabIndex={-1}>
                                         Add a CTC
                                     </button>
                                 </Link>
                             </div>
-                            <div className="z-10 w-14 fixed bottom-5 right-0 m-4 cursor-pointer text-cyan-300 md:hidden">
+                            <div className="z-10 w-14 fixed bottom-3 left-0 m-4 cursor-pointer text-white md:hidden">
                                 <Link className="m-3 w-full" href={"/placements/ctcs/add"}>
                                     <PlusCircleIcon />
                                 </Link>
@@ -202,20 +203,20 @@ export default function PlacementCTCs() {
                                 <tr>
                                     {headers.map((header) => {
                                         const direction = header.column.getIsSorted()
-                                        const sort_indicator = direction && arrow[direction];
+                                        const sort_indicator = (direction) ? arrow[direction] : arrow["unsorted"]
 
                                         return (
                                             <th key={header.id}>
                                                 {header.isPlaceholder ? null : (
                                                     <div
                                                         onClick={header.column.getToggleSortingHandler()}
-                                                        className="cursor-pointer flex gap-4"
+                                                        className="cursor-pointer flex gap-2"
                                                     >
                                                         {flexRender(
                                                             header.column.columnDef.header,
                                                             header.getContext()
                                                         )}
-                                                        {direction && <span>{sort_indicator}</span>}
+                                                        <span className={`inline-block text-center ${direction ? '' : 'opacity-50'}`}>{sort_indicator}</span>
                                                     </div>
                                                 )}
                                             </th>
