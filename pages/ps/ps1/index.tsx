@@ -4,7 +4,7 @@ import Menu from "@/components/Menu";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { PS_Station } from "@/types/PSData";
-import { years } from "@/data/ps1";
+import { years } from "@/data/years_sems";
 import { toast } from "react-toastify";
 import CustomToastContainer from "@/components/ToastContainer";
 

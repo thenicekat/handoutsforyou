@@ -8,81 +8,61 @@ import AutoCompleter from "@/components/AutoCompleter";
 import CustomToastContainer from "@/components/ToastContainer";
 import { toast } from "react-toastify";
 import { GradeRow } from "@/types/CourseGrading";
+import { semesters } from "@/data/years_sems";
 
 export default function AddGrading() {
     const [course, setCourse] = useState("");
     const [prof, setProf] = useState("");
     const [semester, setSemester] = useState("");
     const [gradingData, setGradingData] = useState("");
-    const [existingSemesters, setExistingSemesters] = useState<string[]>([]);
-    
-    // State for the parsed/editable data
+
     const [parsedData, setParsedData] = useState<string | null>(null);
-    
+
     const { data: session } = useSession();
 
-    // Fetch existing semesters for suggestions
-    const fetchExistingSemesters = async () => {
-        try {
-            const res = await fetch("/api/courses/grading/get", {
-                method: "POST",
-                body: JSON.stringify({ course: "", prof: "" }),
-                headers: { "Content-Type": "application/json" }
-            });
-            const data = await res.json();
-            if (!data.error) {
-                const semesters = new Set(data.data.map((item: any) => item.sem));
-                setExistingSemesters(Array.from(semesters) as string[]);
-            }
-        } catch (error) {
-            console.error("Error fetching semesters:", error);
-        }
-    };
 
-    // Dummy parse function (to be replaced with actual parsing logic)
     const parseGradingData = (input: string): string => {
         const lines = input.split('\n').map(line => line.trim());
         const gradeData: GradeRow[] = [];
         const rowPattern = /^Row\d+$/;
-        
+
         for (let i = 0; i < lines.length; i++) {
             if (rowPattern.test(lines[i])) {
-            const dataLines = lines.slice(i + 1, i + 5).filter(line => line.length > 0);
-            
-            const gradeRow: GradeRow = {
-                grade: '',
-                numberOfStudents: 0
-            };
-            
-            gradeRow.grade = dataLines[0];
-            
-            if (dataLines[1]) {
-                gradeRow.numberOfStudents = parseInt(dataLines[1], 10) || 0;
-            }
-            
-            if (dataLines[2]) {
-                const minMarks = parseFloat(dataLines[2]);
-                if (!isNaN(minMarks)) {
-                    if (dataLines.length === 3) {
-                        gradeRow.maxMarks = minMarks;
-                    } else {
-                        gradeRow.minMarks = minMarks;
+                const dataLines = lines.slice(i + 1, i + 5).filter(line => line.length > 0);
+
+                const gradeRow: GradeRow = {
+                    grade: '',
+                    numberOfStudents: 0
+                };
+
+                gradeRow.grade = dataLines[0];
+
+                if (dataLines[1]) {
+                    gradeRow.numberOfStudents = parseInt(dataLines[1], 10) || 0;
+                }
+
+                if (dataLines[2]) {
+                    const minMarks = parseFloat(dataLines[2]);
+                    if (!isNaN(minMarks)) {
+                        if (dataLines.length === 3) {
+                            gradeRow.maxMarks = minMarks;
+                        } else {
+                            gradeRow.minMarks = minMarks;
+                        }
                     }
                 }
-            }
-            
-            if (dataLines[3]) {
-                const maxMarks = parseFloat(dataLines[3]);
-                if (!isNaN(maxMarks)) {
-                gradeRow.maxMarks = maxMarks;
+
+                if (dataLines[3]) {
+                    const maxMarks = parseFloat(dataLines[3]);
+                    if (!isNaN(maxMarks)) {
+                        gradeRow.maxMarks = maxMarks;
+                    }
                 }
-            }
-            
-            gradeData.push(gradeRow);
+
+                gradeData.push(gradeRow);
             }
         }
-        
-        // Convert to CSV
+
         const headers = ['Grade', 'Number of Students', 'Min Marks', 'Max Marks'];
         const rows = gradeData.map(row => [
             row.grade,
@@ -90,13 +70,12 @@ export default function AddGrading() {
             row.minMarks?.toString() || '',
             row.maxMarks?.toString() || ''
         ]);
-        
-        // Combine headers and rows
+
         const csvLines = [
             headers.join(','),
             ...rows.map(row => row.join(','))
         ];
-        
+
         return csvLines.join('\n');
     };
 
@@ -128,7 +107,6 @@ export default function AddGrading() {
             return;
         }
 
-        // Parse the data and set the parsed state
         const parsed = parseGradingData(gradingData);
         setParsedData(parsed);
     };
@@ -177,8 +155,6 @@ export default function AddGrading() {
     };
 
     useEffect(() => {
-        fetchExistingSemesters();
-        
         // Load saved values from localStorage
         if (localStorage.getItem("h4u_grading_course")) {
             setCourse(localStorage.getItem("h4u_grading_course")!);
@@ -224,11 +200,11 @@ export default function AddGrading() {
                                         onChange={(val) => setProf(val)}
                                     />
                                     <span className="m-2"></span>
-                                    
+
                                     <div className="w-full max-w-xl">
                                         <AutoCompleter
                                             name={"Semester"}
-                                            items={existingSemesters}
+                                            items={semesters}
                                             value={semester}
                                             onChange={(val) => setSemester(val)}
                                         />
@@ -262,7 +238,7 @@ export default function AddGrading() {
                                         <div className="text-lg">
                                             <span className="font-bold">Semester:</span> {semester}
                                         </div>
-                                        
+
                                         <textarea
                                             className="textarea textarea-primary w-full h-60"
                                             value={parsedData}
