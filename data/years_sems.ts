@@ -1,4 +1,4 @@
-// For PS2 and Course Grading.
+// For PS2.
 export const semesters = [
     "24-25 Sem 2",
     "24-25 Sem 1",
@@ -29,4 +29,9 @@ export const years = [
     "2023 Batch",
     "2022 Batch",
     "2021 Batch"
+]
+
+// For Course Grading.
+export const gradedSemesters = [
+    "24-25 Sem 1",
 ]
