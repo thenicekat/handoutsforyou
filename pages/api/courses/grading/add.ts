@@ -51,30 +51,24 @@ export default async function handler(
         return
     }
 
-    const dataRowRegex = /^[A-Za-z0-9\+\-]{1,5},(\d*\.?\d*),(\d*\.?\d*),(\d*\.?\d*)$/
-
-    const isFirstRowData = dataRowRegex.test(rows[0])
-
-    // If first row looks like data, prepend the header
     const expectedHeader = 'Grade,Number of Students,Min Marks,Max Marks'
-    if (isFirstRowData) {
-        rows.unshift(expectedHeader)
-    } else {
-        // Otherwise replace the first row with header
-        rows[0] = expectedHeader
+    if (rows[0] !== expectedHeader) {
+        res.status(422).json({ 
+            message: 'Invalid Request - First row must be exactly: Grade,Number of Students,Min Marks,Max Marks', 
+            error: true 
+        })
+        return
     }
 
     for (let i = 1; i < rows.length; i++) {
         const columns = rows[i].split(',')
         
-        for (let i = 1; i < rows.length; i++) {
-            if (!dataRowRegex.test(rows[i])) {
-                res.status(422).json({ 
-                    message: `Invalid Request - Row ${i + 1} has invalid format. Expected: Grade(1-5 chars),Number,Number,Number`, 
-                    error: true 
-                })
-                return
-            }
+        if (columns.length !== 4) {
+            res.status(422).json({ 
+                message: `Invalid Request - Row ${i + 1} does not have exactly 4 columns`, 
+                error: true 
+            })
+            return
         }
 
         if (!columns[0] || columns[0].trim().length === 0) {
