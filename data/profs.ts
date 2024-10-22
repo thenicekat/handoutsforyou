@@ -1,4 +1,5 @@
 export const profs = [
+  "Debajit Bora",
   "Ruchi Jain Dey",
   "Piyush Khandelia",
   "Pragya Komal",
