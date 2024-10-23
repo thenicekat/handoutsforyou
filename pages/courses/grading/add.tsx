@@ -16,6 +16,7 @@ export default function AddGrading() {
     const [semester, setSemester] = useState("");
     const [gradingData, setGradingData] = useState("");
 
+    const [averageMark, setAverageMark] = useState<string | null>(null);
     const [parsedData, setParsedData] = useState<string | null>(null);
 
     const { data: session } = useSession();
@@ -24,7 +25,7 @@ export default function AddGrading() {
     const parseGradingData = (input: string): string => {
         const lines = input.split('\n').map(line => line.trim());
         const gradeData: GradeRow[] = [];
-        const rowPattern = /^Row\d+$/;
+        const rowPattern = /^Row\s*\d+$/;
 
         for (let i = 0; i < lines.length; i++) {
             if (rowPattern.test(lines[i])) {
@@ -76,11 +77,15 @@ export default function AddGrading() {
             ...rows.map(row => row.join(','))
         ];
 
+        if (csvLines.length === 1) {
+            toast.error("Could not parse properly!")
+            return '';
+        }
+
         return csvLines.join('\n');
     };
 
     const handleNext = () => {
-        // Validate fields
         if (course === "") {
             toast.error("Please fill course!");
             return;
@@ -125,7 +130,8 @@ export default function AddGrading() {
                     prof: prof,
                     sem: semester,
                     data: parsedData,
-                    created_by: session?.user?.email
+                    created_by: session?.user?.email,
+                    average_mark: parseFloat(averageMark || "0")
                 }),
                 headers: { "Content-Type": "application/json" }
             });
@@ -155,7 +161,6 @@ export default function AddGrading() {
     };
 
     useEffect(() => {
-        // Load saved values from localStorage
         if (localStorage.getItem("h4u_grading_course")) {
             setCourse(localStorage.getItem("h4u_grading_course")!);
         }
@@ -221,7 +226,18 @@ export default function AddGrading() {
                                         ></textarea>
                                     </div>
 
-                                    <div className="text-center flex-wrap w-3/4 justify-between m-1">
+                                    <div className="w-full max-w-xl">
+                                        <input
+                                            type="text"
+                                            className="input input-secondary w-full"
+                                            value={averageMark || ""}
+                                            onChange={(e) => setAverageMark(e.target.value)}
+                                            placeholder={`Please enter the average marks...`}
+                                            tabIndex={0}
+                                        />
+                                    </div>
+
+                                    <div className="text-center flex-wrap w-3/4 justify-between m-2">
                                         <button className="btn btn-primary" onClick={handleNext}>
                                             Next
                                         </button>

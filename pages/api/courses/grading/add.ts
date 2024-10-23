@@ -22,7 +22,7 @@ export default async function handler(
         return
     }
 
-    const { course, sem, prof, data, created_by } = req.body
+    const { course, sem, prof, data, created_by, average_mark } = req.body
 
     if (!course) {
         res.status(422).json({ message: 'Invalid Request - Course missing', error: true })
@@ -44,6 +44,10 @@ export default async function handler(
         res.status(422).json({ message: 'Invalid Request - User missing', error: true })
         return
     }
+    if (!average_mark) {
+        res.status(422).json({ message: 'Invalid Request - Average mark missing', error: true })
+        return
+    }
 
     const rows = data.split('\n').map((row: string) => row.trim()).filter((row: string) => row.length > 0)
     if (rows.length === 0) {
@@ -53,28 +57,28 @@ export default async function handler(
 
     const expectedHeader = 'Grade,Number of Students,Min Marks,Max Marks'
     if (rows[0] !== expectedHeader) {
-        res.status(422).json({ 
-            message: 'Invalid Request - First row must be exactly: Grade,Number of Students,Min Marks,Max Marks', 
-            error: true 
+        res.status(422).json({
+            message: 'Invalid Request - First row must be exactly: Grade,Number of Students,Min Marks,Max Marks',
+            error: true
         })
         return
     }
 
     for (let i = 1; i < rows.length; i++) {
         const columns = rows[i].split(',')
-        
+
         if (columns.length !== 4) {
-            res.status(422).json({ 
-                message: `Invalid Request - Row ${i + 1} does not have exactly 4 columns`, 
-                error: true 
+            res.status(422).json({
+                message: `Invalid Request - Row ${i + 1} does not have exactly 4 columns`,
+                error: true
             })
             return
         }
 
         if (!columns[0] || columns[0].trim().length === 0) {
-            res.status(422).json({ 
-                message: `Invalid Request - Grade is empty in row ${i + 1}`, 
-                error: true 
+            res.status(422).json({
+                message: `Invalid Request - Grade is empty in row ${i + 1}`,
+                error: true
             })
             return
         }
@@ -93,12 +97,13 @@ export default async function handler(
     const { error } = await supabase
         .from(COURSE_GRADING)
         .insert([
-            { 
+            {
                 course: course,
                 sem: sem,
                 prof: prof,
                 data: validatedData,
-                created_by: created_by 
+                created_by: created_by,
+                average_mark: average_mark
             }
         ])
 
