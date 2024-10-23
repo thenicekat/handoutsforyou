@@ -9,9 +9,8 @@ import { profs } from "@/data/profs";
 import AutoCompleter from "@/components/AutoCompleter";
 import CustomToastContainer from "@/components/ToastContainer";
 import { toast } from "react-toastify";
-import { PlusCircleIcon } from '@heroicons/react/24/solid';
 
-interface GradingBySemester {
+interface GradingByCourse {
     [key: string]: CourseGrading[]
 }
 
@@ -19,7 +18,7 @@ export default function Grading() {
     const [course, setCourse] = useState("");
     const [prof, setProf] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-    const [gradings, setGradings] = useState<GradingBySemester>({});
+    const [gradings, setGradings] = useState<GradingByCourse>({});
 
     const { data: session } = useSession();
 
@@ -74,14 +73,14 @@ export default function Grading() {
             if (response.error && response.status !== 400) {
                 toast.error(response.message);
             } else {
-                const gradingsBySemester: GradingBySemester = {};
+                const gradingByCourse: GradingByCourse = {};
                 response.data.forEach((grading: CourseGrading) => {
-                    if (!gradingsBySemester[grading.sem]) {
-                        gradingsBySemester[grading.sem] = [];
+                    if (!gradingByCourse[grading.course]) {
+                        gradingByCourse[grading.course] = [];
                     }
-                    gradingsBySemester[grading.sem].push(grading);
+                    gradingByCourse[grading.course].push(grading);
                 });
-                setGradings(gradingsBySemester);
+                setGradings(gradingByCourse);
             }
         }
         setIsLoading(false);
@@ -141,31 +140,34 @@ export default function Grading() {
                         </div>
                     ) : (
                         <>
-                            {Object.keys(gradings).sort((a, b) => b.localeCompare(a)).map((semester) => (
-                                <div key={semester} className="mb-4 w-full">
-                                <div className="collapse collapse-plus w-full">
-                                    <input type="checkbox" />
-                                    <div className="collapse-title text-xl md:text-2xl font-medium">
-                                        {semester} ({gradings[semester].length} entries)
-                                    </div>
-                                    <div className="collapse-content w-full overflow-x-auto">
-                                        {gradings[semester].map((grading) => (
-                                            <div className="card bg-base-100 shadow-xl mb-4 w-full" key={grading.id}>
-                                                <div className="card-body">
-                                                    <h2 className="card-title text-center md:text-left text-base sm:text-lg md:text-xl break-words">
-                                                        {grading.course} - Prof. {grading.prof}
-                                                    </h2>
-                                                    <div className="-mx-4 sm:-mx-6 md:-mx-8">
-                                                        <div className="min-w-min px-4 sm:px-6 md:px-8">
-                                                            {parseCSVToTable(grading.data)}
+                            {Object.keys(gradings).sort((a, b) => b.localeCompare(a)).map((course) => (
+                                <div key={course} className="mb-4 w-full">
+                                    <div className="collapse collapse-plus w-full">
+                                        <input type="checkbox" />
+                                        <div className="collapse-title text-xl md:text-2xl font-medium">
+                                            {course} ({gradings[course].length} entries)
+                                        </div>
+                                        <div className="collapse-content w-full overflow-x-auto">
+                                            {gradings[course].map((grading) => (
+                                                <div className="card bg-base-100 shadow-xl mb-4 w-full" key={grading.id}>
+                                                    <div className="card-body">
+                                                        <h2 className="card-title text-center md:text-left text-base sm:text-lg md:text-xl break-words">
+                                                            {grading.course} - Prof. {grading.prof}
+                                                        </h2>
+                                                        <div className="-mx-4 sm:-mx-6 md:-mx-8">
+                                                            <div className="min-w-min px-4 sm:px-6 md:px-8">
+                                                                {parseCSVToTable(grading.data)}
+                                                            </div>
+                                                            <p className="text-center p-2 m-2">
+                                                                The average mark for this course was: {grading.average_mark || "N/A"}
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        ))}
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             ))}
                         </>
                     )}
