@@ -10,7 +10,7 @@ import AutoCompleter from "@/components/AutoCompleter";
 import CustomToastContainer from "@/components/ToastContainer";
 import { toast } from "react-toastify";
 
-interface GradingByCourse {
+interface GradingBySemester {
     [key: string]: CourseGrading[]
 }
 
@@ -18,7 +18,7 @@ export default function Grading() {
     const [course, setCourse] = useState("");
     const [prof, setProf] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-    const [gradings, setGradings] = useState<GradingByCourse>({});
+    const [gradings, setGradings] = useState<GradingBySemester>({});
 
     const { data: session } = useSession();
 
@@ -73,14 +73,14 @@ export default function Grading() {
             if (response.error && response.status !== 400) {
                 toast.error(response.message);
             } else {
-                const gradingByCourse: GradingByCourse = {};
+                const gradingBySemester: GradingBySemester = {};
                 response.data.forEach((grading: CourseGrading) => {
-                    if (!gradingByCourse[grading.course]) {
-                        gradingByCourse[grading.course] = [];
+                    if (!gradingBySemester[grading.sem]) {
+                        gradingBySemester[grading.sem] = [];
                     }
-                    gradingByCourse[grading.course].push(grading);
+                    gradingBySemester[grading.sem].push(grading);
                 });
-                setGradings(gradingByCourse);
+                setGradings(gradingBySemester);
             }
         }
         setIsLoading(false);
@@ -114,6 +114,7 @@ export default function Grading() {
                         <AutoCompleter name={"Course"} items={courses} value={course} onChange={(val) => setCourse(val)} />
                         <span className="m-2"></span>
                         <AutoCompleter name={"Prof"} items={profs} value={prof} onChange={(val) => setProf(val)} />
+                        <p className="text-center p-2 m-2">P.S. You can search only using profs, and only using courses.</p>
 
                         <div className="flex flex-col md:flex-row w-1/2 justify-center">
                             <Link className="m-3 w-full hidden md:block" href={"/courses/grading/add"}>
@@ -140,15 +141,15 @@ export default function Grading() {
                         </div>
                     ) : (
                         <>
-                            {Object.keys(gradings).sort((a, b) => b.localeCompare(a)).map((course) => (
+                            {Object.keys(gradings).sort((a, b) => b.localeCompare(a)).map((sem) => (
                                 <div key={course} className="mb-4 w-full">
                                     <div className="collapse collapse-plus w-full">
                                         <input type="checkbox" />
                                         <div className="collapse-title text-xl md:text-2xl font-medium">
-                                            {course} ({gradings[course].length} entries)
+                                            {sem} ({gradings[sem].length} entries)
                                         </div>
                                         <div className="collapse-content w-full overflow-x-auto">
-                                            {gradings[course].map((grading) => (
+                                            {gradings[sem].map((grading) => (
                                                 <div className="card bg-base-100 shadow-xl mb-4 w-full" key={grading.id}>
                                                     <div className="card-body">
                                                         <h2 className="card-title text-center md:text-left text-base sm:text-lg md:text-xl break-words">
