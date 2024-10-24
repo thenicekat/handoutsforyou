@@ -51,45 +51,37 @@ export default function PS() {
                     <Menu />
                 </div>
 
-                <div className="flex flex-col md:flex-row w-1/2 justify-center">
-                    <Link className="m-3 w-full" href={"/ps/ps1/chronicles"}>
-                        <button className="btn btn-outline w-full" tabIndex={-1}>
-                            PS1 Chronicles
-                        </button>
-                    </Link>
-
-                    <Link className="m-3 w-full" href={"/ps/ps1/"}>
+                <div className="grid md:grid-cols-2 gap-3 w-1/2 justify-center">
+                    <Link className="w-full" href={"/ps/ps1/"}>
                         <button className="btn btn-outline w-full" tabIndex={-1}>
                             PS1 CGPA Cutoffs
                         </button>
                     </Link>
 
-                    <Link className="m-3 w-full" href={"/ps/ps1/reviews"}>
+                    <Link className="w-full" href={"/ps/reviews/ps1"}>
                         <button className="btn btn-outline w-full" tabIndex={-1}>
                             PS1 Reviews
                         </button>
                     </Link>
-                </div>
 
-                <div className="flex flex-col md:flex-row w-1/2 justify-center">
-                    <Link className="m-3 w-full" href={"/ps/ps2/chronicles"}>
-                        <button className="btn btn-outline w-full" tabIndex={-1}>
-                            PS2 Chronicles
-                        </button>
-                    </Link>
-
-                    <Link className="m-3 w-full" href={"/ps/ps2/"}>
+                    <Link className="w-full" href={"/ps/ps2/"}>
                         <button className="btn btn-outline w-full" tabIndex={-1}>
                             PS2 CGPA Cutoffs
                         </button>
                     </Link>
 
-                    <Link className="m-3 w-full" href={"/ps/ps2/reviews"}>
+                    <Link className="w-full" href={"/ps/reviews/ps2"}>
                         <button className="btn btn-outline w-full" tabIndex={-1}>
                             PS2 Reviews
                         </button>
                     </Link>
                 </div>
+
+                <Link className="m-3 w-1/2" href={"/ps/chronicles"}>
+                    <button className="btn btn-outline w-full" tabIndex={-1}>
+                        PS Chronicles
+                    </button>
+                </Link>
             </div>
 
 
@@ -100,8 +92,7 @@ export default function PS() {
 
                     {!isLoading ?
                         <>
-
-                            <div className='grid md:grid-cols-2 place-items-center p-3'>
+                            <div className='grid md:grid-cols-2 gap-3 place-items-center p-3'>
                                 {data.ps1 && data.ps1.length > 0 ? data.ps1.map((item: PS1Item, index: number) => {
                                     return (
                                         <div key={index} className='p-3 border border-gray-300 rounded-md w-3/4'>
@@ -148,7 +139,7 @@ export default function PS() {
                                             <div className='text-lg font-semibold'>Year and Semester: {item.year_and_sem}</div>
                                             <div className='text-lg font-semibold'>Offshoot: {item.offshoot}</div>
                                             <div className='text-lg font-semibold'>Offshoot Total: {item.offshoot_total}</div>
-                                            <div className='text-lg font-semibold'>Offshoot Type: {item.offshoot_type}</div>
+                                            <div className='text-lg font-semibold'>Offshoot Type: {item.offshoot_type || "N/A"}</div>
 
                                             <div className="m-3 w-full text-center">
                                                 <button className="btn btn-outline w-1/2" onClick={() => {

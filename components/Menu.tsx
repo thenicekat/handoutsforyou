@@ -20,16 +20,18 @@ const Menu = () => {
 
     const menuItems: any = {
         "Handouts": "/handouts",
+        "Course Prereqs": "/courses/prereqs",
         "Course Resources": "/courses/resources",
         "Course Reviews": "/courses/reviews",
-        "Course Grading": "/courses/grading",
+        "Midsem Grading": "/courses/grading",
         "Summer Internships": "/si",
+        "SI Companies": "/si/companies",
         "Research Chronicles": "https://pollen-box-786.notion.site/Research-Chronicles-894bcac1266d4e5fac2f4cd76ff29750",
         "Rants": "/rants",
         "Placements": "/placements",
         "Placement CTCs": "/placements/ctcs",
-        "Practice School": "/ps",
-        "Course Prereqs": "/courses/prereqs",
+        "Practice School": "/ps/",
+        "PS Chronicles": "/ps/chronicles",
         "Minor Courses": "/minors.html",
     }
 
