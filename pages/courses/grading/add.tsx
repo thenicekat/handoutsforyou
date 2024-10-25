@@ -1,17 +1,33 @@
 import Head from "next/head";
+import { GetStaticProps } from "next";
 import { useState, useEffect } from "react";
 import Menu from "@/components/Menu";
 import { useSession } from "next-auth/react";
 import { courses } from "@/data/courses";
 import { profs } from "@/data/profs";
+import { departments } from "@/data/departments";
 import AutoCompleter from "@/components/AutoCompleter";
 import CustomToastContainer from "@/components/ToastContainer";
 import { toast } from "react-toastify";
 import { GradeRow } from "@/types/CourseGrading";
 import { gradedSemesters } from "@/data/years_sems";
 
-export default function AddGrading() {
+export const getStaticProps: GetStaticProps = async () => {
+    const depts: string[] = Object.values(departments)
+        .flatMap((code: string) => code.split('/'))
+        .map(code => code.trim())
+        .filter(code => code.length > 0);
+
+    return {
+        props: {
+            depts,
+        },
+    };
+};
+
+export default function AddGrading({ depts }: { depts: string[] }) {
     const [course, setCourse] = useState("");
+    const [dept, setDept] = useState("");
     const [prof, setProf] = useState("");
     const [semester, setSemester] = useState("");
     const [gradingData, setGradingData] = useState("");
@@ -21,6 +37,18 @@ export default function AddGrading() {
 
     const { data: session } = useSession();
 
+    const filterDepartmentCodes = (course: string): string[] => {
+        let values: string[] = [];
+        if (course !== "") {
+            const allowed = course.split(' ')[0];
+            values = depts.filter(code => allowed.includes(code));
+            if (values.length == 1) {
+                values = [];
+            }
+        }
+        values.push("ALL");
+        return values;
+    };
 
     const parseGradingData = (input: string): string => {
         const lines = input.split('\n').map(line => line.trim());
@@ -68,8 +96,8 @@ export default function AddGrading() {
         const rows = gradeData.map(row => [
             row.grade,
             row.numberOfStudents.toString(),
-            row.minMarks?.toString() || '',
-            row.maxMarks?.toString() || ''
+            row.minMarks?.toString() ?? '',
+            row.maxMarks?.toString() ?? ''
         ]);
 
         const csvLines = [
@@ -88,6 +116,10 @@ export default function AddGrading() {
     const handleNext = () => {
         if (course === "") {
             toast.error("Please fill course!");
+            return;
+        }
+        if (dept === "") {
+            toast.error("Please fill department! (If grading is not separate for different branches, please select 'ALL')");
             return;
         }
         if (prof === "") {
@@ -111,6 +143,10 @@ export default function AddGrading() {
             toast.error("Please select a professor from the given list!");
             return;
         }
+        if (dept !== "ALL" && (!depts.includes(dept) || !course.split(' ')[0].includes(dept))) {
+            toast.error("Please select a valid department for the course, or choose 'ALL'!");
+            return;
+        }
 
         const parsed = parseGradingData(gradingData);
         setParsedData(parsed);
@@ -127,11 +163,12 @@ export default function AddGrading() {
                 method: "POST",
                 body: JSON.stringify({
                     course: course,
+                    dept: dept,
                     prof: prof,
                     sem: semester,
                     data: parsedData,
                     created_by: session?.user?.email,
-                    average_mark: parseFloat(averageMark || "0")
+                    average_mark: parseFloat(averageMark ?? "0")
                 }),
                 headers: { "Content-Type": "application/json" }
             });
@@ -143,6 +180,8 @@ export default function AddGrading() {
                 toast.success("Grading data added successfully! Thank you!");
 
                 setCourse("");
+                setDept("");
+                setAverageMark(null);
                 setProf("");
                 setSemester("");
                 setGradingData("");
@@ -209,12 +248,24 @@ export default function AddGrading() {
                                     <span className="m-2"></span>
 
                                     <div className="w-full max-w-xl">
-                                        <AutoCompleter
-                                            name={"Semester"}
-                                            items={gradedSemesters}
-                                            value={semester}
-                                            onChange={(val) => setSemester(val)}
-                                        />
+                                        <div className="flex flex-col md:flex-row md:gap-4">
+                                            <div className="w-full md:w-1/2">
+                                                <AutoCompleter
+                                                    name={"Semester"}
+                                                    items={gradedSemesters}
+                                                    value={semester}
+                                                    onChange={(val) => setSemester(val)}
+                                                />
+                                            </div>
+                                            <div className="mt-2 md:mt-0 w-full md:w-1/2">
+                                                <AutoCompleter
+                                                    name={"Department"}
+                                                    items={filterDepartmentCodes(course)}
+                                                    value={dept}
+                                                    onChange={(val) => setDept(val)}
+                                                />
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div className="text-center w-full m-2 h-60">
@@ -245,34 +296,35 @@ export default function AddGrading() {
                                 </>
                             ) : (
                                 // Edit State
-                                <>
-                                    <div className="w-full max-w-xl space-y-4">
-                                        <div className="text-lg">
-                                            <span className="font-bold">Course:</span> {course}
-                                        </div>
-                                        <div className="text-lg">
-                                            <span className="font-bold">Professor:</span> {prof}
-                                        </div>
-                                        <div className="text-lg">
-                                            <span className="font-bold">Semester:</span> {semester}
-                                        </div>
-
-                                        <textarea
-                                            className="textarea textarea-primary w-full h-60"
-                                            value={parsedData}
-                                            onChange={(e) => setParsedData(e.target.value)}
-                                        ></textarea>
-
-                                        <div className="flex justify-center space-x-4">
-                                            <button className="btn btn-outline" onClick={handleBack}>
-                                                Back
-                                            </button>
-                                            <button className="btn btn-primary" onClick={handleSubmit}>
-                                                Submit
-                                            </button>
-                                        </div>
+                                <div className="w-full max-w-xl space-y-4">
+                                    <div className="text-lg">
+                                        <span className="font-bold">Course:</span> {course}
                                     </div>
-                                </>
+                                    <div className="text-lg">
+                                        <span className="font-bold">Professor:</span> {prof}
+                                    </div>
+                                    <div className="text-lg">
+                                        <span className="font-bold">Semester:</span> {semester}
+                                    </div>
+                                    <div className="text-lg">
+                                        <span className="font-bold">Department:</span> {dept}
+                                    </div>
+
+                                    <textarea
+                                        className="textarea textarea-primary w-full h-60"
+                                        value={parsedData}
+                                        onChange={(e) => setParsedData(e.target.value)}
+                                    ></textarea>
+
+                                    <div className="flex justify-center space-x-4">
+                                        <button className="btn btn-outline" onClick={handleBack}>
+                                            Back
+                                        </button>
+                                        <button className="btn btn-primary" onClick={handleSubmit}>
+                                            Submit
+                                        </button>
+                                    </div>
+                                </div>
                             )}
                         </>
                     )}
