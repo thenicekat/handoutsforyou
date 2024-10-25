@@ -33,7 +33,7 @@ export default async function handler(
         res.status(422).json({ message: 'Invalid Request - Course missing', error: true })
         return
     }
-    if (!dept || !(depts.includes(dept) || dept === "ALL")) {
+    if (dept !== "ALL" && (!depts.includes(dept) || !course.split(' ')[0].includes(dept))) {
         res.status(422).json({ message: 'Invalid Request - Department missing/invalid', error: true })
         return
     }
