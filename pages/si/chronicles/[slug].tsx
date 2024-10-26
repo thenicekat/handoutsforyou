@@ -61,7 +61,7 @@ export default function ChroniclePage() {
 
             {session && <div className='place-items-center p-5'>
                 {
-                    chronicles.map((chron) => (<div className="card shadow-lg bg-base-100 text-base-content mt-5" key={chron.name}>
+                    chronicles.map((chron) => (<div className="card shadow-lg break-words bg-base-100 text-base-content mt-5" key={chron.name}>
                         <div className="card-body" >
                             <h2 className="card-title text-center">Name: {chron.name} | CGPA: {chron.cgpa}</h2>
                             {chron.text}
