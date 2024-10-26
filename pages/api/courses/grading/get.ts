@@ -39,7 +39,7 @@ export default async function handler(
     if (!course && !prof) {
         const { data, error } = await supabase
             .from(COURSE_GRADING)
-            .select('id, course, sem, prof, created_by, data, average_mark')
+            .select('id, course, dept, sem, prof, created_by, data, average_mark')
 
         if (error) {
             res.status(500).json({ message: error.message, data: [], error: true })
@@ -57,7 +57,7 @@ export default async function handler(
     else if (!course) {
         const { data, error } = await supabase
             .from(COURSE_GRADING)
-            .select('id, course, sem, prof, created_by, data, average_mark')
+            .select('id, course, dept, sem, prof, created_by, data, average_mark')
             .eq('prof', prof)
 
         if (error) {
@@ -75,7 +75,7 @@ export default async function handler(
     } else if (!prof) {
         const { data, error } = await supabase
             .from(COURSE_GRADING)
-            .select('id, course, sem, prof, created_by, data, average_mark')
+            .select('id, course, dept, sem, prof, created_by, data, average_mark')
             .eq('course', course)
 
         if (error) {
@@ -94,7 +94,7 @@ export default async function handler(
     } else {
         const { data, error } = await supabase
             .from(COURSE_GRADING)
-            .select('id, course, sem, prof, created_by, data, average_mark')
+            .select('id, course, dept, sem, prof, created_by, data, average_mark')
             .eq('course', course)
             .eq('prof', prof)
 
