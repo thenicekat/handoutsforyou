@@ -59,13 +59,13 @@ const Menu = () => {
             </div>
             <div>
                 {mobileMenu && (
-                    <div className="fixed overflow-y-scroll top-0 left-0 w-full h-full text-white bg-black z-30 text-center">
-                        <h1 className="text-5xl pt-[50px] pb-[25px] text-primary">Menu.</h1>
-                        <div className="grid grid-cols-1 md:grid-cols-2 justify-around text-2xl">
+                    <div className="fixed overflow-y-scroll top-0 left-0 w-full h-full text-white bg-gradient-to-r from-slate-700 to-slate-900 z-30 text-center">
+                        <h1 className="text-5xl pt-[50px] pb-[25px] text-primary font-bold font-mono">Menu</h1>
+                        <div className="grid grid-cols-1 md:grid-cols-2 justify-around text-2xl font-mono">
                             {Object.keys(menuItems).map(
                                 (menuItem) =>
                                     <Link
-                                        className="m-3 transition ease-in-out delay-150 hover:scale-110 duration-200"
+                                        className="m-3 transition ease-in-out delay-100 hover:scale-125 duration-200"
                                         href={menuItems[menuItem]}
                                         key={menuItems[menuItem]}
                                     >
@@ -77,22 +77,22 @@ const Menu = () => {
                 )}
             </div>
 
-            <div className="grid md:grid-cols-2 justify-around" >
+            <div className="grid md:grid-cols-2 justify-around font-mono" >
                 <>
                     <Link className="m-3" href="https://github.com/thenicekat/handoutsforyou">
-                        <button className="btn btn-outline btn-accent w-full" tabIndex={-1}>
-                            Star on GitHub! ({starCount})
+                        <button className="btn btn-success w-full" tabIndex={-1}>
+                            ⭐️ Star on Github ({starCount})
                         </button>
                     </Link>
 
                     {
                         !session ?
                             <Link className="m-3" href={"#"}>
-                                <button className="btn btn-warning btn-outline w-full" onClick={() => signIn("google")} tabIndex={-1}>Sign In</button>
+                                <button className="btn btn-warning w-full" onClick={() => signIn("google")} tabIndex={-1}>Sign In</button>
                             </Link>
                             :
                             <Link className="m-3" href={"#"}>
-                                <button className="btn btn-warning btn-outline w-full" onClick={() => signOut()} tabIndex={-1}>Sign Out</button>
+                                <button className="btn btn-error w-full" onClick={() => signOut()} tabIndex={-1}>Sign Out</button>
                             </Link>
                     }
                 </>

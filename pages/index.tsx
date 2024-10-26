@@ -65,7 +65,7 @@ export default function Home() {
 
       <div className="grid place-items-center">
         <div className="w-[70vw] place-items-center flex flex-col justify-between">
-          <h1 className="text-5xl pt-[50px] pb-[25px] text-primary">Handouts4U.</h1>
+          <h1 className="text-6xl pt-[50px] pb-[25px] font-bold">Handouts4U.</h1>
 
           <Menu />
         </div>
@@ -73,37 +73,68 @@ export default function Home() {
 
       {session &&
         !isLoading &&
-        <div className="px-2 md:px-20 text-center place-items-center">
-          Thank you! For making this project a huge success. We wouldn&apos;t be here without your support.
+        <div className="px-2 md:px-20 text-center">
 
-          <div className='grid md:grid-cols-2'>
-            <div>
-              <div className="grid place-items-center">
-                <Image src="/logo.svg" width={300} height={300} alt="H4U logo" />
-              </div>
+          <div className="grid md:grid-cols-4 px-10 py-10">
+            <div className="ml-14">
+              <Image src="/logo.svg" width={300} height={300} alt="H4U logo" />
             </div>
-            <div>
-              <span className="text-3xl text-primary"><CountUp end={3200} duration={3} />+ Handouts</span>
-              <br />
-              <span className="text-3xl text-primary"><CountUp end={summaryData.reviews} duration={3} /> Course Reviews</span>
-              <br />
-              <span className="text-3xl text-primary"><CountUp end={summaryData.resources} duration={3} /> Resources</span>
-              <br />
-              <span className="text-3xl text-primary"><CountUp end={summaryData.placement_ctcs} duration={3} /> Placement CTCs</span>
-              <br />
-              <span className="text-3xl text-primary"><CountUp end={summaryData.si_chronicles} duration={3} /> SI Chronicles</span>
-              <br />
-              <span className="text-3xl text-primary"><CountUp end={summaryData.si_companies} duration={3} /> SI Companies</span>
-              <br />
-              <span className="text-3xl text-primary"><CountUp end={summaryData.ps1} duration={3} /> PS1 Responses</span>
-              <br />
-              <span className="text-3xl text-primary"><CountUp end={summaryData.ps2} duration={3} /> PS2 Responses</span>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 col-span-3">
+              <div className="place-items-center">
+                <span className="text-5xl text-primary font-bold">
+                  <CountUp end={3200} duration={3} />
+                </span>
+                <div className="whitespace-nowrap text-2xl"> Handouts </div>
+              </div>
+              <div className="place-items-center">
+                <span className="text-5xl text-primary font-bold">
+                  <CountUp end={summaryData.reviews} duration={3} />
+                </span>
+                <div className="text-2xl"> Course Reviews </div>
+              </div>
+              <div className="place-items-center">
+                <span className="text-5xl text-primary font-bold">
+                  <CountUp end={summaryData.resources} duration={3} />
+                </span>
+                <div className="whitespace-nowrap text-2xl"> Resources</div>
+              </div>
+              <div className="place-items-center">
+                <span className="text-5xl text-primary font-bold">
+                  <CountUp end={summaryData.placement_ctcs} duration={3} />
+                </span>
+                <div className="text-2xl"> Placement CTCs </div>
+              </div>
+              <div className="place-items-center px-8">
+                <span className="text-5xl text-primary font-bold">
+                  <CountUp end={summaryData.si_chronicles} duration={3} />
+                </span>
+                <div className="text-2xl"> SI Chronicles </div>
+              </div>
+              <div className="place-items-center px-8">
+                <span className="text-5xl text-primary font-bold">
+                  <CountUp end={summaryData.si_companies} duration={3} />
+                </span>
+                <div className="text-2xl"> SI Companies </div>
+              </div>
+              <div className="place-items-center px-8">
+                <span className="text-5xl text-primary font-bold">
+                  <CountUp end={summaryData.ps1} duration={3} />
+                </span>
+                <div className="text-2xl"> PS1 Responses </div>
+              </div>
+              <div className="place-items-center px-8">
+                <span className="text-5xl text-primary font-bold">
+                  <CountUp end={summaryData.ps2} duration={3} />
+                </span>
+                <div className="text-2xl"> PS2 Responses </div>
+              </div>
             </div>
           </div>
 
-          <br /><br />
 
-          Vashisth Choudhari, Anagha G, Ruban SriramBabu, Nishith Kumar, Srikant Tangirala, Mahith Tunuguntla, Anubhab Khanra, Adarsh Das, Manan Gupta, Aman Ranjan, Soham Barui, Aarsh Kulkarni, Manish Vasireddy, Sai Charan, Santrupti Behera, Varad Gorantyal, Sudhanshu Patil, Aditya Kumar, Harshit Juneja, Anirudh Agarwal, Ashna, Shubham Agrawal, Shubh Badjate, Areen Raj, Dev Gala, Dhairya Agarwal, Jason Aaron Goveas, Shivam Atul Trivedi and everyone else...
+          <br />
+          <span className="text-lg font-bold">Thank you! For making this project a huge success. We wouldn&apos;t be here without your support🤍</span>
+          <br />Vashisth Choudhari, Anagha G, Ruban SriramBabu, Nishith Kumar, Srikant Tangirala, Mahith Tunuguntla, Anubhab Khanra, Adarsh Das, Manan Gupta, Aman Ranjan, Soham Barui, Aarsh Kulkarni, Manish Vasireddy, Sai Charan, Santrupti Behera, Varad Gorantyal, Sudhanshu Patil, Aditya Kumar, Harshit Juneja, Anirudh Agarwal, Ashna, Shubham Agrawal, Shubh Badjate, Areen Raj, Dev Gala, Dhairya Agarwal, Jason Aaron Goveas, Shivam Atul Trivedi and everyone else...
         </div>
       }
 
