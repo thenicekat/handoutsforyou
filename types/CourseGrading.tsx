@@ -8,6 +8,7 @@ export type GradeRow = {
 export type CourseGrading = {
   id: string;
   course: string;
+  dept: string;
   sem: string;
   prof: string;
   created_by: string;
