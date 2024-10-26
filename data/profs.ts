@@ -266,5 +266,8 @@ export const profs = [
   "Souri Banerjee .",
   "ACV Subramaniam",
   "Akanksha Rathore",
-  "Krishnanunni Hari"
+  "Krishnanunni Hari",
+  "Kunaljeet Roy",
+   "Ufaque Paiker",
+   "Madhavi Jha"
 ];
