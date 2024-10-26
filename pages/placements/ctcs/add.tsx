@@ -95,7 +95,7 @@ export default function AddPlacementCTCs({ }: {}) {
 
                             <div className="flex flex-col w-3/4 justify-between m-1">
                                 <label htmlFor="campus" className="text-primary">Campus</label>
-                                <AutoCompleter name="campus" items={['Hyderabad', 'Pilani', 'Goa']} value={campus} onChange={(val) => setCampus(val)} />
+                                <AutoCompleter name="campus" items={['PS', 'Hyderabad', 'Pilani', 'Goa']} value={campus} onChange={(val) => setCampus(val)} />
                             </div>
 
                             <div className="flex flex-col w-3/4 justify-between m-1">
@@ -126,6 +126,7 @@ export default function AddPlacementCTCs({ }: {}) {
                             <div className="flex flex-col w-3/4 justify-between m-1">
                                 <label htmlFor="monetaryValueOfBenefits" className="text-primary">Monetary Value of Benefits</label>
                                 <input type="number" id="monetaryValueOfBenefits" className="input input-secondary" value={monetaryValueOfBenefits} onChange={(e) => setMonetaryValueOfBenefits(parseInt(e.target.value))} />
+                                <p>NOTE: ESOPs do not count as monetary benefits for the sake of uniformity on this page.</p>
                             </div>
 
                             <div className="flex flex-col w-3/4 justify-between m-1">

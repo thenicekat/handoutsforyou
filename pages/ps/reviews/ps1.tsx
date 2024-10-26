@@ -84,7 +84,7 @@ export default function PS1Reviews({ }: {}) {
                                 reviews
                                     .filter(review => review.station.toLowerCase().includes(station.toLowerCase()))
                                     .map((review) => (
-                                        <div className="card shadow-lg bg-base-100 text-base-content mt-5" key={review.created_at}>
+                                        <div className="card shadow-lg bg-base-100 break-words text-base-content mt-5" key={review.created_at}>
                                             <div className="card-body">
                                                 <h2 className="card-title text-center">Station Name: {review.station} Batch: {review.batch}</h2>
                                                 <p>{review.review}</p>
