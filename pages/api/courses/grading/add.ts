@@ -3,6 +3,7 @@ import { supabase } from '../../supabase'
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "../../auth/[...nextauth]"
 import { COURSE_GRADING } from '../../constants'
+import { departments } from '@/data/departments'
 
 type ResponseData = {
     message: string,
@@ -13,6 +14,10 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
 ) {
+    const depts: string[] = Object.values(departments)
+        .flatMap((code: string) => code.split('/'))
+        .map(code => code.trim())
+        .filter(code => code.length > 0);
     const session = await getServerSession(req, res, authOptions)
     if (!session) {
         res.status(400).json({
@@ -22,10 +27,14 @@ export default async function handler(
         return
     }
 
-    const { course, sem, prof, data, created_by, average_mark } = req.body
+    const { course, dept, sem, prof, data, created_by, average_mark } = req.body
 
     if (!course) {
         res.status(422).json({ message: 'Invalid Request - Course missing', error: true })
+        return
+    }
+    if (dept !== "ALL" && (!depts.includes(dept) || !course.split(' ')[0].includes(dept))) {
+        res.status(422).json({ message: 'Invalid Request - Department missing/invalid', error: true })
         return
     }
     if (!sem) {
@@ -99,6 +108,7 @@ export default async function handler(
         .insert([
             {
                 course: course,
+                dept: dept,
                 sem: sem,
                 prof: prof,
                 data: validatedData,

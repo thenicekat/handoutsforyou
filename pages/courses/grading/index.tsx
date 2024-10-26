@@ -155,6 +155,11 @@ export default function Grading() {
                                                         <h2 className="card-title text-center md:text-left text-base sm:text-lg md:text-xl break-words">
                                                             {grading.course} - Prof. {grading.prof}
                                                         </h2>
+                                                        {grading.dept !== "ALL" &&
+                                                            <p className="text-sm text-gray-500">
+                                                                For the branch: {grading.dept}
+                                                            </p>
+                                                        }
                                                         <div className="-mx-4 sm:-mx-6 md:-mx-8">
                                                             <div className="min-w-min px-4 sm:px-6 md:px-8">
                                                                 {parseCSVToTable(grading.data)}
