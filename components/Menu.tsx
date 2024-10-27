@@ -60,8 +60,8 @@ const Menu = () => {
             <div>
                 {mobileMenu && (
                     <div className="fixed overflow-y-scroll top-0 left-0 w-full h-full text-white bg-gradient-to-r from-slate-700 to-slate-900 z-30 text-center">
-                        <h1 className="text-5xl pt-[50px] pb-[25px] text-primary font-bold font-mono">Menu</h1>
-                        <div className="grid grid-cols-1 md:grid-cols-2 justify-around text-2xl font-mono">
+                        <h1 className="text-5xl pt-[50px] pb-[25px] text-primary font-bold">Menu</h1>
+                        <div className="grid grid-cols-1 md:grid-cols-2 justify-around text-2xl">
                             {Object.keys(menuItems).map(
                                 (menuItem) =>
                                     <Link
@@ -77,7 +77,7 @@ const Menu = () => {
                 )}
             </div>
 
-            <div className="grid md:grid-cols-2 justify-around font-mono" >
+            <div className="grid md:grid-cols-2 justify-around" >
                 <>
                     <Link className="m-3" href="https://github.com/thenicekat/handoutsforyou">
                         <button className="btn btn-success w-full" tabIndex={-1}>
@@ -88,11 +88,11 @@ const Menu = () => {
                     {
                         !session ?
                             <Link className="m-3" href={"#"}>
-                                <button className="btn btn-outline w-full" onClick={() => signIn("google")} tabIndex={-1}>Sign In</button>
+                                <button className="btn btn-warning btn-outline w-full" onClick={() => signIn("google")} tabIndex={-1}>Sign In</button>
                             </Link>
                             :
                             <Link className="m-3" href={"#"}>
-                                <button className="btn btn-outline w-full" onClick={() => signOut()} tabIndex={-1}>Sign Out</button>
+                                <button className="btn btn-warning btn-outline w-full" onClick={() => signOut()} tabIndex={-1}>Sign Out</button>
                             </Link>
                     }
                 </>
