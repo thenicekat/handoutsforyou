@@ -60,7 +60,7 @@ const Menu = () => {
             <div>
                 {mobileMenu && (
                     <div className="fixed overflow-y-scroll top-0 left-0 w-full h-full text-white bg-gradient-to-r from-slate-700 to-slate-900 z-30 text-center">
-                        <h1 className="text-5xl pt-[50px] pb-[25px] text-primary font-bold">Menu</h1>
+                        <h1 className="text-5xl pt-[50px] pb-[25px] text-primary font-bold">Menu.</h1>
                         <div className="grid grid-cols-1 md:grid-cols-2 justify-around text-2xl">
                             {Object.keys(menuItems).map(
                                 (menuItem) =>
