@@ -130,7 +130,7 @@ export default function PS() {
                                     <div className="m-3 w-full text-center">
                                         <Link href={"/ps/ps1/add"}>
                                             <button className="btn btn-outline w-1/2" tabIndex={-1}>
-                                                No PS1 Data Found! Click here to add.
+                                                No PS 1 Data Found! Click here to add.
                                             </button>
                                         </Link>
                                     </div>
@@ -168,7 +168,7 @@ export default function PS() {
                                     <div className="m-3 w-full text-center">
                                         <Link href={"/ps/ps2/add"}>
                                             <button className="btn btn-outline w-1/2" tabIndex={-1}>
-                                                No PS2 Data Found! Click here to add.
+                                                No PS 2 Data Found! Click here to add.
                                             </button>
                                         </Link>
                                     </div>
