@@ -133,7 +133,7 @@ export default function Home() {
 
 
           <br />
-          <span className="text-lg font-bold">Thank you! For making this project a huge success. We wouldn&apos;t be here without your support🤍</span>
+          <span className="text-lg font-bold">Thank you! For making this project a huge success. We wouldn&apos;t be here without your support 🤍</span>
           <br />Vashisth Choudhari, Anagha G, Ruban SriramBabu, Nishith Kumar, Srikant Tangirala, Mahith Tunuguntla, Anubhab Khanra, Adarsh Das, Manan Gupta, Aman Ranjan, Soham Barui, Aarsh Kulkarni, Manish Vasireddy, Sai Charan, Santrupti Behera, Varad Gorantyal, Sudhanshu Patil, Aditya Kumar, Harshit Juneja, Anirudh Agarwal, Ashna, Shubham Agrawal, Shubh Badjate, Areen Raj, Dev Gala, Dhairya Agarwal, Jason Aaron Goveas, Shivam Atul Trivedi and everyone else...
         </div>
       }
