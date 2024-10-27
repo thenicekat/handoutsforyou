@@ -88,11 +88,11 @@ const Menu = () => {
                     {
                         !session ?
                             <Link className="m-3" href={"#"}>
-                                <button className="btn btn-outline w-full" onClick={() => signIn("google")} tabIndex={-1}>Sign In</button>
+                                <button className="btn btn-warning btn-outline w-full" onClick={() => signIn("google")} tabIndex={-1}>Sign In</button>
                             </Link>
                             :
                             <Link className="m-3" href={"#"}>
-                                <button className="btn btn-outline w-full" onClick={() => signOut()} tabIndex={-1}>Sign Out</button>
+                                <button className="btn  btn-warning btn-outline w-full" onClick={() => signOut()} tabIndex={-1}>Sign Out</button>
                             </Link>
                     }
                 </>
