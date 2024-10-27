@@ -16,10 +16,10 @@
     <!-- Documents in a fan style -->
     <g transform="rotate(15 50 50)">
         <rect x="41" y="45" width="20" height="25" stroke="black" stroke-width="2" fill="white" />
-        <text x="43" y="50" font-family="Arial" font-size="3" fill="black">&#8226; Handouts</text>
-        <text x="43" y="55" font-family="Arial" font-size="3" fill="black">&#8226; Reviews</text>
-        <text x="43" y="60" font-family="Arial" font-size="3" fill="black">&#8226; Notes</text>
-        <text x="43" y="65" font-family="Arial" font-size="3" fill="black">&#8226; Life</text>
+        <text x="43" y="50" font-family="Bradley Hand ITC" font-size="3" fill="black" font-weight="bold">&#8226; Handouts</text>
+        <text x="43" y="55" font-family="Bradley Hand ITC" font-size="3" fill="black" font-weight="bold">&#8226; Reviews</text>
+        <text x="43" y="60" font-family="Bradley Hand ITC" font-size="3" fill="black" font-weight="bold">&#8226; Notes</text>
+        <text x="43" y="65" font-family="Bradley Hand ITC" font-size="3" fill="black" font-weight="bold">&#8226; Life</text>
     </g>
 
     <!-- Arms hugging the documents, further apart and curving to show embrace, with rotation -->
