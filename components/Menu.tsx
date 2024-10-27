@@ -92,7 +92,7 @@ const Menu = () => {
                             </Link>
                             :
                             <Link className="m-3" href={"#"}>
-                                <button className="btn  btn-warning btn-outline w-full" onClick={() => signOut()} tabIndex={-1}>Sign Out</button>
+                                <button className="btn btn-warning btn-outline w-full" onClick={() => signOut()} tabIndex={-1}>Sign Out</button>
                             </Link>
                     }
                 </>
