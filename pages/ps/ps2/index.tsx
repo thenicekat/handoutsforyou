@@ -194,7 +194,7 @@ export default function PS2Data() {
                             </Link>
                         </div>
 
-                        <p className="m-2">NOTE: This data is crowdsourced and might not be accurate.</p>
+                        <p className="m-2">NOTE: This data is crowdsourced and might not be accurate. By default data is sorted using last submitted time. To sort based on other data, use the desktop mode of the website.</p>
                     </>}
                 </div>
             </div>
