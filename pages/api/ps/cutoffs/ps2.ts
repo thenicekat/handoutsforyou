@@ -38,7 +38,7 @@ export default async function handler(
             .from(PS2_RESPONSES)
             .select('id, id_number, station, cgpa, stipend, allotment_round, offshoot, offshoot_total, offshoot_type, public')
             .eq('year_and_sem', year)
-            .order('cgpa', { ascending: false })
+            .order('created_at', { ascending: false })
 
         if (error) {
             console.error(error)
