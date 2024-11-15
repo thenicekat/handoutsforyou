@@ -214,7 +214,7 @@ export default function PS2Data() {
                                     <div className='px-2 p-2 grid md:hidden sm:grid-cols-2 grid-cols-1 place-items-center'>
                                         {
                                             filteredPS2Data.map((ps2Item: PS2Item) => (
-                                                <div className="card w-72 h-96 bg-base-100 text-base-content m-2" key={ps2Item.id}>
+                                                <div className="card w-72 bg-base-100 text-base-content m-2" key={ps2Item.id}>
                                                     <div className="card-body">
                                                         <p className='text-lg'>{ps2Item.station.toUpperCase()}</p>
 
