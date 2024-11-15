@@ -27,7 +27,6 @@ const Menu = () => {
         "Summer Internships": "/si",
         "SI Companies": "/si/companies",
         "Research Chronicles": "https://pollen-box-786.notion.site/Research-Chronicles-894bcac1266d4e5fac2f4cd76ff29750",
-        "Rants": "/rants",
         "Placements": "/placements",
         "Placement CTCs": "/placements/ctcs",
         "Practice School": "/ps/",
