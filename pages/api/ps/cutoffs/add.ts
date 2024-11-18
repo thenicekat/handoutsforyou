@@ -145,8 +145,8 @@ export default async function handler(
                 return
             }
             // Validate stipend.
-            if (reqBody.stipend < 0 || reqBody.stipend > 400000) {
-                res.status(422).json({ message: "Stipend should be between 0 and 400000. If your stipend is higher, please reach out to the developers to add your response.", data: [], error: true })
+            if (!(reqBody.stipend >= 0 && reqBody.stipend <= 1200000)) {
+                res.status(422).json({ message: "Stipend should be between 0 and 1200000. If your stipend is higher, please reach out to the developers to add your response.", data: [], error: true })
                 return
             }
 
