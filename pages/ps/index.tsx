@@ -51,31 +51,29 @@ export default function PS() {
                     <Menu />
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-3 w-1/2 justify-center">
-                    <Link className="w-full" href={"/ps/ps1/"}>
-                        <button className="btn btn-outline w-full" tabIndex={-1}>
-                            PS1 CGPA Cutoffs
-                        </button>
-                    </Link>
+                <Link className="m-3 w-1/2" href={"/ps/ps1/"}>
+                    <button className="btn btn-outline w-full" tabIndex={-1}>
+                        PS1 CGPA Cutoffs
+                    </button>
+                </Link>
 
-                    <Link className="w-full" href={"/ps/reviews/ps1"}>
-                        <button className="btn btn-outline w-full" tabIndex={-1}>
-                            PS1 Reviews
-                        </button>
-                    </Link>
+                <Link className="m-3 w-1/2" href={"/ps/reviews/ps1"}>
+                    <button className="btn btn-outline w-full" tabIndex={-1}>
+                        PS1 Reviews
+                    </button>
+                </Link>
 
-                    <Link className="w-full" href={"/ps/ps2/"}>
-                        <button className="btn btn-outline w-full" tabIndex={-1}>
-                            PS2 CGPA Cutoffs
-                        </button>
-                    </Link>
+                <Link className="m-3 w-1/2" href={"/ps/ps2/"}>
+                    <button className="btn btn-outline w-full" tabIndex={-1}>
+                        PS2 CGPA Cutoffs
+                    </button>
+                </Link>
 
-                    <Link className="w-full" href={"/ps/reviews/ps2"}>
-                        <button className="btn btn-outline w-full" tabIndex={-1}>
-                            PS2 Reviews
-                        </button>
-                    </Link>
-                </div>
+                <Link className="m-3 w-1/2" href={"/ps/reviews/ps2"}>
+                    <button className="btn btn-outline w-full" tabIndex={-1}>
+                        PS2 Reviews
+                    </button>
+                </Link>
 
                 <Link className="m-3 w-1/2" href={"/ps/chronicles"}>
                     <button className="btn btn-outline w-full" tabIndex={-1}>
