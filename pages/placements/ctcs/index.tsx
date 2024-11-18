@@ -29,6 +29,7 @@ export default function PlacementCTCs() {
         const resp = await res.json();
         if (!resp.error) {
             setPlacementCTCs(resp.data)
+            setFilteredPlacementCTCs(resp.data)
         } else {
             toast.error("Error fetching placement details")
         }
