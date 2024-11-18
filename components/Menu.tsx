@@ -1,7 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
 import { signIn, signOut, useSession } from 'next-auth/react'
-import { Bars2Icon, EllipsisHorizontalCircleIcon, XCircleIcon } from '@heroicons/react/24/solid';
+import { EllipsisHorizontalCircleIcon, XCircleIcon } from '@heroicons/react/24/solid';
+import Modal from './Modal';
 
 if (
     typeof window !== "undefined" &&
@@ -13,10 +14,13 @@ if (
     if (process.env.NEXT_PUBLIC_PRODUCTION === "1") disableDevtool();
 }
 
+
 const Menu = () => {
     const { data: session } = useSession()
     const [mobileMenu, setMobileMenu] = React.useState(false)
     const [starCount, setStarCount] = React.useState(0)
+
+    const [starPromptOpen, setStarPromptOpen] = React.useState(false)
 
     const menuItems: any = {
         "Handouts": "/handouts",
@@ -46,10 +50,45 @@ const Menu = () => {
 
     React.useEffect(() => {
         getStarCount().then((count) => setStarCount(count))
+
+        let localStarPromptStore = localStorage.getItem("starPromptStore")
+        if (localStarPromptStore == null) {
+            console.info("Local storage not found, creating one")
+            let jsonString = JSON.stringify({ lastPrompt: Date.now() })
+            localStorage.setItem("starPromptStore", jsonString)
+            setStarPromptOpen(true)
+        } else {
+            const { lastPrompt } = JSON.parse(localStarPromptStore)
+            console.info("Local storage found, checking for prompt. Last prompt: " + lastPrompt)
+            if (Date.now() - lastPrompt >= 2 * 24 * 60 * 60 * 1000) {
+                let jsonString = JSON.stringify({ lastPrompt: Date.now() })
+                localStorage.setItem("starPromptStore", jsonString)
+                setStarPromptOpen(true)
+            }
+        }
     }, [])
 
     return (
         <>
+            {/* Star wala modal */}
+            <Modal open={starPromptOpen}>
+                <h3 className="text-lg">
+                    ✨ If you find this project helpful, please consider giving it a ⭐ on GitHub! ✨
+                    Your support would mean a lot to the team! 🙌
+                </h3>
+                <div className="text-primary m-3 gap-3">
+                    <Link href="https://github.com/thenicekat/handoutsforyou">
+                        <button className="m-2 btn btn-success w-full" tabIndex={-1}>
+                            ⭐️ Star on Github ({starCount})
+                        </button>
+                    </Link>
+
+                    <button className="m-2 btn btn-success w-full" tabIndex={-1} onClick={() => setStarPromptOpen(false)}>
+                        Close
+                    </button>
+                </div>
+            </Modal>
+
             {/* Mobile Menu */}
             <div
                 className="z-50 w-14 fixed bottom-9 md:top-0 right-0 m-4 cursor-pointer text-white"
