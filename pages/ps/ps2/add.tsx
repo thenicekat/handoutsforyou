@@ -39,6 +39,12 @@ export default function AddPS2Response({ }: {}) {
             return
         }
 
+        if (!stipend || !cgpa || !preference) {
+            toast.error("Missing one of the fields: stipend, cgpa or preference!")
+            setIsLoading(false)
+            return
+        }
+
         if (offshoot > offshootTotal) {
             toast.error("Offshoot cannot be greater than Offshoot Total!")
             setIsLoading(false)
