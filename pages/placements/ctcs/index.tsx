@@ -15,6 +15,7 @@ export default function PlacementCTCs() {
     const [input, setInput] = useState("");
     const { data: session } = useSession();
     const [placementCTCs, setPlacementCTCs] = useState([] as PlacementCTC[]);
+    const [filteredPlacementCTCs, setFilteredPlacementCTCs] = useState([] as PlacementCTC[]);
     const [yearRef, setYearRef] = useState(years[0])
 
     const fetchPlacementCTCs = async () => {
@@ -32,6 +33,11 @@ export default function PlacementCTCs() {
             toast.error("Error fetching placement details")
         }
     }
+
+    React.useEffect(() => {
+        let filteredPlacementCTCs = placementCTCs.filter((placementCTC) => placementCTC.company.toLowerCase().includes(input.toLowerCase()))
+        setFilteredPlacementCTCs(filteredPlacementCTCs)
+    }, [input])
 
     const columnHelper = createColumnHelper<PlacementCTC>();
 
@@ -86,7 +92,7 @@ export default function PlacementCTCs() {
     const [sorting, setSorting] = React.useState<SortingState>([]);
     const table = useReactTable({
         columns: columnDefs,
-        data: placementCTCs ?? [],
+        data: filteredPlacementCTCs ?? [],
         getCoreRowModel: getCoreRowModel(),
         getSortedRowModel: getSortedRowModel(),
         state: {
@@ -176,7 +182,7 @@ export default function PlacementCTCs() {
                     {/* Mobile UI */}
                     <div className='px-2 p-2 grid md:hidden sm:grid-cols-2 grid-cols-1 place-items-center'>
                         {
-                            placementCTCs.filter((placementCTC) => placementCTC.company.toLowerCase().includes(input.toLowerCase())).map((placementCTC) => (
+                            filteredPlacementCTCs.map((placementCTC) => (
                                 <div className="card w-72 bg-base-100 text-base-content m-2" key={placementCTC.company + "/" + placementCTC.campus}>
                                     <div className="card-body ">
                                         <h2 className="text-sm font-bold uppercase">{placementCTC.campus}</h2>
