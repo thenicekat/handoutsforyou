@@ -60,7 +60,7 @@ const Menu = () => {
         } else {
             const { lastPrompt } = JSON.parse(localStarPromptStore)
             console.info("Local storage found, checking for prompt. Last prompt: " + lastPrompt)
-            if (Date.now() - lastPrompt >= 2 * 24 * 60 * 60 * 1000) {
+            if (Date.now() - lastPrompt >= 4 * 24 * 60 * 60 * 1000) {
                 let jsonString = JSON.stringify({ lastPrompt: Date.now() })
                 localStorage.setItem("starPromptStore", jsonString)
                 setStarPromptOpen(true)
