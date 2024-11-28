@@ -25,6 +25,7 @@ const Menu = () => {
     const menuItems: any = {
         "Handouts": "/handouts",
         "Course Prereqs": "/courses/prereqs",
+        "Course PYQs": "/courses/pyqs",
         "Course Resources": "/courses/resources",
         "Course Reviews": "/courses/reviews",
         "Midsem Grading": "/courses/grading",
