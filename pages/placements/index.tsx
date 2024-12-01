@@ -59,6 +59,10 @@ export default function Placement({ pu_chronicles }: any) {
             name: "Placement OA Questions - EE - 2018",
             link: "https://drive.google.com/drive/folders/1AkF0xiK2eXH6o24k_32ziOB6pdkBrfHp?usp=drive_link"
         },
+        {
+            name: "Product Management Guide",
+            link: "https://www.facebook.com/groups/BPHC.Free.Expression.Group/posts/6516810605110024/"
+        },
     ]
 
     return (
