@@ -141,8 +141,8 @@ export default function Reviews({ }: {}) {
                                     .map((review) => (
                                         <div className="card shadow-lg bg-base-100 break-words text-base-content mt-5" key={review.created_at}>
                                             <div className="card-body">
-                                                <h2 className="card-title text-center">Course Name: {review.course} by Professor: {review.prof}</h2>
-                                                <p>{review.review}</p>
+                                                <h2 className="card-title text-center text-lg">Course Name: {review.course} by Professor: {review.prof}</h2>
+                                                <p className="text-sm">{review.review}</p>
                                                 <p className="italic">Submitted at: {new Date(review.created_at).toLocaleString("en-IN", {})}</p>
                                             </div>
                                         </div>
