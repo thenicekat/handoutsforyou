@@ -51,35 +51,38 @@ export default function PS() {
                     <Menu />
                 </div>
 
-                <Link className="m-3 w-1/2" href={"/ps/ps1/"}>
-                    <button className="btn btn-outline w-full" tabIndex={-1}>
-                        PS1 CGPA Cutoffs
-                    </button>
-                </Link>
+                <div className="grid md:grid-cols-3 w-full md:w-3/4">
+                    <Link className="m-3" href={"/ps/reviews/ps1"}>
+                        <button className="btn btn-outline w-full" tabIndex={-1}>
+                            PS1 Reviews
+                        </button>
+                    </Link>
 
-                <Link className="m-3 w-1/2" href={"/ps/reviews/ps1"}>
-                    <button className="btn btn-outline w-full" tabIndex={-1}>
-                        PS1 Reviews
-                    </button>
-                </Link>
+                    <Link className="m-3" href={"/ps/reviews/ps2"}>
+                        <button className="btn btn-outline w-full" tabIndex={-1}>
+                            PS2 Reviews
+                        </button>
+                    </Link>
 
-                <Link className="m-3 w-1/2" href={"/ps/ps2/"}>
-                    <button className="btn btn-outline w-full" tabIndex={-1}>
-                        PS2 CGPA Cutoffs
-                    </button>
-                </Link>
+                    <Link className="m-3" href={"/ps/chronicles"}>
+                        <button className="btn btn-outline w-full" tabIndex={-1}>
+                            PS Chronicles
+                        </button>
+                    </Link>
+                </div>
+                <div className="grid md:grid-cols-2 w-full md:w-1/2">
+                    <Link className="m-3" href={"/ps/ps1/"}>
+                        <button className="btn btn-outline w-full" tabIndex={-1}>
+                            PS1 CGPA Cutoffs
+                        </button>
+                    </Link>
 
-                <Link className="m-3 w-1/2" href={"/ps/reviews/ps2"}>
-                    <button className="btn btn-outline w-full" tabIndex={-1}>
-                        PS2 Reviews
-                    </button>
-                </Link>
-
-                <Link className="m-3 w-1/2" href={"/ps/chronicles"}>
-                    <button className="btn btn-outline w-full" tabIndex={-1}>
-                        PS Chronicles
-                    </button>
-                </Link>
+                    <Link className="m-3" href={"/ps/ps2/"}>
+                        <button className="btn btn-outline w-full" tabIndex={-1}>
+                            PS2 CGPA Cutoffs
+                        </button>
+                    </Link>
+                </div>
             </div>
 
 
@@ -93,7 +96,7 @@ export default function PS() {
                             <div className='grid md:grid-cols-2 gap-3 place-items-center p-3'>
                                 {data.ps1 && data.ps1.length > 0 ? data.ps1.map((item: PS1Item, index: number) => {
                                     return (
-                                        <div key={index} className='p-3 border border-gray-300 rounded-md w-3/4'>
+                                        <div key={index} className='p-3 rounded-md w-3/4'>
                                             <div className='text-xl text-center'>PS1</div>
                                             <div className='text-lg font-semibold'>Station: {item.station}</div>
                                             <div className='text-lg font-semibold'>CGPA: {item.cgpa}</div>
@@ -127,7 +130,7 @@ export default function PS() {
 
                                 {data.ps2 && data.ps2.length > 0 ? data.ps2.map((item: PS2Item, index: number) => {
                                     return (
-                                        <div key={index} className='p-3 border border-gray-300 rounded-md w-3/4'>
+                                        <div key={index} className='p-3 rounded-md w-3/4'>
                                             <div className='text-xl text-center'>PS2</div>
                                             <div className='text-lg font-semibold'>Station: {item.station}</div>
                                             <div className='text-lg font-semibold'>Stipend: {item.stipend}</div>
