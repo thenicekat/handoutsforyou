@@ -14,7 +14,8 @@ export default function HigherStudies() {
 
     const mastersResources = [
         {
-            name: "MAHITH's DOCUMENT ON GRADUATE APPLICATIONS: EVERYTHING YOU NEED TO KNOW",
+            name: "GRADUATE APPLICATIONS: EVERYTHING YOU NEED TO KNOW",
+            created_by: "Mahith Tunuguntla",
             link: "https://docs.google.com/document/d/1FjYQYsvS2fLqtGPoMzaC60y9p_e-U13U6tjKOdlYZqo/edit"
         },
     ]
@@ -22,6 +23,7 @@ export default function HigherStudies() {
     const mbaResources = [
         {
             name: "BITS2BSchool Facebook Group",
+            created_by: "BITS2BSchool",
             link: "https://www.facebook.com/groups/238673429575065"
         }
     ]
@@ -40,7 +42,7 @@ export default function HigherStudies() {
             {/* Search box */}
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
-                    <h1 className="text-5xl pt-[50px] pb-[20px] px-[35px] text-primary">Placements.</h1>
+                    <h1 className="text-5xl pt-[50px] pb-[20px] px-[35px] text-primary">Higher Studies.</h1>
 
                     <Menu />
 
@@ -60,7 +62,7 @@ export default function HigherStudies() {
 
                     <div className="collapse collapse-plus">
                         <input type="checkbox" />
-                        <h1 className="collapse-title text-xl font-medium">Masters' Resources x {mastersResources.length}</h1>
+                        <h1 className="collapse-title text-xl font-medium">Masters&apos; Resources x {mastersResources.length}</h1>
 
                         <div className="collapse-content">
                             <div className='px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center'>
@@ -68,6 +70,7 @@ export default function HigherStudies() {
                                     mastersResources.filter(d => d.name.toLowerCase().includes(search.toLowerCase())).map(resource => (
                                         <div className="card w-72 h-96 bg-base-100 text-base-content m-2" key={resource.name}>
                                             <div className="card-body">
+                                                <h2 className="text-sm font-bold uppercase">{resource.created_by}</h2>
                                                 <p className='text-lg'>{resource.name.toUpperCase()}</p>
 
                                                 <div className="flex">
@@ -98,6 +101,7 @@ export default function HigherStudies() {
                                     mbaResources.filter(d => d.name.toLowerCase().includes(search.toLowerCase())).map(resource => (
                                         <div className="card w-72 h-96 bg-base-100 text-base-content m-2" key={resource.name}>
                                             <div className="card-body">
+                                                <h2 className="text-sm font-bold uppercase">{resource.created_by}</h2>
                                                 <p className='text-lg'>{resource.name.toUpperCase()}</p>
 
                                                 <div className="flex">
