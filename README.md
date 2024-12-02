@@ -1,16 +1,20 @@
 # Handouts For You.
 
 ## Features
-1. Handouts
-2. Course prerequisites
-3. Course Reviews
-4. Practice School Cutoffs
-5. Practice School Chronicles
-6. Practice School Reviews
-7. Summer Internship Chronicles (Might become hard to find lmao)
-8. Placement Chronicles
-9. Minors on Campus
-10. Academic Resources
+- Handouts
+- Course Prerequisites
+- Course Reviews
+- Course PYQs
+- Course Resources
+- Course Grading (Midsem)
+- Practice School Cutoffs
+- Practice School Chronicles
+- Practice School Reviews
+- Summer Internship Chronicles (Might become hard to find lmao)
+- Summer Internship Company Details
+- Placement Chronicles
+- Research Chronicles
+- Higher Studies Resources
 
 ## Development
 - First install the dependencies by using pnpm after installing [pnpm](https://pnpm.io/installation)
@@ -18,21 +22,13 @@
 pnpm install
 ```
 
-- Then, run the development server and for the pages you are making changes to, replace `{session &&` with `{true &&`. This lets you overcome the auth temporarily locally.
+- Then, run the development server and for the pages you are making changes to, replace `{session &&` with `{true &&`. This lets you overcome the auth temporarily locally. This will work only for pages without server side verification. None of the database relient features will work.
 
 ```bash
 pnpm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-## Folder Structure
-- `api` - Contains the backend routes for handoutsforyou.
-- `courses/prereqs` - Contains code for course prereqs.
-- `courses` - Contains code for the course reviews page.
-- `handouts` - Contains code for the handouts page.
-- `ps` - Contains code for the ps pages. Each ps folder has one page for `add`-ing responses, one page for `chronicles` and one page for `data` and one page for `reviews`.
-- `resources` - Contains code for resources which you can share publicly to others.
 
 ## Scripts
 ### Course Reviews.
