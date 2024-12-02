@@ -24,7 +24,7 @@ const Menu = () => {
         "Practice School": "/ps/",
         "PS Chronicles": "/ps/chronicles",
         "Research Chronicles": "https://pollen-box-786.notion.site/Research-Chronicles-894bcac1266d4e5fac2f4cd76ff29750",
-        "Higher Studies": "/higherstudies",
+        "Higher Studies": "/higherstudies/resources",
     };
 
     const toggleMobileMenu = () => setMobileMenu(!mobileMenu);
@@ -54,7 +54,7 @@ const Menu = () => {
     return (
         <>
             {/* Star Prompt Modal */}
-            <Modal open={true}>
+            <Modal open={starPromptOpen}>
                 <div className="backdrop-blur-lg p-6 rounded-xl shadow-lg">
                     <h3 className="text-md font-semibold text-white">
                         ✨ Love this project? We will try to keep this alive and free for as long as possible. Please consider giving it a ⭐ on GitHub! ✨
