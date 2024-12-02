@@ -125,6 +125,7 @@ export default function Resources() {
                                                 {
                                                     resources[key].map((resource) => (
                                                         <CardWithScore
+                                                            key={resource.id}
                                                             resource={resource}
                                                             incrementEP='/api/courses/resources/score'
                                                         />
