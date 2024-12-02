@@ -119,6 +119,7 @@ export default function HSResources() {
                                                 {
                                                     resources[key].map((resource) => (
                                                         <CardWithScore
+                                                            key={resource.id}
                                                             resource={resource}
                                                             incrementEP='/api/higherstudies/resources/score'
                                                         />
