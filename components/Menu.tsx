@@ -54,17 +54,21 @@ const Menu = () => {
     return (
         <>
             {/* Star Prompt Modal */}
-            <Modal open={starPromptOpen}>
-                <div className="bg-white/10 backdrop-blur-lg p-6 rounded-xl shadow-lg">
-                    <h3 className="text-2xl font-semibold text-white">
-                        ✨ Love this project? Please consider giving it a ⭐ on GitHub! ✨
+            <Modal open={true}>
+                <div className="backdrop-blur-lg p-6 rounded-xl shadow-lg">
+                    <h3 className="text-md font-semibold text-white">
+                        ✨ Love this project? We will try to keep this alive and free for as long as possible. Please consider giving it a ⭐ on GitHub! ✨
                     </h3>
                     <div className="mt-4 flex flex-col gap-4">
-                        <Link href="https://github.com/thenicekat/handoutsforyou">
-                            <button className="bg-gradient-to-r from-teal-400 to-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:scale-105 transition-transform">
-                                ⭐️ Star on GitHub ({starCount})
-                            </button>
-                        </Link>
+
+                        <button className="bg-gradient-to-r from-teal-400 to-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:scale-105 transition-transform"
+                            onClick={() => {
+                                window.open("https://github.com/thenicekat/handoutsforyou", "_blank");
+                            }}
+                        >
+                            ⭐️ Star on GitHub ({starCount})
+                        </button>
+
                         <button
                             className="bg-gradient-to-r from-red-400 to-pink-500 text-white font-semibold py-2 px-4 rounded-lg hover:scale-105 transition-transform"
                             onClick={() => setStarPromptOpen(false)}
