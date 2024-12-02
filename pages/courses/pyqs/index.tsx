@@ -45,7 +45,7 @@ export default function Home() {
                                 className="btn w-full"
                                 tabIndex={-1}
                                 onClick={
-                                    () => window.open("https://hyderabadbitspilaniacin0-my.sharepoint.com/:f:/g/personal/f20210075_hyderabad_bits-pilani_ac_in/EunGAZ-G5K1ErIlgk-n2-8YBdsBqiRE3lYeZEfNlt9upug?e=4BUwdX")
+                                    () => window.open("https://hyderabadbitspilaniacin0-my.sharepoint.com/:f:/g/personal/f20210075_hyderabad_bits-pilani_ac_in/EunGAZ-G5K1ErIlgk-n2-8YBc0nDlzhtjdHTmprPgNGrzg?e=ImbC9q")
                                 }
                             >
                                 Redirect
