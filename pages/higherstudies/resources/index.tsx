@@ -10,34 +10,34 @@ import CustomToastContainer from '@/components/ToastContainer';
 import { PlusCircleIcon } from '@heroicons/react/24/solid'
 import CardWithScore from '@/components/CardWithScore';
 
-interface ResourceByDept {
+interface ResourceByCategory {
     [key: string]: Resource[]
 }
 
-export default function Resources() {
+export default function HSResources() {
     const [input, setInput] = useState("");
     const { data: session } = useSession()
-    const [resources, setResources] = useState<ResourceByDept>({})
+    const [resources, setResources] = useState<ResourceByCategory>({})
 
     const fetchResources = async () => {
-        const res = await fetch("/api/courses/resources/get")
+        const res = await fetch("/api/higherstudies/resources/get")
         const data = await res.json()
         if (!data.error) {
-            let resourcesByDepartment: ResourceByDept = {}
+            let resourcesByCategory: ResourceByCategory = {}
             for (let i = 0; i < data.data.length; i++) {
-                if (resourcesByDepartment[data.data[i].category] == undefined) {
-                    resourcesByDepartment[data.data[i].category] = []
+                if (resourcesByCategory[data.data[i].category] == undefined) {
+                    resourcesByCategory[data.data[i].category] = []
                 }
-                resourcesByDepartment[data.data[i].category].push(data.data[i])
+                resourcesByCategory[data.data[i].category].push(data.data[i])
             }
-            setResources(resourcesByDepartment)
+            setResources(resourcesByCategory)
         } else {
             toast.error("Error fetching resources")
         }
     }
 
     const filterResources = () => {
-        let filteredResources: ResourceByDept = {}
+        let filteredResources: ResourceByCategory = {}
         for (let key in resources) {
             let filtered = resources[key].filter((resource) => resource.name.toLowerCase().includes(input.toLowerCase()))
             if (filtered.length > 0) {
@@ -54,7 +54,7 @@ export default function Resources() {
     return (
         <>
             <Head>
-                <title>Course Resources.</title>
+                <title>Higher Studies Resources.</title>
                 <meta name="description" content="Handouts app for bits hyderabad" />
                 <meta name="description" content="BPHC Handouts" />
                 <meta name="description" content="Handouts for you." />
@@ -69,7 +69,7 @@ export default function Resources() {
 
             <div className='grid place-items-center'>
                 <div className='w-[70vw] place-items-center flex flex-col justify-between'>
-                    <h1 className='text-5xl pt-[50px] pb-[20px] px-[35px] text-primary'>Course Resources.</h1>
+                    <h1 className='text-5xl pt-[50px] pb-[20px] px-[35px] text-primary'>Higher Studies Resources.</h1>
                     <Menu />
                     {session &&
                         <>
@@ -83,14 +83,14 @@ export default function Resources() {
                             </div>
 
                             <div className="flex-col hidden md:block md:flex-row w-1/3 justify-center">
-                                <Link className="m-3 w-full" href={"/courses/resources/add"}>
+                                <Link className="m-3 w-full" href={"/higherstudies/resources/add"}>
                                     <button className="btn btn-outline w-full" tabIndex={-1}>
                                         Add a Resource
                                     </button>
                                 </Link>
                             </div>
                             <div className="z-10 w-14 fixed bottom-3 left-0 m-4 cursor-pointer text-white md:hidden">
-                                <Link className="m-3 w-full" href={"/courses/resources/add"}>
+                                <Link className="m-3 w-full" href={"/higherstudies/resources/add"}>
                                     <PlusCircleIcon />
                                 </Link>
                             </div>
@@ -107,13 +107,7 @@ export default function Resources() {
                     </h1>
 
                     {
-                        Object.keys(resources).sort((a, b) => {
-                            if (a == 'General') return -1
-                            else if (b == 'General') return 1
-                            else if (a > b) return 1
-                            else if (a < b) return -1
-                            else return 0
-                        }).map((key) => {
+                        Object.keys(resources).sort().map((key) => {
                             return (
                                 <>
                                     <div className="collapse collapse-plus">
@@ -126,7 +120,7 @@ export default function Resources() {
                                                     resources[key].map((resource) => (
                                                         <CardWithScore
                                                             resource={resource}
-                                                            incrementEP='/api/courses/resources/score'
+                                                            incrementEP='/api/higherstudies/resources/score'
                                                         />
                                                     ))
                                                 }
@@ -140,7 +134,7 @@ export default function Resources() {
                         })
                     }
                 </div >}
-            <CustomToastContainer containerId="resources" />
+            <CustomToastContainer containerId="hsResources" />
         </>
     )
 }

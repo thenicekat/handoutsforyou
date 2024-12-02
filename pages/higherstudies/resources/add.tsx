@@ -6,9 +6,10 @@ import { toast } from "react-toastify";
 import CustomToastContainer from "@/components/ToastContainer";
 import AutoCompleter from "@/components/AutoCompleter";
 import { departments } from "@/data/departments";
+import { higherStudiesCategories } from "@/data/higherstudies";
 
 
-export default function AddResources({ }: {}) {
+export default function AddHSResources({ }: {}) {
     const [name, setName] = useState("");
     const [link, setLink] = useState("");
     const [created_by, setCreatedBy] = useState("");
@@ -20,12 +21,12 @@ export default function AddResources({ }: {}) {
 
     const addResource = async () => {
         setIsLoading(true)
-        if (departments[category] == undefined) {
+        if (higherStudiesCategories.indexOf(category) == -1) {
             toast.error("Please select a valid category!")
             setIsLoading(false)
             return
         }
-        const res = await fetch("/api/courses/resources/add", {
+        const res = await fetch("/api/higherstudies/resources/add", {
             method: "POST",
             body: JSON.stringify({
                 name: name,
@@ -52,7 +53,7 @@ export default function AddResources({ }: {}) {
     return (
         <>
             <Head>
-                <title>Course Resources.</title>
+                <title>Higher Studies Resources.</title>
                 <meta name="description" content="One stop place for your PS queries, handouts, and much more" />
                 <meta name="keywords" content="BITS Pilani, Handouts, BPHC, Hyderabad Campus, BITS Hyderabad, BITS, Pilani, Handouts for you, handouts, for, you, bits, birla, institute, bits hyd, academics, practice school, ps, queries, ps cutoffs, ps2, ps1" />
                 <meta name="robots" content="index, follow" />
@@ -94,7 +95,7 @@ export default function AddResources({ }: {}) {
 
                             <div className="flex flex-col w-3/4 justify-between m-1">
                                 <label htmlFor="category" className="text-primary">Category</label>
-                                <AutoCompleter name="category" items={Object.keys(departments)} value={category} onChange={(val) => setCategory(val)} />
+                                <AutoCompleter name="category" items={higherStudiesCategories} value={category} onChange={(val) => setCategory(val)} />
                             </div>
 
                             <div className="text-center flex-wrap w-3/4 justify-between m-1">
@@ -104,7 +105,7 @@ export default function AddResources({ }: {}) {
                     }
                 </div>
             </div>
-            <CustomToastContainer containerId="addResources" />
+            <CustomToastContainer containerId="addHSResources" />
         </>
     )
 }
