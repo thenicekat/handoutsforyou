@@ -15,16 +15,16 @@ export default function Home() {
     reviews: 0,
     resources: 0,
     placement_ctcs: 0,
-    si_chronicles: 0,
-    si_companies: 0
+    si_data: 0,
+    grading: 0
   } as {
     ps1: number,
     ps2: number,
     reviews: number,
     resources: number,
     placement_ctcs: number,
-    si_chronicles: number,
-    si_companies: number
+    si_data: number,
+    grading: number
   });
 
   const fetchSummaryData = async () => {
@@ -35,13 +35,13 @@ export default function Home() {
       toast.error(res.error);
     } else {
       let result = summaryData;
-      result.ps1 = res.data.ps1.count;
-      result.ps2 = res.data.ps2.count;
-      result.reviews = res.data.reviews.count;
-      result.resources = res.data.resources.count;
-      result.placement_ctcs = res.data.placement_ctcs.count;
-      result.si_chronicles = res.data.si_chronicles.count;
-      result.si_companies = res.data.si_companies.count;
+      result.ps1 = res.data.ps1;
+      result.ps2 = res.data.ps2;
+      result.reviews = res.data.reviews;
+      result.resources = res.data.resources;
+      result.placement_ctcs = res.data.placement_ctcs;
+      result.si_data = res.data.si_data;
+      result.grading = res.data.grading;
       setSummaryData(result);
     }
     setIsLoading(false);
@@ -98,6 +98,12 @@ export default function Home() {
                 </span>
                 <div className="whitespace-nowrap text-2xl"> Resources</div>
               </div>
+              <div className="place-items-center px-8">
+                <span className="text-5xl text-primary font-bold">
+                  <CountUp end={summaryData.grading} duration={3} />
+                </span>
+                <div className="text-2xl"> Grading </div>
+              </div>
               <div className="place-items-center">
                 <span className="text-5xl text-primary font-bold">
                   <CountUp end={summaryData.placement_ctcs} duration={3} />
@@ -106,15 +112,9 @@ export default function Home() {
               </div>
               <div className="place-items-center px-8">
                 <span className="text-5xl text-primary font-bold">
-                  <CountUp end={summaryData.si_chronicles} duration={3} />
+                  <CountUp end={summaryData.si_data} duration={3} />
                 </span>
-                <div className="text-2xl"> SI Chronicles </div>
-              </div>
-              <div className="place-items-center px-8">
-                <span className="text-5xl text-primary font-bold">
-                  <CountUp end={summaryData.si_companies} duration={3} />
-                </span>
-                <div className="text-2xl"> SI Companies </div>
+                <div className="text-2xl"> SI Data </div>
               </div>
               <div className="place-items-center px-8">
                 <span className="text-5xl text-primary font-bold">
