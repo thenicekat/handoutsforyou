@@ -45,8 +45,8 @@ export default function PS() {
                 <div className='px-2 p-2 grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center'>
                     {
                         psResources.map(psResource => {
-                            return <div className="grid place-items-center">
-                                <div className="card h-60 w-72 bg-base-100 text-base-content m-2" key={psResource.title}>
+                            return <div className="grid place-items-center" key={psResource.title}>
+                                <div className="card h-60 w-72 bg-base-100 text-base-content m-2">
                                     <div className="card-body">
                                         <p className='text-lg'>{psResource.title.toUpperCase()}</p>
 
