@@ -1,38 +1,30 @@
-import { useSession } from "next-auth/react";
 import Head from "next/head";
 import Link from "next/link";
 import Menu from "@/components/Menu";
-import { useEffect, useState } from "react";
-import CustomToastContainer from "@/components/ToastContainer";
-import { toast } from "react-toastify";
-import { PS1Item, PS2Item } from "@/types/PSData";
 
 export default function PS() {
-    const { data: session } = useSession()
-
-    const [isLoading, setIsLoading] = useState(false);
-    const [data, setData] = useState<any>({});
-
-    const fetchData = async () => {
-        setIsLoading(true);
-        const response = await fetch("/api/ps/me", {
-            method: "GET",
-            headers: { "Content-Type": "application/json" }
-        });
-        if (response.status !== 400) {
-            const res = await response.json();
-            if (res.error) {
-                toast.error(res.message);
-                return
-            } else {
-                setData(res.data);
-            }
-        }
-        setIsLoading(false);
-    }
-
-    useEffect(() => { fetchData() }, []);
-
+    const psResources = [
+        {
+            title: "PS1 CGPA Cutoffs",
+            link: "/ps/cutoffs/ps1"
+        },
+        {
+            title: "PS2 CGPA Cutoffs",
+            link: "/ps/cutoffs/ps2"
+        },
+        {
+            title: "PS Chronicles",
+            link: "/ps/chronicles"
+        },
+        {
+            title: "PS1 Reviews",
+            link: "/ps/reviews/ps1"
+        },
+        {
+            title: "PS2 Reviews",
+            link: "/ps/reviews/ps2"
+        },
+    ]
     return (
         <>
             <Head>
@@ -50,129 +42,26 @@ export default function PS() {
 
                     <Menu />
                 </div>
+                <div className='px-2 p-2 grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center'>
+                    {
+                        psResources.map(psResource => {
+                            return <div className="grid place-items-center">
+                                <div className="card h-60 w-72 bg-base-100 text-base-content m-2" key={psResource.title}>
+                                    <div className="card-body">
+                                        <p className='text-lg'>{psResource.title.toUpperCase()}</p>
 
-                <div className="grid md:grid-cols-3 w-full md:w-3/4">
-                    <Link className="m-3" href={"/ps/reviews/ps1"}>
-                        <button className="btn btn-outline w-full" tabIndex={-1}>
-                            PS1 Reviews
-                        </button>
-                    </Link>
-
-                    <Link className="m-3" href={"/ps/reviews/ps2"}>
-                        <button className="btn btn-outline w-full" tabIndex={-1}>
-                            PS2 Reviews
-                        </button>
-                    </Link>
-
-                    <Link className="m-3" href={"/ps/chronicles"}>
-                        <button className="btn btn-outline w-full" tabIndex={-1}>
-                            PS Chronicles
-                        </button>
-                    </Link>
-                </div>
-                <div className="grid md:grid-cols-2 w-full md:w-1/2">
-                    <Link className="m-3" href={"/ps/ps1/"}>
-                        <button className="btn btn-outline w-full" tabIndex={-1}>
-                            PS1 CGPA Cutoffs
-                        </button>
-                    </Link>
-
-                    <Link className="m-3" href={"/ps/ps2/"}>
-                        <button className="btn btn-outline w-full" tabIndex={-1}>
-                            PS2 CGPA Cutoffs
-                        </button>
-                    </Link>
-                </div>
-            </div>
-
-
-            {session &&
-                <div>
-                    <h1 className="text-3xl text-center my-3">Your PS Dashboard</h1>
-                    <h1 className="text-xl text-center my-3">Please contribute to this project by sharing your PS details</h1>
-
-                    {!isLoading ?
-                        <>
-                            <div className='grid md:grid-cols-2 gap-3 place-items-center p-3'>
-                                {data.ps1 && data.ps1.length > 0 ? data.ps1.map((item: PS1Item, index: number) => {
-                                    return (
-                                        <div key={index} className='p-3 rounded-md w-3/4'>
-                                            <div className='text-xl text-center'>PS1</div>
-                                            <div className='text-lg font-semibold'>Station: {item.station}</div>
-                                            <div className='text-lg font-semibold'>CGPA: {item.cgpa}</div>
-                                            <div className='text-lg font-semibold'>Preference: {item.preference}</div>
-                                            <div className='text-lg font-semibold'>Allotment Round: {item.allotment_round}</div>
-                                            <div className='text-lg font-semibold'>Year and Semester: {item.year_and_sem}</div>
-
-                                            <div className="m-3 w-full text-center">
-                                                <button className="btn btn-outline w-1/2" onClick={() => {
-                                                    localStorage.setItem("h4u_ps_review_data", JSON.stringify({
-                                                        type: "PS1",
-                                                        batch: item.year_and_sem,
-                                                        station: item.station,
-                                                    }))
-                                                    window.location.href = "/ps/reviews/add"
-                                                }}>
-                                                    Add Review.
-                                                </button>
-                                            </div>
+                                        <div className="flex">
+                                            <button className="btn btn-sm btn-primary m-1" onClick={() => {
+                                                window.location.href = psResource.link
+                                            }}>View</button>
                                         </div>
-                                    )
-                                }) :
-                                    <div className="m-3 w-full text-center">
-                                        <Link href={"/ps/ps1/add"}>
-                                            <button className="btn btn-outline w-1/2" tabIndex={-1}>
-                                                No PS 1 Data Found! Click here to add.
-                                            </button>
-                                        </Link>
                                     </div>
-                                }
-
-                                {data.ps2 && data.ps2.length > 0 ? data.ps2.map((item: PS2Item, index: number) => {
-                                    return (
-                                        <div key={index} className='p-3 rounded-md w-3/4'>
-                                            <div className='text-xl text-center'>PS2</div>
-                                            <div className='text-lg font-semibold'>Station: {item.station}</div>
-                                            <div className='text-lg font-semibold'>Stipend: {item.stipend}</div>
-                                            <div className='text-lg font-semibold'>CGPA: {item.cgpa}</div>
-                                            <div className='text-lg font-semibold'>Preference: {item.preference}</div>
-                                            <div className='text-lg font-semibold'>Allotment Round: {item.allotment_round}</div>
-                                            <div className='text-lg font-semibold'>Year and Semester: {item.year_and_sem}</div>
-                                            <div className='text-lg font-semibold'>Offshoot: {item.offshoot}</div>
-                                            <div className='text-lg font-semibold'>Offshoot Total: {item.offshoot_total}</div>
-                                            <div className='text-lg font-semibold'>Offshoot Type: {item.offshoot_type || "N/A"}</div>
-
-                                            <div className="m-3 w-full text-center">
-                                                <button className="btn btn-outline w-1/2" onClick={() => {
-                                                    localStorage.setItem("h4u_ps_review_data", JSON.stringify({
-                                                        type: "PS2",
-                                                        batch: item.year_and_sem,
-                                                        station: item.station,
-                                                    }))
-                                                    window.location.href = "/ps/reviews/add"
-                                                }}>
-                                                    Add Review.
-                                                </button>
-                                            </div>
-                                        </div>
-                                    )
-                                }) :
-                                    <div className="m-3 w-full text-center">
-                                        <Link href={"/ps/ps2/add"}>
-                                            <button className="btn btn-outline w-1/2" tabIndex={-1}>
-                                                No PS 2 Data Found! Click here to add.
-                                            </button>
-                                        </Link>
-                                    </div>
-                                }
+                                </div>
                             </div>
-                        </>
-                        :
-                        <div className='text-lg text-center font-semibold'>Loading...</div>
+                        })
                     }
                 </div>
-            }
-            <CustomToastContainer containerId="ps" />
+            </div>
         </>
     );
 }

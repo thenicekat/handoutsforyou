@@ -124,7 +124,7 @@ export default function PS1Data() {
                         </div>
 
                         <div className="flex flex-col md:flex-row w-1/2 justify-center">
-                            <Link className="m-3 w-full" href={"/ps/ps1/add"}>
+                            <Link className="m-3 w-full" href={"/ps/cutoffs/ps1/add"}>
                                 <button className="btn btn-outline w-full">
                                     Add your response?
                                 </button>
