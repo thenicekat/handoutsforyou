@@ -191,7 +191,7 @@ export default function PS2Data() {
 
 
                         <div className="flex flex-col md:flex-row w-1/2 justify-center">
-                            <Link className="m-3 w-full" href={"/ps/ps2/add"}>
+                            <Link className="m-3 w-full" href={"/ps/cutoffs/ps2/add"}>
                                 <button className="btn btn-outline w-full" tabIndex={-1}>
                                     Add your response?
                                 </button>
