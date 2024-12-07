@@ -85,7 +85,7 @@ export default function AddPS2Response({ }: {}) {
             setOffshootTotal(0)
             setOffshootType("")
 
-            window.location.href = "/ps/ps2/"
+            window.location.href = "/ps/cutoffs/ps2/"
         }
         setIsLoading(false)
     }
