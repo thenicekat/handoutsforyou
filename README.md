@@ -67,8 +67,11 @@ National Instruments<|>National Instruments (Bangalore)<|>National Instruments S
 ## Contributors - Developers
 1. Divyateja Pasupuleti
 2. Adarsh Das
-3. Namit Bhutani
-4. Anirudh Agarwal
+3. Pratyush Nair
+4. Namit Bhutani
+5. Anirudh Agarwal
+6. Santrupti Behera
+
 
 ## Contributors - Content
 Redirected to [https://handoutsforyou.vercel.app](https://handoutsforyou.vercel.app)
