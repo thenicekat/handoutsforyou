@@ -44,7 +44,7 @@ const Menu = () => {
             setStarPromptOpen(true);
         } else {
             const { lastPrompt } = JSON.parse(localStarPromptStore);
-            if (Date.now() - lastPrompt >= 2 * 24 * 60 * 60 * 1000) {
+            if (Date.now() - lastPrompt >= 24 * 60 * 60 * 1000) {
                 localStorage.setItem("starPromptStore", JSON.stringify({ lastPrompt: Date.now() }));
                 setStarPromptOpen(true);
             }
