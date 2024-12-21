@@ -21,17 +21,21 @@ export default async function handler(
         })
     }
 
-    const { amount } = req.body
+    const { amount, name } = req.body
 
     if (!amount) {
         res.status(422).json({ message: 'Invalid Request - Amount missing', error: true })
+        return
+    }
+    if (!name) {
+        res.status(422).json({ message: 'Invalid Request - Name missing', error: true })
         return
     }
 
     const { error } = await supabase
         .from(DONATIONS)
         .insert([
-            { amount: amount, created_by: session?.user?.email }
+            { name: name, amount: amount, created_by: session?.user?.email }
         ])
 
     if (error) {
