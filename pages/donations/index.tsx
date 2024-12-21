@@ -127,7 +127,7 @@ export default function Donations() {
                             <div className="collapse-content">
                                 {
                                     donationsReceived.donations.map((donation, index) => (
-                                        <p>Name: {donation.name} - {donation.amount} - {donation.verified ? "Verified" : "Not verified"}</p>
+                                        <p key={index}>Name: {donation.name} - {donation.amount} - {donation.verified ? "Verified" : "Not verified"}</p>
                                     ))
                                 }
                             </div>
