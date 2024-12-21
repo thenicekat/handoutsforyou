@@ -3,11 +3,19 @@ import { useSession } from 'next-auth/react';
 import Menu from "@/components/Menu";
 import React from "react";
 import { toast } from "react-toastify";
+import CustomToastContainer from "@/components/ToastContainer";
 
 export default function Donations() {
     const { data: session } = useSession()
+    const [name, setName] = React.useState("")
     const [amount, setAmount] = React.useState(0)
-    const [donationsReceived, setDonationsReceived] = React.useState(0)
+    const [donationsReceived, setDonationsReceived] = React.useState<{
+        sum: number,
+        donations: any[]
+    }>({
+        sum: 0,
+        donations: []
+    })
 
     const fetchDonations = async () => {
         const response = await fetch("/api/donations/get", {
@@ -23,6 +31,7 @@ export default function Donations() {
         } else {
             setDonationsReceived(res.data)
         }
+        toast.warn("Please open this page only on your phone.")
     }
 
     const addDonation = async () => {
@@ -38,7 +47,7 @@ export default function Donations() {
             toast.error(res.message)
         } else {
             toast.info("Donation recorded successfully. Opening UPI app!")
-            window.open(`upi://pay?pa=divyateja2004@okicici&amp;pn=Divyateja Pasupuleti&amp;cu=INR&amp;am=${amount}`, "_blank")
+            window.open(`upi://pay?pa=divyateja2004@okicici&pn=Divyateja Pasupuleti&cu=INR&am=${amount}&tn=h4udonation`, "_blank")
         }
     }
 
@@ -68,16 +77,13 @@ export default function Donations() {
 
             {session &&
                 <div className="px-2 md:px-20">
-                    <div className="grid place-items-center text-xl p-10">
-                        <p className="text-3xl my-2">Total Amount Received till date: {donationsReceived ? donationsReceived : 0}</p>
+                    <div className="grid place-items-center p-10">
+                        <p className="text-3xl my-2">Total Amount Received till date: {donationsReceived.sum}</p>
 
-                        <p className="text-center">
-                            All this while handoutsforyou was free but due to some recent issues especially with storage as well as bandwidth, we require funding to keep this alive. If you feel like h4u has helped you in any way, please consider donating to keep this project alive. Even a small amount would make a difference.
-                            <br /><br />
-                            NOTE: You need to be on your phone to pay for the same. We promise all the amount that comes to us will be used only for this project.
-                            <br /><br />
-                        </p>
-
+                        <div className="flex flex-col md:w-1/3 justify-between m-3">
+                            <label htmlFor="name" className="text-primary">Name.</label>
+                            <input type="text" id="name" className="input input-secondary" value={name} onChange={(e) => setName(e.target.value)} />
+                        </div>
 
                         <div className="flex flex-col md:w-1/3 justify-between m-3">
                             <label htmlFor="amount" className="text-primary">Amount donated.</label>
@@ -85,10 +91,50 @@ export default function Donations() {
                         </div>
 
                         <div className="text-center flex flex-col md:w-1/3  justify-between m-1">
-                            <button className="btn btn-primary" onClick={addDonation}>💸 Submit Transaction!</button>
+                            <button className="btn btn-primary" onClick={addDonation}>💸 Start your Transaction!</button>
+                        </div>
+
+
+                        <div className="collapse collapse-arrow bg-base-200 m-2">
+                            <input type="radio" name="my-accordion-2" />
+                            <div className="collapse-title text-xl font-medium">Why do we need money?</div>
+                            <div className="collapse-content">
+                                <p>
+                                    All this while handoutsforyou was free but due to some recent issues especially with storage as well as database, we require funding to keep this alive. If you feel like h4u has helped you in any way, please consider donating.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="collapse collapse-arrow bg-base-200 m-2">
+                            <input type="radio" name="my-accordion-2" />
+                            <div className="collapse-title text-xl font-medium">Can I pay from laptop?</div>
+                            <div className="collapse-content">
+                                <p>No, You need to be on your phone to pay for the same since it uses UPI.</p>
+                            </div>
+                        </div>
+
+                        <div className="collapse collapse-arrow bg-base-200 m-2">
+                            <input type="radio" name="my-accordion-2" />
+                            <div className="collapse-title text-xl font-medium">I paid but the amount shown on the website did not change</div>
+                            <div className="collapse-content">
+                                <p>Yes, that is completely normal as the transactions are verified manually.</p>
+                            </div>
+                        </div>
+
+                        <div className="collapse collapse-arrow bg-base-200 m-2">
+                            <input type="radio" name="my-accordion-2" />
+                            <div className="collapse-title text-xl font-medium">Can I check all transactions somehow?</div>
+                            <div className="collapse-content">
+                                {
+                                    donationsReceived.donations.map((donation, index) => (
+                                        <p>Name: {donation.name} - {donation.amount} - {donation.verified ? "Verified" : "Not verified"}</p>
+                                    ))
+                                }
+                            </div>
                         </div>
                     </div>
                 </div>}
+            <CustomToastContainer containerId="donations" />
         </>
     );
 }
