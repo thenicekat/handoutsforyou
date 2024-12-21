@@ -51,7 +51,7 @@ export default function Donations() {
             toast.error(res.message)
         } else {
             toast.info("Donation recorded successfully. Opening UPI app!")
-            window.open(`upi://pay?pa=divyateja2004@okicici&pn=Divyateja Pasupuleti&cu=INR&am=${amount}&tn=h4udonation`)
+            window.open(`upi://pay?pa=divyateja2004@okicici&cu=INR&tn=h4udonation`)
         }
         setIsLoading(false)
     }

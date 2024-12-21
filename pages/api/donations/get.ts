@@ -41,7 +41,7 @@ export default async function handler(
             message: 'success',
             error: false,
             data: {
-                donationsReceived: sum,
+                sum: sum,
                 donations: data
             }
         })
