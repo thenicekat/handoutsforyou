@@ -112,11 +112,17 @@ const Menu = () => {
             </div>
 
             {/* Main Buttons */}
-            <div className="grid md:grid-cols-2 justify-around" >
+            <div className="grid md:grid-cols-3 justify-around" >
                 <>
                     <Link className="m-3" href="https://github.com/thenicekat/handoutsforyou">
                         <button className="btn btn-success w-full" tabIndex={-1}>
                             ⭐️ Star on Github ({starCount})
+                        </button>
+                    </Link>
+
+                    <Link className="m-3" href="/donations">
+                        <button className="btn btn-warning w-full" tabIndex={-1}>
+                            💸 Fund the Project!
                         </button>
                     </Link>
 
@@ -127,7 +133,7 @@ const Menu = () => {
                             </Link>
                             :
                             <Link className="m-3" href={"#"}>
-                                <button className="btn btn-warning btn-outline w-full" onClick={() => signOut()} tabIndex={-1}>Sign Out</button>
+                                <button className="btn btn-error w-full" onClick={() => signOut()} tabIndex={-1}>Sign Out</button>
                             </Link>
                     }
                 </>
