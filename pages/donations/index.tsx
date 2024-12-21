@@ -13,6 +13,8 @@ export default function Donations() {
     const [name, setName] = React.useState("")
     const [amount, setAmount] = React.useState(0)
 
+    const DONATIONS_ENABLED = process.env.NEXT_PUBLIC_DONATIONS_ENABLED
+
     const [donationsReceived, setDonationsReceived] = React.useState<{
         sum: number,
         donations: any[]
@@ -38,6 +40,10 @@ export default function Donations() {
     }
 
     const addDonation = async () => {
+        if (DONATIONS_ENABLED !== "1") {
+            toast.warn("We are not accepting donations at the moment.")
+            return
+        }
         setIsLoading(true)
         const response = await fetch("/api/donations/add", {
             method: "POST",
@@ -80,8 +86,8 @@ export default function Donations() {
                 </div>
             </div>
 
-            {session &&
-                <div className="px-2 md:px-20">
+            {
+                session && <div className="px-2 md:px-20">
                     <div className="grid place-items-center p-10">
                         <p className="text-3xl my-2">Total Amount Received till date: {donationsReceived.sum}</p>
                         {isLoading ? <p>Loading...</p> :
@@ -141,7 +147,8 @@ export default function Donations() {
                             </div>
                         </div>
                     </div>
-                </div>}
+                </div>
+            }
             <CustomToastContainer containerId="donations" />
         </>
     );
