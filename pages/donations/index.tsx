@@ -23,7 +23,7 @@ export default function Donations() {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ amount })
+            body: JSON.stringify({ name, amount })
         })
         const res = await response.json()
         if (res.error) {
