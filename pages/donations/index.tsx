@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { useSession } from 'next-auth/react';
 import Menu from "@/components/Menu";
-import Link from "next/link";
 import React from "react";
 import { toast } from "react-toastify";
 
