@@ -7,8 +7,12 @@ import CustomToastContainer from "@/components/ToastContainer";
 
 export default function Donations() {
     const { data: session } = useSession()
+
+    const [isLoading, setIsLoading] = React.useState(false)
+
     const [name, setName] = React.useState("")
     const [amount, setAmount] = React.useState(0)
+
     const [donationsReceived, setDonationsReceived] = React.useState<{
         sum: number,
         donations: any[]
@@ -34,6 +38,7 @@ export default function Donations() {
     }
 
     const addDonation = async () => {
+        setIsLoading(true)
         const response = await fetch("/api/donations/add", {
             method: "POST",
             headers: {
@@ -46,8 +51,9 @@ export default function Donations() {
             toast.error(res.message)
         } else {
             toast.info("Donation recorded successfully. Opening UPI app!")
-            window.open(`upi://pay?pa=divyateja2004@okicici&pn=Divyateja Pasupuleti&cu=INR&am=${amount}&tn=h4udonation`, "_blank")
+            window.open(`upi://pay?pa=divyateja2004@okicici&pn=Divyateja Pasupuleti&cu=INR&am=${amount}&tn=h4udonation`)
         }
+        setIsLoading(false)
     }
 
     React.useEffect(() => {
@@ -78,20 +84,23 @@ export default function Donations() {
                 <div className="px-2 md:px-20">
                     <div className="grid place-items-center p-10">
                         <p className="text-3xl my-2">Total Amount Received till date: {donationsReceived.sum}</p>
+                        {isLoading ? <p>Loading...</p> :
+                            <>
+                                <div className="flex flex-col md:w-1/3 justify-between m-3">
+                                    <label htmlFor="name" className="text-primary">Name.</label>
+                                    <input type="text" id="name" className="input input-secondary" value={name} onChange={(e) => setName(e.target.value)} />
+                                </div>
 
-                        <div className="flex flex-col md:w-1/3 justify-between m-3">
-                            <label htmlFor="name" className="text-primary">Name.</label>
-                            <input type="text" id="name" className="input input-secondary" value={name} onChange={(e) => setName(e.target.value)} />
-                        </div>
+                                <div className="flex flex-col md:w-1/3 justify-between m-3">
+                                    <label htmlFor="amount" className="text-primary">Amount donated.</label>
+                                    <input type="text" id="amount" className="input input-secondary" value={amount} onChange={(e) => setAmount(Number(e.target.value))} />
+                                </div>
 
-                        <div className="flex flex-col md:w-1/3 justify-between m-3">
-                            <label htmlFor="amount" className="text-primary">Amount donated.</label>
-                            <input type="text" id="amount" className="input input-secondary" value={amount} onChange={(e) => setAmount(Number(e.target.value))} />
-                        </div>
-
-                        <div className="text-center flex flex-col md:w-1/3  justify-between m-1">
-                            <button className="btn btn-primary" onClick={addDonation}>💸 Start your Transaction!</button>
-                        </div>
+                                <div className="text-center flex flex-col md:w-1/3  justify-between m-1">
+                                    <button className="btn btn-primary" onClick={addDonation}>💸 Start your Transaction!</button>
+                                </div>
+                            </>
+                        }
 
 
                         <div className="collapse collapse-arrow bg-base-200 m-2">
