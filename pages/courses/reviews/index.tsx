@@ -65,10 +65,6 @@ export default function Reviews({ }: {}) {
     }
 
     useEffect(() => {
-        fetchReviews()
-    }, [])
-
-    useEffect(() => {
         localStorage.setItem("h4u_course", course)
         localStorage.setItem("h4u_prof", prof)
     })
@@ -109,7 +105,7 @@ export default function Reviews({ }: {}) {
 
                             <Link className="m-3 w-full" href={""}>
                                 <button className="btn btn-outline w-full" tabIndex={-1} onClick={fetchReviews}>
-                                    Filter Reviews
+                                    Fetch Reviews
                                 </button>
                             </Link>
                         </div>
@@ -126,7 +122,7 @@ export default function Reviews({ }: {}) {
                 <div>
                     {/* Show the count of reviews */}
                     <div className="flex justify-center">
-                        <h1 className="text-3xl text-primary">Total Reviews: {reviews.length}</h1>
+                        <h1 className="text-3xl text-primary">{reviews.length > 0 && `Total Reviews: ${reviews.length}`}</h1>
                     </div>
 
                     <div className='px-2 md:px-20 p-2'>
