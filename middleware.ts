@@ -1,9 +1,8 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { getServerSession } from 'next-auth/next';
-import { authOptions } from './auth/[...nextauth]'; // Update path as necessary
+import { authOptions } from './pages/api/auth/[...nextauth]';
 
-// Regex for email validation
 const EMAIL_REGEX = /^(?:[fh]\d{8}@(hyderabad|pilani)\.bits-pilani\.ac\.in|[fh]\d{8}[pgh]@alumni\.bits-pilani\.ac\.in)$/;
 // const EMAIL_REGEX = /a/;
 
@@ -37,7 +36,6 @@ export async function middleware(req: NextRequest) {
   return NextResponse.next();
 }
 
-// Apply middleware to specific routes
 export const config = {
-  matcher: ['/api/protected/:path*'], // Restrict middleware to protected API routes
+  matcher: ['/api/:path*'],
 };
