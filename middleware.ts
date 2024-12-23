@@ -4,7 +4,6 @@ import { getServerSession } from 'next-auth/next';
 import { authOptions } from './pages/api/auth/[...nextauth]';
 
 const EMAIL_REGEX = /^(?:[fh]\d{8}@(hyderabad|pilani)\.bits-pilani\.ac\.in|[fh]\d{8}[pgh]@alumni\.bits-pilani\.ac\.in)$/;
-// const EMAIL_REGEX = /a/;
 
 export async function middleware(req: NextRequest) {
   const session = await getServerSession(req, NextResponse.next(), authOptions);
