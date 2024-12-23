@@ -1,18 +1,43 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { getServerSession } from 'next-auth/next';
+import { authOptions } from './auth/[...nextauth]'; // Update path as necessary
 
+// Regex for email validation
 const EMAIL_REGEX = /^(?:[fh]\d{8}@(hyderabad|pilani)\.bits-pilani\.ac\.in|[fh]\d{8}[pgh]@alumni\.bits-pilani\.ac\.in)$/;
+// const EMAIL_REGEX = /a/;
 
-export function middleware(req: NextRequest) {  
-  const email = req.cookies.get('userEmail')?.value;
-  
-  if (!email || !EMAIL_REGEX.test(email)) {
-    return NextResponse.redirect(new URL('/unauthorized', req.url));
+export async function middleware(req: NextRequest) {
+  const session = await getServerSession(req, NextResponse.next(), authOptions);
+
+  if (!session) {
+    return NextResponse.json(
+      {
+        message: 'Unauthorized, please login and try again',
+        error: true,
+        data: [],
+      },
+      { status: 401 }
+    );
   }
-  
+
+  const email = session?.user?.email;
+
+  if (!email || !EMAIL_REGEX.test(email)) {
+    return NextResponse.json(
+      {
+        message: 'Access restricted to BITS Hyderabad or Pilani students/alumni',
+        error: true,
+        data: [],
+      },
+      { status: 403 }
+    );
+  }
+
   return NextResponse.next();
 }
 
+// Apply middleware to specific routes
 export const config = {
-  matcher: ['/protected/:path*'], 
+  matcher: ['/api/protected/:path*'], // Restrict middleware to protected API routes
 };
