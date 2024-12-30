@@ -74,6 +74,7 @@ export default function Home() {
       {session &&
         !isLoading &&
         <div className="px-2 md:px-20 text-center">
+          <span className="text-lg font-bold">Thank you! For making this project a huge success. We wouldn&apos;t be here without your support 🤍</span>
 
           <div className="grid md:grid-cols-4 px-10 py-10">
             <div className="ml-14">
@@ -131,10 +132,9 @@ export default function Home() {
             </div>
           </div>
 
-
           <br />
-          <span className="text-lg font-bold">Thank you! For making this project a huge success. We wouldn&apos;t be here without your support 🤍</span>
-          <br />Vashisth Choudhari, Anagha G, Ruban SriramBabu, Nishith Kumar, Srikant Tangirala, Mahith Tunuguntla, Anubhab Khanra, Adarsh Das, Manan Gupta, Aman Ranjan, Soham Barui, Aarsh Kulkarni, Manish Vasireddy, Sai Charan, Santrupti Behera, Varad Gorantyal, Sudhanshu Patil, Aditya Kumar, Harshit Juneja, Anirudh Agarwal, Ashna, Shubham Agrawal, Shubh Badjate, Areen Raj, Dev Gala, Dhairya Agarwal, Jason Aaron Goveas, Shivam Atul Trivedi and everyone else...
+
+          Vashisth Choudhari, Anagha G, Ruban SriramBabu, Nishith Kumar, Srikant Tangirala, Mahith Tunuguntla, Anubhab Khanra, Adarsh Das, Manan Gupta, Aman Ranjan, Soham Barui, Aarsh Kulkarni, Manish Vasireddy, Sai Charan, Santrupti Behera, Varad Gorantyal, Sudhanshu Patil, Aditya Kumar, Harshit Juneja, Anirudh Agarwal, Ashna, Shubham Agrawal, Shubh Badjate, Areen Raj, Dev Gala, Dhairya Agarwal, Jason Aaron Goveas, Shivam Atul Trivedi, Nirmal Sethumadhavan, Pratyush Nair, Aryan Dalmia, Umaang Khambhati and everyone else...
         </div>
       }
 
