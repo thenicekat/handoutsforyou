@@ -1,5 +1,7 @@
 # Handouts For You.
 
+[![Star History Chart](https://api.star-history.com/svg?repos=thenicekat/handoutsforyou&type=Date)](https://star-history.com/#thenicekat/handoutsforyou&Date)
+
 ## Features
 - Handouts
 - Course Prerequisites
