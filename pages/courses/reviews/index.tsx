@@ -28,7 +28,7 @@ export default function Reviews({ }: {}) {
             toast.error("Please select a course from the given list!")
             return
         }
-        if (profs.includes(prof) == false && prof !== "") {
+        if (profs.map((p) => p.name).includes(prof) == false && prof !== "") {
             toast.error("Please select a professor from the given list!")
             return
         }
@@ -90,7 +90,7 @@ export default function Reviews({ }: {}) {
                     {session && <>
                         <AutoCompleter name={"Course"} items={courses} value={course} onChange={(val) => setCourse(val)} />
                         <span className="m-2"></span>
-                        <AutoCompleter name={"Prof"} items={profs} value={prof} onChange={(val) => setProf(val)} />
+                        <AutoCompleter name={"Prof"} items={profs.map((p) => p.name)} value={prof} onChange={(val) => setProf(val)} />
                         <span className="m-2"></span>
                         <AutoCompleter name={"Department"} items={Object.keys(departments)} value={dept} onChange={(val) => {
                             setDept(val)

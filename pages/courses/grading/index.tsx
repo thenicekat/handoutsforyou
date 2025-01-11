@@ -56,7 +56,7 @@ export default function Grading() {
             toast.error("Please select a course from the given list!");
             return;
         }
-        if (profs.includes(prof) === false && prof !== "") {
+        if (profs.map((p) => p.name).includes(prof) === false && prof !== "") {
             toast.error("Please select a professor from the given list!");
             return;
         }
@@ -113,7 +113,7 @@ export default function Grading() {
                     {session && <>
                         <AutoCompleter name={"Course"} items={courses} value={course} onChange={(val) => setCourse(val)} />
                         <span className="m-2"></span>
-                        <AutoCompleter name={"Prof"} items={profs} value={prof} onChange={(val) => setProf(val)} />
+                        <AutoCompleter name={"Prof"} items={profs.map((p) => p.name)} value={prof} onChange={(val) => setProf(val)} />
                         <p className="text-center p-2 m-2">P.S. You can search only using profs, and only using courses.</p>
 
                         <div className="flex flex-col md:flex-row w-1/2 justify-center">

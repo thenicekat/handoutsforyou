@@ -35,7 +35,7 @@ export default function AddReview({ }: {}) {
             toast.error("Please select a course from the given list!")
             return
         }
-        if (profs.includes(prof) == false) {
+        if (profs.map((p) => p.name).includes(prof) == false) {
             toast.error("Please select a professor from the given list!")
             return
         }
@@ -93,7 +93,7 @@ export default function AddReview({ }: {}) {
                     {session && <>
                         <AutoCompleter name={"Course"} items={courses} value={course} onChange={(val) => setCourse(val)} />
                         <span className="m-2"></span>
-                        <AutoCompleter name={"Prof"} items={profs} value={prof} onChange={(val) => setProf(val)} />
+                        <AutoCompleter name={"Prof"} items={profs.map((p) => p.name)} value={prof} onChange={(val) => setProf(val)} />
 
                         <div className="text-center w-full m-2 h-60">
                             <textarea
