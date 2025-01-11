@@ -65,7 +65,7 @@ export default function Chambers() {
                                     })
                                     .filter((p) => p.name.toLowerCase().includes(prof.toLowerCase()))
                                     .map((chamber) => (
-                                        <div className="card shadow-lg bg-base-100 break-words text-base-content mt-5 w-full" key={chamber.name}>
+                                        <div className="card shadow-lg bg-base-100 break-words text-base-content w-full" key={chamber.name}>
                                             <div className="card-body">
                                                 <h2 className="card-title text-center text-lg">{chamber.name}</h2>
                                                 <p className={`text-sm ${chamber.chamber === 'Unavailable' ? 'italic' : ''} text-right`}>{chamber.chamber}</p>
