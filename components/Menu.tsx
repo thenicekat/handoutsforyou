@@ -17,6 +17,7 @@ const Menu = () => {
         "Course Resources": "/courses/resources",
         "Course Reviews": "/courses/reviews",
         "Course Grading": "/courses/grading",
+        "Professor Chambers": "/chambers",
         "SI Resources": "/si",
         "SI Companies": "/si/companies",
         "Placement Resources": "/placements",
