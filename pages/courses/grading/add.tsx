@@ -139,7 +139,7 @@ export default function AddGrading({ depts }: { depts: string[] }) {
             toast.error("Please select a course from the given list!");
             return;
         }
-        if (!profs.includes(prof)) {
+        if (!profs.map((p) => p.name).includes(prof)) {
             toast.error("Please select a professor from the given list!");
             return;
         }
@@ -240,7 +240,7 @@ export default function AddGrading({ depts }: { depts: string[] }) {
 
                                     <AutoCompleter
                                         name={"Prof"}
-                                        items={profs}
+                                        items={profs.map((p) => p.name)}
                                         value={prof}
                                         onChange={(val) => setProf(val)}
                                     />
