@@ -82,7 +82,7 @@ const Menu = () => {
 
             {/* Mobile Menu Toggle */}
             <div
-                className={`fixed md:top-5 right-5 z-50 cursor-pointer p-3 rounded-full transform transition-transform`}
+                className={`fixed bottom-12 md:top-5 right-5 z-50 cursor-pointer p-3 rounded-full transform transition-transform`}
                 onClick={toggleMobileMenu}
             >
                 {!mobileMenu ? (
@@ -98,7 +98,7 @@ const Menu = () => {
             >
                 <div className="flex flex-col items-center justify-center h-full text-white space-y-6">
                     <h1 className="text-4xl font-extrabold">Sitemap.</h1>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-1/4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-3/4">
                         {Object.keys(menuItems).map((menuItem) => (
                             <Link
                                 key={menuItems[menuItem]}
