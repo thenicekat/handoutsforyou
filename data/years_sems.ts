@@ -33,5 +33,6 @@ export const years = [
 
 // For Course Grading.
 export const gradedSemesters = [
+    "24-25 Sem 2",
     "24-25 Sem 1",
 ]
