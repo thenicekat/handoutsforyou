@@ -1,5 +1,6 @@
 // For PS2.
 export const semesters = [
+    "25-26 Sem 1",
     "24-25 Sem 2",
     "24-25 Sem 1",
     "23-24 Sem 2",
