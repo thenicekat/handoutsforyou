@@ -78,7 +78,7 @@ export default function AddTestimonial({ }: {}) {
                         </div>
                         <p className="text-xl">Character Count: {testimonial.length}</p>
                         <br />
-                        <p className="text-xl">Do note the website actually enforces 500 chars, but this does not. Do not blame me if the testimonial does not get printed.</p>
+                        <p className="text-xl">Do note the yearbook website actually enforces 500 chars, but this does not. Do not blame me if the testimonial does not get printed completely. Do ask the receiver if they received it just in case.</p>
 
                         <div className="text-center flex-wrap w-3/4 justify-between m-1">
                             <button className="btn btn-primary" onClick={AddTestimonial}>Add Testimonial</button>
