@@ -76,9 +76,18 @@ export default function AddTestimonial({ }: {}) {
                                 value={testimonial}
                             ></textarea>
                         </div>
-                        <p className="text-xl">Character Count: {testimonial.length}</p>
+                        <p className="text-md">Character Count: {testimonial.length}</p>
                         <br />
-                        <p className="text-xl">Do note the yearbook website actually enforces 500 chars, but this does not. Do not blame me if the testimonial does not get printed completely. Do ask the receiver if they received it just in case.</p>
+                        <p className="text-md">Do note the yearbook website actually enforces 500 chars, but this does not. Do not blame me if the testimonial does not get printed completely. Do ask the receiver if they received it just in case.</p>
+                        <br />
+
+                        <div className="collapse collapse-arrow bg-base-200 m-2">
+                            <input type="radio" name="my-accordion-2" />
+                            <div className="collapse-title text-md font-medium">How to find your user id?</div>
+                            <div className="collapse-content">
+                                <p>To find your user id, you can ask any one you sent request to, to click on the write for you button and then it should show a number in the url bar. You can also ask any junior and senior to send the url they got, it should be simple to figure it out from there.</p>
+                            </div>
+                        </div>
 
                         <div className="text-center flex-wrap w-3/4 justify-between m-1">
                             <button className="btn btn-primary" onClick={AddTestimonial}>Add Testimonial</button>
