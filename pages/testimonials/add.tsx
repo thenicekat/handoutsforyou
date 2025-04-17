@@ -43,6 +43,7 @@ export default function AddTestimonial({ }: {}) {
         }
         else {
             toast.success("Thank you! Your review was added successfully!")
+            setTestimonial("")
         }
     }
 
