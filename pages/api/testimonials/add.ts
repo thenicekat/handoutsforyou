@@ -10,7 +10,7 @@ type ResponseData = {
 const capitalize = (s: string) => {
     if (typeof s !== 'string') return ''
     s = s.toLowerCase()
-    return s.replace(/\b\w/g, (c) => c.toUpperCase())
+    return s.replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
 export default async function handler(
