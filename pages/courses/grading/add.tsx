@@ -216,7 +216,6 @@ export default function AddGrading({ depts }: { depts: string[] }) {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
                     <h1 className="text-5xl pt-[50px] pb-[20px] px-[35px] text-primary">
@@ -296,7 +295,7 @@ export default function AddGrading({ depts }: { depts: string[] }) {
                                 </>
                             ) : (
                                 // Edit State
-                                <div className="w-full max-w-xl space-y-4">
+                                (<div className="w-full max-w-xl space-y-4">
                                     <div className="text-lg">
                                         <span className="font-bold">Course:</span> {course}
                                     </div>
@@ -309,13 +308,11 @@ export default function AddGrading({ depts }: { depts: string[] }) {
                                     <div className="text-lg">
                                         <span className="font-bold">Department:</span> {dept}
                                     </div>
-
                                     <textarea
                                         className="textarea textarea-primary w-full h-60"
                                         value={parsedData}
                                         onChange={(e) => setParsedData(e.target.value)}
                                     ></textarea>
-
                                     <div className="flex justify-center space-x-4">
                                         <button className="btn btn-outline" onClick={handleBack}>
                                             Back
@@ -324,13 +321,12 @@ export default function AddGrading({ depts }: { depts: string[] }) {
                                             Submit
                                         </button>
                                     </div>
-                                </div>
+                                </div>)
                             )}
                         </>
                     )}
                 </div>
             </div>
-
             <CustomToastContainer containerId="addGrading" />
         </>
     );
