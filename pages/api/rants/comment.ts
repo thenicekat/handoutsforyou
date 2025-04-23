@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '../supabase'
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "../auth/[...nextauth]"
-import { RANT_POSTS } from '../constants'
+import { RANT_COMMENTS } from '../constants'
 
 type ResponseData = {
     message: string,
@@ -22,17 +22,21 @@ export default async function handler(
         return
     }
 
-    const { rant, isPublic } = req.body
+    const { rantId, comment } = req.body
 
-    if (!rant) {
-        res.status(422).json({ message: 'Invalid Request - Rant missing', error: true })
+    if (!rantId) {
+        res.status(422).json({ message: 'Invalid Request - Rant ID missing', error: true })
+        return
+    }
+    if (!comment) {
+        res.status(422).json({ message: 'Invalid Request - Comment missing', error: true })
         return
     }
 
     const { error } = await supabase
-        .from(RANT_POSTS)
+        .from(RANT_COMMENTS)
         .insert([
-            { rant, created_by: session?.user?.email, created_at: Date.now(), public: isPublic ? 1 : 0 }
+            { rant_id: rantId, comment: comment, created_by: session?.user?.email, created_at: Date.now() }
         ])
 
     if (error) {

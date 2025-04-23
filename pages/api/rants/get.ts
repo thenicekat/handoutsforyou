@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '../supabase'
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "../auth/[...nextauth]"
-import { RANTS } from '../constants'
+import { RANT_POSTS } from '../constants'
 
 type ResponseData = {
     message: string,
@@ -15,6 +15,10 @@ type Rant = {
     rant: string,
     created_at: string,
     public: number
+    rants_comments: {
+        id: number,
+        comment: string
+    }[]
 }
 
 export default async function handler(
@@ -45,8 +49,8 @@ export default async function handler(
 
     // Get public rants from last 7 days.
     const { data, error } = await supabase
-        .from(RANTS)
-        .select('id, rant, created_at, public')
+        .from(RANT_POSTS)
+        .select('id, rant, created_at, public, rants_comments (id, comment)')
         .gte('created_at', Date.now() - 7 * 24 * 60 * 60 * 1000)
         .eq('public', 1)
 
@@ -62,8 +66,8 @@ export default async function handler(
     }
     // Get private rants of the user.
     const { data: privateRants, error: privateError } = await supabase
-        .from(RANTS)
-        .select('id, rant, created_at, public')
+        .from(RANT_POSTS)
+        .select('id, rant, created_at, public, rants_comments (id, comment)')
         .gte('created_at', Date.now() - 7 * 24 * 60 * 60 * 1000)
         .eq('created_by', session?.user?.email)
         .eq('public', 0)
