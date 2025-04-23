@@ -29,11 +29,12 @@ export default function Home() {
   });
 
   const fetchSummaryData = async () => {
+    setIsLoading(true);
+
     const githubResponse = await fetch("https://api.github.com/repos/thenicekat/handoutsforyou");
     const githubRes = await githubResponse.json();
     setStarCount(githubRes.stargazers_count || 0);
 
-    setIsLoading(true);
     let response = await fetch('/api/summary/data');
     let res = await response.json();
     if (res.error) {
