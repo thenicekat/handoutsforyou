@@ -20,6 +20,7 @@ const Menu = () => {
         "Professor Chambers": "/chambers",
         "SI Resources": "/si",
         "SI Companies": "/si/companies",
+        "Rants": "/rants",
         "Placement Resources": "/placements",
         "Placement CTCs": "/placements/ctcs",
         "Practice School": "/ps/",
