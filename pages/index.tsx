@@ -5,6 +5,7 @@ import CountUp from 'react-countup';
 import Image from 'next/image';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
+import StarPrompt from "@/components/StarPrompt";
 
 export default function Home() {
   const { data: session } = useSession()
@@ -30,10 +31,6 @@ export default function Home() {
 
   const fetchSummaryData = async () => {
     setIsLoading(true);
-
-    const githubResponse = await fetch("https://api.github.com/repos/thenicekat/handoutsforyou");
-    const githubRes = await githubResponse.json();
-    setStarCount(githubRes.stargazers_count || 0);
 
     let response = await fetch('/api/summary/data');
     let res = await response.json();
@@ -112,12 +109,12 @@ export default function Home() {
         <meta name="google-adsense-account" content="ca-pub-8538529975248100" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      <StarPrompt setStarCount={setStarCount} />
       <div className="py-8">
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
           <div className="md:w-1/2 mb-8 md:mb-0">
             <h1 className="text-5xl md:text-6xl font-bold mb-4 text-center">Handouts4U.</h1>
-            <p className="text-md md:text-xl text-white mb-6">Your complete resource hub for BITS Pilani Hyderabad Campus</p>
+            <p className="text-md md:text-xl text-white mb-6">Your complete resource hub for BITS Pilani.</p>
 
             {/* Main Buttons */}
             <div className="grid md:grid-cols-3 justify-around" >
