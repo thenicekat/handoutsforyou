@@ -114,7 +114,7 @@ export default function Home() {
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
           <div className="md:w-1/2 mb-8 md:mb-0">
             <h1 className="text-5xl md:text-6xl font-bold mb-4 text-center">Handouts4U.</h1>
-            <p className="text-md md:text-xl text-white mb-6">Your complete resource hub for BITS Pilani.</p>
+            <p className="text-md md:text-xl text-white mb-6 text-center">Your complete resource hub for BITS Pilani.</p>
 
             {/* Main Buttons */}
             <div className="grid md:grid-cols-3 justify-around" >
