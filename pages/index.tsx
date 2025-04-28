@@ -66,8 +66,8 @@ export default function Home() {
       ]
     },
     {
-      title: "Placement Resources.",
-      description: "Explore placement information and opportunities",
+      title: "Future Resources.",
+      description: "Explore placement information and other opportunities",
       items: [
         { name: "Placement CTCs", path: "/placements/ctcs" },
         { name: "Placement Resources", path: "/placements" },
