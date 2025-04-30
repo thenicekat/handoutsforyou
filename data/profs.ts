@@ -194,7 +194,7 @@ export const profs: Professor[] = [
   { name: "Bivudutta Mishra", chamber: "H025" },
   { name: "Pradyumn Kumar Sahoo", chamber: "H016" },
   { name: "Ravi Shanker Vidyarthy", chamber: "E104" },
-  { name: "Pardha Saradhi Gurugubelli Venkata", chamber: "Unavailable" },
+  { name: "Pardha Saradhi Gurugubelli Venkata", chamber: "E213B" },
   { name: "Piyush Chandra Verma", chamber: "E218" },
   { name: "Brajesh Kumar Panigrahi", chamber: "D308" },
   { name: "Vuppuluri Amol", chamber: "D310" },
