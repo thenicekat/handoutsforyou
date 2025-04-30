@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
 import StarPrompt from "@/components/StarPrompt";
+import Menu from "@/components/Menu";
 
 export default function Home() {
   const { data: session } = useSession()
@@ -70,7 +71,7 @@ export default function Home() {
       description: "Explore placement information and other opportunities",
       items: [
         { name: "Placement CTCs", path: "/placements/ctcs" },
-        { name: "Placement Resources", path: "/placements" },
+        { name: "Placement Resources", path: "/placements/resources" },
         { name: "SI Resources", path: "/si" },
         { name: "SI Companies", path: "/si/companies" },
         { name: "Research Chronicles", path: "https://pollen-box-786.notion.site/Research-Chronicles-894bcac1266d4e5fac2f4cd76ff29750" },
@@ -109,41 +110,15 @@ export default function Home() {
         <meta name="google-adsense-account" content="ca-pub-8538529975248100" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <Menu doNotShowMenu={true} />
       <StarPrompt setStarCount={setStarCount} />
+
       <div className="py-8">
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
           <div className="md:w-1/2 mb-8 md:mb-0">
-            <h1 className="text-5xl md:text-6xl font-bold mb-4 text-center">Handouts4U.</h1>
-            <p className="text-md md:text-xl text-white mb-6 text-center">Your complete resource hub for BITS Pilani.</p>
-
-            {/* Main Buttons */}
-            <div className="grid md:grid-cols-3 justify-around" >
-              <>
-                <Link className="m-3" href="https://github.com/thenicekat/handoutsforyou">
-                  <button className="btn btn-success w-full" tabIndex={-1}>
-                    ⭐️ Star on Github ({starCount})
-                  </button>
-                </Link>
-
-                <Link className="m-3" href="/donations">
-                  <button className="btn btn-warning w-full" tabIndex={-1}>
-                    💸 Fund the Project!
-                  </button>
-                </Link>
-
-                {
-                  !session ?
-                    <Link className="m-3" href={"#"}>
-                      <button className="btn btn-warning btn-outline w-full" onClick={() => signIn("google")} tabIndex={-1}>Sign In</button>
-                    </Link>
-                    :
-                    <Link className="m-3" href={"#"}>
-                      <button className="btn btn-error w-full" onClick={() => signOut()} tabIndex={-1}>Sign Out</button>
-                    </Link>
-                }
-              </>
-
-            </div >
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center">Handouts4U.</h1>
+            <p className="text-md md:text-lg text-white mb-6 text-center">Your complete resource hub for BITS Pilani.</p>
           </div>
           <div className="md:w-1/2 justify-center hidden md:flex">
             <Image src="/logo.svg" width={300} height={300} alt="H4U logo" className="drop-shadow-md" />
@@ -154,7 +129,7 @@ export default function Home() {
       {isLoading && (
         <div className="grid place-items-center py-16">
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
-          <p className="text-xl mt-4">Loading resources...</p>
+          <p className="text-lg mt-4">Loading resources...</p>
         </div>
       )}
 

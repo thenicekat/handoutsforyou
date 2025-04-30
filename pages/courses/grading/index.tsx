@@ -106,7 +106,7 @@ export default function Grading() {
 
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
-                    <h1 className="text-5xl pt-[50px] pb-[20px] px-[35px] text-primary">Course Grading.</h1>
+                    <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">Course Grading.</h1>
 
                     <Menu />
 
@@ -145,14 +145,14 @@ export default function Grading() {
                                 <div key={course} className="mb-4 w-full">
                                     <div className="collapse collapse-plus w-full">
                                         <input type="checkbox" />
-                                        <div className="collapse-title text-xl md:text-2xl font-medium">
+                                        <div className="collapse-title text-lg md:text-2xl font-medium">
                                             {sem} ({gradings[sem].length} entries)
                                         </div>
                                         <div className="collapse-content w-full overflow-x-auto">
                                             {gradings[sem].map((grading) => (
                                                 <div className="card bg-base-100 shadow-xl mb-4 w-full" key={grading.id}>
                                                     <div className="card-body">
-                                                        <h2 className="card-title text-center md:text-left text-base sm:text-lg md:text-xl break-words">
+                                                        <h2 className="card-title text-center md:text-left text-base sm:text-lg md:text-lg break-words">
                                                             {grading.course} - Prof. {grading.prof}
                                                         </h2>
                                                         {grading.dept !== "ALL" &&

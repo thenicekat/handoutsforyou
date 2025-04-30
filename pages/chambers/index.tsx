@@ -35,7 +35,7 @@ export default function Chambers() {
             {/* Search box */}
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
-                    <h1 className="text-5xl pt-[50px] pb-[20px] px-[35px] text-primary">Professor Chambers.</h1>
+                    <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">Professor Chambers.</h1>
 
                     <Menu />
 
@@ -51,7 +51,7 @@ export default function Chambers() {
                 <div>
                     {/* Show the count of reviews */}
                     <div className="flex justify-center">
-                        <h1 className="text-xl text-primary m-5">If you would like to correct the information here, please contact us.</h1>
+                        <h1 className="text-lg text-primary m-5">If you would like to correct the information here, please contact us.</h1>
                     </div>
 
                     <div className='grid md:grid-cols-3 place-items-center p-5 gap-4'>
