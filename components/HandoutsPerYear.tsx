@@ -26,7 +26,7 @@ export default function HandoutsPerYear({ handouts, year, searchWord }: Handouts
               </div>
             )) :
           <div className="flex justify-center">
-            <h1 className="text-xl text-primary">No handouts found for the year {year}!</h1>
+            <h1 className="text-lg text-primary">No handouts found for the year {year}!</h1>
           </div>
       }
     </div>

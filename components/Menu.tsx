@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { signIn, signOut, useSession } from 'next-auth/react';
-import { ArrowsPointingInIcon, ArrowsPointingOutIcon } from '@heroicons/react/24/solid';
+import {
+    StarIcon,
+    BanknotesIcon,
+    Bars3Icon,
+    XMarkIcon,
+} from '@heroicons/react/24/outline';
 import StarPrompt from './StarPrompt';
 
-const Menu = () => {
+interface MenuProps {
+    doNotShowMenu?: boolean;
+}
+
+const Menu = (
+    { doNotShowMenu }: MenuProps,
+) => {
     const { data: session } = useSession();
-    const [starCount, setStarCount] = React.useState(0);
-    const [mobileMenu, setMobileMenu] = React.useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [starCount, setStarCount] = useState(0);
 
     const menuItems: Record<string, string> = {
         "Handouts": "/handouts",
@@ -28,74 +39,114 @@ const Menu = () => {
         "Higher Studies": "/higherstudies/resources",
     };
 
-    const toggleMobileMenu = () => setMobileMenu(!mobileMenu);
-
     return (
         <>
             <StarPrompt setStarCount={setStarCount} />
+            {/* Main Navbar */}
+            <nav className="fixed top-0 right-0 left-0 z-40 bg-white/50 dark:bg-black/50 backdrop-blur-md border-b border-black/10 dark:border-white/10">
+                <div className="flex items-center justify-between h-16 px-4 md:px-6">
+                    {/* Left side - Brand/Title */}
+                    <div className="flex items-center">
+                        <h1 className="text-lg font-semibold text-black dark:text-white">H4U.</h1>
+                    </div>
 
-            {/* Mobile Menu Toggle */}
-            <div
-                className={`fixed bottom-12 md:top-5 right-5 z-50 cursor-pointer p-3 rounded-full transform transition-transform`}
-                onClick={toggleMobileMenu}
-            >
-                {!mobileMenu ? (
-                    <ArrowsPointingOutIcon className="h-8 w-8 text-white" />
-                ) : (
-                    <ArrowsPointingInIcon className="h-8 w-8 text-white" />
-                )}
-            </div>
+                    {/* Right side - Action Buttons */}
+                    <div className="flex items-center gap-2 md:gap-4">
+                        <Link href="https://github.com/thenicekat/handoutsforyou">
+                            <button className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg bg-zinc-200/50 dark:bg-zinc-800/50 hover:bg-zinc-300/50 dark:hover:bg-zinc-700/50 text-black dark:text-white transition-all">
+                                <StarIcon className="h-4 w-4" />
+                                <span className="text-sm">{starCount}</span>
+                            </button>
+                        </Link>
 
-            {/* Mobile Menu */}
-            <div
-                className={`fixed inset-0 bg-black bg-opacity-80 backdrop-blur-md z-40 transform ${mobileMenu ? "translate-x-0" : "translate-x-full"} transition-transform duration-300 ease-in-out`}
-            >
-                <div className="flex flex-col items-center justify-center h-full text-white space-y-6">
-                    <h1 className="text-4xl font-extrabold">Sitemap.</h1>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-3/4">
-                        {Object.keys(menuItems).map((menuItem) => (
-                            <Link
-                                key={menuItems[menuItem]}
-                                href={menuItems[menuItem]}
-                                className="text-xl font-medium hover:underline hover:text-teal-400 transition duration-200"
+                        <Link href="/donations">
+                            <button className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-500 transition-all">
+                                <BanknotesIcon className="h-4 w-4" />
+                                <span className="text-sm">Fund</span>
+                            </button>
+                        </Link>
+
+                        {!session ? (
+                            <button
+                                onClick={() => signIn("google")}
+                                className="px-4 py-2 rounded-lg bg-zinc-200/50 dark:bg-white/10 hover:bg-zinc-300/50 dark:hover:bg-white/20 text-black dark:text-white text-sm transition-all"
                             >
-                                {menuItem}
-                            </Link>
-                        ))}
+                                Sign In
+                            </button>
+                        ) : (
+                            <button
+                                onClick={() => signOut()}
+                                className="px-4 py-2 rounded-lg bg-red-500/20 hover:bg-red-500/30 text-red-500 text-sm transition-all"
+                            >
+                                Sign Out
+                            </button>
+                        )}
+
+                        <button
+                            onClick={() => setIsMenuOpen(!isMenuOpen)}
+                            className={`p-2 rounded-lg bg-zinc-200/50 dark:bg-zinc-800/50 hover:bg-zinc-300/50 dark:hover:bg-zinc-700/50 text-black dark:text-white transition-all ${doNotShowMenu && " hidden"}`}
+                        >
+                            {isMenuOpen ? (
+                                <XMarkIcon className="h-6 w-6" />
+                            ) : (
+                                <Bars3Icon className="h-6 w-6" />
+                            )}
+                        </button>
                     </div>
                 </div>
-            </div>
+            </nav >
 
-            {/* Main Buttons */}
-            <div className="grid md:grid-cols-3 justify-around" >
-                <>
-                    <Link className="m-3" href="https://github.com/thenicekat/handoutsforyou">
-                        <button className="btn btn-success w-full" tabIndex={-1}>
-                            ⭐️ Star on Github ({starCount})
-                        </button>
-                    </Link>
+            {/* Sidebar/Mobile Menu */}
+            < div
+                className={`fixed inset-0 z-30 transform transition-all duration-300 ${isMenuOpen ? "translate-x-0" : "translate-x-full"
+                    }`
+                }
+            >
+                {/* Backdrop */}
+                < div
+                    className={`absolute inset-0`}
+                    onClick={() => setIsMenuOpen(false)}
+                />
 
-                    <Link className="m-3" href="/donations">
-                        <button className="btn btn-warning w-full" tabIndex={-1}>
-                            💸 Fund the Project!
-                        </button>
-                    </Link>
-
-                    {
-                        !session ?
-                            <Link className="m-3" href={"#"}>
-                                <button className="btn btn-warning btn-outline w-full" onClick={() => signIn("google")} tabIndex={-1}>Sign In</button>
+                {/* Menu Content */}
+                <div className="absolute right-0 h-full w-full md:w-80 bg-white/95 dark:bg-zinc-900/95 border-l border-black/10 dark:border-white/10">
+                    <div className="flex flex-col h-full pt-20 pb-6 px-4">
+                        {/* Mobile-only buttons */}
+                        <div className="md:hidden flex gap-4 mb-6">
+                            <Link href="https://github.com/thenicekat/handoutsforyou" className="flex-1">
+                                <button className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-zinc-200/50 dark:bg-zinc-800/50 hover:bg-zinc-300/50 dark:hover:bg-zinc-700/50 text-black dark:text-white transition-all">
+                                    <StarIcon className="h-4 w-4" />
+                                    <span className="text-sm">{starCount}</span>
+                                </button>
                             </Link>
-                            :
-                            <Link className="m-3" href={"#"}>
-                                <button className="btn btn-error w-full" onClick={() => signOut()} tabIndex={-1}>Sign Out</button>
+                            <Link href="/donations" className="flex-1">
+                                <button className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-500 transition-all">
+                                    <BanknotesIcon className="h-4 w-4" />
+                                    <span className="text-sm">Fund</span>
+                                </button>
                             </Link>
-                    }
-                </>
+                        </div>
 
+                        {/* Navigation Links */}
+                        <div className="flex-1 overflow-y-auto">
+                            <div className="grid grid-cols-1 gap-2">
+                                {Object.entries(menuItems).map(([label, href]) => (
+                                    <Link
+                                        key={href}
+                                        href={href}
+                                        onClick={() => setIsMenuOpen(false)}
+                                        className="px-4 py-2 text-sm text-zinc-600 dark:text-zinc-300 rounded-lg hover:bg-zinc-100 dark:hover:bg-white/10 hover:text-black dark:hover:text-white transition-all"
+                                    >
+                                        {label}
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div >
         </>
     );
-};
+}
 
 export default Menu;

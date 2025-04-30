@@ -29,7 +29,7 @@ export default function StatusCode({ code }: Props) {
             />
 
             <div className="w-1/2 text-center mx-auto my-2">
-                <h3 className="text-xl font-semibold text-white">
+                <h3 className="text-lg font-semibold text-white">
                     ✨ Love this project? Please consider giving it a ⭐ on GitHub! ✨
                 </h3>
                 <div className="mt-4 flex flex-col gap-4">

@@ -81,7 +81,7 @@ export default function Donations() {
 
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
-                    <h1 className="text-5xl pt-[50px] pb-[20px] px-[35px] text-primary">Donations.</h1>
+                    <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">Donations.</h1>
                     <Menu />
                 </div>
             </div>
@@ -111,7 +111,7 @@ export default function Donations() {
 
                         <div className="collapse collapse-arrow bg-base-200 m-2">
                             <input type="radio" name="my-accordion-2" />
-                            <div className="collapse-title text-xl font-medium">Why do we need money?</div>
+                            <div className="collapse-title text-lg font-medium">Why do we need money?</div>
                             <div className="collapse-content">
                                 <p>
                                     All this while handoutsforyou was free but due to some recent issues especially with storage as well as database, we require funding to keep this alive. If you feel like h4u has helped you in any way, please consider donating.
@@ -121,7 +121,7 @@ export default function Donations() {
 
                         <div className="collapse collapse-arrow bg-base-200 m-2">
                             <input type="radio" name="my-accordion-2" />
-                            <div className="collapse-title text-xl font-medium">Can I pay from laptop?</div>
+                            <div className="collapse-title text-lg font-medium">Can I pay from laptop?</div>
                             <div className="collapse-content">
                                 <p>No, You need to be on your phone to pay for the same since it uses UPI.</p>
                             </div>
@@ -129,7 +129,7 @@ export default function Donations() {
 
                         <div className="collapse collapse-arrow bg-base-200 m-2">
                             <input type="radio" name="my-accordion-2" />
-                            <div className="collapse-title text-xl font-medium">I paid but the amount shown on the website did not change</div>
+                            <div className="collapse-title text-lg font-medium">I paid but the amount shown on the website did not change</div>
                             <div className="collapse-content">
                                 <p>Yes, that is completely normal as the transactions are verified manually.</p>
                             </div>
@@ -137,7 +137,7 @@ export default function Donations() {
 
                         <div className="collapse collapse-arrow bg-base-200 m-2">
                             <input type="radio" name="my-accordion-2" />
-                            <div className="collapse-title text-xl font-medium">Can I check all transactions somehow?</div>
+                            <div className="collapse-title text-lg font-medium">Can I check all transactions somehow?</div>
                             <div className="collapse-content">
                                 {
                                     donationsReceived.donations.map((donation, index) => (

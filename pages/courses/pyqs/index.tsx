@@ -23,7 +23,7 @@ export default function Home() {
 
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
-                    <h1 className="text-5xl pt-[50px] pb-[20px] px-[35px] text-primary">PYQs.</h1>
+                    <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">PYQs.</h1>
                     <Menu />
                 </div>
             </div>
@@ -31,7 +31,7 @@ export default function Home() {
             {/* PYQs List */}
             {session &&
                 <div className="px-2 md:px-20">
-                    <div className="grid place-items-center text-xl p-10">
+                    <div className="grid place-items-center text-lg p-10">
                         <p>
                             Most of these PYQs were collected from multiple seniors drives and from dspace. Almost all of these have solutions scraped from CMS rips. Please contact us to contribute more PYQs or solutions.
                             <br /><br />
@@ -50,7 +50,7 @@ export default function Home() {
                             >
                                 Redirect
                             </button>
-                            <button 
+                            <button
                                 className="btn btn-outline w-full"
                                 tabIndex={-1}
                                 onClick={
