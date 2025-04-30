@@ -34,7 +34,7 @@ export default function PSChronicles({ ps1_chronicles, ps2_chronicles }: { ps1_c
             {/* Search box */}
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
-                    <h1 className="text-5xl pt-[50px] pb-[20px] px-[35px] text-primary">Practice School.</h1>
+                    <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">Practice School.</h1>
 
                     <Menu />
                 </div>

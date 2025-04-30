@@ -56,7 +56,7 @@ export default function SummerInternships({ siChronicles }: any) {
             {/* Search box */}
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
-                    <h1 className="text-5xl pt-[50px] pb-[20px] px-[35px] text-primary">Summer Internships.</h1>
+                    <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">Summer Internships.</h1>
 
                     <Menu />
 
@@ -76,7 +76,7 @@ export default function SummerInternships({ siChronicles }: any) {
 
                     <div className="collapse collapse-plus">
                         <input type="checkbox" />
-                        <h1 className="collapse-title text-xl font-medium">General Resources x {resources.length}</h1>
+                        <h1 className="collapse-title text-lg font-medium">General Resources x {resources.length}</h1>
 
                         <div className="collapse-content">
                             <div className='px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center'>
@@ -102,7 +102,7 @@ export default function SummerInternships({ siChronicles }: any) {
                         Object.keys(siChronicles).map((campus: string) => (
                             <div className="collapse collapse-plus" key={campus}>
                                 <input type="checkbox" />
-                                <h1 className="collapse-title text-xl font-medium">SI Chronicles - {campus} x {siChronicles[campus].length}</h1>
+                                <h1 className="collapse-title text-lg font-medium">SI Chronicles - {campus} x {siChronicles[campus].length}</h1>
 
                                 <div className="collapse-content">
                                     <div className='px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center'>

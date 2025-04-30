@@ -170,7 +170,7 @@ export default function Faqs() {
                     {
                         faqs.filter(f => f.question.toLowerCase().includes(input.toLowerCase())).map(faq => (
                             <div tabIndex={0} key={faq.question} className="collapse collapse-plus border border-primary-300 bg-base-100 rounded-box m-2">
-                                <div className="collapse-title text-xl font-medium">
+                                <div className="collapse-title text-lg font-medium">
                                     {faq.question.toUpperCase()}
                                 </div>
                                 <div className="collapse-content">

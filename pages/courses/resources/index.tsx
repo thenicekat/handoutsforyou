@@ -118,7 +118,7 @@ export default function Resources() {
                                 <>
                                     <div className="collapse collapse-plus">
                                         <input type="checkbox" />
-                                        <div className="collapse-title text-xl font-medium">{key} x {resources[key].length}</div>
+                                        <div className="collapse-title text-lg font-medium">{key} x {resources[key].length}</div>
 
                                         <div className="collapse-content">
                                             <div className='px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center'>
