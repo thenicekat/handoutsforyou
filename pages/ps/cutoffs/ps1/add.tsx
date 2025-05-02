@@ -1,18 +1,20 @@
 import Head from "next/head";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Menu from "@/components/Menu";
 import { useSession } from "next-auth/react";
+import { years, allotmentRounds } from "@/data/years_sems";
 import AutoCompleter from "@/components/AutoCompleter";
-import { years } from "@/data/years_sems";
 import { toast } from "react-toastify";
 import CustomToastContainer from "@/components/ToastContainer";
 
 export default function AddPS1Response({ }: {}) {
+    const [idNumber, setIdNumber] = useState("");
     const [yearAndSem, setYearAndSem] = useState("");
-    const [allotmentRound, setAllotmentRound] = useState("Round 1");
+    const [allotmentRound, setAllotmentRound] = useState("");
     const [station, setStation] = useState("");
     const [cgpa, setCGPA] = useState(0);
-    const [preference, setPreference] = useState(0);
+    const [preference, setPreference] = useState(1);
+    const [isPublic, setIsPublic] = useState(true)
 
     const [isLoading, setIsLoading] = useState(false)
 
@@ -20,14 +22,21 @@ export default function AddPS1Response({ }: {}) {
 
     const AddResponse = async () => {
         setIsLoading(true)
-        if (!yearAndSem || !allotmentRound || !station) {
-            toast.error("Please fill all the fields!")
+
+        if (years.indexOf(yearAndSem) === -1) {
+            toast.error("Invalid Year, Please select from the dropdown!")
             setIsLoading(false)
             return
         }
 
-        if (years.indexOf(yearAndSem) === -1) {
-            toast.error("Invalid Year and Sem, Please select from the dropdown!")
+        if (allotmentRounds.indexOf(allotmentRound) === -1) {
+            toast.error("Invalid Allotment Round, Please select from the dropdown!")
+            setIsLoading(false)
+            return
+        }
+
+        if (!cgpa || !preference) {
+            toast.error("Missing one of the fields: stipend, cgpa or preference!")
             setIsLoading(false)
             return
         }
@@ -36,11 +45,13 @@ export default function AddPS1Response({ }: {}) {
             method: "POST",
             body: JSON.stringify({
                 typeOfPS: "ps1",
+                idNumber: idNumber,
                 yearAndSem: yearAndSem,
                 allotmentRound: allotmentRound,
                 station: station,
                 cgpa: cgpa,
                 preference: preference,
+                public: isPublic ? 1 : 0
             }),
             headers: { "Content-Type": "application/json" }
         })
@@ -50,6 +61,7 @@ export default function AddPS1Response({ }: {}) {
         }
         else {
             toast.success("Thank you! Your response was added successfully!")
+            setIdNumber("")
             setYearAndSem("")
             setAllotmentRound("")
             setStation("")
@@ -66,7 +78,7 @@ export default function AddPS1Response({ }: {}) {
             <Head>
                 <title>Practice School.</title>
                 <meta name="description" content="One stop place for your PS queries, handouts, and much more" />
-                <meta name="keywords" content="BITS Pilani, Handouts, BPHC, Hyderabad Campus, BITS Hyderabad, BITS, Pilani, Handouts for you, handouts, for, you, bits, birla, institute, bits hyd, academics, practice school, ps, queries, ps cutoffs, ps2, ps1" />
+                <meta name="keywords" content="BITS Pilani, Handouts, BPHC, Hyderabad Campus, BITS Hyderabad, BITS, Pilani, Handouts for you, handouts, for, you, bits, birla, institute, bits hyd, academics, practice school, ps, queries, ps cutoffs, PS1, ps1" />
                 <meta name="robots" content="index, follow" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
@@ -90,34 +102,50 @@ export default function AddPS1Response({ }: {}) {
                         <>
                             {/* Take input */}
                             <div className="flex flex-col w-3/4 justify-between m-1">
+                                <label htmlFor="idNumber" className="text-primary">ID Number</label>
+                                <input type="text" id="idNumber" className="input input-secondary" value={idNumber} onChange={(e) => setIdNumber(e.target.value)} />
+                            </div>
+
+                            <div className="flex flex-col w-3/4 justify-between m-1">
                                 <label htmlFor="yearAndSem" className="text-primary">Year and Sem</label>
-                                <AutoCompleter items={years} onChange={(e) => setYearAndSem(e)} name="Year and Sem" value={yearAndSem} />
+                                <AutoCompleter name="Year and Sem" value={yearAndSem} items={years} onChange={(e) => setYearAndSem(e)} />
                             </div>
 
                             <div className="flex flex-col w-3/4 justify-between m-1">
                                 <label htmlFor="allotmentRound" className="text-primary">Allotment Round</label>
-                                <input type="text" id="allotmentRound" className="input input-secondary" value={allotmentRound} onChange={(e) => setAllotmentRound(e.target.value)} />
+                                <AutoCompleter name="allotment round" items={allotmentRounds} value={allotmentRound} onChange={(val) => setAllotmentRound(val)} />
                             </div>
 
                             <div className="flex flex-col w-3/4 justify-between m-1">
-                                <label htmlFor="station" className="text-primary">Station</label>
+                                <label htmlFor="station" className="text-primary">Station (Please mention the role as well.)</label>
                                 <input type="text" id="station" className="input input-secondary" value={station} onChange={(e) => setStation(e.target.value)} />
                             </div>
 
                             <div className="flex flex-col w-3/4 justify-between m-1">
                                 <label htmlFor="cgpa" className="text-primary">CGPA</label>
-                                <input type="number" id="cgpa" className="input input-secondary" value={cgpa} onChange={(e) => setCGPA(parseFloat(e.target.value) || 0)} />
+                                <input type="number" id="cgpa" className="input input-secondary" value={cgpa} onChange={(e) => setCGPA(parseFloat(e.target.value))} />
                             </div>
 
                             <div className="flex flex-col w-3/4 justify-between m-1">
                                 <label htmlFor="preference" className="text-primary">Preference</label>
-                                <input type="number" id="preference" className="input input-secondary" value={preference} onChange={(e) => setPreference(parseFloat(e.target.value) || 0)} />
+                                <input type="number" id="preference" className="input input-secondary" value={preference} onChange={(e) => setPreference(parseFloat(e.target.value))} />
+                            </div>
+
+                            <div className="text-center flex-wrap w-3/4 justify-between m-1">
+                                <label className="text-primary">DO YOU WANT TO MAKE YOUR ID NUMBER PUBLIC? </label>
+                                <input
+                                    type="checkbox"
+                                    onChange={(e) => setIsPublic(e.target.checked)}
+                                    checked={isPublic}
+                                />
+                                <br />
                             </div>
 
                             <div className="text-center flex-wrap w-3/4 justify-between m-1">
                                 <button className="btn btn-primary" onClick={AddResponse}>Add Response</button>
                             </div>
-                        </>}
+                        </>
+                    }
                 </div>
             </div>
             <CustomToastContainer containerId="addPS1Response" />
