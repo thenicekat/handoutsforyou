@@ -32,25 +32,50 @@ export default async function handler(
             error: true,
             data: []
         })
-        return
     }
     else {
-        const { data, error } = await supabase
-            .from(PS1_RESPONSES)
-            .select('station, cgpa.min(), cgpa.max(), allotment_round')
-            .eq('year_and_sem', year)
+        let allData: any[] = [];
+        let page = 0;
+        const pageSize = 1000;
 
-        if (error) {
-            res.status(500).json({ message: error.message, data: [], error: true })
-            return
+        while (true) {
+            const { data, error } = await supabase
+                .from(PS1_RESPONSES)
+                .select('id, id_number, station, cgpa, allotment_round, public')
+                .eq('year_and_sem', year)
+                .order('created_at', { ascending: false })
+                .range(page * pageSize, (page + 1) * pageSize - 1);
+
+            if (error) {
+                console.error(error);
+                res.status(500).json({ message: error.message, data: [], error: true });
+                return;
+            }
+
+            if (data.length === 0) {
+                break;
+            }
+
+            allData = allData.concat(data);
+            page++;
         }
-        else {
-            res.status(200).json({
-                message: 'success',
-                data: data,
-                error: false
-            })
-            return
-        }
+
+        let concealedData = allData.map((item: any) => {
+            if (item.public) {
+                return item;
+            } else {
+                return {
+                    ...item,
+                    id_number: item.id_number.slice(0, 8) + 'XXXX' + item.id_number.slice(12, 13),
+                };
+            }
+        });
+
+        res.status(200).json({
+            message: 'success',
+            data: concealedData,
+            error: false,
+        });
+
     }
 }

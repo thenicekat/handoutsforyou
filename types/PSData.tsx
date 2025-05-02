@@ -16,6 +16,8 @@ export type PS_Review = {
 }
 
 export type PS1Item = {
+    id: number;
+    id_number: string | undefined;
     created_at: string;
     email: string;
     allotment_round: string;
@@ -23,7 +25,6 @@ export type PS1Item = {
     station: string;
     cgpa: number;
     preference: number;
-    id: number;
 }
 
 export type PS2Item = {
