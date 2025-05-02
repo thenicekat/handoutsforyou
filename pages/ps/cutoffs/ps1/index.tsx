@@ -55,9 +55,7 @@ export default function PS1Data() {
 
     useEffect(() => {
         setIsLoading(true);
-        console.log("PS1 Data: ", ps1Data)
         let filteredPS1Data = ps1Data.filter((d: PS1Item) => d.cgpa <= cgpa)
-        console.log("Filtered Data: ", filteredPS1Data)
         filteredPS1Data = filteredPS1Data.filter((d: PS1Item) => d.station.toLowerCase().includes(search.toLowerCase()))
         setFilteredPS1Data(filteredPS1Data);
         setIsLoading(false);
@@ -173,7 +171,7 @@ export default function PS1Data() {
 
 
                         <div className="flex flex-col md:flex-row w-1/2 justify-center">
-                            <Link className="m-3 w-full" href={"/ps/cutoffs/PS1/add"}>
+                            <Link className="m-3 w-full" href={"/ps/cutoffs/ps1/add"}>
                                 <button className="btn btn-outline w-full" tabIndex={-1}>
                                     Add your response?
                                 </button>

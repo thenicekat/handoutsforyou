@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useState } from "react";
 import Menu from "@/components/Menu";
 import { useSession } from "next-auth/react";
-import { semesters, allotmentRounds } from "@/data/years_sems";
+import { years, allotmentRounds } from "@/data/years_sems";
 import AutoCompleter from "@/components/AutoCompleter";
 import { toast } from "react-toastify";
 import CustomToastContainer from "@/components/ToastContainer";
@@ -12,12 +12,8 @@ export default function AddPS1Response({ }: {}) {
     const [yearAndSem, setYearAndSem] = useState("");
     const [allotmentRound, setAllotmentRound] = useState("");
     const [station, setStation] = useState("");
-    const [stipend, setStipend] = useState(0);
     const [cgpa, setCGPA] = useState(0);
     const [preference, setPreference] = useState(1);
-    const [offshoot, setOffshoot] = useState(0);
-    const [offshootTotal, setOffshootTotal] = useState(0);
-    const [offshootType, setOffshootType] = useState("");
     const [isPublic, setIsPublic] = useState(true)
 
     const [isLoading, setIsLoading] = useState(false)
@@ -27,8 +23,8 @@ export default function AddPS1Response({ }: {}) {
     const AddResponse = async () => {
         setIsLoading(true)
 
-        if (semesters.indexOf(yearAndSem) === -1) {
-            toast.error("Invalid Year and Sem, Please select from the dropdown!")
+        if (years.indexOf(yearAndSem) === -1) {
+            toast.error("Invalid Year, Please select from the dropdown!")
             setIsLoading(false)
             return
         }
@@ -39,14 +35,8 @@ export default function AddPS1Response({ }: {}) {
             return
         }
 
-        if (!stipend || !cgpa || !preference) {
+        if (!cgpa || !preference) {
             toast.error("Missing one of the fields: stipend, cgpa or preference!")
-            setIsLoading(false)
-            return
-        }
-
-        if (offshoot > offshootTotal) {
-            toast.error("Offshoot cannot be greater than Offshoot Total!")
             setIsLoading(false)
             return
         }
@@ -54,7 +44,7 @@ export default function AddPS1Response({ }: {}) {
         const res = await fetch("/api/ps/cutoffs/add", {
             method: "POST",
             body: JSON.stringify({
-                typeOfPS: "PS1",
+                typeOfPS: "ps1",
                 idNumber: idNumber,
                 yearAndSem: yearAndSem,
                 allotmentRound: allotmentRound,
@@ -118,7 +108,7 @@ export default function AddPS1Response({ }: {}) {
 
                             <div className="flex flex-col w-3/4 justify-between m-1">
                                 <label htmlFor="yearAndSem" className="text-primary">Year and Sem</label>
-                                <AutoCompleter name="Year and Sem" value={yearAndSem} items={semesters} onChange={(e) => setYearAndSem(e)} />
+                                <AutoCompleter name="Year and Sem" value={yearAndSem} items={years} onChange={(e) => setYearAndSem(e)} />
                             </div>
 
                             <div className="flex flex-col w-3/4 justify-between m-1">
