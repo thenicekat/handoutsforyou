@@ -87,6 +87,17 @@ export default async function handler(
         reqBody.station = reqBody.station.toUpperCase().trim()
 
         if (reqBody.typeOfPS === 'ps1') {
+            // Validate ID Number.
+            if (!reqBody.idNumber || (reqBody && reqBody.idNumber && reqBody.idNumber?.length != 13)) {
+                res.status(422).json({ message: "ID number should be 13 characters. For any queries, please reach out to the developers.", data: [], error: true });
+                return;
+            }
+            // Check if email and ID Number match, this is only doing for PS2
+            const matchingCheckResponse = matchEmailIDNumber(email, reqBody.idNumber)
+            if (matchingCheckResponse !== "") {
+                res.status(422).json({ message: matchingCheckResponse, data: [], error: true })
+                return
+            }
             const { data: existingData, error: existingError } = await supabase.
                 from(PS1_RESPONSES)
                 .select('*')
@@ -98,15 +109,17 @@ export default async function handler(
             }
 
             const { data, error } = await supabase
-                .from('ps1_responses')
+                .from(PS1_RESPONSES)
                 .insert([
                     {
                         email: email,
                         allotment_round: reqBody.allotmentRound,
+                        id_number: reqBody.idNumber,
                         year_and_sem: reqBody.yearAndSem,
                         station: reqBody.station,
                         cgpa: reqBody.cgpa,
                         preference: reqBody.preference,
+                        public: reqBody.public
                     }
                 ])
 
