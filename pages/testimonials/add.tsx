@@ -60,27 +60,69 @@ export default function AddTestimonial({ }: {}) {
             toast.error("Please login to add a testimonial!")
             return
         }
+
+        // Split at word boundaries near 500 characters.
         const sets = []
-        for (let i = 0; i < testimonial.length; i += 500) {
-            sets.push(testimonial.slice(i, i + 500))
+        let remainingText = testimonial
+
+        while (remainingText.length > 0) {
+            if (remainingText.length <= 490) {
+                // Last piece is under the limit
+                sets.push(remainingText)
+                break
+            }
+
+            // Find the last space within 490 characters (leaving room for part numbers).
+            let cutIndex = 490
+            while (cutIndex > 0 && remainingText[cutIndex] !== ' ') {
+                cutIndex--
+            }
+
+            // If no space found, fall back to hard cut at 490.
+            if (cutIndex === 0) {
+                cutIndex = 490
+            }
+
+            // Add this chunk and continue with remainder.
+            sets.push(remainingText.substring(0, cutIndex))
+            remainingText = remainingText.substring(cutIndex).trim()
         }
+
+        // Track success for feedback.
+        let successCount = 0
+        let hasError = false
+
+        // Send each chunk with part numbers.
         for (let i = 0; i < sets.length; i++) {
+            const partNumber = `[${i + 1}/${sets.length}] `;
+            const testimonialWithPart = partNumber + sets[i];
+
             const data = await fetch("/api/testimonials/add", {
                 method: "POST",
                 body: JSON.stringify({
                     userId: userId,
-                    testimonial: sets[i],
+                    testimonial: testimonialWithPart,
                 }),
                 headers: { "Content-Type": "application/json" }
             })
             const res = await data.json()
             if (res.error) {
-                toast.error(res.message)
+                toast.error(`Error sending part ${i + 1}/${sets.length}: ${res.message}`)
+                hasError = true
+            } else {
+                successCount++
+                toast.success(`Part ${i + 1}/${sets.length} sent successfully!`)
             }
-            else {
-                toast.success("Thank you! Your review was added successfully!")
-                setTestimonial("")
-            }
+        }
+
+        if (hasError) {
+            toast.warning(`Sent ${successCount} of ${sets.length} parts successfully`)
+        } else if (sets.length > 1) {
+            toast.success(`All ${sets.length} parts sent successfully!`)
+            setTestimonial("")
+        } else {
+            toast.success("Thank you! Your review was added successfully!")
+            setTestimonial("")
         }
     }
 
@@ -106,6 +148,11 @@ export default function AddTestimonial({ }: {}) {
                     {session && <>
                         <span className="m-2"></span>
 
+                        <p className="text-sm">You are writing for user ID: {userId}</p>
+                        <br />
+                        <p className="text-sm">Do note the yearbook website actually enforces 500 chars, but this does not. Do not blame me if the testimonial does not get printed completely. Now that you can send more than 1 testimonial, maybe send many but in sets of 500 chars.</p>
+
+
                         <div className="text-center w-full m-2 h-60">
                             <textarea
                                 className="textarea textarea-primary w-full max-w-xl h-full"
@@ -115,8 +162,6 @@ export default function AddTestimonial({ }: {}) {
                             ></textarea>
                         </div>
                         <p className="text-md">Character Count: {testimonial.length}</p>
-                        <br />
-                        <p className="text-md">Do note the yearbook website actually enforces 500 chars, but this does not. Do not blame me if the testimonial does not get printed completely. Do ask the receiver if they received it just in case. Now that you can send more than 1 testimonial, maybe send many but in 500 char limits.</p>
                         <br />
 
                         <div className="collapse collapse-arrow bg-base-200 m-2">
