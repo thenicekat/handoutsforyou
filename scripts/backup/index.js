@@ -1,16 +1,13 @@
-// Import necessary modules
 const { createClient } = require('@supabase/supabase-js');
 const fs = require('fs');
 const dotenv = require('dotenv');
 
-dotenv.config(); // Load environment variables from .env file
+dotenv.config();
 
-// Read environment variables
-const SUPABASE_API_KEY = process.env.SUPABASE_API_KEY;
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
 
-if (!SUPABASE_API_KEY || !SUPABASE_URL || !SUPABASE_SERVICE_KEY) {
+if (!SUPABASE_URL || !SUPABASE_SERVICE_KEY) {
   console.error('Error: Missing required environment variables.');
   process.exit(1);
 }
@@ -20,17 +17,20 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY);
 
 // Tables to back up
 const tablesToBackup = [
+  "course_reviews",
+  "course_resources",
+  "course_grading",
+  "donations",
+  "higherstudies_resources",
+  "placement_ctcs",
   "ps1_responses",
   "ps1_reviews",
   "ps2_responses",
   "ps2_reviews",
-  "course_reviews",
-  "course_resources",
-  "course_grading",
+  "rants_comments",
+  "rants_posts",
   "si_chronicles",
   "si_companies",
-  "placement_ctcs",
-  "higherstudies_resources",
 ];
 
 async function backupDatabase() {
