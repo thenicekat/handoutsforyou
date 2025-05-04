@@ -28,7 +28,7 @@ const Menu = (
         "Course Reviews": "/courses/reviews",
         "Course Grading": "/courses/grading",
         "Professor Chambers": "/chambers",
-        "SI Resources": "/si",
+        "SI Resources": "/si/resources",
         "SI Companies": "/si/companies",
         "Rants": "/rants",
         "Placement Resources": "/placements",

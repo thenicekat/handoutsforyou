@@ -20,7 +20,9 @@ type SummaryData = {
   placementCtcs: number,
   placementResources: number,
   siCompanies: number,
-  higherStudies: number,
+  siChronicles: number,
+  siResources: number,
+  higherStudiesResources: number,
 }
 
 export default function Home() {
@@ -39,7 +41,9 @@ export default function Home() {
     placementCtcs: 0,
     placementResources: 30,
     siCompanies: 0,
-    higherStudies: 2,
+    siChronicles: 0,
+    siResources: 10,
+    higherStudiesResources: 0,
   });
 
   const fetchSummaryData = async () => {
@@ -51,13 +55,15 @@ export default function Home() {
       toast.error(res.error);
     } else {
       let result = summaryData;
-      result.ps1Cutoffs = res.data.ps1;
-      result.ps2Cutoffs = res.data.ps2;
-      result.courseReviews = res.data.reviews;
-      result.courseResources = res.data.resources;
-      result.placementCtcs = res.data.placement_ctcs;
-      result.siCompanies = res.data.si_data;
-      result.courseGrading = res.data.grading;
+      result.ps1Cutoffs = res.data.ps1Cutoffs;
+      result.ps2Cutoffs = res.data.ps2Cutoffs;
+      result.courseReviews = res.data.courseReviews;
+      result.courseResources = res.data.courseResources;
+      result.placementCtcs = res.data.placementCtcs;
+      result.siCompanies = res.data.siCompanies;
+      result.siChronicles = res.data.siChronicles;
+      result.courseGrading = res.data.courseGrading;
+      result.higherStudiesResources = res.data.higherStudiesResources;
       setSummaryData(result);
     }
     setIsLoading(false);
@@ -84,10 +90,10 @@ export default function Home() {
       items: [
         { name: "Placement CTCs", path: "/placements/ctcs", count: summaryData.placementCtcs },
         { name: "Placement Resources", path: "/placements/resources", count: summaryData.placementResources },
-        { name: "SI Resources", path: "/si", count: 10 },
-        { name: "SI Companies", path: "/si/companies", count: summaryData.siCompanies },
+        { name: "SI Resources", path: "/si/resources", count: summaryData.siResources },
+        { name: "SI Companies", path: "/si/companies", count: summaryData.siCompanies + summaryData.siChronicles },
         { name: "Research Chronicles", path: "https://pollen-box-786.notion.site/Research-Chronicles-894bcac1266d4e5fac2f4cd76ff29750" },
-        { name: "Higher Studies", path: "/higherstudies/resources", count: summaryData.higherStudies },
+        { name: "Higher Studies", path: "/higherstudies/resources", count: summaryData.higherStudiesResources },
       ]
     },
     {

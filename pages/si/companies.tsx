@@ -79,7 +79,7 @@ export default function SICompanies() {
                             }
                         </select>
 
-                        <Link className="m-3" href={"/si"}>
+                        <Link className="m-3" href={"/si/resources"}>
                             <button className="btn btn-outline w-full" tabIndex={-1}>
                                 Are you looking for resources?
                             </button>
