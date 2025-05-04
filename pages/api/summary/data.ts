@@ -83,13 +83,15 @@ export default async function handler(
         res.status(200).json({
             message: 'success',
             data: {
-                ps1: ps1_data.count,
-                ps2: ps2_data.count,
-                reviews: reviews_data.count,
-                resources: resources_data.count + hs_resources_data.count,
-                si_data: si_chron_data.count + si_comp_data.count,
-                grading: grading_data.count,
-                placement_ctcs: placement_ctc_data.count
+                ps1Cutoffs: ps1_data.count,
+                ps2Cutoffs: ps2_data.count,
+                courseReviews: reviews_data.count,
+                courseResources: resources_data.count,
+                courseGrading: grading_data.count,
+                siChronicles: si_chron_data.count,
+                siCompanies: si_comp_data.count,
+                placementCtcs: placement_ctc_data.count,
+                higherStudiesResources: hs_resources_data.count
             },
             error: false
         })
