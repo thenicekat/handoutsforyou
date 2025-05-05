@@ -45,22 +45,22 @@ const Menu = (
             {/* Main Navbar */}
             <nav className="fixed top-0 right-0 left-0 z-40 bg-white/50 dark:bg-black/50 backdrop-blur-md border-b border-black/10 dark:border-white/10">
                 <div className="flex items-center justify-between h-16 px-4 md:px-6">
-                    {/* Left side - Brand/Title */}
                     <div className="flex items-center">
-                        <h1 className="text-lg font-semibold text-black dark:text-white">H4U.</h1>
+                        <Link href="/" className="flex items-center">
+                            <h1 className="text-lg font-semibold text-black dark:text-white">H4U.</h1>
+                        </Link>
                     </div>
 
-                    {/* Right side - Action Buttons */}
                     <div className="flex items-center gap-2 md:gap-4">
                         <Link href="https://github.com/thenicekat/handoutsforyou">
-                            <button className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg bg-zinc-200/50 dark:bg-zinc-800/50 hover:bg-zinc-300/50 dark:hover:bg-zinc-700/50 text-black dark:text-white transition-all">
+                            <button className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-400/20 hover:bg-amber-400/30 text-amber-500 transition-all">
                                 <StarIcon className="h-4 w-4" />
                                 <span className="text-sm">{starCount}</span>
                             </button>
                         </Link>
 
                         <Link href="/donations">
-                            <button className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-500 transition-all">
+                            <button className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg transition-all bg-green-400/20 hover:bg-green-400/30 text-green-500">
                                 <BanknotesIcon className="h-4 w-4" />
                                 <span className="text-sm">Fund</span>
                             </button>
