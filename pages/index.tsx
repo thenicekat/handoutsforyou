@@ -26,7 +26,6 @@ type SummaryData = {
 }
 
 export default function Home() {
-  const { data: session } = useSession()
   const [isLoading, setIsLoading] = useState(false);
   const [starCount, setStarCount] = useState(0);
   const [summaryData, setSummaryData] = useState<SummaryData>({
