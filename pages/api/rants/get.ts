@@ -36,22 +36,13 @@ export default async function handler(
     }
 
     const email = session?.user?.email
-    if (!email?.includes('hyderabad')) {
-        res.status(403).json({
-            message: 'Course reviews are only available for BITS Hyderabad students',
-            error: true,
-            data: []
-        })
-        return;
-    }
 
     let rants: Rant[] = []
 
-    // Get public rants from last 7 days.
+    // Get public rants.
     const { data, error } = await supabase
         .from(RANT_POSTS)
         .select('id, rant, created_at, public, rants_comments (id, comment)')
-        .gte('created_at', Date.now() - 7 * 24 * 60 * 60 * 1000)
         .eq('public', 1)
 
     if (error) {
@@ -68,7 +59,6 @@ export default async function handler(
     const { data: privateRants, error: privateError } = await supabase
         .from(RANT_POSTS)
         .select('id, rant, created_at, public, rants_comments (id, comment)')
-        .gte('created_at', Date.now() - 7 * 24 * 60 * 60 * 1000)
         .eq('created_by', session?.user?.email)
         .eq('public', 0)
 
