@@ -114,13 +114,13 @@ const Menu = (
                         {/* Mobile-only buttons */}
                         <div className="md:hidden flex gap-4 mb-6">
                             <Link href="https://github.com/thenicekat/handoutsforyou" className="flex-1">
-                                <button className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-zinc-200/50 dark:bg-zinc-800/50 hover:bg-zinc-300/50 dark:hover:bg-zinc-700/50 text-black dark:text-white transition-all">
+                                <button className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-amber-400/20 hover:bg-amber-400/30 text-amber-500 transition-all">
                                     <StarIcon className="h-4 w-4" />
                                     <span className="text-sm">{starCount}</span>
                                 </button>
                             </Link>
                             <Link href="/donations" className="flex-1">
-                                <button className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-500 transition-all">
+                                <button className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-green-400/20 hover:bg-green-400/30 text-green-500 transition-all">
                                     <BanknotesIcon className="h-4 w-4" />
                                     <span className="text-sm">Fund</span>
                                 </button>
