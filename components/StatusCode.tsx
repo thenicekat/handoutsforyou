@@ -28,7 +28,7 @@ export default function StatusCode({ code }: Props) {
                 height="100"
             />
 
-            <div className="w-1/2 text-center mx-auto my-2">
+            <div className="w-3/4 text-center mx-auto my-2">
                 <h3 className="text-lg font-semibold text-white">
                     ✨ Love this project? Please consider giving it a ⭐ on GitHub! ✨
                 </h3>
