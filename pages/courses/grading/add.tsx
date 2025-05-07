@@ -2,7 +2,7 @@ import Head from "next/head";
 import { GetStaticProps } from "next";
 import { useState, useEffect } from "react";
 import Menu from "@/components/Menu";
-import { useSession } from "next-auth/react";
+import { useAuth } from "@/hooks/useAuth";
 import { courses } from "@/data/courses";
 import { profs } from "@/data/profs";
 import { departments } from "@/data/departments";
@@ -35,7 +35,7 @@ export default function AddGrading({ depts }: { depts: string[] }) {
     const [averageMark, setAverageMark] = useState<string | null>(null);
     const [parsedData, setParsedData] = useState<string | null>(null);
 
-    const { data: session } = useSession();
+    const { session } = useAuth()
 
     const filterDepartmentCodes = (course: string): string[] => {
         let values: string[] = [];

@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import Menu from "@/components/Menu";
-import { useSession } from "next-auth/react";
+import { useAuth } from "@/hooks/useAuth";
 import Link from "next/link";
 import { CourseGrading } from "@/types/CourseGrading";
 import { courses } from "@/data/courses";
@@ -9,6 +9,7 @@ import { profs } from "@/data/profs";
 import AutoCompleter from "@/components/AutoCompleter";
 import CustomToastContainer from "@/components/ToastContainer";
 import { toast } from "react-toastify";
+import { PlusCircleIcon } from "@heroicons/react/24/solid"
 
 interface GradingBySemester {
     [key: string]: CourseGrading[]
@@ -19,8 +20,7 @@ export default function Grading() {
     const [prof, setProf] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [gradings, setGradings] = useState<GradingBySemester>({});
-
-    const { data: session } = useSession();
+    const { session } = useAuth();
 
     const parseCSVToTable = (csv: string) => {
         const rows = csv.trim().split('\n');

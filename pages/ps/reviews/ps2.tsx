@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import Menu from "@/components/Menu";
-import { useSession } from "next-auth/react";
+import { useAuth } from "@/hooks/useAuth";
 import Link from "next/link";
 import AutoCompleter from "@/components/AutoCompleter";
 import CustomToastContainer from "@/components/ToastContainer";
@@ -15,7 +15,7 @@ export default function PS2Reviews({ }: {}) {
 
     const [reviews, setReviews] = useState([] as PS_Review[]);
 
-    const { data: session } = useSession()
+    const { session } = useAuth()
 
     const fetchReviews = async () => {
         setIsLoading(true)

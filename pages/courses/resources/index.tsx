@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Menu from '@/components/Menu';
-import { useSession } from 'next-auth/react';
+import { useAuth } from '@/hooks/useAuth';
 import { Resource } from '@/types/Resource';
 import React from 'react';
 import { toast } from 'react-toastify';
@@ -16,7 +16,7 @@ interface ResourceByDept {
 
 export default function Resources() {
     const [input, setInput] = useState("");
-    const { data: session } = useSession()
+    const { session } = useAuth()
     const [resources, setResources] = useState<ResourceByDept>({})
 
     const fetchResources = async () => {
@@ -47,7 +47,7 @@ export default function Resources() {
         setResources(filteredResources)
     }
 
-    React.useEffect(() => {
+    useEffect(() => {
         fetchResources()
     }, [])
 

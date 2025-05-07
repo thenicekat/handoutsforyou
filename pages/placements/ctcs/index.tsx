@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useState } from 'react'
 import Menu from '@/components/Menu';
-import { useSession } from 'next-auth/react';
+import { useAuth } from '@/hooks/useAuth';
 import React from 'react';
 import { toast } from 'react-toastify';
 import CustomToastContainer from '@/components/ToastContainer';
@@ -13,7 +13,7 @@ import { createColumnHelper, flexRender, getCoreRowModel, getSortedRowModel, Sor
 
 export default function PlacementCTCs() {
     const [input, setInput] = useState("");
-    const { data: session } = useSession();
+    const { session } = useAuth();
     const [placementCTCs, setPlacementCTCs] = useState([] as PlacementCTC[]);
     const [filteredPlacementCTCs, setFilteredPlacementCTCs] = useState([] as PlacementCTC[]);
     const [yearRef, setYearRef] = useState(years[0])
