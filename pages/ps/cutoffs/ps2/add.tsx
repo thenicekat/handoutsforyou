@@ -1,11 +1,11 @@
 import Head from "next/head";
 import { useState } from "react";
+import { useAuth } from "@/hooks/useAuth";
 import Menu from "@/components/Menu";
-import { useSession } from "next-auth/react";
-import { semesters, allotmentRounds } from "@/data/years_sems";
-import AutoCompleter from "@/components/AutoCompleter";
 import { toast } from "react-toastify";
 import CustomToastContainer from "@/components/ToastContainer";
+import AutoCompleter from "@/components/AutoCompleter";
+import { semesters, allotmentRounds } from "@/data/years_sems";
 
 export default function AddPS2Response({ }: {}) {
     const [idNumber, setIdNumber] = useState("");
@@ -22,7 +22,7 @@ export default function AddPS2Response({ }: {}) {
 
     const [isLoading, setIsLoading] = useState(false)
 
-    const { data: session } = useSession()
+    const { session } = useAuth()
 
     const AddResponse = async () => {
         setIsLoading(true)

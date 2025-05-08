@@ -1,8 +1,13 @@
 import { GetStaticProps } from "next";
 import Head from "next/head";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Menu from "@/components/Menu";
-import { useSession } from "next-auth/react";
+import { useAuth } from "@/hooks/useAuth";
+import Link from "next/link";
+import { toast } from "react-toastify";
+import CustomToastContainer from "@/components/ToastContainer";
+import { PlusCircleIcon } from "@heroicons/react/24/solid";
+import { Resource } from "@/types/Resource";
 import { LinkIcon } from "@heroicons/react/24/solid";
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -27,11 +32,17 @@ export const getStaticProps: GetStaticProps = async () => {
     };
 };
 
-export default function SummerInternships({ siChronicles }: any) {
-    const [search, setSearch] = useState("");
-    const { data: session } = useSession()
+interface ResourceByCategory {
+    [key: string]: Resource[]
+}
 
-    const resources = [
+export default function SummerInternships({ siChronicles }: any) {
+    const [input, setInput] = useState("");
+    const { session } = useAuth()
+    const [resources, setResources] = useState<ResourceByCategory>({})
+    const [search, setSearch] = useState("");
+
+    const resourcesList = [
         {
             name: "Summer Internship Companies Data",
             link: "/si/companies"
@@ -69,19 +80,18 @@ export default function SummerInternships({ siChronicles }: any) {
                 </div>
             </div>
 
-
             {session &&
                 <div className='place-items-center p-5 max-w-7xl mx-auto'>
                     <h1 className="text-3xl text-center my-3">Summer Internship Resources</h1>
 
                     <div className="collapse collapse-plus">
                         <input type="checkbox" />
-                        <h1 className="collapse-title text-lg font-medium">General Resources x {resources.length}</h1>
+                        <h1 className="collapse-title text-lg font-medium">General Resources x {resourcesList.length}</h1>
 
                         <div className="collapse-content">
                             <div className='px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center'>
                                 {
-                                    resources.filter(d => d.name.toLowerCase().includes(search.toLowerCase())).map(resource => (
+                                    resourcesList.filter(d => d.name.toLowerCase().includes(search.toLowerCase())).map(resource => (
                                         <div className="card w-72 h-96 bg-base-100 text-base-content m-2" key={resource.name}>
                                             <div className="card-body">
                                                 <h2 className="text-sm font-bold uppercase">General</h2>

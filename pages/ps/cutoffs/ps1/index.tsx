@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import Menu from "@/components/Menu";
-import { useSession } from "next-auth/react";
+import { useAuth } from "@/hooks/useAuth";
 import Link from "next/link";
 import { PS1Item } from "@/types/PSData";
 import { years } from "@/data/years_sems";
@@ -20,7 +20,7 @@ export default function PS1Data() {
     const [ps1Data, setPS1Data] = useState<PS1Item[]>([]);
     const [filteredPS1Data, setFilteredPS1Data] = useState<PS1Item[]>([]);
 
-    const { data: session } = useSession()
+    const { session } = useAuth()
 
     const updateData = async () => {
         setIsLoading(true);

@@ -3,13 +3,13 @@ import { GetStaticProps } from "next";
 import Head from "next/head";
 import { use, useEffect, useState } from "react";
 import Menu from "@/components/Menu";
-import { useSession } from "next-auth/react";
+import { useAuth } from "@/hooks/useAuth";
 import { SI_Chronicle } from '../../../types/SIData';
 
 export default function ChroniclePage() {
     const router = useRouter()
     const { slug } = router.query
-    const { data: session } = useSession()
+    const { session } = useAuth()
 
     const [chronicles, setChronicles] = useState<SI_Chronicle[]>([]);
 

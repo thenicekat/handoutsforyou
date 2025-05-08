@@ -1,12 +1,13 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import { useSession } from 'next-auth/react';
+import { useAuth } from "@/hooks/useAuth";
 import CountUp from 'react-countup';
 import Image from 'next/image';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
 import StarPrompt from "@/components/StarPrompt";
 import Menu from "@/components/Menu";
+import CustomToastContainer from "@/components/ToastContainer";
 
 type SummaryData = {
   handouts: number,
@@ -26,6 +27,7 @@ type SummaryData = {
 }
 
 export default function Home() {
+  const { session } = useAuth()
   const [isLoading, setIsLoading] = useState(false);
   const [starCount, setStarCount] = useState(0);
   const [summaryData, setSummaryData] = useState<SummaryData>({

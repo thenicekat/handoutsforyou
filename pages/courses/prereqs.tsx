@@ -1,8 +1,8 @@
 import { GetStaticProps } from "next";
 import Head from "next/head";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Menu from "@/components/Menu";
-import { useSession } from "next-auth/react";
+import { useAuth } from "@/hooks/useAuth";
 import { PreReqGroup } from "@/types/PreReq";
 import Modal from "@/components/Modal";
 
@@ -21,8 +21,8 @@ export const getStaticProps: GetStaticProps = async () => {
 
 
 export default function Prereqs({ prereqs }: { prereqs: PreReqGroup[] }) {
+    const { session } = useAuth()
     const [search, setSearch] = useState("");
-    const { data: session } = useSession()
     const [open, setOpen] = useState(false);
     const [prereq, setPrereq] = useState<PreReqGroup | null>(null);
 

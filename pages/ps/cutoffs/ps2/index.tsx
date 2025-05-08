@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import Menu from "@/components/Menu";
-import { useSession } from "next-auth/react";
+import { useAuth } from "@/hooks/useAuth";
 import Link from "next/link";
 import { PS2Item } from "@/types/PSData";
 import { semesters } from "@/data/years_sems";
@@ -20,7 +20,7 @@ export default function PS2Data() {
     const [ps2Data, setPS2Data] = useState<PS2Item[]>([]);
     const [filteredPS2Data, setFilteredPS2Data] = useState<PS2Item[]>([]);
 
-    const { data: session } = useSession()
+    const { session } = useAuth()
 
     const updateData = async () => {
         setIsLoading(true);

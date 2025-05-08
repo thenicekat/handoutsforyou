@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useState } from "react";
 import Menu from "@/components/Menu";
-import { useSession } from "next-auth/react";
+import { useAuth } from "@/hooks/useAuth";
 import { years, allotmentRounds } from "@/data/years_sems";
 import AutoCompleter from "@/components/AutoCompleter";
 import { toast } from "react-toastify";
@@ -18,7 +18,7 @@ export default function AddPS1Response({ }: {}) {
 
     const [isLoading, setIsLoading] = useState(false)
 
-    const { data: session } = useSession()
+    const { session } = useAuth()
 
     const AddResponse = async () => {
         setIsLoading(true)
