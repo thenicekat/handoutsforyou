@@ -1,9 +1,17 @@
 import { GetStaticProps } from "next";
 import Head from "next/head";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Menu from "@/components/Menu";
-import { useSession } from "next-auth/react";
-import { LinkIcon } from "@heroicons/react/24/solid";
+import { useAuth } from "@/hooks/useAuth";
+import Link from "next/link";
+import { toast } from "react-toastify";
+import CustomToastContainer from "@/components/ToastContainer";
+import { LinkIcon, PlusCircleIcon } from "@heroicons/react/24/solid";
+import { Resource } from "@/types/Resource";
+
+interface ResourceByCategory {
+    [key: string]: Resource[]
+}
 
 export const getStaticProps: GetStaticProps = async () => {
     const fs = require("fs");
@@ -27,10 +35,10 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 export default function Placement({ pu_chronicles }: any) {
-    const [search, setSearch] = useState("");
-    const { data: session } = useSession()
+    const [input, setInput] = useState("");
+    const { session } = useAuth()
 
-    const resources = [
+    const placementResources = [
         {
             name: "Placements CTC Data",
             link: "/placements/ctcs"
@@ -87,7 +95,7 @@ export default function Placement({ pu_chronicles }: any) {
                         type="text"
                         placeholder="Search..."
                         className="input input-secondary w-full max-w-xs"
-                        onChange={(e) => setSearch(e.target.value)}
+                        onChange={(e) => setInput(e.target.value)}
                     />
                 </div>
             </div>
@@ -99,12 +107,12 @@ export default function Placement({ pu_chronicles }: any) {
 
                     <div className="collapse collapse-plus">
                         <input type="checkbox" />
-                        <h1 className="collapse-title text-lg font-medium">General Resources x {resources.length}</h1>
+                        <h1 className="collapse-title text-lg font-medium">General Resources x {placementResources.length}</h1>
 
                         <div className="collapse-content">
                             <div className='px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center'>
                                 {
-                                    resources.filter(d => d.name.toLowerCase().includes(search.toLowerCase())).map(resource => (
+                                    placementResources.filter(d => d.name.toLowerCase().includes(input.toLowerCase())).map(resource => (
                                         <div className="card w-72 h-96 bg-base-100 text-base-content m-2" key={resource.name}>
                                             <div className="card-body">
                                                 <h2 className="text-sm font-bold uppercase">General</h2>
@@ -130,7 +138,7 @@ export default function Placement({ pu_chronicles }: any) {
                                 <div className="collapse-content">
                                     <div className='px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center'>
                                         {
-                                            pu_chronicles[campus].filter((d: string) => d.toLowerCase().includes(search.toLowerCase())).map((chron: string) => (
+                                            pu_chronicles[campus].filter((d: string) => d.toLowerCase().includes(input.toLowerCase())).map((chron: string) => (
                                                 <div className="card w-72 h-96 bg-base-100 text-base-content m-2" key={campus + "/" + chron}>
                                                     <div className="card-body">
                                                         <h2 className="text-sm font-bold uppercase">Placement Chronicles</h2>

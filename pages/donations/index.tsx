@@ -1,12 +1,12 @@
 import Head from "next/head";
-import { useSession } from 'next-auth/react';
+import { useAuth } from '@/hooks/useAuth';
 import Menu from "@/components/Menu";
 import React from "react";
 import { toast } from "react-toastify";
 import CustomToastContainer from "@/components/ToastContainer";
 
 export default function Donations() {
-    const { data: session } = useSession()
+    const { session } = useAuth()
 
     const [isLoading, setIsLoading] = React.useState(false)
 

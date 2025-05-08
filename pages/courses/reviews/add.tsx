@@ -1,21 +1,20 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
 import Menu from "@/components/Menu";
-import { useSession } from "next-auth/react";
+import { useAuth } from "@/hooks/useAuth";
 import { courses } from "@/data/courses";
 import { profs } from "@/data/profs";
 import AutoCompleter from "@/components/AutoCompleter";
 import CustomToastContainter from "@/components/ToastContainer"
 import { toast } from "react-toastify";
 
-
-export default function AddReview({ }: {}) {
+export default function AddReview() {
     const [course, setCourse] = useState("");
     const [prof, setProf] = useState("");
 
     const [review, setReview] = useState("");
 
-    const { data: session } = useSession()
+    const { session } = useAuth()
 
     const AddReview = async () => {
         if (course == "") {

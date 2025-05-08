@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import Menu from "@/components/Menu";
-import { useSession } from "next-auth/react";
+import { useAuth } from "@/hooks/useAuth";
 import Link from "next/link";
 import { SI_Company } from "@/types/SIData";
 import { toast } from "react-toastify";
@@ -16,7 +16,7 @@ export default function SICompanies() {
     const [isLoading, setIsLoading] = useState(false);
     const [SIData, setSIData] = useState([]);
 
-    const { data: session } = useSession()
+    const { session } = useAuth()
 
     const fetchData = async () => {
         setIsLoading(true);

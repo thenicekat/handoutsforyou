@@ -2,10 +2,9 @@ import { GetStaticProps } from "next";
 import Head from "next/head";
 import { useState } from "react";
 import dynamic from "next/dynamic";
-import { signIn, signOut, useSession } from 'next-auth/react';
+import { useAuth } from "@/hooks/useAuth";
 import Menu from "@/components/Menu";
 import Link from "next/link";
-
 
 const HandoutsPerYear = dynamic(() => import("./../../components/HandoutsPerYear"), {
     loading: () => (
@@ -36,7 +35,7 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 export default function Home({ handoutsMap }: any) {
-    const { data: session } = useSession()
+    const { session } = useAuth()
     const [search, setSearch] = useState("");
     const [actualSearch, setActualSearch] = useState("");
     const [isLoading, setIsLoading] = useState(false);
@@ -50,7 +49,7 @@ export default function Home({ handoutsMap }: any) {
     return (
         <>
             <Head>
-                <title>Handouts for You.</title>
+                <title>Handouts.</title>
                 <meta name="description" content="A website containing all bits pilani hyderabad campus handouts" />
                 <meta name="keywords" content="BITS Pilani, Handouts, BPHC, Hyderabad Campus, BITS Hyderabad, BITS, Pilani, Handouts for you, handouts, for, you, bits, birla, institute, bits hyd, academics" />
                 <meta name="robots" content="index, follow" />
