@@ -1,16 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "../auth/[...nextauth]"
+import { capitalize } from '../constants'
 
 type ResponseData = {
     message: string,
     error: boolean
-}
-
-const capitalize = (s: string) => {
-    if (typeof s !== 'string') return ''
-    s = s.toLowerCase()
-    return s.replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
 export default async function handler(

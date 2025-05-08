@@ -7,7 +7,6 @@ import { toast } from 'react-toastify';
 import Link from 'next/link';
 import StarPrompt from "@/components/StarPrompt";
 import Menu from "@/components/Menu";
-import CustomToastContainer from "@/components/ToastContainer";
 
 type SummaryData = {
   handouts: number,

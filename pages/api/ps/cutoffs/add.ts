@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '../../supabase'
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "../../auth/[...nextauth]"
-import { PS1_RESPONSES, PS2_RESPONSES } from '../../constants'
+import { capitalize, PS1_RESPONSES, PS2_RESPONSES } from '../../constants'
 
 type ResponseData = {
     message: string,
@@ -55,7 +55,7 @@ export default async function handler(
         return;
     }
 
-    const email = session?.user?.email
+    const { name, email } = session.user
     const reqBody: RequestData = req.body
 
     if (!email) {
@@ -112,6 +112,7 @@ export default async function handler(
                 .from(PS1_RESPONSES)
                 .insert([
                     {
+                        name: capitalize(name),
                         email: email,
                         allotment_round: reqBody.allotmentRound,
                         id_number: reqBody.idNumber,

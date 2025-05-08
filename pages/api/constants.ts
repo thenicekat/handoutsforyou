@@ -17,3 +17,9 @@ export const HIGHER_STUDIES_RESOURCES = "higherstudies_resources"
 export const DONATIONS = "donations"
 export const RANT_POSTS = "rants_posts"
 export const RANT_COMMENTS = "rants_comments"
+
+export const capitalize = (s: string) => {
+    if (typeof s !== 'string') return ''
+    s = s.toLowerCase()
+    return s.replace(/\b\w/g, (c) => c.toUpperCase());
+}
