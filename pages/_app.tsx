@@ -11,6 +11,17 @@ export default function App({
   Component,
   pageProps: { session, ...pageProps },
 }: AppProps<{ session: Session }>) {
+
+  if (
+    typeof window !== "undefined" &&
+    typeof window.navigator !== "undefined" &&
+    typeof navigator !== "undefined" &&
+    navigator.userAgent
+  ) {
+    const disableDevtool = require("disable-devtool");
+    disableDevtool();
+  }
+
   return (
     <>
       <Head>
