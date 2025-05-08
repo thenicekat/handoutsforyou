@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useState } from "react";
-import { useSession } from "next-auth/react";
+import { useAuth } from "@/hooks/useAuth";
 import Menu from "@/components/Menu";
 import { toast } from "react-toastify";
 import CustomToastContainer from "@/components/ToastContainer";
@@ -17,7 +17,7 @@ export default function AddHSResources({ }: {}) {
 
     const [isLoading, setIsLoading] = useState(false)
 
-    const { data: session } = useSession()
+    const { session } = useAuth()
 
     const addResource = async () => {
         setIsLoading(true)

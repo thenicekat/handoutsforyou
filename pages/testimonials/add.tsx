@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useSession } from "next-auth/react";
+import { useAuth } from "@/hooks/useAuth";
 import { toast } from "react-toastify";
 import Head from "next/head";
 import CustomToastContainter from "@/components/ToastContainer"
@@ -13,7 +13,7 @@ export default function AddTestimonial({ }: {}) {
 
     const [testimonial, setTestimonial] = useState("");
 
-    const { data: session } = useSession()
+    const { session } = useAuth()
 
     const AddTestimonial = async () => {
         if (!userId) {

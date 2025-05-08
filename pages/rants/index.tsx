@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import Menu from "@/components/Menu";
-import { useSession } from "next-auth/react";
+import { useAuth } from "@/hooks/useAuth";
 import Link from "next/link";
 import CustomToastContainer from "@/components/ToastContainer";
 import { toast } from "react-toastify";
@@ -13,7 +13,7 @@ export default function Rants({ }: {}) {
     const [isLoading, setIsLoading] = useState(false);
     const [rants, setRants] = useState([] as Rant[]);
     const [newComments, setNewComments] = useState<{ [key: number]: string }>({});
-    const { data: session } = useSession();
+    const { session } = useAuth();
 
     const fetchRants = async () => {
         setIsLoading(true)

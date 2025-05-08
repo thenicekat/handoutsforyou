@@ -1,5 +1,5 @@
 import { GetStaticProps } from "next";
-import { useSession } from "next-auth/react";
+import { useAuth } from "@/hooks/useAuth";
 import Head from "next/head";
 import Menu from "@/components/Menu";
 
@@ -18,7 +18,7 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 export default function PSChronicles({ ps1_chronicles, ps2_chronicles }: { ps1_chronicles: string[], ps2_chronicles: string[] }) {
-    const { data: session } = useSession();
+    const { session } = useAuth();
 
     return (
         <>

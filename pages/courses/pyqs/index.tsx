@@ -1,12 +1,12 @@
 import { GetStaticProps } from "next";
 import Head from "next/head";
 import { useState } from "react";
-import { useSession } from 'next-auth/react';
+import { useAuth } from '@/hooks/useAuth';
 import Menu from "@/components/Menu";
 import Link from "next/link";
 
 export default function Home() {
-    const { data: session } = useSession()
+    const { session } = useAuth()
 
     return (
         <>

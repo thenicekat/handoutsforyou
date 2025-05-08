@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useState } from "react";
+import { useAuth } from "@/hooks/useAuth";
 import Menu from "@/components/Menu";
-import { useSession } from "next-auth/react";
 import CustomToastContainter from "@/components/ToastContainer"
 import { toast } from "react-toastify";
 import {
@@ -16,7 +16,7 @@ export default function AddReview({ }: {}) {
     const [rant, setRant] = useState("");
     const [isPublic, setIsPublic] = useState(true);
 
-    const { data: session } = useSession()
+    const { session } = useAuth()
 
     const matcher = new RegExpMatcher({
         ...englishDataset.build(),

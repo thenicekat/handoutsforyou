@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
 import Menu from "@/components/Menu";
-import { useSession } from "next-auth/react";
+import { useAuth } from "@/hooks/useAuth";
 import CustomToastContainter from "@/components/ToastContainer"
 import { toast } from "react-toastify";
 
@@ -14,7 +14,7 @@ export default function AddReview({ }: {}) {
     }>();
     const [review, setReview] = useState("");
 
-    const { data: session } = useSession()
+    const { session } = useAuth()
 
     const AddReview = async () => {
         if (!PSReviewData) {

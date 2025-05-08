@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { signIn, signOut, useSession } from 'next-auth/react';
+import { signIn, signOut } from 'next-auth/react';
+import { useAuth } from '@/hooks/useAuth';
 import {
     StarIcon,
     BanknotesIcon,
@@ -16,7 +17,7 @@ interface MenuProps {
 const Menu = (
     { doNotShowMenu }: MenuProps,
 ) => {
-    const { data: session } = useSession();
+    const { session } = useAuth();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [starCount, setStarCount] = useState(0);
 
