@@ -1,6 +1,12 @@
 # Handouts For You.
 
-[![Star History Chart](https://api.star-history.com/svg?repos=thenicekat/handoutsforyou&type=Date)](https://star-history.com/#thenicekat/handoutsforyou&Date)
+<a href="https://www.star-history.com/#thenicekat/handoutsforyou&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=thenicekat/handoutsforyou&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=thenicekat/handoutsforyou&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=thenicekat/handoutsforyou&type=Date" />
+ </picture>
+</a>
 
 ## Features
 - Handouts
