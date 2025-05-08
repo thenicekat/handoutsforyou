@@ -41,7 +41,7 @@ export default async function handler(
         while (true) {
             const { data, error } = await supabase
                 .from(PS1_RESPONSES)
-                .select('id, id_number, station, cgpa, allotment_round, public')
+                .select('id, id_number, name, station, cgpa, allotment_round, public')
                 .eq('year_and_sem', year)
                 .order('created_at', { ascending: false })
                 .range(page * pageSize, (page + 1) * pageSize - 1);
@@ -67,6 +67,7 @@ export default async function handler(
                 return {
                     ...item,
                     id_number: item.id_number.slice(0, 8) + 'XXXX' + item.id_number.slice(12, 13),
+                    name: "Not Available"
                 };
             }
         });
