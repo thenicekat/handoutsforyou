@@ -64,6 +64,11 @@ export default function PS1Data() {
     const columnHelper = createColumnHelper<PS1Item>();
 
     const columnDefs = [
+        columnHelper.accessor((row) => row.name, {
+            id: "Name",
+            cell: (info) => info.getValue(),
+            header: "Name",
+        }),
         columnHelper.accessor((row) => row.id_number, {
             id: "ID Number",
             cell: (info) => info.getValue(),

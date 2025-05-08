@@ -64,6 +64,11 @@ export default function PS2Data() {
     const columnHelper = createColumnHelper<PS2Item>();
 
     const columnDefs = [
+        columnHelper.accessor((row) => row.name, {
+            id: "Name",
+            cell: (info) => info.getValue(),
+            header: "Name",
+        }),
         columnHelper.accessor((row) => row.id_number, {
             id: "ID Number",
             cell: (info) => info.getValue(),
