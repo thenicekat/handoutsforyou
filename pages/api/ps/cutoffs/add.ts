@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '../../supabase'
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "../../auth/[...nextauth]"
-import { capitalize, PS1_RESPONSES, PS2_RESPONSES } from '../../constants'
+import { PS1_RESPONSES, PS2_RESPONSES } from '../../constants'
 
 type ResponseData = {
     message: string,
@@ -112,7 +112,7 @@ export default async function handler(
                 .from(PS1_RESPONSES)
                 .insert([
                     {
-                        name: capitalize(name),
+                        name: name.toUpperCase(),
                         email: email,
                         allotment_round: reqBody.allotmentRound,
                         id_number: reqBody.idNumber,
@@ -179,6 +179,7 @@ export default async function handler(
                 .from(PS2_RESPONSES)
                 .insert([
                     {
+                        name: name.toUpperCase(),
                         email: email,
                         id_number: reqBody.idNumber,
                         allotment_round: reqBody.allotmentRound,
