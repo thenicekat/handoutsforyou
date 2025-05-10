@@ -150,7 +150,7 @@ export default function AddTestimonial({ }: {}) {
 
                         <p className="text-sm">You are writing for user ID: {userId}</p>
                         <br />
-                        <p className="text-sm">Do note the yearbook website actually enforces 500 chars, but this does not. Do not blame me if the testimonial does not get printed completely. Now that you can send more than 1 testimonial, maybe send many but in sets of 500 chars.</p>
+                        <p className="text-sm">This is a wrapper on top of the yearbook website. The yearbook website actually enforces a limit of 500 chars, but this does not. Do not blame me if the testimonial does not get printed completely. You should probably just use the split testimonial into parts feature.</p>
 
 
                         <div className="text-center w-full m-2 h-60">
@@ -165,7 +165,7 @@ export default function AddTestimonial({ }: {}) {
                         <br />
 
                         <div className="collapse collapse-arrow bg-base-200 m-2">
-                            <input type="radio" name="my-accordion-2" />
+                            <input type="checkbox" />
                             <div className="collapse-title text-md font-medium">How to find your user id?</div>
                             <div className="collapse-content">
                                 <p>To find your user id, you can ask any one you sent request to, to click on the write for you button and then it should show a number in the url bar. You can also ask any junior and senior to send the url they got, it should be simple to figure it out from there. </p>

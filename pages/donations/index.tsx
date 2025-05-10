@@ -110,7 +110,7 @@ export default function Donations() {
 
 
                         <div className="collapse collapse-arrow bg-base-200 m-2">
-                            <input type="radio" name="my-accordion-2" />
+                            <input type="checkbox" />
                             <div className="collapse-title text-lg font-medium">Why do we need money?</div>
                             <div className="collapse-content">
                                 <p>
@@ -120,7 +120,7 @@ export default function Donations() {
                         </div>
 
                         <div className="collapse collapse-arrow bg-base-200 m-2">
-                            <input type="radio" name="my-accordion-2" />
+                            <input type="checkbox" />
                             <div className="collapse-title text-lg font-medium">Can I pay from laptop?</div>
                             <div className="collapse-content">
                                 <p>No, You need to be on your phone to pay for the same since it uses UPI.</p>
@@ -128,7 +128,7 @@ export default function Donations() {
                         </div>
 
                         <div className="collapse collapse-arrow bg-base-200 m-2">
-                            <input type="radio" name="my-accordion-2" />
+                            <input type="checkbox" />
                             <div className="collapse-title text-lg font-medium">I paid but the amount shown on the website did not change</div>
                             <div className="collapse-content">
                                 <p>Yes, that is completely normal as the transactions are verified manually.</p>
@@ -136,7 +136,7 @@ export default function Donations() {
                         </div>
 
                         <div className="collapse collapse-arrow bg-base-200 m-2">
-                            <input type="radio" name="my-accordion-2" />
+                            <input type="checkbox" />
                             <div className="collapse-title text-lg font-medium">Can I check all transactions somehow?</div>
                             <div className="collapse-content">
                                 {
