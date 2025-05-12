@@ -32,7 +32,7 @@ const Menu = (
         "SI Resources": "/si/resources",
         "SI Companies": "/si/companies",
         "Rants": "/rants",
-        "Placement Resources": "/placements",
+        "Placement Resources": "/placements/resources",
         "Placement CTCs": "/placements/ctcs",
         "Practice School": "/ps/",
         "PS Chronicles": "/ps/chronicles",

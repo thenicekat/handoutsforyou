@@ -67,7 +67,7 @@ export default async function handler(
                 return {
                     ...item,
                     id_number: item.id_number.slice(0, 8) + 'XXXX' + item.id_number.slice(12, 13),
-                    name: "RETRACTED"
+                    name: "REDACTED"
                 };
             }
         });

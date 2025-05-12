@@ -78,7 +78,7 @@ export default function Resources() {
                                 <input type="text" placeholder="Search..." className="input input-secondary w-full max-w-xs m-3" onChange={e => setInput(e.target.value)} />
 
                                 <button className="btn btn-outline m-3" onClick={filterResources}>
-                                    Filter
+                                    Search
                                 </button>
                             </div>
 
@@ -103,7 +103,9 @@ export default function Resources() {
 
                 <div className="max-w-7xl mx-auto">
                     <h1 className='text-md max-w-6xl text-center'>
-                        NOTE: To access the onedrive links you might have to create an account with your BITS email ID over at: <Link className="underline" href="https://www.microsoft.com/en-us/education/products/office">Microsoft Education</Link>
+                        <br />
+                        This is a page containing course resources from various students. Click on the category you need to get started. To access the onedrive links you might have to create an account with your BITS email ID over at: <Link className="underline" href="https://www.microsoft.com/en-us/education/products/office">Microsoft Education</Link>
+                        <br /><br />
                     </h1>
 
                     {
