@@ -208,6 +208,7 @@ export default function PS1Data() {
                                                         <p className='text-lg'>{PS1Item.station.toUpperCase()}</p>
 
                                                         <div className="flex-none">
+                                                            <p className="m-1">Name: {PS1Item.name}</p>
                                                             <p className="m-1">ID Number: {PS1Item.id_number}</p>
                                                             <p className="m-1">CGPA: {PS1Item.cgpa}</p>
                                                             <p className="m-1">Allotment Round: {PS1Item.allotment_round}</p>

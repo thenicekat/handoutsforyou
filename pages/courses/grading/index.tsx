@@ -114,7 +114,7 @@ export default function Grading() {
                         <AutoCompleter name={"Course"} items={courses} value={course} onChange={(val) => setCourse(val)} />
                         <span className="m-2"></span>
                         <AutoCompleter name={"Prof"} items={profs.map((p) => p.name)} value={prof} onChange={(val) => setProf(val)} />
-                        <p className="text-center p-2 m-2">P.S. You can search only using profs, and only using courses.</p>
+                        <p className="text-center p-2 m-2">This is a list of all the courses and their midsem grading. P.S. You can choose the prof/course you want to filter for.</p>
 
                         <div className="flex flex-col md:flex-row w-1/2 justify-center">
                             <Link className="m-3 w-full hidden md:block" href={"/courses/grading/add"}>
