@@ -78,7 +78,7 @@ export default function Home() {
       items: [
         { name: "Handouts", path: "/handouts", count: summaryData.handouts },
         { name: "Prerequisites", path: "/courses/prereqs", count: summaryData.coursePrerequisites },
-        { name: "PYQs", path: "/courses/pyqs", count: summaryData.coursePyqs },
+        { name: "Previous Year Questions", path: "/courses/pyqs", count: summaryData.coursePyqs },
         { name: "Reviews", path: "/courses/reviews", count: summaryData.courseReviews },
         { name: "Resources", path: "/courses/resources", count: summaryData.courseResources },
         { name: "Grading", path: "/courses/grading", count: summaryData.courseGrading },

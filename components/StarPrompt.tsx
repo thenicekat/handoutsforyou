@@ -40,7 +40,7 @@ export default function StarPrompt({
     return (<Modal open={starPromptOpen} >
         <div className="backdrop-blur-lg p-6 rounded-xl shadow-lg">
             <h3 className="text-md font-semibold text-white">
-                ✨ Love this project? We will try to keep this alive and free for as long as possible. Please consider giving it a ⭐ on GitHub! ✨
+                ✨ Love this project? Please consider giving it a ⭐ on GitHub! ✨
             </h3>
             <div className="mt-4 flex flex-col gap-4">
 
@@ -56,7 +56,7 @@ export default function StarPrompt({
                     className="bg-gradient-to-r from-red-400 to-pink-500 text-white font-semibold py-2 px-4 rounded-lg hover:scale-105 transition-transform"
                     onClick={() => setStarPromptOpen(false)}
                 >
-                    Close
+                    Ignore
                 </button>
             </div>
         </div>

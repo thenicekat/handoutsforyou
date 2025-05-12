@@ -46,7 +46,7 @@ export default function Chambers() {
                 <div>
                     {/* Show the count of reviews */}
                     <div className="flex justify-center">
-                        <h1 className="text-lg text-primary m-5">If you would like to correct the information here, please contact us.</h1>
+                        <h1 className="text-lg text-primary m-5 max-w-2xl">This is a list of all the professors of hyderabad campus and their chamber numbers. If you would like to correct the information here, please contact us.</h1>
                     </div>
 
                     <div className='grid md:grid-cols-3 place-items-center p-5 gap-4'>

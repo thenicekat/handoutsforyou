@@ -229,6 +229,7 @@ export default function PS2Data() {
 
                                                         <div className="flex-none">
                                                             <p className="m-1">ID Number: {ps2Item.id_number}</p>
+                                                            <p className="m-1">ID Number: {ps2Item.name}</p>
                                                             <p className="m-1">CGPA: {ps2Item.cgpa}</p>
                                                             <p className="m-1">Stipend: {ps2Item.stipend}</p>
                                                             <p className="m-1">Allotment Round: {ps2Item.allotment_round}</p>

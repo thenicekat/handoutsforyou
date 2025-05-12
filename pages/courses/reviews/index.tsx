@@ -96,6 +96,8 @@ export default function Reviews({ }: {}) {
                             setDept(val)
                         }} />
 
+                        <p className="text-center p-2 m-2">This is a list of all the courses reviews. You can choose the prof/course you want to filter for. You would need to click on fetch reviews to get started. We do this to prevent unnecessary load if you want to filter.</p>
+
                         <div className="flex flex-col md:flex-row w-1/2 justify-center">
                             <Link className="m-3 w-full hidden md:block" href={"/courses/reviews/add"}>
                                 <button className="btn btn-outline w-full" tabIndex={-1}>
