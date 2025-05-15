@@ -25,6 +25,9 @@
 - Higher Studies Resources
 
 ## Development
+- Create a database in supabase with the following schema:
+![supabase-schema-hzmhyjycziqgetlvgfwg (1)](https://github.com/user-attachments/assets/a1735232-da82-43ec-9047-10dfbae6ec6d)
+
 - First install the dependencies by using pnpm after installing [pnpm](https://pnpm.io/installation)
 ```bash
 pnpm install
