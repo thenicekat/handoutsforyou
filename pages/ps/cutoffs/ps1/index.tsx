@@ -128,7 +128,8 @@ export default function PS1Data() {
 
                     <Menu />
 
-                    {session && <>
+                    {/* {session && <> */}
+                    {true && <>
                         <Link className="m-3" href={"/ps"}>
                             <button className="btn btn-outline w-full">
                                 Are you looking for chronicles?
@@ -175,10 +176,15 @@ export default function PS1Data() {
                         </div>
 
 
-                        <div className="flex flex-col md:flex-row w-1/2 justify-center">
-                            <Link className="m-3 w-full" href={"/ps/cutoffs/ps1/add"}>
+                        <div className="flex flex-col md:flex-row w-full justify-center">
+                            <Link className="m-3 w-full max-w-xs" href={"/ps/cutoffs/ps1/add?edit=false"}>
                                 <button className="btn btn-outline w-full" tabIndex={-1}>
                                     Add your response?
+                                </button>
+                            </Link>
+                            <Link className="m-3 w-full max-w-xs" href={"/ps/cutoffs/ps1/add?edit=true"}>
+                                <button className="btn btn-outline w-full" tabIndex={-1}>
+                                    Edit your response?
                                 </button>
                             </Link>
                         </div>
@@ -188,7 +194,8 @@ export default function PS1Data() {
                 </div>
             </div>
 
-            {session &&
+            {/* {session && */}
+            {true &&
                 <div>
                     {/* Show the count of reviews */}
                     <div className="flex justify-center">
