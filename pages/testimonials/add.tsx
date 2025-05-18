@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 
 
 export default function AddTestimonial({ }: {}) {
+    toast.success("Sending your testimonial. Please wait...")
     const router = useRouter();
     const { userId } = router.query;
 
@@ -16,6 +17,7 @@ export default function AddTestimonial({ }: {}) {
     const { session } = useAuth()
 
     const AddTestimonial = async () => {
+
         if (!userId) {
             toast.error("You need a user id!")
             return
@@ -42,7 +44,7 @@ export default function AddTestimonial({ }: {}) {
             toast.error(res.message)
         }
         else {
-            toast.success("Thank you! Your review was added successfully!")
+            toast.success("Thank you! Your testimonial was added successfully!")
             setTestimonial("")
         }
     }
