@@ -153,16 +153,6 @@ export default function AddPS2Response({ }: {}) {
                                 <input type="number" id="preference" className="input input-secondary" value={preference} onChange={(e) => setPreference(parseFloat(e.target.value))} />
                             </div>
 
-                            <div className="text-center flex-wrap w-3/4 justify-between m-1">
-                                <label className="text-primary">DO YOU WANT TO MAKE YOUR ID NUMBER PUBLIC? </label>
-                                <input
-                                    type="checkbox"
-                                    onChange={(e) => setIsPublic(e.target.checked)}
-                                    checked={isPublic}
-                                />
-                                <br />
-                            </div>
-
                             <div className="flex flex-col w-3/4 justify-between m-1">
                                 <label htmlFor="offshoot" className="text-primary">Offshoot (Ignore if not relevant)</label>
                                 <input type="number" id="offshoot" className="input input-secondary" value={offshoot} onChange={(e) => setOffshoot(parseFloat(e.target.value) || 0)} />
@@ -178,6 +168,16 @@ export default function AddPS2Response({ }: {}) {
                                 <input type="text" id="offshootType" className="input input-secondary" value={offshootType} onChange={(e) => setOffshootType(e.target.value)} />
                             </div>
 
+                            <div className="text-center flex-wrap w-3/4 justify-between m-1">
+                                <label className="text-primary">DO YOU WANT TO MAKE YOUR ID NUMBER PUBLIC? </label>
+                                <input
+                                    type="checkbox"
+                                    onChange={(e) => setIsPublic(e.target.checked)}
+                                    checked={isPublic}
+                                />
+                                <br />
+                            </div>
+                            
                             <div className="text-center flex-wrap w-3/4 justify-between m-1">
                                 <button className="btn btn-primary" onClick={AddResponse}>Add Response</button>
                             </div>
