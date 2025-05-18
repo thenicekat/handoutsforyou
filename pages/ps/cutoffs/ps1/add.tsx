@@ -57,24 +57,24 @@ export default function AddPS1Response({ }: {}) {
     const fetchUserResponses = async () => {
         setIsFetchingResponses(true);
         try {
-            const response = await fetch("/api/ps/cutoffs/getUserResponses", {
+            const response = await fetch("/api/ps/cutoffs/get", {
                 method: "POST",
                 body: JSON.stringify({ type: "ps1" }),
                 headers: { "Content-Type": "application/json" }
             });
             
             if (response.ok) {
-                const data = await response.json();
+                const data = await response.json()
                 if (!data.error) {
-                    setUserResponses(data.data);
+                    setUserResponses(data.data)
                 } else {
-                    toast.error(data.message);
+                    toast.error(data.message)
                 }
             } else {
-                toast.error("Failed to fetch your responses");
+                toast.error("Failed to fetch your responses")
             }
         } catch (error) {
-            toast.error("An error occurred while fetching your responses");
+            toast.error("An error occurred while fetching your responses")
         } finally {
             setIsFetchingResponses(false);
         }
@@ -84,24 +84,24 @@ export default function AddPS1Response({ }: {}) {
         setIsLoading(true);
 
         if (years.indexOf(yearAndSem) === -1) {
-            toast.error("Invalid Year, Please select from the dropdown!");
+            toast.error("Invalid Year, Please select from the dropdown!")
             setIsLoading(false);
             return;
         }
 
         if (allotmentRounds.indexOf(allotmentRound) === -1) {
-            toast.error("Invalid Allotment Round, Please select from the dropdown!");
+            toast.error("Invalid Allotment Round, Please select from the dropdown!")
             setIsLoading(false);
             return;
         }
 
         if (!cgpa || !preference) {
-            toast.error("Missing one of the fields: cgpa or preference!");
+            toast.error("Missing one of the fields: cgpa or preference!")
             setIsLoading(false);
             return;
         }
 
-        const endpoint = isEditMode ? "/api/ps/cutoffs/update" : "/api/ps/cutoffs/add";
+        const endpoint = isEditMode ? "/api/ps/cutoffs/edit" : "/api/ps/cutoffs/add";
         const payload = {
             typeOfPS: "ps1",
             idNumber: idNumber,
@@ -126,7 +126,7 @@ export default function AddPS1Response({ }: {}) {
         } else {
             toast.success(isEditMode 
                 ? "Your response was updated successfully!" 
-                : "Thank you! Your response was added successfully!");
+                : "Thank you! Your response was added successfully!")
                 
             setIdNumber("");
             setYearAndSem("");
@@ -161,8 +161,7 @@ export default function AddPS1Response({ }: {}) {
 
                     <Menu />
 
-                    {/* {session && */}
-                   { true &&
+                    {session &&
                         isLoading ? (
                             <div className="flex flex-col w-3/4 justify-between m-1">
                                 <label className="text-primary">Loading...</label>
@@ -284,5 +283,5 @@ export default function AddPS1Response({ }: {}) {
             </div>
             <CustomToastContainer containerId="addPS1Response" />
         </>
-    );
+    )
 }

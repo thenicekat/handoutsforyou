@@ -194,8 +194,7 @@ export default function PS1Data() {
                 </div>
             </div>
 
-            {/* {session && */}
-            {true &&
+            {session &&
                 <div>
                     {/* Show the count of reviews */}
                     <div className="flex justify-center">
