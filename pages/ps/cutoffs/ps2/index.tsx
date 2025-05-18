@@ -195,10 +195,15 @@ export default function PS2Data() {
                         </div>
 
 
-                        <div className="flex flex-col md:flex-row w-1/2 justify-center">
-                            <Link className="m-3 w-full" href={"/ps/cutoffs/ps2/add"}>
+                        <div className="flex flex-col md:flex-row w-full justify-center">
+                            <Link className="m-3 w-full max-w-xs" href={"/ps/cutoffs/ps2/add?edit=false"}>
                                 <button className="btn btn-outline w-full" tabIndex={-1}>
                                     Add your response?
+                                </button>
+                            </Link>
+                            <Link className="m-3 w-full max-w-xs" href={"/ps/cutoffs/ps2/add?edit=true"}>
+                                <button className="btn btn-outline w-full" tabIndex={-1}>
+                                    Edit your response?
                                 </button>
                             </Link>
                         </div>

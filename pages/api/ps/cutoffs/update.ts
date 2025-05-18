@@ -61,7 +61,6 @@ export default async function handler(
         return;
     }
 
-    // Validate CGPA and preference
     if (reqBody.cgpa < 0 || reqBody.cgpa > 10) {
         res.status(422).json({ message: "CGPA should be between 0 and 10", data: [], error: true })
         return
@@ -71,13 +70,10 @@ export default async function handler(
         return
     }
 
-    // Trim and convert to uppercase to avoid duplicates
     reqBody.station = reqBody.station.toUpperCase().trim()
 
-    // Determine which table to use based on typeOfPS
     const tableName = reqBody.typeOfPS === 'ps1' ? PS1_RESPONSES : PS2_RESPONSES
 
-    // Verify the response belongs to the current user
     const { data: existingResponse, error: existingError } = await supabase
         .from(tableName)
         .select('id, email')
@@ -94,7 +90,6 @@ export default async function handler(
         return
     }
 
-    // Update the response
     if (reqBody.typeOfPS === 'ps1') {
         const { data, error } = await supabase
             .from(PS1_RESPONSES)
@@ -121,7 +116,6 @@ export default async function handler(
             return
         }
     } else if (reqBody.typeOfPS === 'ps2') {
-        // Handle PS2 updates - similar to PS1 but with additional fields
         const { data, error } = await supabase
             .from(PS2_RESPONSES)
             .update({
