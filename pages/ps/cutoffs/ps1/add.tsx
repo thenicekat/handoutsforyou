@@ -30,14 +30,12 @@ export default function AddPS1Response({ }: {}) {
 
     const { session } = useAuth();
 
-    // Fetch user responses if in edit mode
     useEffect(() => {
         if (isEditMode && session) {
             fetchUserResponses();
         }
     }, [isEditMode, session]);
 
-    // Populate form when a response is selected
     useEffect(() => {
         if (selectedResponse) {
             const response = userResponses.find(r => r.id.toString() === selectedResponse);
@@ -183,7 +181,7 @@ export default function AddPS1Response({ }: {}) {
                                                 <option value="">Select a response</option>
                                                 {userResponses.map(response => (
                                                     <option key={response.id} value={response.id}>
-                                                        {response.station} - {response.year_and_sem} - Round {response.allotment_round}
+                                                        {response.station} - {response.year_and_sem} - {response.allotment_round}
                                                     </option>
                                                 ))}
                                             </select>
@@ -201,6 +199,7 @@ export default function AddPS1Response({ }: {}) {
                                         className="input input-secondary" 
                                         value={idNumber} 
                                         onChange={(e) => setIdNumber(e.target.value)} 
+                                        disabled = {isEditMode}
                                     />
                                 </div>
 
