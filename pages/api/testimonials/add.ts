@@ -65,7 +65,7 @@ export default async function handler(
 
         if (response.status != 200) {
             res.status(500).json({
-                message: 'Internal Server Error',
+                message: 'Internal Server Error, Please try again later',
                 error: true
             })
             return
@@ -77,7 +77,7 @@ export default async function handler(
         return
     } catch (error) {
         res.status(500).json({
-            message: 'Internal Server Error',
+            message: 'Internal Server Error, Please try again later',
             error: true
         })
         return
