@@ -16,7 +16,7 @@ export default function AddTestimonial({ }: {}) {
     const { session } = useAuth()
 
     const AddTestimonial = async () => {
-        toast.info("Sending your testimonial. Please wait...")
+        toast.info("Sending your testimonial. Please wait until the success message appears...")
         if (!userId) {
             toast.error("You need a user id!")
             return
