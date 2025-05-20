@@ -8,6 +8,24 @@ type ResponseData = {
     error: boolean
 }
 
+const MAX_RETRIES = 5;
+const INITIAL_RETRY_DELAY = 1000;
+
+async function fetchWithRetry(url: string, options: RequestInit, retries = MAX_RETRIES): Promise<Response> {
+    try {
+        return await fetch(url, options);
+    } catch (error) {
+        if (retries === 0) {
+            throw error;
+        }
+
+        const delay = INITIAL_RETRY_DELAY * Math.pow(2, MAX_RETRIES - retries);
+        await new Promise(resolve => setTimeout(resolve, delay));
+
+        return fetchWithRetry(url, options, retries - 1);
+    }
+}
+
 export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
@@ -37,7 +55,7 @@ export default async function handler(
     }
 
     try {
-        const response = await fetch('https://yearbooknostalgia.com/portal/write-testimonial-post', {
+        const response = await fetchWithRetry('https://yearbooknostalgia.com/portal/write-testimonial-post', {
             method: 'POST',
             headers: {
                 'Accept': '*/*',
@@ -64,8 +82,8 @@ export default async function handler(
         });
 
         if (response.status != 200) {
-            res.status(500).json({
-                message: 'Internal Server Error, Please try again later',
+            res.status(response.status).json({
+                message: `Received unexpected response ${response.status} from server.`,
                 error: true
             })
             return
@@ -77,7 +95,7 @@ export default async function handler(
         return
     } catch (error) {
         res.status(500).json({
-            message: 'Internal Server Error, Please try again later',
+            message: `Upstream server RIPed, Request failed after multiple attempts.`,
             error: true
         })
         return
