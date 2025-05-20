@@ -12,10 +12,12 @@ export default function AddTestimonial({ }: {}) {
     const { userId } = router.query;
 
     const [testimonial, setTestimonial] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
 
     const { session } = useAuth()
 
     const AddTestimonial = async () => {
+        setIsLoading(true)
         toast.info("Sending your testimonial. Please wait until the success message appears...")
         if (!userId) {
             toast.error("You need a user id!")
@@ -46,6 +48,7 @@ export default function AddTestimonial({ }: {}) {
             toast.success("Thank you! Your testimonial was added successfully!")
             setTestimonial("")
         }
+        setIsLoading(false)
     }
 
     const AddTestimonialSets = async () => {
@@ -177,6 +180,7 @@ export default function AddTestimonial({ }: {}) {
                             <button
                                 className="btn btn-primary"
                                 onClick={AddTestimonial}
+                                disabled={isLoading}
                             >
                                 Add Testimonial
                             </button>
