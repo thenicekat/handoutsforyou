@@ -19,13 +19,45 @@ export default function PS2Data() {
     const [isLoading, setIsLoading] = useState(false);
     const [ps2Data, setPS2Data] = useState<PS2Item[]>([]);
     const [filteredPS2Data, setFilteredPS2Data] = useState<PS2Item[]>([]);
+    const [hasResponses, setHasResponses] = useState(false);
+    const [, setCheckingResponses] = useState(false);
 
     const { session } = useAuth()
+
+    const checkUserResponses = async () => {
+        if (!session) return;
+
+        setCheckingResponses(true);
+        try {
+            const response = await fetch("/api/ps/cutoffs/get", {
+                method: "POST",
+                body: JSON.stringify({ type: "ps2" }),
+                headers: { "Content-Type": "application/json" }
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                if (!data.error && data.data) {
+                    setHasResponses(data.data.length > 0)
+                }
+            }
+        } catch (error) {
+            console.error("Failed to check user responses", error);
+        } finally {
+            setCheckingResponses(false)
+        }
+    };
+
+    useEffect(() => {
+        if (session) {
+            checkUserResponses()
+        }
+    }, [session]);
 
     const updateData = async () => {
         setIsLoading(true);
         if (yearRef == cachedYear) {
-            setIsLoading(false);
+            setIsLoading(false)
             return
         }
 
@@ -195,12 +227,19 @@ export default function PS2Data() {
                         </div>
 
 
-                        <div className="flex flex-col md:flex-row w-1/2 justify-center">
-                            <Link className="m-3 w-full" href={"/ps/cutoffs/ps2/add"}>
+                        <div className="flex flex-col md:flex-row w-full justify-center">
+                            <Link className="m-3 w-full max-w-xs" href={"/ps/cutoffs/ps2/add?edit=false"}>
                                 <button className="btn btn-outline w-full" tabIndex={-1}>
                                     Add your response?
                                 </button>
                             </Link>
+                            {hasResponses && (
+                                <Link className="m-3 w-full max-w-xs" href={"/ps/cutoffs/ps2/add?edit=true"}>
+                                    <button className="btn btn-outline w-full" tabIndex={-1}>
+                                        Edit your response?
+                                    </button>
+                                </Link>
+                            )}
                         </div>
 
                         <p className="m-2">NOTE: This data is crowdsourced and might not be accurate. By default data is sorted using last submitted time. To sort based on other data, use the desktop mode of the website.</p>
