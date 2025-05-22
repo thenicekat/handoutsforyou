@@ -49,6 +49,15 @@ export default function AddPS1Response({ }: {}) {
                 setIsPublic(response.public === true);
                 setResponseId(response.id);
             }
+        } else {
+            setIdNumber("");
+            setYearAndSem("");
+            setAllotmentRound("");
+            setStation("");
+            setCGPA(0);
+            setPreference(1);
+            setIsPublic(true);
+            setResponseId(null);
         }
     }, [selectedResponse]);
 
@@ -60,7 +69,7 @@ export default function AddPS1Response({ }: {}) {
                 body: JSON.stringify({ type: "ps1" }),
                 headers: { "Content-Type": "application/json" }
             });
-            
+
             if (response.ok) {
                 const data = await response.json()
                 if (!data.error) {
@@ -117,15 +126,15 @@ export default function AddPS1Response({ }: {}) {
             body: JSON.stringify(payload),
             headers: { "Content-Type": "application/json" }
         });
-        
+
         const data = await res.json();
         if (data.error) {
             toast.error(data.message);
         } else {
-            toast.success(isEditMode 
-                ? "Your response was updated successfully!" 
+            toast.success(isEditMode
+                ? "Your response was updated successfully!"
                 : "Thank you! Your response was added successfully!")
-                
+
             setIdNumber("");
             setYearAndSem("");
             setAllotmentRound("");
@@ -161,122 +170,122 @@ export default function AddPS1Response({ }: {}) {
 
                     {session &&
                         isLoading ? (
+                        <div className="flex flex-col w-3/4 justify-between m-1">
+                            <label className="text-primary">Loading...</label>
+                        </div>
+                    ) : (
+                        <>
+                            {isEditMode && (
+                                <div className="flex flex-col w-3/4 justify-between m-1">
+                                    <label htmlFor="responseSelect" className="text-primary">Select Response to Edit</label>
+                                    {isFetchingResponses ? (
+                                        <p>Loading your responses...</p>
+                                    ) : userResponses.length > 0 ? (
+                                        <select
+                                            id="responseSelect"
+                                            className="select select-secondary"
+                                            value={selectedResponse}
+                                            onChange={(e) => setSelectedResponse(e.target.value)}
+                                        >
+                                            <option value="">Select a response</option>
+                                            {userResponses.map(response => (
+                                                <option key={response.id} value={response.id}>
+                                                    {response.station} - {response.year_and_sem} - {response.allotment_round}
+                                                </option>
+                                            ))}
+                                        </select>
+                                    ) : (
+                                        <p>You don't have any responses to edit.</p>
+                                    )}
+                                </div>
+                            )}
+
                             <div className="flex flex-col w-3/4 justify-between m-1">
-                                <label className="text-primary">Loading...</label>
+                                <label htmlFor="idNumber" className="text-primary">ID Number</label>
+                                <input
+                                    type="text"
+                                    id="idNumber"
+                                    className="input input-secondary"
+                                    value={idNumber}
+                                    onChange={(e) => setIdNumber(e.target.value)}
+                                    disabled={isEditMode}
+                                />
                             </div>
-                        ) : (
-                            <>
-                                {isEditMode && (
-                                    <div className="flex flex-col w-3/4 justify-between m-1">
-                                        <label htmlFor="responseSelect" className="text-primary">Select Response to Edit</label>
-                                        {isFetchingResponses ? (
-                                            <p>Loading your responses...</p>
-                                        ) : userResponses.length > 0 ? (
-                                            <select 
-                                                id="responseSelect" 
-                                                className="select select-secondary" 
-                                                value={selectedResponse}
-                                                onChange={(e) => setSelectedResponse(e.target.value)}
-                                            >
-                                                <option value="">Select a response</option>
-                                                {userResponses.map(response => (
-                                                    <option key={response.id} value={response.id}>
-                                                        {response.station} - {response.year_and_sem} - {response.allotment_round}
-                                                    </option>
-                                                ))}
-                                            </select>
-                                        ) : (
-                                            <p>You don't have any responses to edit.</p>
-                                        )}
-                                    </div>
-                                )}
 
-                                <div className="flex flex-col w-3/4 justify-between m-1">
-                                    <label htmlFor="idNumber" className="text-primary">ID Number</label>
-                                    <input 
-                                        type="text" 
-                                        id="idNumber" 
-                                        className="input input-secondary" 
-                                        value={idNumber} 
-                                        onChange={(e) => setIdNumber(e.target.value)} 
-                                        disabled = {isEditMode}
-                                    />
-                                </div>
+                            <div className="flex flex-col w-3/4 justify-between m-1">
+                                <label htmlFor="yearAndSem" className="text-primary">Year and Sem</label>
+                                <AutoCompleter
+                                    name="Year and Sem"
+                                    value={yearAndSem}
+                                    items={years}
+                                    onChange={(e) => setYearAndSem(e)}
+                                />
+                            </div>
 
-                                <div className="flex flex-col w-3/4 justify-between m-1">
-                                    <label htmlFor="yearAndSem" className="text-primary">Year and Sem</label>
-                                    <AutoCompleter 
-                                        name="Year and Sem" 
-                                        value={yearAndSem} 
-                                        items={years} 
-                                        onChange={(e) => setYearAndSem(e)} 
-                                    />
-                                </div>
+                            <div className="flex flex-col w-3/4 justify-between m-1">
+                                <label htmlFor="allotmentRound" className="text-primary">Allotment Round</label>
+                                <AutoCompleter
+                                    name="allotment round"
+                                    items={allotmentRounds}
+                                    value={allotmentRound}
+                                    onChange={(val) => setAllotmentRound(val)}
+                                />
+                            </div>
 
-                                <div className="flex flex-col w-3/4 justify-between m-1">
-                                    <label htmlFor="allotmentRound" className="text-primary">Allotment Round</label>
-                                    <AutoCompleter 
-                                        name="allotment round" 
-                                        items={allotmentRounds} 
-                                        value={allotmentRound} 
-                                        onChange={(val) => setAllotmentRound(val)} 
-                                    />
-                                </div>
+                            <div className="flex flex-col w-3/4 justify-between m-1">
+                                <label htmlFor="station" className="text-primary">Station (Please mention the role as well.)</label>
+                                <input
+                                    type="text"
+                                    id="station"
+                                    className="input input-secondary"
+                                    value={station}
+                                    onChange={(e) => setStation(e.target.value)}
+                                />
+                            </div>
 
-                                <div className="flex flex-col w-3/4 justify-between m-1">
-                                    <label htmlFor="station" className="text-primary">Station (Please mention the role as well.)</label>
-                                    <input 
-                                        type="text" 
-                                        id="station" 
-                                        className="input input-secondary" 
-                                        value={station} 
-                                        onChange={(e) => setStation(e.target.value)} 
-                                    />
-                                </div>
+                            <div className="flex flex-col w-3/4 justify-between m-1">
+                                <label htmlFor="cgpa" className="text-primary">CGPA</label>
+                                <input
+                                    type="number"
+                                    id="cgpa"
+                                    className="input input-secondary"
+                                    value={cgpa}
+                                    onChange={(e) => setCGPA(parseFloat(e.target.value))}
+                                />
+                            </div>
 
-                                <div className="flex flex-col w-3/4 justify-between m-1">
-                                    <label htmlFor="cgpa" className="text-primary">CGPA</label>
-                                    <input 
-                                        type="number" 
-                                        id="cgpa" 
-                                        className="input input-secondary" 
-                                        value={cgpa} 
-                                        onChange={(e) => setCGPA(parseFloat(e.target.value))} 
-                                    />
-                                </div>
+                            <div className="flex flex-col w-3/4 justify-between m-1">
+                                <label htmlFor="preference" className="text-primary">Preference</label>
+                                <input
+                                    type="number"
+                                    id="preference"
+                                    className="input input-secondary"
+                                    value={preference}
+                                    onChange={(e) => setPreference(parseFloat(e.target.value))}
+                                />
+                            </div>
 
-                                <div className="flex flex-col w-3/4 justify-between m-1">
-                                    <label htmlFor="preference" className="text-primary">Preference</label>
-                                    <input 
-                                        type="number" 
-                                        id="preference" 
-                                        className="input input-secondary" 
-                                        value={preference} 
-                                        onChange={(e) => setPreference(parseFloat(e.target.value))} 
-                                    />
-                                </div>
+                            <div className="text-center flex-wrap w-3/4 justify-between m-1">
+                                <label className="text-primary">DO YOU WANT TO MAKE YOUR ID NUMBER PUBLIC? </label>
+                                <input
+                                    type="checkbox"
+                                    onChange={(e) => setIsPublic(e.target.checked)}
+                                    checked={isPublic}
+                                />
+                                <br />
+                            </div>
 
-                                <div className="text-center flex-wrap w-3/4 justify-between m-1">
-                                    <label className="text-primary">DO YOU WANT TO MAKE YOUR ID NUMBER PUBLIC? </label>
-                                    <input
-                                        type="checkbox"
-                                        onChange={(e) => setIsPublic(e.target.checked)}
-                                        checked={isPublic}
-                                    />
-                                    <br />
-                                </div>
-
-                                <div className="text-center flex-wrap w-3/4 justify-between m-1">
-                                    <button 
-                                        className="btn btn-primary" 
-                                        onClick={AddResponse}
-                                        disabled={isEditMode && !selectedResponse}
-                                    >
-                                        {isEditMode ? "Update Response" : "Add Response"}
-                                    </button>
-                                </div>
-                            </>
-                        )
+                            <div className="text-center flex-wrap w-3/4 justify-between m-1">
+                                <button
+                                    className="btn btn-primary"
+                                    onClick={AddResponse}
+                                    disabled={isEditMode && !selectedResponse}
+                                >
+                                    {isEditMode ? "Update Response" : "Add Response"}
+                                </button>
+                            </div>
+                        </>
+                    )
                     }
                 </div>
             </div>

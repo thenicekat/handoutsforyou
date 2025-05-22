@@ -57,6 +57,19 @@ export default function AddPS2Response({ }: {}) {
                 setIsPublic(response.public === true);
                 setResponseId(response.id);
             }
+        } else {
+            setIdNumber("");
+            setYearAndSem("");
+            setAllotmentRound("");
+            setStation("");
+            setStipend(0);
+            setCGPA(0);
+            setPreference(1);
+            setOffshoot(0);
+            setOffshootTotal(0);
+            setOffshootType("");
+            setIsPublic(true);
+            setResponseId(null);
         }
     }, [selectedResponse]);
 
