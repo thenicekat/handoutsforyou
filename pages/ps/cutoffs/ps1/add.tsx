@@ -46,7 +46,7 @@ export default function AddPS1Response({ }: {}) {
                 setStation(response.station || "");
                 setCGPA(response.cgpa || 0);
                 setPreference(response.preference || 1);
-                setIsPublic(response.public === 1);
+                setIsPublic(response.public === true);
                 setResponseId(response.id);
             }
         }

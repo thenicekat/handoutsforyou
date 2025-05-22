@@ -54,7 +54,7 @@ export default function AddPS2Response({ }: {}) {
                 setOffshoot(response.offshoot || 0);
                 setOffshootTotal(response.offshoot_total || 0);
                 setOffshootType(response.offshoot_type || "");
-                setIsPublic(response.public === 1);
+                setIsPublic(response.public === true);
                 setResponseId(response.id);
             }
         }
