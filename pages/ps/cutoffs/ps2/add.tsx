@@ -233,7 +233,21 @@ export default function AddPS2Response({ }: {}) {
 
                             <div className="flex flex-col w-3/4 justify-between m-1">
                                 <label htmlFor="yearAndSem" className="text-primary">Year and Sem</label>
-                                <AutoCompleter name="Year and Sem" value={yearAndSem} items={semesters} onChange={(e) => setYearAndSem(e)} />
+                                {isEditMode ? (
+                                    <input
+                                        type="text"
+                                        className="input input-secondary w-full"
+                                        value={yearAndSem}
+                                        disabled={true}
+                                    />
+                                ) : (
+                                    <AutoCompleter
+                                        name="Year and Sem"
+                                        value={yearAndSem}
+                                        items={semesters}
+                                        onChange={(e) => setYearAndSem(e)}
+                                    />
+                                )}
                             </div>
 
                             <div className="flex flex-col w-3/4 justify-between m-1">
