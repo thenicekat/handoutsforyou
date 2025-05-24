@@ -14,7 +14,7 @@ export default function ChroniclePage() {
     const [chronicles, setChronicles] = useState<SI_Chronicle[]>([]);
 
     const fetchChronicles = async () => {
-        const res = await fetch(`/api/si/getchronicles`, {
+        const res = await fetch(`/api/si/chronicles/get`, {
             method: "POST",
             body: JSON.stringify({
                 slug: slug,
