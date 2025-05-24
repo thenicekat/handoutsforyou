@@ -20,7 +20,7 @@ export default function SICompanies() {
 
     const fetchData = async () => {
         setIsLoading(true);
-        const res = await fetch("/api/si/getcompanies", {
+        const res = await fetch("/api/si/companies/get", {
             method: "POST",
             body: JSON.stringify({
                 year: yearRef
