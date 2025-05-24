@@ -20,7 +20,6 @@ const tablesToBackup = [
   "course_reviews",
   "course_resources",
   "course_grading",
-  "donations",
   "higherstudies_resources",
   "placement_ctcs",
   "ps1_responses",
