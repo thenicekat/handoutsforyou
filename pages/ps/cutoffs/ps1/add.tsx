@@ -195,7 +195,7 @@ export default function AddPS1Response({ }: {}) {
                                             ))}
                                         </select>
                                     ) : (
-                                        <p>You do not have any responses to edit.</p>
+                                        <p>You don't have any responses to edit.</p>
                                     )}
                                 </div>
                             )}
