@@ -1,8 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { supabase } from '../supabase'
+import { supabase } from '../../supabase'
 import { getServerSession } from "next-auth/next"
-import { authOptions } from "../auth/[...nextauth]"
-import { SI_CHRONICLES } from '../constants'
+import { authOptions } from "../../auth/[...nextauth]"
+import { SI_COMPANIES } from '../../constants'
 
 type ResponseData = {
     message: string,
@@ -24,9 +24,9 @@ export default async function handler(
         return;
     }
 
-    const { slug } = req.body
+    const { year } = req.body
 
-    if (!slug) {
+    if (!year) {
         res.status(422).json({
             message: 'Missing required fields',
             error: true,
@@ -34,14 +34,10 @@ export default async function handler(
         })
     }
     else {
-        const year = slug.split('_')[0]
-        const company = slug.split('_')[1]
-
         const { data, error } = await supabase
-            .from(SI_CHRONICLES)
+            .from(SI_COMPANIES)
             .select('*')
             .eq('year', year)
-            .eq('company', company)
 
         if (error) {
             console.error(error)
