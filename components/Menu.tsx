@@ -9,6 +9,8 @@ import {
     XMarkIcon,
 } from '@heroicons/react/24/outline';
 import StarPrompt from './StarPrompt';
+import { toast } from 'react-toastify';
+import CustomToastContainer from './ToastContainer';
 
 interface MenuProps {
     doNotShowMenu?: boolean;
@@ -60,12 +62,14 @@ const Menu = (
                             </button>
                         </Link>
 
-                        <Link href="/donations">
-                            <button className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg transition-all bg-green-400/20 hover:bg-green-400/30 text-green-500">
-                                <BanknotesIcon className="h-4 w-4" />
-                                <span className="text-sm">Fund</span>
-                            </button>
-                        </Link>
+                        <button
+                            onClick={() => {
+                                toast.info("Please contact us if you are interested in contributing to this project.")
+                            }}
+                            className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg transition-all bg-green-400/20 hover:bg-green-400/30 text-green-500">
+                            <BanknotesIcon className="h-4 w-4" />
+                            <span className="text-sm">Fund</span>
+                        </button>
 
                         {!session ? (
                             <button
@@ -120,12 +124,15 @@ const Menu = (
                                     <span className="text-sm">{starCount}</span>
                                 </button>
                             </Link>
-                            <Link href="/donations" className="flex-1">
-                                <button className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-green-400/20 hover:bg-green-400/30 text-green-500 transition-all">
-                                    <BanknotesIcon className="h-4 w-4" />
-                                    <span className="text-sm">Fund</span>
-                                </button>
-                            </Link>
+                            <button
+                                className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-green-400/20 hover:bg-green-400/30 text-green-500 transition-all"
+                                onClick={() => {
+                                    toast.info("Please contact us if you are interested in contributing to this project.")
+                                }}
+                            >
+                                <BanknotesIcon className="h-4 w-4" />
+                                <span className="text-sm">Fund</span>
+                            </button>
                         </div>
 
                         {/* Navigation Links */}
@@ -146,8 +153,12 @@ const Menu = (
                     </div>
                 </div>
             </div >
+
+            <CustomToastContainer containerId="menu" />
         </>
     );
+
+
 }
 
 export default Menu;
