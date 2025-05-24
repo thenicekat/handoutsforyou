@@ -195,7 +195,7 @@ export default function AddPS1Response({ }: {}) {
                                             ))}
                                         </select>
                                     ) : (
-                                        <p>You don't have any responses to edit.</p>
+                                        <p>You do not have any responses to edit.</p>
                                     )}
                                 </div>
                             )}
@@ -215,18 +215,18 @@ export default function AddPS1Response({ }: {}) {
                             <div className="flex flex-col w-3/4 justify-between m-1">
                                 <label htmlFor="yearAndSem" className="text-primary">Year and Sem</label>
                                 {isEditMode ? (
-                                    <input 
-                                        type="text" 
-                                        className="input input-secondary w-full" 
-                                        value={yearAndSem} 
-                                        disabled={true} 
+                                    <input
+                                        type="text"
+                                        className="input input-secondary w-full"
+                                        value={yearAndSem}
+                                        disabled={true}
                                     />
                                 ) : (
-                                    <AutoCompleter 
-                                        name="Year and Sem" 
-                                        value={yearAndSem} 
-                                        items={years} 
-                                        onChange={(e) => setYearAndSem(e)} 
+                                    <AutoCompleter
+                                        name="Year and Sem"
+                                        value={yearAndSem}
+                                        items={years}
+                                        onChange={(e) => setYearAndSem(e)}
                                     />
                                 )}
                             </div>
