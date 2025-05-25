@@ -1,38 +1,18 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '../../supabase'
-import { getServerSession } from "next-auth/next"
-import { authOptions } from "../../auth/[...nextauth]"
 import { COURSE_REVIEWS } from '../../constants'
+import { validateAPISession, BaseResponseData } from '@/lib/session'
 
-type ResponseData = {
-    message: string,
-    data: any,
-    error: boolean
+interface ResponseData extends BaseResponseData {
+    data: any
 }
 
 export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
 ) {
-    const session = await getServerSession(req, res, authOptions)
-    if (!session) {
-        res.status(400).json({
-            message: 'Unauthorized, Please login and try again',
-            error: true,
-            data: []
-        })
-        return;
-    }
-
-    const email = session?.user?.email
-    if (!email?.includes('hyderabad')) {
-        res.status(403).json({
-            message: 'Course reviews are only available for BITS Hyderabad students.',
-            error: true,
-            data: []
-        })
-        return;
-    }
+    const session = await validateAPISession<ResponseData>(req, res, { requireHyderabadEmail: true });
+    if (!session) return;
 
     const { course, prof } = req.body
 

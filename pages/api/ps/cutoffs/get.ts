@@ -1,40 +1,20 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '../../supabase'
-import { getServerSession } from "next-auth/next"
-import { authOptions } from "../../auth/[...nextauth]"
 import { PS1_RESPONSES, PS2_RESPONSES } from '../../constants'
+import { validateAPISession, BaseResponseData } from '@/lib/session'
 
-type ResponseData = {
-    message: string,
-    data: any,
-    error: boolean
+interface ResponseData extends BaseResponseData {
+    data: any
 }
 
 export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
 ) {
-    const session = await getServerSession(req, res, authOptions)
-    if (!session) {
-        res.status(400).json({
-            message: 'Unauthorized, Please login and try again',
-            error: true,
-            data: []
-        })
-        return;
-    }
+    const session = await validateAPISession<ResponseData>(req, res);
+    if (!session) return;
 
-    const { email } = session.user
     const { type } = req.body
-
-    if (!email) {
-        res.status(400).json({
-            message: 'Unauthorized, Please login and try again',
-            error: true,
-            data: []
-        })
-        return;
-    }
 
     if (!type) {
         res.status(422).json({
@@ -50,7 +30,7 @@ export default async function handler(
     const { data, error } = await supabase
         .from(tableName)
         .select('*')
-        .eq('email', email)
+        .eq('email', session.user.email)
     
     if (error) {
         res.status(500).json({ 
