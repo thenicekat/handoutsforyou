@@ -9,7 +9,6 @@ import {
     XMarkIcon,
 } from '@heroicons/react/24/outline';
 import StarPrompt from './StarPrompt';
-import { toast } from 'react-toastify';
 
 interface MenuProps {
     doNotShowMenu?: boolean;
@@ -55,20 +54,11 @@ const Menu = (
 
                     <div className="flex items-center gap-2 md:gap-4">
                         <Link href="https://github.com/thenicekat/handoutsforyou">
-                            <button className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-400/20 hover:bg-amber-400/30 text-amber-500 transition-all">
+                            <button className="md:flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-400/20 hover:bg-amber-400/30 text-amber-500 transition-all">
                                 <StarIcon className="h-4 w-4" />
-                                <span className="text-sm">{starCount}</span>
+                                <span className="hidden md:block text-sm">{starCount}</span>
                             </button>
                         </Link>
-
-                        <button
-                            onClick={() => {
-                                toast.info("Please contact us if you are interested in contributing to this project.")
-                            }}
-                            className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg transition-all bg-green-400/20 hover:bg-green-400/30 text-green-500">
-                            <BanknotesIcon className="h-4 w-4" />
-                            <span className="text-sm">Fund</span>
-                        </button>
 
                         {!session ? (
                             <button
@@ -116,23 +106,14 @@ const Menu = (
                 <div className="absolute right-0 h-full w-full md:w-80 bg-white/95 dark:bg-zinc-900/95 border-l border-black/10 dark:border-white/10">
                     <div className="flex flex-col h-full pt-20 pb-6 px-4">
                         {/* Mobile-only buttons */}
-                        <div className="md:hidden flex gap-4 mb-6">
+                        {/* <div className="md:hidden flex gap-4 mb-6">
                             <Link href="https://github.com/thenicekat/handoutsforyou" className="flex-1">
                                 <button className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-amber-400/20 hover:bg-amber-400/30 text-amber-500 transition-all">
                                     <StarIcon className="h-4 w-4" />
                                     <span className="text-sm">{starCount}</span>
                                 </button>
                             </Link>
-                            <button
-                                className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-green-400/20 hover:bg-green-400/30 text-green-500 transition-all"
-                                onClick={() => {
-                                    toast.info("Please contact us if you are interested in contributing to this project.")
-                                }}
-                            >
-                                <BanknotesIcon className="h-4 w-4" />
-                                <span className="text-sm">Fund</span>
-                            </button>
-                        </div>
+                        </div> */}
 
                         {/* Navigation Links */}
                         <div className="flex-1 overflow-y-auto">
