@@ -14,7 +14,6 @@ export const SI_CHRONICLES = "si_chronicles"
 export const SI_COMPANIES = "si_companies"
 export const PLACEMENT_CTCS = "placement_ctcs"
 export const HIGHER_STUDIES_RESOURCES = "higherstudies_resources"
-export const DONATIONS = "donations"
 export const RANT_POSTS = "rants_posts"
 export const RANT_COMMENTS = "rants_comments"
 

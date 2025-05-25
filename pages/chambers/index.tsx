@@ -35,7 +35,6 @@ export default function Chambers() {
                     <Menu />
 
                     {session && <>
-
                         <AutoCompleter name={"Prof"} items={profs.map((p) => p.name)} value={prof} onChange={(val) => setProf(val)} />
                         <span className="m-2"></span>
                     </>}
@@ -44,7 +43,6 @@ export default function Chambers() {
 
             {session &&
                 <div>
-                    {/* Show the count of reviews */}
                     <div className="flex justify-center">
                         <h1 className="text-lg text-primary m-5 max-w-2xl">This is a list of all the professors of hyderabad campus and their chamber numbers. If you would like to correct the information here, please contact us.</h1>
                     </div>

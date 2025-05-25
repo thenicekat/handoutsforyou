@@ -10,11 +10,8 @@ import { PS_Review } from "@/types/PSData";
 
 export default function PS2Reviews({ }: {}) {
     const [station, setStation] = useState("");
-
     const [isLoading, setIsLoading] = useState(false);
-
     const [reviews, setReviews] = useState([] as PS_Review[]);
-
     const { session } = useAuth()
 
     const fetchReviews = async () => {
@@ -49,7 +46,7 @@ export default function PS2Reviews({ }: {}) {
     return (
         <>
             <Head>
-                <title>PS2 Reviews.</title>
+                <title>PS2 Reviews</title>
                 <meta name="description" content="One stop place for your PS queries, handouts, and much more" />
                 <meta name="keywords" content="BITS Pilani, Handouts, BPHC, Hyderabad Campus, BITS Hyderabad, BITS, Pilani, Handouts for you, handouts, for, you, bits, birla, institute, bits hyd, academics, practice school, ps, queries, ps cutoffs, ps2, ps1" />
                 <meta name="robots" content="index, follow" />
@@ -57,48 +54,58 @@ export default function PS2Reviews({ }: {}) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            {/* Search box */}
-            <div className="grid place-items-center">
-                <div className="w-[70vw] place-items-center flex flex-col justify-between">
-                    <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">PS2 Reviews.</h1>
-
+            <div className="container mx-auto px-4 py-8">
+                <div className="max-w-4xl mx-auto">
+                    <h1 className="text-4xl font-bold text-primary text-center mb-8">PS2 Reviews</h1>
                     <Menu />
 
-                    {session && <>
-                        <input type="text" placeholder="Search..." className="input input-secondary w-full max-w-xs" onChange={e => setStation(e.target.value)} />
-                        <span className="m-2"></span>
-                    </>}
+                    {session && (
+                        <div className="flex flex-col items-center gap-4 mb-8">
+                            <div className="flex items-center gap-4 w-full max-w-md">
+                                <input
+                                    type="text"
+                                    placeholder="Search station..."
+                                    className="input input-bordered input-primary flex-1"
+                                    onChange={e => setStation(e.target.value)}
+                                />
+                                <Link href="/ps/reviews/add/" className="btn btn-primary">
+                                    Add Review
+                                </Link>
+                            </div>
+                        </div>
+                    )}
                 </div>
-            </div>
 
-            {session &&
-                <div>
-                    {/* Show the count of reviews */}
-                    <div className="flex justify-center">
-                        <h1 className="text-3xl text-primary">Total Reviews: {reviews.length}</h1>
-                    </div>
+                {session && (
+                    <div className="max-w-4xl mx-auto">
+                        <div className="flex justify-center mb-8">
+                            <h2 className="text-2xl font-semibold text-primary">Total Reviews: {reviews.length}</h2>
+                        </div>
 
-                    <div className='px-2 md:px-20 p-2'>
-                        {
-                            !isLoading ?
+                        <div className="space-y-6">
+                            {!isLoading ? (
                                 reviews
                                     .filter(review => review.station.toLowerCase().includes(station.toLowerCase()))
                                     .map((review) => (
-                                        <div className="card shadow-lg bg-base-100 break-words text-base-content mt-5" key={review.created_at}>
+                                        <div className="card shadow-lg bg-base-100 break-words text-base-content" key={review.created_at}>
                                             <div className="card-body">
                                                 <h2 className="card-title text-center">Station Name: {review.station} Batch: {review.batch}</h2>
-                                                <p>{review.review}</p>
-                                                <p className="italic">Submitted at: {new Date(review.created_at).toLocaleString("en-IN", {})}</p>
+                                                <p className="whitespace-pre-wrap">{review.review}</p>
+                                                <p className="text-sm text-base-content/70 mt-2">
+                                                    Submitted at: {new Date(review.created_at).toLocaleString("en-IN", {})}
+                                                </p>
                                             </div>
                                         </div>
-                                    )) :
+                                    ))
+                            ) : (
                                 <div className="flex justify-center">
-                                    <h1 className="text-3xl text-primary">Loading...</h1>
+                                    <span className="loading loading-spinner loading-lg text-primary"></span>
                                 </div>
-                        }
+                            )}
+                        </div>
                     </div>
-                </div>
-            }
+                )}
+            </div>
             <CustomToastContainer containerId="ps2Reviews" />
         </>
     )

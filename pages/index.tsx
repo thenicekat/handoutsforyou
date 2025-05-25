@@ -151,17 +151,12 @@ export default function Home() {
 
       <div className="py-8">
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
-          <div className="md:w-1/2 mb-8 md:mb-0">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center">Handouts4U.</h1>
-            <p className="text-md md:text-lg text-white mb-6 text-center">
-              Your complete resource hub.
-              <br />
-              Thank you for making this project a huge success! 🤍
-            </p>
-          </div>
-          <div className="md:w-1/2 justify-center hidden md:flex">
-            <Image src="/logo.svg" width={300} height={300} alt="H4U logo" className="drop-shadow-md" />
-          </div>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center">Handouts4U.</h1>
+          <p className="text-md md:text-lg text-white mb-6 text-center">
+            Your complete resource hub.
+            <br />
+            Thank you for making this project a huge success! 🤍
+          </p>
         </div>
       </div>
 
