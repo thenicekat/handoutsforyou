@@ -9,7 +9,7 @@ import { departments } from "@/data/departments";
 import { higherStudiesCategories } from "@/data/higherstudies";
 
 
-export default function AddHSResources({ }: {}) {
+export default function AddHSResources() {
     const [name, setName] = useState("");
     const [link, setLink] = useState("");
     const [created_by, setCreatedBy] = useState("");

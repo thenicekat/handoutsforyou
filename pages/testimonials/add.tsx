@@ -7,7 +7,7 @@ import Menu from "@/components/Menu";
 import { useRouter } from "next/router";
 
 
-export default function AddTestimonial({ }: {}) {
+export default function AddTestimonial() {
     const router = useRouter();
     const { userId } = router.query;
 

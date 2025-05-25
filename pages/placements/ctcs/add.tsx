@@ -8,7 +8,7 @@ import AutoCompleter from "@/components/AutoCompleter";
 import { years } from "@/data/placements";
 
 
-export default function AddPlacementCTCs({ }: {}) {
+export default function AddPlacementCTCs() {
     const [name, setName] = useState("");
     const [campus, setCampus] = useState("");
     const [academicYear, setAcademicYear] = useState("");

@@ -12,7 +12,7 @@ import {
 
 
 
-export default function AddReview({ }: {}) {
+export default function AddReview() {
     const [rant, setRant] = useState("");
     const [isPublic, setIsPublic] = useState(true);
 
