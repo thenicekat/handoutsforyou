@@ -72,10 +72,10 @@ export default function Home() {
 
   const navigationCategories = [
     {
-      title: "Academic Resources.",
+      title: "Course Resources.",
       description: "Access course materials, handouts, and academic resources",
       items: [
-        { name: "Handouts", path: "/handouts", count: summaryData.handouts },
+        { name: "Handouts", path: "/courses/handouts", count: summaryData.handouts },
         { name: "Prerequisites", path: "/courses/prereqs", count: summaryData.coursePrerequisites },
         { name: "Previous Year Questions", path: "/courses/pyqs", count: summaryData.coursePyqs },
         { name: "Reviews", path: "/courses/reviews", count: summaryData.courseReviews },
@@ -96,24 +96,17 @@ export default function Home() {
       ]
     },
     {
-      title: "Practice School.",
-      description: "Find information about PS stations and experiences",
+      title: "Practice School and Others.",
+      description: "Everything else.",
       items: [
-        { name: "PS1 Responses", path: "/ps/cutoffs/ps1", count: summaryData.ps1Cutoffs },
-        { name: "PS2 Responses", path: "/ps/cutoffs/ps2", count: summaryData.ps2Cutoffs },
-        { name: "PS Chronicles", path: "/ps/chronicles" },
-        { name: "PS1 Reviews", path: "/ps/reviews/ps1" },
-        { name: "PS2 Reviews", path: "/ps/reviews/ps2" },
+        { name: "Practice School Dashboard", path: "/ps" },
+        { name: "PS1 CGPA Cutoffs", path: "/ps/cutoffs/ps1", count: summaryData.ps1Cutoffs },
+        { name: "PS2 CGPA Cutoffs", path: "/ps/cutoffs/ps2", count: summaryData.ps2Cutoffs },
+        { name: "Rants", path: "/rants" },
+        { name: "Professor Chambers", path: "/chambers" },
+        { name: "FAQs", path: "/faqs" }
       ]
     },
-    {
-      title: "Others.",
-      description: "Everything else",
-      items: [
-        { name: "Rants", path: "/rants" },
-        { name: "Professor Chambers", path: "/chambers" }
-      ]
-    }
   ];
 
   return (
