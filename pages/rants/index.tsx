@@ -9,7 +9,7 @@ import { Rant } from "@/types/Rant";
 import { PlusCircleIcon } from "@heroicons/react/24/solid";
 import { ChatBubbleOvalLeftEllipsisIcon } from "@heroicons/react/24/outline";
 
-export default function Rants({ }: {}) {
+export default function Rants() {
     const [isLoading, setIsLoading] = useState(false);
     const [rants, setRants] = useState([] as Rant[]);
     const [newComments, setNewComments] = useState<{ [key: number]: string }>({});
