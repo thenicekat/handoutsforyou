@@ -10,7 +10,6 @@ import {
 } from '@heroicons/react/24/outline';
 import StarPrompt from './StarPrompt';
 import { toast } from 'react-toastify';
-import CustomToastContainer from './ToastContainer';
 
 interface MenuProps {
     doNotShowMenu?: boolean;
@@ -153,12 +152,8 @@ const Menu = (
                     </div>
                 </div>
             </div >
-
-            <CustomToastContainer containerId="menu" />
         </>
     );
-
-
 }
 
 export default Menu;
