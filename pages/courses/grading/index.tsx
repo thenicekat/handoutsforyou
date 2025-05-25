@@ -9,7 +9,6 @@ import { profs } from "@/data/profs";
 import AutoCompleter from "@/components/AutoCompleter";
 import CustomToastContainer from "@/components/ToastContainer";
 import { toast } from "react-toastify";
-import { PlusCircleIcon } from "@heroicons/react/24/solid"
 
 interface GradingBySemester {
     [key: string]: CourseGrading[]

@@ -6,7 +6,7 @@ import { useAuth } from "@/hooks/useAuth";
 import Menu from "@/components/Menu";
 import Link from "next/link";
 
-const HandoutsPerYear = dynamic(() => import("./../../components/HandoutsPerYear"), {
+const HandoutsPerYear = dynamic(() => import("@/components/HandoutsPerYear"), {
     loading: () => (
         <div className="grid place-items-center">
             <p className="text-lg m-3">

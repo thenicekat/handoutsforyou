@@ -8,7 +8,7 @@ import CustomToastContainer from "@/components/ToastContainer";
 import { toast } from "react-toastify";
 import { PS_Review } from "@/types/PSData";
 
-export default function PS2Reviews({ }: {}) {
+export default function PS2Reviews() {
     const [station, setStation] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [reviews, setReviews] = useState([] as PS_Review[]);
@@ -68,7 +68,7 @@ export default function PS2Reviews({ }: {}) {
                                     className="input input-bordered input-primary flex-1"
                                     onChange={e => setStation(e.target.value)}
                                 />
-                                <Link href="/ps/reviews/add/" className="btn btn-primary">
+                                <Link href="/ps/reviews/ps2/add/" className="btn btn-primary">
                                     Add Review
                                 </Link>
                             </div>

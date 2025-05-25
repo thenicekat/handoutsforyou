@@ -12,7 +12,7 @@ import CustomToastContainer from "@/components/ToastContainer";
 import { toast } from "react-toastify";
 import { PlusCircleIcon } from '@heroicons/react/24/solid'
 
-export default function Reviews({ }: {}) {
+export default function Reviews() {
     const [course, setCourse] = useState("");
     const [prof, setProf] = useState("");
     const [dept, setDept] = useState("");
