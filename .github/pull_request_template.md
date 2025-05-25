@@ -17,4 +17,5 @@
 ## Checklist:
 
 - [ ] I used `pnpm` for my project dependencies
+- [ ] I ran `pnpm build`
 - [ ] I didnt push any `.env` files
