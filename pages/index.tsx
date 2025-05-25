@@ -48,25 +48,42 @@ export default function Home() {
 
   const fetchSummaryData = async () => {
     setIsLoading(true);
+    try {
+      const response = await fetch('/api/summary/data');
+      
+      // If we get a 400 (unauthorized) or any other error, just use default values
+      if (!response.ok) {
+        console.log(`Using default values due to ${response.status} response`);
+        return;
+      }
 
-    let response = await fetch('/api/summary/data');
-    let res = await response.json();
-    if (res.error) {
-      toast.error(res.error);
-    } else {
-      let result = summaryData;
-      result.ps1Cutoffs = res.data.ps1Cutoffs;
-      result.ps2Cutoffs = res.data.ps2Cutoffs;
-      result.courseReviews = res.data.courseReviews;
-      result.courseResources = res.data.courseResources;
-      result.placementCtcs = res.data.placementCtcs;
-      result.siCompanies = res.data.siCompanies;
-      result.siChronicles = res.data.siChronicles;
-      result.courseGrading = res.data.courseGrading;
-      result.higherStudiesResources = res.data.higherStudiesResources;
-      setSummaryData(result);
+      // Only try to parse JSON if the response was successful
+      const contentType = response.headers.get("content-type");
+      if (contentType && contentType.indexOf("application/json") !== -1) {
+        const res = await response.json();
+        if (res.error) {
+          console.log('API returned error:', res.message);
+          return;
+        }
+        setSummaryData(prev => ({
+          ...prev,
+          ps1Cutoffs: res.data.ps1Cutoffs || 0,
+          ps2Cutoffs: res.data.ps2Cutoffs || 0,
+          courseReviews: res.data.courseReviews || 0,
+          courseResources: res.data.courseResources || 0,
+          placementCtcs: res.data.placementCtcs || 0,
+          siCompanies: res.data.siCompanies || 0,
+          siChronicles: res.data.siChronicles || 0,
+          courseGrading: res.data.courseGrading || 0,
+          higherStudiesResources: res.data.higherStudiesResources || 0,
+        }));
+      }
+    } catch (error) {
+      console.log('Error fetching summary data:', error);
+      // On error, we'll just keep using the default values
+    } finally {
+      setIsLoading(false);
     }
-    setIsLoading(false);
   }
 
   useEffect(() => { fetchSummaryData() }, []);
