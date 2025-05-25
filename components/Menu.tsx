@@ -22,7 +22,7 @@ const Menu = (
     const [starCount, setStarCount] = useState(0);
 
     const menuItems: Record<string, string> = {
-        "Handouts": "/handouts",
+        "Handouts": "/courses/handouts",
         "Course Prereqs": "/courses/prereqs",
         "Course PYQs": "/courses/pyqs",
         "Course Resources": "/courses/resources",
@@ -34,10 +34,10 @@ const Menu = (
         "Rants": "/rants",
         "Placement Resources": "/placements/resources",
         "Placement CTCs": "/placements/ctcs",
-        "Practice School": "/ps/",
-        "PS Chronicles": "/ps/chronicles",
+        "Practice School": "/ps",
         "Research Chronicles": "https://pollen-box-786.notion.site/Research-Chronicles-894bcac1266d4e5fac2f4cd76ff29750",
         "Higher Studies": "/higherstudies/resources",
+        "FAQs": "/faqs",
     };
 
     return (
