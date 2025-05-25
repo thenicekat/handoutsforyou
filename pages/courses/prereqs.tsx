@@ -33,7 +33,7 @@ export default function Prereqs({ prereqs }: { prereqs: PreReqGroup[] }) {
     return (
         <>
             <Head>
-                <title>Course Prerequisites.</title>
+                <title>Prereqs.</title>
                 <meta name="description" content="One stop place for your PS queries, handouts, and much more" />
                 <meta name="keywords" content="BITS Pilani, Handouts, BPHC, Hyderabad Campus, BITS Hyderabad, BITS, Pilani, Handouts for you, handouts, for, you, bits, birla, institute, bits hyd, academics, practice school, ps, queries, ps cutoffs, ps2, ps1" />
                 <meta name="robots" content="index, follow" />
@@ -44,7 +44,7 @@ export default function Prereqs({ prereqs }: { prereqs: PreReqGroup[] }) {
             {/* Search box */}
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
-                    <h1 className="text-6xl pt-[50px] pb-[20px] px-[35px] text-primary">Course Prerequisites.</h1>
+                    <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">Prereqs.</h1>
 
                     <Menu />
 

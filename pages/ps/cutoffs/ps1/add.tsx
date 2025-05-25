@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import CustomToastContainer from "@/components/ToastContainer";
 import { useRouter } from "next/router";
 
-export default function AddPS1Response({ }: {}) {
+export default function AddPS1Response() {
     const router = useRouter();
     const { edit } = router.query;
     const isEditMode = edit === "true";

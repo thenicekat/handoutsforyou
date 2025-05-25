@@ -8,7 +8,7 @@ import AutoCompleter from "@/components/AutoCompleter";
 import { departments } from "@/data/departments";
 
 
-export default function AddResources({ }: {}) {
+export default function AddResources() {
     const [name, setName] = useState("");
     const [link, setLink] = useState("");
     const [created_by, setCreatedBy] = useState("");

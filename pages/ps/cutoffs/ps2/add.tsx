@@ -8,7 +8,7 @@ import AutoCompleter from "@/components/AutoCompleter";
 import { semesters, allotmentRounds } from "@/data/years_sems";
 import { useRouter } from "next/router";
 
-export default function AddPS2Response({ }: {}) {
+export default function AddPS2Response() {
     const router = useRouter();
     const { edit } = router.query;
     const isEditMode = edit === "true";
