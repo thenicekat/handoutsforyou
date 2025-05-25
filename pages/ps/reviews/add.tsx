@@ -4,30 +4,32 @@ import Menu from "@/components/Menu";
 import { useAuth } from "@/hooks/useAuth";
 import CustomToastContainter from "@/components/ToastContainer"
 import { toast } from "react-toastify";
-
+import AutoCompleter from "@/components/AutoCompleter";
+import { allotmentRounds, semesters } from "@/data/years_sems";
+import { years } from "@/data/placements";
 
 export default function AddReview({ }: {}) {
-    const [PSReviewData, setPSReviewData] = useState<{
-        type: string,
-        batch: string,
-        station: string,
-    }>();
-    const [review, setReview] = useState("");
+    const [PSType, setPSType] = useState("");
+    const [PSBatch, setPSBatch] = useState("");
+    const [PSStation, setPSStation] = useState("");
+    const [PSReview, setPSReview] = useState("");
+    const [PSAllotmentRound, setPSAllotmentRound] = useState("");
+    const [batches, setBatches] = useState([] as string[]);
 
     const { session } = useAuth()
 
     const AddReview = async () => {
-        if (!PSReviewData) {
-            toast.error("Invalid Request - PS Data missing")
+        if (!PSType || !PSBatch || !PSStation) {
+            toast.error("Please fill in all PS details")
             return
         }
-        if (!review) {
+        if (!PSReview) {
             toast.error("Review cannot be empty!")
             return
         }
         const data = await fetch("/api/ps/reviews/add", {
             method: "POST",
-            body: JSON.stringify({ ...PSReviewData, review: review, created_by: session?.user?.email }),
+            body: JSON.stringify({ type: PSType, batch: PSBatch, station: PSStation, review: PSReview, created_by: session?.user?.email }),
             headers: { "Content-Type": "application/json" }
         })
         const res = await data.json()
@@ -36,19 +38,22 @@ export default function AddReview({ }: {}) {
         }
         else {
             toast.success("Thank you! Your review was added successfully!")
-            setReview("")
-            if (localStorage.getItem("h4u_ps_review_data")) {
-                localStorage.removeItem("h4u_ps_review_data")
-            }
+            setPSReview("")
+            setPSType("")
+            setPSBatch("")
+            setPSStation("")
             window.location.href = '/ps'
         }
     }
 
     useEffect(() => {
-        if (localStorage.getItem("h4u_ps_review_data")) {
-            setPSReviewData(JSON.parse(localStorage.getItem("h4u_ps_review_data")!))
+        if (PSType === "PS1") {
+            setBatches(years)
         }
-    }, [])
+        else if (PSType === "PS2") {
+            setBatches(semesters)
+        }
+    }, [PSType])
 
     return (
         <>
@@ -64,21 +69,71 @@ export default function AddReview({ }: {}) {
             {/* Search box */}
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
-                    <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">Course Reviews.</h1>
+                    <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">PS Reviews.</h1>
 
                     <Menu />
 
                     {session && <>
-                        You are submitting a review for {PSReviewData?.type}:
-                        <span className="text-primary">Station: {PSReviewData?.station}</span>
-                        <span className="text-primary">Batch: {PSReviewData?.batch}</span>
+                        <div className="w-full max-w-xl space-y-4 mb-4">
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">PS Type</span>
+                                </label>
+                                <select
+                                    className="select select-primary w-full"
+                                    value={PSType}
+                                    onChange={(e) => setPSType(e.target.value)}
+                                >
+                                    <option value="">Select PS Type</option>
+                                    <option value="PS1">PS1</option>
+                                    <option value="PS2">PS2</option>
+                                </select>
+                            </div>
+
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Station</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    placeholder="Enter station name"
+                                    className="input input-primary w-full"
+                                    value={PSStation}
+                                    onChange={(e) => setPSStation(e.target.value)}
+                                />
+                            </div>
+
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Batch</span>
+                                </label>
+                                <AutoCompleter
+                                    items={batches}
+                                    value={PSBatch}
+                                    onChange={setPSBatch}
+                                    name="batch"
+                                />
+                            </div>
+
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Allotment Round</span>
+                                </label>
+                                <AutoCompleter
+                                    items={allotmentRounds}
+                                    value={PSAllotmentRound}
+                                    onChange={setPSAllotmentRound}
+                                    name="Allotment Round"
+                                />
+                            </div>
+                        </div>
 
                         <div className="text-center w-full m-2 h-60">
                             <textarea
                                 className="textarea textarea-primary w-full max-w-xl h-full"
                                 placeholder="Enter your Review..."
-                                onChange={(e) => setReview(e.target.value)}
-                                value={review}
+                                onChange={(e) => setPSReview(e.target.value)}
+                                value={PSReview}
                             ></textarea>
                         </div>
 
