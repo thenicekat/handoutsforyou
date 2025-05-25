@@ -51,6 +51,7 @@ export default function PS2Data() {
     useEffect(() => {
         if (session) {
             checkUserResponses()
+            updateData()
         }
     }, [session]);
 
@@ -58,6 +59,7 @@ export default function PS2Data() {
         setIsLoading(true);
         if (yearRef == cachedYear) {
             setIsLoading(false)
+            toast.info("You are already using the data for this year!")
             return
         }
 
@@ -79,11 +81,9 @@ export default function PS2Data() {
             }
         }
         setCachedYear(yearRef);
-        toast("Year updated successfully!")
+        toast.success("Data fetched successfully!")
         setIsLoading(false);
     }
-
-    useEffect(() => { updateData() }, [])
 
     useEffect(() => {
         setIsLoading(true);
@@ -247,86 +247,88 @@ export default function PS2Data() {
                 </div>
             </div>
 
-            {session &&
+            {isLoading && (
+                <div className="grid place-items-center py-16">
+                    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+                    <p className="text-lg mt-4">Loading data...</p>
+                </div>
+            )}
+
+            {session && !isLoading &&
                 <div>
                     {/* Show the count of reviews */}
                     <div className="flex justify-center">
-                        <h1 className="text-3xl text-primary">Total Responses: {isLoading ? "Loading..." : filteredPS2Data.length}</h1>
+                        <h1 className="text-3xl text-primary">Total Responses: {filteredPS2Data.length}</h1>
                     </div>
 
                     <div className='px-2 md:px-20'>
                         {
-                            !isLoading ?
-                                <>
-                                    {/* Mobile UI */}
-                                    <div className='px-2 p-2 grid md:hidden sm:grid-cols-2 grid-cols-1 place-items-center'>
-                                        {
-                                            filteredPS2Data.map((ps2Item: PS2Item) => (
-                                                <div className="card w-72 bg-base-100 text-base-content m-2" key={ps2Item.id}>
-                                                    <div className="card-body">
-                                                        <p className='text-lg'>{ps2Item.station.toUpperCase()}</p>
+                            <>
+                                {/* Mobile UI */}
+                                <div className='px-2 p-2 grid md:hidden sm:grid-cols-2 grid-cols-1 place-items-center'>
+                                    {
+                                        filteredPS2Data.map((ps2Item: PS2Item) => (
+                                            <div className="card w-72 bg-base-100 text-base-content m-2" key={ps2Item.id}>
+                                                <div className="card-body">
+                                                    <p className='text-lg'>{ps2Item.station.toUpperCase()}</p>
 
-                                                        <div className="flex-none">
-                                                            <p className="m-1">ID Number: {ps2Item.id_number}</p>
-                                                            <p className="m-1">ID Number: {ps2Item.name}</p>
-                                                            <p className="m-1">CGPA: {ps2Item.cgpa}</p>
-                                                            <p className="m-1">Stipend: {ps2Item.stipend}</p>
-                                                            <p className="m-1">Allotment Round: {ps2Item.allotment_round}</p>
-                                                            <p className="m-1">Offshoot: {ps2Item.offshoot}</p>
-                                                            <p className="m-1">Offshoot Total: {ps2Item.offshoot_total}</p>
-                                                            <p className="m-1">Offshoot Type: {ps2Item.offshoot_type ? ps2Item.offshoot_type : "NA"}</p>
-                                                        </div>
+                                                    <div className="flex-none">
+                                                        <p className="m-1">ID Number: {ps2Item.id_number}</p>
+                                                        <p className="m-1">ID Number: {ps2Item.name}</p>
+                                                        <p className="m-1">CGPA: {ps2Item.cgpa}</p>
+                                                        <p className="m-1">Stipend: {ps2Item.stipend}</p>
+                                                        <p className="m-1">Allotment Round: {ps2Item.allotment_round}</p>
+                                                        <p className="m-1">Offshoot: {ps2Item.offshoot}</p>
+                                                        <p className="m-1">Offshoot Total: {ps2Item.offshoot_total}</p>
+                                                        <p className="m-1">Offshoot Type: {ps2Item.offshoot_type ? ps2Item.offshoot_type : "NA"}</p>
                                                     </div>
-                                                </div>))
-                                        }
-                                    </div>
-
-                                    {/* Web UI */}
-                                    <div className="overflow-x-auto m-2 rounded-md hidden md:block">
-                                        <table className="table table-sm table-pin-rows bg-base-100">
-                                            <thead className='table-header-group'>
-                                                <tr>
-                                                    {headers.map((header) => {
-                                                        const direction = header.column.getIsSorted()
-                                                        const sort_indicator = (direction) ? arrow[direction] : arrow["unsorted"]
-
-                                                        return (
-                                                            <th key={header.id}>
-                                                                {header.isPlaceholder ? null : (
-                                                                    <div
-                                                                        onClick={header.column.getToggleSortingHandler()}
-                                                                        className="cursor-pointer flex gap-2"
-                                                                    >
-                                                                        {flexRender(
-                                                                            header.column.columnDef.header,
-                                                                            header.getContext()
-                                                                        )}
-                                                                        <span className={`inline-block text-center ${direction ? '' : 'opacity-50'}`}>{sort_indicator}</span>
-                                                                    </div>
-                                                                )}
-                                                            </th>
-                                                        );
-                                                    })}
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {rows.map((row) => (
-                                                    <tr key={row.id}>
-                                                        {row.getVisibleCells().map((cell) => (
-                                                            <td key={cell.id}>
-                                                                {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                                            </td>
-                                                        ))}
-                                                    </tr>
-                                                ))}
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </>
-                                :
-                                <div className="flex justify-center">
-                                    <h1 className="text-3xl text-primary">Loading...</h1>
+                                                </div>
+                                            </div>))
+                                    }
                                 </div>
+
+                                {/* Web UI */}
+                                <div className="overflow-x-auto m-2 rounded-md hidden md:block">
+                                    <table className="table table-sm table-pin-rows bg-base-100">
+                                        <thead className='table-header-group'>
+                                            <tr>
+                                                {headers.map((header) => {
+                                                    const direction = header.column.getIsSorted()
+                                                    const sort_indicator = (direction) ? arrow[direction] : arrow["unsorted"]
+
+                                                    return (
+                                                        <th key={header.id}>
+                                                            {header.isPlaceholder ? null : (
+                                                                <div
+                                                                    onClick={header.column.getToggleSortingHandler()}
+                                                                    className="cursor-pointer flex gap-2"
+                                                                >
+                                                                    {flexRender(
+                                                                        header.column.columnDef.header,
+                                                                        header.getContext()
+                                                                    )}
+                                                                    <span className={`inline-block text-center ${direction ? '' : 'opacity-50'}`}>{sort_indicator}</span>
+                                                                </div>
+                                                            )}
+                                                        </th>
+                                                    );
+                                                })}
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {rows.map((row) => (
+                                                <tr key={row.id}>
+                                                    {row.getVisibleCells().map((cell) => (
+                                                        <td key={cell.id}>
+                                                            {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                                        </td>
+                                                    ))}
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </>
                         }
                     </div>
                 </div>
