@@ -3,7 +3,6 @@ import { useAuth } from "@/hooks/useAuth";
 import Head from "next/head";
 import Menu from "@/components/Menu";
 
-
 export const getStaticProps: GetStaticProps = async () => {
     const fs = require("fs");
     let ps1_chronicles = fs.readdirSync("./public/ps/ps1_chronicles/");
@@ -23,7 +22,7 @@ export default function PSChronicles({ ps1_chronicles, ps2_chronicles }: { ps1_c
     return (
         <>
             <Head>
-                <title>PS Chronicles.</title>
+                <title>PS Chronicles</title>
                 <meta name="description" content="One stop place for your PS queries, handouts, and much more" />
                 <meta name="keywords" content="BITS Pilani, Handouts, BPHC, Hyderabad Campus, BITS Hyderabad, BITS, Pilani, Handouts for you, handouts, for, you, bits, birla, institute, bits hyd, academics, practice school, ps, queries, ps cutoffs, ps2, ps1" />
                 <meta name="robots" content="index, follow" />
@@ -31,62 +30,58 @@ export default function PSChronicles({ ps1_chronicles, ps2_chronicles }: { ps1_c
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            {/* Search box */}
-            <div className="grid place-items-center">
-                <div className="w-[70vw] place-items-center flex flex-col justify-between">
-                    <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">Practice School.</h1>
-
+            <div className="container mx-auto px-4 py-8">
+                <div className="max-w-4xl mx-auto">
+                    <h1 className="text-4xl font-bold text-primary text-center mb-8">Practice School</h1>
                     <Menu />
                 </div>
+
+                {session && (
+                    <div className="space-y-12 mt-12">
+                        <section>
+                            <h2 className="text-3xl font-semibold text-center mb-8">PS1 Chronicles</h2>
+                            <div className="grid md:grid-cols-3 gap-6">
+                                {ps1_chronicles.map((chron: string) => (
+                                    <div key={chron} className="card bg-base-100 shadow-md hover:shadow-lg transition-shadow">
+                                        <div className="card-body p-4">
+                                            <h3 className="card-title text-lg">PS1 {chron}</h3>
+                                            <div className="card-actions justify-end mt-2">
+                                                <button
+                                                    className="btn btn-primary btn-sm"
+                                                    onClick={() => window.open(`https://github.com/thenicekat/handoutsforyou/raw/main/public/ps/ps1_chronicles/${chron}`)}
+                                                >
+                                                    View
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
+
+                        <section>
+                            <h2 className="text-3xl font-semibold text-center mb-8">PS2 Chronicles</h2>
+                            <div className="grid md:grid-cols-3 gap-6">
+                                {ps2_chronicles.map((chron: string) => (
+                                    <div key={chron} className="card bg-base-100 shadow-md hover:shadow-lg transition-shadow">
+                                        <div className="card-body p-4">
+                                            <h3 className="card-title text-lg">PS2 {chron}</h3>
+                                            <div className="card-actions justify-end mt-2">
+                                                <button
+                                                    className="btn btn-primary btn-sm"
+                                                    onClick={() => window.open(`https://github.com/thenicekat/handoutsforyou/raw/main/public/ps/ps2_chronicles/${chron}`)}
+                                                >
+                                                    View
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
+                    </div>
+                )}
             </div>
-
-            {session &&
-                <>
-                    <div>
-                        <h1 className="text-3xl text-center my-3">PS1 Chronicles</h1>
-                        <div className='grid md:grid-cols-3 place-items-center p-5'>
-                            {
-                                ps1_chronicles.map((chron: string) => (
-                                    <div key={chron} className='m-2 py-1 rounded-xl'>
-                                        <div className="alert ">
-                                            <div>
-                                                <span>PS1 {chron}</span>
-                                            </div>
-                                            <div className="flex-none">
-                                                <button className="btn btn-primary" onClick={
-                                                    () => window.open("https://github.com/thenicekat/handoutsforyou/raw/main/public/ps/ps1_chronicles/" + chron)
-                                                }>View</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))
-                            }
-                        </div>
-                    </div>
-
-                    <div>
-                        <h1 className="text-3xl text-center my-3">PS2 Chronicles</h1>
-                        <div className='grid md:grid-cols-3 place-items-center p-5'>
-                            {
-                                ps2_chronicles.map((chron: string) => (
-                                    <div key={chron} className='m-2 p-1 rounded-xl'>
-                                        <div className="alert">
-                                            <div>
-                                                <span>PS2 Chronicles {chron}</span>
-                                            </div>
-                                            <div className="flex-none">
-                                                <button className="btn btn-primary" onClick={
-                                                    () => window.open("https://github.com/thenicekat/handoutsforyou/raw/main/public/ps/ps2_chronicles/" + chron)
-                                                }>View</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))
-                            }
-                        </div>
-                    </div>
-                </>
-            }
         </>
-    )
+    );
 }
