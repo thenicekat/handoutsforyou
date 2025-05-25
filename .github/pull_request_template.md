@@ -1,11 +1,5 @@
 ## Description
-
-<pre>
-Include summary of change here.
-
-A brief description of the your implementation method can be helpful too. If the implemented method/algorithm is not so
-well-known, it would be helpful to add a link to an article explaining it with more details.
-</pre>
+<!-- Please add summary of changes here. -->
 
 ## Type of change
 
