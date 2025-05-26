@@ -3,6 +3,7 @@ import { supabase } from '../../supabase'
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "../../auth/[...nextauth]"
 import { SI_CHRONICLES } from '../../constants'
+import { validateAPISession } from '@/lib/session'
 
 type ResponseData = {
     message: string,
@@ -14,15 +15,8 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
 ) {
-    const session = await getServerSession(req, res, authOptions)
-    if (!session) {
-        res.status(400).json({
-            message: 'Unauthorized, Please login and try again',
-            error: true,
-            data: []
-        })
-        return;
-    }
+    const session = await validateAPISession<ResponseData>(req, res);
+    if (!session) return;
 
     const { slug } = req.body
 
