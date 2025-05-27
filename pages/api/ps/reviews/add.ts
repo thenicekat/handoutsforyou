@@ -3,7 +3,7 @@ import { supabase } from '../../supabase'
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "../../auth/[...nextauth]"
 import { PS1_REVIEWS, PS2_REVIEWS } from '../../constants'
-import { validateAPISession } from '@/lib/session'
+import { validateAPISession } from '@/pages/api/auth/session'
 
 type ResponseData = {
     message: string,

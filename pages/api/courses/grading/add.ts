@@ -4,7 +4,7 @@ import { getServerSession } from "next-auth/next"
 import { authOptions } from "../../auth/[...nextauth]"
 import { COURSE_GRADING } from '../../constants'
 import { departments } from '@/data/departments'
-import { validateAPISession } from '@/lib/session'
+import { validateAPISession } from '@/pages/api/auth/session'
 
 type ResponseData = {
     message: string,

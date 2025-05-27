@@ -11,8 +11,6 @@ const publicRoutes = [
   '/api/auth',
   '/faqs',
   '/maintenance',
-  '/logo.svg',  // Explicitly allow logo access
-  '/favicon.ico',
   '/manifest.json'
 ]
 
@@ -20,12 +18,11 @@ const publicRoutes = [
 const isPublicRoute = (path: string) => {
   // Check for exact matches first
   if (publicRoutes.includes(path)) return true
-  
+
   // Check for path starts with
-  return publicRoutes.some(route => 
+  return publicRoutes.some(route =>
     (route !== '/' && path.startsWith(`${route}/`)) || // Don't match '/' as a prefix
     path.startsWith('/api/auth/') ||
-    path.startsWith('/_next/') ||    // Allow Next.js internal routes
     path.startsWith('/public/') ||   // Allow public assets
     /\.(svg|ico|png|jpg|jpeg|gif)$/.test(path)  // Allow all image assets
   )
@@ -95,4 +92,4 @@ export const config = {
      */
     '/((?!_next/static|_next/image|favicon.ico|public/).*)',
   ],
-} 
+}

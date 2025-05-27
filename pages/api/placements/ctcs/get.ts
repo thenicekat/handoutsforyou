@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '../../supabase'
 import { PLACEMENT_CTCS } from '../../constants'
-import { validateAPISession, BaseResponseData } from '@/lib/session'
+import { validateAPISession, BaseResponseData } from '@/pages/api/auth/session'
 
 interface ResponseData extends BaseResponseData {
     data: any

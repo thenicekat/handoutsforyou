@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "../pages/api/auth/[...nextauth]";
+import { authOptions } from "./[...nextauth]";
 
 export type BaseResponseData = {
     message: string,
