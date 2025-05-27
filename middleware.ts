@@ -84,6 +84,7 @@ export const config = {
      * 3. Static assets (images, icons, etc)
      * 4. public folder
      */
-    '/((?!_next/static|_next/image|public/|.*\\.(svg|ico|png|jpg|jpeg|gif)$).*)',
-  ],
+    '/((?!_next/static|_next/image|public).*)',
+    '/(api|auth|courses|ps|placements|si|higherstudies|rants|chambers)/:path*'
+  ]
 }
