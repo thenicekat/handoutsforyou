@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import { getToken } from 'next-auth/jwt'
 
-// Define public routes that don't require authentication
+// Define routes that are accessible without authentication
 const publicRoutes = [
   '/',
   '/auth/signin',
@@ -19,12 +19,9 @@ const isPublicRoute = (path: string) => {
   // Check for exact matches first
   if (publicRoutes.includes(path)) return true
 
-  // Check for path starts with
+  // Check for routes that start with a public prefix
   return publicRoutes.some(route =>
-    (route !== '/' && path.startsWith(`${route}/`)) || // Don't match '/' as a prefix
-    path.startsWith('/api/auth/') ||
-    path.startsWith('/public/') ||   // Allow public assets
-    /\.(svg|ico|png|jpg|jpeg|gif)$/.test(path)  // Allow all image assets
+    route !== '/' && path.startsWith(`${route}/`) // Don't match '/' as a prefix
   )
 }
 
@@ -73,10 +70,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next()
   } catch (error) {
     // If there's any error in token validation, redirect to unauthorized page
-    if (!isPublicRoute(pathname)) {
-      return NextResponse.redirect(new URL('/auth/error?error=Unauthorized', request.url))
-    }
-    return NextResponse.next()
+    return NextResponse.redirect(new URL('/auth/error?error=Unauthorized', request.url))
   }
 }
 
@@ -87,9 +81,9 @@ export const config = {
      * Match all request paths except:
      * 1. _next/static (static files)
      * 2. _next/image (image optimization files)
-     * 3. favicon.ico (favicon file)
+     * 3. Static assets (images, icons, etc)
      * 4. public folder
      */
-    '/((?!_next/static|_next/image|favicon.ico|public/).*)',
+    '/((?!_next/static|_next/image|public/|.*\\.(svg|ico|png|jpg|jpeg|gif)$).*)',
   ],
 }
