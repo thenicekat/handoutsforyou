@@ -43,4 +43,4 @@ export default async function handler(
         message: 'Authenticated',
         error: false
     });
-} 
+}

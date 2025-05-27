@@ -22,7 +22,6 @@ type SummaryData = {
   higherStudiesResources: number,
 }
 
-// Constants for resource counts
 const RESOURCE_COUNTS: SummaryData = {
   handouts: 3200,
   ps1Cutoffs: 150,
