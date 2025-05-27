@@ -2,6 +2,8 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
+import StatusCode from '@/components/StatusCode'
+import { signIn } from 'next-auth/react'
 
 const errorMessages = {
   UnauthorizedEmail: {
@@ -13,6 +15,11 @@ const errorMessages = {
     title: 'Campus Restricted',
     message: 'This feature is only available for BITS Hyderabad campus students.',
     action: 'Please use your BITS Hyderabad email address.'
+  },
+  Unauthorized: {
+    title: 'Sign in Required',
+    message: 'You need to be signed in to access this page.',
+    action: 'Please sign in with your BITS email address.'
   },
   Default: {
     title: 'Authentication Error',
@@ -33,46 +40,60 @@ export default function ErrorPage() {
   }, [router.query])
 
   const errorContent = errorMessages[errorType]
+  
+  const handleSignIn = () => {
+    signIn('google', { callbackUrl: '/' })
+  }
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-      <Head>
-        <title>{errorContent.title} - HandoutsForYou</title>
-        <meta name="description" content="Authentication error page" />
-      </Head>
+    <>
+      <nav className="fixed top-0 right-0 left-0 z-40 bg-white/50 dark:bg-black/50 backdrop-blur-md border-b border-black/10 dark:border-white/10">
+        <div className="flex items-center justify-between h-16 px-4 md:px-6">
+          <div className="flex items-center">
+            <Link href="/" className="flex items-center">
+              <h1 className="text-lg font-semibold text-black dark:text-white">H4U.</h1>
+            </Link>
+          </div>
+        </div>
+      </nav>
 
-      <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <div className="text-center">
-            <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
+      <div className="min-h-screen flex flex-col items-center pt-32 p-4">
+        <Head>
+          <title>{errorContent.title} - HandoutsForYou</title>
+          <meta name="description" content="Authentication error page" />
+        </Head>
+
+        <div className="w-full md:w-2/5 mx-auto">
+          <StatusCode code={errorType === 'Unauthorized' ? 401 : 403} />
+          <div className="text-center -mt-4">
+            <h3 className="text-lg font-semibold text-white">
               {errorContent.title}
-            </h2>
-            <p className="mt-2 text-sm text-gray-600">
+            </h3>
+            <p className="mt-2 text-sm text-gray-200">
               {errorContent.message}
             </p>
-            <p className="mt-1 text-sm text-gray-500">
+            <p className="mt-1 text-sm text-gray-300">
               {errorContent.action}
             </p>
-          </div>
-
-          <div className="mt-6">
-            <div className="flex flex-col space-y-4">
-              <Link
-                href="/auth/signin"
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            <div className="mt-4 space-y-3">
+              <button 
+                className="bg-gradient-to-r from-teal-400 to-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:scale-105 transition-transform"
+                onClick={handleSignIn}
               >
-                Sign in
-              </Link>
-              <Link
-                href="/"
-                className="w-full flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              >
-                Go to Home
-              </Link>
+                Sign in with Google
+              </button>
+              <div>
+                <Link
+                  href="/"
+                  className="inline-block text-gray-200 hover:text-white text-sm hover:underline"
+                >
+                  Go to Home
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 } 

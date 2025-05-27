@@ -52,7 +52,7 @@ export async function middleware(request: NextRequest) {
 
     // If no token found, redirect to unauthorized page
     if (!token) {
-      return NextResponse.redirect(new URL('/auth/unauthorized', request.url))
+      return NextResponse.redirect(new URL('/auth/error?error=Unauthorized', request.url))
     }
 
     // Check for BITS email domain only if we have a token
@@ -61,7 +61,7 @@ export async function middleware(request: NextRequest) {
     }
 
     // Special routes that require Hyderabad campus email
-    const hyderabadOnlyRoutes = ['/courses/grading']
+    const hyderabadOnlyRoutes = ['/courses/grading', '/courses/resources', '/courses/reviews']
     if (
       token.email &&
       hyderabadOnlyRoutes.some(route => pathname.startsWith(route)) &&
@@ -74,7 +74,7 @@ export async function middleware(request: NextRequest) {
   } catch (error) {
     // If there's any error in token validation, redirect to unauthorized page
     if (!isPublicRoute(pathname)) {
-      return NextResponse.redirect(new URL('/auth/unauthorized', request.url))
+      return NextResponse.redirect(new URL('/auth/error?error=Unauthorized', request.url))
     }
     return NextResponse.next()
   }

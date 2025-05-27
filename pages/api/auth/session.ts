@@ -9,10 +9,7 @@ export type BaseResponseData = {
 
 export async function validateAPISession<T extends BaseResponseData>(
     req: NextApiRequest,
-    res: NextApiResponse<T>,
-    options?: {
-        requireHyderabadEmail?: boolean
-    }
+    res: NextApiResponse<T>
 ) {
     const session = await getServerSession(req, res, authOptions);
     
@@ -25,14 +22,25 @@ export async function validateAPISession<T extends BaseResponseData>(
         return null;
     }
 
-    if (options?.requireHyderabadEmail && !session.user.email.includes('hyderabad')) {
-        res.status(403).json({
-            message: 'This feature is only available for BITS Hyderabad students.',
-            error: true,
-            ...('data' in res ? { data: [] } : {})
-        } as T);
-        return null;
+    return session;
+}
+
+// Default export for Next.js API route
+export default async function handler(
+    req: NextApiRequest,
+    res: NextApiResponse<BaseResponseData>
+) {
+    const session = await getServerSession(req, res, authOptions);
+    
+    if (!session) {
+        return res.status(401).json({
+            message: 'Unauthorized',
+            error: true
+        });
     }
 
-    return session;
+    return res.status(200).json({
+        message: 'Authenticated',
+        error: false
+    });
 } 

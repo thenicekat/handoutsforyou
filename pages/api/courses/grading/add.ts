@@ -19,7 +19,7 @@ export default async function handler(
         .flatMap((code: string) => code.split('/'))
         .map(code => code.trim())
         .filter(code => code.length > 0);
-        const session = await validateAPISession<ResponseData>(req, res, { requireHyderabadEmail: true });
+        const session = await validateAPISession<ResponseData>(req, res);
         if (!session) return;
 
     const { course, dept, sem, prof, data, created_by, average_mark } = req.body

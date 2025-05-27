@@ -14,7 +14,7 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
 ) {
-    const session = await validateAPISession<ResponseData>(req, res, { requireHyderabadEmail: true });
+    const session = await validateAPISession<ResponseData>(req, res);
     if (!session) return;
 
     const { name, link, created_by, category } = req.body
