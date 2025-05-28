@@ -59,7 +59,7 @@ export default function ErrorPage() {
 
       <div className="min-h-screen flex flex-col items-center pt-32 p-4">
         <Head>
-          <title>{errorContent.title} - HandoutsForYou</title>
+          <title>{`${errorContent.title} - HandoutsForYou`}</title>
           <meta name="description" content="Authentication error page" />
         </Head>
 
