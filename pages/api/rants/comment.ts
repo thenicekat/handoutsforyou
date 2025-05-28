@@ -1,26 +1,18 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '../supabase'
-import { getServerSession } from "next-auth/next"
-import { authOptions } from "../auth/[...nextauth]"
 import { RANT_COMMENTS } from '../constants'
+import { validateAPISession, BaseResponseData } from '@/pages/api/auth/session'
 
-type ResponseData = {
-    message: string,
-    error: boolean
+interface ResponseData extends BaseResponseData {
+    data?: any
 }
 
 export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
 ) {
-    const session = await getServerSession(req, res, authOptions)
-    if (!session) {
-        res.status(400).json({
-            message: 'Unauthorized, Please login and try again',
-            error: true
-        })
-        return
-    }
+    const session = await validateAPISession<ResponseData>(req, res);
+    if (!session) return;
 
     const { rantId, comment } = req.body
 
@@ -30,6 +22,10 @@ export default async function handler(
     }
     if (!comment) {
         res.status(422).json({ message: 'Invalid Request - Comment missing', error: true })
+        return
+    }
+    if (!rantId) {
+        res.status(422).json({ message: 'Invalid Request - Rant missing', error: true })
         return
     }
 

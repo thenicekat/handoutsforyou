@@ -4,6 +4,7 @@ import { getServerSession } from "next-auth/next"
 import { authOptions } from "../../auth/[...nextauth]"
 import { COURSE_GRADING } from '../../constants'
 import { departments } from '@/data/departments'
+import { validateAPISession } from '@/pages/api/auth/session'
 
 type ResponseData = {
     message: string,
@@ -18,14 +19,8 @@ export default async function handler(
         .flatMap((code: string) => code.split('/'))
         .map(code => code.trim())
         .filter(code => code.length > 0);
-    const session = await getServerSession(req, res, authOptions)
-    if (!session) {
-        res.status(400).json({
-            message: 'Unauthorized, Please login and try again',
-            error: true
-        })
-        return
-    }
+        const session = await validateAPISession<ResponseData>(req, res);
+        if (!session) return;
 
     const { course, dept, sem, prof, data, created_by, average_mark } = req.body
 
