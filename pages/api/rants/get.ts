@@ -1,13 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '../supabase'
-import { getServerSession } from "next-auth/next"
-import { authOptions } from "../auth/[...nextauth]"
 import { RANT_POSTS } from '../constants'
+import { validateAPISession, BaseResponseData } from '@/pages/api/auth/session'
 
-type ResponseData = {
-    message: string,
-    data: any,
-    error: boolean
+interface ResponseData extends BaseResponseData {
+    data: any
 }
 
 type Rant = {
@@ -25,17 +22,8 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
 ) {
-    const session = await getServerSession(req, res, authOptions)
-    if (!session) {
-        res.status(400).json({
-            message: 'Unauthorized, Please login and try again',
-            error: true,
-            data: []
-        })
-        return;
-    }
-
-    const email = session?.user?.email
+    const session = await validateAPISession<ResponseData>(req, res);
+    if (!session) return;
 
     let rants: Rant[] = []
 
@@ -59,7 +47,7 @@ export default async function handler(
     const { data: privateRants, error: privateError } = await supabase
         .from(RANT_POSTS)
         .select('id, rant, created_at, public, rants_comments (id, comment)')
-        .eq('created_by', session?.user?.email)
+        .eq('created_by', session.user.email)
         .eq('public', 0)
 
     if (privateError) {

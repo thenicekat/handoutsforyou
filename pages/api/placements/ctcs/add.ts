@@ -3,6 +3,7 @@ import { supabase } from '../../supabase'
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "../../auth/[...nextauth]"
 import { admins, PLACEMENT_CTCS } from '../../constants'
+import { validateAPISession } from '@/pages/api/auth/session'
 
 type ResponseData = {
     message: string,
@@ -13,14 +14,8 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
 ) {
-    const session = await getServerSession(req, res, authOptions)
-    if (!session) {
-        res.status(400).json({
-            message: 'Unauthorized, Please login and try again',
-            error: true
-        })
-        return
-    }
+    const session = await validateAPISession<ResponseData>(req, res);
+    if (!session) return;
 
     let { company, campus, academicYear, base, joiningBonus, relocationBonus, variableBonus, monetaryValueOfBenefits, description } = req.body
 
