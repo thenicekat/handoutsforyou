@@ -67,7 +67,16 @@ export async function middleware(request: NextRequest) {
       return NextResponse.redirect(new URL('/auth/error?error=HyderabadOnly', request.url))
     }
 
-    return NextResponse.next()
+    const response = NextResponse.next()
+    
+    if (pathname.startsWith('/api/') && !pathname.startsWith('/api/auth/')) {
+      response.headers.set('x-auth-email', token.email || '')
+      response.headers.set('x-auth-name', token.name || '')
+      response.headers.set('x-auth-validated', 'true')
+    }
+    
+    return response
+
   } catch (error) {
     // If there's any error in token validation, redirect to unauthorized page
     return NextResponse.redirect(new URL('/auth/error?error=Unauthorized', request.url))

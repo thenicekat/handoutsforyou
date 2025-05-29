@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import { Session } from 'next-auth';
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "./[...nextauth]";
 
@@ -10,10 +11,13 @@ export type BaseResponseData = {
 export async function validateAPISession<T extends BaseResponseData>(
     req: NextApiRequest,
     res: NextApiResponse<T>
-) {
-    const session = await getServerSession(req, res, authOptions);
-    
-    if (!session || !session.user?.email) {
+): Promise<Session | null> {
+    // For API routes, use header-based validation
+    const isValidated = req.headers['x-auth-validated'] === 'true';
+    const email = req.headers['x-auth-email'];
+    const name = req.headers['x-auth-name'];
+
+    if (!isValidated || !email) {
         res.status(401).json({
             message: 'Unauthorized, Please login and try again',
             error: true,
@@ -22,25 +26,19 @@ export async function validateAPISession<T extends BaseResponseData>(
         return null;
     }
 
-    return session;
+    return {
+        user: {
+            email: email as string,
+            name: name as string
+        },
+        expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString() // 30 days from now
+    };
 }
 
-// Default export for Next.js API route
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse<BaseResponseData>
+    res: NextApiResponse
 ) {
     const session = await getServerSession(req, res, authOptions);
-    
-    if (!session) {
-        return res.status(401).json({
-            message: 'Unauthorized',
-            error: true
-        });
-    }
-
-    return res.status(200).json({
-        message: 'Authenticated',
-        error: false
-    });
+    return res.json(session);
 }
