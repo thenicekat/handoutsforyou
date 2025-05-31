@@ -95,7 +95,7 @@ export default function AddPlacementCTCs() {
 
                             <div className="flex flex-col w-3/4 justify-between m-1">
                                 <label htmlFor="campus" className="text-primary">Campus</label>
-                                <AutoCompleter name="campus" items={['PS', 'Hyderabad', 'Pilani', 'Goa']} value={campus} onChange={(val) => setCampus(val)} />
+                                <AutoCompleter name="campus" items={['PS', 'Hyderabad', 'Pilani', 'Goa', 'Offcampus']} value={campus} onChange={(val) => setCampus(val)} />
                             </div>
 
                             <div className="flex flex-col w-3/4 justify-between m-1">
