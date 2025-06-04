@@ -24,19 +24,19 @@ type SummaryData = {
 
 const RESOURCE_COUNTS: SummaryData = {
   handouts: 3200,
-  ps1Cutoffs: 150,
-  ps2Cutoffs: 200,
-  courseReviews: 300,
-  courseGrading: 250,
-  courseResources: 400,
+  ps1Cutoffs: 1411,
+  ps2Cutoffs: 4560,
+  courseReviews: 622,
+  courseGrading: 148,
+  courseResources: 109,
   coursePrerequisites: 707,
-  coursePyqs: 80,
-  placementCtcs: 100,
-  placementResources: 30,
-  siCompanies: 50,
-  siChronicles: 20,
+  coursePyqs: 87,
+  placementCtcs: 113,
+  placementResources: 27,
+  siCompanies: 142,
+  siChronicles: 316,
   siResources: 10,
-  higherStudiesResources: 50,
+  higherStudiesResources: 2,
 }
 
 export default function Home() {
