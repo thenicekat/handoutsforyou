@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
 import Menu from "@/components/Menu";
-import { useAuth } from "@/hooks/useAuth";
 import CustomToastContainter from "@/components/ToastContainer"
 import { toast } from "react-toastify";
 import { PS1Item } from "@/types/PSData";
@@ -16,8 +15,6 @@ export default function AddPS1Review() {
     const [PSAllotmentRound, setPSAllotmentRound] = useState("");
     const [selectedResponse, setSelectedResponse] = useState<PS1Item | null>(null);
     const [isLoading, setIsLoading] = useState(true);
-
-    const { session } = useAuth()
 
     const fetchUserResponses = async () => {
         setIsLoading(true);
@@ -69,7 +66,6 @@ export default function AddPS1Review() {
                 batch: PSBatch,
                 station: PSStation,
                 review: PSReview,
-                created_by: session?.user?.email,
                 allotment_round: PSAllotmentRound
             }),
             headers: { "Content-Type": "application/json" }
@@ -111,60 +107,58 @@ export default function AddPS1Review() {
 
                     <Menu />
 
-                    {session && (
-                        <>
-                            {isLoading ? (
-                                <div className="grid place-items-center py-16">
-                                    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
-                                    <p className="text-lg mt-4">Loading your responses...</p>
-                                </div>
-                            ) : userResponses.length === 0 ? (
-                                <div className="text-center py-16">
-                                    <h2 className="text-2xl font-bold mb-4">No PS1 Responses Found</h2>
-                                    <p className="text-gray-600 mb-6">You need to submit your PS1 responses before writing a review.</p>
-                                    <Link href="/ps/cutoffs/ps1" className="btn btn-primary">
-                                        Submit PS1 Response
-                                    </Link>
-                                </div>
-                            ) : (
-                                <>
-                                    <div className="w-full max-w-xl mb-8">
-                                        <h2 className="text-2xl mb-4">Your PS1 Responses</h2>
-                                        <div className="space-y-4">
-                                            {userResponses.map((response) => (
-                                                <div
-                                                    key={response.id}
-                                                    className={`p-4 border rounded-lg cursor-pointer bg-black ${selectedResponse?.id === response.id ? 'bg-black/70' : ''}`}
-                                                    onClick={() => handleResponseSelect(response)}
-                                                >
-                                                    <div className="font-semibold">{response.station}</div>
-                                                    <div className="text-sm text-gray-600">
-                                                        Batch: {response.year_and_sem} | Round: {response.allotment_round}
-                                                    </div>
-                                                    <div className="text-sm text-gray-600">
-                                                        CGPA: {response.cgpa}
-                                                    </div>
+                    <>
+                        {isLoading ? (
+                            <div className="grid place-items-center py-16">
+                                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+                                <p className="text-lg mt-4">Loading your responses...</p>
+                            </div>
+                        ) : userResponses.length === 0 ? (
+                            <div className="text-center py-16">
+                                <h2 className="text-2xl font-bold mb-4">No PS1 Responses Found</h2>
+                                <p className="text-gray-600 mb-6">You need to submit your PS1 responses before writing a review.</p>
+                                <Link href="/ps/cutoffs/ps1" className="btn btn-primary">
+                                    Submit PS1 Response
+                                </Link>
+                            </div>
+                        ) : (
+                            <>
+                                <div className="w-full max-w-xl mb-8">
+                                    <h2 className="text-2xl mb-4">Your PS1 Responses</h2>
+                                    <div className="space-y-4">
+                                        {userResponses.map((response) => (
+                                            <div
+                                                key={response.id}
+                                                className={`p-4 border rounded-lg cursor-pointer bg-black ${selectedResponse?.id === response.id ? 'bg-black/70' : ''}`}
+                                                onClick={() => handleResponseSelect(response)}
+                                            >
+                                                <div className="font-semibold">{response.station}</div>
+                                                <div className="text-sm text-gray-600">
+                                                    Batch: {response.year_and_sem} | Round: {response.allotment_round}
                                                 </div>
-                                            ))}
-                                        </div>
+                                                <div className="text-sm text-gray-600">
+                                                    CGPA: {response.cgpa}
+                                                </div>
+                                            </div>
+                                        ))}
                                     </div>
+                                </div>
 
-                                    <div className="text-center w-full m-2 h-60">
-                                        <textarea
-                                            className="textarea textarea-primary w-full max-w-xl h-full"
-                                            placeholder={selectedResponse ? "You are writing a review for the following PS1 response: " + selectedResponse?.station + " " + selectedResponse?.year_and_sem + " " + selectedResponse?.allotment_round : "Select a PS1 response to write a review..."}
-                                            onChange={(e) => setPSReview(e.target.value)}
-                                            value={PSReview}
-                                        ></textarea>
-                                    </div>
+                                <div className="text-center w-full m-2 h-60">
+                                    <textarea
+                                        className="textarea textarea-primary w-full max-w-xl h-full"
+                                        placeholder={selectedResponse ? "You are writing a review for the following PS1 response: " + selectedResponse?.station + " " + selectedResponse?.year_and_sem + " " + selectedResponse?.allotment_round : "Select a PS1 response to write a review..."}
+                                        onChange={(e) => setPSReview(e.target.value)}
+                                        value={PSReview}
+                                    ></textarea>
+                                </div>
 
-                                    <div className="text-center flex-wrap w-3/4 justify-between m-1">
-                                        <button className="btn btn-primary" onClick={AddReview}>Add Review</button>
-                                    </div>
-                                </>
-                            )}
-                        </>
-                    )}
+                                <div className="text-center flex-wrap w-3/4 justify-between m-1">
+                                    <button className="btn btn-primary" onClick={AddReview}>Add Review</button>
+                                </div>
+                            </>
+                        )}
+                    </>
                 </div>
             </div>
 

@@ -1,10 +1,10 @@
 import { GetStaticProps } from "next";
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-import { useAuth } from "@/hooks/useAuth";
 import Menu from "@/components/Menu";
 import Link from "next/link";
+import { checkSession } from "@/utils/checkSession";
 
 const HandoutsPerYear = dynamic(() => import("@/components/HandoutsPerYear"), {
     loading: () => (
@@ -35,16 +35,20 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 export default function Home({ handoutsMap }: any) {
-    const { session } = useAuth()
     const [search, setSearch] = useState("");
     const [actualSearch, setActualSearch] = useState("");
     const [isLoading, setIsLoading] = useState(false);
 
-    const fetchHandouts = () => {
+    const fetchHandouts = async () => {
+        await checkSession()
         setIsLoading(true)
         setActualSearch(search)
         setIsLoading(false)
     }
+
+    useEffect(() => {
+        fetchHandouts()
+    }, [])
 
     return (
         <>
@@ -64,20 +68,19 @@ export default function Home({ handoutsMap }: any) {
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
                     <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">Handouts.</h1>
                     <Menu />
-                    {session &&
-                        <>
-                            <input type="text" placeholder="Search..." className="input input-secondary w-full max-w-xs" onChange={e => setSearch(e.target.value)} />
-                            <Link className="m-3 w-full max-w-xs" href={""}>
-                                <button className="btn btn-outline w-full" tabIndex={-1} onClick={fetchHandouts}>
-                                    Filter Handouts
-                                </button>
-                            </Link>
-                        </>}
+                    <>
+                        <input type="text" placeholder="Search..." className="input input-secondary w-full max-w-xs" onChange={e => setSearch(e.target.value)} />
+                        <Link className="m-3 w-full max-w-xs" href={""}>
+                            <button className="btn btn-outline w-full" tabIndex={-1} onClick={fetchHandouts}>
+                                Filter Handouts
+                            </button>
+                        </Link>
+                    </>
                 </div>
             </div>
 
             {/* Handouts List */}
-            {session && !isLoading && <div className="px-2 md:px-20">
+            {!isLoading && <div className="px-2 md:px-20">
                 {Object.keys(handoutsMap)
                     .reverse()
                     .map((handoutMap: any) => {

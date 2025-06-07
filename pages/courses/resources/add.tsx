@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { useState } from "react";
-import { useAuth } from "@/hooks/useAuth";
 import Menu from "@/components/Menu";
 import { toast } from "react-toastify";
 import CustomToastContainer from "@/components/ToastContainer";
@@ -15,8 +14,6 @@ export default function AddResources() {
     const [category, setCategory] = useState("");
 
     const [isLoading, setIsLoading] = useState(false)
-
-    const { session } = useAuth()
 
     const addResource = async () => {
         setIsLoading(true)
@@ -67,41 +64,39 @@ export default function AddResources() {
 
                     <Menu />
 
-                    {session &&
-                        isLoading ?
-                        <>
-                            <div className="flex flex-col w-3/4 justify-between m-1">
-                                <label className="text-primary">Loading...</label>
-                            </div>
-                        </>
-                        :
-                        <>
-                            {/* Take input */}
-                            <div className="flex flex-col w-3/4 justify-between m-1">
-                                <label htmlFor="idNumber" className="text-primary">Name of the Resource</label>
-                                <input type="text" id="idNumber" className="input input-secondary" value={name} onChange={(e) => setName(e.target.value)} />
-                            </div>
+                    isLoading ?
+                    <>
+                        <div className="flex flex-col w-3/4 justify-between m-1">
+                            <label className="text-primary">Loading...</label>
+                        </div>
+                    </>
+                    :
+                    <>
+                        {/* Take input */}
+                        <div className="flex flex-col w-3/4 justify-between m-1">
+                            <label htmlFor="idNumber" className="text-primary">Name of the Resource</label>
+                            <input type="text" id="idNumber" className="input input-secondary" value={name} onChange={(e) => setName(e.target.value)} />
+                        </div>
 
-                            <div className="flex flex-col w-3/4 justify-between m-1">
-                                <label htmlFor="yearAndSem" className="text-primary">Link</label>
-                                <input type="text" id="yearAndSem" className="input input-secondary" value={link} onChange={(e) => setLink(e.target.value)} />
-                            </div>
+                        <div className="flex flex-col w-3/4 justify-between m-1">
+                            <label htmlFor="yearAndSem" className="text-primary">Link</label>
+                            <input type="text" id="yearAndSem" className="input input-secondary" value={link} onChange={(e) => setLink(e.target.value)} />
+                        </div>
 
-                            <div className="flex flex-col w-3/4 justify-between m-1">
-                                <label htmlFor="createdBy" className="text-primary">Created By</label>
-                                <input type="text" id="allotmentRound" className="input input-secondary" value={created_by} onChange={(e) => setCreatedBy(e.target.value)} />
-                            </div>
+                        <div className="flex flex-col w-3/4 justify-between m-1">
+                            <label htmlFor="createdBy" className="text-primary">Created By</label>
+                            <input type="text" id="allotmentRound" className="input input-secondary" value={created_by} onChange={(e) => setCreatedBy(e.target.value)} />
+                        </div>
 
-                            <div className="flex flex-col w-3/4 justify-between m-1">
-                                <label htmlFor="category" className="text-primary">Category</label>
-                                <AutoCompleter name="category" items={Object.keys(departments)} value={category} onChange={(val) => setCategory(val)} />
-                            </div>
+                        <div className="flex flex-col w-3/4 justify-between m-1">
+                            <label htmlFor="category" className="text-primary">Category</label>
+                            <AutoCompleter name="category" items={Object.keys(departments)} value={category} onChange={(val) => setCategory(val)} />
+                        </div>
 
-                            <div className="text-center flex-wrap w-3/4 justify-between m-1">
-                                <button className="btn btn-primary" onClick={addResource}>Submit</button>
-                            </div>
-                        </>
-                    }
+                        <div className="text-center flex-wrap w-3/4 justify-between m-1">
+                            <button className="btn btn-primary" onClick={addResource}>Submit</button>
+                        </div>
+                    </>
                 </div>
             </div>
             <CustomToastContainer containerId="addResources" />

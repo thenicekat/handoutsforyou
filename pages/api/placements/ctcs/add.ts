@@ -60,7 +60,7 @@ export default async function handler(
                 variable_bonus: variableBonus,
                 monetary_value_of_benefits: monetaryValueOfBenefits,
                 description: description,
-                created_by: session?.user?.email
+                created_by: session.user.email
             }
         ])
 

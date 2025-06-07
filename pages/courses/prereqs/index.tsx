@@ -2,7 +2,6 @@ import { GetStaticProps } from "next";
 import Head from "next/head";
 import { useState, useEffect } from "react";
 import Menu from "@/components/Menu";
-import { useAuth } from "@/hooks/useAuth";
 import { PreReqGroup } from "@/types/PreReq";
 import Modal from "@/components/Modal";
 
@@ -21,7 +20,6 @@ export const getStaticProps: GetStaticProps = async () => {
 
 
 export default function Prereqs({ prereqs }: { prereqs: PreReqGroup[] }) {
-    const { session } = useAuth()
     const [search, setSearch] = useState("");
     const [open, setOpen] = useState(false);
     const [prereq, setPrereq] = useState<PreReqGroup | null>(null);
@@ -48,18 +46,18 @@ export default function Prereqs({ prereqs }: { prereqs: PreReqGroup[] }) {
 
                     <Menu />
 
-                    {session && <input
+                    <input
                         type="text"
                         placeholder="Search..."
                         className="input input-secondary w-full max-w-xs"
                         onChange={(e) => setSearch(e.target.value)}
-                    />}
+                    />
                 </div>
             </div>
 
             <p className="text-center m-2">NOTE: Here PRE means you will have to complete before hand while CO means you can do them parallelly</p>
 
-            {session && <div className='grid md:grid-cols-3 place-items-center p-5'>
+            <div className='grid md:grid-cols-3 place-items-center p-5'>
                 <Modal open={open}>
                     <h3 className="font-bold text-lg">
                         {prereq?.name}
@@ -96,8 +94,7 @@ export default function Prereqs({ prereqs }: { prereqs: PreReqGroup[] }) {
                         </div>
                     ))
                 }
-            </div >}
-
+            </div>
         </>
     );
 }

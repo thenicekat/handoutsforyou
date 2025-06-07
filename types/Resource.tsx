@@ -6,3 +6,7 @@ export type Resource = {
     score: number;
     category: string;
 };
+
+export interface ResourceByCategory {
+    [key: string]: Resource[]
+}

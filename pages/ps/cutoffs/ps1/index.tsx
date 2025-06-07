@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import Menu from "@/components/Menu";
-import { useAuth } from "@/hooks/useAuth";
 import Link from "next/link";
 import { PS1Item } from "@/types/PSData";
 import { years } from "@/data/years_sems";
@@ -20,8 +19,6 @@ export default function PS1Data() {
     const [filteredPS1Data, setFilteredPS1Data] = useState<PS1Item[]>([]);
     const [hasResponses, setHasResponses] = useState(false);
     const [, setCheckingResponses] = useState(false);
-
-    const { session } = useAuth()
 
     const updateData = async () => {
         setIsLoading(true);
@@ -54,8 +51,6 @@ export default function PS1Data() {
     }
 
     const checkUserResponses = async () => {
-        if (!session) return;
-
         setCheckingResponses(true);
         try {
             const response = await fetch("/api/ps/cutoffs/get", {
@@ -78,11 +73,9 @@ export default function PS1Data() {
     };
 
     useEffect(() => {
-        if (session) {
-            checkUserResponses();
-            updateData()
-        }
-    }, [session]);
+        checkUserResponses();
+        updateData()
+    }, []);
 
     useEffect(() => {
         setIsLoading(true);
@@ -159,7 +152,7 @@ export default function PS1Data() {
 
                     <Menu />
 
-                    {session && <>
+                    <>
                         <Link className="m-3" href={"/ps"}>
                             <button className="btn btn-outline w-full">
                                 Are you looking for chronicles?
@@ -223,7 +216,7 @@ export default function PS1Data() {
                         </div>
 
                         <p className="m-2">NOTE: This data is crowdsourced and might not be accurate. By default data is sorted using last submitted time. To sort based on other data, use the desktop mode of the website.</p>
-                    </>}
+                    </>
                 </div>
             </div>
 
@@ -234,7 +227,7 @@ export default function PS1Data() {
                 </div>
             )}
 
-            {session && !isLoading &&
+            {!isLoading &&
                 <div>
                     {/* Show the count of reviews */}
                     <div className="flex justify-center">

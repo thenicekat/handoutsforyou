@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
-import { useAuth } from "@/hooks/useAuth";
 import Menu from "@/components/Menu";
 import { toast } from "react-toastify";
 import CustomToastContainer from "@/components/ToastContainer";
@@ -32,13 +31,11 @@ export default function AddPS2Response() {
     const [isLoading, setIsLoading] = useState(false);
     const [isFetchingResponses, setIsFetchingResponses] = useState(false);
 
-    const { session } = useAuth();
-
     useEffect(() => {
-        if (isEditMode && session) {
+        if (isEditMode) {
             fetchUserResponses();
         }
-    }, [isEditMode, session]);
+    }, [isEditMode]);
 
     useEffect(() => {
         if (selectedResponse) {
@@ -194,8 +191,7 @@ export default function AddPS2Response() {
 
                     <Menu />
 
-                    {session &&
-                        isLoading ? (
+                    {isLoading ? (
                         <div className="flex flex-col w-3/4 justify-between m-1">
                             <label className="text-primary">Loading...</label>
                         </div>
