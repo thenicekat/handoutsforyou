@@ -2,7 +2,6 @@ import Head from "next/head";
 import { GetStaticProps } from "next";
 import { useState, useEffect } from "react";
 import Menu from "@/components/Menu";
-import { useAuth } from "@/hooks/useAuth";
 import { courses } from "@/data/courses";
 import { profs } from "@/data/profs";
 import { departments } from "@/data/departments";
@@ -34,8 +33,6 @@ export default function AddGrading({ depts }: { depts: string[] }) {
 
     const [averageMark, setAverageMark] = useState<string | null>(null);
     const [parsedData, setParsedData] = useState<string | null>(null);
-
-    const { session } = useAuth()
 
     const filterDepartmentCodes = (course: string): string[] => {
         let values: string[] = [];
@@ -167,7 +164,6 @@ export default function AddGrading({ depts }: { depts: string[] }) {
                     prof: prof,
                     sem: semester,
                     data: parsedData,
-                    created_by: session?.user?.email,
                     average_mark: parseFloat(averageMark ?? "0")
                 }),
                 headers: { "Content-Type": "application/json" }
@@ -224,107 +220,105 @@ export default function AddGrading({ depts }: { depts: string[] }) {
 
                     <Menu />
 
-                    {session && (
-                        <>
-                            {parsedData === null ? (
-                                <>
-                                    <AutoCompleter
-                                        name={"Course"}
-                                        items={courses}
-                                        value={course}
-                                        onChange={(val) => setCourse(val)}
-                                    />
+                    <>
+                        {parsedData === null ? (
+                            <>
+                                <AutoCompleter
+                                    name={"Course"}
+                                    items={courses}
+                                    value={course}
+                                    onChange={(val) => setCourse(val)}
+                                />
 
-                                    <span className="m-2"></span>
+                                <span className="m-2"></span>
 
-                                    <AutoCompleter
-                                        name={"Prof"}
-                                        items={profs.map((p) => p.name)}
-                                        value={prof}
-                                        onChange={(val) => setProf(val)}
-                                    />
+                                <AutoCompleter
+                                    name={"Prof"}
+                                    items={profs.map((p) => p.name)}
+                                    value={prof}
+                                    onChange={(val) => setProf(val)}
+                                />
 
-                                    <span className="m-2"></span>
+                                <span className="m-2"></span>
 
-                                    <div className="w-full max-w-xl">
-                                        <div className="flex flex-col md:flex-row md:gap-4">
-                                            <div className="w-full md:w-1/2">
-                                                <AutoCompleter
-                                                    name={"Semester"}
-                                                    items={gradedSemesters}
-                                                    value={semester}
-                                                    onChange={(val) => setSemester(val)}
-                                                />
-                                            </div>
-                                            <div className="mt-2 md:mt-0 w-full md:w-1/2">
-                                                <AutoCompleter
-                                                    name={"Department"}
-                                                    items={filterDepartmentCodes(course)}
-                                                    value={dept}
-                                                    onChange={(val) => setDept(val)}
-                                                />
-                                            </div>
+                                <div className="w-full max-w-xl">
+                                    <div className="flex flex-col md:flex-row md:gap-4">
+                                        <div className="w-full md:w-1/2">
+                                            <AutoCompleter
+                                                name={"Semester"}
+                                                items={gradedSemesters}
+                                                value={semester}
+                                                onChange={(val) => setSemester(val)}
+                                            />
+                                        </div>
+                                        <div className="mt-2 md:mt-0 w-full md:w-1/2">
+                                            <AutoCompleter
+                                                name={"Department"}
+                                                items={filterDepartmentCodes(course)}
+                                                value={dept}
+                                                onChange={(val) => setDept(val)}
+                                            />
                                         </div>
                                     </div>
+                                </div>
 
-                                    <div className="text-center w-full m-2 h-60">
-                                        <textarea
-                                            className="textarea w-full max-w-xl h-56"
-                                            placeholder="Enter grading data... (Copy paste the grade analysis table from ERP, your text should have the lines Row1, then the data and so on)"
-                                            value={gradingData}
-                                            onChange={(e) => setGradingData(e.target.value)}
-                                        ></textarea>
-                                    </div>
-
-                                    <div className="w-full max-w-xl">
-                                        <input
-                                            type="text"
-                                            className="input input-secondary w-full"
-                                            value={averageMark || ""}
-                                            onChange={(e) => setAverageMark(e.target.value)}
-                                            placeholder={`Please enter the average marks...`}
-                                            tabIndex={0}
-                                        />
-                                    </div>
-
-                                    <div className="text-center flex-wrap w-3/4 justify-between m-2">
-                                        <button className="btn btn-primary" onClick={handleNext}>
-                                            Next
-                                        </button>
-                                    </div>
-                                </>
-                            ) : (
-                                // Edit State
-                                (<div className="w-full max-w-xl space-y-4">
-                                    <div className="text-lg">
-                                        <span className="font-bold">Course:</span> {course}
-                                    </div>
-                                    <div className="text-lg">
-                                        <span className="font-bold">Professor:</span> {prof}
-                                    </div>
-                                    <div className="text-lg">
-                                        <span className="font-bold">Semester:</span> {semester}
-                                    </div>
-                                    <div className="text-lg">
-                                        <span className="font-bold">Department:</span> {dept}
-                                    </div>
+                                <div className="text-center w-full m-2 h-60">
                                     <textarea
-                                        className="textarea textarea-primary w-full h-60"
-                                        value={parsedData}
-                                        onChange={(e) => setParsedData(e.target.value)}
+                                        className="textarea w-full max-w-xl h-56"
+                                        placeholder="Enter grading data... (Copy paste the grade analysis table from ERP, your text should have the lines Row1, then the data and so on)"
+                                        value={gradingData}
+                                        onChange={(e) => setGradingData(e.target.value)}
                                     ></textarea>
-                                    <div className="flex justify-center space-x-4">
-                                        <button className="btn btn-outline" onClick={handleBack}>
-                                            Back
-                                        </button>
-                                        <button className="btn btn-primary" onClick={handleSubmit}>
-                                            Submit
-                                        </button>
-                                    </div>
-                                </div>)
-                            )}
-                        </>
-                    )}
+                                </div>
+
+                                <div className="w-full max-w-xl">
+                                    <input
+                                        type="text"
+                                        className="input input-secondary w-full"
+                                        value={averageMark || ""}
+                                        onChange={(e) => setAverageMark(e.target.value)}
+                                        placeholder={`Please enter the average marks...`}
+                                        tabIndex={0}
+                                    />
+                                </div>
+
+                                <div className="text-center flex-wrap w-3/4 justify-between m-2">
+                                    <button className="btn btn-primary" onClick={handleNext}>
+                                        Next
+                                    </button>
+                                </div>
+                            </>
+                        ) : (
+                            // Edit State
+                            (<div className="w-full max-w-xl space-y-4">
+                                <div className="text-lg">
+                                    <span className="font-bold">Course:</span> {course}
+                                </div>
+                                <div className="text-lg">
+                                    <span className="font-bold">Professor:</span> {prof}
+                                </div>
+                                <div className="text-lg">
+                                    <span className="font-bold">Semester:</span> {semester}
+                                </div>
+                                <div className="text-lg">
+                                    <span className="font-bold">Department:</span> {dept}
+                                </div>
+                                <textarea
+                                    className="textarea textarea-primary w-full h-60"
+                                    value={parsedData}
+                                    onChange={(e) => setParsedData(e.target.value)}
+                                ></textarea>
+                                <div className="flex justify-center space-x-4">
+                                    <button className="btn btn-outline" onClick={handleBack}>
+                                        Back
+                                    </button>
+                                    <button className="btn btn-primary" onClick={handleSubmit}>
+                                        Submit
+                                    </button>
+                                </div>
+                            </div>)
+                        )}
+                    </>
                 </div>
             </div>
             <CustomToastContainer containerId="addGrading" />

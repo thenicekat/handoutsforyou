@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
 import Menu from "@/components/Menu";
-import { useAuth } from "@/hooks/useAuth";
 import { courses } from "@/data/courses";
 import { profs } from "@/data/profs";
 import AutoCompleter from "@/components/AutoCompleter";
@@ -13,8 +12,6 @@ export default function AddReview() {
     const [prof, setProf] = useState("");
 
     const [review, setReview] = useState("");
-
-    const { session } = useAuth()
 
     const AddReview = async () => {
         if (course == "") {
@@ -41,7 +38,7 @@ export default function AddReview() {
 
         const data = await fetch("/api/courses/reviews/add", {
             method: "POST",
-            body: JSON.stringify({ course: course, prof: prof, review: review, created_by: session?.user?.email }),
+            body: JSON.stringify({ course: course, prof: prof, review: review }),
             headers: { "Content-Type": "application/json" }
         })
         const res = await data.json()
@@ -89,7 +86,7 @@ export default function AddReview() {
 
                     <Menu />
 
-                    {session && <>
+                    <>
                         <AutoCompleter name={"Course"} items={courses} value={course} onChange={(val) => setCourse(val)} />
                         <span className="m-2"></span>
                         <AutoCompleter name={"Prof"} items={profs.map((p) => p.name)} value={prof} onChange={(val) => setProf(val)} />
@@ -106,7 +103,7 @@ export default function AddReview() {
                         <div className="text-center flex-wrap w-3/4 justify-between m-1">
                             <button className="btn btn-primary" onClick={AddReview}>Add Review</button>
                         </div>
-                    </>}
+                    </>
                 </div>
             </div>
 

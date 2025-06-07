@@ -1,17 +1,13 @@
 import { GetStaticProps } from "next";
 import Head from "next/head";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Menu from "@/components/Menu";
-import { useAuth } from "@/hooks/useAuth";
-import Link from "next/link";
+import { LinkIcon, PlusCircleIcon } from "@heroicons/react/24/solid";
+import CardWithScore from "@/components/CardWithScore";
 import { toast } from "react-toastify";
 import CustomToastContainer from "@/components/ToastContainer";
-import { LinkIcon, PlusCircleIcon } from "@heroicons/react/24/solid";
-import { Resource } from "@/types/Resource";
-
-interface ResourceByCategory {
-    [key: string]: Resource[]
-}
+import { ResourceByCategory } from "@/types/Resource";
+import Link from "next/link";
 
 export const getStaticProps: GetStaticProps = async () => {
     const fs = require("fs");
@@ -36,42 +32,42 @@ export const getStaticProps: GetStaticProps = async () => {
 
 export default function Placement({ pu_chronicles }: any) {
     const [input, setInput] = useState("");
-    const { session } = useAuth()
+    const [isLoading, setIsLoading] = useState(false);
+    const [resources, setResources] = useState<ResourceByCategory>({});
 
-    const placementResources = [
-        {
-            name: "Placements CTC Data",
-            link: "/placements/ctcs"
-        },
-        {
-            name: "Company Wise OA Questions",
-            link: "https://drive.google.com/drive/folders/1NlbJI1MAfb4UfL5h5AoaeO6-UlA3hF22?usp=sharing"
-        },
-        {
-            name: "All IIT, NIT, IIIT Placement and Intern OAs",
-            link: "https://drive.google.com/drive/folders/1Siv1g-kRqmiwArvivAKikZL9DQd2mGPV?usp=sharing"
-        },
-        {
-            name: "Placement OA Questions - ET - 2020",
-            link: "https://drive.google.com/drive/u/0/folders/1F-k4zWAesz2LbP1qeNccaSi3Zrh-0pT7"
-        },
-        {
-            name: "Placement OA Questions - ET - 2019",
-            link: "https://drive.google.com/drive/folders/19ztdWFDLxKTyNrrxgSLjm3MHRo4nqVo8?usp=drive_link"
-        },
-        {
-            name: "Placement OA Questions - ET - 2018",
-            link: "https://drive.google.com/drive/folders/1I4OA8WiwrA9I1cBuFSy_vMRwXQCiWAZE?usp=drive_link"
-        },
-        {
-            name: "Placement OA Questions - EE - 2018",
-            link: "https://drive.google.com/drive/folders/1AkF0xiK2eXH6o24k_32ziOB6pdkBrfHp?usp=drive_link"
-        },
-        {
-            name: "Product Management Guide",
-            link: "https://www.facebook.com/groups/BPHC.Free.Expression.Group/posts/6516810605110024/"
-        },
-    ]
+    const fetchResources = async () => {
+        setIsLoading(true);
+        const res = await fetch("/api/placements/resources/get")
+        const data = await res.json()
+        if (!data.error) {
+            let resourcesByCategory: ResourceByCategory = {}
+            for (let i = 0; i < data.data.length; i++) {
+                if (resourcesByCategory[data.data[i].category] == undefined) {
+                    resourcesByCategory[data.data[i].category] = []
+                }
+                resourcesByCategory[data.data[i].category].push(data.data[i])
+            }
+            setResources(resourcesByCategory)
+        } else {
+            toast.error("Error fetching resources")
+        }
+        setIsLoading(false);
+    }
+
+    const filterResources = () => {
+        let filteredResources: ResourceByCategory = {}
+        for (let key in resources) {
+            let filtered = resources[key].filter((resource) => resource.name.toLowerCase().includes(input.toLowerCase()))
+            if (filtered.length > 0) {
+                filteredResources[key] = filtered
+            }
+        }
+        setResources(filteredResources)
+    }
+
+    useEffect(() => {
+        fetchResources()
+    }, [])
 
     return (
         <>
@@ -87,80 +83,97 @@ export default function Placement({ pu_chronicles }: any) {
             {/* Search box */}
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
-                    <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">Placements.</h1>
+                    <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">Placements Resources.</h1>
 
                     <Menu />
 
-                    <input
-                        type="text"
-                        placeholder="Search..."
-                        className="input input-secondary w-full max-w-xs"
-                        onChange={(e) => setInput(e.target.value)}
-                    />
+                    <div className="flex flex-col md:flex-row w-full md:w-1/2 justify-center">
+                        <input type="text" placeholder="Search..." className="input input-secondary w-full max-w-xs m-3" onChange={e => setInput(e.target.value)} />
+
+                        <button className="btn btn-outline m-3" onClick={filterResources}>
+                            Filter
+                        </button>
+                    </div>
+
+                    <div className="flex-col hidden md:block md:flex-row w-1/3 justify-center">
+                        <Link className="m-3 w-full" href={"/placements/resources/add"}>
+                            <button className="btn btn-outline w-full" tabIndex={-1}>
+                                Add a Resource
+                            </button>
+                        </Link>
+                    </div>
+                    <div className="z-10 w-14 fixed bottom-3 left-0 m-4 cursor-pointer text-white md:hidden">
+                        <Link className="m-3 w-full" href={"/placements/resources/add"}>
+                            <PlusCircleIcon />
+                        </Link>
+                    </div>
                 </div>
             </div>
 
 
-            {session &&
-                <div className='place-items-center p-5 max-w-7xl mx-auto'>
-                    <h1 className="text-3xl text-center my-3">Placement Resources</h1>
+            {!isLoading ? <div className='place-items-center p-5 max-w-7xl mx-auto'>
+                {
+                    Object.keys(resources).sort().map((key) => {
+                        return (
+                            <>
+                                <div className="collapse collapse-plus">
+                                    <input type="checkbox" />
+                                    <div className="collapse-title text-lg font-medium">{key} x {resources[key].length}</div>
 
-                    <div className="collapse collapse-plus">
-                        <input type="checkbox" />
-                        <h1 className="collapse-title text-lg font-medium">General Resources x {placementResources.length}</h1>
-
-                        <div className="collapse-content">
-                            <div className='px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center'>
-                                {
-                                    placementResources.filter(d => d.name.toLowerCase().includes(input.toLowerCase())).map(resource => (
-                                        <div className="card w-72 h-96 bg-base-100 text-base-content m-2" key={resource.name}>
-                                            <div className="card-body">
-                                                <h2 className="text-sm font-bold uppercase">General</h2>
-                                                <p className='text-lg'>{resource.name.toUpperCase()}</p>
-
-                                                <div className="flex-none">
-                                                    <button className="btn btn-sm btn-primary m-1" tabIndex={-1} onClick={() => window.open(resource.link)}>Know more<LinkIcon className='w-5 h-5' /></button>
-                                                </div>
-                                            </div>
+                                    <div className="collapse-content">
+                                        <div className='px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center'>
+                                            {
+                                                resources[key].map((resource) => (
+                                                    <CardWithScore
+                                                        key={resource.id}
+                                                        resource={resource}
+                                                        incrementEP='/api/higherstudies/resources/score'
+                                                    />
+                                                ))
+                                            }
                                         </div>
-                                    ))
-                                }
-                            </div>
-                        </div >
-                    </div>
+                                    </div >
+                                </div>
+                            </>
+                        )
+                    })
+                }
 
-                    {
-                        Object.keys(pu_chronicles).map((campus: string) => (
-                            <div className="collapse collapse-plus" key={campus}>
-                                <input type="checkbox" />
-                                <h1 className="collapse-title text-lg font-medium">Placement Chronicles - {campus} x {pu_chronicles[campus].length}</h1>
+                {
+                    Object.keys(pu_chronicles).map((campus: string) => (
+                        <div className="collapse collapse-plus" key={campus}>
+                            <input type="checkbox" />
+                            <h1 className="collapse-title text-lg font-medium">Placement Chronicles - {campus} x {pu_chronicles[campus].length}</h1>
 
-                                <div className="collapse-content">
-                                    <div className='px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center'>
-                                        {
-                                            pu_chronicles[campus].filter((d: string) => d.toLowerCase().includes(input.toLowerCase())).map((chron: string) => (
-                                                <div className="card w-72 h-96 bg-base-100 text-base-content m-2" key={campus + "/" + chron}>
-                                                    <div className="card-body">
-                                                        <h2 className="text-sm font-bold uppercase">Placement Chronicles</h2>
-                                                        <p className='text-lg'>Placement Chronicles {chron.toUpperCase()}</p>
+                            <div className="collapse-content">
+                                <div className='px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center'>
+                                    {
+                                        pu_chronicles[campus].filter((d: string) => d.toLowerCase().includes(input.toLowerCase())).map((chron: string) => (
+                                            <div className="card w-72 h-96 bg-base-100 text-base-content m-2" key={campus + "/" + chron}>
+                                                <div className="card-body">
+                                                    <h2 className="text-sm font-bold uppercase">Placement Chronicles</h2>
+                                                    <p className='text-lg'>Placement Chronicles {chron.toUpperCase()}</p>
 
-                                                        <div className="flex-none">
-                                                            <button className="btn btn-sm btn-primary m-1" onClick={() => {
-                                                                window.open("https://github.com/thenicekat/handoutsforyou/raw/main/public/placements/chronicles/" + campus + "/" + chron, "_blank")
-                                                            }}>Know more<LinkIcon className='w-5 h-5' /></button>
-                                                        </div>
+                                                    <div className="flex-none">
+                                                        <button className="btn btn-sm btn-primary m-1" onClick={() => {
+                                                            window.open("https://github.com/thenicekat/handoutsforyou/raw/main/public/placements/chronicles/" + campus + "/" + chron, "_blank")
+                                                        }}>Know more<LinkIcon className='w-5 h-5' /></button>
                                                     </div>
                                                 </div>
-                                            ))
-                                        }
-                                    </div>
-                                </div >
-                            </div>
-                        ))
-                    }
-                </div>
+                                            </div>
+                                        ))
+                                    }
+                                </div>
+                            </div >
+                        </div>
+                    ))
+                }
+            </div> : <div className="grid place-items-center py-16">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+                <p className="text-lg mt-4">Loading data...</p>
+            </div>
             }
-
+            <CustomToastContainer containerId="placementResources" />
         </>
     );
 }

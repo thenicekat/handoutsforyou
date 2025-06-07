@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { useState } from "react";
-import { useAuth } from "@/hooks/useAuth";
 import Menu from "@/components/Menu";
 import CustomToastContainter from "@/components/ToastContainer"
 import { toast } from "react-toastify";
@@ -10,13 +9,9 @@ import {
     englishRecommendedTransformers,
 } from 'obscenity';
 
-
-
 export default function AddReview() {
     const [rant, setRant] = useState("");
     const [isPublic, setIsPublic] = useState(true);
-
-    const { session } = useAuth()
 
     const matcher = new RegExpMatcher({
         ...englishDataset.build(),
@@ -67,29 +62,26 @@ export default function AddReview() {
 
                     <Menu />
 
-                    {session && <>
+                    <div className="text-center w-full m-2 h-60">
+                        <textarea
+                            className="textarea textarea-primary w-full max-w-xl h-full"
+                            placeholder="Do rr..."
+                            onChange={(e) => setRant(e.target.value)}
+                            value={rant}
+                        ></textarea>
+                    </div>
 
-                        <div className="text-center w-full m-2 h-60">
-                            <textarea
-                                className="textarea textarea-primary w-full max-w-xl h-full"
-                                placeholder="Do rr..."
-                                onChange={(e) => setRant(e.target.value)}
-                                value={rant}
-                            ></textarea>
-                        </div>
+                    <div className="text-center flex-wrap w-3/4 justify-between m-1">
+                        <label className="text-primary">Make it Public? </label>
+                        <input
+                            type="checkbox"
+                            onChange={(e) => setIsPublic(e.target.checked)}
+                            checked={isPublic}
+                        />
+                        <br />
 
-                        <div className="text-center flex-wrap w-3/4 justify-between m-1">
-                            <label className="text-primary">Make it Public? </label>
-                            <input
-                                type="checkbox"
-                                onChange={(e) => setIsPublic(e.target.checked)}
-                                checked={isPublic}
-                            />
-                            <br />
-
-                            <button className="btn btn-primary my-2" onClick={AddRant}>Add Rant</button>
-                        </div>
-                    </>}
+                        <button className="btn btn-primary my-2" onClick={AddRant}>Add Rant</button>
+                    </div>
                 </div>
             </div>
 

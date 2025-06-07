@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import Menu from "@/components/Menu";
-import { useAuth } from "@/hooks/useAuth";
 import Link from "next/link";
 import { SI_Company } from "@/types/SIData";
 import { toast } from "react-toastify";
@@ -16,7 +15,6 @@ export default function SICompanies() {
     const [isLoading, setIsLoading] = useState(false);
     const [SIData, setSIData] = useState([]);
 
-    const { session } = useAuth()
 
     const fetchData = async () => {
         setIsLoading(true);
@@ -61,8 +59,7 @@ export default function SICompanies() {
                     <h1 className="text-5xl pt-[50px] pb-[20px] px-[15px] text-primary">Summer Internships.</h1>
 
                     <Menu />
-
-                    {session && <>
+                    <>
                         <input
                             type="text"
                             placeholder="Search for Company..."
@@ -84,56 +81,54 @@ export default function SICompanies() {
                                 Are you looking for resources?
                             </button>
                         </Link>
-                    </>}
+                    </>
                 </div>
 
                 <div className="w-[70vw] place-items-center flex flex-col justify-between m-2">NOTE: This content was scrapped from SI Chronicles and belongs to Placement Unit</div>
             </div>
 
-            {session &&
-                <div>
-                    <div className='px-2 md:px-20'>
-                        {
-                            !isLoading ?
-                                SIData
-                                    .filter((d: SI_Company) => d.name.toLowerCase().includes(search.toLowerCase()) || d.roles.toLowerCase().includes(search.toLowerCase()))
-                                    .map((station: SI_Company) => (
-                                        <div className="collapse collapse-plus py-1 m-2 rounded-xl bg-secondary" key={station.name + station.roles}>
-                                            <input type="checkbox" className="peer" />
-                                            <div className="collapse-title bg-secondary text-primary font-bold text-lg">
-                                                {station.name.toUpperCase()}: {station.roles.toUpperCase()}
-                                            </div>
-                                            <div className="collapse-content bg-secondary text-primary">
-                                                <ul className="m-2 list-disc">
-                                                    <li>CGPA Cutoff: {station.cgpa_cutoff}</li>
-                                                    <li>Roles: {station.roles}</li>
-                                                    <li>Stipend: {station.stipend}</li>
-                                                    <li>Selection Rounds: {station.selection_rounds}</li>
-                                                    <li>Eligibility: {station.eligibility}</li>
-                                                    <li>Selects: {station.selects}</li>
-                                                    {station.otherdetails && <li>Other Details: {station.otherdetails}</li>}
-                                                </ul>
-
-                                                <div className="my-4">
-                                                    <button className="btn btn-outline"
-                                                        onClick={() => {
-                                                            window.location.href = `/si/chronicles/${yearRef}_${station.name}`
-                                                        }}>
-                                                        View Chronicles
-                                                    </button>
-                                                </div>
-                                            </div>
-
+            <div>
+                <div className='px-2 md:px-20'>
+                    {
+                        !isLoading ?
+                            SIData
+                                .filter((d: SI_Company) => d.name.toLowerCase().includes(search.toLowerCase()) || d.roles.toLowerCase().includes(search.toLowerCase()))
+                                .map((station: SI_Company) => (
+                                    <div className="collapse collapse-plus py-1 m-2 rounded-xl bg-secondary" key={station.name + station.roles}>
+                                        <input type="checkbox" className="peer" />
+                                        <div className="collapse-title bg-secondary text-primary font-bold text-lg">
+                                            {station.name.toUpperCase()}: {station.roles.toUpperCase()}
                                         </div>
-                                    ))
-                                :
-                                <div className="flex justify-center">
-                                    <h1 className="text-3xl text-primary">Loading...</h1>
-                                </div>
-                        }
-                    </div>
+                                        <div className="collapse-content bg-secondary text-primary">
+                                            <ul className="m-2 list-disc">
+                                                <li>CGPA Cutoff: {station.cgpa_cutoff}</li>
+                                                <li>Roles: {station.roles}</li>
+                                                <li>Stipend: {station.stipend}</li>
+                                                <li>Selection Rounds: {station.selection_rounds}</li>
+                                                <li>Eligibility: {station.eligibility}</li>
+                                                <li>Selects: {station.selects}</li>
+                                                {station.otherdetails && <li>Other Details: {station.otherdetails}</li>}
+                                            </ul>
+
+                                            <div className="my-4">
+                                                <button className="btn btn-outline"
+                                                    onClick={() => {
+                                                        window.location.href = `/si/chronicles/${yearRef}_${station.name}`
+                                                    }}>
+                                                    View Chronicles
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                ))
+                            :
+                            <div className="flex justify-center">
+                                <h1 className="text-3xl text-primary">Loading...</h1>
+                            </div>
+                    }
                 </div>
-            }
+            </div>
             <CustomToastContainer containerId="siCompanies" />
         </>
     )

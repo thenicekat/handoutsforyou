@@ -19,10 +19,11 @@ export default async function handler(
         .flatMap((code: string) => code.split('/'))
         .map(code => code.trim())
         .filter(code => code.length > 0);
-        const session = await validateAPISession<ResponseData>(req, res);
-        if (!session) return;
 
-    const { course, dept, sem, prof, data, created_by, average_mark } = req.body
+    const session = await validateAPISession<ResponseData>(req, res);
+    if (!session) return;
+
+    const { course, dept, sem, prof, data, average_mark } = req.body
 
     if (!course) {
         res.status(422).json({ message: 'Invalid Request - Course missing', error: true })
@@ -42,10 +43,6 @@ export default async function handler(
     }
     if (!data) {
         res.status(422).json({ message: 'Invalid Request - Grading data missing', error: true })
-        return
-    }
-    if (!created_by) {
-        res.status(422).json({ message: 'Invalid Request - User missing', error: true })
         return
     }
     if (!average_mark) {
@@ -107,7 +104,7 @@ export default async function handler(
                 sem: sem,
                 prof: prof,
                 data: validatedData,
-                created_by: created_by,
+                created_by: session.user.email,
                 average_mark: average_mark
             }
         ])
