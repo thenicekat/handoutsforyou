@@ -7,7 +7,7 @@ import AutoCompleter from "@/components/AutoCompleter";
 import { higherStudiesCategories } from "@/data/higherstudies";
 
 
-export default function AddHSResources() {
+export default function AddPlacementResources() {
     const [name, setName] = useState("");
     const [link, setLink] = useState("");
     const [created_by, setCreatedBy] = useState("");
@@ -22,7 +22,7 @@ export default function AddHSResources() {
             setIsLoading(false)
             return
         }
-        const res = await fetch("/api/higherstudies/resources/add", {
+        const res = await fetch("/api/placements/resources/add", {
             method: "POST",
             body: JSON.stringify({
                 name: name,
@@ -49,7 +49,7 @@ export default function AddHSResources() {
     return (
         <>
             <Head>
-                <title>Higher Studies Resources.</title>
+                <title>Placement Resources.</title>
                 <meta name="description" content="One stop place for your PS queries, handouts, and much more" />
                 <meta name="keywords" content="BITS Pilani, Handouts, BPHC, Hyderabad Campus, BITS Hyderabad, BITS, Pilani, Handouts for you, handouts, for, you, bits, birla, institute, bits hyd, academics, practice school, ps, queries, ps cutoffs, ps2, ps1" />
                 <meta name="robots" content="index, follow" />
@@ -99,7 +99,7 @@ export default function AddHSResources() {
                     </>
                 </div>
             </div>
-            <CustomToastContainer containerId="addHSResources" />
+            <CustomToastContainer containerId="addPlacementResources" />
         </>
     )
 }

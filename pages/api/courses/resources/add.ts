@@ -39,7 +39,7 @@ export default async function handler(
     const { error } = await supabase
         .from(COURSE_RESOURCES)
         .insert([
-            { name: name, link: link, created_by: created_by, email: session?.user?.email, category: category }
+            { name: name, link: link, created_by: created_by, email: session.user.email, category: category }
         ])
 
     if (error) {

@@ -1,8 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '../../supabase'
-import { getServerSession } from "next-auth/next"
-import { authOptions } from "../../auth/[...nextauth]"
-import { COURSE_REVIEWS } from '../../constants'
+import { PLACEMENT_RESOURCES } from '../../constants'
 import { validateAPISession } from '@/pages/api/auth/session'
 
 type ResponseData = {
@@ -17,25 +15,29 @@ export default async function handler(
     const session = await validateAPISession<ResponseData>(req, res);
     if (!session) return;
 
-    const { course, prof, review } = req.body
+    const { name, link, created_by, category } = req.body
 
-    if (!course) {
-        res.status(422).json({ message: 'Invalid Request - Course missing', error: true })
+    if (!name) {
+        res.status(422).json({ message: 'Invalid Request - Name missing', error: true })
         return
     }
-    if (!prof) {
-        res.status(422).json({ message: 'Invalid Request - Professor missing', error: true })
+    if (!link) {
+        res.status(422).json({ message: 'Invalid Request - Link missing', error: true })
         return
     }
-    if (!review) {
-        res.status(422).json({ message: 'Invalid Request - Review missing', error: true })
+    if (!created_by) {
+        res.status(422).json({ message: 'Invalid Request - User missing', error: true })
+        return
+    }
+    if (!category) {
+        res.status(422).json({ message: 'Invalid Request - Category missing', error: true })
         return
     }
 
     const { error } = await supabase
-        .from(COURSE_REVIEWS)
+        .from(PLACEMENT_RESOURCES)
         .insert([
-            { course: course, prof: prof, review: review, created_by: session.user.email }
+            { name: name, link: link, created_by: session.user.email, category: category }
         ])
 
     if (error) {

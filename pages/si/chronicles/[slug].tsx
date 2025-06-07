@@ -3,13 +3,11 @@ import { GetStaticProps } from "next";
 import Head from "next/head";
 import { use, useEffect, useState } from "react";
 import Menu from "@/components/Menu";
-import { useAuth } from "@/hooks/useAuth";
 import { SI_Chronicle } from '../../../types/SIData';
 
 export default function ChroniclePage() {
     const router = useRouter()
     const { slug } = router.query
-    const { session } = useAuth()
 
     const [chronicles, setChronicles] = useState<SI_Chronicle[]>([]);
 
@@ -59,7 +57,7 @@ export default function ChroniclePage() {
                 <div className="w-[70vw] place-items-center flex flex-col justify-between m-2">NOTE: This content was scrapped from SI Chronicles and belongs to Placement Unit</div>
             </div>
 
-            {session && <div className='place-items-center p-5'>
+            <div className='place-items-center p-5'>
                 {
                     chronicles.map((chron) => (<div className="card shadow-lg break-words bg-base-100 text-base-content mt-5" key={chron.name}>
                         <div className="card-body" >
@@ -68,8 +66,7 @@ export default function ChroniclePage() {
                         </div>
                     </div>))
                 }
-            </div>}
-
+            </div>
         </>
     );
 }

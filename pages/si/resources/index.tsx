@@ -2,13 +2,8 @@ import { GetStaticProps } from "next";
 import Head from "next/head";
 import { useState, useEffect } from "react";
 import Menu from "@/components/Menu";
-import { useAuth } from "@/hooks/useAuth";
-import Link from "next/link";
-import { toast } from "react-toastify";
-import CustomToastContainer from "@/components/ToastContainer";
-import { PlusCircleIcon } from "@heroicons/react/24/solid";
-import { Resource } from "@/types/Resource";
 import { LinkIcon } from "@heroicons/react/24/solid";
+import { checkSession } from "@/utils/checkSession";
 
 export const getStaticProps: GetStaticProps = async () => {
     const fs = require("fs");
@@ -32,14 +27,7 @@ export const getStaticProps: GetStaticProps = async () => {
     };
 };
 
-interface ResourceByCategory {
-    [key: string]: Resource[]
-}
-
 export default function SummerInternships({ siChronicles }: any) {
-    const [input, setInput] = useState("");
-    const { session } = useAuth()
-    const [resources, setResources] = useState<ResourceByCategory>({})
     const [search, setSearch] = useState("");
 
     const resourcesList = [
@@ -52,6 +40,10 @@ export default function SummerInternships({ siChronicles }: any) {
             link: "https://docs.google.com/document/d/1q6i_IVYwhOSpt8IpyrT4n5N4DfDi4oq0r-pBTsWebjE/edit?usp=sharing"
         },
     ]
+
+    useEffect(() => {
+        checkSession()
+    }, [])
 
     return (
         <>
@@ -80,66 +72,63 @@ export default function SummerInternships({ siChronicles }: any) {
                 </div>
             </div>
 
-            {session &&
-                <div className='place-items-center p-5 max-w-7xl mx-auto'>
-                    <h1 className="text-3xl text-center my-3">Summer Internship Resources</h1>
+            <div className='place-items-center p-5 max-w-7xl mx-auto'>
+                <h1 className="text-3xl text-center my-3">Summer Internship Resources</h1>
 
-                    <div className="collapse collapse-plus">
-                        <input type="checkbox" />
-                        <h1 className="collapse-title text-lg font-medium">General Resources x {resourcesList.length}</h1>
+                <div className="collapse collapse-plus">
+                    <input type="checkbox" />
+                    <h1 className="collapse-title text-lg font-medium">General Resources x {resourcesList.length}</h1>
 
-                        <div className="collapse-content">
-                            <div className='px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center'>
-                                {
-                                    resourcesList.filter(d => d.name.toLowerCase().includes(search.toLowerCase())).map(resource => (
-                                        <div className="card w-72 h-96 bg-base-100 text-base-content m-2" key={resource.name}>
-                                            <div className="card-body">
-                                                <h2 className="text-sm font-bold uppercase">General</h2>
-                                                <p className='text-lg'>{resource.name.toUpperCase()}</p>
+                    <div className="collapse-content">
+                        <div className='px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center'>
+                            {
+                                resourcesList.filter(d => d.name.toLowerCase().includes(search.toLowerCase())).map(resource => (
+                                    <div className="card w-72 h-96 bg-base-100 text-base-content m-2" key={resource.name}>
+                                        <div className="card-body">
+                                            <h2 className="text-sm font-bold uppercase">General</h2>
+                                            <p className='text-lg'>{resource.name.toUpperCase()}</p>
 
-                                                <div className="flex-none">
-                                                    <button className="btn btn-sm btn-primary m-1" onClick={() => window.open(resource.link)}>Know more<LinkIcon className='w-5 h-5' /></button>
-                                                </div>
+                                            <div className="flex-none">
+                                                <button className="btn btn-sm btn-primary m-1" onClick={() => window.open(resource.link)}>Know more<LinkIcon className='w-5 h-5' /></button>
                                             </div>
                                         </div>
-                                    ))
-                                }
-                            </div>
-                        </div >
-                    </div>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </div >
+                </div>
 
-                    {
-                        Object.keys(siChronicles).map((campus: string) => (
-                            <div className="collapse collapse-plus" key={campus}>
-                                <input type="checkbox" />
-                                <h1 className="collapse-title text-lg font-medium">SI Chronicles - {campus} x {siChronicles[campus].length}</h1>
+                {
+                    Object.keys(siChronicles).map((campus: string) => (
+                        <div className="collapse collapse-plus" key={campus}>
+                            <input type="checkbox" />
+                            <h1 className="collapse-title text-lg font-medium">SI Chronicles - {campus} x {siChronicles[campus].length}</h1>
 
-                                <div className="collapse-content">
-                                    <div className='px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center'>
-                                        {
-                                            siChronicles[campus].filter((d: string) => d.toLowerCase().includes(search.toLowerCase())).map((chron: string) => (
-                                                <div className="card w-72 h-96 bg-base-100 text-base-content m-2" key={campus + "/" + chron}>
-                                                    <div className="card-body">
-                                                        <h2 className="text-sm font-bold uppercase">SI Chronicles</h2>
-                                                        <p className='text-lg'>SI Chronicles {chron.toUpperCase()}</p>
+                            <div className="collapse-content">
+                                <div className='px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center'>
+                                    {
+                                        siChronicles[campus].filter((d: string) => d.toLowerCase().includes(search.toLowerCase())).map((chron: string) => (
+                                            <div className="card w-72 h-96 bg-base-100 text-base-content m-2" key={campus + "/" + chron}>
+                                                <div className="card-body">
+                                                    <h2 className="text-sm font-bold uppercase">SI Chronicles</h2>
+                                                    <p className='text-lg'>SI Chronicles {chron.toUpperCase()}</p>
 
-                                                        <div className="flex-none">
-                                                            <button className="btn btn-sm btn-primary m-1" onClick={() => {
-                                                                window.open("https://github.com/thenicekat/handoutsforyou/raw/main/public/si/" + campus + "/" + chron, "_blank")
-                                                            }}>Know more<LinkIcon className='w-5 h-5' /></button>
-                                                        </div>
+                                                    <div className="flex-none">
+                                                        <button className="btn btn-sm btn-primary m-1" onClick={() => {
+                                                            window.open("https://github.com/thenicekat/handoutsforyou/raw/main/public/si/" + campus + "/" + chron, "_blank")
+                                                        }}>Know more<LinkIcon className='w-5 h-5' /></button>
                                                     </div>
                                                 </div>
-                                            ))
-                                        }
-                                    </div>
-                                </div >
-                            </div>
-                        ))
-                    }
-                </div>
-            }
-
+                                            </div>
+                                        ))
+                                    }
+                                </div>
+                            </div >
+                        </div>
+                    ))
+                }
+            </div>
         </>
     );
 }

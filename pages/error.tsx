@@ -40,7 +40,7 @@ export default function ErrorPage() {
   }, [router.query])
 
   const errorContent = errorMessages[errorType]
-  
+
   const handleSignIn = () => {
     signIn('google', { callbackUrl: '/' })
   }
@@ -51,7 +51,7 @@ export default function ErrorPage() {
         <div className="flex items-center justify-between h-16 px-4 md:px-6">
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
-              <h1 className="text-lg font-semibold text-black dark:text-white">H4U.</h1>
+              <h1 className="text-lg font-semibold text-black dark:text-white">h4u.</h1>
             </Link>
           </div>
         </div>
@@ -76,7 +76,7 @@ export default function ErrorPage() {
               {errorContent.action}
             </p>
             <div className="mt-4 space-y-3">
-              <button 
+              <button
                 className="bg-gradient-to-r from-teal-400 to-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:scale-105 transition-transform"
                 onClick={handleSignIn}
               >

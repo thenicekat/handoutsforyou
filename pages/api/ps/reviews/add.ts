@@ -17,7 +17,7 @@ export default async function handler(
     const session = await validateAPISession<ResponseData>(req, res);
     if (!session) return;
 
-    const { type, batch, station, review, created_by } = req.body
+    const { type, batch, station, review } = req.body
 
     if (!type) {
         res.status(422).json({ message: 'Invalid Request - Type missing', error: true })
@@ -26,7 +26,7 @@ export default async function handler(
         const { error } = await supabase
             .from(PS1_REVIEWS)
             .insert([
-                { batch: batch, station: station, review: review, created_by: created_by }
+                { batch: batch, station: station, review: review, created_by: session.user.email }
             ])
         if (error) {
             res.status(500).json({ message: error.message, error: true })
@@ -43,7 +43,7 @@ export default async function handler(
         const { error } = await supabase
             .from(PS2_REVIEWS)
             .insert([
-                { batch: batch, station: station, review: review, created_by: created_by }
+                { batch: batch, station: station, review: review, created_by: session.user.email }
             ])
         if (error) {
             res.status(500).json({ message: error.message, error: true })

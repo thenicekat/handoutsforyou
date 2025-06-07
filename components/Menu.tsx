@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { signIn, signOut } from 'next-auth/react';
-import { useAuth } from '@/hooks/useAuth';
 import {
     StarIcon,
-    BanknotesIcon,
     Bars3Icon,
     XMarkIcon,
 } from '@heroicons/react/24/outline';
 import StarPrompt from './StarPrompt';
+import { checkSession } from '@/utils/checkSession';
 
 interface MenuProps {
     doNotShowMenu?: boolean;
@@ -17,9 +16,17 @@ interface MenuProps {
 const Menu = (
     { doNotShowMenu }: MenuProps,
 ) => {
-    const { session } = useAuth();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [starCount, setStarCount] = useState(0);
+    const [isSignedIn, setIsSignedIn] = useState(false);
+
+    useEffect(() => {
+        const checkSessionWrapper = async () => {
+            const session = await checkSession()
+            setIsSignedIn(session)
+        }
+        checkSessionWrapper()
+    }, [])
 
     const menuItems: Record<string, string> = {
         "Handouts": "/courses/handouts",
@@ -48,7 +55,7 @@ const Menu = (
                 <div className="flex items-center justify-between h-16 px-4 md:px-6">
                     <div className="flex items-center">
                         <Link href="/" className="flex items-center">
-                            <h1 className="text-lg font-semibold text-black dark:text-white">H4U.</h1>
+                            <h1 className="text-lg font-semibold text-black dark:text-white">h4u.</h1>
                         </Link>
                     </div>
 
@@ -60,7 +67,7 @@ const Menu = (
                             </button>
                         </Link>
 
-                        {!session ? (
+                        {!isSignedIn ? (
                             <button
                                 onClick={() => signIn("google")}
                                 className="px-4 py-2 rounded-lg bg-zinc-200/50 dark:bg-white/10 hover:bg-zinc-300/50 dark:hover:bg-white/20 text-black dark:text-white text-sm transition-all"
