@@ -127,7 +127,7 @@ export default function Placement({ pu_chronicles }: any) {
                                                     <CardWithScore
                                                         key={resource.id}
                                                         resource={resource}
-                                                        incrementEP='/api/higherstudies/resources/score'
+                                                        incrementEP='/api/placements/resources/score'
                                                     />
                                                 ))
                                             }
