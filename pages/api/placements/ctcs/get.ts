@@ -11,8 +11,8 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
 ) {
-    const session = await validateAPISession<ResponseData>(req, res);
-    if (!session) return;
+    const session = await validateAPISession<ResponseData>(req, res)
+    if (!session) return
 
     const { year } = req.body
 
@@ -20,26 +20,30 @@ export default async function handler(
         res.status(422).json({
             message: 'Missing required fields',
             error: true,
-            data: []
+            data: [],
         })
-    }
-    else {
+    } else {
         const { data, error } = await supabase
-        .from(PLACEMENT_CTCS)
-        .select('company, campus, base, joining_bonus, relocation_bonus, variable_bonus, monetary_value_of_benefits, description')
-        .order('company', { ascending: true })
-        .eq('academic_year', year)
+            .from(PLACEMENT_CTCS)
+            .select(
+                'company, campus, base, joining_bonus, relocation_bonus, variable_bonus, monetary_value_of_benefits, description'
+            )
+            .order('company', { ascending: true })
+            .eq('academic_year', year)
 
         if (error) {
             console.error(error)
-            res.status(500).json({ message: error.message, data: [], error: true })
+            res.status(500).json({
+                message: error.message,
+                data: [],
+                error: true,
+            })
             return
-        }
-        else {
+        } else {
             res.status(200).json({
                 message: 'success',
                 data: data,
-                error: false
+                error: false,
             })
             return
         }

@@ -1,27 +1,27 @@
-import classNames from "classnames";
-import React, { memo, useRef, useState } from "react";
+import classNames from 'classnames'
+import React, { memo, useRef, useState } from 'react'
 
 type Props = {
-    items: string[];
-    value: string;
-    onChange(val: string): void;
-    name: string;
-};
+    items: string[]
+    value: string
+    onChange(val: string): void
+    name: string
+}
 
 //we are using dropdown, input and menu component from daisyui
 const Autocomplete = (props: Props) => {
-    const { items, value, onChange, name } = props;
+    const { items, value, onChange, name } = props
 
-    const ref = useRef<HTMLDivElement>(null);
+    const ref = useRef<HTMLDivElement>(null)
 
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(false)
 
     return (
         <div
-            // use classnames here to easily toggle dropdown open 
+            // use classnames here to easily toggle dropdown open
             className={classNames({
-                "dropdown w-full": true,
-                "dropdown-open w-full": open,
+                'dropdown w-full': true,
+                'dropdown-open w-full': open,
             })}
             ref={ref}
         >
@@ -41,26 +41,30 @@ const Autocomplete = (props: Props) => {
                     style={{ width: ref.current?.clientWidth }}
                 >
                     {items
-                        .filter((item) => item.toLowerCase().includes(value.toLowerCase()))
+                        .filter((item) =>
+                            item.toLowerCase().includes(value.toLowerCase())
+                        )
                         .map((item, index) => {
                             return (
                                 <li
                                     key={index}
                                     tabIndex={index + 1}
                                     onClick={() => {
-                                        onChange(item);
-                                        setOpen(false);
+                                        onChange(item)
+                                        setOpen(false)
                                     }}
                                     className="border-b border-b-base-content/10 w-full"
                                 >
-                                    <button className="uppercase">{item}</button>
+                                    <button className="uppercase">
+                                        {item}
+                                    </button>
                                 </li>
-                            );
+                            )
                         })}
                 </ul>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default memo(Autocomplete);
+export default memo(Autocomplete)

@@ -11,8 +11,8 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
 ) {
-    const session = await validateAPISession<ResponseData>(req, res);
-    if (!session) return;
+    const session = await validateAPISession<ResponseData>(req, res)
+    if (!session) return
 
     const { data, error } = await supabase
         .from(PLACEMENT_RESOURCES)
@@ -23,12 +23,11 @@ export default async function handler(
         console.error(error)
         res.status(500).json({ message: error.message, data: [], error: true })
         return
-    }
-    else {
+    } else {
         res.status(200).json({
             message: 'success',
             data: data,
-            error: false
+            error: false,
         })
         return
     }
