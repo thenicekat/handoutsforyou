@@ -26,16 +26,14 @@ export default async function handler(
         })
         return
     } else if (type === 'PS1') {
-        const { error } = await supabase
-            .from(PS1_REVIEWS)
-            .insert([
-                {
-                    batch: batch,
-                    station: station,
-                    review: review,
-                    created_by: session.user.email,
-                },
-            ])
+        const { error } = await supabase.from(PS1_REVIEWS).insert([
+            {
+                batch: batch,
+                station: station,
+                review: review,
+                created_by: session.user.email,
+            },
+        ])
         if (error) {
             res.status(500).json({ message: error.message, error: true })
             return
@@ -47,16 +45,14 @@ export default async function handler(
             return
         }
     } else if (type === 'PS2') {
-        const { error } = await supabase
-            .from(PS2_REVIEWS)
-            .insert([
-                {
-                    batch: batch,
-                    station: station,
-                    review: review,
-                    created_by: session.user.email,
-                },
-            ])
+        const { error } = await supabase.from(PS2_REVIEWS).insert([
+            {
+                batch: batch,
+                station: station,
+                review: review,
+                created_by: session.user.email,
+            },
+        ])
         if (error) {
             res.status(500).json({ message: error.message, error: true })
             return

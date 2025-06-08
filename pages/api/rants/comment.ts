@@ -38,16 +38,14 @@ export default async function handler(
         return
     }
 
-    const { error } = await supabase
-        .from(RANT_COMMENTS)
-        .insert([
-            {
-                rant_id: rantId,
-                comment: comment,
-                created_by: session?.user?.email,
-                created_at: Date.now(),
-            },
-        ])
+    const { error } = await supabase.from(RANT_COMMENTS).insert([
+        {
+            rant_id: rantId,
+            comment: comment,
+            created_by: session?.user?.email,
+            created_at: Date.now(),
+        },
+    ])
 
     if (error) {
         res.status(500).json({ message: error.message, error: true })
