@@ -41,16 +41,14 @@ export default async function handler(
         return
     }
 
-    const { error } = await supabase
-        .from(COURSE_REVIEWS)
-        .insert([
-            {
-                course: course,
-                prof: prof,
-                review: review,
-                created_by: session.user.email,
-            },
-        ])
+    const { error } = await supabase.from(COURSE_REVIEWS).insert([
+        {
+            course: course,
+            prof: prof,
+            review: review,
+            created_by: session.user.email,
+        },
+    ])
 
     if (error) {
         res.status(500).json({ message: error.message, error: true })

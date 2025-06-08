@@ -1,0 +1,39 @@
+name: Build and Prettify on PR
+on: pull_request
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        permissions:
+            contents: write
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '19'
+
+            - name: Install pnpm
+              uses: pnpm/action-setup@v2
+              with:
+                  version: 8
+
+            - name: Install dependencies
+              run: pnpm install
+
+            # Build should succeed before running prettier.
+            - name: Build project
+              run: pnpm build
+
+            - name: Run prettier
+              run: pnpm format
+
+            - name: Commit changes
+              uses: stefanzweifel/git-auto-commit-action@v5
+              with:
+                  commit_message: 'style: format code with prettier'
+                  branch: ${{ github.event.pull_request.head.ref }}
+                  file_pattern: '!pnpm-lock.yaml'

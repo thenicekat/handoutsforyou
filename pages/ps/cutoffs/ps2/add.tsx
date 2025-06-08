@@ -4,7 +4,7 @@ import Menu from '@/components/Menu'
 import { toast } from 'react-toastify'
 import CustomToastContainer from '@/components/ToastContainer'
 import AutoCompleter from '@/components/AutoCompleter'
-import { semesters, allotmentRounds } from '@/data/years_sems'
+import { ps2Semesters, psAllotmentRounds } from '@/data/years_sems'
 import { useRouter } from 'next/router'
 
 export default function AddPS2Response() {
@@ -101,7 +101,7 @@ export default function AddPS2Response() {
     const AddResponse = async () => {
         setIsLoading(true)
 
-        if (semesters.indexOf(yearAndSem) === -1) {
+        if (ps2Semesters.indexOf(yearAndSem) === -1) {
             toast.error(
                 'Invalid Year and Sem, Please select from the dropdown!'
             )
@@ -109,7 +109,7 @@ export default function AddPS2Response() {
             return
         }
 
-        if (allotmentRounds.indexOf(allotmentRound) === -1) {
+        if (psAllotmentRounds.indexOf(allotmentRound) === -1) {
             toast.error(
                 'Invalid Allotment Round, Please select from the dropdown!'
             )
@@ -301,7 +301,7 @@ export default function AddPS2Response() {
                                     <AutoCompleter
                                         name="Year and Sem"
                                         value={yearAndSem}
-                                        items={semesters}
+                                        items={ps2Semesters}
                                         onChange={(e) => setYearAndSem(e)}
                                     />
                                 )}
@@ -316,7 +316,7 @@ export default function AddPS2Response() {
                                 </label>
                                 <AutoCompleter
                                     name="allotment round"
-                                    items={allotmentRounds}
+                                    items={psAllotmentRounds}
                                     value={allotmentRound}
                                     onChange={(val) => setAllotmentRound(val)}
                                 />

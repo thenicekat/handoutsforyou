@@ -1,5 +1,7 @@
+// For PS1.
+export const ps1Years = ['2023 Batch', '2022 Batch', '2021 Batch']
 // For PS2.
-export const semesters = [
+export const ps2Semesters = [
     '25-26 Sem 1',
     '24-25 Sem 2',
     '24-25 Sem 1',
@@ -13,9 +15,8 @@ export const semesters = [
     '19-20 Sem 2',
     '19-20 Sem 1',
 ]
-
-// For PS2.
-export const allotmentRounds = [
+// For PS1 and PS2.
+export const psAllotmentRounds = [
     'Interaction Role',
     'PS Lock',
     'Round 1',
@@ -24,9 +25,7 @@ export const allotmentRounds = [
     'Round 4',
     'Grievance',
 ]
-
-// For PS1.
-export const years = ['2023 Batch', '2022 Batch', '2021 Batch']
-
 // For Course Grading.
 export const gradedSemesters = ['24-25 Sem 2', '24-25 Sem 1']
+// For Placement CTCs
+export const placementYears = ['2024-2025', '2023-2024']

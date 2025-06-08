@@ -24,16 +24,14 @@ export default async function handler(
         return
     }
 
-    const { error } = await supabase
-        .from(RANT_POSTS)
-        .insert([
-            {
-                rant,
-                created_by: session.user.email,
-                created_at: Date.now(),
-                public: isPublic ? 1 : 0,
-            },
-        ])
+    const { error } = await supabase.from(RANT_POSTS).insert([
+        {
+            rant,
+            created_by: session.user.email,
+            created_at: Date.now(),
+            public: isPublic ? 1 : 0,
+        },
+    ])
 
     if (error) {
         res.status(500).json({ message: error.message, error: true })
