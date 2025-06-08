@@ -1,4 +1,1 @@
-export const higherStudiesCategories = [
-    "Masters",
-    "MBA"
-]
+export const higherStudiesCategories = ['Masters', 'MBA']

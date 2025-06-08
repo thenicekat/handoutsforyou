@@ -1,4 +1,4 @@
 export type Professor = {
-    name: string;
-    chamber: string;
+    name: string
+    chamber: string
 }
