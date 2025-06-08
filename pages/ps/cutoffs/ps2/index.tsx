@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import Menu from '@/components/Menu'
 import Link from 'next/link'
 import { PS2Item } from '@/types/PSData'
-import { semesters } from '@/data/years_sems'
+import { ps2Semesters } from '@/data/years_sems'
 import { toast } from 'react-toastify'
 import CustomToastContainer from '@/components/ToastContainer'
 import React from 'react'
@@ -19,7 +19,7 @@ import {
 export default function PS2Data() {
     const [search, setSearch] = useState('')
     const [cgpa, setCGPA] = useState(10)
-    const [yearRef, setYearRef] = useState(semesters[0])
+    const [yearRef, setYearRef] = useState(ps2Semesters[0])
     const [cachedYear, setCachedYear] = useState('')
 
     const [isLoading, setIsLoading] = useState(false)
@@ -230,7 +230,7 @@ export default function PS2Data() {
                                 <option disabled selected>
                                     Which year to use as reference?
                                 </option>
-                                {semesters.map((semester) => (
+                                {ps2Semesters.map((semester) => (
                                     <option
                                         value={semester}
                                         key={semester}

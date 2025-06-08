@@ -46,17 +46,15 @@ export default async function handler(
         return
     }
 
-    const { error } = await supabase
-        .from(HIGHER_STUDIES_RESOURCES)
-        .insert([
-            {
-                name: name,
-                link: link,
-                created_by: created_by,
-                email: session?.user?.email,
-                category: category,
-            },
-        ])
+    const { error } = await supabase.from(HIGHER_STUDIES_RESOURCES).insert([
+        {
+            name: name,
+            link: link,
+            created_by: created_by,
+            email: session?.user?.email,
+            category: category,
+        },
+    ])
 
     if (error) {
         res.status(500).json({ message: error.message, error: true })

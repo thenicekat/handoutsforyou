@@ -46,16 +46,14 @@ export default async function handler(
         return
     }
 
-    const { error } = await supabase
-        .from(PLACEMENT_RESOURCES)
-        .insert([
-            {
-                name: name,
-                link: link,
-                created_by: session.user.email,
-                category: category,
-            },
-        ])
+    const { error } = await supabase.from(PLACEMENT_RESOURCES).insert([
+        {
+            name: name,
+            link: link,
+            created_by: session.user.email,
+            category: category,
+        },
+    ])
 
     if (error) {
         res.status(500).json({ message: error.message, error: true })

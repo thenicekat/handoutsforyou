@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import Menu from '@/components/Menu'
 import Link from 'next/link'
 import { PS1Item } from '@/types/PSData'
-import { years } from '@/data/years_sems'
+import { ps1Years } from '@/data/years_sems'
 import { toast } from 'react-toastify'
 import CustomToastContainer from '@/components/ToastContainer'
 import React from 'react'
@@ -19,7 +19,7 @@ import {
 export default function PS1Data() {
     const [search, setSearch] = useState('')
     const [cgpa, setCGPA] = useState(10)
-    const [yearRef, setYearRef] = useState(years[0])
+    const [yearRef, setYearRef] = useState(ps1Years[0])
     const [cachedYear, setCachedYear] = useState('')
     const [isLoading, setIsLoading] = useState(false)
     const [ps1Data, setPS1Data] = useState<PS1Item[]>([])
@@ -209,7 +209,7 @@ export default function PS1Data() {
                                 <option disabled selected>
                                     Which year to use as reference?
                                 </option>
-                                {years.map((year) => (
+                                {ps1Years.map((year) => (
                                     <option
                                         value={year}
                                         key={year}
