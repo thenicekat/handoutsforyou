@@ -36,3 +36,4 @@ jobs:
               with:
                   commit_message: 'style: format code with prettier'
                   branch: ${{ github.event.pull_request.head.ref }}
+                  file_pattern: '!pnpm-lock.yaml'
