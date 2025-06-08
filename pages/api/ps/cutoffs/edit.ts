@@ -1,29 +1,29 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '../../supabase'
-import { getServerSession } from "next-auth/next"
-import { authOptions } from "../../auth/[...nextauth]"
+import { getServerSession } from 'next-auth/next'
+import { authOptions } from '../../auth/[...nextauth]'
 import { PS1_RESPONSES, PS2_RESPONSES } from '../../constants'
 import { validateAPISession } from '@/pages/api/auth/session'
 
 type ResponseData = {
-    message: string,
-    data: any,
+    message: string
+    data: any
     error: boolean
 }
 
 type RequestData = {
-    id: number,
-    typeOfPS: string,
-    idNumber: string | undefined,
-    yearAndSem: string,
-    stipend?: number,
-    allotmentRound: string,
-    station: string,
-    cgpa: number,
-    preference: number,
-    offshoot?: number,
-    offshootTotal?: number,
-    offshootType?: string,
+    id: number
+    typeOfPS: string
+    idNumber: string | undefined
+    yearAndSem: string
+    stipend?: number
+    allotmentRound: string
+    station: string
+    cgpa: number
+    preference: number
+    offshoot?: number
+    offshootTotal?: number
+    offshootType?: string
     public: number
 }
 
@@ -31,8 +31,8 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
 ) {
-    const session = await validateAPISession<ResponseData>(req, res);
-    if (!session) return;
+    const session = await validateAPISession<ResponseData>(req, res)
+    if (!session) return
 
     const { email } = session.user
     const reqBody: RequestData = req.body
@@ -41,26 +41,42 @@ export default async function handler(
         res.status(400).json({
             message: 'Unauthorized, Please login and try again',
             error: true,
-            data: []
+            data: [],
         })
-        return;
+        return
     }
 
-    if (!reqBody || !reqBody.id || !reqBody.typeOfPS || !reqBody.yearAndSem || !reqBody.allotmentRound || !reqBody.station || !reqBody.cgpa) {
+    if (
+        !reqBody ||
+        !reqBody.id ||
+        !reqBody.typeOfPS ||
+        !reqBody.yearAndSem ||
+        !reqBody.allotmentRound ||
+        !reqBody.station ||
+        !reqBody.cgpa
+    ) {
         res.status(422).json({
             message: 'Missing required fields',
             error: true,
-            data: []
+            data: [],
         })
-        return;
+        return
     }
 
     if (reqBody.cgpa < 0 || reqBody.cgpa > 10) {
-        res.status(422).json({ message: "CGPA should be between 0 and 10", data: [], error: true })
+        res.status(422).json({
+            message: 'CGPA should be between 0 and 10',
+            data: [],
+            error: true,
+        })
         return
     }
     if (reqBody.preference < 0) {
-        res.status(422).json({ message: "Preference should be a positive number", data: [], error: true })
+        res.status(422).json({
+            message: 'Preference should be a positive number',
+            data: [],
+            error: true,
+        })
         return
     }
 
@@ -75,12 +91,20 @@ export default async function handler(
         .single()
 
     if (existingError) {
-        res.status(500).json({ message: existingError.message, data: [], error: true })
+        res.status(500).json({
+            message: existingError.message,
+            data: [],
+            error: true,
+        })
         return
     }
 
     if (!existingResponse || existingResponse.email !== email) {
-        res.status(403).json({ message: "You don't have permission to update this response", data: [], error: true })
+        res.status(403).json({
+            message: "You don't have permission to update this response",
+            data: [],
+            error: true,
+        })
         return
     }
 
@@ -94,18 +118,22 @@ export default async function handler(
                 station: reqBody.station,
                 cgpa: reqBody.cgpa,
                 preference: reqBody.preference,
-                public: reqBody.public
+                public: reqBody.public,
             })
             .eq('id', reqBody.id)
 
         if (error) {
-            res.status(500).json({ message: error.message, data: [], error: true })
+            res.status(500).json({
+                message: error.message,
+                data: [],
+                error: true,
+            })
             return
         } else {
             res.status(200).json({
                 message: 'success',
                 data: data,
-                error: false
+                error: false,
             })
             return
         }
@@ -123,22 +151,30 @@ export default async function handler(
                 offshoot: reqBody.offshoot,
                 offshoot_total: reqBody.offshootTotal,
                 offshoot_type: reqBody.offshootType,
-                public: reqBody.public
+                public: reqBody.public,
             })
             .eq('id', reqBody.id)
 
         if (error) {
-            res.status(500).json({ message: error.message, data: [], error: true })
+            res.status(500).json({
+                message: error.message,
+                data: [],
+                error: true,
+            })
             return
         } else {
             res.status(200).json({
                 message: 'success',
                 data: data,
-                error: false
+                error: false,
             })
             return
         }
     }
 
-    res.status(400).json({ message: 'Invalid typeOfPS value', data: [], error: true })
+    res.status(400).json({
+        message: 'Invalid typeOfPS value',
+        data: [],
+        error: true,
+    })
 }

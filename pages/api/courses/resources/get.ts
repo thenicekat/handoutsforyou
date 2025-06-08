@@ -1,13 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '../../supabase'
-import { getServerSession } from "next-auth/next"
-import { authOptions } from "../../auth/[...nextauth]"
+import { getServerSession } from 'next-auth/next'
+import { authOptions } from '../../auth/[...nextauth]'
 import { COURSE_RESOURCES } from '../../constants'
 import { validateAPISession } from '@/pages/api/auth/session'
 
 type ResponseData = {
-    message: string,
-    data: any,
+    message: string
+    data: any
     error: boolean
 }
 
@@ -15,8 +15,8 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
 ) {
-    const session = await validateAPISession<ResponseData>(req, res);
-    if (!session) return;
+    const session = await validateAPISession<ResponseData>(req, res)
+    if (!session) return
 
     const { data, error } = await supabase
         .from(COURSE_RESOURCES)
@@ -27,12 +27,11 @@ export default async function handler(
         console.error(error)
         res.status(500).json({ message: error.message, data: [], error: true })
         return
-    }
-    else {
+    } else {
         res.status(200).json({
             message: 'success',
             data: data,
-            error: false
+            error: false,
         })
         return
     }

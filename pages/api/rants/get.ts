@@ -8,12 +8,12 @@ interface ResponseData extends BaseResponseData {
 }
 
 type Rant = {
-    id: number,
-    rant: string,
-    created_at: string,
+    id: number
+    rant: string
+    created_at: string
     public: number
     rants_comments: {
-        id: number,
+        id: number
         comment: string
     }[]
 }
@@ -22,8 +22,8 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
 ) {
-    const session = await validateAPISession<ResponseData>(req, res);
-    if (!session) return;
+    const session = await validateAPISession<ResponseData>(req, res)
+    if (!session) return
 
     let rants: Rant[] = []
 
@@ -37,8 +37,7 @@ export default async function handler(
         console.error(error)
         res.status(500).json({ message: error.message, data: [], error: true })
         return
-    }
-    else {
+    } else {
         for (let i = 0; i < data.length; i++) {
             rants.push(data[i] as Rant)
         }
@@ -52,7 +51,11 @@ export default async function handler(
 
     if (privateError) {
         console.error(privateError)
-        res.status(500).json({ message: privateError.message, data: [], error: true })
+        res.status(500).json({
+            message: privateError.message,
+            data: [],
+            error: true,
+        })
         return
     } else {
         for (let i = 0; i < privateRants.length; i++) {
@@ -63,7 +66,7 @@ export default async function handler(
     res.status(200).json({
         message: 'success',
         data: rants,
-        error: false
+        error: false,
     })
     return
 }
