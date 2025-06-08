@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useState, useEffect } from 'react'
 import Menu from '@/components/Menu'
-import { years, allotmentRounds } from '@/data/years_sems'
+import { ps1Years, psAllotmentRounds } from '@/data/years_sems'
 import AutoCompleter from '@/components/AutoCompleter'
 import { toast } from 'react-toastify'
 import CustomToastContainer from '@/components/ToastContainer'
@@ -89,13 +89,13 @@ export default function AddPS1Response() {
     const AddResponse = async () => {
         setIsLoading(true)
 
-        if (years.indexOf(yearAndSem) === -1) {
+        if (ps1Years.indexOf(yearAndSem) === -1) {
             toast.error('Invalid Year, Please select from the dropdown!')
             setIsLoading(false)
             return
         }
 
-        if (allotmentRounds.indexOf(allotmentRound) === -1) {
+        if (psAllotmentRounds.indexOf(allotmentRound) === -1) {
             toast.error(
                 'Invalid Allotment Round, Please select from the dropdown!'
             )
@@ -261,7 +261,7 @@ export default function AddPS1Response() {
                                 <AutoCompleter
                                     name="Year and Sem"
                                     value={yearAndSem}
-                                    items={years}
+                                    items={ps1Years}
                                     onChange={(e) => setYearAndSem(e)}
                                 />
                             )}
@@ -276,7 +276,7 @@ export default function AddPS1Response() {
                             </label>
                             <AutoCompleter
                                 name="allotment round"
-                                items={allotmentRounds}
+                                items={psAllotmentRounds}
                                 value={allotmentRound}
                                 onChange={(val) => setAllotmentRound(val)}
                             />

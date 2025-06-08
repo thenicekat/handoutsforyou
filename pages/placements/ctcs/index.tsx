@@ -7,7 +7,6 @@ import { toast } from 'react-toastify'
 import CustomToastContainer from '@/components/ToastContainer'
 import { PlusCircleIcon } from '@heroicons/react/24/solid'
 import { PlacementCTC } from '@/types/PlacementData'
-import { years } from '@/data/placements'
 import {
     createColumnHelper,
     flexRender,
@@ -16,6 +15,7 @@ import {
     SortingState,
     useReactTable,
 } from '@tanstack/react-table'
+import { placementYears } from '@/data/years_sems'
 
 export default function PlacementCTCs() {
     const [input, setInput] = useState('')
@@ -23,7 +23,7 @@ export default function PlacementCTCs() {
     const [filteredPlacementCTCs, setFilteredPlacementCTCs] = useState(
         [] as PlacementCTC[]
     )
-    const [yearRef, setYearRef] = useState(years[0])
+    const [yearRef, setYearRef] = useState(placementYears[0])
 
     const fetchPlacementCTCs = async () => {
         const res = await fetch('/api/placements/ctcs/get', {
@@ -199,7 +199,7 @@ export default function PlacementCTCs() {
                                 <option disabled selected>
                                     Which year to use as reference?
                                 </option>
-                                {years.map((year) => (
+                                {placementYears.map((year) => (
                                     <option
                                         value={year}
                                         key={year}
