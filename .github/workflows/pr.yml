@@ -6,6 +6,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+
     steps:
       - uses: actions/checkout@v4
 
@@ -34,4 +37,3 @@ jobs:
         with:
           commit_message: "style: format code with prettier"
           branch: ${{ github.event.pull_request.head.ref }}
-          skip_fetch: true
