@@ -65,4 +65,8 @@ venv/
 # DS Store
 **.DS_Store
 
+# Database Backups
 **.sql
+
+# Credentials.
+keys/

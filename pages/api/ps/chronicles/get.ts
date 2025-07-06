@@ -17,19 +17,19 @@ export default async function handler(
 
     try {
         // Get the Google Drive folder ID from environment variables
-        const rootFolderId = process.env.GOOGLE_DRIVE_SI_CHRONICLES_FOLDER_ID
+        const rootFolderId = process.env.GOOGLE_DRIVE_PS_CHRONICLES_FOLDER_ID
 
         if (!rootFolderId) {
             res.status(500).json({
-                message: 'Google Drive SI chronicles folder ID not configured',
+                message: 'Google Drive PS chronicles folder ID not configured',
                 data: {},
                 error: true,
             })
             return
         }
 
-        // Fetch SI chronicles from Google Drive
-        const chronicles = await googleDriveService.getSIChronicles(rootFolderId)
+        // Fetch PS chronicles from Google Drive
+        const chronicles = await googleDriveService.getPSChronicles(rootFolderId)
 
         res.status(200).json({
             message: 'success',
@@ -37,11 +37,11 @@ export default async function handler(
             error: false,
         })
     } catch (error) {
-        console.error('Error fetching SI chronicles:', error)
+        console.error('Error fetching PS chronicles:', error)
         res.status(500).json({
-            message: 'Failed to fetch SI chronicles from Google Drive',
+            message: 'Failed to fetch PS chronicles from Google Drive',
             data: {},
             error: true,
         })
     }
-}
+} 

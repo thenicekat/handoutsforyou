@@ -1,27 +1,37 @@
-import { GetStaticProps } from 'next'
 import Head from 'next/head'
+import { useState, useEffect } from 'react'
 import Menu from '@/components/Menu'
+import type { PSChronicles } from '@/types/GoogleDriveChronicles'
+import { toast } from 'react-toastify'
+import CustomToastContainer from '@/components/ToastContainer'
+import { checkSession } from '@/utils/checkSession'
 
-export const getStaticProps: GetStaticProps = async () => {
-    const fs = require('fs')
-    let ps1_chronicles = fs.readdirSync('./public/ps/ps1_chronicles/')
-    let ps2_chronicles = fs.readdirSync('./public/ps/ps2_chronicles/')
+export default function PSChroniclesPage() {
+    const [psChronicles, setPsChronicles] = useState<PSChronicles>({ ps1: [], ps2: [] })
+    const [chroniclesLoading, setChroniclesLoading] = useState(false)
 
-    return {
-        props: {
-            ps1_chronicles,
-            ps2_chronicles,
-        },
+    const fetchChronicles = async () => {
+        setChroniclesLoading(true)
+        try {
+            const res = await fetch('/api/ps/chronicles/get')
+            const data = await res.json()
+            if (!data.error) {
+                setPsChronicles(data.data)
+            } else {
+                toast.error('Error fetching PS chronicles')
+            }
+        } catch (error) {
+            console.error('Error fetching PS chronicles:', error)
+            toast.error('Error fetching PS chronicles')
+        }
+        setChroniclesLoading(false)
     }
-}
 
-export default function PSChronicles({
-    ps1_chronicles,
-    ps2_chronicles,
-}: {
-    ps1_chronicles: string[]
-    ps2_chronicles: string[]
-}) {
+    useEffect(() => {
+        checkSession()
+        fetchChronicles()
+    }, [])
+
     return (
         <>
             <Head>
@@ -50,72 +60,92 @@ export default function PSChronicles({
                     <Menu />
                 </div>
 
-                <div className="space-y-12 mt-12">
-                    <section>
-                        <h2 className="text-3xl font-semibold text-center mb-8">
-                            PS1 Chronicles
-                        </h2>
-                        <div className="grid md:grid-cols-3 gap-6">
-                            {ps1_chronicles.map((chron: string) => (
-                                <div
-                                    key={chron}
-                                    className="card bg-base-100 shadow-md hover:shadow-lg transition-shadow"
-                                >
-                                    <div className="card-body p-4">
-                                        <h3 className="card-title text-lg">
-                                            PS1 {chron}
-                                        </h3>
-                                        <div className="card-actions justify-end mt-2">
-                                            <button
-                                                className="btn btn-primary btn-sm"
-                                                onClick={() =>
-                                                    window.open(
-                                                        `https://github.com/thenicekat/handoutsforyou/raw/main/public/ps/ps1_chronicles/${chron}`
-                                                    )
-                                                }
-                                            >
-                                                View
-                                            </button>
+                {!chroniclesLoading ? (
+                    <div className="space-y-12 mt-12">
+                        <section>
+                            <h2 className="text-3xl font-semibold text-center mb-8">
+                                PS1 Chronicles ({psChronicles.ps1.length})
+                            </h2>
+                            <div className="grid md:grid-cols-3 gap-6">
+                                {psChronicles.ps1.map((chronicle) => (
+                                    <div
+                                        key={chronicle.id}
+                                        className="card bg-base-100 shadow-md hover:shadow-lg transition-shadow"
+                                    >
+                                        <div className="card-body p-4">
+                                            <h3 className="card-title text-lg">
+                                                {chronicle.name}
+                                            </h3>
+                                            {chronicle.size && (
+                                                <p className="text-xs text-gray-400">
+                                                    Size: {Math.round(parseInt(chronicle.size) / 1024 / 1024 * 100) / 100} MB
+                                                </p>
+                                            )}
+                                            <div className="card-actions justify-end mt-2">
+                                                <button
+                                                    className="btn btn-primary btn-sm"
+                                                    onClick={() =>
+                                                        window.open(
+                                                            chronicle.downloadUrl,
+                                                            '_blank'
+                                                        )
+                                                    }
+                                                >
+                                                    View
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            ))}
-                        </div>
-                    </section>
+                                ))}
+                            </div>
+                        </section>
 
-                    <section>
-                        <h2 className="text-3xl font-semibold text-center mb-8">
-                            PS2 Chronicles
-                        </h2>
-                        <div className="grid md:grid-cols-3 gap-6">
-                            {ps2_chronicles.map((chron: string) => (
-                                <div
-                                    key={chron}
-                                    className="card bg-base-100 shadow-md hover:shadow-lg transition-shadow"
-                                >
-                                    <div className="card-body p-4">
-                                        <h3 className="card-title text-lg">
-                                            PS2 {chron}
-                                        </h3>
-                                        <div className="card-actions justify-end mt-2">
-                                            <button
-                                                className="btn btn-primary btn-sm"
-                                                onClick={() =>
-                                                    window.open(
-                                                        `https://github.com/thenicekat/handoutsforyou/raw/main/public/ps/ps2_chronicles/${chron}`
-                                                    )
-                                                }
-                                            >
-                                                View
-                                            </button>
+                        <section>
+                            <h2 className="text-3xl font-semibold text-center mb-8">
+                                PS2 Chronicles ({psChronicles.ps2.length})
+                            </h2>
+                            <div className="grid md:grid-cols-3 gap-6">
+                                {psChronicles.ps2.map((chronicle) => (
+                                    <div
+                                        key={chronicle.id}
+                                        className="card bg-base-100 shadow-md hover:shadow-lg transition-shadow"
+                                    >
+                                        <div className="card-body p-4">
+                                            <h3 className="card-title text-lg">
+                                                {chronicle.name}
+                                            </h3>
+                                            {chronicle.size && (
+                                                <p className="text-xs text-gray-400">
+                                                    Size: {Math.round(parseInt(chronicle.size) / 1024 / 1024 * 100) / 100} MB
+                                                </p>
+                                            )}
+                                            <div className="card-actions justify-end mt-2">
+                                                <button
+                                                    className="btn btn-primary btn-sm"
+                                                    onClick={() =>
+                                                        window.open(
+                                                            chronicle.downloadUrl,
+                                                            '_blank'
+                                                        )
+                                                    }
+                                                >
+                                                    View
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            ))}
-                        </div>
-                    </section>
-                </div>
+                                ))}
+                            </div>
+                        </section>
+                    </div>
+                ) : (
+                    <div className="grid place-items-center py-16">
+                        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+                        <p className="text-lg mt-4">Loading PS chronicles...</p>
+                    </div>
+                )}
             </div>
+            <CustomToastContainer containerId="psChronicles" />
         </>
     )
 }

@@ -7,33 +7,15 @@ import CardWithScore from '@/components/CardWithScore'
 import { toast } from 'react-toastify'
 import CustomToastContainer from '@/components/ToastContainer'
 import { ResourceByCategory } from '@/types/Resource'
+import { PlacementChroniclesByCampus } from '@/types/GoogleDriveChronicles'
 import Link from 'next/link'
 
-export const getStaticProps: GetStaticProps = async () => {
-    const fs = require('fs')
-    let pu_chronicles: {
-        [key: string]: string[]
-    } = {}
-    let dirs = fs.readdirSync('./public/placements/chronicles/')
-    for (let dir of dirs) {
-        pu_chronicles[dir] = []
-        let files = fs.readdirSync('./public/placements/chronicles/' + dir)
-        for (let file in files) {
-            pu_chronicles[dir].push(files[file])
-        }
-    }
-
-    return {
-        props: {
-            pu_chronicles,
-        },
-    }
-}
-
-export default function Placement({ pu_chronicles }: any) {
+export default function Placement() {
     const [input, setInput] = useState('')
     const [isLoading, setIsLoading] = useState(false)
     const [resources, setResources] = useState<ResourceByCategory>({})
+    const [puChronicles, setPuChronicles] = useState<PlacementChroniclesByCampus>({})
+    const [chroniclesLoading, setChroniclesLoading] = useState(false)
 
     const fetchResources = async () => {
         setIsLoading(true)
@@ -54,6 +36,23 @@ export default function Placement({ pu_chronicles }: any) {
         setIsLoading(false)
     }
 
+    const fetchChronicles = async () => {
+        setChroniclesLoading(true)
+        try {
+            const res = await fetch('/api/placements/chronicles/get')
+            const data = await res.json()
+            if (!data.error) {
+                setPuChronicles(data.data)
+            } else {
+                toast.error('Error fetching placement chronicles')
+            }
+        } catch (error) {
+            console.error('Error fetching chronicles:', error)
+            toast.error('Error fetching placement chronicles')
+        }
+        setChroniclesLoading(false)
+    }
+
     const filterResources = () => {
         let filteredResources: ResourceByCategory = {}
         for (let key in resources) {
@@ -69,6 +68,7 @@ export default function Placement({ pu_chronicles }: any) {
 
     useEffect(() => {
         fetchResources()
+        fetchChronicles()
     }, [])
 
     return (
@@ -140,81 +140,83 @@ export default function Placement({ pu_chronicles }: any) {
                 </div>
             </div>
 
-            {!isLoading ? (
+            {!isLoading && !chroniclesLoading ? (
                 <div className="place-items-center p-5 max-w-7xl mx-auto">
                     {Object.keys(resources)
                         .sort()
                         .map((key) => {
                             return (
-                                <>
-                                    <div className="collapse collapse-plus">
-                                        <input type="checkbox" />
-                                        <div className="collapse-title text-lg font-medium">
-                                            {key} x {resources[key].length}
-                                        </div>
+                                <div key={key} className="collapse collapse-plus">
+                                    <input type="checkbox" />
+                                    <div className="collapse-title text-lg font-medium">
+                                        {key} x {resources[key].length}
+                                    </div>
 
-                                        <div className="collapse-content">
-                                            <div className="px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center">
-                                                {resources[key].map(
-                                                    (resource) => (
-                                                        <CardWithScore
-                                                            key={resource.id}
-                                                            resource={resource}
-                                                            incrementEP="/api/placements/resources/score"
-                                                        />
-                                                    )
-                                                )}
-                                            </div>
+                                    <div className="collapse-content">
+                                        <div className="px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center">
+                                            {resources[key].map(
+                                                (resource) => (
+                                                    <CardWithScore
+                                                        key={resource.id}
+                                                        resource={resource}
+                                                        incrementEP="/api/placements/resources/score"
+                                                    />
+                                                )
+                                            )}
                                         </div>
                                     </div>
-                                </>
+                                </div>
                             )
                         })}
 
-                    {Object.keys(pu_chronicles).map((campus: string) => (
+                    {Object.keys(puChronicles).map((campus: string) => (
                         <div className="collapse collapse-plus" key={campus}>
                             <input type="checkbox" />
                             <h1 className="collapse-title text-lg font-medium">
                                 Placement Chronicles - {campus} x{' '}
-                                {pu_chronicles[campus].length}
+                                {puChronicles[campus].length}
                             </h1>
 
                             <div className="collapse-content">
                                 <div className="px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center">
-                                    {pu_chronicles[campus]
-                                        .filter((d: string) =>
-                                            d
+                                    {puChronicles[campus]
+                                        .filter((chronicle) =>
+                                            chronicle.name
                                                 .toLowerCase()
                                                 .includes(input.toLowerCase())
                                         )
-                                        .map((chron: string) => (
+                                        .map((chronicle) => (
                                             <div
                                                 className="card w-72 h-96 bg-base-100 text-base-content m-2"
-                                                key={campus + '/' + chron}
+                                                key={chronicle.id}
                                             >
                                                 <div className="card-body">
                                                     <h2 className="text-sm font-bold uppercase">
                                                         Placement Chronicles
                                                     </h2>
                                                     <p className="text-lg">
-                                                        Placement Chronicles{' '}
-                                                        {chron.toUpperCase()}
+                                                        {chronicle.name}
                                                     </p>
+                                                    <p className="text-sm text-gray-500">
+                                                        {campus} Campus
+                                                    </p>
+                                                    {chronicle.size && (
+                                                        <p className="text-xs text-gray-400">
+                                                            Size: {Math.round(parseInt(chronicle.size) / 1024 / 1024 * 100) / 100} MB
+                                                        </p>
+                                                    )}
 
                                                     <div className="flex-none">
                                                         <button
                                                             className="btn btn-sm btn-primary m-1"
                                                             onClick={() => {
                                                                 window.open(
-                                                                    'https://github.com/thenicekat/handoutsforyou/raw/main/public/placements/chronicles/' +
-                                                                        campus +
-                                                                        '/' +
-                                                                        chron,
+                                                                    chronicle.downloadUrl,
                                                                     '_blank'
                                                                 )
                                                             }}
                                                         >
-                                                            Know more
+                                                            View
                                                             <LinkIcon className="w-5 h-5" />
                                                         </button>
                                                     </div>
