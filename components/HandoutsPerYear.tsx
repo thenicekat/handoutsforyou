@@ -9,14 +9,14 @@ export default function HandoutsPerYear({
     return (
         <div className="p-3 m-3">
             {handouts.filter((handout: any) =>
-                handout.toLowerCase().includes(searchWord.toLowerCase())
+                handout.name.toLowerCase().includes(searchWord.toLowerCase())
             ).length > 0 ? (
                 handouts
                     .filter((handout: any) =>
-                        handout.toLowerCase().includes(searchWord.toLowerCase())
+                        handout.name.toLowerCase().includes(searchWord.toLowerCase())
                     )
                     .map((handout: any) => (
-                        <div key={handout} className="m-2 py-1 rounded-xl">
+                        <div key={handout.id} className="m-2 py-1 rounded-xl">
                             <div role="alert" className="alert">
                                 <svg
                                     className="stroke-info shrink-0 w-6 h-6"
@@ -26,7 +26,7 @@ export default function HandoutsPerYear({
                                 </svg>
                                 <span className="text-ellipsis">
                                     {
-                                        handout
+                                        handout.name
                                             .toUpperCase()
                                             .replace('-', ' ')
                                             .replace('_', ' ')
@@ -46,13 +46,7 @@ export default function HandoutsPerYear({
                                     </button>
 
                                     <Link
-                                        href={
-                                            'https://github.com/thenicekat/handoutsforyou/raw/main/public/handouts/' +
-                                            year +
-                                            '/' +
-                                            handout +
-                                            '?raw=true'
-                                        }
+                                        href={handout.publicUrl}
                                         target="_blank"
                                     >
                                         <button

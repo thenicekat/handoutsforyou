@@ -9,13 +9,48 @@ import CustomToastContainer from '@/components/ToastContainer'
 import { ResourceByCategory } from '@/types/Resource'
 import { PlacementChroniclesByCampus } from '@/types/GoogleDriveChronicles'
 import Link from 'next/link'
+import { googleDriveService } from '@/utils/googleDrive'
 
-export default function Placement() {
+export const getStaticProps: GetStaticProps = async () => {
+    try {
+        const placementChroniclesFolderId = process.env.GOOGLE_DRIVE_PLACEMENT_CHRONICLES_FOLDER_ID
+
+        if (!placementChroniclesFolderId) {
+            console.error('GOOGLE_DRIVE_PLACEMENT_CHRONICLES_FOLDER_ID environment variable is not set')
+            return {
+                props: {
+                    puChronicles: {},
+                    error: 'Google Drive configuration missing'
+                },
+            }
+        }
+
+        const puChronicles = await googleDriveService.getPlacementChronicles(placementChroniclesFolderId)
+
+        return {
+            props: {
+                puChronicles,
+            },
+            revalidate: 12 * 3600 // Regenerate every 12 hours
+        }
+    } catch (error) {
+        console.error('Error fetching placement chronicles:', error)
+        return {
+            props: {
+                puChronicles: {},
+                error: 'Failed to fetch placement chronicles from Google Drive'
+            },
+            revalidate: 300 // Try again in 5 minutes on error
+        }
+    }
+}
+
+export default function Placement({ puChronicles: initialPuChronicles, error }: { puChronicles: PlacementChroniclesByCampus, error?: string }) {
     const [input, setInput] = useState('')
     const [isLoading, setIsLoading] = useState(false)
     const [resources, setResources] = useState<ResourceByCategory>({})
-    const [puChronicles, setPuChronicles] = useState<PlacementChroniclesByCampus>({})
-    const [chroniclesLoading, setChroniclesLoading] = useState(false)
+    const [puChronicles] = useState<PlacementChroniclesByCampus>(initialPuChronicles)
+    const [chroniclesLoading] = useState(false)
 
     const fetchResources = async () => {
         setIsLoading(true)
@@ -36,23 +71,6 @@ export default function Placement() {
         setIsLoading(false)
     }
 
-    const fetchChronicles = async () => {
-        setChroniclesLoading(true)
-        try {
-            const res = await fetch('/api/placements/chronicles/get')
-            const data = await res.json()
-            if (!data.error) {
-                setPuChronicles(data.data)
-            } else {
-                toast.error('Error fetching placement chronicles')
-            }
-        } catch (error) {
-            console.error('Error fetching chronicles:', error)
-            toast.error('Error fetching placement chronicles')
-        }
-        setChroniclesLoading(false)
-    }
-
     const filterResources = () => {
         let filteredResources: ResourceByCategory = {}
         for (let key in resources) {
@@ -68,8 +86,18 @@ export default function Placement() {
 
     useEffect(() => {
         fetchResources()
-        fetchChronicles()
     }, [])
+
+    if (error) {
+        return (
+            <div className="grid place-items-center min-h-screen">
+                <div className="text-center">
+                    <h1 className="text-2xl text-red-500 mb-4">Error Loading Placement Chronicles</h1>
+                    <p className="text-gray-600">{error}</p>
+                </div>
+            </div>
+        )
+    }
 
     return (
         <>
