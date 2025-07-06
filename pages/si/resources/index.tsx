@@ -1,3 +1,4 @@
+import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import { useState, useEffect } from 'react'
 import Menu from '@/components/Menu'
@@ -6,11 +7,45 @@ import { checkSession } from '@/utils/checkSession'
 import { SIChroniclesByCampus } from '@/types/GoogleDriveChronicles'
 import { toast } from 'react-toastify'
 import CustomToastContainer from '@/components/ToastContainer'
+import { googleDriveService } from '@/utils/googleDrive'
 
-export default function SummerInternships() {
+export const getStaticProps: GetStaticProps = async () => {
+    try {
+        const siChroniclesFolderId = process.env.GOOGLE_DRIVE_SI_CHRONICLES_FOLDER_ID
+
+        if (!siChroniclesFolderId) {
+            console.error('GOOGLE_DRIVE_SI_CHRONICLES_FOLDER_ID environment variable is not set')
+            return {
+                props: {
+                    siChronicles: {},
+                    error: 'Google Drive configuration missing'
+                },
+            }
+        }
+
+        const siChronicles = await googleDriveService.getSIChronicles(siChroniclesFolderId)
+
+        return {
+            props: {
+                siChronicles,
+            },
+            revalidate: 12 * 3600 // Regenerate every 12 hours
+        }
+    } catch (error) {
+        console.error('Error fetching SI chronicles:', error)
+        return {
+            props: {
+                siChronicles: {},
+                error: 'Failed to fetch SI chronicles from Google Drive'
+            },
+            revalidate: 300 // Try again in 5 minutes on error
+        }
+    }
+}
+
+export default function SummerInternships({ siChronicles, error }: { siChronicles: SIChroniclesByCampus, error?: string }) {
     const [search, setSearch] = useState('')
-    const [siChronicles, setSiChronicles] = useState<SIChroniclesByCampus>({})
-    const [chroniclesLoading, setChroniclesLoading] = useState(false)
+    const [chroniclesLoading, setChroniclesLoading] = useState(true)
 
     const resourcesList = [
         {
@@ -23,27 +58,26 @@ export default function SummerInternships() {
         },
     ]
 
-    const fetchChronicles = async () => {
-        setChroniclesLoading(true)
-        try {
-            const res = await fetch('/api/si/chronicles/get')
-            const data = await res.json()
-            if (!data.error) {
-                setSiChronicles(data.data)
-            } else {
-                toast.error('Error fetching SI chronicles')
-            }
-        } catch (error) {
-            console.error('Error fetching SI chronicles:', error)
-            toast.error('Error fetching SI chronicles')
-        }
-        setChroniclesLoading(false)
-    }
-
     useEffect(() => {
         checkSession()
-        fetchChronicles()
+        // Simulate data loading completion
+        const timer = setTimeout(() => {
+            setChroniclesLoading(false)
+        }, 1000)
+
+        return () => clearTimeout(timer)
     }, [])
+
+    if (error) {
+        return (
+            <div className="grid place-items-center min-h-screen">
+                <div className="text-center">
+                    <h1 className="text-2xl text-red-500 mb-4">Error Loading SI Chronicles</h1>
+                    <p className="text-gray-600">{error}</p>
+                </div>
+            </div>
+        )
+    }
 
     return (
         <>
@@ -83,7 +117,14 @@ export default function SummerInternships() {
                 </div>
             </div>
 
-            {!chroniclesLoading ? (
+            {chroniclesLoading && (
+                <div className="grid place-items-center py-16">
+                    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+                    <p className="text-lg mt-4">Loading data...</p>
+                </div>
+            )}
+
+            {!chroniclesLoading && (
                 <div className="place-items-center p-5 max-w-7xl mx-auto">
                     <h1 className="text-3xl text-center my-3">
                         Summer Internship Resources
@@ -194,11 +235,6 @@ export default function SummerInternships() {
                             </div>
                         </div>
                     ))}
-                </div>
-            ) : (
-                <div className="grid place-items-center py-16">
-                    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
-                    <p className="text-lg mt-4">Loading SI chronicles...</p>
                 </div>
             )}
             <CustomToastContainer containerId="siResources" />

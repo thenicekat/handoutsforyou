@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic'
 import Menu from '@/components/Menu'
 import Link from 'next/link'
 import { checkSession } from '@/utils/checkSession'
+import { googleDriveService } from '@/utils/googleDrive'
 
 const HandoutsPerYear = dynamic(() => import('@/components/HandoutsPerYear'), {
     loading: () => (
@@ -15,24 +16,40 @@ const HandoutsPerYear = dynamic(() => import('@/components/HandoutsPerYear'), {
 })
 
 export const getStaticProps: GetStaticProps = async () => {
-    const fs = require('fs')
-    const handoutsMap: any = {}
+    try {
+        const handoutsFolderId = process.env.GOOGLE_DRIVE_HANDOUTS_FOLDER_ID
 
-    const semsWithYears = fs.readdirSync('./public/handouts/')
+        if (!handoutsFolderId) {
+            console.error('GOOGLE_DRIVE_HANDOUTS_FOLDER_ID environment variable is not set')
+            return {
+                props: {
+                    handoutsMap: {},
+                    error: 'Google Drive configuration missing'
+                },
+            }
+        }
 
-    semsWithYears.forEach((sem: string) => {
-        const semWiseHandouts = fs.readdirSync('./public/handouts/' + sem)
-        handoutsMap[sem] = semWiseHandouts
-    })
+        const handoutsMap = await googleDriveService.getHandouts(handoutsFolderId)
 
-    return {
-        props: {
-            handoutsMap,
-        },
+        return {
+            props: {
+                handoutsMap,
+            },
+            revalidate: 12 * 3600 // Regenerate every 12 hours
+        }
+    } catch (error) {
+        console.error('Error fetching handouts:', error)
+        return {
+            props: {
+                handoutsMap: {},
+                error: 'Failed to fetch handouts from Google Drive'
+            },
+            revalidate: 300 // Try again in 5 minutes on error
+        }
     }
 }
 
-export default function Home({ handoutsMap }: any) {
+export default function Home({ handoutsMap, error }: { handoutsMap: { [key: string]: any[] }, error?: string }) {
     const [search, setSearch] = useState('')
     const [actualSearch, setActualSearch] = useState('')
     const [isLoading, setIsLoading] = useState(false)
@@ -47,6 +64,17 @@ export default function Home({ handoutsMap }: any) {
     useEffect(() => {
         fetchHandouts()
     }, [])
+
+    if (error) {
+        return (
+            <div className="grid place-items-center min-h-screen">
+                <div className="text-center">
+                    <h1 className="text-2xl text-red-500 mb-4">Error Loading Handouts</h1>
+                    <p className="text-gray-600">{error}</p>
+                </div>
+            </div>
+        )
+    }
 
     return (
         <>
@@ -104,7 +132,7 @@ export default function Home({ handoutsMap }: any) {
                 <div className="px-2 md:px-20">
                     {Object.keys(handoutsMap)
                         .reverse()
-                        .map((handoutMap: any) => {
+                        .map((handoutMap: string) => {
                             return (
                                 <>
                                     <HandoutsPerYear

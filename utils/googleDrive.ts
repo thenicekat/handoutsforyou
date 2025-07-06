@@ -1,8 +1,5 @@
 import { google } from 'googleapis'
 
-/**
- * Google Drive service for accessing placement chronicles
- */
 export class GoogleDriveService {
     private drive: any
     private auth: any
@@ -12,7 +9,6 @@ export class GoogleDriveService {
     }
 
     private initializeAuth() {
-        // Use service account authentication
         this.auth = new google.auth.GoogleAuth({
             credentials: {
                 client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
@@ -61,8 +57,8 @@ export class GoogleDriveService {
     }
 
     /**
- * Get placement chronicles organized by campus
- */
+     * Get placement chronicles organized by campus
+     */
     async getPlacementChronicles(rootFolderId: string): Promise<{ [key: string]: any[] }> {
         try {
             const chronicles: { [key: string]: any[] } = {}
@@ -85,7 +81,7 @@ export class GoogleDriveService {
                         name: file.name,
                         size: file.size,
                         createdTime: file.createdTime,
-                        downloadUrl: `https://drive.google.com/file/d/${file.id}/view`
+                        downloadUrl: this.getDirectDownloadUrl(file.id)
                     }))
                 }
             }
@@ -122,7 +118,7 @@ export class GoogleDriveService {
                         name: file.name,
                         size: file.size,
                         createdTime: file.createdTime,
-                        downloadUrl: `https://drive.google.com/file/d/${file.id}/view`
+                        downloadUrl: this.getDirectDownloadUrl(file.id)
                     }))
                 }
             }
@@ -135,8 +131,8 @@ export class GoogleDriveService {
     }
 
     /**
- * Get PS chronicles with PS1 and PS2 sections
- */
+     * Get PS chronicles with PS1 and PS2 sections
+     */
     async getPSChronicles(rootFolderId: string): Promise<{ ps1: any[], ps2: any[] }> {
         try {
             const chronicles: { ps1: any[], ps2: any[] } = { ps1: [], ps2: [] }
@@ -158,7 +154,7 @@ export class GoogleDriveService {
                     name: file.name,
                     size: file.size,
                     createdTime: file.createdTime,
-                    downloadUrl: `https://drive.google.com/file/d/${file.id}/view`
+                    downloadUrl: this.getDirectDownloadUrl(file.id)
                 }))
 
                 // Determine if it's PS1 or PS2 based on folder name
@@ -173,6 +169,44 @@ export class GoogleDriveService {
         } catch (error) {
             console.error('Error getting PS chronicles:', error)
             throw new Error('Failed to get PS chronicles from Google Drive')
+        }
+    }
+
+    /**
+     * Get handouts organized by semester/year folders
+     */
+    async getHandouts(rootFolderId: string): Promise<{ [key: string]: any[] }> {
+        try {
+            const handouts: { [key: string]: any[] } = {}
+
+            // Get all semester/year folders
+            const semesterFolders = await this.listFolders(rootFolderId)
+
+            for (const folder of semesterFolders) {
+                const files = await this.listFiles(folder.id)
+
+                // Filter for PDF files (assuming handouts are PDFs)
+                const pdfFiles = files.filter(file =>
+                    file.mimeType === 'application/pdf' ||
+                    file.name.toLowerCase().endsWith('.pdf')
+                )
+
+                if (pdfFiles.length > 0) {
+                    handouts[folder.name] = pdfFiles.map(file => ({
+                        id: file.id,
+                        name: file.name,
+                        size: file.size,
+                        createdTime: file.createdTime,
+                        downloadUrl: this.getDirectDownloadUrl(file.id),
+                        publicUrl: this.getPublicUrl(file.id)
+                    }))
+                }
+            }
+
+            return handouts
+        } catch (error) {
+            console.error('Error getting handouts:', error)
+            throw new Error('Failed to get handouts from Google Drive')
         }
     }
 

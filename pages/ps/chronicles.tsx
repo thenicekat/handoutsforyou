@@ -1,3 +1,4 @@
+import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import { useState, useEffect } from 'react'
 import Menu from '@/components/Menu'
@@ -5,32 +6,59 @@ import type { PSChronicles } from '@/types/GoogleDriveChronicles'
 import { toast } from 'react-toastify'
 import CustomToastContainer from '@/components/ToastContainer'
 import { checkSession } from '@/utils/checkSession'
+import { googleDriveService } from '@/utils/googleDrive'
 
-export default function PSChroniclesPage() {
-    const [psChronicles, setPsChronicles] = useState<PSChronicles>({ ps1: [], ps2: [] })
-    const [chroniclesLoading, setChroniclesLoading] = useState(false)
+export const getStaticProps: GetStaticProps = async () => {
+    try {
+        const psFolderId = process.env.GOOGLE_DRIVE_PS_CHRONICLES_FOLDER_ID
 
-    const fetchChronicles = async () => {
-        setChroniclesLoading(true)
-        try {
-            const res = await fetch('/api/ps/chronicles/get')
-            const data = await res.json()
-            if (!data.error) {
-                setPsChronicles(data.data)
-            } else {
-                toast.error('Error fetching PS chronicles')
+        if (!psFolderId) {
+            console.error('GOOGLE_DRIVE_PS_CHRONICLES_FOLDER_ID environment variable is not set')
+            return {
+                props: {
+                    psChronicles: { ps1: [], ps2: [] },
+                    error: 'Google Drive configuration missing'
+                },
             }
-        } catch (error) {
-            console.error('Error fetching PS chronicles:', error)
-            toast.error('Error fetching PS chronicles')
         }
-        setChroniclesLoading(false)
+
+        const psChronicles = await googleDriveService.getPSChronicles(psFolderId)
+
+        return {
+            props: {
+                psChronicles,
+            },
+            revalidate: 3600 // Regenerate every hour
+        }
+    } catch (error) {
+        console.error('Error fetching PS chronicles:', error)
+        return {
+            props: {
+                psChronicles: { ps1: [], ps2: [] },
+                error: 'Failed to fetch PS chronicles from Google Drive'
+            },
+            revalidate: 300 // Try again in 5 minutes on error
+        }
     }
+}
+
+export default function PSChroniclesPage({ psChronicles, error }: { psChronicles: PSChronicles, error?: string }) {
+    const [chroniclesLoading, setChroniclesLoading] = useState(false)
 
     useEffect(() => {
         checkSession()
-        fetchChronicles()
     }, [])
+
+    if (error) {
+        return (
+            <div className="grid place-items-center min-h-screen">
+                <div className="text-center">
+                    <h1 className="text-2xl text-red-500 mb-4">Error Loading PS Chronicles</h1>
+                    <p className="text-gray-600">{error}</p>
+                </div>
+            </div>
+        )
+    }
 
     return (
         <>
@@ -60,90 +88,83 @@ export default function PSChroniclesPage() {
                     <Menu />
                 </div>
 
-                {!chroniclesLoading ? (
-                    <div className="space-y-12 mt-12">
-                        <section>
-                            <h2 className="text-3xl font-semibold text-center mb-8">
-                                PS1 Chronicles ({psChronicles.ps1.length})
-                            </h2>
-                            <div className="grid md:grid-cols-3 gap-6">
-                                {psChronicles.ps1.map((chronicle) => (
-                                    <div
-                                        key={chronicle.id}
-                                        className="card bg-base-100 shadow-md hover:shadow-lg transition-shadow"
-                                    >
-                                        <div className="card-body p-4">
-                                            <h3 className="card-title text-lg">
-                                                {chronicle.name}
-                                            </h3>
-                                            {chronicle.size && (
-                                                <p className="text-xs text-gray-400">
-                                                    Size: {Math.round(parseInt(chronicle.size) / 1024 / 1024 * 100) / 100} MB
-                                                </p>
-                                            )}
-                                            <div className="card-actions justify-end mt-2">
-                                                <button
-                                                    className="btn btn-primary btn-sm"
-                                                    onClick={() =>
-                                                        window.open(
-                                                            chronicle.downloadUrl,
-                                                            '_blank'
-                                                        )
-                                                    }
-                                                >
-                                                    View
-                                                </button>
-                                            </div>
+                <div className="space-y-12 mt-12">
+                    <section>
+                        <h2 className="text-3xl font-semibold text-center mb-8">
+                            PS1 Chronicles ({psChronicles.ps1.length})
+                        </h2>
+                        <div className="grid md:grid-cols-3 gap-6">
+                            {psChronicles.ps1.map((chronicle) => (
+                                <div
+                                    key={chronicle.id}
+                                    className="card bg-base-100 shadow-md hover:shadow-lg transition-shadow"
+                                >
+                                    <div className="card-body p-4">
+                                        <h3 className="card-title text-lg">
+                                            {chronicle.name}
+                                        </h3>
+                                        {chronicle.size && (
+                                            <p className="text-xs text-gray-400">
+                                                Size: {Math.round(parseInt(chronicle.size) / 1024 / 1024 * 100) / 100} MB
+                                            </p>
+                                        )}
+                                        <div className="card-actions justify-end mt-2">
+                                            <button
+                                                className="btn btn-primary btn-sm"
+                                                onClick={() =>
+                                                    window.open(
+                                                        chronicle.downloadUrl,
+                                                        '_blank'
+                                                    )
+                                                }
+                                            >
+                                                View
+                                            </button>
                                         </div>
                                     </div>
-                                ))}
-                            </div>
-                        </section>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
 
-                        <section>
-                            <h2 className="text-3xl font-semibold text-center mb-8">
-                                PS2 Chronicles ({psChronicles.ps2.length})
-                            </h2>
-                            <div className="grid md:grid-cols-3 gap-6">
-                                {psChronicles.ps2.map((chronicle) => (
-                                    <div
-                                        key={chronicle.id}
-                                        className="card bg-base-100 shadow-md hover:shadow-lg transition-shadow"
-                                    >
-                                        <div className="card-body p-4">
-                                            <h3 className="card-title text-lg">
-                                                {chronicle.name}
-                                            </h3>
-                                            {chronicle.size && (
-                                                <p className="text-xs text-gray-400">
-                                                    Size: {Math.round(parseInt(chronicle.size) / 1024 / 1024 * 100) / 100} MB
-                                                </p>
-                                            )}
-                                            <div className="card-actions justify-end mt-2">
-                                                <button
-                                                    className="btn btn-primary btn-sm"
-                                                    onClick={() =>
-                                                        window.open(
-                                                            chronicle.downloadUrl,
-                                                            '_blank'
-                                                        )
-                                                    }
-                                                >
-                                                    View
-                                                </button>
-                                            </div>
+                    <section>
+                        <h2 className="text-3xl font-semibold text-center mb-8">
+                            PS2 Chronicles ({psChronicles.ps2.length})
+                        </h2>
+                        <div className="grid md:grid-cols-3 gap-6">
+                            {psChronicles.ps2.map((chronicle) => (
+                                <div
+                                    key={chronicle.id}
+                                    className="card bg-base-100 shadow-md hover:shadow-lg transition-shadow"
+                                >
+                                    <div className="card-body p-4">
+                                        <h3 className="card-title text-lg">
+                                            {chronicle.name}
+                                        </h3>
+                                        {chronicle.size && (
+                                            <p className="text-xs text-gray-400">
+                                                Size: {Math.round(parseInt(chronicle.size) / 1024 / 1024 * 100) / 100} MB
+                                            </p>
+                                        )}
+                                        <div className="card-actions justify-end mt-2">
+                                            <button
+                                                className="btn btn-primary btn-sm"
+                                                onClick={() =>
+                                                    window.open(
+                                                        chronicle.downloadUrl,
+                                                        '_blank'
+                                                    )
+                                                }
+                                            >
+                                                View
+                                            </button>
                                         </div>
                                     </div>
-                                ))}
-                            </div>
-                        </section>
-                    </div>
-                ) : (
-                    <div className="grid place-items-center py-16">
-                        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
-                        <p className="text-lg mt-4">Loading PS chronicles...</p>
-                    </div>
-                )}
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+                </div>
             </div>
             <CustomToastContainer containerId="psChronicles" />
         </>
