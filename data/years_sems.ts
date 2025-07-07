@@ -29,3 +29,10 @@ export const psAllotmentRounds = [
 export const gradedSemesters = ['24-25 Sem 2', '24-25 Sem 1']
 // For Placement CTCs
 export const placementYears = ['2024-2025', '2023-2024']
+// For PYQs.
+export const pyqYears = [
+    '2024-Sem-2', '2024-Sem-1', '2023-Sem-2', '2023-Sem-1', '2022-Sem-2', '2022-Sem-1', '2021-Sem-2', '2021-Sem-1', '2020-Sem-2', '2020-Sem-1',
+    '2019-Sem-2', '2019-Sem-1', '2018-Sem-2', '2018-Sem-1', '2017-Sem-2', '2017-Sem-1', '2016-Sem-2', '2016-Sem-1', '2015-Sem-2', '2015-Sem-1',
+    '2014-Sem-2', '2014-Sem-1', '2013-Sem-2', '2013-Sem-1', '2012-Sem-2', '2012-Sem-1', '2011-Sem-2', '2011-Sem-1', '2010-Sem-2', '2010-Sem-1',
+    '2009-Sem-2', '2009-Sem-1', '2008-Sem-2', '2008-Sem-1', '2007-Sem-2', '2007-Sem-1', '2006-Sem-2', '2006-Sem-1', '2005-Sem-2', '2005-Sem-1'
+]

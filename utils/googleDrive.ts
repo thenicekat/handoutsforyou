@@ -14,7 +14,9 @@ export class GoogleDriveService {
                 client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
                 private_key: process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY?.replace(/\\n/g, '\n'),
             },
-            scopes: ['https://www.googleapis.com/auth/drive.readonly'],
+            scopes: [
+                'https://www.googleapis.com/auth/drive',
+            ],
         })
 
         this.drive = google.drive({ version: 'v3', auth: this.auth })
@@ -29,6 +31,8 @@ export class GoogleDriveService {
                 q: `'${folderId}' in parents and trashed = false`,
                 fields: 'files(id, name, mimeType, size, createdTime)',
                 orderBy: 'name',
+                supportsAllDrives: true,
+                includeItemsFromAllDrives: true,
             })
 
             return response.data.files || []
@@ -47,6 +51,8 @@ export class GoogleDriveService {
                 q: `'${folderId}' in parents and mimeType = 'application/vnd.google-apps.folder' and trashed = false`,
                 fields: 'files(id, name, mimeType, createdTime)',
                 orderBy: 'name',
+                supportsAllDrives: true,
+                includeItemsFromAllDrives: true,
             })
 
             return response.data.files || []
@@ -222,6 +228,134 @@ export class GoogleDriveService {
      */
     getDirectDownloadUrl(fileId: string): string {
         return `https://drive.google.com/uc?export=download&id=${fileId}`
+    }
+
+    /**
+     * Get all PYQs in a course folder
+     */
+    async getPYQsForCourse(courseFolderId: string): Promise<{ [key: string]: any[] }> {
+        try {
+            const yearFolders = await this.listFolders(courseFolderId)
+            let yearMapping: { [key: string]: any[] } = {}
+
+            if (yearFolders.length > 0) {
+                for (const yearFolder of yearFolders) {
+                    const files = await this.listFiles(yearFolder.id)
+
+                    if (files.length > 0) {
+                        yearMapping[yearFolder.name] = files.map(file => ({
+                            id: file.id,
+                            name: file.name,
+                            size: file.size,
+                            createdTime: file.createdTime,
+                            downloadUrl: this.getDirectDownloadUrl(file.id),
+                        }))
+                    }
+                }
+            }
+
+            return yearMapping
+        } catch (error) {
+            console.error('Error getting PYQs:', error)
+            throw new Error('Failed to get PYQs from Google Drive')
+        }
+    }
+
+    /**
+     * Upload file to Google Drive
+     */
+    async uploadFile(fileName: string, fileBuffer: Buffer, parentFolderId: string, mimeType: string): Promise<any> {
+        try {
+            const { Readable } = require('stream')
+            const fileStream = new Readable()
+            fileStream.push(fileBuffer)
+            fileStream.push(null)
+
+            // Create file metadata
+            const fileMetadata = {
+                name: fileName,
+                parents: [parentFolderId],
+            }
+
+            // Set up the upload
+            const media = {
+                mimeType: mimeType,
+                body: fileStream,
+            }
+
+            // Create the file with specific parameters for shared drives
+            const response = await this.drive.files.create({
+                requestBody: fileMetadata,
+                media: media,
+                fields: 'id, name, mimeType, size, createdTime',
+                supportsAllDrives: true,
+                enforceSingleParent: true,
+            })
+
+            return {
+                id: response.data.id,
+                name: response.data.name,
+                size: response.data.size,
+                createdTime: response.data.createdTime,
+                downloadUrl: this.getDirectDownloadUrl(response.data.id),
+            }
+        } catch (error: any) {
+            console.error('Error uploading file:', error)
+            const errorMessage = error.message || 'Unknown error'
+            throw new Error(`Failed to upload file to Google Drive: ${errorMessage}.`)
+        }
+    }
+
+    /**
+     * Create folder in Google Drive
+     */
+    async createFolder(folderName: string, parentFolderId: string): Promise<any> {
+        try {
+            const response = await this.drive.files.create({
+                requestBody: {
+                    name: folderName,
+                    mimeType: 'application/vnd.google-apps.folder',
+                    parents: [parentFolderId],
+                },
+                supportsAllDrives: true,
+            })
+
+            return response.data
+        } catch (error) {
+            console.error('Error creating folder:', error)
+            throw new Error('Failed to create folder in Google Drive')
+        }
+    }
+
+    /**
+     * Find or create year folder
+     */
+    async findOrCreateFolder(folderName: string, parentFolderId: string): Promise<string> {
+        try {
+            const folders = await this.listFolders(parentFolderId)
+            const existingFolder = folders.find(folder => folder.name.toLowerCase() === folderName.toLowerCase())
+
+            if (existingFolder) {
+                return existingFolder.id
+            }
+
+            const newFolder = await this.createFolder(folderName, parentFolderId)
+            const permissionMetadata = {
+                type: "user",
+                role: "owner",
+                emailAddress: "oopsieshoppingapp@gmail.com",
+            };
+            const permissionResponse = await this.drive.permissions.create({
+                fileId: newFolder.id,
+                requestBody: permissionMetadata,
+                fields: "id",
+                transferOwnership: true,
+                supportsAllDrives: true,
+            });
+            return newFolder.id
+        } catch (error) {
+            throw new Error('Failed to find or create folder: ' + error)
+        }
     }
 }
 

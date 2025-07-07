@@ -1,8 +1,134 @@
 import Head from 'next/head'
 import Menu from '@/components/Menu'
-import Link from 'next/link'
+import { useState, useEffect } from 'react'
+import { toast } from 'react-toastify'
+import AutoCompleter from '@/components/AutoCompleter'
+import { pyqYears } from '@/data/years_sems'
+import { courses as courseNames } from '@/data/courses'
+import { Course, PYQFile, PYQsByYear } from '@/types/PYQs'
+import { profs } from '@/data/profs'
+import CustomToastContainer from '@/components/ToastContainer'
 
 export default function PYQs() {
+    const [courses, setCourses] = useState<Course[]>([])
+    const [selectedCourse, setSelectedCourse] = useState<Course | null>(null)
+    const [pyqsByYear, setPyqsByYear] = useState<PYQsByYear>({})
+
+    const [loading, setLoading] = useState(true)
+    const [loadingPyqs, setLoadingPyqs] = useState(false)
+    const [uploading, setUploading] = useState(false)
+
+    const [showUploadForm, setShowUploadForm] = useState(false)
+    const [uploadCourse, setUploadCourse] = useState('')
+    const [uploadYear, setUploadYear] = useState('')
+    const [selectedFile, setSelectedFile] = useState<File | null>(null)
+    const [uploadProfessor, setUploadProfessor] = useState('')
+
+    useEffect(() => {
+        fetchCourses()
+    }, [])
+
+    const fetchCourses = async () => {
+        try {
+            const response = await fetch('/api/courses/pyqs/get/courses')
+            const data = await response.json()
+
+            if (data.error) {
+                toast.error(data.message)
+            } else {
+                setCourses(data.data)
+            }
+        } catch (error) {
+            console.error('Error fetching courses:', error)
+            toast.error('Error fetching courses')
+        } finally {
+            setLoading(false)
+        }
+    }
+
+    const fetchPYQsForCourse = async (course: Course) => {
+        setLoadingPyqs(true)
+        try {
+            const response = await fetch(`/api/courses/pyqs/get/pyqs?courseId=${course.id}`)
+            const data = await response.json()
+
+            if (data.error) {
+                toast.error(data.message)
+            } else {
+                setPyqsByYear(data.data)
+                setSelectedCourse(course)
+            }
+        } catch (error) {
+            toast.error('Error fetching PYQs for course')
+        } finally {
+            setLoadingPyqs(false)
+        }
+    }
+
+    const handleUpload = async (e: React.FormEvent) => {
+        e.preventDefault()
+
+        if (!uploadCourse || !uploadYear || !uploadProfessor || !selectedFile) {
+            toast.error('Please fill all fields')
+            return
+        }
+        if (!validateFile(selectedFile)) {
+            return
+        }
+
+        setUploading(true)
+
+        try {
+            const formData = new FormData()
+            formData.append('course', uploadCourse)
+            formData.append('year', uploadYear)
+            formData.append('professor', uploadProfessor)
+            formData.append('file', selectedFile)
+
+            const response = await fetch('/api/courses/pyqs/add', {
+                method: 'POST',
+                body: formData,
+            })
+
+            const data = await response.json()
+
+            if (!data.error) {
+                toast.success('PYQ uploaded successfully!')
+                setShowUploadForm(false)
+                setUploadCourse('')
+                setUploadYear('')
+                setUploadProfessor('')
+                setSelectedFile(null)
+                fetchCourses()
+            } else {
+                toast.error(data.message || 'Failed to upload PYQ')
+            }
+        } catch (error) {
+            toast.error('Error uploading PYQ: ' + error)
+        } finally {
+            setUploading(false)
+        }
+    }
+
+    const validateFile = (file: File) => {
+        const allowedExtensions = ['pdf', 'docx', 'doc']
+        const extension = file.name.split('.').pop()
+        if (!extension || !allowedExtensions.includes(extension.toLowerCase())) {
+            toast.error('Please upload: ' + allowedExtensions.join(', '))
+            return false
+        }
+        return true
+    }
+
+    const formatFileSize = (bytes: string | number) => {
+        const numBytes = typeof bytes === 'string' ? parseInt(bytes) : bytes
+        if (numBytes === 0 || isNaN(numBytes)) return '0 Bytes'
+        const k = 1024
+        const sizes = ['Bytes', 'KB', 'MB', 'GB']
+        const i = Math.floor(Math.log(numBytes) / Math.log(k))
+        return parseFloat((numBytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i]
+    }
+
     return (
         <>
             <Head>
@@ -36,63 +162,203 @@ export default function PYQs() {
                 </div>
             </div>
 
-            {/* PYQs List */}
-            <div className="px-2 md:px-20">
-                <div className="grid place-items-center text-lg p-10">
-                    <p>
-                        Most of these previous year question papers were
-                        collected from multiple seniors drives and from dspace.
-                        Almost all of these have solutions scraped from CMS
-                        rips. Please contact us to contribute more PYQs or
-                        solutions.
-                        <br />
-                        <br />
-                        To access the onedrive links you might have to create an
-                        account with your BITS email ID over at:{' '}
-                        <Link
-                            className="underline"
-                            href="https://www.microsoft.com/en-us/education/products/office"
-                        >
-                            Microsoft Education
-                        </Link>
-                        <br />
-                        <br />
-                        You might not be able to download these files. That is
-                        because there were incidents where people just
-                        downloaded the files and reported the drives. So we have
-                        disabled the download option. You can view the files
-                        online and take screenshots if you want to.
-                        <br />
-                        <br />
-                        Apologize for the inconvenience caused.
-                    </p>
+            {/* Upload Form Modal */}
+            {showUploadForm && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                    <div className="bg-black rounded-lg p-6 w-full max-w-md mx-4">
+                        <h2 className="text-2xl font-bold mb-4">Upload PYQ</h2>
+                        <form onSubmit={handleUpload}>
+                            <div className="mb-4">
+                                <label className="block text-sm font-medium mb-2">
+                                    Course Name
+                                </label>
+                                <AutoCompleter
+                                    items={courseNames}
+                                    value={uploadCourse}
+                                    onChange={setUploadCourse}
+                                    name="course"
+                                />
+                            </div>
 
-                    <div className="flex-col block md:flex-row md:w-1/3 w-full justify-center m-3">
-                        <button
-                            className="btn w-full mb-5"
-                            tabIndex={-1}
-                            onClick={() =>
-                                window.open(
-                                    'https://hyderabadbitspilaniacin0-my.sharepoint.com/:f:/g/personal/f20210075_hyderabad_bits-pilani_ac_in/EunGAZ-G5K1ErIlgk-n2-8YBc0nDlzhtjdHTmprPgNGrzg?e=ImbC9q'
-                                )
-                            }
-                        >
-                            View PYQs
-                        </button>
-                        <button
-                            className="btn btn-outline w-full"
-                            tabIndex={-1}
-                            onClick={() =>
-                                window.open(
-                                    'https://forms.gle/CTKfG8sPgzttjC817'
-                                )
-                            }
-                        >
-                            Add PYQs
-                        </button>
+                            <div className="mb-4">
+                                <label className="block text-sm font-medium mb-2">
+                                    Professor Name
+                                </label>
+                                <AutoCompleter
+                                    items={profs.map(prof => prof.name)}
+                                    value={uploadProfessor}
+                                    onChange={setUploadProfessor}
+                                    name="professor"
+                                />
+                            </div>
+
+                            <div className="mb-4">
+                                <label className="block text-sm font-medium mb-2">
+                                    Year
+                                </label>
+                                <AutoCompleter
+                                    items={pyqYears}
+                                    value={uploadYear}
+                                    onChange={setUploadYear}
+                                    name="year"
+                                />
+                            </div>
+
+                            <div className="mb-4">
+                                <label className="block text-sm font-medium mb-2">
+                                    File
+                                </label>
+                                <input
+                                    type="file"
+                                    className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    onChange={(e) => setSelectedFile(e.target.files?.[0] || null)}
+                                    required
+                                />
+                            </div>
+
+                            <div className="flex justify-end space-x-2">
+                                <button
+                                    type="button"
+                                    className="px-4 py-2 text-gray-500 hover:text-gray-700"
+                                    onClick={() => setShowUploadForm(false)}
+                                    disabled={uploading}
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    type="submit"
+                                    className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:opacity-50"
+                                    disabled={uploading}
+                                >
+                                    {uploading ? 'Uploading...' : 'Upload'}
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
+            )}
+
+            {/* PYQs Content */}
+            <div className="px-2 md:px-20">
+                <div className="grid place-items-center text-lg p-10">
+                    <p className="mb-6">
+                        Previous year question papers organized by course and year.
+                        You can view PDFs online or download them for offline access.
+                    </p>
+
+                    {/* <div className="flex-col block md:flex-row md:w-1/3 w-full justify-center m-3">
+                        <button
+                            className="btn btn-outline w-full mb-3"
+                            onClick={() => setShowUploadForm(true)}
+                        >
+                            Upload PYQ
+                        </button>
+                    </div> */}
+                </div>
+
+                {loading ? (
+                    <div className="flex justify-center items-center py-20">
+                        <div className="loading loading-spinner loading-lg"></div>
+                    </div>
+                ) : (
+                    <div className="max-w-6xl mx-auto">
+                        {!selectedCourse ? (
+                            // Show courses list
+                            <div>
+                                <h3 className="text-2xl font-bold mb-6 text-center">Select a Course</h3>
+                                {courses.length === 0 ? (
+                                    <div className="text-center py-20">
+                                        <p className="text-gray-500">No courses available yet.</p>
+                                    </div>
+                                ) : (
+                                    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                                        {courses.map((course) => (
+                                            <div key={course.id} className="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
+                                                <div className="card-body" onClick={() => fetchPYQsForCourse(course)}>
+                                                    <h2 className="card-title text-primary">{course.name}</h2>
+                                                    <p className="text-sm text-gray-500">
+                                                        Created: {new Date(course.createdTime).toLocaleDateString()}
+                                                    </p>
+                                                    <div className="card-actions justify-end">
+                                                        <button className="btn btn-sm btn-primary">
+                                                            View PYQs
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        ) : (
+                            // Show PYQs for selected course
+                            <div>
+                                <div className="flex items-center justify-between mb-6">
+                                    <h3 className="text-2xl font-bold">
+                                        PYQs for {selectedCourse.name}
+                                    </h3>
+                                    <button
+                                        className="btn btn-outline"
+                                        onClick={() => {
+                                            setSelectedCourse(null)
+                                            setPyqsByYear({})
+                                        }}
+                                    >
+                                        ← Back to Courses
+                                    </button>
+                                </div>
+
+                                {loadingPyqs ? (
+                                    <div className="flex justify-center items-center py-20">
+                                        <div className="loading loading-spinner loading-lg"></div>
+                                    </div>
+                                ) : Object.keys(pyqsByYear).length === 0 ? (
+                                    <div className="text-center py-20">
+                                        <p className="text-gray-500">No PYQs available for this course yet.</p>
+                                    </div>
+                                ) : (
+                                    <div className="space-y-6">
+                                        {Object.entries(pyqsByYear).map(([year, files]) => (
+                                            <div key={year} className="card bg-base-100 shadow-lg">
+                                                <div className="card-body">
+                                                    <h4 className="card-title text-xl text-primary mb-4">{year}</h4>
+                                                    <div className="space-y-2">
+                                                        {files.map((file: PYQFile) => (
+                                                            <div key={file.id} className="flex items-center justify-between p-3 bg-base-200 rounded-lg">
+                                                                <div className="flex-1">
+                                                                    <p className="font-medium">{file.name}</p>
+                                                                    <p className="text-sm text-gray-500">
+                                                                        {file.size && formatFileSize(file.size)} • {new Date(file.createdTime).toLocaleDateString()}
+                                                                    </p>
+                                                                </div>
+                                                                <div className="card-actions">
+                                                                    <button
+                                                                        className="btn btn-primary btn-sm"
+                                                                        onClick={() => {
+                                                                            const link = document.createElement('a')
+                                                                            link.href = file.downloadUrl
+                                                                            link.download = file.name
+                                                                            link.click()
+                                                                        }}
+                                                                    >
+                                                                        Download
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        )}
+                    </div>
+                )}
             </div>
+
+            <CustomToastContainer containerId="coursePyqs" />
         </>
     )
 }
