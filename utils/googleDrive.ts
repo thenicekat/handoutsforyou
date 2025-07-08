@@ -1,51 +1,90 @@
 import { google } from 'googleapis'
+import { drive_v3 } from 'googleapis/build/src/apis/drive/v3'
+import { Readable } from 'stream'
+
+interface DriveFile {
+    id: string
+    name: string
+    size?: string | number
+    createdTime: string
+    downloadUrl: string
+    publicUrl?: string
+}
+
+interface ChronicleMap {
+    [key: string]: DriveFile[]
+}
+
+interface PSChronicles {
+    ps1: DriveFile[]
+    ps2: DriveFile[]
+}
 
 export class GoogleDriveService {
-    private drive: any
+    private drive!: drive_v3.Drive
     private auth: any
+    private readonly BATCH_SIZE = 1000
 
     constructor() {
         this.initializeAuth()
     }
 
     private initializeAuth() {
-        this.auth = new google.auth.GoogleAuth({
-            credentials: {
-                client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-                private_key: process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY?.replace(/\\n/g, '\n'),
-            },
-            scopes: [
-                'https://www.googleapis.com/auth/drive',
-            ],
-        })
+        try {
+            const privateKey = process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY?.replace(/\\n/g, '\n')
+            if (!privateKey || !process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL) {
+                throw new Error('Missing required Google Drive credentials')
+            }
 
-        this.drive = google.drive({ version: 'v3', auth: this.auth })
+            this.auth = new google.auth.GoogleAuth({
+                credentials: {
+                    client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+                    private_key: privateKey,
+                },
+                scopes: ['https://www.googleapis.com/auth/drive'],
+            })
+
+            this.drive = google.drive({ version: 'v3', auth: this.auth })
+        } catch (error) {
+            throw new Error(`Failed to initialize Google Drive auth: ${error instanceof Error ? error.message : 'Unknown error'}`)
+        }
     }
 
     /**
-     * List files in a Google Drive folder
+     * List files in a Google Drive folder with pagination support
      */
-    async listFiles(folderId: string): Promise<any[]> {
+    async listFiles(folderId: string): Promise<drive_v3.Schema$File[]> {
         try {
-            const response = await this.drive.files.list({
-                q: `'${folderId}' in parents and trashed = false`,
-                fields: 'files(id, name, mimeType, size, createdTime)',
-                orderBy: 'name',
-                supportsAllDrives: true,
-                includeItemsFromAllDrives: true,
-            })
+            const allFiles: drive_v3.Schema$File[] = []
+            let pageToken: string | undefined = undefined
 
-            return response.data.files || []
+            do {
+                const response: any = await this.drive.files.list({
+                    q: `'${folderId}' in parents and trashed = false`,
+                    fields: 'nextPageToken, files(id, name, mimeType, size, createdTime)',
+                    orderBy: 'name',
+                    supportsAllDrives: true,
+                    includeItemsFromAllDrives: true,
+                    pageSize: this.BATCH_SIZE,
+                    pageToken,
+                })
+
+                const files = response.data.files || []
+                allFiles.push(...files)
+                pageToken = response.data.nextPageToken || undefined
+
+            } while (pageToken)
+
+            return allFiles
         } catch (error) {
-            console.error('Error listing files:', error)
-            throw new Error('Failed to list files from Google Drive')
+            throw new Error(`Failed to list files from Google Drive: ${error instanceof Error ? error.message : 'Unknown error'}`)
         }
     }
 
     /**
      * List folders in a Google Drive folder
      */
-    async listFolders(folderId: string): Promise<any[]> {
+    async listFolders(folderId: string): Promise<drive_v3.Schema$File[]> {
         try {
             const response = await this.drive.files.list({
                 q: `'${folderId}' in parents and mimeType = 'application/vnd.google-apps.folder' and trashed = false`,
@@ -57,259 +96,181 @@ export class GoogleDriveService {
 
             return response.data.files || []
         } catch (error) {
-            console.error('Error listing folders:', error)
-            throw new Error('Failed to list folders from Google Drive')
+            throw new Error(`Failed to list folders from Google Drive: ${error instanceof Error ? error.message : 'Unknown error'}`)
+        }
+    }
+
+    /**
+     * Generic method to get chronicles by type
+     */
+    private async getChroniclesByType(rootFolderId: string, type: 'placement' | 'si'): Promise<ChronicleMap> {
+        try {
+            const chronicles: ChronicleMap = {}
+            const campusFolders = await this.listFolders(rootFolderId)
+
+            await Promise.all(campusFolders.map(async (folder) => {
+                if (!folder.id) return
+
+                const files = await this.listFiles(folder.id)
+                const pdfFiles = files.filter(file =>
+                    file.mimeType === 'application/pdf' ||
+                    (file.name && file.name.toLowerCase().endsWith('.pdf'))
+                )
+
+                if (pdfFiles.length > 0 && folder.name) {
+                    chronicles[folder.name] = pdfFiles
+                        .filter(file => file.id)
+                        .map(file => this.mapFileToDriveFile(file))
+                }
+            }))
+
+            return chronicles
+        } catch (error) {
+            throw new Error(`Failed to get ${type} chronicles: ${error instanceof Error ? error.message : 'Unknown error'}`)
         }
     }
 
     /**
      * Get placement chronicles organized by campus
      */
-    async getPlacementChronicles(rootFolderId: string): Promise<{ [key: string]: any[] }> {
-        try {
-            const chronicles: { [key: string]: any[] } = {}
-
-            // Get all campus folders
-            const campusFolders = await this.listFolders(rootFolderId)
-
-            for (const folder of campusFolders) {
-                const files = await this.listFiles(folder.id)
-
-                // Filter for PDF files (assuming chronicles are PDFs)
-                const pdfFiles = files.filter(file =>
-                    file.mimeType === 'application/pdf' ||
-                    file.name.toLowerCase().endsWith('.pdf')
-                )
-
-                if (pdfFiles.length > 0) {
-                    chronicles[folder.name] = pdfFiles.map(file => ({
-                        id: file.id,
-                        name: file.name,
-                        size: file.size,
-                        createdTime: file.createdTime,
-                        downloadUrl: this.getDirectDownloadUrl(file.id)
-                    }))
-                }
-            }
-
-            return chronicles
-        } catch (error) {
-            console.error('Error getting placement chronicles:', error)
-            throw new Error('Failed to get placement chronicles from Google Drive')
-        }
+    async getPlacementChronicles(rootFolderId: string): Promise<ChronicleMap> {
+        return this.getChroniclesByType(rootFolderId, 'placement')
     }
 
     /**
      * Get SI chronicles organized by campus
      */
-    async getSIChronicles(rootFolderId: string): Promise<{ [key: string]: any[] }> {
-        try {
-            const chronicles: { [key: string]: any[] } = {}
-
-            // Get all campus folders
-            const campusFolders = await this.listFolders(rootFolderId)
-
-            for (const folder of campusFolders) {
-                const files = await this.listFiles(folder.id)
-
-                // Filter for PDF files (assuming chronicles are PDFs)
-                const pdfFiles = files.filter(file =>
-                    file.mimeType === 'application/pdf' ||
-                    file.name.toLowerCase().endsWith('.pdf')
-                )
-
-                if (pdfFiles.length > 0) {
-                    chronicles[folder.name] = pdfFiles.map(file => ({
-                        id: file.id,
-                        name: file.name,
-                        size: file.size,
-                        createdTime: file.createdTime,
-                        downloadUrl: this.getDirectDownloadUrl(file.id)
-                    }))
-                }
-            }
-
-            return chronicles
-        } catch (error) {
-            console.error('Error getting SI chronicles:', error)
-            throw new Error('Failed to get SI chronicles from Google Drive')
-        }
+    async getSIChronicles(rootFolderId: string): Promise<ChronicleMap> {
+        return this.getChroniclesByType(rootFolderId, 'si')
     }
 
     /**
      * Get PS chronicles with PS1 and PS2 sections
      */
-    async getPSChronicles(rootFolderId: string): Promise<{ ps1: any[], ps2: any[] }> {
+    async getPSChronicles(rootFolderId: string): Promise<PSChronicles> {
         try {
-            const chronicles: { ps1: any[], ps2: any[] } = { ps1: [], ps2: [] }
-
-            // Get all folders in the root PS folder
+            const chronicles: PSChronicles = { ps1: [], ps2: [] }
             const folders = await this.listFolders(rootFolderId)
 
-            for (const folder of folders) {
+            await Promise.all(folders.map(async (folder) => {
+                if (!folder.id || !folder.name) return
+
                 const files = await this.listFiles(folder.id)
+                const pdfFiles = files
+                    .filter(file =>
+                        file.mimeType === 'application/pdf' ||
+                        (file.name && file.name.toLowerCase().endsWith('.pdf'))
+                    )
+                    .map(file => this.mapFileToDriveFile(file))
 
-                // Filter for PDF files
-                const pdfFiles = files.filter(file =>
-                    file.mimeType === 'application/pdf' ||
-                    file.name.toLowerCase().endsWith('.pdf')
-                )
-
-                const mappedFiles = pdfFiles.map(file => ({
-                    id: file.id,
-                    name: file.name,
-                    size: file.size,
-                    createdTime: file.createdTime,
-                    downloadUrl: this.getDirectDownloadUrl(file.id)
-                }))
-
-                // Determine if it's PS1 or PS2 based on folder name
                 if (folder.name.toLowerCase().includes('ps1')) {
-                    chronicles.ps1 = [...chronicles.ps1, ...mappedFiles]
+                    chronicles.ps1.push(...pdfFiles)
                 } else if (folder.name.toLowerCase().includes('ps2')) {
-                    chronicles.ps2 = [...chronicles.ps2, ...mappedFiles]
+                    chronicles.ps2.push(...pdfFiles)
                 }
-            }
+            }))
 
             return chronicles
         } catch (error) {
-            console.error('Error getting PS chronicles:', error)
-            throw new Error('Failed to get PS chronicles from Google Drive')
+            throw new Error(`Failed to get PS chronicles: ${error instanceof Error ? error.message : 'Unknown error'}`)
         }
     }
 
     /**
      * Get handouts organized by semester/year folders
      */
-    async getHandouts(rootFolderId: string): Promise<{ [key: string]: any[] }> {
+    async getHandouts(rootFolderId: string): Promise<ChronicleMap> {
         try {
-            const handouts: { [key: string]: any[] } = {}
-
-            // Get all semester/year folders
+            const handouts: ChronicleMap = {}
             const semesterFolders = await this.listFolders(rootFolderId)
 
-            for (const folder of semesterFolders) {
+            await Promise.all(semesterFolders.map(async (folder) => {
+                if (!folder.id || !folder.name) return
+
                 const files = await this.listFiles(folder.id)
-
-                // Filter for PDF files (assuming handouts are PDFs)
-                const pdfFiles = files.filter(file =>
-                    file.mimeType === 'application/pdf' ||
-                    file.name.toLowerCase().endsWith('.pdf')
-                )
-
-                if (pdfFiles.length > 0) {
-                    handouts[folder.name] = pdfFiles.map(file => ({
-                        id: file.id,
-                        name: file.name,
-                        size: file.size,
-                        createdTime: file.createdTime,
-                        downloadUrl: this.getDirectDownloadUrl(file.id),
-                        publicUrl: this.getPublicUrl(file.id)
-                    }))
+                if (files.length > 0) {
+                    handouts[folder.name] = files
+                        .filter(file => file.id)
+                        .map(file => ({
+                            ...this.mapFileToDriveFile(file),
+                            publicUrl: this.getPublicUrl(file.id!)
+                        }))
                 }
-            }
+            }))
 
             return handouts
         } catch (error) {
-            console.error('Error getting handouts:', error)
-            throw new Error('Failed to get handouts from Google Drive')
+            throw new Error(`Failed to get handouts: ${error instanceof Error ? error.message : 'Unknown error'}`)
         }
-    }
-
-    /**
-     * Get public download URL for a file
-     */
-    getPublicUrl(fileId: string): string {
-        return `https://drive.google.com/file/d/${fileId}/view`
-    }
-
-    /**
-     * Get direct download URL for a file
-     */
-    getDirectDownloadUrl(fileId: string): string {
-        return `https://drive.google.com/uc?export=download&id=${fileId}`
     }
 
     /**
      * Get all PYQs in a course folder
      */
-    async getPYQsForCourse(courseFolderId: string): Promise<{ [key: string]: any[] }> {
+    async getPYQsForCourse(courseFolderId: string): Promise<ChronicleMap> {
         try {
             const yearFolders = await this.listFolders(courseFolderId)
-            let yearMapping: { [key: string]: any[] } = {}
+            const yearMapping: ChronicleMap = {}
 
-            if (yearFolders.length > 0) {
-                for (const yearFolder of yearFolders) {
-                    const files = await this.listFiles(yearFolder.id)
+            await Promise.all(yearFolders.map(async (yearFolder) => {
+                if (!yearFolder.id || !yearFolder.name) return
 
-                    if (files.length > 0) {
-                        yearMapping[yearFolder.name] = files.map(file => ({
-                            id: file.id,
-                            name: file.name,
-                            size: file.size,
-                            createdTime: file.createdTime,
-                            downloadUrl: this.getDirectDownloadUrl(file.id),
-                        }))
-                    }
+                const files = await this.listFiles(yearFolder.id)
+                if (files.length > 0) {
+                    yearMapping[yearFolder.name] = files
+                        .filter(file => file.id)
+                        .map(file => this.mapFileToDriveFile(file))
                 }
-            }
+            }))
 
             return yearMapping
         } catch (error) {
-            console.error('Error getting PYQs:', error)
-            throw new Error('Failed to get PYQs from Google Drive')
+            throw new Error(`Failed to get PYQs: ${error instanceof Error ? error.message : 'Unknown error'}`)
         }
     }
 
     /**
      * Upload file to Google Drive
      */
-    async uploadFile(fileName: string, fileBuffer: Buffer, parentFolderId: string, mimeType: string): Promise<any> {
+    async uploadFile(
+        fileName: string,
+        fileBuffer: Buffer,
+        parentFolderId: string,
+        mimeType: string
+    ): Promise<DriveFile> {
         try {
-            const { Readable } = require('stream')
             const fileStream = new Readable()
             fileStream.push(fileBuffer)
             fileStream.push(null)
 
-            // Create file metadata
             const fileMetadata = {
                 name: fileName,
                 parents: [parentFolderId],
             }
 
-            // Set up the upload
             const media = {
-                mimeType: mimeType,
+                mimeType,
                 body: fileStream,
             }
 
-            // Create the file with specific parameters for shared drives
             const response = await this.drive.files.create({
                 requestBody: fileMetadata,
-                media: media,
+                media,
                 fields: 'id, name, mimeType, size, createdTime',
                 supportsAllDrives: true,
                 enforceSingleParent: true,
             })
 
-            return {
-                id: response.data.id,
-                name: response.data.name,
-                size: response.data.size,
-                createdTime: response.data.createdTime,
-                downloadUrl: this.getDirectDownloadUrl(response.data.id),
-            }
-        } catch (error: any) {
-            console.error('Error uploading file:', error)
-            const errorMessage = error.message || 'Unknown error'
-            throw new Error(`Failed to upload file to Google Drive: ${errorMessage}.`)
+            return this.mapFileToDriveFile(response.data)
+        } catch (error) {
+            throw new Error(`Failed to upload file: ${error instanceof Error ? error.message : 'Unknown error'}`)
         }
     }
 
     /**
      * Create folder in Google Drive
      */
-    async createFolder(folderName: string, parentFolderId: string): Promise<any> {
+    async createFolder(folderName: string, parentFolderId: string): Promise<drive_v3.Schema$File> {
         try {
             const response = await this.drive.files.create({
                 requestBody: {
@@ -322,40 +283,84 @@ export class GoogleDriveService {
 
             return response.data
         } catch (error) {
-            console.error('Error creating folder:', error)
-            throw new Error('Failed to create folder in Google Drive')
+            throw new Error(`Failed to create folder: ${error instanceof Error ? error.message : 'Unknown error'}`)
         }
     }
 
     /**
-     * Find or create year folder
+     * Find or create year folder and transfer ownership
      */
     async findOrCreateFolder(folderName: string, parentFolderId: string): Promise<string> {
         try {
             const folders = await this.listFolders(parentFolderId)
-            const existingFolder = folders.find(folder => folder.name.toLowerCase() === folderName.toLowerCase())
+            const existingFolder = folders.find(
+                folder => folder.name?.toLowerCase() === folderName.toLowerCase()
+            )
 
-            if (existingFolder) {
+            if (existingFolder?.id) {
                 return existingFolder.id
             }
 
             const newFolder = await this.createFolder(folderName, parentFolderId)
-            const permissionMetadata = {
-                type: "user",
-                role: "owner",
-                emailAddress: "oopsieshoppingapp@gmail.com",
-            };
-            const permissionResponse = await this.drive.permissions.create({
-                fileId: newFolder.id,
-                requestBody: permissionMetadata,
-                fields: "id",
-                transferOwnership: true,
-                supportsAllDrives: true,
-            });
+            if (!newFolder.id) {
+                throw new Error('Failed to create new folder - no ID returned')
+            }
+
+            await this.transferOwnership(newFolder.id)
             return newFolder.id
         } catch (error) {
-            throw new Error('Failed to find or create folder: ' + error)
+            throw new Error(`Failed to find or create folder: ${error instanceof Error ? error.message : 'Unknown error'}`)
         }
+    }
+
+    /**
+     * Helper method to transfer ownership of a file/folder
+     */
+    private async transferOwnership(fileId: string): Promise<void> {
+        const permissionMetadata = {
+            type: "user",
+            role: "owner",
+            emailAddress: "oopsieshoppingapp@gmail.com",
+        }
+
+        await this.drive.permissions.create({
+            fileId,
+            requestBody: permissionMetadata,
+            fields: "id",
+            transferOwnership: true,
+            supportsAllDrives: true,
+        })
+    }
+
+    /**
+     * Helper method to map Drive file to DriveFile interface
+     */
+    private mapFileToDriveFile(file: drive_v3.Schema$File): DriveFile {
+        if (!file.id) {
+            throw new Error('Invalid file object - missing ID')
+        }
+
+        return {
+            id: file.id,
+            name: file.name || 'Unnamed File',
+            size: file.size || undefined,
+            createdTime: file.createdTime || new Date().toISOString(),
+            downloadUrl: this.getDirectDownloadUrl(file.id),
+        }
+    }
+
+    /**
+     * Get public URL for a file
+     */
+    getPublicUrl(fileId: string): string {
+        return `https://drive.google.com/file/d/${fileId}/view`
+    }
+
+    /**
+     * Get direct download URL for a file
+     */
+    getDirectDownloadUrl(fileId: string): string {
+        return `https://drive.google.com/uc?export=download&id=${fileId}`
     }
 }
 
