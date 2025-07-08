@@ -35,7 +35,7 @@ export const getStaticProps: GetStaticProps = async () => {
             props: {
                 handoutsMap,
             },
-            revalidate: 12 * 3600 // Regenerate every 12 hours
+            revalidate: 24 * 3600 // Regenerate every 12 hours
         }
     } catch (error) {
         console.error('Error fetching handouts:', error)
