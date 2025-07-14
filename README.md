@@ -77,6 +77,28 @@ To shut down your local Supabase services:
 pnpm dlx supabase stop
 ```
 
+### Updating the Schema
+
+To update the database schema in your local Supabase instance:
+
+1. Make your changes in `/supabase/schemas/init.sql`.
+
+2. Generate a new migration file by running:
+
+```bash
+pnpm dlx supabase db diff -f <migration_name>
+```
+
+This will create a new migration file in `/supabase/migrations`.
+
+3. Ensure that your Supabase instance is running, then apply your migrations with:
+
+```bash
+pnpm dlx supabase migration up
+```
+
+**Note:** The seed data can be modified by updating the file at `/supabase/seed.sql`
+
 ### Accessing Supabase Studio and Credentials
 
 After Supabase starts, a local Supabase Studio URL will be displayed in the terminal (typically `http://localhost:54323`). You can use this interface to:
