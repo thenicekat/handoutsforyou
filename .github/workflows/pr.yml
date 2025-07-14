@@ -4,6 +4,7 @@ on: pull_request
 jobs:
     build:
         runs-on: ubuntu-latest
+        environment: Github
 
         permissions:
             contents: write
