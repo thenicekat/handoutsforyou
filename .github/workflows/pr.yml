@@ -1,5 +1,5 @@
 name: Build and Prettify on PR
-on: pull_request
+on: pull_request_target
 
 jobs:
     build:
@@ -28,14 +28,6 @@ jobs:
             # Build should succeed before running prettier.
             - name: Build project
               run: pnpm build
-              with:
-                GOOGLE_DRIVE_HANDOUTS_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_HANDOUTS_FOLDER_ID }}
-                GOOGLE_DRIVE_PLACEMENT_CHRONICLES_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_PLACEMENT_CHRONICLES_FOLDER_ID }}
-                GOOGLE_DRIVE_PS_CHRONICLES_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_PS_CHRONICLES_FOLDER_ID }}
-                GOOGLE_DRIVE_PYQS_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_PYQS_FOLDER_ID }}
-                GOOGLE_DRIVE_SI_CHRONICLES_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_SI_CHRONICLES_FOLDER_ID }}
-                GOOGLE_SERVICE_ACCOUNT_EMAIL: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_EMAIL }}
-                GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY }}
               env:
                 GOOGLE_DRIVE_HANDOUTS_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_HANDOUTS_FOLDER_ID }}
                 GOOGLE_DRIVE_PLACEMENT_CHRONICLES_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_PLACEMENT_CHRONICLES_FOLDER_ID }}
