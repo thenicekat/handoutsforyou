@@ -67,6 +67,7 @@ venv/
 
 # Database Backups
 **.sql
+!supabase/**/**.sql
 
 # Credentials.
 keys/

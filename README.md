@@ -44,6 +44,69 @@ pnpm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+
+## Setting Up a Local Supabase Instance (Optional)
+
+You can run Supabase locally using Docker for development and testing.
+
+**Note:** Make sure you have [Docker](https://docs.docker.com/get-docker/) installed before proceeding.
+
+### Start the Supabase Instance
+
+This command starts a minimal Supabase stack, excluding optional services like auth, realtime, storage, etc.:
+
+```bash
+pnpm dlx supabase start -x gotrue,realtime,storage-api,imgproxy,mailpit,edge-runtime,logflare,vector
+````
+
+On the first run, this may take some time as Docker images are downloaded.
+
+### Run Migrations and Seed the Database
+
+Once the instance is running, apply the database schema and initialize seed data:
+
+```bash
+pnpm dlx supabase db reset
+```
+
+### Stop the Supabase Instance
+
+To shut down your local Supabase services:
+
+```bash
+pnpm dlx supabase stop
+```
+
+### Updating the Schema
+
+To update the database schema in your local Supabase instance:
+
+1. Make your changes in `/supabase/schemas/init.sql`.
+
+2. Generate a new migration file by running:
+
+```bash
+pnpm dlx supabase db diff -f <migration_name>
+```
+
+This will create a new migration file in `/supabase/migrations`.
+
+3. Ensure that your Supabase instance is running, then apply your migrations with:
+
+```bash
+pnpm dlx supabase migration up
+```
+
+**Note:** The seed data can be modified by updating the file at `/supabase/seed.sql`
+
+### Accessing Supabase Studio and Credentials
+
+After Supabase starts, a local Supabase Studio URL will be displayed in the terminal (typically `http://localhost:54323`). You can use this interface to:
+
+* Explore and edit your database
+* Run SQL queries
+* Retrieve your Supabase API credentials (URL and anon key) for local development
+
 ## Scripts
 
 ### Course Reviews.
