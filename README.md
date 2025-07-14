@@ -1,14 +1,5 @@
 # Handouts For You.
-
-<a href="https://www.star-history.com/#thenicekat/handoutsforyou&Date">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=thenicekat/handoutsforyou&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=thenicekat/handoutsforyou&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=thenicekat/handoutsforyou&type=Date" />
- </picture>
-</a>
-
-## Features
+## Features.
 
 - Handouts
 - Course Prerequisites
@@ -25,33 +16,29 @@
 - Research Chronicles
 - Higher Studies Resources
 
-## Development
-
-- Create a database in supabase with the following schema:
-  ![supabase-schema-hzmhyjycziqgetlvgfwg (1)](https://github.com/user-attachments/assets/a1735232-da82-43ec-9047-10dfbae6ec6d)
-
+## Setup.
+### Dependencies.
 - First install the dependencies by using pnpm after installing [pnpm](https://pnpm.io/installation)
-
+- This is essentially installing all the libraries needed for this website to run.
 ```bash
 pnpm install
 ```
+- Create a copy of the file .env.testing and rename it to .env.local. All your environment variables must be put in this file.
 
-- Then, run the development server and for the pages you are making changes to, replace `{session &&` with `{true &&`. This lets you overcome the auth temporarily locally. This will work only for pages without server side verification. None of the database relient features will work.
+### Oauth .
+You need to set up google oauth using your bits email for signing into the website. You can use the [next auth guide](https://next-auth.js.org/providers/google) for the same .
 
-```bash
-pnpm run dev
+You would need to populate the following for auth to work.
+```
+GOOGLE_CLIENT_ID=""
+GOOGLE_CLIENT_SECRET=""
+NEXTAUTH_SECRET=""
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Database.
+Supabase is used as the database for h4u. You can run Supabase locally using Docker for development and testing. **Note:** Make sure you have [Docker](https://docs.docker.com/get-docker/) installed before proceeding.
 
-
-## Setting Up a Local Supabase Instance (Optional)
-
-You can run Supabase locally using Docker for development and testing.
-
-**Note:** Make sure you have [Docker](https://docs.docker.com/get-docker/) installed before proceeding.
-
-### Start the Supabase Instance
+#### Start the Supabase Instance
 
 This command starts a minimal Supabase stack, excluding optional services like auth, realtime, storage, etc.:
 
@@ -61,15 +48,20 @@ pnpm dlx supabase start -x gotrue,realtime,storage-api,imgproxy,mailpit,edge-run
 
 On the first run, this may take some time as Docker images are downloaded.
 
-### Run Migrations and Seed the Database
+#### Run Migrations and Seed the Database
 
 Once the instance is running, apply the database schema and initialize seed data:
 
 ```bash
 pnpm dlx supabase db reset
 ```
+Populate the following env variables from supabase studio.
+```
+SUPABASE_API_KEY=""
+SUPABASE_URL=""
+```
 
-### Stop the Supabase Instance
+#### Stop the Supabase Instance
 
 To shut down your local Supabase services:
 
@@ -77,7 +69,16 @@ To shut down your local Supabase services:
 pnpm dlx supabase stop
 ```
 
-### Updating the Schema
+### Development Server.
+
+Run the development server using the following command. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+```bash
+pnpm run dev
+```
+
+
+### Updating the Supabase Schema
 
 To update the database schema in your local Supabase instance:
 
@@ -99,6 +100,8 @@ pnpm dlx supabase migration up
 
 **Note:** The seed data can be modified by updating the file at `/supabase/seed.sql`
 
+## Maintenance/Scripts
+
 ### Accessing Supabase Studio and Credentials
 
 After Supabase starts, a local Supabase Studio URL will be displayed in the terminal (typically `http://localhost:54323`). You can use this interface to:
@@ -107,7 +110,6 @@ After Supabase starts, a local Supabase Studio URL will be displayed in the term
 * Run SQL queries
 * Retrieve your Supabase API credentials (URL and anon key) for local development
 
-## Scripts
 
 ### Course Reviews.
 
@@ -157,17 +159,10 @@ National Instruments<|>National Instruments (Bangalore)<|>National Instruments S
 
 Redirected to [https://handoutsforyou.vercel.app](https://handoutsforyou.vercel.app)
 
-## Pull Request Guidelines
-
-We aim to follow the following standards for PRs
-
-1. build: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
-2. ci: Changes to CI configuration files and scripts
-3. docs: Documentation only changes
-4. feat: A new feature
-5. fix: A bug fix
-6. perf: A code change that improves performance
-7. refactor: A code change that neither fixes a bug nor adds a feature
-8. style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
-9. test: Adding missing tests or correcting existing tests
-10. chore: edits to files that aren't src, build, or ci files
+<a href="https://www.star-history.com/#thenicekat/handoutsforyou&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=thenicekat/handoutsforyou&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=thenicekat/handoutsforyou&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=thenicekat/handoutsforyou&type=Date" />
+ </picture>
+</a>
