@@ -18,7 +18,8 @@ import {
 
 export default function PS1Data() {
     const [search, setSearch] = useState('')
-    const [cgpa, setCGPA] = useState(10)
+    const [minCGPA, setMinCGPA] = useState(0)
+    const [maxCGPA, setMaxCGPA] = useState(10)
     const [yearRef, setYearRef] = useState(ps1Years[0])
     const [cachedYear, setCachedYear] = useState('')
     const [isLoading, setIsLoading] = useState(false)
@@ -86,13 +87,15 @@ export default function PS1Data() {
 
     useEffect(() => {
         setIsLoading(true)
-        let filteredPS1Data = ps1Data.filter((d: PS1Item) => d.cgpa <= cgpa)
+        let filteredPS1Data = ps1Data.filter(
+            (d: PS1Item) => d.cgpa >= minCGPA && d.cgpa <= maxCGPA
+        )
         filteredPS1Data = filteredPS1Data.filter((d: PS1Item) =>
             d.station.toLowerCase().includes(search.toLowerCase())
         )
         setFilteredPS1Data(filteredPS1Data)
         setIsLoading(false)
-    }, [ps1Data, cgpa, search])
+    }, [ps1Data, minCGPA, maxCGPA, search])
 
     const columnHelper = createColumnHelper<PS1Item>()
 
@@ -181,18 +184,21 @@ export default function PS1Data() {
 
                         <div className="flex flex-col md:flex-row w-full justify-center">
                             <input
-                                type="text"
-                                placeholder="Filter using CGPA..."
+                                type="number"
+                                placeholder="Min CGPA"
                                 className="input input-secondary w-full max-w-xs m-3"
-                                onChange={(e) => {
-                                    if (e.target.value == '') {
-                                        setCGPA(10)
-                                        return
-                                    }
-                                    setCGPA(parseFloat(e.target.value))
-                                }}
+                                onChange={(e) =>
+                                    setMinCGPA(parseFloat(e.target.value) || 0)
+                                }
                             />
-
+                            <input
+                                type="number"
+                                placeholder="Max CGPA"
+                                className="input input-secondary w-full max-w-xs m-3"
+                                onChange={(e) =>
+                                    setMaxCGPA(parseFloat(e.target.value) || 10)
+                                }
+                            />
                             <input
                                 type="text"
                                 placeholder="Search for Company..."
@@ -278,7 +284,6 @@ export default function PS1Data() {
 
             {!isLoading && (
                 <div>
-                    {/* Show the count of reviews */}
                     <div className="flex justify-center">
                         <h1 className="text-3xl text-primary">
                             Total Responses: {filteredPS1Data.length}
@@ -286,59 +291,55 @@ export default function PS1Data() {
                     </div>
 
                     <div className="px-2 md:px-20">
-                        {
-                            <>
-                                {/* Mobile UI */}
-                                <div className="px-2 p-2 grid md:hidden sm:grid-cols-2 grid-cols-1 place-items-center">
-                                    {filteredPS1Data.map((PS1Item: PS1Item) => (
-                                        <div
-                                            className="card w-72 bg-base-100 text-base-content m-2"
-                                            key={PS1Item.id}
-                                        >
-                                            <div className="card-body">
-                                                <p className="text-lg">
-                                                    {PS1Item.station.toUpperCase()}
-                                                </p>
+                        <>
+                            <div className="px-2 p-2 grid md:hidden sm:grid-cols-2 grid-cols-1 place-items-center">
+                                {filteredPS1Data.map((PS1Item: PS1Item) => (
+                                    <div
+                                        className="card w-72 bg-base-100 text-base-content m-2"
+                                        key={PS1Item.id}
+                                    >
+                                        <div className="card-body">
+                                            <p className="text-lg">
+                                                {PS1Item.station.toUpperCase()}
+                                            </p>
 
-                                                <div className="flex-none">
-                                                    <p className="m-1">
-                                                        Name: {PS1Item.name}
-                                                    </p>
-                                                    <p className="m-1">
-                                                        ID Number:{' '}
-                                                        {PS1Item.id_number}
-                                                    </p>
-                                                    <p className="m-1">
-                                                        CGPA: {PS1Item.cgpa}
-                                                    </p>
-                                                    <p className="m-1">
-                                                        Allotment Round:{' '}
-                                                        {
-                                                            PS1Item.allotment_round
-                                                        }
-                                                    </p>
-                                                </div>
+                                            <div className="flex-none">
+                                                <p className="m-1">
+                                                    Name: {PS1Item.name}
+                                                </p>
+                                                <p className="m-1">
+                                                    ID Number:{' '}
+                                                    {PS1Item.id_number}
+                                                </p>
+                                                <p className="m-1">
+                                                    CGPA: {PS1Item.cgpa}
+                                                </p>
+                                                <p className="m-1">
+                                                    Allotment Round:{' '}
+                                                    {PS1Item.allotment_round}
+                                                </p>
                                             </div>
                                         </div>
-                                    ))}
-                                </div>
+                                    </div>
+                                ))}
+                            </div>
 
-                                {/* Web UI */}
-                                <div className="overflow-x-auto m-2 rounded-md hidden md:block">
-                                    <table className="table table-sm table-pin-rows bg-base-100">
-                                        <thead className="table-header-group">
-                                            <tr>
-                                                {headers.map((header) => {
-                                                    const direction =
-                                                        header.column.getIsSorted()
-                                                    const sort_indicator =
-                                                        direction
-                                                            ? arrow[direction]
-                                                            : arrow['unsorted']
+                            <div className="overflow-x-auto m-2 rounded-md hidden md:block">
+                                <table className="table table-sm table-pin-rows bg-base-100">
+                                    <thead className="table-header-group">
+                                        <tr>
+                                            {headers.map((header) => {
+                                                const direction =
+                                                    header.column.getIsSorted()
+                                                const sort_indicator = direction
+                                                    ? arrow[direction]
+                                                    : arrow['unsorted']
 
-                                                    return (
-                                                        <th key={header.id}>
-                                                            {header.isPlaceholder ? null : (
+                                                return (
+                                                    <th key={header.id}>
+                                                        {header.isPlaceholder
+                                                            ? null
+                                                            : (
                                                                 <div
                                                                     onClick={header.column.getToggleSortingHandler()}
                                                                     className="cursor-pointer flex gap-2"
@@ -359,33 +360,32 @@ export default function PS1Data() {
                                                                     </span>
                                                                 </div>
                                                             )}
-                                                        </th>
-                                                    )
-                                                })}
+                                                    </th>
+                                                )
+                                            })}
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {rows.map((row) => (
+                                            <tr key={row.id}>
+                                                {row
+                                                    .getVisibleCells()
+                                                    .map((cell) => (
+                                                        <td key={cell.id}>
+                                                            {flexRender(
+                                                                cell.column
+                                                                    .columnDef
+                                                                    .cell,
+                                                                cell.getContext()
+                                                            )}
+                                                        </td>
+                                                    ))}
                                             </tr>
-                                        </thead>
-                                        <tbody>
-                                            {rows.map((row) => (
-                                                <tr key={row.id}>
-                                                    {row
-                                                        .getVisibleCells()
-                                                        .map((cell) => (
-                                                            <td key={cell.id}>
-                                                                {flexRender(
-                                                                    cell.column
-                                                                        .columnDef
-                                                                        .cell,
-                                                                    cell.getContext()
-                                                                )}
-                                                            </td>
-                                                        ))}
-                                                </tr>
-                                            ))}
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </>
-                        }
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </>
                     </div>
                 </div>
             )}
