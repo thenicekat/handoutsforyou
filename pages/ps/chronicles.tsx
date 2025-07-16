@@ -5,7 +5,6 @@ import Menu from '@/components/Menu'
 import type { PSChronicles } from '@/types/GoogleDriveChronicles'
 import { toast } from 'react-toastify'
 import CustomToastContainer from '@/components/ToastContainer'
-import { checkSession } from '@/utils/checkSession'
 import { googleDriveService } from '@/utils/googleDrive'
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -45,9 +44,6 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function PSChroniclesPage({ psChronicles, error }: { psChronicles: PSChronicles, error?: string }) {
     const [chroniclesLoading, setChroniclesLoading] = useState(false)
 
-    useEffect(() => {
-        checkSession()
-    }, [])
 
     if (error) {
         return (
