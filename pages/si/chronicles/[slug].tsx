@@ -4,6 +4,7 @@ import Head from 'next/head'
 import { use, useEffect, useState } from 'react'
 import Menu from '@/components/Menu'
 import { SI_Chronicle } from '../../../types/SIData'
+import { axiosInstance } from '@/utils/axiosCache'
 
 export default function ChroniclePage() {
     const router = useRouter()
@@ -12,21 +13,20 @@ export default function ChroniclePage() {
     const [chronicles, setChronicles] = useState<SI_Chronicle[]>([])
 
     const fetchChronicles = async () => {
-        const res = await fetch(`/api/si/chronicles/data`, {
-            method: 'POST',
-            body: JSON.stringify({
+        try {
+            const res = await axiosInstance.post(`/api/si/chronicles/data`, {
                 slug: slug,
-            }),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
-        if (res.status !== 400) {
-            const data = await res.json()
-            if (data.error) {
-                alert(data.message)
-                return
-            } else setChronicles(data.data)
+            })
+            if (res.status !== 400) {
+                const data = res.data
+                if (data.error) {
+                    alert(data.message)
+                    return
+                } else setChronicles(data.data)
+            }
+        } catch (error) {
+            console.error('Error fetching chronicles:', error)
+            alert('Failed to fetch chronicles data')
         }
     }
 

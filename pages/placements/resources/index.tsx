@@ -10,6 +10,7 @@ import { ResourceByCategory } from '@/types/Resource'
 import { PlacementChroniclesByCampus } from '@/types/GoogleDriveChronicles'
 import Link from 'next/link'
 import { googleDriveService } from '@/utils/googleDrive'
+import { axiosInstance } from '@/utils/axiosCache'
 
 export const getStaticProps: GetStaticProps = async () => {
     try {
@@ -54,19 +55,24 @@ export default function Placement({ puChronicles: initialPuChronicles, error }: 
 
     const fetchResources = async () => {
         setIsLoading(true)
-        const res = await fetch('/api/placements/resources/get')
-        const data = await res.json()
-        if (!data.error) {
-            let resourcesByCategory: ResourceByCategory = {}
-            for (let i = 0; i < data.data.length; i++) {
-                if (resourcesByCategory[data.data[i].category] == undefined) {
-                    resourcesByCategory[data.data[i].category] = []
+        try {
+            const res = await axiosInstance.get('/api/placements/resources/get')
+            const data = res.data
+            if (!data.error) {
+                let resourcesByCategory: ResourceByCategory = {}
+                for (let i = 0; i < data.data.length; i++) {
+                    if (resourcesByCategory[data.data[i].category] == undefined) {
+                        resourcesByCategory[data.data[i].category] = []
+                    }
+                    resourcesByCategory[data.data[i].category].push(data.data[i])
                 }
-                resourcesByCategory[data.data[i].category].push(data.data[i])
+                setResources(resourcesByCategory)
+            } else {
+                toast.error('Error fetching resources')
             }
-            setResources(resourcesByCategory)
-        } else {
-            toast.error('Error fetching resources')
+        } catch (error) {
+            console.error('Error fetching placement resources:', error)
+            toast.error('Failed to fetch resources')
         }
         setIsLoading(false)
     }

@@ -5,6 +5,7 @@ import { toast } from 'react-toastify'
 import CustomToastContainer from '@/components/ToastContainer'
 import AutoCompleter from '@/components/AutoCompleter'
 import { higherStudiesCategories } from '@/data/higherstudies'
+import { axiosInstance } from '@/utils/axiosCache'
 
 export default function AddPlacementResources() {
     const [name, setName] = useState('')
@@ -21,25 +22,26 @@ export default function AddPlacementResources() {
             setIsLoading(false)
             return
         }
-        const res = await fetch('/api/placements/resources/add', {
-            method: 'POST',
-            body: JSON.stringify({
+        try {
+            const res = await axiosInstance.post('/api/placements/resources/add', {
                 name: name,
                 link: link,
                 created_by: created_by,
                 category: category,
-            }),
-            headers: { 'Content-Type': 'application/json' },
-        })
-        const data = await res.json()
-        if (data.error) {
-            toast.error(data.message)
-        } else {
-            toast.success('Thank you! Your resource was added successfully!')
-            setName('')
-            setLink('')
-            setCreatedBy('')
-            setCategory('')
+            })
+            const data = res.data
+            if (data.error) {
+                toast.error(data.message)
+            } else {
+                toast.success('Thank you! Your resource was added successfully!')
+                setName('')
+                setLink('')
+                setCreatedBy('')
+                setCategory('')
+            }
+        } catch (error) {
+            console.error('Error adding placement resource:', error)
+            toast.error('Failed to add resource')
         }
         setIsLoading(false)
     }
