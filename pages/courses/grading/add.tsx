@@ -1,4 +1,5 @@
-import Head from 'next/head'
+import { getMetaConfig } from '@/utils/meta-config';
+import Meta from '@/components/Meta';
 import { GetStaticProps } from 'next'
 import { useState, useEffect } from 'react'
 import Menu from '@/components/Menu'
@@ -220,18 +221,7 @@ export default function AddGrading({ depts }: { depts: string[] }) {
 
     return (
         <>
-            <Head>
-                <title>Course Grading.</title>
-                <meta
-                    name="description"
-                    content="Add course grading information"
-                />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
+            <Meta {...getMetaConfig('courses/grading/add')} />
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
                     <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">
@@ -321,7 +311,7 @@ export default function AddGrading({ depts }: { depts: string[] }) {
                             </>
                         ) : (
                             // Edit State
-                            <div className="w-full max-w-xl space-y-4">
+                            (<div className="w-full max-w-xl space-y-4">
                                 <div className="text-lg">
                                     <span className="font-bold">Course:</span>{' '}
                                     {course}
@@ -363,12 +353,12 @@ export default function AddGrading({ depts }: { depts: string[] }) {
                                         Submit
                                     </button>
                                 </div>
-                            </div>
+                            </div>)
                         )}
                     </>
                 </div>
             </div>
             <CustomToastContainer containerId="addGrading" />
         </>
-    )
+    );
 }

@@ -1,4 +1,5 @@
-import Head from 'next/head'
+import { getMetaConfig } from '@/utils/meta-config';
+import Meta from '@/components/Meta';
 import { useState } from 'react'
 import Menu from '@/components/Menu'
 import { toast } from 'react-toastify'
@@ -46,24 +47,7 @@ export default function AddPlacementResources() {
 
     return (
         <>
-            <Head>
-                <title>Placement Resources.</title>
-                <meta
-                    name="description"
-                    content="One stop place for your PS queries, handouts, and much more"
-                />
-                <meta
-                    name="keywords"
-                    content="BITS Pilani, Handouts, BPHC, Hyderabad Campus, BITS Hyderabad, BITS, Pilani, Handouts for you, handouts, for, you, bits, birla, institute, bits hyd, academics, practice school, ps, queries, ps cutoffs, ps2, ps1"
-                />
-                <meta name="robots" content="index, follow" />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-
+            <Meta {...getMetaConfig('placements/resources/add')} />
             {/* Search box */}
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
@@ -147,5 +131,5 @@ export default function AddPlacementResources() {
             </div>
             <CustomToastContainer containerId="addPlacementResources" />
         </>
-    )
+    );
 }

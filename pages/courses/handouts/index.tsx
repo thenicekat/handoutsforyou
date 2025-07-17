@@ -1,5 +1,6 @@
+import { getMetaConfig } from '@/utils/meta-config';
+import Meta from '@/components/Meta';
 import { GetStaticProps } from 'next'
-import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
 import Menu from '@/components/Menu'
@@ -78,28 +79,7 @@ export default function Home({ handoutsMap, error }: { handoutsMap: { [key: stri
 
     return (
         <>
-            <Head>
-                <title>Handouts.</title>
-                <meta
-                    name="description"
-                    content="A website containing all bits pilani hyderabad campus handouts"
-                />
-                <meta
-                    name="keywords"
-                    content="BITS Pilani, Handouts, BPHC, Hyderabad Campus, BITS Hyderabad, BITS, Pilani, Handouts for you, handouts, for, you, bits, birla, institute, bits hyd, academics"
-                />
-                <meta name="robots" content="index, follow" />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
-                <meta
-                    name="google-adsense-account"
-                    content="ca-pub-8538529975248100"
-                />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-
+            <Meta {...getMetaConfig('courses/handouts')} />
             {/* Search box */}
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
@@ -126,7 +106,6 @@ export default function Home({ handoutsMap, error }: { handoutsMap: { [key: stri
                     </>
                 </div>
             </div>
-
             {/* Handouts List */}
             {!isLoading && (
                 <div className="px-2 md:px-20">
@@ -147,12 +126,11 @@ export default function Home({ handoutsMap, error }: { handoutsMap: { [key: stri
                         })}
                 </div>
             )}
-
             {isLoading && (
                 <div className="grid place-items-center">
                     <p className="text-lg m-3">Loading...</p>
                 </div>
             )}
         </>
-    )
+    );
 }

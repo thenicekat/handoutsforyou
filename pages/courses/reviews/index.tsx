@@ -1,4 +1,5 @@
-import Head from 'next/head'
+import { getMetaConfig } from '@/utils/meta-config';
+import Meta from '@/components/Meta';
 import { useEffect, useState } from 'react'
 import Menu from '@/components/Menu'
 import { useSession } from 'next-auth/react'
@@ -72,24 +73,7 @@ export default function Reviews() {
 
     return (
         <>
-            <Head>
-                <title>Course Reviews.</title>
-                <meta
-                    name="description"
-                    content="One stop place for your PS queries, handouts, and much more"
-                />
-                <meta
-                    name="keywords"
-                    content="BITS Pilani, Handouts, BPHC, Hyderabad Campus, BITS Hyderabad, BITS, Pilani, Handouts for you, handouts, for, you, bits, birla, institute, bits hyd, academics, practice school, ps, queries, ps cutoffs, ps2, ps1"
-                />
-                <meta name="robots" content="index, follow" />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-
+            <Meta {...getMetaConfig('courses/reviews')} />
             {/* Search box */}
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
@@ -167,7 +151,6 @@ export default function Reviews() {
                     )}
                 </div>
             </div>
-
             {session && (
                 <div>
                     {/* Show the count of reviews */}
@@ -220,5 +203,5 @@ export default function Reviews() {
             )}
             <CustomToastContainer containerId="courseReviews" />
         </>
-    )
+    );
 }

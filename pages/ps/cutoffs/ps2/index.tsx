@@ -1,4 +1,5 @@
-import Head from 'next/head'
+import { getMetaConfig } from '@/utils/meta-config';
+import Meta from '@/components/Meta';
 import { useEffect, useState } from 'react'
 import Menu from '@/components/Menu'
 import Link from 'next/link'
@@ -168,24 +169,7 @@ export default function PS2Data() {
 
     return (
         <>
-            <Head>
-                <title>PS 2 Cutoffs.</title>
-                <meta
-                    name="description"
-                    content="One stop place for your PS queries, handouts, and much more"
-                />
-                <meta
-                    name="keywords"
-                    content="BITS Pilani, Handouts, BPHC, Hyderabad Campus, BITS Hyderabad, BITS, Pilani, Handouts for you, handouts, for, you, bits, birla, institute, bits hyd, academics, practice school, ps, queries, ps cutoffs, ps2, ps1"
-                />
-                <meta name="robots" content="index, follow" />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-
+            <Meta {...getMetaConfig('ps/cutoffs/ps2')} />
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
                     <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">
@@ -304,14 +288,12 @@ export default function PS2Data() {
                     </>
                 </div>
             </div>
-
             {isLoading && (
                 <div className="grid place-items-center py-16">
                     <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
                     <p className="text-lg mt-4">Loading data...</p>
                 </div>
             )}
-
             {!isLoading && (
                 <div>
                     <div className="flex justify-center">
@@ -419,5 +401,5 @@ export default function PS2Data() {
             )}
             <CustomToastContainer containerId="ps2Data" />
         </>
-    )
+    );
 }

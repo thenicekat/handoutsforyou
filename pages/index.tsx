@@ -1,9 +1,9 @@
-import Head from 'next/head'
 import { useState } from 'react'
 import CountUp from 'react-countup'
 import Link from 'next/link'
 import StarPrompt from '@/components/StarPrompt'
 import Menu from '@/components/Menu'
+import Meta from '@/components/Meta'
 
 type SummaryData = {
     handouts: number
@@ -142,27 +142,13 @@ export default function Home() {
 
     return (
         <>
-            <Head>
-                <title>Handouts for You.</title>
-                <meta
-                    name="description"
-                    content="A website containing all bits pilani hyderabad campus handouts"
-                />
-                <meta
-                    name="keywords"
-                    content="BITS Pilani, Handouts, BPHC, Hyderabad Campus, BITS Hyderabad, BITS, Pilani, Handouts for you, handouts, for, you, bits, birla, institute, bits hyd, academics"
-                />
-                <meta name="robots" content="index, follow" />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
+            <Meta>
+                {/* Extra meta specific to this page */}
                 <meta
                     name="google-adsense-account"
                     content="ca-pub-8538529975248100"
                 />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
+            </Meta>
 
             <Menu doNotShowMenu={true} />
             <StarPrompt setStarCount={setStarCount} />
