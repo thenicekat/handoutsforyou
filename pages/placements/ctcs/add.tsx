@@ -1,5 +1,5 @@
-import { getMetaConfig } from '@/config/meta';
-import Meta from '@/components/Meta';
+import { getMetaConfig } from '@/config/meta'
+import Meta from '@/components/Meta'
 import { useState } from 'react'
 import Menu from '@/components/Menu'
 import { toast } from 'react-toastify'
@@ -246,5 +246,5 @@ export default function AddPlacementCTCs() {
             </div>
             <CustomToastContainer containerId="addPlacementCTC" />
         </>
-    );
+    )
 }

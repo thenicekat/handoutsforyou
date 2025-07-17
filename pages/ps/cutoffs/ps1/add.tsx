@@ -1,5 +1,5 @@
-import { getMetaConfig } from '@/config/meta';
-import Meta from '@/components/Meta';
+import { getMetaConfig } from '@/config/meta'
+import Meta from '@/components/Meta'
 import { useState, useEffect } from 'react'
 import Menu from '@/components/Menu'
 import { ps1Years, psAllotmentRounds } from '@/config/years_sems'
@@ -338,5 +338,5 @@ export default function AddPS1Response() {
             </div>
             <CustomToastContainer containerId="addPS1Response" />
         </>
-    );
+    )
 }

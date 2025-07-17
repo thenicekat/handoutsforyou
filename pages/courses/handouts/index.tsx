@@ -1,5 +1,5 @@
-import { getMetaConfig } from '@/config/meta';
-import Meta from '@/components/Meta';
+import { getMetaConfig } from '@/config/meta'
+import Meta from '@/components/Meta'
 import { GetStaticProps } from 'next'
 import { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
@@ -21,36 +21,45 @@ export const getStaticProps: GetStaticProps = async () => {
         const handoutsFolderId = process.env.GOOGLE_DRIVE_HANDOUTS_FOLDER_ID
 
         if (!handoutsFolderId) {
-            console.error('GOOGLE_DRIVE_HANDOUTS_FOLDER_ID environment variable is not set')
+            console.error(
+                'GOOGLE_DRIVE_HANDOUTS_FOLDER_ID environment variable is not set'
+            )
             return {
                 props: {
                     handoutsMap: {},
-                    error: 'Google Drive configuration missing'
+                    error: 'Google Drive configuration missing',
                 },
             }
         }
 
-        const handoutsMap = await googleDriveService.getHandouts(handoutsFolderId)
+        const handoutsMap =
+            await googleDriveService.getHandouts(handoutsFolderId)
 
         return {
             props: {
                 handoutsMap,
             },
-            revalidate: 24 * 3600 // Regenerate every 12 hours
+            revalidate: 24 * 3600, // Regenerate every 12 hours
         }
     } catch (error) {
         console.error('Error fetching handouts:', error)
         return {
             props: {
                 handoutsMap: {},
-                error: 'Failed to fetch handouts from Google Drive'
+                error: 'Failed to fetch handouts from Google Drive',
             },
-            revalidate: 300 // Try again in 5 minutes on error
+            revalidate: 300, // Try again in 5 minutes on error
         }
     }
 }
 
-export default function Home({ handoutsMap, error }: { handoutsMap: { [key: string]: any[] }, error?: string }) {
+export default function Home({
+    handoutsMap,
+    error,
+}: {
+    handoutsMap: { [key: string]: any[] }
+    error?: string
+}) {
     const [search, setSearch] = useState('')
     const [actualSearch, setActualSearch] = useState('')
     const [isLoading, setIsLoading] = useState(false)
@@ -70,7 +79,9 @@ export default function Home({ handoutsMap, error }: { handoutsMap: { [key: stri
         return (
             <div className="grid place-items-center min-h-screen">
                 <div className="text-center">
-                    <h1 className="text-2xl text-red-500 mb-4">Error Loading Handouts</h1>
+                    <h1 className="text-2xl text-red-500 mb-4">
+                        Error Loading Handouts
+                    </h1>
                     <p className="text-gray-600">{error}</p>
                 </div>
             </div>
@@ -132,5 +143,5 @@ export default function Home({ handoutsMap, error }: { handoutsMap: { [key: stri
                 </div>
             )}
         </>
-    );
+    )
 }

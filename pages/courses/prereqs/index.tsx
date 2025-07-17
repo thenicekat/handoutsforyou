@@ -1,5 +1,5 @@
-import { getMetaConfig } from '@/config/meta';
-import Meta from '@/components/Meta';
+import { getMetaConfig } from '@/config/meta'
+import Meta from '@/components/Meta'
 import { GetStaticProps } from 'next'
 import { useState, useEffect } from 'react'
 import Menu from '@/components/Menu'
@@ -108,5 +108,5 @@ export default function Prereqs({ prereqs }: { prereqs: PreReqGroup[] }) {
                     ))}
             </div>
         </>
-    );
+    )
 }

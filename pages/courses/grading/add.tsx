@@ -1,5 +1,5 @@
-import { getMetaConfig } from '@/config/meta';
-import Meta from '@/components/Meta';
+import { getMetaConfig } from '@/config/meta'
+import Meta from '@/components/Meta'
 import { GetStaticProps } from 'next'
 import { useState, useEffect } from 'react'
 import Menu from '@/components/Menu'
@@ -311,7 +311,7 @@ export default function AddGrading({ depts }: { depts: string[] }) {
                             </>
                         ) : (
                             // Edit State
-                            (<div className="w-full max-w-xl space-y-4">
+                            <div className="w-full max-w-xl space-y-4">
                                 <div className="text-lg">
                                     <span className="font-bold">Course:</span>{' '}
                                     {course}
@@ -353,12 +353,12 @@ export default function AddGrading({ depts }: { depts: string[] }) {
                                         Submit
                                     </button>
                                 </div>
-                            </div>)
+                            </div>
                         )}
                     </>
                 </div>
             </div>
             <CustomToastContainer containerId="addGrading" />
         </>
-    );
+    )
 }

@@ -35,4 +35,4 @@ export interface PSChroniclesResponse {
     message: string
     data: PSChronicles
     error: boolean
-} 
+}

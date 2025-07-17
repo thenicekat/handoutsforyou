@@ -1,7 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { googleDriveService } from '@/utils/googleDrive'
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+    req: NextApiRequest,
+    res: NextApiResponse
+) {
     if (req.method !== 'GET') {
         return res.status(405).json({ message: 'Method not allowed' })
     }
@@ -10,7 +13,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const rootFolderId = process.env.GOOGLE_DRIVE_PYQS_FOLDER_ID
 
         if (!rootFolderId) {
-            return res.status(500).json({ message: 'Google Drive PYQs folder ID not configured' })
+            return res
+                .status(500)
+                .json({ message: 'Google Drive PYQs folder ID not configured' })
         }
 
         const pyqs = await googleDriveService.listFolders(rootFolderId)
@@ -25,4 +30,4 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             message: 'Failed to fetch PYQs: ' + error,
         })
     }
-} 
+}

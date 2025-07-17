@@ -1,5 +1,5 @@
-import { getMetaConfig } from '@/config/meta';
-import Meta from '@/components/Meta';
+import { getMetaConfig } from '@/config/meta'
+import Meta from '@/components/Meta'
 import Link from 'next/link'
 import Menu from '@/components/Menu'
 
@@ -133,5 +133,5 @@ export default function PS() {
                 </div>
             </div>
         </>
-    );
+    )
 }
