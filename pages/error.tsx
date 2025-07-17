@@ -63,7 +63,7 @@ export default function ErrorPage() {
                 </div>
             </nav>
             <div className="min-h-screen flex flex-col items-center pt-32 p-4">
-                <Meta {...getMetaConfig('error')} />
+                <Meta />
 
                 <div className="w-full md:w-2/5 mx-auto">
                     <StatusCode

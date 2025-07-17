@@ -94,7 +94,7 @@ export default function AddPS2Review() {
 
     return (
         <>
-            <Meta {...getMetaConfig('ps/reviews/ps2/add')} />
+            <Meta {...getMetaConfig('ps/reviews/ps2')} />
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
                     <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">
@@ -168,11 +168,11 @@ export default function AddPS2Review() {
                                         placeholder={
                                             selectedResponse
                                                 ? 'You are writing a review for the following PS2 response: ' +
-                                                  selectedResponse?.station +
-                                                  ' ' +
-                                                  selectedResponse?.year_and_sem +
-                                                  ' ' +
-                                                  selectedResponse?.allotment_round
+                                                selectedResponse?.station +
+                                                ' ' +
+                                                selectedResponse?.year_and_sem +
+                                                ' ' +
+                                                selectedResponse?.allotment_round
                                                 : 'Select a PS2 response to write a review...'
                                         }
                                         onChange={(e) =>

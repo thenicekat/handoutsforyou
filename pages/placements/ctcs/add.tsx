@@ -58,7 +58,7 @@ export default function AddPlacementCTCs() {
 
     return (
         <>
-            <Meta {...getMetaConfig('placements/ctcs/add')} />
+            <Meta {...getMetaConfig('placements/ctcs')} />
             {/* Search box */}
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">

@@ -47,7 +47,7 @@ export default function AddPlacementResources() {
 
     return (
         <>
-            <Meta {...getMetaConfig('placements/resources/add')} />
+            <Meta {...getMetaConfig('placements/resources')} />
             {/* Search box */}
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">

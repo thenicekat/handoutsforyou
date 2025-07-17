@@ -44,7 +44,7 @@ export default function SICompanies() {
 
     return (
         <>
-            <Meta {...getMetaConfig('si/companies')} />
+            <Meta {...getMetaConfig('si')} />
             {/* Search box */}
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">

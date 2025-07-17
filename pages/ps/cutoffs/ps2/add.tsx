@@ -187,7 +187,7 @@ export default function AddPS2Response() {
 
     return (
         <>
-            <Meta {...getMetaConfig('ps/cutoffs/ps2/add')} />
+            <Meta {...getMetaConfig('ps/cutoffs/ps2')} />
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
                     <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">

@@ -37,9 +37,9 @@ export default function ChroniclePage() {
 
     return (
         <>
-            <Meta {...getMetaConfig('si/chronicles/[slug]')} />
+            <Meta {...getMetaConfig('si')} />
             {/* Search box */}
-            <div className="grid place-items-center">
+            < div className="grid place-items-center" >
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
                     <h1 className="text-4xl pt-[50px] pb-[20px] px-[15px] text-primary">
                         Summer Internships.
@@ -51,7 +51,7 @@ export default function ChroniclePage() {
                     NOTE: This content was scrapped from SI Chronicles and
                     belongs to Placement Unit
                 </div>
-            </div>
+            </div >
             <div className="place-items-center p-5">
                 {chronicles.map((chron) => (
                     <div

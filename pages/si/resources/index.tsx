@@ -82,7 +82,7 @@ export default function SummerInternships({ siChronicles, error }: { siChronicle
 
     return (
         <>
-            <Meta {...getMetaConfig('si/resources')} />
+            <Meta {...getMetaConfig('si')} />
             {/* Search box */}
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">

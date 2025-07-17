@@ -58,39 +58,59 @@ export const metaConfigs: Record<string, MetaConfig> = {
         title: 'Summer Internships.',
         description: 'One stop place for your PS queries, handouts, and much more',
     }),
-    'placements/resources/add': createMeta({
-        title: 'Placement Resources.',
-        description: 'One stop place for your PS queries, handouts, and much more',
-    }),
     'higherstudies': createMeta({
         title: 'Higher Studies Resources.',
         description: 'One stop place for your PS queries, handouts, and much more',
     }),
-    'ps/reviews/ps1/add': createMeta({
-        title: 'PS Reviews.',
+    'ps/chronicles': createMeta({
+        title: 'PS Chronicles.',
+        description: 'One stop place for your PS queries, handouts, and much more',
+    }),
+    'ps/cutoffs/ps1': createMeta({
+        title: 'PS1 Cutoffs',
+        description: 'One stop place for your PS queries, handouts, and much more',
+    }),
+    'ps/cutoffs/ps2': createMeta({
+        title: 'PS2 Cutoffs',
         description: 'One stop place for your PS queries, handouts, and much more',
     }),
     'ps/reviews/ps1': createMeta({
         title: 'PS1 Reviews',
         description: 'One stop place for your PS queries, handouts, and much more',
     }),
-    handouts: createMeta({
-        title: 'Handouts.',
-        description: 'A website containing all BITS Pilani Hyderabad campus handouts',
+    'ps/reviews/ps2': createMeta({
+        title: 'PS2 Reviews',
+        description: 'One stop place for your PS queries, handouts, and much more',
     }),
-    'placements/ctcs/add': createMeta({
+    'placements/ctcs': createMeta({
         title: 'Placement CTCs.',
         description: 'One stop place for your PS queries, handouts, and much more',
     }),
-    'course/resources': createMeta({
+    'placements/resources': createMeta({
+        title: 'Placement Resources.',
+        description: 'One stop place for your PS queries, handouts, and much more',
+    }),
+    'courses/handouts': createMeta({
+        title: 'Course Handouts.',
+        description: 'A website containing all BITS Pilani Hyderabad campus handouts',
+    }),
+    'courses/resources': createMeta({
         title: 'Course Resources.',
         description: 'Handouts app for BITS Hyderabad',
     }),
-    'course/pyqs': createMeta({
+    'courses/pyqs': createMeta({
         title: 'Course PYQs.',
         description: 'A website containing all BITS Pilani Hyderabad campus handouts',
     }),
-    'course/reviews': createMeta({
+    'courses/prereqs': createMeta({
+        title: 'Course Prerequisites.',
+        description: 'A website containing all BITS Pilani Hyderabad campus handouts',
+    }),
+    'courses/grading': createMeta({
+        title: 'Course Grading.',
+        description: 'A website containing all BITS Pilani Hyderabad campus handouts',
+    }),
+    'courses/reviews': createMeta({
         title: 'Course Reviews.',
         description: 'One stop place for your PS queries, handouts, and much more',
     }),
