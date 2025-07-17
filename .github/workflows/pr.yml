@@ -12,6 +12,10 @@ jobs:
 
         steps:
             - uses: actions/checkout@v4
+              with:
+                  repository: ${{ github.event.pull_request.head.repo.full_name }}
+                  ref: ${{ github.event.pull_request.head.ref }}
+                  token: ${{ secrets.GITHUB_TOKEN }}
 
             - name: Setup Node.js
               uses: actions/setup-node@v4
@@ -46,4 +50,4 @@ jobs:
               with:
                   commit_message: 'style: format code with prettier'
                   branch: ${{ github.event.pull_request.head.ref }}
-                  file_pattern: '!pnpm-lock.yaml'
+                  file_pattern: ':(exclude)pnpm-lock.yaml'
