@@ -2,7 +2,7 @@ import { getMetaConfig } from '@/utils/meta-config';
 import Meta from '@/components/Meta';
 import { useState } from 'react'
 import Menu from '@/components/Menu'
-import CustomToastContainter from '@/components/ToastContainer'
+import CustomToastContainer from '@/components/ToastContainer'
 import { toast } from 'react-toastify'
 import {
     RegExpMatcher,
@@ -83,7 +83,7 @@ export default function AddReview() {
                     </div>
                 </div>
             </div>
-            <CustomToastContainter containerId="addRant" />
+            <CustomToastContainer containerId="addRant" />
         </>
     );
 }

@@ -5,7 +5,7 @@ import Menu from '@/components/Menu'
 import { courses } from '@/data/courses'
 import { profs } from '@/data/profs'
 import AutoCompleter from '@/components/AutoCompleter'
-import CustomToastContainter from '@/components/ToastContainer'
+import CustomToastContainer from '@/components/ToastContainer'
 import { toast } from 'react-toastify'
 
 export default function AddReview() {
@@ -74,7 +74,7 @@ export default function AddReview() {
 
     return (
         <>
-            <Meta {...getMetaConfig('courses/reviews/add')} />
+            <Meta {...getMetaConfig('courses/reviews')} />
             {/* Search box */}
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
@@ -119,7 +119,7 @@ export default function AddReview() {
                     </>
                 </div>
             </div>
-            <CustomToastContainter containerId="addReview" />
+            <CustomToastContainer containerId="addReview" />
         </>
     );
 }

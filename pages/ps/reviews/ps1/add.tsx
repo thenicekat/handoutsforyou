@@ -2,7 +2,7 @@ import { getMetaConfig } from '@/utils/meta-config';
 import Meta from '@/components/Meta';
 import { useState, useEffect } from 'react'
 import Menu from '@/components/Menu'
-import CustomToastContainter from '@/components/ToastContainer'
+import CustomToastContainer from '@/components/ToastContainer'
 import { toast } from 'react-toastify'
 import { PS1Item } from '@/types/PSData'
 import Link from 'next/link'
@@ -194,7 +194,7 @@ export default function AddPS1Review() {
                     </>
                 </div>
             </div>
-            <CustomToastContainter containerId="addPSReview" />
+            <CustomToastContainer containerId="addPSReview" />
         </>
     );
 }

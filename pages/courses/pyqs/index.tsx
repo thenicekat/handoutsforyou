@@ -242,7 +242,7 @@ export default function PYQs() {
                     <div className="max-w-6xl mx-auto">
                         {!selectedCourse ? (
                             // Show courses list
-                            (<div>
+                            <div>
                                 <h3 className="text-2xl font-bold mb-6 text-center">Select a Course</h3>
                                 {courses.length === 0 ? (
                                     <div className="text-center py-20">
@@ -267,10 +267,10 @@ export default function PYQs() {
                                         ))}
                                     </div>
                                 )}
-                            </div>)
+                            </div>
                         ) : (
                             // Show PYQs for selected course
-                            (<div>
+                            <div>
                                 <div className="flex items-center justify-between mb-6">
                                     <h3 className="text-2xl font-bold">
                                         PYQs for {selectedCourse.name}
@@ -329,7 +329,7 @@ export default function PYQs() {
                                         ))}
                                     </div>
                                 )}
-                            </div>)
+                            </div>
                         )}
                     </div>
                 )}
