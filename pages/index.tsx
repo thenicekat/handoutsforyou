@@ -167,12 +167,12 @@ export default function Home() {
             <Menu doNotShowMenu={true} />
             <StarPrompt setStarCount={setStarCount} />
 
-            <div className="py-8">
+            <div className="pt-6 pb-1">
                 <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center">
+                    <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center pl-5">
                         Handouts4U.
                     </h1>
-                    <p className="text-md md:text-lg text-white mb-6 text-center">
+                    <p className="text-md md:text-lg text-white mb-4 text-center pr-5">
                         Your complete resource hub.
                         <br />
                         Thank you for making this project a huge success! 🤍
@@ -222,6 +222,33 @@ export default function Home() {
                 </div>
 
                 <div className="text-center mt-8">
+
+                {/* Useful Links Panel - Redesigned */}
+                <div className="bg-white rounded-lg shadow-lg border border-gray-100 w-full max-w-xl mx-auto my-6 pt-5 pr-6 pb-3 pl-6 text-center">
+                    <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">List of some useful Links:</h2>
+                    <div className="mb-6">
+                        <h3 className="text-lg font-semibold text-gray-800 mb-2">Official Bits Links:</h3>
+                        <div className="flex flex-wrap gap-2 mb-2 justify-center">
+                            <a href="https://erp.bits-pilani.ac.in" target="_blank" rel="noopener noreferrer" className="bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-medium shadow hover:bg-gray-300 transition">ERP</a>
+                            <a href="https://swd.bits-hyderabad.ac.in/login-page" target="_blank" rel="noopener noreferrer" className="bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-medium shadow hover:bg-gray-300 transition">SWD</a>
+                            <a href="https://lms.erp.bits-pilani.ac.in/moodle/my/" target="_blank" rel="noopener noreferrer" className="bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-medium shadow hover:bg-gray-300 transition">LMS</a>
+                            <a href="https://bitshyd.impartus.com/login/#/" target="_blank" rel="noopener noreferrer" className="bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-medium shadow hover:bg-gray-300 transition">Impartus</a>
+                            <a href="http://172.16.100.176:8080/jspui/" target="_blank" rel="noopener noreferrer" className="bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-medium shadow hover:bg-gray-300 transition">Digital Library</a>
+                        </div>
+                        <hr className="my-4 border-gray-300" />
+                        <h3 className="text-lg font-semibold text-gray-800 mb-2">Made by Students:</h3>
+                        <div className="flex flex-wrap gap-2 mb-2 justify-center">
+                            <a href="https://lex.crux-bphc.com/" target="_blank" rel="noopener noreferrer" className="bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-medium shadow hover:bg-gray-300 transition">LeX</a>
+                            <a href="https://tabulr.net/" target="_blank" rel="noopener noreferrer" className="bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-medium shadow hover:bg-gray-300 transition">Tabulr</a>
+                            <a href="https://www.chrono.crux-bphc.com/login" target="_blank" rel="noopener noreferrer" className="bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-medium shadow hover:bg-gray-300 transition">ChronoFactorem</a>
+                            <a href="https://ce-bphc.vercel.app/" target="_blank" rel="noopener noreferrer" className="bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-medium shadow hover:bg-gray-300 transition">Campus Essentials</a>
+                            <a href="https://draft.chrono.crux-bphc.com/" target="_blank" rel="noopener noreferrer" className="bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-medium shadow hover:bg-gray-300 transition">Draft ChronoFactorem</a>
+                            <a href="https://swd.bits-hyderabad.ac.in/dcpphub_status/" target="_blank" rel="noopener noreferrer" className="bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-medium shadow hover:bg-gray-300 transition">DC++ Hub Status</a>
+                            <a href="https://quietspacebphc.vercel.app/" target="_blank" rel="noopener noreferrer" className="bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-medium shadow hover:bg-gray-300 transition">Quiet-Space</a>
+                        </div>
+                    </div>
+                </div>
+
                     <p className="text-lg font-medium mb-4"></p>
                     <p className="text-sm text-white">
                         Vashisth Choudhari, Pratyush Nair, Anagha G, Adarsh Das,
