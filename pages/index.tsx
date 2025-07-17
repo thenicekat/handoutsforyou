@@ -39,6 +39,31 @@ const RESOURCE_COUNTS: SummaryData = {
     higherStudiesResources: 2,
 }
 
+const USEFUL_LINKS = [
+    {
+        title: "Official Bits Links",
+        links: [
+            { name: "ERP", url: "https://erp.bits-pilani.ac.in" },
+            { name: "SWD", url: "https://swd.bits-hyderabad.ac.in/login-page" },
+            { name: "LMS", url: "https://lms.erp.bits-pilani.ac.in/moodle/my/" },
+            { name: "Impartus", url: "https://bitshyd.impartus.com/login/#/" },
+            { name: "Digital Library", url: "http://172.16.100.176:8080/jspui/" },
+        ],
+    },
+    {
+        title: "Made by Students",
+        links: [
+            { name: "LeX", url: "https://lex.crux-bphc.com/" },
+            { name: "Tabulr", url: "https://tabulr.net/" },
+            { name: "ChronoFactorem", url: "https://www.chrono.crux-bphc.com/login" },
+            { name: "Campus Essentials", url: "https://ce-bphc.vercel.app/" },
+            { name: "Draft ChronoFactorem", url: "https://draft.chrono.crux-bphc.com/" },
+            { name: "DC++ Hub Status", url: "https://swd.bits-hyderabad.ac.in/dcpphub_status/" },
+            { name: "Quiet-Space", url: "https://quietspacebphc.vercel.app/" },
+        ],
+    },
+];
+
 export default function Home() {
     const [starCount, setStarCount] = useState(0)
 
@@ -167,12 +192,12 @@ export default function Home() {
             <Menu doNotShowMenu={true} />
             <StarPrompt setStarCount={setStarCount} />
 
-            <div className="pt-6 pb-1">
+            <div className="pt-7 pb-1">
                 <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center pl-5">
+                    <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center">
                         Handouts4U.
                     </h1>
-                    <p className="text-md md:text-lg text-white mb-4 text-center pr-5">
+                    <p className="text-md md:text-lg text-white mb-4 text-center">
                         Your complete resource hub.
                         <br />
                         Thank you for making this project a huge success! 🤍
@@ -223,31 +248,30 @@ export default function Home() {
 
                 <div className="text-center mt-8">
 
-                {/* Useful Links Panel - Redesigned */}
-                <div className="bg-white rounded-lg shadow-lg border border-gray-100 w-full max-w-xl mx-auto my-6 pt-5 pr-6 pb-3 pl-6 text-center">
-                    <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">List of some useful Links:</h2>
-                    <div className="mb-6">
-                        <h3 className="text-lg font-semibold text-gray-800 mb-2">Official Bits Links:</h3>
-                        <div className="flex flex-wrap gap-2 mb-2 justify-center">
-                            <a href="https://erp.bits-pilani.ac.in" target="_blank" rel="noopener noreferrer" className="bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-medium shadow hover:bg-gray-300 transition">ERP</a>
-                            <a href="https://swd.bits-hyderabad.ac.in/login-page" target="_blank" rel="noopener noreferrer" className="bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-medium shadow hover:bg-gray-300 transition">SWD</a>
-                            <a href="https://lms.erp.bits-pilani.ac.in/moodle/my/" target="_blank" rel="noopener noreferrer" className="bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-medium shadow hover:bg-gray-300 transition">LMS</a>
-                            <a href="https://bitshyd.impartus.com/login/#/" target="_blank" rel="noopener noreferrer" className="bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-medium shadow hover:bg-gray-300 transition">Impartus</a>
-                            <a href="http://172.16.100.176:8080/jspui/" target="_blank" rel="noopener noreferrer" className="bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-medium shadow hover:bg-gray-300 transition">Digital Library</a>
-                        </div>
-                        <hr className="my-4 border-gray-300" />
-                        <h3 className="text-lg font-semibold text-gray-800 mb-2">Made by Students:</h3>
-                        <div className="flex flex-wrap gap-2 mb-2 justify-center">
-                            <a href="https://lex.crux-bphc.com/" target="_blank" rel="noopener noreferrer" className="bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-medium shadow hover:bg-gray-300 transition">LeX</a>
-                            <a href="https://tabulr.net/" target="_blank" rel="noopener noreferrer" className="bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-medium shadow hover:bg-gray-300 transition">Tabulr</a>
-                            <a href="https://www.chrono.crux-bphc.com/login" target="_blank" rel="noopener noreferrer" className="bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-medium shadow hover:bg-gray-300 transition">ChronoFactorem</a>
-                            <a href="https://ce-bphc.vercel.app/" target="_blank" rel="noopener noreferrer" className="bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-medium shadow hover:bg-gray-300 transition">Campus Essentials</a>
-                            <a href="https://draft.chrono.crux-bphc.com/" target="_blank" rel="noopener noreferrer" className="bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-medium shadow hover:bg-gray-300 transition">Draft ChronoFactorem</a>
-                            <a href="https://swd.bits-hyderabad.ac.in/dcpphub_status/" target="_blank" rel="noopener noreferrer" className="bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-medium shadow hover:bg-gray-300 transition">DC++ Hub Status</a>
-                            <a href="https://quietspacebphc.vercel.app/" target="_blank" rel="noopener noreferrer" className="bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-medium shadow hover:bg-gray-300 transition">Quiet-Space</a>
-                        </div>
+                    <div className="bg-white rounded-lg shadow-lg border border-gray-100 w-full max-w-xl mx-auto my-6 pt-5 pr-6 pb-3 pl-6 text-center">
+                        <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">List of some useful Links:</h2>
+
+                        {USEFUL_LINKS.map((section, idx) => (
+                            <div className="mb-6" key={idx}>
+                                <h3 className="text-lg font-semibold text-gray-800 mb-2">{section.title}:</h3>
+                                <div className="flex flex-wrap gap-2 mb-2 justify-center">
+                                    {section.links.map((link, linkIdx) => (
+                                        <a
+                                            key={linkIdx}
+                                            href={link.url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-medium shadow hover:bg-gray-300 transition"
+                                        >
+                                            {link.name}
+                                        </a>
+                                    ))}
+                                </div>
+                                {idx < USEFUL_LINKS.length - 1 && <hr className="my-4 border-gray-300" />}
+                            </div>
+                        ))}
                     </div>
-                </div>
+
 
                     <p className="text-lg font-medium mb-4"></p>
                     <p className="text-sm text-white">
