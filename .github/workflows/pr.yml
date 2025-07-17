@@ -3,7 +3,7 @@ on: pull_request_target
 
 jobs:
     build:
-        name: Build and Format Check
+        name: Build and Format
         runs-on: ubuntu-latest
         environment: Github
 

@@ -1,6 +1,7 @@
+import { getMetaConfig } from '@/config/meta';
+import Meta from '@/components/Meta';
 import { useState } from 'react'
 import Menu from '@/components/Menu'
-import Head from 'next/head'
 import { FaqModel } from '@/types/FaqModel'
 
 export default function Faqs() {
@@ -148,25 +149,7 @@ export default function Faqs() {
 
     return (
         <>
-            <Head>
-                <title>FAQs.</title>
-                <meta
-                    name="description"
-                    content="Handouts app for bits hyderabad"
-                />
-                <meta name="description" content="BPHC Handouts" />
-                <meta name="description" content="Handouts for you." />
-                <meta
-                    name="description"
-                    content="handouts, bits pilani hyderabad campus"
-                />
-                <meta name="robots" content="index, follow" />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
+            <Meta {...getMetaConfig('faqs')} />
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
                     <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px]">
@@ -183,7 +166,6 @@ export default function Faqs() {
                     />
                 </div>
             </div>
-
             <div className="grid p-5">
                 <div className="w-50 flex flex-col justify-between py-2">
                     {faqs
@@ -209,5 +191,5 @@ export default function Faqs() {
                 </div>
             </div>
         </>
-    )
+    );
 }

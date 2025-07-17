@@ -1,7 +1,8 @@
-import Head from 'next/head'
+import { getMetaConfig } from '@/config/meta';
+import Meta from '@/components/Meta';
 import { useState, useEffect } from 'react'
 import Menu from '@/components/Menu'
-import CustomToastContainter from '@/components/ToastContainer'
+import CustomToastContainer from '@/components/ToastContainer'
 import { toast } from 'react-toastify'
 import { PS2Item } from '@/types/PSData'
 import Link from 'next/link'
@@ -93,24 +94,7 @@ export default function AddPS2Review() {
 
     return (
         <>
-            <Head>
-                <title>PS Reviews.</title>
-                <meta
-                    name="description"
-                    content="One stop place for your PS queries, handouts, and much more"
-                />
-                <meta
-                    name="keywords"
-                    content="BITS Pilani, Handouts, BPHC, Hyderabad Campus, BITS Hyderabad, BITS, Pilani, Handouts for you, handouts, for, you, bits, birla, institute, bits hyd, academics, practice school, ps, queries, ps cutoffs, ps2, ps1"
-                />
-                <meta name="robots" content="index, follow" />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-
+            <Meta {...getMetaConfig('ps/reviews/ps2')} />
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
                     <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">
@@ -184,11 +168,11 @@ export default function AddPS2Review() {
                                         placeholder={
                                             selectedResponse
                                                 ? 'You are writing a review for the following PS2 response: ' +
-                                                  selectedResponse?.station +
-                                                  ' ' +
-                                                  selectedResponse?.year_and_sem +
-                                                  ' ' +
-                                                  selectedResponse?.allotment_round
+                                                selectedResponse?.station +
+                                                ' ' +
+                                                selectedResponse?.year_and_sem +
+                                                ' ' +
+                                                selectedResponse?.allotment_round
                                                 : 'Select a PS2 response to write a review...'
                                         }
                                         onChange={(e) =>
@@ -211,8 +195,7 @@ export default function AddPS2Review() {
                     </>
                 </div>
             </div>
-
-            <CustomToastContainter containerId="addPSReview" />
+            <CustomToastContainer containerId="addPSReview" />
         </>
-    )
+    );
 }

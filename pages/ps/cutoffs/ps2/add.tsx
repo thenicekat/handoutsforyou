@@ -1,10 +1,11 @@
-import Head from 'next/head'
+import { getMetaConfig } from '@/config/meta';
+import Meta from '@/components/Meta';
 import { useState, useEffect } from 'react'
 import Menu from '@/components/Menu'
 import { toast } from 'react-toastify'
 import CustomToastContainer from '@/components/ToastContainer'
 import AutoCompleter from '@/components/AutoCompleter'
-import { ps2Semesters, psAllotmentRounds } from '@/data/years_sems'
+import { ps2Semesters, psAllotmentRounds } from '@/config/years_sems'
 import { useRouter } from 'next/router'
 
 export default function AddPS2Response() {
@@ -186,26 +187,7 @@ export default function AddPS2Response() {
 
     return (
         <>
-            <Head>
-                <title>
-                    {isEditMode ? 'Edit PS2 Response' : 'Add PS2 Response'}
-                </title>
-                <meta
-                    name="description"
-                    content="One stop place for your PS queries, handouts, and much more"
-                />
-                <meta
-                    name="keywords"
-                    content="BITS Pilani, Handouts, BPHC, Hyderabad Campus, BITS Hyderabad, BITS, Pilani, Handouts for you, handouts, for, you, bits, birla, institute, bits hyd, academics, practice school, ps, queries, ps cutoffs, ps2, ps1"
-                />
-                <meta name="robots" content="index, follow" />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-
+            <Meta {...getMetaConfig('ps/cutoffs/ps2')} />
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
                     <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">
@@ -481,5 +463,5 @@ export default function AddPS2Response() {
             </div>
             <CustomToastContainer containerId="addPS2Response" />
         </>
-    )
+    );
 }

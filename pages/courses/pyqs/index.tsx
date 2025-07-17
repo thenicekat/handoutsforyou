@@ -1,12 +1,13 @@
-import Head from 'next/head'
+import { getMetaConfig } from '@/config/meta';
+import Meta from '@/components/Meta';
 import Menu from '@/components/Menu'
 import { useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
 import AutoCompleter from '@/components/AutoCompleter'
-import { pyqYears } from '@/data/years_sems'
-import { courses as courseNames } from '@/data/courses'
+import { pyqYears } from '@/config/years_sems'
+import { courses as courseNames } from '@/config/courses'
 import { Course, PYQFile, PYQsByYear } from '@/types/PYQs'
-import { profs } from '@/data/profs'
+import { profs } from '@/config/profs'
 import CustomToastContainer from '@/components/ToastContainer'
 
 export default function PYQs() {
@@ -131,28 +132,7 @@ export default function PYQs() {
 
     return (
         <>
-            <Head>
-                <title>Course PYQs.</title>
-                <meta
-                    name="description"
-                    content="A website containing all bits pilani hyderabad campus handouts"
-                />
-                <meta
-                    name="keywords"
-                    content="BITS Pilani, Handouts, BPHC, Hyderabad Campus, BITS Hyderabad, BITS, Pilani, Handouts for you, handouts, for, you, bits, birla, institute, bits hyd, academics"
-                />
-                <meta name="robots" content="index, follow" />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
-                <meta
-                    name="google-adsense-account"
-                    content="ca-pub-8538529975248100"
-                />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-
+            <Meta {...getMetaConfig('courses/pyqs')} />
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
                     <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">
@@ -161,7 +141,6 @@ export default function PYQs() {
                     <Menu />
                 </div>
             </div>
-
             {/* Upload Form Modal */}
             {showUploadForm && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -237,7 +216,6 @@ export default function PYQs() {
                     </div>
                 </div>
             )}
-
             {/* PYQs Content */}
             <div className="px-2 md:px-20">
                 <div className="grid place-items-center text-lg p-10">
@@ -307,7 +285,6 @@ export default function PYQs() {
                                         ← Back to Courses
                                     </button>
                                 </div>
-
                                 {loadingPyqs ? (
                                     <div className="flex justify-center items-center py-20">
                                         <div className="loading loading-spinner loading-lg"></div>
@@ -357,8 +334,7 @@ export default function PYQs() {
                     </div>
                 )}
             </div>
-
             <CustomToastContainer containerId="coursePyqs" />
         </>
-    )
+    );
 }

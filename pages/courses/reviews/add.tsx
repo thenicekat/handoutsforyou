@@ -1,10 +1,11 @@
-import Head from 'next/head'
+import { getMetaConfig } from '@/config/meta';
+import Meta from '@/components/Meta';
 import { useState, useEffect } from 'react'
 import Menu from '@/components/Menu'
-import { courses } from '@/data/courses'
-import { profs } from '@/data/profs'
+import { courses } from '@/config/courses'
+import { profs } from '@/config/profs'
 import AutoCompleter from '@/components/AutoCompleter'
-import CustomToastContainter from '@/components/ToastContainer'
+import CustomToastContainer from '@/components/ToastContainer'
 import { toast } from 'react-toastify'
 
 export default function AddReview() {
@@ -73,24 +74,7 @@ export default function AddReview() {
 
     return (
         <>
-            <Head>
-                <title>Course Reviews.</title>
-                <meta
-                    name="description"
-                    content="One stop place for your PS queries, handouts, and much more"
-                />
-                <meta
-                    name="keywords"
-                    content="BITS Pilani, Handouts, BPHC, Hyderabad Campus, BITS Hyderabad, BITS, Pilani, Handouts for you, handouts, for, you, bits, birla, institute, bits hyd, academics, practice school, ps, queries, ps cutoffs, ps2, ps1"
-                />
-                <meta name="robots" content="index, follow" />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-
+            <Meta {...getMetaConfig('courses/reviews')} />
             {/* Search box */}
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
@@ -135,8 +119,7 @@ export default function AddReview() {
                     </>
                 </div>
             </div>
-
-            <CustomToastContainter containerId="addReview" />
+            <CustomToastContainer containerId="addReview" />
         </>
-    )
+    );
 }
