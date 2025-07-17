@@ -228,9 +228,7 @@ export default function PS2Data() {
                                 }}
                             />
 
-                        </div>
-
-                        <div className="flex flex-col md:flex-row w-full justify-center">
+                        
                             <input
                                 type="text"
                                 placeholder="Search for Company..."
