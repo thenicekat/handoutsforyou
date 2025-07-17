@@ -50,7 +50,6 @@ export default function Meta({
                 <meta property="og:url" content={meta.openGraph.url} />
             )}
 
-            {/* Allow additional meta tags passed as children */}
             {children}
         </Head>
     )

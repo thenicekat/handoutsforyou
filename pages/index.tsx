@@ -171,7 +171,6 @@ export default function Home() {
     return (
         <>
             <Meta>
-                {/* Extra meta specific to this page */}
                 <meta
                     name="google-adsense-account"
                     content="ca-pub-8538529975248100"
