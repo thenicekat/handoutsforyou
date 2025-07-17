@@ -227,9 +227,8 @@ export default function PS2Data() {
                                     setMaxCGPA(isNaN(value) ? 10 : value)
                                 }}
                             />
-                        </div>
 
-                        <div className="flex flex-col md:flex-row w-full justify-center">
+                        
                             <input
                                 type="text"
                                 placeholder="Search for Company..."
