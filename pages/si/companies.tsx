@@ -1,5 +1,5 @@
-import { getMetaConfig } from '@/config/meta';
-import Meta from '@/components/Meta';
+import { getMetaConfig } from '@/config/meta'
+import Meta from '@/components/Meta'
 import { useEffect, useState } from 'react'
 import Menu from '@/components/Menu'
 import Link from 'next/link'
@@ -163,5 +163,5 @@ export default function SICompanies() {
             </div>
             <CustomToastContainer containerId="siCompanies" />
         </>
-    );
+    )
 }

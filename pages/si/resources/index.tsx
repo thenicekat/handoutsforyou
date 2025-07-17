@@ -1,5 +1,5 @@
-import { getMetaConfig } from '@/config/meta';
-import Meta from '@/components/Meta';
+import { getMetaConfig } from '@/config/meta'
+import Meta from '@/components/Meta'
 import { GetStaticProps } from 'next'
 import { useState, useEffect } from 'react'
 import Menu from '@/components/Menu'
@@ -12,39 +12,49 @@ import { googleDriveService } from '@/utils/googleDrive'
 
 export const getStaticProps: GetStaticProps = async () => {
     try {
-        const siChroniclesFolderId = process.env.GOOGLE_DRIVE_SI_CHRONICLES_FOLDER_ID
+        const siChroniclesFolderId =
+            process.env.GOOGLE_DRIVE_SI_CHRONICLES_FOLDER_ID
 
         if (!siChroniclesFolderId) {
-            console.error('GOOGLE_DRIVE_SI_CHRONICLES_FOLDER_ID environment variable is not set')
+            console.error(
+                'GOOGLE_DRIVE_SI_CHRONICLES_FOLDER_ID environment variable is not set'
+            )
             return {
                 props: {
                     siChronicles: {},
-                    error: 'Google Drive configuration missing'
+                    error: 'Google Drive configuration missing',
                 },
             }
         }
 
-        const siChronicles = await googleDriveService.getSIChronicles(siChroniclesFolderId)
+        const siChronicles =
+            await googleDriveService.getSIChronicles(siChroniclesFolderId)
 
         return {
             props: {
                 siChronicles,
             },
-            revalidate: 24 * 3600 // Regenerate every 12 hours
+            revalidate: 24 * 3600, // Regenerate every 12 hours
         }
     } catch (error) {
         console.error('Error fetching SI chronicles:', error)
         return {
             props: {
                 siChronicles: {},
-                error: 'Failed to fetch SI chronicles from Google Drive'
+                error: 'Failed to fetch SI chronicles from Google Drive',
             },
-            revalidate: 300 // Try again in 5 minutes on error
+            revalidate: 300, // Try again in 5 minutes on error
         }
     }
 }
 
-export default function SummerInternships({ siChronicles, error }: { siChronicles: SIChroniclesByCampus, error?: string }) {
+export default function SummerInternships({
+    siChronicles,
+    error,
+}: {
+    siChronicles: SIChroniclesByCampus
+    error?: string
+}) {
     const [search, setSearch] = useState('')
     const [chroniclesLoading, setChroniclesLoading] = useState(true)
 
@@ -73,7 +83,9 @@ export default function SummerInternships({ siChronicles, error }: { siChronicle
         return (
             <div className="grid place-items-center min-h-screen">
                 <div className="text-center">
-                    <h1 className="text-2xl text-red-500 mb-4">Error Loading SI Chronicles</h1>
+                    <h1 className="text-2xl text-red-500 mb-4">
+                        Error Loading SI Chronicles
+                    </h1>
                     <p className="text-gray-600">{error}</p>
                 </div>
             </div>
@@ -192,7 +204,16 @@ export default function SummerInternships({ siChronicles, error }: { siChronicle
                                                     </p>
                                                     {chronicle.size && (
                                                         <p className="text-xs text-gray-400">
-                                                            Size: {Math.round(parseInt(chronicle.size) / 1024 / 1024 * 100) / 100} MB
+                                                            Size:{' '}
+                                                            {Math.round(
+                                                                (parseInt(
+                                                                    chronicle.size
+                                                                ) /
+                                                                    1024 /
+                                                                    1024) *
+                                                                    100
+                                                            ) / 100}{' '}
+                                                            MB
                                                         </p>
                                                     )}
 
@@ -221,5 +242,5 @@ export default function SummerInternships({ siChronicles, error }: { siChronicle
             )}
             <CustomToastContainer containerId="siResources" />
         </>
-    );
+    )
 }

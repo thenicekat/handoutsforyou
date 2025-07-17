@@ -1,5 +1,5 @@
-import { getMetaConfig } from '@/config/meta';
-import Meta from '@/components/Meta';
+import { getMetaConfig } from '@/config/meta'
+import Meta from '@/components/Meta'
 import { useState, useEffect } from 'react'
 import Menu from '@/components/Menu'
 import CustomToastContainer from '@/components/ToastContainer'
@@ -168,11 +168,11 @@ export default function AddPS2Review() {
                                         placeholder={
                                             selectedResponse
                                                 ? 'You are writing a review for the following PS2 response: ' +
-                                                selectedResponse?.station +
-                                                ' ' +
-                                                selectedResponse?.year_and_sem +
-                                                ' ' +
-                                                selectedResponse?.allotment_round
+                                                  selectedResponse?.station +
+                                                  ' ' +
+                                                  selectedResponse?.year_and_sem +
+                                                  ' ' +
+                                                  selectedResponse?.allotment_round
                                                 : 'Select a PS2 response to write a review...'
                                         }
                                         onChange={(e) =>
@@ -197,5 +197,5 @@ export default function AddPS2Review() {
             </div>
             <CustomToastContainer containerId="addPSReview" />
         </>
-    );
+    )
 }

@@ -13,7 +13,9 @@ export default function HandoutsPerYear({
             ).length > 0 ? (
                 handouts
                     .filter((handout: any) =>
-                        handout.name.toLowerCase().includes(searchWord.toLowerCase())
+                        handout.name
+                            .toLowerCase()
+                            .includes(searchWord.toLowerCase())
                     )
                     .map((handout: any) => (
                         <div key={handout.id} className="m-2 py-1 rounded-xl">

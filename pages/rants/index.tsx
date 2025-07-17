@@ -1,5 +1,5 @@
-import { getMetaConfig } from '@/config/meta';
-import Meta from '@/components/Meta';
+import { getMetaConfig } from '@/config/meta'
+import Meta from '@/components/Meta'
 import { useEffect, useState } from 'react'
 import Menu from '@/components/Menu'
 import Link from 'next/link'
@@ -92,10 +92,10 @@ export default function Rants() {
                                 currentRants.map((rant) =>
                                     rant.id === rantId
                                         ? {
-                                            ...rant,
-                                            rants_comments:
-                                                updatedRant.rants_comments,
-                                        }
+                                              ...rant,
+                                              rants_comments:
+                                                  updatedRant.rants_comments,
+                                          }
                                         : rant
                                 )
                             )
@@ -191,7 +191,7 @@ export default function Rants() {
                                         </h3>
 
                                         {!rant.rants_comments ||
-                                            rant.rants_comments.length === 0 ? (
+                                        rant.rants_comments.length === 0 ? (
                                             <p className="text-sm text-gray-500 italic mt-2">
                                                 No comments yet
                                             </p>
@@ -263,5 +263,5 @@ export default function Rants() {
             </div>
             <CustomToastContainer containerId="rants" />
         </>
-    );
+    )
 }

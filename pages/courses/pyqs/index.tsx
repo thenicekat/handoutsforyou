@@ -1,5 +1,5 @@
-import { getMetaConfig } from '@/config/meta';
-import Meta from '@/components/Meta';
+import { getMetaConfig } from '@/config/meta'
+import Meta from '@/components/Meta'
 import Menu from '@/components/Menu'
 import { useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
@@ -50,7 +50,9 @@ export default function PYQs() {
     const fetchPYQsForCourse = async (course: Course) => {
         setLoadingPyqs(true)
         try {
-            const response = await fetch(`/api/courses/pyqs/get/pyqs?courseId=${course.id}`)
+            const response = await fetch(
+                `/api/courses/pyqs/get/pyqs?courseId=${course.id}`
+            )
             const data = await response.json()
 
             if (data.error) {
@@ -114,7 +116,10 @@ export default function PYQs() {
     const validateFile = (file: File) => {
         const allowedExtensions = ['pdf', 'docx', 'doc']
         const extension = file.name.split('.').pop()
-        if (!extension || !allowedExtensions.includes(extension.toLowerCase())) {
+        if (
+            !extension ||
+            !allowedExtensions.includes(extension.toLowerCase())
+        ) {
             toast.error('Please upload: ' + allowedExtensions.join(', '))
             return false
         }
@@ -127,7 +132,9 @@ export default function PYQs() {
         const k = 1024
         const sizes = ['Bytes', 'KB', 'MB', 'GB']
         const i = Math.floor(Math.log(numBytes) / Math.log(k))
-        return parseFloat((numBytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i]
+        return (
+            parseFloat((numBytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i]
+        )
     }
 
     return (
@@ -164,7 +171,7 @@ export default function PYQs() {
                                     Professor Name
                                 </label>
                                 <AutoCompleter
-                                    items={profs.map(prof => prof.name)}
+                                    items={profs.map((prof) => prof.name)}
                                     value={uploadProfessor}
                                     onChange={setUploadProfessor}
                                     name="professor"
@@ -190,7 +197,11 @@ export default function PYQs() {
                                 <input
                                     type="file"
                                     className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                    onChange={(e) => setSelectedFile(e.target.files?.[0] || null)}
+                                    onChange={(e) =>
+                                        setSelectedFile(
+                                            e.target.files?.[0] || null
+                                        )
+                                    }
                                     required
                                 />
                             </div>
@@ -220,8 +231,9 @@ export default function PYQs() {
             <div className="px-2 md:px-20">
                 <div className="grid place-items-center text-lg p-10">
                     <p className="mb-6">
-                        Previous year question papers organized by course and year.
-                        You can view PDFs online or download them for offline access.
+                        Previous year question papers organized by course and
+                        year. You can view PDFs online or download them for
+                        offline access.
                     </p>
 
                     {/* <div className="flex-col block md:flex-row md:w-1/3 w-full justify-center m-3">
@@ -243,19 +255,38 @@ export default function PYQs() {
                         {!selectedCourse ? (
                             // Show courses list
                             <div>
-                                <h3 className="text-2xl font-bold mb-6 text-center">Select a Course</h3>
+                                <h3 className="text-2xl font-bold mb-6 text-center">
+                                    Select a Course
+                                </h3>
                                 {courses.length === 0 ? (
                                     <div className="text-center py-20">
-                                        <p className="text-gray-500">No courses available yet.</p>
+                                        <p className="text-gray-500">
+                                            No courses available yet.
+                                        </p>
                                     </div>
                                 ) : (
                                     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                                         {courses.map((course) => (
-                                            <div key={course.id} className="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
-                                                <div className="card-body" onClick={() => fetchPYQsForCourse(course)}>
-                                                    <h2 className="card-title text-primary">{course.name}</h2>
+                                            <div
+                                                key={course.id}
+                                                className="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
+                                            >
+                                                <div
+                                                    className="card-body"
+                                                    onClick={() =>
+                                                        fetchPYQsForCourse(
+                                                            course
+                                                        )
+                                                    }
+                                                >
+                                                    <h2 className="card-title text-primary">
+                                                        {course.name}
+                                                    </h2>
                                                     <p className="text-sm text-gray-500">
-                                                        Created: {new Date(course.createdTime).toLocaleDateString()}
+                                                        Created:{' '}
+                                                        {new Date(
+                                                            course.createdTime
+                                                        ).toLocaleDateString()}
                                                     </p>
                                                     <div className="card-actions justify-end">
                                                         <button className="btn btn-sm btn-primary">
@@ -291,42 +322,77 @@ export default function PYQs() {
                                     </div>
                                 ) : Object.keys(pyqsByYear).length === 0 ? (
                                     <div className="text-center py-20">
-                                        <p className="text-gray-500">No PYQs available for this course yet.</p>
+                                        <p className="text-gray-500">
+                                            No PYQs available for this course
+                                            yet.
+                                        </p>
                                     </div>
                                 ) : (
                                     <div className="space-y-6">
-                                        {Object.entries(pyqsByYear).map(([year, files]) => (
-                                            <div key={year} className="card bg-base-100 shadow-lg">
-                                                <div className="card-body">
-                                                    <h4 className="card-title text-xl text-primary mb-4">{year}</h4>
-                                                    <div className="space-y-2">
-                                                        {files.map((file: PYQFile) => (
-                                                            <div key={file.id} className="flex items-center justify-between p-3 bg-base-200 rounded-lg">
-                                                                <div className="flex-1">
-                                                                    <p className="font-medium">{file.name}</p>
-                                                                    <p className="text-sm text-gray-500">
-                                                                        {file.size && formatFileSize(file.size)} • {new Date(file.createdTime).toLocaleDateString()}
-                                                                    </p>
-                                                                </div>
-                                                                <div className="card-actions">
-                                                                    <button
-                                                                        className="btn btn-primary btn-sm"
-                                                                        onClick={() => {
-                                                                            const link = document.createElement('a')
-                                                                            link.href = file.downloadUrl
-                                                                            link.download = file.name
-                                                                            link.click()
-                                                                        }}
+                                        {Object.entries(pyqsByYear).map(
+                                            ([year, files]) => (
+                                                <div
+                                                    key={year}
+                                                    className="card bg-base-100 shadow-lg"
+                                                >
+                                                    <div className="card-body">
+                                                        <h4 className="card-title text-xl text-primary mb-4">
+                                                            {year}
+                                                        </h4>
+                                                        <div className="space-y-2">
+                                                            {files.map(
+                                                                (
+                                                                    file: PYQFile
+                                                                ) => (
+                                                                    <div
+                                                                        key={
+                                                                            file.id
+                                                                        }
+                                                                        className="flex items-center justify-between p-3 bg-base-200 rounded-lg"
                                                                     >
-                                                                        Download
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                        ))}
+                                                                        <div className="flex-1">
+                                                                            <p className="font-medium">
+                                                                                {
+                                                                                    file.name
+                                                                                }
+                                                                            </p>
+                                                                            <p className="text-sm text-gray-500">
+                                                                                {file.size &&
+                                                                                    formatFileSize(
+                                                                                        file.size
+                                                                                    )}{' '}
+                                                                                •{' '}
+                                                                                {new Date(
+                                                                                    file.createdTime
+                                                                                ).toLocaleDateString()}
+                                                                            </p>
+                                                                        </div>
+                                                                        <div className="card-actions">
+                                                                            <button
+                                                                                className="btn btn-primary btn-sm"
+                                                                                onClick={() => {
+                                                                                    const link =
+                                                                                        document.createElement(
+                                                                                            'a'
+                                                                                        )
+                                                                                    link.href =
+                                                                                        file.downloadUrl
+                                                                                    link.download =
+                                                                                        file.name
+                                                                                    link.click()
+                                                                                }}
+                                                                            >
+                                                                                Download
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                )
+                                                            )}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        ))}
+                                            )
+                                        )}
                                     </div>
                                 )}
                             </div>
@@ -336,5 +402,5 @@ export default function PYQs() {
             </div>
             <CustomToastContainer containerId="coursePyqs" />
         </>
-    );
+    )
 }

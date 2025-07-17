@@ -43,28 +43,43 @@ const RESOURCE_COUNTS: SummaryData = {
 
 const USEFUL_LINKS = [
     {
-        title: "Official Bits Links",
+        title: 'Official Bits Links',
         links: [
-            { name: "ERP", url: "https://erp.bits-pilani.ac.in" },
-            { name: "SWD", url: "https://swd.bits-hyderabad.ac.in/login-page" },
-            { name: "LMS", url: "https://lms.erp.bits-pilani.ac.in/moodle/my/" },
-            { name: "Impartus", url: "https://bitshyd.impartus.com/login/#/" },
-            { name: "Digital Library", url: "http://172.16.100.176:8080/jspui/" },
+            { name: 'ERP', url: 'https://erp.bits-pilani.ac.in' },
+            { name: 'SWD', url: 'https://swd.bits-hyderabad.ac.in/login-page' },
+            {
+                name: 'LMS',
+                url: 'https://lms.erp.bits-pilani.ac.in/moodle/my/',
+            },
+            { name: 'Impartus', url: 'https://bitshyd.impartus.com/login/#/' },
+            {
+                name: 'Digital Library',
+                url: 'http://172.16.100.176:8080/jspui/',
+            },
         ],
     },
     {
-        title: "Made by Students",
+        title: 'Made by Students',
         links: [
-            { name: "LeX", url: "https://lex.crux-bphc.com/" },
-            { name: "Tabulr", url: "https://tabulr.net/" },
-            { name: "ChronoFactorem", url: "https://www.chrono.crux-bphc.com/login" },
-            { name: "Campus Essentials", url: "https://ce-bphc.vercel.app/" },
-            { name: "Draft ChronoFactorem", url: "https://draft.chrono.crux-bphc.com/" },
-            { name: "DC++ Hub Status", url: "https://swd.bits-hyderabad.ac.in/dcpphub_status/" },
-            { name: "Quiet-Space", url: "https://quietspacebphc.vercel.app/" },
+            { name: 'LeX', url: 'https://lex.crux-bphc.com/' },
+            { name: 'Tabulr', url: 'https://tabulr.net/' },
+            {
+                name: 'ChronoFactorem',
+                url: 'https://www.chrono.crux-bphc.com/login',
+            },
+            { name: 'Campus Essentials', url: 'https://ce-bphc.vercel.app/' },
+            {
+                name: 'Draft ChronoFactorem',
+                url: 'https://draft.chrono.crux-bphc.com/',
+            },
+            {
+                name: 'DC++ Hub Status',
+                url: 'https://swd.bits-hyderabad.ac.in/dcpphub_status/',
+            },
+            { name: 'Quiet-Space', url: 'https://quietspacebphc.vercel.app/' },
         ],
     },
-];
+]
 
 export default function Home() {
     const [starCount, setStarCount] = useState(0)
@@ -162,7 +177,10 @@ export default function Home() {
                 },
                 { name: 'Rants', path: '/rants' },
                 { name: 'Professor Chambers', path: '/chambers' },
-                { name: 'Some Useful Links', onClick: () => setShowLinksModal(true) },
+                {
+                    name: 'Some Useful Links',
+                    onClick: () => setShowLinksModal(true),
+                },
                 { name: 'FAQs', path: '/faqs' },
             ],
         },
@@ -215,12 +233,22 @@ export default function Home() {
                                             {item.path ? (
                                                 <Link href={item.path}>
                                                     <div className="flex items-center justify-between p-3 m-1 rounded-lg hover:bg-gray-100 transition-colors duration-200">
-                                                        <span className="font-medium text-gray-800">{item.name}</span>
-                                                        {item.count && item.count > 0 && (
-                                                            <span className="text-primary font-bold text-sm bg-black px-2 py-1 rounded-full">
-                                                                <CountUp end={item.count} duration={5} />
-                                                            </span>
-                                                        )}
+                                                        <span className="font-medium text-gray-800">
+                                                            {item.name}
+                                                        </span>
+                                                        {item.count &&
+                                                            item.count > 0 && (
+                                                                <span className="text-primary font-bold text-sm bg-black px-2 py-1 rounded-full">
+                                                                    <CountUp
+                                                                        end={
+                                                                            item.count
+                                                                        }
+                                                                        duration={
+                                                                            5
+                                                                        }
+                                                                    />
+                                                                </span>
+                                                            )}
                                                     </div>
                                                 </Link>
                                             ) : (
@@ -228,12 +256,22 @@ export default function Home() {
                                                     onClick={item.onClick}
                                                     className="flex items-center justify-between p-3 m-1 rounded-lg hover:bg-gray-100 transition-colors duration-200 cursor-pointer"
                                                 >
-                                                    <span className="font-medium text-gray-800">{item.name}</span>
-                                                    {item.name === "Some Useful Links" && RESOURCE_COUNTS.links > 0 && (
-                                                        <span className="text-primary font-bold text-sm bg-black px-2 py-1 rounded-full">
-                                                            <CountUp end={RESOURCE_COUNTS.links} duration={5} />
-                                                        </span>
-                                                    )}
+                                                    <span className="font-medium text-gray-800">
+                                                        {item.name}
+                                                    </span>
+                                                    {item.name ===
+                                                        'Some Useful Links' &&
+                                                        RESOURCE_COUNTS.links >
+                                                            0 && (
+                                                            <span className="text-primary font-bold text-sm bg-black px-2 py-1 rounded-full">
+                                                                <CountUp
+                                                                    end={
+                                                                        RESOURCE_COUNTS.links
+                                                                    }
+                                                                    duration={5}
+                                                                />
+                                                            </span>
+                                                        )}
                                                 </div>
                                             )}
                                         </div>
@@ -245,7 +283,6 @@ export default function Home() {
                 </div>
 
                 <div className="text-center mt-8">
-
                     {showLinksModal && (
                         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
                             <div className="bg-white rounded-lg shadow-lg max-w-xl w-full p-6 relative">
@@ -256,24 +293,32 @@ export default function Home() {
                                 >
                                     &times;
                                 </button>
-                                <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">List of some useful Links</h2>
+                                <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">
+                                    List of some useful Links
+                                </h2>
                                 {USEFUL_LINKS.map((section, idx) => (
                                     <div className="mb-6" key={idx}>
-                                        <h3 className="text-lg font-semibold text-gray-800 mb-2">{section.title}</h3>
+                                        <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                                            {section.title}
+                                        </h3>
                                         <div className="flex flex-wrap gap-2 mb-2 justify-center">
-                                            {section.links.map((link, linkIdx) => (
-                                                <a
-                                                    key={linkIdx}
-                                                    href={link.url}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="bg-gray-300 text-gray-800 px-4 py-2 rounded-full font-medium shadow hover:bg-gray-200 transition"
-                                                >
-                                                    {link.name}
-                                                </a>
-                                            ))}
+                                            {section.links.map(
+                                                (link, linkIdx) => (
+                                                    <a
+                                                        key={linkIdx}
+                                                        href={link.url}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="bg-gray-300 text-gray-800 px-4 py-2 rounded-full font-medium shadow hover:bg-gray-200 transition"
+                                                    >
+                                                        {link.name}
+                                                    </a>
+                                                )
+                                            )}
                                         </div>
-                                        {idx < USEFUL_LINKS.length - 1 && <hr className="my-4 border-gray-300" />}
+                                        {idx < USEFUL_LINKS.length - 1 && (
+                                            <hr className="my-4 border-gray-300" />
+                                        )}
                                     </div>
                                 ))}
                             </div>

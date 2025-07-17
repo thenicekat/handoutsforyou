@@ -1,5 +1,5 @@
-import { getMetaConfig } from '@/config/meta';
-import Meta from '@/components/Meta';
+import { getMetaConfig } from '@/config/meta'
+import Meta from '@/components/Meta'
 import { useEffect, useState } from 'react'
 import Menu from '@/components/Menu'
 import CustomToastContainer from '@/components/ToastContainer'
@@ -116,5 +116,5 @@ export default function PS1Reviews() {
             </div>
             <CustomToastContainer containerId="ps1Reviews" />
         </>
-    );
+    )
 }

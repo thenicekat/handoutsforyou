@@ -1,5 +1,5 @@
-import { getMetaConfig } from '@/config/meta';
-import Meta from '@/components/Meta';
+import { getMetaConfig } from '@/config/meta'
+import Meta from '@/components/Meta'
 import { useState } from 'react'
 import Menu from '@/components/Menu'
 import { FaqModel } from '@/types/FaqModel'
@@ -191,5 +191,5 @@ export default function Faqs() {
                 </div>
             </div>
         </>
-    );
+    )
 }

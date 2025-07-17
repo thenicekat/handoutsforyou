@@ -9,7 +9,10 @@ export const config = {
     },
 }
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+    req: NextApiRequest,
+    res: NextApiResponse
+) {
     if (req.method !== 'POST') {
         return res.status(405).json({ message: 'Method not allowed' })
     }
@@ -18,35 +21,51 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const rootFolderId = process.env.GOOGLE_DRIVE_PYQS_FOLDER_ID
 
         if (!rootFolderId) {
-            return res.status(500).json({ message: 'Google Drive PYQs folder ID not configured' })
+            return res
+                .status(500)
+                .json({ message: 'Google Drive PYQs folder ID not configured' })
         }
 
         const form = formidable({
             maxFileSize: 10 * 1024 * 1024,
             filter: (part: Part) => {
-                return part.mimetype === 'application/pdf' || part.mimetype === 'application/msword' || part.mimetype === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+                return (
+                    part.mimetype === 'application/pdf' ||
+                    part.mimetype === 'application/msword' ||
+                    part.mimetype ===
+                        'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+                )
             },
         })
 
         const [fields, files] = await form.parse(req)
 
-        const course = Array.isArray(fields.course) ? fields.course[0] : fields.course
-        const professor = Array.isArray(fields.professor) ? fields.professor[0] : fields.professor
+        const course = Array.isArray(fields.course)
+            ? fields.course[0]
+            : fields.course
+        const professor = Array.isArray(fields.professor)
+            ? fields.professor[0]
+            : fields.professor
         const year = Array.isArray(fields.year) ? fields.year[0] : fields.year
         const file = Array.isArray(files.file) ? files.file[0] : files.file
-
 
         if (!course || !professor || !year || !file) {
             return res.status(400).json({
                 error: true,
-                message: 'Course, professor, year, and file are required'
+                message: 'Course, professor, year, and file are required',
             })
         }
 
-        const courseFolderId = await googleDriveService.findOrCreateFolder(course, rootFolderId)
+        const courseFolderId = await googleDriveService.findOrCreateFolder(
+            course,
+            rootFolderId
+        )
 
         const pyqsFolderName = `${year} - ${professor}`
-        const pyqsFolderId = await googleDriveService.findOrCreateFolder(pyqsFolderName, courseFolderId)
+        const pyqsFolderId = await googleDriveService.findOrCreateFolder(
+            pyqsFolderName,
+            courseFolderId
+        )
 
         const fileBuffer = fs.readFileSync(file.filepath)
 
@@ -76,4 +95,4 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             message: 'Failed to upload PYQ',
         })
     }
-} 
+}

@@ -1,5 +1,5 @@
-import { getMetaConfig } from '@/config/meta';
-import Meta from '@/components/Meta';
+import { getMetaConfig } from '@/config/meta'
+import Meta from '@/components/Meta'
 import { useEffect, useState } from 'react'
 import Menu from '@/components/Menu'
 import Link from 'next/link'
@@ -319,29 +319,27 @@ export default function PS1Data() {
 
                                                 return (
                                                     <th key={header.id}>
-                                                        {header.isPlaceholder
-                                                            ? null
-                                                            : (
-                                                                <div
-                                                                    onClick={header.column.getToggleSortingHandler()}
-                                                                    className="cursor-pointer flex gap-2"
+                                                        {header.isPlaceholder ? null : (
+                                                            <div
+                                                                onClick={header.column.getToggleSortingHandler()}
+                                                                className="cursor-pointer flex gap-2"
+                                                            >
+                                                                {flexRender(
+                                                                    header
+                                                                        .column
+                                                                        .columnDef
+                                                                        .header,
+                                                                    header.getContext()
+                                                                )}
+                                                                <span
+                                                                    className={`inline-block text-center ${direction ? '' : 'opacity-50'}`}
                                                                 >
-                                                                    {flexRender(
-                                                                        header
-                                                                            .column
-                                                                            .columnDef
-                                                                            .header,
-                                                                        header.getContext()
-                                                                    )}
-                                                                    <span
-                                                                        className={`inline-block text-center ${direction ? '' : 'opacity-50'}`}
-                                                                    >
-                                                                        {
-                                                                            sort_indicator
-                                                                        }
-                                                                    </span>
-                                                                </div>
-                                                            )}
+                                                                    {
+                                                                        sort_indicator
+                                                                    }
+                                                                </span>
+                                                            </div>
+                                                        )}
                                                     </th>
                                                 )
                                             })}
@@ -373,5 +371,5 @@ export default function PS1Data() {
             )}
             <CustomToastContainer containerId="PS1Data" />
         </>
-    );
+    )
 }

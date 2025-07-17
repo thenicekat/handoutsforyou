@@ -1,5 +1,5 @@
-import { getMetaConfig } from '@/config/meta';
-import Meta from '@/components/Meta';
+import { getMetaConfig } from '@/config/meta'
+import Meta from '@/components/Meta'
 import { GetStaticProps } from 'next'
 import { useState, useEffect } from 'react'
 import Menu from '@/components/Menu'
@@ -14,36 +14,45 @@ export const getStaticProps: GetStaticProps = async () => {
         const psFolderId = process.env.GOOGLE_DRIVE_PS_CHRONICLES_FOLDER_ID
 
         if (!psFolderId) {
-            console.error('GOOGLE_DRIVE_PS_CHRONICLES_FOLDER_ID environment variable is not set')
+            console.error(
+                'GOOGLE_DRIVE_PS_CHRONICLES_FOLDER_ID environment variable is not set'
+            )
             return {
                 props: {
                     psChronicles: { ps1: [], ps2: [] },
-                    error: 'Google Drive configuration missing'
+                    error: 'Google Drive configuration missing',
                 },
             }
         }
 
-        const psChronicles = await googleDriveService.getPSChronicles(psFolderId)
+        const psChronicles =
+            await googleDriveService.getPSChronicles(psFolderId)
 
         return {
             props: {
                 psChronicles,
             },
-            revalidate: 3600 // Regenerate every hour
+            revalidate: 3600, // Regenerate every hour
         }
     } catch (error) {
         console.error('Error fetching PS chronicles:', error)
         return {
             props: {
                 psChronicles: { ps1: [], ps2: [] },
-                error: 'Failed to fetch PS chronicles from Google Drive'
+                error: 'Failed to fetch PS chronicles from Google Drive',
             },
-            revalidate: 300 // Try again in 5 minutes on error
+            revalidate: 300, // Try again in 5 minutes on error
         }
     }
 }
 
-export default function PSChroniclesPage({ psChronicles, error }: { psChronicles: PSChronicles, error?: string }) {
+export default function PSChroniclesPage({
+    psChronicles,
+    error,
+}: {
+    psChronicles: PSChronicles
+    error?: string
+}) {
     const [chroniclesLoading, setChroniclesLoading] = useState(false)
 
     useEffect(() => {
@@ -54,7 +63,9 @@ export default function PSChroniclesPage({ psChronicles, error }: { psChronicles
         return (
             <div className="grid place-items-center min-h-screen">
                 <div className="text-center">
-                    <h1 className="text-2xl text-red-500 mb-4">Error Loading PS Chronicles</h1>
+                    <h1 className="text-2xl text-red-500 mb-4">
+                        Error Loading PS Chronicles
+                    </h1>
                     <p className="text-gray-600">{error}</p>
                 </div>
             </div>
@@ -89,7 +100,14 @@ export default function PSChroniclesPage({ psChronicles, error }: { psChronicles
                                         </h3>
                                         {chronicle.size && (
                                             <p className="text-xs text-gray-400">
-                                                Size: {Math.round(parseInt(chronicle.size) / 1024 / 1024 * 100) / 100} MB
+                                                Size:{' '}
+                                                {Math.round(
+                                                    (parseInt(chronicle.size) /
+                                                        1024 /
+                                                        1024) *
+                                                        100
+                                                ) / 100}{' '}
+                                                MB
                                             </p>
                                         )}
                                         <div className="card-actions justify-end mt-2">
@@ -127,7 +145,14 @@ export default function PSChroniclesPage({ psChronicles, error }: { psChronicles
                                         </h3>
                                         {chronicle.size && (
                                             <p className="text-xs text-gray-400">
-                                                Size: {Math.round(parseInt(chronicle.size) / 1024 / 1024 * 100) / 100} MB
+                                                Size:{' '}
+                                                {Math.round(
+                                                    (parseInt(chronicle.size) /
+                                                        1024 /
+                                                        1024) *
+                                                        100
+                                                ) / 100}{' '}
+                                                MB
                                             </p>
                                         )}
                                         <div className="card-actions justify-end mt-2">
@@ -152,5 +177,5 @@ export default function PSChroniclesPage({ psChronicles, error }: { psChronicles
             </div>
             <CustomToastContainer containerId="psChronicles" />
         </>
-    );
+    )
 }

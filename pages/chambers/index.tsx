@@ -1,5 +1,5 @@
-import { getMetaConfig } from '@/config/meta';
-import Meta from '@/components/Meta';
+import { getMetaConfig } from '@/config/meta'
+import Meta from '@/components/Meta'
 import { useState } from 'react'
 import Menu from '@/components/Menu'
 import { useSession } from 'next-auth/react'
@@ -94,5 +94,5 @@ export default function Chambers() {
             )}
             <CustomToastContainer containerId="courseReviews" />
         </>
-    );
+    )
 }

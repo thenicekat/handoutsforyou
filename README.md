@@ -1,4 +1,5 @@
 # Handouts For You.
+
 ## Features.
 
 - Handouts
@@ -17,18 +18,24 @@
 - Higher Studies Resources
 
 ## Setup.
+
 ### Dependencies.
+
 - First install the dependencies by using pnpm after installing [pnpm](https://pnpm.io/installation)
 - This is essentially installing all the libraries needed for this website to run.
+
 ```bash
 pnpm install
 ```
+
 - Create a copy of the file .env.testing and rename it to .env.local. All your environment variables must be put in this file.
 
 ### Oauth .
+
 You need to set up google oauth using your bits email for signing into the website. You can use the [next auth guide](https://next-auth.js.org/providers/google) for the same .
 
 You would need to populate the following for auth to work.
+
 ```
 GOOGLE_CLIENT_ID=""
 GOOGLE_CLIENT_SECRET=""
@@ -36,6 +43,7 @@ NEXTAUTH_SECRET=""
 ```
 
 ### Database.
+
 Supabase is used as the database for h4u. You can run Supabase locally using Docker for development and testing. **Note:** Make sure you have [Docker](https://docs.docker.com/get-docker/) installed before proceeding.
 
 #### Start the Supabase Instance
@@ -44,7 +52,7 @@ This command starts a minimal Supabase stack, excluding optional services like a
 
 ```bash
 pnpm dlx supabase start -x gotrue,realtime,storage-api,imgproxy,mailpit,edge-runtime,logflare,vector
-````
+```
 
 On the first run, this may take some time as Docker images are downloaded.
 
@@ -55,7 +63,9 @@ Once the instance is running, apply the database schema and initialize seed data
 ```bash
 pnpm dlx supabase db reset
 ```
+
 Populate the following env variables from supabase studio.
+
 ```
 SUPABASE_API_KEY=""
 SUPABASE_URL=""
@@ -76,7 +86,6 @@ Run the development server using the following command. Open [http://localhost:3
 ```bash
 pnpm run dev
 ```
-
 
 ### Updating the Supabase Schema
 
@@ -106,10 +115,9 @@ pnpm dlx supabase migration up
 
 After Supabase starts, a local Supabase Studio URL will be displayed in the terminal (typically `http://localhost:54323`). You can use this interface to:
 
-* Explore and edit your database
-* Run SQL queries
-* Retrieve your Supabase API credentials (URL and anon key) for local development
-
+- Explore and edit your database
+- Run SQL queries
+- Retrieve your Supabase API credentials (URL and anon key) for local development
 
 ### Course Reviews.
 
