@@ -4,7 +4,9 @@ import Footer from '../components/Footer'
 export default function Document() {
     return (
         <Html lang="en">
-            <Head></Head>
+            <Head>
+
+            </Head>
             <body className="mb-20 mt-20">
                 <Main />
             </body>
