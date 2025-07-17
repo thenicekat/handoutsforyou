@@ -1,5 +1,5 @@
-import { getMetaConfig } from '@/config/meta';
-import Meta from '@/components/Meta';
+import { getMetaConfig } from '@/config/meta'
+import Meta from '@/components/Meta'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import Menu from '@/components/Menu'
@@ -22,10 +22,15 @@ export default function Resources() {
             if (!data.error) {
                 let resourcesByDepartment: ResourceByCategory = {}
                 for (let i = 0; i < data.data.length; i++) {
-                    if (resourcesByDepartment[data.data[i].category] == undefined) {
+                    if (
+                        resourcesByDepartment[data.data[i].category] ==
+                        undefined
+                    ) {
                         resourcesByDepartment[data.data[i].category] = []
                     }
-                    resourcesByDepartment[data.data[i].category].push(data.data[i])
+                    resourcesByDepartment[data.data[i].category].push(
+                        data.data[i]
+                    )
                 }
                 setResources(resourcesByDepartment)
             } else {
@@ -116,8 +121,8 @@ export default function Resources() {
                     <h1 className="text-md max-w-6xl text-center">
                         <br />
                         This is a page containing course resources from various
-                        students. Click on the category you need to get started. To
-                        access the onedrive links you might have to create an
+                        students. Click on the category you need to get started.
+                        To access the onedrive links you might have to create an
                         account with your BITS email ID over at:{' '}
                         <Link
                             className="underline"
@@ -148,13 +153,15 @@ export default function Resources() {
 
                                         <div className="collapse-content">
                                             <div className="px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center">
-                                                {resources[key].map((resource) => (
-                                                    <CardWithScore
-                                                        key={resource.id}
-                                                        resource={resource}
-                                                        incrementEP="/api/courses/resources/score"
-                                                    />
-                                                ))}
+                                                {resources[key].map(
+                                                    (resource) => (
+                                                        <CardWithScore
+                                                            key={resource.id}
+                                                            resource={resource}
+                                                            incrementEP="/api/courses/resources/score"
+                                                        />
+                                                    )
+                                                )}
                                             </div>
                                         </div>
                                     </div>
@@ -167,5 +174,5 @@ export default function Resources() {
             )}
             <CustomToastContainer containerId="resources" />
         </>
-    );
+    )
 }

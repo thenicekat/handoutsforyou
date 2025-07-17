@@ -31,7 +31,11 @@ export class GoogleDriveService {
 
     private initializeAuth() {
         try {
-            const privateKey = process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY?.replace(/\\n/g, '\n')
+            const privateKey =
+                process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY?.replace(
+                    /\\n/g,
+                    '\n'
+                )
             if (!privateKey || !process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL) {
                 throw new Error('Missing required Google Drive credentials')
             }
@@ -46,7 +50,9 @@ export class GoogleDriveService {
 
             this.drive = google.drive({ version: 'v3', auth: this.auth })
         } catch (error) {
-            throw new Error(`Failed to initialize Google Drive auth: ${error instanceof Error ? error.message : 'Unknown error'}`)
+            throw new Error(
+                `Failed to initialize Google Drive auth: ${error instanceof Error ? error.message : 'Unknown error'}`
+            )
         }
     }
 
@@ -72,12 +78,13 @@ export class GoogleDriveService {
                 const files = response.data.files || []
                 allFiles.push(...files)
                 pageToken = response.data.nextPageToken || undefined
-
             } while (pageToken)
 
             return allFiles
         } catch (error) {
-            throw new Error(`Failed to list files from Google Drive: ${error instanceof Error ? error.message : 'Unknown error'}`)
+            throw new Error(
+                `Failed to list files from Google Drive: ${error instanceof Error ? error.message : 'Unknown error'}`
+            )
         }
     }
 
@@ -96,37 +103,48 @@ export class GoogleDriveService {
 
             return response.data.files || []
         } catch (error) {
-            throw new Error(`Failed to list folders from Google Drive: ${error instanceof Error ? error.message : 'Unknown error'}`)
+            throw new Error(
+                `Failed to list folders from Google Drive: ${error instanceof Error ? error.message : 'Unknown error'}`
+            )
         }
     }
 
     /**
      * Generic method to get chronicles by type
      */
-    private async getChroniclesByType(rootFolderId: string, type: 'placement' | 'si'): Promise<ChronicleMap> {
+    private async getChroniclesByType(
+        rootFolderId: string,
+        type: 'placement' | 'si'
+    ): Promise<ChronicleMap> {
         try {
             const chronicles: ChronicleMap = {}
             const campusFolders = await this.listFolders(rootFolderId)
 
-            await Promise.all(campusFolders.map(async (folder) => {
-                if (!folder.id) return
+            await Promise.all(
+                campusFolders.map(async (folder) => {
+                    if (!folder.id) return
 
-                const files = await this.listFiles(folder.id)
-                const pdfFiles = files.filter(file =>
-                    file.mimeType === 'application/pdf' ||
-                    (file.name && file.name.toLowerCase().endsWith('.pdf'))
-                )
+                    const files = await this.listFiles(folder.id)
+                    const pdfFiles = files.filter(
+                        (file) =>
+                            file.mimeType === 'application/pdf' ||
+                            (file.name &&
+                                file.name.toLowerCase().endsWith('.pdf'))
+                    )
 
-                if (pdfFiles.length > 0 && folder.name) {
-                    chronicles[folder.name] = pdfFiles
-                        .filter(file => file.id)
-                        .map(file => this.mapFileToDriveFile(file))
-                }
-            }))
+                    if (pdfFiles.length > 0 && folder.name) {
+                        chronicles[folder.name] = pdfFiles
+                            .filter((file) => file.id)
+                            .map((file) => this.mapFileToDriveFile(file))
+                    }
+                })
+            )
 
             return chronicles
         } catch (error) {
-            throw new Error(`Failed to get ${type} chronicles: ${error instanceof Error ? error.message : 'Unknown error'}`)
+            throw new Error(
+                `Failed to get ${type} chronicles: ${error instanceof Error ? error.message : 'Unknown error'}`
+            )
         }
     }
 
@@ -152,27 +170,33 @@ export class GoogleDriveService {
             const chronicles: PSChronicles = { ps1: [], ps2: [] }
             const folders = await this.listFolders(rootFolderId)
 
-            await Promise.all(folders.map(async (folder) => {
-                if (!folder.id || !folder.name) return
+            await Promise.all(
+                folders.map(async (folder) => {
+                    if (!folder.id || !folder.name) return
 
-                const files = await this.listFiles(folder.id)
-                const pdfFiles = files
-                    .filter(file =>
-                        file.mimeType === 'application/pdf' ||
-                        (file.name && file.name.toLowerCase().endsWith('.pdf'))
-                    )
-                    .map(file => this.mapFileToDriveFile(file))
+                    const files = await this.listFiles(folder.id)
+                    const pdfFiles = files
+                        .filter(
+                            (file) =>
+                                file.mimeType === 'application/pdf' ||
+                                (file.name &&
+                                    file.name.toLowerCase().endsWith('.pdf'))
+                        )
+                        .map((file) => this.mapFileToDriveFile(file))
 
-                if (folder.name.toLowerCase().includes('ps1')) {
-                    chronicles.ps1.push(...pdfFiles)
-                } else if (folder.name.toLowerCase().includes('ps2')) {
-                    chronicles.ps2.push(...pdfFiles)
-                }
-            }))
+                    if (folder.name.toLowerCase().includes('ps1')) {
+                        chronicles.ps1.push(...pdfFiles)
+                    } else if (folder.name.toLowerCase().includes('ps2')) {
+                        chronicles.ps2.push(...pdfFiles)
+                    }
+                })
+            )
 
             return chronicles
         } catch (error) {
-            throw new Error(`Failed to get PS chronicles: ${error instanceof Error ? error.message : 'Unknown error'}`)
+            throw new Error(
+                `Failed to get PS chronicles: ${error instanceof Error ? error.message : 'Unknown error'}`
+            )
         }
     }
 
@@ -184,23 +208,27 @@ export class GoogleDriveService {
             const handouts: ChronicleMap = {}
             const semesterFolders = await this.listFolders(rootFolderId)
 
-            await Promise.all(semesterFolders.map(async (folder) => {
-                if (!folder.id || !folder.name) return
+            await Promise.all(
+                semesterFolders.map(async (folder) => {
+                    if (!folder.id || !folder.name) return
 
-                const files = await this.listFiles(folder.id)
-                if (files.length > 0) {
-                    handouts[folder.name] = files
-                        .filter(file => file.id)
-                        .map(file => ({
-                            ...this.mapFileToDriveFile(file),
-                            publicUrl: this.getPublicUrl(file.id!)
-                        }))
-                }
-            }))
+                    const files = await this.listFiles(folder.id)
+                    if (files.length > 0) {
+                        handouts[folder.name] = files
+                            .filter((file) => file.id)
+                            .map((file) => ({
+                                ...this.mapFileToDriveFile(file),
+                                publicUrl: this.getPublicUrl(file.id!),
+                            }))
+                    }
+                })
+            )
 
             return handouts
         } catch (error) {
-            throw new Error(`Failed to get handouts: ${error instanceof Error ? error.message : 'Unknown error'}`)
+            throw new Error(
+                `Failed to get handouts: ${error instanceof Error ? error.message : 'Unknown error'}`
+            )
         }
     }
 
@@ -212,20 +240,24 @@ export class GoogleDriveService {
             const yearFolders = await this.listFolders(courseFolderId)
             const yearMapping: ChronicleMap = {}
 
-            await Promise.all(yearFolders.map(async (yearFolder) => {
-                if (!yearFolder.id || !yearFolder.name) return
+            await Promise.all(
+                yearFolders.map(async (yearFolder) => {
+                    if (!yearFolder.id || !yearFolder.name) return
 
-                const files = await this.listFiles(yearFolder.id)
-                if (files.length > 0) {
-                    yearMapping[yearFolder.name] = files
-                        .filter(file => file.id)
-                        .map(file => this.mapFileToDriveFile(file))
-                }
-            }))
+                    const files = await this.listFiles(yearFolder.id)
+                    if (files.length > 0) {
+                        yearMapping[yearFolder.name] = files
+                            .filter((file) => file.id)
+                            .map((file) => this.mapFileToDriveFile(file))
+                    }
+                })
+            )
 
             return yearMapping
         } catch (error) {
-            throw new Error(`Failed to get PYQs: ${error instanceof Error ? error.message : 'Unknown error'}`)
+            throw new Error(
+                `Failed to get PYQs: ${error instanceof Error ? error.message : 'Unknown error'}`
+            )
         }
     }
 
@@ -263,14 +295,19 @@ export class GoogleDriveService {
 
             return this.mapFileToDriveFile(response.data)
         } catch (error) {
-            throw new Error(`Failed to upload file: ${error instanceof Error ? error.message : 'Unknown error'}`)
+            throw new Error(
+                `Failed to upload file: ${error instanceof Error ? error.message : 'Unknown error'}`
+            )
         }
     }
 
     /**
      * Create folder in Google Drive
      */
-    async createFolder(folderName: string, parentFolderId: string): Promise<drive_v3.Schema$File> {
+    async createFolder(
+        folderName: string,
+        parentFolderId: string
+    ): Promise<drive_v3.Schema$File> {
         try {
             const response = await this.drive.files.create({
                 requestBody: {
@@ -283,25 +320,34 @@ export class GoogleDriveService {
 
             return response.data
         } catch (error) {
-            throw new Error(`Failed to create folder: ${error instanceof Error ? error.message : 'Unknown error'}`)
+            throw new Error(
+                `Failed to create folder: ${error instanceof Error ? error.message : 'Unknown error'}`
+            )
         }
     }
 
     /**
      * Find or create year folder and transfer ownership
      */
-    async findOrCreateFolder(folderName: string, parentFolderId: string): Promise<string> {
+    async findOrCreateFolder(
+        folderName: string,
+        parentFolderId: string
+    ): Promise<string> {
         try {
             const folders = await this.listFolders(parentFolderId)
             const existingFolder = folders.find(
-                folder => folder.name?.toLowerCase() === folderName.toLowerCase()
+                (folder) =>
+                    folder.name?.toLowerCase() === folderName.toLowerCase()
             )
 
             if (existingFolder?.id) {
                 return existingFolder.id
             }
 
-            const newFolder = await this.createFolder(folderName, parentFolderId)
+            const newFolder = await this.createFolder(
+                folderName,
+                parentFolderId
+            )
             if (!newFolder.id) {
                 throw new Error('Failed to create new folder - no ID returned')
             }
@@ -309,7 +355,9 @@ export class GoogleDriveService {
             await this.transferOwnership(newFolder.id)
             return newFolder.id
         } catch (error) {
-            throw new Error(`Failed to find or create folder: ${error instanceof Error ? error.message : 'Unknown error'}`)
+            throw new Error(
+                `Failed to find or create folder: ${error instanceof Error ? error.message : 'Unknown error'}`
+            )
         }
     }
 
@@ -318,15 +366,15 @@ export class GoogleDriveService {
      */
     private async transferOwnership(fileId: string): Promise<void> {
         const permissionMetadata = {
-            type: "user",
-            role: "owner",
-            emailAddress: "oopsieshoppingapp@gmail.com",
+            type: 'user',
+            role: 'owner',
+            emailAddress: 'oopsieshoppingapp@gmail.com',
         }
 
         await this.drive.permissions.create({
             fileId,
             requestBody: permissionMetadata,
-            fields: "id",
+            fields: 'id',
             transferOwnership: true,
             supportsAllDrives: true,
         })
@@ -364,4 +412,4 @@ export class GoogleDriveService {
     }
 }
 
-export const googleDriveService = new GoogleDriveService() 
+export const googleDriveService = new GoogleDriveService()

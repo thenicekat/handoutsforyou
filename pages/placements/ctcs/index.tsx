@@ -1,5 +1,5 @@
-import { getMetaConfig } from '@/config/meta';
-import Meta from '@/components/Meta';
+import { getMetaConfig } from '@/config/meta'
+import Meta from '@/components/Meta'
 import Link from 'next/link'
 import { useState } from 'react'
 import Menu from '@/components/Menu'
@@ -320,5 +320,5 @@ export default function PlacementCTCs() {
             </div>
             <CustomToastContainer containerId="placementCTCs" />
         </>
-    );
+    )
 }

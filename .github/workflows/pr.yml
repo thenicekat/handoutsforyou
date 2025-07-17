@@ -12,6 +12,10 @@ jobs:
 
         steps:
             - uses: actions/checkout@v4
+              with:
+                  repository: ${{ github.event.pull_request.head.repo.full_name }}
+                  ref: ${{ github.event.pull_request.head.ref }}
+                  token: ${{ secrets.GITHUB_TOKEN }}
 
             - name: Setup Node.js
               uses: actions/setup-node@v4
@@ -30,13 +34,13 @@ jobs:
             - name: Build project
               run: pnpm build
               env:
-                GOOGLE_DRIVE_HANDOUTS_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_HANDOUTS_FOLDER_ID }}
-                GOOGLE_DRIVE_PLACEMENT_CHRONICLES_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_PLACEMENT_CHRONICLES_FOLDER_ID }}
-                GOOGLE_DRIVE_PS_CHRONICLES_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_PS_CHRONICLES_FOLDER_ID }}
-                GOOGLE_DRIVE_PYQS_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_PYQS_FOLDER_ID }}
-                GOOGLE_DRIVE_SI_CHRONICLES_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_SI_CHRONICLES_FOLDER_ID }}
-                GOOGLE_SERVICE_ACCOUNT_EMAIL: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_EMAIL }}
-                GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY }}
+                  GOOGLE_DRIVE_HANDOUTS_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_HANDOUTS_FOLDER_ID }}
+                  GOOGLE_DRIVE_PLACEMENT_CHRONICLES_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_PLACEMENT_CHRONICLES_FOLDER_ID }}
+                  GOOGLE_DRIVE_PS_CHRONICLES_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_PS_CHRONICLES_FOLDER_ID }}
+                  GOOGLE_DRIVE_PYQS_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_PYQS_FOLDER_ID }}
+                  GOOGLE_DRIVE_SI_CHRONICLES_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_SI_CHRONICLES_FOLDER_ID }}
+                  GOOGLE_SERVICE_ACCOUNT_EMAIL: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_EMAIL }}
+                  GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY }}
 
             - name: Run prettier
               run: pnpm format
@@ -46,4 +50,4 @@ jobs:
               with:
                   commit_message: 'style: format code with prettier'
                   branch: ${{ github.event.pull_request.head.ref }}
-                  file_pattern: '!pnpm-lock.yaml'
+                  file_pattern: ':(exclude)pnpm-lock.yaml'
