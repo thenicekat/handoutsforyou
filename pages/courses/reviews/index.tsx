@@ -1,14 +1,14 @@
-import { getMetaConfig } from '@/utils/meta-config';
+import { getMetaConfig } from '@/config/meta';
 import Meta from '@/components/Meta';
 import { useEffect, useState } from 'react'
 import Menu from '@/components/Menu'
 import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { CourseReview } from '@/types/CourseReview'
-import { courses } from '@/data/courses'
-import { profs } from '@/data/profs'
+import { courses } from '@/config/courses'
+import { profs } from '@/config/profs'
 import AutoCompleter from '@/components/AutoCompleter'
-import { departments } from '@/data/departments'
+import { departments } from '@/config/departments'
 import CustomToastContainer from '@/components/ToastContainer'
 import { toast } from 'react-toastify'
 import { PlusCircleIcon } from '@heroicons/react/24/solid'

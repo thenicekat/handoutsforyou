@@ -1,8 +1,8 @@
-import { getMetaConfig } from '@/utils/meta-config';
+import { getMetaConfig } from '@/config/meta';
 import Meta from '@/components/Meta';
 import { useState, useEffect } from 'react'
 import Menu from '@/components/Menu'
-import { ps1Years, psAllotmentRounds } from '@/data/years_sems'
+import { ps1Years, psAllotmentRounds } from '@/config/years_sems'
 import AutoCompleter from '@/components/AutoCompleter'
 import { toast } from 'react-toastify'
 import CustomToastContainer from '@/components/ToastContainer'

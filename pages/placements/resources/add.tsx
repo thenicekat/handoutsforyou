@@ -1,11 +1,11 @@
-import { getMetaConfig } from '@/utils/meta-config';
+import { getMetaConfig } from '@/config/meta';
 import Meta from '@/components/Meta';
 import { useState } from 'react'
 import Menu from '@/components/Menu'
 import { toast } from 'react-toastify'
 import CustomToastContainer from '@/components/ToastContainer'
 import AutoCompleter from '@/components/AutoCompleter'
-import { higherStudiesCategories } from '@/data/higherstudies'
+import { higherStudiesCategories } from '@/config/higherstudies'
 
 export default function AddPlacementResources() {
     const [name, setName] = useState('')

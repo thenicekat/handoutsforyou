@@ -1,13 +1,13 @@
-import { getMetaConfig } from '@/utils/meta-config';
+import { getMetaConfig } from '@/config/meta';
 import Meta from '@/components/Meta';
 import Menu from '@/components/Menu'
 import { useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
 import AutoCompleter from '@/components/AutoCompleter'
-import { pyqYears } from '@/data/years_sems'
-import { courses as courseNames } from '@/data/courses'
+import { pyqYears } from '@/config/years_sems'
+import { courses as courseNames } from '@/config/courses'
 import { Course, PYQFile, PYQsByYear } from '@/types/PYQs'
-import { profs } from '@/data/profs'
+import { profs } from '@/config/profs'
 import CustomToastContainer from '@/components/ToastContainer'
 
 export default function PYQs() {

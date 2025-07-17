@@ -1,4 +1,4 @@
-import { getMetaConfig } from '@/utils/meta-config';
+import { getMetaConfig } from '@/config/meta';
 import Meta from '@/components/Meta';
 import { GetStaticProps } from 'next'
 import { useEffect, useState } from 'react'

@@ -1,11 +1,11 @@
-import { getMetaConfig } from '@/utils/meta-config';
+import { getMetaConfig } from '@/config/meta';
 import Meta from '@/components/Meta';
 import { useEffect, useState } from 'react'
 import Menu from '@/components/Menu'
 import Link from 'next/link'
 import { CourseGrading } from '@/types/CourseGrading'
-import { courses } from '@/data/courses'
-import { profs } from '@/data/profs'
+import { courses } from '@/config/courses'
+import { profs } from '@/config/profs'
 import AutoCompleter from '@/components/AutoCompleter'
 import CustomToastContainer from '@/components/ToastContainer'
 import { toast } from 'react-toastify'
@@ -181,11 +181,11 @@ export default function Grading() {
                                                         </h2>
                                                         {grading.dept !==
                                                             'ALL' && (
-                                                            <p className="text-sm text-gray-500">
-                                                                For the branch:{' '}
-                                                                {grading.dept}
-                                                            </p>
-                                                        )}
+                                                                <p className="text-sm text-gray-500">
+                                                                    For the branch:{' '}
+                                                                    {grading.dept}
+                                                                </p>
+                                                            )}
                                                         <div className="-mx-4 sm:-mx-6 md:-mx-8">
                                                             <div className="min-w-min px-4 sm:px-6 md:px-8">
                                                                 {parseCSVToTable(

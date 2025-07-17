@@ -1,4 +1,4 @@
-import { getMetaConfig } from '@/utils/meta-config';
+import { getMetaConfig } from '@/config/meta';
 import Meta from '@/components/Meta';
 import Link from 'next/link'
 import { useState } from 'react'
@@ -16,7 +16,7 @@ import {
     SortingState,
     useReactTable,
 } from '@tanstack/react-table'
-import { placementYears } from '@/data/years_sems'
+import { placementYears } from '@/config/years_sems'
 
 export default function PlacementCTCs() {
     const [input, setInput] = useState('')

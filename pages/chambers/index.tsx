@@ -1,9 +1,9 @@
-import { getMetaConfig } from '@/utils/meta-config';
+import { getMetaConfig } from '@/config/meta';
 import Meta from '@/components/Meta';
 import { useState } from 'react'
 import Menu from '@/components/Menu'
 import { useSession } from 'next-auth/react'
-import { profs } from '@/data/profs'
+import { profs } from '@/config/profs'
 import AutoCompleter from '@/components/AutoCompleter'
 import CustomToastContainer from '@/components/ToastContainer'
 import { Professor } from '@/types/Professor'

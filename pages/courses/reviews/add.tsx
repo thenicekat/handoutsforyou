@@ -1,9 +1,9 @@
-import { getMetaConfig } from '@/utils/meta-config';
+import { getMetaConfig } from '@/config/meta';
 import Meta from '@/components/Meta';
 import { useState, useEffect } from 'react'
 import Menu from '@/components/Menu'
-import { courses } from '@/data/courses'
-import { profs } from '@/data/profs'
+import { courses } from '@/config/courses'
+import { profs } from '@/config/profs'
 import AutoCompleter from '@/components/AutoCompleter'
 import CustomToastContainer from '@/components/ToastContainer'
 import { toast } from 'react-toastify'

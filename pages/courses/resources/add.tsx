@@ -1,11 +1,11 @@
-import { getMetaConfig } from '@/utils/meta-config';
+import { getMetaConfig } from '@/config/meta';
 import Meta from '@/components/Meta';
 import { useState } from 'react'
 import Menu from '@/components/Menu'
 import { toast } from 'react-toastify'
 import CustomToastContainer from '@/components/ToastContainer'
 import AutoCompleter from '@/components/AutoCompleter'
-import { departments } from '@/data/departments'
+import { departments } from '@/config/departments'
 
 export default function AddResources() {
     const [name, setName] = useState('')

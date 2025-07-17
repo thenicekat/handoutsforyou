@@ -1,16 +1,16 @@
-import { getMetaConfig } from '@/utils/meta-config';
+import { getMetaConfig } from '@/config/meta';
 import Meta from '@/components/Meta';
 import { GetStaticProps } from 'next'
 import { useState, useEffect } from 'react'
 import Menu from '@/components/Menu'
-import { courses } from '@/data/courses'
-import { profs } from '@/data/profs'
-import { departments } from '@/data/departments'
+import { courses } from '@/config/courses'
+import { profs } from '@/config/profs'
+import { departments } from '@/config/departments'
 import AutoCompleter from '@/components/AutoCompleter'
 import CustomToastContainer from '@/components/ToastContainer'
 import { toast } from 'react-toastify'
 import { GradeRow } from '@/types/CourseGrading'
-import { gradedSemesters } from '@/data/years_sems'
+import { gradedSemesters } from '@/config/years_sems'
 
 export const getStaticProps: GetStaticProps = async () => {
     const depts: string[] = Object.values(departments)
