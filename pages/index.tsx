@@ -1,9 +1,9 @@
-import Head from 'next/head'
 import { useState } from 'react'
 import CountUp from 'react-countup'
 import Link from 'next/link'
 import StarPrompt from '@/components/StarPrompt'
 import Menu from '@/components/Menu'
+import Meta from '@/components/Meta'
 
 type SummaryData = {
     handouts: number
@@ -170,27 +170,12 @@ export default function Home() {
 
     return (
         <>
-            <Head>
-                <title>Handouts for You.</title>
-                <meta
-                    name="description"
-                    content="A website containing all bits pilani hyderabad campus handouts"
-                />
-                <meta
-                    name="keywords"
-                    content="BITS Pilani, Handouts, BPHC, Hyderabad Campus, BITS Hyderabad, BITS, Pilani, Handouts for you, handouts, for, you, bits, birla, institute, bits hyd, academics"
-                />
-                <meta name="robots" content="index, follow" />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
+            <Meta>
                 <meta
                     name="google-adsense-account"
                     content="ca-pub-8538529975248100"
                 />
-                <link rel="icon" href="/favicon.ico"/>
-            </Head>
+            </Meta>
 
             <Menu doNotShowMenu={true} />
             <StarPrompt setStarCount={setStarCount} />
@@ -245,9 +230,9 @@ export default function Home() {
                                                 >
                                                     <span className="font-medium text-gray-800">{item.name}</span>
                                                     {item.name === "Some Useful Links" && RESOURCE_COUNTS.links > 0 && (
-                                                    <span className="text-primary font-bold text-sm bg-black px-2 py-1 rounded-full">
-                                                        <CountUp end={RESOURCE_COUNTS.links} duration={5} />
-                                                    </span>
+                                                        <span className="text-primary font-bold text-sm bg-black px-2 py-1 rounded-full">
+                                                            <CountUp end={RESOURCE_COUNTS.links} duration={5} />
+                                                        </span>
                                                     )}
                                                 </div>
                                             )}

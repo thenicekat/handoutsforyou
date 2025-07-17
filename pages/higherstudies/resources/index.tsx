@@ -1,4 +1,5 @@
-import Head from 'next/head'
+import { getMetaConfig } from '@/config/meta';
+import Meta from '@/components/Meta';
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import Menu from '@/components/Menu'
@@ -52,26 +53,7 @@ export default function HSResources() {
 
     return (
         <>
-            <Head>
-                <title>Higher Studies Resources.</title>
-                <meta
-                    name="description"
-                    content="Handouts app for bits hyderabad"
-                />
-                <meta name="description" content="BPHC Handouts" />
-                <meta name="description" content="Handouts for you." />
-                <meta
-                    name="description"
-                    content="handouts, bits pilani hyderabad campus"
-                />
-                <meta name="robots" content="index, follow" />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-
+            <Meta {...getMetaConfig('higherstudies')} />
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
                     <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">
@@ -119,7 +101,6 @@ export default function HSResources() {
                     </>
                 </div>
             </div>
-
             {!isLoading ? (
                 <div className="max-w-7xl mx-auto">
                     <h1 className="text-md max-w-6xl text-center">
@@ -172,5 +153,5 @@ export default function HSResources() {
             )}
             <CustomToastContainer containerId="hsResources" />
         </>
-    )
+    );
 }

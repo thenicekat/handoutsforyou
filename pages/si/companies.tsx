@@ -1,4 +1,5 @@
-import Head from 'next/head'
+import { getMetaConfig } from '@/config/meta';
+import Meta from '@/components/Meta';
 import { useEffect, useState } from 'react'
 import Menu from '@/components/Menu'
 import Link from 'next/link'
@@ -43,24 +44,7 @@ export default function SICompanies() {
 
     return (
         <>
-            <Head>
-                <title>Summer Internships.</title>
-                <meta
-                    name="description"
-                    content="One stop place for your PS queries, handouts, and much more"
-                />
-                <meta
-                    name="keywords"
-                    content="BITS Pilani, Handouts, BPHC, Hyderabad Campus, BITS Hyderabad, BITS, Pilani, Handouts for you, handouts, for, you, bits, birla, institute, bits hyd, academics, practice school, ps, queries, ps cutoffs, ps2, ps1"
-                />
-                <meta name="robots" content="index, follow" />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-
+            <Meta {...getMetaConfig('si')} />
             {/* Search box */}
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
@@ -111,7 +95,6 @@ export default function SICompanies() {
                     belongs to Placement Unit
                 </div>
             </div>
-
             <div>
                 <div className="px-2 md:px-20">
                     {!isLoading ? (
@@ -180,5 +163,5 @@ export default function SICompanies() {
             </div>
             <CustomToastContainer containerId="siCompanies" />
         </>
-    )
+    );
 }

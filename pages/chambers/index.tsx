@@ -1,8 +1,9 @@
-import Head from 'next/head'
+import { getMetaConfig } from '@/config/meta';
+import Meta from '@/components/Meta';
 import { useState } from 'react'
 import Menu from '@/components/Menu'
 import { useSession } from 'next-auth/react'
-import { profs } from '@/data/profs'
+import { profs } from '@/config/profs'
 import AutoCompleter from '@/components/AutoCompleter'
 import CustomToastContainer from '@/components/ToastContainer'
 import { Professor } from '@/types/Professor'
@@ -18,24 +19,7 @@ export default function Chambers() {
 
     return (
         <>
-            <Head>
-                <title>Professor Chambers.</title>
-                <meta
-                    name="description"
-                    content="One stop place for your PS queries, handouts, and much more"
-                />
-                <meta
-                    name="keywords"
-                    content="BITS Pilani, Handouts, BPHC, Hyderabad Campus, BITS Hyderabad, BITS, Pilani, Handouts for you, handouts, for, you, bits, birla, institute, bits hyd, academics, practice school, ps, queries, ps cutoffs, ps2, ps1"
-                />
-                <meta name="robots" content="index, follow" />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-
+            <Meta {...getMetaConfig('chambers')} />
             {/* Search box */}
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
@@ -58,7 +42,6 @@ export default function Chambers() {
                     )}
                 </div>
             </div>
-
             {session && (
                 <div>
                     <div className="flex justify-center">
@@ -111,5 +94,5 @@ export default function Chambers() {
             )}
             <CustomToastContainer containerId="courseReviews" />
         </>
-    )
+    );
 }
