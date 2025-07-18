@@ -52,6 +52,12 @@ export default function Meta({
             <link rel="shortcut icon" href="/favicon.ico" />
             <link rel="icon" href="/favicon.ico" />
 
+            {/* Adsense */}
+            <meta
+                name="google-adsense-account"
+                content="ca-pub-8538529975248100"
+            />
+
             {/* Open Graph Tags */}
             {meta.openGraph?.title && (
                 <meta property="og:title" content={meta.openGraph.title} />
