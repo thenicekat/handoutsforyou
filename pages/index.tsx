@@ -188,12 +188,7 @@ export default function Home() {
 
     return (
         <>
-            <Meta>
-                <meta
-                    name="google-adsense-account"
-                    content="ca-pub-8538529975248100"
-                />
-            </Meta>
+            <Meta />
 
             <Menu doNotShowMenu={true} />
             <StarPrompt setStarCount={setStarCount} />
