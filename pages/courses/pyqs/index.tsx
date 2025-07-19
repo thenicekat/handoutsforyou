@@ -148,7 +148,7 @@ export default function PYQs() {
                     <Menu />
                 </div>
             </div>
-            {/* Upload Form Modal */}
+
             {showUploadForm && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
                     <div className="bg-black rounded-lg p-6 w-full max-w-md mx-4">
@@ -236,14 +236,14 @@ export default function PYQs() {
                         offline access.
                     </p>
 
-                    {/* <div className="flex-col block md:flex-row md:w-1/3 w-full justify-center m-3">
+                    <div className="flex-col block md:flex-row md:w-1/3 w-full justify-center m-3">
                         <button
                             className="btn btn-outline w-full mb-3"
                             onClick={() => setShowUploadForm(true)}
                         >
                             Upload PYQ
                         </button>
-                    </div> */}
+                    </div>
                 </div>
 
                 {loading ? (
