@@ -1,5 +1,6 @@
+import { getMetaConfig } from '@/config/meta'
+import Meta from '@/components/Meta'
 import { GetStaticProps } from 'next'
-import Head from 'next/head'
 import { useState, useEffect } from 'react'
 import Menu from '@/components/Menu'
 import type { PSChronicles } from '@/types/GoogleDriveChronicles'
@@ -12,36 +13,45 @@ export const getStaticProps: GetStaticProps = async () => {
         const psFolderId = process.env.GOOGLE_DRIVE_PS_CHRONICLES_FOLDER_ID
 
         if (!psFolderId) {
-            console.error('GOOGLE_DRIVE_PS_CHRONICLES_FOLDER_ID environment variable is not set')
+            console.error(
+                'GOOGLE_DRIVE_PS_CHRONICLES_FOLDER_ID environment variable is not set'
+            )
             return {
                 props: {
                     psChronicles: { ps1: [], ps2: [] },
-                    error: 'Google Drive configuration missing'
+                    error: 'Google Drive configuration missing',
                 },
             }
         }
 
-        const psChronicles = await googleDriveService.getPSChronicles(psFolderId)
+        const psChronicles =
+            await googleDriveService.getPSChronicles(psFolderId)
 
         return {
             props: {
                 psChronicles,
             },
-            revalidate: 3600 // Regenerate every hour
+            revalidate: 3600, // Regenerate every hour
         }
     } catch (error) {
         console.error('Error fetching PS chronicles:', error)
         return {
             props: {
                 psChronicles: { ps1: [], ps2: [] },
-                error: 'Failed to fetch PS chronicles from Google Drive'
+                error: 'Failed to fetch PS chronicles from Google Drive',
             },
-            revalidate: 300 // Try again in 5 minutes on error
+            revalidate: 300, // Try again in 5 minutes on error
         }
     }
 }
 
-export default function PSChroniclesPage({ psChronicles, error }: { psChronicles: PSChronicles, error?: string }) {
+export default function PSChroniclesPage({
+    psChronicles,
+    error,
+}: {
+    psChronicles: PSChronicles
+    error?: string
+}) {
     const [chroniclesLoading, setChroniclesLoading] = useState(false)
 
 
@@ -49,7 +59,9 @@ export default function PSChroniclesPage({ psChronicles, error }: { psChronicles
         return (
             <div className="grid place-items-center min-h-screen">
                 <div className="text-center">
-                    <h1 className="text-2xl text-red-500 mb-4">Error Loading PS Chronicles</h1>
+                    <h1 className="text-2xl text-red-500 mb-4">
+                        Error Loading PS Chronicles
+                    </h1>
                     <p className="text-gray-600">{error}</p>
                 </div>
             </div>
@@ -58,24 +70,7 @@ export default function PSChroniclesPage({ psChronicles, error }: { psChronicles
 
     return (
         <>
-            <Head>
-                <title>PS Chronicles</title>
-                <meta
-                    name="description"
-                    content="One stop place for your PS queries, handouts, and much more"
-                />
-                <meta
-                    name="keywords"
-                    content="BITS Pilani, Handouts, BPHC, Hyderabad Campus, BITS Hyderabad, BITS, Pilani, Handouts for you, handouts, for, you, bits, birla, institute, bits hyd, academics, practice school, ps, queries, ps cutoffs, ps2, ps1"
-                />
-                <meta name="robots" content="index, follow" />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-
+            <Meta {...getMetaConfig('ps/chronicles')} />
             <div className="container mx-auto px-4 py-8">
                 <div className="max-w-4xl mx-auto">
                     <h1 className="text-4xl font-bold text-primary text-center mb-8">
@@ -101,7 +96,14 @@ export default function PSChroniclesPage({ psChronicles, error }: { psChronicles
                                         </h3>
                                         {chronicle.size && (
                                             <p className="text-xs text-gray-400">
-                                                Size: {Math.round(parseInt(chronicle.size) / 1024 / 1024 * 100) / 100} MB
+                                                Size:{' '}
+                                                {Math.round(
+                                                    (parseInt(chronicle.size) /
+                                                        1024 /
+                                                        1024) *
+                                                        100
+                                                ) / 100}{' '}
+                                                MB
                                             </p>
                                         )}
                                         <div className="card-actions justify-end mt-2">
@@ -139,7 +141,14 @@ export default function PSChroniclesPage({ psChronicles, error }: { psChronicles
                                         </h3>
                                         {chronicle.size && (
                                             <p className="text-xs text-gray-400">
-                                                Size: {Math.round(parseInt(chronicle.size) / 1024 / 1024 * 100) / 100} MB
+                                                Size:{' '}
+                                                {Math.round(
+                                                    (parseInt(chronicle.size) /
+                                                        1024 /
+                                                        1024) *
+                                                        100
+                                                ) / 100}{' '}
+                                                MB
                                             </p>
                                         )}
                                         <div className="card-actions justify-end mt-2">

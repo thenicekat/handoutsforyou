@@ -1,10 +1,11 @@
-import Head from 'next/head'
+import { getMetaConfig } from '@/config/meta'
+import Meta from '@/components/Meta'
 import { useEffect, useState } from 'react'
 import Menu from '@/components/Menu'
 import Link from 'next/link'
 import { CourseGrading } from '@/types/CourseGrading'
-import { courses } from '@/data/courses'
-import { profs } from '@/data/profs'
+import { courses } from '@/config/courses'
+import { profs } from '@/config/profs'
 import AutoCompleter from '@/components/AutoCompleter'
 import CustomToastContainer from '@/components/ToastContainer'
 import { toast } from 'react-toastify'
@@ -99,19 +100,7 @@ export default function Grading() {
 
     return (
         <>
-            <Head>
-                <title>Course Grading.</title>
-                <meta
-                    name="description"
-                    content="Course grading information and statistics"
-                />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-
+            <Meta {...getMetaConfig('courses/grading')} />
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
                     <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">
@@ -162,7 +151,6 @@ export default function Grading() {
                     </>
                 </div>
             </div>
-
             <div className="max-w-7xl mx-auto px-2 md:px-20 p-4">
                 {isLoading ? (
                     <div className="flex justify-center">

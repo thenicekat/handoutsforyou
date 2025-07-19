@@ -1,9 +1,10 @@
-import Head from 'next/head'
+import { getMetaConfig } from '@/config/meta'
+import Meta from '@/components/Meta'
 import { useEffect, useState } from 'react'
 import Menu from '@/components/Menu'
 import Link from 'next/link'
 import { PS2Item } from '@/types/PSData'
-import { ps2Semesters } from '@/data/years_sems'
+import { ps2Semesters } from '@/config/years_sems'
 import { toast } from 'react-toastify'
 import CustomToastContainer from '@/components/ToastContainer'
 import React from 'react'
@@ -87,8 +88,8 @@ export default function PS2Data() {
 
     useEffect(() => {
         setIsLoading(true)
-        let filteredPS2Data = ps2Data.filter((d: PS2Item) =>
-            d.cgpa >= minCGPA && d.cgpa <= maxCGPA
+        let filteredPS2Data = ps2Data.filter(
+            (d: PS2Item) => d.cgpa >= minCGPA && d.cgpa <= maxCGPA
         )
         filteredPS2Data = filteredPS2Data.filter((d: PS2Item) =>
             d.station.toLowerCase().includes(search.toLowerCase())
@@ -168,24 +169,7 @@ export default function PS2Data() {
 
     return (
         <>
-            <Head>
-                <title>PS 2 Cutoffs.</title>
-                <meta
-                    name="description"
-                    content="One stop place for your PS queries, handouts, and much more"
-                />
-                <meta
-                    name="keywords"
-                    content="BITS Pilani, Handouts, BPHC, Hyderabad Campus, BITS Hyderabad, BITS, Pilani, Handouts for you, handouts, for, you, bits, birla, institute, bits hyd, academics, practice school, ps, queries, ps cutoffs, ps2, ps1"
-                />
-                <meta name="robots" content="index, follow" />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-
+            <Meta {...getMetaConfig('ps/cutoffs/ps2')} />
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
                     <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">
@@ -227,9 +211,7 @@ export default function PS2Data() {
                                     setMaxCGPA(isNaN(value) ? 10 : value)
                                 }}
                             />
-                        </div>
 
-                        <div className="flex flex-col md:flex-row w-full justify-center">
                             <input
                                 type="text"
                                 placeholder="Search for Company..."
@@ -304,14 +286,12 @@ export default function PS2Data() {
                     </>
                 </div>
             </div>
-
             {isLoading && (
                 <div className="grid place-items-center py-16">
                     <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
                     <p className="text-lg mt-4">Loading data...</p>
                 </div>
             )}
-
             {!isLoading && (
                 <div>
                     <div className="flex justify-center">
@@ -336,7 +316,8 @@ export default function PS2Data() {
 
                                                 <div className="flex-none">
                                                     <p className="m-1">
-                                                        ID Number: {ps2Item.id_number}
+                                                        ID Number:{' '}
+                                                        {ps2Item.id_number}
                                                     </p>
                                                     <p className="m-1">
                                                         Name: {ps2Item.name}
@@ -345,19 +326,27 @@ export default function PS2Data() {
                                                         CGPA: {ps2Item.cgpa}
                                                     </p>
                                                     <p className="m-1">
-                                                        Stipend: {ps2Item.stipend}
+                                                        Stipend:{' '}
+                                                        {ps2Item.stipend}
                                                     </p>
                                                     <p className="m-1">
-                                                        Allotment Round: {ps2Item.allotment_round}
+                                                        Allotment Round:{' '}
+                                                        {
+                                                            ps2Item.allotment_round
+                                                        }
                                                     </p>
                                                     <p className="m-1">
-                                                        Offshoot: {ps2Item.offshoot}
+                                                        Offshoot:{' '}
+                                                        {ps2Item.offshoot}
                                                     </p>
                                                     <p className="m-1">
-                                                        Offshoot Total: {ps2Item.offshoot_total}
+                                                        Offshoot Total:{' '}
+                                                        {ps2Item.offshoot_total}
                                                     </p>
                                                     <p className="m-1">
-                                                        Offshoot Type: {ps2Item.offshoot_type || 'NA'}
+                                                        Offshoot Type:{' '}
+                                                        {ps2Item.offshoot_type ||
+                                                            'NA'}
                                                     </p>
                                                 </div>
                                             </div>
@@ -370,10 +359,12 @@ export default function PS2Data() {
                                         <thead className="table-header-group">
                                             <tr>
                                                 {headers.map((header) => {
-                                                    const direction = header.column.getIsSorted()
-                                                    const sort_indicator = direction
-                                                        ? arrow[direction]
-                                                        : arrow['unsorted']
+                                                    const direction =
+                                                        header.column.getIsSorted()
+                                                    const sort_indicator =
+                                                        direction
+                                                            ? arrow[direction]
+                                                            : arrow['unsorted']
 
                                                     return (
                                                         <th key={header.id}>
@@ -383,11 +374,18 @@ export default function PS2Data() {
                                                                     className="cursor-pointer flex gap-2"
                                                                 >
                                                                     {flexRender(
-                                                                        header.column.columnDef.header,
+                                                                        header
+                                                                            .column
+                                                                            .columnDef
+                                                                            .header,
                                                                         header.getContext()
                                                                     )}
-                                                                    <span className={`inline-block text-center ${direction ? '' : 'opacity-50'}`}>
-                                                                        {sort_indicator}
+                                                                    <span
+                                                                        className={`inline-block text-center ${direction ? '' : 'opacity-50'}`}
+                                                                    >
+                                                                        {
+                                                                            sort_indicator
+                                                                        }
                                                                     </span>
                                                                 </div>
                                                             )}
@@ -399,14 +397,18 @@ export default function PS2Data() {
                                         <tbody>
                                             {rows.map((row) => (
                                                 <tr key={row.id}>
-                                                    {row.getVisibleCells().map((cell) => (
-                                                        <td key={cell.id}>
-                                                            {flexRender(
-                                                                cell.column.columnDef.cell,
-                                                                cell.getContext()
-                                                            )}
-                                                        </td>
-                                                    ))}
+                                                    {row
+                                                        .getVisibleCells()
+                                                        .map((cell) => (
+                                                            <td key={cell.id}>
+                                                                {flexRender(
+                                                                    cell.column
+                                                                        .columnDef
+                                                                        .cell,
+                                                                    cell.getContext()
+                                                                )}
+                                                            </td>
+                                                        ))}
                                                 </tr>
                                             ))}
                                         </tbody>

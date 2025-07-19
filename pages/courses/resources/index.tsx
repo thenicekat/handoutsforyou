@@ -1,4 +1,5 @@
-import Head from 'next/head'
+import { getMetaConfig } from '@/config/meta'
+import Meta from '@/components/Meta'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import Menu from '@/components/Menu'
@@ -21,10 +22,15 @@ export default function Resources() {
             if (!data.error) {
                 let resourcesByDepartment: ResourceByCategory = {}
                 for (let i = 0; i < data.data.length; i++) {
-                    if (resourcesByDepartment[data.data[i].category] == undefined) {
+                    if (
+                        resourcesByDepartment[data.data[i].category] ==
+                        undefined
+                    ) {
                         resourcesByDepartment[data.data[i].category] = []
                     }
-                    resourcesByDepartment[data.data[i].category].push(data.data[i])
+                    resourcesByDepartment[data.data[i].category].push(
+                        data.data[i]
+                    )
                 }
                 setResources(resourcesByDepartment)
             } else {
@@ -56,29 +62,10 @@ export default function Resources() {
 
     return (
         <>
-            <Head>
-                <title>Course Resources.</title>
-                <meta
-                    name="description"
-                    content="Handouts app for bits hyderabad"
-                />
-                <meta name="description" content="BPHC Handouts" />
-                <meta name="description" content="Handouts for you." />
-                <meta
-                    name="description"
-                    content="handouts, bits pilani hyderabad campus"
-                />
-                <meta name="robots" content="index, follow" />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-
+            <Meta {...getMetaConfig('courses/resources')} />
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
-                    <h1 className="text-5xl pt-[50px] pb-[20px] px-[35px] text-primary">
+                    <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">
                         Course Resources.
                     </h1>
                     <Menu />
@@ -123,21 +110,19 @@ export default function Resources() {
                     </>
                 </div>
             </div>
-
             {isLoading && (
                 <div className="grid place-items-center py-16">
                     <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
                     <p className="text-lg mt-4">Loading resources...</p>
                 </div>
             )}
-
             {!isLoading && (
                 <div className="max-w-7xl mx-auto">
                     <h1 className="text-md max-w-6xl text-center">
                         <br />
                         This is a page containing course resources from various
-                        students. Click on the category you need to get started. To
-                        access the onedrive links you might have to create an
+                        students. Click on the category you need to get started.
+                        To access the onedrive links you might have to create an
                         account with your BITS email ID over at:{' '}
                         <Link
                             className="underline"
@@ -168,13 +153,15 @@ export default function Resources() {
 
                                         <div className="collapse-content">
                                             <div className="px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center">
-                                                {resources[key].map((resource) => (
-                                                    <CardWithScore
-                                                        key={resource.id}
-                                                        resource={resource}
-                                                        incrementEP="/api/courses/resources/score"
-                                                    />
-                                                ))}
+                                                {resources[key].map(
+                                                    (resource) => (
+                                                        <CardWithScore
+                                                            key={resource.id}
+                                                            resource={resource}
+                                                            incrementEP="/api/courses/resources/score"
+                                                        />
+                                                    )
+                                                )}
                                             </div>
                                         </div>
                                     </div>

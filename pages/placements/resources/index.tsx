@@ -1,5 +1,6 @@
+import { getMetaConfig } from '@/config/meta'
+import Meta from '@/components/Meta'
 import { GetStaticProps } from 'next'
-import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import Menu from '@/components/Menu'
 import { LinkIcon, PlusCircleIcon } from '@heroicons/react/24/solid'
@@ -14,43 +15,55 @@ import { axiosInstance } from '@/utils/axiosCache'
 
 export const getStaticProps: GetStaticProps = async () => {
     try {
-        const placementChroniclesFolderId = process.env.GOOGLE_DRIVE_PLACEMENT_CHRONICLES_FOLDER_ID
+        const placementChroniclesFolderId =
+            process.env.GOOGLE_DRIVE_PLACEMENT_CHRONICLES_FOLDER_ID
 
         if (!placementChroniclesFolderId) {
-            console.error('GOOGLE_DRIVE_PLACEMENT_CHRONICLES_FOLDER_ID environment variable is not set')
+            console.error(
+                'GOOGLE_DRIVE_PLACEMENT_CHRONICLES_FOLDER_ID environment variable is not set'
+            )
             return {
                 props: {
                     puChronicles: {},
-                    error: 'Google Drive configuration missing'
+                    error: 'Google Drive configuration missing',
                 },
             }
         }
 
-        const puChronicles = await googleDriveService.getPlacementChronicles(placementChroniclesFolderId)
+        const puChronicles = await googleDriveService.getPlacementChronicles(
+            placementChroniclesFolderId
+        )
 
         return {
             props: {
                 puChronicles,
             },
-            revalidate: 24 * 3600 // Regenerate every 12 hours
+            revalidate: 24 * 3600, // Regenerate every 12 hours
         }
     } catch (error) {
         console.error('Error fetching placement chronicles:', error)
         return {
             props: {
                 puChronicles: {},
-                error: 'Failed to fetch placement chronicles from Google Drive'
+                error: 'Failed to fetch placement chronicles from Google Drive',
             },
-            revalidate: 300 // Try again in 5 minutes on error
+            revalidate: 300, // Try again in 5 minutes on error
         }
     }
 }
 
-export default function Placement({ puChronicles: initialPuChronicles, error }: { puChronicles: PlacementChroniclesByCampus, error?: string }) {
+export default function Placement({
+    puChronicles: initialPuChronicles,
+    error,
+}: {
+    puChronicles: PlacementChroniclesByCampus
+    error?: string
+}) {
     const [input, setInput] = useState('')
     const [isLoading, setIsLoading] = useState(false)
     const [resources, setResources] = useState<ResourceByCategory>({})
-    const [puChronicles] = useState<PlacementChroniclesByCampus>(initialPuChronicles)
+    const [puChronicles] =
+        useState<PlacementChroniclesByCampus>(initialPuChronicles)
     const [chroniclesLoading] = useState(false)
 
     const fetchResources = async () => {
@@ -98,7 +111,9 @@ export default function Placement({ puChronicles: initialPuChronicles, error }: 
         return (
             <div className="grid place-items-center min-h-screen">
                 <div className="text-center">
-                    <h1 className="text-2xl text-red-500 mb-4">Error Loading Placement Chronicles</h1>
+                    <h1 className="text-2xl text-red-500 mb-4">
+                        Error Loading Placement Chronicles
+                    </h1>
                     <p className="text-gray-600">{error}</p>
                 </div>
             </div>
@@ -107,24 +122,7 @@ export default function Placement({ puChronicles: initialPuChronicles, error }: 
 
     return (
         <>
-            <Head>
-                <title>Placements.</title>
-                <meta
-                    name="description"
-                    content="One stop place for your PS queries, handouts, and much more"
-                />
-                <meta
-                    name="keywords"
-                    content="BITS Pilani, Handouts, BPHC, Hyderabad Campus, BITS Hyderabad, BITS, Pilani, Handouts for you, handouts, for, you, bits, birla, institute, bits hyd, academics, practice school, ps, queries, ps cutoffs, ps2, ps1"
-                />
-                <meta name="robots" content="index, follow" />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-
+            <Meta {...getMetaConfig('placements/resources')} />
             {/* Search box */}
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
@@ -173,14 +171,16 @@ export default function Placement({ puChronicles: initialPuChronicles, error }: 
                     </div>
                 </div>
             </div>
-
             {!isLoading && !chroniclesLoading ? (
                 <div className="place-items-center p-5 max-w-7xl mx-auto">
                     {Object.keys(resources)
                         .sort()
                         .map((key) => {
                             return (
-                                <div key={key} className="collapse collapse-plus">
+                                <div
+                                    key={key}
+                                    className="collapse collapse-plus"
+                                >
                                     <input type="checkbox" />
                                     <div className="collapse-title text-lg font-medium">
                                         {key} x {resources[key].length}
@@ -188,15 +188,13 @@ export default function Placement({ puChronicles: initialPuChronicles, error }: 
 
                                     <div className="collapse-content">
                                         <div className="px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center">
-                                            {resources[key].map(
-                                                (resource) => (
-                                                    <CardWithScore
-                                                        key={resource.id}
-                                                        resource={resource}
-                                                        incrementEP="/api/placements/resources/score"
-                                                    />
-                                                )
-                                            )}
+                                            {resources[key].map((resource) => (
+                                                <CardWithScore
+                                                    key={resource.id}
+                                                    resource={resource}
+                                                    incrementEP="/api/placements/resources/score"
+                                                />
+                                            ))}
                                         </div>
                                     </div>
                                 </div>
@@ -236,7 +234,16 @@ export default function Placement({ puChronicles: initialPuChronicles, error }: 
                                                     </p>
                                                     {chronicle.size && (
                                                         <p className="text-xs text-gray-400">
-                                                            Size: {Math.round(parseInt(chronicle.size) / 1024 / 1024 * 100) / 100} MB
+                                                            Size:{' '}
+                                                            {Math.round(
+                                                                (parseInt(
+                                                                    chronicle.size
+                                                                ) /
+                                                                    1024 /
+                                                                    1024) *
+                                                                    100
+                                                            ) / 100}{' '}
+                                                            MB
                                                         </p>
                                                     )}
 

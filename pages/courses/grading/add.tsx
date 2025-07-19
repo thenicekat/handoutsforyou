@@ -1,15 +1,16 @@
-import Head from 'next/head'
+import { getMetaConfig } from '@/config/meta'
+import Meta from '@/components/Meta'
 import { GetStaticProps } from 'next'
 import { useState, useEffect } from 'react'
 import Menu from '@/components/Menu'
-import { courses } from '@/data/courses'
-import { profs } from '@/data/profs'
-import { departments } from '@/data/departments'
+import { courses } from '@/config/courses'
+import { profs } from '@/config/profs'
+import { departments } from '@/config/departments'
 import AutoCompleter from '@/components/AutoCompleter'
 import CustomToastContainer from '@/components/ToastContainer'
 import { toast } from 'react-toastify'
 import { GradeRow } from '@/types/CourseGrading'
-import { gradedSemesters } from '@/data/years_sems'
+import { gradedSemesters } from '@/config/years_sems'
 
 export const getStaticProps: GetStaticProps = async () => {
     const depts: string[] = Object.values(departments)
@@ -220,18 +221,7 @@ export default function AddGrading({ depts }: { depts: string[] }) {
 
     return (
         <>
-            <Head>
-                <title>Course Grading.</title>
-                <meta
-                    name="description"
-                    content="Add course grading information"
-                />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
+            <Meta {...getMetaConfig('courses/grading')} />
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
                     <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">

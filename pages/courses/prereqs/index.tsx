@@ -1,5 +1,6 @@
+import { getMetaConfig } from '@/config/meta'
+import Meta from '@/components/Meta'
 import { GetStaticProps } from 'next'
-import Head from 'next/head'
 import { useState, useEffect } from 'react'
 import Menu from '@/components/Menu'
 import { PreReqGroup } from '@/types/PreReq'
@@ -29,24 +30,7 @@ export default function Prereqs({ prereqs }: { prereqs: PreReqGroup[] }) {
 
     return (
         <>
-            <Head>
-                <title>Prereqs.</title>
-                <meta
-                    name="description"
-                    content="One stop place for your PS queries, handouts, and much more"
-                />
-                <meta
-                    name="keywords"
-                    content="BITS Pilani, Handouts, BPHC, Hyderabad Campus, BITS Hyderabad, BITS, Pilani, Handouts for you, handouts, for, you, bits, birla, institute, bits hyd, academics, practice school, ps, queries, ps cutoffs, ps2, ps1"
-                />
-                <meta name="robots" content="index, follow" />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-
+            <Meta {...getMetaConfig('courses/prereqs')} />
             {/* Search box */}
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
@@ -64,12 +48,10 @@ export default function Prereqs({ prereqs }: { prereqs: PreReqGroup[] }) {
                     />
                 </div>
             </div>
-
             <p className="text-center m-2">
                 NOTE: Here PRE means you will have to complete before hand while
                 CO means you can do them parallelly
             </p>
-
             <div className="grid md:grid-cols-3 place-items-center p-5">
                 <Modal open={open}>
                     <h3 className="font-bold text-lg">{prereq?.name}</h3>

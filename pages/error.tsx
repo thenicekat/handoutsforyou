@@ -1,6 +1,7 @@
+import { getMetaConfig } from '@/config/meta'
+import Meta from '@/components/Meta'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-import Head from 'next/head'
 import Link from 'next/link'
 import StatusCode from '@/components/StatusCode'
 import { signIn } from 'next-auth/react'
@@ -61,15 +62,8 @@ export default function ErrorPage() {
                     </div>
                 </div>
             </nav>
-
             <div className="min-h-screen flex flex-col items-center pt-32 p-4">
-                <Head>
-                    <title>{`${errorContent.title} - HandoutsForYou`}</title>
-                    <meta
-                        name="description"
-                        content="Authentication error page"
-                    />
-                </Head>
+                <Meta />
 
                 <div className="w-full md:w-2/5 mx-auto">
                     <StatusCode

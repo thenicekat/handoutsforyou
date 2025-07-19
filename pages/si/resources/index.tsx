@@ -1,5 +1,6 @@
+import { getMetaConfig } from '@/config/meta'
+import Meta from '@/components/Meta'
 import { GetStaticProps } from 'next'
-import Head from 'next/head'
 import { useState, useEffect } from 'react'
 import Menu from '@/components/Menu'
 import { LinkIcon } from '@heroicons/react/24/solid'
@@ -10,39 +11,49 @@ import { googleDriveService } from '@/utils/googleDrive'
 
 export const getStaticProps: GetStaticProps = async () => {
     try {
-        const siChroniclesFolderId = process.env.GOOGLE_DRIVE_SI_CHRONICLES_FOLDER_ID
+        const siChroniclesFolderId =
+            process.env.GOOGLE_DRIVE_SI_CHRONICLES_FOLDER_ID
 
         if (!siChroniclesFolderId) {
-            console.error('GOOGLE_DRIVE_SI_CHRONICLES_FOLDER_ID environment variable is not set')
+            console.error(
+                'GOOGLE_DRIVE_SI_CHRONICLES_FOLDER_ID environment variable is not set'
+            )
             return {
                 props: {
                     siChronicles: {},
-                    error: 'Google Drive configuration missing'
+                    error: 'Google Drive configuration missing',
                 },
             }
         }
 
-        const siChronicles = await googleDriveService.getSIChronicles(siChroniclesFolderId)
+        const siChronicles =
+            await googleDriveService.getSIChronicles(siChroniclesFolderId)
 
         return {
             props: {
                 siChronicles,
             },
-            revalidate: 24 * 3600 // Regenerate every 12 hours
+            revalidate: 24 * 3600, // Regenerate every 12 hours
         }
     } catch (error) {
         console.error('Error fetching SI chronicles:', error)
         return {
             props: {
                 siChronicles: {},
-                error: 'Failed to fetch SI chronicles from Google Drive'
+                error: 'Failed to fetch SI chronicles from Google Drive',
             },
-            revalidate: 300 // Try again in 5 minutes on error
+            revalidate: 300, // Try again in 5 minutes on error
         }
     }
 }
 
-export default function SummerInternships({ siChronicles, error }: { siChronicles: SIChroniclesByCampus, error?: string }) {
+export default function SummerInternships({
+    siChronicles,
+    error,
+}: {
+    siChronicles: SIChroniclesByCampus
+    error?: string
+}) {
     const [search, setSearch] = useState('')
     const [chroniclesLoading, setChroniclesLoading] = useState(true)
 
@@ -70,7 +81,9 @@ export default function SummerInternships({ siChronicles, error }: { siChronicle
         return (
             <div className="grid place-items-center min-h-screen">
                 <div className="text-center">
-                    <h1 className="text-2xl text-red-500 mb-4">Error Loading SI Chronicles</h1>
+                    <h1 className="text-2xl text-red-500 mb-4">
+                        Error Loading SI Chronicles
+                    </h1>
                     <p className="text-gray-600">{error}</p>
                 </div>
             </div>
@@ -79,24 +92,7 @@ export default function SummerInternships({ siChronicles, error }: { siChronicle
 
     return (
         <>
-            <Head>
-                <title>Summer Internships.</title>
-                <meta
-                    name="description"
-                    content="One stop place for your PS queries, handouts, and much more"
-                />
-                <meta
-                    name="keywords"
-                    content="BITS Pilani, Handouts, BPHC, Hyderabad Campus, BITS Hyderabad, BITS, Pilani, Handouts for you, handouts, for, you, bits, birla, institute, bits hyd, academics, practice school, ps, queries, ps cutoffs, ps2, ps1"
-                />
-                <meta name="robots" content="index, follow" />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-
+            <Meta {...getMetaConfig('si')} />
             {/* Search box */}
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
@@ -114,14 +110,12 @@ export default function SummerInternships({ siChronicles, error }: { siChronicle
                     />
                 </div>
             </div>
-
             {chroniclesLoading && (
                 <div className="grid place-items-center py-16">
                     <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
                     <p className="text-lg mt-4">Loading data...</p>
                 </div>
             )}
-
             {!chroniclesLoading && (
                 <div className="place-items-center p-5 max-w-7xl mx-auto">
                     <h1 className="text-3xl text-center my-3">
@@ -208,7 +202,16 @@ export default function SummerInternships({ siChronicles, error }: { siChronicle
                                                     </p>
                                                     {chronicle.size && (
                                                         <p className="text-xs text-gray-400">
-                                                            Size: {Math.round(parseInt(chronicle.size) / 1024 / 1024 * 100) / 100} MB
+                                                            Size:{' '}
+                                                            {Math.round(
+                                                                (parseInt(
+                                                                    chronicle.size
+                                                                ) /
+                                                                    1024 /
+                                                                    1024) *
+                                                                    100
+                                                            ) / 100}{' '}
+                                                            MB
                                                         </p>
                                                     )}
 
