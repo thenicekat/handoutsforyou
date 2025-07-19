@@ -16,7 +16,7 @@ import {
     SortingState,
     useReactTable,
 } from '@tanstack/react-table'
-import { placementYears } from '@/data/years_sems'
+import { placementYears } from '@/config/years_sems'
 import { axiosInstance } from '@/utils/axiosCache'
 
 export default function PlacementCTCs() {
