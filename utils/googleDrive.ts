@@ -34,10 +34,14 @@ export class GoogleDriveService {
                 GOOGLE_DRIVE_CLIENT_SECRET,
                 GOOGLE_DRIVE_REFRESH_TOKEN,
             } = process.env
-            if (!GOOGLE_DRIVE_CLIENT_ID || !GOOGLE_DRIVE_CLIENT_SECRET || !GOOGLE_DRIVE_REFRESH_TOKEN) {
-                throw new Error(
-                    'Missing required Google OAuth credentials (GOOGLE_DRIVE_CLIENT_ID, GOOGLE_DRIVE_CLIENT_SECRET, GOOGLE_DRIVE_REFRESH_TOKEN).'
-                )
+            if (!GOOGLE_DRIVE_CLIENT_ID) {
+                throw new Error('GOOGLE_DRIVE_CLIENT_ID is not set')
+            }
+            if (!GOOGLE_DRIVE_CLIENT_SECRET) {
+                throw new Error('GOOGLE_DRIVE_CLIENT_SECRET is not set')
+            }
+            if (!GOOGLE_DRIVE_REFRESH_TOKEN) {
+                throw new Error('GOOGLE_DRIVE_REFRESH_TOKEN is not set')
             }
 
             const oAuth2Client = new google.auth.OAuth2(
