@@ -16,8 +16,6 @@ export default function ChroniclePage() {
 
     const [chronicles, setChronicles] = useState<SI_Chronicle[]>([])
 
-    if (!session) return <StatusCode code={401} />
-
     const fetchChronicles = async () => {
         try {
             const res = await axiosInstance.post(`/api/si/chronicles/data`, {
@@ -31,7 +29,6 @@ export default function ChroniclePage() {
                 } else setChronicles(data.data)
             }
         } catch (error) {
-            console.error('Error fetching chronicles:', error)
             alert('Failed to fetch chronicles data')
         }
     }
@@ -39,6 +36,8 @@ export default function ChroniclePage() {
     useEffect(() => {
         if (slug) fetchChronicles()
     }, [slug])
+
+    if (!session) return <StatusCode code={401} />
 
     return (
         <>
