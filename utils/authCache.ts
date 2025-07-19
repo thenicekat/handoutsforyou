@@ -12,7 +12,6 @@ export async function checkSessionCached(): Promise<boolean> {
         const response = await axiosInstance.get('/api/auth/session')
         return !response.data.error
     } catch (error) {
-        console.error('Session check failed:', error)
         return false
     }
 }
@@ -99,7 +98,6 @@ export class PWASessionManager {
             }
             return isAuthenticated
         } catch (error) {
-            console.error('PWA session check failed:', error)
             return false
         }
     }

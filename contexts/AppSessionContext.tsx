@@ -66,7 +66,6 @@ export function AppSessionProvider({
                         isAuthenticated ? 'authenticated' : 'unauthenticated'
                     )
                 } catch (error) {
-                    console.error('Session check failed:', error)
                     setSessionStatus('unauthenticated')
                 }
             }
@@ -94,7 +93,6 @@ export function AppSessionProvider({
                     isAuthenticated ? 'authenticated' : 'unauthenticated'
                 )
             } catch (error) {
-                console.error('Initial session check failed:', error)
                 setSessionStatus('unauthenticated')
             }
         }

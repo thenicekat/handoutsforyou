@@ -8,7 +8,6 @@ export async function checkSession() {
         }
         return true
     } catch (error) {
-        console.error('Session check failed:', error)
         return false
     }
 }

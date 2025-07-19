@@ -6,12 +6,17 @@ import { use, useEffect, useState } from 'react'
 import Menu from '@/components/Menu'
 import { SI_Chronicle } from '../../../types/SIData'
 import { axiosInstance } from '@/utils/axiosCache'
+import { useSession } from 'next-auth/react'
+import StatusCode from '@/components/StatusCode'
 
 export default function ChroniclePage() {
     const router = useRouter()
     const { slug } = router.query
+    const { data: session, status } = useSession()
 
     const [chronicles, setChronicles] = useState<SI_Chronicle[]>([])
+
+    if (!session) return <StatusCode code={401} />
 
     const fetchChronicles = async () => {
         try {
