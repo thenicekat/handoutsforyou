@@ -5,7 +5,7 @@ import Menu from '@/components/Menu'
 import { toast } from 'react-toastify'
 import CustomToastContainer from '@/components/ToastContainer'
 import AutoCompleter from '@/components/AutoCompleter'
-import { higherStudiesCategories } from '@/data/higherstudies'
+import { higherStudiesCategories } from '@/config/higherstudies'
 import { axiosInstance } from '@/utils/axiosCache'
 
 export default function AddHSResources() {
