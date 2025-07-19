@@ -1,5 +1,6 @@
 import React from 'react'
 import Modal from './Modal'
+import { axiosInstance } from '@/utils/axiosCache'
 
 type Props = {
     setStarCount: (count: number) => void
@@ -10,12 +11,15 @@ export default function StarPrompt({ setStarCount }: Props) {
     const [internalStarCount, setInternalStarCount] = React.useState(0)
 
     const getStarCount = async () => {
-        const response = await fetch(
-            'https://api.github.com/repos/thenicekat/handoutsforyou'
-        )
-        const res = await response.json()
-        setInternalStarCount(res.stargazers_count || 0)
-        setStarCount(res.stargazers_count || 0)
+        try {
+            const response = await axiosInstance.get(
+                'https://api.github.com/repos/thenicekat/handoutsforyou'
+            )
+            setInternalStarCount(response.data.stargazers_count || 0)
+            setStarCount(response.data.stargazers_count || 0)
+        } catch (error) {
+            console.error('Failed to fetch star count:', error)
+        }
     }
 
     React.useEffect(() => {

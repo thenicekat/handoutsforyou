@@ -6,6 +6,7 @@ import CustomToastContainer from '@/components/ToastContainer'
 import { toast } from 'react-toastify'
 import { PS_Review } from '@/types/PSData'
 import Link from 'next/link'
+import { axiosInstance } from '@/utils/axiosCache'
 
 export default function PS1Reviews() {
     const [station, setStation] = useState('')
@@ -14,26 +15,31 @@ export default function PS1Reviews() {
 
     const fetchReviews = async () => {
         setIsLoading(true)
-        const response = await fetch('/api/ps/reviews/get', {
-            method: 'POST',
-            body: JSON.stringify({ type: 'PS1' }),
-            headers: { 'Content-Type': 'application/json' },
-        })
-        if (response.status !== 400) {
-            const res = await response.json()
-            if (res.error && res.status !== 400) {
-                toast.error(res.message)
-                setIsLoading(false)
-            } else {
-                let reviews: PS_Review[] = res.data as PS_Review[]
-                reviews = reviews.sort((a, b) => {
-                    if (a.station > b.station) return 1
-                    else if (a.station < b.station) return -1
-                    else return 0
-                })
-                setReviews(reviews)
-                setIsLoading(false)
+        try {
+            const response = await axiosInstance.post('/api/ps/reviews/get', {
+                type: 'PS1',
+            })
+            if (response.status !== 400) {
+                const res = response.data
+                if (res.error && res.status !== 400) {
+                    toast.error(res.message)
+                    setIsLoading(false)
+                } else {
+                    let reviews: PS_Review[] = res.data as PS_Review[]
+                    reviews = reviews.sort((a, b) => {
+                        if (a.station > b.station) return 1
+                        else if (a.station < b.station) return -1
+                        else return 0
+                    })
+                    setReviews(reviews)
+                    setIsLoading(false)
+                }
             }
+        } catch (error) {
+            console.error('Error fetching PS1 reviews:', error)
+            toast.error('Failed to fetch reviews')
+        } finally {
+            setIsLoading(false)
         }
     }
 
