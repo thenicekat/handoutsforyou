@@ -47,23 +47,24 @@ export default function Meta({
             <meta name="msapplication-tap-highlight" content="no" />
             <meta name="theme-color" content="#000000" />
 
-            <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-            <link rel="manifest" href="/manifest.json" />
+            <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+            <link rel="manifest" href="/images/manifest.json" />
 
-            <link rel="shortcut icon" href="/favicon.ico" />
-            <link rel="icon" href="/favicon.ico" />
-            <link rel="icon" sizes="64x64" href="/favicon.ico" />
+            <link rel="shortcut icon" href="/images/favicon.ico" />
+            <link rel="icon" href="/images/favicon.ico" />
+            <link rel="icon" sizes="64x64" href="/images/favicon.ico" />
+            <link rel="icon" sizes="48x48" href="/images/favicon-48x48.png" />
             <link
                 rel="icon"
                 type="image/png"
                 sizes="32x32"
-                href="/favicon-32x32.png"
+                href="/images/favicon-32x32.png"
             />
             <link
                 rel="icon"
                 type="image/png"
                 sizes="16x16"
-                href="/favicon-16x16.png"
+                href="/images/favicon-16x16.png"
             />
 
             {/* Adsense */}
