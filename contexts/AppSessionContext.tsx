@@ -1,16 +1,16 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
-import { pwaSessionManager } from '@/utils/optimizedAuth'
+import { pwaSessionManager } from '@/utils/authCache'
 
-interface PWAContextType {
+interface AppSessionContextType {
     isInstalled: boolean
     isOnline: boolean
     showInstallPrompt: () => void
     sessionStatus: 'loading' | 'authenticated' | 'unauthenticated'
 }
 
-const PWAContext = createContext<PWAContextType | undefined>(undefined)
+const AppSessionContext = createContext<AppSessionContextType | undefined>(undefined)
 
-export function PWAProvider({ children }: { children: React.ReactNode }) {
+export function AppSessionProvider({ children }: { children: React.ReactNode }) {
     const [isInstalled, setIsInstalled] = useState(false)
     const [isOnline, setIsOnline] = useState(true)
     const [sessionStatus, setSessionStatus] = useState<'loading' | 'authenticated' | 'unauthenticated'>('loading')
@@ -95,21 +95,21 @@ export function PWAProvider({ children }: { children: React.ReactNode }) {
     }
 
     return (
-        <PWAContext.Provider value={{
+        <AppSessionContext.Provider value={{
             isInstalled,
             isOnline,
             showInstallPrompt,
             sessionStatus
         }}>
             {children}
-        </PWAContext.Provider>
+        </AppSessionContext.Provider>
     )
 }
 
-export function usePWA(): PWAContextType {
-    const context = useContext(PWAContext)
+export function useAppSession(): AppSessionContextType {
+    const context = useContext(AppSessionContext)
     if (context === undefined) {
-        throw new Error('usePWA must be used within a PWAProvider')
+        throw new Error('useAppSession must be used within an AppSessionProvider')
     }
     return context
 }

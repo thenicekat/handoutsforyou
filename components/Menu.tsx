@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { signIn, signOut } from 'next-auth/react'
 import { StarIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import StarPrompt from './StarPrompt'
-import { useOptimizedAuth } from '@/utils/optimizedAuth'
+import { useOptimizedAuth } from '@/utils/authCache'
 
 interface MenuProps {
     doNotShowMenu?: boolean

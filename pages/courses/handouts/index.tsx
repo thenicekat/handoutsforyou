@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
 import Menu from '@/components/Menu'
 import Link from 'next/link'
-import { checkSessionCached } from '@/utils/optimizedAuth'
+import { checkSessionCached } from '@/utils/authCache'
 import { googleDriveService } from '@/utils/googleDrive'
 
 const HandoutsPerYear = dynamic(() => import('@/components/HandoutsPerYear'), {
