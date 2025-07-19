@@ -17,7 +17,7 @@ export default function PS2Reviews() {
         setIsLoading(true)
         try {
             const response = await axiosInstance.post('/api/ps/reviews/get', {
-                type: 'PS2'
+                type: 'PS2',
             })
             if (response.status !== 400) {
                 const res = response.data

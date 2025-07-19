@@ -1,7 +1,12 @@
+/**
+ * Auth utilities with caching and PWA lifecycle management.
+ * Provides React hooks for optimized authentication state and session validation
+ * with PWA-aware caching that handles app install/visibility events.
+ */
+
 import { useSession } from 'next-auth/react'
 import { axiosInstance } from './axiosCache'
 
-// Cached session check using axios interceptor
 export async function checkSessionCached(): Promise<boolean> {
     try {
         const response = await axiosInstance.get('/api/auth/session')
@@ -15,27 +20,36 @@ export async function checkSessionCached(): Promise<boolean> {
 // React hook for optimized auth state
 export function useOptimizedAuth() {
     const { data: session, status } = useSession()
-    
+
     return {
         isAuthenticated: !!session,
         isLoading: status === 'loading',
         user: session?.user,
-        session
+        session,
     }
 }
 
 // PWA-specific session handling
 export class PWASessionManager {
     private static instance: PWASessionManager
-    private sessionCache: { isAuthenticated: boolean; timestamp: number } | null = null
+    private sessionCache: {
+        isAuthenticated: boolean
+        timestamp: number
+    } | null = null
     private readonly CACHE_DURATION = 30000 // 30 seconds
 
     private constructor() {
         // Listen for PWA lifecycle events
         if (typeof window !== 'undefined') {
-            window.addEventListener('beforeinstallprompt', this.handleBeforeInstallPrompt)
+            window.addEventListener(
+                'beforeinstallprompt',
+                this.handleBeforeInstallPrompt
+            )
             window.addEventListener('appinstalled', this.handleAppInstalled)
-            document.addEventListener('visibilitychange', this.handleVisibilityChange)
+            document.addEventListener(
+                'visibilitychange',
+                this.handleVisibilityChange
+            )
         }
     }
 
@@ -59,7 +73,10 @@ export class PWASessionManager {
     private handleVisibilityChange = () => {
         if (document.visibilityState === 'visible') {
             // Clear stale session cache when app becomes visible
-            if (this.sessionCache && Date.now() - this.sessionCache.timestamp > this.CACHE_DURATION) {
+            if (
+                this.sessionCache &&
+                Date.now() - this.sessionCache.timestamp > this.CACHE_DURATION
+            ) {
                 this.sessionCache = null
             }
         }
@@ -67,7 +84,10 @@ export class PWASessionManager {
 
     async getSessionStatus(): Promise<boolean> {
         // Return cached result if available and not expired
-        if (this.sessionCache && Date.now() - this.sessionCache.timestamp < this.CACHE_DURATION) {
+        if (
+            this.sessionCache &&
+            Date.now() - this.sessionCache.timestamp < this.CACHE_DURATION
+        ) {
             return this.sessionCache.isAuthenticated
         }
 
@@ -75,7 +95,7 @@ export class PWASessionManager {
             const isAuthenticated = await checkSessionCached()
             this.sessionCache = {
                 isAuthenticated,
-                timestamp: Date.now()
+                timestamp: Date.now(),
             }
             return isAuthenticated
         } catch (error) {

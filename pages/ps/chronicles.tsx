@@ -54,7 +54,6 @@ export default function PSChroniclesPage({
 }) {
     const [chroniclesLoading, setChroniclesLoading] = useState(false)
 
-
     if (error) {
         return (
             <div className="grid place-items-center min-h-screen">

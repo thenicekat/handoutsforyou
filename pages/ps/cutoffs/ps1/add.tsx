@@ -66,7 +66,7 @@ export default function AddPS1Response() {
         setIsFetchingResponses(true)
         try {
             const response = await axiosInstance.post('/api/ps/cutoffs/get', {
-                type: 'ps1'
+                type: 'ps1',
             })
 
             if (response.status === 200) {

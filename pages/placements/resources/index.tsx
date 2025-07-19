@@ -74,10 +74,14 @@ export default function Placement({
             if (!data.error) {
                 let resourcesByCategory: ResourceByCategory = {}
                 for (let i = 0; i < data.data.length; i++) {
-                    if (resourcesByCategory[data.data[i].category] == undefined) {
+                    if (
+                        resourcesByCategory[data.data[i].category] == undefined
+                    ) {
                         resourcesByCategory[data.data[i].category] = []
                     }
-                    resourcesByCategory[data.data[i].category].push(data.data[i])
+                    resourcesByCategory[data.data[i].category].push(
+                        data.data[i]
+                    )
                 }
                 setResources(resourcesByCategory)
             } else {

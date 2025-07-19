@@ -1,3 +1,9 @@
+/**
+ * App session context for PWA state management.
+ * Manages PWA installation detection, online/offline status, install prompts,
+ * and session state with automatic refresh on app visibility changes.
+ */
+
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { pwaSessionManager } from '@/utils/authCache'
 
@@ -8,29 +14,38 @@ interface AppSessionContextType {
     sessionStatus: 'loading' | 'authenticated' | 'unauthenticated'
 }
 
-const AppSessionContext = createContext<AppSessionContextType | undefined>(undefined)
+const AppSessionContext = createContext<AppSessionContextType | undefined>(
+    undefined
+)
 
-export function AppSessionProvider({ children }: { children: React.ReactNode }) {
+export function AppSessionProvider({
+    children,
+}: {
+    children: React.ReactNode
+}) {
     const [isInstalled, setIsInstalled] = useState(false)
     const [isOnline, setIsOnline] = useState(true)
-    const [sessionStatus, setSessionStatus] = useState<'loading' | 'authenticated' | 'unauthenticated'>('loading')
+    const [sessionStatus, setSessionStatus] = useState<
+        'loading' | 'authenticated' | 'unauthenticated'
+    >('loading')
     const [installPrompt, setInstallPrompt] = useState<Event | null>(null)
 
     useEffect(() => {
-        // Check if app is already installed
+        // Check if app is already installed.
         const checkInstalled = () => {
-            const isStandalone = window.matchMedia('(display-mode: standalone)').matches
+            const isStandalone = window.matchMedia(
+                '(display-mode: standalone)'
+            ).matches
             const isWebapp = (window.navigator as any).standalone === true
             setIsInstalled(isStandalone || isWebapp)
         }
 
-        // Handle install prompt
+        // Prompt user to install.
         const handleBeforeInstallPrompt = (e: Event) => {
             e.preventDefault()
             setInstallPrompt(e)
         }
 
-        // Handle app installed
         const handleAppInstalled = () => {
             setIsInstalled(true)
             setInstallPrompt(null)
@@ -45,8 +60,11 @@ export function AppSessionProvider({ children }: { children: React.ReactNode }) 
             if (document.visibilityState === 'visible') {
                 // Refresh session when app becomes visible
                 try {
-                    const isAuthenticated = await pwaSessionManager.getSessionStatus()
-                    setSessionStatus(isAuthenticated ? 'authenticated' : 'unauthenticated')
+                    const isAuthenticated =
+                        await pwaSessionManager.getSessionStatus()
+                    setSessionStatus(
+                        isAuthenticated ? 'authenticated' : 'unauthenticated'
+                    )
                 } catch (error) {
                     console.error('Session check failed:', error)
                     setSessionStatus('unauthenticated')
@@ -54,12 +72,14 @@ export function AppSessionProvider({ children }: { children: React.ReactNode }) 
             }
         }
 
-        // Initialize
         checkInstalled()
         setIsOnline(navigator.onLine)
 
         // Add event listeners
-        window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
+        window.addEventListener(
+            'beforeinstallprompt',
+            handleBeforeInstallPrompt
+        )
         window.addEventListener('appinstalled', handleAppInstalled)
         window.addEventListener('online', handleOnline)
         window.addEventListener('offline', handleOffline)
@@ -68,8 +88,11 @@ export function AppSessionProvider({ children }: { children: React.ReactNode }) 
         // Initial session check
         const checkInitialSession = async () => {
             try {
-                const isAuthenticated = await pwaSessionManager.getSessionStatus()
-                setSessionStatus(isAuthenticated ? 'authenticated' : 'unauthenticated')
+                const isAuthenticated =
+                    await pwaSessionManager.getSessionStatus()
+                setSessionStatus(
+                    isAuthenticated ? 'authenticated' : 'unauthenticated'
+                )
             } catch (error) {
                 console.error('Initial session check failed:', error)
                 setSessionStatus('unauthenticated')
@@ -80,11 +103,17 @@ export function AppSessionProvider({ children }: { children: React.ReactNode }) 
 
         // Cleanup
         return () => {
-            window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
+            window.removeEventListener(
+                'beforeinstallprompt',
+                handleBeforeInstallPrompt
+            )
             window.removeEventListener('appinstalled', handleAppInstalled)
             window.removeEventListener('online', handleOnline)
             window.removeEventListener('offline', handleOffline)
-            document.removeEventListener('visibilitychange', handleVisibilityChange)
+            document.removeEventListener(
+                'visibilitychange',
+                handleVisibilityChange
+            )
         }
     }, [])
 
@@ -95,12 +124,14 @@ export function AppSessionProvider({ children }: { children: React.ReactNode }) 
     }
 
     return (
-        <AppSessionContext.Provider value={{
-            isInstalled,
-            isOnline,
-            showInstallPrompt,
-            sessionStatus
-        }}>
+        <AppSessionContext.Provider
+            value={{
+                isInstalled,
+                isOnline,
+                showInstallPrompt,
+                sessionStatus,
+            }}
+        >
             {children}
         </AppSessionContext.Provider>
     )
@@ -109,7 +140,9 @@ export function AppSessionProvider({ children }: { children: React.ReactNode }) 
 export function useAppSession(): AppSessionContextType {
     const context = useContext(AppSessionContext)
     if (context === undefined) {
-        throw new Error('useAppSession must be used within an AppSessionProvider')
+        throw new Error(
+            'useAppSession must be used within an AppSessionProvider'
+        )
     }
     return context
 }

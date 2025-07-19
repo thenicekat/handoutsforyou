@@ -33,7 +33,7 @@ export default function AddReview() {
         try {
             const res = await axiosInstance.post('/api/rants/add', {
                 rant: rant,
-                isPublic: isPublic
+                isPublic: isPublic,
             })
             const data = res.data
             if (data.error) {

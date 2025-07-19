@@ -39,18 +39,18 @@ export default function Reviews() {
         try {
             const res = await axiosInstance.post('/api/courses/reviews/get', {
                 course: course,
-                prof: prof
+                prof: prof,
             })
             if (res.status !== 400) {
                 const reviews = res.data
-            if (reviews.error && reviews.status !== 400) {
-                toast.error(reviews.message)
-                setIsLoading(false)
-            } else {
-                setReviews(reviews.data as CourseReview[])
-                setIsLoading(false)
-                filterByDept(departments[dept])
-            }
+                if (reviews.error && reviews.status !== 400) {
+                    toast.error(reviews.message)
+                    setIsLoading(false)
+                } else {
+                    setReviews(reviews.data as CourseReview[])
+                    setIsLoading(false)
+                    filterByDept(departments[dept])
+                }
             }
         } catch (error) {
             console.error('Error fetching course reviews:', error)

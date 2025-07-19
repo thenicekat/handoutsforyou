@@ -37,42 +37,12 @@ const nextConfig = {
     },
 }
 
-// Enhanced runtime caching for PWA
-const customRuntimeCaching = [
-    ...runtimeCaching,
-    {
-        urlPattern: /^\/api\/auth\/session$/,
-        handler: 'CacheFirst',
-        options: {
-            cacheName: 'auth-session-cache',
-            expiration: {
-                maxEntries: 1,
-                maxAgeSeconds: 30, // 30 seconds cache for auth
-            },
-            cacheKeyWillBeUsed: async ({ request }) => {
-                return `${request.url}-${Date.now() - (Date.now() % 30000)}` // Cache per 30-second window
-            },
-        },
-    },
-    {
-        urlPattern: /\/api\//,
-        handler: 'NetworkFirst',
-        options: {
-            cacheName: 'api-cache',
-            expiration: {
-                maxEntries: 50,
-                maxAgeSeconds: 60, // 1 minute for other API calls
-            },
-        },
-    },
-]
-
 module.exports = withPWA({
-    dest: "public",
+    dest: 'public',
     register: true,
     skipWaiting: true,
-    disable: process.env.NODE_ENV === "development",
-    runtimeCaching: customRuntimeCaching,
+    disable: process.env.NODE_ENV === 'development',
+    runtimeCaching,
     buildExcludes: [/middleware-manifest\.json$/],
     publicExcludes: ['!robots.txt', '!sitemap.xml'],
 })(nextConfig)

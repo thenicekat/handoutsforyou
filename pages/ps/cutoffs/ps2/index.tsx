@@ -34,7 +34,7 @@ export default function PS2Data() {
         setCheckingResponses(true)
         try {
             const response = await axiosInstance.post('/api/ps/cutoffs/get', {
-                type: 'ps2'
+                type: 'ps2',
             })
 
             if (response.status === 200) {

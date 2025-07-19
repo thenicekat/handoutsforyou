@@ -19,20 +19,26 @@ export default function HSResources() {
     const fetchResources = async () => {
         setIsLoading(true)
         try {
-            const res = await axiosInstance.get('/api/higherstudies/resources/get')
+            const res = await axiosInstance.get(
+                '/api/higherstudies/resources/get'
+            )
             const data = res.data
-        if (!data.error) {
-            let resourcesByCategory: ResourceByCategory = {}
-            for (let i = 0; i < data.data.length; i++) {
-                if (resourcesByCategory[data.data[i].category] == undefined) {
-                    resourcesByCategory[data.data[i].category] = []
+            if (!data.error) {
+                let resourcesByCategory: ResourceByCategory = {}
+                for (let i = 0; i < data.data.length; i++) {
+                    if (
+                        resourcesByCategory[data.data[i].category] == undefined
+                    ) {
+                        resourcesByCategory[data.data[i].category] = []
+                    }
+                    resourcesByCategory[data.data[i].category].push(
+                        data.data[i]
+                    )
                 }
-                resourcesByCategory[data.data[i].category].push(data.data[i])
+                setResources(resourcesByCategory)
+            } else {
+                toast.error('Error fetching resources')
             }
-            setResources(resourcesByCategory)
-        } else {
-            toast.error('Error fetching resources')
-        }
         } catch (error) {
             console.error('Error fetching higher studies resources:', error)
             toast.error('Failed to fetch resources')

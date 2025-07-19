@@ -44,16 +44,16 @@ export default function PS1Data() {
             })
             if (res.status !== 400) {
                 const data = res.data
-            if (data.error) {
-                toast(data.message)
-                return
-            } else {
-                let ps1Data = data.data
-                setPS1Data(ps1Data)
+                if (data.error) {
+                    toast(data.message)
+                    return
+                } else {
+                    let ps1Data = data.data
+                    setPS1Data(ps1Data)
+                }
             }
-        }
-        setCachedYear(yearRef)
-        toast.success('Data fetched successfully!')
+            setCachedYear(yearRef)
+            toast.success('Data fetched successfully!')
         } catch (error) {
             console.error('Error updating PS1 data:', error)
             toast.error('Failed to fetch data')
@@ -65,7 +65,7 @@ export default function PS1Data() {
         setCheckingResponses(true)
         try {
             const response = await axiosInstance.post('/api/ps/cutoffs/get', {
-                type: 'ps1'
+                type: 'ps1',
             })
 
             if (response.status === 200) {

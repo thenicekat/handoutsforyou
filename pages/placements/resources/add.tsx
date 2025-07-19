@@ -24,17 +24,22 @@ export default function AddPlacementResources() {
             return
         }
         try {
-            const res = await axiosInstance.post('/api/placements/resources/add', {
-                name: name,
-                link: link,
-                created_by: created_by,
-                category: category,
-            })
+            const res = await axiosInstance.post(
+                '/api/placements/resources/add',
+                {
+                    name: name,
+                    link: link,
+                    created_by: created_by,
+                    category: category,
+                }
+            )
             const data = res.data
             if (data.error) {
                 toast.error(data.message)
             } else {
-                toast.success('Thank you! Your resource was added successfully!')
+                toast.success(
+                    'Thank you! Your resource was added successfully!'
+                )
                 setName('')
                 setLink('')
                 setCreatedBy('')

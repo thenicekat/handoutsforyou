@@ -17,7 +17,7 @@ export default function PS1Reviews() {
         setIsLoading(true)
         try {
             const response = await axiosInstance.post('/api/ps/reviews/get', {
-                type: 'PS1'
+                type: 'PS1',
             })
             if (response.status !== 400) {
                 const res = response.data
@@ -38,6 +38,7 @@ export default function PS1Reviews() {
         } catch (error) {
             console.error('Error fetching PS1 reviews:', error)
             toast.error('Failed to fetch reviews')
+        } finally {
             setIsLoading(false)
         }
     }
