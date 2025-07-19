@@ -196,7 +196,7 @@ export default function Home() {
             <div className="pt-7">
                 <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
                     <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center">
-                        Handouts4U.
+                        h4u.
                     </h1>
                     <p className="text-md md:text-lg text-white mb-4 text-center">
                         Your complete resource hub.
@@ -257,7 +257,7 @@ export default function Home() {
                                                     {item.name ===
                                                         'Some Useful Links' &&
                                                         RESOURCE_COUNTS.links >
-                                                            0 && (
+                                                        0 && (
                                                             <span className="text-primary font-bold text-sm bg-black px-2 py-1 rounded-full">
                                                                 <CountUp
                                                                     end={
