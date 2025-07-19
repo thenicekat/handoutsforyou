@@ -3,12 +3,15 @@ import type { NextRequest } from 'next/server'
 import { getToken } from 'next-auth/jwt'
 
 const routesWithoutAuth = [
+    // Landing page.
     '/',
+    // Auth & error pages.
     '/auth/signin',
     '/error',
     '/api/auth',
-    '/faqs',
     '/maintenance',
+    // Static assets.
+    '/images',
     '/manifest.json',
 ]
 
