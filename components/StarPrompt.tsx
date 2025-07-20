@@ -10,12 +10,16 @@ export default function StarPrompt({ setStarCount }: Props) {
     const [internalStarCount, setInternalStarCount] = React.useState(0)
 
     const getStarCount = async () => {
-        const response = await fetch(
-            'https://api.github.com/repos/thenicekat/handoutsforyou'
-        )
-        const res = await response.json()
-        setInternalStarCount(res.stargazers_count || 0)
-        setStarCount(res.stargazers_count || 0)
+        try {
+            const response = await fetch(
+                'https://api.github.com/repos/thenicekat/handoutsforyou'
+            )
+            const data = await response.json()
+            setInternalStarCount(data.stargazers_count || 0)
+            setStarCount(data.stargazers_count || 0)
+        } catch (error) {
+            // Silently handle error
+        }
     }
 
     React.useEffect(() => {

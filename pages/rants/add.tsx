@@ -9,6 +9,7 @@ import {
     englishDataset,
     englishRecommendedTransformers,
 } from 'obscenity'
+import { axiosInstance } from '@/utils/axiosCache'
 
 export default function AddReview() {
     const [rant, setRant] = useState('')
@@ -29,18 +30,22 @@ export default function AddReview() {
             return
         }
 
-        const data = await fetch('/api/rants/add', {
-            method: 'POST',
-            body: JSON.stringify({ rant: rant, isPublic: isPublic }),
-            headers: { 'Content-Type': 'application/json' },
-        })
-        const res = await data.json()
-        if (res.error) {
-            toast.error(res.message)
-        } else {
-            toast.success('Rant Added!')
-            setRant('')
-            window.location.href = '/rants'
+        try {
+            const res = await axiosInstance.post('/api/rants/add', {
+                rant: rant,
+                isPublic: isPublic,
+            })
+            const data = res.data
+            if (data.error) {
+                toast.error(data.message)
+            } else {
+                toast.success('Rant Added!')
+                setRant('')
+                window.location.href = '/rants'
+            }
+        } catch (error) {
+            console.error('Error adding rant:', error)
+            toast.error('Failed to add rant')
         }
     }
 
