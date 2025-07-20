@@ -48,7 +48,7 @@ export default function Meta({
             <meta name="theme-color" content="#000000" />
 
             <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
-            <link rel="manifest" href="/images/manifest.json" />
+            <link rel="manifest" href="manifest.json" />
 
             <link rel="shortcut icon" href="/images/favicon.ico" />
             <link rel="icon" href="/images/favicon.ico" />
