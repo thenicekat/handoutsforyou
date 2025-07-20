@@ -86,9 +86,8 @@ export default function Home() {
     const [showLinksModal, setShowLinksModal] = useState(false)
     const navigationCategories = [
         {
-            title: 'Course Resources.',
-            description:
-                'Access course materials, handouts, and academic resources',
+            title: 'Core Academics.',
+            description: 'Essential course details needed to get started.',
             items: [
                 {
                     name: 'Handouts',
@@ -105,6 +104,13 @@ export default function Home() {
                     path: '/courses/pyqs',
                     count: RESOURCE_COUNTS.coursePyqs,
                 },
+            ],
+        },
+        {
+            title: 'Course Extras.',
+            description:
+                'Crowd sourced reviews, resources and grading information for courses.',
+            items: [
                 {
                     name: 'Reviews',
                     path: '/courses/reviews',
@@ -123,9 +129,8 @@ export default function Home() {
             ],
         },
         {
-            title: 'Future Resources.',
-            description:
-                'Explore placement information and other opportunities',
+            title: 'Placement Resources.',
+            description: 'Placement and summer internship information.',
             items: [
                 {
                     name: 'Placement CTCs',
@@ -149,6 +154,13 @@ export default function Home() {
                         RESOURCE_COUNTS.siCompanies +
                         RESOURCE_COUNTS.siChronicles,
                 },
+            ],
+        },
+        {
+            title: 'Higher Studies.',
+            description:
+                'Resources for pursuing higher education and research.',
+            items: [
                 {
                     name: 'Research Chronicles',
                     path: 'https://pollen-box-786.notion.site/Research-Chronicles-894bcac1266d4e5fac2f4cd76ff29750',
@@ -161,8 +173,9 @@ export default function Home() {
             ],
         },
         {
-            title: 'Practice School and Others.',
-            description: 'Everything else.',
+            title: 'Practice School.',
+            description:
+                'Practice School chronicles, reviews and CGPA cutoffs.',
             items: [
                 { name: 'Practice School Dashboard', path: '/ps' },
                 {
@@ -175,6 +188,12 @@ export default function Home() {
                     path: '/ps/cutoffs/ps2',
                     count: RESOURCE_COUNTS.ps2Cutoffs,
                 },
+            ],
+        },
+        {
+            title: 'Others.',
+            description: 'Everything else.',
+            items: [
                 { name: 'Rants', path: '/rants' },
                 { name: 'Professor Chambers', path: '/chambers' },
                 {
@@ -193,91 +212,202 @@ export default function Home() {
             <Menu doNotShowMenu={true} />
             <StarPrompt setStarCount={setStarCount} />
 
-            <div className="pt-7">
-                <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center">
-                        h4u.
-                    </h1>
-                    <p className="text-md md:text-lg text-white mb-4 text-center">
-                        Your complete resource hub.
-                        <br />
-                        Thank you for making this project a huge success! 🤍
-                    </p>
-                </div>
-            </div>
-
             {/* Main Content */}
-            <div className="container mx-auto px-4 py-8">
-                {/* Resource Categories */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {navigationCategories.map((category, idx) => (
+            <div className="container mx-auto px-4 py-12">
+                {/* Hero Section with Stats */}
+                <div className="text-center mb-16">
+                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                        Your Comprehensive Resource Hub.
+                    </h2>
+                    <p className="text-lg text-gray-300 mb-8 max-w-3xl mx-auto">
+                        Everything you need for your journey @ BITS.
+                    </p>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+                            <div className="text-2xl md:text-3xl font-bold text-white">
+                                <CountUp
+                                    end={
+                                        RESOURCE_COUNTS.handouts +
+                                        RESOURCE_COUNTS.ps1Cutoffs +
+                                        RESOURCE_COUNTS.ps2Cutoffs
+                                    }
+                                    duration={3}
+                                />
+                                +
+                            </div>
+                            <div className="text-sm text-gray-300">
+                                Total Resources
+                            </div>
+                        </div>
+                        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+                            <div className="text-2xl md:text-3xl font-bold text-white">
+                                <CountUp
+                                    end={
+                                        RESOURCE_COUNTS.courseReviews +
+                                        RESOURCE_COUNTS.courseGrading
+                                    }
+                                    duration={3}
+                                />
+                                +
+                            </div>
+                            <div className="text-sm text-gray-300">
+                                Course Insights
+                            </div>
+                        </div>
+                        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+                            <div className="text-2xl md:text-3xl font-bold text-white">
+                                <CountUp
+                                    end={
+                                        RESOURCE_COUNTS.placementCtcs +
+                                        RESOURCE_COUNTS.siCompanies
+                                    }
+                                    duration={3}
+                                />
+                                +
+                            </div>
+                            <div className="text-sm text-gray-300">
+                                Career Data
+                            </div>
+                        </div>
+                        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+                            <div className="text-2xl md:text-3xl font-bold text-white">
+                                <CountUp
+                                    end={RESOURCE_COUNTS.links}
+                                    duration={3}
+                                />
+                            </div>
+                            <div className="text-sm text-gray-300">
+                                Useful Links
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Resource Categories Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {navigationCategories.map((category, categoryIndex) => (
                         <div
-                            key={idx}
-                            className="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-shadow duration-300"
+                            key={categoryIndex}
+                            className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100 overflow-hidden"
                         >
-                            <div className="p-6">
-                                <h2 className="text-2xl font-bold text-gray-800 mb-2">
+                            {/* Category Header */}
+                            <div className="bg-gradient-to-r from-gray-900 to-gray-800 p-6 text-white">
+                                <h3 className="text-xl font-bold mb-2">
                                     {category.title}
-                                </h2>
-                                <p className="text-gray-600 mb-2">
+                                </h3>
+                                <p className="text-gray-300 text-sm leading-relaxed">
                                     {category.description}
                                 </p>
-                                <div className="space-y-1">
-                                    {category.items.map((item, i) => (
-                                        <div key={i}>
-                                            {item.path ? (
-                                                <Link href={item.path}>
-                                                    <div className="flex items-center justify-between p-3 m-1 rounded-lg hover:bg-gray-100 transition-colors duration-200">
-                                                        <span className="font-medium text-gray-800">
+                            </div>
+
+                            {/* Category Items */}
+                            <div className="p-6 space-y-3">
+                                {category.items.map((item, itemIndex) => (
+                                    <div key={itemIndex}>
+                                        {item.path ? (
+                                            <Link href={item.path}>
+                                                <div className="group flex items-center justify-between p-4 rounded-lg border border-gray-200 hover:border-gray-400 hover:bg-gray-50 transition-all duration-200 cursor-pointer">
+                                                    <div className="flex-1">
+                                                        <span className="font-semibold text-gray-800 group-hover:text-gray-900 transition-colors">
                                                             {item.name}
                                                         </span>
-                                                        {item.count &&
+                                                    </div>
+                                                    <div className="flex items-center space-x-3">
+                                                        {'count' in item &&
+                                                            item.count &&
                                                             item.count > 0 && (
-                                                                <span className="text-primary font-bold text-sm bg-black px-2 py-1 rounded-full">
+                                                                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gray-900 text-white">
                                                                     <CountUp
                                                                         end={
                                                                             item.count
                                                                         }
                                                                         duration={
-                                                                            5
+                                                                            3
                                                                         }
                                                                     />
                                                                 </span>
                                                             )}
+                                                        <svg
+                                                            className="w-4 h-4 text-gray-400 group-hover:text-gray-600 transition-colors"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            viewBox="0 0 24 24"
+                                                        >
+                                                            <path
+                                                                strokeLinecap="round"
+                                                                strokeLinejoin="round"
+                                                                strokeWidth="2"
+                                                                d="M9 5l7 7-7 7"
+                                                            />
+                                                        </svg>
                                                     </div>
-                                                </Link>
-                                            ) : (
-                                                <div
-                                                    onClick={item.onClick}
-                                                    className="flex items-center justify-between p-3 m-1 rounded-lg hover:bg-gray-100 transition-colors duration-200 cursor-pointer"
-                                                >
-                                                    <span className="font-medium text-gray-800">
+                                                </div>
+                                            </Link>
+                                        ) : (
+                                            <div
+                                                onClick={
+                                                    'onClick' in item
+                                                        ? item.onClick
+                                                        : undefined
+                                                }
+                                                className="group flex items-center justify-between p-4 rounded-lg border border-gray-200 hover:border-gray-400 hover:bg-gray-50 transition-all duration-200 cursor-pointer"
+                                            >
+                                                <div className="flex-1">
+                                                    <span className="font-semibold text-gray-800 group-hover:text-gray-900 transition-colors">
                                                         {item.name}
                                                     </span>
+                                                </div>
+                                                <div className="flex items-center space-x-3">
+                                                    {'count' in item &&
+                                                        item.count &&
+                                                        item.count > 0 && (
+                                                            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gray-900 text-white">
+                                                                <CountUp
+                                                                    end={
+                                                                        item.count
+                                                                    }
+                                                                    duration={3}
+                                                                />
+                                                            </span>
+                                                        )}
                                                     {item.name ===
                                                         'Some Useful Links' &&
                                                         RESOURCE_COUNTS.links >
-                                                        0 && (
-                                                            <span className="text-primary font-bold text-sm bg-black px-2 py-1 rounded-full">
+                                                            0 && (
+                                                            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gray-900 text-white">
                                                                 <CountUp
                                                                     end={
                                                                         RESOURCE_COUNTS.links
                                                                     }
-                                                                    duration={5}
+                                                                    duration={3}
                                                                 />
                                                             </span>
                                                         )}
+                                                    <svg
+                                                        className="w-4 h-4 text-gray-400 group-hover:text-gray-600 transition-colors"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        viewBox="0 0 24 24"
+                                                    >
+                                                        <path
+                                                            strokeLinecap="round"
+                                                            strokeLinejoin="round"
+                                                            strokeWidth="2"
+                                                            d="M9 5l7 7-7 7"
+                                                        />
+                                                    </svg>
                                                 </div>
-                                            )}
-                                        </div>
-                                    ))}
-                                </div>
+                                            </div>
+                                        )}
+                                    </div>
+                                ))}
                             </div>
                         </div>
                     ))}
                 </div>
 
-                <div className="text-center mt-8">
+                {/* Contributors Section */}
+                <div className="text-center mt-16 p-8 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10">
                     {showLinksModal && (
                         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
                             <div className="bg-white rounded-lg shadow-lg max-w-xl w-full p-6 relative">
@@ -320,8 +450,10 @@ export default function Home() {
                         </div>
                     )}
 
-                    <p className="text-lg font-medium mb-4"></p>
-                    <p className="text-sm text-white">
+                    <h3 className="text-xl font-semibold text-white mb-4">
+                        Made Possible By
+                    </h3>
+                    <p className="text-sm text-gray-300 leading-relaxed">
                         Vashisth Choudhari, Pratyush Nair, Anagha G, Adarsh Das,
                         Santrupti Behera, Ruban SriramBabu, Nishith Kumar,
                         Srikant Tangirala, Mahith Tunuguntla, Anubhab Khanra,
