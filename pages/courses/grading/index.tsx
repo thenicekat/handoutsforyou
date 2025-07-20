@@ -9,6 +9,7 @@ import { profs } from '@/config/profs'
 import AutoCompleter from '@/components/AutoCompleter'
 import CustomToastContainer from '@/components/ToastContainer'
 import { toast } from 'react-toastify'
+import { axiosInstance } from '@/utils/axiosCache'
 
 interface GradingBySemester {
     [key: string]: CourseGrading[]
@@ -65,26 +66,29 @@ export default function Grading() {
         }
 
         setIsLoading(true)
-        const res = await fetch('/api/courses/grading/get', {
-            method: 'POST',
-            body: JSON.stringify({ course: course, prof: prof }),
-            headers: { 'Content-Type': 'application/json' },
-        })
+        try {
+            const res = await axiosInstance.post('/api/courses/grading/get', {
+                course: course,
+                prof: prof
+            })
 
-        if (res.status !== 400) {
-            const response = await res.json()
-            if (response.error && response.status !== 400) {
-                toast.error(response.message)
-            } else {
-                const gradingBySemester: GradingBySemester = {}
-                response.data.forEach((grading: CourseGrading) => {
+            if (res.status !== 400) {
+                const response = res.data
+                if (response.error && response.status !== 400) {
+                    toast.error(response.message)
+                } else {
+                    const gradingBySemester: GradingBySemester = {}
+                    response.data.forEach((grading: CourseGrading) => {
                     if (!gradingBySemester[grading.sem]) {
                         gradingBySemester[grading.sem] = []
                     }
                     gradingBySemester[grading.sem].push(grading)
                 })
                 setGradings(gradingBySemester)
+                }
             }
+        } catch (error) {
+            toast.error('Failed to fetch grading data')
         }
         setIsLoading(false)
     }
