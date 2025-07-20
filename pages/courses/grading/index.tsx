@@ -69,7 +69,7 @@ export default function Grading() {
         try {
             const res = await axiosInstance.post('/api/courses/grading/get', {
                 course: course,
-                prof: prof
+                prof: prof,
             })
 
             if (res.status !== 400) {
@@ -79,12 +79,12 @@ export default function Grading() {
                 } else {
                     const gradingBySemester: GradingBySemester = {}
                     response.data.forEach((grading: CourseGrading) => {
-                    if (!gradingBySemester[grading.sem]) {
-                        gradingBySemester[grading.sem] = []
-                    }
-                    gradingBySemester[grading.sem].push(grading)
-                })
-                setGradings(gradingBySemester)
+                        if (!gradingBySemester[grading.sem]) {
+                            gradingBySemester[grading.sem] = []
+                        }
+                        gradingBySemester[grading.sem].push(grading)
+                    })
+                    setGradings(gradingBySemester)
                 }
             }
         } catch (error) {
