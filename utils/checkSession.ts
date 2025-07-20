@@ -1,13 +1,8 @@
-import { authApi } from './api'
-
 export async function checkSession() {
-    try {
-        const result = await authApi.checkSession()
-        if (result.error) {
-            return false
-        }
-        return true
-    } catch (error) {
+    const response = await fetch('/api/auth/session')
+    const result = await response.json()
+    if (result.error) {
         return false
     }
+    return true
 }

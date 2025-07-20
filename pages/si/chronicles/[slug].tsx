@@ -5,39 +5,35 @@ import { GetStaticProps } from 'next'
 import { use, useEffect, useState } from 'react'
 import Menu from '@/components/Menu'
 import { SI_Chronicle } from '../../../types/SIData'
-import { axiosInstance } from '@/utils/axiosCache'
-import { useSession } from 'next-auth/react'
-import StatusCode from '@/components/StatusCode'
 
 export default function ChroniclePage() {
     const router = useRouter()
     const { slug } = router.query
-    const { data: session, status } = useSession()
 
     const [chronicles, setChronicles] = useState<SI_Chronicle[]>([])
 
     const fetchChronicles = async () => {
-        try {
-            const res = await axiosInstance.post(`/api/si/chronicles/data`, {
+        const res = await fetch(`/api/si/chronicles/data`, {
+            method: 'POST',
+            body: JSON.stringify({
                 slug: slug,
-            })
-            if (res.status !== 400) {
-                const data = res.data
-                if (data.error) {
-                    alert(data.message)
-                    return
-                } else setChronicles(data.data)
-            }
-        } catch (error) {
-            alert('Failed to fetch chronicles data')
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        if (res.status !== 400) {
+            const data = await res.json()
+            if (data.error) {
+                alert(data.message)
+                return
+            } else setChronicles(data.data)
         }
     }
 
     useEffect(() => {
         if (slug) fetchChronicles()
     }, [slug])
-
-    if (!session) return <StatusCode code={401} />
 
     return (
         <>

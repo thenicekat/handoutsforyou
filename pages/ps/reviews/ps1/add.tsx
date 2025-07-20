@@ -6,7 +6,6 @@ import CustomToastContainer from '@/components/ToastContainer'
 import { toast } from 'react-toastify'
 import { PS1Item } from '@/types/PSData'
 import Link from 'next/link'
-import { axiosInstance } from '@/utils/axiosCache'
 
 export default function AddPS1Review() {
     const [userResponses, setUserResponses] = useState([] as PS1Item[])
@@ -23,12 +22,14 @@ export default function AddPS1Review() {
     const fetchUserResponses = async () => {
         setIsLoading(true)
         try {
-            const response = await axiosInstance.post('/api/ps/cutoffs/get', {
-                type: 'ps1',
+            const response = await fetch('/api/ps/cutoffs/get', {
+                method: 'POST',
+                body: JSON.stringify({ type: 'ps1' }),
+                headers: { 'Content-Type': 'application/json' },
             })
 
-            if (response.status === 200) {
-                const data = response.data
+            if (response.ok) {
+                const data = await response.json()
                 if (!data.error) {
                     setUserResponses(data.data)
                 } else {
@@ -38,7 +39,6 @@ export default function AddPS1Review() {
                 toast.error('Failed to fetch your responses')
             }
         } catch (error) {
-            console.error('Error fetching user responses:', error)
             toast.error('An error occurred while fetching your responses')
         } finally {
             setIsLoading(false)
@@ -62,30 +62,29 @@ export default function AddPS1Review() {
             toast.error('Review cannot be empty!')
             return
         }
-        try {
-            const response = await axiosInstance.post('/api/ps/reviews/add', {
+        const data = await fetch('/api/ps/reviews/add', {
+            method: 'POST',
+            body: JSON.stringify({
                 type: PSType,
                 batch: PSBatch,
                 station: PSStation,
                 review: PSReview,
                 allotment_round: PSAllotmentRound,
-            })
-            const res = response.data
-            if (res.error) {
-                toast.error(res.message)
-            } else {
-                toast.success('Thank you! Your review was added successfully!')
-                setPSReview('')
-                setPSType('')
-                setPSBatch('')
-                setPSStation('')
-                setPSAllotmentRound('')
-                setSelectedResponse(null)
-                window.location.href = '/ps'
-            }
-        } catch (error) {
-            console.error('Error adding review:', error)
-            toast.error('Failed to add review')
+            }),
+            headers: { 'Content-Type': 'application/json' },
+        })
+        const res = await data.json()
+        if (res.error) {
+            toast.error(res.message)
+        } else {
+            toast.success('Thank you! Your review was added successfully!')
+            setPSReview('')
+            setPSType('')
+            setPSBatch('')
+            setPSStation('')
+            setPSAllotmentRound('')
+            setSelectedResponse(null)
+            window.location.href = '/ps'
         }
     }
 
