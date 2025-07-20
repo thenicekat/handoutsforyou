@@ -6,9 +6,8 @@ import Menu from '@/components/Menu'
 import type { PSChronicles } from '@/types/GoogleDriveChronicles'
 import { toast } from 'react-toastify'
 import CustomToastContainer from '@/components/ToastContainer'
+import { checkSession } from '@/utils/checkSession'
 import { googleDriveService } from '@/utils/googleDrive'
-import { useSession } from 'next-auth/react'
-import StatusCode from '@/components/StatusCode'
 
 export const getStaticProps: GetStaticProps = async () => {
     try {
@@ -54,10 +53,11 @@ export default function PSChroniclesPage({
     psChronicles: PSChronicles
     error?: string
 }) {
-    const { data: session, status } = useSession()
     const [chroniclesLoading, setChroniclesLoading] = useState(false)
 
-    if (!session) return <StatusCode code={401} />
+    useEffect(() => {
+        checkSession()
+    }, [])
 
     if (error) {
         return (

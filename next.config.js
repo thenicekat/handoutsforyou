@@ -37,12 +37,12 @@ const nextConfig = {
     },
 }
 
-module.exports = withPWA({
-    dest: 'public',
-    register: true,
-    skipWaiting: true,
-    disable: process.env.NODE_ENV === 'development',
-    runtimeCaching,
-    buildExcludes: [/middleware-manifest\.json$/],
-    publicExcludes: ['!robots.txt', '!sitemap.xml'],
-})(nextConfig)
+module.exports = nextConfig
+
+// module.exports = withPWA({
+//   dest: "public",
+//   register: true,
+//   skipWaiting: true,
+//   disable: process.env.NODE_ENV === "development",
+//   runtimeCaching,
+// })(nextConfig);

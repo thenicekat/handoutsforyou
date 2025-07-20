@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
 import Menu from '@/components/Menu'
 import Link from 'next/link'
-import { checkSessionCached } from '@/utils/authCache'
+import { checkSession } from '@/utils/checkSession'
 import { googleDriveService } from '@/utils/googleDrive'
 
 const HandoutsPerYear = dynamic(() => import('@/components/HandoutsPerYear'), {
@@ -65,7 +65,7 @@ export default function Home({
     const [isLoading, setIsLoading] = useState(false)
 
     const fetchHandouts = async () => {
-        await checkSessionCached()
+        await checkSession()
         setIsLoading(true)
         setActualSearch(search)
         setIsLoading(false)

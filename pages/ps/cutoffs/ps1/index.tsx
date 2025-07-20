@@ -16,7 +16,6 @@ import {
     SortingState,
     useReactTable,
 } from '@tanstack/react-table'
-import { axiosInstance } from '@/utils/axiosCache'
 
 export default function PS1Data() {
     const [search, setSearch] = useState('')
@@ -38,38 +37,39 @@ export default function PS1Data() {
             return
         }
 
-        try {
-            const res = await axiosInstance.post('/api/ps/cutoffs/ps1', {
+        const res = await fetch('/api/ps/cutoffs/ps1', {
+            method: 'POST',
+            body: JSON.stringify({
                 year: yearRef,
-            })
-            if (res.status !== 400) {
-                const data = res.data
-                if (data.error) {
-                    toast(data.message)
-                    return
-                } else {
-                    let ps1Data = data.data
-                    setPS1Data(ps1Data)
-                }
+            }),
+            headers: { 'Content-Type': 'application/json' },
+        })
+        if (res.status !== 400) {
+            const data = await res.json()
+            if (data.error) {
+                toast(data.message)
+                return
+            } else {
+                let ps1Data = data.data
+                setPS1Data(ps1Data)
             }
-            setCachedYear(yearRef)
-            toast.success('Data fetched successfully!')
-        } catch (error) {
-            console.error('Error updating PS1 data:', error)
-            toast.error('Failed to fetch data')
         }
+        setCachedYear(yearRef)
+        toast.success('Data fetched successfully!')
         setIsLoading(false)
     }
 
     const checkUserResponses = async () => {
         setCheckingResponses(true)
         try {
-            const response = await axiosInstance.post('/api/ps/cutoffs/get', {
-                type: 'ps1',
+            const response = await fetch('/api/ps/cutoffs/get', {
+                method: 'POST',
+                body: JSON.stringify({ type: 'ps1' }),
+                headers: { 'Content-Type': 'application/json' },
             })
 
-            if (response.status === 200) {
-                const data = response.data
+            if (response.ok) {
+                const data = await response.json()
                 if (!data.error && data.data) {
                     setHasResponses(data.data.length > 0)
                 }

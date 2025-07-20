@@ -18,8 +18,6 @@
         "@types/react": "19.1.2",
         "@types/react-dom": "19.1.2",
         "autoprefixer": "^10.4.20",
-        "axios": "^1.10.0",
-        "axios-cache-interceptor": "^1.8.0",
         "classnames": "^2.5.1",
         "daisyui": "^4.12.10",
         "disable-devtool": "^0.3.7",

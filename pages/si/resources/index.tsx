@@ -4,6 +4,7 @@ import { GetStaticProps } from 'next'
 import { useState, useEffect } from 'react'
 import Menu from '@/components/Menu'
 import { LinkIcon } from '@heroicons/react/24/solid'
+import { checkSession } from '@/utils/checkSession'
 import { SIChroniclesByCampus } from '@/types/GoogleDriveChronicles'
 import { toast } from 'react-toastify'
 import CustomToastContainer from '@/components/ToastContainer'
@@ -69,6 +70,7 @@ export default function SummerInternships({
     ]
 
     useEffect(() => {
+        checkSession()
         // Simulate data loading completion
         const timer = setTimeout(() => {
             setChroniclesLoading(false)
