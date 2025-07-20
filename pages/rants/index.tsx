@@ -8,7 +8,6 @@ import { toast } from 'react-toastify'
 import { Rant } from '@/types/Rant'
 import { PlusCircleIcon } from '@heroicons/react/24/solid'
 import { ChatBubbleOvalLeftEllipsisIcon } from '@heroicons/react/24/outline'
-import { axiosInstance } from '@/utils/axiosCache'
 
 export default function Rants() {
     const [isLoading, setIsLoading] = useState(false)
@@ -19,22 +18,20 @@ export default function Rants() {
 
     const fetchRants = async () => {
         setIsLoading(true)
-        try {
-            const res = await axiosInstance.post('/api/rants/get', {})
-            if (res.status !== 400) {
-                const rants = res.data
-                if (rants.error && rants.status !== 400) {
-                    toast.error(rants.message)
-                    setIsLoading(false)
-                } else {
-                    setRants(rants.data.reverse())
-                    setIsLoading(false)
-                }
+        const res = await fetch('/api/rants/get', {
+            method: 'POST',
+            body: JSON.stringify({}),
+            headers: { 'Content-Type': 'application/json' },
+        })
+        if (res.status !== 400) {
+            const rants = await res.json()
+            if (rants.error && rants.status !== 400) {
+                toast.error(rants.message)
+                setIsLoading(false)
+            } else {
+                setRants(rants.data.reverse())
+                setIsLoading(false)
             }
-        } catch (error) {
-            console.error('Error fetching rants:', error)
-            toast.error('Failed to fetch rants')
-            setIsLoading(false)
         }
     }
 
@@ -52,12 +49,16 @@ export default function Rants() {
         }
 
         try {
-            const res = await axiosInstance.post('/api/rants/comment', {
-                rantId,
-                comment: newComments[rantId],
+            const res = await fetch('/api/rants/comment', {
+                method: 'POST',
+                body: JSON.stringify({
+                    rantId,
+                    comment: newComments[rantId],
+                }),
+                headers: { 'Content-Type': 'application/json' },
             })
 
-            const data = res.data
+            const data = await res.json()
 
             if (data.error) {
                 toast.error(data.message || 'Failed to add comment')
@@ -71,10 +72,14 @@ export default function Rants() {
                 }))
 
                 // Fetch updated rants but only update the comments for this specific rant
-                const res = await axiosInstance.post('/api/rants/get', {})
+                const res = await fetch('/api/rants/get', {
+                    method: 'POST',
+                    body: JSON.stringify({}),
+                    headers: { 'Content-Type': 'application/json' },
+                })
 
-                if (res.status === 200) {
-                    const rantsData = res.data
+                if (res.ok) {
+                    const rantsData = await res.json()
                     if (!rantsData.error) {
                         // Find the updated rant with new comments
                         const updatedRant = rantsData.data.find(

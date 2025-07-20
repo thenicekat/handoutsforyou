@@ -7,7 +7,6 @@ import AutoCompleter from '@/components/AutoCompleter'
 import { toast } from 'react-toastify'
 import CustomToastContainer from '@/components/ToastContainer'
 import { useRouter } from 'next/router'
-import { axiosInstance } from '@/utils/axiosCache'
 
 export default function AddPS1Response() {
     const router = useRouter()
@@ -65,12 +64,14 @@ export default function AddPS1Response() {
     const fetchUserResponses = async () => {
         setIsFetchingResponses(true)
         try {
-            const response = await axiosInstance.post('/api/ps/cutoffs/get', {
-                type: 'ps1',
+            const response = await fetch('/api/ps/cutoffs/get', {
+                method: 'POST',
+                body: JSON.stringify({ type: 'ps1' }),
+                headers: { 'Content-Type': 'application/json' },
             })
 
-            if (response.status === 200) {
-                const data = response.data
+            if (response.ok) {
+                const data = await response.json()
                 if (!data.error) {
                     setUserResponses(data.data)
                 } else {
@@ -80,7 +81,6 @@ export default function AddPS1Response() {
                 toast.error('Failed to fetch your responses')
             }
         } catch (error) {
-            console.error('Error fetching user responses:', error)
             toast.error('An error occurred while fetching your responses')
         } finally {
             setIsFetchingResponses(false)
@@ -125,33 +125,32 @@ export default function AddPS1Response() {
             ...(isEditMode && responseId && { id: responseId }),
         }
 
-        try {
-            const res = await axiosInstance.post(endpoint, payload)
+        const res = await fetch(endpoint, {
+            method: 'POST',
+            body: JSON.stringify(payload),
+            headers: { 'Content-Type': 'application/json' },
+        })
 
-            const data = res.data
-            if (data.error) {
-                toast.error(data.message)
-            } else {
-                toast.success(
-                    isEditMode
-                        ? 'Your response was updated successfully!'
-                        : 'Thank you! Your response was added successfully!'
-                )
+        const data = await res.json()
+        if (data.error) {
+            toast.error(data.message)
+        } else {
+            toast.success(
+                isEditMode
+                    ? 'Your response was updated successfully!'
+                    : 'Thank you! Your response was added successfully!'
+            )
 
-                setIdNumber('')
-                setYearAndSem('')
-                setAllotmentRound('')
-                setStation('')
-                setCGPA(0)
-                setPreference(0)
-                setResponseId(null)
-                setSelectedResponse('')
+            setIdNumber('')
+            setYearAndSem('')
+            setAllotmentRound('')
+            setStation('')
+            setCGPA(0)
+            setPreference(0)
+            setResponseId(null)
+            setSelectedResponse('')
 
-                window.location.href = '/ps/cutoffs/ps1/'
-            }
-        } catch (error) {
-            console.error('Error adding/updating PS1 response:', error)
-            toast.error('Failed to save response')
+            window.location.href = '/ps/cutoffs/ps1/'
         }
         setIsLoading(false)
     }
