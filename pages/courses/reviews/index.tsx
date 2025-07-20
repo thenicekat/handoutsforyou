@@ -12,6 +12,7 @@ import { departments } from '@/config/departments'
 import CustomToastContainer from '@/components/ToastContainer'
 import { toast } from 'react-toastify'
 import { PlusCircleIcon } from '@heroicons/react/24/solid'
+import { axiosInstance } from '@/utils/axiosCache'
 
 export default function Reviews() {
     const [course, setCourse] = useState('')
@@ -35,21 +36,26 @@ export default function Reviews() {
         }
 
         setIsLoading(true)
-        const res = await fetch('/api/courses/reviews/get', {
-            method: 'POST',
-            body: JSON.stringify({ course: course, prof: prof }),
-            headers: { 'Content-Type': 'application/json' },
-        })
-        if (res.status !== 400) {
-            const reviews = await res.json()
-            if (reviews.error && reviews.status !== 400) {
-                toast.error(reviews.message)
-                setIsLoading(false)
-            } else {
-                setReviews(reviews.data as CourseReview[])
-                setIsLoading(false)
-                filterByDept(departments[dept])
+        try {
+            const res = await axiosInstance.post('/api/courses/reviews/get', {
+                course: course,
+                prof: prof,
+            })
+            if (res.status !== 400) {
+                const reviews = res.data
+                if (reviews.error && reviews.status !== 400) {
+                    toast.error(reviews.message)
+                    setIsLoading(false)
+                } else {
+                    setReviews(reviews.data as CourseReview[])
+                    setIsLoading(false)
+                    filterByDept(departments[dept])
+                }
             }
+        } catch (error) {
+            console.error('Error fetching course reviews:', error)
+            toast.error('Failed to fetch reviews')
+            setIsLoading(false)
         }
     }
 

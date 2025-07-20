@@ -257,7 +257,7 @@ export default function Home() {
                                                     {item.name ===
                                                         'Some Useful Links' &&
                                                         RESOURCE_COUNTS.links >
-                                                        0 && (
+                                                            0 && (
                                                             <span className="text-primary font-bold text-sm bg-black px-2 py-1 rounded-full">
                                                                 <CountUp
                                                                     end={
