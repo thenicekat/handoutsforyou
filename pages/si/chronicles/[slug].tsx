@@ -1,18 +1,14 @@
 import { getMetaConfig } from '@/config/meta'
 import Meta from '@/components/Meta'
 import { useRouter } from 'next/router'
-import { GetStaticProps } from 'next'
-import { use, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Menu from '@/components/Menu'
 import { SI_Chronicle } from '../../../types/SIData'
 import { axiosInstance } from '@/utils/axiosCache'
-import { useSession } from 'next-auth/react'
-import StatusCode from '@/components/StatusCode'
 
 export default function ChroniclePage() {
     const router = useRouter()
     const { slug } = router.query
-    const { data: session, status } = useSession()
 
     const [chronicles, setChronicles] = useState<SI_Chronicle[]>([])
 
@@ -36,8 +32,6 @@ export default function ChroniclePage() {
     useEffect(() => {
         if (slug) fetchChronicles()
     }, [slug])
-
-    if (!session) return <StatusCode code={401} />
 
     return (
         <>
