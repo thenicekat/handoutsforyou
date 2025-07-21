@@ -56,12 +56,14 @@ const Menu = ({ doNotShowMenu }: MenuProps) => {
                             </button>
                         </Link>
 
-                        {!doNotShowMenu && <button
-                            onClick={() => signOut()}
-                            className="px-4 py-2 rounded-lg bg-red-500/20 hover:bg-red-500/30 text-red-500 text-sm transition-all"
-                        >
-                            Sign Out
-                        </button>}
+                        {!doNotShowMenu && (
+                            <button
+                                onClick={() => signOut()}
+                                className="px-4 py-2 rounded-lg bg-red-500/20 hover:bg-red-500/30 text-red-500 text-sm transition-all"
+                            >
+                                Sign Out
+                            </button>
+                        )}
 
                         <button
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -79,8 +81,9 @@ const Menu = ({ doNotShowMenu }: MenuProps) => {
 
             {/* Sidebar/Mobile Menu */}
             <div
-                className={`fixed inset-0 z-30 transform transition-all duration-300 ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-                    }`}
+                className={`fixed inset-0 z-30 transform transition-all duration-300 ${
+                    isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+                }`}
             >
                 {/* Backdrop */}
                 <div

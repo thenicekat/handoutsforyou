@@ -96,7 +96,7 @@ export default function PSChroniclesPage({
                                                     (parseInt(chronicle.size) /
                                                         1024 /
                                                         1024) *
-                                                    100
+                                                        100
                                                 ) / 100}{' '}
                                                 MB
                                             </p>
@@ -141,7 +141,7 @@ export default function PSChroniclesPage({
                                                     (parseInt(chronicle.size) /
                                                         1024 /
                                                         1024) *
-                                                    100
+                                                        100
                                                 ) / 100}{' '}
                                                 MB
                                             </p>

@@ -7,7 +7,8 @@ export type BaseResponseData = {
     error: boolean
 }
 
-const EMAIL_REGEX = /^(?:[fh]\d{8}@(hyderabad|pilani|goa|dubai)\.bits-pilani\.ac\.in|[fh]\d{8}[pghd]@alumni\.bits-pilani\.ac\.in)$/
+const EMAIL_REGEX =
+    /^(?:[fh]\d{8}@(hyderabad|pilani|goa|dubai)\.bits-pilani\.ac\.in|[fh]\d{8}[pghd]@alumni\.bits-pilani\.ac\.in)$/
 
 export async function validateAPISession<T extends BaseResponseData>(
     req: NextApiRequest,

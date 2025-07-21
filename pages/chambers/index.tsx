@@ -35,9 +35,9 @@ export default function Chambers() {
             <div>
                 <div className="flex justify-center">
                     <h1 className="text-lg text-primary m-5 max-w-2xl">
-                        This is a list of all the professors of hyderabad
-                        campus and their chamber numbers. If you would like
-                        to correct the information here, please contact us.
+                        This is a list of all the professors of hyderabad campus
+                        and their chamber numbers. If you would like to correct
+                        the information here, please contact us.
                     </h1>
                 </div>
 
@@ -49,9 +49,7 @@ export default function Chambers() {
                             else return 0
                         })
                         .filter((p) =>
-                            p.name
-                                .toLowerCase()
-                                .includes(prof.toLowerCase())
+                            p.name.toLowerCase().includes(prof.toLowerCase())
                         )
                         .map((prof) => (
                             <div

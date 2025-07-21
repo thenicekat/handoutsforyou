@@ -54,7 +54,6 @@ export function AppSessionProvider({
         const handleOnline = () => setIsOnline(true)
         const handleOffline = () => setIsOnline(false)
 
-
         checkInstalled()
         setIsOnline(navigator.onLine)
 
@@ -81,7 +80,7 @@ export function AppSessionProvider({
 
     const showInstallPrompt = () => {
         if (installPrompt) {
-            ; (installPrompt as any).prompt()
+            ;(installPrompt as any).prompt()
         }
     }
 
