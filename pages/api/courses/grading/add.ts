@@ -2,6 +2,7 @@ import { departments } from '@/config/departments'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { COURSE_GRADING, EMAIL_HEADER } from '../../constants'
 import { supabase } from '../../supabase'
+import { processHeaders } from '../../auth/session'
 
 type ResponseData = {
     message: string
@@ -18,7 +19,7 @@ export default async function handler(
         .filter((code) => code.length > 0)
 
     const { course, dept, sem, prof, data, average_mark } = req.body
-    const email = Buffer.from(req.headers[EMAIL_HEADER] as string, 'base64').toString('utf-8')
+    const { email } = processHeaders(req)
 
     if (!course) {
         res.status(422).json({

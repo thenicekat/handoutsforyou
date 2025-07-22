@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { COURSE_REVIEWS, EMAIL_HEADER } from '../../constants'
 import { supabase } from '../../supabase'
+import { processHeaders } from '../../auth/session'
 
 type ResponseData = {
     message: string
@@ -12,7 +13,7 @@ export default async function handler(
     res: NextApiResponse<ResponseData>
 ) {
     const { course, prof, review } = req.body
-    const email = Buffer.from(req.headers[EMAIL_HEADER] as string, 'base64').toString('utf-8')
+    const { email } = processHeaders(req)
 
     if (!course) {
         res.status(422).json({

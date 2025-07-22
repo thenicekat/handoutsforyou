@@ -1,4 +1,4 @@
-import { BaseResponseData } from '@/pages/api/auth/session'
+import { BaseResponseData, processHeaders } from '@/pages/api/auth/session'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { EMAIL_HEADER, PS1_RESPONSES, PS2_RESPONSES } from '../../constants'
 import { supabase } from '../../supabase'
@@ -12,7 +12,7 @@ export default async function handler(
     res: NextApiResponse<ResponseData>
 ) {
     const { type } = req.body
-    const email = Buffer.from(req.headers[EMAIL_HEADER] as string, 'base64').toString('utf-8')
+    const { email } = processHeaders(req)
 
     if (!type) {
         res.status(422).json({
