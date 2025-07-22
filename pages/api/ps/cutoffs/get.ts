@@ -1,7 +1,7 @@
+import { BaseResponseData, validateAPISession } from '@/pages/api/auth/session'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { supabase } from '../../supabase'
 import { PS1_RESPONSES, PS2_RESPONSES } from '../../constants'
-import { validateAPISession, BaseResponseData } from '@/pages/api/auth/session'
+import { supabase } from '../../supabase'
 
 interface ResponseData extends BaseResponseData {
     data: any

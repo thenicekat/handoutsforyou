@@ -1,15 +1,14 @@
-import { getMetaConfig } from '@/config/meta'
-import Meta from '@/components/Meta'
-import Link from 'next/link'
-import { useState, useEffect } from 'react'
-import Menu from '@/components/Menu'
-import React from 'react'
-import { toast } from 'react-toastify'
-import CustomToastContainer from '@/components/ToastContainer'
-import { PlusCircleIcon } from '@heroicons/react/24/solid'
 import CardWithScore from '@/components/CardWithScore'
+import Menu from '@/components/Menu'
+import Meta from '@/components/Meta'
+import CustomToastContainer from '@/components/ToastContainer'
+import { getMetaConfig } from '@/config/meta'
 import { ResourceByCategory } from '@/types/Resource'
 import { axiosInstance } from '@/utils/axiosCache'
+import { PlusCircleIcon } from '@heroicons/react/24/solid'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 
 export default function HSResources() {
     const [input, setInput] = useState('')

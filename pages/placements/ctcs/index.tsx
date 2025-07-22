@@ -1,13 +1,11 @@
-import { getMetaConfig } from '@/config/meta'
-import Meta from '@/components/Meta'
-import Link from 'next/link'
-import { useState } from 'react'
 import Menu from '@/components/Menu'
-import React from 'react'
-import { toast } from 'react-toastify'
+import Meta from '@/components/Meta'
 import CustomToastContainer from '@/components/ToastContainer'
-import { PlusCircleIcon } from '@heroicons/react/24/solid'
+import { getMetaConfig } from '@/config/meta'
+import { placementYears } from '@/config/years_sems'
 import { PlacementCTC } from '@/types/PlacementData'
+import { axiosInstance } from '@/utils/axiosCache'
+import { PlusCircleIcon } from '@heroicons/react/24/solid'
 import {
     createColumnHelper,
     flexRender,
@@ -16,8 +14,9 @@ import {
     SortingState,
     useReactTable,
 } from '@tanstack/react-table'
-import { placementYears } from '@/config/years_sems'
-import { axiosInstance } from '@/utils/axiosCache'
+import Link from 'next/link'
+import React, { useState } from 'react'
+import { toast } from 'react-toastify'
 
 export default function PlacementCTCs() {
     const [input, setInput] = useState('')

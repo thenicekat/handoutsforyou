@@ -1,11 +1,10 @@
 import { Resource } from '@/types/Resource'
+import { axiosInstance } from '@/utils/axiosCache'
 import {
     CursorArrowRippleIcon,
     DocumentDuplicateIcon,
 } from '@heroicons/react/24/solid'
-import React from 'react'
 import { toast } from 'react-toastify'
-import { axiosInstance } from '@/utils/axiosCache'
 
 type Props = {
     resource: Resource

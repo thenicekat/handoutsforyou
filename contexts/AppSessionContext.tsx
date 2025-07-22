@@ -4,8 +4,8 @@
  * and session state with automatic refresh on app visibility changes.
  */
 
-import React, { createContext, useContext, useEffect, useState } from 'react'
 import { pwaSessionManager } from '@/utils/authCache'
+import React, { createContext, useContext, useEffect, useState } from 'react'
 
 interface AppSessionContextType {
     isInstalled: boolean

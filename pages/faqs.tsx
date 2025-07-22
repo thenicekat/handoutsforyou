@@ -1,8 +1,8 @@
-import { getMetaConfig } from '@/config/meta'
-import Meta from '@/components/Meta'
-import { useState } from 'react'
 import Menu from '@/components/Menu'
+import Meta from '@/components/Meta'
+import { getMetaConfig } from '@/config/meta'
 import { FaqModel } from '@/types/FaqModel'
+import { useState } from 'react'
 
 export default function Faqs() {
     const [input, setInput] = useState('')

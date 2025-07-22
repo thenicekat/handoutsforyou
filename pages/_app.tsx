@@ -1,8 +1,8 @@
-import '../styles/globals.css'
 import { SessionProvider } from 'next-auth/react'
+import '../styles/globals.css'
 
-import type { AppProps } from 'next/app'
 import type { Session } from 'next-auth'
+import type { AppProps } from 'next/app'
 import Head from 'next/head'
 
 // Use of the <SessionProvider> is mandatory to allow components that call
@@ -33,7 +33,7 @@ export default function App({
             <SessionProvider
                 session={session}
                 refetchOnWindowFocus={false}
-                refetchInterval={5 * 60}
+                refetchInterval={30 * 60}
                 refetchWhenOffline={false}
             >
                 <Component {...pageProps} />

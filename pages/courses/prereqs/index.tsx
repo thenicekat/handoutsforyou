@@ -1,10 +1,10 @@
-import { getMetaConfig } from '@/config/meta'
-import Meta from '@/components/Meta'
-import { GetStaticProps } from 'next'
-import { useState, useEffect } from 'react'
 import Menu from '@/components/Menu'
-import { PreReqGroup } from '@/types/PreReq'
+import Meta from '@/components/Meta'
 import Modal from '@/components/Modal'
+import { getMetaConfig } from '@/config/meta'
+import { PreReqGroup } from '@/types/PreReq'
+import { GetStaticProps } from 'next'
+import { useState } from 'react'
 
 export const getStaticProps: GetStaticProps = async () => {
     const fs = require('fs')

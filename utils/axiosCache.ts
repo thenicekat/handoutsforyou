@@ -6,9 +6,9 @@
 
 import axios from 'axios'
 import {
-    setupCache,
-    buildMemoryStorage,
     AxiosCacheInstance,
+    buildMemoryStorage,
+    setupCache,
 } from 'axios-cache-interceptor'
 
 const axiosInstance: AxiosCacheInstance = setupCache(
