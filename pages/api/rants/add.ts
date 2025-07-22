@@ -1,6 +1,6 @@
-import { BaseResponseData, validateAPISession } from '@/pages/api/auth/session'
+import { BaseResponseData } from '@/pages/api/auth/session'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { RANT_POSTS } from '../constants'
+import { EMAIL_HEADER, RANT_POSTS } from '../constants'
 import { supabase } from '../supabase'
 
 interface ResponseData extends BaseResponseData {
@@ -11,10 +11,8 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
 ) {
-    const session = await validateAPISession<ResponseData>(req, res)
-    if (!session) return
-
     const { rant, isPublic } = req.body
+    const email = Buffer.from(req.headers[EMAIL_HEADER] as string, 'base64').toString('utf-8')
 
     if (!rant) {
         res.status(422).json({
@@ -27,7 +25,7 @@ export default async function handler(
     const { error } = await supabase.from(RANT_POSTS).insert([
         {
             rant,
-            created_by: session.user.email,
+            created_by: email,
             created_at: Date.now(),
             public: isPublic ? 1 : 0,
         },

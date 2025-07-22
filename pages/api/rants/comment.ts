@@ -1,4 +1,4 @@
-import { BaseResponseData, validateAPISession } from '@/pages/api/auth/session'
+import { BaseResponseData } from '@/pages/api/auth/session'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { RANT_COMMENTS } from '../constants'
 import { supabase } from '../supabase'
@@ -11,9 +11,6 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
 ) {
-    const session = await validateAPISession<ResponseData>(req, res)
-    if (!session) return
-
     const { rantId, comment } = req.body
 
     if (!rantId) {
