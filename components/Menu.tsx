@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
+import { signIn, signOut } from 'next-auth/react'
 import { StarIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import StarPrompt from './StarPrompt'
-import { signOut } from 'next-auth/react'
+import { useOptimizedAuth } from '@/utils/authCache'
 
 interface MenuProps {
     doNotShowMenu?: boolean
@@ -11,6 +12,7 @@ interface MenuProps {
 const Menu = ({ doNotShowMenu }: MenuProps) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [starCount, setStarCount] = useState(0)
+    const { isAuthenticated, isLoading } = useOptimizedAuth()
 
     const menuItems: Record<string, string> = {
         Handouts: '/courses/handouts',
@@ -56,7 +58,18 @@ const Menu = ({ doNotShowMenu }: MenuProps) => {
                             </button>
                         </Link>
 
-                        {!doNotShowMenu && (
+                        {isLoading ? (
+                            <div className="px-4 py-2 rounded-lg bg-zinc-200/50 dark:bg-white/10 text-black dark:text-white text-sm">
+                                Loading...
+                            </div>
+                        ) : !isAuthenticated ? (
+                            <button
+                                onClick={() => signIn('google')}
+                                className="px-4 py-2 rounded-lg bg-zinc-200/50 dark:bg-white/10 hover:bg-zinc-300/50 dark:hover:bg-white/20 text-black dark:text-white text-sm transition-all"
+                            >
+                                Sign In
+                            </button>
+                        ) : (
                             <button
                                 onClick={() => signOut()}
                                 className="px-4 py-2 rounded-lg bg-red-500/20 hover:bg-red-500/30 text-red-500 text-sm transition-all"

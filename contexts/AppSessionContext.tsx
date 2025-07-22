@@ -5,6 +5,7 @@
  */
 
 import React, { createContext, useContext, useEffect, useState } from 'react'
+import { pwaSessionManager } from '@/utils/authCache'
 
 interface AppSessionContextType {
     isInstalled: boolean
@@ -54,6 +55,22 @@ export function AppSessionProvider({
         const handleOnline = () => setIsOnline(true)
         const handleOffline = () => setIsOnline(false)
 
+        // Handle visibility change (PWA app switching)
+        const handleVisibilityChange = async () => {
+            if (document.visibilityState === 'visible') {
+                // Refresh session when app becomes visible
+                try {
+                    const isAuthenticated =
+                        await pwaSessionManager.getSessionStatus()
+                    setSessionStatus(
+                        isAuthenticated ? 'authenticated' : 'unauthenticated'
+                    )
+                } catch (error) {
+                    setSessionStatus('unauthenticated')
+                }
+            }
+        }
+
         checkInstalled()
         setIsOnline(navigator.onLine)
 
@@ -65,6 +82,22 @@ export function AppSessionProvider({
         window.addEventListener('appinstalled', handleAppInstalled)
         window.addEventListener('online', handleOnline)
         window.addEventListener('offline', handleOffline)
+        document.addEventListener('visibilitychange', handleVisibilityChange)
+
+        // Initial session check
+        const checkInitialSession = async () => {
+            try {
+                const isAuthenticated =
+                    await pwaSessionManager.getSessionStatus()
+                setSessionStatus(
+                    isAuthenticated ? 'authenticated' : 'unauthenticated'
+                )
+            } catch (error) {
+                setSessionStatus('unauthenticated')
+            }
+        }
+
+        checkInitialSession()
 
         // Cleanup
         return () => {
@@ -75,6 +108,10 @@ export function AppSessionProvider({
             window.removeEventListener('appinstalled', handleAppInstalled)
             window.removeEventListener('online', handleOnline)
             window.removeEventListener('offline', handleOffline)
+            document.removeEventListener(
+                'visibilitychange',
+                handleVisibilityChange
+            )
         }
     }, [])
 

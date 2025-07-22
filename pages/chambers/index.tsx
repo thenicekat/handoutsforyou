@@ -70,7 +70,7 @@ export default function Chambers() {
                         ))}
                 </div>
             </div>
-            <CustomToastContainer containerId="courseReviews" />
+            <CustomToastContainer containerId="profChambers" />
         </>
     )
 }
