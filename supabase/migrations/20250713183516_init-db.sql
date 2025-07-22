@@ -10,6 +10,8 @@ create sequence "public"."ps2_responses_id_seq";
 
 create sequence "public"."rants_comments_id_seq";
 
+create sequence "public"."placement_resources_id_seq";
+
 create sequence "public"."rants_posts_id_seq";
 
 create table "public"."course_grading" (
@@ -69,15 +71,27 @@ create table "public"."higherstudies_resources" (
 
 create table "public"."placement_ctcs" (
     "company" text not null,
-    "basic_ctc" bigint,
+    "base" bigint,
     "joining_bonus" bigint,
     "relocation_bonus" bigint,
     "variable_bonus" bigint,
-    "monetary_value_of_bond" bigint,
+    "monetary_value_of_benefits" bigint,
     "description" text,
     "created_by" text,
     "campus" text,
     "academic_year" text
+);
+
+
+create table "public"."placement_resources" (
+    "id" bigint not null default nextval('placement_resources_id_seq'::regclass),
+    "name" text,
+    "link" text,
+    "created_by" text,
+    "created_at" timestamp with time zone not null,
+    "email" text,
+    "score" integer,
+    "category" character varying(255)
 );
 
 
@@ -186,6 +200,8 @@ alter sequence "public"."ps2_responses_id_seq" owned by "public"."ps2_responses"
 
 alter sequence "public"."rants_comments_id_seq" owned by "public"."rants_comments"."id";
 
+alter sequence "public"."placement_resources_id_seq" owned by "public"."placement_resources"."id";
+
 alter sequence "public"."rants_posts_id_seq" owned by "public"."rants_posts"."id";
 
 CREATE UNIQUE INDEX course_grading_pkey ON public.course_grading USING btree (id);
@@ -197,6 +213,8 @@ CREATE UNIQUE INDEX donations_pkey ON public.donations USING btree (id);
 CREATE UNIQUE INDEX higherstudies_resources_pkey ON public.higherstudies_resources USING btree (id);
 
 CREATE UNIQUE INDEX placement_ctcs_pkey ON public.placement_ctcs USING btree (company);
+
+CREATE UNIQUE INDEX placement_resources_pkey ON public.placement_resources USING btree (id);
 
 CREATE UNIQUE INDEX ps1_responses_pkey ON public.ps1_responses USING btree (id);
 
@@ -215,6 +233,8 @@ alter table "public"."donations" add constraint "donations_pkey" PRIMARY KEY usi
 alter table "public"."higherstudies_resources" add constraint "higherstudies_resources_pkey" PRIMARY KEY using index "higherstudies_resources_pkey";
 
 alter table "public"."placement_ctcs" add constraint "placement_ctcs_pkey" PRIMARY KEY using index "placement_ctcs_pkey";
+
+alter table "public"."placement_resources" add constraint "placement_resources_pkey" PRIMARY KEY using index "placement_resources_pkey";
 
 alter table "public"."ps1_responses" add constraint "ps1_responses_pkey" PRIMARY KEY using index "ps1_responses_pkey";
 
@@ -479,6 +499,48 @@ grant trigger on table "public"."placement_ctcs" to "service_role";
 grant truncate on table "public"."placement_ctcs" to "service_role";
 
 grant update on table "public"."placement_ctcs" to "service_role";
+
+grant delete on table "public"."placement_resources" to "anon";
+
+grant insert on table "public"."placement_resources" to "anon";
+
+grant references on table "public"."placement_resources" to "anon";
+
+grant select on table "public"."placement_resources" to "anon";
+
+grant trigger on table "public"."placement_resources" to "anon";
+
+grant truncate on table "public"."placement_resources" to "anon";
+
+grant update on table "public"."placement_resources" to "anon";
+
+grant delete on table "public"."placement_resources" to "authenticated";
+
+grant insert on table "public"."placement_resources" to "authenticated";
+
+grant references on table "public"."placement_resources" to "authenticated";
+
+grant select on table "public"."placement_resources" to "authenticated";
+
+grant trigger on table "public"."placement_resources" to "authenticated";
+
+grant truncate on table "public"."placement_resources" to "authenticated";
+
+grant update on table "public"."placement_resources" to "authenticated";
+
+grant delete on table "public"."placement_resources" to "service_role";
+
+grant insert on table "public"."placement_resources" to "service_role";
+
+grant references on table "public"."placement_resources" to "service_role";
+
+grant select on table "public"."placement_resources" to "service_role";
+
+grant trigger on table "public"."placement_resources" to "service_role";
+
+grant truncate on table "public"."placement_resources" to "service_role";
+
+grant update on table "public"."placement_resources" to "service_role";
 
 grant delete on table "public"."ps1_responses" to "anon";
 
