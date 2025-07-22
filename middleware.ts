@@ -1,7 +1,7 @@
 import { getToken } from 'next-auth/jwt'
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
-import { EMAIL_HEADER } from './pages/api/constants'
+import { EMAIL_HEADER, NAME_HEADER } from './pages/api/constants'
 
 const routesWithoutAuth = [
     // Landing page.
@@ -74,9 +74,11 @@ export async function middleware(request: NextRequest) {
         if (pathname.startsWith('/api/') && !pathname.startsWith('/api/auth/')) {
             const response = NextResponse.next()
 
-            if (token.email) {
+            if (token.email && token.name) {
                 const encodedEmail = Buffer.from(token.email).toString('base64')
+                const encodedName = Buffer.from(token.name).toString('base64')
                 response.headers.set(EMAIL_HEADER, encodedEmail)
+                response.headers.set(NAME_HEADER, encodedName)
             }
 
             return response

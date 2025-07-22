@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { PS1_RESPONSES, PS2_RESPONSES } from '../../constants'
+import { EMAIL_HEADER, NAME_HEADER, PS1_RESPONSES, PS2_RESPONSES } from '../../constants'
 import { supabase } from '../../supabase'
 
 type ResponseData = {
@@ -46,7 +46,8 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
 ) {
-    const { name, email } = session.user
+    const name = Buffer.from(req.headers[NAME_HEADER] as string, 'base64').toString('utf-8')
+    const email = Buffer.from(req.headers[EMAIL_HEADER] as string, 'base64').toString('utf-8')
     const reqBody: RequestData = req.body
 
     if (!email) {

@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { HIGHER_STUDIES_RESOURCES } from '../../constants'
+import { EMAIL_HEADER, HIGHER_STUDIES_RESOURCES } from '../../constants'
 import { supabase } from '../../supabase'
 
 type ResponseData = {
@@ -12,6 +12,7 @@ export default async function handler(
     res: NextApiResponse<ResponseData>
 ) {
     const { name, link, created_by, category } = req.body
+    const email = Buffer.from(req.headers[EMAIL_HEADER] as string, 'base64').toString('utf-8')
 
     if (!name) {
         res.status(422).json({
@@ -47,7 +48,7 @@ export default async function handler(
             name: name,
             link: link,
             created_by: created_by,
-            email: session?.user?.email,
+            email: email,
             category: category,
         },
     ])

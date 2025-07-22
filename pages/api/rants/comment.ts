@@ -1,6 +1,6 @@
 import { BaseResponseData } from '@/pages/api/auth/session'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { RANT_COMMENTS } from '../constants'
+import { EMAIL_HEADER, RANT_COMMENTS } from '../constants'
 import { supabase } from '../supabase'
 
 interface ResponseData extends BaseResponseData {
@@ -12,6 +12,7 @@ export default async function handler(
     res: NextApiResponse<ResponseData>
 ) {
     const { rantId, comment } = req.body
+    const email = Buffer.from(req.headers[EMAIL_HEADER] as string, 'base64').toString('utf-8')
 
     if (!rantId) {
         res.status(422).json({
@@ -39,7 +40,7 @@ export default async function handler(
         {
             rant_id: rantId,
             comment: comment,
-            created_by: session?.user?.email,
+            created_by: email,
             created_at: Date.now(),
         },
     ])

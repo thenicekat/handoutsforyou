@@ -19,6 +19,7 @@ export const RANT_POSTS = 'rants_posts'
 export const RANT_COMMENTS = 'rants_comments'
 
 export const EMAIL_HEADER = 'x-h4u-email'
+export const NAME_HEADER = 'x-h4u-name'
 
 export const capitalize = (s: string) => {
     if (typeof s !== 'string') return ''
