@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import React, { memo, useRef, useState } from 'react'
+import { memo, useRef, useState } from 'react'
 
 type Props = {
     items: string[]

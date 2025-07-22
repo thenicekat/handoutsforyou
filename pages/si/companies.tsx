@@ -1,12 +1,12 @@
-import { getMetaConfig } from '@/config/meta'
-import Meta from '@/components/Meta'
-import { useEffect, useState } from 'react'
 import Menu from '@/components/Menu'
-import Link from 'next/link'
-import { SI_Company } from '@/types/SIData'
-import { toast } from 'react-toastify'
+import Meta from '@/components/Meta'
 import CustomToastContainer from '@/components/ToastContainer'
+import { getMetaConfig } from '@/config/meta'
+import { SI_Company } from '@/types/SIData'
 import { axiosInstance } from '@/utils/axiosCache'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 
 export default function SICompanies() {
     const [search, setSearch] = useState('')

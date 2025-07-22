@@ -1,9 +1,9 @@
-import { useState } from 'react'
-import CountUp from 'react-countup'
-import Link from 'next/link'
-import StarPrompt from '@/components/StarPrompt'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
+import StarPrompt from '@/components/StarPrompt'
+import Link from 'next/link'
+import { useState } from 'react'
+import CountUp from 'react-countup'
 
 type SummaryData = {
     handouts: number
@@ -209,7 +209,7 @@ export default function Home() {
         <>
             <Meta />
 
-            <Menu doNotShowMenu={true} />
+            <Menu onLandingPage={true} />
             <StarPrompt setStarCount={setStarCount} />
 
             {/* Main Content */}
@@ -406,50 +406,48 @@ export default function Home() {
                     ))}
                 </div>
 
+                {showLinksModal && (
+                    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
+                        <div className="bg-white rounded-lg shadow-lg max-w-xl w-full p-6 relative">
+                            <button
+                                className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl"
+                                onClick={() => setShowLinksModal(false)}
+                                aria-label="Close"
+                            >
+                                &times;
+                            </button>
+                            <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">
+                                List of some useful Links
+                            </h2>
+                            {USEFUL_LINKS.map((section, idx) => (
+                                <div className="mb-6" key={idx}>
+                                    <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                                        {section.title}
+                                    </h3>
+                                    <div className="flex flex-wrap gap-2 mb-2 justify-center">
+                                        {section.links.map((link, linkIdx) => (
+                                            <a
+                                                key={linkIdx}
+                                                href={link.url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="bg-gray-300 text-gray-800 px-4 py-2 rounded-full font-medium shadow hover:bg-gray-200 transition"
+                                            >
+                                                {link.name}
+                                            </a>
+                                        ))}
+                                    </div>
+                                    {idx < USEFUL_LINKS.length - 1 && (
+                                        <hr className="my-4 border-gray-300" />
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
+
                 {/* Contributors Section */}
                 <div className="text-center mt-16 p-8 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10">
-                    {showLinksModal && (
-                        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
-                            <div className="bg-white rounded-lg shadow-lg max-w-xl w-full p-6 relative">
-                                <button
-                                    className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl"
-                                    onClick={() => setShowLinksModal(false)}
-                                    aria-label="Close"
-                                >
-                                    &times;
-                                </button>
-                                <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">
-                                    List of some useful Links
-                                </h2>
-                                {USEFUL_LINKS.map((section, idx) => (
-                                    <div className="mb-6" key={idx}>
-                                        <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                                            {section.title}
-                                        </h3>
-                                        <div className="flex flex-wrap gap-2 mb-2 justify-center">
-                                            {section.links.map(
-                                                (link, linkIdx) => (
-                                                    <a
-                                                        key={linkIdx}
-                                                        href={link.url}
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        className="bg-gray-300 text-gray-800 px-4 py-2 rounded-full font-medium shadow hover:bg-gray-200 transition"
-                                                    >
-                                                        {link.name}
-                                                    </a>
-                                                )
-                                            )}
-                                        </div>
-                                        {idx < USEFUL_LINKS.length - 1 && (
-                                            <hr className="my-4 border-gray-300" />
-                                        )}
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    )}
-
                     <h3 className="text-xl font-semibold text-white mb-4">
                         Made Possible By
                     </h3>

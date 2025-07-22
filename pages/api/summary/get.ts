@@ -1,7 +1,5 @@
+import { validateAPISession } from '@/pages/api/auth/session'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { supabase } from '../supabase'
-import { getServerSession } from 'next-auth/next'
-import { authOptions } from '../auth/[...nextauth]'
 import {
     COURSE_GRADING,
     COURSE_RESOURCES,
@@ -13,7 +11,7 @@ import {
     SI_CHRONICLES,
     SI_COMPANIES,
 } from '../constants'
-import { validateAPISession } from '@/pages/api/auth/session'
+import { supabase } from '../supabase'
 
 type ResponseData = {
     message: string

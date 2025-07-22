@@ -1,9 +1,9 @@
 import Meta from '@/components/Meta'
-import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
-import Link from 'next/link'
 import StatusCode from '@/components/StatusCode'
 import { signIn } from 'next-auth/react'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 
 const errorMessages = {
     NotFound: {

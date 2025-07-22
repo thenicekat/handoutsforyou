@@ -1,13 +1,12 @@
-import { getMetaConfig } from '@/config/meta'
-import Meta from '@/components/Meta'
-import { GetStaticProps } from 'next'
-import { useState, useEffect } from 'react'
 import Menu from '@/components/Menu'
-import { LinkIcon } from '@heroicons/react/24/solid'
-import { SIChroniclesByCampus } from '@/types/GoogleDriveChronicles'
-import { toast } from 'react-toastify'
+import Meta from '@/components/Meta'
 import CustomToastContainer from '@/components/ToastContainer'
+import { getMetaConfig } from '@/config/meta'
+import { SIChroniclesByCampus } from '@/types/GoogleDriveChronicles'
 import { googleDriveService } from '@/utils/googleDrive'
+import { LinkIcon } from '@heroicons/react/24/solid'
+import { GetStaticProps } from 'next'
+import { useEffect, useState } from 'react'
 
 export const getStaticProps: GetStaticProps = async () => {
     try {

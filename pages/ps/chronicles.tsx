@@ -1,14 +1,10 @@
-import { getMetaConfig } from '@/config/meta'
-import Meta from '@/components/Meta'
-import { GetStaticProps } from 'next'
-import { useState, useEffect } from 'react'
 import Menu from '@/components/Menu'
-import type { PSChronicles } from '@/types/GoogleDriveChronicles'
-import { toast } from 'react-toastify'
+import Meta from '@/components/Meta'
 import CustomToastContainer from '@/components/ToastContainer'
+import { getMetaConfig } from '@/config/meta'
+import type { PSChronicles } from '@/types/GoogleDriveChronicles'
 import { googleDriveService } from '@/utils/googleDrive'
-import { useSession } from 'next-auth/react'
-import StatusCode from '@/components/StatusCode'
+import { GetStaticProps } from 'next'
 
 export const getStaticProps: GetStaticProps = async () => {
     try {
@@ -33,7 +29,7 @@ export const getStaticProps: GetStaticProps = async () => {
             props: {
                 psChronicles,
             },
-            revalidate: 3600, // Regenerate every hour
+            revalidate: 24 * 3600, // Regenerate every 24 hours
         }
     } catch (error) {
         console.error('Error fetching PS chronicles:', error)
@@ -54,11 +50,6 @@ export default function PSChroniclesPage({
     psChronicles: PSChronicles
     error?: string
 }) {
-    const { data: session, status } = useSession()
-    const [chroniclesLoading, setChroniclesLoading] = useState(false)
-
-    if (!session) return <StatusCode code={401} />
-
     if (error) {
         return (
             <div className="grid place-items-center min-h-screen">

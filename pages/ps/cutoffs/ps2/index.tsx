@@ -1,13 +1,10 @@
-import { getMetaConfig } from '@/config/meta'
-import Meta from '@/components/Meta'
-import { useEffect, useState } from 'react'
 import Menu from '@/components/Menu'
-import Link from 'next/link'
-import { PS2Item } from '@/types/PSData'
-import { ps2Semesters } from '@/config/years_sems'
-import { toast } from 'react-toastify'
+import Meta from '@/components/Meta'
 import CustomToastContainer from '@/components/ToastContainer'
-import React from 'react'
+import { getMetaConfig } from '@/config/meta'
+import { ps2Semesters } from '@/config/years_sems'
+import { PS2Item } from '@/types/PSData'
+import { axiosInstance } from '@/utils/axiosCache'
 import {
     createColumnHelper,
     flexRender,
@@ -16,7 +13,9 @@ import {
     SortingState,
     useReactTable,
 } from '@tanstack/react-table'
-import { axiosInstance } from '@/utils/axiosCache'
+import Link from 'next/link'
+import React, { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 
 export default function PS2Data() {
     const [search, setSearch] = useState('')

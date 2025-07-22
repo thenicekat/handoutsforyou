@@ -1,21 +1,13 @@
-import { getMetaConfig } from '@/config/meta'
-import Meta from '@/components/Meta'
-import { useState } from 'react'
-import Menu from '@/components/Menu'
-import { useSession } from 'next-auth/react'
-import { profs } from '@/config/profs'
 import AutoCompleter from '@/components/AutoCompleter'
+import Menu from '@/components/Menu'
+import Meta from '@/components/Meta'
 import CustomToastContainer from '@/components/ToastContainer'
-import { Professor } from '@/types/Professor'
+import { getMetaConfig } from '@/config/meta'
+import { profs } from '@/config/profs'
+import { useState } from 'react'
 
 export default function Chambers() {
     const [prof, setProf] = useState('')
-
-    const [isLoading, setIsLoading] = useState(false)
-
-    const [chambers, setChamber] = useState(profs as Professor[])
-
-    const { data: session } = useSession()
 
     return (
         <>
@@ -29,70 +21,56 @@ export default function Chambers() {
 
                     <Menu />
 
-                    {session && (
-                        <>
-                            <AutoCompleter
-                                name={'Prof'}
-                                items={profs.map((p) => p.name)}
-                                value={prof}
-                                onChange={(val) => setProf(val)}
-                            />
-                            <span className="m-2"></span>
-                        </>
-                    )}
+                    <>
+                        <AutoCompleter
+                            name={'Prof'}
+                            items={profs.map((p) => p.name)}
+                            value={prof}
+                            onChange={(val) => setProf(val)}
+                        />
+                        <span className="m-2"></span>
+                    </>
                 </div>
             </div>
-            {session && (
-                <div>
-                    <div className="flex justify-center">
-                        <h1 className="text-lg text-primary m-5 max-w-2xl">
-                            This is a list of all the professors of hyderabad
-                            campus and their chamber numbers. If you would like
-                            to correct the information here, please contact us.
-                        </h1>
-                    </div>
-
-                    <div className="grid md:grid-cols-3 place-items-center p-5 gap-4">
-                        {!isLoading ? (
-                            chambers
-                                .sort((a, b) => {
-                                    if (a.name > b.name) return 1
-                                    else if (a.name < b.name) return -1
-                                    else return 0
-                                })
-                                .filter((p) =>
-                                    p.name
-                                        .toLowerCase()
-                                        .includes(prof.toLowerCase())
-                                )
-                                .map((chamber) => (
-                                    <div
-                                        className="card shadow-lg bg-base-100 break-words text-base-content w-full"
-                                        key={chamber.name}
-                                    >
-                                        <div className="card-body">
-                                            <h2 className="card-title text-center text-lg">
-                                                {chamber.name}
-                                            </h2>
-                                            <p
-                                                className={`text-sm ${chamber.chamber === 'Unavailable' ? 'italic' : ''} text-right`}
-                                            >
-                                                {chamber.chamber}
-                                            </p>
-                                        </div>
-                                    </div>
-                                ))
-                        ) : (
-                            <div className="flex justify-center">
-                                <h1 className="text-3xl text-primary">
-                                    Loading...
-                                </h1>
-                            </div>
-                        )}
-                    </div>
+            <div>
+                <div className="flex justify-center">
+                    <h1 className="text-lg text-primary m-5 max-w-2xl">
+                        This is a list of all the professors of hyderabad campus
+                        and their chamber numbers. If you would like to correct
+                        the information here, please contact us.
+                    </h1>
                 </div>
-            )}
-            <CustomToastContainer containerId="courseReviews" />
+
+                <div className="grid md:grid-cols-3 place-items-center p-5 gap-4">
+                    {profs
+                        .sort((a, b) => {
+                            if (a.name > b.name) return 1
+                            else if (a.name < b.name) return -1
+                            else return 0
+                        })
+                        .filter((p) =>
+                            p.name.toLowerCase().includes(prof.toLowerCase())
+                        )
+                        .map((prof) => (
+                            <div
+                                className="card shadow-lg bg-base-100 break-words text-base-content w-full"
+                                key={prof.name}
+                            >
+                                <div className="card-body">
+                                    <h2 className="card-title text-center text-lg">
+                                        {prof.name}
+                                    </h2>
+                                    <p
+                                        className={`text-sm ${prof.chamber === 'Unavailable' ? 'italic' : ''} text-right`}
+                                    >
+                                        {prof.chamber}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
+                </div>
+            </div>
+            <CustomToastContainer containerId="profChambers" />
         </>
     )
 }
