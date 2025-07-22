@@ -1,9 +1,9 @@
-import { useState } from 'react'
-import CountUp from 'react-countup'
-import Link from 'next/link'
-import StarPrompt from '@/components/StarPrompt'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
+import StarPrompt from '@/components/StarPrompt'
+import Link from 'next/link'
+import { useState } from 'react'
+import CountUp from 'react-countup'
 
 type SummaryData = {
     handouts: number

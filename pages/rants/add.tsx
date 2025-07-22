@@ -1,15 +1,15 @@
-import { getMetaConfig } from '@/config/meta'
-import Meta from '@/components/Meta'
-import { useState } from 'react'
 import Menu from '@/components/Menu'
+import Meta from '@/components/Meta'
 import CustomToastContainer from '@/components/ToastContainer'
-import { toast } from 'react-toastify'
+import { getMetaConfig } from '@/config/meta'
+import { axiosInstance } from '@/utils/axiosCache'
 import {
-    RegExpMatcher,
     englishDataset,
     englishRecommendedTransformers,
+    RegExpMatcher,
 } from 'obscenity'
-import { axiosInstance } from '@/utils/axiosCache'
+import { useState } from 'react'
+import { toast } from 'react-toastify'
 
 export default function AddReview() {
     const [rant, setRant] = useState('')

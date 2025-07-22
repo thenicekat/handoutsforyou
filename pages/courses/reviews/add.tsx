@@ -1,11 +1,11 @@
-import { getMetaConfig } from '@/config/meta'
-import Meta from '@/components/Meta'
-import { useState, useEffect } from 'react'
-import Menu from '@/components/Menu'
-import { courses } from '@/config/courses'
-import { profs } from '@/config/profs'
 import AutoCompleter from '@/components/AutoCompleter'
+import Menu from '@/components/Menu'
+import Meta from '@/components/Meta'
 import CustomToastContainer from '@/components/ToastContainer'
+import { courses } from '@/config/courses'
+import { getMetaConfig } from '@/config/meta'
+import { profs } from '@/config/profs'
+import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
 export default function AddReview() {

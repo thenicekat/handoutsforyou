@@ -1,10 +1,10 @@
-import { getMetaConfig } from '@/config/meta'
-import Meta from '@/components/Meta'
-import { useState } from 'react'
-import Menu from '@/components/Menu'
-import { profs } from '@/config/profs'
 import AutoCompleter from '@/components/AutoCompleter'
+import Menu from '@/components/Menu'
+import Meta from '@/components/Meta'
 import CustomToastContainer from '@/components/ToastContainer'
+import { getMetaConfig } from '@/config/meta'
+import { profs } from '@/config/profs'
+import { useState } from 'react'
 
 export default function Chambers() {
     const [prof, setProf] = useState('')

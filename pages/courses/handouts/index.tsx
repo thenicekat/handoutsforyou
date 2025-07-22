@@ -1,11 +1,11 @@
-import { getMetaConfig } from '@/config/meta'
-import Meta from '@/components/Meta'
-import { GetStaticProps } from 'next'
-import { useEffect, useState } from 'react'
-import dynamic from 'next/dynamic'
 import Menu from '@/components/Menu'
-import Link from 'next/link'
+import Meta from '@/components/Meta'
+import { getMetaConfig } from '@/config/meta'
 import { googleDriveService } from '@/utils/googleDrive'
+import { GetStaticProps } from 'next'
+import dynamic from 'next/dynamic'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
 const HandoutsPerYear = dynamic(() => import('@/components/HandoutsPerYear'), {
     loading: () => (

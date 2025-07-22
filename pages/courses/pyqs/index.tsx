@@ -1,14 +1,14 @@
-import { getMetaConfig } from '@/config/meta'
-import Meta from '@/components/Meta'
-import Menu from '@/components/Menu'
-import { useState, useEffect } from 'react'
-import { toast } from 'react-toastify'
 import AutoCompleter from '@/components/AutoCompleter'
-import { pyqYears } from '@/config/years_sems'
-import { courses as courseNames } from '@/config/courses'
-import { Course, PYQFile, PYQsByYear } from '@/types/PYQs'
-import { profs } from '@/config/profs'
+import Menu from '@/components/Menu'
+import Meta from '@/components/Meta'
 import CustomToastContainer from '@/components/ToastContainer'
+import { courses as courseNames } from '@/config/courses'
+import { getMetaConfig } from '@/config/meta'
+import { profs } from '@/config/profs'
+import { pyqYears } from '@/config/years_sems'
+import { Course, PYQFile, PYQsByYear } from '@/types/PYQs'
+import { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 
 export default function PYQs() {
     const [courses, setCourses] = useState<Course[]>([])

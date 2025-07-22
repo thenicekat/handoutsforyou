@@ -1,10 +1,10 @@
-import { getMetaConfig } from '@/config/meta'
-import Meta from '@/components/Meta'
-import { GetStaticProps } from 'next'
 import Menu from '@/components/Menu'
-import type { PSChronicles } from '@/types/GoogleDriveChronicles'
+import Meta from '@/components/Meta'
 import CustomToastContainer from '@/components/ToastContainer'
+import { getMetaConfig } from '@/config/meta'
+import type { PSChronicles } from '@/types/GoogleDriveChronicles'
 import { googleDriveService } from '@/utils/googleDrive'
+import { GetStaticProps } from 'next'
 
 export const getStaticProps: GetStaticProps = async () => {
     try {

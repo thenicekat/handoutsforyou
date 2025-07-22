@@ -1,13 +1,13 @@
-import { getMetaConfig } from '@/config/meta'
-import Meta from '@/components/Meta'
-import { useState, useEffect } from 'react'
-import Menu from '@/components/Menu'
-import { ps1Years, psAllotmentRounds } from '@/config/years_sems'
 import AutoCompleter from '@/components/AutoCompleter'
-import { toast } from 'react-toastify'
+import Menu from '@/components/Menu'
+import Meta from '@/components/Meta'
 import CustomToastContainer from '@/components/ToastContainer'
-import { useRouter } from 'next/router'
+import { getMetaConfig } from '@/config/meta'
+import { ps1Years, psAllotmentRounds } from '@/config/years_sems'
 import { axiosInstance } from '@/utils/axiosCache'
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 
 export default function AddPS1Response() {
     const router = useRouter()

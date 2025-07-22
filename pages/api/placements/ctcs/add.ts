@@ -1,9 +1,7 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
-import { supabase } from '../../supabase'
-import { getServerSession } from 'next-auth/next'
-import { authOptions } from '../../auth/[...nextauth]'
-import { admins, PLACEMENT_CTCS } from '../../constants'
 import { validateAPISession } from '@/pages/api/auth/session'
+import type { NextApiRequest, NextApiResponse } from 'next'
+import { PLACEMENT_CTCS } from '../../constants'
+import { supabase } from '../../supabase'
 
 type ResponseData = {
     message: string

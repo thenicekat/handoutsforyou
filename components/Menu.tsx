@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
+import { Bars3Icon, StarIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { signOut } from 'next-auth/react'
 import Link from 'next/link'
-import { signIn, signOut } from 'next-auth/react'
-import { StarIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { useState } from 'react'
 import StarPrompt from './StarPrompt'
-import { useOptimizedAuth } from '@/utils/authCache'
 
 interface MenuProps {
     onLandingPage?: boolean

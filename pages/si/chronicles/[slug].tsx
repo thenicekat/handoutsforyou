@@ -1,10 +1,10 @@
-import { getMetaConfig } from '@/config/meta'
+import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
+import { getMetaConfig } from '@/config/meta'
+import { axiosInstance } from '@/utils/axiosCache'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-import Menu from '@/components/Menu'
 import { SI_Chronicle } from '../../../types/SIData'
-import { axiosInstance } from '@/utils/axiosCache'
 
 export default function ChroniclePage() {
     const router = useRouter()

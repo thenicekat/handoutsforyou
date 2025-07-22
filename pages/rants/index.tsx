@@ -1,14 +1,14 @@
-import { getMetaConfig } from '@/config/meta'
-import Meta from '@/components/Meta'
-import { useEffect, useState } from 'react'
 import Menu from '@/components/Menu'
-import Link from 'next/link'
+import Meta from '@/components/Meta'
 import CustomToastContainer from '@/components/ToastContainer'
-import { toast } from 'react-toastify'
+import { getMetaConfig } from '@/config/meta'
 import { Rant } from '@/types/Rant'
-import { PlusCircleIcon } from '@heroicons/react/24/solid'
-import { ChatBubbleOvalLeftEllipsisIcon } from '@heroicons/react/24/outline'
 import { axiosInstance } from '@/utils/axiosCache'
+import { ChatBubbleOvalLeftEllipsisIcon } from '@heroicons/react/24/outline'
+import { PlusCircleIcon } from '@heroicons/react/24/solid'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 
 export default function Rants() {
     const [isLoading, setIsLoading] = useState(false)

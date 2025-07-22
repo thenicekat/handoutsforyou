@@ -1,7 +1,7 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
-import { supabase } from '../../supabase'
-import { PS1_REVIEWS, PS2_REVIEWS } from '../../constants'
 import { validateAPISession } from '@/pages/api/auth/session'
+import type { NextApiRequest, NextApiResponse } from 'next'
+import { PS1_REVIEWS, PS2_REVIEWS } from '../../constants'
+import { supabase } from '../../supabase'
 
 type ResponseData = {
     message: string
