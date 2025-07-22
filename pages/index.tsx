@@ -373,7 +373,7 @@ export default function Home() {
                                                     {item.name ===
                                                         'Some Useful Links' &&
                                                         RESOURCE_COUNTS.links >
-                                                        0 && (
+                                                            0 && (
                                                             <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gray-900 text-white">
                                                                 <CountUp
                                                                     end={
@@ -425,19 +425,17 @@ export default function Home() {
                                         {section.title}
                                     </h3>
                                     <div className="flex flex-wrap gap-2 mb-2 justify-center">
-                                        {section.links.map(
-                                            (link, linkIdx) => (
-                                                <a
-                                                    key={linkIdx}
-                                                    href={link.url}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="bg-gray-300 text-gray-800 px-4 py-2 rounded-full font-medium shadow hover:bg-gray-200 transition"
-                                                >
-                                                    {link.name}
-                                                </a>
-                                            )
-                                        )}
+                                        {section.links.map((link, linkIdx) => (
+                                            <a
+                                                key={linkIdx}
+                                                href={link.url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="bg-gray-300 text-gray-800 px-4 py-2 rounded-full font-medium shadow hover:bg-gray-200 transition"
+                                            >
+                                                {link.name}
+                                            </a>
+                                        ))}
                                     </div>
                                     {idx < USEFUL_LINKS.length - 1 && (
                                         <hr className="my-4 border-gray-300" />
