@@ -209,7 +209,7 @@ export default function Home() {
         <>
             <Meta />
 
-            <Menu doNotShowMenu={true} />
+            <Menu onLandingPage={true} />
             <StarPrompt setStarCount={setStarCount} />
 
             {/* Main Content */}
@@ -373,7 +373,7 @@ export default function Home() {
                                                     {item.name ===
                                                         'Some Useful Links' &&
                                                         RESOURCE_COUNTS.links >
-                                                            0 && (
+                                                        0 && (
                                                             <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gray-900 text-white">
                                                                 <CountUp
                                                                     end={
