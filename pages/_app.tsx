@@ -33,7 +33,7 @@ export default function App({
             <SessionProvider
                 session={session}
                 refetchOnWindowFocus={false}
-                refetchInterval={5 * 60}
+                refetchInterval={30 * 60}
                 refetchWhenOffline={false}
             >
                 <Component {...pageProps} />
