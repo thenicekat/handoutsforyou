@@ -5,8 +5,8 @@
  */
 
 import { EMAIL_HEADER } from '@/pages/api/constants'
-import { axiosInstance } from './axiosCache'
 import { NextApiRequest } from 'next'
+import { axiosInstance } from './axiosCache'
 
 export async function checkSessionCached(): Promise<boolean> {
     try {
@@ -23,7 +23,9 @@ export function getUserEmailFromHeaders(req: NextApiRequest): string | null {
 
     if (sessionValidated === 'true' && encodedEmail) {
         try {
-            return Buffer.from(encodedEmail as string, 'base64').toString('utf-8')
+            return Buffer.from(encodedEmail as string, 'base64').toString(
+                'utf-8'
+            )
         } catch (error) {
             return null
         }

@@ -71,7 +71,10 @@ export async function middleware(request: NextRequest) {
             )
         }
 
-        if (pathname.startsWith('/api/') && !pathname.startsWith('/api/auth/')) {
+        if (
+            pathname.startsWith('/api/') &&
+            !pathname.startsWith('/api/auth/')
+        ) {
             const response = NextResponse.next()
 
             if (token.email && token.name) {

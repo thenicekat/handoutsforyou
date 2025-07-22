@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { PS1_RESPONSES, PS2_RESPONSES } from '../../constants'
 import { processHeaders } from '../../auth/session'
+import { PS1_RESPONSES, PS2_RESPONSES } from '../../constants'
 import { supabase } from '../../supabase'
 
 type ResponseData = {

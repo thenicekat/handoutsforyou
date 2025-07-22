@@ -1,6 +1,6 @@
 import { BaseResponseData, processHeaders } from '@/pages/api/auth/session'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { EMAIL_HEADER, RANT_COMMENTS } from '../constants'
+import { RANT_COMMENTS } from '../constants'
 import { supabase } from '../supabase'
 
 interface ResponseData extends BaseResponseData {

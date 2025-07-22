@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { getServerSession } from 'next-auth/next'
-import { authOptions } from './[...nextauth]'
 import { EMAIL_HEADER, NAME_HEADER } from '../constants'
+import { authOptions } from './[...nextauth]'
 
 export type BaseResponseData = {
     message: string
@@ -9,8 +9,14 @@ export type BaseResponseData = {
 }
 
 export function processHeaders(req: NextApiRequest) {
-    const email = Buffer.from(req.headers[EMAIL_HEADER] as string, 'base64').toString('utf-8')
-    const name = Buffer.from(req.headers[NAME_HEADER] as string, 'base64').toString('utf-8')
+    const email = Buffer.from(
+        req.headers[EMAIL_HEADER] as string,
+        'base64'
+    ).toString('utf-8')
+    const name = Buffer.from(
+        req.headers[NAME_HEADER] as string,
+        'base64'
+    ).toString('utf-8')
     return { email, name }
 }
 

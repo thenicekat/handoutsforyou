@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { COURSE_REVIEWS, EMAIL_HEADER } from '../../constants'
-import { supabase } from '../../supabase'
 import { processHeaders } from '../../auth/session'
+import { COURSE_REVIEWS } from '../../constants'
+import { supabase } from '../../supabase'
 
 type ResponseData = {
     message: string
