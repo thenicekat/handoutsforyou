@@ -4,7 +4,6 @@
  * with PWA-aware caching that handles app install/visibility events.
  */
 
-import { useSession } from 'next-auth/react'
 import { axiosInstance } from './axiosCache'
 
 export async function checkSessionCached(): Promise<boolean> {
@@ -16,18 +15,6 @@ export async function checkSessionCached(): Promise<boolean> {
     }
 }
 
-// React hook for optimized auth state
-export function useOptimizedAuth() {
-    const { data: session, status } = useSession()
-
-    return {
-        isAuthenticated: !!session,
-        isLoading: status === 'loading',
-        user: session?.user,
-        session,
-    }
-}
-
 // PWA-specific session handling
 export class PWASessionManager {
     private static instance: PWASessionManager
@@ -35,7 +22,7 @@ export class PWASessionManager {
         isAuthenticated: boolean
         timestamp: number
     } | null = null
-    private readonly CACHE_DURATION = 30000 // 30 seconds
+    private readonly CACHE_DURATION = 30 * 60 * 1000 // 30 minutes
 
     private constructor() {
         // Listen for PWA lifecycle events
