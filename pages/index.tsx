@@ -209,7 +209,7 @@ export default function Home() {
         <>
             <Meta />
 
-            <Menu doNotShowMenu={true} />
+            <Menu onLandingPage={true} />
             <StarPrompt setStarCount={setStarCount} />
 
             {/* Main Content */}

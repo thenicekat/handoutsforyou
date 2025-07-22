@@ -6,13 +6,12 @@ import StarPrompt from './StarPrompt'
 import { useOptimizedAuth } from '@/utils/authCache'
 
 interface MenuProps {
-    doNotShowMenu?: boolean
+    onLandingPage?: boolean
 }
 
-const Menu = ({ doNotShowMenu }: MenuProps) => {
+const Menu = ({ onLandingPage }: MenuProps) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [starCount, setStarCount] = useState(0)
-    const { isAuthenticated, isLoading } = useOptimizedAuth()
 
     const menuItems: Record<string, string> = {
         Handouts: '/courses/handouts',
@@ -58,18 +57,7 @@ const Menu = ({ doNotShowMenu }: MenuProps) => {
                             </button>
                         </Link>
 
-                        {isLoading ? (
-                            <div className="px-4 py-2 rounded-lg bg-zinc-200/50 dark:bg-white/10 text-black dark:text-white text-sm">
-                                Loading...
-                            </div>
-                        ) : !isAuthenticated ? (
-                            <button
-                                onClick={() => signIn('google')}
-                                className="px-4 py-2 rounded-lg bg-zinc-200/50 dark:bg-white/10 hover:bg-zinc-300/50 dark:hover:bg-white/20 text-black dark:text-white text-sm transition-all"
-                            >
-                                Sign In
-                            </button>
-                        ) : (
+                        {!onLandingPage && (
                             <button
                                 onClick={() => signOut()}
                                 className="px-4 py-2 rounded-lg bg-red-500/20 hover:bg-red-500/30 text-red-500 text-sm transition-all"
@@ -80,7 +68,7 @@ const Menu = ({ doNotShowMenu }: MenuProps) => {
 
                         <button
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
-                            className={`p-2 rounded-lg bg-zinc-200/50 dark:bg-zinc-800/50 hover:bg-zinc-300/50 dark:hover:bg-zinc-700/50 text-black dark:text-white transition-all ${doNotShowMenu && ' hidden'}`}
+                            className={`p-2 rounded-lg bg-zinc-200/50 dark:bg-zinc-800/50 hover:bg-zinc-300/50 dark:hover:bg-zinc-700/50 text-black dark:text-white transition-all ${onLandingPage && ' hidden'}`}
                         >
                             {isMenuOpen ? (
                                 <XMarkIcon className="h-6 w-6" />
