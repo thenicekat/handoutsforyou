@@ -182,6 +182,7 @@ export default function Home() {
                     onClick: () => setShowLinksModal(true),
                 },
                 { name: 'FAQs', path: '/faqs' },
+                { name: 'BITS of Advice', path: '/bits-of-advice' },
             ],
         },
     ]
