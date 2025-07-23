@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { Post } from '@/types/post';
+import { Post } from '@/types/Post';
+import ReactMarkdown from 'react-markdown';
 
 interface PostCardProps {
     post: Post;
@@ -32,11 +33,9 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
                         ))}
                     </div>
                 </div>
-                <p
-                    className="text-gray-300 whitespace-pre-wrap leading-relaxed"
-                    dangerouslySetInnerHTML={{ __html: contentDisplay + (needsTruncation ? '...' : '') }}
-                />
-
+                <div className="text-gray-300 whitespace-pre-wrap leading-relaxed">
+                    <ReactMarkdown>{contentDisplay}</ReactMarkdown>
+                </div>
                 {needsTruncation && (
                     <span className="text-yellow-500 hover:underline mt-4 inline-block font-semibold">
                         Read More

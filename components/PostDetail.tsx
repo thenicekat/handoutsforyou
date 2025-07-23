@@ -1,5 +1,6 @@
 import React from 'react';
-import { Post } from '@/types/post';
+import { Post } from '@/types/Post';
+import ReactMarkdown from 'react-markdown';
 
 interface PostDetailProps {
     post: Post;
@@ -28,10 +29,9 @@ const PostDetail: React.FC<PostDetailProps> = ({ post }) => {
                     <hr />
                 </div>
             </div>
-            <div 
-                className="text-gray-300 whitespace-pre-wrap leading-relaxed text-md" 
-                dangerouslySetInnerHTML={{ __html: post.content }}
-            />
+            <div className="text-gray-300 whitespace-pre-wrap leading-relaxed text-md">
+                <ReactMarkdown>{post.content}</ReactMarkdown>
+            </div>
         </article>
     );
 };
