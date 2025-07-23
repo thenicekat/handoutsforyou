@@ -1,6 +1,6 @@
+import { processHeaders } from '@/middleware'
 import { BaseResponseData } from '@/pages/api/auth/session'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { processHeaders } from '@/middleware'
 import { PS1_RESPONSES, PS2_RESPONSES } from '../../constants'
 import { supabase } from '../../supabase'
 

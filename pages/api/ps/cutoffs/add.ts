@@ -1,5 +1,5 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
 import { processHeaders } from '@/middleware'
+import type { NextApiRequest, NextApiResponse } from 'next'
 import { PS1_RESPONSES, PS2_RESPONSES } from '../../constants'
 import { supabase } from '../../supabase'
 

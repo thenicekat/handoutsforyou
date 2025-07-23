@@ -1,5 +1,5 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
 import { processHeaders } from '@/middleware'
+import type { NextApiRequest, NextApiResponse } from 'next'
 import { PLACEMENT_RESOURCES } from '../../constants'
 import { supabase } from '../../supabase'
 

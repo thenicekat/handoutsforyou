@@ -39,10 +39,14 @@ export async function processHeaders(req: NextApiRequest) {
     if (!h4uToken) {
         throw new Error('H4U token not found in headers.')
     }
-    const decoded = await jose.jwtVerify(h4uToken, jwtConfig.secret)
-    return {
-        email: decoded.payload.email,
-        name: decoded.payload.name,
+    try {
+        const decoded = await jose.jwtVerify(h4uToken, jwtConfig.secret)
+        return {
+            email: decoded.payload.email,
+            name: decoded.payload.name,
+        }
+    } catch (error) {
+        throw new Error('Please login and try again.')
     }
 }
 
@@ -109,8 +113,6 @@ export async function middleware(request: NextRequest) {
                     console.error('Error creating H4U token:', error)
                 }
             }
-            console.log('H4U token created')
-
             return response
         }
 
