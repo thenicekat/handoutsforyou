@@ -3,8 +3,9 @@ import type { GetStaticProps, GetStaticPaths } from 'next';
 import Menu from '@/components/Menu';
 import Meta from '@/components/Meta';
 import PostDetail from '@/components/PostDetail';
-import { Post } from '@/config/post'; // Re-using the interface from the main page
+import { Post } from '@/types/post';
 import { googleDriveService } from '@/utils/googleDrive';
+import { getMetaConfig } from '@/config/meta';
 
 interface PostPageProps {
     post: Post;
@@ -25,7 +26,10 @@ const PostPage = ({ post }: PostPageProps) => {
 
     return (
         <>
-            <Meta title={`${post.title} | handoutsforyou.`} />
+            <Meta 
+                title={`${post.title} | handoutsforyou.`} 
+                keywords={getMetaConfig('bitsofa').keywords.concat(post.tags)}
+                />
             <Menu />
             <div className="text-white min-h-screen font-sans flex flex-col">
                 <main className="px-1 w-full flex-grow">

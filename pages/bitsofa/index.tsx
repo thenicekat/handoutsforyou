@@ -4,7 +4,7 @@ import { GetStaticProps } from 'next';
 
 import Menu from '@/components/Menu';
 import Meta from '@/components/Meta';
-import { Post } from '@/config/post';
+import { Post } from '@/types/post';
 import { googleDriveService } from '@/utils/googleDrive';
 import PostCard from '@/components/PostCard';
 
@@ -45,7 +45,7 @@ const ForumPage = ({ posts, tags }: ForumPageProps) => {
                 <div className="text-center p-4">
                     <h2 className="text-4xl font-bold">BITS of Advice</h2>
                     <h4 className="text-md font-semibold text-white mt-2">Find the best advice from your seniors</h4>
-                    <Link href={'/bits-of-advice/contribute'}>
+                    <Link href={'/bitsofa/contribute'}>
                         <button className='btn btn-outline focus:outline-none mx-auto mt-4'>Contribute an article</button>
                     </Link>
                 </div>

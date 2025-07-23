@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Post } from '@/config/post';
+import { Post } from '@/types/post';
 
 interface PostCardProps {
     post: Post;
@@ -13,11 +13,11 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
     const contentDisplay = post.content.slice(0, maxLength);
 
     return (
-        <Link href={`/bits-of-advice/${post.slug}`}>
+        <Link href={`/bitsofa/${post.slug}`}>
             <article className="bg-gray-800 p-6 rounded-lg border border-gray-700">
                 <div className="mb-4">
                     <h2 className="text-3xl font-bold">
-                        <Link href={`/bits-of-advice/${post.slug}`} className="hover:underline">
+                        <Link href={`/bitsofa/${post.slug}`} className="hover:underline">
                             {post.title}
                         </Link>
                     </h2>

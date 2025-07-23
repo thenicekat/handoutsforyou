@@ -1,5 +1,5 @@
 import React from 'react';
-import { Post } from '@/config/post';
+import { Post } from '@/types/post';
 
 interface PostDetailProps {
     post: Post;

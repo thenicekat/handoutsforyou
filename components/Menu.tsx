@@ -19,7 +19,7 @@ const Menu = ({ onLandingPage }: MenuProps) => {
         'Course Resources': '/courses/resources',
         'Course Reviews': '/courses/reviews',
         'Course Grading': '/courses/grading',
-        'BITS of Advice': '/bits-of-advice',
+        'BITS of Advice': '/bitsofa',
         'Professor Chambers': '/chambers',
         'SI Resources': '/si/resources',
         'SI Companies': '/si/companies',

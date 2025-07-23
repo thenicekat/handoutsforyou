@@ -48,7 +48,7 @@ export default function ContributeAdvice() {
         }
 
         try {
-            const data = await fetch('/api/bits-of-advice/add', {
+            const data = await fetch('/api/bitsofa/add', {
                 method: 'POST',
                 body: JSON.stringify({
                     title,
@@ -77,7 +77,7 @@ export default function ContributeAdvice() {
 
     return (
         <>
-            <Meta {...getMetaConfig('bits-of-advice')} />
+            <Meta {...getMetaConfig('bitsofa')} />
             <div className="min-h-screen text-white">
                 <Menu />
 
