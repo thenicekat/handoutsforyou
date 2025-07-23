@@ -4,8 +4,6 @@
  * with PWA-aware caching that handles app install/visibility events.
  */
 
-import { EMAIL_HEADER } from '@/pages/api/constants'
-import { NextApiRequest } from 'next'
 import { axiosInstance } from './axiosCache'
 
 export async function checkSessionCached(): Promise<boolean> {
@@ -15,23 +13,6 @@ export async function checkSessionCached(): Promise<boolean> {
     } catch (error) {
         return false
     }
-}
-
-export function getUserEmailFromHeaders(req: NextApiRequest): string | null {
-    const sessionValidated = req.headers['x-session-validated']
-    const encodedEmail = req.headers[EMAIL_HEADER]
-
-    if (sessionValidated === 'true' && encodedEmail) {
-        try {
-            return Buffer.from(encodedEmail as string, 'base64').toString(
-                'utf-8'
-            )
-        } catch (error) {
-            return null
-        }
-    }
-
-    return null
 }
 
 // PWA-specific session handling
