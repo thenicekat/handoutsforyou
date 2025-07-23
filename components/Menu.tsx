@@ -1,26 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import { Bars3Icon, StarIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { signOut } from 'next-auth/react'
 import Link from 'next/link'
-import { signIn, signOut } from 'next-auth/react'
-import { StarIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { useState } from 'react'
 import StarPrompt from './StarPrompt'
-import { checkSession } from '@/utils/checkSession'
 
 interface MenuProps {
-    doNotShowMenu?: boolean
+    onLandingPage?: boolean
 }
 
-const Menu = ({ doNotShowMenu }: MenuProps) => {
+const Menu = ({ onLandingPage }: MenuProps) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [starCount, setStarCount] = useState(0)
-    const [isSignedIn, setIsSignedIn] = useState(false)
-
-    useEffect(() => {
-        const checkSessionWrapper = async () => {
-            const session = await checkSession()
-            setIsSignedIn(session)
-        }
-        checkSessionWrapper()
-    }, [])
 
     const menuItems: Record<string, string> = {
         Handouts: '/courses/handouts',
@@ -66,14 +56,7 @@ const Menu = ({ doNotShowMenu }: MenuProps) => {
                             </button>
                         </Link>
 
-                        {!isSignedIn ? (
-                            <button
-                                onClick={() => signIn('google')}
-                                className="px-4 py-2 rounded-lg bg-zinc-200/50 dark:bg-white/10 hover:bg-zinc-300/50 dark:hover:bg-white/20 text-black dark:text-white text-sm transition-all"
-                            >
-                                Sign In
-                            </button>
-                        ) : (
+                        {!onLandingPage && (
                             <button
                                 onClick={() => signOut()}
                                 className="px-4 py-2 rounded-lg bg-red-500/20 hover:bg-red-500/30 text-red-500 text-sm transition-all"
@@ -84,7 +67,7 @@ const Menu = ({ doNotShowMenu }: MenuProps) => {
 
                         <button
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
-                            className={`p-2 rounded-lg bg-zinc-200/50 dark:bg-zinc-800/50 hover:bg-zinc-300/50 dark:hover:bg-zinc-700/50 text-black dark:text-white transition-all ${doNotShowMenu && ' hidden'}`}
+                            className={`p-2 rounded-lg bg-zinc-200/50 dark:bg-zinc-800/50 hover:bg-zinc-300/50 dark:hover:bg-zinc-700/50 text-black dark:text-white transition-all ${onLandingPage && ' hidden'}`}
                         >
                             {isMenuOpen ? (
                                 <XMarkIcon className="h-6 w-6" />

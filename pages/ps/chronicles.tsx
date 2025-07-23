@@ -1,13 +1,10 @@
-import { getMetaConfig } from '@/config/meta'
-import Meta from '@/components/Meta'
-import { GetStaticProps } from 'next'
-import { useState, useEffect } from 'react'
 import Menu from '@/components/Menu'
-import type { PSChronicles } from '@/types/GoogleDriveChronicles'
-import { toast } from 'react-toastify'
+import Meta from '@/components/Meta'
 import CustomToastContainer from '@/components/ToastContainer'
-import { checkSession } from '@/utils/checkSession'
+import { getMetaConfig } from '@/config/meta'
+import type { PSChronicles } from '@/types/GoogleDriveChronicles'
 import { googleDriveService } from '@/utils/googleDrive'
+import { GetStaticProps } from 'next'
 
 export const getStaticProps: GetStaticProps = async () => {
     try {
@@ -32,7 +29,7 @@ export const getStaticProps: GetStaticProps = async () => {
             props: {
                 psChronicles,
             },
-            revalidate: 3600, // Regenerate every hour
+            revalidate: 24 * 3600, // Regenerate every 24 hours
         }
     } catch (error) {
         console.error('Error fetching PS chronicles:', error)
@@ -53,12 +50,6 @@ export default function PSChroniclesPage({
     psChronicles: PSChronicles
     error?: string
 }) {
-    const [chroniclesLoading, setChroniclesLoading] = useState(false)
-
-    useEffect(() => {
-        checkSession()
-    }, [])
-
     if (error) {
         return (
             <div className="grid place-items-center min-h-screen">

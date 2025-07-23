@@ -1,9 +1,7 @@
+import { processHeaders } from '@/middleware'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { supabase } from '../../supabase'
-import { getServerSession } from 'next-auth/next'
-import { authOptions } from '../../auth/[...nextauth]'
 import { PS1_RESPONSES, PS2_RESPONSES } from '../../constants'
-import { validateAPISession } from '@/pages/api/auth/session'
+import { supabase } from '../../supabase'
 
 type ResponseData = {
     message: string
@@ -31,10 +29,7 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
 ) {
-    const session = await validateAPISession<ResponseData>(req, res)
-    if (!session) return
-
-    const { email } = session.user
+    const { email } = await processHeaders(req)
     const reqBody: RequestData = req.body
 
     if (!email) {

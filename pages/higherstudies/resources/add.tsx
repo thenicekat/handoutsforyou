@@ -1,11 +1,12 @@
-import { getMetaConfig } from '@/config/meta'
-import Meta from '@/components/Meta'
-import { useState } from 'react'
-import Menu from '@/components/Menu'
-import { toast } from 'react-toastify'
-import CustomToastContainer from '@/components/ToastContainer'
 import AutoCompleter from '@/components/AutoCompleter'
+import Menu from '@/components/Menu'
+import Meta from '@/components/Meta'
+import CustomToastContainer from '@/components/ToastContainer'
 import { higherStudiesCategories } from '@/config/higherstudies'
+import { getMetaConfig } from '@/config/meta'
+import { axiosInstance } from '@/utils/axiosCache'
+import { useState } from 'react'
+import { toast } from 'react-toastify'
 
 export default function AddHSResources() {
     const [name, setName] = useState('')
@@ -22,25 +23,31 @@ export default function AddHSResources() {
             setIsLoading(false)
             return
         }
-        const res = await fetch('/api/higherstudies/resources/add', {
-            method: 'POST',
-            body: JSON.stringify({
-                name: name,
-                link: link,
-                created_by: created_by,
-                category: category,
-            }),
-            headers: { 'Content-Type': 'application/json' },
-        })
-        const data = await res.json()
-        if (data.error) {
-            toast.error(data.message)
-        } else {
-            toast.success('Thank you! Your resource was added successfully!')
-            setName('')
-            setLink('')
-            setCreatedBy('')
-            setCategory('')
+        try {
+            const res = await axiosInstance.post(
+                '/api/higherstudies/resources/add',
+                {
+                    name: name,
+                    link: link,
+                    created_by: created_by,
+                    category: category,
+                }
+            )
+            const data = res.data
+            if (data.error) {
+                toast.error(data.message)
+            } else {
+                toast.success(
+                    'Thank you! Your resource was added successfully!'
+                )
+                setName('')
+                setLink('')
+                setCreatedBy('')
+                setCategory('')
+            }
+        } catch (error) {
+            console.error('Error adding higher studies resource:', error)
+            toast.error('Failed to add resource')
         }
         setIsLoading(false)
     }

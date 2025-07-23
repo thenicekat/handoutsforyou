@@ -1,9 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { supabase } from '../../supabase'
-import { getServerSession } from 'next-auth/next'
-import { authOptions } from '../../auth/[...nextauth]'
 import { SI_CHRONICLES } from '../../constants'
-import { validateAPISession } from '@/pages/api/auth/session'
+import { supabase } from '../../supabase'
 
 type ResponseData = {
     message: string
@@ -15,9 +12,6 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
 ) {
-    const session = await validateAPISession<ResponseData>(req, res)
-    if (!session) return
-
     const { slug } = req.body
 
     if (!slug) {

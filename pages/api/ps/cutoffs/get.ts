@@ -1,7 +1,8 @@
+import { processHeaders } from '@/middleware'
+import { BaseResponseData } from '@/pages/api/auth/session'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { supabase } from '../../supabase'
 import { PS1_RESPONSES, PS2_RESPONSES } from '../../constants'
-import { validateAPISession, BaseResponseData } from '@/pages/api/auth/session'
+import { supabase } from '../../supabase'
 
 interface ResponseData extends BaseResponseData {
     data: any
@@ -11,10 +12,8 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
 ) {
-    const session = await validateAPISession<ResponseData>(req, res)
-    if (!session) return
-
     const { type } = req.body
+    const { email } = await processHeaders(req)
 
     if (!type) {
         res.status(422).json({
@@ -30,7 +29,7 @@ export default async function handler(
     const { data, error } = await supabase
         .from(tableName)
         .select('*')
-        .eq('email', session.user.email)
+        .eq('email', email)
 
     if (error) {
         res.status(500).json({

@@ -1,12 +1,13 @@
-import { getMetaConfig } from '@/config/meta'
-import Meta from '@/components/Meta'
-import { useState, useEffect } from 'react'
-import Menu from '@/components/Menu'
-import { toast } from 'react-toastify'
-import CustomToastContainer from '@/components/ToastContainer'
 import AutoCompleter from '@/components/AutoCompleter'
+import Menu from '@/components/Menu'
+import Meta from '@/components/Meta'
+import CustomToastContainer from '@/components/ToastContainer'
+import { getMetaConfig } from '@/config/meta'
 import { ps2Semesters, psAllotmentRounds } from '@/config/years_sems'
+import { axiosInstance } from '@/utils/axiosCache'
 import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 
 export default function AddPS2Response() {
     const router = useRouter()
@@ -76,14 +77,12 @@ export default function AddPS2Response() {
     const fetchUserResponses = async () => {
         setIsFetchingResponses(true)
         try {
-            const response = await fetch('/api/ps/cutoffs/get', {
-                method: 'POST',
-                body: JSON.stringify({ type: 'ps2' }),
-                headers: { 'Content-Type': 'application/json' },
+            const response = await axiosInstance.post('/api/ps/cutoffs/get', {
+                type: 'ps2',
             })
 
-            if (response.ok) {
-                const data = await response.json()
+            if (response.status === 200) {
+                const data = response.data
                 if (!data.error) {
                     setUserResponses(data.data)
                 } else {
@@ -93,6 +92,7 @@ export default function AddPS2Response() {
                 toast.error('Failed to fetch your responses')
             }
         } catch (error) {
+            console.error('Error fetching user responses:', error)
             toast.error('An error occurred while fetching your responses')
         } finally {
             setIsFetchingResponses(false)
@@ -151,36 +151,37 @@ export default function AddPS2Response() {
             ...(isEditMode && responseId && { id: responseId }),
         }
 
-        const res = await fetch(endpoint, {
-            method: 'POST',
-            body: JSON.stringify(payload),
-            headers: { 'Content-Type': 'application/json' },
-        })
+        try {
+            const res = await axiosInstance.post(endpoint, payload)
 
-        const data = await res.json()
-        if (data.error) {
-            toast.error(data.message)
-        } else {
-            toast.success(
-                isEditMode
-                    ? 'Your response was updated successfully!'
-                    : 'Thank you! Your response was added successfully!'
-            )
+            const data = res.data
+            if (data.error) {
+                toast.error(data.message)
+            } else {
+                toast.success(
+                    isEditMode
+                        ? 'Your response was updated successfully!'
+                        : 'Thank you! Your response was added successfully!'
+                )
 
-            setIdNumber('')
-            setYearAndSem('')
-            setAllotmentRound('')
-            setStation('')
-            setStipend(0)
-            setCGPA(0)
-            setPreference(0)
-            setOffshoot(0)
-            setOffshootTotal(0)
-            setOffshootType('')
-            setResponseId(null)
-            setSelectedResponse('')
+                setIdNumber('')
+                setYearAndSem('')
+                setAllotmentRound('')
+                setStation('')
+                setStipend(0)
+                setCGPA(0)
+                setPreference(0)
+                setOffshoot(0)
+                setOffshootTotal(0)
+                setOffshootType('')
+                setResponseId(null)
+                setSelectedResponse('')
 
-            window.location.href = '/ps/cutoffs/ps2/'
+                window.location.href = '/ps/cutoffs/ps2/'
+            }
+        } catch (error) {
+            console.error('Error adding/updating PS2 response:', error)
+            toast.error('Failed to save response')
         }
         setIsLoading(false)
     }

@@ -1,11 +1,12 @@
-import { getMetaConfig } from '@/config/meta'
-import Meta from '@/components/Meta'
-import { useState } from 'react'
-import Menu from '@/components/Menu'
-import { toast } from 'react-toastify'
-import CustomToastContainer from '@/components/ToastContainer'
 import AutoCompleter from '@/components/AutoCompleter'
+import Menu from '@/components/Menu'
+import Meta from '@/components/Meta'
+import CustomToastContainer from '@/components/ToastContainer'
+import { getMetaConfig } from '@/config/meta'
 import { placementYears } from '@/config/years_sems'
+import { axiosInstance } from '@/utils/axiosCache'
+import { useState } from 'react'
+import { toast } from 'react-toastify'
 
 export default function AddPlacementCTCs() {
     const [name, setName] = useState('')
@@ -23,9 +24,8 @@ export default function AddPlacementCTCs() {
     const addPlacementCTC = async () => {
         setIsLoading(true)
 
-        const res = await fetch('/api/placements/ctcs/add', {
-            method: 'POST',
-            body: JSON.stringify({
+        try {
+            const res = await axiosInstance.post('/api/placements/ctcs/add', {
                 company: name,
                 campus: campus,
                 academicYear: academicYear,
@@ -35,23 +35,25 @@ export default function AddPlacementCTCs() {
                 variableBonus: variableBonus,
                 monetaryValueOfBenefits: monetaryValueOfBenefits,
                 description: description,
-            }),
-            headers: { 'Content-Type': 'application/json' },
-        })
-        const data = await res.json()
-        if (data.error) {
-            toast.error(data.message)
-        } else {
-            toast.success('Thank you! CTC was added successfully!')
-            setName('')
-            setCampus('')
-            setAcademicYear('')
-            setBase(0)
-            setJoiningBonus(0)
-            setRelocationBonus(0)
-            setVariableBonus(0)
-            setMonetaryValueOfBenefits(0)
-            setDescription('')
+            })
+            const data = res.data
+            if (data.error) {
+                toast.error(data.message)
+            } else {
+                toast.success('Thank you! CTC was added successfully!')
+                setName('')
+                setCampus('')
+                setAcademicYear('')
+                setBase(0)
+                setJoiningBonus(0)
+                setRelocationBonus(0)
+                setVariableBonus(0)
+                setMonetaryValueOfBenefits(0)
+                setDescription('')
+            }
+        } catch (error) {
+            console.error('Error adding placement CTC:', error)
+            toast.error('Failed to add CTC')
         }
         setIsLoading(false)
     }

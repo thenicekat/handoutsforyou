@@ -1,9 +1,7 @@
+import { processHeaders } from '@/middleware'
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { PLACEMENT_CTCS } from '../../constants'
 import { supabase } from '../../supabase'
-import { getServerSession } from 'next-auth/next'
-import { authOptions } from '../../auth/[...nextauth]'
-import { admins, PLACEMENT_CTCS } from '../../constants'
-import { validateAPISession } from '@/pages/api/auth/session'
 
 type ResponseData = {
     message: string
@@ -14,9 +12,6 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
 ) {
-    const session = await validateAPISession<ResponseData>(req, res)
-    if (!session) return
-
     let {
         company,
         campus,
@@ -28,6 +23,7 @@ export default async function handler(
         monetaryValueOfBenefits,
         description,
     } = req.body
+    const { email } = await processHeaders(req)
 
     if (!company) {
         res.status(422).json({
@@ -86,7 +82,7 @@ export default async function handler(
             variable_bonus: variableBonus,
             monetary_value_of_benefits: monetaryValueOfBenefits,
             description: description,
-            created_by: session.user.email,
+            created_by: email,
         },
     ])
 

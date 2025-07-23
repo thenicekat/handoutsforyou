@@ -1,7 +1,8 @@
+import { processHeaders } from '@/middleware'
+import { BaseResponseData } from '@/pages/api/auth/session'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { supabase } from '../supabase'
 import { RANT_COMMENTS } from '../constants'
-import { validateAPISession, BaseResponseData } from '@/pages/api/auth/session'
+import { supabase } from '../supabase'
 
 interface ResponseData extends BaseResponseData {
     data?: any
@@ -11,10 +12,8 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
 ) {
-    const session = await validateAPISession<ResponseData>(req, res)
-    if (!session) return
-
     const { rantId, comment } = req.body
+    const { email } = await processHeaders(req)
 
     if (!rantId) {
         res.status(422).json({
@@ -42,7 +41,7 @@ export default async function handler(
         {
             rant_id: rantId,
             comment: comment,
-            created_by: session?.user?.email,
+            created_by: email,
             created_at: Date.now(),
         },
     ])

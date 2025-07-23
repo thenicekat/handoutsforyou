@@ -1,10 +1,8 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
-import { supabase } from '../../supabase'
-import { getServerSession } from 'next-auth/next'
-import { authOptions } from '../../auth/[...nextauth]'
-import { COURSE_GRADING } from '../../constants'
 import { departments } from '@/config/departments'
-import { validateAPISession } from '@/pages/api/auth/session'
+import { processHeaders } from '@/middleware'
+import type { NextApiRequest, NextApiResponse } from 'next'
+import { COURSE_GRADING } from '../../constants'
+import { supabase } from '../../supabase'
 
 type ResponseData = {
     message: string
@@ -20,10 +18,8 @@ export default async function handler(
         .map((code) => code.trim())
         .filter((code) => code.length > 0)
 
-    const session = await validateAPISession<ResponseData>(req, res)
-    if (!session) return
-
     const { course, dept, sem, prof, data, average_mark } = req.body
+    const { email } = await processHeaders(req)
 
     if (!course) {
         res.status(422).json({
@@ -130,7 +126,7 @@ export default async function handler(
             sem: sem,
             prof: prof,
             data: validatedData,
-            created_by: session.user.email,
+            created_by: email,
             average_mark: average_mark,
         },
     ])

@@ -1,38 +1,46 @@
-import { getMetaConfig } from '@/config/meta'
 import Meta from '@/components/Meta'
-import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
-import Link from 'next/link'
 import StatusCode from '@/components/StatusCode'
 import { signIn } from 'next-auth/react'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 
 const errorMessages = {
+    NotFound: {
+        code: 404,
+        title: 'Page Not Found',
+        message:
+            'The page you are looking for does not exist. Please check the URL and try again.',
+    },
     UnauthorizedEmail: {
+        code: 403,
         title: 'Unauthorized Email',
         message:
-            'This application is only accessible to BITS Pilani students and alumni.',
-        action: 'Please sign in with your BITS email address.',
+            'This application is only accessible to BITS Pilani students and alumni. Please sign in with your BITS email address.',
     },
     HyderabadOnly: {
-        title: 'Campus Restricted',
+        code: 403,
+        title: 'Access Restricted',
         message:
             'This feature is only available for BITS Hyderabad campus students.',
-        action: 'Please use your BITS Hyderabad email address.',
     },
     Unauthorized: {
+        code: 401,
         title: 'Sign in Required',
-        message: 'You need to be signed in to access this page.',
-        action: 'Please sign in with your BITS email address.',
+        message:
+            'You need to be signed in to access this page. Please sign in with your BITS email address.',
     },
     Default: {
-        title: 'Authentication Error',
-        message: 'There was a problem with your authentication.',
-        action: 'Please try signing in again.',
+        code: 500,
+        title: 'Internal Server Error',
+        message:
+            'Please try again later. If the problem persists, please contact handoutsforyou@gmail.com.',
     },
 }
 
 export default function ErrorPage() {
     const router = useRouter()
+    const [isLoading, setIsLoading] = useState(true)
     const [errorType, setErrorType] =
         useState<keyof typeof errorMessages>('Default')
 
@@ -40,6 +48,7 @@ export default function ErrorPage() {
         const { error } = router.query
         if (error && typeof error === 'string' && error in errorMessages) {
             setErrorType(error as keyof typeof errorMessages)
+            setIsLoading(false)
         }
     }, [router.query])
 
@@ -49,7 +58,11 @@ export default function ErrorPage() {
         signIn('google', { callbackUrl: '/' })
     }
 
-    return (
+    return isLoading ? (
+        <div className="flex justify-center items-center h-screen">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gray-900 dark:border-white"></div>
+        </div>
+    ) : (
         <>
             <nav className="fixed top-0 right-0 left-0 z-40 bg-white/50 dark:bg-black/50 backdrop-blur-md border-b border-black/10 dark:border-white/10">
                 <div className="flex items-center justify-between h-16 px-4 md:px-6">
@@ -62,13 +75,12 @@ export default function ErrorPage() {
                     </div>
                 </div>
             </nav>
-            <div className="min-h-screen flex flex-col items-center pt-32 p-4">
+
+            <div className="flex flex-col items-center p-4">
                 <Meta />
 
                 <div className="w-full md:w-2/5 mx-auto">
-                    <StatusCode
-                        code={errorType === 'Unauthorized' ? 401 : 403}
-                    />
+                    <StatusCode code={errorContent.code} />
                     <div className="text-center -mt-4">
                         <h3 className="text-lg font-semibold text-white">
                             {errorContent.title}
@@ -76,22 +88,21 @@ export default function ErrorPage() {
                         <p className="mt-2 text-sm text-gray-200">
                             {errorContent.message}
                         </p>
-                        <p className="mt-1 text-sm text-gray-300">
-                            {errorContent.action}
-                        </p>
                         <div className="mt-4 space-y-3">
-                            <button
-                                className="bg-gradient-to-r from-teal-400 to-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:scale-105 transition-transform"
-                                onClick={handleSignIn}
-                            >
-                                Sign in with Google
-                            </button>
+                            {errorType === 'Unauthorized' && (
+                                <button
+                                    className="bg-gradient-to-r from-teal-400 to-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:scale-105 transition-transform"
+                                    onClick={handleSignIn}
+                                >
+                                    Sign in with Google
+                                </button>
+                            )}
                             <div>
                                 <Link
                                     href="/"
                                     className="inline-block text-gray-200 hover:text-white text-sm hover:underline"
                                 >
-                                    Go to Home
+                                    Go back to Home.
                                 </Link>
                             </div>
                         </div>

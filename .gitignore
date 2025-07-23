@@ -55,6 +55,7 @@ next-env.d.ts
 
 # Python scripting
 venv/
+.venv/
 
 # VS Code editor
 .vscode/

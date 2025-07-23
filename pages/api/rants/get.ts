@@ -1,7 +1,8 @@
+import { processHeaders } from '@/middleware'
+import { BaseResponseData } from '@/pages/api/auth/session'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { supabase } from '../supabase'
 import { RANT_POSTS } from '../constants'
-import { validateAPISession, BaseResponseData } from '@/pages/api/auth/session'
+import { supabase } from '../supabase'
 
 interface ResponseData extends BaseResponseData {
     data: any
@@ -22,10 +23,8 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
 ) {
-    const session = await validateAPISession<ResponseData>(req, res)
-    if (!session) return
-
     let rants: Rant[] = []
+    const { email } = await processHeaders(req)
 
     // Get public rants.
     const { data, error } = await supabase
@@ -46,7 +45,7 @@ export default async function handler(
     const { data: privateRants, error: privateError } = await supabase
         .from(RANT_POSTS)
         .select('id, rant, created_at, public, rants_comments (id, comment)')
-        .eq('created_by', session.user.email)
+        .eq('created_by', email)
         .eq('public', 0)
 
     if (privateError) {

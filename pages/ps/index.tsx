@@ -1,7 +1,6 @@
-import { getMetaConfig } from '@/config/meta'
-import Meta from '@/components/Meta'
-import Link from 'next/link'
 import Menu from '@/components/Menu'
+import Meta from '@/components/Meta'
+import { getMetaConfig } from '@/config/meta'
 
 export default function PS() {
     const psResources = {

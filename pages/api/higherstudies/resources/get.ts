@@ -1,7 +1,7 @@
+import { BaseResponseData } from '@/pages/api/auth/session'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { supabase } from '../../supabase'
 import { HIGHER_STUDIES_RESOURCES } from '../../constants'
-import { validateAPISession, BaseResponseData } from '@/pages/api/auth/session'
+import { supabase } from '../../supabase'
 
 interface ResponseData extends BaseResponseData {
     data: any
@@ -11,9 +11,6 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
 ) {
-    const session = await validateAPISession<ResponseData>(req, res)
-    if (!session) return
-
     const { data, error } = await supabase
         .from(HIGHER_STUDIES_RESOURCES)
         .select('id, name, link, created_by, score, category')

@@ -1,9 +1,9 @@
 import { Resource } from '@/types/Resource'
+import { axiosInstance } from '@/utils/axiosCache'
 import {
     CursorArrowRippleIcon,
     DocumentDuplicateIcon,
 } from '@heroicons/react/24/solid'
-import React from 'react'
 import { toast } from 'react-toastify'
 
 type Props = {
@@ -13,12 +13,17 @@ type Props = {
 
 export default function CardWithScore({ resource, incrementEP }: Props) {
     const incrementScore = async (id: number, shouldOpen: boolean) => {
-        const res = await fetch(`${incrementEP}?id=${id}`)
-        const data = await res.json()
-        if (data.error) {
-            toast(data.message)
-        } else {
-            if (shouldOpen) window.open(data.data[0].link, '_blank')
+        try {
+            const res = await axiosInstance.get(`${incrementEP}?id=${id}`)
+            const data = res.data
+            if (data.error) {
+                toast(data.message)
+            } else {
+                if (shouldOpen) window.open(data.data[0].link, '_blank')
+            }
+        } catch (error) {
+            console.error('Error incrementing score:', error)
+            toast('Failed to increment score')
         }
     }
 

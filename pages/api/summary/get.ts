@@ -1,7 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { supabase } from '../supabase'
-import { getServerSession } from 'next-auth/next'
-import { authOptions } from '../auth/[...nextauth]'
 import {
     COURSE_GRADING,
     COURSE_RESOURCES,
@@ -13,7 +10,7 @@ import {
     SI_CHRONICLES,
     SI_COMPANIES,
 } from '../constants'
-import { validateAPISession } from '@/pages/api/auth/session'
+import { supabase } from '../supabase'
 
 type ResponseData = {
     message: string
@@ -25,9 +22,6 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
 ) {
-    const session = await validateAPISession<ResponseData>(req, res)
-    if (!session) return
-
     const { data: ps1_data, error: ps1_error } = await supabase
         .from(PS1_RESPONSES)
         .select('created_at.count()')

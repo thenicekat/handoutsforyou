@@ -1,16 +1,17 @@
-import { getMetaConfig } from '@/config/meta'
-import Meta from '@/components/Meta'
-import { GetStaticProps } from 'next'
-import { useEffect, useState } from 'react'
-import Menu from '@/components/Menu'
-import { LinkIcon, PlusCircleIcon } from '@heroicons/react/24/solid'
 import CardWithScore from '@/components/CardWithScore'
-import { toast } from 'react-toastify'
+import Menu from '@/components/Menu'
+import Meta from '@/components/Meta'
 import CustomToastContainer from '@/components/ToastContainer'
-import { ResourceByCategory } from '@/types/Resource'
+import { getMetaConfig } from '@/config/meta'
 import { PlacementChroniclesByCampus } from '@/types/GoogleDriveChronicles'
-import Link from 'next/link'
+import { ResourceByCategory } from '@/types/Resource'
+import { axiosInstance } from '@/utils/axiosCache'
 import { googleDriveService } from '@/utils/googleDrive'
+import { LinkIcon, PlusCircleIcon } from '@heroicons/react/24/solid'
+import { GetStaticProps } from 'next'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 
 export const getStaticProps: GetStaticProps = async () => {
     try {
@@ -67,19 +68,28 @@ export default function Placement({
 
     const fetchResources = async () => {
         setIsLoading(true)
-        const res = await fetch('/api/placements/resources/get')
-        const data = await res.json()
-        if (!data.error) {
-            let resourcesByCategory: ResourceByCategory = {}
-            for (let i = 0; i < data.data.length; i++) {
-                if (resourcesByCategory[data.data[i].category] == undefined) {
-                    resourcesByCategory[data.data[i].category] = []
+        try {
+            const res = await axiosInstance.get('/api/placements/resources/get')
+            const data = res.data
+            if (!data.error) {
+                let resourcesByCategory: ResourceByCategory = {}
+                for (let i = 0; i < data.data.length; i++) {
+                    if (
+                        resourcesByCategory[data.data[i].category] == undefined
+                    ) {
+                        resourcesByCategory[data.data[i].category] = []
+                    }
+                    resourcesByCategory[data.data[i].category].push(
+                        data.data[i]
+                    )
                 }
-                resourcesByCategory[data.data[i].category].push(data.data[i])
+                setResources(resourcesByCategory)
+            } else {
+                toast.error('Error fetching resources')
             }
-            setResources(resourcesByCategory)
-        } else {
-            toast.error('Error fetching resources')
+        } catch (error) {
+            console.error('Error fetching placement resources:', error)
+            toast.error('Failed to fetch resources')
         }
         setIsLoading(false)
     }

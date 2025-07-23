@@ -1,9 +1,7 @@
+import { processHeaders } from '@/middleware'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { supabase } from '../../supabase'
-import { getServerSession } from 'next-auth/next'
-import { authOptions } from '../../auth/[...nextauth]'
 import { COURSE_RESOURCES } from '../../constants'
-import { validateAPISession } from '@/pages/api/auth/session'
+import { supabase } from '../../supabase'
 
 type ResponseData = {
     message: string
@@ -14,10 +12,8 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
 ) {
-    const session = await validateAPISession<ResponseData>(req, res)
-    if (!session) return
-
     const { name, link, created_by, category } = req.body
+    const { email } = await processHeaders(req)
 
     if (!name) {
         res.status(422).json({
@@ -53,7 +49,7 @@ export default async function handler(
             name: name,
             link: link,
             created_by: created_by,
-            email: session.user.email,
+            email: email,
             category: category,
         },
     ])

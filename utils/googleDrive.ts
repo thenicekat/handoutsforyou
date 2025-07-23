@@ -30,31 +30,37 @@ export class GoogleDriveService {
     private drive!: drive_v3.Drive
     private auth: any
     private readonly BATCH_SIZE = 1000
+    private initialized = false
 
-    constructor() {
-        this.initializeAuth()
-    }
-
-    private initializeAuth() {
+    private async initializeAuth() {
+        if (this.initialized) return
         try {
-            const privateKey =
-                process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY?.replace(
-                    /\\n/g,
-                    '\n'
-                )
-            if (!privateKey || !process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL) {
-                throw new Error('Missing required Google Drive credentials')
+            const {
+                GOOGLE_DRIVE_CLIENT_ID,
+                GOOGLE_DRIVE_CLIENT_SECRET,
+                GOOGLE_DRIVE_REFRESH_TOKEN,
+            } = process.env
+            if (!GOOGLE_DRIVE_CLIENT_ID) {
+                throw new Error('GOOGLE_DRIVE_CLIENT_ID is not set')
+            }
+            if (!GOOGLE_DRIVE_CLIENT_SECRET) {
+                throw new Error('GOOGLE_DRIVE_CLIENT_SECRET is not set')
+            }
+            if (!GOOGLE_DRIVE_REFRESH_TOKEN) {
+                throw new Error('GOOGLE_DRIVE_REFRESH_TOKEN is not set')
             }
 
-            this.auth = new google.auth.GoogleAuth({
-                credentials: {
-                    client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-                    private_key: privateKey,
-                },
-                scopes: ['https://www.googleapis.com/auth/drive'],
+            const oAuth2Client = new google.auth.OAuth2(
+                GOOGLE_DRIVE_CLIENT_ID,
+                GOOGLE_DRIVE_CLIENT_SECRET
+            )
+            oAuth2Client.setCredentials({
+                refresh_token: GOOGLE_DRIVE_REFRESH_TOKEN,
             })
+            this.auth = oAuth2Client
 
             this.drive = google.drive({ version: 'v3', auth: this.auth })
+            this.initialized = true
         } catch (error) {
             throw new Error(
                 `Failed to initialize Google Drive auth: ${error instanceof Error ? error.message : 'Unknown error'}`
@@ -66,6 +72,7 @@ export class GoogleDriveService {
      * List files in a Google Drive folder with pagination support
      */
     async listFiles(folderId: string): Promise<drive_v3.Schema$File[]> {
+        await this.initializeAuth()
         try {
             const allFiles: drive_v3.Schema$File[] = []
             let pageToken: string | undefined = undefined
@@ -98,6 +105,7 @@ export class GoogleDriveService {
      * List folders in a Google Drive folder
      */
     async listFolders(folderId: string): Promise<drive_v3.Schema$File[]> {
+        await this.initializeAuth()
         try {
             const response = await this.drive.files.list({
                 q: `'${folderId}' in parents and mimeType = 'application/vnd.google-apps.folder' and trashed = false`,
@@ -342,6 +350,7 @@ export class GoogleDriveService {
         parentFolderId: string,
         mimeType: string
     ): Promise<DriveFile> {
+        await this.initializeAuth()
         try {
             const fileStream = new Readable()
             fileStream.push(fileBuffer)
@@ -380,6 +389,7 @@ export class GoogleDriveService {
         folderName: string,
         parentFolderId: string
     ): Promise<drive_v3.Schema$File> {
+        await this.initializeAuth()
         try {
             const response = await this.drive.files.create({
                 requestBody: {
@@ -399,7 +409,7 @@ export class GoogleDriveService {
     }
 
     /**
-     * Find or create year folder and transfer ownership
+     * Find or create year folder
      */
     async findOrCreateFolder(
         folderName: string,
@@ -424,32 +434,12 @@ export class GoogleDriveService {
                 throw new Error('Failed to create new folder - no ID returned')
             }
 
-            await this.transferOwnership(newFolder.id)
             return newFolder.id
         } catch (error) {
             throw new Error(
                 `Failed to find or create folder: ${error instanceof Error ? error.message : 'Unknown error'}`
             )
         }
-    }
-
-    /**
-     * Helper method to transfer ownership of a file/folder
-     */
-    private async transferOwnership(fileId: string): Promise<void> {
-        const permissionMetadata = {
-            type: 'user',
-            role: 'owner',
-            emailAddress: 'oopsieshoppingapp@gmail.com',
-        }
-
-        await this.drive.permissions.create({
-            fileId,
-            requestBody: permissionMetadata,
-            fields: 'id',
-            transferOwnership: true,
-            supportsAllDrives: true,
-        })
     }
 
     /**

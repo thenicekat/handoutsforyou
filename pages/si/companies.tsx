@@ -1,11 +1,12 @@
-import { getMetaConfig } from '@/config/meta'
-import Meta from '@/components/Meta'
-import { useEffect, useState } from 'react'
 import Menu from '@/components/Menu'
-import Link from 'next/link'
-import { SI_Company } from '@/types/SIData'
-import { toast } from 'react-toastify'
+import Meta from '@/components/Meta'
 import CustomToastContainer from '@/components/ToastContainer'
+import { getMetaConfig } from '@/config/meta'
+import { SI_Company } from '@/types/SIData'
+import { axiosInstance } from '@/utils/axiosCache'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 
 export default function SICompanies() {
     const [search, setSearch] = useState('')
@@ -18,22 +19,23 @@ export default function SICompanies() {
 
     const fetchData = async () => {
         setIsLoading(true)
-        const res = await fetch('/api/si/companies/get', {
-            method: 'POST',
-            body: JSON.stringify({
+        try {
+            const res = await axiosInstance.post('/api/si/companies/get', {
                 year: yearRef,
-            }),
-            headers: { 'Content-Type': 'application/json' },
-        })
+            })
 
-        if (res.status !== 400) {
-            const data = await res.json()
-            if (data.error) {
-                toast(data.message)
-                return
-            } else {
-                setSIData(data.data)
+            if (res.status !== 400) {
+                const data = res.data
+                if (data.error) {
+                    toast(data.message)
+                    return
+                } else {
+                    setSIData(data.data)
+                }
             }
+        } catch (error) {
+            console.error('Error fetching SI companies:', error)
+            toast('Failed to fetch companies data')
         }
         setIsLoading(false)
     }
