@@ -1,4 +1,3 @@
-import { validateAPISession } from '@/pages/api/auth/session'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import {
     COURSE_GRADING,
@@ -23,9 +22,6 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
 ) {
-    const session = await validateAPISession<ResponseData>(req, res)
-    if (!session) return
-
     const { data: ps1_data, error: ps1_error } = await supabase
         .from(PS1_RESPONSES)
         .select('created_at.count()')
