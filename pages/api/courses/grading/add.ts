@@ -1,6 +1,6 @@
 import { departments } from '@/config/departments'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { processHeaders } from '../../auth/session'
+import { processHeaders } from '@/middleware'
 import { COURSE_GRADING } from '../../constants'
 import { supabase } from '../../supabase'
 
@@ -19,7 +19,7 @@ export default async function handler(
         .filter((code) => code.length > 0)
 
     const { course, dept, sem, prof, data, average_mark } = req.body
-    const { email } = processHeaders(req)
+    const { email } = await processHeaders(req)
 
     if (!course) {
         res.status(422).json({

@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { processHeaders } from '../../auth/session'
+import { processHeaders } from '@/middleware'
 import { COURSE_RESOURCES } from '../../constants'
 import { supabase } from '../../supabase'
 
@@ -13,7 +13,7 @@ export default async function handler(
     res: NextApiResponse<ResponseData>
 ) {
     const { name, link, created_by, category } = req.body
-    const { email } = processHeaders(req)
+    const { email } = await processHeaders(req)
 
     if (!name) {
         res.status(422).json({

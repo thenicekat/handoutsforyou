@@ -1,5 +1,6 @@
-import { BaseResponseData, processHeaders } from '@/pages/api/auth/session'
+import { BaseResponseData } from '@/pages/api/auth/session'
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { processHeaders } from '@/middleware'
 import { RANT_POSTS } from '../constants'
 import { supabase } from '../supabase'
 
@@ -23,7 +24,7 @@ export default async function handler(
     res: NextApiResponse<ResponseData>
 ) {
     let rants: Rant[] = []
-    const { email } = processHeaders(req)
+    const { email } = await processHeaders(req)
 
     // Get public rants.
     const { data, error } = await supabase

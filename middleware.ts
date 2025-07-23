@@ -33,14 +33,17 @@ const isPublicRoute = (path: string) => {
 
 export async function processHeaders(req: NextApiRequest) {
     if (!process.env.NEXTAUTH_SECRET) {
-        throw new Error('NEXTAUTH_SECRET is not set')
+        throw new Error('NEXTAUTH_SECRET is not set.')
     }
     const h4uToken = req.headers['h4u-token'] as string
     if (!h4uToken) {
-        return null
+        throw new Error('H4U token not found in headers.')
     }
     const decoded = await jose.jwtVerify(h4uToken, jwtConfig.secret)
-    return decoded.payload
+    return {
+        email: decoded.payload.email,
+        name: decoded.payload.name,
+    }
 }
 
 export async function middleware(request: NextRequest) {

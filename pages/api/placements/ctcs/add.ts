@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { processHeaders } from '../../auth/session'
+import { processHeaders } from '@/middleware'
 import { PLACEMENT_CTCS } from '../../constants'
 import { supabase } from '../../supabase'
 
@@ -23,7 +23,7 @@ export default async function handler(
         monetaryValueOfBenefits,
         description,
     } = req.body
-    const { email } = processHeaders(req)
+    const { email } = await processHeaders(req)
 
     if (!company) {
         res.status(422).json({
