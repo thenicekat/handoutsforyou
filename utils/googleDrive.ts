@@ -4,8 +4,8 @@ import { drive_v3 } from 'googleapis/build/src/apis/drive/v3'
 import { Readable } from 'stream'
 
 import { remark } from 'remark'
-import remarkHtml from 'remark-html'
 import remarkFrontmatter from 'remark-frontmatter'
+import remarkHtml from 'remark-html'
 import remarkParseFrontmatter from 'remark-parse-frontmatter'
 
 interface DriveFile {
@@ -247,8 +247,8 @@ export class GoogleDriveService {
     }
 
     /**
-     * Get all articles 
-     */ 
+     * Get all articles
+     */
     async getArticles(rootFolderId: string): Promise<Post[]> {
         try {
             const articles: Post[] = []
@@ -262,7 +262,7 @@ export class GoogleDriveService {
                             fileId: file.id,
                             alt: 'media',
                         })
-                        
+
                         if (!content.data) continue
 
                         const rawContent = content.data as string
@@ -274,20 +274,37 @@ export class GoogleDriveService {
                             .use(remarkHtml)
                             .process(rawContent)
 
-                        const frontmatter = (processedContent.data as any).frontmatter || {}
+                        const frontmatter =
+                            (processedContent.data as any).frontmatter || {}
 
-                        const slug = frontmatter.slug || file.name.replace(/\.(md|txt)$/i, '').replace(/\s+/g, '-').toLowerCase()
-                        
+                        const slug =
+                            frontmatter.slug ||
+                            file.name
+                                .replace(/\.(md|txt)$/i, '')
+                                .replace(/\s+/g, '-')
+                                .toLowerCase()
+
                         articles.push({
                             slug,
-                            title: frontmatter.title || file.name.replace(/\.(md|txt)$/i, ''),
+                            title:
+                                frontmatter.title ||
+                                file.name.replace(/\.(md|txt)$/i, ''),
                             author: frontmatter.author || 'Anonymous',
-                            date: frontmatter.date || file.createdTime?.split('T')[0] || new Date().toISOString().split('T')[0],
+                            date:
+                                frontmatter.date ||
+                                file.createdTime?.split('T')[0] ||
+                                new Date().toISOString().split('T')[0],
                             content: String(processedContent),
-                            tags: frontmatter.tags || frontmatter.categories || [],
+                            tags:
+                                frontmatter.tags ||
+                                frontmatter.categories ||
+                                [],
                         })
                     } catch (error) {
-                        console.error(`Error processing file ${file.name}:`, error)
+                        console.error(
+                            `Error processing file ${file.name}:`,
+                            error
+                        )
                         continue
                     }
                 }
@@ -301,14 +318,15 @@ export class GoogleDriveService {
         }
     }
 
-
     async getArticle(slug: string): Promise<Post | null> {
         try {
-            const articles = await this.getArticles(process.env.GOOGLE_DRIVE_BITS_OF_ADVICE_FOLDER_ID || '');
-            return articles.find(article => article.slug === slug) || null;
+            const articles = await this.getArticles(
+                process.env.GOOGLE_DRIVE_BITS_OF_ADVICE_FOLDER_ID || ''
+            )
+            return articles.find((article) => article.slug === slug) || null
         } catch (error) {
-            console.error(`Error fetching article with slug "${slug}":`, error);
-            return null;
+            console.error(`Error fetching article with slug "${slug}":`, error)
+            return null
         }
     }
 

@@ -4,14 +4,14 @@ import { Post } from '@/types/Post';
 import ReactMarkdown from 'react-markdown';
 
 interface PostCardProps {
-    post: Post;
+    post: Post
 }
 
 const PostCard: React.FC<PostCardProps> = ({ post }) => {
-    const maxLength = 400;
+    const maxLength = 400
 
-    const needsTruncation = post.content.length > maxLength;
-    const contentDisplay = post.content.slice(0, maxLength);
+    const needsTruncation = post.content.length > maxLength
+    const contentDisplay = post.content.slice(0, maxLength)
 
     return (
         <Link href={`/bitsofa/${post.slug}`}>
@@ -27,7 +27,10 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
                     </p>
                     <div className="mt-4 flex flex-wrap gap-2">
                         {post.tags.map((tag, index) => (
-                            <span key={index} className="bg-gray-700 text-gray-300 text-xs font-semibold px-2.5 py-0.5 rounded-full">
+                            <span
+                                key={index}
+                                className="bg-gray-700 text-gray-300 text-xs font-semibold px-2.5 py-0.5 rounded-full"
+                            >
                                 {tag}
                             </span>
                         ))}
@@ -43,7 +46,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
                 )}
             </article>
         </Link>
-    );
-};
+    )
+}
 
-export default PostCard;
+export default PostCard
