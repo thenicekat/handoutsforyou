@@ -1,4 +1,4 @@
-import { validateAPISession } from '@/pages/api/auth/session'
+import { processHeaders } from '@/middleware'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { PS1_REVIEWS, PS2_REVIEWS } from '../../constants'
 import { supabase } from '../../supabase'
@@ -12,10 +12,8 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
 ) {
-    const session = await validateAPISession<ResponseData>(req, res)
-    if (!session) return
-
     const { type, batch, station, review } = req.body
+    const { email } = await processHeaders(req)
 
     if (!type) {
         res.status(422).json({
@@ -29,7 +27,7 @@ export default async function handler(
                 batch: batch,
                 station: station,
                 review: review,
-                created_by: session.user.email,
+                created_by: email,
             },
         ])
         if (error) {
@@ -48,7 +46,7 @@ export default async function handler(
                 batch: batch,
                 station: station,
                 review: review,
-                created_by: session.user.email,
+                created_by: email,
             },
         ])
         if (error) {

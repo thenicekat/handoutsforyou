@@ -1,4 +1,4 @@
-import { BaseResponseData, validateAPISession } from '@/pages/api/auth/session'
+import { BaseResponseData } from '@/pages/api/auth/session'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { PLACEMENT_CTCS } from '../../constants'
 import { supabase } from '../../supabase'
@@ -11,9 +11,6 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
 ) {
-    const session = await validateAPISession<ResponseData>(req, res)
-    if (!session) return
-
     const { year } = req.body
 
     if (!year) {

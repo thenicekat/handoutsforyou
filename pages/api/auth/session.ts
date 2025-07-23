@@ -7,24 +7,6 @@ export type BaseResponseData = {
     error: boolean
 }
 
-export async function validateAPISession<T extends BaseResponseData>(
-    req: NextApiRequest,
-    res: NextApiResponse<T>
-) {
-    const session = await getServerSession(req, res, authOptions)
-
-    if (!session || !session.user?.email) {
-        res.status(401).json({
-            message: 'Unauthorized, Please login and try again',
-            error: true,
-            ...('data' in res ? { data: [] } : {}),
-        } as T)
-        return null
-    }
-
-    return session
-}
-
 export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<BaseResponseData>
