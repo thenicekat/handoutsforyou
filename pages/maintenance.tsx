@@ -27,7 +27,7 @@ export default function ErrorPage() {
                             Maintenance Mode
                         </h3>
                         <p className="mt-2 text-sm text-gray-200">
-                            This project's currently running on vibes and broken
+                            This project&apos;s currently running on vibes and broken
                             dreams. 💔 Everyone wants it to work flawlessly, but
                             no one wants to contribute. Classic, right? Still,
                             expectations are sky- high — all without a dev in
