@@ -1,9 +1,9 @@
-import { getMetaConfig } from '@/config/meta'
-import Meta from '@/components/Meta'
-import { useState } from 'react'
-import Menu from '@/components/Menu'
 import AutoCompleter from '@/components/AutoCompleter'
+import Menu from '@/components/Menu'
+import Meta from '@/components/Meta'
 import CustomToastContainer from '@/components/ToastContainer'
+import { getMetaConfig } from '@/config/meta'
+import { useState } from 'react'
 import { toast } from 'react-toastify'
 
 const categories = [
@@ -15,7 +15,7 @@ const categories = [
     'Campus Life',
     'Placements',
     'Higher Studies',
-    'General'
+    'General',
 ]
 
 export default function ContributeAdvice() {
@@ -64,7 +64,9 @@ export default function ContributeAdvice() {
             if (res.error) {
                 toast.error(res.message)
             } else {
-                toast.success('Thank you! Your advice was submitted successfully!')
+                toast.success(
+                    'Thank you! Your advice was submitted successfully!'
+                )
                 setTitle('')
                 setAuthor('')
                 setCategory('')
@@ -94,13 +96,27 @@ export default function ContributeAdvice() {
 
                         {/* Guidelines */}
                         <div className="mb-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
-                            <h3 className="text-lg font-semibold mb-4">Guidelines</h3>
+                            <h3 className="text-lg font-semibold mb-4">
+                                Guidelines
+                            </h3>
                             <ul className="text-sm text-gray-300 space-y-2">
-                                <li>• Be respectful and constructive in your advice</li>
-                                <li>• Share personal experiences and practical tips</li>
+                                <li>
+                                    • Be respectful and constructive in your
+                                    advice
+                                </li>
+                                <li>
+                                    • Share personal experiences and practical
+                                    tips
+                                </li>
                                 <li>• Use clear and concise language</li>
-                                <li>• Choose the most appropriate category for your advice</li>
-                                <li>• Your submission will be reviewed before being published</li>
+                                <li>
+                                    • Choose the most appropriate category for
+                                    your advice
+                                </li>
+                                <li>
+                                    • Your submission will be reviewed before
+                                    being published
+                                </li>
                             </ul>
                         </div>
 
@@ -109,35 +125,42 @@ export default function ContributeAdvice() {
                                 {/* Title Input */}
                                 <div>
                                     <label className="block text-sm font-medium mb-2">
-                                        Title <span className="text-red-500">*</span>
+                                        Title{' '}
+                                        <span className="text-red-500">*</span>
                                     </label>
                                     <input
                                         type="text"
                                         className="w-full bg-gray-900 border border-gray-600 rounded-md px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
                                         placeholder="Give your advice a catchy title..."
                                         value={title}
-                                        onChange={(e) => setTitle(e.target.value)}
+                                        onChange={(e) =>
+                                            setTitle(e.target.value)
+                                        }
                                     />
                                 </div>
 
                                 {/* Author Input */}
                                 <div>
                                     <label className="block text-sm font-medium mb-2">
-                                        Your Name <span className="text-red-500">*</span>
+                                        Your Name{' '}
+                                        <span className="text-red-500">*</span>
                                     </label>
                                     <input
                                         type="text"
                                         className="w-full bg-gray-900 border border-gray-600 rounded-md px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
                                         placeholder="How should we credit you?"
                                         value={author}
-                                        onChange={(e) => setAuthor(e.target.value)}
+                                        onChange={(e) =>
+                                            setAuthor(e.target.value)
+                                        }
                                     />
                                 </div>
 
                                 {/* Category Selector */}
                                 <div>
                                     <label className="block text-sm font-medium mb-2">
-                                        Category <span className="text-red-500">*</span>
+                                        Category{' '}
+                                        <span className="text-red-500">*</span>
                                     </label>
                                     <AutoCompleter
                                         name="Category"
@@ -150,16 +173,20 @@ export default function ContributeAdvice() {
                                 {/* Content Textarea */}
                                 <div>
                                     <label className="block text-sm font-medium mb-2">
-                                        Your Advice <span className="text-red-500">*</span>
+                                        Your Advice{' '}
+                                        <span className="text-red-500">*</span>
                                     </label>
                                     <textarea
                                         className="w-full bg-gray-900 border border-gray-600 rounded-md px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent h-60 resize-none"
                                         placeholder="Share your wisdom! You can use markdown formatting (e.g., **bold**, *italic*, [links](url), etc.)"
                                         value={content}
-                                        onChange={(e) => setContent(e.target.value)}
+                                        onChange={(e) =>
+                                            setContent(e.target.value)
+                                        }
                                     ></textarea>
                                     <p className="text-sm text-gray-400 mt-2">
-                                        Tip: You can use Markdown formatting in your advice!
+                                        Tip: You can use Markdown formatting in
+                                        your advice!
                                     </p>
                                 </div>
 

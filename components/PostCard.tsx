@@ -1,23 +1,26 @@
-import React from 'react';
-import Link from 'next/link';
-import { Post } from '@/config/post';
+import { Post } from '@/config/post'
+import Link from 'next/link'
+import React from 'react'
 
 interface PostCardProps {
-    post: Post;
+    post: Post
 }
 
 const PostCard: React.FC<PostCardProps> = ({ post }) => {
-    const maxLength = 400;
+    const maxLength = 400
 
-    const needsTruncation = post.content.length > maxLength;
-    const contentDisplay = post.content.slice(0, maxLength);
+    const needsTruncation = post.content.length > maxLength
+    const contentDisplay = post.content.slice(0, maxLength)
 
     return (
         <Link href={`/bits-of-advice/${post.slug}`}>
             <article className="bg-gray-800 p-6 rounded-lg border border-gray-700">
                 <div className="mb-4">
                     <h2 className="text-3xl font-bold">
-                        <Link href={`/bits-of-advice/${post.slug}`} className="hover:underline">
+                        <Link
+                            href={`/bits-of-advice/${post.slug}`}
+                            className="hover:underline"
+                        >
                             {post.title}
                         </Link>
                     </h2>
@@ -26,7 +29,10 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
                     </p>
                     <div className="mt-4 flex flex-wrap gap-2">
                         {post.tags.map((tag, index) => (
-                            <span key={index} className="bg-gray-700 text-gray-300 text-xs font-semibold px-2.5 py-0.5 rounded-full">
+                            <span
+                                key={index}
+                                className="bg-gray-700 text-gray-300 text-xs font-semibold px-2.5 py-0.5 rounded-full"
+                            >
                                 {tag}
                             </span>
                         ))}
@@ -34,7 +40,9 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
                 </div>
                 <p
                     className="text-gray-300 whitespace-pre-wrap leading-relaxed"
-                    dangerouslySetInnerHTML={{ __html: contentDisplay + (needsTruncation ? '...' : '') }}
+                    dangerouslySetInnerHTML={{
+                        __html: contentDisplay + (needsTruncation ? '...' : ''),
+                    }}
                 />
 
                 {needsTruncation && (
@@ -44,7 +52,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
                 )}
             </article>
         </Link>
-    );
-};
+    )
+}
 
-export default PostCard;
+export default PostCard

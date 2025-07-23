@@ -1,41 +1,43 @@
-import React from 'react';
-import Link from 'next/link';
-import { GetStaticProps } from 'next';
+import { GetStaticProps } from 'next'
+import Link from 'next/link'
+import React from 'react'
 
-import Menu from '@/components/Menu';
-import Meta from '@/components/Meta';
-import { Post } from '@/config/post';
-import { googleDriveService } from '@/utils/googleDrive';
-import PostCard from '@/components/PostCard';
+import Menu from '@/components/Menu'
+import Meta from '@/components/Meta'
+import PostCard from '@/components/PostCard'
+import { Post } from '@/config/post'
+import { googleDriveService } from '@/utils/googleDrive'
 
 interface ForumPageProps {
-    posts: Post[];
-    tags: string[];
+    posts: Post[]
+    tags: string[]
 }
 
 const ForumPage = ({ posts, tags }: ForumPageProps) => {
-    const [searchQuery, setSearchQuery] = React.useState('');
-    const [selectedTags, setSelectedTags] = React.useState<string[]>([]);
+    const [searchQuery, setSearchQuery] = React.useState('')
+    const [selectedTags, setSelectedTags] = React.useState<string[]>([])
 
     const handleTagClick = (tag: string) => {
-        setSelectedTags(prev => {
+        setSelectedTags((prev) => {
             if (prev.includes(tag)) {
-                return prev.filter(t => t !== tag);
+                return prev.filter((t) => t !== tag)
             } else {
-                return [...prev, tag];
+                return [...prev, tag]
             }
-        });
-    };
+        })
+    }
 
-    const filteredPosts = posts.filter(post => {
-        const searchMatch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            post.content.toLowerCase().includes(searchQuery.toLowerCase());
+    const filteredPosts = posts.filter((post) => {
+        const searchMatch =
+            post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            post.content.toLowerCase().includes(searchQuery.toLowerCase())
 
-        const tagMatch = selectedTags.length === 0 ||
-            selectedTags.some(tag => (post.tags || []).includes(tag));
+        const tagMatch =
+            selectedTags.length === 0 ||
+            selectedTags.some((tag) => (post.tags || []).includes(tag))
 
-        return searchMatch && tagMatch;
-    });
+        return searchMatch && tagMatch
+    })
 
     return (
         <>
@@ -44,9 +46,13 @@ const ForumPage = ({ posts, tags }: ForumPageProps) => {
             <div className="text-white min-h-screen font-sans pt-8">
                 <div className="text-center p-4">
                     <h2 className="text-4xl font-bold">BITS of Advice</h2>
-                    <h4 className="text-md font-semibold text-white mt-2">Find the best advice from your seniors</h4>
+                    <h4 className="text-md font-semibold text-white mt-2">
+                        Find the best advice from your seniors
+                    </h4>
                     <Link href={'/bits-of-advice/contribute'}>
-                        <button className='btn btn-outline focus:outline-none mx-auto mt-4'>Contribute an article</button>
+                        <button className="btn btn-outline focus:outline-none mx-auto mt-4">
+                            Contribute an article
+                        </button>
                     </Link>
                 </div>
                 <main className="flex flex-col md:flex-row gap-8 px-8 pb-2 pt-0 md:p-8">
@@ -63,19 +69,20 @@ const ForumPage = ({ posts, tags }: ForumPageProps) => {
                         <h2 className="text-lg font-bold">Tags</h2>
                         <div className="flex flex-wrap gap-2">
                             {tags.map((tag, index) => {
-                                const isSelected = selectedTags.includes(tag);
+                                const isSelected = selectedTags.includes(tag)
                                 return (
                                     <button
                                         key={index}
-                                        className={`font-semibold py-1 px-3 rounded-full text-sm transition-colors duration-200 ${isSelected
-                                            ? 'bg-yellow-500 text-black'
-                                            : 'bg-gray-700 hover:bg-gray-600 text-white'
-                                            }`}
+                                        className={`font-semibold py-1 px-3 rounded-full text-sm transition-colors duration-200 ${
+                                            isSelected
+                                                ? 'bg-yellow-500 text-black'
+                                                : 'bg-gray-700 hover:bg-gray-600 text-white'
+                                        }`}
                                         onClick={() => handleTagClick(tag)}
                                     >
                                         {tag}
                                     </button>
-                                );
+                                )
                             })}
                         </div>
                     </aside>
@@ -87,65 +94,71 @@ const ForumPage = ({ posts, tags }: ForumPageProps) => {
                             ))
                         ) : (
                             <div className="text-center text-white py-16">
-                                <p className="text-2xl font-bold">No posts found!</p>
-                                <p className="mt-2">Try adjusting your search or category filters.</p>
+                                <p className="text-2xl font-bold">
+                                    No posts found!
+                                </p>
+                                <p className="mt-2">
+                                    Try adjusting your search or category
+                                    filters.
+                                </p>
                             </div>
                         )}
                     </section>
                 </main>
             </div>
         </>
-    );
+    )
 }
 
 export const getStaticProps: GetStaticProps = async () => {
     try {
         const bitsOfAdviceFolderId =
-            process.env.GOOGLE_DRIVE_BITS_OF_ADVICE_FOLDER_ID;
+            process.env.GOOGLE_DRIVE_BITS_OF_ADVICE_FOLDER_ID
 
         if (!bitsOfAdviceFolderId) {
             console.error(
                 'GOOGLE_DRIVE_BITS_OF_ADVICE_FOLDER_ID environment variable is not set'
-            );
+            )
 
             return {
                 props: {
                     posts: [],
-                    tags: []
-                }
-            };
+                    tags: [],
+                },
+            }
         }
-        const articles = await googleDriveService.getArticles(bitsOfAdviceFolderId);
-        const tagsList = new Set<string>();
+        const articles =
+            await googleDriveService.getArticles(bitsOfAdviceFolderId)
+        const tagsList = new Set<string>()
 
         // Extract all unique tags from posts
-        articles.forEach(article => {
+        articles.forEach((article) => {
             if (article.tags) {
-                article.tags.forEach(tag => {
-                    console.log(tag);
+                article.tags.forEach((tag) => {
+                    console.log(tag)
                     if (tag && tag.trim()) {
-                        tagsList.add(tag.trim());
+                        tagsList.add(tag.trim())
                     }
-                });
+                })
             }
-        });
+        })
 
         return {
             props: {
                 posts: articles,
-                tags: Array.from(tagsList)
+                tags: Array.from(tagsList),
             },
-            revalidate: 3600 // Revalidate every hour
-        };
+            revalidate: 3600, // Revalidate every hour
+        }
     } catch (error) {
-        console.error('Error fetching BITS of advice:', error);
+        console.error('Error fetching BITS of advice:', error)
         return {
             props: {
                 posts: [],
                 tags: [],
-            }
-        };
+            },
+        }
     }
-};
+}
 
-export default ForumPage;
+export default ForumPage

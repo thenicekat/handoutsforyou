@@ -1,13 +1,12 @@
-import React from 'react';
-import type { GetStaticProps, GetStaticPaths } from 'next';
-import Menu from '@/components/Menu';
-import Meta from '@/components/Meta';
-import PostDetail from '@/components/PostDetail';
-import { Post } from '@/config/post'; // Re-using the interface from the main page
-import { googleDriveService } from '@/utils/googleDrive';
+import Menu from '@/components/Menu'
+import Meta from '@/components/Meta'
+import PostDetail from '@/components/PostDetail'
+import { Post } from '@/config/post' // Re-using the interface from the main page
+import { googleDriveService } from '@/utils/googleDrive'
+import type { GetStaticPaths, GetStaticProps } from 'next'
 
 interface PostPageProps {
-    post: Post;
+    post: Post
 }
 
 const PostPage = ({ post }: PostPageProps) => {
@@ -20,7 +19,7 @@ const PostPage = ({ post }: PostPageProps) => {
                     <h1 className="text-4xl font-bold">Post not found</h1>
                 </div>
             </>
-        );
+        )
     }
 
     return (
@@ -33,71 +32,75 @@ const PostPage = ({ post }: PostPageProps) => {
                 </main>
             </div>
         </>
-    );
-};
+    )
+}
 
 export const getStaticPaths: GetStaticPaths = async () => {
     try {
-        const bitsOfAdviceFolderId = process.env.GOOGLE_DRIVE_BITS_OF_ADVICE_FOLDER_ID;
-        
+        const bitsOfAdviceFolderId =
+            process.env.GOOGLE_DRIVE_BITS_OF_ADVICE_FOLDER_ID
+
         if (!bitsOfAdviceFolderId) {
             return {
                 paths: [],
-                fallback: 'blocking'
-            };
+                fallback: 'blocking',
+            }
         }
 
-        const articles = await googleDriveService.getArticles(bitsOfAdviceFolderId);
-        
+        const articles =
+            await googleDriveService.getArticles(bitsOfAdviceFolderId)
+
         const paths = articles.map((post) => ({
-            params: { slug: post.slug }
-        }));
+            params: { slug: post.slug },
+        }))
 
         return {
             paths,
-            fallback: 'blocking' // Enable ISR for new posts
-        };
+            fallback: 'blocking', // Enable ISR for new posts
+        }
     } catch (error) {
-        console.error('Error generating static paths:', error);
+        console.error('Error generating static paths:', error)
         return {
             paths: [],
-            fallback: 'blocking'
-        };
+            fallback: 'blocking',
+        }
     }
-};
+}
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     try {
-        const slug = params?.slug as string;
-        const bitsOfAdviceFolderId = process.env.GOOGLE_DRIVE_BITS_OF_ADVICE_FOLDER_ID;
+        const slug = params?.slug as string
+        const bitsOfAdviceFolderId =
+            process.env.GOOGLE_DRIVE_BITS_OF_ADVICE_FOLDER_ID
 
         if (!bitsOfAdviceFolderId || !slug) {
             return {
-                notFound: true
-            };
+                notFound: true,
+            }
         }
 
-        const articles = await googleDriveService.getArticles(bitsOfAdviceFolderId);
-        const post = articles.find(p => p.slug === slug);
+        const articles =
+            await googleDriveService.getArticles(bitsOfAdviceFolderId)
+        const post = articles.find((p) => p.slug === slug)
 
         if (!post) {
             return {
-                notFound: true
-            };
+                notFound: true,
+            }
         }
 
         return {
             props: {
-                post
+                post,
             },
-            revalidate: 3600 // Revalidate every hour
-        };
+            revalidate: 3600, // Revalidate every hour
+        }
     } catch (error) {
-        console.error('Error fetching post:', error);
+        console.error('Error fetching post:', error)
         return {
-            notFound: true
-        };
+            notFound: true,
+        }
     }
-};
+}
 
-export default PostPage;
+export default PostPage
