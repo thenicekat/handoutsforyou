@@ -1,6 +1,12 @@
+import { Post } from '@/config/post'
 import { google } from 'googleapis'
 import { drive_v3 } from 'googleapis/build/src/apis/drive/v3'
 import { Readable } from 'stream'
+
+import { remark } from 'remark'
+import remarkHtml from 'remark-html'
+import remarkFrontmatter from 'remark-frontmatter'
+import remarkParseFrontmatter from 'remark-parse-frontmatter'
 
 interface DriveFile {
     id: string
@@ -229,6 +235,72 @@ export class GoogleDriveService {
             throw new Error(
                 `Failed to get handouts: ${error instanceof Error ? error.message : 'Unknown error'}`
             )
+        }
+    }
+
+    /**
+     * Get all articles 
+     */ 
+    async getArticles(rootFolderId: string): Promise<Post[]> {
+        try {
+            const articles: Post[] = []
+
+            const files = await this.listFiles(rootFolderId)
+
+            for (const file of files) {
+                if (file.id && file.name) {
+                    try {
+                        const content = await this.drive.files.get({
+                            fileId: file.id,
+                            alt: 'media',
+                        })
+                        
+                        if (!content.data) continue
+
+                        const rawContent = content.data as string
+
+                        // Parse markdown with frontmatter using remark
+                        const processedContent = await remark()
+                            .use(remarkFrontmatter)
+                            .use(remarkParseFrontmatter)
+                            .use(remarkHtml)
+                            .process(rawContent)
+
+                        const frontmatter = (processedContent.data as any).frontmatter || {}
+
+                        const slug = frontmatter.slug || file.name.replace(/\.(md|txt)$/i, '').replace(/\s+/g, '-').toLowerCase()
+                        
+                        articles.push({
+                            slug,
+                            title: frontmatter.title || file.name.replace(/\.(md|txt)$/i, ''),
+                            author: frontmatter.author || 'Anonymous',
+                            date: frontmatter.date || file.createdTime?.split('T')[0] || new Date().toISOString().split('T')[0],
+                            content: String(processedContent),
+                            tags: frontmatter.tags || frontmatter.categories || [],
+                        })
+                    } catch (error) {
+                        console.error(`Error processing file ${file.name}:`, error)
+                        continue
+                    }
+                }
+            }
+
+            return articles
+        } catch (error) {
+            throw new Error(
+                `Failed to get articles: ${error instanceof Error ? error.message : 'Unknown error'}`
+            )
+        }
+    }
+
+
+    async getArticle(slug: string): Promise<Post | null> {
+        try {
+            const articles = await this.getArticles(process.env.GOOGLE_DRIVE_BITS_OF_ADVICE_FOLDER_ID || '');
+            return articles.find(article => article.slug === slug) || null;
+        } catch (error) {
+            console.error(`Error fetching article with slug "${slug}":`, error);
+            return null;
         }
     }
 
