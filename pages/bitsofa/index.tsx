@@ -7,13 +7,50 @@ import Meta from '@/components/Meta';
 import { Post } from '@/types/Post';
 import { googleDriveService } from '@/utils/googleDrive';
 import PostCard from '@/components/PostCard';
+import { bitsofaTags } from '@/config/bitsofa_tags';
 
 interface ForumPageProps {
     posts: Post[]
-    tags: string[]
 }
 
-const ForumPage = ({ posts, tags }: ForumPageProps) => {
+export const getStaticProps: GetStaticProps = async () => {
+    try {
+        const bitsOfAdviceFolderId =
+            process.env.GOOGLE_DRIVE_BITS_OF_ADVICE_FOLDER_ID
+
+        if (!bitsOfAdviceFolderId) {
+            console.error(
+                'GOOGLE_DRIVE_BITS_OF_ADVICE_FOLDER_ID environment variable is not set'
+            )
+
+            return {
+                props: {
+                    posts: []
+                },
+            }
+        }
+
+        const articles =
+            await googleDriveService.getArticles(bitsOfAdviceFolderId)
+
+        return {
+            props: {
+                posts: articles
+            },
+            revalidate: 3600
+        }
+    } catch (error) {
+        console.error('Error fetching BITS of advice:', error)
+        return {
+            props: {
+                posts: []
+            },
+        }
+    }
+}
+
+
+const ForumPage = ({ posts }: ForumPageProps) => {
     const [searchQuery, setSearchQuery] = React.useState('')
     const [selectedTags, setSelectedTags] = React.useState<string[]>([])
 
@@ -64,16 +101,15 @@ const ForumPage = ({ posts, tags }: ForumPageProps) => {
                         <hr />
                         <h2 className="text-lg font-bold">Tags</h2>
                         <div className="flex flex-wrap gap-2">
-                            {tags.map((tag, index) => {
+                            {bitsofaTags.map((tag, index) => {
                                 const isSelected = selectedTags.includes(tag)
                                 return (
                                     <button
                                         key={index}
-                                        className={`font-semibold py-1 px-3 rounded-full text-sm transition-colors duration-200 ${
-                                            isSelected
-                                                ? 'bg-yellow-500 text-black'
-                                                : 'bg-gray-700 hover:bg-gray-600 text-white'
-                                        }`}
+                                        className={`font-semibold py-1 px-3 rounded-full text-sm transition-colors duration-200 ${isSelected
+                                            ? 'bg-yellow-500 text-black'
+                                            : 'bg-gray-700 hover:bg-gray-600 text-white'
+                                            }`}
                                         onClick={() => handleTagClick(tag)}
                                     >
                                         {tag}
@@ -104,57 +140,6 @@ const ForumPage = ({ posts, tags }: ForumPageProps) => {
             </div>
         </>
     )
-}
-
-export const getStaticProps: GetStaticProps = async () => {
-    try {
-        const bitsOfAdviceFolderId =
-            process.env.GOOGLE_DRIVE_BITS_OF_ADVICE_FOLDER_ID
-
-        if (!bitsOfAdviceFolderId) {
-            console.error(
-                'GOOGLE_DRIVE_BITS_OF_ADVICE_FOLDER_ID environment variable is not set'
-            )
-
-            return {
-                props: {
-                    posts: [],
-                    tags: [],
-                },
-            }
-        }
-        const articles =
-            await googleDriveService.getArticles(bitsOfAdviceFolderId)
-        const tagsList = new Set<string>()
-
-        // Extract all unique tags from posts
-        articles.forEach((article) => {
-            if (article.tags) {
-                article.tags.forEach((tag: string) => {
-                    console.log(tag);
-                    if (tag && tag.trim()) {
-                        tagsList.add(tag.trim())
-                    }
-                })
-            }
-        })
-
-        return {
-            props: {
-                posts: articles,
-                tags: Array.from(tagsList),
-            },
-            revalidate: 3600, // Revalidate every hour
-        }
-    } catch (error) {
-        console.error('Error fetching BITS of advice:', error)
-        return {
-            props: {
-                posts: [],
-                tags: [],
-            },
-        }
-    }
 }
 
 export default ForumPage
