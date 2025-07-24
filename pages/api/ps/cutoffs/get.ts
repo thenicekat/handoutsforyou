@@ -1,4 +1,4 @@
-import { processHeaders } from '@/middleware'
+import { getAuthenticatedUser } from '@/utils/auth'
 import { BaseResponseData } from '@/pages/api/auth/session'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { PS1_RESPONSES, PS2_RESPONSES } from '../../constants'
@@ -13,7 +13,7 @@ export default async function handler(
     res: NextApiResponse<ResponseData>
 ) {
     const { type } = req.body
-    const { email } = await processHeaders(req)
+    const { email } = await getAuthenticatedUser(req, res)
 
     if (!type) {
         res.status(422).json({

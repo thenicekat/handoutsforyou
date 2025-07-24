@@ -2,7 +2,7 @@ import { BaseResponseData } from '@/pages/api/auth/session'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { COURSE_GRADING } from '../../constants'
 import { supabase } from '../../supabase'
-import { processHeaders } from '@/middleware'
+import { requireAuth } from '@/utils/auth'
 
 interface ResponseData extends BaseResponseData {
     data: any
@@ -13,16 +13,9 @@ export default async function handler(
     res: NextApiResponse<ResponseData>
 ) {
     const { course, prof } = req.body
-    const { email } = await processHeaders(req)
-
-    if (!email) {
-        res.status(401).json({
-            message: 'Unauthorized',
-            data: [],
-            error: true,
-        })
-        return
-    }
+    const user = await requireAuth(req, res)
+    if (!user) return
+    const { email } = user
 
     if (email && !email.includes('pilani')) {
         res.status(403).json({

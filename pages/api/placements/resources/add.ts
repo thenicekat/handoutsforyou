@@ -1,4 +1,4 @@
-import { processHeaders } from '@/middleware'
+import { requireAuth } from '@/utils/auth'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { PLACEMENT_RESOURCES } from '../../constants'
 import { supabase } from '../../supabase'
@@ -13,7 +13,9 @@ export default async function handler(
     res: NextApiResponse<ResponseData>
 ) {
     const { name, link, created_by, category } = req.body
-    const { email } = await processHeaders(req)
+    const user = await requireAuth(req, res)
+    if (!user) return
+    const { email } = user
 
     if (!name) {
         res.status(422).json({

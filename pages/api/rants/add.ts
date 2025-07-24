@@ -1,4 +1,4 @@
-import { processHeaders } from '@/middleware'
+import { requireAuth } from '@/utils/auth'
 import { BaseResponseData } from '@/pages/api/auth/session'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { RANT_POSTS } from '../constants'
@@ -13,7 +13,9 @@ export default async function handler(
     res: NextApiResponse<ResponseData>
 ) {
     const { rant, isPublic } = req.body
-    const { email } = await processHeaders(req)
+    const user = await requireAuth(req, res)
+    if (!user) return
+    const { email } = user
 
     if (!rant) {
         res.status(422).json({
