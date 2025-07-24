@@ -57,9 +57,6 @@ importers:
       googleapis:
         specifier: ^150.0.1
         version: 150.0.1
-      jose:
-        specifier: ^6.0.12
-        version: 6.0.12
       next:
         specifier: 15.3.1
         version: 15.3.1(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -2373,9 +2370,6 @@ packages:
 
   jose@4.15.9:
     resolution: {integrity: sha512-1vUQX+IdDMVPj4k8kOxgUqlcK518yluMuGZwqlr44FS1ppZB/5GWh4rZG89erpOBOJjU/OBsnCVFfapsRz6nEA==}
-
-  jose@6.0.12:
-    resolution: {integrity: sha512-T8xypXs8CpmiIi78k0E+Lk7T2zlK4zDyg+o1CZ4AkOHgDg98ogdP2BeZ61lTFKFyoEwJ9RgAgN+SdM3iPgNonQ==}
 
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
@@ -6161,8 +6155,6 @@ snapshots:
   jiti@1.21.7: {}
 
   jose@4.15.9: {}
-
-  jose@6.0.12: {}
 
   js-tokens@4.0.0: {}
 

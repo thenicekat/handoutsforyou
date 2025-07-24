@@ -8,24 +8,16 @@ import { getMetaConfig } from '@/config/meta'
 import { profs } from '@/config/profs'
 import { gradedSemesters } from '@/config/years_sems'
 import { GradeRow } from '@/types/CourseGrading'
-import { GetStaticProps } from 'next'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
-export const getStaticProps: GetStaticProps = async () => {
+
+export default function AddGrading() {
     const depts: string[] = Object.values(departments)
         .flatMap((code: string) => code.split('/'))
         .map((code) => code.trim())
         .filter((code) => code.length > 0)
 
-    return {
-        props: {
-            depts,
-        },
-    }
-}
-
-export default function AddGrading({ depts }: { depts: string[] }) {
     const [course, setCourse] = useState('')
     const [dept, setDept] = useState('')
     const [prof, setProf] = useState('')
