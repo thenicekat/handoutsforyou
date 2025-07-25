@@ -5,7 +5,7 @@ import React from 'react'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import PostCard from '@/components/PostCard'
-import { bitsofaTags } from '@/config/bitsofa_tags'
+import { tags } from '@/config/bitsofa_tags'
 import { Post } from '@/types/Post'
 import { googleDriveService } from '@/utils/googleDrive'
 
@@ -104,7 +104,7 @@ const ForumPage = ({ posts }: ForumPageProps) => {
                         <hr />
                         <h2 className="text-lg font-bold">Tags</h2>
                         <div className="flex flex-wrap gap-2">
-                            {bitsofaTags.map((tag, index) => {
+                            {tags.map((tag, index) => {
                                 const isSelected = selectedTags.includes(tag)
                                 return (
                                     <button
