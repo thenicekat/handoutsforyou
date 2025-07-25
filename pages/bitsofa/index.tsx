@@ -101,7 +101,6 @@ const ForumPage = ({ posts }: ForumPageProps) => {
                     Loading...
                 </div>
                 :
-
                 <main className="flex flex-col md:flex-row gap-8 px-8 pb-2 pt-0 md:p-8">
                     <aside className="bg-gray-800 p-6 rounded-lg w-full md:w-1/4 mt-6 md:mt-0 flex flex-col gap-4 md:self-start md:sticky top-20">
                         <h2 className="text-lg font-bold">Search</h2>
