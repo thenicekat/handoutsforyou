@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
@@ -52,6 +52,11 @@ export const getStaticProps: GetStaticProps = async () => {
 const ForumPage = ({ posts }: ForumPageProps) => {
     const [searchQuery, setSearchQuery] = React.useState('')
     const [selectedTags, setSelectedTags] = React.useState<string[]>([])
+    const [isClientLoaded, setIsClientLoaded] = React.useState(false)
+
+    useEffect(() => {
+        setIsClientLoaded(true)
+    }, [])
 
     const handleTagClick = (tag: string) => {
         setSelectedTags((prev) => {
@@ -91,6 +96,12 @@ const ForumPage = ({ posts }: ForumPageProps) => {
                         </button>
                     </Link>
                 </div>
+                (!isClientLoaded ?
+                <div className="bg-gray-800 p-6 rounded-lg border text-center border-gray-700">
+                    Loading...
+                </div>
+                :
+
                 <main className="flex flex-col md:flex-row gap-8 px-8 pb-2 pt-0 md:p-8">
                     <aside className="bg-gray-800 p-6 rounded-lg w-full md:w-1/4 mt-6 md:mt-0 flex flex-col gap-4 md:self-start md:sticky top-20">
                         <h2 className="text-lg font-bold">Search</h2>
@@ -141,6 +152,7 @@ const ForumPage = ({ posts }: ForumPageProps) => {
                         )}
                     </section>
                 </main>
+                )
             </div>
         </>
     )
