@@ -49,7 +49,7 @@ export class GoogleDriveService {
 
             const oAuth2Client = new google.auth.OAuth2(
                 GOOGLE_DRIVE_CLIENT_ID,
-                GOOGLE_DRIVE_CLIENT_SECRET,
+                GOOGLE_DRIVE_CLIENT_SECRET
             )
             oAuth2Client.setCredentials({
                 refresh_token: GOOGLE_DRIVE_REFRESH_TOKEN,
