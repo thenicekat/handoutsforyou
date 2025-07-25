@@ -3,11 +3,7 @@ import Link from 'next/link';
 import { Post } from '@/types/Post';
 import ReactMarkdown from 'react-markdown';
 
-interface PostCardProps {
-    post: Post
-}
-
-export default function PostCard({ post }: PostCardProps) {
+const PostCard = ({ post }: { post: Post }) => {
     const maxLength = 400
 
     const [isClientLoaded, setIsClientLoaded] = React.useState(false)
@@ -61,3 +57,5 @@ export default function PostCard({ post }: PostCardProps) {
         )
     )
 }
+
+export default PostCard;

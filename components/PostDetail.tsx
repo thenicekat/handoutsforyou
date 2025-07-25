@@ -2,11 +2,7 @@ import React from 'react';
 import { Post } from '@/types/Post';
 import ReactMarkdown from 'react-markdown';
 
-interface PostDetailProps {
-    post: Post
-}
-
-const PostDetail: React.FC<PostDetailProps> = ({ post }) => {
+const PostDetail = ({ post }: { post: Post }) => {
     return (
         <article className="bg-gray-800 max-w-6xl mx-auto p-8 rounded-lg border border-gray-700 min-h-screen">
             <div className="mb-6">
