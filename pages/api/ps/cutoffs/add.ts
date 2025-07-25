@@ -50,7 +50,7 @@ export default async function handler(
     const { name, email } = await processHeaders(req)
     const reqBody: RequestData = req.body
 
-    if (!email) {
+    if (!email || !name) {
         res.status(400).json({
             message: 'Unauthorized, Please login and try again',
             error: true,
