@@ -42,7 +42,9 @@ const PostCard = ({ post }: { post: Post }) => {
                     </div>
                 </div>
                 <div className="text-gray-300 whitespace-pre-wrap leading-relaxed">
-                    <ReactMarkdown components={reactMarkdownComponentConfig} >{contentDisplay}</ReactMarkdown>
+                    <ReactMarkdown components={reactMarkdownComponentConfig}>
+                        {contentDisplay}
+                    </ReactMarkdown>
                 </div>
                 {needsTruncation && (
                     <span className="text-yellow-500 hover:underline mt-4 inline-block font-semibold">

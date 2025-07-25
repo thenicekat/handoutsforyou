@@ -1,11 +1,11 @@
-// Given a list of tags -> allow user to choose multiple tags 
+// Given a list of tags -> allow user to choose multiple tags
 // and display the chosen ones below
 
 const MultiSelectTags = ({
     availableTags,
     selectedTags,
     onTagsChange,
-    disabled = false
+    disabled = false,
 }: {
     availableTags: string[]
     selectedTags: string[]
@@ -16,7 +16,7 @@ const MultiSelectTags = ({
         if (disabled) return
 
         if (selectedTags.includes(tag)) {
-            onTagsChange(selectedTags.filter(t => t !== tag))
+            onTagsChange(selectedTags.filter((t) => t !== tag))
         } else {
             onTagsChange([...selectedTags, tag])
         }
@@ -31,12 +31,13 @@ const MultiSelectTags = ({
                         <button
                             key={tag}
                             type="button"
-                            className={`px-3 py-2 rounded-full text-sm font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-gray-800 ${isSelected
+                            className={`px-3 py-2 rounded-full text-sm font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-gray-800 ${
+                                isSelected
                                     ? 'bg-yellow-500 text-black'
                                     : disabled
-                                        ? 'bg-gray-700 text-gray-500 cursor-not-allowed'
-                                        : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
-                                }`}
+                                      ? 'bg-gray-700 text-gray-500 cursor-not-allowed'
+                                      : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                            }`}
                             onClick={() => toggleTag(tag)}
                             disabled={disabled}
                         >

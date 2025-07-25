@@ -2,9 +2,9 @@ import { getMetaConfig } from '@/config/meta'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 
-import MultiSelectTags from '@/components/MultiSelectTags'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
+import MultiSelectTags from '@/components/MultiSelectTags'
 import CustomToastContainer from '@/components/ToastContainer'
 import { tags } from '@/config/bitsofa_tags'
 
@@ -33,18 +33,18 @@ export default function ContributeAdvice() {
             return false
         }
 
-        const invalidTag = selectedTags.find(
-            (tag) => !tags.includes(tag)
-        )
+        const invalidTag = selectedTags.find((tag) => !tags.includes(tag))
 
         if (invalidTag) {
             toast.error('Please select a category from the given list!')
             return false
         }
 
-        const invalidTags = selectedTags.filter(tag => !tags.includes(tag))
+        const invalidTags = selectedTags.filter((tag) => !tags.includes(tag))
         if (invalidTags.length > 0) {
-            toast.error(`Invalid categories selected: ${invalidTags.join(', ')}`)
+            toast.error(
+                `Invalid categories selected: ${invalidTags.join(', ')}`
+            )
             return false
         }
 
@@ -95,7 +95,10 @@ export default function ContributeAdvice() {
 
     return (
         <>
-            <Meta {...getMetaConfig('bitsofa')} title='Contribute an Article | handoutsforyou.' />
+            <Meta
+                {...getMetaConfig('bitsofa')}
+                title="Contribute an Article | handoutsforyou."
+            />
             <div className="min-h-screen text-white">
                 <Menu />
 
@@ -152,7 +155,9 @@ export default function ContributeAdvice() {
                                         className="w-full bg-gray-900 border border-gray-600 rounded-md px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
                                         placeholder="Give your advice a catchy title..."
                                         value={title}
-                                        onChange={(e) => setTitle(e.target.value)}
+                                        onChange={(e) =>
+                                            setTitle(e.target.value)
+                                        }
                                         disabled={isSubmitting}
                                     />
                                 </div>
@@ -168,7 +173,9 @@ export default function ContributeAdvice() {
                                         className="w-full bg-gray-900 border border-gray-600 rounded-md px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
                                         placeholder="How should we credit you?"
                                         value={author}
-                                        onChange={(e) => setAuthor(e.target.value)}
+                                        onChange={(e) =>
+                                            setAuthor(e.target.value)
+                                        }
                                         disabled={isSubmitting}
                                     />
                                 </div>
@@ -180,7 +187,8 @@ export default function ContributeAdvice() {
                                         <span className="text-red-500">*</span>
                                     </label>
                                     <p className="text-sm text-gray-400 mb-3">
-                                        Select one or more categories that best describe your advice
+                                        Select one or more categories that best
+                                        describe your advice
                                     </p>
                                     <MultiSelectTags
                                         availableTags={tags}
@@ -189,7 +197,6 @@ export default function ContributeAdvice() {
                                         disabled={isSubmitting}
                                     />
                                 </div>
-
 
                                 {/* Content Textarea */}
                                 <div>
@@ -201,7 +208,9 @@ export default function ContributeAdvice() {
                                         className="w-full bg-gray-900 border border-gray-600 rounded-md px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent h-60 resize-none"
                                         placeholder="Share your wisdom! You can use markdown formatting (e.g., **bold**, *italic*, [links](url), etc.)"
                                         value={content}
-                                        onChange={(e) => setContent(e.target.value)}
+                                        onChange={(e) =>
+                                            setContent(e.target.value)
+                                        }
                                         disabled={isSubmitting}
                                     ></textarea>
                                     <p className="text-sm text-gray-400 mt-2">
@@ -214,10 +223,11 @@ export default function ContributeAdvice() {
                                 <div className="text-center">
                                     <button
                                         type="button"
-                                        className={`font-semibold py-3 px-8 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-gray-800 ${isSubmitting
-                                            ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
-                                            : 'bg-yellow-500 hover:bg-yellow-600 text-black'
-                                            }`}
+                                        className={`font-semibold py-3 px-8 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-gray-800 ${
+                                            isSubmitting
+                                                ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
+                                                : 'bg-yellow-500 hover:bg-yellow-600 text-black'
+                                        }`}
                                         onClick={submitAdvice}
                                         disabled={isSubmitting}
                                     >

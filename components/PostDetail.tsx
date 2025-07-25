@@ -1,8 +1,6 @@
-import { Post } from '@/types/Post'
 import reactMarkdownComponentConfig from '@/config/react_markdown_components'
+import { Post } from '@/types/Post'
 import ReactMarkdown from 'react-markdown'
-
-
 
 const PostDetail = ({ post }: { post: Post }) => {
     return (
@@ -34,9 +32,9 @@ const PostDetail = ({ post }: { post: Post }) => {
                 </div>
             </div>
             <div className="text-gray-300 whitespace-pre-wrap leading-relaxed text-md">
-                <ReactMarkdown
-                    components={reactMarkdownComponentConfig}
-                >{post.content}</ReactMarkdown>
+                <ReactMarkdown components={reactMarkdownComponentConfig}>
+                    {post.content}
+                </ReactMarkdown>
             </div>
         </article>
     )

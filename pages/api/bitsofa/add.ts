@@ -1,6 +1,6 @@
+import { googleDriveService } from '@/utils/googleDrive'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { Readable } from 'stream'
-import { googleDriveService } from '@/utils/googleDrive'
 
 interface FormData {
     title: string
@@ -22,7 +22,7 @@ export default async function handler(
     if (req.method !== 'POST') {
         return res.status(405).json({
             success: false,
-            message: 'Method not allowed'
+            message: 'Method not allowed',
         })
     }
 
@@ -33,12 +33,12 @@ export default async function handler(
         if (!title || !author || !content) {
             return res.status(400).json({
                 success: false,
-                message: 'Missing required fields: title, author, or content'
+                message: 'Missing required fields: title, author, or content',
             })
         }
 
         const currentDate = new Date().toISOString().split('T')[0]
-        
+
         console.log(currentDate)
 
         const slug = title
@@ -50,7 +50,7 @@ export default async function handler(
 title: "${title}"
 author: "${author}"
 date: "${currentDate}"
-tags: [${tags.map(tag => `"${tag}"`).join(', ')}]
+tags: [${tags.map((tag) => `"${tag}"`).join(', ')}]
 ---
 
 ${content}
@@ -66,15 +66,14 @@ ${content}
 
         return res.status(200).json({
             success: true,
-            message: 'Submission uploaded successfully'
+            message: 'Submission uploaded successfully',
         })
-
     } catch (error: any) {
         console.error('Error uploading submission: ', error)
 
         return res.status(500).json({
             success: false,
-            message: error.message || 'Failed to upload submission'
+            message: error.message || 'Failed to upload submission',
         })
     }
 }
