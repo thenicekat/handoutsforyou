@@ -332,6 +332,45 @@ export class GoogleDriveService {
         }
     }
 
+    async uploadArticle(fileName: string, contentStream: Readable): Promise<DriveFile> {
+        await this.initializeAuth()
+
+        try {
+
+            const { GOOGLE_DRIVE_BITSOFA_SUBMISSIONS_FOLDER_ID } = process.env
+
+            if (!GOOGLE_DRIVE_BITSOFA_SUBMISSIONS_FOLDER_ID) {
+                throw new Error('GOOGLE_DRIVE_BITSOFA_SUBMISSIONS_FOLDER_ID is not set'
+                )
+            }
+
+            const fileMetadata = {
+                name: fileName,
+                mimeType: 'text/markdown',
+                parents: [process.env.GOOGLE_DRIVE_BITSOFA_SUBMISSIONS_FOLDER_ID!],
+            }
+
+            const media = {
+                mimeType: 'text/markdown',
+                body: contentStream,
+            }
+
+            const response = await this.drive.files.create({
+                requestBody: fileMetadata,
+                media,
+                fields: 'id, name, mimeType, size, createdTime',
+                supportsAllDrives: true,
+                enforceSingleParent: true,
+            })
+
+            return this.mapFileToDriveFile(response.data)
+        } catch (error) {
+            throw new Error(
+                `Failed to upload article: ${error instanceof Error ? error.message : 'Unknown error'}`
+            )
+        }
+    }
+
     /**
      * Get all PYQs in a course folder
      */

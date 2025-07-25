@@ -1,3 +1,4 @@
+import reactMarkdownComponentConfig from '@/config/react_markdown_components'
 import { Post } from '@/types/Post'
 import Link from 'next/link'
 import React from 'react'
@@ -41,7 +42,7 @@ const PostCard = ({ post }: { post: Post }) => {
                     </div>
                 </div>
                 <div className="text-gray-300 whitespace-pre-wrap leading-relaxed">
-                    <ReactMarkdown>{contentDisplay}</ReactMarkdown>
+                    <ReactMarkdown components={reactMarkdownComponentConfig} >{contentDisplay}</ReactMarkdown>
                 </div>
                 {needsTruncation && (
                     <span className="text-yellow-500 hover:underline mt-4 inline-block font-semibold">
