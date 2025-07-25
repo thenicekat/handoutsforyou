@@ -16,15 +16,15 @@ export async function convertGDriveDataToPost(fileContent: string, slug: string 
 
     const postContent = fileContent.replace(/^---\s*\n[\s\S]*?\n---\s*\n/, '')
     
-    const postSlug = slug || frontmatter.title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '')
+    const postSlug = slug || frontmatter.title?.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '') || ''
 
     return {
         slug: postSlug,
-        title: frontmatter.title,
-        author: frontmatter.author,
-        date: frontmatter.date,
+        title: frontmatter.title || '',
+        author: frontmatter.author || '',
+        date: frontmatter.date || '',
         content: String(postContent),
-        tags: frontmatter.tags,
+        tags: frontmatter.tags || [],
     }
 
 }
