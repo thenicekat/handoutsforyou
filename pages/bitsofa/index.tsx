@@ -116,14 +116,16 @@ const ForumPage = ({ posts }: ForumPageProps) => {
                             <h2 className="text-lg font-bold">Tags</h2>
                             <div className="flex flex-wrap gap-2">
                                 {tags.map((tag, index) => {
-                                    const isSelected = selectedTags.includes(tag)
+                                    const isSelected =
+                                        selectedTags.includes(tag)
                                     return (
                                         <button
                                             key={index}
-                                            className={`font-semibold py-1 px-3 rounded-full text-sm transition-colors duration-200 ${isSelected
+                                            className={`font-semibold py-1 px-3 rounded-full text-sm transition-colors duration-200 ${
+                                                isSelected
                                                     ? 'bg-yellow-500 text-black'
                                                     : 'bg-gray-700 hover:bg-gray-600 text-white'
-                                                }`}
+                                            }`}
                                             onClick={() => handleTagClick(tag)}
                                         >
                                             {tag}
