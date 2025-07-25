@@ -6,16 +6,64 @@ import PostDetail from '@/components/PostDetail';
 import { Post } from '@/types/Post';
 import { googleDriveService } from '@/utils/googleDrive';
 import { getMetaConfig } from '@/config/meta';
+import Link from 'next/link';
+import ArrowLeftIcon from '@heroicons/react/24/outline/ArrowLeftIcon';
 
 interface PostPageProps {
-    post: Post
+    post: Post | null
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+    return {
+        paths: [],
+        fallback: 'blocking',
+    }
+}
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+    try {
+        const slug = params?.slug as string
+
+        if (!slug) {
+            return {
+                props: {
+                    post: null
+                }
+            }
+        }
+
+        const post =
+            await googleDriveService.getArticle(slug)
+
+        if (!post) {
+            return {
+                props: {
+                    post: null
+                }
+            }
+        }
+
+        return {
+            props: {
+                post,
+            },
+            revalidate: 3600,
+        }
+    } catch (error) {
+        console.error('Error fetching post:', error)
+        return {
+            props: {
+                post: null
+            }
+        }
+    }
 }
 
 const PostPage = ({ post }: PostPageProps) => {
     if (!post) {
         return (
             <>
-                <Meta title="Post not found" />
+                <Meta title="Post not found | handoutsforyou." />
                 <Menu />
                 <div className="text-white min-h-screen font-sans pt-16 flex items-center justify-center">
                     <h1 className="text-4xl font-bold">Post not found</h1>
@@ -26,86 +74,22 @@ const PostPage = ({ post }: PostPageProps) => {
 
     return (
         <>
-            <Meta 
-                title={`${post.title} | handoutsforyou.`} 
+            <Meta
+                title={`${post.title} | handoutsforyou.`}
                 keywords={getMetaConfig('bitsofa').keywords.concat(post.tags)}
-                />
+            />
             <Menu />
             <div className="text-white min-h-screen font-sans flex flex-col">
+                <Link href="/bitsofa" className="btn btn-secondary w-auto mx-auto my-4">
+                    <ArrowLeftIcon className="h-5 w-5 mr-2" />
+                    View all posts
+                </Link>
                 <main className="px-1 w-full flex-grow">
                     <PostDetail post={post} />
                 </main>
             </div>
         </>
     )
-}
-
-export const getStaticPaths: GetStaticPaths = async () => {
-    try {
-        const bitsOfAdviceFolderId =
-            process.env.GOOGLE_DRIVE_BITS_OF_ADVICE_FOLDER_ID
-
-        if (!bitsOfAdviceFolderId) {
-            return {
-                paths: [],
-                fallback: 'blocking',
-            }
-        }
-
-        const articles =
-            await googleDriveService.getArticles(bitsOfAdviceFolderId)
-
-        const paths = articles.map((post) => ({
-            params: { slug: post.slug },
-        }))
-
-        return {
-            paths,
-            fallback: 'blocking', // Enable ISR for new posts
-        }
-    } catch (error) {
-        console.error('Error generating static paths:', error)
-        return {
-            paths: [],
-            fallback: 'blocking',
-        }
-    }
-}
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-    try {
-        const slug = params?.slug as string
-        const bitsOfAdviceFolderId =
-            process.env.GOOGLE_DRIVE_BITS_OF_ADVICE_FOLDER_ID
-
-        if (!bitsOfAdviceFolderId || !slug) {
-            return {
-                notFound: true,
-            }
-        }
-
-        const articles =
-            await googleDriveService.getArticles(bitsOfAdviceFolderId)
-        const post = articles.find((p) => p.slug === slug)
-
-        if (!post) {
-            return {
-                notFound: true,
-            }
-        }
-
-        return {
-            props: {
-                post,
-            },
-            revalidate: 3600, // Revalidate every hour
-        }
-    } catch (error) {
-        console.error('Error fetching post:', error)
-        return {
-            notFound: true,
-        }
-    }
 }
 
 export default PostPage
