@@ -96,62 +96,62 @@ const ForumPage = ({ posts }: ForumPageProps) => {
                         </button>
                     </Link>
                 </div>
-                (!isClientLoaded ?
-                <div className="bg-gray-800 p-6 rounded-lg border text-center border-gray-700">
-                    Loading...
-                </div>
-                :
-                <main className="flex flex-col md:flex-row gap-8 px-8 pb-2 pt-0 md:p-8">
-                    <aside className="bg-gray-800 p-6 rounded-lg w-full md:w-1/4 mt-6 md:mt-0 flex flex-col gap-4 md:self-start md:sticky top-20">
-                        <h2 className="text-lg font-bold">Search</h2>
-                        <input
-                            type="text"
-                            placeholder="What are you looking for..."
-                            className="bg-gray-800 border border-gray-200 focus:outline-none rounded-md p-2 w-full mx-auto text-white"
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                        />
-                        <hr />
-                        <h2 className="text-lg font-bold">Tags</h2>
-                        <div className="flex flex-wrap gap-2">
-                            {tags.map((tag, index) => {
-                                const isSelected = selectedTags.includes(tag)
-                                return (
-                                    <button
-                                        key={index}
-                                        className={`font-semibold py-1 px-3 rounded-full text-sm transition-colors duration-200 ${
-                                            isSelected
-                                                ? 'bg-yellow-500 text-black'
-                                                : 'bg-gray-700 hover:bg-gray-600 text-white'
-                                        }`}
-                                        onClick={() => handleTagClick(tag)}
-                                    >
-                                        {tag}
-                                    </button>
-                                )
-                            })}
-                        </div>
-                    </aside>
 
-                    <section className="w-full md:w-3/4 flex flex-col gap-6">
-                        {filteredPosts.length > 0 ? (
-                            filteredPosts.map((post, index) => (
-                                <PostCard key={index} post={post} />
-                            ))
-                        ) : (
-                            <div className="text-center text-white py-16">
-                                <p className="text-2xl font-bold">
-                                    No posts found!
-                                </p>
-                                <p className="mt-2">
-                                    Try adjusting your search or category
-                                    filters.
-                                </p>
+                {!isClientLoaded ? (
+                    <div className="bg-gray-800 p-6 rounded-lg border text-center border-gray-700">
+                        Loading...
+                    </div>
+                ) : (
+                    <main className="flex flex-col md:flex-row gap-8 px-8 pb-2 pt-0 md:p-8">
+                        <aside className="bg-gray-800 p-6 rounded-lg w-full md:w-1/4 mt-6 md:mt-0 flex flex-col gap-4 md:self-start md:sticky top-20">
+                            <h2 className="text-lg font-bold">Search</h2>
+                            <input
+                                type="text"
+                                placeholder="What are you looking for..."
+                                className="bg-gray-800 border border-gray-200 focus:outline-none rounded-md p-2 w-full mx-auto text-white"
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                            />
+                            <hr />
+                            <h2 className="text-lg font-bold">Tags</h2>
+                            <div className="flex flex-wrap gap-2">
+                                {tags.map((tag, index) => {
+                                    const isSelected = selectedTags.includes(tag)
+                                    return (
+                                        <button
+                                            key={index}
+                                            className={`font-semibold py-1 px-3 rounded-full text-sm transition-colors duration-200 ${isSelected
+                                                    ? 'bg-yellow-500 text-black'
+                                                    : 'bg-gray-700 hover:bg-gray-600 text-white'
+                                                }`}
+                                            onClick={() => handleTagClick(tag)}
+                                        >
+                                            {tag}
+                                        </button>
+                                    )
+                                })}
                             </div>
-                        )}
-                    </section>
-                </main>
-                )
+                        </aside>
+
+                        <section className="w-full md:w-3/4 flex flex-col gap-6">
+                            {filteredPosts.length > 0 ? (
+                                filteredPosts.map((post, index) => (
+                                    <PostCard key={index} post={post} />
+                                ))
+                            ) : (
+                                <div className="text-center text-white py-16">
+                                    <p className="text-2xl font-bold">
+                                        No posts found!
+                                    </p>
+                                    <p className="mt-2">
+                                        Try adjusting your search or category
+                                        filters.
+                                    </p>
+                                </div>
+                            )}
+                        </section>
+                    </main>
+                )}
             </div>
         </>
     )
