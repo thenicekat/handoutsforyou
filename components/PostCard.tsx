@@ -1,7 +1,7 @@
-import React from 'react';
-import Link from 'next/link';
-import { Post } from '@/types/Post';
-import ReactMarkdown from 'react-markdown';
+import { Post } from '@/types/Post'
+import Link from 'next/link'
+import React from 'react'
+import ReactMarkdown from 'react-markdown'
 
 const PostCard = ({ post }: { post: Post }) => {
     const maxLength = 400
@@ -11,7 +11,6 @@ const PostCard = ({ post }: { post: Post }) => {
     React.useEffect(() => {
         setIsClientLoaded(true)
     }, [])
-
 
     const needsTruncation = post.content.length > maxLength
     const contentDisplay = post.content.slice(0, maxLength)
@@ -54,8 +53,7 @@ const PostCard = ({ post }: { post: Post }) => {
                     )}
                 </article>
             </Link>
-        )
-    )
+        ))
 }
 
 export default PostCard;

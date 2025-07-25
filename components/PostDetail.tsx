@@ -1,6 +1,6 @@
-import React from 'react';
-import { Post } from '@/types/Post';
-import ReactMarkdown from 'react-markdown';
+import { Post } from '@/types/Post'
+import React from 'react'
+import ReactMarkdown from 'react-markdown'
 
 const PostDetail = ({ post }: { post: Post }) => {
     return (

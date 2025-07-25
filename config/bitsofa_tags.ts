@@ -3,5 +3,5 @@ export const tags : string[] = [
     'Links',
     'Academics',
     'For Freshers',
-    'Guide'
-];
+    'Guide',
+]

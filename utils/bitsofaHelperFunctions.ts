@@ -1,18 +1,19 @@
-import { remark } from "remark";
-import remarkFrontmatter from "remark-frontmatter";
-import remarkParseFrontmatter from "remark-parse-frontmatter";
+import { remark } from 'remark'
+import remarkFrontmatter from 'remark-frontmatter'
+import remarkParseFrontmatter from 'remark-parse-frontmatter'
 
-import { Post } from "@/types/Post";
+import { Post } from '@/types/Post'
 
-export async function convertGDriveDataToPost(fileContent: string, slug: string | null = null): Promise<Post> {
-
+export async function convertGDriveDataToPost(
+    fileContent: string,
+    slug: string | null = null
+): Promise<Post> {
     const processedContent = await remark()
         .use(remarkFrontmatter)
         .use(remarkParseFrontmatter)
         .process(fileContent)
 
-    const frontmatter =
-        (processedContent.data as any).frontmatter || {}
+    const frontmatter = (processedContent.data as any).frontmatter || {}
 
     const postContent = fileContent.replace(/^---\s*\n[\s\S]*?\n---\s*\n/, '')
     
@@ -26,5 +27,4 @@ export async function convertGDriveDataToPost(fileContent: string, slug: string 
         content: String(postContent),
         tags: frontmatter.tags || [],
     }
-
 }
