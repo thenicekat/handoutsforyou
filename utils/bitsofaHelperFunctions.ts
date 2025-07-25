@@ -16,8 +16,14 @@ export async function convertGDriveDataToPost(
     const frontmatter = (processedContent.data as any).frontmatter || {}
 
     const postContent = fileContent.replace(/^---\s*\n[\s\S]*?\n---\s*\n/, '')
-    
-    const postSlug = slug || frontmatter.title?.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '') || ''
+
+    const postSlug =
+        slug ||
+        frontmatter.title
+            ?.toLowerCase()
+            .replace(/\s+/g, '-')
+            .replace(/[^\w-]/g, '') ||
+        ''
 
     return {
         slug: postSlug,
