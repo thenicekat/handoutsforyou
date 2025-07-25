@@ -7,7 +7,7 @@ interface PostCardProps {
     post: Post
 }
 
-const PostCard: React.FC<PostCardProps> = ({ post }) => {
+export default function PostCard({ post }: PostCardProps) {
     const maxLength = 400
 
     const [isClientLoaded, setIsClientLoaded] = React.useState(false)
@@ -30,9 +30,9 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
                 <article className="bg-gray-800 p-6 rounded-lg border border-gray-700">
                     <div className="mb-4">
                         <h2 className="text-3xl font-bold">
-                            <Link href={`/bitsofa/${post.slug}`} className="hover:underline">
+                            <span className="hover:underline">
                                 {post.title}
-                            </Link>
+                            </span>
                         </h2>
                         <p className="text-gray-400 text-sm mt-1">
                             By {post.author}, on {post.date}
@@ -61,5 +61,3 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
         )
     )
 }
-
-export default PostCard
