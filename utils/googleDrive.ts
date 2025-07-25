@@ -1,12 +1,9 @@
-import { Post } from '@/config/post'
+import { Post } from '@/types/Post'
 import { google } from 'googleapis'
 import { drive_v3 } from 'googleapis/build/src/apis/drive/v3'
 import { Readable } from 'stream'
 
-import { remark } from 'remark'
-import remarkFrontmatter from 'remark-frontmatter'
-import remarkHtml from 'remark-html'
-import remarkParseFrontmatter from 'remark-parse-frontmatter'
+import { convertGDriveDataToPost } from './bitsofaHelperFunctions'
 
 interface DriveFile {
     id: string
@@ -56,6 +53,7 @@ export class GoogleDriveService {
             )
             oAuth2Client.setCredentials({
                 refresh_token: GOOGLE_DRIVE_REFRESH_TOKEN,
+                scope: 'https://www.googleapis.com/auth/drive.readonly',
             })
             this.auth = oAuth2Client
 
@@ -265,41 +263,9 @@ export class GoogleDriveService {
 
                         if (!content.data) continue
 
-                        const rawContent = content.data as string
+                        const post : Post = await convertGDriveDataToPost(content.data as string)
 
-                        // Parse markdown with frontmatter using remark
-                        const processedContent = await remark()
-                            .use(remarkFrontmatter)
-                            .use(remarkParseFrontmatter)
-                            .use(remarkHtml)
-                            .process(rawContent)
-
-                        const frontmatter =
-                            (processedContent.data as any).frontmatter || {}
-
-                        const slug =
-                            frontmatter.slug ||
-                            file.name
-                                .replace(/\.(md|txt)$/i, '')
-                                .replace(/\s+/g, '-')
-                                .toLowerCase()
-
-                        articles.push({
-                            slug,
-                            title:
-                                frontmatter.title ||
-                                file.name.replace(/\.(md|txt)$/i, ''),
-                            author: frontmatter.author || 'Anonymous',
-                            date:
-                                frontmatter.date ||
-                                file.createdTime?.split('T')[0] ||
-                                new Date().toISOString().split('T')[0],
-                            content: String(processedContent),
-                            tags:
-                                frontmatter.tags ||
-                                frontmatter.categories ||
-                                [],
-                        })
+                        articles.push(post)
                     } catch (error) {
                         console.error(
                             `Error processing file ${file.name}:`,
@@ -320,10 +286,44 @@ export class GoogleDriveService {
 
     async getArticle(slug: string): Promise<Post | null> {
         try {
-            const articles = await this.getArticles(
-                process.env.GOOGLE_DRIVE_BITS_OF_ADVICE_FOLDER_ID || ''
-            )
-            return articles.find((article) => article.slug === slug) || null
+            await this.initializeAuth()
+            const { GOOGLE_DRIVE_BITS_OF_ADVICE_FOLDER_ID } = process.env
+
+            if (!GOOGLE_DRIVE_BITS_OF_ADVICE_FOLDER_ID) {
+                throw new Error('GOOGLE_DRIVE_BITS_OF_ADVICE_FOLDER_ID is not set')
+            }
+
+            const fileName = `${slug}.md`
+            const response = await this.drive.files.list({
+                q: `'${GOOGLE_DRIVE_BITS_OF_ADVICE_FOLDER_ID}' in parents and name = '${fileName}' and trashed = false`,
+                fields: 'files(id, name)',
+                supportsAllDrives: true,
+                includeItemsFromAllDrives: true,
+            })
+
+            const files = response.data.files || []
+
+            if (files.length === 0) {
+                return null
+            }
+
+            const file = files[0]
+
+            if (!file.id) {
+                return null
+            }
+
+            const content = await this.drive.files.get({
+                fileId: file.id,
+                alt: 'media',
+            })
+
+            if (!content.data) {
+                return null
+            }
+
+            return await convertGDriveDataToPost(content.data as string, slug)
+
         } catch (error) {
             console.error(`Error fetching article with slug "${slug}":`, error)
             return null
