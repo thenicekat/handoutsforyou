@@ -2,12 +2,12 @@ import { GetStaticProps } from 'next'
 import Link from 'next/link'
 import React from 'react'
 
-import Menu from '@/components/Menu';
-import Meta from '@/components/Meta';
-import { Post } from '@/types/Post';
-import { googleDriveService } from '@/utils/googleDrive';
-import PostCard from '@/components/PostCard';
-import { bitsofaTags } from '@/config/bitsofa_tags';
+import Menu from '@/components/Menu'
+import Meta from '@/components/Meta'
+import PostCard from '@/components/PostCard'
+import { bitsofaTags } from '@/config/bitsofa_tags'
+import { Post } from '@/types/Post'
+import { googleDriveService } from '@/utils/googleDrive'
 
 interface ForumPageProps {
     posts: Post[]
@@ -25,7 +25,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
             return {
                 props: {
-                    posts: []
+                    posts: [],
                 },
             }
         }
@@ -35,20 +35,19 @@ export const getStaticProps: GetStaticProps = async () => {
 
         return {
             props: {
-                posts: articles
+                posts: articles,
             },
-            revalidate: 3600
+            revalidate: 3600,
         }
     } catch (error) {
         console.error('Error fetching BITS of advice:', error)
         return {
             props: {
-                posts: []
+                posts: [],
             },
         }
     }
 }
-
 
 const ForumPage = ({ posts }: ForumPageProps) => {
     const [searchQuery, setSearchQuery] = React.useState('')
@@ -83,9 +82,13 @@ const ForumPage = ({ posts }: ForumPageProps) => {
             <div className="text-white min-h-screen font-sans pt-8">
                 <div className="text-center p-4">
                     <h2 className="text-4xl font-bold">BITS of Advice</h2>
-                    <h4 className="text-md font-semibold text-white mt-2">Find the best advice from your seniors</h4>
+                    <h4 className="text-md font-semibold text-white mt-2">
+                        Find the best advice from your seniors
+                    </h4>
                     <Link href={'/bitsofa/contribute'}>
-                        <button className='btn btn-outline focus:outline-none mx-auto mt-4'>Contribute an article</button>
+                        <button className="btn btn-outline focus:outline-none mx-auto mt-4">
+                            Contribute an article
+                        </button>
                     </Link>
                 </div>
                 <main className="flex flex-col md:flex-row gap-8 px-8 pb-2 pt-0 md:p-8">
@@ -106,10 +109,11 @@ const ForumPage = ({ posts }: ForumPageProps) => {
                                 return (
                                     <button
                                         key={index}
-                                        className={`font-semibold py-1 px-3 rounded-full text-sm transition-colors duration-200 ${isSelected
-                                            ? 'bg-yellow-500 text-black'
-                                            : 'bg-gray-700 hover:bg-gray-600 text-white'
-                                            }`}
+                                        className={`font-semibold py-1 px-3 rounded-full text-sm transition-colors duration-200 ${
+                                            isSelected
+                                                ? 'bg-yellow-500 text-black'
+                                                : 'bg-gray-700 hover:bg-gray-600 text-white'
+                                        }`}
                                         onClick={() => handleTagClick(tag)}
                                     >
                                         {tag}

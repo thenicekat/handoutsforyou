@@ -1,7 +1,7 @@
-export const bitsofaTags : string[] = [
+export const bitsofaTags: string[] = [
     'Campus Life',
     'Links',
     'Academics',
     'For Freshers',
-    'Guide'
-];
+    'Guide',
+]

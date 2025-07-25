@@ -263,7 +263,9 @@ export class GoogleDriveService {
 
                         if (!content.data) continue
 
-                        const post : Post = await convertGDriveDataToPost(content.data as string)
+                        const post: Post = await convertGDriveDataToPost(
+                            content.data as string
+                        )
 
                         articles.push(post)
                     } catch (error) {
@@ -290,7 +292,9 @@ export class GoogleDriveService {
             const { GOOGLE_DRIVE_BITS_OF_ADVICE_FOLDER_ID } = process.env
 
             if (!GOOGLE_DRIVE_BITS_OF_ADVICE_FOLDER_ID) {
-                throw new Error('GOOGLE_DRIVE_BITS_OF_ADVICE_FOLDER_ID is not set')
+                throw new Error(
+                    'GOOGLE_DRIVE_BITS_OF_ADVICE_FOLDER_ID is not set'
+                )
             }
 
             const fileName = `${slug}.md`
@@ -323,7 +327,6 @@ export class GoogleDriveService {
             }
 
             return await convertGDriveDataToPost(content.data as string, slug)
-
         } catch (error) {
             console.error(`Error fetching article with slug "${slug}":`, error)
             return null

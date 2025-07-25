@@ -320,7 +320,7 @@ export const metaConfigs: Record<string, MetaConfig> = {
         description:
             'Frequently asked questions - about anything from academics to campus life to placements and beyond.',
     }),
-    'bitsofa': createMeta({
+    bitsofa: createMeta({
         title: 'BITS of Advice.',
         description:
             'A collection of advice from seniors on various topics, searchable by title, author and category.',

@@ -1,13 +1,12 @@
-import React from 'react';
-import type { GetStaticProps, GetStaticPaths } from 'next';
-import Menu from '@/components/Menu';
-import Meta from '@/components/Meta';
-import PostDetail from '@/components/PostDetail';
-import { Post } from '@/types/Post';
-import { googleDriveService } from '@/utils/googleDrive';
-import { getMetaConfig } from '@/config/meta';
-import Link from 'next/link';
-import ArrowLeftIcon from '@heroicons/react/24/outline/ArrowLeftIcon';
+import Menu from '@/components/Menu'
+import Meta from '@/components/Meta'
+import PostDetail from '@/components/PostDetail'
+import { getMetaConfig } from '@/config/meta'
+import { Post } from '@/types/Post'
+import { googleDriveService } from '@/utils/googleDrive'
+import ArrowLeftIcon from '@heroicons/react/24/outline/ArrowLeftIcon'
+import type { GetStaticPaths, GetStaticProps } from 'next'
+import Link from 'next/link'
 
 interface PostPageProps {
     post: Post | null
@@ -27,19 +26,18 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         if (!slug) {
             return {
                 props: {
-                    post: null
-                }
+                    post: null,
+                },
             }
         }
 
-        const post =
-            await googleDriveService.getArticle(slug)
+        const post = await googleDriveService.getArticle(slug)
 
         if (!post) {
             return {
                 props: {
-                    post: null
-                }
+                    post: null,
+                },
             }
         }
 
@@ -53,8 +51,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         console.error('Error fetching post:', error)
         return {
             props: {
-                post: null
-            }
+                post: null,
+            },
         }
     }
 }
@@ -80,7 +78,10 @@ const PostPage = ({ post }: PostPageProps) => {
             />
             <Menu />
             <div className="text-white min-h-screen font-sans flex flex-col">
-                <Link href="/bitsofa" className="btn btn-secondary w-auto mx-auto my-4">
+                <Link
+                    href="/bitsofa"
+                    className="btn btn-secondary w-auto mx-auto my-4"
+                >
                     <ArrowLeftIcon className="h-5 w-5 mr-2" />
                     View all posts
                 </Link>
