@@ -11,15 +11,9 @@ export const getStaticProps: GetStaticProps = async () => {
         const psFolderId = process.env.GOOGLE_DRIVE_PS_CHRONICLES_FOLDER_ID
 
         if (!psFolderId) {
-            console.error(
+            throw new Error(
                 'GOOGLE_DRIVE_PS_CHRONICLES_FOLDER_ID environment variable is not set'
             )
-            return {
-                props: {
-                    psChronicles: { ps1: [], ps2: [] },
-                    error: 'Google Drive configuration missing',
-                },
-            }
         }
 
         const psChronicles =
@@ -96,7 +90,7 @@ export default function PSChroniclesPage({
                                                     (parseInt(chronicle.size) /
                                                         1024 /
                                                         1024) *
-                                                        100
+                                                    100
                                                 ) / 100}{' '}
                                                 MB
                                             </p>
@@ -141,7 +135,7 @@ export default function PSChroniclesPage({
                                                     (parseInt(chronicle.size) /
                                                         1024 /
                                                         1024) *
-                                                        100
+                                                    100
                                                 ) / 100}{' '}
                                                 MB
                                             </p>

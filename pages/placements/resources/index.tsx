@@ -19,15 +19,9 @@ export const getStaticProps: GetStaticProps = async () => {
             process.env.GOOGLE_DRIVE_PLACEMENT_CHRONICLES_FOLDER_ID
 
         if (!placementChroniclesFolderId) {
-            console.error(
+            throw new Error(
                 'GOOGLE_DRIVE_PLACEMENT_CHRONICLES_FOLDER_ID environment variable is not set'
             )
-            return {
-                props: {
-                    puChronicles: {},
-                    error: 'Google Drive configuration missing',
-                },
-            }
         }
 
         const puChronicles = await googleDriveService.getPlacementChronicles(
@@ -245,7 +239,7 @@ export default function Placement({
                                                                 ) /
                                                                     1024 /
                                                                     1024) *
-                                                                    100
+                                                                100
                                                             ) / 100}{' '}
                                                             MB
                                                         </p>
