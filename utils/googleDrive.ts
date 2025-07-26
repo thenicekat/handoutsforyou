@@ -276,17 +276,17 @@ export class GoogleDriveService {
     async getArticle(slug: string): Promise<Post | null> {
         try {
             await this.initializeAuth()
-            const { GOOGLE_DRIVE_BITS_OF_ADVICE_FOLDER_ID } = process.env
+            const { GOOGLE_DRIVE_BITSOFA_FOLDER_ID } = process.env
 
-            if (!GOOGLE_DRIVE_BITS_OF_ADVICE_FOLDER_ID) {
+            if (!GOOGLE_DRIVE_BITSOFA_FOLDER_ID) {
                 throw new Error(
-                    'GOOGLE_DRIVE_BITS_OF_ADVICE_FOLDER_ID is not set'
+                    'GOOGLE_DRIVE_BITSOFA_FOLDER_ID is not set'
                 )
             }
 
             const fileName = `${slug}.md`
             const response = await this.drive.files.list({
-                q: `'${GOOGLE_DRIVE_BITS_OF_ADVICE_FOLDER_ID}' in parents and name = '${fileName}' and trashed = false`,
+                q: `'${GOOGLE_DRIVE_BITSOFA_FOLDER_ID}' in parents and name = '${fileName}' and trashed = false`,
                 fields: 'files(id, name)',
                 supportsAllDrives: true,
                 includeItemsFromAllDrives: true,
