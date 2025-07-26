@@ -18,7 +18,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     try {
         const slug = params?.slug as string
-
         if (!slug) {
             return {
                 props: {
@@ -28,7 +27,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         }
 
         const post = await googleDriveService.getArticle(slug)
-
         if (!post) {
             return {
                 props: {
@@ -61,7 +59,7 @@ const PostPage = ({ post }: PostPageProps) => {
             <>
                 <Meta title="Post not found | handoutsforyou." />
                 <Menu />
-                <div className="text-white min-h-screen font-sans pt-16 flex items-center justify-center">
+                <div className="text-white min-h-screen pt-16 flex items-center justify-center">
                     <h1 className="text-4xl font-bold">Post not found</h1>
                 </div>
             </>
@@ -75,7 +73,7 @@ const PostPage = ({ post }: PostPageProps) => {
                 keywords={getMetaConfig('bitsofa').keywords.concat(post.tags)}
             />
             <Menu />
-            <div className="text-white min-h-screen font-sans flex flex-col">
+            <div className="text-white min-h-screen flex flex-col">
                 <Link
                     href="/bitsofa"
                     className="btn btn-secondary w-auto mx-auto my-4"

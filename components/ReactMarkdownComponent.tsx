@@ -13,6 +13,12 @@ const reactMarkdownComponentConfig: Components = {
     h3: ({ children }) => (
         <h3 className="text-lg font-bold mb-3 mt-4 text-white"> {children} </h3>
     ),
+    ol: ({ children }) => (
+        <ol className="list-decimal list-inside text-white"> {children} </ol>
+    ),
+    ul: ({ children }) => (
+        <ul className="list-disc list-inside text-white"> {children} </ul>
+    ),
 }
 
 export default reactMarkdownComponentConfig

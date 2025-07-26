@@ -5,6 +5,7 @@ import React, { useEffect } from 'react'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import PostCard from '@/components/PostCard'
+import CustomToastContainer from '@/components/ToastContainer'
 import { tags } from '@/config/tags'
 import { Post } from '@/types/Post'
 import { googleDriveService } from '@/utils/googleDrive'
@@ -48,9 +49,27 @@ const ForumPage = ({ posts }: ForumPageProps) => {
     const [selectedTags, setSelectedTags] = React.useState<string[]>([])
     const [isClientLoaded, setIsClientLoaded] = React.useState(false)
 
+    const [bookmarkedSlugs, setBookmarkedSlugs] = React.useState<string[]>([])
+    const [activeTab, setActiveTab] = React.useState<'all' | 'bookmarks'>('all')
+
     useEffect(() => {
         setIsClientLoaded(true)
+        if (typeof window !== 'undefined') {
+            const saved: string[] = JSON.parse(
+                localStorage.getItem('bitsofaBookmarks') || '[]'
+            )
+            setBookmarkedSlugs(saved)
+        }
     }, [])
+
+    const refreshBookmarks = () => {
+        if (typeof window !== 'undefined') {
+            const saved: string[] = JSON.parse(
+                localStorage.getItem('bitsofaBookmarks') || '[]'
+            )
+            setBookmarkedSlugs(saved)
+        }
+    }
 
     const handleTagClick = (tag: string) => {
         setSelectedTags((prev) => {
@@ -73,6 +92,13 @@ const ForumPage = ({ posts }: ForumPageProps) => {
 
         return searchMatch && tagMatch
     })
+
+    const bookmarkedPosts = posts.filter((post) =>
+        bookmarkedSlugs.includes(post.slug)
+    )
+
+    const postsToDisplay =
+        activeTab === 'bookmarks' ? bookmarkedPosts : filteredPosts
 
     return (
         <>
@@ -98,6 +124,32 @@ const ForumPage = ({ posts }: ForumPageProps) => {
                 ) : (
                     <main className="flex flex-col md:flex-row gap-8 px-8 pb-2 pt-0 md:p-8">
                         <aside className="bg-gray-800 p-6 rounded-lg w-full md:w-1/4 mt-6 md:mt-0 flex flex-col gap-4 md:self-start md:sticky top-20">
+                            <h2 className="text-lg font-bold">View</h2>
+                            <div className="flex gap-2">
+                                <button
+                                    className={`py-1 px-3 rounded-full text-sm font-semibold transition-colors ${
+                                        activeTab === 'all'
+                                            ? 'bg-yellow-500 text-black'
+                                            : 'bg-gray-700 hover:bg-gray-600 text-white'
+                                    }`}
+                                    onClick={() => setActiveTab('all')}
+                                >
+                                    All
+                                </button>
+                                <button
+                                    className={`py-1 px-3 rounded-full text-sm font-semibold transition-colors ${
+                                        activeTab === 'bookmarks'
+                                            ? 'bg-yellow-500 text-black'
+                                            : 'bg-gray-700 hover:bg-gray-600 text-white'
+                                    }`}
+                                    onClick={() => setActiveTab('bookmarks')}
+                                >
+                                    Bookmarks ({bookmarkedSlugs.length})
+                                </button>
+                            </div>
+
+                            <hr />
+
                             <h2 className="text-lg font-bold">Search</h2>
                             <input
                                 type="text"
@@ -130,9 +182,13 @@ const ForumPage = ({ posts }: ForumPageProps) => {
                         </aside>
 
                         <section className="w-full md:w-3/4 flex flex-col gap-6">
-                            {filteredPosts.length > 0 ? (
-                                filteredPosts.map((post, index) => (
-                                    <PostCard key={index} post={post} />
+                            {postsToDisplay.length > 0 ? (
+                                postsToDisplay.map((post, index) => (
+                                    <PostCard
+                                        key={index}
+                                        post={post}
+                                        onBookmarkToggle={refreshBookmarks}
+                                    />
                                 ))
                             ) : (
                                 <div className="text-center text-white py-16">
@@ -149,6 +205,7 @@ const ForumPage = ({ posts }: ForumPageProps) => {
                     </main>
                 )}
             </div>
+            <CustomToastContainer containerId="bitsofa" />
         </>
     )
 }
