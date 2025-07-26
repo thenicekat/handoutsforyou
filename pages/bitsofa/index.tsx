@@ -115,10 +115,11 @@ const ForumPage = ({ posts }: ForumPageProps) => {
                                     return (
                                         <button
                                             key={index}
-                                            className={`font-semibold py-1 px-3 rounded-full text-sm transition-colors duration-200 ${isSelected
+                                            className={`font-semibold py-1 px-3 rounded-full text-sm transition-colors duration-200 ${
+                                                isSelected
                                                     ? 'bg-yellow-500 text-black'
                                                     : 'bg-gray-700 hover:bg-gray-600 text-white'
-                                                }`}
+                                            }`}
                                             onClick={() => handleTagClick(tag)}
                                         >
                                             {tag}

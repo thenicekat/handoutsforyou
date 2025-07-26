@@ -117,7 +117,7 @@ export function AppSessionProvider({
 
     const showInstallPrompt = () => {
         if (installPrompt) {
-            ; (installPrompt as any).prompt()
+            ;(installPrompt as any).prompt()
         }
     }
 
