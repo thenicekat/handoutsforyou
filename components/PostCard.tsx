@@ -1,4 +1,4 @@
-import reactMarkdownComponentConfig from '@/config/react_markdown_components'
+import reactMarkdownComponentConfig from '@/components/ReactMarkdownComponent'
 import { Post } from '@/types/Post'
 import Link from 'next/link'
 import React from 'react'

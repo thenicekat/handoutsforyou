@@ -6,7 +6,7 @@ import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import MultiSelectTags from '@/components/MultiSelectTags'
 import CustomToastContainer from '@/components/ToastContainer'
-import { tags } from '@/config/bitsofa_tags'
+import { tags } from '@/config/tags'
 
 export default function ContributeAdvice() {
     const [title, setTitle] = useState('')
@@ -223,11 +223,10 @@ export default function ContributeAdvice() {
                                 <div className="text-center">
                                     <button
                                         type="button"
-                                        className={`font-semibold py-3 px-8 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-gray-800 ${
-                                            isSubmitting
+                                        className={`font-semibold py-3 px-8 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-gray-800 ${isSubmitting
                                                 ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
                                                 : 'bg-yellow-500 hover:bg-yellow-600 text-black'
-                                        }`}
+                                            }`}
                                         onClick={submitAdvice}
                                         disabled={isSubmitting}
                                     >
