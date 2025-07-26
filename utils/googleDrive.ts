@@ -218,7 +218,6 @@ export class GoogleDriveService {
                             .filter((file) => file.id)
                             .map((file) => ({
                                 ...this.mapFileToDriveFile(file),
-                                publicUrl: this.getPublicUrl(file.id!),
                             }))
                     }
                 })

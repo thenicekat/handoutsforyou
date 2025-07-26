@@ -4,7 +4,6 @@ export interface GoogleDriveFile {
     size?: string
     createdTime: string
     downloadUrl: string
-    publicUrl?: string
 }
 
 export interface ChronicleMap {
