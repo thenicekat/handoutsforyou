@@ -67,7 +67,7 @@ const USEFUL_LINKS = [
                 name: 'ChronoFactorem',
                 url: 'https://www.chrono.crux-bphc.com/login',
             },
-            { name: 'Campus Essentials', url: 'https://ce-bphc.vercel.app/' },
+            { name: 'Campus 101', url: 'https://campus101.vercel.app/' },
             {
                 name: 'Draft ChronoFactorem',
                 url: 'https://draft.chrono.crux-bphc.com/',
@@ -76,7 +76,7 @@ const USEFUL_LINKS = [
                 name: 'DC++ Hub Status',
                 url: 'https://swd.bits-hyderabad.ac.in/dcpphub_status/',
             },
-            { name: 'Quiet-Space', url: 'https://quietspacebphc.vercel.app/' },
+            { name: 'Quietspace', url: 'https://qsbphc.vercel.app/' },
         ],
     },
 ]
@@ -462,7 +462,8 @@ export default function Home() {
                         Ashna, Shubham Agrawal, Shubh Badjate, Areen Raj, Dev
                         Gala, Dhairya Agarwal, Jason Aaron Goveas, Shivam Atul
                         Trivedi, Nirmal Sethumadhavan, Aryan Dalmia, Umaang
-                        Khambhati and everyone else...
+                        Khambhati, Archisman Das, Aditya Jagtap and everyone
+                        else...
                     </p>
                 </div>
             </div>

@@ -1,5 +1,29 @@
-import NextAuth from 'next-auth'
+import { NextApiRequest, NextApiResponse } from 'next'
+import NextAuth, { getServerSession } from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
+
+export type BaseResponseData = {
+    message: string
+    error: boolean
+}
+
+export async function getUser(
+    request: NextApiRequest,
+    response: NextApiResponse
+) {
+    try {
+        const session = await getServerSession(request, response, authOptions)
+        if (!session) {
+            throw new Error('No session found')
+        }
+        return {
+            email: session.user?.email,
+            name: session.user?.name,
+        }
+    } catch (error) {
+        throw new Error('Error occured: ' + error)
+    }
+}
 
 export const authOptions = {
     providers: [

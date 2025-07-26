@@ -1,4 +1,4 @@
-import { processHeaders } from '@/middleware'
+import { getUser } from '@/pages/api/auth/[...nextauth]'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { COURSE_REVIEWS } from '../../constants'
 import { supabase } from '../../supabase'
@@ -13,7 +13,7 @@ export default async function handler(
     res: NextApiResponse<ResponseData>
 ) {
     const { course, prof, review } = req.body
-    const { email } = await processHeaders(req)
+    const { email } = await getUser(req, res)
 
     if (!course) {
         res.status(422).json({

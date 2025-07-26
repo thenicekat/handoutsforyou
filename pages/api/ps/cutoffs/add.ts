@@ -1,4 +1,4 @@
-import { processHeaders } from '@/middleware'
+import { getUser } from '@/pages/api/auth/[...nextauth]'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { PS1_RESPONSES, PS2_RESPONSES } from '../../constants'
 import { supabase } from '../../supabase'
@@ -47,10 +47,10 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
 ) {
-    const { name, email } = await processHeaders(req)
+    const { name, email } = await getUser(req, res)
     const reqBody: RequestData = req.body
 
-    if (!email) {
+    if (!email || !name) {
         res.status(400).json({
             message: 'Unauthorized, Please login and try again',
             error: true,
