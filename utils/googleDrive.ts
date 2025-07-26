@@ -279,9 +279,7 @@ export class GoogleDriveService {
             const { GOOGLE_DRIVE_BITSOFA_FOLDER_ID } = process.env
 
             if (!GOOGLE_DRIVE_BITSOFA_FOLDER_ID) {
-                throw new Error(
-                    'GOOGLE_DRIVE_BITSOFA_FOLDER_ID is not set'
-                )
+                throw new Error('GOOGLE_DRIVE_BITSOFA_FOLDER_ID is not set')
             }
 
             const fileName = `${slug}.md`
