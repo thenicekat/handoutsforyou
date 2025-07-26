@@ -13,7 +13,7 @@ export default async function handler(
     res: NextApiResponse<ResponseData>
 ) {
     const { rant, isPublic } = req.body
-    const { email } = await processHeaders(req)
+    const { email } = await processHeaders(req, res)
 
     if (!rant) {
         res.status(422).json({

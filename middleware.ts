@@ -1,7 +1,9 @@
-import type { NextApiRequest } from 'next'
-import { decode, getToken } from 'next-auth/jwt'
+import { NextApiRequest, NextApiResponse } from 'next'
+import { getServerSession } from 'next-auth'
+import { getToken } from 'next-auth/jwt'
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
+import { authOptions } from './pages/api/auth/[...nextauth]'
 
 const EMAIL_REGEX =
     /^(?:[fh]\d{8}@(hyderabad|pilani|goa|dubai)\.bits-pilani\.ac\.in|[fh]\d{8}[pghd]@alumni\.bits-pilani\.ac\.in)$/
@@ -26,25 +28,18 @@ const isPublicRoute = (path: string) => {
     )
 }
 
-export async function processHeaders(req: NextApiRequest) {
-    if (!process.env.NEXTAUTH_SECRET) {
-        throw new Error('NEXTAUTH_SECRET is not set.')
-    }
+export async function processHeaders(
+    request: NextApiRequest,
+    response: NextApiResponse
+) {
     try {
-        const h4uToken = await getToken({
-            req: req,
-            secret: process.env.NEXTAUTH_SECRET,
-        })
-        const decoded = await decode({
-            token: String(h4uToken),
-            secret: process.env.NEXTAUTH_SECRET,
-        })
-        if (!decoded) {
-            throw new Error('Invalid token')
+        const session = await getServerSession(request, response, authOptions)
+        if (!session) {
+            throw new Error('No session found')
         }
         return {
-            email: decoded.email,
-            name: decoded.name,
+            email: session.user?.email,
+            name: session.user?.name,
         }
     } catch (error) {
         throw new Error('Error occured: ' + error)

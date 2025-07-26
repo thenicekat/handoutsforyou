@@ -13,7 +13,7 @@ export default async function handler(
     res: NextApiResponse<ResponseData>
 ) {
     const { type } = req.body
-    const { email } = await processHeaders(req)
+    const { email } = await processHeaders(req, res)
 
     if (!type) {
         res.status(422).json({

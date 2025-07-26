@@ -373,7 +373,7 @@ export default function Home() {
                                                     {item.name ===
                                                         'Some Useful Links' &&
                                                         RESOURCE_COUNTS.links >
-                                                        0 && (
+                                                            0 && (
                                                             <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gray-900 text-white">
                                                                 <CountUp
                                                                     end={
@@ -461,7 +461,8 @@ export default function Home() {
                         Ashna, Shubham Agrawal, Shubh Badjate, Areen Raj, Dev
                         Gala, Dhairya Agarwal, Jason Aaron Goveas, Shivam Atul
                         Trivedi, Nirmal Sethumadhavan, Aryan Dalmia, Umaang
-                        Khambhati, Archisman Das, Aditya Jagtap and everyone else...
+                        Khambhati, Archisman Das, Aditya Jagtap and everyone
+                        else...
                     </p>
                 </div>
             </div>
