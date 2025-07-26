@@ -33,7 +33,7 @@ export default async function handler(
                     part.mimetype === 'application/pdf' ||
                     part.mimetype === 'application/msword' ||
                     part.mimetype ===
-                    'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+                        'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
                 )
             },
         })
