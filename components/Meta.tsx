@@ -53,7 +53,6 @@ export default function Meta({
             <link rel="shortcut icon" href="/images/favicon.ico" />
             <link rel="icon" href="/images/favicon.ico" />
             <link rel="icon" sizes="64x64" href="/images/favicon.ico" />
-            <link rel="icon" sizes="48x48" href="/images/favicon-48x48.png" />
             <link
                 rel="icon"
                 type="image/png"
