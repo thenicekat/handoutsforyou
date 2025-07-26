@@ -20,15 +20,9 @@ export const getStaticProps: GetStaticProps = async () => {
         const handoutsFolderId = process.env.GOOGLE_DRIVE_HANDOUTS_FOLDER_ID
 
         if (!handoutsFolderId) {
-            console.error(
+            throw new Error(
                 'GOOGLE_DRIVE_HANDOUTS_FOLDER_ID environment variable is not set'
             )
-            return {
-                props: {
-                    handoutsMap: {},
-                    error: 'Google Drive configuration missing',
-                },
-            }
         }
 
         const handoutsMap =

@@ -1,16 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { BaseResponseData } from '../../auth/[...nextauth]'
 import { SI_CHRONICLES } from '../../constants'
 import { supabase } from '../../supabase'
 
-type ResponseData = {
-    message: string
-    data: any
-    error: boolean
-}
-
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse<ResponseData>
+    res: NextApiResponse<BaseResponseData>
 ) {
     const { slug } = req.body
 

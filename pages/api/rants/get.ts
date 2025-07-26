@@ -3,10 +3,6 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { RANT_POSTS } from '../constants'
 import { supabase } from '../supabase'
 
-interface ResponseData extends BaseResponseData {
-    data: any
-}
-
 type Rant = {
     id: number
     rant: string
@@ -20,7 +16,7 @@ type Rant = {
 
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse<ResponseData>
+    res: NextApiResponse<BaseResponseData>
 ) {
     let rants: Rant[] = []
     const { email } = await getUser(req, res)

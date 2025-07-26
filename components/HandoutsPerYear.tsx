@@ -48,7 +48,7 @@ export default function HandoutsPerYear({
                                     </button>
 
                                     <Link
-                                        href={handout.publicUrl}
+                                        href={handout.downloadUrl}
                                         target="_blank"
                                     >
                                         <button

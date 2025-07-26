@@ -194,6 +194,7 @@ export default function Home() {
             title: 'Others.',
             description: 'Everything else.',
             items: [
+                { name: 'BITS of Advice', path: '/bitsofa' },
                 { name: 'Rants', path: '/rants' },
                 { name: 'Professor Chambers', path: '/chambers' },
                 {

@@ -2,7 +2,7 @@ import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import Modal from '@/components/Modal'
 import { getMetaConfig } from '@/config/meta'
-import { PreReqGroup } from '@/types/PreReq'
+import { CoursePreReqGroup } from '@/types/Courses'
 import { GetStaticProps } from 'next'
 import { useState } from 'react'
 
@@ -19,10 +19,10 @@ export const getStaticProps: GetStaticProps = async () => {
     }
 }
 
-export default function Prereqs({ prereqs }: { prereqs: PreReqGroup[] }) {
+export default function Prereqs({ prereqs }: { prereqs: CoursePreReqGroup[] }) {
     const [search, setSearch] = useState('')
     const [open, setOpen] = useState(false)
-    const [prereq, setPrereq] = useState<PreReqGroup | null>(null)
+    const [prereq, setPrereq] = useState<CoursePreReqGroup | null>(null)
 
     const toggleModal = () => {
         setOpen(!open)
@@ -87,10 +87,10 @@ export default function Prereqs({ prereqs }: { prereqs: PreReqGroup[] }) {
                 </Modal>
 
                 {prereqs
-                    .filter((d: PreReqGroup) =>
+                    .filter((d: CoursePreReqGroup) =>
                         d.name.toLowerCase().includes(search.toLowerCase())
                     )
-                    .map((preqgroup: PreReqGroup) => (
+                    .map((preqgroup: CoursePreReqGroup) => (
                         <div
                             className="card w-11/12 bg-secondary text-neutral-content m-2 cursor-grab"
                             key={preqgroup.name}

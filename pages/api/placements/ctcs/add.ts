@@ -1,16 +1,11 @@
-import { getUser } from '@/pages/api/auth/[...nextauth]'
+import { BaseResponseData, getUser } from '@/pages/api/auth/[...nextauth]'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { PLACEMENT_CTCS } from '../../constants'
 import { supabase } from '../../supabase'
 
-type ResponseData = {
-    message: string
-    error: boolean
-}
-
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse<ResponseData>
+    res: NextApiResponse<BaseResponseData>
 ) {
     let {
         company,

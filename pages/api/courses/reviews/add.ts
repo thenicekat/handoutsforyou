@@ -1,16 +1,11 @@
-import { getUser } from '@/pages/api/auth/[...nextauth]'
+import { BaseResponseData, getUser } from '@/pages/api/auth/[...nextauth]'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { COURSE_REVIEWS } from '../../constants'
 import { supabase } from '../../supabase'
 
-type ResponseData = {
-    message: string
-    error: boolean
-}
-
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse<ResponseData>
+    res: NextApiResponse<BaseResponseData>
 ) {
     const { course, prof, review } = req.body
     const { email } = await getUser(req, res)

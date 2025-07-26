@@ -14,15 +14,9 @@ export const getStaticProps: GetStaticProps = async () => {
             process.env.GOOGLE_DRIVE_SI_CHRONICLES_FOLDER_ID
 
         if (!siChroniclesFolderId) {
-            console.error(
+            throw new Error(
                 'GOOGLE_DRIVE_SI_CHRONICLES_FOLDER_ID environment variable is not set'
             )
-            return {
-                props: {
-                    siChronicles: {},
-                    error: 'Google Drive configuration missing',
-                },
-            }
         }
 
         const siChronicles =

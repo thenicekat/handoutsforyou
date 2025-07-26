@@ -92,7 +92,7 @@ export default async function handler(
         console.error('Error uploading PYQ:', error)
         res.status(500).json({
             error: true,
-            message: 'Failed to upload PYQ',
+            message: 'Failed to upload PYQ: ' + error,
         })
     }
 }
