@@ -29,7 +29,6 @@ export default async function handler(
     try {
         const { title, author, content, tags = [] }: FormData = req.body
 
-        // Validate required fields
         if (!title || !author || !content) {
             return res.status(400).json({
                 success: false,
@@ -38,8 +37,6 @@ export default async function handler(
         }
 
         const currentDate = new Date().toISOString().split('T')[0]
-
-        console.log(currentDate)
 
         const slug = title
             .toLowerCase()
