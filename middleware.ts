@@ -1,9 +1,6 @@
-import { NextApiRequest, NextApiResponse } from 'next'
-import { getServerSession } from 'next-auth'
 import { getToken } from 'next-auth/jwt'
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
-import { authOptions } from './pages/api/auth/[...nextauth]'
 
 const EMAIL_REGEX =
     /^(?:[fh]\d{8}@(hyderabad|pilani|goa|dubai)\.bits-pilani\.ac\.in|[fh]\d{8}[pghd]@alumni\.bits-pilani\.ac\.in)$/
@@ -26,24 +23,6 @@ const isPublicRoute = (path: string) => {
     return routesWithoutAuth.some(
         (route) => route !== '/' && path.startsWith(`${route}/`)
     )
-}
-
-export async function processHeaders(
-    request: NextApiRequest,
-    response: NextApiResponse
-) {
-    try {
-        const session = await getServerSession(request, response, authOptions)
-        if (!session) {
-            throw new Error('No session found')
-        }
-        return {
-            email: session.user?.email,
-            name: session.user?.name,
-        }
-    } catch (error) {
-        throw new Error('Error occured: ' + error)
-    }
 }
 
 export async function middleware(request: NextRequest) {

@@ -1,4 +1,4 @@
-import { processHeaders } from '@/middleware'
+import { getUser } from '@/pages/api/auth/[...nextauth]'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { PLACEMENT_CTCS } from '../../constants'
 import { supabase } from '../../supabase'
@@ -23,7 +23,7 @@ export default async function handler(
         monetaryValueOfBenefits,
         description,
     } = req.body
-    const { email } = await processHeaders(req, res)
+    const { email } = await getUser(req, res)
 
     if (!company) {
         res.status(422).json({
