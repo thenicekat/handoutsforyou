@@ -27,9 +27,4 @@ export const api = {
     },
 }
 
-export const authApi = {
-    checkSession: () => api.get('/api/auth/session'),
-    signOut: () => api.post('/api/auth/signout'),
-}
-
 export default api
