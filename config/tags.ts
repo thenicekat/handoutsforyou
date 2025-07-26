@@ -1,7 +1,8 @@
 export const tags: string[] = [
-    'Campus Life',
-    'Links',
+    'New Here?',
     'Academics',
-    'For Freshers',
-    'Guide',
+    'Campus Life',
+    'Placements',
+    'Beyond College',
+    'Gossip',
 ]
