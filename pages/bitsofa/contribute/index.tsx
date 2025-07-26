@@ -4,6 +4,7 @@ import { toast } from 'react-toastify'
 
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
+import Modal from '@/components/Modal'
 import MultiSelectTags from '@/components/MultiSelectTags'
 import CustomToastContainer from '@/components/ToastContainer'
 import { tags } from '@/config/tags'
@@ -14,6 +15,7 @@ export default function ContributeAdvice() {
     const [selectedTags, setSelectedTags] = useState<string[]>([])
     const [content, setContent] = useState('')
     const [isSubmitting, setIsSubmitting] = useState(false)
+    const [showGuidelines, setShowGuidelines] = useState(false)
 
     const validateForm = (): boolean => {
         if (title === '') {
@@ -52,10 +54,7 @@ export default function ContributeAdvice() {
     }
 
     const submitAdvice = async () => {
-        // Validation
-        if (!validateForm) {
-            return
-        }
+        // Validation already performed before opening guidelines modal
 
         setIsSubmitting(true)
 
@@ -86,11 +85,19 @@ export default function ContributeAdvice() {
             setAuthor('')
             setSelectedTags([])
             setContent('')
+            window.location.href = '/bitsofa'
         } catch (error) {
             toast.error('Something went wrong. Please try again later.')
         } finally {
             setIsSubmitting(false)
         }
+    }
+
+    const handleSubmitClick = () => {
+        if (!validateForm()) {
+            return
+        }
+        setShowGuidelines(true)
     }
 
     return (
@@ -103,41 +110,17 @@ export default function ContributeAdvice() {
                 <Menu />
 
                 <div className="container mx-auto px-4 py-8">
-                    <div className="max-w-2xl mx-auto">
+                    <div className="max-w-5xl mx-auto">
                         <div className="text-center mb-8">
                             <h1 className="text-4xl font-bold mb-4">
-                                Contribute Your Advice
+                                Contribute Your Advice.
                             </h1>
                             <p className="text-gray-300 text-lg">
-                                Share your experiences and help fellow BITSians
+                                Share your experiences and help fellow BITSians.
                             </p>
                         </div>
 
-                        {/* Guidelines */}
-                        <div className="mb-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
-                            <h3 className="text-lg font-semibold mb-4">
-                                Guidelines
-                            </h3>
-                            <ul className="text-sm text-gray-300 space-y-2">
-                                <li>
-                                    • Be respectful and constructive in your
-                                    advice
-                                </li>
-                                <li>
-                                    • Share personal experiences and practical
-                                    tips
-                                </li>
-                                <li>• Use clear and concise language</li>
-                                <li>
-                                    • Choose the most appropriate category for
-                                    your advice
-                                </li>
-                                <li>
-                                    • Your submission will be reviewed before
-                                    being published
-                                </li>
-                            </ul>
-                        </div>
+                        {/* Guidelines moved to modal */}
 
                         <div className="bg-gray-800 rounded-lg p-8 border border-gray-700">
                             <form
@@ -226,9 +209,9 @@ export default function ContributeAdvice() {
                                         className={`font-semibold py-3 px-8 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-gray-800 ${
                                             isSubmitting
                                                 ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
-                                                : 'bg-yellow-500 hover:bg-yellow-600 text-black'
+                                                : 'bg-success hover:bg-success/80 text-black'
                                         }`}
-                                        onClick={submitAdvice}
+                                        onClick={handleSubmitClick}
                                         disabled={isSubmitting}
                                     >
                                         {isSubmitting ? (
@@ -265,6 +248,47 @@ export default function ContributeAdvice() {
                     </div>
                 </div>
             </div>
+            {/* Guidelines Modal */}
+            <Modal open={showGuidelines}>
+                <h3 className="font-bold text-lg mb-4">
+                    Please confirm you adhere to the following guidelines:
+                </h3>
+                <ol className="text-sm text-gray-300 space-y-2 list-decimal list-inside">
+                    <li>I was respectful and constructive in my advice</li>
+                    <li>
+                        I have shared personal experiences and practical tips
+                    </li>
+                    <li>I have used clear and concise language</li>
+                    <li>
+                        I have chosen the most appropriate category for my
+                        advice
+                    </li>
+                </ol>
+                ---
+                <br />
+                Your submission will be reviewed before it is published.
+                <div className="flex justify-end space-x-3">
+                    <button
+                        className="btn btn-ghost"
+                        onClick={() => setShowGuidelines(false)}
+                        disabled={isSubmitting}
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        className={`btn btn-primary ${
+                            isSubmitting ? 'loading' : ''
+                        }`}
+                        onClick={async () => {
+                            await submitAdvice()
+                            setShowGuidelines(false)
+                        }}
+                        disabled={isSubmitting}
+                    >
+                        {isSubmitting ? 'Submitting...' : 'I Agree & Submit'}
+                    </button>
+                </div>
+            </Modal>
             <CustomToastContainer containerId="contributeAdvice" />
         </>
     )
