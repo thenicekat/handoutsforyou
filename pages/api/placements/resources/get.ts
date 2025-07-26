@@ -3,8 +3,6 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { PLACEMENT_RESOURCES } from '../../constants'
 import { supabase } from '../../supabase'
 
-
-
 export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<BaseResponseData>

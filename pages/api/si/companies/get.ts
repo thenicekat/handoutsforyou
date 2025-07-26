@@ -3,8 +3,6 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { SI_COMPANIES } from '../../constants'
 import { supabase } from '../../supabase'
 
-
-
 export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<BaseResponseData>

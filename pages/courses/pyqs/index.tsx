@@ -12,7 +12,9 @@ import { toast } from 'react-toastify'
 
 export default function PYQs() {
     const [courses, setCourses] = useState<CourseDetails[]>([])
-    const [selectedCourse, setSelectedCourse] = useState<CourseDetails | null>(null)
+    const [selectedCourse, setSelectedCourse] = useState<CourseDetails | null>(
+        null
+    )
     const [pyqsByYear, setPyqsByYear] = useState<CoursePYQsByYear>({})
 
     const [loading, setLoading] = useState(true)

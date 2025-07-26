@@ -4,7 +4,6 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { COURSE_GRADING } from '../../constants'
 import { supabase } from '../../supabase'
 
-
 export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<BaseResponseData>

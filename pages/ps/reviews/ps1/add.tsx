@@ -168,11 +168,11 @@ export default function AddPS1Review() {
                                         placeholder={
                                             selectedResponse
                                                 ? 'You are writing a review for the following PS1 response: ' +
-                                                selectedResponse?.station +
-                                                ' ' +
-                                                selectedResponse?.year_and_sem +
-                                                ' ' +
-                                                selectedResponse?.allotment_round
+                                                  selectedResponse?.station +
+                                                  ' ' +
+                                                  selectedResponse?.year_and_sem +
+                                                  ' ' +
+                                                  selectedResponse?.allotment_round
                                                 : 'Select a PS1 response to write a review...'
                                         }
                                         onChange={(e) =>

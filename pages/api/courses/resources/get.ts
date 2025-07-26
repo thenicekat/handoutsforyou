@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { BaseResponseData } from '../../auth/[...nextauth]'
 import { COURSE_RESOURCES } from '../../constants'
 import { supabase } from '../../supabase'
-import { BaseResponseData } from '../../auth/[...nextauth]'
 
 export default async function handler(
     req: NextApiRequest,

@@ -3,8 +3,12 @@ import { google } from 'googleapis'
 import { drive_v3 } from 'googleapis/build/src/apis/drive/v3'
 import { Readable } from 'stream'
 
+import {
+    ChronicleMap,
+    GoogleDriveFile,
+    GoogleDrivePSChronicles,
+} from '@/types/GoogleDriveChronicles'
 import { convertGDriveDataToPost } from './bitsofaHelperFunctions'
-import { ChronicleMap, GoogleDriveFile, GoogleDrivePSChronicles } from '@/types/GoogleDriveChronicles'
 
 export class GoogleDriveService {
     private drive!: drive_v3.Drive
@@ -159,7 +163,9 @@ export class GoogleDriveService {
     /**
      * Get PS chronicles with PS1 and PS2 sections
      */
-    async getPSChronicles(rootFolderId: string): Promise<GoogleDrivePSChronicles> {
+    async getPSChronicles(
+        rootFolderId: string
+    ): Promise<GoogleDrivePSChronicles> {
         try {
             const chronicles: GoogleDrivePSChronicles = { ps1: [], ps2: [] }
             const folders = await this.listFolders(rootFolderId)

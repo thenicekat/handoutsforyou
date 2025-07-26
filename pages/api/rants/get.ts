@@ -3,8 +3,6 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { RANT_POSTS } from '../constants'
 import { supabase } from '../supabase'
 
-
-
 type Rant = {
     id: number
     rant: string
