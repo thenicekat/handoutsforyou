@@ -3,13 +3,9 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { RANT_COMMENTS } from '../constants'
 import { supabase } from '../supabase'
 
-interface ResponseData extends BaseResponseData {
-    data?: any
-}
-
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse<ResponseData>
+    res: NextApiResponse<BaseResponseData>
 ) {
     const { rantId, comment } = req.body
     const { email } = await getUser(req, res)

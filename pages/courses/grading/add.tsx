@@ -7,7 +7,7 @@ import { departments } from '@/config/departments'
 import { getMetaConfig } from '@/config/meta'
 import { profs } from '@/config/profs'
 import { gradedSemesters } from '@/config/years_sems'
-import { GradeRow } from '@/types/CourseGrading'
+import { CourseGradeRow } from '@/types/Courses'
 import { GetStaticProps } from 'next'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
@@ -50,7 +50,7 @@ export default function AddGrading({ depts }: { depts: string[] }) {
 
     const parseGradingData = (input: string): string => {
         const lines = input.split('\n').map((line) => line.trim())
-        const gradeData: GradeRow[] = []
+        const gradeData: CourseGradeRow[] = []
         const rowPattern = /^Row\s*\d+$/
 
         for (let i = 0; i < lines.length; i++) {
@@ -59,7 +59,7 @@ export default function AddGrading({ depts }: { depts: string[] }) {
                     .slice(i + 1, i + 5)
                     .filter((line) => line.length > 0)
 
-                const gradeRow: GradeRow = {
+                const gradeRow: CourseGradeRow = {
                     grade: '',
                     numberOfStudents: 0,
                 }

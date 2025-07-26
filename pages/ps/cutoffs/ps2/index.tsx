@@ -3,7 +3,7 @@ import Meta from '@/components/Meta'
 import CustomToastContainer from '@/components/ToastContainer'
 import { getMetaConfig } from '@/config/meta'
 import { ps2Semesters } from '@/config/years_sems'
-import { PS2Item } from '@/types/PSData'
+import { PS2Item } from '@/types/PS'
 import { axiosInstance } from '@/utils/axiosCache'
 import {
     createColumnHelper,

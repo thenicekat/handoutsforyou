@@ -1,12 +1,9 @@
+import { MenuProps } from '@/types/Menu'
 import { Bars3Icon, StarIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { signOut } from 'next-auth/react'
 import Link from 'next/link'
 import { useState } from 'react'
 import StarPrompt from './StarPrompt'
-
-interface MenuProps {
-    onLandingPage?: boolean
-}
 
 const Menu = ({ onLandingPage }: MenuProps) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -19,6 +16,7 @@ const Menu = ({ onLandingPage }: MenuProps) => {
         'Course Resources': '/courses/resources',
         'Course Reviews': '/courses/reviews',
         'Course Grading': '/courses/grading',
+        'BITS of Advice': '/bitsofa',
         'Professor Chambers': '/chambers',
         'SI Resources': '/si/resources',
         'SI Companies': '/si/companies',

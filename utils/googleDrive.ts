@@ -1,24 +1,14 @@
+import { Post } from '@/types/Post'
 import { google } from 'googleapis'
 import { drive_v3 } from 'googleapis/build/src/apis/drive/v3'
 import { Readable } from 'stream'
 
-interface DriveFile {
-    id: string
-    name: string
-    size?: string | number
-    createdTime: string
-    downloadUrl: string
-    publicUrl?: string
-}
-
-interface ChronicleMap {
-    [key: string]: DriveFile[]
-}
-
-interface PSChronicles {
-    ps1: DriveFile[]
-    ps2: DriveFile[]
-}
+import {
+    ChronicleMap,
+    GoogleDriveFile,
+    GoogleDrivePSChronicles,
+} from '@/types/GoogleDriveChronicles'
+import { convertGDriveDataToPost } from './bitsofaHelperFunctions'
 
 export class GoogleDriveService {
     private drive!: drive_v3.Drive
@@ -173,9 +163,11 @@ export class GoogleDriveService {
     /**
      * Get PS chronicles with PS1 and PS2 sections
      */
-    async getPSChronicles(rootFolderId: string): Promise<PSChronicles> {
+    async getPSChronicles(
+        rootFolderId: string
+    ): Promise<GoogleDrivePSChronicles> {
         try {
-            const chronicles: PSChronicles = { ps1: [], ps2: [] }
+            const chronicles: GoogleDrivePSChronicles = { ps1: [], ps2: [] }
             const folders = await this.listFolders(rootFolderId)
 
             await Promise.all(
@@ -226,7 +218,6 @@ export class GoogleDriveService {
                             .filter((file) => file.id)
                             .map((file) => ({
                                 ...this.mapFileToDriveFile(file),
-                                publicUrl: this.getPublicUrl(file.id!),
                             }))
                     }
                 })
@@ -236,6 +227,139 @@ export class GoogleDriveService {
         } catch (error) {
             throw new Error(
                 `Failed to get handouts: ${error instanceof Error ? error.message : 'Unknown error'}`
+            )
+        }
+    }
+
+    /**
+     * Get all articles
+     */
+    async getArticles(rootFolderId: string): Promise<Post[]> {
+        try {
+            const articles: Post[] = []
+
+            const files = await this.listFiles(rootFolderId)
+
+            for (const file of files) {
+                if (file.id && file.name) {
+                    try {
+                        const content = await this.drive.files.get({
+                            fileId: file.id,
+                            alt: 'media',
+                        })
+
+                        if (!content.data) continue
+
+                        const post: Post = await convertGDriveDataToPost(
+                            content.data as string
+                        )
+
+                        articles.push(post)
+                    } catch (error) {
+                        console.error(
+                            `Error processing file ${file.name}:`,
+                            error
+                        )
+                        continue
+                    }
+                }
+            }
+
+            return articles
+        } catch (error) {
+            throw new Error(
+                `Failed to get articles: ${error instanceof Error ? error.message : 'Unknown error'}`
+            )
+        }
+    }
+
+    async getArticle(slug: string): Promise<Post | null> {
+        try {
+            await this.initializeAuth()
+            const { GOOGLE_DRIVE_BITS_OF_ADVICE_FOLDER_ID } = process.env
+
+            if (!GOOGLE_DRIVE_BITS_OF_ADVICE_FOLDER_ID) {
+                throw new Error(
+                    'GOOGLE_DRIVE_BITS_OF_ADVICE_FOLDER_ID is not set'
+                )
+            }
+
+            const fileName = `${slug}.md`
+            const response = await this.drive.files.list({
+                q: `'${GOOGLE_DRIVE_BITS_OF_ADVICE_FOLDER_ID}' in parents and name = '${fileName}' and trashed = false`,
+                fields: 'files(id, name)',
+                supportsAllDrives: true,
+                includeItemsFromAllDrives: true,
+            })
+
+            const files = response.data.files || []
+
+            if (files.length === 0) {
+                return null
+            }
+
+            const file = files[0]
+
+            if (!file.id) {
+                return null
+            }
+
+            const content = await this.drive.files.get({
+                fileId: file.id,
+                alt: 'media',
+            })
+
+            if (!content.data) {
+                return null
+            }
+
+            return await convertGDriveDataToPost(content.data as string, slug)
+        } catch (error) {
+            console.error(`Error fetching article with slug "${slug}":`, error)
+            return null
+        }
+    }
+
+    async uploadArticle(
+        fileName: string,
+        contentStream: Readable
+    ): Promise<GoogleDriveFile> {
+        await this.initializeAuth()
+
+        try {
+            const { GOOGLE_DRIVE_BITSOFA_SUBMISSIONS_FOLDER_ID } = process.env
+
+            if (!GOOGLE_DRIVE_BITSOFA_SUBMISSIONS_FOLDER_ID) {
+                throw new Error(
+                    'GOOGLE_DRIVE_BITSOFA_SUBMISSIONS_FOLDER_ID is not set'
+                )
+            }
+
+            const fileMetadata = {
+                name: fileName,
+                mimeType: 'text/markdown',
+                parents: [
+                    process.env.GOOGLE_DRIVE_BITSOFA_SUBMISSIONS_FOLDER_ID!,
+                ],
+            }
+
+            const media = {
+                mimeType: 'text/markdown',
+                body: contentStream,
+            }
+
+            const response = await this.drive.files.create({
+                requestBody: fileMetadata,
+                media,
+                fields: 'id, name, mimeType, size, createdTime',
+                supportsAllDrives: true,
+                enforceSingleParent: true,
+            })
+
+            return this.mapFileToDriveFile(response.data)
+        } catch (error) {
+            throw new Error(
+                `Failed to upload article: ${error instanceof Error ? error.message : 'Unknown error'}`
             )
         }
     }
@@ -277,7 +401,7 @@ export class GoogleDriveService {
         fileBuffer: Buffer,
         parentFolderId: string,
         mimeType: string
-    ): Promise<DriveFile> {
+    ): Promise<GoogleDriveFile> {
         await this.initializeAuth()
         try {
             const fileStream = new Readable()
@@ -373,7 +497,7 @@ export class GoogleDriveService {
     /**
      * Helper method to map Drive file to DriveFile interface
      */
-    private mapFileToDriveFile(file: drive_v3.Schema$File): DriveFile {
+    private mapFileToDriveFile(file: drive_v3.Schema$File): GoogleDriveFile {
         if (!file.id) {
             throw new Error('Invalid file object - missing ID')
         }
