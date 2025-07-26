@@ -24,7 +24,7 @@ export default async function handler(
     res: NextApiResponse<ResponseData>
 ) {
     let rants: Rant[] = []
-    const { email } = await processHeaders(req)
+    const { email } = await processHeaders(req, res)
 
     // Get public rants.
     const { data, error } = await supabase

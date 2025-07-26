@@ -13,7 +13,7 @@ export default async function handler(
     res: NextApiResponse<ResponseData>
 ) {
     const { course, prof, review } = req.body
-    const { email } = await processHeaders(req)
+    const { email } = await processHeaders(req, res)
 
     if (!course) {
         res.status(422).json({

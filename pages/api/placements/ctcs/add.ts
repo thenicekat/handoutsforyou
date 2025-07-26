@@ -23,7 +23,7 @@ export default async function handler(
         monetaryValueOfBenefits,
         description,
     } = req.body
-    const { email } = await processHeaders(req)
+    const { email } = await processHeaders(req, res)
 
     if (!company) {
         res.status(422).json({

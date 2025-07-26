@@ -29,7 +29,7 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
 ) {
-    const { email } = await processHeaders(req)
+    const { email } = await processHeaders(req, res)
     const reqBody: RequestData = req.body
 
     if (!email) {
