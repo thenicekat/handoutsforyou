@@ -11,7 +11,7 @@ import { tags } from '@/config/tags'
 export default function ContributeAdvice() {
     const [title, setTitle] = useState('')
     const [author, setAuthor] = useState('')
-    const [selectedTags, setSelectedTags] = useState<string[]>([]) // Changed from category to selectedTags array
+    const [selectedTags, setSelectedTags] = useState<string[]>([])
     const [content, setContent] = useState('')
     const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -75,7 +75,7 @@ export default function ContributeAdvice() {
 
             const result = await response.json()
 
-            if (!response.ok || !result.success) {
+            if (!response.ok || result.error) {
                 toast.error(result.message || 'Failed to submit advice')
                 return
             }
