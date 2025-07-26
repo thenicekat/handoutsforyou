@@ -2,7 +2,7 @@ import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import CustomToastContainer from '@/components/ToastContainer'
 import { getMetaConfig } from '@/config/meta'
-import type { PSChronicles } from '@/types/GoogleDriveChronicles'
+import type { GoogleDrivePSChronicles } from '@/types/GoogleDriveChronicles'
 import { googleDriveService } from '@/utils/googleDrive'
 import { GetStaticProps } from 'next'
 
@@ -41,7 +41,7 @@ export default function PSChroniclesPage({
     psChronicles,
     error,
 }: {
-    psChronicles: PSChronicles
+    psChronicles: GoogleDrivePSChronicles
     error?: string
 }) {
     if (error) {

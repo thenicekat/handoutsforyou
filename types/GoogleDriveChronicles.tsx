@@ -4,19 +4,23 @@ export interface GoogleDriveFile {
     size?: string
     createdTime: string
     downloadUrl: string
+    publicUrl?: string
 }
 
+export interface ChronicleMap {
+    [key: string]: GoogleDriveFile[]
+}
+
+export interface GoogleDrivePSChronicles {
+    ps1: GoogleDriveFile[]
+    ps2: GoogleDriveFile[]
+}
 export interface PlacementChroniclesByCampus {
     [campus: string]: GoogleDriveFile[]
 }
 
 export interface SIChroniclesByCampus {
     [campus: string]: GoogleDriveFile[]
-}
-
-export interface PSChronicles {
-    ps1: GoogleDriveFile[]
-    ps2: GoogleDriveFile[]
 }
 
 export interface GoogleDriveChroniclesResponse {
@@ -33,6 +37,6 @@ export interface SIChroniclesResponse {
 
 export interface PSChroniclesResponse {
     message: string
-    data: PSChronicles
+    data: GoogleDrivePSChronicles
     error: boolean
 }

@@ -3,13 +3,11 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { PS2_RESPONSES } from '../../constants'
 import { supabase } from '../../supabase'
 
-interface ResponseData extends BaseResponseData {
-    data: any
-}
+
 
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse<ResponseData>
+    res: NextApiResponse<BaseResponseData>
 ) {
     const { year } = req.body
 

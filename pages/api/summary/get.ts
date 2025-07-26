@@ -11,16 +11,11 @@ import {
     SI_COMPANIES,
 } from '../constants'
 import { supabase } from '../supabase'
-
-type ResponseData = {
-    message: string
-    data: any
-    error: boolean
-}
+import { BaseResponseData } from '../auth/[...nextauth]'
 
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse<ResponseData>
+    res: NextApiResponse<BaseResponseData>
 ) {
     const { data: ps1_data, error: ps1_error } = await supabase
         .from(PS1_RESPONSES)

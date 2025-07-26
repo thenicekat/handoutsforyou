@@ -3,10 +3,7 @@ import { signOut } from 'next-auth/react'
 import Link from 'next/link'
 import { useState } from 'react'
 import StarPrompt from './StarPrompt'
-
-interface MenuProps {
-    onLandingPage?: boolean
-}
+import { MenuProps } from '@/types/Menu'
 
 const Menu = ({ onLandingPage }: MenuProps) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -82,9 +79,8 @@ const Menu = ({ onLandingPage }: MenuProps) => {
 
             {/* Sidebar/Mobile Menu */}
             <div
-                className={`fixed inset-0 z-30 transform transition-all duration-300 ${
-                    isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-                }`}
+                className={`fixed inset-0 z-30 transform transition-all duration-300 ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+                    }`}
             >
                 {/* Backdrop */}
                 <div

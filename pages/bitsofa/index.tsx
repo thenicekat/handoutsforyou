@@ -80,13 +80,13 @@ const ForumPage = ({ posts }: ForumPageProps) => {
             <Menu />
             <div className="text-white min-h-screen font-sans pt-8">
                 <div className="text-center p-4">
-                    <h2 className="text-4xl font-bold">BITS of Advice</h2>
+                    <h2 className="text-4xl font-bold">BITS of Advice.</h2>
                     <h4 className="text-md font-semibold text-white mt-2">
-                        Find the best advice from your seniors
+                        Find the best advice from your seniors.
                     </h4>
                     <Link href={'/bitsofa/contribute'}>
                         <button className="btn btn-outline focus:outline-none mx-auto mt-4">
-                            Contribute an article
+                            Contribute an article.
                         </button>
                     </Link>
                 </div>

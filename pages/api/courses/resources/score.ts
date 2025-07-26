@@ -1,16 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { COURSE_RESOURCES } from '../../constants'
 import { supabase } from '../../supabase'
+import { BaseResponseData } from '../../auth/[...nextauth]'
 
-type ResponseData = {
-    message: string
-    data: any
-    error: boolean
-}
+
 
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse<ResponseData>
+    res: NextApiResponse<BaseResponseData>
 ) {
     const resource_id = req.query.id as string
     const { data, error } = await supabase

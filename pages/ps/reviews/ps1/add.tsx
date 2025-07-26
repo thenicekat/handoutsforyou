@@ -2,7 +2,7 @@ import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import CustomToastContainer from '@/components/ToastContainer'
 import { getMetaConfig } from '@/config/meta'
-import { PS1Item } from '@/types/PSData'
+import { PS1Item } from '@/types/PS'
 import { axiosInstance } from '@/utils/axiosCache'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
@@ -168,11 +168,11 @@ export default function AddPS1Review() {
                                         placeholder={
                                             selectedResponse
                                                 ? 'You are writing a review for the following PS1 response: ' +
-                                                  selectedResponse?.station +
-                                                  ' ' +
-                                                  selectedResponse?.year_and_sem +
-                                                  ' ' +
-                                                  selectedResponse?.allotment_round
+                                                selectedResponse?.station +
+                                                ' ' +
+                                                selectedResponse?.year_and_sem +
+                                                ' ' +
+                                                selectedResponse?.allotment_round
                                                 : 'Select a PS1 response to write a review...'
                                         }
                                         onChange={(e) =>

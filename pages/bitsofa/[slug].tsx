@@ -2,15 +2,11 @@ import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import PostDetail from '@/components/PostDetail'
 import { getMetaConfig } from '@/config/meta'
-import { Post } from '@/types/Post'
+import { PostPageProps } from '@/types/Post'
 import { googleDriveService } from '@/utils/googleDrive'
 import ArrowLeftIcon from '@heroicons/react/24/outline/ArrowLeftIcon'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 import Link from 'next/link'
-
-interface PostPageProps {
-    post: Post | null
-}
 
 export const getStaticPaths: GetStaticPaths = async () => {
     return {

@@ -1,13 +1,7 @@
-import { getUser } from '@/pages/api/auth/[...nextauth]'
+import { BaseResponseData, getUser } from '@/pages/api/auth/[...nextauth]'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { PS1_RESPONSES, PS2_RESPONSES } from '../../constants'
 import { supabase } from '../../supabase'
-
-type ResponseData = {
-    message: string
-    data: any
-    error: boolean
-}
 
 type RequestData = {
     typeOfPS: string
@@ -45,7 +39,7 @@ const matchEmailIDNumber = (email: string, idNumber: string): string => {
 
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse<ResponseData>
+    res: NextApiResponse<BaseResponseData>
 ) {
     const { name, email } = await getUser(req, res)
     const reqBody: RequestData = req.body

@@ -5,6 +5,7 @@ import GoogleProvider from 'next-auth/providers/google'
 export type BaseResponseData = {
     message: string
     error: boolean
+    data?: any
 }
 
 export async function getUser(

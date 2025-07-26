@@ -6,3 +6,7 @@ export type Post = {
     content: string
     tags: string[]
 }
+
+export interface PostPageProps {
+    post: Post | null
+}

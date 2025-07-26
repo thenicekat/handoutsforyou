@@ -3,13 +3,11 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { PS1_REVIEWS, PS2_REVIEWS } from '../../constants'
 import { supabase } from '../../supabase'
 
-interface ResponseData extends BaseResponseData {
-    data: any
-}
+
 
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse<ResponseData>
+    res: NextApiResponse<BaseResponseData>
 ) {
     const { type } = req.body
 

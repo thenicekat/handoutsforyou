@@ -4,24 +4,7 @@ import { drive_v3 } from 'googleapis/build/src/apis/drive/v3'
 import { Readable } from 'stream'
 
 import { convertGDriveDataToPost } from './bitsofaHelperFunctions'
-
-interface DriveFile {
-    id: string
-    name: string
-    size?: string | number
-    createdTime: string
-    downloadUrl: string
-    publicUrl?: string
-}
-
-interface ChronicleMap {
-    [key: string]: DriveFile[]
-}
-
-interface PSChronicles {
-    ps1: DriveFile[]
-    ps2: DriveFile[]
-}
+import { ChronicleMap, GoogleDriveFile, GoogleDrivePSChronicles } from '@/types/GoogleDriveChronicles'
 
 export class GoogleDriveService {
     private drive!: drive_v3.Drive
@@ -176,9 +159,9 @@ export class GoogleDriveService {
     /**
      * Get PS chronicles with PS1 and PS2 sections
      */
-    async getPSChronicles(rootFolderId: string): Promise<PSChronicles> {
+    async getPSChronicles(rootFolderId: string): Promise<GoogleDrivePSChronicles> {
         try {
-            const chronicles: PSChronicles = { ps1: [], ps2: [] }
+            const chronicles: GoogleDrivePSChronicles = { ps1: [], ps2: [] }
             const folders = await this.listFolders(rootFolderId)
 
             await Promise.all(
@@ -335,7 +318,7 @@ export class GoogleDriveService {
     async uploadArticle(
         fileName: string,
         contentStream: Readable
-    ): Promise<DriveFile> {
+    ): Promise<GoogleDriveFile> {
         await this.initializeAuth()
 
         try {
@@ -413,7 +396,7 @@ export class GoogleDriveService {
         fileBuffer: Buffer,
         parentFolderId: string,
         mimeType: string
-    ): Promise<DriveFile> {
+    ): Promise<GoogleDriveFile> {
         await this.initializeAuth()
         try {
             const fileStream = new Readable()
@@ -509,7 +492,7 @@ export class GoogleDriveService {
     /**
      * Helper method to map Drive file to DriveFile interface
      */
-    private mapFileToDriveFile(file: drive_v3.Schema$File): DriveFile {
+    private mapFileToDriveFile(file: drive_v3.Schema$File): GoogleDriveFile {
         if (!file.id) {
             throw new Error('Invalid file object - missing ID')
         }

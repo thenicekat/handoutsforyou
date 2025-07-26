@@ -6,14 +6,14 @@ import { courses as courseNames } from '@/config/courses'
 import { getMetaConfig } from '@/config/meta'
 import { profs } from '@/config/profs'
 import { pyqYears } from '@/config/years_sems'
-import { Course, PYQFile, PYQsByYear } from '@/types/PYQs'
+import { CourseDetails, CoursePYQFile, CoursePYQsByYear } from '@/types/Courses'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
 export default function PYQs() {
-    const [courses, setCourses] = useState<Course[]>([])
-    const [selectedCourse, setSelectedCourse] = useState<Course | null>(null)
-    const [pyqsByYear, setPyqsByYear] = useState<PYQsByYear>({})
+    const [courses, setCourses] = useState<CourseDetails[]>([])
+    const [selectedCourse, setSelectedCourse] = useState<CourseDetails | null>(null)
+    const [pyqsByYear, setPyqsByYear] = useState<CoursePYQsByYear>({})
 
     const [loading, setLoading] = useState(true)
     const [loadingPyqs, setLoadingPyqs] = useState(false)
@@ -47,7 +47,7 @@ export default function PYQs() {
         }
     }
 
-    const fetchPYQsForCourse = async (course: Course) => {
+    const fetchPYQsForCourse = async (course: CourseDetails) => {
         setLoadingPyqs(true)
         try {
             const response = await fetch(
@@ -342,7 +342,7 @@ export default function PYQs() {
                                                         <div className="space-y-2">
                                                             {files.map(
                                                                 (
-                                                                    file: PYQFile
+                                                                    file: CoursePYQFile
                                                                 ) => (
                                                                     <div
                                                                         key={
