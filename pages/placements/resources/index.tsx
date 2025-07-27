@@ -63,7 +63,9 @@ export default function Placement({
     const fetchResources = async () => {
         setIsLoading(true)
         try {
-            const res = await axiosInstance.get('/api/placements/resources/get')
+            const res = await axiosInstance.get(
+                '/api/placements/resources/get?type=Placement'
+            )
             const data = res.data
             if (!data.error) {
                 let resourcesByCategory: ResourceByCategory = {}

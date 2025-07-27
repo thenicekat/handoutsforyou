@@ -23,7 +23,7 @@ export default async function handler(
 
     try {
         const { title, author, content, tags = [] }: FormData = req.body
-        const { email } = await getUser(req, res)
+        const { email } = (await getUser(req, res))!
 
         if (!title || !author || !content) {
             return res.status(400).json({

@@ -7,6 +7,7 @@ import { getMetaConfig } from '@/config/meta'
 import { profs } from '@/config/profs'
 import { pyqYears } from '@/config/years_sems'
 import { CourseDetails, CoursePYQFile, CoursePYQsByYear } from '@/types/Courses'
+import axiosInstance from '@/utils/axiosCache'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
@@ -33,13 +34,14 @@ export default function PYQs() {
 
     const fetchCourses = async () => {
         try {
-            const response = await fetch('/api/courses/pyqs/get/courses')
-            const data = await response.json()
+            const response = await axiosInstance.get(
+                '/api/courses/pyqs/get/courses'
+            )
 
-            if (data.error) {
-                toast.error(data.message)
+            if (response.data.error) {
+                toast.error(response.data.message)
             } else {
-                setCourses(data.data)
+                setCourses(response.data.data)
             }
         } catch (error) {
             console.error('Error fetching courses:', error)
@@ -52,15 +54,14 @@ export default function PYQs() {
     const fetchPYQsForCourse = async (course: CourseDetails) => {
         setLoadingPyqs(true)
         try {
-            const response = await fetch(
+            const response = await axiosInstance.get(
                 `/api/courses/pyqs/get/pyqs?courseId=${course.id}`
             )
-            const data = await response.json()
 
-            if (data.error) {
-                toast.error(data.message)
+            if (response.data.error) {
+                toast.error(response.data.message)
             } else {
-                setPyqsByYear(data.data)
+                setPyqsByYear(response.data.data)
                 setSelectedCourse(course)
             }
         } catch (error) {
