@@ -8,13 +8,18 @@ export type BaseResponseData = {
     data?: any
 }
 
+export type AuthorizedUser = {
+    email: string
+    name: string | null | undefined
+}
+
 const EMAIL_REGEX =
     /^(?:[fh]\d{8}@(hyderabad|pilani|goa|dubai)\.bits-pilani\.ac\.in|[fh]\d{8}[pghd]@alumni\.bits-pilani\.ac\.in)$/
 
 export async function getUser(
     request: NextApiRequest,
     response: NextApiResponse
-) {
+): Promise<AuthorizedUser> {
     try {
         const session = await getServerSession(request, response, authOptions)
         if (!session) {
@@ -23,7 +28,7 @@ export async function getUser(
                 data: [],
                 error: true,
             })
-            return
+            return response.end() as never
         }
         if (!EMAIL_REGEX.test(session.user?.email ?? '')) {
             response.status(403).json({
@@ -31,10 +36,10 @@ export async function getUser(
                 data: [],
                 error: true,
             })
-            return
+            return response.end() as never
         }
         return {
-            email: session.user?.email,
+            email: session.user?.email!,
             name: session.user?.name,
         }
     } catch (error) {
@@ -43,7 +48,7 @@ export async function getUser(
             data: [],
             error: true,
         })
-        return
+        return response.end() as never
     }
 }
 

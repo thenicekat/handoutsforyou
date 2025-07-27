@@ -7,7 +7,7 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<BaseResponseData>
 ) {
-    const { email } = (await getUser(req, res))!
+    const { email } = await getUser(req, res)
     let {
         company,
         campus,

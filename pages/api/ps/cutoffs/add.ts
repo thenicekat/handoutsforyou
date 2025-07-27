@@ -41,7 +41,7 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<BaseResponseData>
 ) {
-    const { name, email } = (await getUser(req, res))!
+    const { name, email } = await getUser(req, res)
     const reqBody: RequestData = req.body
 
     if (!email || !name) {
