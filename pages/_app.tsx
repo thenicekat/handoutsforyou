@@ -30,12 +30,7 @@ export default function App({
                 />
             </Head>
 
-            <SessionProvider
-                session={session}
-                refetchOnWindowFocus={false}
-                refetchInterval={30 * 60}
-                refetchWhenOffline={false}
-            >
+            <SessionProvider session={session}>
                 <Component {...pageProps} />
             </SessionProvider>
         </>

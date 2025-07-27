@@ -6,4 +6,9 @@ export default async function handler(
     res: NextApiResponse<BaseResponseData>
 ) {
     await getUser(req, res)
+    return res.status(200).json({
+        error: false,
+        message: 'User authenticated',
+        data: null,
+    })
 }
