@@ -3,8 +3,10 @@ import Meta from '@/components/Meta'
 import CustomToastContainer from '@/components/ToastContainer'
 import { getMetaConfig } from '@/config/meta'
 import type { GoogleDrivePSChronicles } from '@/types/GoogleDriveChronicles'
+import axiosInstance from '@/utils/axiosCache'
 import { googleDriveService } from '@/utils/googleDrive'
 import { GetStaticProps } from 'next'
+import { useEffect } from 'react'
 
 export const getStaticProps: GetStaticProps = async () => {
     try {
@@ -56,6 +58,13 @@ export default function PSChroniclesPage({
             </div>
         )
     }
+
+    useEffect(() => {
+        async function checkAuth() {
+            await axiosInstance.get('/api/auth/check')
+        }
+        checkAuth()
+    }, [])
 
     return (
         <>

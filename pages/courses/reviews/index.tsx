@@ -70,9 +70,16 @@ export default function Reviews() {
     }
 
     useEffect(() => {
+        async function checkAuth() {
+            await axiosInstance.get('/api/auth/check')
+        }
+        checkAuth()
+    }, [])
+
+    useEffect(() => {
         localStorage.setItem('h4u_course', course)
         localStorage.setItem('h4u_prof', prof)
-    })
+    }, [course, prof])
 
     return (
         <>
