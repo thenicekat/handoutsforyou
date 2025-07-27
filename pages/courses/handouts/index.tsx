@@ -19,7 +19,6 @@ const HandoutsPerYear = dynamic(() => import('@/components/HandoutsPerYear'), {
 export const getStaticProps: GetStaticProps = async () => {
     try {
         const handoutsFolderId = process.env.GOOGLE_DRIVE_HANDOUTS_FOLDER_ID
-
         if (!handoutsFolderId) {
             throw new Error(
                 'GOOGLE_DRIVE_HANDOUTS_FOLDER_ID environment variable is not set'
@@ -47,7 +46,7 @@ export const getStaticProps: GetStaticProps = async () => {
     }
 }
 
-export default function Home({
+export default function Handouts({
     handoutsMap,
     error,
 }: {
@@ -56,7 +55,7 @@ export default function Home({
 }) {
     const [search, setSearch] = useState('')
     const [actualSearch, setActualSearch] = useState('')
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
 
     const filterHandouts = async () => {
         setIsLoading(true)
@@ -85,7 +84,7 @@ export default function Home({
     return (
         <>
             <Meta {...getMetaConfig('courses/handouts')} />
-            {/* Search box */}
+
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
                     <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">
@@ -111,7 +110,7 @@ export default function Home({
                     </>
                 </div>
             </div>
-            {/* Handouts List */}
+
             {!isLoading && (
                 <div className="px-2 md:px-20">
                     {Object.keys(handoutsMap)
@@ -131,9 +130,11 @@ export default function Home({
                         })}
                 </div>
             )}
+
             {isLoading && (
-                <div className="grid place-items-center">
-                    <p className="text-lg m-3">Loading...</p>
+                <div className="grid place-items-center py-16">
+                    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+                    <p className="text-lg mt-4">Loading data...</p>
                 </div>
             )}
         </>
