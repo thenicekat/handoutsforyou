@@ -32,5 +32,18 @@ const axiosInstance: AxiosCacheInstance = setupCache(
     }
 )
 
+axiosInstance.interceptors.response.use(
+    (response) => response,
+    (error) => {
+        const status = error?.response?.status
+        if (status === 401 || status === 403) {
+            if (typeof window !== 'undefined') {
+                window.location.assign('/error?error=Unauthorized')
+            }
+        }
+        return Promise.reject(error)
+    }
+)
+
 export { axiosInstance }
 export default axiosInstance

@@ -31,6 +31,7 @@ export default function AddPlacementResources() {
                     link: link,
                     created_by: created_by,
                     category: category,
+                    type: 'placement',
                 }
             )
             const data = res.data

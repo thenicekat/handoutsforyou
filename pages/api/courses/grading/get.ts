@@ -1,4 +1,4 @@
-import { BaseResponseData } from '@/pages/api/auth/[...nextauth]'
+import { BaseResponseData, getUser } from '@/pages/api/auth/[...nextauth]'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { COURSE_GRADING } from '../../constants'
 import { supabase } from '../../supabase'
@@ -8,6 +8,7 @@ export default async function handler(
     res: NextApiResponse<BaseResponseData>
 ) {
     const { course, prof } = req.body
+    await getUser(req, res)
 
     if (!course && !prof) {
         const { data, error } = await supabase

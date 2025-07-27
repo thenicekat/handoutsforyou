@@ -1,6 +1,7 @@
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import { getMetaConfig } from '@/config/meta'
+import axiosInstance from '@/utils/axiosCache'
 import { googleDriveService } from '@/utils/googleDrive'
 import { GetStaticProps } from 'next'
 import dynamic from 'next/dynamic'
@@ -32,7 +33,7 @@ export const getStaticProps: GetStaticProps = async () => {
             props: {
                 handoutsMap,
             },
-            revalidate: 24 * 3600, // Regenerate every 12 hours
+            revalidate: 24 * 60 * 60, // Regenerate every 24 hours
         }
     } catch (error) {
         console.error('Error fetching handouts:', error)
@@ -57,14 +58,15 @@ export default function Home({
     const [actualSearch, setActualSearch] = useState('')
     const [isLoading, setIsLoading] = useState(false)
 
-    const fetchHandouts = async () => {
+    const filterHandouts = async () => {
         setIsLoading(true)
+        await axiosInstance.get('/api/auth/check')
         setActualSearch(search)
         setIsLoading(false)
     }
 
     useEffect(() => {
-        fetchHandouts()
+        filterHandouts()
     }, [])
 
     if (error) {
@@ -101,7 +103,7 @@ export default function Home({
                             <button
                                 className="btn btn-outline w-full"
                                 tabIndex={-1}
-                                onClick={fetchHandouts}
+                                onClick={filterHandouts}
                             >
                                 Filter Handouts
                             </button>
