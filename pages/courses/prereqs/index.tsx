@@ -3,8 +3,9 @@ import Meta from '@/components/Meta'
 import Modal from '@/components/Modal'
 import { getMetaConfig } from '@/config/meta'
 import { CoursePreReqGroup } from '@/types/Courses'
+import axiosInstance from '@/utils/axiosCache'
 import { GetStaticProps } from 'next'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export const getStaticProps: GetStaticProps = async () => {
     const fs = require('fs')
@@ -27,6 +28,13 @@ export default function Prereqs({ prereqs }: { prereqs: CoursePreReqGroup[] }) {
     const toggleModal = () => {
         setOpen(!open)
     }
+
+    useEffect(() => {
+        async function checkAuth() {
+            await axiosInstance.get('/api/auth/check')
+        }
+        checkAuth()
+    }, [])
 
     return (
         <>
