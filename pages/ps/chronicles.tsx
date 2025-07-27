@@ -46,6 +46,13 @@ export default function PSChroniclesPage({
     psChronicles: GoogleDrivePSChronicles
     error?: string
 }) {
+    useEffect(() => {
+        async function checkAuth() {
+            await axiosInstance.get('/api/auth/check')
+        }
+        checkAuth()
+    }, [])
+
     if (error) {
         return (
             <div className="grid place-items-center min-h-screen">
@@ -58,13 +65,6 @@ export default function PSChroniclesPage({
             </div>
         )
     }
-
-    useEffect(() => {
-        async function checkAuth() {
-            await axiosInstance.get('/api/auth/check')
-        }
-        checkAuth()
-    }, [])
 
     return (
         <>
