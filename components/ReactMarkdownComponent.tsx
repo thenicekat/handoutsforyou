@@ -27,9 +27,20 @@ const reactMarkdownComponentConfig: Components = {
         </ul>
     ),
     li: ({ children, ...props }) => (
-        <li className="text-white" {...props}>
-            {children}
+        <li
+            className="text-white leading-relaxed list-item list-outside"
+            {...props}
+        >
+            <div className="inline">{children}</div>
         </li>
+    ),
+    p: ({ children, ...props }) => (
+        <p
+            className="text-white mb-4 whitespace-pre-wrap leading-relaxed"
+            {...props}
+        >
+            {children}
+        </p>
     ),
 }
 
