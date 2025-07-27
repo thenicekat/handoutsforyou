@@ -42,6 +42,50 @@ GOOGLE_CLIENT_SECRET=""
 NEXTAUTH_SECRET=""
 ```
 
+### Google Drive
+
+The following environment variables are required to be populated:
+
+```sh
+GOOGLE_DRIVE_CLIENT_ID=
+GOOGLE_DRIVE_CLIENT_SECRET=
+GOOGLE_DRIVE_REFRESH_TOKEN=
+
+GOOGLE_SERVICE_ACCOUNT_EMAIL=
+GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY=
+
+# Specific to 'BITS of Advice' section
+GOOGLE_DRIVE_BITSOFA_FOLDER_ID=
+GOOGLE_DRIVE_BITSOFA_SUBMISSIONS_FOLDER_ID=
+
+# For the other sections
+GOOGLE_DRIVE_PLACEMENT_CHRONICLES_FOLDER_ID=
+GOOGLE_DRIVE_SI_CHRONICLES_FOLDER_ID=
+GOOGLE_DRIVE_PS_CHRONICLES_FOLDER_ID=
+GOOGLE_DRIVE_HANDOUTS_FOLDER_ID=
+GOOGLE_DRIVE_PYQS_FOLDER_ID=
+```
+
+The first two (`GOOGLE_DRIVE_CLIENT_ID` and `GOOGLE_DRIVE_CLIENT_SECRET)` are the same as the `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`
+
+To obtain `GOOGLE_DRIVE_REFRESH_TOKEN`, you must do the following:
+
+1. Go to [OAuth2 Playground](https://developers.google.com/oauthplayground/) and click on the settings icon on the top right
+2. Check the box saying "Use your own OAuth credentials"
+3. Input the `GOOGLE_DRIVE_CLIENT_ID` and `GOOGLE_DRIVE_CLIENT_SECRET`
+4. Select Google Drive v3 API's `https://www.googleapis.com/auth/drive` scope
+5. Click `Authorize APIs`, and ensure you log in with the Google account which h4u will use for fetching data
+6. Click on `Exchange authorization code for tokens` and obtain the refresh token (`GOOGLE_DRIVE_REFRESH_TOKEN`)
+
+To create a service account (a bot account that is required for this to work):
+
+1. Enable the Google Drive API
+2. Go to Credentials -> Create credentials (choose service)
+3. Enter the details, choose Basic -> Editor in roles and hit done; this is `GOOGLE_SERVICE_ACCOUNT_EMAIL`
+4. Download the JSON containing keys and populate `GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY`
+
+To obtain any `GOOGLE_DRIVE_<folder_name>_FOLDER_ID`, copy the `folder_id` from `https://drive.google.com/file/u/1/d/<folder_id>/`
+
 ### Database.
 
 Supabase is used as the database for h4u. You can run Supabase locally using Docker for development and testing. **Note:** Make sure you have [Docker](https://docs.docker.com/get-docker/) installed before proceeding.
@@ -92,7 +136,6 @@ pnpm run dev
 To update the database schema in your local Supabase instance:
 
 1. Make your changes in `/supabase/schemas/init.sql`.
-
 2. Generate a new migration file by running:
 
 ```bash
