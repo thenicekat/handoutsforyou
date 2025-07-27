@@ -14,7 +14,7 @@ export default async function handler(
         .filter((code) => code.length > 0)
 
     const { course, dept, sem, prof, data, average_mark } = req.body
-    const { email } = (await getUser(req, res))!
+    const { email } = await getUser(req, res)
 
     if (!course) {
         res.status(422).json({
