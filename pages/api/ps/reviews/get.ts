@@ -1,4 +1,4 @@
-import { BaseResponseData } from '@/pages/api/auth/[...nextauth]'
+import { BaseResponseData, getUser } from '@/pages/api/auth/[...nextauth]'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { PS1_REVIEWS, PS2_REVIEWS } from '../../constants'
 import { supabase } from '../../supabase'
@@ -7,6 +7,7 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<BaseResponseData>
 ) {
+    await getUser(req, res)
     const { type } = req.body
 
     if (type) {

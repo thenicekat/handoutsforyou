@@ -18,8 +18,8 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<BaseResponseData>
 ) {
+    const { email } = (await getUser(req, res))!
     let rants: Rant[] = []
-    const { email } = await getUser(req, res)
 
     // Get public rants.
     const { data, error } = await supabase

@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { BaseResponseData } from '../../auth/[...nextauth]'
+import { BaseResponseData, getUser } from '../../auth/[...nextauth]'
 import { SI_CHRONICLES } from '../../constants'
 import { supabase } from '../../supabase'
 
@@ -7,6 +7,7 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<BaseResponseData>
 ) {
+    await getUser(req, res)
     const { slug } = req.body
 
     if (!slug) {

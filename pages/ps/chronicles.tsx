@@ -23,7 +23,7 @@ export const getStaticProps: GetStaticProps = async () => {
             props: {
                 psChronicles,
             },
-            revalidate: 24 * 3600, // Regenerate every 24 hours
+            revalidate: 24 * 60 * 60, // Regenerate every 24 hours
         }
     } catch (error) {
         console.error('Error fetching PS chronicles:', error)

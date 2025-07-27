@@ -4,6 +4,7 @@ import Meta from '@/components/Meta'
 import CustomToastContainer from '@/components/ToastContainer'
 import { getMetaConfig } from '@/config/meta'
 import { ResourceByCategory } from '@/types/Resource'
+import axiosInstance from '@/utils/axiosCache'
 import { PlusCircleIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
@@ -16,19 +17,18 @@ export default function Resources() {
 
     const fetchResources = async () => {
         try {
-            const res = await fetch('/api/courses/resources/get')
-            const data = await res.json()
-            if (!data.error) {
+            const res = await axiosInstance.get('/api/courses/resources/get')
+            if (!res.data.error) {
                 let resourcesByDepartment: ResourceByCategory = {}
-                for (let i = 0; i < data.data.length; i++) {
+                for (let i = 0; i < res.data.data.length; i++) {
                     if (
-                        resourcesByDepartment[data.data[i].category] ==
+                        resourcesByDepartment[res.data.data[i].category] ==
                         undefined
                     ) {
-                        resourcesByDepartment[data.data[i].category] = []
+                        resourcesByDepartment[res.data.data[i].category] = []
                     }
-                    resourcesByDepartment[data.data[i].category].push(
-                        data.data[i]
+                    resourcesByDepartment[res.data.data[i].category].push(
+                        res.data.data[i]
                     )
                 }
                 setResources(resourcesByDepartment)
