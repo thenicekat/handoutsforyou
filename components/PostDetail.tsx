@@ -31,7 +31,7 @@ const PostDetail = ({ post }: { post: Post }) => {
                     <hr />
                 </div>
             </div>
-            <div className="text-gray-300 whitespace-pre-wrap leading-relaxed text-md">
+            <div className="whitespace-normal">
                 <ReactMarkdown components={reactMarkdownComponentConfig}>
                     {post.content}
                 </ReactMarkdown>
