@@ -1,7 +1,7 @@
 import { remark } from 'remark'
 import remarkFrontmatter from 'remark-frontmatter'
-import remarkParseFrontmatter from 'remark-parse-frontmatter'
 import remarkGfm from 'remark-gfm'
+import remarkParseFrontmatter from 'remark-parse-frontmatter'
 
 import { Post } from '@/types/Post'
 

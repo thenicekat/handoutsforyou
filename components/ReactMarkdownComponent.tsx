@@ -51,7 +51,10 @@ const reactMarkdownComponentConfig: Components = {
 
     table: ({ children, ...props }) => (
         <div className="overflow-x-auto w-full px-3 border-2 border-gray-500 rounded-lg">
-            <table className="table-auto w-full border-collapse border border-gray-500 my-4" {...props}>
+            <table
+                className="table-auto w-full border-collapse border border-gray-500 my-4"
+                {...props}
+            >
                 {children}
             </table>
         </div>
@@ -61,11 +64,7 @@ const reactMarkdownComponentConfig: Components = {
             {children}
         </thead>
     ),
-    tbody: ({ children, ...props }) => (
-        <tbody {...props}>
-            {children}
-        </tbody>
-    ),
+    tbody: ({ children, ...props }) => <tbody {...props}>{children}</tbody>,
     tr: ({ children, ...props }) => (
         <tr className="border-b border-gray-500" {...props}>
             {children}

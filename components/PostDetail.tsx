@@ -6,7 +6,6 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 
 const PostDetail = ({ post }: { post: Post }) => {
-
     useEffect(() => {
         mermaid.initialize({ startOnLoad: true })
         mermaid.contentLoaded()
@@ -22,7 +21,9 @@ const PostDetail = ({ post }: { post: Post }) => {
                 <div className="text-gray-400 text-md  mt-4 flex flex-col">
                     <p>
                         <span className="text-gray-300">Contributed By - </span>
-                        {post.authors.length === 1 ? post.authors[0] : post.authors.join(', ')}
+                        {post.authors.length === 1
+                            ? post.authors[0]
+                            : post.authors.join(', ')}
                     </p>
                 </div>
                 <div className="my-4 flex flex-wrap items-baseline gap-2">
@@ -41,7 +42,10 @@ const PostDetail = ({ post }: { post: Post }) => {
                 </div>
             </div>
             <div className="whitespace-normal">
-                <ReactMarkdown remarkPlugins={[remarkGfm]} components={reactMarkdownComponentConfig}>
+                <ReactMarkdown
+                    remarkPlugins={[remarkGfm]}
+                    components={reactMarkdownComponentConfig}
+                >
                     {post.content}
                 </ReactMarkdown>
             </div>

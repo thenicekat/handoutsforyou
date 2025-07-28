@@ -118,8 +118,15 @@ const PostCard = ({ post, onBookmarkToggle }: PostCardProps) => {
                 </div>
                 <p className="text-gray-400 text-sm mt-1 flex flex-wrap items-center gap-2">
                     <span>
-                        By <span className="font-semibold">{post.authors.length === 1 ? post.authors[0] : post.authors.map((author) => author).join(', ')}</span>,
-                        on {post.date}
+                        By{' '}
+                        <span className="font-semibold">
+                            {post.authors.length === 1
+                                ? post.authors[0]
+                                : post.authors
+                                      .map((author) => author)
+                                      .join(', ')}
+                        </span>
+                        , on {post.date}
                     </span>
                     <span className="flex items-center gap-1 text-gray-500">
                         <ClockIcon className="w-4 h-4" />
@@ -140,7 +147,10 @@ const PostCard = ({ post, onBookmarkToggle }: PostCardProps) => {
 
             <div className="text-gray-300 whitespace-pre-wrap leading-relaxed mt-2">
                 <Link href={`/bitsofa/${post.slug}`}>
-                    <ReactMarkdown remarkPlugins={[remarkGfm]} components={reactMarkdownComponentConfig}>
+                    <ReactMarkdown
+                        remarkPlugins={[remarkGfm]}
+                        components={reactMarkdownComponentConfig}
+                    >
                         {contentDisplay}
                     </ReactMarkdown>
                 </Link>
