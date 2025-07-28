@@ -6,10 +6,12 @@ import {
     ShareIcon,
     StarIcon as StarIconSolid,
 } from '@heroicons/react/24/solid'
+import mermaid from 'mermaid'
 import Link from 'next/link'
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import { toast } from 'react-toastify'
+import remarkGfm from 'remark-gfm'
 
 interface PostCardProps {
     post: Post
@@ -35,6 +37,11 @@ const PostCard = ({ post, onBookmarkToggle }: PostCardProps) => {
             setIsBookmarked(saved.includes(post.slug))
         }
     }, [])
+
+    React.useEffect(() => {
+        mermaid.initialize({ startOnLoad: true })
+        mermaid.contentLoaded()
+    }, [post.content])
 
     const toggleBookmark = () => {
         if (typeof window === 'undefined') return
@@ -111,7 +118,7 @@ const PostCard = ({ post, onBookmarkToggle }: PostCardProps) => {
                 </div>
                 <p className="text-gray-400 text-sm mt-1 flex flex-wrap items-center gap-2">
                     <span>
-                        By <span className="font-semibold">{post.author}</span>,
+                        By <span className="font-semibold">{post.authors.length === 1 ? post.authors[0] : post.authors.map((author) => author).join(', ')}</span>,
                         on {post.date}
                     </span>
                     <span className="flex items-center gap-1 text-gray-500">
@@ -133,7 +140,7 @@ const PostCard = ({ post, onBookmarkToggle }: PostCardProps) => {
 
             <div className="text-gray-300 whitespace-pre-wrap leading-relaxed mt-2">
                 <Link href={`/bitsofa/${post.slug}`}>
-                    <ReactMarkdown components={reactMarkdownComponentConfig}>
+                    <ReactMarkdown remarkPlugins={[remarkGfm]} components={reactMarkdownComponentConfig}>
                         {contentDisplay}
                     </ReactMarkdown>
                 </Link>

@@ -1,7 +1,7 @@
 export type Post = {
     slug: string
     title: string
-    author: string
+    authors: string[]
     date: string
     content: string
     tags: string[]

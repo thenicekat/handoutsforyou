@@ -1,8 +1,17 @@
 import reactMarkdownComponentConfig from '@/components/ReactMarkdownComponent'
 import { Post } from '@/types/Post'
+import mermaid from 'mermaid'
+import { useEffect } from 'react'
 import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
 const PostDetail = ({ post }: { post: Post }) => {
+
+    useEffect(() => {
+        mermaid.initialize({ startOnLoad: true })
+        mermaid.contentLoaded()
+    }, [])
+
     return (
         <article className="bg-gray-800 max-w-6xl mx-auto p-8 rounded-lg border border-gray-700 min-h-screen">
             <div className="mb-6">
@@ -13,7 +22,7 @@ const PostDetail = ({ post }: { post: Post }) => {
                 <div className="text-gray-400 text-md  mt-4 flex flex-col">
                     <p>
                         <span className="text-gray-300">Contributed By - </span>
-                        {post.author}
+                        {post.authors.length === 1 ? post.authors[0] : post.authors.join(', ')}
                     </p>
                 </div>
                 <div className="my-4 flex flex-wrap items-baseline gap-2">
@@ -32,7 +41,7 @@ const PostDetail = ({ post }: { post: Post }) => {
                 </div>
             </div>
             <div className="whitespace-normal">
-                <ReactMarkdown components={reactMarkdownComponentConfig}>
+                <ReactMarkdown remarkPlugins={[remarkGfm]} components={reactMarkdownComponentConfig}>
                     {post.content}
                 </ReactMarkdown>
             </div>

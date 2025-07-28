@@ -42,6 +42,45 @@ const reactMarkdownComponentConfig: Components = {
             {children}
         </p>
     ),
+    // Mermaid
+    code: ({ children, className, ...props }) => (
+        <code className={`mermaid ${className}`} {...props}>
+            {children}
+        </code>
+    ),
+
+    table: ({ children, ...props }) => (
+        <div className="overflow-x-auto w-full px-3 border-2 border-gray-500 rounded-lg">
+            <table className="table-auto w-full border-collapse border border-gray-500 my-4" {...props}>
+                {children}
+            </table>
+        </div>
+    ),
+    thead: ({ children, ...props }) => (
+        <thead className="bg-gray-700 text-white" {...props}>
+            {children}
+        </thead>
+    ),
+    tbody: ({ children, ...props }) => (
+        <tbody {...props}>
+            {children}
+        </tbody>
+    ),
+    tr: ({ children, ...props }) => (
+        <tr className="border-b border-gray-500" {...props}>
+            {children}
+        </tr>
+    ),
+    th: ({ children, ...props }) => (
+        <th className="px-4 py-2 font-bold border border-gray-500" {...props}>
+            {children}
+        </th>
+    ),
+    td: ({ children, ...props }) => (
+        <td className="px-4 py-2 border border-gray-500" {...props}>
+            {children}
+        </td>
+    ),
 }
 
 export default reactMarkdownComponentConfig

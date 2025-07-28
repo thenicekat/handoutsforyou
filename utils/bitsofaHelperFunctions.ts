@@ -1,6 +1,7 @@
 import { remark } from 'remark'
 import remarkFrontmatter from 'remark-frontmatter'
 import remarkParseFrontmatter from 'remark-parse-frontmatter'
+import remarkGfm from 'remark-gfm'
 
 import { Post } from '@/types/Post'
 
@@ -11,6 +12,7 @@ export async function convertGDriveDataToPost(
     const processedContent = await remark()
         .use(remarkFrontmatter)
         .use(remarkParseFrontmatter)
+        .use(remarkGfm)
         .process(fileContent)
 
     const frontmatter = (processedContent.data as any).frontmatter || {}
@@ -28,7 +30,7 @@ export async function convertGDriveDataToPost(
     return {
         slug: postSlug,
         title: frontmatter.title || '',
-        author: frontmatter.author || '',
+        authors: frontmatter.authors || [],
         date: frontmatter.date || '',
         content: String(postContent),
         tags: frontmatter.tags || [],
