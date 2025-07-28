@@ -31,7 +31,6 @@
         "next-auth": "^4.24.11",
         "next-pwa": "^5.6.0",
         "obscenity": "^0.4.0",
-        "playwright": "^1.54.1",
         "postcss": "^8.4.41",
         "react": "19.1.0",
         "react-countup": "^6.5.3",
