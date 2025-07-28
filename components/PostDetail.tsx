@@ -1,6 +1,5 @@
 import reactMarkdownComponentConfig from '@/components/ReactMarkdownComponent'
 import { Post } from '@/types/Post'
-import { useEffect } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 

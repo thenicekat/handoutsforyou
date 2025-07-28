@@ -117,8 +117,8 @@ const PostCard = ({ post, onBookmarkToggle }: PostCardProps) => {
                             {post.authors.length === 1
                                 ? post.authors[0]
                                 : post.authors
-                                    .map((author) => author)
-                                    .join(', ')}
+                                      .map((author) => author)
+                                      .join(', ')}
                         </span>
                         , on {post.date}
                     </span>

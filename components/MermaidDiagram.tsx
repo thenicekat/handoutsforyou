@@ -1,6 +1,6 @@
-import { useEffect, useRef } from 'react'
 import mermaid from 'mermaid'
 import dynamic from 'next/dynamic'
+import { useEffect, useRef } from 'react'
 
 interface MermaidDiagramProps {
     content: string
@@ -14,20 +14,21 @@ const MermaidDiagramComponent = ({ content }: MermaidDiagramProps) => {
             mermaid.initialize({
                 startOnLoad: false,
                 theme: 'dark',
-                securityLevel: 'strict'
+                securityLevel: 'strict',
             })
 
             // Clear previous content
             containerRef.current.innerHTML = ''
 
             // Render new diagram
-            mermaid.render(`mermaid-${Date.now()}`, content)
+            mermaid
+                .render(`mermaid-${Date.now()}`, content)
                 .then(({ svg }) => {
                     if (containerRef.current) {
                         containerRef.current.innerHTML = svg
                     }
                 })
-                .catch(error => {
+                .catch((error) => {
                     console.error('Mermaid rendering failed:', error)
                     if (containerRef.current) {
                         containerRef.current.innerHTML = `<pre>${content}</pre>`
@@ -45,4 +46,4 @@ const MermaidDiagram = dynamic<MermaidDiagramProps>(
     { ssr: false }
 )
 
-export default MermaidDiagram 
+export default MermaidDiagram
