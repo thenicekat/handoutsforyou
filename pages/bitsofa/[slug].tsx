@@ -39,8 +39,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             props: {
                 post,
             },
-            // Caches the article for 60s [testing]
-            revalidate: 60,
+            // Caches the article for 90 days
+            // 91st day onwards, new version will be fetched and cached for 90 days
+            revalidate: 60 * 60 * 24 * 90,
         }
     } catch (error) {
         console.error('Error fetching post:', error)
