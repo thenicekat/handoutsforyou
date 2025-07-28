@@ -42,13 +42,11 @@ const reactMarkdownComponentConfig: Components = {
             {children}
         </p>
     ),
-    // Mermaid
     code: ({ children, className, ...props }) => (
         <code className={`mermaid ${className}`} {...props}>
             {children}
         </code>
     ),
-
     table: ({ children, ...props }) => (
         <div className="overflow-x-auto w-full px-3 border-2 border-gray-500 rounded-lg">
             <table
