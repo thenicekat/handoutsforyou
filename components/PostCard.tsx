@@ -6,7 +6,6 @@ import {
     ShareIcon,
     StarIcon as StarIconSolid,
 } from '@heroicons/react/24/solid'
-import mermaid from 'mermaid'
 import Link from 'next/link'
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
@@ -37,11 +36,6 @@ const PostCard = ({ post, onBookmarkToggle }: PostCardProps) => {
             setIsBookmarked(saved.includes(post.slug))
         }
     }, [])
-
-    React.useEffect(() => {
-        mermaid.initialize({ startOnLoad: true })
-        mermaid.contentLoaded()
-    }, [post.content])
 
     const toggleBookmark = () => {
         if (typeof window === 'undefined') return
@@ -123,8 +117,8 @@ const PostCard = ({ post, onBookmarkToggle }: PostCardProps) => {
                             {post.authors.length === 1
                                 ? post.authors[0]
                                 : post.authors
-                                      .map((author) => author)
-                                      .join(', ')}
+                                    .map((author) => author)
+                                    .join(', ')}
                         </span>
                         , on {post.date}
                     </span>

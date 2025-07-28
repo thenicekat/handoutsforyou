@@ -1,16 +1,10 @@
 import reactMarkdownComponentConfig from '@/components/ReactMarkdownComponent'
 import { Post } from '@/types/Post'
-import mermaid from 'mermaid'
 import { useEffect } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 
 const PostDetail = ({ post }: { post: Post }) => {
-    useEffect(() => {
-        mermaid.initialize({ startOnLoad: true })
-        mermaid.contentLoaded()
-    }, [])
-
     return (
         <article className="bg-gray-800 max-w-6xl mx-auto p-8 rounded-lg border border-gray-700 min-h-screen">
             <div className="mb-6">

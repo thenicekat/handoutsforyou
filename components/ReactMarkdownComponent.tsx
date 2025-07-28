@@ -1,4 +1,5 @@
 import { Components } from 'react-markdown'
+import MermaidDiagram from './MermaidDiagram'
 
 const reactMarkdownComponentConfig: Components = {
     h1: ({ children, ...props }) => (
@@ -42,11 +43,20 @@ const reactMarkdownComponentConfig: Components = {
             {children}
         </p>
     ),
-    code: ({ children, className, ...props }) => (
-        <code className={`mermaid ${className}`} {...props}>
-            {children}
-        </code>
-    ),
+    code: ({ node, className, children, ...props }) => {
+        const match = /language-(\w+)/.exec(className || '')
+        const content = String(children).replace(/\n$/, '')
+
+        if (match && match[1] === 'mermaid') {
+            return <MermaidDiagram content={content} />
+        }
+
+        return (
+            <code className={className} {...props}>
+                {children}
+            </code>
+        )
+    },
     table: ({ children, ...props }) => (
         <div className="overflow-x-auto w-full px-3 border-2 border-gray-500 rounded-lg">
             <table
