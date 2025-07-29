@@ -1,6 +1,6 @@
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
-import StarPrompt from '@/components/StarPrompt'
+import StarPrompt from '@/components/Prompt'
 import Link from 'next/link'
 import { useState } from 'react'
 import CountUp from 'react-countup'
