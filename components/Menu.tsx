@@ -3,7 +3,7 @@ import { Bars3Icon, StarIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { signOut } from 'next-auth/react'
 import Link from 'next/link'
 import { useState } from 'react'
-import StarPrompt from './StarPrompt'
+import StarPrompt from './Prompt'
 
 const Menu = ({ onLandingPage }: MenuProps) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)

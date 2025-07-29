@@ -17,9 +17,7 @@ export default function StarPrompt({ setStarCount }: Props) {
             const data = await response.json()
             setInternalStarCount(data.stargazers_count || 0)
             setStarCount(data.stargazers_count || 0)
-        } catch (error) {
-            // Silently handle error
-        }
+        } catch (error) {}
     }
 
     React.useEffect(() => {
@@ -49,10 +47,15 @@ export default function StarPrompt({ setStarCount }: Props) {
     return (
         <Modal open={starPromptOpen}>
             <div className="backdrop-blur-lg p-6 rounded-xl shadow-lg">
-                <h3 className="text-md font-semibold text-white">
-                    ✨ Love this project? Please consider giving it a ⭐ on
-                    GitHub! ✨
+                <h3 className="text-lg font-semibold text-white text-center">
+                    Feature alert!
                 </h3>
+                <br />
+                <p className="text-sm text-white text-center">
+                    Presenting our new feature, with advice, feedback and
+                    commentary on stuff you need, in college and beyond. We hope
+                    you find our <b>BITS of Advice</b> useful.
+                </p>
                 <div className="mt-4 flex flex-col gap-4">
                     <button
                         className="bg-gradient-to-r from-teal-400 to-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:scale-105 transition-transform"
