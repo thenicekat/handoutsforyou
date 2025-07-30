@@ -1,5 +1,5 @@
 import { getMetaConfig } from '@/config/meta'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
 import Menu from '@/components/Menu'
@@ -8,6 +8,7 @@ import Modal from '@/components/Modal'
 import MultiSelectTags from '@/components/MultiSelectTags'
 import CustomToastContainer from '@/components/ToastContainer'
 import { tags } from '@/config/tags'
+import axiosInstance from '@/utils/axiosCache'
 
 export default function ContributeAdvice() {
     const [title, setTitle] = useState('')
@@ -16,6 +17,13 @@ export default function ContributeAdvice() {
     const [content, setContent] = useState('')
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [showGuidelines, setShowGuidelines] = useState(false)
+
+    useEffect(() => {
+        async function checkAuth() {
+            await axiosInstance.get('/api/auth/check')
+        }
+        checkAuth()
+    }, [])
 
     const validateForm = (): boolean => {
         if (title === '') {
@@ -54,10 +62,7 @@ export default function ContributeAdvice() {
     }
 
     const submitAdvice = async () => {
-        // Validation already performed before opening guidelines modal
-
         setIsSubmitting(true)
-
         try {
             const response = await fetch('/api/bitsofa/add', {
                 method: 'POST',

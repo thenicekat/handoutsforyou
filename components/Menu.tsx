@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import StarPrompt from './Prompt'
 
-const Menu = ({ onLandingPage }: MenuProps) => {
+const Menu = ({ doNotShowMenu }: MenuProps) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [starCount, setStarCount] = useState(0)
 
@@ -54,7 +54,7 @@ const Menu = ({ onLandingPage }: MenuProps) => {
                             </button>
                         </Link>
 
-                        {!onLandingPage && (
+                        {!doNotShowMenu && (
                             <button
                                 onClick={() => signOut()}
                                 className="px-4 py-2 rounded-lg bg-red-500/20 hover:bg-red-500/30 text-red-500 text-sm transition-all"
@@ -65,7 +65,7 @@ const Menu = ({ onLandingPage }: MenuProps) => {
 
                         <button
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
-                            className={`p-2 rounded-lg bg-zinc-200/50 dark:bg-zinc-800/50 hover:bg-zinc-300/50 dark:hover:bg-zinc-700/50 text-black dark:text-white transition-all ${onLandingPage && ' hidden'}`}
+                            className={`p-2 rounded-lg bg-zinc-200/50 dark:bg-zinc-800/50 hover:bg-zinc-300/50 dark:hover:bg-zinc-700/50 text-black dark:text-white transition-all ${doNotShowMenu && ' hidden'}`}
                         >
                             {isMenuOpen ? (
                                 <XMarkIcon className="h-6 w-6" />
