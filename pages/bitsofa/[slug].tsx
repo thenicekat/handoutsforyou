@@ -58,7 +58,7 @@ const PostPage = ({ post }: PostPageProps) => {
         return (
             <>
                 <Meta title="Post not found | handoutsforyou." />
-                <Menu />
+                <Menu doNotShowMenu={true} />
                 <div className="text-white min-h-screen pt-16 flex items-center justify-center">
                     <h1 className="text-4xl font-bold">Post not found</h1>
                 </div>
