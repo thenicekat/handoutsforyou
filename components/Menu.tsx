@@ -1,6 +1,5 @@
 import { MenuProps } from '@/types/Menu'
 import { Bars3Icon, StarIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import { signOut } from 'next-auth/react'
 import Link from 'next/link'
 import { useState } from 'react'
 import StarPrompt from './Prompt'
@@ -53,15 +52,6 @@ const Menu = ({ doNotShowMenu }: MenuProps) => {
                                 </span>
                             </button>
                         </Link>
-
-                        {!doNotShowMenu && (
-                            <button
-                                onClick={() => signOut()}
-                                className="px-4 py-2 rounded-lg bg-red-500/20 hover:bg-red-500/30 text-red-500 text-sm transition-all"
-                            >
-                                Sign Out
-                            </button>
-                        )}
 
                         <button
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
