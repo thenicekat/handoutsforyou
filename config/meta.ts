@@ -315,11 +315,6 @@ export const metaConfigs: Record<string, MetaConfig> = {
         description:
             'Find out where to find any professor, any department. Searchable by prof name.',
     }),
-    faqs: createMeta({
-        title: 'FAQs.',
-        description:
-            'Frequently asked questions - about anything from academics to campus life to placements and beyond.',
-    }),
     bitsofa: createMeta({
         title: 'BITS of Advice.',
         description:
