@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { useState } from 'react'
 import CountUp from 'react-countup'
 
+const COUNT_UP_DURATION = 3
+
 type SummaryData = {
     handouts: number
     ps1Cutoffs: number
@@ -21,6 +23,8 @@ type SummaryData = {
     siResources: number
     higherStudiesResources: number
     links: number
+    rants: number
+    profChambers: number
 }
 
 const RESOURCE_COUNTS: SummaryData = {
@@ -39,6 +43,8 @@ const RESOURCE_COUNTS: SummaryData = {
     siResources: 10,
     higherStudiesResources: 2,
     links: 12,
+    rants: 23,
+    profChambers: 320,
 }
 
 const USEFUL_LINKS = [
@@ -191,17 +197,25 @@ export default function Home() {
             ],
         },
         {
-            title: 'Others.',
-            description: 'Everything else.',
+            title: 'Everything else.',
+            description: "We couldn't fit these in the other categories :P",
             items: [
                 { name: 'BITS of Advice', path: '/bitsofa' },
-                { name: 'Rants', path: '/rants' },
-                { name: 'Professor Chambers', path: '/chambers' },
+                {
+                    name: 'Rants',
+                    path: '/rants',
+                    count: RESOURCE_COUNTS.rants,
+                },
+                {
+                    name: 'Professor Chambers',
+                    path: '/chambers',
+                    count: RESOURCE_COUNTS.profChambers,
+                },
                 {
                     name: 'Some Useful Links',
+                    count: RESOURCE_COUNTS.links,
                     onClick: () => setShowLinksModal(true),
                 },
-                { name: 'FAQs', path: '/faqs' },
             ],
         },
     ]
@@ -232,7 +246,7 @@ export default function Home() {
                                         RESOURCE_COUNTS.ps1Cutoffs +
                                         RESOURCE_COUNTS.ps2Cutoffs
                                     }
-                                    duration={3}
+                                    duration={COUNT_UP_DURATION}
                                 />
                                 +
                             </div>
@@ -247,7 +261,7 @@ export default function Home() {
                                         RESOURCE_COUNTS.courseReviews +
                                         RESOURCE_COUNTS.courseGrading
                                     }
-                                    duration={3}
+                                    duration={COUNT_UP_DURATION}
                                 />
                                 +
                             </div>
@@ -262,7 +276,7 @@ export default function Home() {
                                         RESOURCE_COUNTS.placementCtcs +
                                         RESOURCE_COUNTS.siCompanies
                                     }
-                                    duration={3}
+                                    duration={COUNT_UP_DURATION}
                                 />
                                 +
                             </div>
@@ -274,7 +288,7 @@ export default function Home() {
                             <div className="text-2xl md:text-3xl font-bold text-white">
                                 <CountUp
                                     end={RESOURCE_COUNTS.links}
-                                    duration={3}
+                                    duration={COUNT_UP_DURATION}
                                 />
                             </div>
                             <div className="text-sm text-gray-300">
@@ -323,7 +337,7 @@ export default function Home() {
                                                                             item.count
                                                                         }
                                                                         duration={
-                                                                            3
+                                                                            COUNT_UP_DURATION
                                                                         }
                                                                     />
                                                                 </span>
@@ -367,20 +381,9 @@ export default function Home() {
                                                                     end={
                                                                         item.count
                                                                     }
-                                                                    duration={3}
-                                                                />
-                                                            </span>
-                                                        )}
-                                                    {item.name ===
-                                                        'Some Useful Links' &&
-                                                        RESOURCE_COUNTS.links >
-                                                            0 && (
-                                                            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gray-900 text-white">
-                                                                <CountUp
-                                                                    end={
-                                                                        RESOURCE_COUNTS.links
+                                                                    duration={
+                                                                        COUNT_UP_DURATION
                                                                     }
-                                                                    duration={3}
                                                                 />
                                                             </span>
                                                         )}
