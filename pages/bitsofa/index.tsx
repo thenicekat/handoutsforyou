@@ -102,7 +102,7 @@ const ForumPage = ({ posts }: ForumPageProps) => {
     return (
         <>
             <Meta title="BITS of Advice. | handoutsforyou." />
-            <Menu doNotShowMenu={true} />
+            <Menu />
             <div className="text-white min-h-screen pt-8">
                 <div className="text-center p-4">
                     <h2 className="text-4xl font-bold">BITS of Advice.</h2>
