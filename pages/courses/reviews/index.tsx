@@ -31,7 +31,6 @@ export default function Reviews() {
             toast.error('Please select a professor from the given list!')
             return
         }
-
         setIsLoading(true)
         try {
             const res = await axiosInstance.post('/api/courses/reviews/get', {
@@ -42,31 +41,37 @@ export default function Reviews() {
                 const reviews = res.data
                 if (reviews.error && reviews.status !== 400) {
                     toast.error(reviews.message)
-                    setIsLoading(false)
                 } else {
-                    setReviews(reviews.data as CourseReview[])
-                    setIsLoading(false)
-                    filterByDept(departments[dept])
+                    setReviews(
+                        filterByDept(
+                            reviews.data as CourseReview[],
+                            departments[dept]
+                        )
+                    )
                 }
             }
         } catch (error) {
             console.error('Error fetching course reviews:', error)
             toast.error('Failed to fetch reviews')
+        } finally {
             setIsLoading(false)
         }
     }
 
-    const filterByDept = (dept: string) => {
-        if (dept === '' || dept === undefined) return
-        let deptsToCheck = dept.split('/').map((d) => d.trim())
+    const filterByDept = (
+        courseReviews: CourseReview[],
+        department: string
+    ): CourseReview[] => {
+        if (department === '' || department === undefined) return courseReviews
+        let departmentsToCheck = department.split('/').map((d) => d.trim())
         let filteredReviews = new Set()
-        reviews.forEach((review) => {
-            deptsToCheck.forEach((d) => {
+        courseReviews.forEach((review) => {
+            departmentsToCheck.forEach((d: string) => {
                 if (review.course.split(' ')[0].includes(d))
                     filteredReviews.add(review)
             })
         })
-        setReviews(Array.from(filteredReviews) as CourseReview[])
+        return Array.from(filteredReviews) as CourseReview[]
     }
 
     useEffect(() => {
@@ -118,11 +123,7 @@ export default function Reviews() {
                         />
 
                         <p className="text-center p-2 m-2">
-                            This is a list of all the courses reviews. You can
-                            choose the prof/course you want to filter for. You
-                            would need to click on fetch reviews to get started.
-                            We do this to prevent unnecessary load if you want
-                            to filter.
+                            Start by selecting a course and professor.
                         </p>
 
                         <div className="flex flex-col md:flex-row w-1/2 justify-center">
@@ -160,7 +161,6 @@ export default function Reviews() {
                 </div>
             </div>
             <div>
-                {/* Show the count of reviews */}
                 <div className="flex justify-center">
                     <h1 className="text-3xl text-primary">
                         {reviews.length > 0 &&
@@ -199,10 +199,9 @@ export default function Reviews() {
                                 </div>
                             ))
                     ) : (
-                        <div className="flex justify-center">
-                            <h1 className="text-3xl text-primary">
-                                Loading...
-                            </h1>
+                        <div className="grid place-items-center py-16">
+                            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+                            <p className="text-lg mt-4">Loading reviews...</p>
                         </div>
                     )}
                 </div>
