@@ -64,7 +64,6 @@ export default function Grading() {
             toast.error('Please select a professor from the given list!')
             return
         }
-
         setIsLoading(true)
         try {
             const res = await axiosInstance.post('/api/courses/grading/get', {
@@ -100,7 +99,7 @@ export default function Grading() {
     useEffect(() => {
         localStorage.setItem('h4u_grading_course', course)
         localStorage.setItem('h4u_grading_prof', prof)
-    })
+    }, [course, prof])
 
     return (
         <>
@@ -120,13 +119,16 @@ export default function Grading() {
                             value={course}
                             onChange={(val) => setCourse(val)}
                         />
+
                         <span className="m-2"></span>
+
                         <AutoCompleter
-                            name={'Prof'}
+                            name={'Professor'}
                             items={profs.map((p) => p.name)}
                             value={prof}
                             onChange={(val) => setProf(val)}
                         />
+
                         <p className="text-center p-2 m-2">
                             This is a list of all the courses and their midsem
                             grading. P.S. You can choose the prof/course you
@@ -155,17 +157,22 @@ export default function Grading() {
                     </>
                 </div>
             </div>
+
             <div className="max-w-7xl mx-auto px-2 md:px-20 p-4">
                 {isLoading ? (
-                    <div className="flex justify-center">
-                        <h1 className="text-3xl text-primary">Loading...</h1>
+                    <div className="grid place-items-center py-16">
+                        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+                        <p className="text-lg mt-4">Loading...</p>
                     </div>
                 ) : (
                     <>
                         {Object.keys(gradings)
                             .sort((a, b) => b.localeCompare(a))
                             .map((sem) => (
-                                <div key={course} className="mb-4 w-full">
+                                <div
+                                    key={course + prof + sem}
+                                    className="mb-4 w-full"
+                                >
                                     <div className="collapse collapse-plus w-full">
                                         <input type="checkbox" />
                                         <div className="collapse-title text-lg md:text-2xl font-medium">
