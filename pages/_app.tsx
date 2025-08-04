@@ -31,7 +31,7 @@ export default function App({
                 />
             </Head>
 
-            <GoogleAdSense publisherId="ca-pub-8538529975248100" />
+            <GoogleAdSense publisherId="pub-8538529975248100" />
 
             <SessionProvider session={session}>
                 <Component {...pageProps} />
