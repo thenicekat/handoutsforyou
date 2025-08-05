@@ -1,3 +1,4 @@
+import AdBanner from '@/components/AdBanner'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import Modal from '@/components/Modal'
@@ -56,10 +57,19 @@ export default function Prereqs({ prereqs }: { prereqs: CoursePreReqGroup[] }) {
                     />
                 </div>
             </div>
+
             <p className="text-center m-2">
                 NOTE: Here PRE means you will have to complete before hand while
                 CO means you can do them parallelly
             </p>
+
+            <AdBanner
+                data-ad-slot="6217320688"
+                data-full-width-responsive="true"
+                data-ad-format="fluid"
+                data-ad-layout="in-article"
+            />
+
             <div className="grid md:grid-cols-3 place-items-center p-5">
                 <Modal open={open}>
                     <h3 className="font-bold text-lg">{prereq?.name}</h3>
