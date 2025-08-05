@@ -1,3 +1,4 @@
+import AdBanner from '@/components/AdBanner'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import StarPrompt from '@/components/Prompt'
@@ -297,6 +298,12 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
+
+                <AdBanner
+                    data-ad-slot="6217320688"
+                    data-full-width-responsive="true"
+                    data-ad-format="auto"
+                />
 
                 {/* Resource Categories Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
