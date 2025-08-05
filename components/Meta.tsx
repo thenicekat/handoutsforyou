@@ -33,6 +33,11 @@ export default function Meta({
                 <meta name="keywords" content={meta.keywords.join(', ')} />
             )}
 
+            <meta
+                name="viewport"
+                content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
+            />
+
             {/* Icon Tags */}
             <meta name="handoutsforyou" content="handoutsforyou" />
             <meta name="apple-mobile-web-app-capable" content="yes" />
