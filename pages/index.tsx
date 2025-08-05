@@ -231,7 +231,7 @@ export default function Home() {
             {/* Main Content */}
             <div className="container mx-auto px-4 py-12">
                 {/* Hero Section with Stats */}
-                <div className="text-center mb-16">
+                <div className="text-center mb-8">
                     <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                         Your Comprehensive Resource Hub.
                     </h2>
@@ -302,7 +302,8 @@ export default function Home() {
                 <AdBanner
                     data-ad-slot="6217320688"
                     data-full-width-responsive="true"
-                    data-ad-format="auto"
+                    data-ad-format="fluid"
+                    data-ad-layout="in-article"
                 />
 
                 {/* Resource Categories Grid */}
