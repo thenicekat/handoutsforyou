@@ -1,3 +1,4 @@
+import AdBanner from '@/components/AdBanner'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import CustomToastContainer from '@/components/ToastContainer'
@@ -17,6 +18,7 @@ import {
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { toast } from 'react-toastify'
+
 
 export default function PlacementCTCs() {
     const [input, setInput] = useState('')
@@ -201,6 +203,7 @@ export default function PlacementCTCs() {
                                     Update Year
                                 </button>
                             </Link>
+
                         </div>
                         <p className="text-center">
                             NOTE: ESOPs do not count as monetary benefits for
@@ -210,6 +213,13 @@ export default function PlacementCTCs() {
                 </div>
             </div>
             <div className="max-w-7xl mx-auto">
+                <AdBanner
+                    data-ad-slot="6217320688"
+                    data-full-width-responsive="true"
+                    data-ad-format="fluid"
+                    data-ad-layout="in-article"
+                />
+
                 {/* Mobile UI */}
                 <div className="px-2 p-2 grid md:hidden sm:grid-cols-2 grid-cols-1 place-items-center">
                     {filteredPlacementCTCs.map((placementCTC) => (
