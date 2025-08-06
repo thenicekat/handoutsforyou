@@ -17,7 +17,7 @@ export default function StarPrompt({ setStarCount }: Props) {
             const data = await response.json()
             setInternalStarCount(data.stargazers_count || 0)
             setStarCount(data.stargazers_count || 0)
-        } catch (error) {}
+        } catch (error) { }
     }
 
     React.useEffect(() => {
@@ -48,13 +48,14 @@ export default function StarPrompt({ setStarCount }: Props) {
         <Modal open={starPromptOpen}>
             <div className="backdrop-blur-lg p-6 rounded-xl shadow-lg">
                 <h3 className="text-lg font-semibold text-white text-center">
-                    Feature alert!
+                    h4u now has ads!
                 </h3>
                 <br />
                 <p className="text-sm text-white text-center">
-                    Presenting our new feature, with advice, feedback and
-                    commentary on stuff you need, in college and beyond. We hope
-                    you find our <b>BITS of Advice</b> useful.
+                    We know ads can be annoying—but they help us keep the site running.
+                    Your support through viewing ads helps cover server and domain costs.
+                    If you enjoy using this site, consider keeping ads on. Every bit counts.
+                    Thank you
                 </p>
                 <div className="mt-4 flex flex-col gap-4">
                     <button
