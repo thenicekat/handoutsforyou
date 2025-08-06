@@ -2,7 +2,6 @@ import { GetStaticProps } from 'next'
 import Link from 'next/link'
 import React, { useEffect } from 'react'
 
-import AdBanner from '@/components/AdBanner'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import PostCard from '@/components/PostCard'
@@ -104,11 +103,6 @@ const ForumPage = ({ posts }: ForumPageProps) => {
         <>
             <Meta title="BITS of Advice. | handoutsforyou." />
             <Menu />
-            <AdBanner
-                data-ad-slot="6217320688"
-                data-full-width-responsive="true"
-                data-ad-format="auto"
-            />
             <div className="text-white min-h-screen pt-8">
                 <div className="text-center p-4">
                     <h2 className="text-4xl font-bold">BITS of Advice.</h2>
