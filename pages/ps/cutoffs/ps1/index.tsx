@@ -257,12 +257,14 @@ export default function PS1Data() {
                     </>
                 </div>
             </div>
+
             {isLoading && (
                 <div className="grid place-items-center py-16">
                     <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
                     <p className="text-lg mt-4">Loading data...</p>
                 </div>
             )}
+
             {!isLoading && (
                 <div>
                     <div className="flex justify-center">
