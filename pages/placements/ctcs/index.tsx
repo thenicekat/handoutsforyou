@@ -19,7 +19,6 @@ import Link from 'next/link'
 import React, { useState } from 'react'
 import { toast } from 'react-toastify'
 
-
 export default function PlacementCTCs() {
     const [input, setInput] = useState('')
     const [placementCTCs, setPlacementCTCs] = useState([] as PlacementCTC[])
@@ -203,7 +202,6 @@ export default function PlacementCTCs() {
                                     Update Year
                                 </button>
                             </Link>
-
                         </div>
                         <p className="text-center">
                             NOTE: ESOPs do not count as monetary benefits for

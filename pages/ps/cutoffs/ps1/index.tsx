@@ -1,4 +1,3 @@
-import AdBanner from '@/components/AdBanner'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import CustomToastContainer from '@/components/ToastContainer'

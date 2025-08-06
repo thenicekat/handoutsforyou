@@ -1,4 +1,3 @@
-import AdBanner from '@/components/AdBanner'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import StarPrompt from '@/components/Prompt'
@@ -231,7 +230,7 @@ export default function Home() {
             {/* Main Content */}
             <div className="container mx-auto px-4 py-12">
                 {/* Hero Section with Stats */}
-                <div className="text-center mb-8">
+                <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                         Your Comprehensive Resource Hub.
                     </h2>
@@ -298,13 +297,6 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-
-                <AdBanner
-                    data-ad-slot="6217320688"
-                    data-full-width-responsive="true"
-                    data-ad-format="fluid"
-                    data-ad-layout="in-article"
-                />
 
                 {/* Resource Categories Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
