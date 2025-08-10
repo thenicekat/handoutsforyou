@@ -104,11 +104,14 @@ const ForumPage = ({ posts }: ForumPageProps) => {
         <>
             <Meta title="BITS of Advice. | handoutsforyou." />
             <Menu />
+
             <AdBanner
                 data-ad-slot="6217320688"
                 data-full-width-responsive="true"
-                data-ad-format="auto"
+                data-ad-format="fluid"
+                data-ad-layout="in-article"
             />
+
             <div className="text-white min-h-screen pt-8">
                 <div className="text-center p-4">
                     <h2 className="text-4xl font-bold">BITS of Advice.</h2>
