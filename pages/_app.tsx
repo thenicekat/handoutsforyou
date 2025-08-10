@@ -4,7 +4,6 @@ import '../styles/globals.css'
 import type { Session } from 'next-auth'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import { GoogleAdSense } from 'nextjs-google-adsense'
 
 // Use of the <SessionProvider> is mandatory to allow components that call
 // `useSession()` anywhere in your application to access the `session` object.
@@ -30,8 +29,6 @@ export default function App({
                     content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
                 />
             </Head>
-
-            <GoogleAdSense publisherId="pub-8538529975248100" />
 
             <SessionProvider session={session}>
                 <Component {...pageProps} />
