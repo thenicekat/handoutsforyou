@@ -25,6 +25,7 @@ export default function PlacementCTCs() {
         [] as PlacementCTC[]
     )
     const [yearRef, setYearRef] = useState(placementYears[0])
+    const [isLoading, setIsLoading] = useState(true)
 
     const fetchPlacementCTCs = async () => {
         try {
@@ -41,6 +42,8 @@ export default function PlacementCTCs() {
         } catch (error) {
             console.error('Error fetching placement CTCs:', error)
             toast.error('Failed to fetch placement details')
+        } finally {
+            setIsLoading(false)
         }
     }
 
@@ -210,7 +213,12 @@ export default function PlacementCTCs() {
                 </div>
             </div>
             <div className="max-w-7xl mx-auto">
-                {filteredPlacementCTCs.length === 0 ? (
+                {isLoading ? (
+                    <div className="grid place-items-center py-16">
+                        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+                        <p className="text-lg mt-4">Loading data...</p>
+                    </div>
+                ) : filteredPlacementCTCs.length === 0 ? (
                     <div className="flex flex-col items-center justify-center p-8 text-center">
                         <div className="text-6xl mb-4">📊</div>
                         <h3 className="text-2xl font-semibold mb-2">
