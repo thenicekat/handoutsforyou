@@ -20,13 +20,66 @@ export default function AddPlacementCTCs() {
     const [description, setDescription] = useState('')
 
     const [isLoading, setIsLoading] = useState(false)
+    const [errors, setErrors] = useState<{ [key: string]: string }>({})
+
+    const validateForm = () => {
+        const newErrors: { [key: string]: string } = {}
+
+        if (!name.trim()) {
+            newErrors.name = 'Company name is required'
+        }
+
+        if (!campus) {
+            newErrors.campus = 'Campus is required'
+        }
+
+        if (!academicYear) {
+            newErrors.academicYear = 'Academic year is required'
+        }
+
+        if (base < 0) {
+            newErrors.base = 'Base salary cannot be negative'
+        }
+
+        if (joiningBonus < 0) {
+            newErrors.joiningBonus = 'Joining bonus cannot be negative'
+        }
+
+        if (relocationBonus < 0) {
+            newErrors.relocationBonus = 'Relocation bonus cannot be negative'
+        }
+
+        if (variableBonus < 0) {
+            newErrors.variableBonus = 'Variable bonus cannot be negative'
+        }
+
+        if (monetaryValueOfBenefits < 0) {
+            newErrors.monetaryValueOfBenefits =
+                'Benefits value cannot be negative'
+        }
+
+        if (!description.trim()) {
+            newErrors.description = 'Description is required'
+        } else if (description.trim().length < 50) {
+            newErrors.description =
+                'Description should be at least 50 characters'
+        }
+
+        setErrors(newErrors)
+        return Object.keys(newErrors).length === 0
+    }
 
     const addPlacementCTC = async () => {
+        if (!validateForm()) {
+            toast.error('Please fix the errors in the form')
+            return
+        }
+
         setIsLoading(true)
 
         try {
             const res = await axiosInstance.post('/api/placements/ctcs/add', {
-                company: name,
+                company: name.trim(),
                 campus: campus,
                 academicYear: academicYear,
                 base: base,
@@ -34,13 +87,14 @@ export default function AddPlacementCTCs() {
                 relocationBonus: relocationBonus,
                 variableBonus: variableBonus,
                 monetaryValueOfBenefits: monetaryValueOfBenefits,
-                description: description,
+                description: description.trim(),
             })
             const data = res.data
             if (data.error) {
                 toast.error(data.message)
             } else {
                 toast.success('Thank you! CTC was added successfully!')
+                // Reset form
                 setName('')
                 setCampus('')
                 setAcademicYear('')
@@ -50,10 +104,11 @@ export default function AddPlacementCTCs() {
                 setVariableBonus(0)
                 setMonetaryValueOfBenefits(0)
                 setDescription('')
+                setErrors({})
             }
         } catch (error) {
             console.error('Error adding placement CTC:', error)
-            toast.error('Failed to add CTC')
+            toast.error('Failed to add CTC. Please try again.')
         }
         setIsLoading(false)
     }
@@ -61,202 +116,329 @@ export default function AddPlacementCTCs() {
     return (
         <>
             <Meta {...getMetaConfig('placements/ctcs')} />
-            {/* Search box */}
-            <div className="grid place-items-center">
-                <div className="w-[70vw] place-items-center flex flex-col justify-between">
-                    <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">
-                        Placement CTCs.
-                    </h1>
-                    <Menu />
+
+            <div className="min-h-screen py-12">
+                <div className="max-w-4xl mx-auto px-4">
+                    <div className="text-center mb-12">
+                        <h1 className="text-4xl font-bold text-primary mb-2">
+                            Add Placement CTC.
+                        </h1>
+                        <p className="text-base-content/70">
+                            Help others by sharing placement compensation
+                            details
+                        </p>
+                    </div>
+
+                    <div className="mb-8">
+                        <Menu />
+                    </div>
+
                     {isLoading ? (
-                        <>
-                            <div className="flex flex-col w-3/4 justify-between m-1">
-                                <label className="text-primary">
-                                    Loading...
-                                </label>
+                        <div className="card bg-base-100 shadow-xl p-8">
+                            <div className="flex items-center justify-center">
+                                <div className="loading loading-spinner loading-lg text-primary"></div>
                             </div>
-                        </>
+                        </div>
                     ) : (
-                        <>
-                            {/* Take input */}
-                            <div className="flex flex-col w-3/4 justify-between m-1">
-                                <label htmlFor="name" className="text-primary">
-                                    Name of the Company
-                                </label>
-                                <input
-                                    type="text"
-                                    id="name"
-                                    className="input input-secondary"
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)}
-                                />
-                            </div>
+                        <div className="card bg-base-100 shadow-xl">
+                            <div className="card-body space-y-6">
+                                {/* Company Details Section */}
+                                <div className="space-y-4">
+                                    <h2 className="text-xl font-semibold text-primary border-b pb-2">
+                                        Company Details
+                                    </h2>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div className="form-control">
+                                            <label className="label">
+                                                <span className="label-text">
+                                                    Company Name
+                                                </span>
+                                            </label>
+                                            <input
+                                                type="text"
+                                                className={`input input-bordered ${errors.name ? 'input-error' : ''}`}
+                                                value={name}
+                                                onChange={(e) =>
+                                                    setName(e.target.value)
+                                                }
+                                                placeholder="Enter company name"
+                                            />
+                                            {errors.name && (
+                                                <label className="label">
+                                                    <span className="label-text-alt text-error">
+                                                        {errors.name}
+                                                    </span>
+                                                </label>
+                                            )}
+                                        </div>
 
-                            <div className="flex flex-col w-3/4 justify-between m-1">
-                                <label
-                                    htmlFor="campus"
-                                    className="text-primary"
-                                >
-                                    Campus
-                                </label>
-                                <AutoCompleter
-                                    name="campus"
-                                    items={[
-                                        'PS',
-                                        'Hyderabad',
-                                        'Pilani',
-                                        'Goa',
-                                        'Offcampus',
-                                    ]}
-                                    value={campus}
-                                    onChange={(val) => setCampus(val)}
-                                />
-                            </div>
+                                        <div className="form-control">
+                                            <label className="label">
+                                                <span className="label-text">
+                                                    Campus
+                                                </span>
+                                            </label>
+                                            <AutoCompleter
+                                                name="campus"
+                                                items={[
+                                                    'PS',
+                                                    'Hyderabad',
+                                                    'Pilani',
+                                                    'Goa',
+                                                    'Offcampus',
+                                                ]}
+                                                value={campus}
+                                                onChange={(val) =>
+                                                    setCampus(val)
+                                                }
+                                            />
+                                            {errors.campus && (
+                                                <label className="label">
+                                                    <span className="label-text-alt text-error">
+                                                        {errors.campus}
+                                                    </span>
+                                                </label>
+                                            )}
+                                        </div>
 
-                            <div className="flex flex-col w-3/4 justify-between m-1">
-                                <label
-                                    htmlFor="academic year"
-                                    className="text-primary"
-                                >
-                                    Academic Year
-                                </label>
-                                <AutoCompleter
-                                    name="academic year"
-                                    items={placementYears}
-                                    value={academicYear}
-                                    onChange={(val) => setAcademicYear(val)}
-                                />
-                            </div>
+                                        <div className="form-control">
+                                            <label className="label">
+                                                <span className="label-text">
+                                                    Academic Year
+                                                </span>
+                                            </label>
+                                            <AutoCompleter
+                                                name="academic year"
+                                                items={placementYears}
+                                                value={academicYear}
+                                                onChange={(val) =>
+                                                    setAcademicYear(val)
+                                                }
+                                            />
+                                            {errors.academicYear && (
+                                                <label className="label">
+                                                    <span className="label-text-alt text-error">
+                                                        {errors.academicYear}
+                                                    </span>
+                                                </label>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
 
-                            <div className="flex flex-col w-3/4 justify-between m-1">
-                                <label htmlFor="base" className="text-primary">
-                                    Base
-                                </label>
-                                <input
-                                    type="number"
-                                    id="base"
-                                    className="input input-secondary"
-                                    value={base}
-                                    onChange={(e) =>
-                                        setBase(parseInt(e.target.value))
-                                    }
-                                />
-                            </div>
+                                {/* Compensation Details Section */}
+                                <div className="space-y-4">
+                                    <h2 className="text-xl font-semibold text-primary border-b pb-2">
+                                        Compensation Details
+                                    </h2>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div className="form-control">
+                                            <label className="label">
+                                                <span className="label-text">
+                                                    Base Salary
+                                                </span>
+                                            </label>
+                                            <input
+                                                type="number"
+                                                className={`input input-bordered ${errors.base ? 'input-error' : ''}`}
+                                                value={base}
+                                                onChange={(e) =>
+                                                    setBase(
+                                                        parseInt(
+                                                            e.target.value
+                                                        ) || 0
+                                                    )
+                                                }
+                                                placeholder="0"
+                                                min="0"
+                                            />
+                                            {errors.base && (
+                                                <label className="label">
+                                                    <span className="label-text-alt text-error">
+                                                        {errors.base}
+                                                    </span>
+                                                </label>
+                                            )}
+                                        </div>
 
-                            <div className="flex flex-col w-3/4 justify-between m-1">
-                                <label
-                                    htmlFor="joiningBonus"
-                                    className="text-primary"
-                                >
-                                    Joining Bonus
-                                </label>
-                                <input
-                                    type="number"
-                                    id="joiningBonus"
-                                    className="input input-secondary"
-                                    value={joiningBonus}
-                                    onChange={(e) =>
-                                        setJoiningBonus(
-                                            parseInt(e.target.value)
-                                        )
-                                    }
-                                />
-                            </div>
+                                        <div className="form-control">
+                                            <label className="label">
+                                                <span className="label-text">
+                                                    Joining Bonus
+                                                </span>
+                                            </label>
+                                            <input
+                                                type="number"
+                                                className={`input input-bordered ${errors.joiningBonus ? 'input-error' : ''}`}
+                                                value={joiningBonus}
+                                                onChange={(e) =>
+                                                    setJoiningBonus(
+                                                        parseInt(
+                                                            e.target.value
+                                                        ) || 0
+                                                    )
+                                                }
+                                                placeholder="0"
+                                                min="0"
+                                            />
+                                            {errors.joiningBonus && (
+                                                <label className="label">
+                                                    <span className="label-text-alt text-error">
+                                                        {errors.joiningBonus}
+                                                    </span>
+                                                </label>
+                                            )}
+                                        </div>
 
-                            <div className="flex flex-col w-3/4 justify-between m-1">
-                                <label
-                                    htmlFor="relocationBonus"
-                                    className="text-primary"
-                                >
-                                    Relocation Bonus
-                                </label>
-                                <input
-                                    type="number"
-                                    id="relocationBonus"
-                                    className="input input-secondary"
-                                    value={relocationBonus}
-                                    onChange={(e) =>
-                                        setRelocationBonus(
-                                            parseInt(e.target.value)
-                                        )
-                                    }
-                                />
-                            </div>
+                                        <div className="form-control">
+                                            <label className="label">
+                                                <span className="label-text">
+                                                    Relocation Bonus
+                                                </span>
+                                            </label>
+                                            <input
+                                                type="number"
+                                                className={`input input-bordered ${errors.relocationBonus ? 'input-error' : ''}`}
+                                                value={relocationBonus}
+                                                onChange={(e) =>
+                                                    setRelocationBonus(
+                                                        parseInt(
+                                                            e.target.value
+                                                        ) || 0
+                                                    )
+                                                }
+                                                placeholder="0"
+                                                min="0"
+                                            />
+                                            {errors.relocationBonus && (
+                                                <label className="label">
+                                                    <span className="label-text-alt text-error">
+                                                        {errors.relocationBonus}
+                                                    </span>
+                                                </label>
+                                            )}
+                                        </div>
 
-                            <div className="flex flex-col w-3/4 justify-between m-1">
-                                <label
-                                    htmlFor="variableBonus"
-                                    className="text-primary"
-                                >
-                                    Variable Bonus
-                                </label>
-                                <input
-                                    type="number"
-                                    id="variableBonus"
-                                    className="input input-secondary"
-                                    value={variableBonus}
-                                    onChange={(e) =>
-                                        setVariableBonus(
-                                            parseInt(e.target.value)
-                                        )
-                                    }
-                                />
-                            </div>
+                                        <div className="form-control">
+                                            <label className="label">
+                                                <span className="label-text">
+                                                    Variable Bonus
+                                                </span>
+                                            </label>
+                                            <input
+                                                type="number"
+                                                className={`input input-bordered ${errors.variableBonus ? 'input-error' : ''}`}
+                                                value={variableBonus}
+                                                onChange={(e) =>
+                                                    setVariableBonus(
+                                                        parseInt(
+                                                            e.target.value
+                                                        ) || 0
+                                                    )
+                                                }
+                                                placeholder="0"
+                                                min="0"
+                                            />
+                                            {errors.variableBonus && (
+                                                <label className="label">
+                                                    <span className="label-text-alt text-error">
+                                                        {errors.variableBonus}
+                                                    </span>
+                                                </label>
+                                            )}
+                                        </div>
 
-                            <div className="flex flex-col w-3/4 justify-between m-1">
-                                <label
-                                    htmlFor="monetaryValueOfBenefits"
-                                    className="text-primary"
-                                >
-                                    Monetary Value of Benefits
-                                </label>
-                                <input
-                                    type="number"
-                                    id="monetaryValueOfBenefits"
-                                    className="input input-secondary"
-                                    value={monetaryValueOfBenefits}
-                                    onChange={(e) =>
-                                        setMonetaryValueOfBenefits(
-                                            parseInt(e.target.value)
-                                        )
-                                    }
-                                />
-                                <p className="text-sm text-base-content/70 mt-2">
-                                    NOTE: ESOPs do not count as monetary
-                                    benefits for the sake of uniformity on this
-                                    page. Stocks are counted as monetary
-                                    benefits.
-                                </p>
-                            </div>
+                                        <div className="form-control col-span-2">
+                                            <label className="label">
+                                                <span className="label-text">
+                                                    Monetary Value of Benefits
+                                                </span>
+                                            </label>
+                                            <input
+                                                type="number"
+                                                className={`input input-bordered ${errors.monetaryValueOfBenefits ? 'input-error' : ''}`}
+                                                value={monetaryValueOfBenefits}
+                                                onChange={(e) =>
+                                                    setMonetaryValueOfBenefits(
+                                                        parseInt(
+                                                            e.target.value
+                                                        ) || 0
+                                                    )
+                                                }
+                                                placeholder="0"
+                                                min="0"
+                                            />
+                                            {errors.monetaryValueOfBenefits && (
+                                                <label className="label">
+                                                    <span className="label-text-alt text-error">
+                                                        {
+                                                            errors.monetaryValueOfBenefits
+                                                        }
+                                                    </span>
+                                                </label>
+                                            )}
+                                            <label className="label">
+                                                <span className="label-text-alt text-base-content/70">
+                                                    Note: ESOPs are not counted
+                                                    as monetary benefits. Only
+                                                    stocks are counted.
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
 
-                            <div className="flex flex-col w-3/4 justify-between m-1">
-                                <label
-                                    htmlFor="description"
-                                    className="text-primary"
-                                >
-                                    Description
-                                </label>
-                                <div className="text-center w-full m-2 h-60">
-                                    <textarea
-                                        className="textarea w-full h-full"
-                                        placeholder="Enter description of the role and the CTC for this role..."
-                                        onChange={(e) =>
-                                            setDescription(e.target.value)
-                                        }
-                                        value={description}
-                                    ></textarea>
+                                {/* Description Section */}
+                                <div className="space-y-4">
+                                    <h2 className="text-xl font-semibold text-primary border-b pb-2">
+                                        Role Description
+                                    </h2>
+                                    <div className="form-control">
+                                        <textarea
+                                            className={`textarea textarea-bordered h-32 ${errors.description ? 'textarea-error' : ''}`}
+                                            placeholder="Enter description of the role and the CTC for this role..."
+                                            onChange={(e) =>
+                                                setDescription(e.target.value)
+                                            }
+                                            value={description}
+                                        ></textarea>
+                                        {errors.description && (
+                                            <label className="label">
+                                                <span className="label-text-alt text-error">
+                                                    {errors.description}
+                                                </span>
+                                            </label>
+                                        )}
+                                    </div>
+                                </div>
+
+                                <div className="bg-base-200 rounded-lg p-4 text-center">
+                                    <h3 className="text-lg font-semibold mb-2">
+                                        Total CTC
+                                    </h3>
+                                    <p className="text-2xl font-bold text-primary">
+                                        ₹
+                                        {(
+                                            base +
+                                            joiningBonus +
+                                            relocationBonus +
+                                            variableBonus +
+                                            monetaryValueOfBenefits
+                                        ).toLocaleString('en-IN')}
+                                    </p>
+                                </div>
+
+                                {/* Submit Button */}
+                                <div className="card-actions justify-end mt-6">
+                                    <button
+                                        className="btn btn-primary btn-lg"
+                                        onClick={addPlacementCTC}
+                                    >
+                                        Submit CTC Details
+                                    </button>
                                 </div>
                             </div>
-
-                            <div className="text-center flex-wrap w-3/4 justify-between m-1">
-                                <button
-                                    className="btn btn-primary"
-                                    onClick={addPlacementCTC}
-                                >
-                                    Submit
-                                </button>
-                            </div>
-                        </>
+                        </div>
                     )}
                 </div>
             </div>
