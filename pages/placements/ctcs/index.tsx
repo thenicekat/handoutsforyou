@@ -66,27 +66,27 @@ export default function PlacementCTCs() {
         }),
         columnHelper.accessor((row) => row.base, {
             id: 'Base',
-            cell: (info) => info.getValue(),
+            cell: (info) => info.getValue().toLocaleString('en-IN') || 0,
             header: 'Base',
         }),
         columnHelper.accessor((row) => row.joining_bonus, {
             id: 'Joining Bonus',
-            cell: (info) => info.getValue(),
+            cell: (info) => info.getValue().toLocaleString('en-IN'),
             header: 'Joining Bonus',
         }),
         columnHelper.accessor((row) => row.relocation_bonus, {
             id: 'Relocation Bonus',
-            cell: (info) => info.getValue(),
+            cell: (info) => info.getValue().toLocaleString('en-IN'),
             header: 'Relocation Bonus',
         }),
         columnHelper.accessor((row) => row.variable_bonus, {
             id: 'Variable Bonus',
-            cell: (info) => info.getValue(),
+            cell: (info) => info.getValue().toLocaleString('en-IN'),
             header: 'Variable Bonus',
         }),
         columnHelper.accessor((row) => row.monetary_value_of_benefits, {
             id: 'Other',
-            cell: (info) => info.getValue(),
+            cell: (info) => info.getValue().toLocaleString('en-IN'),
             header: 'Other',
         }),
         columnHelper.accessor((row) => row.description, {
@@ -103,7 +103,7 @@ export default function PlacementCTCs() {
                 row.monetary_value_of_benefits,
             {
                 id: 'Total CTC',
-                cell: (info) => info.getValue(),
+                cell: (info) => info.getValue().toLocaleString('en-IN'),
                 header: 'Total CTC',
             }
         ),
@@ -244,36 +244,47 @@ export default function PlacementCTCs() {
 
                                         <div className="flex-none">
                                             <p className="m-1">
-                                                Base: {placementCTC.base}
+                                                Base:{' '}
+                                                {placementCTC.base.toLocaleString(
+                                                    'en-IN'
+                                                )}
                                             </p>
                                             <p className="m-1">
                                                 Joining Bonus:{' '}
-                                                {placementCTC.joining_bonus}
+                                                {placementCTC.joining_bonus.toLocaleString(
+                                                    'en-IN'
+                                                )}
                                             </p>
                                             <p className="m-1">
                                                 Relocation Bonus:{' '}
-                                                {placementCTC.relocation_bonus}
+                                                {placementCTC.relocation_bonus.toLocaleString(
+                                                    'en-IN'
+                                                )}
                                             </p>
                                             <p className="m-1">
                                                 Variable Bonus:{' '}
-                                                {placementCTC.variable_bonus}
+                                                {placementCTC.variable_bonus.toLocaleString(
+                                                    'en-IN'
+                                                )}
                                             </p>
                                             <p className="m-1">
                                                 Monetary Value of Benefits:{' '}
-                                                {
-                                                    placementCTC.monetary_value_of_benefits
-                                                }
+                                                {placementCTC.monetary_value_of_benefits.toLocaleString(
+                                                    'en-IN'
+                                                )}
                                             </p>
                                             <p className="m-1">
                                                 Desc: {placementCTC.description}
                                             </p>
                                             <p className="m-1">
                                                 Total CTC:{' '}
-                                                {placementCTC.base +
+                                                {(
+                                                    placementCTC.base +
                                                     placementCTC.joining_bonus +
                                                     placementCTC.relocation_bonus +
                                                     placementCTC.variable_bonus +
-                                                    placementCTC.monetary_value_of_benefits}
+                                                    placementCTC.monetary_value_of_benefits
+                                                ).toLocaleString('en-IN')}
                                             </p>
                                         </div>
                                     </div>
