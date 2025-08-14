@@ -221,10 +221,11 @@ export default function AddPlacementCTCs() {
                                         )
                                     }
                                 />
-                                <p>
+                                <p className="text-sm text-base-content/70 mt-2">
                                     NOTE: ESOPs do not count as monetary
                                     benefits for the sake of uniformity on this
-                                    page.
+                                    page. Stocks are counted as monetary
+                                    benefits.
                                 </p>
                             </div>
 
@@ -238,7 +239,7 @@ export default function AddPlacementCTCs() {
                                 <div className="text-center w-full m-2 h-60">
                                     <textarea
                                         className="textarea w-full h-full"
-                                        placeholder="Enter your Description..."
+                                        placeholder="Enter description of the role and the CTC for this role..."
                                         onChange={(e) =>
                                             setDescription(e.target.value)
                                         }
