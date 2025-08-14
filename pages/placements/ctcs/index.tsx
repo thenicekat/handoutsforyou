@@ -210,114 +210,135 @@ export default function PlacementCTCs() {
                 </div>
             </div>
             <div className="max-w-7xl mx-auto">
-                {/* Mobile UI */}
-                <div className="px-2 p-2 grid md:hidden sm:grid-cols-2 grid-cols-1 place-items-center">
-                    {filteredPlacementCTCs.map((placementCTC) => (
-                        <div
-                            className="card w-72 bg-base-100 text-base-content m-2"
-                            key={
-                                placementCTC.company + '/' + placementCTC.campus
-                            }
-                        >
-                            <div className="card-body ">
-                                <h2 className="text-sm font-bold uppercase">
-                                    {placementCTC.campus}
-                                </h2>
-                                <p className="text-lg">
-                                    {placementCTC?.company.toUpperCase()}
-                                </p>
+                {filteredPlacementCTCs.length === 0 ? (
+                    <div className="flex flex-col items-center justify-center p-8 text-center">
+                        <div className="text-6xl mb-4">📊</div>
+                        <h3 className="text-2xl font-semibold mb-2">
+                            No CTCs Found
+                        </h3>
+                        <p className="text-base-content/70 mb-6">
+                            There are no placement CTCs available for the
+                            selected year. Be the first to contribute!
+                        </p>
+                    </div>
+                ) : (
+                    <>
+                        {/* Mobile UI */}
+                        <div className="px-2 p-2 grid md:hidden sm:grid-cols-2 grid-cols-1 place-items-center">
+                            {filteredPlacementCTCs.map((placementCTC) => (
+                                <div
+                                    className="card w-72 bg-base-100 text-base-content m-2"
+                                    key={
+                                        placementCTC.company +
+                                        '/' +
+                                        placementCTC.campus
+                                    }
+                                >
+                                    <div className="card-body ">
+                                        <h2 className="text-sm font-bold uppercase">
+                                            {placementCTC.campus}
+                                        </h2>
+                                        <p className="text-lg">
+                                            {placementCTC?.company.toUpperCase()}
+                                        </p>
 
-                                <div className="flex-none">
-                                    <p className="m-1">
-                                        Base: {placementCTC.base}
-                                    </p>
-                                    <p className="m-1">
-                                        Joining Bonus:{' '}
-                                        {placementCTC.joining_bonus}
-                                    </p>
-                                    <p className="m-1">
-                                        Relocation Bonus:{' '}
-                                        {placementCTC.relocation_bonus}
-                                    </p>
-                                    <p className="m-1">
-                                        Variable Bonus:{' '}
-                                        {placementCTC.variable_bonus}
-                                    </p>
-                                    <p className="m-1">
-                                        Monetary Value of Benefits:{' '}
-                                        {
-                                            placementCTC.monetary_value_of_benefits
-                                        }
-                                    </p>
-                                    <p className="m-1">
-                                        Desc: {placementCTC.description}
-                                    </p>
-                                    <p className="m-1">
-                                        Total CTC:{' '}
-                                        {placementCTC.base +
-                                            placementCTC.joining_bonus +
-                                            placementCTC.relocation_bonus +
-                                            placementCTC.variable_bonus +
-                                            placementCTC.monetary_value_of_benefits}
-                                    </p>
+                                        <div className="flex-none">
+                                            <p className="m-1">
+                                                Base: {placementCTC.base}
+                                            </p>
+                                            <p className="m-1">
+                                                Joining Bonus:{' '}
+                                                {placementCTC.joining_bonus}
+                                            </p>
+                                            <p className="m-1">
+                                                Relocation Bonus:{' '}
+                                                {placementCTC.relocation_bonus}
+                                            </p>
+                                            <p className="m-1">
+                                                Variable Bonus:{' '}
+                                                {placementCTC.variable_bonus}
+                                            </p>
+                                            <p className="m-1">
+                                                Monetary Value of Benefits:{' '}
+                                                {
+                                                    placementCTC.monetary_value_of_benefits
+                                                }
+                                            </p>
+                                            <p className="m-1">
+                                                Desc: {placementCTC.description}
+                                            </p>
+                                            <p className="m-1">
+                                                Total CTC:{' '}
+                                                {placementCTC.base +
+                                                    placementCTC.joining_bonus +
+                                                    placementCTC.relocation_bonus +
+                                                    placementCTC.variable_bonus +
+                                                    placementCTC.monetary_value_of_benefits}
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-
-                {/* Web UI */}
-                <div className="overflow-x-auto m-2 rounded-md hidden md:block">
-                    <table className="table table-sm table-pin-rows bg-base-100">
-                        <thead className="table-header-group">
-                            <tr>
-                                {headers.map((header) => {
-                                    const direction =
-                                        header.column.getIsSorted()
-                                    const sort_indicator = direction
-                                        ? arrow[direction]
-                                        : arrow['unsorted']
-
-                                    return (
-                                        <th key={header.id}>
-                                            {header.isPlaceholder ? null : (
-                                                <div
-                                                    onClick={header.column.getToggleSortingHandler()}
-                                                    className="cursor-pointer flex gap-2"
-                                                >
-                                                    {flexRender(
-                                                        header.column.columnDef
-                                                            .header,
-                                                        header.getContext()
-                                                    )}
-                                                    <span
-                                                        className={`inline-block text-center ${direction ? '' : 'opacity-50'}`}
-                                                    >
-                                                        {sort_indicator}
-                                                    </span>
-                                                </div>
-                                            )}
-                                        </th>
-                                    )
-                                })}
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {rows.map((row) => (
-                                <tr key={row.id}>
-                                    {row.getVisibleCells().map((cell) => (
-                                        <td key={cell.id}>
-                                            {flexRender(
-                                                cell.column.columnDef.cell,
-                                                cell.getContext()
-                                            )}
-                                        </td>
-                                    ))}
-                                </tr>
                             ))}
-                        </tbody>
-                    </table>
-                </div>
+                        </div>
+
+                        {/* Web UI */}
+                        <div className="overflow-x-auto m-2 rounded-md hidden md:block">
+                            <table className="table table-sm table-pin-rows bg-base-100">
+                                <thead className="table-header-group">
+                                    <tr>
+                                        {headers.map((header) => {
+                                            const direction =
+                                                header.column.getIsSorted()
+                                            const sort_indicator = direction
+                                                ? arrow[direction]
+                                                : arrow['unsorted']
+
+                                            return (
+                                                <th key={header.id}>
+                                                    {header.isPlaceholder ? null : (
+                                                        <div
+                                                            onClick={header.column.getToggleSortingHandler()}
+                                                            className="cursor-pointer flex gap-2"
+                                                        >
+                                                            {flexRender(
+                                                                header.column
+                                                                    .columnDef
+                                                                    .header,
+                                                                header.getContext()
+                                                            )}
+                                                            <span
+                                                                className={`inline-block text-center ${direction ? '' : 'opacity-50'}`}
+                                                            >
+                                                                {sort_indicator}
+                                                            </span>
+                                                        </div>
+                                                    )}
+                                                </th>
+                                            )
+                                        })}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {rows.map((row) => (
+                                        <tr key={row.id}>
+                                            {row
+                                                .getVisibleCells()
+                                                .map((cell) => (
+                                                    <td key={cell.id}>
+                                                        {flexRender(
+                                                            cell.column
+                                                                .columnDef.cell,
+                                                            cell.getContext()
+                                                        )}
+                                                    </td>
+                                                ))}
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </>
+                )}
             </div>
             <CustomToastContainer containerId="placementCTCs" />
         </>
