@@ -17,7 +17,7 @@ export default function StarPrompt({ setStarCount }: Props) {
             const data = await response.json()
             setInternalStarCount(data.stargazers_count || 0)
             setStarCount(data.stargazers_count || 0)
-        } catch (error) { }
+        } catch (error) {}
     }
 
     React.useEffect(() => {
@@ -52,10 +52,10 @@ export default function StarPrompt({ setStarCount }: Props) {
                 </h3>
                 <br />
                 <p className="text-sm text-white text-center">
-                    We know ads can be annoying—but they help us keep the site running.
-                    Your support through viewing ads helps cover server and domain costs.
-                    If you enjoy using this site, consider keeping ads on. Every bit counts.
-                    Thank you
+                    We know ads can be annoying—but they help us keep the site
+                    running. Your support through viewing ads helps cover server
+                    and domain costs. If you enjoy using this site, consider
+                    keeping ads on. Every bit counts. Thank you
                 </p>
                 <div className="mt-4 flex flex-col gap-4">
                     <button

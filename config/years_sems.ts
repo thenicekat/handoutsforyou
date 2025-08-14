@@ -28,7 +28,7 @@ export const psAllotmentRounds = [
 // For Course Grading.
 export const gradedSemesters = ['24-25 Sem 2', '24-25 Sem 1']
 // For Placement CTCs
-export const placementYears = ['2024-2025', '2023-2024']
+export const placementYears = ['2025-2026', '2024-2025', '2023-2024']
 // For PYQs.
 export const pyqYears = [
     '2024-Sem-2',
