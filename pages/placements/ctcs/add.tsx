@@ -60,9 +60,9 @@ export default function AddPlacementCTCs() {
 
         if (!description.trim()) {
             newErrors.description = 'Description is required'
-        } else if (description.trim().length < 50) {
+        } else if (description.trim().length < 30) {
             newErrors.description =
-                'Description should be at least 50 characters'
+                'Description should be at least 30 characters'
         }
 
         setErrors(newErrors)
@@ -123,15 +123,9 @@ export default function AddPlacementCTCs() {
                         <h1 className="text-4xl font-bold text-primary mb-2">
                             Add Placement CTC.
                         </h1>
-                        <p className="text-base-content/70">
-                            Help others by sharing placement compensation
-                            details
-                        </p>
                     </div>
 
-                    <div className="mb-8">
-                        <Menu />
-                    </div>
+                    <Menu />
 
                     {isLoading ? (
                         <div className="card bg-base-100 shadow-xl p-8">
@@ -226,11 +220,11 @@ export default function AddPlacementCTCs() {
                                     </div>
                                 </div>
 
-                                {/* Compensation Details Section */}
                                 <div className="space-y-4">
                                     <h2 className="text-xl font-semibold text-primary border-b pb-2">
                                         Compensation Details
                                     </h2>
+
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         <div className="form-control">
                                             <label className="label">
@@ -252,6 +246,7 @@ export default function AddPlacementCTCs() {
                                                 placeholder="0"
                                                 min="0"
                                             />
+
                                             {errors.base && (
                                                 <label className="label">
                                                     <span className="label-text-alt text-error">
@@ -281,6 +276,7 @@ export default function AddPlacementCTCs() {
                                                 placeholder="0"
                                                 min="0"
                                             />
+
                                             {errors.joiningBonus && (
                                                 <label className="label">
                                                     <span className="label-text-alt text-error">
@@ -296,6 +292,7 @@ export default function AddPlacementCTCs() {
                                                     Relocation Bonus
                                                 </span>
                                             </label>
+
                                             <input
                                                 type="number"
                                                 className={`input input-bordered ${errors.relocationBonus ? 'input-error' : ''}`}
@@ -348,12 +345,13 @@ export default function AddPlacementCTCs() {
                                             )}
                                         </div>
 
-                                        <div className="form-control col-span-2">
+                                        <div className="form-control">
                                             <label className="label">
                                                 <span className="label-text">
                                                     Monetary Value of Benefits
                                                 </span>
                                             </label>
+
                                             <input
                                                 type="number"
                                                 className={`input input-bordered ${errors.monetaryValueOfBenefits ? 'input-error' : ''}`}
@@ -388,10 +386,9 @@ export default function AddPlacementCTCs() {
                                     </div>
                                 </div>
 
-                                {/* Description Section */}
                                 <div className="space-y-4">
                                     <h2 className="text-xl font-semibold text-primary border-b pb-2">
-                                        Role Description
+                                        Description
                                     </h2>
                                     <div className="form-control">
                                         <textarea
@@ -402,6 +399,7 @@ export default function AddPlacementCTCs() {
                                             }
                                             value={description}
                                         ></textarea>
+
                                         {errors.description && (
                                             <label className="label">
                                                 <span className="label-text-alt text-error">
@@ -428,8 +426,7 @@ export default function AddPlacementCTCs() {
                                     </p>
                                 </div>
 
-                                {/* Submit Button */}
-                                <div className="card-actions justify-end mt-6">
+                                <div className="card-actions justify-center mt-6">
                                     <button
                                         className="btn btn-primary btn-lg"
                                         onClick={addPlacementCTC}
