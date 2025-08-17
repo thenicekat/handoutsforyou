@@ -14,7 +14,7 @@ export default function ChroniclePage() {
 
     const fetchChronicles = async () => {
         try {
-            const res = await axiosInstance.post(`/api/si/chronicles/data`, {
+            const res = await axiosInstance.post(`/api/zob/sichronicles/data`, {
                 slug: slug,
             })
             if (res.status !== 400) {

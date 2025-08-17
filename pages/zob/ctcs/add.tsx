@@ -78,7 +78,7 @@ export default function AddPlacementCTCs() {
         setIsLoading(true)
 
         try {
-            const res = await axiosInstance.post('/api/placements/ctcs/add', {
+            const res = await axiosInstance.post('/api/zob/ctcs/add', {
                 company: name.trim(),
                 campus: campus,
                 academicYear: academicYear,
@@ -115,7 +115,7 @@ export default function AddPlacementCTCs() {
 
     return (
         <>
-            <Meta {...getMetaConfig('placements/ctcs')} />
+            <Meta {...getMetaConfig('zob/ctcs')} />
 
             <div className="min-h-screen py-12">
                 <div className="max-w-4xl mx-auto px-4">

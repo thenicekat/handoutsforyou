@@ -7,7 +7,7 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<BaseResponseData>
 ) {
-    const { name, link, created_by, category, type } = req.body
+    const { name, link, created_by, category } = req.body
     const { email } = await getUser(req, res)
 
     if (!name) {
@@ -38,21 +38,14 @@ export default async function handler(
         })
         return
     }
-    if (!type) {
-        res.status(422).json({
-            message: 'Invalid Request - Type missing',
-            error: true,
-        })
-        return
-    }
 
     const { error } = await supabase.from(PLACEMENT_RESOURCES).insert([
         {
             name: name,
             link: link,
-            created_by: email,
+            created_by: created_by,
             category: category,
-            type: type,
+            email: email,
         },
     ])
 
@@ -67,3 +60,4 @@ export default async function handler(
         return
     }
 }
+

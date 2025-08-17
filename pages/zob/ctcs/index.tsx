@@ -29,7 +29,7 @@ export default function PlacementCTCs() {
 
     const fetchPlacementCTCs = async () => {
         try {
-            const res = await axiosInstance.post('/api/placements/ctcs/get', {
+            const res = await axiosInstance.post('/api/zob/ctcs/get', {
                 year: yearRef,
             })
             const resp = res.data
@@ -137,7 +137,7 @@ export default function PlacementCTCs() {
 
     return (
         <>
-            <Meta {...getMetaConfig('placements/ctcs')} />
+            <Meta {...getMetaConfig('zob/ctcs')} />
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
                     <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">
@@ -156,10 +156,7 @@ export default function PlacementCTCs() {
                         </div>
 
                         <div className="flex-col hidden md:block md:flex-row w-1/3 justify-center">
-                            <Link
-                                className="m-3 w-full"
-                                href={'/placements/ctcs/add'}
-                            >
+                            <Link className="m-3 w-full" href={'/zob/ctcs/add'}>
                                 <button
                                     className="btn btn-outline w-full"
                                     tabIndex={-1}
@@ -169,10 +166,7 @@ export default function PlacementCTCs() {
                             </Link>
                         </div>
                         <div className="z-10 w-14 fixed bottom-3 left-0 m-4 cursor-pointer text-white md:hidden">
-                            <Link
-                                className="m-3 w-full"
-                                href={'/placements/ctcs/add'}
-                            >
+                            <Link className="m-3 w-full" href={'/zob/ctcs/add'}>
                                 <PlusCircleIcon />
                             </Link>
                         </div>

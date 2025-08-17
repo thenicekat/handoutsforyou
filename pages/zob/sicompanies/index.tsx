@@ -20,7 +20,7 @@ export default function SICompanies() {
     const fetchData = async () => {
         setIsLoading(true)
         try {
-            const res = await axiosInstance.post('/api/si/companies/get', {
+            const res = await axiosInstance.post('/api/zob/companies/get', {
                 year: yearRef,
             })
 
@@ -81,7 +81,7 @@ export default function SICompanies() {
                             ))}
                         </select>
 
-                        <Link className="m-3" href={'/si/resources'}>
+                        <Link className="m-3" href={'/zob/resources'}>
                             <button
                                 className="btn btn-outline w-full"
                                 tabIndex={-1}
@@ -145,7 +145,7 @@ export default function SICompanies() {
                                         <button
                                             className="btn btn-outline"
                                             onClick={() => {
-                                                window.location.href = `/si/chronicles/${yearRef}_${station.name}`
+                                                window.location.href = `/zob/sichronicles/${yearRef}_${station.name}`
                                             }}
                                         >
                                             View Chronicles

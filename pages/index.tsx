@@ -135,27 +135,24 @@ export default function Home() {
             ],
         },
         {
-            title: 'Placement Resources.',
+            title: 'Zob Resources.',
             description: 'Placement and summer internship information.',
             items: [
                 {
-                    name: 'Placement CTCs',
-                    path: '/placements/ctcs',
+                    name: 'CTC Details',
+                    path: '/zob/ctcs',
                     count: RESOURCE_COUNTS.placementCtcs,
                 },
                 {
-                    name: 'Placement Resources',
-                    path: '/placements/resources',
-                    count: RESOURCE_COUNTS.placementResources,
-                },
-                {
-                    name: 'SI Resources',
-                    path: '/si/resources',
-                    count: RESOURCE_COUNTS.siResources,
+                    name: 'Resources',
+                    path: '/zob/resources',
+                    count:
+                        RESOURCE_COUNTS.siResources +
+                        RESOURCE_COUNTS.placementResources,
                 },
                 {
                     name: 'SI Companies',
-                    path: '/si/companies',
+                    path: '/zob/sicompanies',
                     count:
                         RESOURCE_COUNTS.siCompanies +
                         RESOURCE_COUNTS.siChronicles,
