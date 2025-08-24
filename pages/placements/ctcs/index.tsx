@@ -265,7 +265,7 @@ export default function PlacementCTCs() {
                             </div>
                         </div>
                     ))}
-                    
+
                     {/* Ad after first 4 items on mobile */}
                     {filteredPlacementCTCs.length > 4 && (
                         <div className="col-span-full my-4">
@@ -277,12 +277,15 @@ export default function PlacementCTCs() {
                             />
                         </div>
                     )}
-                    
+
                     {filteredPlacementCTCs.slice(4).map((placementCTC) => (
                         <div
                             className="card w-72 bg-base-100 text-base-content m-2"
                             key={
-                                placementCTC.company + '/' + placementCTC.campus + '_after_ad'
+                                placementCTC.company +
+                                '/' +
+                                placementCTC.campus +
+                                '_after_ad'
                             }
                         >
                             <div className="card-body ">
@@ -330,18 +333,19 @@ export default function PlacementCTCs() {
                             </div>
                         </div>
                     ))}
-                    
+
                     {/* Show ad at end if 4 or fewer items on mobile */}
-                    {filteredPlacementCTCs.length <= 4 && filteredPlacementCTCs.length > 0 && (
-                        <div className="col-span-full mt-4">
-                            <AdBanner
-                                data-ad-slot="6217320688"
-                                data-full-width-responsive="true"
-                                data-ad-format="fluid"
-                                data-ad-layout="in-article"
-                            />
-                        </div>
-                    )}
+                    {filteredPlacementCTCs.length <= 4 &&
+                        filteredPlacementCTCs.length > 0 && (
+                            <div className="col-span-full mt-4">
+                                <AdBanner
+                                    data-ad-slot="6217320688"
+                                    data-full-width-responsive="true"
+                                    data-ad-format="fluid"
+                                    data-ad-layout="in-article"
+                                />
+                            </div>
+                        )}
                 </div>
 
                 {/* Web UI */}
@@ -396,7 +400,7 @@ export default function PlacementCTCs() {
                         </tbody>
                     </table>
                 </div>
-                
+
                 {/* Ad after desktop table */}
                 <div className="hidden md:block my-8">
                     <AdBanner

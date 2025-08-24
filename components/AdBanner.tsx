@@ -27,7 +27,7 @@ const AdBanner = (props: AdsBannerProps) => {
                 } catch (err) {
                     // Handle AdSense errors gracefully
                     if (process.env.NODE_ENV === 'development') {
-                        console.warn('[AdSense] Error (expected on localhost)');
+                        console.warn('[AdSense] Error (expected on localhost)')
                     }
                     clearInterval(intervalId) // Ensure we clear interval on errors too
                 }
@@ -54,8 +54,10 @@ const AdBanner = (props: AdsBannerProps) => {
             className="adsbygoogle adbanner-customize m-2 max-w-7xl place-self-center"
             style={{
                 display: 'block',
-                minHeight: process.env.NODE_ENV === 'development' ? '50px' : 'auto', // Ensure ad has minimum size
-                minWidth: process.env.NODE_ENV === 'development' ? '320px' : 'auto',
+                minHeight:
+                    process.env.NODE_ENV === 'development' ? '50px' : 'auto', // Ensure ad has minimum size
+                minWidth:
+                    process.env.NODE_ENV === 'development' ? '320px' : 'auto',
                 overflow: 'hidden',
                 border:
                     process.env.NODE_ENV === 'development'
