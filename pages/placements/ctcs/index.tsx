@@ -211,16 +211,9 @@ export default function PlacementCTCs() {
                 </div>
             </div>
             <div className="max-w-7xl mx-auto">
-                <AdBanner
-                    data-ad-slot="6217320688"
-                    data-full-width-responsive="true"
-                    data-ad-format="fluid"
-                    data-ad-layout="in-article"
-                />
-
                 {/* Mobile UI */}
                 <div className="px-2 p-2 grid md:hidden sm:grid-cols-2 grid-cols-1 place-items-center">
-                    {filteredPlacementCTCs.map((placementCTC) => (
+                    {filteredPlacementCTCs.slice(0, 4).map((placementCTC) => (
                         <div
                             className="card w-72 bg-base-100 text-base-content m-2"
                             key={
@@ -272,6 +265,83 @@ export default function PlacementCTCs() {
                             </div>
                         </div>
                     ))}
+                    
+                    {/* Ad after first 4 items on mobile */}
+                    {filteredPlacementCTCs.length > 4 && (
+                        <div className="col-span-full my-4">
+                            <AdBanner
+                                data-ad-slot="6217320688"
+                                data-full-width-responsive="true"
+                                data-ad-format="fluid"
+                                data-ad-layout="in-article"
+                            />
+                        </div>
+                    )}
+                    
+                    {filteredPlacementCTCs.slice(4).map((placementCTC) => (
+                        <div
+                            className="card w-72 bg-base-100 text-base-content m-2"
+                            key={
+                                placementCTC.company + '/' + placementCTC.campus + '_after_ad'
+                            }
+                        >
+                            <div className="card-body ">
+                                <h2 className="text-sm font-bold uppercase">
+                                    {placementCTC.campus}
+                                </h2>
+                                <p className="text-lg">
+                                    {placementCTC?.company.toUpperCase()}
+                                </p>
+
+                                <div className="flex-none">
+                                    <p className="m-1">
+                                        Base: {placementCTC.base}
+                                    </p>
+                                    <p className="m-1">
+                                        Joining Bonus:{' '}
+                                        {placementCTC.joining_bonus}
+                                    </p>
+                                    <p className="m-1">
+                                        Relocation Bonus:{' '}
+                                        {placementCTC.relocation_bonus}
+                                    </p>
+                                    <p className="m-1">
+                                        Variable Bonus:{' '}
+                                        {placementCTC.variable_bonus}
+                                    </p>
+                                    <p className="m-1">
+                                        Monetary Value of Benefits:{' '}
+                                        {
+                                            placementCTC.monetary_value_of_benefits
+                                        }
+                                    </p>
+                                    <p className="m-1">
+                                        Desc: {placementCTC.description}
+                                    </p>
+                                    <p className="m-1">
+                                        Total CTC:{' '}
+                                        {placementCTC.base +
+                                            placementCTC.joining_bonus +
+                                            placementCTC.relocation_bonus +
+                                            placementCTC.variable_bonus +
+                                            placementCTC.monetary_value_of_benefits}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                    
+                    {/* Show ad at end if 4 or fewer items on mobile */}
+                    {filteredPlacementCTCs.length <= 4 && filteredPlacementCTCs.length > 0 && (
+                        <div className="col-span-full mt-4">
+                            <AdBanner
+                                data-ad-slot="6217320688"
+                                data-full-width-responsive="true"
+                                data-ad-format="fluid"
+                                data-ad-layout="in-article"
+                            />
+                        </div>
+                    )}
                 </div>
 
                 {/* Web UI */}
@@ -325,6 +395,16 @@ export default function PlacementCTCs() {
                             ))}
                         </tbody>
                     </table>
+                </div>
+                
+                {/* Ad after desktop table */}
+                <div className="hidden md:block my-8">
+                    <AdBanner
+                        data-ad-slot="6217320688"
+                        data-full-width-responsive="true"
+                        data-ad-format="fluid"
+                        data-ad-layout="in-article"
+                    />
                 </div>
             </div>
             <CustomToastContainer containerId="placementCTCs" />
