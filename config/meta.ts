@@ -270,15 +270,15 @@ export const metaConfigs: Record<string, MetaConfig> = {
         description:
             'Crowdsourced reviews of seniors’ experience at Practice School 2 stations.',
     }),
-    'placements/ctcs': createMeta({
+    'zob/ctcs': createMeta({
         title: 'Placement CTCs.',
         description:
             'Crowdsourced CTCs at placement, searchable by department, CGPA and company for ease of retrieval.',
     }),
-    'placements/resources': createMeta({
-        title: 'Placement Resources.',
+    'zob/resources': createMeta({
+        title: 'Zob Resources.',
         description:
-            'One stop place for your PS queries, handouts, and much more',
+            'One stop place for your placement and summer internship queries, resources, CTCs, and much more',
     }),
     'courses/handouts': createMeta({
         title: 'Course Handouts.',
