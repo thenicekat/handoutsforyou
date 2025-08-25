@@ -59,17 +59,22 @@ export default function AddPlacementResources() {
                         Resources.
                     </h1>
                     <Menu />
-                    {isLoading ?
+                    {isLoading ? (
                         <>
                             <div className="flex flex-col w-3/4 justify-between m-1">
-                                <label className="text-primary">Loading...</label>
+                                <label className="text-primary">
+                                    Loading...
+                                </label>
                             </div>
                         </>
-                        :
+                    ) : (
                         <>
                             {/* Take input */}
                             <div className="flex flex-col w-3/4 justify-between m-1">
-                                <label htmlFor="resourceName" className="text-primary">
+                                <label
+                                    htmlFor="resourceName"
+                                    className="text-primary"
+                                >
                                     Name of the Resource
                                 </label>
                                 <input
@@ -98,7 +103,10 @@ export default function AddPlacementResources() {
                             </div>
 
                             <div className="flex flex-col w-3/4 justify-between m-1">
-                                <label htmlFor="createdBy" className="text-primary">
+                                <label
+                                    htmlFor="createdBy"
+                                    className="text-primary"
+                                >
                                     Created By
                                 </label>
                                 <input
@@ -106,12 +114,17 @@ export default function AddPlacementResources() {
                                     id="createdBy"
                                     className="input input-secondary"
                                     value={created_by}
-                                    onChange={(e) => setCreatedBy(e.target.value)}
+                                    onChange={(e) =>
+                                        setCreatedBy(e.target.value)
+                                    }
                                 />
                             </div>
 
                             <div className="flex flex-col w-3/4 justify-between m-1">
-                                <label htmlFor="category" className="text-primary">
+                                <label
+                                    htmlFor="category"
+                                    className="text-primary"
+                                >
                                     Category
                                 </label>
                                 <AutoCompleter
@@ -131,7 +144,7 @@ export default function AddPlacementResources() {
                                 </button>
                             </div>
                         </>
-                    }
+                    )}
                 </div>
             </div>
             <CustomToastContainer containerId="addZobResources" />
