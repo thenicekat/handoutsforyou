@@ -1,6 +1,7 @@
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import CustomToastContainer from '@/components/ToastContainer'
+import AdBanner from '@/components/AdBanner'
 import { getMetaConfig } from '@/config/meta'
 import { placementYears } from '@/config/years_sems'
 import { PlacementCTC } from '@/types/Placements'
@@ -206,6 +207,13 @@ export default function PlacementCTCs() {
                     </>
                 </div>
             </div>
+            {/* Ad Banner before CTCS content */}
+                    <AdBanner
+                        data-ad-slot="6217320688"
+                        data-full-width-responsive="true"
+                        data-ad-format="fluid"
+                        data-ad-layout="in-article"
+                    />
             <div className="max-w-7xl mx-auto">
                 {isLoading ? (
                     <div className="grid place-items-center py-16">
@@ -353,6 +361,17 @@ export default function PlacementCTCs() {
                     </>
                 )}
             </div>
+            
+            {/* Ad Banner after CTCS content */}
+            <div className="max-w-7xl mx-auto">
+                <AdBanner
+                    data-ad-slot="6217320688"
+                    data-full-width-responsive="true"
+                    data-ad-format="fluid"
+                    data-ad-layout="in-article"
+                />
+            </div>
+            
             <CustomToastContainer containerId="placementCTCs" />
         </>
     )
