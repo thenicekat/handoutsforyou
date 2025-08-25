@@ -278,62 +278,64 @@ export default function PlacementCTCs() {
                         </div>
                     )}
 
-                    {filteredPlacementCTCs.slice(4).map((placementCTC, index) => (
-                        <div
-                            className="card w-72 bg-base-100 text-base-content m-2"
-                            key={
-                                placementCTC.company +
-                                '/' +
-                                placementCTC.campus +
-                                '/' +
-                                index
-                            }
-                        >
-                            <div className="card-body ">
-                                <h2 className="text-sm font-bold uppercase">
-                                    {placementCTC.campus}
-                                </h2>
-                                <p className="text-lg">
-                                    {placementCTC?.company.toUpperCase()}
-                                </p>
+                    {filteredPlacementCTCs
+                        .slice(4)
+                        .map((placementCTC, index) => (
+                            <div
+                                className="card w-72 bg-base-100 text-base-content m-2"
+                                key={
+                                    placementCTC.company +
+                                    '/' +
+                                    placementCTC.campus +
+                                    '/' +
+                                    index
+                                }
+                            >
+                                <div className="card-body ">
+                                    <h2 className="text-sm font-bold uppercase">
+                                        {placementCTC.campus}
+                                    </h2>
+                                    <p className="text-lg">
+                                        {placementCTC?.company.toUpperCase()}
+                                    </p>
 
-                                <div className="flex-none">
-                                    <p className="m-1">
-                                        Base: {placementCTC.base}
-                                    </p>
-                                    <p className="m-1">
-                                        Joining Bonus:{' '}
-                                        {placementCTC.joining_bonus}
-                                    </p>
-                                    <p className="m-1">
-                                        Relocation Bonus:{' '}
-                                        {placementCTC.relocation_bonus}
-                                    </p>
-                                    <p className="m-1">
-                                        Variable Bonus:{' '}
-                                        {placementCTC.variable_bonus}
-                                    </p>
-                                    <p className="m-1">
-                                        Monetary Value of Benefits:{' '}
-                                        {
-                                            placementCTC.monetary_value_of_benefits
-                                        }
-                                    </p>
-                                    <p className="m-1">
-                                        Desc: {placementCTC.description}
-                                    </p>
-                                    <p className="m-1">
-                                        Total CTC:{' '}
-                                        {placementCTC.base +
-                                            placementCTC.joining_bonus +
-                                            placementCTC.relocation_bonus +
-                                            placementCTC.variable_bonus +
-                                            placementCTC.monetary_value_of_benefits}
-                                    </p>
+                                    <div className="flex-none">
+                                        <p className="m-1">
+                                            Base: {placementCTC.base}
+                                        </p>
+                                        <p className="m-1">
+                                            Joining Bonus:{' '}
+                                            {placementCTC.joining_bonus}
+                                        </p>
+                                        <p className="m-1">
+                                            Relocation Bonus:{' '}
+                                            {placementCTC.relocation_bonus}
+                                        </p>
+                                        <p className="m-1">
+                                            Variable Bonus:{' '}
+                                            {placementCTC.variable_bonus}
+                                        </p>
+                                        <p className="m-1">
+                                            Monetary Value of Benefits:{' '}
+                                            {
+                                                placementCTC.monetary_value_of_benefits
+                                            }
+                                        </p>
+                                        <p className="m-1">
+                                            Desc: {placementCTC.description}
+                                        </p>
+                                        <p className="m-1">
+                                            Total CTC:{' '}
+                                            {placementCTC.base +
+                                                placementCTC.joining_bonus +
+                                                placementCTC.relocation_bonus +
+                                                placementCTC.variable_bonus +
+                                                placementCTC.monetary_value_of_benefits}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
 
                     {/* Show ad at end if 4 or fewer items on mobile */}
                     {filteredPlacementCTCs.length <= 4 &&
