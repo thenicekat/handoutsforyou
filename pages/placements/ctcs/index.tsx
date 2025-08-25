@@ -278,14 +278,15 @@ export default function PlacementCTCs() {
                         </div>
                     )}
 
-                    {filteredPlacementCTCs.slice(4).map((placementCTC) => (
+                    {filteredPlacementCTCs.slice(4).map((placementCTC, index) => (
                         <div
                             className="card w-72 bg-base-100 text-base-content m-2"
                             key={
                                 placementCTC.company +
                                 '/' +
                                 placementCTC.campus +
-                                '_after_ad'
+                                '/' +
+                                index
                             }
                         >
                             <div className="card-body ">
