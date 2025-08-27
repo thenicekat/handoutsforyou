@@ -296,7 +296,6 @@ export default function Home() {
                     </div>
                 </div>
 
-                {/* Ad Banner after Hero Section */}
                 <AdBanner
                     data-ad-slot="6217320688"
                     data-full-width-responsive="true"
@@ -456,7 +455,6 @@ export default function Home() {
                     </div>
                 )}
 
-                {/* Ad Banner before Contributors Section */}
                 <AdBanner
                     data-ad-slot="6217320688"
                     data-full-width-responsive="true"

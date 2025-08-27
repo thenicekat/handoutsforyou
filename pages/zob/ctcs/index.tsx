@@ -207,7 +207,6 @@ export default function PlacementCTCs() {
                     </>
                 </div>
             </div>
-            {/* Ad Banner before CTCS content */}
             <AdBanner
                 data-ad-slot="6217320688"
                 data-full-width-responsive="true"
@@ -362,7 +361,6 @@ export default function PlacementCTCs() {
                 )}
             </div>
 
-            {/* Ad Banner after CTCS content */}
             <div className="max-w-7xl mx-auto">
                 <AdBanner
                     data-ad-slot="6217320688"

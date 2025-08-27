@@ -159,7 +159,6 @@ export default function Grading() {
                 </div>
             </div>
 
-            {/* Strategic ad placement after search interface */}
             <AdBanner
                 data-ad-slot="6217320688"
                 data-ad-format="auto"
