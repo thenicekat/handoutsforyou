@@ -60,8 +60,6 @@ export default function Handouts({
 
     const filterHandouts = async () => {
         setIsLoading(true)
-        await axiosInstance.get('/api/auth/check')
-        await axiosInstance.get('/api/auth/check')
         setActualSearch(search)
         setIsLoading(false)
     }
