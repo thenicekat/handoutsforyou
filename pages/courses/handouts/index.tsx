@@ -2,6 +2,7 @@ import AdBanner from '@/components/AdBanner'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import { getMetaConfig } from '@/config/meta'
+import axiosInstance from '@/utils/axiosCache'
 import { googleDriveService } from '@/utils/googleDrive'
 import { GetStaticProps } from 'next'
 import dynamic from 'next/dynamic'
@@ -59,6 +60,7 @@ export default function Handouts({
 
     const filterHandouts = async () => {
         setIsLoading(true)
+        await axiosInstance.get('/api/auth/check')
         setActualSearch(search)
         setIsLoading(false)
     }
