@@ -1,3 +1,4 @@
+import AdBanner from '@/components/AdBanner'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import Modal from '@/components/Modal'
@@ -56,10 +57,12 @@ export default function Prereqs({ prereqs }: { prereqs: CoursePreReqGroup[] }) {
                     />
                 </div>
             </div>
+
             <p className="text-center m-2">
                 NOTE: Here PRE means you will have to complete before hand while
                 CO means you can do them parallelly
             </p>
+
             <div className="grid md:grid-cols-3 place-items-center p-5">
                 <Modal open={open}>
                     <h3 className="font-bold text-lg">{prereq?.name}</h3>
@@ -94,26 +97,65 @@ export default function Prereqs({ prereqs }: { prereqs: CoursePreReqGroup[] }) {
                     </div>
                 </Modal>
 
-                {prereqs
-                    .filter((d: CoursePreReqGroup) =>
-                        d.name.toLowerCase().includes(search.toLowerCase())
+                {(() => {
+                    const filteredPrereqs = prereqs.filter(
+                        (d: CoursePreReqGroup) =>
+                            d.name.toLowerCase().includes(search.toLowerCase())
                     )
-                    .map((preqgroup: CoursePreReqGroup) => (
-                        <div
-                            className="card w-11/12 bg-secondary text-neutral-content m-2 cursor-grab"
-                            key={preqgroup.name}
-                            onClick={() => {
-                                toggleModal()
-                                setPrereq(preqgroup)
-                            }}
-                        >
-                            <div className="card-body items-center">
-                                <h2 className="card-title text-primary">
-                                    {preqgroup.name}
-                                </h2>
-                            </div>
-                        </div>
-                    ))}
+
+                    return (
+                        <>
+                            {filteredPrereqs.map(
+                                (
+                                    preqgroup: CoursePreReqGroup,
+                                    index: number
+                                ) => (
+                                    <>
+                                        <div
+                                            className="card w-11/12 bg-secondary text-neutral-content m-2 cursor-grab"
+                                            key={preqgroup.name}
+                                            onClick={() => {
+                                                toggleModal()
+                                                setPrereq(preqgroup)
+                                            }}
+                                        >
+                                            <div className="card-body items-center">
+                                                <h2 className="card-title text-primary">
+                                                    {preqgroup.name}
+                                                </h2>
+                                            </div>
+                                        </div>
+
+                                        {/* Ad placement after every 15 cards (5 rows in 3-col grid) */}
+                                        {(index + 1) % 15 === 0 && (
+                                            <div className="md:col-span-3 w-full flex justify-center my-4">
+                                                <AdBanner
+                                                    data-ad-slot="6217320688"
+                                                    data-full-width-responsive="true"
+                                                    data-ad-format="fluid"
+                                                    data-ad-layout="in-article"
+                                                />
+                                            </div>
+                                        )}
+                                    </>
+                                )
+                            )}
+
+                            {/* Ad at the end if total results < 15 */}
+                            {filteredPrereqs.length > 0 &&
+                                filteredPrereqs.length < 15 && (
+                                    <div className="md:col-span-3 w-full flex justify-center my-4">
+                                        <AdBanner
+                                            data-ad-slot="6217320688"
+                                            data-full-width-responsive="true"
+                                            data-ad-format="fluid"
+                                            data-ad-layout="in-article"
+                                        />
+                                    </div>
+                                )}
+                        </>
+                    )
+                })()}
             </div>
         </>
     )

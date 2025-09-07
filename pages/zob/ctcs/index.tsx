@@ -1,3 +1,4 @@
+import AdBanner from '@/components/AdBanner'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import CustomToastContainer from '@/components/ToastContainer'
@@ -206,6 +207,12 @@ export default function PlacementCTCs() {
                     </>
                 </div>
             </div>
+            <AdBanner
+                data-ad-slot="6217320688"
+                data-full-width-responsive="true"
+                data-ad-format="fluid"
+                data-ad-layout="in-article"
+            />
             <div className="max-w-7xl mx-auto">
                 {isLoading ? (
                     <div className="grid place-items-center py-16">
@@ -353,6 +360,16 @@ export default function PlacementCTCs() {
                     </>
                 )}
             </div>
+
+            <div className="max-w-7xl mx-auto">
+                <AdBanner
+                    data-ad-slot="6217320688"
+                    data-full-width-responsive="true"
+                    data-ad-format="fluid"
+                    data-ad-layout="in-article"
+                />
+            </div>
+
             <CustomToastContainer containerId="placementCTCs" />
         </>
     )
