@@ -7,14 +7,14 @@
     <img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge&color=34d399&labelColor=111827" alt="License">
 </div>
 
-## Features
+## Features available.
 
-| Feature | Description |
+| Section | Description |
 |---------|-------------|
-| **Course Details** | Prereqs, Handouts, PYQs, Grading, Reviews and Notes |
-| **PS Details** | PS Cutoffs, Chronicles, Reviews and more |
-| **Zob** | Summer Internship Chronicles, Placement Chronicles |
-| **Research & Higher Studies** | Resources, Chronicles |
+| **Courses** | Prereqs, Handouts, PYQs, Grading, Reviews and Notes |
+| **Practice School** | PS Cutoffs, Chronicles, Reviews and more |
+| **Zob** | Summer Internship Chronicles, Placement Chronicles and other resources |
+| **Research & Higher Studies** | Chronicles and other resources |
 
 ## Setup.
 
