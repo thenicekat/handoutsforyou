@@ -1,21 +1,20 @@
-# h4u | handoutsforyou.
+<div align="center">
+    <h1>h4u. | handoutsforyou.</h1>
+    <p>One stop website for your Handouts, Academic Resources, Practice School Queries, Course Reviews, Course Prerequisites, etc. This facilitates the accessibility of course handouts, notes, resources, and contains a course review system, notes sharing system..</p>
+    <img src="https://img.shields.io/github/last-commit/thenicekat/handoutsforyou?style=for-the-badge&color=74c7ec&labelColor=111827" alt="Last Commit">
+    <img src="https://img.shields.io/github/stars/thenicekat/handoutsforyou?style=for-the-badge&color=facc15&labelColor=111827" alt="GitHub Stars">
+    <img src="https://img.shields.io/github/repo-size/thenicekat/handoutsforyou?style=for-the-badge&color=a78bfa&labelColor=111827" alt="Repo Size">
+    <img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge&color=34d399&labelColor=111827" alt="License">
+</div>
 
-## Features.
+## Features
 
-- Handouts
-- Course Prerequisites
-- Course Reviews
-- Course PYQs
-- Course Resources
-- Course Grading (Midsem)
-- Practice School Cutoffs
-- Practice School Chronicles
-- Practice School Reviews
-- Summer Internship Chronicles (Might become hard to find lmao)
-- Summer Internship Company Details
-- Placement Chronicles
-- Research Chronicles
-- Higher Studies Resources
+| Feature | Description |
+|---------|-------------|
+| **Course Details** | Prereqs, Handouts, PYQs, Grading, Reviews and Notes |
+| **PS Details** | PS Cutoffs, Chronicles, Reviews and more |
+| **Zob** | Summer Internship Chronicles, Placement Chronicles |
+| **Research & Higher Studies** | Resources, Chronicles |
 
 ## Setup.
 
