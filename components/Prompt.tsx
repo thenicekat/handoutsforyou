@@ -34,7 +34,7 @@ export default function StarPrompt({ setStarCount }: Props) {
             setStarPromptOpen(true)
         } else {
             const { lastPrompt } = JSON.parse(localStarPromptStore)
-            if (Date.now() - lastPrompt >= 1 * 60 * 60 * 1000) {
+            if (Date.now() - lastPrompt >= 24 * 60 * 60 * 1000) {
                 localStorage.setItem(
                     'starPromptStore',
                     JSON.stringify({ lastPrompt: Date.now() })

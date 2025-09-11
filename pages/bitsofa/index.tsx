@@ -1,4 +1,3 @@
-import AdBanner from '@/components/AdBanner'
 import { GetStaticProps } from 'next'
 import Link from 'next/link'
 import React, { useEffect } from 'react'
@@ -104,14 +103,6 @@ const ForumPage = ({ posts }: ForumPageProps) => {
         <>
             <Meta title="BITS of Advice. | handoutsforyou." />
             <Menu />
-
-            <AdBanner
-                data-ad-slot="6217320688"
-                data-full-width-responsive="true"
-                data-ad-format="fluid"
-                data-ad-layout="in-article"
-            />
-
             <div className="text-white min-h-screen pt-8">
                 <div className="text-center p-4">
                     <h2 className="text-4xl font-bold">BITS of Advice.</h2>
@@ -124,13 +115,6 @@ const ForumPage = ({ posts }: ForumPageProps) => {
                         </button>
                     </Link>
                 </div>
-
-                <AdBanner
-                    data-ad-slot="6217320688"
-                    data-full-width-responsive="true"
-                    data-ad-format="fluid"
-                    data-ad-layout="in-article"
-                />
 
                 {!isClientLoaded ? (
                     <div className="bg-gray-800 p-6 rounded-lg border text-center border-gray-700">

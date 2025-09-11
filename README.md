@@ -9,12 +9,12 @@
 
 ## Features available.
 
-| Section | Description |
-|---------|-------------|
-| **Courses** | Prereqs, Handouts, PYQs, Grading, Reviews and Notes |
-| **Practice School** | PS Cutoffs, Chronicles, Reviews and more |
-| **Zob** | Summer Internship Chronicles, Placement Chronicles and other resources |
-| **Research & Higher Studies** | Chronicles and other resources |
+| Section                       | Description                                                            |
+| ----------------------------- | ---------------------------------------------------------------------- |
+| **Courses**                   | Prereqs, Handouts, PYQs, Grading, Reviews and Notes                    |
+| **Practice School**           | PS Cutoffs, Chronicles, Reviews and more                               |
+| **Zob**                       | Summer Internship Chronicles, Placement Chronicles and other resources |
+| **Research & Higher Studies** | Chronicles and other resources                                         |
 
 ## Setup.
 

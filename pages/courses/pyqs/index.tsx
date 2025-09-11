@@ -1,4 +1,3 @@
-import AdBanner from '@/components/AdBanner'
 import AutoCompleter from '@/components/AutoCompleter'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
@@ -231,7 +230,7 @@ export default function PYQs() {
                     </div>
                 </div>
             )}
-
+            {/* PYQs Content */}
             <div className="px-2 md:px-20">
                 <div className="grid place-items-center text-lg p-10">
                     <p className="mb-6">
@@ -242,20 +241,13 @@ export default function PYQs() {
 
                     <div className="flex-col block md:flex-row md:w-1/3 w-full justify-center m-3">
                         <button
-                            className="btn btn-outline w-full mb-1"
+                            className="btn btn-outline w-full mb-3"
                             onClick={() => setShowUploadForm(true)}
                         >
                             Upload PYQ
                         </button>
                     </div>
                 </div>
-
-                <AdBanner
-                    data-ad-slot="6217320688"
-                    data-full-width-responsive="true"
-                    data-ad-format="fluid"
-                    data-ad-layout="in-article"
-                />
 
                 {loading ? (
                     <div className="flex justify-center items-center py-20">

@@ -1,4 +1,3 @@
-import AdBanner from '@/components/AdBanner'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import { getMetaConfig } from '@/config/meta'
@@ -111,13 +110,6 @@ export default function Handouts({
                     </>
                 </div>
             </div>
-
-            <AdBanner
-                data-ad-slot="6217320688"
-                data-full-width-responsive="true"
-                data-ad-format="fluid"
-                data-ad-layout="in-article"
-            />
 
             {!isLoading && (
                 <div className="px-2 md:px-20">
