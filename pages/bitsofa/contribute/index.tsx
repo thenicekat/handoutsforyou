@@ -126,6 +126,7 @@ export default function ContributeAdvice() {
                         </div>
 
                         {/* Guidelines moved to modal */}
+
                         <div className="bg-gray-800 rounded-lg p-8 border border-gray-700">
                             <form
                                 className="space-y-6"

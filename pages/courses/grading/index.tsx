@@ -1,4 +1,3 @@
-import AdBanner from '@/components/AdBanner'
 import AutoCompleter from '@/components/AutoCompleter'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
@@ -158,12 +157,6 @@ export default function Grading() {
                     </>
                 </div>
             </div>
-
-            <AdBanner
-                data-ad-slot="6217320688"
-                data-ad-format="auto"
-                data-full-width-responsive="true"
-            />
 
             <div className="max-w-7xl mx-auto px-2 md:px-20 p-4">
                 {isLoading ? (

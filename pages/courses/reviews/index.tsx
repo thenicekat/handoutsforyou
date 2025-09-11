@@ -1,4 +1,3 @@
-import AdBanner from '@/components/AdBanner'
 import AutoCompleter from '@/components/AutoCompleter'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
@@ -168,13 +167,6 @@ export default function Reviews() {
                             `Total Reviews: ${reviews.length}`}
                     </h1>
                 </div>
-
-                <AdBanner
-                    data-ad-slot="6217320688"
-                    data-full-width-responsive="true"
-                    data-ad-format="fluid"
-                    data-ad-layout="in-article"
-                />
 
                 <div className="px-2 md:px-20 p-2">
                     {!isLoading ? (

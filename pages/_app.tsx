@@ -30,7 +30,9 @@ export default function App({
                     content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
                 />
             </Head>
+
             <GoogleAdSense publisherId="pub-8538529975248100" />
+
             <SessionProvider session={session}>
                 <Component {...pageProps} />
             </SessionProvider>
