@@ -14,7 +14,7 @@ export type AuthorizedUser = {
 }
 
 const EMAIL_REGEX =
-    /^(?:[fh]\d{8}@(hyderabad|pilani|goa|dubai)\.bits-pilani\.ac\.in|[fh]\d{8}[pghd]@alumni\.bits-pilani\.ac\.in)$/
+    /^(?:[fh]\d{8}@(hyderabad|pilani|goa|dubai|online)\.bits-pilani\.ac\.in|[fh]\d{8}[pghd]@alumni\.bits-pilani\.ac\.in)$/
 
 export async function getUser(
     request: NextApiRequest,
