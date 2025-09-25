@@ -26,8 +26,6 @@ const tablesToBackup = [
     'ps1_reviews',
     'ps2_responses',
     'ps2_reviews',
-    'rants_comments',
-    'rants_posts',
     'si_chronicles',
     'si_companies',
 ]

@@ -8,11 +8,7 @@ create sequence "public"."ps1_responses_id_seq";
 
 create sequence "public"."ps2_responses_id_seq";
 
-create sequence "public"."rants_comments_id_seq";
-
 create sequence "public"."placement_resources_id_seq";
-
-create sequence "public"."rants_posts_id_seq";
 
 create table "public"."course_grading" (
     "id" uuid not null,
@@ -147,24 +143,6 @@ create table "public"."ps2_reviews" (
 );
 
 
-create table "public"."rants_comments" (
-    "id" bigint not null default nextval('rants_comments_id_seq'::regclass),
-    "rant_id" bigint,
-    "comment" text,
-    "created_by" text,
-    "created_at" bigint
-);
-
-
-create table "public"."rants_posts" (
-    "id" bigint not null default nextval('rants_posts_id_seq'::regclass),
-    "rant" text,
-    "public" boolean,
-    "created_by" text,
-    "created_at" bigint
-);
-
-
 create table "public"."si_chronicles" (
     "name" character varying(255),
     "company" text,
@@ -198,11 +176,7 @@ alter sequence "public"."ps1_responses_id_seq" owned by "public"."ps1_responses"
 
 alter sequence "public"."ps2_responses_id_seq" owned by "public"."ps2_responses"."id";
 
-alter sequence "public"."rants_comments_id_seq" owned by "public"."rants_comments"."id";
-
 alter sequence "public"."placement_resources_id_seq" owned by "public"."placement_resources"."id";
-
-alter sequence "public"."rants_posts_id_seq" owned by "public"."rants_posts"."id";
 
 CREATE UNIQUE INDEX course_grading_pkey ON public.course_grading USING btree (id);
 
@@ -220,10 +194,6 @@ CREATE UNIQUE INDEX ps1_responses_pkey ON public.ps1_responses USING btree (id);
 
 CREATE UNIQUE INDEX ps2_responses_pkey ON public.ps2_responses USING btree (id);
 
-CREATE UNIQUE INDEX rants_comments_pkey ON public.rants_comments USING btree (id);
-
-CREATE UNIQUE INDEX rants_posts_pkey ON public.rants_posts USING btree (id);
-
 alter table "public"."course_grading" add constraint "course_grading_pkey" PRIMARY KEY using index "course_grading_pkey";
 
 alter table "public"."course_resources" add constraint "course_resources_pkey" PRIMARY KEY using index "course_resources_pkey";
@@ -239,14 +209,6 @@ alter table "public"."placement_resources" add constraint "placement_resources_p
 alter table "public"."ps1_responses" add constraint "ps1_responses_pkey" PRIMARY KEY using index "ps1_responses_pkey";
 
 alter table "public"."ps2_responses" add constraint "ps2_responses_pkey" PRIMARY KEY using index "ps2_responses_pkey";
-
-alter table "public"."rants_comments" add constraint "rants_comments_pkey" PRIMARY KEY using index "rants_comments_pkey";
-
-alter table "public"."rants_posts" add constraint "rants_posts_pkey" PRIMARY KEY using index "rants_posts_pkey";
-
-alter table "public"."rants_comments" add constraint "rants_comments_rant_id_fkey" FOREIGN KEY (rant_id) REFERENCES rants_posts(id) not valid;
-
-alter table "public"."rants_comments" validate constraint "rants_comments_rant_id_fkey";
 
 grant delete on table "public"."course_grading" to "anon";
 
@@ -709,90 +671,6 @@ grant trigger on table "public"."ps2_reviews" to "service_role";
 grant truncate on table "public"."ps2_reviews" to "service_role";
 
 grant update on table "public"."ps2_reviews" to "service_role";
-
-grant delete on table "public"."rants_comments" to "anon";
-
-grant insert on table "public"."rants_comments" to "anon";
-
-grant references on table "public"."rants_comments" to "anon";
-
-grant select on table "public"."rants_comments" to "anon";
-
-grant trigger on table "public"."rants_comments" to "anon";
-
-grant truncate on table "public"."rants_comments" to "anon";
-
-grant update on table "public"."rants_comments" to "anon";
-
-grant delete on table "public"."rants_comments" to "authenticated";
-
-grant insert on table "public"."rants_comments" to "authenticated";
-
-grant references on table "public"."rants_comments" to "authenticated";
-
-grant select on table "public"."rants_comments" to "authenticated";
-
-grant trigger on table "public"."rants_comments" to "authenticated";
-
-grant truncate on table "public"."rants_comments" to "authenticated";
-
-grant update on table "public"."rants_comments" to "authenticated";
-
-grant delete on table "public"."rants_comments" to "service_role";
-
-grant insert on table "public"."rants_comments" to "service_role";
-
-grant references on table "public"."rants_comments" to "service_role";
-
-grant select on table "public"."rants_comments" to "service_role";
-
-grant trigger on table "public"."rants_comments" to "service_role";
-
-grant truncate on table "public"."rants_comments" to "service_role";
-
-grant update on table "public"."rants_comments" to "service_role";
-
-grant delete on table "public"."rants_posts" to "anon";
-
-grant insert on table "public"."rants_posts" to "anon";
-
-grant references on table "public"."rants_posts" to "anon";
-
-grant select on table "public"."rants_posts" to "anon";
-
-grant trigger on table "public"."rants_posts" to "anon";
-
-grant truncate on table "public"."rants_posts" to "anon";
-
-grant update on table "public"."rants_posts" to "anon";
-
-grant delete on table "public"."rants_posts" to "authenticated";
-
-grant insert on table "public"."rants_posts" to "authenticated";
-
-grant references on table "public"."rants_posts" to "authenticated";
-
-grant select on table "public"."rants_posts" to "authenticated";
-
-grant trigger on table "public"."rants_posts" to "authenticated";
-
-grant truncate on table "public"."rants_posts" to "authenticated";
-
-grant update on table "public"."rants_posts" to "authenticated";
-
-grant delete on table "public"."rants_posts" to "service_role";
-
-grant insert on table "public"."rants_posts" to "service_role";
-
-grant references on table "public"."rants_posts" to "service_role";
-
-grant select on table "public"."rants_posts" to "service_role";
-
-grant trigger on table "public"."rants_posts" to "service_role";
-
-grant truncate on table "public"."rants_posts" to "service_role";
-
-grant update on table "public"."rants_posts" to "service_role";
 
 grant delete on table "public"."si_chronicles" to "anon";
 

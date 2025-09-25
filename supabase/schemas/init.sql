@@ -123,15 +123,6 @@ CREATE TABLE ps2_reviews (
   review     TEXT
 );
 
--- === rants_posts ===
-CREATE TABLE rants_posts (
-  id          BIGSERIAL PRIMARY KEY,
-  rant        TEXT,
-  public      BOOLEAN,
-  created_by  TEXT,
-  created_at  BIGINT
-);
-
 -- === course_reviews ===
 CREATE TABLE course_reviews (
   created_at TIMESTAMPTZ NOT NULL,
@@ -149,13 +140,4 @@ CREATE TABLE donations (
   amount      BIGINT,
   verified    SMALLINT,
   name        TEXT
-);
-
--- === rants_comments ===
-CREATE TABLE rants_comments (
-  id          BIGSERIAL PRIMARY KEY,
-  rant_id     BIGINT REFERENCES rants_posts(id),
-  comment     TEXT,
-  created_by  TEXT,
-  created_at  BIGINT
 );
