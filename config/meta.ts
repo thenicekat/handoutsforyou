@@ -74,7 +74,6 @@ export const defaultMetaConfig: MetaConfig = {
         'BITS professor office locations',
         'BITS FAQ',
         'FAQs BITS Hyderabad',
-        'Student rants BITS Pilani',
         'BITS anonymous posts',
         'BITS Hyderabad academics',
         'h4u app BITS Pilani',
@@ -103,7 +102,6 @@ export const defaultMetaConfig: MetaConfig = {
         'handwritten notes BITS',
         'BITS question papers',
         'grading patterns BITS',
-        'anonymous rants BITS',
         'student resources BITS Hyderabad',
         'course prerequisites BITS',
         'course reviews BITS Pilani',
@@ -119,7 +117,6 @@ export const defaultMetaConfig: MetaConfig = {
         'school',
         'ps1',
         'ps2',
-        'rants',
         'expression',
         'summer internship(s)',
         'SI',
@@ -229,11 +226,6 @@ export const metaConfigs: Record<string, MetaConfig> = {
         title: 'Practice School.',
         description:
             'Find information on Practice School at BITS Pilani Hyderabad campus - cutoffs, chronicles, reviews and more.',
-    }),
-    rants: createMeta({
-        title: 'Rants.',
-        description:
-            'Let all your feelings out - whether you’re lonely, happy, anxious, frustrated, or simply need to talk, just write it out here.',
     }),
     si: createMeta({
         title: 'Summer Internships.',

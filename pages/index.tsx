@@ -23,11 +23,10 @@ type SummaryData = {
     siResources: number
     higherStudiesResources: number
     links: number
-    rants: number
     profChambers: number
 }
 
-const RESOURCE_COUNTS: SummaryData = {
+export const RESOURCE_COUNTS: SummaryData = {
     handouts: 3200,
     ps1Cutoffs: 1411,
     ps2Cutoffs: 4560,
@@ -43,7 +42,6 @@ const RESOURCE_COUNTS: SummaryData = {
     siResources: 10,
     higherStudiesResources: 2,
     links: 12,
-    rants: 23,
     profChambers: 320,
 }
 
@@ -199,11 +197,6 @@ export default function Home() {
             items: [
                 { name: 'BITS of Advice', path: '/bitsofa' },
                 {
-                    name: 'Rants',
-                    path: '/rants',
-                    count: RESOURCE_COUNTS.rants,
-                },
-                {
                     name: 'Professor Chambers',
                     path: '/chambers',
                     count: RESOURCE_COUNTS.profChambers,
@@ -278,7 +271,7 @@ export default function Home() {
                                 +
                             </div>
                             <div className="text-sm text-gray-300">
-                                Career Data
+                                Zob Data
                             </div>
                         </div>
                         <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">

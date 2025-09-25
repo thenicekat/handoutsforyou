@@ -20,7 +20,6 @@ const Menu = ({ doNotShowMenu }: MenuProps) => {
         'Zob Resources': '/zob/resources',
         'SI Companies': '/zob/sicompanies',
         'Placement CTCs': '/zob/ctcs',
-        Rants: '/rants',
         'Practice School': '/ps',
         'Research Chronicles':
             'https://pollen-box-786.notion.site/Research-Chronicles-894bcac1266d4e5fac2f4cd76ff29750',
@@ -67,9 +66,8 @@ const Menu = ({ doNotShowMenu }: MenuProps) => {
 
             {/* Sidebar/Mobile Menu */}
             <div
-                className={`fixed inset-0 z-30 transform transition-all duration-300 ${
-                    isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-                }`}
+                className={`fixed inset-0 z-30 transform transition-all duration-300 ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+                    }`}
             >
                 {/* Backdrop */}
                 <div
