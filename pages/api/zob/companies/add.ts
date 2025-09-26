@@ -8,15 +8,8 @@ export default async function handler(
     res: NextApiResponse<BaseResponseData>
 ) {
     const { email } = await getUser(req, res)
-    let {
-        name,
-        roles,
-        year,
-        cgpaCutoff,
-        stipend,
-        eligibility,
-        otherDetails,
-    } = req.body
+    let { name, roles, year, cgpaCutoff, stipend, eligibility, otherDetails } =
+        req.body
 
     if (!name) {
         res.status(422).json({
