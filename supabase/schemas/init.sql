@@ -65,8 +65,6 @@ CREATE TABLE si_companies (
   eligibility      TEXT,
   cgpa_cutoff      TEXT,
   roles            TEXT,
-  selects          TEXT,
-  selection_rounds TEXT,
   stipend          TEXT,
   otherdetails     TEXT
 );
