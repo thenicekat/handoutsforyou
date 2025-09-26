@@ -15,7 +15,6 @@ export default async function handler(
         cgpaCutoff,
         stipend,
         eligibility,
-        selects,
         otherDetails,
     } = req.body
 
@@ -61,20 +60,12 @@ export default async function handler(
         })
         return
     }
-    if (!selects) {
-        res.status(422).json({
-            message: 'Invalid Request - Number of selections missing',
-            error: true,
-        })
-        return
-    }
 
     name = name.trim()
     roles = roles.trim()
     cgpaCutoff = cgpaCutoff.trim()
     stipend = stipend.trim()
     eligibility = eligibility.trim()
-    selects = selects.trim()
     otherDetails = otherDetails ? otherDetails.trim() : ''
     year = year.trim()
 
@@ -91,7 +82,6 @@ export default async function handler(
             cgpa_cutoff: cgpaCutoff,
             stipend: stipend,
             eligibility: eligibility,
-            selects: selects,
             otherdetails: otherDetails,
             created_by: email,
         },

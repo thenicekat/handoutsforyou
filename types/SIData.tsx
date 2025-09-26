@@ -4,8 +4,6 @@ export type SI_Company = {
     cgpa_cutoff: string
     roles: string
     stipend: string
-    selects: string
-    selection_rounds: string
     year: string
     otherdetails: string
 }

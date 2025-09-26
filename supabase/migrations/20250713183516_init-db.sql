@@ -149,8 +149,6 @@ create table "public"."si_companies" (
     "eligibility" text,
     "cgpa_cutoff" text,
     "roles" text,
-    "selects" text,
-    "selection_rounds" text,
     "stipend" text,
     "otherdetails" text
 );

@@ -17,8 +17,6 @@ for company in data:
 		"eligibility": "Not Available",
 		"cgpa_cutoff": "Not Available",
 		"roles": company["name"],
-		"selects": "Not Available",
-		"selection_rounds": "Not Available",
 		"stipend": company["jobDescription"][3],
 		"year": year,
 		"otherdetails": " | ".join(company["otherInfo"]),

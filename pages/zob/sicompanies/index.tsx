@@ -84,11 +84,6 @@ export default function SICompanies() {
             cell: (info) => info.getValue(),
             header: 'Eligibility',
         }),
-        columnHelper.accessor((row) => row.selects, {
-            id: 'Selects',
-            cell: (info) => info.getValue(),
-            header: 'Selects',
-        }),
     ]
 
     const [sorting, setSorting] = React.useState<SortingState>([])
@@ -251,9 +246,6 @@ export default function SICompanies() {
                                             <p className="m-1">
                                                 Eligibility:{' '}
                                                 {siCompany.eligibility}
-                                            </p>
-                                            <p className="m-1">
-                                                Selects: {siCompany.selects}
                                             </p>
                                             {siCompany.otherdetails && (
                                                 <p className="m-1">

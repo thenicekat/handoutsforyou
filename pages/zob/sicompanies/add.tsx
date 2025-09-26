@@ -15,7 +15,6 @@ export default function AddSICompany() {
     const [cgpaCutoff, setCgpaCutoff] = useState('')
     const [stipend, setStipend] = useState('')
     const [eligibility, setEligibility] = useState('')
-    const [selects, setSelects] = useState('')
     const [otherDetails, setOtherDetails] = useState('')
 
     const [isLoading, setIsLoading] = useState(false)
@@ -47,11 +46,6 @@ export default function AddSICompany() {
         if (!eligibility.trim()) {
             newErrors.eligibility = 'Eligibility criteria is required'
         }
-
-        if (!selects.trim()) {
-            newErrors.selects = 'Number of selections is required'
-        }
-
         setErrors(newErrors)
         return Object.keys(newErrors).length === 0
     }
@@ -72,7 +66,6 @@ export default function AddSICompany() {
                 cgpaCutoff: cgpaCutoff.trim(),
                 stipend: stipend.trim(),
                 eligibility: eligibility.trim(),
-                selects: selects.trim(),
                 otherDetails: otherDetails.trim(),
             })
             const data = res.data
@@ -87,7 +80,6 @@ export default function AddSICompany() {
                 setCgpaCutoff('')
                 setStipend('')
                 setEligibility('')
-                setSelects('')
                 setOtherDetails('')
                 setErrors({})
             }
@@ -250,30 +242,6 @@ export default function AddSICompany() {
                                                 <label className="label">
                                                     <span className="label-text-alt text-error">
                                                         {errors.stipend}
-                                                    </span>
-                                                </label>
-                                            )}
-                                        </div>
-
-                                        <div className="form-control">
-                                            <label className="label">
-                                                <span className="label-text">
-                                                    Number of Selections
-                                                </span>
-                                            </label>
-                                            <input
-                                                type="text"
-                                                className={`input input-bordered ${errors.selects ? 'input-error' : ''}`}
-                                                value={selects}
-                                                onChange={(e) =>
-                                                    setSelects(e.target.value)
-                                                }
-                                                placeholder="e.g., 5-10 or TBD"
-                                            />
-                                            {errors.selects && (
-                                                <label className="label">
-                                                    <span className="label-text-alt text-error">
-                                                        {errors.selects}
                                                     </span>
                                                 </label>
                                             )}
