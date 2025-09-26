@@ -140,17 +140,6 @@ export default function SICompanies() {
                                             </li>
                                         )}
                                     </ul>
-
-                                    <div className="my-4">
-                                        <button
-                                            className="btn btn-outline"
-                                            onClick={() => {
-                                                window.location.href = `/zob/sichronicles/${yearRef}_${station.name}`
-                                            }}
-                                        >
-                                            View Chronicles
-                                        </button>
-                                    </div>
                                 </div>
                             </div>
                         ))
