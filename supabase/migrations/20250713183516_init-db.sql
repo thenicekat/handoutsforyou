@@ -143,16 +143,6 @@ create table "public"."ps2_reviews" (
 );
 
 
-create table "public"."si_chronicles" (
-    "name" character varying(255),
-    "company" text,
-    "year" text,
-    "cgpa" character varying(255),
-    "role" character varying(255),
-    "text" text
-);
-
-
 create table "public"."si_companies" (
     "name" character varying(255),
     "year" text,
@@ -671,48 +661,6 @@ grant trigger on table "public"."ps2_reviews" to "service_role";
 grant truncate on table "public"."ps2_reviews" to "service_role";
 
 grant update on table "public"."ps2_reviews" to "service_role";
-
-grant delete on table "public"."si_chronicles" to "anon";
-
-grant insert on table "public"."si_chronicles" to "anon";
-
-grant references on table "public"."si_chronicles" to "anon";
-
-grant select on table "public"."si_chronicles" to "anon";
-
-grant trigger on table "public"."si_chronicles" to "anon";
-
-grant truncate on table "public"."si_chronicles" to "anon";
-
-grant update on table "public"."si_chronicles" to "anon";
-
-grant delete on table "public"."si_chronicles" to "authenticated";
-
-grant insert on table "public"."si_chronicles" to "authenticated";
-
-grant references on table "public"."si_chronicles" to "authenticated";
-
-grant select on table "public"."si_chronicles" to "authenticated";
-
-grant trigger on table "public"."si_chronicles" to "authenticated";
-
-grant truncate on table "public"."si_chronicles" to "authenticated";
-
-grant update on table "public"."si_chronicles" to "authenticated";
-
-grant delete on table "public"."si_chronicles" to "service_role";
-
-grant insert on table "public"."si_chronicles" to "service_role";
-
-grant references on table "public"."si_chronicles" to "service_role";
-
-grant select on table "public"."si_chronicles" to "service_role";
-
-grant trigger on table "public"."si_chronicles" to "service_role";
-
-grant truncate on table "public"."si_chronicles" to "service_role";
-
-grant update on table "public"."si_chronicles" to "service_role";
 
 grant delete on table "public"."si_companies" to "anon";
 

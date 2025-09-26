@@ -58,16 +58,6 @@ CREATE TABLE ps2_responses (
   name           TEXT
 );
 
--- === si_chronicles ===
-CREATE TABLE si_chronicles (
-  name       VARCHAR(255),
-  company    TEXT,
-  year       TEXT,
-  cgpa       VARCHAR(255),
-  role       VARCHAR(255),
-  text       TEXT
-);
-
 -- === si_companies ===
 CREATE TABLE si_companies (
   name             VARCHAR(255),
