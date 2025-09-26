@@ -48,9 +48,10 @@ export default function SICompanies() {
     }
 
     React.useEffect(() => {
-        let filteredSiCompanies = siCompanies.filter((siCompany) =>
-            siCompany.name.toLowerCase().includes(input.toLowerCase()) ||
-            siCompany.roles.toLowerCase().includes(input.toLowerCase())
+        let filteredSiCompanies = siCompanies.filter(
+            (siCompany) =>
+                siCompany.name.toLowerCase().includes(input.toLowerCase()) ||
+                siCompany.roles.toLowerCase().includes(input.toLowerCase())
         )
         setFilteredSiCompanies(filteredSiCompanies)
     }, [input])
@@ -134,7 +135,10 @@ export default function SICompanies() {
                         </div>
 
                         <div className="flex-col hidden md:block md:flex-row w-1/3 justify-center">
-                            <Link className="m-3 w-full" href={'/zob/sicompanies/add'}>
+                            <Link
+                                className="m-3 w-full"
+                                href={'/zob/sicompanies/add'}
+                            >
                                 <button
                                     className="btn btn-outline w-full"
                                     tabIndex={-1}
@@ -144,7 +148,10 @@ export default function SICompanies() {
                             </Link>
                         </div>
                         <div className="z-10 w-14 fixed bottom-3 left-0 m-4 cursor-pointer text-white md:hidden">
-                            <Link className="m-3 w-full" href={'/zob/sicompanies/add'}>
+                            <Link
+                                className="m-3 w-full"
+                                href={'/zob/sicompanies/add'}
+                            >
                                 <PlusCircleIcon />
                             </Link>
                         </div>
@@ -179,7 +186,10 @@ export default function SICompanies() {
                         </div>
 
                         <div className="flex flex-col md:flex-row w-full justify-center">
-                            <Link className="m-3 w-full max-w-xs" href={'/zob/resources'}>
+                            <Link
+                                className="m-3 w-full max-w-xs"
+                                href={'/zob/resources'}
+                            >
                                 <button
                                     className="btn btn-outline w-full"
                                     tabIndex={-1}
@@ -190,8 +200,8 @@ export default function SICompanies() {
                         </div>
 
                         <p className="text-center">
-                            NOTE: This content was scrapped from SI Chronicles and
-                            belongs to Placement Unit
+                            NOTE: This content was scrapped from SI Chronicles
+                            and belongs to Placement Unit
                         </p>
                     </>
                 </div>
@@ -209,8 +219,8 @@ export default function SICompanies() {
                             No SI Companies Found
                         </h3>
                         <p className="text-base-content/70 mb-6">
-                            There are no SI companies available for the
-                            selected year. Be the first to contribute!
+                            There are no SI companies available for the selected
+                            year. Be the first to contribute!
                         </p>
                     </div>
                 ) : (
@@ -220,11 +230,7 @@ export default function SICompanies() {
                             {filteredSiCompanies.map((siCompany) => (
                                 <div
                                     className="card w-72 bg-base-100 text-base-content m-2"
-                                    key={
-                                        siCompany.name +
-                                        '/' +
-                                        siCompany.roles
-                                    }
+                                    key={siCompany.name + '/' + siCompany.roles}
                                 >
                                     <div className="card-body ">
                                         <h2 className="text-sm font-bold uppercase">
@@ -240,16 +246,14 @@ export default function SICompanies() {
                                                 {siCompany.cgpa_cutoff}
                                             </p>
                                             <p className="m-1">
-                                                Stipend:{' '}
-                                                {siCompany.stipend}
+                                                Stipend: {siCompany.stipend}
                                             </p>
                                             <p className="m-1">
                                                 Eligibility:{' '}
                                                 {siCompany.eligibility}
                                             </p>
                                             <p className="m-1">
-                                                Selects:{' '}
-                                                {siCompany.selects}
+                                                Selects: {siCompany.selects}
                                             </p>
                                             {siCompany.otherdetails && (
                                                 <p className="m-1">

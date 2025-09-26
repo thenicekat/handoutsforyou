@@ -185,9 +185,7 @@ export default function AddSICompany() {
                                                 name="year"
                                                 items={siYears}
                                                 value={year}
-                                                onChange={(val) =>
-                                                    setYear(val)
-                                                }
+                                                onChange={(val) => setYear(val)}
                                             />
                                             {errors.year && (
                                                 <label className="label">
@@ -209,7 +207,9 @@ export default function AddSICompany() {
                                                 className={`input input-bordered ${errors.cgpaCutoff ? 'input-error' : ''}`}
                                                 value={cgpaCutoff}
                                                 onChange={(e) =>
-                                                    setCgpaCutoff(e.target.value)
+                                                    setCgpaCutoff(
+                                                        e.target.value
+                                                    )
                                                 }
                                                 placeholder="e.g., 7.5 or Above 8.0"
                                             />
@@ -289,7 +289,9 @@ export default function AddSICompany() {
                                                 className={`textarea textarea-bordered h-24 ${errors.eligibility ? 'textarea-error' : ''}`}
                                                 placeholder="Enter eligibility criteria (e.g., Branch requirements, academic performance, etc.)"
                                                 onChange={(e) =>
-                                                    setEligibility(e.target.value)
+                                                    setEligibility(
+                                                        e.target.value
+                                                    )
                                                 }
                                                 value={eligibility}
                                             ></textarea>
