@@ -31,7 +31,7 @@ export const getStaticProps: GetStaticProps = async () => {
             props: {
                 posts: articles,
             },
-            revalidate: 3600,
+            revalidate: 3600, // Regenerate list of articles every hour.
         }
     } catch (error) {
         console.error('Error fetching BITS of advice:', error)

@@ -269,9 +269,6 @@ export default function ContributeAdvice() {
                         advice
                     </li>
                 </ol>
-                ---
-                <br />
-                Your submission will be reviewed before it is published.
                 <div className="flex justify-end space-x-3">
                     <button
                         className="btn btn-ghost"

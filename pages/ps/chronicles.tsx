@@ -25,7 +25,7 @@ export const getStaticProps: GetStaticProps = async () => {
             props: {
                 psChronicles,
             },
-            revalidate: 24 * 60 * 60, // Regenerate every 24 hours
+            revalidate: 24 * 60 * 60, // Regenerate list of PS chronicles every 24 hours.
         }
     } catch (error) {
         console.error('Error fetching PS chronicles:', error)
@@ -34,7 +34,7 @@ export const getStaticProps: GetStaticProps = async () => {
                 psChronicles: { ps1: [], ps2: [] },
                 error: 'Failed to fetch PS chronicles from Google Drive',
             },
-            revalidate: 300, // Try again in 5 minutes on error
+            revalidate: 300, // Try again in 5 minutes on error.
         }
     }
 }
