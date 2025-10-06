@@ -46,7 +46,7 @@ export const getStaticProps: GetStaticProps = async () => {
                 puChronicles,
                 siChronicles,
             },
-            revalidate: 24 * 3600, // Regenerate every 12 hours
+            revalidate: 24 * 3600, // Regenerate list of placement and SI chronicles every 12 hours.
         }
     } catch (error) {
         console.error('Error fetching placement chronicles:', error)
@@ -55,7 +55,7 @@ export const getStaticProps: GetStaticProps = async () => {
                 puChronicles: {},
                 error: 'Failed to fetch placement chronicles from Google Drive',
             },
-            revalidate: 300, // Try again in 5 minutes on error
+            revalidate: 300, // Try again in 5 minutes on error.
         }
     }
 }
@@ -254,7 +254,7 @@ export default function Placement({
                                                                 ) /
                                                                     1024 /
                                                                     1024) *
-                                                                    100
+                                                                100
                                                             ) / 100}{' '}
                                                             MB
                                                         </p>
@@ -322,7 +322,7 @@ export default function Placement({
                                                                 ) /
                                                                     1024 /
                                                                     1024) *
-                                                                    100
+                                                                100
                                                             ) / 100}{' '}
                                                             MB
                                                         </p>

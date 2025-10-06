@@ -43,7 +43,6 @@ jobs:
                   GOOGLE_DRIVE_CLIENT_SECRET: ${{ secrets.GOOGLE_DRIVE_CLIENT_SECRET }}
                   GOOGLE_DRIVE_REFRESH_TOKEN: ${{ secrets.GOOGLE_DRIVE_REFRESH_TOKEN }}
                   GOOGLE_DRIVE_BITSOFA_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_BITSOFA_FOLDER_ID }}
-                  GOOGLE_DRIVE_BITSOFA_SUBMISSIONS_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_BITSOFA_SUBMISSIONS_FOLDER_ID }}
 
             - name: Run prettier
               run: pnpm format

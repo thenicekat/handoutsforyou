@@ -31,7 +31,7 @@ export const getStaticProps: GetStaticProps = async () => {
             props: {
                 posts: articles,
             },
-            revalidate: 3600,
+            revalidate: 3600, // Regenerate list of articles every hour.
         }
     } catch (error) {
         console.error('Error fetching BITS of advice:', error)
@@ -126,21 +126,19 @@ const ForumPage = ({ posts }: ForumPageProps) => {
                             <h2 className="text-lg font-bold">View</h2>
                             <div className="flex gap-2">
                                 <button
-                                    className={`py-1 px-3 rounded-full text-sm font-semibold transition-colors ${
-                                        activeTab === 'all'
-                                            ? 'bg-yellow-500 text-black'
-                                            : 'bg-gray-700 hover:bg-gray-600 text-white'
-                                    }`}
+                                    className={`py-1 px-3 rounded-full text-sm font-semibold transition-colors ${activeTab === 'all'
+                                        ? 'bg-yellow-500 text-black'
+                                        : 'bg-gray-700 hover:bg-gray-600 text-white'
+                                        }`}
                                     onClick={() => setActiveTab('all')}
                                 >
                                     All
                                 </button>
                                 <button
-                                    className={`py-1 px-3 rounded-full text-sm font-semibold transition-colors ${
-                                        activeTab === 'bookmarks'
-                                            ? 'bg-yellow-500 text-black'
-                                            : 'bg-gray-700 hover:bg-gray-600 text-white'
-                                    }`}
+                                    className={`py-1 px-3 rounded-full text-sm font-semibold transition-colors ${activeTab === 'bookmarks'
+                                        ? 'bg-yellow-500 text-black'
+                                        : 'bg-gray-700 hover:bg-gray-600 text-white'
+                                        }`}
                                     onClick={() => setActiveTab('bookmarks')}
                                 >
                                     Bookmarks ({bookmarkedSlugs.length})
@@ -166,11 +164,10 @@ const ForumPage = ({ posts }: ForumPageProps) => {
                                     return (
                                         <button
                                             key={index}
-                                            className={`font-semibold py-1 px-3 rounded-full text-sm transition-colors duration-200 ${
-                                                isSelected
-                                                    ? 'bg-yellow-500 text-black'
-                                                    : 'bg-gray-700 hover:bg-gray-600 text-white'
-                                            }`}
+                                            className={`font-semibold py-1 px-3 rounded-full text-sm transition-colors duration-200 ${isSelected
+                                                ? 'bg-yellow-500 text-black'
+                                                : 'bg-gray-700 hover:bg-gray-600 text-white'
+                                                }`}
                                             onClick={() => handleTagClick(tag)}
                                         >
                                             {tag}

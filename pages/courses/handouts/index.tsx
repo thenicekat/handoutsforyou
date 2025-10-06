@@ -32,7 +32,7 @@ export const getStaticProps: GetStaticProps = async () => {
             props: {
                 handoutsMap,
             },
-            revalidate: 24 * 60 * 60, // Regenerate every 24 hours
+            revalidate: 24 * 60 * 60, // Regenerate list of handouts every 24 hours.
         }
     } catch (error) {
         console.error('Error fetching handouts:', error)
@@ -41,7 +41,7 @@ export const getStaticProps: GetStaticProps = async () => {
                 handoutsMap: {},
                 error: 'Failed to fetch handouts from Google Drive',
             },
-            revalidate: 300, // Try again in 5 minutes on error
+            revalidate: 300, // Try again in 5 minutes on error.
         }
     }
 }

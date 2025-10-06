@@ -325,11 +325,11 @@ export class GoogleDriveService {
         await this.initializeAuth()
 
         try {
-            const { GOOGLE_DRIVE_BITSOFA_SUBMISSIONS_FOLDER_ID } = process.env
+            const { GOOGLE_DRIVE_BITSOFA_FOLDER_ID } = process.env
 
-            if (!GOOGLE_DRIVE_BITSOFA_SUBMISSIONS_FOLDER_ID) {
+            if (!GOOGLE_DRIVE_BITSOFA_FOLDER_ID) {
                 throw new Error(
-                    'GOOGLE_DRIVE_BITSOFA_SUBMISSIONS_FOLDER_ID is not set'
+                    'GOOGLE_DRIVE_BITSOFA_FOLDER_ID is not set'
                 )
             }
 
@@ -337,7 +337,7 @@ export class GoogleDriveService {
                 name: fileName,
                 mimeType: 'text/markdown',
                 parents: [
-                    process.env.GOOGLE_DRIVE_BITSOFA_SUBMISSIONS_FOLDER_ID!,
+                    process.env.GOOGLE_DRIVE_BITSOFA_FOLDER_ID!,
                 ],
             }
 

@@ -211,11 +211,10 @@ export default function ContributeAdvice() {
                                 <div className="text-center">
                                     <button
                                         type="button"
-                                        className={`font-semibold py-3 px-8 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-gray-800 ${
-                                            isSubmitting
+                                        className={`font-semibold py-3 px-8 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-gray-800 ${isSubmitting
                                                 ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
                                                 : 'bg-success hover:bg-success/80 text-black'
-                                        }`}
+                                            }`}
                                         onClick={handleSubmitClick}
                                         disabled={isSubmitting}
                                     >
@@ -269,9 +268,6 @@ export default function ContributeAdvice() {
                         advice
                     </li>
                 </ol>
-                ---
-                <br />
-                Your submission will be reviewed before it is published.
                 <div className="flex justify-end space-x-3">
                     <button
                         className="btn btn-ghost"
@@ -281,9 +277,8 @@ export default function ContributeAdvice() {
                         Cancel
                     </button>
                     <button
-                        className={`btn btn-primary ${
-                            isSubmitting ? 'loading' : ''
-                        }`}
+                        className={`btn btn-primary ${isSubmitting ? 'loading' : ''
+                            }`}
                         onClick={async () => {
                             await submitAdvice()
                             setShowGuidelines(false)
