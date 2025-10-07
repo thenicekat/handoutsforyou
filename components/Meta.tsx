@@ -72,6 +72,9 @@ export default function Meta({
                 content="ca-pub-8538529975248100"
             />
 
+            {/* Monetag */}
+            <meta name="monetag" content="9f14733e352fad16554f2d8f355d4ed3" />
+
             {/* Open Graph Tags */}
             {meta.openGraph?.title && (
                 <meta property="og:title" content={meta.openGraph.title} />
