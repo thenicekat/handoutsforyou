@@ -40,6 +40,7 @@ export const siYears = [
 ]
 // For PYQs.
 export const pyqYears = [
+    '2025-Sem-1',
     '2024-Sem-2',
     '2024-Sem-1',
     '2023-Sem-2',
