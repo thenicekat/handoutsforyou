@@ -227,6 +227,7 @@ export default function Home() {
                     <p className="text-lg text-gray-300 mb-8 max-w-3xl mx-auto">
                         Everything you need for your journey @ BITS.
                     </p>
+                    <p>Hello, Monetag!</p>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
                         <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
                             <div className="text-2xl md:text-3xl font-bold text-white">
