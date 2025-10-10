@@ -5,6 +5,8 @@ import type { Session } from 'next-auth'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { GoogleAdSense } from 'nextjs-google-adsense'
+import Script from 'next/script'
+import { MONETAG_VIGNETTE_BANNER_INLINE } from '../utils/monetagExtraInline'
 
 // Use of the <SessionProvider> is mandatory to allow components that call
 // `useSession()` anywhere in your application to access the `session` object.
@@ -29,7 +31,15 @@ export default function App({
                     name="viewport"
                     content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
                 />
+                {MONETAG_VIGNETTE_BANNER_INLINE && (
+                    <Script
+                        id="monetag-vignette"
+                        strategy="afterInteractive"
+                        dangerouslySetInnerHTML={{ __html: MONETAG_VIGNETTE_BANNER_INLINE }}
+                    />
+                )}
             </Head>
+
 
             <GoogleAdSense publisherId="pub-8538529975248100" />
 
