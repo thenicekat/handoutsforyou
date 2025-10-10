@@ -2,7 +2,6 @@ import { SessionProvider } from 'next-auth/react'
 import '../styles/globals.css'
 
 import type { Session } from 'next-auth'
-import { GoogleAdSense } from 'next-google-adsense'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import Script from 'next/script'
