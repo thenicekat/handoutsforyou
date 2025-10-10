@@ -67,12 +67,12 @@ importers:
       next-auth:
         specifier: ^4.24.11
         version: 4.24.11(next@15.3.1(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      next-google-adsense:
-        specifier: ^1.1.0-beta.3
-        version: 1.1.0(next@15.3.1(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)
       next-pwa:
         specifier: ^5.6.0
         version: 5.6.0(@babel/core@7.28.0)(next@15.3.1(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(webpack@5.99.9)
+      nextjs-google-adsense:
+        specifier: ^1.0.0
+        version: 1.0.0(next@15.3.1(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)
       postcss:
         specifier: ^8.4.41
         version: 8.5.6
@@ -1549,9 +1549,6 @@ packages:
 
   asap@2.0.6:
     resolution: {integrity: sha512-BSHWgDSAiKs50o2Re8ppvp3seVHXSRM44cdSsT9FfNEUUZLOGWVCsiWaRPWM1Znn+mqZ1OfVZ3z3DWEzSp7hRA==}
-
-  assert-never@1.4.0:
-    resolution: {integrity: sha512-5oJg84os6NMQNl27T9LnZkvvqzvAnHu03ShCnoj6bsJwS7L8AO4lf+C/XjK/nvzEqQB744moC6V128RucQd1jA==}
 
   ast-types-flow@0.0.8:
     resolution: {integrity: sha512-OH/2E5Fg20h2aPrbe+QL8JZQFko0YZaF+j4mnQ7BGhfavO7OpSLa8a0y9sBwomHdSbkhTS8TQNayBfnW5DwbvQ==}
@@ -3234,13 +3231,6 @@ packages:
       nodemailer:
         optional: true
 
-  next-google-adsense@1.1.0:
-    resolution: {integrity: sha512-xcxz2ZQsnMcGsurCoJix/tvlhq4ROIbnTqip2SNiBE7QAJdjW97TfH6M1v0DARsPnKDHu6biwK7YrWn3rl5kMA==}
-    hasBin: true
-    peerDependencies:
-      next: '>=11.0.0'
-      react: '>=17.0.0'
-
   next-pwa@5.6.0:
     resolution: {integrity: sha512-XV8g8C6B7UmViXU8askMEYhWwQ4qc/XqJGnexbLV68hzKaGHZDMtHsm2TNxFcbR7+ypVuth/wwpiIlMwpRJJ5A==}
     peerDependencies:
@@ -3266,6 +3256,12 @@ packages:
         optional: true
       sass:
         optional: true
+
+  nextjs-google-adsense@1.0.0:
+    resolution: {integrity: sha512-gVqV9EH1JkDYT70M8AlqCTYq2DrmtJ8nL8xajXp+D5vK+U5PUwCJHi5XSuD9W0nFMBLYDWhVx452c8OcrI53/A==}
+    peerDependencies:
+      next: '>=11.0.0'
+      react: '>=17.0.0'
 
   node-domexception@1.0.0:
     resolution: {integrity: sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==}
@@ -5985,8 +5981,6 @@ snapshots:
 
   asap@2.0.6: {}
 
-  assert-never@1.4.0: {}
-
   ast-types-flow@0.0.8: {}
 
   async-function@1.0.0: {}
@@ -8105,12 +8099,6 @@ snapshots:
       react-dom: 19.1.0(react@19.1.0)
       uuid: 8.3.2
 
-  next-google-adsense@1.1.0(next@15.3.1(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0):
-    dependencies:
-      assert-never: 1.4.0
-      next: 15.3.1(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      react: 19.1.0
-
   next-pwa@5.6.0(@babel/core@7.28.0)(next@15.3.1(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(webpack@5.99.9):
     dependencies:
       babel-loader: 8.4.1(@babel/core@7.28.0)(webpack@5.99.9)
@@ -8153,6 +8141,13 @@ snapshots:
     transitivePeerDependencies:
       - '@babel/core'
       - babel-plugin-macros
+
+  nextjs-google-adsense@1.0.0(next@15.3.1(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0):
+    dependencies:
+      next: 15.3.1(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      react: 19.1.0
+    optionalDependencies:
+      fsevents: 2.3.3
 
   node-domexception@1.0.0: {}
 
