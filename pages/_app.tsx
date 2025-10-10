@@ -5,7 +5,7 @@ import type { Session } from 'next-auth'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import Script from 'next/script'
-import { GoogleAdSense } from 'nextjs-google-adsense'
+import { GoogleAdSense } from 'next-google-adsense'
 import { MONETAG_VIGNETTE_BANNER_INLINE } from '../utils/monetagExtraInline'
 
 
