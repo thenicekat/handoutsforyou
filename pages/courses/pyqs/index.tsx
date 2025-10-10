@@ -8,10 +8,10 @@ import { profs } from '@/config/profs'
 import { pyqYears } from '@/config/years_sems'
 import { CourseDetails, CoursePYQFile, CoursePYQsByYear } from '@/types/Courses'
 import axiosInstance from '@/utils/axiosCache'
+import { MONETAG_VIGNETTE_BANNER_INLINE } from '@/utils/monetagExtraInline'
+import Script from 'next/script'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
-import Script from 'next/script'
-import { MONETAG_VIGNETTE_BANNER_INLINE } from '@/utils/monetagExtraInline'
 
 export default function PYQs() {
     const [courses, setCourses] = useState<CourseDetails[]>([])
@@ -145,12 +145,14 @@ export default function PYQs() {
     return (
         <>
             <Meta {...getMetaConfig('courses/pyqs')} />
-            
+
             {MONETAG_VIGNETTE_BANNER_INLINE && (
                 <Script
                     id="monetag-vignette-pyqs"
                     strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{ __html: MONETAG_VIGNETTE_BANNER_INLINE }}
+                    dangerouslySetInnerHTML={{
+                        __html: MONETAG_VIGNETTE_BANNER_INLINE,
+                    }}
                 />
             )}
 
