@@ -2,12 +2,11 @@ import { SessionProvider } from 'next-auth/react'
 import '../styles/globals.css'
 
 import type { Session } from 'next-auth'
+import { GoogleAdSense } from 'next-google-adsense'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import Script from 'next/script'
-import { GoogleAdSense } from 'next-google-adsense'
 import { MONETAG_VIGNETTE_BANNER_INLINE } from '../utils/monetagExtraInline'
-
 
 // Use of the <SessionProvider> is mandatory to allow components that call
 // `useSession()` anywhere in your application to access the `session` object.
