@@ -9,7 +9,7 @@ import Script from 'next/script'
 
 interface MonetagAdComponentProps {
     adFormat: 'inpage-push' | 'vignette-banner' | 'interstitial'
-    pageId?: string // Optional for unique IDs
+    pageId?: string
 }
 
 const MonetagAdComponent: React.FC<MonetagAdComponentProps> = ({
