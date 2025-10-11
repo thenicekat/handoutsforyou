@@ -7,9 +7,11 @@ import { departments } from '@/config/departments'
 import { getMetaConfig } from '@/config/meta'
 import { profs } from '@/config/profs'
 import { CourseReview } from '@/types/Courses'
+import { MONETAG_INPAGE_PUSH_CORE, MONETAG_INPAGE_PUSH_LOADER, MONETAG_VIGNETTE_BANNER_CORE, MONETAG_VIGNETTE_BANNER_LOADER } from '@/utils/monetagExtraInline'
 import { axiosInstance } from '@/utils/axiosCache'
 import { PlusCircleIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
+import Script from 'next/script'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
@@ -89,6 +91,47 @@ export default function Reviews() {
     return (
         <>
             <Meta {...getMetaConfig('courses/reviews')} />
+
+            {MONETAG_INPAGE_PUSH_CORE && (
+                <Script
+                    id="monetag-inpage-push-core-reviews"
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                        __html: MONETAG_INPAGE_PUSH_CORE,
+                    }}
+                />
+            )}
+
+            {MONETAG_INPAGE_PUSH_LOADER && (
+                <Script
+                    id="monetag-inpage-push-reviews"
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                        __html: MONETAG_INPAGE_PUSH_LOADER,
+                    }}
+                />
+            )}
+
+            {MONETAG_VIGNETTE_BANNER_CORE && (
+                <Script
+                    id="monetag-vignette-core-reviews"
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                        __html: MONETAG_VIGNETTE_BANNER_CORE,
+                    }}
+                />
+            )}
+
+            {MONETAG_VIGNETTE_BANNER_LOADER && (
+                <Script
+                    id="monetag-vignette-reviews"
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                        __html: MONETAG_VIGNETTE_BANNER_LOADER,
+                    }}
+                />
+            )}
+
             {/* Search box */}
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">

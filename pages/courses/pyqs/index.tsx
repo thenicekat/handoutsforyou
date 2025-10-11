@@ -8,7 +8,7 @@ import { profs } from '@/config/profs'
 import { pyqYears } from '@/config/years_sems'
 import { CourseDetails, CoursePYQFile, CoursePYQsByYear } from '@/types/Courses'
 import axiosInstance from '@/utils/axiosCache'
-import { MONETAG_VIGNETTE_BANNER_INLINE } from '@/utils/monetagExtraInline'
+import { MONETAG_INPAGE_PUSH_CORE, MONETAG_INPAGE_PUSH_LOADER, MONETAG_VIGNETTE_BANNER_CORE, MONETAG_VIGNETTE_BANNER_LOADER } from '@/utils/monetagExtraInline'
 import Script from 'next/script'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
@@ -146,12 +146,42 @@ export default function PYQs() {
         <>
             <Meta {...getMetaConfig('courses/pyqs')} />
 
-            {MONETAG_VIGNETTE_BANNER_INLINE && (
+            {MONETAG_INPAGE_PUSH_CORE && (
+                <Script
+                    id="monetag-inpage-push-core-pyqs"
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                        __html: MONETAG_INPAGE_PUSH_CORE,
+                    }}
+                />
+            )}
+
+            {MONETAG_INPAGE_PUSH_LOADER && (
+                <Script
+                    id="monetag-inpage-push-pyqs"
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                        __html: MONETAG_INPAGE_PUSH_LOADER,
+                    }}
+                />
+            )}
+
+            {MONETAG_VIGNETTE_BANNER_CORE && (
+                <Script
+                    id="monetag-vignette-core-pyqs"
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                        __html: MONETAG_VIGNETTE_BANNER_CORE,
+                    }}
+                />
+            )}
+
+            {MONETAG_VIGNETTE_BANNER_LOADER && (
                 <Script
                     id="monetag-vignette-pyqs"
                     strategy="afterInteractive"
                     dangerouslySetInnerHTML={{
-                        __html: MONETAG_VIGNETTE_BANNER_INLINE,
+                        __html: MONETAG_VIGNETTE_BANNER_LOADER,
                     }}
                 />
             )}

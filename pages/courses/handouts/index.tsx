@@ -1,11 +1,13 @@
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import { getMetaConfig } from '@/config/meta'
+import { MONETAG_INPAGE_PUSH_CORE, MONETAG_INPAGE_PUSH_LOADER, MONETAG_VIGNETTE_BANNER_CORE, MONETAG_VIGNETTE_BANNER_LOADER } from '@/utils/monetagExtraInline'
 import axiosInstance from '@/utils/axiosCache'
 import { googleDriveService } from '@/utils/googleDrive'
 import { GetStaticProps } from 'next'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
+import Script from 'next/script'
 import { useEffect, useState } from 'react'
 
 const HandoutsPerYear = dynamic(() => import('@/components/HandoutsPerYear'), {
@@ -84,6 +86,46 @@ export default function Handouts({
     return (
         <>
             <Meta {...getMetaConfig('courses/handouts')} />
+
+            {MONETAG_INPAGE_PUSH_CORE && (
+                <Script
+                    id="monetag-inpage-push-core-handouts"
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                        __html: MONETAG_INPAGE_PUSH_CORE,
+                    }}
+                />
+            )}
+
+            {MONETAG_INPAGE_PUSH_LOADER && (
+                <Script
+                    id="monetag-inpage-push-handouts"
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                        __html: MONETAG_INPAGE_PUSH_LOADER,
+                    }}
+                />
+            )}
+
+            {MONETAG_VIGNETTE_BANNER_CORE && (
+                <Script
+                    id="monetag-vignette-core-handouts"
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                        __html: MONETAG_VIGNETTE_BANNER_CORE,
+                    }}
+                />
+            )}
+
+            {MONETAG_VIGNETTE_BANNER_LOADER && (
+                <Script
+                    id="monetag-vignette-handouts"
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                        __html: MONETAG_VIGNETTE_BANNER_LOADER,
+                    }}
+                />
+            )}
 
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
