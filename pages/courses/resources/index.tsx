@@ -1,19 +1,13 @@
 import CardWithScore from '@/components/CardWithScore'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
+import MonetagAdComponent from '@/components/MonetagAdComponent'
 import CustomToastContainer from '@/components/ToastContainer'
 import { getMetaConfig } from '@/config/meta'
 import { ResourceByCategory } from '@/types/Resource'
 import axiosInstance from '@/utils/axiosCache'
-import {
-    MONETAG_INPAGE_PUSH_CORE,
-    MONETAG_INPAGE_PUSH_LOADER,
-    MONETAG_VIGNETTE_BANNER_CORE,
-    MONETAG_VIGNETTE_BANNER_LOADER,
-} from '@/utils/monetagExtraInline'
 import { PlusCircleIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
-import Script from 'next/script'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
@@ -70,45 +64,8 @@ export default function Resources() {
         <>
             <Meta {...getMetaConfig('courses/resources')} />
 
-            {MONETAG_INPAGE_PUSH_CORE && (
-                <Script
-                    id="monetag-inpage-push-core-resources"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: MONETAG_INPAGE_PUSH_CORE,
-                    }}
-                />
-            )}
-
-            {MONETAG_INPAGE_PUSH_LOADER && (
-                <Script
-                    id="monetag-inpage-push-resources"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: MONETAG_INPAGE_PUSH_LOADER,
-                    }}
-                />
-            )}
-
-            {MONETAG_VIGNETTE_BANNER_CORE && (
-                <Script
-                    id="monetag-vignette-core-resources"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: MONETAG_VIGNETTE_BANNER_CORE,
-                    }}
-                />
-            )}
-
-            {MONETAG_VIGNETTE_BANNER_LOADER && (
-                <Script
-                    id="monetag-vignette-resources"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: MONETAG_VIGNETTE_BANNER_LOADER,
-                    }}
-                />
-            )}
+            <MonetagAdComponent adFormat="inpage-push" pageId="resources" />
+            <MonetagAdComponent adFormat="vignette-banner" pageId="resources" />
 
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
