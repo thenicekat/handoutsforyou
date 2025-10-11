@@ -6,7 +6,7 @@ import { GoogleAdSense } from 'nextjs-google-adsense'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import Script from 'next/script'
-import { MONETAG_VIGNETTE_BANNER_INLINE, MONETAG_INPAGE_PUSH_CORE, MONETAG_INPAGE_PUSH_LOADER, MONETAG_INTERSTITIAL_BANNER_INLINE } from '../utils/monetagExtraInline'
+import {MONETAG_INPAGE_PUSH_CORE, MONETAG_INPAGE_PUSH_LOADER, MONETAG_INTERSTITIAL_BANNER_INLINE } from '../utils/monetagExtraInline'
 
 // Use of the <SessionProvider> is mandatory to allow components that call
 // `useSession()` anywhere in your application to access the `session` object.
