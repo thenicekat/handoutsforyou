@@ -8,7 +8,12 @@ import { profs } from '@/config/profs'
 import { pyqYears } from '@/config/years_sems'
 import { CourseDetails, CoursePYQFile, CoursePYQsByYear } from '@/types/Courses'
 import axiosInstance from '@/utils/axiosCache'
-import { MONETAG_INPAGE_PUSH_CORE, MONETAG_INPAGE_PUSH_LOADER, MONETAG_VIGNETTE_BANNER_CORE, MONETAG_VIGNETTE_BANNER_LOADER } from '@/utils/monetagExtraInline'
+import {
+    MONETAG_INPAGE_PUSH_CORE,
+    MONETAG_INPAGE_PUSH_LOADER,
+    MONETAG_VIGNETTE_BANNER_CORE,
+    MONETAG_VIGNETTE_BANNER_LOADER,
+} from '@/utils/monetagExtraInline'
 import Script from 'next/script'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'

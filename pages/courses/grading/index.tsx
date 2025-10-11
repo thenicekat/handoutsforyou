@@ -6,8 +6,13 @@ import { courses } from '@/config/courses'
 import { getMetaConfig } from '@/config/meta'
 import { profs } from '@/config/profs'
 import { CourseGrading } from '@/types/Courses'
-import { MONETAG_INPAGE_PUSH_CORE, MONETAG_INPAGE_PUSH_LOADER, MONETAG_VIGNETTE_BANNER_CORE, MONETAG_VIGNETTE_BANNER_LOADER } from '@/utils/monetagExtraInline'
 import { axiosInstance } from '@/utils/axiosCache'
+import {
+    MONETAG_INPAGE_PUSH_CORE,
+    MONETAG_INPAGE_PUSH_LOADER,
+    MONETAG_VIGNETTE_BANNER_CORE,
+    MONETAG_VIGNETTE_BANNER_LOADER,
+} from '@/utils/monetagExtraInline'
 import Link from 'next/link'
 import Script from 'next/script'
 import { useEffect, useState } from 'react'

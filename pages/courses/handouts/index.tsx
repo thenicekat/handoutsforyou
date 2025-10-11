@@ -1,9 +1,14 @@
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import { getMetaConfig } from '@/config/meta'
-import { MONETAG_INPAGE_PUSH_CORE, MONETAG_INPAGE_PUSH_LOADER, MONETAG_VIGNETTE_BANNER_CORE, MONETAG_VIGNETTE_BANNER_LOADER } from '@/utils/monetagExtraInline'
 import axiosInstance from '@/utils/axiosCache'
 import { googleDriveService } from '@/utils/googleDrive'
+import {
+    MONETAG_INPAGE_PUSH_CORE,
+    MONETAG_INPAGE_PUSH_LOADER,
+    MONETAG_VIGNETTE_BANNER_CORE,
+    MONETAG_VIGNETTE_BANNER_LOADER,
+} from '@/utils/monetagExtraInline'
 import { GetStaticProps } from 'next'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'

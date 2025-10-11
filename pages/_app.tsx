@@ -2,11 +2,15 @@ import { SessionProvider } from 'next-auth/react'
 import '../styles/globals.css'
 
 import type { Session } from 'next-auth'
-import { GoogleAdSense } from 'nextjs-google-adsense'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import Script from 'next/script'
-import {MONETAG_INPAGE_PUSH_CORE, MONETAG_INPAGE_PUSH_LOADER, MONETAG_INTERSTITIAL_BANNER_INLINE } from '../utils/monetagExtraInline'
+import { GoogleAdSense } from 'nextjs-google-adsense'
+import {
+    MONETAG_INPAGE_PUSH_CORE,
+    MONETAG_INPAGE_PUSH_LOADER,
+    MONETAG_INTERSTITIAL_BANNER_INLINE,
+} from '../utils/monetagExtraInline'
 
 // Use of the <SessionProvider> is mandatory to allow components that call
 // `useSession()` anywhere in your application to access the `session` object.
@@ -35,21 +39,27 @@ export default function App({
                     <Script
                         id="monetag-interstitial-inline"
                         strategy="afterInteractive"
-                        dangerouslySetInnerHTML={{ __html: MONETAG_INTERSTITIAL_BANNER_INLINE }}
+                        dangerouslySetInnerHTML={{
+                            __html: MONETAG_INTERSTITIAL_BANNER_INLINE,
+                        }}
                     />
                 )}
                 {MONETAG_INPAGE_PUSH_CORE && (
                     <Script
                         id="monetag-inpage-core"
                         strategy="afterInteractive"
-                        dangerouslySetInnerHTML={{ __html: MONETAG_INPAGE_PUSH_CORE }}
+                        dangerouslySetInnerHTML={{
+                            __html: MONETAG_INPAGE_PUSH_CORE,
+                        }}
                     />
                 )}
                 {MONETAG_INPAGE_PUSH_LOADER && (
                     <Script
                         id="monetag-inpage-loader"
                         strategy="afterInteractive"
-                        dangerouslySetInnerHTML={{ __html: MONETAG_INPAGE_PUSH_LOADER }}
+                        dangerouslySetInnerHTML={{
+                            __html: MONETAG_INPAGE_PUSH_LOADER,
+                        }}
                     />
                 )}
             </Head>

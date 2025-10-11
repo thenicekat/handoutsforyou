@@ -2,9 +2,14 @@ import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import Modal from '@/components/Modal'
 import { getMetaConfig } from '@/config/meta'
-import { MONETAG_INPAGE_PUSH_CORE, MONETAG_INPAGE_PUSH_LOADER, MONETAG_VIGNETTE_BANNER_CORE, MONETAG_VIGNETTE_BANNER_LOADER } from '@/utils/monetagExtraInline'
 import { CoursePreReqGroup } from '@/types/Courses'
 import axiosInstance from '@/utils/axiosCache'
+import {
+    MONETAG_INPAGE_PUSH_CORE,
+    MONETAG_INPAGE_PUSH_LOADER,
+    MONETAG_VIGNETTE_BANNER_CORE,
+    MONETAG_VIGNETTE_BANNER_LOADER,
+} from '@/utils/monetagExtraInline'
 import { GetStaticProps } from 'next'
 import Script from 'next/script'
 import { useEffect, useState } from 'react'

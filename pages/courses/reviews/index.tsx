@@ -7,8 +7,13 @@ import { departments } from '@/config/departments'
 import { getMetaConfig } from '@/config/meta'
 import { profs } from '@/config/profs'
 import { CourseReview } from '@/types/Courses'
-import { MONETAG_INPAGE_PUSH_CORE, MONETAG_INPAGE_PUSH_LOADER, MONETAG_VIGNETTE_BANNER_CORE, MONETAG_VIGNETTE_BANNER_LOADER } from '@/utils/monetagExtraInline'
 import { axiosInstance } from '@/utils/axiosCache'
+import {
+    MONETAG_INPAGE_PUSH_CORE,
+    MONETAG_INPAGE_PUSH_LOADER,
+    MONETAG_VIGNETTE_BANNER_CORE,
+    MONETAG_VIGNETTE_BANNER_LOADER,
+} from '@/utils/monetagExtraInline'
 import { PlusCircleIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
 import Script from 'next/script'
