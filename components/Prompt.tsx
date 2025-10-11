@@ -48,14 +48,13 @@ export default function StarPrompt({ setStarCount }: Props) {
         <Modal open={starPromptOpen}>
             <div className="backdrop-blur-lg p-6 rounded-xl shadow-lg">
                 <h3 className="text-lg font-semibold text-white text-center">
-                    h4u now has ads!
+                    Your turn to contribute!
                 </h3>
                 <br />
                 <p className="text-sm text-white text-center">
-                    We know ads can be annoying—but they help us keep the site
-                    running. Your support through viewing ads helps cover server
-                    and domain costs. If you enjoy using this site, consider
-                    keeping ads on. Every bit counts. Thank you
+                    Please consider giving us a star on GitHub. It keeps us motivated to keep this site running.
+                    It also helps us get more contributors and maintainers for the project. If you have any ideas or suggestions, 
+                    please feel free to open an issue or a pull request.
                 </p>
                 <div className="mt-4 flex flex-col gap-4">
                     <button
