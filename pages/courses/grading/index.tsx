@@ -9,7 +9,6 @@ import { profs } from '@/config/profs'
 import { CourseGrading } from '@/types/Courses'
 import { axiosInstance } from '@/utils/axiosCache'
 import Link from 'next/link'
-import Script from 'next/script'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
