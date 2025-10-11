@@ -1,6 +1,7 @@
 import AutoCompleter from '@/components/AutoCompleter'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
+
 import CustomToastContainer from '@/components/ToastContainer'
 import { courses } from '@/config/courses'
 import { getMetaConfig } from '@/config/meta'

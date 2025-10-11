@@ -1,6 +1,7 @@
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import Modal from '@/components/Modal'
+
 import { getMetaConfig } from '@/config/meta'
 import { CoursePreReqGroup } from '@/types/Courses'
 import axiosInstance from '@/utils/axiosCache'

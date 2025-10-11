@@ -1,6 +1,7 @@
 import CardWithScore from '@/components/CardWithScore'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
+
 import CustomToastContainer from '@/components/ToastContainer'
 import { getMetaConfig } from '@/config/meta'
 import { ResourceByCategory } from '@/types/Resource'
