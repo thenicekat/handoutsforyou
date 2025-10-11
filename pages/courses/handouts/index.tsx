@@ -1,5 +1,6 @@
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
+import MonetagAdComponent from '@/components/MonetagAdComponent'
 import { getMetaConfig } from '@/config/meta'
 import axiosInstance from '@/utils/axiosCache'
 import { googleDriveService } from '@/utils/googleDrive'
@@ -84,6 +85,9 @@ export default function Handouts({
     return (
         <>
             <Meta {...getMetaConfig('courses/handouts')} />
+
+            <MonetagAdComponent adFormat="inpage-push" pageId="handouts" />
+            <MonetagAdComponent adFormat="vignette-banner" pageId="handouts" />
 
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">

@@ -1,6 +1,7 @@
 import AutoCompleter from '@/components/AutoCompleter'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
+import MonetagAdComponent from '@/components/MonetagAdComponent'
 import CustomToastContainer from '@/components/ToastContainer'
 import { courses as courseNames } from '@/config/courses'
 import { getMetaConfig } from '@/config/meta'
@@ -8,8 +9,6 @@ import { profs } from '@/config/profs'
 import { pyqYears } from '@/config/years_sems'
 import { CourseDetails, CoursePYQFile, CoursePYQsByYear } from '@/types/Courses'
 import axiosInstance from '@/utils/axiosCache'
-import { MONETAG_VIGNETTE_BANNER_INLINE } from '@/utils/monetagExtraInline'
-import Script from 'next/script'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
@@ -146,15 +145,8 @@ export default function PYQs() {
         <>
             <Meta {...getMetaConfig('courses/pyqs')} />
 
-            {MONETAG_VIGNETTE_BANNER_INLINE && (
-                <Script
-                    id="monetag-vignette-pyqs"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: MONETAG_VIGNETTE_BANNER_INLINE,
-                    }}
-                />
-            )}
+            <MonetagAdComponent adFormat="inpage-push" pageId="pyqs" />
+            <MonetagAdComponent adFormat="vignette-banner" pageId="pyqs" />
 
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">

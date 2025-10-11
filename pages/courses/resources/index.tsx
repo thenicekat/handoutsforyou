@@ -1,6 +1,7 @@
 import CardWithScore from '@/components/CardWithScore'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
+import MonetagAdComponent from '@/components/MonetagAdComponent'
 import CustomToastContainer from '@/components/ToastContainer'
 import { getMetaConfig } from '@/config/meta'
 import { ResourceByCategory } from '@/types/Resource'
@@ -62,6 +63,10 @@ export default function Resources() {
     return (
         <>
             <Meta {...getMetaConfig('courses/resources')} />
+
+            <MonetagAdComponent adFormat="inpage-push" pageId="resources" />
+            <MonetagAdComponent adFormat="vignette-banner" pageId="resources" />
+
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
                     <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">

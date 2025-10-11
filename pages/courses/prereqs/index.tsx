@@ -1,6 +1,7 @@
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import Modal from '@/components/Modal'
+import MonetagAdComponent from '@/components/MonetagAdComponent'
 import { getMetaConfig } from '@/config/meta'
 import { CoursePreReqGroup } from '@/types/Courses'
 import axiosInstance from '@/utils/axiosCache'
@@ -39,6 +40,10 @@ export default function Prereqs({ prereqs }: { prereqs: CoursePreReqGroup[] }) {
     return (
         <>
             <Meta {...getMetaConfig('courses/prereqs')} />
+
+            <MonetagAdComponent adFormat="inpage-push" pageId="prereqs" />
+            <MonetagAdComponent adFormat="vignette-banner" pageId="prereqs" />
+
             {/* Search box */}
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
