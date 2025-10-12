@@ -351,7 +351,10 @@ export default function PYQs() {
                                     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                                         {filteredCourses.length === 0 ? (
                                             <div className="col-span-full text-center py-10">
-                                                <p className="text-gray-500">No courses match your search.</p>
+                                                <p className="text-gray-500">
+                                                    No courses match your
+                                                    search.
+                                                </p>
                                             </div>
                                         ) : (
                                             filteredCourses.map((course) => (
@@ -409,7 +412,8 @@ export default function PYQs() {
                                     <div className="flex justify-center items-center py-20">
                                         <div className="loading loading-spinner loading-lg"></div>
                                     </div>
-                                ) : Object.keys(displayedPyqsByYear).length === 0 ? (
+                                ) : Object.keys(displayedPyqsByYear).length ===
+                                  0 ? (
                                     <div className="text-center py-20">
                                         <p className="text-gray-500">
                                             No PYQs available for this course
@@ -418,70 +422,70 @@ export default function PYQs() {
                                     </div>
                                 ) : (
                                     <div className="space-y-6">
-                                        {Object.entries(displayedPyqsByYear).map(
-                                            ([year, files]) => (
-                                                <div
-                                                    key={year}
-                                                    className="card bg-base-100 shadow-lg"
-                                                >
-                                                    <div className="card-body">
-                                                        <h4 className="card-title text-xl text-primary mb-4">
-                                                            {year}
-                                                        </h4>
-                                                        <div className="space-y-2">
-                                                            {files.map(
-                                                                (
-                                                                    file: CoursePYQFile
-                                                                ) => (
-                                                                    <div
-                                                                        key={
-                                                                            file.id
-                                                                        }
-                                                                        className="flex items-center justify-between p-3 bg-base-200 rounded-lg"
-                                                                    >
-                                                                        <div className="flex-1">
-                                                                            <p className="font-medium">
-                                                                                {
-                                                                                    file.name
-                                                                                }
-                                                                            </p>
-                                                                            <p className="text-sm text-gray-500">
-                                                                                {file.size &&
-                                                                                    formatFileSize(
-                                                                                        file.size
-                                                                                    )}{' '}
-                                                                                •{' '}
-                                                                                {new Date(
-                                                                                    file.createdTime
-                                                                                ).toLocaleDateString()}
-                                                                            </p>
-                                                                        </div>
-                                                                        <div className="card-actions">
-                                                                            <button
-                                                                                className="btn btn-primary btn-sm"
-                                                                                onClick={() => {
-                                                                                    const link =
-                                                                                        document.createElement(
-                                                                                            'a'
-                                                                                        )
-                                                                                    link.href =
-                                                                                        file.downloadUrl
-                                                                                    link.download =
-                                                                                        file.name
-                                                                                    link.click()
-                                                                                }}
-                                                                            >
-                                                                                Download
-                                                                            </button>
-                                                                        </div>
+                                        {Object.entries(
+                                            displayedPyqsByYear
+                                        ).map(([year, files]) => (
+                                            <div
+                                                key={year}
+                                                className="card bg-base-100 shadow-lg"
+                                            >
+                                                <div className="card-body">
+                                                    <h4 className="card-title text-xl text-primary mb-4">
+                                                        {year}
+                                                    </h4>
+                                                    <div className="space-y-2">
+                                                        {files.map(
+                                                            (
+                                                                file: CoursePYQFile
+                                                            ) => (
+                                                                <div
+                                                                    key={
+                                                                        file.id
+                                                                    }
+                                                                    className="flex items-center justify-between p-3 bg-base-200 rounded-lg"
+                                                                >
+                                                                    <div className="flex-1">
+                                                                        <p className="font-medium">
+                                                                            {
+                                                                                file.name
+                                                                            }
+                                                                        </p>
+                                                                        <p className="text-sm text-gray-500">
+                                                                            {file.size &&
+                                                                                formatFileSize(
+                                                                                    file.size
+                                                                                )}{' '}
+                                                                            •{' '}
+                                                                            {new Date(
+                                                                                file.createdTime
+                                                                            ).toLocaleDateString()}
+                                                                        </p>
                                                                     </div>
-                                                                )
-                                                            )}
-                                                        </div>
+                                                                    <div className="card-actions">
+                                                                        <button
+                                                                            className="btn btn-primary btn-sm"
+                                                                            onClick={() => {
+                                                                                const link =
+                                                                                    document.createElement(
+                                                                                        'a'
+                                                                                    )
+                                                                                link.href =
+                                                                                    file.downloadUrl
+                                                                                link.download =
+                                                                                    file.name
+                                                                                link.click()
+                                                                            }}
+                                                                        >
+                                                                            Download
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            )
+                                                        )}
                                                     </div>
                                                 </div>
-                                            )
-                                        )}
+                                            </div>
+                                        ))}
                                     </div>
                                 )}
                             </div>
