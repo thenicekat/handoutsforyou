@@ -149,12 +149,10 @@ export default function PYQs() {
         )
     }
 
-    // filtered list based on search query (case-insensitive)
     const filteredCourses = courses.filter((c) =>
         c.name.toLowerCase().includes(searchQuery.toLowerCase())
     )
 
-    // When a course is selected, filter its PYQs by the same search query.
     const displayedPyqsByYear: CoursePYQsByYear = (() => {
         const q = searchQuery.trim().toLowerCase()
         if (!q) return pyqsByYear
