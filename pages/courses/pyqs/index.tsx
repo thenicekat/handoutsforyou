@@ -21,6 +21,7 @@ import { toast } from 'react-toastify'
 
 export default function PYQs() {
     const [courses, setCourses] = useState<CourseDetails[]>([])
+    const [searchQuery, setSearchQuery] = useState('')
     const [selectedCourse, setSelectedCourse] = useState<CourseDetails | null>(
         null
     )
@@ -147,6 +148,24 @@ export default function PYQs() {
             parseFloat((numBytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i]
         )
     }
+
+    const filteredCourses = courses.filter((c) =>
+        c.name.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+
+    const displayedPyqsByYear: CoursePYQsByYear = (() => {
+        const q = searchQuery.trim().toLowerCase()
+        if (!q) return pyqsByYear
+
+        const result: CoursePYQsByYear = {}
+        Object.entries(pyqsByYear).forEach(([year, files]) => {
+            const matched = files.filter((f) =>
+                f.name.toLowerCase().includes(q)
+            )
+            if (matched.length) result[year] = matched
+        })
+        return result
+    })()
 
     return (
         <>
@@ -281,12 +300,21 @@ export default function PYQs() {
             )}
             {/* PYQs Content */}
             <div className="px-2 md:px-20">
-                <div className="grid place-items-center text-lg p-10">
-                    <p className="mb-6">
-                        Previous year question papers organized by course and
-                        year. You can view PDFs online or download them for
-                        offline access.
-                    </p>
+                <div className="grid place-items-center text-lg p-1">
+                    <div className="mt-3 mb-6 max-w-md mx-auto w-full px-4">
+                        <input
+                            type="search"
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            placeholder={
+                                selectedCourse
+                                    ? 'Search PYQs for ' + selectedCourse.name
+                                    : 'Search courses...'
+                            }
+                            className="w-full input input-bordered"
+                            aria-label="Search"
+                        />
+                    </div>
 
                     <div className="flex-col block md:flex-row md:w-1/3 w-full justify-center m-3">
                         <button
@@ -296,6 +324,12 @@ export default function PYQs() {
                             Upload PYQ
                         </button>
                     </div>
+
+                    <p className="mb-6">
+                        Previous year question papers organized by course and
+                        year. You can view PDFs online or download them for
+                        offline access.
+                    </p>
                 </div>
 
                 {loading ? (
@@ -307,9 +341,6 @@ export default function PYQs() {
                         {!selectedCourse ? (
                             // Show courses list
                             <div>
-                                <h3 className="text-2xl font-bold mb-6 text-center">
-                                    Select a Course
-                                </h3>
                                 {courses.length === 0 ? (
                                     <div className="text-center py-20">
                                         <p className="text-gray-500">
@@ -318,36 +349,45 @@ export default function PYQs() {
                                     </div>
                                 ) : (
                                     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                                        {courses.map((course) => (
-                                            <div
-                                                key={course.id}
-                                                className="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
-                                            >
+                                        {filteredCourses.length === 0 ? (
+                                            <div className="col-span-full text-center py-10">
+                                                <p className="text-gray-500">
+                                                    No courses match your
+                                                    search.
+                                                </p>
+                                            </div>
+                                        ) : (
+                                            filteredCourses.map((course) => (
                                                 <div
-                                                    className="card-body"
-                                                    onClick={() =>
-                                                        fetchPYQsForCourse(
-                                                            course
-                                                        )
-                                                    }
+                                                    key={course.id}
+                                                    className="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
                                                 >
-                                                    <h2 className="card-title text-primary">
-                                                        {course.name}
-                                                    </h2>
-                                                    <p className="text-sm text-gray-500">
-                                                        Created:{' '}
-                                                        {new Date(
-                                                            course.createdTime
-                                                        ).toLocaleDateString()}
-                                                    </p>
-                                                    <div className="card-actions justify-end">
-                                                        <button className="btn btn-sm btn-primary">
-                                                            View PYQs
-                                                        </button>
+                                                    <div
+                                                        className="card-body"
+                                                        onClick={() =>
+                                                            fetchPYQsForCourse(
+                                                                course
+                                                            )
+                                                        }
+                                                    >
+                                                        <h2 className="card-title text-primary">
+                                                            {course.name}
+                                                        </h2>
+                                                        <p className="text-sm text-gray-500">
+                                                            Created:{' '}
+                                                            {new Date(
+                                                                course.createdTime
+                                                            ).toLocaleDateString()}
+                                                        </p>
+                                                        <div className="card-actions justify-end">
+                                                            <button className="btn btn-sm btn-primary">
+                                                                View PYQs
+                                                            </button>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        ))}
+                                            ))
+                                        )}
                                     </div>
                                 )}
                             </div>
@@ -372,7 +412,8 @@ export default function PYQs() {
                                     <div className="flex justify-center items-center py-20">
                                         <div className="loading loading-spinner loading-lg"></div>
                                     </div>
-                                ) : Object.keys(pyqsByYear).length === 0 ? (
+                                ) : Object.keys(displayedPyqsByYear).length ===
+                                  0 ? (
                                     <div className="text-center py-20">
                                         <p className="text-gray-500">
                                             No PYQs available for this course
@@ -381,70 +422,70 @@ export default function PYQs() {
                                     </div>
                                 ) : (
                                     <div className="space-y-6">
-                                        {Object.entries(pyqsByYear).map(
-                                            ([year, files]) => (
-                                                <div
-                                                    key={year}
-                                                    className="card bg-base-100 shadow-lg"
-                                                >
-                                                    <div className="card-body">
-                                                        <h4 className="card-title text-xl text-primary mb-4">
-                                                            {year}
-                                                        </h4>
-                                                        <div className="space-y-2">
-                                                            {files.map(
-                                                                (
-                                                                    file: CoursePYQFile
-                                                                ) => (
-                                                                    <div
-                                                                        key={
-                                                                            file.id
-                                                                        }
-                                                                        className="flex items-center justify-between p-3 bg-base-200 rounded-lg"
-                                                                    >
-                                                                        <div className="flex-1">
-                                                                            <p className="font-medium">
-                                                                                {
-                                                                                    file.name
-                                                                                }
-                                                                            </p>
-                                                                            <p className="text-sm text-gray-500">
-                                                                                {file.size &&
-                                                                                    formatFileSize(
-                                                                                        file.size
-                                                                                    )}{' '}
-                                                                                •{' '}
-                                                                                {new Date(
-                                                                                    file.createdTime
-                                                                                ).toLocaleDateString()}
-                                                                            </p>
-                                                                        </div>
-                                                                        <div className="card-actions">
-                                                                            <button
-                                                                                className="btn btn-primary btn-sm"
-                                                                                onClick={() => {
-                                                                                    const link =
-                                                                                        document.createElement(
-                                                                                            'a'
-                                                                                        )
-                                                                                    link.href =
-                                                                                        file.downloadUrl
-                                                                                    link.download =
-                                                                                        file.name
-                                                                                    link.click()
-                                                                                }}
-                                                                            >
-                                                                                Download
-                                                                            </button>
-                                                                        </div>
+                                        {Object.entries(
+                                            displayedPyqsByYear
+                                        ).map(([year, files]) => (
+                                            <div
+                                                key={year}
+                                                className="card bg-base-100 shadow-lg"
+                                            >
+                                                <div className="card-body">
+                                                    <h4 className="card-title text-xl text-primary mb-4">
+                                                        {year}
+                                                    </h4>
+                                                    <div className="space-y-2">
+                                                        {files.map(
+                                                            (
+                                                                file: CoursePYQFile
+                                                            ) => (
+                                                                <div
+                                                                    key={
+                                                                        file.id
+                                                                    }
+                                                                    className="flex items-center justify-between p-3 bg-base-200 rounded-lg"
+                                                                >
+                                                                    <div className="flex-1">
+                                                                        <p className="font-medium">
+                                                                            {
+                                                                                file.name
+                                                                            }
+                                                                        </p>
+                                                                        <p className="text-sm text-gray-500">
+                                                                            {file.size &&
+                                                                                formatFileSize(
+                                                                                    file.size
+                                                                                )}{' '}
+                                                                            •{' '}
+                                                                            {new Date(
+                                                                                file.createdTime
+                                                                            ).toLocaleDateString()}
+                                                                        </p>
                                                                     </div>
-                                                                )
-                                                            )}
-                                                        </div>
+                                                                    <div className="card-actions">
+                                                                        <button
+                                                                            className="btn btn-primary btn-sm"
+                                                                            onClick={() => {
+                                                                                const link =
+                                                                                    document.createElement(
+                                                                                        'a'
+                                                                                    )
+                                                                                link.href =
+                                                                                    file.downloadUrl
+                                                                                link.download =
+                                                                                    file.name
+                                                                                link.click()
+                                                                            }}
+                                                                        >
+                                                                            Download
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            )
+                                                        )}
                                                     </div>
                                                 </div>
-                                            )
-                                        )}
+                                            </div>
+                                        ))}
                                     </div>
                                 )}
                             </div>
