@@ -52,11 +52,9 @@ export default function StarPrompt({ setStarCount }: Props) {
                 </h3>
                 <br />
                 <p className="text-sm text-white text-center">
-                    Please consider giving us a star on GitHub. It keeps us
-                    motivated to keep this site running. It also helps us get
-                    more contributors and maintainers for the project. If you
-                    have any ideas or suggestions, please feel free to open an
-                    issue or a pull request.
+                    Please consider giving us a star on GitHub. It keeps us motivated to keep this site running.
+                    It also helps us get more contributors and maintainers for the project. If you have any ideas or suggestions, 
+                    please feel free to open an issue or a pull request.
                 </p>
                 <div className="mt-4 flex flex-col gap-4">
                     <button
