@@ -72,6 +72,7 @@ export default function PYQs() {
             } else {
                 setPyqsByYear(response.data.data)
                 setSelectedCourse(course)
+                setSearchQuery('')
             }
         } catch (error) {
             toast.error('Error fetching PYQs for course')
@@ -159,6 +160,11 @@ export default function PYQs() {
 
         const result: CoursePYQsByYear = {}
         Object.entries(pyqsByYear).forEach(([year, files]) => {
+            if (year.toLowerCase().includes(q)) {
+                result[year] = files
+                return
+            }
+
             const matched = files.filter((f) =>
                 f.name.toLowerCase().includes(q)
             )
@@ -403,6 +409,7 @@ export default function PYQs() {
                                         onClick={() => {
                                             setSelectedCourse(null)
                                             setPyqsByYear({})
+                                            setSearchQuery('')
                                         }}
                                     >
                                         ← Back to Courses
