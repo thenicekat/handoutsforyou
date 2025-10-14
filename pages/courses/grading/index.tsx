@@ -11,8 +11,6 @@ import { axiosInstance } from '@/utils/axiosCache'
 import {
     MONETAG_INPAGE_PUSH_CORE,
     MONETAG_INPAGE_PUSH_LOADER,
-    MONETAG_VIGNETTE_BANNER_CORE,
-    MONETAG_VIGNETTE_BANNER_LOADER,
 } from '@/utils/monetagExtraInline'
 import Link from 'next/link'
 import Script from 'next/script'

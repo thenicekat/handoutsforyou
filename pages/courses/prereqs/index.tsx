@@ -8,8 +8,6 @@ import axiosInstance from '@/utils/axiosCache'
 import {
     MONETAG_INPAGE_PUSH_CORE,
     MONETAG_INPAGE_PUSH_LOADER,
-    MONETAG_VIGNETTE_BANNER_CORE,
-    MONETAG_VIGNETTE_BANNER_LOADER,
 } from '@/utils/monetagExtraInline'
 import { GetStaticProps } from 'next'
 import Script from 'next/script'
@@ -67,7 +65,6 @@ export default function Prereqs({ prereqs }: { prereqs: CoursePreReqGroup[] }) {
                     }}
                 />
             )}
-
 
             {/* Search box */}
             <div className="grid place-items-center">
