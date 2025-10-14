@@ -16,7 +16,7 @@ import {
     MONETAG_VIGNETTE_BANNER_LOADER,
 } from '@/utils/monetagExtraInline'
 import Script from 'next/script'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { toast } from 'react-toastify'
 
 export default function PYQs() {
@@ -150,11 +150,15 @@ export default function PYQs() {
         )
     }
 
-    const filteredCourses = courses.filter((c) =>
-        c.name.toLowerCase().includes(searchQuery.toLowerCase())
+    const filteredCourses = useMemo(
+        () =>
+            courses.filter((c) =>
+                c.name.toLowerCase().includes(searchQuery.toLowerCase())
+            ),
+        [courses, searchQuery]
     )
 
-    const displayedPyqsByYear: CoursePYQsByYear = (() => {
+    const displayedPyqsByYear: CoursePYQsByYear = useMemo(() => {
         const q = searchQuery.trim().toLowerCase()
         if (!q) return pyqsByYear
 
@@ -171,7 +175,7 @@ export default function PYQs() {
             if (matched.length) result[year] = matched
         })
         return result
-    })()
+    }, [pyqsByYear, searchQuery])
 
     return (
         <>
