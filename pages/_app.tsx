@@ -44,24 +44,6 @@ export default function App({
                         }}
                     />
                 )}
-                {MONETAG_INPAGE_PUSH_CORE && (
-                    <Script
-                        id="monetag-inpage-core"
-                        strategy="afterInteractive"
-                        dangerouslySetInnerHTML={{
-                            __html: MONETAG_INPAGE_PUSH_CORE,
-                        }}
-                    />
-                )}
-                {MONETAG_INPAGE_PUSH_LOADER && (
-                    <Script
-                        id="monetag-inpage-loader"
-                        strategy="afterInteractive"
-                        dangerouslySetInnerHTML={{
-                            __html: MONETAG_INPAGE_PUSH_LOADER,
-                        }}
-                    />
-                )}
             </Head>
 
             <GoogleAdSense publisherId="pub-8538529975248100" />

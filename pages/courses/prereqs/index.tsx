@@ -68,25 +68,6 @@ export default function Prereqs({ prereqs }: { prereqs: CoursePreReqGroup[] }) {
                 />
             )}
 
-            {MONETAG_VIGNETTE_BANNER_CORE && (
-                <Script
-                    id="monetag-vignette-core-prereqs"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: MONETAG_VIGNETTE_BANNER_CORE,
-                    }}
-                />
-            )}
-
-            {MONETAG_VIGNETTE_BANNER_LOADER && (
-                <Script
-                    id="monetag-vignette-prereqs"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: MONETAG_VIGNETTE_BANNER_LOADER,
-                    }}
-                />
-            )}
 
             {/* Search box */}
             <div className="grid place-items-center">
