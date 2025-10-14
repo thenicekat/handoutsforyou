@@ -7,8 +7,6 @@ import { googleDriveService } from '@/utils/googleDrive'
 import {
     MONETAG_INPAGE_PUSH_CORE,
     MONETAG_INPAGE_PUSH_LOADER,
-    MONETAG_VIGNETTE_BANNER_CORE,
-    MONETAG_VIGNETTE_BANNER_LOADER,
 } from '@/utils/monetagExtraInline'
 import { GetStaticProps } from 'next'
 import dynamic from 'next/dynamic'
@@ -109,26 +107,6 @@ export default function Handouts({
                     strategy="afterInteractive"
                     dangerouslySetInnerHTML={{
                         __html: MONETAG_INPAGE_PUSH_LOADER,
-                    }}
-                />
-            )}
-
-            {MONETAG_VIGNETTE_BANNER_CORE && (
-                <Script
-                    id="monetag-vignette-core-handouts"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: MONETAG_VIGNETTE_BANNER_CORE,
-                    }}
-                />
-            )}
-
-            {MONETAG_VIGNETTE_BANNER_LOADER && (
-                <Script
-                    id="monetag-vignette-handouts"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: MONETAG_VIGNETTE_BANNER_LOADER,
                     }}
                 />
             )}

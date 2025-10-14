@@ -12,8 +12,6 @@ import axiosInstance from '@/utils/axiosCache'
 import {
     MONETAG_INPAGE_PUSH_CORE,
     MONETAG_INPAGE_PUSH_LOADER,
-    MONETAG_VIGNETTE_BANNER_CORE,
-    MONETAG_VIGNETTE_BANNER_LOADER,
 } from '@/utils/monetagExtraInline'
 import Script from 'next/script'
 import { useEffect, useMemo, useState } from 'react'
@@ -197,26 +195,6 @@ export default function PYQs() {
                     strategy="afterInteractive"
                     dangerouslySetInnerHTML={{
                         __html: MONETAG_INPAGE_PUSH_LOADER,
-                    }}
-                />
-            )}
-
-            {MONETAG_VIGNETTE_BANNER_CORE && (
-                <Script
-                    id="monetag-vignette-core-pyqs"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: MONETAG_VIGNETTE_BANNER_CORE,
-                    }}
-                />
-            )}
-
-            {MONETAG_VIGNETTE_BANNER_LOADER && (
-                <Script
-                    id="monetag-vignette-pyqs"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: MONETAG_VIGNETTE_BANNER_LOADER,
                     }}
                 />
             )}

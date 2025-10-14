@@ -11,8 +11,6 @@ import { axiosInstance } from '@/utils/axiosCache'
 import {
     MONETAG_INPAGE_PUSH_CORE,
     MONETAG_INPAGE_PUSH_LOADER,
-    MONETAG_VIGNETTE_BANNER_CORE,
-    MONETAG_VIGNETTE_BANNER_LOADER,
 } from '@/utils/monetagExtraInline'
 import Link from 'next/link'
 import Script from 'next/script'
@@ -132,27 +130,6 @@ export default function Grading() {
                     }}
                 />
             )}
-
-            {MONETAG_VIGNETTE_BANNER_CORE && (
-                <Script
-                    id="monetag-vignette-core-grading"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: MONETAG_VIGNETTE_BANNER_CORE,
-                    }}
-                />
-            )}
-
-            {MONETAG_VIGNETTE_BANNER_LOADER && (
-                <Script
-                    id="monetag-vignette-grading"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: MONETAG_VIGNETTE_BANNER_LOADER,
-                    }}
-                />
-            )}
-
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
                     <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">

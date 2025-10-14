@@ -12,8 +12,6 @@ import { axiosInstance } from '@/utils/axiosCache'
 import {
     MONETAG_INPAGE_PUSH_CORE,
     MONETAG_INPAGE_PUSH_LOADER,
-    MONETAG_VIGNETTE_BANNER_CORE,
-    MONETAG_VIGNETTE_BANNER_LOADER,
 } from '@/utils/monetagExtraInline'
 import { PlusCircleIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
@@ -114,26 +112,6 @@ export default function Reviews() {
                     strategy="afterInteractive"
                     dangerouslySetInnerHTML={{
                         __html: MONETAG_INPAGE_PUSH_LOADER,
-                    }}
-                />
-            )}
-
-            {MONETAG_VIGNETTE_BANNER_CORE && (
-                <Script
-                    id="monetag-vignette-core-reviews"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: MONETAG_VIGNETTE_BANNER_CORE,
-                    }}
-                />
-            )}
-
-            {MONETAG_VIGNETTE_BANNER_LOADER && (
-                <Script
-                    id="monetag-vignette-reviews"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: MONETAG_VIGNETTE_BANNER_LOADER,
                     }}
                 />
             )}
