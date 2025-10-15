@@ -1,9 +1,9 @@
-import Script from 'next/script'
 import {
+    MONETAG_INPAGE_PUSH_INLINE,
     MONETAG_INTERSTITIAL_BANNER_INLINE,
     MONETAG_VIGNETTE_BANNER_INLINE,
-    MONETAG_INPAGE_PUSH_INLINE,
 } from '@/utils/monetagExtraInline'
+import Script from 'next/script'
 
 type AdFormat = 'interstitial-banner' | 'vignette-banner' | 'inpage-push'
 
