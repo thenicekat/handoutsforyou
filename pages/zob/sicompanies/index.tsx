@@ -5,9 +5,7 @@ import { getMetaConfig } from '@/config/meta'
 import { siYears } from '@/config/years_sems'
 import { SI_Company } from '@/types/SIData'
 import { axiosInstance } from '@/utils/axiosCache'
-import {
-    MONETAG_INTERSTITIAL_BANNER_INLINE,
-} from '@/utils/monetagExtraInline'
+import { MONETAG_INTERSTITIAL_BANNER_INLINE } from '@/utils/monetagExtraInline'
 import { PlusCircleIcon } from '@heroicons/react/24/solid'
 import {
     createColumnHelper,

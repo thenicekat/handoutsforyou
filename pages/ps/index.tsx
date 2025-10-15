@@ -1,9 +1,7 @@
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import { getMetaConfig } from '@/config/meta'
-import {
-    MONETAG_INTERSTITIAL_BANNER_INLINE,
-} from '@/utils/monetagExtraInline'
+import { MONETAG_INTERSTITIAL_BANNER_INLINE } from '@/utils/monetagExtraInline'
 import Script from 'next/script'
 
 export default function PS() {

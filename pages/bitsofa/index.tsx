@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next'
 import Link from 'next/link'
-import React, { useEffect } from 'react'
 import Script from 'next/script'
+import React, { useEffect } from 'react'
 
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
@@ -10,9 +10,7 @@ import CustomToastContainer from '@/components/ToastContainer'
 import { tags } from '@/config/tags'
 import { Post } from '@/types/Post'
 import { googleDriveService } from '@/utils/googleDrive'
-import {
-    MONETAG_INTERSTITIAL_BANNER_INLINE,
-} from '@/utils/monetagExtraInline'
+import { MONETAG_INTERSTITIAL_BANNER_INLINE } from '@/utils/monetagExtraInline'
 
 interface ForumPageProps {
     posts: Post[]
@@ -141,19 +139,21 @@ const ForumPage = ({ posts }: ForumPageProps) => {
                             <h2 className="text-lg font-bold">View</h2>
                             <div className="flex gap-2">
                                 <button
-                                    className={`py-1 px-3 rounded-full text-sm font-semibold transition-colors ${activeTab === 'all'
+                                    className={`py-1 px-3 rounded-full text-sm font-semibold transition-colors ${
+                                        activeTab === 'all'
                                             ? 'bg-yellow-500 text-black'
                                             : 'bg-gray-700 hover:bg-gray-600 text-white'
-                                        }`}
+                                    }`}
                                     onClick={() => setActiveTab('all')}
                                 >
                                     All
                                 </button>
                                 <button
-                                    className={`py-1 px-3 rounded-full text-sm font-semibold transition-colors ${activeTab === 'bookmarks'
+                                    className={`py-1 px-3 rounded-full text-sm font-semibold transition-colors ${
+                                        activeTab === 'bookmarks'
                                             ? 'bg-yellow-500 text-black'
                                             : 'bg-gray-700 hover:bg-gray-600 text-white'
-                                        }`}
+                                    }`}
                                     onClick={() => setActiveTab('bookmarks')}
                                 >
                                     Bookmarks ({bookmarkedSlugs.length})
@@ -179,10 +179,11 @@ const ForumPage = ({ posts }: ForumPageProps) => {
                                     return (
                                         <button
                                             key={index}
-                                            className={`font-semibold py-1 px-3 rounded-full text-sm transition-colors duration-200 ${isSelected
+                                            className={`font-semibold py-1 px-3 rounded-full text-sm transition-colors duration-200 ${
+                                                isSelected
                                                     ? 'bg-yellow-500 text-black'
                                                     : 'bg-gray-700 hover:bg-gray-600 text-white'
-                                                }`}
+                                            }`}
                                             onClick={() => handleTagClick(tag)}
                                         >
                                             {tag}

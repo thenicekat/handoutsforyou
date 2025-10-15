@@ -4,9 +4,7 @@ import Meta from '@/components/Meta'
 import CustomToastContainer from '@/components/ToastContainer'
 import { getMetaConfig } from '@/config/meta'
 import { profs } from '@/config/profs'
-import {
-    MONETAG_INTERSTITIAL_BANNER_INLINE,
-} from '@/utils/monetagExtraInline'
+import { MONETAG_INTERSTITIAL_BANNER_INLINE } from '@/utils/monetagExtraInline'
 import Script from 'next/script'
 import { useState } from 'react'
 

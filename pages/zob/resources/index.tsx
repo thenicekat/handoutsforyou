@@ -10,9 +10,7 @@ import {
 import { ResourceByCategory } from '@/types/Resource'
 import { axiosInstance } from '@/utils/axiosCache'
 import { googleDriveService } from '@/utils/googleDrive'
-import {
-    MONETAG_INTERSTITIAL_BANNER_INLINE,
-} from '@/utils/monetagExtraInline'
+import { MONETAG_INTERSTITIAL_BANNER_INLINE } from '@/utils/monetagExtraInline'
 import { LinkIcon, PlusCircleIcon } from '@heroicons/react/24/solid'
 import { GetStaticProps } from 'next'
 import Link from 'next/link'
@@ -269,7 +267,7 @@ export default function Placement({
                                                                 ) /
                                                                     1024 /
                                                                     1024) *
-                                                                100
+                                                                    100
                                                             ) / 100}{' '}
                                                             MB
                                                         </p>
@@ -337,7 +335,7 @@ export default function Placement({
                                                                 ) /
                                                                     1024 /
                                                                     1024) *
-                                                                100
+                                                                    100
                                                             ) / 100}{' '}
                                                             MB
                                                         </p>

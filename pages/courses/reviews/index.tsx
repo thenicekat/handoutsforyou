@@ -9,9 +9,7 @@ import { getMetaConfig } from '@/config/meta'
 import { profs } from '@/config/profs'
 import { CourseReview } from '@/types/Courses'
 import { axiosInstance } from '@/utils/axiosCache'
-import {
-    MONETAG_INTERSTITIAL_BANNER_INLINE,
-} from '@/utils/monetagExtraInline'
+import { MONETAG_INTERSTITIAL_BANNER_INLINE } from '@/utils/monetagExtraInline'
 import { PlusCircleIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
 import Script from 'next/script'

@@ -5,9 +5,7 @@ import { getMetaConfig } from '@/config/meta'
 import { ps1Years } from '@/config/years_sems'
 import { PS1Item } from '@/types/PS'
 import { axiosInstance } from '@/utils/axiosCache'
-import {
-    MONETAG_INTERSTITIAL_BANNER_INLINE,
-} from '@/utils/monetagExtraInline'
+import { MONETAG_INTERSTITIAL_BANNER_INLINE } from '@/utils/monetagExtraInline'
 import {
     createColumnHelper,
     flexRender,

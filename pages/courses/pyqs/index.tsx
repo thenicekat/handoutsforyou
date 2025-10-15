@@ -9,9 +9,7 @@ import { profs } from '@/config/profs'
 import { pyqYears } from '@/config/years_sems'
 import { CourseDetails, CoursePYQFile, CoursePYQsByYear } from '@/types/Courses'
 import axiosInstance from '@/utils/axiosCache'
-import {
-    MONETAG_INTERSTITIAL_BANNER_INLINE,
-} from '@/utils/monetagExtraInline'
+import { MONETAG_INTERSTITIAL_BANNER_INLINE } from '@/utils/monetagExtraInline'
 import Script from 'next/script'
 import { useEffect, useMemo, useState } from 'react'
 import { toast } from 'react-toastify'
@@ -391,7 +389,7 @@ export default function PYQs() {
                                         <div className="loading loading-spinner loading-lg"></div>
                                     </div>
                                 ) : Object.keys(displayedPyqsByYear).length ===
-                                    0 ? (
+                                  0 ? (
                                     <div className="text-center py-20">
                                         <p className="text-gray-500">
                                             No PYQs available for this course

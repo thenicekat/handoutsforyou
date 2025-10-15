@@ -4,9 +4,7 @@ import Meta from '@/components/Meta'
 import { getMetaConfig } from '@/config/meta'
 import axiosInstance from '@/utils/axiosCache'
 import { googleDriveService } from '@/utils/googleDrive'
-import {
-    MONETAG_INTERSTITIAL_BANNER_INLINE,
-} from '@/utils/monetagExtraInline'
+import { MONETAG_INTERSTITIAL_BANNER_INLINE } from '@/utils/monetagExtraInline'
 import { GetStaticProps } from 'next'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'

@@ -4,9 +4,7 @@ import CustomToastContainer from '@/components/ToastContainer'
 import { getMetaConfig } from '@/config/meta'
 import { PS_Review } from '@/types/PS'
 import { axiosInstance } from '@/utils/axiosCache'
-import {
-    MONETAG_INTERSTITIAL_BANNER_INLINE,
-} from '@/utils/monetagExtraInline'
+import { MONETAG_INTERSTITIAL_BANNER_INLINE } from '@/utils/monetagExtraInline'
 import Link from 'next/link'
 import Script from 'next/script'
 import { useEffect, useState } from 'react'

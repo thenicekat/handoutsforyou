@@ -5,9 +5,7 @@ import { getMetaConfig } from '@/config/meta'
 import { placementYears } from '@/config/years_sems'
 import { PlacementCTC } from '@/types/Placements'
 import { axiosInstance } from '@/utils/axiosCache'
-import {
-    MONETAG_INTERSTITIAL_BANNER_INLINE,
-} from '@/utils/monetagExtraInline'
+import { MONETAG_INTERSTITIAL_BANNER_INLINE } from '@/utils/monetagExtraInline'
 import { PlusCircleIcon } from '@heroicons/react/24/solid'
 import {
     createColumnHelper,
