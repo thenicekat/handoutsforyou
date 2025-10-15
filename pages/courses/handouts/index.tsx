@@ -1,14 +1,12 @@
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
-
+import MonetagAd from '@/components/MonetagAd'
 import { getMetaConfig } from '@/config/meta'
 import axiosInstance from '@/utils/axiosCache'
 import { googleDriveService } from '@/utils/googleDrive'
-import { MONETAG_INTERSTITIAL_BANNER_INLINE } from '@/utils/monetagExtraInline'
 import { GetStaticProps } from 'next'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
-import Script from 'next/script'
 import { useEffect, useState } from 'react'
 
 const HandoutsPerYear = dynamic(() => import('@/components/HandoutsPerYear'), {
@@ -88,15 +86,10 @@ export default function Handouts({
         <>
             <Meta {...getMetaConfig('courses/handouts')} />
 
-            {MONETAG_INTERSTITIAL_BANNER_INLINE && (
-                <Script
-                    id="monetag-interstitial-banner-inline-handouts"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: MONETAG_INTERSTITIAL_BANNER_INLINE,
-                    }}
-                />
-            )}
+            <MonetagAd
+                adFormat="interstitial-banner"
+                id="monetag-interstitial-banner-inline-handouts"
+            />
 
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">

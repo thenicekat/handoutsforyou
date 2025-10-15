@@ -1,11 +1,11 @@
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
+import MonetagAd from '@/components/MonetagAd'
 import CustomToastContainer from '@/components/ToastContainer'
 import { getMetaConfig } from '@/config/meta'
 import { ps2Semesters } from '@/config/years_sems'
 import { PS2Item } from '@/types/PS'
 import { axiosInstance } from '@/utils/axiosCache'
-import { MONETAG_INTERSTITIAL_BANNER_INLINE } from '@/utils/monetagExtraInline'
 import {
     createColumnHelper,
     flexRender,
@@ -15,7 +15,6 @@ import {
     useReactTable,
 } from '@tanstack/react-table'
 import Link from 'next/link'
-import Script from 'next/script'
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
@@ -172,15 +171,10 @@ export default function PS2Data() {
         <>
             <Meta {...getMetaConfig('ps/cutoffs/ps2')} />
 
-            {MONETAG_INTERSTITIAL_BANNER_INLINE && (
-                <Script
-                    id="monetag-interstitial-banner-inline-ps-cutoffs-ps2"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: MONETAG_INTERSTITIAL_BANNER_INLINE,
-                    }}
-                />
-            )}
+            <MonetagAd
+                adFormat="interstitial-banner"
+                id="monetag-interstitial-banner-inline-ps-cutoffs-ps2"
+            />
 
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">

@@ -1,6 +1,7 @@
 import CardWithScore from '@/components/CardWithScore'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
+import MonetagAd from '@/components/MonetagAd'
 import CustomToastContainer from '@/components/ToastContainer'
 import { getMetaConfig } from '@/config/meta'
 import {
@@ -10,11 +11,9 @@ import {
 import { ResourceByCategory } from '@/types/Resource'
 import { axiosInstance } from '@/utils/axiosCache'
 import { googleDriveService } from '@/utils/googleDrive'
-import { MONETAG_INTERSTITIAL_BANNER_INLINE } from '@/utils/monetagExtraInline'
 import { LinkIcon, PlusCircleIcon } from '@heroicons/react/24/solid'
 import { GetStaticProps } from 'next'
 import Link from 'next/link'
-import Script from 'next/script'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
@@ -138,15 +137,10 @@ export default function Placement({
         <>
             <Meta {...getMetaConfig('zob/resources')} />
 
-            {MONETAG_INTERSTITIAL_BANNER_INLINE && (
-                <Script
-                    id="monetag-interstitial-banner-inline-zob-resources"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: MONETAG_INTERSTITIAL_BANNER_INLINE,
-                    }}
-                />
-            )}
+            <MonetagAd
+                adFormat="interstitial-banner"
+                id="monetag-interstitial-banner-inline-zob-resources"
+            />
 
             {/* Search box */}
             <div className="grid place-items-center">
@@ -267,7 +261,7 @@ export default function Placement({
                                                                 ) /
                                                                     1024 /
                                                                     1024) *
-                                                                    100
+                                                                100
                                                             ) / 100}{' '}
                                                             MB
                                                         </p>
@@ -335,7 +329,7 @@ export default function Placement({
                                                                 ) /
                                                                     1024 /
                                                                     1024) *
-                                                                    100
+                                                                100
                                                             ) / 100}{' '}
                                                             MB
                                                         </p>

@@ -1,8 +1,7 @@
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
+import MonetagAd from '@/components/MonetagAd'
 import { getMetaConfig } from '@/config/meta'
-import { MONETAG_INTERSTITIAL_BANNER_INLINE } from '@/utils/monetagExtraInline'
-import Script from 'next/script'
 
 export default function PS() {
     const psResources = {
@@ -41,15 +40,10 @@ export default function PS() {
         <>
             <Meta {...getMetaConfig('ps')} />
 
-            {MONETAG_INTERSTITIAL_BANNER_INLINE && (
-                <Script
-                    id="monetag-interstitial-banner-inline-ps"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: MONETAG_INTERSTITIAL_BANNER_INLINE,
-                    }}
-                />
-            )}
+            <MonetagAd
+                adFormat="interstitial-banner"
+                id="monetag-interstitial-banner-inline-ps"
+            />
 
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">

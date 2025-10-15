@@ -1,16 +1,15 @@
 import { GetStaticProps } from 'next'
 import Link from 'next/link'
-import Script from 'next/script'
 import React, { useEffect } from 'react'
 
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
+import MonetagAd from '@/components/MonetagAd'
 import PostCard from '@/components/PostCard'
 import CustomToastContainer from '@/components/ToastContainer'
 import { tags } from '@/config/tags'
 import { Post } from '@/types/Post'
 import { googleDriveService } from '@/utils/googleDrive'
-import { MONETAG_INTERSTITIAL_BANNER_INLINE } from '@/utils/monetagExtraInline'
 
 interface ForumPageProps {
     posts: Post[]
@@ -105,15 +104,10 @@ const ForumPage = ({ posts }: ForumPageProps) => {
         <>
             <Meta title="BITS of Advice. | handoutsforyou." />
 
-            {MONETAG_INTERSTITIAL_BANNER_INLINE && (
-                <Script
-                    id="monetag-interstitial-banner-inline-bitsofa"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: MONETAG_INTERSTITIAL_BANNER_INLINE,
-                    }}
-                />
-            )}
+            <MonetagAd
+                adFormat="interstitial-banner"
+                id="monetag-interstitial-banner-inline-bitsofa"
+            />
 
             <Menu />
             <div className="text-white min-h-screen pt-8">
@@ -139,21 +133,19 @@ const ForumPage = ({ posts }: ForumPageProps) => {
                             <h2 className="text-lg font-bold">View</h2>
                             <div className="flex gap-2">
                                 <button
-                                    className={`py-1 px-3 rounded-full text-sm font-semibold transition-colors ${
-                                        activeTab === 'all'
-                                            ? 'bg-yellow-500 text-black'
-                                            : 'bg-gray-700 hover:bg-gray-600 text-white'
-                                    }`}
+                                    className={`py-1 px-3 rounded-full text-sm font-semibold transition-colors ${activeTab === 'all'
+                                        ? 'bg-yellow-500 text-black'
+                                        : 'bg-gray-700 hover:bg-gray-600 text-white'
+                                        }`}
                                     onClick={() => setActiveTab('all')}
                                 >
                                     All
                                 </button>
                                 <button
-                                    className={`py-1 px-3 rounded-full text-sm font-semibold transition-colors ${
-                                        activeTab === 'bookmarks'
+                                    className={`py-1 px-3 rounded-full text-sm font-semibold transition-colors ${activeTab === 'bookmarks'
                                             ? 'bg-yellow-500 text-black'
                                             : 'bg-gray-700 hover:bg-gray-600 text-white'
-                                    }`}
+                                        }`}
                                     onClick={() => setActiveTab('bookmarks')}
                                 >
                                     Bookmarks ({bookmarkedSlugs.length})
@@ -179,11 +171,10 @@ const ForumPage = ({ posts }: ForumPageProps) => {
                                     return (
                                         <button
                                             key={index}
-                                            className={`font-semibold py-1 px-3 rounded-full text-sm transition-colors duration-200 ${
-                                                isSelected
-                                                    ? 'bg-yellow-500 text-black'
-                                                    : 'bg-gray-700 hover:bg-gray-600 text-white'
-                                            }`}
+                                            className={`font-semibold py-1 px-3 rounded-full text-sm transition-colors duration-200 ${isSelected
+                                                ? 'bg-yellow-500 text-black'
+                                                : 'bg-gray-700 hover:bg-gray-600 text-white'
+                                                }`}
                                             onClick={() => handleTagClick(tag)}
                                         >
                                             {tag}

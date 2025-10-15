@@ -1,16 +1,14 @@
 import AutoCompleter from '@/components/AutoCompleter'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
-
+import MonetagAd from '@/components/MonetagAd'
 import CustomToastContainer from '@/components/ToastContainer'
 import { courses } from '@/config/courses'
 import { getMetaConfig } from '@/config/meta'
 import { profs } from '@/config/profs'
 import { CourseGrading } from '@/types/Courses'
 import { axiosInstance } from '@/utils/axiosCache'
-import { MONETAG_INTERSTITIAL_BANNER_INLINE } from '@/utils/monetagExtraInline'
 import Link from 'next/link'
-import Script from 'next/script'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
@@ -108,15 +106,11 @@ export default function Grading() {
         <>
             <Meta {...getMetaConfig('courses/grading')} />
 
-            {MONETAG_INTERSTITIAL_BANNER_INLINE && (
-                <Script
-                    id="monetag-interstitial-banner-inline-grading"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: MONETAG_INTERSTITIAL_BANNER_INLINE,
-                    }}
-                />
-            )}
+            <MonetagAd
+                adFormat="interstitial-banner"
+                id="monetag-interstitial-banner-inline-grading"
+            />
+
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
                     <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">
@@ -205,11 +199,11 @@ export default function Grading() {
                                                         </h2>
                                                         {grading.dept !==
                                                             'ALL' && (
-                                                            <p className="text-sm text-gray-500">
-                                                                For the branch:{' '}
-                                                                {grading.dept}
-                                                            </p>
-                                                        )}
+                                                                <p className="text-sm text-gray-500">
+                                                                    For the branch:{' '}
+                                                                    {grading.dept}
+                                                                </p>
+                                                            )}
                                                         <div className="-mx-4 sm:-mx-6 md:-mx-8">
                                                             <div className="min-w-min px-4 sm:px-6 md:px-8">
                                                                 {parseCSVToTable(

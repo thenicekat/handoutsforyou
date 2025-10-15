@@ -1,11 +1,11 @@
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
+import MonetagAd from '@/components/MonetagAd'
 import CustomToastContainer from '@/components/ToastContainer'
 import { getMetaConfig } from '@/config/meta'
 import { placementYears } from '@/config/years_sems'
 import { PlacementCTC } from '@/types/Placements'
 import { axiosInstance } from '@/utils/axiosCache'
-import { MONETAG_INTERSTITIAL_BANNER_INLINE } from '@/utils/monetagExtraInline'
 import { PlusCircleIcon } from '@heroicons/react/24/solid'
 import {
     createColumnHelper,
@@ -16,7 +16,6 @@ import {
     useReactTable,
 } from '@tanstack/react-table'
 import Link from 'next/link'
-import Script from 'next/script'
 import React, { useState } from 'react'
 import { toast } from 'react-toastify'
 
@@ -141,15 +140,10 @@ export default function PlacementCTCs() {
         <>
             <Meta {...getMetaConfig('zob/ctcs')} />
 
-            {MONETAG_INTERSTITIAL_BANNER_INLINE && (
-                <Script
-                    id="monetag-interstitial-banner-inline-zob-ctcs"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: MONETAG_INTERSTITIAL_BANNER_INLINE,
-                    }}
-                />
-            )}
+            <MonetagAd
+                adFormat="interstitial-banner"
+                id="monetag-interstitial-banner-inline-zob-ctcs"
+            />
 
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">

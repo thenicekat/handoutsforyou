@@ -1,7 +1,7 @@
 import AutoCompleter from '@/components/AutoCompleter'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
-
+import MonetagAd from '@/components/MonetagAd'
 import CustomToastContainer from '@/components/ToastContainer'
 import { courses as courseNames } from '@/config/courses'
 import { getMetaConfig } from '@/config/meta'
@@ -9,8 +9,6 @@ import { profs } from '@/config/profs'
 import { pyqYears } from '@/config/years_sems'
 import { CourseDetails, CoursePYQFile, CoursePYQsByYear } from '@/types/Courses'
 import axiosInstance from '@/utils/axiosCache'
-import { MONETAG_INTERSTITIAL_BANNER_INLINE } from '@/utils/monetagExtraInline'
-import Script from 'next/script'
 import { useEffect, useMemo, useState } from 'react'
 import { toast } from 'react-toastify'
 
@@ -176,15 +174,10 @@ export default function PYQs() {
         <>
             <Meta {...getMetaConfig('courses/pyqs')} />
 
-            {MONETAG_INTERSTITIAL_BANNER_INLINE && (
-                <Script
-                    id="monetag-interstitial-banner-inline-pyqs"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: MONETAG_INTERSTITIAL_BANNER_INLINE,
-                    }}
-                />
-            )}
+            <MonetagAd
+                adFormat="interstitial-banner"
+                id="monetag-interstitial-banner-inline-pyqs"
+            />
 
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
@@ -389,7 +382,7 @@ export default function PYQs() {
                                         <div className="loading loading-spinner loading-lg"></div>
                                     </div>
                                 ) : Object.keys(displayedPyqsByYear).length ===
-                                  0 ? (
+                                    0 ? (
                                     <div className="text-center py-20">
                                         <p className="text-gray-500">
                                             No PYQs available for this course
