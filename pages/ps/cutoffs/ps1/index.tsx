@@ -6,6 +6,9 @@ import { ps1Years } from '@/config/years_sems'
 import { PS1Item } from '@/types/PS'
 import { axiosInstance } from '@/utils/axiosCache'
 import {
+    MONETAG_INTERSTITIAL_BANNER_INLINE,
+} from '@/utils/monetagExtraInline'
+import {
     createColumnHelper,
     flexRender,
     getCoreRowModel,
@@ -14,6 +17,7 @@ import {
     useReactTable,
 } from '@tanstack/react-table'
 import Link from 'next/link'
+import Script from 'next/script'
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
@@ -149,6 +153,17 @@ export default function PS1Data() {
     return (
         <>
             <Meta {...getMetaConfig('ps/cutoffs/ps1')} />
+
+            {MONETAG_INTERSTITIAL_BANNER_INLINE && (
+                <Script
+                    id="monetag-interstitial-banner-inline-ps-cutoffs-ps1"
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                        __html: MONETAG_INTERSTITIAL_BANNER_INLINE,
+                    }}
+                />
+            )}
+
             {/* Search box */}
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">

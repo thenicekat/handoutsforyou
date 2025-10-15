@@ -4,7 +4,11 @@ import CustomToastContainer from '@/components/ToastContainer'
 import { getMetaConfig } from '@/config/meta'
 import { PS_Review } from '@/types/PS'
 import { axiosInstance } from '@/utils/axiosCache'
+import {
+    MONETAG_INTERSTITIAL_BANNER_INLINE,
+} from '@/utils/monetagExtraInline'
 import Link from 'next/link'
+import Script from 'next/script'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
@@ -50,6 +54,17 @@ export default function PS1Reviews() {
     return (
         <>
             <Meta {...getMetaConfig('ps/reviews/ps1')} />
+
+            {MONETAG_INTERSTITIAL_BANNER_INLINE && (
+                <Script
+                    id="monetag-interstitial-banner-inline-ps-reviews-ps1"
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                        __html: MONETAG_INTERSTITIAL_BANNER_INLINE,
+                    }}
+                />
+            )}
+
             <div className="container mx-auto px-4 py-8">
                 <div className="max-w-4xl mx-auto">
                     <h1 className="text-4xl font-bold text-primary text-center mb-8">

@@ -5,6 +5,9 @@ import { getMetaConfig } from '@/config/meta'
 import { placementYears } from '@/config/years_sems'
 import { PlacementCTC } from '@/types/Placements'
 import { axiosInstance } from '@/utils/axiosCache'
+import {
+    MONETAG_INTERSTITIAL_BANNER_INLINE,
+} from '@/utils/monetagExtraInline'
 import { PlusCircleIcon } from '@heroicons/react/24/solid'
 import {
     createColumnHelper,
@@ -15,6 +18,7 @@ import {
     useReactTable,
 } from '@tanstack/react-table'
 import Link from 'next/link'
+import Script from 'next/script'
 import React, { useState } from 'react'
 import { toast } from 'react-toastify'
 
@@ -138,6 +142,17 @@ export default function PlacementCTCs() {
     return (
         <>
             <Meta {...getMetaConfig('zob/ctcs')} />
+
+            {MONETAG_INTERSTITIAL_BANNER_INLINE && (
+                <Script
+                    id="monetag-interstitial-banner-inline-zob-ctcs"
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                        __html: MONETAG_INTERSTITIAL_BANNER_INLINE,
+                    }}
+                />
+            )}
+
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
                     <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">

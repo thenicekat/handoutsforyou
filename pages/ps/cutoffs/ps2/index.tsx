@@ -6,6 +6,9 @@ import { ps2Semesters } from '@/config/years_sems'
 import { PS2Item } from '@/types/PS'
 import { axiosInstance } from '@/utils/axiosCache'
 import {
+    MONETAG_INTERSTITIAL_BANNER_INLINE,
+} from '@/utils/monetagExtraInline'
+import {
     createColumnHelper,
     flexRender,
     getCoreRowModel,
@@ -14,6 +17,7 @@ import {
     useReactTable,
 } from '@tanstack/react-table'
 import Link from 'next/link'
+import Script from 'next/script'
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
@@ -169,6 +173,17 @@ export default function PS2Data() {
     return (
         <>
             <Meta {...getMetaConfig('ps/cutoffs/ps2')} />
+
+            {MONETAG_INTERSTITIAL_BANNER_INLINE && (
+                <Script
+                    id="monetag-interstitial-banner-inline-ps-cutoffs-ps2"
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                        __html: MONETAG_INTERSTITIAL_BANNER_INLINE,
+                    }}
+                />
+            )}
+
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
                     <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">
