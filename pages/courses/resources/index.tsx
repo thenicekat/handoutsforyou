@@ -7,8 +7,7 @@ import { getMetaConfig } from '@/config/meta'
 import { ResourceByCategory } from '@/types/Resource'
 import axiosInstance from '@/utils/axiosCache'
 import {
-    MONETAG_INPAGE_PUSH_CORE,
-    MONETAG_INPAGE_PUSH_LOADER,
+    MONETAG_INTERSTITIAL_BANNER_INLINE,
 } from '@/utils/monetagExtraInline'
 import { PlusCircleIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
@@ -69,22 +68,12 @@ export default function Resources() {
         <>
             <Meta {...getMetaConfig('courses/resources')} />
 
-            {MONETAG_INPAGE_PUSH_CORE && (
+            {MONETAG_INTERSTITIAL_BANNER_INLINE && (
                 <Script
-                    id="monetag-inpage-push-core-resources"
+                    id="monetag-interstitial-banner-inline-resources"
                     strategy="afterInteractive"
                     dangerouslySetInnerHTML={{
-                        __html: MONETAG_INPAGE_PUSH_CORE,
-                    }}
-                />
-            )}
-
-            {MONETAG_INPAGE_PUSH_LOADER && (
-                <Script
-                    id="monetag-inpage-push-resources"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: MONETAG_INPAGE_PUSH_LOADER,
+                        __html: MONETAG_INTERSTITIAL_BANNER_INLINE,
                     }}
                 />
             )}

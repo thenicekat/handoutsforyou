@@ -6,8 +6,7 @@ import { getMetaConfig } from '@/config/meta'
 import { CoursePreReqGroup } from '@/types/Courses'
 import axiosInstance from '@/utils/axiosCache'
 import {
-    MONETAG_INPAGE_PUSH_CORE,
-    MONETAG_INPAGE_PUSH_LOADER,
+    MONETAG_INTERSTITIAL_BANNER_INLINE,
 } from '@/utils/monetagExtraInline'
 import { GetStaticProps } from 'next'
 import Script from 'next/script'
@@ -46,22 +45,12 @@ export default function Prereqs({ prereqs }: { prereqs: CoursePreReqGroup[] }) {
         <>
             <Meta {...getMetaConfig('courses/prereqs')} />
 
-            {MONETAG_INPAGE_PUSH_CORE && (
+            {MONETAG_INTERSTITIAL_BANNER_INLINE && (
                 <Script
-                    id="monetag-inpage-push-core-prereqs"
+                    id="monetag-interstitial-banner-inline-prereqs"
                     strategy="afterInteractive"
                     dangerouslySetInnerHTML={{
-                        __html: MONETAG_INPAGE_PUSH_CORE,
-                    }}
-                />
-            )}
-
-            {MONETAG_INPAGE_PUSH_LOADER && (
-                <Script
-                    id="monetag-inpage-push-prereqs"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: MONETAG_INPAGE_PUSH_LOADER,
+                        __html: MONETAG_INTERSTITIAL_BANNER_INLINE,
                     }}
                 />
             )}

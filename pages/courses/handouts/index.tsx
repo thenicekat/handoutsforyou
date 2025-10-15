@@ -5,8 +5,7 @@ import { getMetaConfig } from '@/config/meta'
 import axiosInstance from '@/utils/axiosCache'
 import { googleDriveService } from '@/utils/googleDrive'
 import {
-    MONETAG_INPAGE_PUSH_CORE,
-    MONETAG_INPAGE_PUSH_LOADER,
+    MONETAG_INTERSTITIAL_BANNER_INLINE,
 } from '@/utils/monetagExtraInline'
 import { GetStaticProps } from 'next'
 import dynamic from 'next/dynamic'
@@ -91,22 +90,12 @@ export default function Handouts({
         <>
             <Meta {...getMetaConfig('courses/handouts')} />
 
-            {MONETAG_INPAGE_PUSH_CORE && (
+            {MONETAG_INTERSTITIAL_BANNER_INLINE && (
                 <Script
-                    id="monetag-inpage-push-core-handouts"
+                    id="monetag-interstitial-banner-inline-handouts"
                     strategy="afterInteractive"
                     dangerouslySetInnerHTML={{
-                        __html: MONETAG_INPAGE_PUSH_CORE,
-                    }}
-                />
-            )}
-
-            {MONETAG_INPAGE_PUSH_LOADER && (
-                <Script
-                    id="monetag-inpage-push-handouts"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: MONETAG_INPAGE_PUSH_LOADER,
+                        __html: MONETAG_INTERSTITIAL_BANNER_INLINE,
                     }}
                 />
             )}

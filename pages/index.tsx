@@ -1,7 +1,7 @@
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import StarPrompt from '@/components/Prompt'
-import { MONETAG_INTERSTITIAL_BANNER_INLINE } from '@/utils/monetagExtraInline'
+import { MONETAG_VIGNETTE_BANNER_INLINE } from '@/utils/monetagExtraInline'
 import Script from 'next/dist/client/script'
 import Link from 'next/link'
 import { useState } from 'react'
@@ -218,12 +218,12 @@ export default function Home() {
 
             <Menu doNotShowMenu={true} />
             <StarPrompt setStarCount={setStarCount} />
-            {MONETAG_INTERSTITIAL_BANNER_INLINE && (
+            {MONETAG_VIGNETTE_BANNER_INLINE && (
                 <Script
                     id="monetag-interstitial-inline"
                     strategy="afterInteractive"
                     dangerouslySetInnerHTML={{
-                        __html: MONETAG_INTERSTITIAL_BANNER_INLINE,
+                        __html: MONETAG_VIGNETTE_BANNER_INLINE,
                     }}
                 />
             )}

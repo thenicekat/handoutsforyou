@@ -9,8 +9,7 @@ import { profs } from '@/config/profs'
 import { CourseGrading } from '@/types/Courses'
 import { axiosInstance } from '@/utils/axiosCache'
 import {
-    MONETAG_INPAGE_PUSH_CORE,
-    MONETAG_INPAGE_PUSH_LOADER,
+    MONETAG_INTERSTITIAL_BANNER_INLINE,
 } from '@/utils/monetagExtraInline'
 import Link from 'next/link'
 import Script from 'next/script'
@@ -111,22 +110,12 @@ export default function Grading() {
         <>
             <Meta {...getMetaConfig('courses/grading')} />
 
-            {MONETAG_INPAGE_PUSH_CORE && (
+            {MONETAG_INTERSTITIAL_BANNER_INLINE && (
                 <Script
-                    id="monetag-inpage-push-core-grading"
+                    id="monetag-interstitial-banner-inline-grading"
                     strategy="afterInteractive"
                     dangerouslySetInnerHTML={{
-                        __html: MONETAG_INPAGE_PUSH_CORE,
-                    }}
-                />
-            )}
-
-            {MONETAG_INPAGE_PUSH_LOADER && (
-                <Script
-                    id="monetag-inpage-push-grading"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: MONETAG_INPAGE_PUSH_LOADER,
+                        __html: MONETAG_INTERSTITIAL_BANNER_INLINE,
                     }}
                 />
             )}
@@ -218,11 +207,11 @@ export default function Grading() {
                                                         </h2>
                                                         {grading.dept !==
                                                             'ALL' && (
-                                                            <p className="text-sm text-gray-500">
-                                                                For the branch:{' '}
-                                                                {grading.dept}
-                                                            </p>
-                                                        )}
+                                                                <p className="text-sm text-gray-500">
+                                                                    For the branch:{' '}
+                                                                    {grading.dept}
+                                                                </p>
+                                                            )}
                                                         <div className="-mx-4 sm:-mx-6 md:-mx-8">
                                                             <div className="min-w-min px-4 sm:px-6 md:px-8">
                                                                 {parseCSVToTable(

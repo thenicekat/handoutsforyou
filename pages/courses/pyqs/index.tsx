@@ -10,8 +10,7 @@ import { pyqYears } from '@/config/years_sems'
 import { CourseDetails, CoursePYQFile, CoursePYQsByYear } from '@/types/Courses'
 import axiosInstance from '@/utils/axiosCache'
 import {
-    MONETAG_INPAGE_PUSH_CORE,
-    MONETAG_INPAGE_PUSH_LOADER,
+    MONETAG_INTERSTITIAL_BANNER_INLINE,
 } from '@/utils/monetagExtraInline'
 import Script from 'next/script'
 import { useEffect, useMemo, useState } from 'react'
@@ -179,22 +178,12 @@ export default function PYQs() {
         <>
             <Meta {...getMetaConfig('courses/pyqs')} />
 
-            {MONETAG_INPAGE_PUSH_CORE && (
+            {MONETAG_INTERSTITIAL_BANNER_INLINE && (
                 <Script
-                    id="monetag-inpage-push-core-pyqs"
+                    id="monetag-interstitial-banner-inline-pyqs"
                     strategy="afterInteractive"
                     dangerouslySetInnerHTML={{
-                        __html: MONETAG_INPAGE_PUSH_CORE,
-                    }}
-                />
-            )}
-
-            {MONETAG_INPAGE_PUSH_LOADER && (
-                <Script
-                    id="monetag-inpage-push-pyqs"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: MONETAG_INPAGE_PUSH_LOADER,
+                        __html: MONETAG_INTERSTITIAL_BANNER_INLINE,
                     }}
                 />
             )}
@@ -402,7 +391,7 @@ export default function PYQs() {
                                         <div className="loading loading-spinner loading-lg"></div>
                                     </div>
                                 ) : Object.keys(displayedPyqsByYear).length ===
-                                  0 ? (
+                                    0 ? (
                                     <div className="text-center py-20">
                                         <p className="text-gray-500">
                                             No PYQs available for this course
