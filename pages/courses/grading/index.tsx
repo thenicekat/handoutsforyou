@@ -1,19 +1,14 @@
 import AutoCompleter from '@/components/AutoCompleter'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
-
+import MonetagAd from '@/components/MonetagAd'
 import CustomToastContainer from '@/components/ToastContainer'
 import { courses } from '@/config/courses'
 import { getMetaConfig } from '@/config/meta'
 import { profs } from '@/config/profs'
 import { CourseGrading } from '@/types/Courses'
 import { axiosInstance } from '@/utils/axiosCache'
-import {
-    MONETAG_INPAGE_PUSH_CORE,
-    MONETAG_INPAGE_PUSH_LOADER,
-} from '@/utils/monetagExtraInline'
 import Link from 'next/link'
-import Script from 'next/script'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
@@ -111,25 +106,11 @@ export default function Grading() {
         <>
             <Meta {...getMetaConfig('courses/grading')} />
 
-            {MONETAG_INPAGE_PUSH_CORE && (
-                <Script
-                    id="monetag-inpage-push-core-grading"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: MONETAG_INPAGE_PUSH_CORE,
-                    }}
-                />
-            )}
+            <MonetagAd
+                adFormat="interstitial-banner"
+                id="monetag-interstitial-banner-inline-grading"
+            />
 
-            {MONETAG_INPAGE_PUSH_LOADER && (
-                <Script
-                    id="monetag-inpage-push-grading"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: MONETAG_INPAGE_PUSH_LOADER,
-                    }}
-                />
-            )}
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
                     <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">

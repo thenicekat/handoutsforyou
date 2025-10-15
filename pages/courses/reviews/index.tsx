@@ -1,7 +1,7 @@
 import AutoCompleter from '@/components/AutoCompleter'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
-
+import MonetagAd from '@/components/MonetagAd'
 import CustomToastContainer from '@/components/ToastContainer'
 import { courses } from '@/config/courses'
 import { departments } from '@/config/departments'
@@ -9,13 +9,8 @@ import { getMetaConfig } from '@/config/meta'
 import { profs } from '@/config/profs'
 import { CourseReview } from '@/types/Courses'
 import { axiosInstance } from '@/utils/axiosCache'
-import {
-    MONETAG_INPAGE_PUSH_CORE,
-    MONETAG_INPAGE_PUSH_LOADER,
-} from '@/utils/monetagExtraInline'
 import { PlusCircleIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
-import Script from 'next/script'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
@@ -96,25 +91,10 @@ export default function Reviews() {
         <>
             <Meta {...getMetaConfig('courses/reviews')} />
 
-            {MONETAG_INPAGE_PUSH_CORE && (
-                <Script
-                    id="monetag-inpage-push-core-reviews"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: MONETAG_INPAGE_PUSH_CORE,
-                    }}
-                />
-            )}
-
-            {MONETAG_INPAGE_PUSH_LOADER && (
-                <Script
-                    id="monetag-inpage-push-reviews"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: MONETAG_INPAGE_PUSH_LOADER,
-                    }}
-                />
-            )}
+            <MonetagAd
+                adFormat="interstitial-banner"
+                id="monetag-interstitial-banner-inline-reviews"
+            />
 
             {/* Search box */}
             <div className="grid place-items-center">
