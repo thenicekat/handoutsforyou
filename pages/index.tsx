@@ -1,6 +1,8 @@
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import StarPrompt from '@/components/Prompt'
+import { MONETAG_INTERSTITIAL_BANNER_INLINE } from '@/utils/monetagExtraInline'
+import Script from 'next/dist/client/script'
 import Link from 'next/link'
 import { useState } from 'react'
 import CountUp from 'react-countup'
@@ -216,7 +218,15 @@ export default function Home() {
 
             <Menu doNotShowMenu={true} />
             <StarPrompt setStarCount={setStarCount} />
-
+            {MONETAG_INTERSTITIAL_BANNER_INLINE && (
+                                <Script
+                                    id="monetag-interstitial-inline"
+                                    strategy="afterInteractive"
+                                    dangerouslySetInnerHTML={{
+                                        __html: MONETAG_INTERSTITIAL_BANNER_INLINE,
+                                    }}
+                                />
+                            )}
             {/* Main Content */}
             <div className="container mx-auto px-4 py-12">
                 {/* Hero Section with Stats */}

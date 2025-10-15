@@ -6,7 +6,6 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import Script from 'next/script'
 import { GoogleAdSense } from 'nextjs-google-adsense'
-import { MONETAG_INTERSTITIAL_BANNER_INLINE } from '../utils/monetagExtraInline'
 
 // Use of the <SessionProvider> is mandatory to allow components that call
 // `useSession()` anywhere in your application to access the `session` object.
@@ -31,15 +30,7 @@ export default function App({
                     name="viewport"
                     content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
                 />
-                {MONETAG_INTERSTITIAL_BANNER_INLINE && (
-                    <Script
-                        id="monetag-interstitial-inline"
-                        strategy="afterInteractive"
-                        dangerouslySetInnerHTML={{
-                            __html: MONETAG_INTERSTITIAL_BANNER_INLINE,
-                        }}
-                    />
-                )}
+                
             </Head>
 
             <GoogleAdSense publisherId="pub-8538529975248100" />
