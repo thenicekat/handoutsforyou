@@ -19,47 +19,50 @@ const AD_FORMAT_MAP: Record<AdFormat, string> = {
 }
 
 export default function MonetagAd({ adFormat, id }: MonetagAdProps) {
-    const adScript = AD_FORMAT_MAP[adFormat];
-    const scriptId = id || `monetag-${adFormat}`;
+    const adScript = AD_FORMAT_MAP[adFormat]
+    const scriptId = id || `monetag-${adFormat}`
 
     useEffect(() => {
-        if (!adScript) return;
+        if (!adScript) return
 
         // Create and inject the wrapper script
-        const script = document.createElement('script');
-        script.id = scriptId;
-        script.type = 'text/javascript';
-        script.innerHTML = adScript;
-        document.body.appendChild(script);
+        const script = document.createElement('script')
+        script.id = scriptId
+        script.type = 'text/javascript'
+        script.innerHTML = adScript
+        document.body.appendChild(script)
 
         // Wait a tick for Monetag to create its script, then store reference
-        const createdScripts: HTMLScriptElement[] = [];
+        const createdScripts: HTMLScriptElement[] = []
         setTimeout(() => {
-            const monetagScripts = document.querySelectorAll('script[data-zone]');
+            const monetagScripts =
+                document.querySelectorAll('script[data-zone]')
             monetagScripts.forEach((s) => {
-                if (s.getAttribute('src')?.includes('vignette.min.js') ||
-                    s.getAttribute('src')?.includes('tag.min.js')) {
-                    createdScripts.push(s as HTMLScriptElement);
+                if (
+                    s.getAttribute('src')?.includes('vignette.min.js') ||
+                    s.getAttribute('src')?.includes('tag.min.js')
+                ) {
+                    createdScripts.push(s as HTMLScriptElement)
                 }
-            });
-        }, 0);
+            })
+        }, 0)
 
         return () => {
             // Remove the wrapper script
-            const existing = document.getElementById(scriptId);
+            const existing = document.getElementById(scriptId)
             if (existing) {
-                existing.remove();
+                existing.remove()
             }
 
-            // Remove scripts we stored references to 
+            // Remove scripts we stored references to
             createdScripts.forEach((s) => {
                 if (s.parentNode) {
-                    s.remove();
+                    s.remove()
                 }
-            });
-        };
-    }, [adScript, scriptId]);
+            })
+        }
+    }, [adScript, scriptId])
 
     // Optionally render a placeholder div for the ad
-    return <div id={`ad-container-${scriptId}`}></div>;
+    return <div id={`ad-container-${scriptId}`}></div>
 }
