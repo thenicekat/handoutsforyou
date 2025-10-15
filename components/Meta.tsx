@@ -66,12 +66,6 @@ export default function Meta({
                 href="/images/favicon-16x16.png"
             />
 
-            {/* Adsense */}
-            <meta
-                name="google-adsense-account"
-                content="ca-pub-8538529975248100"
-            />
-
             {/* Monetag */}
             <meta name="monetag" content="9f14733e352fad16554f2d8f355d4ed3" />
 
