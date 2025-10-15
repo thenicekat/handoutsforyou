@@ -219,7 +219,7 @@ export default function Home() {
             <StarPrompt setStarCount={setStarCount} />
             <MonetagAd
                 adFormat="vignette-banner"
-                id="monetag-interstitial-inline"
+                id="monetag-vignette-banner-inline=landing"
             />
             {/* Main Content */}
             <div className="container mx-auto px-4 py-12">
