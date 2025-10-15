@@ -219,14 +219,14 @@ export default function Home() {
             <Menu doNotShowMenu={true} />
             <StarPrompt setStarCount={setStarCount} />
             {MONETAG_INTERSTITIAL_BANNER_INLINE && (
-                                <Script
-                                    id="monetag-interstitial-inline"
-                                    strategy="afterInteractive"
-                                    dangerouslySetInnerHTML={{
-                                        __html: MONETAG_INTERSTITIAL_BANNER_INLINE,
-                                    }}
-                                />
-                            )}
+                <Script
+                    id="monetag-interstitial-inline"
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                        __html: MONETAG_INTERSTITIAL_BANNER_INLINE,
+                    }}
+                />
+            )}
             {/* Main Content */}
             <div className="container mx-auto px-4 py-12">
                 {/* Hero Section with Stats */}
