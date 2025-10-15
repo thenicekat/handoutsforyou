@@ -382,7 +382,7 @@ export default function PYQs() {
                                         <div className="loading loading-spinner loading-lg"></div>
                                     </div>
                                 ) : Object.keys(displayedPyqsByYear).length ===
-                                    0 ? (
+                                  0 ? (
                                     <div className="text-center py-20">
                                         <p className="text-gray-500">
                                             No PYQs available for this course

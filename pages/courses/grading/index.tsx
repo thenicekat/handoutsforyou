@@ -199,11 +199,11 @@ export default function Grading() {
                                                         </h2>
                                                         {grading.dept !==
                                                             'ALL' && (
-                                                                <p className="text-sm text-gray-500">
-                                                                    For the branch:{' '}
-                                                                    {grading.dept}
-                                                                </p>
-                                                            )}
+                                                            <p className="text-sm text-gray-500">
+                                                                For the branch:{' '}
+                                                                {grading.dept}
+                                                            </p>
+                                                        )}
                                                         <div className="-mx-4 sm:-mx-6 md:-mx-8">
                                                             <div className="min-w-min px-4 sm:px-6 md:px-8">
                                                                 {parseCSVToTable(
