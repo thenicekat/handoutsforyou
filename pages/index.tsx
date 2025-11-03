@@ -9,28 +9,32 @@ import CountUp from 'react-countup'
 const COUNT_UP_DURATION = 3
 
 type SummaryData = {
-    handouts: number
+    // PS Data.
     ps1Cutoffs: number
     ps2Cutoffs: number
+    // Course Insights.
+    courseHandouts: number
     courseReviews: number
     courseResources: number
     courseGrading: number
     coursePrerequisites: number
     coursePyqs: number
+    // Placement Data
     placementCtcs: number
     placementResources: number
     siCompanies: number
     siChronicles: number
     siResources: number
+    // Other Resources.
     higherStudiesResources: number
     links: number
     profChambers: number
 }
 
 export const RESOURCE_COUNTS: SummaryData = {
-    handouts: 3200,
     ps1Cutoffs: 1411,
     ps2Cutoffs: 4560,
+    courseHandouts: 3200,
     courseReviews: 622,
     courseGrading: 148,
     courseResources: 109,
@@ -97,7 +101,7 @@ export default function Home() {
                 {
                     name: 'Handouts',
                     path: '/courses/handouts',
-                    count: RESOURCE_COUNTS.handouts,
+                    count: RESOURCE_COUNTS.courseHandouts,
                 },
                 {
                     name: 'Prerequisites',
@@ -236,7 +240,6 @@ export default function Home() {
                             <div className="text-2xl md:text-3xl font-bold text-white">
                                 <CountUp
                                     end={
-                                        RESOURCE_COUNTS.handouts +
                                         RESOURCE_COUNTS.ps1Cutoffs +
                                         RESOURCE_COUNTS.ps2Cutoffs
                                     }
@@ -245,15 +248,19 @@ export default function Home() {
                                 +
                             </div>
                             <div className="text-sm text-gray-300">
-                                Total Resources
+                                Practice School Resources
                             </div>
                         </div>
                         <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
                             <div className="text-2xl md:text-3xl font-bold text-white">
                                 <CountUp
                                     end={
+                                        RESOURCE_COUNTS.courseHandouts +
+                                        RESOURCE_COUNTS.coursePrerequisites +
+                                        RESOURCE_COUNTS.coursePyqs +
                                         RESOURCE_COUNTS.courseReviews +
-                                        RESOURCE_COUNTS.courseGrading
+                                        RESOURCE_COUNTS.courseGrading +
+                                        RESOURCE_COUNTS.courseResources
                                     }
                                     duration={COUNT_UP_DURATION}
                                 />
@@ -268,7 +275,9 @@ export default function Home() {
                                 <CountUp
                                     end={
                                         RESOURCE_COUNTS.placementCtcs +
-                                        RESOURCE_COUNTS.siCompanies
+                                        RESOURCE_COUNTS.siCompanies +
+                                        RESOURCE_COUNTS.siChronicles +
+                                        RESOURCE_COUNTS.siResources
                                     }
                                     duration={COUNT_UP_DURATION}
                                 />
@@ -281,12 +290,15 @@ export default function Home() {
                         <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
                             <div className="text-2xl md:text-3xl font-bold text-white">
                                 <CountUp
-                                    end={RESOURCE_COUNTS.links}
+                                    end={
+                                        RESOURCE_COUNTS.links +
+                                        RESOURCE_COUNTS.higherStudiesResources
+                                    }
                                     duration={COUNT_UP_DURATION}
                                 />
                             </div>
                             <div className="text-sm text-gray-300">
-                                Useful Links
+                                Other Resources
                             </div>
                         </div>
                     </div>

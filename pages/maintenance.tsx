@@ -39,8 +39,7 @@ export default function MaintenancePage() {
                         </h1>
 
                         <p className="text-lg text-gray-300 mb-6 max-w-2xl mx-auto">
-                            Reimagining how you access and discover academic
-                            resources at BITS.
+                            We will be back soon! Thank you for your patience.
                         </p>
                     </div>
 
@@ -65,7 +64,8 @@ export default function MaintenancePage() {
                         </div>
 
                         <p className="text-gray-300 text-xs text-center">
-                            Almost there! Thank you for your patience.
+                            Reimagining how you access and discover academic
+                            resources at BITS.
                         </p>
                     </div>
 
@@ -73,24 +73,21 @@ export default function MaintenancePage() {
                         <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 text-center">
                             <div className="text-xl md:text-2xl font-bold text-white">
                                 <CountUp
-                                    end={RESOURCE_COUNTS.handouts}
+                                    end={
+                                        RESOURCE_COUNTS.courseHandouts +
+                                        RESOURCE_COUNTS.coursePrerequisites +
+                                        RESOURCE_COUNTS.coursePyqs +
+                                        RESOURCE_COUNTS.courseReviews +
+                                        RESOURCE_COUNTS.courseResources +
+                                        RESOURCE_COUNTS.courseGrading
+                                    }
                                     duration={3}
                                 />
                                 +
                             </div>
                             <div className="text-xs text-gray-400">
-                                Handouts
+                                Course Insights
                             </div>
-                        </div>
-                        <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 text-center">
-                            <div className="text-xl md:text-2xl font-bold text-white">
-                                <CountUp
-                                    end={RESOURCE_COUNTS.courseReviews}
-                                    duration={3}
-                                />
-                                +
-                            </div>
-                            <div className="text-xs text-gray-400">Reviews</div>
                         </div>
                         <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 text-center">
                             <div className="text-xl md:text-2xl font-bold text-white">
@@ -109,9 +106,34 @@ export default function MaintenancePage() {
                         </div>
                         <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 text-center">
                             <div className="text-xl md:text-2xl font-bold text-white">
-                                <CountUp end={99} duration={3} />%
+                                <CountUp
+                                    end={
+                                        RESOURCE_COUNTS.placementCtcs +
+                                        RESOURCE_COUNTS.siCompanies +
+                                        RESOURCE_COUNTS.siChronicles +
+                                        RESOURCE_COUNTS.siResources
+                                    }
+                                    duration={3}
+                                />
+                                +
                             </div>
-                            <div className="text-xs text-gray-400">Uptime</div>
+                            <div className="text-xs text-gray-400">
+                                Zob Data
+                            </div>
+                        </div>
+                        <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 text-center">
+                            <div className="text-xl md:text-2xl font-bold text-white">
+                                <CountUp
+                                    end={
+                                        RESOURCE_COUNTS.links +
+                                        RESOURCE_COUNTS.higherStudiesResources
+                                    }
+                                    duration={3}
+                                />
+                            </div>
+                            <div className="text-xs text-gray-400">
+                                Other Resources
+                            </div>
                         </div>
                     </div>
 
