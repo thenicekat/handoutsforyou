@@ -248,7 +248,7 @@ export default function Home() {
                                 +
                             </div>
                             <div className="text-sm text-gray-300">
-                                Practice School Resources
+                                PS Resources
                             </div>
                         </div>
                         <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
