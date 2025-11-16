@@ -18,7 +18,7 @@ export default function App({
         navigator.userAgent
     ) {
         const disableDevtool = require('disable-devtool')
-        // if (process.env.NODE_ENV !== 'development') disableDevtool()
+        if (process.env.NODE_ENV !== 'development') disableDevtool()
     }
 
     return (
