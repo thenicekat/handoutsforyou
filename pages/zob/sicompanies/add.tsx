@@ -10,7 +10,10 @@ import { toast } from 'react-toastify'
 export default function AddSICompany() {
     const [isLoading, setIsLoading] = useState(false)
 
-    const handleSubmit = async (data: SICompanyFormData) => {
+    const handleSubmit = async (
+        data: SICompanyFormData,
+        resetForm: () => void
+    ) => {
         setIsLoading(true)
 
         try {
@@ -28,8 +31,7 @@ export default function AddSICompany() {
                 toast.error(result.message)
             } else {
                 toast.success('Thank you! SI Company was added successfully!')
-                // Form will be reset automatically by React Hook Form
-                window.location.reload() // Refresh to clear form
+                resetForm() // Reset form using React Hook Form
             }
         } catch (error) {
             console.error('Error adding SI company:', error)

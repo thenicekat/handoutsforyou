@@ -10,7 +10,10 @@ import { toast } from 'react-toastify'
 export default function AddPlacementCTCs() {
     const [isLoading, setIsLoading] = useState(false)
 
-    const handleSubmit = async (data: PlacementCTCFormData) => {
+    const handleSubmit = async (
+        data: PlacementCTCFormData,
+        resetForm: () => void
+    ) => {
         setIsLoading(true)
 
         try {
@@ -30,8 +33,7 @@ export default function AddPlacementCTCs() {
                 toast.error(result.message)
             } else {
                 toast.success('Thank you! CTC was added successfully!')
-                // Form will be reset automatically by React Hook Form
-                window.location.reload() // Refresh to clear form
+                resetForm() // Reset form using React Hook Form
             }
         } catch (error) {
             console.error('Error adding placement CTC:', error)

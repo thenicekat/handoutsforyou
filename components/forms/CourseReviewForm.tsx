@@ -27,7 +27,7 @@ const courseReviewSchema = z.object({
 export type CourseReviewFormData = z.infer<typeof courseReviewSchema>
 
 interface CourseReviewFormProps {
-    onSubmit: (data: CourseReviewFormData) => void
+    onSubmit: (data: CourseReviewFormData, reset: () => void) => void
     isLoading?: boolean
     defaultValues?: Partial<CourseReviewFormData>
 }
@@ -70,7 +70,10 @@ export default function CourseReviewForm({
     }, [defaultValues, reset])
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+        <form
+            onSubmit={handleSubmit((data) => onSubmit(data, reset))}
+            className="space-y-6"
+        >
             <FormField label="Course" required error={errors.course}>
                 <SelectInput
                     registration={register('course')}

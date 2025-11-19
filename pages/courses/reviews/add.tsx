@@ -12,7 +12,10 @@ export default function AddReview() {
         Partial<CourseReviewFormData>
     >({})
 
-    const handleSubmit = async (data: CourseReviewFormData) => {
+    const handleSubmit = async (
+        data: CourseReviewFormData,
+        resetForm: () => void
+    ) => {
         setIsLoading(true)
         try {
             const res = await fetch('/api/courses/reviews/add', {
@@ -33,8 +36,7 @@ export default function AddReview() {
                 // Clear localStorage
                 localStorage.removeItem('h4u_course')
                 localStorage.removeItem('h4u_prof')
-                // Form will be reset automatically by React Hook Form
-                window.location.reload() // Refresh to clear form
+                resetForm() // Reset form using React Hook Form
             }
         } catch (error) {
             toast.error('An error occurred. Please try again.')

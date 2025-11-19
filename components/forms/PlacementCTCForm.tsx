@@ -30,7 +30,7 @@ const placementCTCSchema = z.object({
 export type PlacementCTCFormData = z.infer<typeof placementCTCSchema>
 
 interface PlacementCTCFormProps {
-    onSubmit: (data: PlacementCTCFormData) => void
+    onSubmit: (data: PlacementCTCFormData, reset: () => void) => void
     isLoading?: boolean
     defaultValues?: Partial<PlacementCTCFormData>
 }
@@ -105,7 +105,10 @@ export default function PlacementCTCForm({
     }, [defaultValues, reset])
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+        <form
+            onSubmit={handleSubmit((data) => onSubmit(data, reset))}
+            className="space-y-8"
+        >
             {/* Company Details Section */}
             <div className="space-y-6">
                 <h2 className="text-xl font-semibold text-primary border-b border-primary/20 pb-2">

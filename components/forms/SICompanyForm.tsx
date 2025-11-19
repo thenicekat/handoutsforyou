@@ -18,7 +18,7 @@ const siCompanySchema = z.object({
 export type SICompanyFormData = z.infer<typeof siCompanySchema>
 
 interface SICompanyFormProps {
-    onSubmit: (data: SICompanyFormData) => void
+    onSubmit: (data: SICompanyFormData, reset: () => void) => void
     isLoading?: boolean
     defaultValues?: Partial<SICompanyFormData>
 }
@@ -60,7 +60,10 @@ export default function SICompanyForm({
     }, [defaultValues, reset])
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+        <form
+            onSubmit={handleSubmit((data) => onSubmit(data, reset))}
+            className="space-y-8"
+        >
             {/* Company Details Section */}
             <div className="space-y-6">
                 <h2 className="text-xl font-semibold text-primary border-b border-primary/20 pb-2">
