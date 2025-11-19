@@ -1,5 +1,5 @@
 import AddPageLayout from '@/components/AddPageLayout'
-import PSReviewForm from '@/components/forms/PSReviewForm'
+import PS1ReviewForm from '@/components/forms/PS1ReviewForm'
 import SubmitButton from '@/components/SubmitButton'
 import { getMetaConfig } from '@/config/meta'
 import { PS1Item } from '@/types/PS'
@@ -91,8 +91,7 @@ export default function AddPS1Review() {
             metaConfig={getMetaConfig('ps/reviews/ps1')}
             containerId="addPSReview"
         >
-            <PSReviewForm
-                isPS1={true}
+            <PS1ReviewForm
                 userResponses={userResponses}
                 selectedResponse={selectedResponse}
                 onResponseSelect={handleResponseSelect}
