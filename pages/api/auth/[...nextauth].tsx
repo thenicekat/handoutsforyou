@@ -22,12 +22,18 @@ export async function getUser(
 ): Promise<AuthorizedUser> {
     try {
         if (process.env.MAINTENANCE === '1') {
-            response.status(503).json({
-                error: true,
-                message: 'Site is under maintenance',
-                data: null,
-            })
-            return response.end() as never
+            if (request.method === 'GET') {
+                // Allow stats endpoint during maintenance for UI functionality
+                const url = request.url || ''
+                if (!url.includes('/api/contributions/stats')) {
+                    response.status(503).json({
+                        error: true,
+                        message: 'Site is under contribute only mode.',
+                        data: null,
+                    })
+                    return response.end() as never
+                }
+            }
         }
         const session = await getServerSession(request, response, authOptions)
         if (!session) {

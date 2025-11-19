@@ -2,6 +2,7 @@ import { BaseResponseData, getUser } from '@/pages/api/auth/[...nextauth]'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { PS1_RESPONSES, PS2_RESPONSES } from '../../constants'
 import { supabase } from '../../supabase'
+import { trackContribution } from '../../contributions/track'
 
 type RequestData = {
     typeOfPS: string
@@ -150,6 +151,15 @@ export default async function handler(
                 })
                 return
             } else {
+                // Track the contribution
+                await trackContribution({
+                    email: email,
+                    created_by: name,
+                    contribution_type: 'ps1_cutoff',
+                    resource_name: reqBody.station,
+                    category: reqBody.yearAndSem,
+                })
+
                 res.status(200).json({
                     message: 'success',
                     data: data,
@@ -250,6 +260,15 @@ export default async function handler(
                 })
                 return
             } else {
+                // Track the contribution
+                await trackContribution({
+                    email: email,
+                    created_by: name,
+                    contribution_type: 'ps2_cutoff',
+                    resource_name: reqBody.station,
+                    category: reqBody.yearAndSem,
+                })
+
                 res.status(200).json({
                     message: 'success',
                     data: data,

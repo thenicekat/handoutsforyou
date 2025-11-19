@@ -2,6 +2,7 @@ import { BaseResponseData, getUser } from '@/pages/api/auth/[...nextauth]'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { COURSE_REVIEWS } from '../../constants'
 import { supabase } from '../../supabase'
+import { trackContribution } from '../../contributions/track'
 
 export default async function handler(
     req: NextApiRequest,
@@ -45,6 +46,15 @@ export default async function handler(
         res.status(500).json({ message: error.message, error: true })
         return
     } else {
+        // Track the contribution
+        await trackContribution({
+            email: email,
+            created_by: email,
+            contribution_type: 'course_review',
+            resource_name: `${course} - ${prof}`,
+            category: course,
+        })
+
         res.status(200).json({
             message: 'success',
             error: false,
