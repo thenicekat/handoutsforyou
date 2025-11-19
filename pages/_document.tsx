@@ -5,7 +5,7 @@ export default function Document() {
     return (
         <Html lang="en">
             <Head></Head>
-            
+
             <body className="mb-20 mt-20">
                 <Main />
             </body>
