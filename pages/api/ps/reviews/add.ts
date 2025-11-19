@@ -22,7 +22,7 @@ export default async function handler(
                 batch: batch,
                 station: station,
                 review: review,
-                created_by: email,
+                email: email,
             },
         ])
         if (error) {
@@ -41,7 +41,7 @@ export default async function handler(
                 batch: batch,
                 station: station,
                 review: review,
-                created_by: email,
+                email: email,
             },
         ])
         if (error) {

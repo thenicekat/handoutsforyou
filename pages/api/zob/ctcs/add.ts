@@ -77,7 +77,7 @@ export default async function handler(
             variable_bonus: variableBonus,
             monetary_value_of_benefits: monetaryValueOfBenefits,
             description: description,
-            created_by: email,
+            email: email,
         },
     ])
 
