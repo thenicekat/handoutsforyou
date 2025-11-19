@@ -14,7 +14,6 @@ const PLACEMENT_RESOURCE = 'placement_resource'
 const HIGHERSTUDIES_RESOURCE = 'higherstudies_resource'
 
 type ContributionType =
-type ContributionType =
     | typeof COURSE_RESOURCE
     | typeof COURSE_REVIEW
     | typeof PS1_CUTOFF
@@ -26,11 +25,6 @@ interface ContributionFormProps {
     onContributionAdded?: () => void
 }
 
-export default function ContributionForm({
-    onContributionAdded,
-}: ContributionFormProps) {
-    const [contributionType, setContributionType] =
-        useState<ContributionType>(COURSE_RESOURCE)
 export default function ContributionForm({
     onContributionAdded,
 }: ContributionFormProps) {
@@ -120,14 +114,6 @@ export default function ContributionForm({
                         !preference ||
                         !allotmentRound
                     ) {
-                    if (
-                        !idNumber ||
-                        !yearAndSem ||
-                        !station ||
-                        !cgpa ||
-                        !preference ||
-                        !allotmentRound
-                    ) {
                         toast.error('Please fill all required fields')
                         setIsLoading(false)
                         return
@@ -142,23 +128,11 @@ export default function ContributionForm({
                         preference: parseInt(preference),
                         allotmentRound,
                         public: isPublic ? 1 : 0,
-                        public: isPublic ? 1 : 0,
                     }
+
                     break
 
                 case PS2_CUTOFF:
-                    if (
-                        !idNumber ||
-                        !yearAndSem ||
-                        !station ||
-                        !cgpa ||
-                        !preference ||
-                        !allotmentRound ||
-                        !stipend ||
-                        !offshoot ||
-                        !offshootTotal ||
-                        !offshootType
-                    ) {
                     if (
                         !idNumber ||
                         !yearAndSem ||
@@ -188,7 +162,6 @@ export default function ContributionForm({
                         offshoot: parseInt(offshoot),
                         offshootTotal: parseInt(offshootTotal),
                         offshootType,
-                        public: isPublic ? 1 : 0,
                         public: isPublic ? 1 : 0,
                     }
                     break
