@@ -1,9 +1,9 @@
-import AddPageLayout from '@/components/AddPageLayout'
 import { getMetaConfig } from '@/config/meta'
 import ResourceForm, {
     ResourceFormData,
     ResourceFormRef,
 } from '@/forms/ResourceForm'
+import AddPageLayout from '@/layout/AddPage'
 import { useRef, useState } from 'react'
 import { toast } from 'react-toastify'
 

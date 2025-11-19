@@ -1,6 +1,6 @@
-import AddPageLayout from '@/components/AddPageLayout'
 import { getMetaConfig } from '@/config/meta'
 import PSReviewForm, { PSReviewFormData } from '@/forms/PSReviewForm'
+import AddPageLayout from '@/layout/AddPage'
 import { PS1Item } from '@/types/PS'
 import { axiosInstance } from '@/utils/axiosCache'
 import { useEffect, useState } from 'react'

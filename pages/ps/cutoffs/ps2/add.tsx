@@ -1,7 +1,7 @@
-import AddPageLayout from '@/components/AddPageLayout'
 import { getMetaConfig } from '@/config/meta'
 import { FormField } from '@/forms/FormComponents'
 import PSCutoffForm, { PS2CutoffFormData } from '@/forms/PSCutoffForm'
+import AddPageLayout from '@/layout/AddPage'
 import { axiosInstance } from '@/utils/axiosCache'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'

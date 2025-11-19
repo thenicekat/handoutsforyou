@@ -6,6 +6,9 @@ import CourseReviewForm, {
     CourseReviewFormData,
 } from '@/forms/CourseReviewForm'
 import { FormField } from '@/forms/FormComponents'
+import PlacementCTCForm, {
+    PlacementCTCFormData,
+} from '@/forms/PlacementCTCForm'
 import PSCutoffForm, { PSCutoffFormData } from '@/forms/PSCutoffForm'
 import ResourceForm, { ResourceFormData } from '@/forms/ResourceForm'
 import { useMemo, useState } from 'react'
@@ -17,6 +20,7 @@ const COURSE_GRADING = 'course_grading'
 const PS1_CUTOFF = 'ps1_cutoff'
 const PS2_CUTOFF = 'ps2_cutoff'
 const PLACEMENT_RESOURCE = 'placement_resource'
+const PLACEMENT_CTC = 'placement_ctc'
 const HIGHERSTUDIES_RESOURCE = 'higherstudies_resource'
 
 type ContributionType =
@@ -26,6 +30,7 @@ type ContributionType =
     | typeof PS1_CUTOFF
     | typeof PS2_CUTOFF
     | typeof PLACEMENT_RESOURCE
+    | typeof PLACEMENT_CTC
     | typeof HIGHERSTUDIES_RESOURCE
 
 interface ContributionFormProps {
@@ -39,7 +44,6 @@ export default function ContributionForm({
         useState<ContributionType>(COURSE_RESOURCE)
     const [isLoading, setIsLoading] = useState(false)
 
-    // Process departments for course grading form
     const depts = useMemo(() => {
         return Object.values(departments)
             .flatMap((code: string) => code.split('/'))
@@ -138,6 +142,43 @@ export default function ContributionForm({
                 toast.success(
                     'Thank you! Your higher studies resource was added successfully!'
                 )
+                onContributionAdded?.()
+            }
+        } catch (error) {
+            toast.error('An error occurred. Please try again.')
+        }
+        setIsLoading(false)
+    }
+
+    const handlePlacementCTCSubmit = async (
+        data: PlacementCTCFormData,
+        reset: () => void
+    ) => {
+        setIsLoading(true)
+        try {
+            const res = await fetch('/api/zob/ctcs/add', {
+                method: 'POST',
+                body: JSON.stringify({
+                    company: data.name,
+                    campus: data.campus,
+                    academicYear: data.academicYear,
+                    base: data.base,
+                    joiningBonus: data.joiningBonus,
+                    relocationBonus: data.relocationBonus,
+                    variableBonus: data.variableBonus,
+                    monetaryValueOfBenefits: data.monetaryValueOfBenefits,
+                    description: data.description,
+                }),
+                headers: { 'Content-Type': 'application/json' },
+            })
+            const result = await res.json()
+            if (result.error) {
+                toast.error(result.message)
+            } else {
+                toast.success(
+                    'Thank you! Your placement CTC was added successfully!'
+                )
+                reset()
                 onContributionAdded?.()
             }
         } catch (error) {
@@ -252,6 +293,7 @@ export default function ContributionForm({
         { value: PS1_CUTOFF, label: 'PS1 Cutoff' },
         { value: PS2_CUTOFF, label: 'PS2 Cutoff' },
         { value: PLACEMENT_RESOURCE, label: 'Placement Resource' },
+        { value: PLACEMENT_CTC, label: 'Placement CTC' },
         { value: HIGHERSTUDIES_RESOURCE, label: 'Higher Studies Resource' },
     ]
 
@@ -303,6 +345,14 @@ export default function ContributionForm({
                 <ResourceForm
                     resourceType="higherStudies"
                     onSubmit={handleHigherStudiesResourceSubmit}
+                    isLoading={isLoading}
+                />
+            )}
+
+            {/* Placement CTC Form */}
+            {contributionType === PLACEMENT_CTC && (
+                <PlacementCTCForm
+                    onSubmit={handlePlacementCTCSubmit}
                     isLoading={isLoading}
                 />
             )}
