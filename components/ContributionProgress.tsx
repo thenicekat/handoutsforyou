@@ -109,7 +109,7 @@ export default function ContributionProgress({
                     <div
                         className="bg-gradient-to-r from-amber-400 to-orange-500 h-3 rounded-full transition-all duration-1000 ease-out"
                         style={{
-                            width: `${Math.min((stats.total / 100) * 100, 100)}%`,
+                            width: `${Math.min((stats.total / 5000) * 100, 100)}%`,
                         }}
                     ></div>
                 </div>
