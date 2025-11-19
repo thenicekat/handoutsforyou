@@ -21,5 +21,7 @@ export async function trackContribution(data: ContributionData) {
         },
     ])
 
-    return { error }
+    if (error) {
+        throw new Error(error.message)
+    }
 }
