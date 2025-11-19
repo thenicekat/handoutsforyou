@@ -5,20 +5,31 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { Checkbox, FormField, SelectInput, TextInput } from './FormComponents'
 
-// Base schema for common fields
 const basePSCutoffSchema = z.object({
     idNumber: z
         .string()
         .min(1, 'ID Number is required')
         .max(13, 'ID Number must be 13 digits or less'),
-    yearAndSem: z.string().min(1, 'Year/Semester is required'),
+    yearAndSem: z
+        .string()
+        .min(1, 'Year/Semester is required')
+        .refine(
+            (val) => ps1Years.includes(val) || ps2Semesters.includes(val),
+            'Please select a valid year/semester from the list'
+        ),
     station: z.string().min(1, 'Station is required'),
     cgpa: z
         .number()
         .min(0, 'CGPA must be positive')
         .max(10, 'CGPA cannot exceed 10'),
     preference: z.number().min(1, 'Preference must be at least 1'),
-    allotmentRound: z.string().min(1, 'Allotment Round is required'),
+    allotmentRound: z
+        .string()
+        .min(1, 'Allotment Round is required')
+        .refine(
+            (val) => psAllotmentRounds.includes(val),
+            'Please select a valid allotment round from the list'
+        ),
     isPublic: z.boolean(),
 })
 

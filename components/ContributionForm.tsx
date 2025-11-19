@@ -1,13 +1,12 @@
 import CourseReviewForm, {
     CourseReviewFormData,
-} from '@/components/forms/CourseReviewForm'
-import { FormField } from '@/components/forms/FormComponents'
-import PSCutoffForm, { PSCutoffFormData } from '@/components/forms/PSCutoffForm'
-import ResourceForm, { ResourceFormData } from '@/components/forms/ResourceForm'
+} from '@/forms/CourseReviewForm'
+import { FormField } from '@/forms/FormComponents'
+import PSCutoffForm, { PSCutoffFormData } from '@/forms/PSCutoffForm'
+import ResourceForm, { ResourceFormData } from '@/forms/ResourceForm'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 
-// Contribution Type Constants
 const COURSE_RESOURCE = 'course_resource'
 const COURSE_REVIEW = 'course_review'
 const PS1_CUTOFF = 'ps1_cutoff'
