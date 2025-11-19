@@ -1,6 +1,7 @@
 import { BaseResponseData, getUser } from '@/pages/api/auth/[...nextauth]'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { HIGHER_STUDIES_RESOURCES } from '../../constants'
+import { trackContribution } from '../../contributions/track'
 import { supabase } from '../../supabase'
 
 export default async function handler(
@@ -53,6 +54,10 @@ export default async function handler(
         res.status(500).json({ message: error.message, error: true })
         return
     } else {
+        await trackContribution({
+            email: email,
+            contribution_type: 'higherstudies_resource',
+        })
         res.status(200).json({
             message: 'success',
             error: false,

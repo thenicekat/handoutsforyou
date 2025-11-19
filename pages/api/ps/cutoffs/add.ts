@@ -151,13 +151,9 @@ export default async function handler(
                 })
                 return
             } else {
-                // Track the contribution
                 await trackContribution({
                     email: email,
-                    created_by: name,
                     contribution_type: 'ps1_cutoff',
-                    resource_name: reqBody.station,
-                    category: reqBody.yearAndSem,
                 })
 
                 res.status(200).json({
@@ -260,13 +256,9 @@ export default async function handler(
                 })
                 return
             } else {
-                // Track the contribution
                 await trackContribution({
                     email: email,
-                    created_by: name,
                     contribution_type: 'ps2_cutoff',
-                    resource_name: reqBody.station,
-                    category: reqBody.yearAndSem,
                 })
 
                 res.status(200).json({

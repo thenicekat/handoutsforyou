@@ -18,7 +18,7 @@ export default async function handler(
     try {
         const { data, error } = await supabase
             .from(CONTRIBUTIONS)
-            .select('contribution_type, status, created_by, email')
+            .select('contribution_type, count, created_by, email')
 
         if (error) {
             res.status(500).json({ message: error.message, error: true })
@@ -26,20 +26,20 @@ export default async function handler(
         }
 
         const stats = {
-            total: data?.length || 0,
-            pending: data?.filter((c) => c.status === 'pending').length || 0,
-            approved: data?.filter((c) => c.status === 'approved').length || 0,
+            total: 0,
             byType: {} as Record<string, number>,
             byUser: {} as Record<string, number>,
         }
 
         data?.forEach((contribution) => {
             const type = contribution.contribution_type
-            stats.byType[type] = (stats.byType[type] || 0) + 1
+            const count = contribution.count || 1
 
-            // Group by user (use email as the primary identifier)
+            stats.total += count
+            stats.byType[type] = (stats.byType[type] || 0) + count
+
             const user = contribution.email || 'Anonymous'
-            stats.byUser[user] = (stats.byUser[user] || 0) + 1
+            stats.byUser[user] = (stats.byUser[user] || 0) + count
         })
 
         res.status(200).json({

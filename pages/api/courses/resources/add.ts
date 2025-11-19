@@ -54,13 +54,9 @@ export default async function handler(
         res.status(500).json({ message: error.message, error: true })
         return
     } else {
-        // Track the contribution
         await trackContribution({
             email: email,
-            created_by: created_by,
             contribution_type: 'course_resource',
-            resource_name: name,
-            category: category,
         })
 
         res.status(200).json({

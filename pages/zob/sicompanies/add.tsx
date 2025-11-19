@@ -1,8 +1,6 @@
 import AddPageLayout from '@/components/AddPageLayout'
-import SICompanyForm, {
-    SICompanyFormData,
-} from '@/components/forms/SICompanyForm'
 import { getMetaConfig } from '@/config/meta'
+import SICompanyForm, { SICompanyFormData } from '@/forms/SICompanyForm'
 import { axiosInstance } from '@/utils/axiosCache'
 import { useState } from 'react'
 import { toast } from 'react-toastify'

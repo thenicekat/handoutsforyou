@@ -2,6 +2,7 @@ import { departments } from '@/config/departments'
 import { BaseResponseData, getUser } from '@/pages/api/auth/[...nextauth]'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { COURSE_GRADING } from '../../constants'
+import { trackContribution } from '../../contributions/track'
 import { supabase } from '../../supabase'
 
 export default async function handler(
@@ -121,7 +122,7 @@ export default async function handler(
             sem: sem,
             prof: prof,
             data: validatedData,
-            created_by: email,
+            email: email,
             average_mark: average_mark,
         },
     ])
@@ -130,6 +131,15 @@ export default async function handler(
         res.status(500).json({ message: error.message, error: true })
         return
     } else {
+        try {
+            await trackContribution({
+                email: email,
+                contribution_type: 'course_grading',
+            })
+        } catch (trackError) {
+            console.error('Failed to track contribution:', trackError)
+        }
+
         res.status(200).json({
             message: 'success',
             error: false,

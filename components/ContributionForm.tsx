@@ -1,14 +1,19 @@
+import { departments } from '@/config/departments'
+import CourseGradingForm, {
+    CourseGradingFormData,
+} from '@/forms/CourseGradingForm'
 import CourseReviewForm, {
     CourseReviewFormData,
 } from '@/forms/CourseReviewForm'
 import { FormField } from '@/forms/FormComponents'
 import PSCutoffForm, { PSCutoffFormData } from '@/forms/PSCutoffForm'
 import ResourceForm, { ResourceFormData } from '@/forms/ResourceForm'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { toast } from 'react-toastify'
 
 const COURSE_RESOURCE = 'course_resource'
 const COURSE_REVIEW = 'course_review'
+const COURSE_GRADING = 'course_grading'
 const PS1_CUTOFF = 'ps1_cutoff'
 const PS2_CUTOFF = 'ps2_cutoff'
 const PLACEMENT_RESOURCE = 'placement_resource'
@@ -17,6 +22,7 @@ const HIGHERSTUDIES_RESOURCE = 'higherstudies_resource'
 type ContributionType =
     | typeof COURSE_RESOURCE
     | typeof COURSE_REVIEW
+    | typeof COURSE_GRADING
     | typeof PS1_CUTOFF
     | typeof PS2_CUTOFF
     | typeof PLACEMENT_RESOURCE
@@ -32,6 +38,27 @@ export default function ContributionForm({
     const [contributionType, setContributionType] =
         useState<ContributionType>(COURSE_RESOURCE)
     const [isLoading, setIsLoading] = useState(false)
+
+    // Process departments for course grading form
+    const depts = useMemo(() => {
+        return Object.values(departments)
+            .flatMap((code: string) => code.split('/'))
+            .map((code) => code.trim())
+            .filter((code) => code.length > 0)
+    }, [])
+
+    const filterDepartmentCodes = (course: string): string[] => {
+        let values: string[] = []
+        if (course !== '') {
+            const allowed = course.split(' ')[0]
+            values = depts.filter((code) => allowed.includes(code))
+            if (values.length === 1) {
+                values = []
+            }
+        }
+        values.push('ALL')
+        return values
+    }
 
     const handleCourseResourceSubmit = async (data: ResourceFormData) => {
         setIsLoading(true)
@@ -146,6 +173,36 @@ export default function ContributionForm({
         setIsLoading(false)
     }
 
+    const handleCourseGradingSubmit = async (data: CourseGradingFormData) => {
+        setIsLoading(true)
+        try {
+            const res = await fetch('/api/courses/grading/add', {
+                method: 'POST',
+                body: JSON.stringify({
+                    course: data.course,
+                    dept: data.dept,
+                    sem: data.semester,
+                    prof: data.prof,
+                    data: data.gradingData,
+                    average_mark: data.averageMark,
+                }),
+                headers: { 'Content-Type': 'application/json' },
+            })
+            const result = await res.json()
+            if (result.error) {
+                toast.error(result.message)
+            } else {
+                toast.success(
+                    'Thank you! Your course grading data was added successfully!'
+                )
+                onContributionAdded?.()
+            }
+        } catch (error) {
+            toast.error('An error occurred. Please try again.')
+        }
+        setIsLoading(false)
+    }
+
     const handlePSCutoffSubmit = async (data: PSCutoffFormData) => {
         setIsLoading(true)
         try {
@@ -191,6 +248,7 @@ export default function ContributionForm({
     const contributionTypes = [
         { value: COURSE_RESOURCE, label: 'Course Resource' },
         { value: COURSE_REVIEW, label: 'Course Review' },
+        { value: COURSE_GRADING, label: 'Course Grading' },
         { value: PS1_CUTOFF, label: 'PS1 Cutoff' },
         { value: PS2_CUTOFF, label: 'PS2 Cutoff' },
         { value: PLACEMENT_RESOURCE, label: 'Placement Resource' },
@@ -254,6 +312,16 @@ export default function ContributionForm({
                 <CourseReviewForm
                     onSubmit={handleCourseReviewSubmit}
                     isLoading={isLoading}
+                />
+            )}
+
+            {/* Course Grading Form */}
+            {contributionType === COURSE_GRADING && (
+                <CourseGradingForm
+                    onSubmit={handleCourseGradingSubmit}
+                    isLoading={isLoading}
+                    depts={depts}
+                    filterDepartmentCodes={filterDepartmentCodes}
                 />
             )}
 

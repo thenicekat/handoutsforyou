@@ -38,7 +38,7 @@ export default async function handler(
             course: course,
             prof: prof,
             review: review,
-            created_by: email,
+            email: email,
         },
     ])
 
@@ -46,15 +46,10 @@ export default async function handler(
         res.status(500).json({ message: error.message, error: true })
         return
     } else {
-        // Track the contribution
         await trackContribution({
             email: email,
-            created_by: email,
             contribution_type: 'course_review',
-            resource_name: `${course} - ${prof}`,
-            category: course,
         })
-
         res.status(200).json({
             message: 'success',
             error: false,

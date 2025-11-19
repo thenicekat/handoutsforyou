@@ -1,9 +1,9 @@
 import AddPageLayout from '@/components/AddPageLayout'
-import CourseGradingForm, {
-    CourseGradingFormData,
-} from '@/components/forms/CourseGradingForm'
 import { departments } from '@/config/departments'
 import { getMetaConfig } from '@/config/meta'
+import CourseGradingForm, {
+    CourseGradingFormData,
+} from '@/forms/CourseGradingForm'
 import { CourseGradeRow } from '@/types/Courses'
 import { GetStaticProps } from 'next'
 import { useEffect, useState } from 'react'

@@ -1,8 +1,8 @@
 import AddPageLayout from '@/components/AddPageLayout'
+import { getMetaConfig } from '@/config/meta'
 import CourseReviewForm, {
     CourseReviewFormData,
-} from '@/components/forms/CourseReviewForm'
-import { getMetaConfig } from '@/config/meta'
+} from '@/forms/CourseReviewForm'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 

@@ -3,25 +3,30 @@ import { supabase } from '../supabase'
 
 export interface ContributionData {
     email: string
-    created_by: string
     contribution_type: string
-    resource_name?: string
-    category?: string
 }
 
-export async function trackContribution(data: ContributionData) {
-    const { error } = await supabase.from(CONTRIBUTIONS).insert([
-        {
-            email: data.email,
-            created_by: data.created_by,
-            contribution_type: data.contribution_type,
-            resource_name: data.resource_name,
-            category: data.category,
-            status: 'pending',
-        },
-    ])
+export async function trackContribution(input: ContributionData) {
+    const { data, error } = await supabase
+        .from(CONTRIBUTIONS)
+        .select('*')
+        .eq('email', input.email)
+        .eq('contribution_type', input.contribution_type)
 
     if (error) {
-        throw new Error(error.message)
+        throw Error('Error while fetching user contributions.')
+    } else {
+        const { data: updatedData, error: updatedError } = await supabase
+            .from(CONTRIBUTIONS)
+            .update({ count: data[0].count + 1 })
+            .eq('email', input.email)
+            .eq('contribution_type', input.contribution_type)
+            .select()
+
+        if (updatedError) {
+            throw Error('Error while updating user contributions.')
+        } else {
+            return updatedData
+        }
     }
 }
