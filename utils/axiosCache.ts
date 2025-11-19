@@ -41,6 +41,11 @@ axiosInstance.interceptors.response.use(
                 window.location.assign('/error?error=Unauthorized')
             }
         }
+        if (status === 503) {
+            if (typeof window !== 'undefined') {
+                window.location.assign('/error?error=Unavailable')
+            }
+        }
         return Promise.reject(error)
     }
 )

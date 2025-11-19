@@ -33,8 +33,13 @@ const errorMessages = {
     Default: {
         code: 500,
         title: 'Internal Server Error',
+        message: 'Please try again later.',
+    },
+    Unavailable: {
+        code: 503,
+        title: 'Service Unavailable',
         message:
-            'Please try again later. If the problem persists, please contact handoutsforyou@gmail.com.',
+            'The service is currently unavailable. Please check back later.',
     },
 }
 

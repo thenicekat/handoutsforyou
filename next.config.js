@@ -7,10 +7,10 @@ const nextConfig = {
 
     // Use async function for redirects
     async redirects() {
-        if (process.env.NEXT_PUBLIC_SHOW_MAINTENANCE === '1') {
+        if (process.env.MAINTENANCE === '1') {
             return [
                 {
-                    source: '/((?!maintenance).*)',
+                    source: '/((?!maintenance|error|api).*)',
                     destination: '/maintenance',
                     permanent: false,
                 },

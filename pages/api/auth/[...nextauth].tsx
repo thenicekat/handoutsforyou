@@ -21,6 +21,14 @@ export async function getUser(
     response: NextApiResponse
 ): Promise<AuthorizedUser> {
     try {
+        if (process.env.MAINTENANCE === '1') {
+            response.status(503).json({
+                error: true,
+                message: 'Site is under maintenance',
+                data: null,
+            })
+            return response.end() as never
+        }
         const session = await getServerSession(request, response, authOptions)
         if (!session) {
             response.status(401).json({
