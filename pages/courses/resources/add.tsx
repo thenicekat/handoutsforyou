@@ -1,11 +1,12 @@
 import AddPageLayout from '@/components/AddPageLayout'
-import ResourceForm, { ResourceFormData } from '@/components/forms/ResourceForm'
+import ResourceForm, { ResourceFormData, ResourceFormRef } from '@/components/forms/ResourceForm'
 import { getMetaConfig } from '@/config/meta'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { toast } from 'react-toastify'
 
 export default function AddResources() {
     const [isLoading, setIsLoading] = useState(false)
+    const formRef = useRef<ResourceFormRef>(null)
 
     const handleSubmit = async (data: ResourceFormData) => {
         setIsLoading(true)
@@ -28,8 +29,8 @@ export default function AddResources() {
                 toast.success(
                     'Thank you! Your resource was added successfully!'
                 )
-                // Form will be reset automatically by React Hook Form
-                window.location.reload() // Refresh to clear form
+                // Reset form using React Hook Form's reset method
+                formRef.current?.reset()
             }
         } catch (error) {
             toast.error('An error occurred. Please try again.')
@@ -44,9 +45,10 @@ export default function AddResources() {
             containerId="addResources"
         >
             <ResourceForm
+                ref={formRef}
+                resourceType="course"
                 onSubmit={handleSubmit}
                 isLoading={isLoading}
-                isCourseDepartment={true}
             />
         </AddPageLayout>
     )

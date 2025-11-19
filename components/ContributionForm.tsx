@@ -2,13 +2,7 @@ import CourseReviewForm, {
     CourseReviewFormData,
 } from '@/components/forms/CourseReviewForm'
 import { FormField } from '@/components/forms/FormComponents'
-import HigherStudiesResourceForm, {
-    HigherStudiesResourceFormData,
-} from '@/components/forms/HigherStudiesResourceForm'
 import PSCutoffForm, { PSCutoffFormData } from '@/components/forms/PSCutoffForm'
-import PlacementResourceForm, {
-    PlacementResourceFormData,
-} from '@/components/forms/PlacementResourceForm'
 import ResourceForm, { ResourceFormData } from '@/components/forms/ResourceForm'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
@@ -69,7 +63,7 @@ export default function ContributionForm({
     }
 
     const handlePlacementResourceSubmit = async (
-        data: PlacementResourceFormData
+        data: ResourceFormData
     ) => {
         setIsLoading(true)
         try {
@@ -99,7 +93,7 @@ export default function ContributionForm({
     }
 
     const handleHigherStudiesResourceSubmit = async (
-        data: HigherStudiesResourceFormData
+        data: ResourceFormData
     ) => {
         setIsLoading(true)
         try {
@@ -234,15 +228,16 @@ export default function ContributionForm({
             {/* Course Resource Form */}
             {contributionType === COURSE_RESOURCE && (
                 <ResourceForm
+                    resourceType="course"
                     onSubmit={handleCourseResourceSubmit}
                     isLoading={isLoading}
-                    isCourseDepartment={true}
                 />
             )}
 
             {/* Placement Resource Form */}
             {contributionType === PLACEMENT_RESOURCE && (
-                <PlacementResourceForm
+                <ResourceForm
+                    resourceType="placement"
                     onSubmit={handlePlacementResourceSubmit}
                     isLoading={isLoading}
                 />
@@ -250,7 +245,8 @@ export default function ContributionForm({
 
             {/* Higher Studies Resource Form */}
             {contributionType === HIGHERSTUDIES_RESOURCE && (
-                <HigherStudiesResourceForm
+                <ResourceForm
+                    resourceType="higherStudies"
                     onSubmit={handleHigherStudiesResourceSubmit}
                     isLoading={isLoading}
                 />

@@ -1,6 +1,7 @@
 import { departments } from '@/config/departments'
+import { higherStudiesCategories, zobCategories } from '@/config/categories'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useEffect } from 'react'
+import { useEffect, useImperativeHandle, forwardRef } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { FormField, SelectInput, TextInput } from './FormComponents'
@@ -14,19 +15,25 @@ const resourceSchema = z.object({
 
 export type ResourceFormData = z.infer<typeof resourceSchema>
 
+export interface ResourceFormRef {
+    reset: () => void
+}
+
+type ResourceType = 'course' | 'higherStudies' | 'placement' | 'general'
+
 interface ResourceFormProps {
     onSubmit: (data: ResourceFormData) => void
     isLoading?: boolean
     defaultValues?: Partial<ResourceFormData>
-    isCourseDepartment?: boolean
+    resourceType: ResourceType
 }
 
-export default function ResourceForm({
+const ResourceForm = forwardRef<ResourceFormRef, ResourceFormProps>(({
     onSubmit,
     isLoading = false,
     defaultValues,
-    isCourseDepartment = false,
-}: ResourceFormProps) {
+    resourceType,
+}: ResourceFormProps, ref) => {
     const {
         register,
         handleSubmit,
@@ -43,9 +50,9 @@ export default function ResourceForm({
         },
     })
 
-    const departmentOptions = Object.keys(departments).map((dept) => ({
-        value: dept,
-        label: dept,
+    // Expose reset method to parent
+    useImperativeHandle(ref, () => ({
+        reset: () => reset(),
     }))
 
     // Reset form when defaultValues change
@@ -54,6 +61,52 @@ export default function ResourceForm({
             reset(defaultValues)
         }
     }, [defaultValues, reset])
+
+    // Get category options based on resource type
+    const getCategoryConfig = () => {
+        switch (resourceType) {
+            case 'course':
+                return {
+                    categoryOptions: Object.keys(departments).map((dept) => ({
+                        value: dept,
+                        label: dept,
+                    })),
+                    categoryLabel: 'Department',
+                    categoryPlaceholder: 'Select department',
+                    allowTextCategory: false,
+                }
+            case 'higherStudies':
+                return {
+                    categoryOptions: higherStudiesCategories.map((category) => ({
+                        value: category,
+                        label: category,
+                    })),
+                    categoryLabel: 'Category',
+                    categoryPlaceholder: 'Select category',
+                    allowTextCategory: false,
+                }
+            case 'placement':
+                return {
+                    categoryOptions: zobCategories.map((category) => ({
+                        value: category,
+                        label: category,
+                    })),
+                    categoryLabel: 'Category',
+                    categoryPlaceholder: 'Select category',
+                    allowTextCategory: false,
+                }
+            case 'general':
+            default:
+                return {
+                    categoryOptions: [],
+                    categoryLabel: 'Category',
+                    categoryPlaceholder: 'Enter category',
+                    allowTextCategory: true,
+                }
+        }
+    }
+
+    const categoryConfig = getCategoryConfig()
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
@@ -82,18 +135,18 @@ export default function ResourceForm({
                 />
             </FormField>
 
-            <FormField label="Category" required error={errors.category}>
-                {isCourseDepartment ? (
-                    <SelectInput
+            <FormField label={categoryConfig.categoryLabel} required error={errors.category}>
+                {categoryConfig.allowTextCategory ? (
+                    <TextInput
                         registration={register('category')}
-                        options={departmentOptions}
-                        placeholder="Select department"
+                        placeholder={categoryConfig.categoryPlaceholder}
                         error={errors.category}
                     />
                 ) : (
-                    <TextInput
+                    <SelectInput
                         registration={register('category')}
-                        placeholder="Enter category"
+                        options={categoryConfig.categoryOptions}
+                        placeholder={categoryConfig.categoryPlaceholder}
                         error={errors.category}
                     />
                 )}
@@ -117,4 +170,8 @@ export default function ResourceForm({
             </div>
         </form>
     )
-}
+})
+
+ResourceForm.displayName = 'ResourceForm'
+
+export default ResourceForm

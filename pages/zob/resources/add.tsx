@@ -1,16 +1,18 @@
 import AddPageLayout from '@/components/AddPageLayout'
-import PlacementResourceForm, {
-    PlacementResourceFormData,
-} from '@/components/forms/PlacementResourceForm'
+import ResourceForm, {
+    ResourceFormData,
+    ResourceFormRef,
+} from '@/components/forms/ResourceForm'
 import { getMetaConfig } from '@/config/meta'
 import { axiosInstance } from '@/utils/axiosCache'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { toast } from 'react-toastify'
 
 export default function AddPlacementResources() {
     const [isLoading, setIsLoading] = useState(false)
+    const formRef = useRef<ResourceFormRef>(null)
 
-    const handleSubmit = async (data: PlacementResourceFormData) => {
+    const handleSubmit = async (data: ResourceFormData) => {
         setIsLoading(true)
         try {
             const res = await axiosInstance.post('/api/zob/resources/add', {
@@ -27,8 +29,8 @@ export default function AddPlacementResources() {
                 toast.success(
                     'Thank you! Your resource was added successfully!'
                 )
-                // Form will be reset automatically by React Hook Form
-                window.location.reload() // Refresh to clear form
+                // Reset form using React Hook Form's reset method
+                formRef.current?.reset()
             }
         } catch (error) {
             console.error('Error adding placement resource:', error)
@@ -43,7 +45,9 @@ export default function AddPlacementResources() {
             metaConfig={getMetaConfig('zob/resources')}
             containerId="addZobResources"
         >
-            <PlacementResourceForm
+            <ResourceForm
+                ref={formRef}
+                resourceType="placement"
                 onSubmit={handleSubmit}
                 isLoading={isLoading}
             />

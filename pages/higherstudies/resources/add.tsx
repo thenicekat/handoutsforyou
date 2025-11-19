@@ -1,16 +1,18 @@
 import AddPageLayout from '@/components/AddPageLayout'
-import HigherStudiesResourceForm, {
-    HigherStudiesResourceFormData,
-} from '@/components/forms/HigherStudiesResourceForm'
+import ResourceForm, {
+    ResourceFormData,
+    ResourceFormRef,
+} from '@/components/forms/ResourceForm'
 import { getMetaConfig } from '@/config/meta'
 import { axiosInstance } from '@/utils/axiosCache'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { toast } from 'react-toastify'
 
 export default function AddHSResources() {
     const [isLoading, setIsLoading] = useState(false)
+    const formRef = useRef<ResourceFormRef>(null)
 
-    const handleSubmit = async (data: HigherStudiesResourceFormData) => {
+    const handleSubmit = async (data: ResourceFormData) => {
         setIsLoading(true)
         try {
             const res = await axiosInstance.post(
@@ -30,8 +32,8 @@ export default function AddHSResources() {
                 toast.success(
                     'Thank you! Your resource was added successfully!'
                 )
-                // Form will be reset automatically by React Hook Form
-                window.location.reload() // Refresh to clear form
+                // Reset form using React Hook Form's reset method
+                formRef.current?.reset()
             }
         } catch (error) {
             console.error('Error adding higher studies resource:', error)
@@ -46,7 +48,9 @@ export default function AddHSResources() {
             metaConfig={getMetaConfig('higherstudies')}
             containerId="addHSResources"
         >
-            <HigherStudiesResourceForm
+            <ResourceForm
+                ref={formRef}
+                resourceType="higherStudies"
                 onSubmit={handleSubmit}
                 isLoading={isLoading}
             />
