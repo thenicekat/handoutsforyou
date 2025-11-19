@@ -1,6 +1,6 @@
 import AutoCompleter from '@/components/AutoCompleter'
-import { departments } from '@/config/departments'
 import { courses } from '@/config/courses'
+import { departments } from '@/config/departments'
 import { profs } from '@/config/profs'
 import { ps1Years, ps2Semesters, psAllotmentRounds } from '@/config/years_sems'
 import { useState } from 'react'
@@ -14,7 +14,7 @@ const PS2_CUTOFF = 'ps2_cutoff'
 const PLACEMENT_RESOURCE = 'placement_resource'
 const HIGHERSTUDIES_RESOURCE = 'higherstudies_resource'
 
-type ContributionType = 
+type ContributionType =
     | typeof COURSE_RESOURCE
     | typeof COURSE_REVIEW
     | typeof PS1_CUTOFF
@@ -26,8 +26,11 @@ interface ContributionFormProps {
     onContributionAdded?: () => void
 }
 
-export default function ContributionForm({ onContributionAdded }: ContributionFormProps) {
-    const [contributionType, setContributionType] = useState<ContributionType>(COURSE_RESOURCE)
+export default function ContributionForm({
+    onContributionAdded,
+}: ContributionFormProps) {
+    const [contributionType, setContributionType] =
+        useState<ContributionType>(COURSE_RESOURCE)
     const [isLoading, setIsLoading] = useState(false)
 
     // Common fields
@@ -104,7 +107,14 @@ export default function ContributionForm({ onContributionAdded }: ContributionFo
                     break
 
                 case PS1_CUTOFF:
-                    if (!idNumber || !yearAndSem || !station || !cgpa || !preference || !allotmentRound) {
+                    if (
+                        !idNumber ||
+                        !yearAndSem ||
+                        !station ||
+                        !cgpa ||
+                        !preference ||
+                        !allotmentRound
+                    ) {
                         toast.error('Please fill all required fields')
                         setIsLoading(false)
                         return
@@ -118,12 +128,23 @@ export default function ContributionForm({ onContributionAdded }: ContributionFo
                         cgpa: parseFloat(cgpa),
                         preference: parseInt(preference),
                         allotmentRound,
-                        public: isPublic ? 1 : 0
+                        public: isPublic ? 1 : 0,
                     }
                     break
 
                 case PS2_CUTOFF:
-                    if (!idNumber || !yearAndSem || !station || !cgpa || !preference || !allotmentRound || !stipend || !offshoot || !offshootTotal || !offshootType) {
+                    if (
+                        !idNumber ||
+                        !yearAndSem ||
+                        !station ||
+                        !cgpa ||
+                        !preference ||
+                        !allotmentRound ||
+                        !stipend ||
+                        !offshoot ||
+                        !offshootTotal ||
+                        !offshootType
+                    ) {
                         toast.error('Please fill all required fields')
                         setIsLoading(false)
                         return
@@ -141,7 +162,7 @@ export default function ContributionForm({ onContributionAdded }: ContributionFo
                         offshoot: parseInt(offshoot),
                         offshootTotal: parseInt(offshootTotal),
                         offshootType,
-                        public: isPublic ? 1 : 0
+                        public: isPublic ? 1 : 0,
                     }
                     break
 
@@ -176,7 +197,9 @@ export default function ContributionForm({ onContributionAdded }: ContributionFo
             if (data.error) {
                 toast.error(data.message)
             } else {
-                toast.success('Thank you! Your contribution was added successfully!')
+                toast.success(
+                    'Thank you! Your contribution was added successfully!'
+                )
                 resetForm()
                 onContributionAdded?.()
             }
@@ -205,11 +228,17 @@ export default function ContributionForm({ onContributionAdded }: ContributionFo
                 </label>
                 <select
                     value={contributionType}
-                    onChange={(e) => setContributionType(e.target.value as ContributionType)}
+                    onChange={(e) =>
+                        setContributionType(e.target.value as ContributionType)
+                    }
                     className="w-full p-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-amber-400"
                 >
                     {contributionTypes.map((type) => (
-                        <option key={type.value} value={type.value} className="bg-gray-800">
+                        <option
+                            key={type.value}
+                            value={type.value}
+                            className="bg-gray-800"
+                        >
                             {type.label}
                         </option>
                     ))}
@@ -217,7 +246,9 @@ export default function ContributionForm({ onContributionAdded }: ContributionFo
             </div>
 
             {/* Dynamic Form Fields */}
-            {(contributionType === COURSE_RESOURCE || contributionType === PLACEMENT_RESOURCE || contributionType === HIGHERSTUDIES_RESOURCE) && (
+            {(contributionType === COURSE_RESOURCE ||
+                contributionType === PLACEMENT_RESOURCE ||
+                contributionType === HIGHERSTUDIES_RESOURCE) && (
                 <>
                     <div className="mb-4">
                         <label className="block text-gray-300 text-sm font-medium mb-2">
@@ -301,7 +332,7 @@ export default function ContributionForm({ onContributionAdded }: ContributionFo
                             Professor *
                         </label>
                         <AutoCompleter
-                            items={profs.map(p => p.name)}
+                            items={profs.map((p) => p.name)}
                             value={prof}
                             onChange={setProf}
                             name="professor"
@@ -323,7 +354,8 @@ export default function ContributionForm({ onContributionAdded }: ContributionFo
                 </>
             )}
 
-            {(contributionType === PS1_CUTOFF || contributionType === PS2_CUTOFF) && (
+            {(contributionType === PS1_CUTOFF ||
+                contributionType === PS2_CUTOFF) && (
                 <>
                     <div className="mb-4">
                         <label className="block text-gray-300 text-sm font-medium mb-2">
@@ -341,7 +373,9 @@ export default function ContributionForm({ onContributionAdded }: ContributionFo
 
                     <div className="mb-4">
                         <label className="block text-gray-300 text-sm font-medium mb-2">
-                            {contributionType === PS1_CUTOFF ? 'Batch *' : 'Year and Semester *'}
+                            {contributionType === PS1_CUTOFF
+                                ? 'Batch *'
+                                : 'Year and Semester *'}
                         </label>
                         <select
                             value={yearAndSem}
@@ -349,20 +383,29 @@ export default function ContributionForm({ onContributionAdded }: ContributionFo
                             className="w-full p-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-amber-400"
                         >
                             <option value="" className="bg-gray-800">
-                                {contributionType === PS1_CUTOFF ? 'Select Batch' : 'Select Year and Semester'}
+                                {contributionType === PS1_CUTOFF
+                                    ? 'Select Batch'
+                                    : 'Select Year and Semester'}
                             </option>
-                            {contributionType === PS1_CUTOFF 
+                            {contributionType === PS1_CUTOFF
                                 ? ps1Years.map((year) => (
-                                    <option key={year} value={year} className="bg-gray-800">
-                                        {year}
-                                    </option>
-                                ))
+                                      <option
+                                          key={year}
+                                          value={year}
+                                          className="bg-gray-800"
+                                      >
+                                          {year}
+                                      </option>
+                                  ))
                                 : ps2Semesters.map((semester) => (
-                                    <option key={semester} value={semester} className="bg-gray-800">
-                                        {semester}
-                                    </option>
-                                ))
-                            }
+                                      <option
+                                          key={semester}
+                                          value={semester}
+                                          className="bg-gray-800"
+                                      >
+                                          {semester}
+                                      </option>
+                                  ))}
                         </select>
                     </div>
 
@@ -420,9 +463,15 @@ export default function ContributionForm({ onContributionAdded }: ContributionFo
                             onChange={(e) => setAllotmentRound(e.target.value)}
                             className="w-full p-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-amber-400"
                         >
-                            <option value="" className="bg-gray-800">Select Round</option>
+                            <option value="" className="bg-gray-800">
+                                Select Round
+                            </option>
                             {psAllotmentRounds.map((round) => (
-                                <option key={round} value={round} className="bg-gray-800">
+                                <option
+                                    key={round}
+                                    value={round}
+                                    className="bg-gray-800"
+                                >
                                     {round}
                                 </option>
                             ))}
@@ -455,7 +504,9 @@ export default function ContributionForm({ onContributionAdded }: ContributionFo
                                         type="number"
                                         min="0"
                                         value={offshoot}
-                                        onChange={(e) => setOffshoot(e.target.value)}
+                                        onChange={(e) =>
+                                            setOffshoot(e.target.value)
+                                        }
                                         className="w-full p-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-400"
                                         placeholder="0"
                                     />
@@ -469,7 +520,9 @@ export default function ContributionForm({ onContributionAdded }: ContributionFo
                                         type="number"
                                         min="0"
                                         value={offshootTotal}
-                                        onChange={(e) => setOffshootTotal(e.target.value)}
+                                        onChange={(e) =>
+                                            setOffshootTotal(e.target.value)
+                                        }
                                         className="w-full p-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-400"
                                         placeholder="0"
                                     />
@@ -482,7 +535,9 @@ export default function ContributionForm({ onContributionAdded }: ContributionFo
                                     <input
                                         type="text"
                                         value={offshootType}
-                                        onChange={(e) => setOffshootType(e.target.value)}
+                                        onChange={(e) =>
+                                            setOffshootType(e.target.value)
+                                        }
                                         className="w-full p-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-400"
                                         placeholder="Type"
                                     />

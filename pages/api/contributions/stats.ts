@@ -27,16 +27,16 @@ export default async function handler(
 
         const stats = {
             total: data?.length || 0,
-            pending: data?.filter(c => c.status === 'pending').length || 0,
-            approved: data?.filter(c => c.status === 'approved').length || 0,
+            pending: data?.filter((c) => c.status === 'pending').length || 0,
+            approved: data?.filter((c) => c.status === 'approved').length || 0,
             byType: {} as Record<string, number>,
-            byUser: {} as Record<string, number>
+            byUser: {} as Record<string, number>,
         }
 
-        data?.forEach(contribution => {
+        data?.forEach((contribution) => {
             const type = contribution.contribution_type
             stats.byType[type] = (stats.byType[type] || 0) + 1
-            
+
             // Group by user (use email as the primary identifier)
             const user = contribution.email || 'Anonymous'
             stats.byUser[user] = (stats.byUser[user] || 0) + 1
