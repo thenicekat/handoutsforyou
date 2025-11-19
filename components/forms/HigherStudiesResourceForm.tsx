@@ -1,63 +1,118 @@
-import AutoCompleter from '@/components/AutoCompleter'
-import { FormField, TextInput } from '@/components/FormField'
 import { higherStudiesCategories } from '@/config/categories'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useEffect } from 'react'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+import { FormField, SelectInput, TextInput } from './FormComponents'
+
+const higherStudiesResourceSchema = z.object({
+    name: z.string().min(1, 'Resource name is required'),
+    link: z.string().url('Please enter a valid URL'),
+    createdBy: z.string().min(1, 'Your name is required'),
+    category: z
+        .string()
+        .min(1, 'Category is required')
+        .refine(
+            (val) => higherStudiesCategories.includes(val),
+            'Please select a valid category from the list'
+        ),
+})
+
+export type HigherStudiesResourceFormData = z.infer<
+    typeof higherStudiesResourceSchema
+>
 
 interface HigherStudiesResourceFormProps {
-    name: string
-    setName: (value: string) => void
-    link: string
-    setLink: (value: string) => void
-    createdBy: string
-    setCreatedBy: (value: string) => void
-    category: string
-    setCategory: (value: string) => void
+    onSubmit: (data: HigherStudiesResourceFormData) => void
+    isLoading?: boolean
+    defaultValues?: Partial<HigherStudiesResourceFormData>
 }
 
 export default function HigherStudiesResourceForm({
-    name,
-    setName,
-    link,
-    setLink,
-    createdBy,
-    setCreatedBy,
-    category,
-    setCategory,
+    onSubmit,
+    isLoading = false,
+    defaultValues,
 }: HigherStudiesResourceFormProps) {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+        reset,
+    } = useForm<HigherStudiesResourceFormData>({
+        resolver: zodResolver(higherStudiesResourceSchema),
+        defaultValues: {
+            name: '',
+            link: '',
+            createdBy: '',
+            category: '',
+            ...defaultValues,
+        },
+    })
+
+    const categoryOptions = higherStudiesCategories.map((category) => ({
+        value: category,
+        label: category,
+    }))
+
+    // Reset form when defaultValues change
+    useEffect(() => {
+        if (defaultValues) {
+            reset(defaultValues)
+        }
+    }, [defaultValues, reset])
+
     return (
-        <>
-            <FormField label="Resource Name" required>
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+            <FormField label="Resource Name" required error={errors.name}>
                 <TextInput
-                    value={name}
-                    onChange={setName}
+                    registration={register('name')}
                     placeholder="Enter resource name"
+                    error={errors.name}
                 />
             </FormField>
 
-            <FormField label="Link" required>
+            <FormField label="Link" required error={errors.link}>
                 <TextInput
                     type="url"
-                    value={link}
-                    onChange={setLink}
+                    registration={register('link')}
                     placeholder="https://..."
+                    error={errors.link}
                 />
             </FormField>
 
-            <FormField label="Your Name" required>
+            <FormField label="Your Name" required error={errors.createdBy}>
                 <TextInput
-                    value={createdBy}
-                    onChange={setCreatedBy}
+                    registration={register('createdBy')}
                     placeholder="Enter your name"
+                    error={errors.createdBy}
                 />
             </FormField>
 
-            <FormField label="Category" required>
-                <AutoCompleter
-                    items={higherStudiesCategories}
-                    value={category}
-                    onChange={setCategory}
-                    name="category"
+            <FormField label="Category" required error={errors.category}>
+                <SelectInput
+                    registration={register('category')}
+                    options={categoryOptions}
+                    placeholder="Select category"
+                    error={errors.category}
                 />
             </FormField>
-        </>
+
+            <div className="flex justify-center">
+                <button
+                    type="submit"
+                    disabled={isLoading}
+                    className="btn btn-primary btn-lg min-w-48"
+                >
+                    {isLoading ? (
+                        <>
+                            <span className="loading loading-spinner loading-sm"></span>
+                            Submitting...
+                        </>
+                    ) : (
+                        'Add Resource'
+                    )}
+                </button>
+            </div>
+        </form>
     )
 }

@@ -1,7 +1,15 @@
-import { FormField, SelectInput } from '@/components/FormField'
-import CourseReviewForm from '@/components/forms/CourseReviewForm'
-import PSCutoffForm from '@/components/forms/PSCutoffForm'
-import ResourceForm from '@/components/forms/ResourceForm'
+import CourseReviewForm, {
+    CourseReviewFormData,
+} from '@/components/forms/CourseReviewForm'
+import { FormField } from '@/components/forms/FormComponents'
+import HigherStudiesResourceForm, {
+    HigherStudiesResourceFormData,
+} from '@/components/forms/HigherStudiesResourceForm'
+import PSCutoffForm, { PSCutoffFormData } from '@/components/forms/PSCutoffForm'
+import PlacementResourceForm, {
+    PlacementResourceFormData,
+} from '@/components/forms/PlacementResourceForm'
+import ResourceForm, { ResourceFormData } from '@/components/forms/ResourceForm'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 
@@ -32,184 +40,160 @@ export default function ContributionForm({
         useState<ContributionType>(COURSE_RESOURCE)
     const [isLoading, setIsLoading] = useState(false)
 
-    // Common fields
-    const [name, setName] = useState('')
-    const [link, setLink] = useState('')
-    const [createdBy, setCreatedBy] = useState('')
-    const [category, setCategory] = useState('')
-
-    // Course review specific
-    const [course, setCourse] = useState('')
-    const [prof, setProf] = useState('')
-    const [review, setReview] = useState('')
-
-    // PS cutoff specific
-    const [idNumber, setIdNumber] = useState('')
-    const [yearAndSem, setYearAndSem] = useState('')
-    const [station, setStation] = useState('')
-    const [cgpa, setCgpa] = useState('')
-    const [preference, setPreference] = useState('')
-    const [allotmentRound, setAllotmentRound] = useState('')
-    const [stipend, setStipend] = useState('')
-    const [offshoot, setOffshoot] = useState('')
-    const [offshootTotal, setOffshootTotal] = useState('')
-    const [offshootType, setOffshootType] = useState('')
-    const [isPublic, setIsPublic] = useState(true)
-
-    const resetForm = () => {
-        setName('')
-        setLink('')
-        setCreatedBy('')
-        setCategory('')
-        setCourse('')
-        setProf('')
-        setReview('')
-        setIdNumber('')
-        setYearAndSem('')
-        setStation('')
-        setCgpa('')
-        setPreference('')
-        setAllotmentRound('')
-        setStipend('')
-        setOffshoot('')
-        setOffshootTotal('')
-        setOffshootType('')
-        setIsPublic(true)
-    }
-
-    const handleSubmit = async () => {
+    const handleCourseResourceSubmit = async (data: ResourceFormData) => {
         setIsLoading(true)
-
         try {
-            let endpoint = ''
-            let payload = {}
-
-            switch (contributionType) {
-                case COURSE_RESOURCE:
-                    if (!name || !link || !createdBy || !category) {
-                        toast.error('Please fill all required fields')
-                        setIsLoading(false)
-                        return
-                    }
-                    endpoint = '/api/courses/resources/add'
-                    payload = { name, link, created_by: createdBy, category }
-                    break
-
-                case COURSE_REVIEW:
-                    if (!course || !prof || !review) {
-                        toast.error('Please fill all required fields')
-                        setIsLoading(false)
-                        return
-                    }
-                    endpoint = '/api/courses/reviews/add'
-                    payload = { course, prof, review }
-                    break
-
-                case PS1_CUTOFF:
-                    if (
-                        !idNumber ||
-                        !yearAndSem ||
-                        !station ||
-                        !cgpa ||
-                        !preference ||
-                        !allotmentRound
-                    ) {
-                        toast.error('Please fill all required fields')
-                        setIsLoading(false)
-                        return
-                    }
-                    endpoint = '/api/ps/cutoffs/add'
-                    payload = {
-                        typeOfPS: 'ps1',
-                        idNumber,
-                        yearAndSem,
-                        station,
-                        cgpa: parseFloat(cgpa),
-                        preference: parseInt(preference),
-                        allotmentRound,
-                        public: isPublic ? 1 : 0,
-                    }
-
-                    break
-
-                case PS2_CUTOFF:
-                    if (
-                        !idNumber ||
-                        !yearAndSem ||
-                        !station ||
-                        !cgpa ||
-                        !preference ||
-                        !allotmentRound ||
-                        !stipend ||
-                        !offshoot ||
-                        !offshootTotal ||
-                        !offshootType
-                    ) {
-                        toast.error('Please fill all required fields')
-                        setIsLoading(false)
-                        return
-                    }
-                    endpoint = '/api/ps/cutoffs/add'
-                    payload = {
-                        typeOfPS: 'ps2',
-                        idNumber,
-                        yearAndSem,
-                        station,
-                        cgpa: parseFloat(cgpa),
-                        preference: parseInt(preference),
-                        allotmentRound,
-                        stipend: parseInt(stipend),
-                        offshoot: parseInt(offshoot),
-                        offshootTotal: parseInt(offshootTotal),
-                        offshootType,
-                        public: isPublic ? 1 : 0,
-                    }
-                    break
-
-                case PLACEMENT_RESOURCE:
-                    if (!name || !link || !createdBy || !category) {
-                        toast.error('Please fill all required fields')
-                        setIsLoading(false)
-                        return
-                    }
-                    endpoint = '/api/zob/resources/add'
-                    payload = { name, link, created_by: createdBy, category }
-                    break
-
-                case HIGHERSTUDIES_RESOURCE:
-                    if (!name || !link || !createdBy || !category) {
-                        toast.error('Please fill all required fields')
-                        setIsLoading(false)
-                        return
-                    }
-                    endpoint = '/api/higherstudies/resources/add'
-                    payload = { name, link, created_by: createdBy, category }
-                    break
-            }
-
-            const res = await fetch(endpoint, {
+            const res = await fetch('/api/courses/resources/add', {
                 method: 'POST',
-                body: JSON.stringify(payload),
+                body: JSON.stringify({
+                    name: data.name,
+                    link: data.link,
+                    created_by: data.createdBy,
+                    category: data.category,
+                }),
                 headers: { 'Content-Type': 'application/json' },
             })
-
-            const data = await res.json()
-            if (data.error) {
-                toast.error(data.message)
+            const result = await res.json()
+            if (result.error) {
+                toast.error(result.message)
             } else {
                 toast.success(
-                    'Thank you! Your contribution was added successfully!'
+                    'Thank you! Your course resource was added successfully!'
                 )
-                toast.success(
-                    'Thank you! Your contribution was added successfully!'
-                )
-                resetForm()
                 onContributionAdded?.()
             }
         } catch (error) {
             toast.error('An error occurred. Please try again.')
         }
+        setIsLoading(false)
+    }
 
+    const handlePlacementResourceSubmit = async (
+        data: PlacementResourceFormData
+    ) => {
+        setIsLoading(true)
+        try {
+            const res = await fetch('/api/zob/resources/add', {
+                method: 'POST',
+                body: JSON.stringify({
+                    name: data.name,
+                    link: data.link,
+                    created_by: data.createdBy,
+                    category: data.category,
+                }),
+                headers: { 'Content-Type': 'application/json' },
+            })
+            const result = await res.json()
+            if (result.error) {
+                toast.error(result.message)
+            } else {
+                toast.success(
+                    'Thank you! Your placement resource was added successfully!'
+                )
+                onContributionAdded?.()
+            }
+        } catch (error) {
+            toast.error('An error occurred. Please try again.')
+        }
+        setIsLoading(false)
+    }
+
+    const handleHigherStudiesResourceSubmit = async (
+        data: HigherStudiesResourceFormData
+    ) => {
+        setIsLoading(true)
+        try {
+            const res = await fetch('/api/higherstudies/resources/add', {
+                method: 'POST',
+                body: JSON.stringify({
+                    name: data.name,
+                    link: data.link,
+                    created_by: data.createdBy,
+                    category: data.category,
+                }),
+                headers: { 'Content-Type': 'application/json' },
+            })
+            const result = await res.json()
+            if (result.error) {
+                toast.error(result.message)
+            } else {
+                toast.success(
+                    'Thank you! Your higher studies resource was added successfully!'
+                )
+                onContributionAdded?.()
+            }
+        } catch (error) {
+            toast.error('An error occurred. Please try again.')
+        }
+        setIsLoading(false)
+    }
+
+    const handleCourseReviewSubmit = async (data: CourseReviewFormData) => {
+        setIsLoading(true)
+        try {
+            const res = await fetch('/api/courses/reviews/add', {
+                method: 'POST',
+                body: JSON.stringify({
+                    course: data.course,
+                    prof: data.prof,
+                    review: data.review,
+                }),
+                headers: { 'Content-Type': 'application/json' },
+            })
+            const result = await res.json()
+            if (result.error) {
+                toast.error(result.message)
+            } else {
+                toast.success(
+                    'Thank you! Your course review was added successfully!'
+                )
+                onContributionAdded?.()
+            }
+        } catch (error) {
+            toast.error('An error occurred. Please try again.')
+        }
+        setIsLoading(false)
+    }
+
+    const handlePSCutoffSubmit = async (data: PSCutoffFormData) => {
+        setIsLoading(true)
+        try {
+            const payload = {
+                typeOfPS: contributionType === PS1_CUTOFF ? 'ps1' : 'ps2',
+                idNumber: data.idNumber,
+                yearAndSem: data.yearAndSem,
+                station: data.station,
+                cgpa: data.cgpa,
+                preference: data.preference,
+                allotmentRound: data.allotmentRound,
+                public: data.isPublic ? 1 : 0,
+                ...(contributionType === PS2_CUTOFF && 'stipend' in data
+                    ? {
+                          stipend: data.stipend,
+                          offshoot: data.offshoot,
+                          offshootTotal: data.offshootTotal,
+                          offshootType: data.offshootType,
+                      }
+                    : {}),
+            }
+
+            const res = await fetch('/api/ps/cutoffs/add', {
+                method: 'POST',
+                body: JSON.stringify(payload),
+                headers: { 'Content-Type': 'application/json' },
+            })
+            const result = await res.json()
+            if (result.error) {
+                toast.error(result.message)
+            } else {
+                toast.success(
+                    `Thank you! Your ${contributionType === PS1_CUTOFF ? 'PS1' : 'PS2'} cutoff was added successfully!`
+                )
+                onContributionAdded?.()
+            }
+        } catch (error) {
+            toast.error('An error occurred. Please try again.')
+        }
         setIsLoading(false)
     }
 
@@ -228,42 +212,55 @@ export default function ContributionForm({
                 label="What would you like to contribute?"
                 className="mb-6"
             >
-                <SelectInput
+                <select
                     value={contributionType}
-                    onChange={(value) =>
-                        setContributionType(value as ContributionType)
+                    onChange={(e) =>
+                        setContributionType(e.target.value as ContributionType)
                     }
-                    options={contributionTypes}
-                    placeholder="Select contribution type"
-                />
+                    className="w-full p-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-amber-400"
+                >
+                    {contributionTypes.map((option) => (
+                        <option
+                            key={option.value}
+                            value={option.value}
+                            className="bg-gray-800"
+                        >
+                            {option.label}
+                        </option>
+                    ))}
+                </select>
             </FormField>
 
-            {/* Resource Forms */}
-            {(contributionType === COURSE_RESOURCE ||
-                contributionType === PLACEMENT_RESOURCE ||
-                contributionType === HIGHERSTUDIES_RESOURCE) && (
+            {/* Course Resource Form */}
+            {contributionType === COURSE_RESOURCE && (
                 <ResourceForm
-                    name={name}
-                    setName={setName}
-                    link={link}
-                    setLink={setLink}
-                    createdBy={createdBy}
-                    setCreatedBy={setCreatedBy}
-                    category={category}
-                    setCategory={setCategory}
-                    isCourseDepartment={contributionType === COURSE_RESOURCE}
+                    onSubmit={handleCourseResourceSubmit}
+                    isLoading={isLoading}
+                    isCourseDepartment={true}
+                />
+            )}
+
+            {/* Placement Resource Form */}
+            {contributionType === PLACEMENT_RESOURCE && (
+                <PlacementResourceForm
+                    onSubmit={handlePlacementResourceSubmit}
+                    isLoading={isLoading}
+                />
+            )}
+
+            {/* Higher Studies Resource Form */}
+            {contributionType === HIGHERSTUDIES_RESOURCE && (
+                <HigherStudiesResourceForm
+                    onSubmit={handleHigherStudiesResourceSubmit}
+                    isLoading={isLoading}
                 />
             )}
 
             {/* Course Review Form */}
             {contributionType === COURSE_REVIEW && (
                 <CourseReviewForm
-                    course={course}
-                    setCourse={setCourse}
-                    prof={prof}
-                    setProf={setProf}
-                    review={review}
-                    setReview={setReview}
+                    onSubmit={handleCourseReviewSubmit}
+                    isLoading={isLoading}
                 />
             )}
 
@@ -272,40 +269,10 @@ export default function ContributionForm({
                 contributionType === PS2_CUTOFF) && (
                 <PSCutoffForm
                     isPS1={contributionType === PS1_CUTOFF}
-                    idNumber={idNumber}
-                    setIdNumber={setIdNumber}
-                    yearAndSem={yearAndSem}
-                    setYearAndSem={setYearAndSem}
-                    station={station}
-                    setStation={setStation}
-                    cgpa={cgpa}
-                    setCgpa={setCgpa}
-                    preference={preference}
-                    setPreference={setPreference}
-                    allotmentRound={allotmentRound}
-                    setAllotmentRound={setAllotmentRound}
-                    stipend={stipend}
-                    setStipend={setStipend}
-                    offshoot={offshoot}
-                    setOffshoot={setOffshoot}
-                    offshootTotal={offshootTotal}
-                    setOffshootTotal={setOffshootTotal}
-                    offshootType={offshootType}
-                    setOffshootType={setOffshootType}
-                    isPublic={isPublic}
-                    setIsPublic={setIsPublic}
+                    onSubmit={handlePSCutoffSubmit}
+                    isLoading={isLoading}
                 />
             )}
-
-            <div className="flex justify-center">
-                <button
-                    onClick={handleSubmit}
-                    disabled={isLoading}
-                    className="bg-gradient-to-r from-amber-400 to-orange-500 text-black font-semibold py-3 px-8 rounded-lg hover:scale-105 transition-transform disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                    {isLoading ? 'Contributing...' : 'Contribute'}
-                </button>
-            </div>
         </div>
     )
 }

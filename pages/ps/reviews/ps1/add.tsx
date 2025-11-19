@@ -1,6 +1,5 @@
 import AddPageLayout from '@/components/AddPageLayout'
-import PS1ReviewForm from '@/components/forms/PS1ReviewForm'
-import SubmitButton from '@/components/SubmitButton'
+import PSReviewForm, { PSReviewFormData } from '@/components/forms/PSReviewForm'
 import { getMetaConfig } from '@/config/meta'
 import { PS1Item } from '@/types/PS'
 import { axiosInstance } from '@/utils/axiosCache'
@@ -12,7 +11,6 @@ export default function AddPS1Review() {
     const [selectedResponse, setSelectedResponse] = useState<PS1Item | null>(
         null
     )
-    const [review, setReview] = useState('')
     const [isLoading, setIsLoading] = useState(true)
     const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -45,13 +43,9 @@ export default function AddPS1Review() {
         setSelectedResponse(response)
     }
 
-    const addReview = async () => {
+    const handleSubmit = async (data: PSReviewFormData) => {
         if (!selectedResponse) {
             toast.error('Please select a PS1 response')
-            return
-        }
-        if (!review.trim()) {
-            toast.error('Review cannot be empty!')
             return
         }
 
@@ -61,7 +55,7 @@ export default function AddPS1Review() {
                 type: 'PS1',
                 batch: selectedResponse.year_and_sem,
                 station: selectedResponse.station,
-                review: review,
+                review: data.review,
                 allotment_round: selectedResponse.allotment_round,
             })
             const res = response.data
@@ -70,7 +64,6 @@ export default function AddPS1Review() {
                 toast.error(res.message)
             } else {
                 toast.success('Thank you! Your review was added successfully!')
-                setReview('')
                 setSelectedResponse(null)
                 window.location.href = '/ps'
             }
@@ -91,25 +84,15 @@ export default function AddPS1Review() {
             metaConfig={getMetaConfig('ps/reviews/ps1')}
             containerId="addPSReview"
         >
-            <PS1ReviewForm
+            <PSReviewForm
+                isPS1={true}
                 userResponses={userResponses}
                 selectedResponse={selectedResponse}
                 onResponseSelect={handleResponseSelect}
-                review={review}
-                setReview={setReview}
+                onSubmit={handleSubmit}
                 isLoading={isLoading}
+                isSubmitting={isSubmitting}
             />
-
-            {userResponses.length > 0 && (
-                <SubmitButton
-                    onClick={addReview}
-                    isLoading={isSubmitting}
-                    disabled={!selectedResponse || !review.trim()}
-                    className="mt-6"
-                >
-                    Add Review
-                </SubmitButton>
-            )}
         </AddPageLayout>
     )
 }

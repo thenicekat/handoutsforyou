@@ -1,45 +1,40 @@
 import AddPageLayout from '@/components/AddPageLayout'
-import CourseReviewForm from '@/components/forms/CourseReviewForm'
-import SubmitButton from '@/components/SubmitButton'
+import CourseReviewForm, {
+    CourseReviewFormData,
+} from '@/components/forms/CourseReviewForm'
 import { getMetaConfig } from '@/config/meta'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
 export default function AddReview() {
-    const [course, setCourse] = useState('')
-    const [prof, setProf] = useState('')
-    const [review, setReview] = useState('')
     const [isLoading, setIsLoading] = useState(false)
+    const [defaultValues, setDefaultValues] = useState<
+        Partial<CourseReviewFormData>
+    >({})
 
-    const addReview = async () => {
-        if (!course || !prof || !review) {
-            toast.error('Please fill all required fields')
-            return
-        }
-
+    const handleSubmit = async (data: CourseReviewFormData) => {
         setIsLoading(true)
         try {
             const res = await fetch('/api/courses/reviews/add', {
                 method: 'POST',
                 body: JSON.stringify({
-                    course,
-                    prof,
-                    review,
+                    course: data.course,
+                    prof: data.prof,
+                    review: data.review,
                 }),
                 headers: { 'Content-Type': 'application/json' },
             })
-            const data = await res.json()
+            const result = await res.json()
 
-            if (data.error) {
-                toast.error(data.message)
+            if (result.error) {
+                toast.error(result.message)
             } else {
                 toast.success('Thank you! Your review was added successfully!')
-                setCourse('')
-                setProf('')
-                setReview('')
                 // Clear localStorage
                 localStorage.removeItem('h4u_course')
                 localStorage.removeItem('h4u_prof')
+                // Form will be reset automatically by React Hook Form
+                window.location.reload() // Refresh to clear form
             }
         } catch (error) {
             toast.error('An error occurred. Please try again.')
@@ -51,8 +46,13 @@ export default function AddReview() {
         // Load from localStorage if available
         const savedCourse = localStorage.getItem('h4u_course')
         const savedProf = localStorage.getItem('h4u_prof')
-        if (savedCourse) setCourse(savedCourse)
-        if (savedProf) setProf(savedProf)
+        if (savedCourse || savedProf) {
+            setDefaultValues({
+                course: savedCourse || '',
+                prof: savedProf || '',
+                review: '',
+            })
+        }
     }, [])
 
     return (
@@ -62,21 +62,10 @@ export default function AddReview() {
             containerId="addReview"
         >
             <CourseReviewForm
-                course={course}
-                setCourse={setCourse}
-                prof={prof}
-                setProf={setProf}
-                review={review}
-                setReview={setReview}
-            />
-
-            <SubmitButton
-                onClick={addReview}
+                onSubmit={handleSubmit}
                 isLoading={isLoading}
-                className="mt-6"
-            >
-                Add Review
-            </SubmitButton>
+                defaultValues={defaultValues}
+            />
         </AddPageLayout>
     )
 }

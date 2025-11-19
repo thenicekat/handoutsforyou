@@ -1,9 +1,9 @@
 import AddPageLayout from '@/components/AddPageLayout'
-import { FormField, SelectInput } from '@/components/FormField'
-import SubmitButton from '@/components/SubmitButton'
-import PSCutoffForm from '@/components/forms/PSCutoffForm'
+import { FormField } from '@/components/forms/FormComponents'
+import PSCutoffForm, {
+    PS1CutoffFormData,
+} from '@/components/forms/PSCutoffForm'
 import { getMetaConfig } from '@/config/meta'
-import { ps1Years, psAllotmentRounds } from '@/config/years_sems'
 import { axiosInstance } from '@/utils/axiosCache'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
@@ -14,13 +14,6 @@ export default function AddPS1Response() {
     const { edit } = router.query
     const isEditMode = edit === 'true'
 
-    const [idNumber, setIdNumber] = useState('')
-    const [yearAndSem, setYearAndSem] = useState('')
-    const [allotmentRound, setAllotmentRound] = useState('')
-    const [station, setStation] = useState('')
-    const [cgpa, setCGPA] = useState(0)
-    const [preference, setPreference] = useState(1)
-    const [isPublic, setIsPublic] = useState(true)
     const [responseId, setResponseId] = useState<number | null>(null)
 
     const [userResponses, setUserResponses] = useState<any[]>([])
@@ -41,26 +34,12 @@ export default function AddPS1Response() {
                 (r) => r.id.toString() === selectedResponse
             )
             if (response) {
-                setIdNumber(response.id_number || '')
-                setYearAndSem(response.year_and_sem || '')
-                setAllotmentRound(response.allotment_round || '')
-                setStation(response.station || '')
-                setCGPA(response.cgpa || 0)
-                setPreference(response.preference || 1)
-                setIsPublic(response.public === true)
                 setResponseId(response.id)
             }
         } else {
-            setIdNumber('')
-            setYearAndSem('')
-            setAllotmentRound('')
-            setStation('')
-            setCGPA(0)
-            setPreference(1)
-            setIsPublic(true)
             setResponseId(null)
         }
-    }, [selectedResponse])
+    }, [selectedResponse, userResponses])
 
     const fetchUserResponses = async () => {
         setIsFetchingResponses(true)
@@ -87,50 +66,30 @@ export default function AddPS1Response() {
         }
     }
 
-    const AddResponse = async () => {
+    const handleSubmit = async (data: PS1CutoffFormData) => {
         setIsLoading(true)
-
-        if (ps1Years.indexOf(yearAndSem) === -1) {
-            toast.error('Invalid Year, Please select from the dropdown!')
-            setIsLoading(false)
-            return
-        }
-
-        if (psAllotmentRounds.indexOf(allotmentRound) === -1) {
-            toast.error(
-                'Invalid Allotment Round, Please select from the dropdown!'
-            )
-            setIsLoading(false)
-            return
-        }
-
-        if (!cgpa || !preference) {
-            toast.error('Missing one of the fields: cgpa or preference!')
-            setIsLoading(false)
-            return
-        }
 
         const endpoint = isEditMode
             ? '/api/ps/cutoffs/edit'
             : '/api/ps/cutoffs/add'
         const payload = {
             typeOfPS: 'ps1',
-            idNumber: idNumber,
-            yearAndSem: yearAndSem,
-            allotmentRound: allotmentRound,
-            station: station,
-            cgpa: cgpa,
-            preference: preference,
-            public: isPublic ? 1 : 0,
+            idNumber: data.idNumber,
+            yearAndSem: data.yearAndSem,
+            allotmentRound: data.allotmentRound,
+            station: data.station,
+            cgpa: data.cgpa,
+            preference: data.preference,
+            public: data.isPublic ? 1 : 0,
             ...(isEditMode && responseId && { id: responseId }),
         }
 
         try {
             const res = await axiosInstance.post(endpoint, payload)
 
-            const data = res.data
-            if (data.error) {
-                toast.error(data.message)
+            const result = res.data
+            if (result.error) {
+                toast.error(result.message)
             } else {
                 toast.success(
                     isEditMode
@@ -138,12 +97,6 @@ export default function AddPS1Response() {
                         : 'Thank you! Your response was added successfully!'
                 )
 
-                setIdNumber('')
-                setYearAndSem('')
-                setAllotmentRound('')
-                setStation('')
-                setCGPA(0)
-                setPreference(0)
                 setResponseId(null)
                 setSelectedResponse('')
 
@@ -174,12 +127,26 @@ export default function AddPS1Response() {
                             Loading your responses...
                         </div>
                     ) : userResponses.length > 0 ? (
-                        <SelectInput
+                        <select
                             value={selectedResponse}
-                            onChange={setSelectedResponse}
-                            options={responseOptions}
-                            placeholder="Select a response to edit"
-                        />
+                            onChange={(e) =>
+                                setSelectedResponse(e.target.value)
+                            }
+                            className="w-full p-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-amber-400"
+                        >
+                            <option value="" className="bg-gray-800">
+                                Select a response to edit
+                            </option>
+                            {responseOptions.map((option) => (
+                                <option
+                                    key={option.value}
+                                    value={option.value}
+                                    className="bg-gray-800"
+                                >
+                                    {option.label}
+                                </option>
+                            ))}
+                        </select>
                     ) : (
                         <div className="text-gray-300">
                             You do not have any responses to edit.
@@ -190,30 +157,30 @@ export default function AddPS1Response() {
 
             <PSCutoffForm
                 isPS1={true}
-                idNumber={idNumber}
-                setIdNumber={setIdNumber}
-                yearAndSem={yearAndSem}
-                setYearAndSem={setYearAndSem}
-                station={station}
-                setStation={setStation}
-                cgpa={cgpa.toString()}
-                setCgpa={(value) => setCGPA(parseFloat(value) || 0)}
-                preference={preference.toString()}
-                setPreference={(value) => setPreference(parseFloat(value) || 1)}
-                allotmentRound={allotmentRound}
-                setAllotmentRound={setAllotmentRound}
-                isPublic={isPublic}
-                setIsPublic={setIsPublic}
-            />
-
-            <SubmitButton
-                onClick={AddResponse}
+                onSubmit={handleSubmit}
                 isLoading={isLoading}
-                disabled={isEditMode && !selectedResponse}
-                className="mt-6"
-            >
-                {isEditMode ? 'Update Response' : 'Add Response'}
-            </SubmitButton>
+                defaultValues={
+                    selectedResponse
+                        ? (() => {
+                              const response = userResponses.find(
+                                  (r) => r.id.toString() === selectedResponse
+                              )
+                              return response
+                                  ? {
+                                        idNumber: response.id_number || '',
+                                        yearAndSem: response.year_and_sem || '',
+                                        allotmentRound:
+                                            response.allotment_round || '',
+                                        station: response.station || '',
+                                        cgpa: response.cgpa || 0,
+                                        preference: response.preference || 1,
+                                        isPublic: response.public === true,
+                                    }
+                                  : undefined
+                          })()
+                        : undefined
+                }
+            />
         </AddPageLayout>
     )
 }

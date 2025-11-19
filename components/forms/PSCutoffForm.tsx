@@ -1,62 +1,92 @@
-import {
-    Checkbox,
-    FormField,
-    SelectInput,
-    TextInput,
-} from '@/components/FormField'
 import { ps1Years, ps2Semesters, psAllotmentRounds } from '@/config/years_sems'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useEffect } from 'react'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+import { Checkbox, FormField, SelectInput, TextInput } from './FormComponents'
+
+// Base schema for common fields
+const basePSCutoffSchema = z.object({
+    idNumber: z
+        .string()
+        .min(1, 'ID Number is required')
+        .max(13, 'ID Number must be 13 digits or less'),
+    yearAndSem: z.string().min(1, 'Year/Semester is required'),
+    station: z.string().min(1, 'Station is required'),
+    cgpa: z
+        .number()
+        .min(0, 'CGPA must be positive')
+        .max(10, 'CGPA cannot exceed 10'),
+    preference: z.number().min(1, 'Preference must be at least 1'),
+    allotmentRound: z.string().min(1, 'Allotment Round is required'),
+    isPublic: z.boolean(),
+})
+
+// PS1 schema (no additional fields)
+const ps1CutoffSchema = basePSCutoffSchema
+
+// PS2 schema (with additional fields)
+const ps2CutoffSchema = basePSCutoffSchema
+    .extend({
+        stipend: z
+            .number()
+            .min(0, 'Stipend must be positive')
+            .max(1200000, 'Stipend seems too high'),
+        offshoot: z.number().min(0, 'Offshoot must be positive'),
+        offshootTotal: z.number().min(0, 'Offshoot Total must be positive'),
+        offshootType: z.string().min(1, 'Offshoot Type is required'),
+    })
+    .refine((data) => data.offshoot <= data.offshootTotal, {
+        message: 'Offshoot cannot be greater than Offshoot Total',
+        path: ['offshoot'],
+    })
+
+export type PS1CutoffFormData = z.infer<typeof ps1CutoffSchema>
+export type PS2CutoffFormData = z.infer<typeof ps2CutoffSchema>
+export type PSCutoffFormData = PS1CutoffFormData | PS2CutoffFormData
 
 interface PSCutoffFormProps {
     isPS1: boolean
-    idNumber: string
-    setIdNumber: (value: string) => void
-    yearAndSem: string
-    setYearAndSem: (value: string) => void
-    station: string
-    setStation: (value: string) => void
-    cgpa: string
-    setCgpa: (value: string) => void
-    preference: string
-    setPreference: (value: string) => void
-    allotmentRound: string
-    setAllotmentRound: (value: string) => void
-    stipend?: string
-    setStipend?: (value: string) => void
-    offshoot?: string
-    setOffshoot?: (value: string) => void
-    offshootTotal?: string
-    setOffshootTotal?: (value: string) => void
-    offshootType?: string
-    setOffshootType?: (value: string) => void
-    isPublic: boolean
-    setIsPublic: (value: boolean) => void
+    onSubmit: (data: any) => void
+    isLoading?: boolean
+    defaultValues?: Partial<PSCutoffFormData>
 }
 
 export default function PSCutoffForm({
     isPS1,
-    idNumber,
-    setIdNumber,
-    yearAndSem,
-    setYearAndSem,
-    station,
-    setStation,
-    cgpa,
-    setCgpa,
-    preference,
-    setPreference,
-    allotmentRound,
-    setAllotmentRound,
-    stipend,
-    setStipend,
-    offshoot,
-    setOffshoot,
-    offshootTotal,
-    setOffshootTotal,
-    offshootType,
-    setOffshootType,
-    isPublic,
-    setIsPublic,
+    onSubmit,
+    isLoading = false,
+    defaultValues,
 }: PSCutoffFormProps) {
+    const schema = isPS1 ? ps1CutoffSchema : ps2CutoffSchema
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+        reset,
+    } = useForm<PSCutoffFormData>({
+        resolver: zodResolver(schema),
+        defaultValues: {
+            idNumber: '',
+            yearAndSem: '',
+            station: '',
+            cgpa: 0,
+            preference: 1,
+            allotmentRound: '',
+            isPublic: true,
+            ...(isPS1
+                ? {}
+                : {
+                      stipend: 0,
+                      offshoot: 0,
+                      offshootTotal: 0,
+                      offshootType: '',
+                  }),
+            ...defaultValues,
+        },
+    })
+
     const yearOptions = isPS1
         ? ps1Years.map((year) => ({ value: year, label: year }))
         : ps2Semesters.map((sem) => ({ value: sem, label: sem }))
@@ -66,121 +96,171 @@ export default function PSCutoffForm({
         label: round,
     }))
 
+    // Reset form when defaultValues change
+    useEffect(() => {
+        if (defaultValues) {
+            reset(defaultValues)
+        }
+    }, [defaultValues, reset])
+
     return (
-        <>
-            <FormField label="ID Number" required>
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+            <FormField label="ID Number" required error={errors.idNumber}>
                 <TextInput
-                    value={idNumber}
-                    onChange={setIdNumber}
+                    registration={register('idNumber')}
                     placeholder="Enter your 13-digit ID number"
-                    maxLength={13}
+                    error={errors.idNumber}
                 />
             </FormField>
 
-            <FormField label={isPS1 ? 'Batch' : 'Year and Semester'} required>
+            <FormField
+                label={isPS1 ? 'Batch' : 'Year and Semester'}
+                required
+                error={errors.yearAndSem}
+            >
                 <SelectInput
-                    value={yearAndSem}
-                    onChange={setYearAndSem}
+                    registration={register('yearAndSem')}
                     options={yearOptions}
                     placeholder={
                         isPS1 ? 'Select Batch' : 'Select Year and Semester'
                     }
+                    error={errors.yearAndSem}
                 />
             </FormField>
 
-            <FormField label="Station" required>
+            <FormField label="Station" required error={errors.station}>
                 <TextInput
-                    value={station}
-                    onChange={setStation}
+                    registration={register('station')}
                     placeholder="Enter station name"
+                    error={errors.station}
                 />
             </FormField>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <FormField label="CGPA" required className="">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <FormField label="CGPA" required error={errors.cgpa}>
                     <TextInput
                         type="number"
-                        value={cgpa}
-                        onChange={setCgpa}
+                        registration={register('cgpa', { valueAsNumber: true })}
                         placeholder="0.00"
-                        min="0"
-                        max="10"
-                        step="0.01"
+                        error={errors.cgpa}
                     />
                 </FormField>
 
-                <FormField label="Preference" required className="">
+                <FormField
+                    label="Preference"
+                    required
+                    error={errors.preference}
+                >
                     <TextInput
                         type="number"
-                        value={preference}
-                        onChange={setPreference}
+                        registration={register('preference', {
+                            valueAsNumber: true,
+                        })}
                         placeholder="1"
-                        min="1"
+                        error={errors.preference}
                     />
                 </FormField>
             </div>
 
-            <FormField label="Allotment Round" required>
+            <FormField
+                label="Allotment Round"
+                required
+                error={errors.allotmentRound}
+            >
                 <SelectInput
-                    value={allotmentRound}
-                    onChange={setAllotmentRound}
+                    registration={register('allotmentRound')}
                     options={roundOptions}
                     placeholder="Select Round"
+                    error={errors.allotmentRound}
                 />
             </FormField>
 
-            {!isPS1 && stipend !== undefined && setStipend && (
+            {!isPS1 && (
                 <>
-                    <FormField label="Stipend (₹)" required>
+                    <FormField
+                        label="Stipend (₹)"
+                        required
+                        error={(errors as any).stipend}
+                    >
                         <TextInput
                             type="number"
-                            value={stipend}
-                            onChange={setStipend}
+                            registration={register('stipend', {
+                                valueAsNumber: true,
+                            })}
                             placeholder="Enter stipend amount"
-                            min="0"
-                            max="1200000"
+                            error={(errors as any).stipend}
                         />
                     </FormField>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                        <FormField label="Offshoot" required className="">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <FormField
+                            label="Offshoot"
+                            required
+                            error={(errors as any).offshoot}
+                        >
                             <TextInput
                                 type="number"
-                                value={offshoot || ''}
-                                onChange={setOffshoot || (() => {})}
+                                registration={register('offshoot', {
+                                    valueAsNumber: true,
+                                })}
                                 placeholder="0"
-                                min="0"
+                                error={(errors as any).offshoot}
                             />
                         </FormField>
 
-                        <FormField label="Offshoot Total" required className="">
+                        <FormField
+                            label="Offshoot Total"
+                            required
+                            error={(errors as any).offshootTotal}
+                        >
                             <TextInput
                                 type="number"
-                                value={offshootTotal || ''}
-                                onChange={setOffshootTotal || (() => {})}
+                                registration={register('offshootTotal', {
+                                    valueAsNumber: true,
+                                })}
                                 placeholder="0"
-                                min="0"
+                                error={(errors as any).offshootTotal}
                             />
                         </FormField>
 
-                        <FormField label="Offshoot Type" required className="">
+                        <FormField
+                            label="Offshoot Type"
+                            required
+                            error={(errors as any).offshootType}
+                        >
                             <TextInput
-                                value={offshootType || ''}
-                                onChange={setOffshootType || (() => {})}
+                                registration={register('offshootType')}
                                 placeholder="Type"
+                                error={(errors as any).offshootType}
                             />
                         </FormField>
                     </div>
                 </>
             )}
 
-            <FormField label="" className="mb-4">
+            <FormField label="">
                 <Checkbox
-                    checked={isPublic}
-                    onChange={setIsPublic}
+                    registration={register('isPublic')}
                     label="Make this data public (helps other students)"
                 />
             </FormField>
-        </>
+
+            <div className="flex justify-center">
+                <button
+                    type="submit"
+                    disabled={isLoading}
+                    className="btn btn-primary btn-lg min-w-48"
+                >
+                    {isLoading ? (
+                        <>
+                            <span className="loading loading-spinner loading-sm"></span>
+                            Submitting...
+                        </>
+                    ) : (
+                        `Add ${isPS1 ? 'PS1' : 'PS2'} Response`
+                    )}
+                </button>
+            </div>
+        </form>
     )
 }

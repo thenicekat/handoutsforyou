@@ -1,44 +1,34 @@
 import AddPageLayout from '@/components/AddPageLayout'
-import PlacementResourceForm from '@/components/forms/PlacementResourceForm'
-import SubmitButton from '@/components/SubmitButton'
+import PlacementResourceForm, {
+    PlacementResourceFormData,
+} from '@/components/forms/PlacementResourceForm'
 import { getMetaConfig } from '@/config/meta'
 import { axiosInstance } from '@/utils/axiosCache'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 
 export default function AddPlacementResources() {
-    const [name, setName] = useState('')
-    const [link, setLink] = useState('')
-    const [createdBy, setCreatedBy] = useState('')
-    const [category, setCategory] = useState('')
     const [isLoading, setIsLoading] = useState(false)
 
-    const addResource = async () => {
-        if (!name || !link || !createdBy || !category) {
-            toast.error('Please fill all required fields')
-            return
-        }
-
+    const handleSubmit = async (data: PlacementResourceFormData) => {
         setIsLoading(true)
         try {
             const res = await axiosInstance.post('/api/zob/resources/add', {
-                name,
-                link,
-                created_by: createdBy,
-                category,
+                name: data.name,
+                link: data.link,
+                created_by: data.createdBy,
+                category: data.category,
             })
-            const data = res.data
+            const result = res.data
 
-            if (data.error) {
-                toast.error(data.message)
+            if (result.error) {
+                toast.error(result.message)
             } else {
                 toast.success(
                     'Thank you! Your resource was added successfully!'
                 )
-                setName('')
-                setLink('')
-                setCreatedBy('')
-                setCategory('')
+                // Form will be reset automatically by React Hook Form
+                window.location.reload() // Refresh to clear form
             }
         } catch (error) {
             console.error('Error adding placement resource:', error)
@@ -54,23 +44,9 @@ export default function AddPlacementResources() {
             containerId="addZobResources"
         >
             <PlacementResourceForm
-                name={name}
-                setName={setName}
-                link={link}
-                setLink={setLink}
-                createdBy={createdBy}
-                setCreatedBy={setCreatedBy}
-                category={category}
-                setCategory={setCategory}
-            />
-
-            <SubmitButton
-                onClick={addResource}
+                onSubmit={handleSubmit}
                 isLoading={isLoading}
-                className="mt-6"
-            >
-                Add Resource
-            </SubmitButton>
+            />
         </AddPageLayout>
     )
 }

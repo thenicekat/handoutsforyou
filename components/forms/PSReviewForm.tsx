@@ -1,28 +1,62 @@
-import { FormField, TextArea } from '@/components/FormField'
 import { PS1Item, PS2Item } from '@/types/PS'
+import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
+import { useEffect } from 'react'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+import { FormField, TextArea } from './FormComponents'
 
-interface PSReviewFormProps {
+const psReviewSchema = z.object({
+    review: z.string().min(10, 'Review must be at least 10 characters long'),
+})
+
+export type PSReviewFormData = z.infer<typeof psReviewSchema>
+
+interface PSReviewFormProps<T = PS1Item | PS2Item> {
     isPS1: boolean
-    userResponses: (PS1Item | PS2Item)[]
-    selectedResponse: PS1Item | PS2Item | null
-    onResponseSelect: (response: PS1Item | PS2Item) => void
-    review: string
-    setReview: (value: string) => void
+    userResponses: T[]
+    selectedResponse: T | null
+    onResponseSelect: (response: T) => void
+    onSubmit: (data: PSReviewFormData) => void
     isLoading: boolean
+    isSubmitting?: boolean
+    defaultValues?: Partial<PSReviewFormData>
 }
 
-export default function PSReviewForm({
+export default function PSReviewForm<T extends PS1Item | PS2Item>({
     isPS1,
     userResponses,
     selectedResponse,
     onResponseSelect,
-    review,
-    setReview,
+    onSubmit,
     isLoading,
-}: PSReviewFormProps) {
+    isSubmitting = false,
+    defaultValues,
+}: PSReviewFormProps<T>) {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+        reset,
+        watch,
+    } = useForm<PSReviewFormData>({
+        resolver: zodResolver(psReviewSchema),
+        defaultValues: {
+            review: '',
+            ...defaultValues,
+        },
+    })
+
+    const review = watch('review')
     const psType = isPS1 ? 'PS1' : 'PS2'
     const addUrl = isPS1 ? '/ps/cutoffs/ps1' : '/ps/cutoffs/ps2'
+
+    // Reset form when defaultValues change
+    useEffect(() => {
+        if (defaultValues) {
+            reset(defaultValues)
+        }
+    }, [defaultValues, reset])
 
     if (isLoading) {
         return (
@@ -54,7 +88,7 @@ export default function PSReviewForm({
     }
 
     return (
-        <>
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
             <FormField label={`Your ${psType} Responses`} className="mb-8">
                 <div className="space-y-3">
                     {userResponses.map((response) => (
@@ -87,18 +121,37 @@ export default function PSReviewForm({
                 </div>
             </FormField>
 
-            <FormField label="Review" required>
+            <FormField label="Review" required error={errors.review}>
                 <TextArea
-                    value={review}
-                    onChange={setReview}
+                    registration={register('review')}
                     placeholder={
                         selectedResponse
                             ? `Write your review for ${selectedResponse.station} (${selectedResponse.year_and_sem}, ${selectedResponse.allotment_round})`
                             : `Select a ${psType} response above to write a review...`
                     }
                     rows={8}
+                    error={errors.review}
                 />
             </FormField>
-        </>
+
+            <div className="flex justify-center">
+                <button
+                    type="submit"
+                    disabled={
+                        isSubmitting || !selectedResponse || !review.trim()
+                    }
+                    className="btn btn-primary btn-lg min-w-48"
+                >
+                    {isSubmitting ? (
+                        <>
+                            <span className="loading loading-spinner loading-sm"></span>
+                            Submitting...
+                        </>
+                    ) : (
+                        'Add Review'
+                    )}
+                </button>
+            </div>
+        </form>
     )
 }
