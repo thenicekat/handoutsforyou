@@ -113,7 +113,7 @@ export default function ContributionProgress({
                         }}
                     ></div>
                 </div>
-                {stats.total >= 100 && (
+                {stats.total >= 5000 && (
                     <div className="text-center mt-2 text-green-400 font-semibold">
                         🎉 Goal achieved! Thank you for your contributions!
                     </div>
