@@ -28,11 +28,13 @@ export default function AddPlacementResources() {
                 category,
             })
             const data = res.data
-            
+
             if (data.error) {
                 toast.error(data.message)
             } else {
-                toast.success('Thank you! Your resource was added successfully!')
+                toast.success(
+                    'Thank you! Your resource was added successfully!'
+                )
                 setName('')
                 setLink('')
                 setCreatedBy('')
@@ -61,7 +63,7 @@ export default function AddPlacementResources() {
                 category={category}
                 setCategory={setCategory}
             />
-            
+
             <SubmitButton
                 onClick={addResource}
                 isLoading={isLoading}

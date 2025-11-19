@@ -21,7 +21,7 @@ export default function HigherStudiesResourceForm({
     createdBy,
     setCreatedBy,
     category,
-    setCategory
+    setCategory,
 }: HigherStudiesResourceFormProps) {
     return (
         <>

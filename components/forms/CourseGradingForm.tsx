@@ -1,5 +1,5 @@
 import AutoCompleter from '@/components/AutoCompleter'
-import { FormField, TextInput, TextArea, SelectInput } from '@/components/FormField'
+import { FormField, SelectInput, TextArea } from '@/components/FormField'
 import { courses } from '@/config/courses'
 import { profs } from '@/config/profs'
 import { gradedSemesters } from '@/config/years_sems'
@@ -35,10 +35,16 @@ export default function CourseGradingForm({
     averageMark,
     parsedData,
     depts,
-    filterDepartmentCodes
+    filterDepartmentCodes,
 }: CourseGradingFormProps) {
-    const semesterOptions = gradedSemesters.map(sem => ({ value: sem, label: sem }))
-    const deptOptions = filterDepartmentCodes(course).map(d => ({ value: d, label: d }))
+    const semesterOptions = gradedSemesters.map((sem) => ({
+        value: sem,
+        label: sem,
+    }))
+    const deptOptions = filterDepartmentCodes(course).map((d) => ({
+        value: d,
+        label: d,
+    }))
 
     return (
         <>
@@ -62,7 +68,7 @@ export default function CourseGradingForm({
 
             <FormField label="Professor" required>
                 <AutoCompleter
-                    items={profs.map(p => p.name)}
+                    items={profs.map((p) => p.name)}
                     value={prof}
                     onChange={setProf}
                     name="professor"
@@ -86,7 +92,8 @@ export default function CourseGradingForm({
                     rows={10}
                 />
                 <div className="text-sm text-gray-400 mt-2">
-                    Paste the raw grading data from the official source. The system will automatically parse it.
+                    Paste the raw grading data from the official source. The
+                    system will automatically parse it.
                 </div>
             </FormField>
 

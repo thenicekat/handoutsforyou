@@ -13,13 +13,15 @@ interface ContributionProgressProps {
     refreshTrigger?: number
 }
 
-export default function ContributionProgress({ refreshTrigger }: ContributionProgressProps) {
+export default function ContributionProgress({
+    refreshTrigger,
+}: ContributionProgressProps) {
     const [stats, setStats] = useState<ContributionStats>({
         total: 0,
         pending: 0,
         approved: 0,
         byType: {},
-        byUser: {}
+        byUser: {},
     })
     const [isLoading, setIsLoading] = useState(true)
 
@@ -52,13 +54,15 @@ export default function ContributionProgress({ refreshTrigger }: ContributionPro
         ps1_review: 'PS1 Reviews',
         ps2_review: 'PS2 Reviews',
         placement_ctc: 'Placement CTCs',
-        si_company: 'SI Companies'
+        si_company: 'SI Companies',
     }
 
     if (isLoading) {
         return (
             <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6 max-w-4xl mx-auto mb-8">
-                <div className="text-center text-gray-300">Loading contribution stats...</div>
+                <div className="text-center text-gray-300">
+                    Loading contribution stats...
+                </div>
             </div>
         )
     }
@@ -75,16 +79,18 @@ export default function ContributionProgress({ refreshTrigger }: ContributionPro
                     <div className="text-2xl font-bold text-amber-400">
                         <CountUp end={stats.total} duration={2} />
                     </div>
-                    <div className="text-sm text-gray-300">Total Contributions</div>
+                    <div className="text-sm text-gray-300">
+                        Total Contributions
+                    </div>
                 </div>
-                
+
                 <div className="bg-white/10 rounded-lg p-4 text-center">
                     <div className="text-2xl font-bold text-green-400">
                         <CountUp end={stats.approved} duration={2} />
                     </div>
                     <div className="text-sm text-gray-300">Approved</div>
                 </div>
-                
+
                 <div className="bg-white/10 rounded-lg p-4 text-center">
                     <div className="text-2xl font-bold text-yellow-400">
                         <CountUp end={stats.pending} duration={2} />
@@ -100,9 +106,11 @@ export default function ContributionProgress({ refreshTrigger }: ContributionPro
                     <span>{Math.min(stats.total, 5000)}/5000</span>
                 </div>
                 <div className="w-full bg-white/10 rounded-full h-3">
-                    <div 
+                    <div
                         className="bg-gradient-to-r from-amber-400 to-orange-500 h-3 rounded-full transition-all duration-1000 ease-out"
-                        style={{ width: `${Math.min((stats.total / 100) * 100, 100)}%` }}
+                        style={{
+                            width: `${Math.min((stats.total / 100) * 100, 100)}%`,
+                        }}
                     ></div>
                 </div>
                 {stats.total >= 100 && (
@@ -115,10 +123,15 @@ export default function ContributionProgress({ refreshTrigger }: ContributionPro
             {/* Contribution Type Breakdown */}
             {Object.keys(stats.byType).length > 0 && (
                 <div className="mb-8">
-                    <h3 className="text-lg font-semibold text-white mb-4">Contribution Breakdown by Type</h3>
+                    <h3 className="text-lg font-semibold text-white mb-4">
+                        Contribution Breakdown by Type
+                    </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                         {Object.entries(stats.byType).map(([type, count]) => (
-                            <div key={type} className="bg-white/5 rounded-lg p-3 flex justify-between items-center">
+                            <div
+                                key={type}
+                                className="bg-white/5 rounded-lg p-3 flex justify-between items-center"
+                            >
                                 <span className="text-gray-300 text-sm">
                                     {contributionTypeLabels[type] || type}
                                 </span>
@@ -134,25 +147,33 @@ export default function ContributionProgress({ refreshTrigger }: ContributionPro
             {/* User Breakdown */}
             {Object.keys(stats.byUser).length > 0 && (
                 <div>
-                    <h3 className="text-lg font-semibold text-white mb-4">Top Contributors</h3>
+                    <h3 className="text-lg font-semibold text-white mb-4">
+                        Top Contributors
+                    </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         {Object.entries(stats.byUser)
-                            .sort(([,a], [,b]) => b - a) // Sort by contribution count descending
+                            .sort(([, a], [, b]) => b - a) // Sort by contribution count descending
                             .slice(0, 10) // Show top 10 contributors
                             .map(([email, count]) => (
-                            <div key={email} className="bg-white/5 rounded-lg p-3 flex justify-between items-center">
-                                <span className="text-gray-300 text-sm truncate mr-2">
-                                    {email === 'Anonymous' ? '🔒 Anonymous' : `📧 ${email}`}
-                                </span>
-                                <span className="text-white font-semibold">
-                                    <CountUp end={count} duration={1.5} />
-                                </span>
-                            </div>
-                        ))}
+                                <div
+                                    key={email}
+                                    className="bg-white/5 rounded-lg p-3 flex justify-between items-center"
+                                >
+                                    <span className="text-gray-300 text-sm truncate mr-2">
+                                        {email === 'Anonymous'
+                                            ? '🔒 Anonymous'
+                                            : `📧 ${email}`}
+                                    </span>
+                                    <span className="text-white font-semibold">
+                                        <CountUp end={count} duration={1.5} />
+                                    </span>
+                                </div>
+                            ))}
                     </div>
                     {Object.keys(stats.byUser).length > 10 && (
                         <div className="text-center mt-4 text-gray-400 text-sm">
-                            Showing top 10 of {Object.keys(stats.byUser).length} contributors
+                            Showing top 10 of {Object.keys(stats.byUser).length}{' '}
+                            contributors
                         </div>
                     )}
                 </div>
@@ -160,7 +181,9 @@ export default function ContributionProgress({ refreshTrigger }: ContributionPro
 
             {stats.total === 0 && (
                 <div className="text-center text-gray-400 py-8">
-                    <div className="text-xl mb-4">🌱 Be the first to contribute!</div>
+                    <div className="text-xl mb-4">
+                        🌱 Be the first to contribute!
+                    </div>
                 </div>
             )}
         </div>

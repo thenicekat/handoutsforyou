@@ -29,7 +29,7 @@ export default function AddReview() {
                 headers: { 'Content-Type': 'application/json' },
             })
             const data = await res.json()
-            
+
             if (data.error) {
                 toast.error(data.message)
             } else {
@@ -69,7 +69,7 @@ export default function AddReview() {
                 review={review}
                 setReview={setReview}
             />
-            
+
             <SubmitButton
                 onClick={addReview}
                 isLoading={isLoading}

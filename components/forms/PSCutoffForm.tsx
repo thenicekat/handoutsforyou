@@ -1,4 +1,9 @@
-import { FormField, TextInput, SelectInput, Checkbox } from '@/components/FormField'
+import {
+    Checkbox,
+    FormField,
+    SelectInput,
+    TextInput,
+} from '@/components/FormField'
 import { ps1Years, ps2Semesters, psAllotmentRounds } from '@/config/years_sems'
 
 interface PSCutoffFormProps {
@@ -50,13 +55,16 @@ export default function PSCutoffForm({
     offshootType,
     setOffshootType,
     isPublic,
-    setIsPublic
+    setIsPublic,
 }: PSCutoffFormProps) {
-    const yearOptions = isPS1 
-        ? ps1Years.map(year => ({ value: year, label: year }))
-        : ps2Semesters.map(sem => ({ value: sem, label: sem }))
+    const yearOptions = isPS1
+        ? ps1Years.map((year) => ({ value: year, label: year }))
+        : ps2Semesters.map((sem) => ({ value: sem, label: sem }))
 
-    const roundOptions = psAllotmentRounds.map(round => ({ value: round, label: round }))
+    const roundOptions = psAllotmentRounds.map((round) => ({
+        value: round,
+        label: round,
+    }))
 
     return (
         <>
@@ -69,12 +77,14 @@ export default function PSCutoffForm({
                 />
             </FormField>
 
-            <FormField label={isPS1 ? "Batch" : "Year and Semester"} required>
+            <FormField label={isPS1 ? 'Batch' : 'Year and Semester'} required>
                 <SelectInput
                     value={yearAndSem}
                     onChange={setYearAndSem}
                     options={yearOptions}
-                    placeholder={isPS1 ? "Select Batch" : "Select Year and Semester"}
+                    placeholder={
+                        isPS1 ? 'Select Batch' : 'Select Year and Semester'
+                    }
                 />
             </FormField>
 

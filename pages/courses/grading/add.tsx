@@ -1,6 +1,3 @@
-import AddPageLayout from '@/components/AddPageLayout'
-import CourseGradingForm from '@/components/forms/CourseGradingForm'
-import SubmitButton from '@/components/SubmitButton'
 import { departments } from '@/config/departments'
 import { getMetaConfig } from '@/config/meta'
 import { CourseGradeRow } from '@/types/Courses'

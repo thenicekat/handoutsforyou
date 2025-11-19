@@ -1,7 +1,7 @@
 import { FormField, SelectInput } from '@/components/FormField'
-import ResourceForm from '@/components/forms/ResourceForm'
 import CourseReviewForm from '@/components/forms/CourseReviewForm'
 import PSCutoffForm from '@/components/forms/PSCutoffForm'
+import ResourceForm from '@/components/forms/ResourceForm'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 
@@ -13,7 +13,7 @@ const PS2_CUTOFF = 'ps2_cutoff'
 const PLACEMENT_RESOURCE = 'placement_resource'
 const HIGHERSTUDIES_RESOURCE = 'higherstudies_resource'
 
-type ContributionType = 
+type ContributionType =
     | typeof COURSE_RESOURCE
     | typeof COURSE_REVIEW
     | typeof PS1_CUTOFF
@@ -25,8 +25,11 @@ interface ContributionFormProps {
     onContributionAdded?: () => void
 }
 
-export default function ContributionForm({ onContributionAdded }: ContributionFormProps) {
-    const [contributionType, setContributionType] = useState<ContributionType>(COURSE_RESOURCE)
+export default function ContributionForm({
+    onContributionAdded,
+}: ContributionFormProps) {
+    const [contributionType, setContributionType] =
+        useState<ContributionType>(COURSE_RESOURCE)
     const [isLoading, setIsLoading] = useState(false)
 
     // Common fields
@@ -103,7 +106,14 @@ export default function ContributionForm({ onContributionAdded }: ContributionFo
                     break
 
                 case PS1_CUTOFF:
-                    if (!idNumber || !yearAndSem || !station || !cgpa || !preference || !allotmentRound) {
+                    if (
+                        !idNumber ||
+                        !yearAndSem ||
+                        !station ||
+                        !cgpa ||
+                        !preference ||
+                        !allotmentRound
+                    ) {
                         toast.error('Please fill all required fields')
                         setIsLoading(false)
                         return
@@ -117,12 +127,23 @@ export default function ContributionForm({ onContributionAdded }: ContributionFo
                         cgpa: parseFloat(cgpa),
                         preference: parseInt(preference),
                         allotmentRound,
-                        public: isPublic ? 1 : 0
+                        public: isPublic ? 1 : 0,
                     }
                     break
 
                 case PS2_CUTOFF:
-                    if (!idNumber || !yearAndSem || !station || !cgpa || !preference || !allotmentRound || !stipend || !offshoot || !offshootTotal || !offshootType) {
+                    if (
+                        !idNumber ||
+                        !yearAndSem ||
+                        !station ||
+                        !cgpa ||
+                        !preference ||
+                        !allotmentRound ||
+                        !stipend ||
+                        !offshoot ||
+                        !offshootTotal ||
+                        !offshootType
+                    ) {
                         toast.error('Please fill all required fields')
                         setIsLoading(false)
                         return
@@ -140,7 +161,7 @@ export default function ContributionForm({ onContributionAdded }: ContributionFo
                         offshoot: parseInt(offshoot),
                         offshootTotal: parseInt(offshootTotal),
                         offshootType,
-                        public: isPublic ? 1 : 0
+                        public: isPublic ? 1 : 0,
                     }
                     break
 
@@ -175,7 +196,9 @@ export default function ContributionForm({ onContributionAdded }: ContributionFo
             if (data.error) {
                 toast.error(data.message)
             } else {
-                toast.success('Thank you! Your contribution was added successfully!')
+                toast.success(
+                    'Thank you! Your contribution was added successfully!'
+                )
                 resetForm()
                 onContributionAdded?.()
             }
@@ -197,17 +220,24 @@ export default function ContributionForm({ onContributionAdded }: ContributionFo
 
     return (
         <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6 max-w-4xl mx-auto">
-            <FormField label="What would you like to contribute?" className="mb-6">
+            <FormField
+                label="What would you like to contribute?"
+                className="mb-6"
+            >
                 <SelectInput
                     value={contributionType}
-                    onChange={(value) => setContributionType(value as ContributionType)}
+                    onChange={(value) =>
+                        setContributionType(value as ContributionType)
+                    }
                     options={contributionTypes}
                     placeholder="Select contribution type"
                 />
             </FormField>
 
             {/* Resource Forms */}
-            {(contributionType === COURSE_RESOURCE || contributionType === PLACEMENT_RESOURCE || contributionType === HIGHERSTUDIES_RESOURCE) && (
+            {(contributionType === COURSE_RESOURCE ||
+                contributionType === PLACEMENT_RESOURCE ||
+                contributionType === HIGHERSTUDIES_RESOURCE) && (
                 <ResourceForm
                     name={name}
                     setName={setName}
@@ -234,7 +264,8 @@ export default function ContributionForm({ onContributionAdded }: ContributionFo
             )}
 
             {/* PS Cutoff Forms */}
-            {(contributionType === PS1_CUTOFF || contributionType === PS2_CUTOFF) && (
+            {(contributionType === PS1_CUTOFF ||
+                contributionType === PS2_CUTOFF) && (
                 <PSCutoffForm
                     isPS1={contributionType === PS1_CUTOFF}
                     idNumber={idNumber}

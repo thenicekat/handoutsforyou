@@ -9,7 +9,9 @@ import { toast } from 'react-toastify'
 
 export default function AddPS2Review() {
     const [userResponses, setUserResponses] = useState<PS2Item[]>([])
-    const [selectedResponse, setSelectedResponse] = useState<PS2Item | null>(null)
+    const [selectedResponse, setSelectedResponse] = useState<PS2Item | null>(
+        null
+    )
     const [review, setReview] = useState('')
     const [isLoading, setIsLoading] = useState(true)
     const [isSubmitting, setIsSubmitting] = useState(false)
@@ -63,7 +65,7 @@ export default function AddPS2Review() {
                 allotment_round: selectedResponse.allotment_round,
             })
             const res = response.data
-            
+
             if (res.error) {
                 toast.error(res.message)
             } else {
@@ -98,7 +100,7 @@ export default function AddPS2Review() {
                 setReview={setReview}
                 isLoading={isLoading}
             />
-            
+
             {userResponses.length > 0 && (
                 <SubmitButton
                     onClick={addReview}

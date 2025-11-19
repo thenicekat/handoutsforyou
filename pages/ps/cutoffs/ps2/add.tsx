@@ -1,7 +1,7 @@
 import AddPageLayout from '@/components/AddPageLayout'
-import PSCutoffForm from '@/components/forms/PSCutoffForm'
-import SubmitButton from '@/components/SubmitButton'
 import { FormField, SelectInput } from '@/components/FormField'
+import SubmitButton from '@/components/SubmitButton'
+import PSCutoffForm from '@/components/forms/PSCutoffForm'
 import { getMetaConfig } from '@/config/meta'
 import { axiosInstance } from '@/utils/axiosCache'
 import { useRouter } from 'next/router'
@@ -185,9 +185,9 @@ export default function AddPS2Response() {
         setIsLoading(false)
     }
 
-    const responseOptions = userResponses.map(response => ({
+    const responseOptions = userResponses.map((response) => ({
         value: response.id.toString(),
-        label: `${response.station} - ${response.year_and_sem} - ${response.allotment_round}`
+        label: `${response.station} - ${response.year_and_sem} - ${response.allotment_round}`,
     }))
 
     return (
@@ -199,7 +199,9 @@ export default function AddPS2Response() {
             {isEditMode && (
                 <FormField label="Select Response to Edit" className="mb-6">
                     {isFetchingResponses ? (
-                        <div className="text-gray-300">Loading your responses...</div>
+                        <div className="text-gray-300">
+                            Loading your responses...
+                        </div>
                     ) : userResponses.length > 0 ? (
                         <SelectInput
                             value={selectedResponse}
@@ -208,7 +210,9 @@ export default function AddPS2Response() {
                             placeholder="Select a response to edit"
                         />
                     ) : (
-                        <div className="text-gray-300">You do not have any responses to edit.</div>
+                        <div className="text-gray-300">
+                            You do not have any responses to edit.
+                        </div>
                     )}
                 </FormField>
             )}
@@ -232,13 +236,15 @@ export default function AddPS2Response() {
                 offshoot={offshoot.toString()}
                 setOffshoot={(value) => setOffshoot(parseFloat(value) || 0)}
                 offshootTotal={offshootTotal.toString()}
-                setOffshootTotal={(value) => setOffshootTotal(parseFloat(value) || 0)}
+                setOffshootTotal={(value) =>
+                    setOffshootTotal(parseFloat(value) || 0)
+                }
                 offshootType={offshootType}
                 setOffshootType={setOffshootType}
                 isPublic={isPublic}
                 setIsPublic={setIsPublic}
             />
-            
+
             <SubmitButton
                 onClick={AddResponse}
                 isLoading={isLoading}

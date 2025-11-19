@@ -31,11 +31,13 @@ export default function AddResources() {
                 headers: { 'Content-Type': 'application/json' },
             })
             const data = await res.json()
-            
+
             if (data.error) {
                 toast.error(data.message)
             } else {
-                toast.success('Thank you! Your resource was added successfully!')
+                toast.success(
+                    'Thank you! Your resource was added successfully!'
+                )
                 setName('')
                 setLink('')
                 setCreatedBy('')
@@ -64,7 +66,7 @@ export default function AddResources() {
                 setCategory={setCategory}
                 isCourseDepartment={true}
             />
-            
+
             <SubmitButton
                 onClick={addResource}
                 isLoading={isLoading}

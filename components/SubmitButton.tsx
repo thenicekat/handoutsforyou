@@ -6,12 +6,12 @@ interface SubmitButtonProps {
     className?: string
 }
 
-export default function SubmitButton({ 
-    onClick, 
-    isLoading = false, 
-    disabled = false, 
+export default function SubmitButton({
+    onClick,
+    isLoading = false,
+    disabled = false,
     children,
-    className = ""
+    className = '',
 }: SubmitButtonProps) {
     return (
         <div className={`flex justify-center ${className}`}>

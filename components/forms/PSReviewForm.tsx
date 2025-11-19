@@ -19,7 +19,7 @@ export default function PSReviewForm({
     onResponseSelect,
     review,
     setReview,
-    isLoading
+    isLoading,
 }: PSReviewFormProps) {
     const psType = isPS1 ? 'PS1' : 'PS2'
     const addUrl = isPS1 ? '/ps/cutoffs/ps1' : '/ps/cutoffs/ps2'
@@ -40,7 +40,8 @@ export default function PSReviewForm({
                     No {psType} Responses Found
                 </h2>
                 <p className="text-gray-300 mb-6">
-                    You need to submit your {psType} responses before writing a review.
+                    You need to submit your {psType} responses before writing a
+                    review.
                 </p>
                 <Link
                     href={addUrl}
@@ -70,7 +71,8 @@ export default function PSReviewForm({
                                 {response.station}
                             </div>
                             <div className="text-sm text-gray-300">
-                                Batch: {response.year_and_sem} | Round: {response.allotment_round}
+                                Batch: {response.year_and_sem} | Round:{' '}
+                                {response.allotment_round}
                             </div>
                             <div className="text-sm text-gray-300">
                                 CGPA: {response.cgpa}

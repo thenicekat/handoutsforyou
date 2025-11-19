@@ -21,18 +21,23 @@ export default function AddHSResources() {
 
         setIsLoading(true)
         try {
-            const res = await axiosInstance.post('/api/higherstudies/resources/add', {
-                name,
-                link,
-                created_by: createdBy,
-                category,
-            })
+            const res = await axiosInstance.post(
+                '/api/higherstudies/resources/add',
+                {
+                    name,
+                    link,
+                    created_by: createdBy,
+                    category,
+                }
+            )
             const data = res.data
-            
+
             if (data.error) {
                 toast.error(data.message)
             } else {
-                toast.success('Thank you! Your resource was added successfully!')
+                toast.success(
+                    'Thank you! Your resource was added successfully!'
+                )
                 setName('')
                 setLink('')
                 setCreatedBy('')
@@ -61,7 +66,7 @@ export default function AddHSResources() {
                 category={category}
                 setCategory={setCategory}
             />
-            
+
             <SubmitButton
                 onClick={addResource}
                 isLoading={isLoading}

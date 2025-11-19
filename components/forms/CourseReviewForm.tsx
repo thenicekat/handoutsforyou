@@ -18,7 +18,7 @@ export default function CourseReviewForm({
     prof,
     setProf,
     review,
-    setReview
+    setReview,
 }: CourseReviewFormProps) {
     return (
         <>
@@ -33,7 +33,7 @@ export default function CourseReviewForm({
 
             <FormField label="Professor" required>
                 <AutoCompleter
-                    items={profs.map(p => p.name)}
+                    items={profs.map((p) => p.name)}
                     value={prof}
                     onChange={setProf}
                     name="professor"

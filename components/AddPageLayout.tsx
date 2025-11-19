@@ -10,17 +10,17 @@ interface AddPageLayoutProps {
     children: ReactNode
 }
 
-export default function AddPageLayout({ 
-    title, 
-    metaConfig, 
-    containerId, 
-    children 
+export default function AddPageLayout({
+    title,
+    metaConfig,
+    containerId,
+    children,
 }: AddPageLayoutProps) {
     return (
         <>
             <Meta {...metaConfig} />
             <Menu doNotShowMenu={true} />
-            
+
             <div className="container mx-auto px-4 pt-10 pb-4 flex items-center">
                 <div className="w-full max-w-4xl mx-auto mt-8 px-4">
                     <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6">
@@ -31,7 +31,7 @@ export default function AddPageLayout({
                     </div>
                 </div>
             </div>
-            
+
             <CustomToastContainer containerId={containerId} />
         </>
     )

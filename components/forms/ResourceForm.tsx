@@ -23,7 +23,7 @@ export default function ResourceForm({
     setCreatedBy,
     category,
     setCategory,
-    isCourseDepartment = false
+    isCourseDepartment = false,
 }: ResourceFormProps) {
     return (
         <>

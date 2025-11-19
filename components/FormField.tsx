@@ -7,7 +7,12 @@ interface FormFieldProps {
     className?: string
 }
 
-export function FormField({ label, required = false, children, className = "mb-4" }: FormFieldProps) {
+export function FormField({
+    label,
+    required = false,
+    children,
+    className = 'mb-4',
+}: FormFieldProps) {
     return (
         <div className={className}>
             <label className="block text-gray-300 text-sm font-medium mb-2">
@@ -29,15 +34,15 @@ interface TextInputProps {
     maxLength?: number
 }
 
-export function TextInput({ 
-    value, 
-    onChange, 
-    placeholder, 
+export function TextInput({
+    value,
+    onChange,
+    placeholder,
     type = 'text',
     min,
     max,
     step,
-    maxLength
+    maxLength,
 }: TextInputProps) {
     return (
         <input
@@ -61,16 +66,27 @@ interface SelectInputProps {
     placeholder?: string
 }
 
-export function SelectInput({ value, onChange, options, placeholder = "Select option" }: SelectInputProps) {
+export function SelectInput({
+    value,
+    onChange,
+    options,
+    placeholder = 'Select option',
+}: SelectInputProps) {
     return (
         <select
             value={value}
             onChange={(e) => onChange(e.target.value)}
             className="w-full p-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-amber-400"
         >
-            <option value="" className="bg-gray-800">{placeholder}</option>
+            <option value="" className="bg-gray-800">
+                {placeholder}
+            </option>
             {options.map((option) => (
-                <option key={option.value} value={option.value} className="bg-gray-800">
+                <option
+                    key={option.value}
+                    value={option.value}
+                    className="bg-gray-800"
+                >
                     {option.label}
                 </option>
             ))}
@@ -85,7 +101,12 @@ interface TextAreaProps {
     rows?: number
 }
 
-export function TextArea({ value, onChange, placeholder, rows = 4 }: TextAreaProps) {
+export function TextArea({
+    value,
+    onChange,
+    placeholder,
+    rows = 4,
+}: TextAreaProps) {
     return (
         <textarea
             value={value}

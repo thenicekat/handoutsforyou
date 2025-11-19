@@ -1,8 +1,8 @@
 import { BaseResponseData, getUser } from '@/pages/api/auth/[...nextauth]'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { PS1_RESPONSES, PS2_RESPONSES } from '../../constants'
-import { supabase } from '../../supabase'
 import { trackContribution } from '../../contributions/track'
+import { supabase } from '../../supabase'
 
 type RequestData = {
     typeOfPS: string

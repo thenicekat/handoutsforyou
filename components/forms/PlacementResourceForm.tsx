@@ -21,7 +21,7 @@ export default function PlacementResourceForm({
     createdBy,
     setCreatedBy,
     category,
-    setCategory
+    setCategory,
 }: PlacementResourceFormProps) {
     return (
         <>
