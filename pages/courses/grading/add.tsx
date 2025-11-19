@@ -1,12 +1,8 @@
-import AutoCompleter from '@/components/AutoCompleter'
-import Menu from '@/components/Menu'
-import Meta from '@/components/Meta'
-import CustomToastContainer from '@/components/ToastContainer'
-import { courses } from '@/config/courses'
+import AddPageLayout from '@/components/AddPageLayout'
+import CourseGradingForm from '@/components/forms/CourseGradingForm'
+import SubmitButton from '@/components/SubmitButton'
 import { departments } from '@/config/departments'
 import { getMetaConfig } from '@/config/meta'
-import { profs } from '@/config/profs'
-import { gradedSemesters } from '@/config/years_sems'
 import { CourseGradeRow } from '@/types/Courses'
 import { GetStaticProps } from 'next'
 import { useEffect, useState } from 'react'
@@ -31,9 +27,9 @@ export default function AddGrading({ depts }: { depts: string[] }) {
     const [prof, setProf] = useState('')
     const [semester, setSemester] = useState('')
     const [gradingData, setGradingData] = useState('')
-
     const [averageMark, setAverageMark] = useState<string | null>(null)
     const [parsedData, setParsedData] = useState<string | null>(null)
+    const [isLoading, setIsLoading] = useState(false)
 
     const filterDepartmentCodes = (course: string): string[] => {
         let values: string[] = []
@@ -165,18 +161,24 @@ export default function AddGrading({ depts }: { depts: string[] }) {
     }
 
     const handleSubmit = async () => {
+        if (!course || !prof || !semester || !dept) {
+            toast.error('Please fill in all required fields')
+            return
+        }
+
         if (!parsedData || parsedData.trim() === '') {
             toast.error('Please ensure the grading data is not empty!')
             return
         }
 
+        setIsLoading(true)
         try {
             const response = await fetch('/api/courses/grading/add', {
                 method: 'POST',
                 body: JSON.stringify({
-                    course: course,
-                    dept: dept,
-                    prof: prof,
+                    course,
+                    dept,
+                    prof,
                     sem: semester,
                     data: parsedData,
                     average_mark: parseFloat(averageMark ?? '0'),
@@ -204,6 +206,7 @@ export default function AddGrading({ depts }: { depts: string[] }) {
         } catch (error) {
             toast.error('An error occurred while submitting the data')
         }
+        setIsLoading(false)
     }
 
     const handleBack = () => {

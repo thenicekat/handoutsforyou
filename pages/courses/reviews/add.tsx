@@ -1,125 +1,82 @@
-import AutoCompleter from '@/components/AutoCompleter'
-import Menu from '@/components/Menu'
-import Meta from '@/components/Meta'
-import CustomToastContainer from '@/components/ToastContainer'
-import { courses } from '@/config/courses'
+import AddPageLayout from '@/components/AddPageLayout'
+import CourseReviewForm from '@/components/forms/CourseReviewForm'
+import SubmitButton from '@/components/SubmitButton'
 import { getMetaConfig } from '@/config/meta'
-import { profs } from '@/config/profs'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
 export default function AddReview() {
     const [course, setCourse] = useState('')
     const [prof, setProf] = useState('')
-
     const [review, setReview] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
 
-    const AddReview = async () => {
-        if (course == '') {
-            toast.error('Please fill course!')
-            return
-        }
-        if (prof == '') {
-            toast.error('Please fill professor!')
-            return
-        }
-        if (review == '') {
-            toast.error('Please fill review!')
+    const addReview = async () => {
+        if (!course || !prof || !review) {
+            toast.error('Please fill all required fields')
             return
         }
 
-        if (courses.includes(course) == false) {
-            toast.error('Please select a course from the given list!')
-            return
-        }
-        if (profs.map((p) => p.name).includes(prof) == false) {
-            toast.error('Please select a professor from the given list!')
-            return
-        }
-
-        const data = await fetch('/api/courses/reviews/add', {
-            method: 'POST',
-            body: JSON.stringify({
-                course: course,
-                prof: prof,
-                review: review,
-            }),
-            headers: { 'Content-Type': 'application/json' },
-        })
-        const res = await data.json()
-        if (res.error) {
-            toast.error(res.message)
-        } else {
-            toast.success('Thank you! Your review was added successfully!')
-            setCourse('')
-            setProf('')
-            setReview('')
-            if (localStorage.getItem('h4u_course')) {
+        setIsLoading(true)
+        try {
+            const res = await fetch('/api/courses/reviews/add', {
+                method: 'POST',
+                body: JSON.stringify({
+                    course,
+                    prof,
+                    review,
+                }),
+                headers: { 'Content-Type': 'application/json' },
+            })
+            const data = await res.json()
+            
+            if (data.error) {
+                toast.error(data.message)
+            } else {
+                toast.success('Thank you! Your review was added successfully!')
+                setCourse('')
+                setProf('')
+                setReview('')
+                // Clear localStorage
                 localStorage.removeItem('h4u_course')
-            }
-            if (localStorage.getItem('h4u_prof')) {
                 localStorage.removeItem('h4u_prof')
             }
+        } catch (error) {
+            toast.error('An error occurred. Please try again.')
         }
+        setIsLoading(false)
     }
 
     useEffect(() => {
-        if (localStorage.getItem('h4u_course')) {
-            setCourse(localStorage.getItem('h4u_course')!)
-        }
-        if (localStorage.getItem('h4u_prof')) {
-            setProf(localStorage.getItem('h4u_prof')!)
-        }
+        // Load from localStorage if available
+        const savedCourse = localStorage.getItem('h4u_course')
+        const savedProf = localStorage.getItem('h4u_prof')
+        if (savedCourse) setCourse(savedCourse)
+        if (savedProf) setProf(savedProf)
     }, [])
 
     return (
-        <>
-            <Meta {...getMetaConfig('courses/reviews')} />
-            {/* Search box */}
-            <div className="grid place-items-center">
-                <div className="w-[70vw] place-items-center flex flex-col justify-between">
-                    <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">
-                        Course Reviews.
-                    </h1>
-
-                    <Menu />
-
-                    <>
-                        <AutoCompleter
-                            name={'Course'}
-                            items={courses}
-                            value={course}
-                            onChange={(val) => setCourse(val)}
-                        />
-                        <span className="m-2"></span>
-                        <AutoCompleter
-                            name={'Prof'}
-                            items={profs.map((p) => p.name)}
-                            value={prof}
-                            onChange={(val) => setProf(val)}
-                        />
-
-                        <div className="text-center w-full m-2 h-60">
-                            <textarea
-                                className="textarea textarea-primary w-full max-w-xl h-full"
-                                placeholder="Enter your Review..."
-                                onChange={(e) => setReview(e.target.value)}
-                                value={review}
-                            ></textarea>
-                        </div>
-
-                        <div className="text-center flex-wrap w-3/4 justify-between m-1">
-                            <button
-                                className="btn btn-primary"
-                                onClick={AddReview}
-                            >
-                                Add Review
-                            </button>
-                        </div>
-                    </>
-                </div>
-            </div>
-            <CustomToastContainer containerId="addReview" />
-        </>
+        <AddPageLayout
+            title="Add Course Review"
+            metaConfig={getMetaConfig('courses/reviews')}
+            containerId="addReview"
+        >
+            <CourseReviewForm
+                course={course}
+                setCourse={setCourse}
+                prof={prof}
+                setProf={setProf}
+                review={review}
+                setReview={setReview}
+            />
+            
+            <SubmitButton
+                onClick={addReview}
+                isLoading={isLoading}
+                className="mt-6"
+            >
+                Add Review
+            </SubmitButton>
+        </AddPageLayout>
     )
 }
