@@ -62,9 +62,7 @@ export default function ContributionForm({
         setIsLoading(false)
     }
 
-    const handlePlacementResourceSubmit = async (
-        data: ResourceFormData
-    ) => {
+    const handlePlacementResourceSubmit = async (data: ResourceFormData) => {
         setIsLoading(true)
         try {
             const res = await fetch('/api/zob/resources/add', {

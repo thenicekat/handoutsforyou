@@ -5,7 +5,7 @@ import ResourceForm, {
 } from '@/components/forms/ResourceForm'
 import { getMetaConfig } from '@/config/meta'
 import { axiosInstance } from '@/utils/axiosCache'
-import { useState, useRef } from 'react'
+import { useRef, useState } from 'react'
 import { toast } from 'react-toastify'
 
 export default function AddHSResources() {
