@@ -1,5 +1,6 @@
-import { ReactNode } from 'react'
-import { FieldError, UseFormRegisterReturn } from 'react-hook-form'
+import { ReactNode, useRef, useState } from 'react'
+import { FieldError, UseFormRegisterReturn, Control, Controller } from 'react-hook-form'
+import classNames from 'classnames'
 
 interface FormFieldProps {
     label: string
@@ -184,5 +185,122 @@ export function Checkbox({
             />
             {label}
         </label>
+    )
+}
+
+interface AutoCompleterInputProps {
+    control: Control<any>
+    name: string
+    items: string[]
+    placeholder?: string
+    error?: FieldError
+    className?: string
+}
+
+export function AutoCompleterInput({
+    control,
+    name,
+    items,
+    placeholder,
+    error,
+    className = '',
+}: AutoCompleterInputProps) {
+    return (
+        <Controller
+            control={control}
+            name={name}
+            render={({ field: { onChange, value } }) => (
+                <FormAutoCompleter
+                    items={items}
+                    value={value || ''}
+                    onChange={onChange}
+                    placeholder={placeholder}
+                    error={error}
+                    className={className}
+                />
+            )}
+        />
+    )
+}
+
+interface FormAutoCompleterProps {
+    items: string[]
+    value: string
+    onChange: (val: string) => void
+    placeholder?: string
+    error?: FieldError
+    className?: string
+}
+
+function FormAutoCompleter({
+    items,
+    value,
+    onChange,
+    placeholder,
+    error,
+    className = '',
+}: FormAutoCompleterProps) {
+    const ref = useRef<HTMLDivElement>(null)
+    const [open, setOpen] = useState(false)
+    const [filteredItems, setFilteredItems] = useState(items)
+
+    const handleInputChange = (inputValue: string) => {
+        onChange(inputValue)
+        const filtered = items.filter((item) =>
+            item.toLowerCase().includes(inputValue.toLowerCase())
+        )
+        setFilteredItems(filtered)
+        setOpen(filtered.length > 0 && inputValue.length > 0)
+    }
+
+    const handleItemSelect = (item: string) => {
+        onChange(item)
+        setOpen(false)
+    }
+
+    const handleInputFocus = () => {
+        if (value.length > 0) {
+            const filtered = items.filter((item) =>
+                item.toLowerCase().includes(value.toLowerCase())
+            )
+            setFilteredItems(filtered)
+            setOpen(filtered.length > 0)
+        }
+    }
+
+    const handleInputBlur = () => {
+        // Delay closing to allow item selection
+        setTimeout(() => setOpen(false), 150)
+    }
+
+    return (
+        <div className={`relative ${className}`} ref={ref}>
+            <input
+                type="text"
+                value={value}
+                onChange={(e) => handleInputChange(e.target.value)}
+                onFocus={handleInputFocus}
+                onBlur={handleInputBlur}
+                className={`w-full p-3 bg-white/10 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-400 ${
+                    error ? 'border-red-400 focus:ring-red-400' : 'border-white/20'
+                }`}
+                placeholder={placeholder ? `Search by ${placeholder}...` : 'Search...'}
+            />
+
+            {open && filteredItems.length > 0 && (
+                <div className="absolute z-50 w-full mt-1 bg-gray-800 border border-white/20 rounded-lg shadow-lg max-h-60 overflow-auto">
+                    {filteredItems.map((item, index) => (
+                        <button
+                            key={index}
+                            type="button"
+                            onClick={() => handleItemSelect(item)}
+                            className="w-full px-3 py-2 text-left text-white hover:bg-white/10 focus:bg-white/10 focus:outline-none border-b border-white/10 last:border-b-0"
+                        >
+                            {item}
+                        </button>
+                    ))}
+                </div>
+            )}
+        </div>
     )
 }

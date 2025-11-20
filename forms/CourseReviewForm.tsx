@@ -4,7 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
-import { FormField, SelectInput, TextArea } from './FormComponents'
+import { FormField, AutoCompleterInput, TextArea } from './FormComponents'
 
 const courseReviewSchema = z.object({
     course: z
@@ -42,6 +42,7 @@ export default function CourseReviewForm({
         handleSubmit,
         formState: { errors },
         reset,
+        control,
     } = useForm<CourseReviewFormData>({
         resolver: zodResolver(courseReviewSchema),
         defaultValues: {
@@ -52,15 +53,7 @@ export default function CourseReviewForm({
         },
     })
 
-    const courseOptions = courses.map((course) => ({
-        value: course,
-        label: course,
-    }))
-
-    const profOptions = profs.map((prof) => ({
-        value: prof.name,
-        label: prof.name,
-    }))
+    const profNames = profs.map((prof) => prof.name)
 
     // Reset form when defaultValues change
     useEffect(() => {
@@ -75,19 +68,21 @@ export default function CourseReviewForm({
             className="space-y-6"
         >
             <FormField label="Course" required error={errors.course}>
-                <SelectInput
-                    registration={register('course')}
-                    options={courseOptions}
-                    placeholder="Select a course"
+                <AutoCompleterInput
+                    control={control}
+                    name="course"
+                    items={courses}
+                    placeholder="course"
                     error={errors.course}
                 />
             </FormField>
 
             <FormField label="Professor" required error={errors.prof}>
-                <SelectInput
-                    registration={register('prof')}
-                    options={profOptions}
-                    placeholder="Select a professor"
+                <AutoCompleterInput
+                    control={control}
+                    name="prof"
+                    items={profNames}
+                    placeholder="professor"
                     error={errors.prof}
                 />
             </FormField>

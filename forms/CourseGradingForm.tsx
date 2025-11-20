@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import { z } from 'zod'
-import { FormField, SelectInput, TextArea, TextInput } from './FormComponents'
+import { FormField, SelectInput, TextArea, TextInput, AutoCompleterInput } from './FormComponents'
 
 const courseGradingSchema = z.object({
     course: z
@@ -63,6 +63,7 @@ export default function CourseGradingForm({
         formState: { errors },
         reset,
         watch,
+        control,
     } = useForm<CourseGradingFormData>({
         resolver: zodResolver(courseGradingSchema),
         defaultValues: {
@@ -88,15 +89,7 @@ export default function CourseGradingForm({
         label: d,
     }))
 
-    const courseOptions = courses.map((course) => ({
-        value: course,
-        label: course,
-    }))
-
-    const profOptions = profs.map((prof) => ({
-        value: prof.name,
-        label: prof.name,
-    }))
+    const profNames = profs.map((prof) => prof.name)
 
     // Reset form when defaultValues change
     useEffect(() => {
@@ -292,10 +285,11 @@ export default function CourseGradingForm({
     return (
         <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-6">
             <FormField label="Course" required error={errors.course}>
-                <SelectInput
-                    registration={register('course')}
-                    options={courseOptions}
-                    placeholder="Select a course"
+                <AutoCompleterInput
+                    control={control}
+                    name="course"
+                    items={courses}
+                    placeholder="course"
                     error={errors.course}
                 />
             </FormField>
@@ -310,10 +304,11 @@ export default function CourseGradingForm({
             </FormField>
 
             <FormField label="Professor" required error={errors.prof}>
-                <SelectInput
-                    registration={register('prof')}
-                    options={profOptions}
-                    placeholder="Select a professor"
+                <AutoCompleterInput
+                    control={control}
+                    name="prof"
+                    items={profNames}
+                    placeholder="professor"
                     error={errors.prof}
                 />
             </FormField>
