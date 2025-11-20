@@ -72,13 +72,18 @@ export default function MaintenancePage() {
     const [isStatsLoading, setIsStatsLoading] = useState(true)
 
     // Form state
-    const [contributionType, setContributionType] =
-        useState<ContributionType>(COURSE_RESOURCE)
+    const [contributionType, setContributionType] = useState<ContributionType>(
+        contributionTypes[0]?.value as ContributionType
+    )
     const [isLoading, setIsLoading] = useState(false)
 
     // PS Review state
-    const [psUserResponses, setPsUserResponses] = useState<(PS1Item | PS2Item)[]>([])
-    const [selectedPsResponse, setSelectedPsResponse] = useState<PS1Item | PS2Item | null>(null)
+    const [psUserResponses, setPsUserResponses] = useState<
+        (PS1Item | PS2Item)[]
+    >([])
+    const [selectedPsResponse, setSelectedPsResponse] = useState<
+        PS1Item | PS2Item | null
+    >(null)
     const [isPsLoading, setIsPsLoading] = useState(false)
 
     const fetchStats = async () => {

@@ -16,30 +16,42 @@ export default async function handler(
     }
 
     try {
-        const { data, error } = await supabase
-            .from(CONTRIBUTIONS)
-            .select('contribution_type, count, email')
+        const [
+            { data: totalData, error: totalError },
+            { data: byTypeData, error: byTypeError },
+            { data: byUserData, error: byUserError },
+        ] = await Promise.all([
+            supabase.from(CONTRIBUTIONS).select('count.sum()'),
 
-        if (error) {
-            res.status(500).json({ message: error.message, error: true })
+            supabase
+                .from(CONTRIBUTIONS)
+                .select('contribution_type, count.sum()'),
+
+            supabase.from(CONTRIBUTIONS).select('email, count.sum()'),
+        ])
+
+        if (totalError || byTypeError || byUserError) {
+            const error = totalError || byTypeError || byUserError
+            res.status(500).json({
+                message: error?.message || 'Internal server error',
+                error: true,
+            })
             return
         }
 
         const stats = {
-            total: 0,
+            total: (totalData?.[0] as any).sum || 0,
             byType: {} as Record<string, number>,
             byUser: {} as Record<string, number>,
         }
 
-        data?.forEach((contribution) => {
-            const type = contribution.contribution_type
-            const count = contribution.count || 1
+        byTypeData?.forEach((item: any) => {
+            stats.byType[item.contribution_type] = item.sum || 0
+        })
 
-            stats.total += count
-            stats.byType[type] = (stats.byType[type] || 0) + count
-
-            const user = contribution.email || 'Anonymous'
-            stats.byUser[user] = (stats.byUser[user] || 0) + count
+        byUserData?.forEach((item: any) => {
+            const user = item.email || 'Anonymous'
+            stats.byUser[user] = item.sum || 0
         })
 
         res.status(200).json({
