@@ -2,9 +2,7 @@ import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import CustomToastContainer from '@/components/ToastContainer'
 import { departments } from '@/config/departments'
-import CourseGradingForm, {
-    CourseGradingFormData,
-} from '@/forms/CourseGradingForm'
+import CourseGradingForm, { CourseGradingFormData } from '@/forms/CourseGradingForm'
 import CourseReviewForm, {
     CourseReviewFormData,
 } from '@/forms/CourseReviewForm'
@@ -15,6 +13,8 @@ import PlacementCTCForm, {
     PlacementCTCFormData,
 } from '@/forms/PlacementCTCForm'
 import ResourceForm, { ResourceFormData } from '@/forms/ResourceForm'
+import PYQUploadForm from '@/forms/PYQUploadForm'
+import HandoutUploadForm from '@/forms/HandoutUploadForm'
 import { PS1Item, PS2Item } from '@/types/PS'
 import { axiosInstance } from '@/utils/axiosCache'
 import { useEffect, useMemo, useState } from 'react'
@@ -22,6 +22,8 @@ import CountUp from 'react-countup'
 import { toast } from 'react-toastify'
 
 const COURSE_RESOURCE = 'course_resource'
+const COURSE_HANDOUT = 'course_handout'
+const COURSE_PYQ = 'course_pyq'
 const COURSE_REVIEW = 'course_review'
 const COURSE_GRADING = 'course_grading'
 const PS1_CUTOFF = 'ps1_cutoff'
@@ -36,6 +38,8 @@ type ContributionType =
     | typeof COURSE_RESOURCE
     | typeof COURSE_REVIEW
     | typeof COURSE_GRADING
+    | typeof COURSE_HANDOUT
+    | typeof COURSE_PYQ
     | typeof PS1_CUTOFF
     | typeof PS2_CUTOFF
     | typeof PS1_REVIEW
@@ -48,6 +52,8 @@ const contributionTypes = [
     // { value: COURSE_RESOURCE, label: 'Course Resource' },
     { value: COURSE_REVIEW, label: 'Course Review' },
     { value: COURSE_GRADING, label: 'Course Grading' },
+    { value: COURSE_HANDOUT, label: 'Course Handout' },
+    { value: COURSE_PYQ, label: 'Course PYQ' },
     { value: PS1_CUTOFF, label: 'PS1 Cutoff' },
     { value: PS2_CUTOFF, label: 'PS2 Cutoff' },
     { value: PS1_REVIEW, label: 'PS1 Review' },
@@ -127,6 +133,8 @@ export default function MaintenancePage() {
         ps1_cutoff: 'PS1 Cutoffs',
         ps2_cutoff: 'PS2 Cutoffs',
         placement_resource: 'Placement Resources',
+        course_handout: 'Course Handouts',
+        course_pyq: 'Course PYQs',
         higherstudies_resource: 'Higher Studies Resources',
         course_grading: 'Course Grading',
         ps1_review: 'PS1 Reviews',
@@ -320,6 +328,54 @@ export default function MaintenancePage() {
         setIsLoading(false)
     }
 
+    const handleHandoutUpload = async (form: { yearFolder: string; file: File }) => {
+        setIsLoading(true)
+        try {
+            const formData = new FormData()
+            formData.append('yearFolder', form.yearFolder)
+            formData.append('file', form.file)
+            const response = await fetch('/api/courses/handouts/add', {
+                method: 'POST',
+                body: formData,
+            })
+            const data = await response.json()
+            if (data.error) {
+                toast.error(data.message || 'Failed to upload handout')
+            } else {
+                toast.success('Thank you! Your handout was uploaded successfully!')
+                onContributionAdded()
+            }
+        } catch (error) {
+            toast.error('An error occurred. ' + (error as Error).message)
+        }
+        setIsLoading(false)
+    }
+
+    const handlePyqUpload = async (form: { course: string; professor: string; year: string; file: File }) => {
+        setIsLoading(true)
+        try {
+            const formData = new FormData()
+            formData.append('course', form.course)
+            formData.append('professor', form.professor)
+            formData.append('year', form.year)
+            formData.append('file', form.file)
+            const response = await fetch('/api/courses/pyqs/add', {
+                method: 'POST',
+                body: formData,
+            })
+            const data = await response.json()
+            if (data.error) {
+                toast.error(data.message || 'Failed to upload PYQ')
+            } else {
+                toast.success('Thank you! Your PYQ was uploaded successfully!')
+                onContributionAdded()
+            }
+        } catch (error) {
+            toast.error('An error occurred. ' + (error as Error).message)
+        }
+        setIsLoading(false)
+    }
+
     const handlePSCutoffSubmit = async (data: PSCutoffFormData) => {
         setIsLoading(true)
         try {
@@ -334,11 +390,11 @@ export default function MaintenancePage() {
                 public: data.isPublic ? 1 : 0,
                 ...(contributionType === PS2_CUTOFF && 'stipend' in data
                     ? {
-                          stipend: data.stipend,
-                          offshoot: data.offshoot,
-                          offshootTotal: data.offshootTotal,
-                          offshootType: data.offshootType,
-                      }
+                        stipend: data.stipend,
+                        offshoot: data.offshoot,
+                        offshootTotal: data.offshootTotal,
+                        offshootType: data.offshootType,
+                    }
                     : {}),
             }
 
@@ -518,7 +574,7 @@ export default function MaintenancePage() {
                                                     >
                                                         <span className="text-gray-300 text-sm truncate mr-2">
                                                             {email ===
-                                                            'Anonymous'
+                                                                'Anonymous'
                                                                 ? '🔒 Anonymous'
                                                                 : `📧 ${email}`}
                                                         </span>
@@ -533,15 +589,15 @@ export default function MaintenancePage() {
                                         </div>
                                         {Object.keys(stats.byUser).length >
                                             10 && (
-                                            <div className="text-center mt-4 text-gray-400 text-sm">
-                                                Showing top 10 of{' '}
-                                                {
-                                                    Object.keys(stats.byUser)
-                                                        .length
-                                                }{' '}
-                                                contributors
-                                            </div>
-                                        )}
+                                                <div className="text-center mt-4 text-gray-400 text-sm">
+                                                    Showing top 10 of{' '}
+                                                    {
+                                                        Object.keys(stats.byUser)
+                                                            .length
+                                                    }{' '}
+                                                    contributors
+                                                </div>
+                                            )}
 
                                         <div className="text-center text-white text-sm">
                                             NOTE: Any spam contribution will
@@ -642,29 +698,45 @@ export default function MaintenancePage() {
                             />
                         )}
 
-                        {/* PS Cutoff Forms */}
-                        {(contributionType === PS1_CUTOFF ||
-                            contributionType === PS2_CUTOFF) && (
-                            <PSCutoffForm
-                                isPS1={contributionType === PS1_CUTOFF}
-                                onSubmit={handlePSCutoffSubmit}
+                        {/* Course Handout Upload */}
+                        {contributionType === COURSE_HANDOUT && (
+                            <HandoutUploadForm
+                                onSubmit={handleHandoutUpload}
                                 isLoading={isLoading}
                             />
                         )}
 
+                        {/* Course PYQ Upload */}
+                        {contributionType === COURSE_PYQ && (
+                            <PYQUploadForm
+                                onSubmit={handlePyqUpload}
+                                isLoading={isLoading}
+                            />
+                        )}
+
+                        {/* PS Cutoff Forms */}
+                        {(contributionType === PS1_CUTOFF ||
+                            contributionType === PS2_CUTOFF) && (
+                                <PSCutoffForm
+                                    isPS1={contributionType === PS1_CUTOFF}
+                                    onSubmit={handlePSCutoffSubmit}
+                                    isLoading={isLoading}
+                                />
+                            )}
+
                         {/* PS Review Forms */}
                         {(contributionType === PS1_REVIEW ||
                             contributionType === PS2_REVIEW) && (
-                            <PSReviewForm
-                                isPS1={contributionType === PS1_REVIEW}
-                                userResponses={psUserResponses}
-                                selectedResponse={selectedPsResponse}
-                                onResponseSelect={handlePsResponseSelect}
-                                onSubmit={handlePSReviewSubmit}
-                                isLoading={isPsLoading}
-                                isSubmitting={isLoading}
-                            />
-                        )}
+                                <PSReviewForm
+                                    isPS1={contributionType === PS1_REVIEW}
+                                    userResponses={psUserResponses}
+                                    selectedResponse={selectedPsResponse}
+                                    onResponseSelect={handlePsResponseSelect}
+                                    onSubmit={handlePSReviewSubmit}
+                                    isLoading={isPsLoading}
+                                    isSubmitting={isLoading}
+                                />
+                            )}
                     </div>
                 </div>
             </div>
