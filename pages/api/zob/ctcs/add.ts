@@ -1,8 +1,8 @@
 import { BaseResponseData, getUser } from '@/pages/api/auth/[...nextauth]'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { PLACEMENT_CTCS } from '../../constants'
-import { supabase } from '../../supabase'
 import { trackContribution } from '../../contributions/track'
+import { supabase } from '../../supabase'
 
 export default async function handler(
     req: NextApiRequest,
