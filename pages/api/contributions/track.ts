@@ -16,6 +16,20 @@ export async function trackContribution(input: ContributionData) {
     if (error) {
         throw Error('Error while fetching user contributions.')
     } else {
+        if (data.length === 0) {
+            const { data: newData, error: newError } = await supabase
+                .from(CONTRIBUTIONS)
+                .insert({
+                    email: input.email,
+                    contribution_type: input.contribution_type,
+                    count: 1,
+                })
+                .select()
+            if (newError) {
+                throw Error('Error while creating user contribution.')
+            }
+            return newData
+        }
         const { data: updatedData, error: updatedError } = await supabase
             .from(CONTRIBUTIONS)
             .update({ count: data[0].count + 1 })
