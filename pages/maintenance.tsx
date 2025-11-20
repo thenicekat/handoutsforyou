@@ -37,27 +37,35 @@ type ContributionType =
     | typeof PLACEMENT_CTC
     | typeof HIGHERSTUDIES_RESOURCE
 
+const contributionTypes = [
+    // { value: COURSE_RESOURCE, label: 'Course Resource' },
+    { value: COURSE_REVIEW, label: 'Course Review' },
+    { value: COURSE_GRADING, label: 'Course Grading' },
+    { value: PS1_CUTOFF, label: 'PS1 Cutoff' },
+    { value: PS2_CUTOFF, label: 'PS2 Cutoff' },
+    { value: PLACEMENT_RESOURCE, label: 'Placement Resource' },
+    { value: PLACEMENT_CTC, label: 'Placement CTC' },
+    { value: HIGHERSTUDIES_RESOURCE, label: 'Higher Studies Resource' },
+]
+
 interface ContributionStats {
     total: number
-    pending: number
-    approved: number
     byType: Record<string, number>
     byUser: Record<string, number>
 }
 
-interface ContributionProgressProps {
-    refreshTrigger?: number
-}
-
-function ContributionProgress({ refreshTrigger }: ContributionProgressProps) {
+export default function MaintenancePage() {
     const [stats, setStats] = useState<ContributionStats>({
         total: 0,
-        pending: 0,
-        approved: 0,
         byType: {},
         byUser: {},
     })
-    const [isLoading, setIsLoading] = useState(true)
+    const [isStatsLoading, setIsStatsLoading] = useState(true)
+
+    // Form state
+    const [contributionType, setContributionType] =
+        useState<ContributionType>(COURSE_RESOURCE)
+    const [isLoading, setIsLoading] = useState(false)
 
     const fetchStats = async () => {
         try {
@@ -69,13 +77,17 @@ function ContributionProgress({ refreshTrigger }: ContributionProgressProps) {
         } catch (error) {
             console.error('Failed to fetch contribution stats:', error)
         } finally {
-            setIsLoading(false)
+            setIsStatsLoading(false)
         }
     }
 
     useEffect(() => {
         fetchStats()
-    }, [refreshTrigger])
+    }, [])
+
+    const onContributionAdded = () => {
+        fetchStats()
+    }
 
     const contributionTypeLabels: Record<string, string> = {
         course_resource: 'Course Resources',
@@ -90,120 +102,6 @@ function ContributionProgress({ refreshTrigger }: ContributionProgressProps) {
         placement_ctc: 'Placement CTCs',
         si_company: 'SI Companies',
     }
-
-    if (isLoading) {
-        return (
-            <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6 max-w-4xl mx-auto mb-8">
-                <div className="text-center text-gray-300">
-                    Loading contribution stats...
-                </div>
-            </div>
-        )
-    }
-
-    return (
-        <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6 max-w-4xl mx-auto mb-8">
-            <h2 className="text-2xl font-bold text-white mb-6 text-center">
-                🚀 Maintenance Mode.
-            </h2>
-
-            <div className="mb-6">
-                <div className="flex justify-between text-sm text-gray-300 mb-2">
-                    <span>Progress towards 5000 contributions</span>
-                    <span>{Math.min(stats.total, 5000)}/5000</span>
-                </div>
-                <div className="w-full bg-white/10 rounded-full h-3">
-                    <div
-                        className="bg-gradient-to-r from-amber-400 to-orange-500 h-3 rounded-full transition-all duration-1000 ease-out"
-                        style={{
-                            width: `${Math.min((stats.total / 5000) * 100, 100)}%`,
-                        }}
-                    ></div>
-                </div>
-                {stats.total >= 5000 && (
-                    <div className="text-center mt-2 text-green-400 font-semibold">
-                        🎉 Goal achieved! Thank you for your contributions!
-                    </div>
-                )}
-            </div>
-
-            {Object.keys(stats.byType).length > 0 && (
-                <div className="mb-8">
-                    <h3 className="text-lg font-semibold text-white mb-4">
-                        Contribution Breakdown by Type
-                    </h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                        {Object.entries(stats.byType).map(([type, count]) => (
-                            <div
-                                key={type}
-                                className="bg-white/5 rounded-lg p-3 flex justify-between items-center"
-                            >
-                                <span className="text-gray-300 text-sm">
-                                    {contributionTypeLabels[type] || type}
-                                </span>
-                                <span className="text-white font-semibold">
-                                    <CountUp end={count} duration={1.5} />
-                                </span>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            )}
-
-            {/* User Breakdown */}
-            {Object.keys(stats.byUser).length > 0 && (
-                <div>
-                    <h3 className="text-lg font-semibold text-white mb-4">
-                        Top Contributors
-                    </h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        {Object.entries(stats.byUser)
-                            .sort(([, a], [, b]) => b - a) // Sort by contribution count descending
-                            .slice(0, 10) // Show top 10 contributors
-                            .map(([email, count]) => (
-                                <div
-                                    key={email}
-                                    className="bg-white/5 rounded-lg p-3 flex justify-between items-center"
-                                >
-                                    <span className="text-gray-300 text-sm truncate mr-2">
-                                        {email === 'Anonymous'
-                                            ? '🔒 Anonymous'
-                                            : `📧 ${email}`}
-                                    </span>
-                                    <span className="text-white font-semibold">
-                                        <CountUp end={count} duration={1.5} />
-                                    </span>
-                                </div>
-                            ))}
-                    </div>
-                    {Object.keys(stats.byUser).length > 10 && (
-                        <div className="text-center mt-4 text-gray-400 text-sm">
-                            Showing top 10 of {Object.keys(stats.byUser).length}{' '}
-                            contributors
-                        </div>
-                    )}
-                </div>
-            )}
-
-            {stats.total === 0 && (
-                <div className="text-center text-gray-400 py-8">
-                    <div className="text-xl mb-4">
-                        🌱 Be the first to contribute!
-                    </div>
-                </div>
-            )}
-        </div>
-    )
-}
-
-interface ContributionFormProps {
-    onContributionAdded?: () => void
-}
-
-function ContributionForm({ onContributionAdded }: ContributionFormProps) {
-    const [contributionType, setContributionType] =
-        useState<ContributionType>(COURSE_RESOURCE)
-    const [isLoading, setIsLoading] = useState(false)
 
     const depts = useMemo(() => {
         return Object.values(departments)
@@ -245,7 +143,7 @@ function ContributionForm({ onContributionAdded }: ContributionFormProps) {
                 toast.success(
                     'Thank you! Your course resource was added successfully!'
                 )
-                onContributionAdded?.()
+                onContributionAdded()
             }
         } catch (error) {
             toast.error('An error occurred. Please try again.')
@@ -273,7 +171,7 @@ function ContributionForm({ onContributionAdded }: ContributionFormProps) {
                 toast.success(
                     'Thank you! Your placement resource was added successfully!'
                 )
-                onContributionAdded?.()
+                onContributionAdded()
             }
         } catch (error) {
             toast.error('An error occurred. Please try again.')
@@ -303,7 +201,7 @@ function ContributionForm({ onContributionAdded }: ContributionFormProps) {
                 toast.success(
                     'Thank you! Your higher studies resource was added successfully!'
                 )
-                onContributionAdded?.()
+                onContributionAdded()
             }
         } catch (error) {
             toast.error('An error occurred. Please try again.')
@@ -340,7 +238,7 @@ function ContributionForm({ onContributionAdded }: ContributionFormProps) {
                     'Thank you! Your placement CTC was added successfully!'
                 )
                 reset()
-                onContributionAdded?.()
+                onContributionAdded()
             }
         } catch (error) {
             toast.error('An error occurred. Please try again.')
@@ -367,7 +265,7 @@ function ContributionForm({ onContributionAdded }: ContributionFormProps) {
                 toast.success(
                     'Thank you! Your course review was added successfully!'
                 )
-                onContributionAdded?.()
+                onContributionAdded()
             }
         } catch (error) {
             toast.error('An error occurred. Please try again.')
@@ -397,7 +295,7 @@ function ContributionForm({ onContributionAdded }: ContributionFormProps) {
                 toast.success(
                     'Thank you! Your course grading data was added successfully!'
                 )
-                onContributionAdded?.()
+                onContributionAdded()
             }
         } catch (error) {
             toast.error('An error occurred. Please try again.')
@@ -439,121 +337,12 @@ function ContributionForm({ onContributionAdded }: ContributionFormProps) {
                 toast.success(
                     `Thank you! Your ${contributionType === PS1_CUTOFF ? 'PS1' : 'PS2'} cutoff was added successfully!`
                 )
-                onContributionAdded?.()
+                onContributionAdded()
             }
         } catch (error) {
             toast.error('An error occurred. Please try again.')
         }
         setIsLoading(false)
-    }
-
-    const contributionTypes = [
-        { value: COURSE_RESOURCE, label: 'Course Resource' },
-        { value: COURSE_REVIEW, label: 'Course Review' },
-        { value: COURSE_GRADING, label: 'Course Grading' },
-        { value: PS1_CUTOFF, label: 'PS1 Cutoff' },
-        { value: PS2_CUTOFF, label: 'PS2 Cutoff' },
-        { value: PLACEMENT_RESOURCE, label: 'Placement Resource' },
-        { value: PLACEMENT_CTC, label: 'Placement CTC' },
-        { value: HIGHERSTUDIES_RESOURCE, label: 'Higher Studies Resource' },
-    ]
-
-    return (
-        <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6 max-w-4xl mx-auto">
-            <FormField
-                label="What would you like to contribute?"
-                className="mb-6"
-            >
-                <select
-                    value={contributionType}
-                    onChange={(e) =>
-                        setContributionType(e.target.value as ContributionType)
-                    }
-                    className="w-full p-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-amber-400"
-                >
-                    {contributionTypes.map((option) => (
-                        <option
-                            key={option.value}
-                            value={option.value}
-                            className="bg-gray-800"
-                        >
-                            {option.label}
-                        </option>
-                    ))}
-                </select>
-            </FormField>
-
-            {/* Course Resource Form */}
-            {contributionType === COURSE_RESOURCE && (
-                <ResourceForm
-                    resourceType="course"
-                    onSubmit={handleCourseResourceSubmit}
-                    isLoading={isLoading}
-                />
-            )}
-
-            {/* Placement Resource Form */}
-            {contributionType === PLACEMENT_RESOURCE && (
-                <ResourceForm
-                    resourceType="placement"
-                    onSubmit={handlePlacementResourceSubmit}
-                    isLoading={isLoading}
-                />
-            )}
-
-            {/* Higher Studies Resource Form */}
-            {contributionType === HIGHERSTUDIES_RESOURCE && (
-                <ResourceForm
-                    resourceType="higherStudies"
-                    onSubmit={handleHigherStudiesResourceSubmit}
-                    isLoading={isLoading}
-                />
-            )}
-
-            {/* Placement CTC Form */}
-            {contributionType === PLACEMENT_CTC && (
-                <PlacementCTCForm
-                    onSubmit={handlePlacementCTCSubmit}
-                    isLoading={isLoading}
-                />
-            )}
-
-            {/* Course Review Form */}
-            {contributionType === COURSE_REVIEW && (
-                <CourseReviewForm
-                    onSubmit={handleCourseReviewSubmit}
-                    isLoading={isLoading}
-                />
-            )}
-
-            {/* Course Grading Form */}
-            {contributionType === COURSE_GRADING && (
-                <CourseGradingForm
-                    onSubmit={handleCourseGradingSubmit}
-                    isLoading={isLoading}
-                    depts={depts}
-                    filterDepartmentCodes={filterDepartmentCodes}
-                />
-            )}
-
-            {/* PS Cutoff Forms */}
-            {(contributionType === PS1_CUTOFF ||
-                contributionType === PS2_CUTOFF) && (
-                <PSCutoffForm
-                    isPS1={contributionType === PS1_CUTOFF}
-                    onSubmit={handlePSCutoffSubmit}
-                    isLoading={isLoading}
-                />
-            )}
-        </div>
-    )
-}
-
-export default function MaintenancePage() {
-    const [refreshTrigger, setRefreshTrigger] = useState(0)
-
-    const handleContributionAdded = () => {
-        setRefreshTrigger((prev) => prev + 1)
     }
 
     return (
@@ -563,10 +352,218 @@ export default function MaintenancePage() {
 
             <div className="container mx-auto px-4 pt-10 pb-4 flex items-center">
                 <div className="w-full max-w-6xl mx-auto mt-8 px-4">
-                    <ContributionProgress refreshTrigger={refreshTrigger} />
-                    <ContributionForm
-                        onContributionAdded={handleContributionAdded}
-                    />
+                    {/* Stats Section */}
+                    <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6 max-w-4xl mx-auto mb-8">
+                        {isStatsLoading ? (
+                            <div className="text-center text-gray-300">
+                                Loading contribution stats...
+                            </div>
+                        ) : (
+                            <>
+                                <h2 className="text-2xl font-bold text-white mb-6 text-center">
+                                    🚀 Maintenance Mode.
+                                </h2>
+
+                                <div className="mb-6">
+                                    <div className="flex justify-between text-sm text-gray-300 mb-2">
+                                        <span>
+                                            Progress towards 5000 contributions
+                                        </span>
+                                        <span>
+                                            {Math.min(stats.total, 5000)}/5000
+                                        </span>
+                                    </div>
+                                    <div className="w-full bg-white/10 rounded-full h-3">
+                                        <div
+                                            className="bg-gradient-to-r from-amber-400 to-orange-500 h-3 rounded-full transition-all duration-1000 ease-out"
+                                            style={{
+                                                width: `${Math.min((stats.total / 5000) * 100, 100)}%`,
+                                            }}
+                                        ></div>
+                                    </div>
+                                    {stats.total >= 5000 && (
+                                        <div className="text-center mt-2 text-green-400 font-semibold">
+                                            🎉 Goal achieved! Thank you for your
+                                            contributions!
+                                        </div>
+                                    )}
+                                </div>
+
+                                {Object.keys(stats.byType).length > 0 && (
+                                    <div className="mb-8">
+                                        <h3 className="text-lg font-semibold text-white mb-4">
+                                            Contribution Breakdown by Type
+                                        </h3>
+                                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                                            {Object.entries(stats.byType).map(
+                                                ([type, count]) => (
+                                                    <div
+                                                        key={type}
+                                                        className="bg-white/5 rounded-lg p-3 flex justify-between items-center"
+                                                    >
+                                                        <span className="text-gray-300 text-sm">
+                                                            {contributionTypeLabels[
+                                                                type
+                                                            ] || type}
+                                                        </span>
+                                                        <span className="text-white font-semibold">
+                                                            <CountUp
+                                                                end={count}
+                                                                duration={1.5}
+                                                            />
+                                                        </span>
+                                                    </div>
+                                                )
+                                            )}
+                                        </div>
+                                    </div>
+                                )}
+
+                                {/* User Breakdown */}
+                                {Object.keys(stats.byUser).length > 0 && (
+                                    <div>
+                                        <h3 className="text-lg font-semibold text-white mb-4">
+                                            Top Contributors
+                                        </h3>
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                            {Object.entries(stats.byUser)
+                                                .sort(([, a], [, b]) => b - a) // Sort by contribution count descending
+                                                .slice(0, 10) // Show top 10 contributors
+                                                .map(([email, count]) => (
+                                                    <div
+                                                        key={email}
+                                                        className="bg-white/5 rounded-lg p-3 flex justify-between items-center"
+                                                    >
+                                                        <span className="text-gray-300 text-sm truncate mr-2">
+                                                            {email ===
+                                                            'Anonymous'
+                                                                ? '🔒 Anonymous'
+                                                                : `📧 ${email}`}
+                                                        </span>
+                                                        <span className="text-white font-semibold">
+                                                            <CountUp
+                                                                end={count}
+                                                                duration={1.5}
+                                                            />
+                                                        </span>
+                                                    </div>
+                                                ))}
+                                        </div>
+                                        {Object.keys(stats.byUser).length >
+                                            10 && (
+                                            <div className="text-center mt-4 text-gray-400 text-sm">
+                                                Showing top 10 of{' '}
+                                                {
+                                                    Object.keys(stats.byUser)
+                                                        .length
+                                                }{' '}
+                                                contributors
+                                            </div>
+                                        )}
+                                    </div>
+                                )}
+
+                                {stats.total === 0 && (
+                                    <div className="text-center text-gray-400 py-8">
+                                        <div className="text-xl mb-4">
+                                            🌱 Be the first to contribute!
+                                        </div>
+                                    </div>
+                                )}
+                            </>
+                        )}
+                    </div>
+
+                    {/* Form Section */}
+                    <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6 max-w-4xl mx-auto">
+                        <FormField
+                            label="What would you like to contribute?"
+                            className="mb-6"
+                        >
+                            <select
+                                value={contributionType}
+                                onChange={(e) =>
+                                    setContributionType(
+                                        e.target.value as ContributionType
+                                    )
+                                }
+                                className="w-full p-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-amber-400"
+                            >
+                                {contributionTypes.map((option) => (
+                                    <option
+                                        key={option.value}
+                                        value={option.value}
+                                        className="bg-gray-800"
+                                    >
+                                        {option.label}
+                                    </option>
+                                ))}
+                            </select>
+                        </FormField>
+
+                        {/* Course Resource Form */}
+                        {contributionType === COURSE_RESOURCE && (
+                            <ResourceForm
+                                resourceType="course"
+                                onSubmit={handleCourseResourceSubmit}
+                                isLoading={isLoading}
+                            />
+                        )}
+
+                        {/* Placement Resource Form */}
+                        {contributionType === PLACEMENT_RESOURCE && (
+                            <ResourceForm
+                                resourceType="placement"
+                                onSubmit={handlePlacementResourceSubmit}
+                                isLoading={isLoading}
+                            />
+                        )}
+
+                        {/* Higher Studies Resource Form */}
+                        {contributionType === HIGHERSTUDIES_RESOURCE && (
+                            <ResourceForm
+                                resourceType="higherStudies"
+                                onSubmit={handleHigherStudiesResourceSubmit}
+                                isLoading={isLoading}
+                            />
+                        )}
+
+                        {/* Placement CTC Form */}
+                        {contributionType === PLACEMENT_CTC && (
+                            <PlacementCTCForm
+                                onSubmit={handlePlacementCTCSubmit}
+                                isLoading={isLoading}
+                            />
+                        )}
+
+                        {/* Course Review Form */}
+                        {contributionType === COURSE_REVIEW && (
+                            <CourseReviewForm
+                                onSubmit={handleCourseReviewSubmit}
+                                isLoading={isLoading}
+                            />
+                        )}
+
+                        {/* Course Grading Form */}
+                        {contributionType === COURSE_GRADING && (
+                            <CourseGradingForm
+                                onSubmit={handleCourseGradingSubmit}
+                                isLoading={isLoading}
+                                depts={depts}
+                                filterDepartmentCodes={filterDepartmentCodes}
+                            />
+                        )}
+
+                        {/* PS Cutoff Forms */}
+                        {(contributionType === PS1_CUTOFF ||
+                            contributionType === PS2_CUTOFF) && (
+                            <PSCutoffForm
+                                isPS1={contributionType === PS1_CUTOFF}
+                                onSubmit={handlePSCutoffSubmit}
+                                isLoading={isLoading}
+                            />
+                        )}
+                    </div>
                 </div>
             </div>
 

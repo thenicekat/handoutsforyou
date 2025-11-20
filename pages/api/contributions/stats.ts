@@ -18,7 +18,7 @@ export default async function handler(
     try {
         const { data, error } = await supabase
             .from(CONTRIBUTIONS)
-            .select('contribution_type, count, created_by, email')
+            .select('contribution_type, count, email')
 
         if (error) {
             res.status(500).json({ message: error.message, error: true })
