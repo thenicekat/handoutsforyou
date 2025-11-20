@@ -38,7 +38,7 @@ export default function AddReview() {
                 resetForm() // Reset form using React Hook Form
             }
         } catch (error) {
-            toast.error('An error occurred. Please try again.')
+            toast.error('Error: ' + error)
         }
         setIsLoading(false)
     }

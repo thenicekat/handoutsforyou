@@ -36,8 +36,7 @@ export default function AddPlacementCTCs() {
                 resetForm() // Reset form using React Hook Form
             }
         } catch (error) {
-            console.error('Error adding placement CTC:', error)
-            toast.error('Failed to add CTC. Please try again.')
+            toast.error('Error: ' + error)
         }
         setIsLoading(false)
     }

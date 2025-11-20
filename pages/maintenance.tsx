@@ -176,7 +176,7 @@ export default function MaintenancePage() {
                 onContributionAdded()
             }
         } catch (error) {
-            toast.error('An error occurred. Please try again.')
+            toast.error('An error occurred. ' + error)
         }
         setIsLoading(false)
     }
@@ -202,7 +202,7 @@ export default function MaintenancePage() {
                 onContributionAdded()
             }
         } catch (error) {
-            toast.error('An error occurred. Please try again.')
+            toast.error('An error occurred. ' + error)
         }
         setIsLoading(false)
     }
@@ -230,7 +230,7 @@ export default function MaintenancePage() {
                 onContributionAdded()
             }
         } catch (error) {
-            toast.error('An error occurred. Please try again.')
+            toast.error('An error occurred. ' + error)
         }
         setIsLoading(false)
     }
@@ -262,7 +262,7 @@ export default function MaintenancePage() {
                 onContributionAdded()
             }
         } catch (error) {
-            toast.error('An error occurred. Please try again.')
+            toast.error('An error occurred. ' + error)
         }
         setIsLoading(false)
     }
@@ -287,7 +287,7 @@ export default function MaintenancePage() {
                 onContributionAdded()
             }
         } catch (error) {
-            toast.error('An error occurred. Please try again.')
+            toast.error('An error occurred. ' + error)
         }
         setIsLoading(false)
     }
@@ -315,7 +315,7 @@ export default function MaintenancePage() {
                 onContributionAdded()
             }
         } catch (error) {
-            toast.error('An error occurred. Please try again.')
+            toast.error('An error occurred. ' + error)
         }
         setIsLoading(false)
     }
@@ -355,7 +355,7 @@ export default function MaintenancePage() {
                 onContributionAdded()
             }
         } catch (error) {
-            toast.error('An error occurred. Please try again.')
+            toast.error('An error occurred. ' + error)
         }
         setIsLoading(false)
     }

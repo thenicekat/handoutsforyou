@@ -7,7 +7,13 @@ import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import { z } from 'zod'
-import { FormField, SelectInput, TextArea, TextInput, AutoCompleterInput } from './FormComponents'
+import {
+    AutoCompleterInput,
+    FormField,
+    SelectInput,
+    TextArea,
+    TextInput,
+} from './FormComponents'
 
 const courseGradingSchema = z.object({
     course: z

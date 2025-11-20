@@ -1,6 +1,10 @@
 import { ReactNode, useRef, useState } from 'react'
-import { FieldError, UseFormRegisterReturn, Control, Controller } from 'react-hook-form'
-import classNames from 'classnames'
+import {
+    Control,
+    Controller,
+    FieldError,
+    UseFormRegisterReturn,
+} from 'react-hook-form'
 
 interface FormFieldProps {
     label: string
@@ -282,9 +286,13 @@ function FormAutoCompleter({
                 onFocus={handleInputFocus}
                 onBlur={handleInputBlur}
                 className={`w-full p-3 bg-white/10 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-400 ${
-                    error ? 'border-red-400 focus:ring-red-400' : 'border-white/20'
+                    error
+                        ? 'border-red-400 focus:ring-red-400'
+                        : 'border-white/20'
                 }`}
-                placeholder={placeholder ? `Search by ${placeholder}...` : 'Search...'}
+                placeholder={
+                    placeholder ? `Search by ${placeholder}...` : 'Search...'
+                }
             />
 
             {open && filteredItems.length > 0 && (
