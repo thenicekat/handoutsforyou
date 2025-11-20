@@ -202,7 +202,7 @@ export default function MaintenancePage() {
                 onContributionAdded()
             }
         } catch (error) {
-            toast.error('An error occurred. ' + error)
+            toast.error('An error occurred. ' + (error as Error).message)
         }
         setIsLoading(false)
     }
@@ -230,7 +230,7 @@ export default function MaintenancePage() {
                 onContributionAdded()
             }
         } catch (error) {
-            toast.error('An error occurred. ' + error)
+            toast.error('An error occurred. ' + (error as Error).message)
         }
         setIsLoading(false)
     }
@@ -262,7 +262,7 @@ export default function MaintenancePage() {
                 onContributionAdded()
             }
         } catch (error) {
-            toast.error('An error occurred. ' + error)
+            toast.error('An error occurred. ' + (error as Error).message)
         }
         setIsLoading(false)
     }
@@ -287,12 +287,12 @@ export default function MaintenancePage() {
                 onContributionAdded()
             }
         } catch (error) {
-            toast.error('An error occurred. ' + error)
+            toast.error('An error occurred. ' + (error as Error).message)
         }
         setIsLoading(false)
     }
 
-    const handleCourseGradingSubmit = async (data: CourseGradingFormData) => {
+    const handleCourseGradingSubmit = async (data: CourseGradingFormData, parsedData: string) => {
         setIsLoading(true)
         try {
             const response = await axiosInstance.post(
@@ -302,7 +302,7 @@ export default function MaintenancePage() {
                     dept: data.dept,
                     sem: data.semester,
                     prof: data.prof,
-                    data: data.gradingData,
+                    data: parsedData,
                     average_mark: data.averageMark,
                 }
             )
@@ -315,7 +315,7 @@ export default function MaintenancePage() {
                 onContributionAdded()
             }
         } catch (error) {
-            toast.error('An error occurred. ' + error)
+            toast.error('An error occurred. ' + (error as any).response.data.message)
         }
         setIsLoading(false)
     }
@@ -355,7 +355,7 @@ export default function MaintenancePage() {
                 onContributionAdded()
             }
         } catch (error) {
-            toast.error('An error occurred. ' + error)
+            toast.error('An error occurred. ' + (error as Error).message)
         }
         setIsLoading(false)
     }
