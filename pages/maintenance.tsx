@@ -560,6 +560,12 @@ export default function MaintenancePage() {
                                                 contributors
                                             </div>
                                         )}
+
+                                        <div className="text-center text-white text-sm">
+                                            NOTE: Any spam contribution will
+                                            increase the limit by 100
+                                            contributions.
+                                        </div>
                                     </div>
                                 )}
 
