@@ -1,9 +1,11 @@
 import { courses } from '@/config/courses'
 import { profs } from '@/config/profs'
 import { gradedSemesters } from '@/config/years_sems'
+import { CourseGradeRow } from '@/types/Courses'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
 import { z } from 'zod'
 import { FormField, SelectInput, TextArea, TextInput } from './FormComponents'
 
@@ -37,14 +39,12 @@ const courseGradingSchema = z.object({
 export type CourseGradingFormData = z.infer<typeof courseGradingSchema>
 
 interface CourseGradingFormProps {
-    onSubmit: (data: CourseGradingFormData) => void
+    onSubmit: (data: CourseGradingFormData, parsedData: string) => void
     isLoading?: boolean
     defaultValues?: Partial<CourseGradingFormData>
     depts: string[]
     filterDepartmentCodes: (course: string) => string[]
-    parsedData?: string | null
-    averageMark?: string | null
-    showParsedData?: boolean
+    resetTrigger?: number
 }
 
 export default function CourseGradingForm({
@@ -53,10 +53,10 @@ export default function CourseGradingForm({
     defaultValues,
     depts,
     filterDepartmentCodes,
-    parsedData,
-    averageMark,
-    showParsedData = false,
+    resetTrigger,
 }: CourseGradingFormProps) {
+    const [parsedData, setParsedData] = useState<string | null>(null)
+    const [showParsedData, setShowParsedData] = useState(false)
     const {
         register,
         handleSubmit,
@@ -105,8 +105,190 @@ export default function CourseGradingForm({
         }
     }, [defaultValues, reset])
 
+    const parseGradingData = (input: string): string => {
+        const lines = input.split('\n').map((line) => line.trim())
+        const gradeData: CourseGradeRow[] = []
+        const rowPattern = /^Row\s*\d+$/
+
+        for (let i = 0; i < lines.length; i++) {
+            if (rowPattern.test(lines[i])) {
+                const dataLines = lines
+                    .slice(i + 1, i + 5)
+                    .filter((line) => line.length > 0)
+
+                const gradeRow: CourseGradeRow = {
+                    grade: '',
+                    numberOfStudents: 0,
+                }
+
+                gradeRow.grade = dataLines[0]
+
+                if (dataLines[1]) {
+                    gradeRow.numberOfStudents = parseInt(dataLines[1], 10) || 0
+                }
+
+                if (dataLines[2]) {
+                    const minMarks = parseFloat(dataLines[2])
+                    if (!isNaN(minMarks)) {
+                        if (dataLines.length === 3) {
+                            gradeRow.maxMarks = minMarks
+                        } else {
+                            gradeRow.minMarks = minMarks
+                        }
+                    }
+                }
+
+                if (dataLines[3]) {
+                    const maxMarks = parseFloat(dataLines[3])
+                    if (!isNaN(maxMarks)) {
+                        gradeRow.maxMarks = maxMarks
+                    }
+                }
+
+                gradeData.push(gradeRow)
+            }
+        }
+
+        const headers = [
+            'Grade',
+            'Number of Students',
+            'Min Marks',
+            'Max Marks',
+        ]
+        const rows = gradeData.map((row) => [
+            row.grade,
+            row.numberOfStudents.toString(),
+            row.minMarks?.toString() ?? '',
+            row.maxMarks?.toString() ?? '',
+        ])
+
+        const csvLines = [
+            headers.join(','),
+            ...rows.map((row) => row.join(',')),
+        ]
+
+        if (csvLines.length === 1) {
+            toast.error('Could not parse properly!')
+            return ''
+        }
+
+        return csvLines.join('\n')
+    }
+
+    const handleFormSubmit = (data: CourseGradingFormData) => {
+        if (!parsedData) {
+            // First step: Parse the data
+            if (
+                data.dept !== 'ALL' &&
+                (!depts.includes(data.dept) ||
+                    !data.course.split(' ')[0].includes(data.dept))
+            ) {
+                toast.error(
+                    "Please select a valid department for the course, or choose 'ALL'!"
+                )
+                return
+            }
+
+            const parsed = parseGradingData(data.gradingData)
+            if (parsed) {
+                setParsedData(parsed)
+                setShowParsedData(true)
+            }
+        } else {
+            // Second step: Submit the data
+            onSubmit(data, parsedData)
+        }
+    }
+
+    const handleBack = () => {
+        setParsedData(null)
+        setShowParsedData(false)
+    }
+
+    const resetForm = () => {
+        setParsedData(null)
+        setShowParsedData(false)
+        reset({
+            course: '',
+            dept: '',
+            prof: '',
+            semester: '',
+            gradingData: '',
+            averageMark: '',
+        })
+    }
+
+    // Reset form when resetTrigger changes
+    useEffect(() => {
+        if (resetTrigger) {
+            resetForm()
+        }
+    }, [resetTrigger])
+
+    if (showParsedData && parsedData) {
+        const formData = watch()
+        return (
+            <div className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
+                    <div>
+                        <span className="font-bold">Course:</span>{' '}
+                        {formData.course}
+                    </div>
+                    <div>
+                        <span className="font-bold">Professor:</span>{' '}
+                        {formData.prof}
+                    </div>
+                    <div>
+                        <span className="font-bold">Semester:</span>{' '}
+                        {formData.semester}
+                    </div>
+                    <div>
+                        <span className="font-bold">Department:</span>{' '}
+                        {formData.dept}
+                    </div>
+                </div>
+
+                <div className="space-y-4">
+                    <label className="block text-gray-300 text-sm font-medium">
+                        Parsed Data (Editable)
+                    </label>
+                    <textarea
+                        className="w-full p-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-400 h-60"
+                        value={parsedData}
+                        onChange={(e) => setParsedData(e.target.value)}
+                    />
+                </div>
+
+                <div className="flex justify-center space-x-4">
+                    <button
+                        className="btn btn-outline"
+                        onClick={handleBack}
+                        type="button"
+                    >
+                        Back
+                    </button>
+                    <button
+                        className="btn btn-primary btn-lg min-w-48"
+                        onClick={() => handleFormSubmit(formData)}
+                        disabled={isLoading}
+                        type="button"
+                    >
+                        {isLoading ? (
+                            <>
+                                <span className="loading loading-spinner loading-sm"></span>
+                                Submitting...
+                            </>
+                        ) : (
+                            'Submit Grading Data'
+                        )}
+                    </button>
+                </div>
+            </div>
+        )
+    }
+
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+        <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-6">
             <FormField label="Course" required error={errors.course}>
                 <SelectInput
                     registration={register('course')}
@@ -158,33 +340,15 @@ export default function CourseGradingForm({
             </FormField>
 
             <FormField
-                label="Average Mark (Optional)"
+                label="Average Mark"
                 error={errors.averageMark}
             >
                 <TextInput
                     registration={register('averageMark')}
-                    placeholder="Enter average marks if available"
+                    placeholder="Enter average marks"
                     error={errors.averageMark}
                 />
             </FormField>
-
-            {averageMark && (
-                <div className="bg-green-500/20 border border-green-500/30 rounded-lg p-4 mb-4">
-                    <div className="text-green-400 font-semibold">
-                        Average Mark: {averageMark}
-                    </div>
-                </div>
-            )}
-
-            {showParsedData && parsedData && (
-                <FormField label="Parsed Data Preview">
-                    <div className="bg-white/5 border border-white/20 rounded-lg p-4 max-h-60 overflow-y-auto">
-                        <pre className="text-sm text-gray-300 whitespace-pre-wrap">
-                            {parsedData}
-                        </pre>
-                    </div>
-                </FormField>
-            )}
 
             <div className="flex justify-center">
                 <button
@@ -197,8 +361,6 @@ export default function CourseGradingForm({
                             <span className="loading loading-spinner loading-sm"></span>
                             Processing...
                         </>
-                    ) : showParsedData ? (
-                        'Submit Grading Data'
                     ) : (
                         'Parse & Preview'
                     )}
