@@ -19,7 +19,7 @@ const basePSCutoffSchema = z.object({
         ),
     station: z.string().min(1, 'Station is required'),
     cgpa: z
-        .number()
+        .float32()
         .min(0, 'CGPA must be positive')
         .max(10, 'CGPA cannot exceed 10'),
     preference: z.number().min(1, 'Preference must be at least 1'),
