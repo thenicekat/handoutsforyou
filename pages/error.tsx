@@ -1,5 +1,5 @@
 import Meta from '@/components/Meta'
-import StatusCode from '@/components/StatusCode'
+import StatusPageLayout from '@/layout/StatusPage'
 import { signIn } from 'next-auth/react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -85,7 +85,7 @@ export default function ErrorPage() {
                 <Meta />
 
                 <div className="w-full md:w-2/5 mx-auto">
-                    <StatusCode code={errorContent.code} />
+                    <StatusPageLayout code={errorContent.code} />
                     <div className="text-center -mt-4">
                         <h3 className="text-lg font-semibold text-white">
                             {errorContent.title}

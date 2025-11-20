@@ -1,6 +1,7 @@
 import { BaseResponseData, getUser } from '@/pages/api/auth/[...nextauth]'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { PLACEMENT_CTCS } from '../../constants'
+import { trackContribution } from '../../contributions/track'
 import { supabase } from '../../supabase'
 
 export default async function handler(
@@ -77,7 +78,7 @@ export default async function handler(
             variable_bonus: variableBonus,
             monetary_value_of_benefits: monetaryValueOfBenefits,
             description: description,
-            created_by: email,
+            email: email,
         },
     ])
 
@@ -85,6 +86,10 @@ export default async function handler(
         res.status(500).json({ message: error.message, error: true })
         return
     } else {
+        await trackContribution({
+            email: email,
+            contribution_type: 'placement_ctc',
+        })
         res.status(200).json({
             message: 'success',
             error: false,

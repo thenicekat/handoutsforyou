@@ -1,46 +1,36 @@
-import AutoCompleter from '@/components/AutoCompleter'
-import Menu from '@/components/Menu'
-import Meta from '@/components/Meta'
-import CustomToastContainer from '@/components/ToastContainer'
-import { zobCategories } from '@/config/categories'
 import { getMetaConfig } from '@/config/meta'
+import ResourceForm, {
+    ResourceFormData,
+    ResourceFormRef,
+} from '@/forms/ResourceForm'
+import AddPageLayout from '@/layout/AddPage'
 import { axiosInstance } from '@/utils/axiosCache'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { toast } from 'react-toastify'
 
 export default function AddPlacementResources() {
-    const [name, setName] = useState('')
-    const [link, setLink] = useState('')
-    const [created_by, setCreatedBy] = useState('')
-    const [category, setCategory] = useState('')
-
     const [isLoading, setIsLoading] = useState(false)
+    const formRef = useRef<ResourceFormRef>(null)
 
-    const addResource = async () => {
+    const handleSubmit = async (data: ResourceFormData) => {
         setIsLoading(true)
-        if (zobCategories.indexOf(category) == -1) {
-            toast.error('Please select a valid category!')
-            setIsLoading(false)
-            return
-        }
         try {
             const res = await axiosInstance.post('/api/zob/resources/add', {
-                name: name,
-                link: link,
-                created_by: created_by,
-                category: category,
+                name: data.name,
+                link: data.link,
+                created_by: data.createdBy,
+                category: data.category,
             })
-            const data = res.data
-            if (data.error) {
-                toast.error(data.message)
+            const result = res.data
+
+            if (result.error) {
+                toast.error(result.message)
             } else {
                 toast.success(
                     'Thank you! Your resource was added successfully!'
                 )
-                setName('')
-                setLink('')
-                setCreatedBy('')
-                setCategory('')
+                // Reset form using React Hook Form's reset method
+                formRef.current?.reset()
             }
         } catch (error) {
             console.error('Error adding placement resource:', error)
@@ -50,104 +40,17 @@ export default function AddPlacementResources() {
     }
 
     return (
-        <>
-            <Meta {...getMetaConfig('zob/resources')} />
-            {/* Search box */}
-            <div className="grid place-items-center">
-                <div className="w-[70vw] place-items-center flex flex-col justify-between">
-                    <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">
-                        Resources.
-                    </h1>
-                    <Menu />
-                    {isLoading ? (
-                        <>
-                            <div className="flex flex-col w-3/4 justify-between m-1">
-                                <label className="text-primary">
-                                    Loading...
-                                </label>
-                            </div>
-                        </>
-                    ) : (
-                        <>
-                            {/* Take input */}
-                            <div className="flex flex-col w-3/4 justify-between m-1">
-                                <label
-                                    htmlFor="resourceName"
-                                    className="text-primary"
-                                >
-                                    Name of the Resource
-                                </label>
-                                <input
-                                    type="text"
-                                    id="resourceName"
-                                    className="input input-secondary"
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)}
-                                />
-                            </div>
-
-                            <div className="flex flex-col w-3/4 justify-between m-1">
-                                <label
-                                    htmlFor="resourceLink"
-                                    className="text-primary"
-                                >
-                                    Link
-                                </label>
-                                <input
-                                    type="text"
-                                    id="resourceLink"
-                                    className="input input-secondary"
-                                    value={link}
-                                    onChange={(e) => setLink(e.target.value)}
-                                />
-                            </div>
-
-                            <div className="flex flex-col w-3/4 justify-between m-1">
-                                <label
-                                    htmlFor="createdBy"
-                                    className="text-primary"
-                                >
-                                    Created By
-                                </label>
-                                <input
-                                    type="text"
-                                    id="createdBy"
-                                    className="input input-secondary"
-                                    value={created_by}
-                                    onChange={(e) =>
-                                        setCreatedBy(e.target.value)
-                                    }
-                                />
-                            </div>
-
-                            <div className="flex flex-col w-3/4 justify-between m-1">
-                                <label
-                                    htmlFor="category"
-                                    className="text-primary"
-                                >
-                                    Category
-                                </label>
-                                <AutoCompleter
-                                    name="category"
-                                    items={zobCategories}
-                                    value={category}
-                                    onChange={(val) => setCategory(val)}
-                                />
-                            </div>
-
-                            <div className="text-center flex-wrap w-3/4 justify-between m-1">
-                                <button
-                                    className="btn btn-primary"
-                                    onClick={addResource}
-                                >
-                                    Submit
-                                </button>
-                            </div>
-                        </>
-                    )}
-                </div>
-            </div>
-            <CustomToastContainer containerId="addZobResources" />
-        </>
+        <AddPageLayout
+            title="Add Placement Resource"
+            metaConfig={getMetaConfig('zob/resources')}
+            containerId="addZobResources"
+        >
+            <ResourceForm
+                ref={formRef}
+                resourceType="placement"
+                onSubmit={handleSubmit}
+                isLoading={isLoading}
+            />
+        </AddPageLayout>
     )
 }

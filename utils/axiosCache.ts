@@ -43,7 +43,7 @@ axiosInstance.interceptors.response.use(
         }
         if (status === 503) {
             if (typeof window !== 'undefined') {
-                window.location.assign('/error?error=Unavailable')
+                window.location.assign('/contribute')
             }
         }
         return Promise.reject(error)

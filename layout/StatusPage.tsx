@@ -4,7 +4,7 @@ type Props = {
     code: number
 }
 
-export default function StatusCode({ code }: Props) {
+export default function StatusPageLayout({ code }: Props) {
     return (
         <div className="flex justify-center items-center p-10">
             <div className="w-full md:w-4/5">
