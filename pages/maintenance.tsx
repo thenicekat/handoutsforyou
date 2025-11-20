@@ -88,10 +88,9 @@ export default function MaintenancePage() {
 
     const fetchStats = async () => {
         try {
-            const res = await fetch('/api/contributions/stats')
-            const data = await res.json()
-            if (!data.error) {
-                setStats(data.data)
+            const response = await axiosInstance.get('/api/contributions/stats')
+            if (!response.data.error) {
+                setStats(response.data.data)
             }
         } catch (error) {
             console.error('Failed to fetch contribution stats:', error)
@@ -159,19 +158,17 @@ export default function MaintenancePage() {
     const handleCourseResourceSubmit = async (data: ResourceFormData) => {
         setIsLoading(true)
         try {
-            const res = await fetch('/api/courses/resources/add', {
-                method: 'POST',
-                body: JSON.stringify({
+            const response = await axiosInstance.post(
+                '/api/courses/resources/add',
+                {
                     name: data.name,
                     link: data.link,
                     created_by: data.createdBy,
                     category: data.category,
-                }),
-                headers: { 'Content-Type': 'application/json' },
-            })
-            const result = await res.json()
-            if (result.error) {
-                toast.error(result.message)
+                }
+            )
+            if (response.data.error) {
+                toast.error(response.data.message)
             } else {
                 toast.success(
                     'Thank you! Your course resource was added successfully!'
@@ -187,19 +184,17 @@ export default function MaintenancePage() {
     const handlePlacementResourceSubmit = async (data: ResourceFormData) => {
         setIsLoading(true)
         try {
-            const res = await fetch('/api/zob/resources/add', {
-                method: 'POST',
-                body: JSON.stringify({
+            const response = await axiosInstance.post(
+                '/api/zob/resources/add',
+                {
                     name: data.name,
                     link: data.link,
                     created_by: data.createdBy,
                     category: data.category,
-                }),
-                headers: { 'Content-Type': 'application/json' },
-            })
-            const result = await res.json()
-            if (result.error) {
-                toast.error(result.message)
+                }
+            )
+            if (response.data.error) {
+                toast.error(response.data.message)
             } else {
                 toast.success(
                     'Thank you! Your placement resource was added successfully!'
@@ -217,19 +212,17 @@ export default function MaintenancePage() {
     ) => {
         setIsLoading(true)
         try {
-            const res = await fetch('/api/higherstudies/resources/add', {
-                method: 'POST',
-                body: JSON.stringify({
+            const response = await axiosInstance.post(
+                '/api/higherstudies/resources/add',
+                {
                     name: data.name,
                     link: data.link,
                     created_by: data.createdBy,
                     category: data.category,
-                }),
-                headers: { 'Content-Type': 'application/json' },
-            })
-            const result = await res.json()
-            if (result.error) {
-                toast.error(result.message)
+                }
+            )
+            if (response.data.error) {
+                toast.error(response.data.message)
             } else {
                 toast.success(
                     'Thank you! Your higher studies resource was added successfully!'
@@ -248,24 +241,19 @@ export default function MaintenancePage() {
     ) => {
         setIsLoading(true)
         try {
-            const res = await fetch('/api/zob/ctcs/add', {
-                method: 'POST',
-                body: JSON.stringify({
-                    company: data.name,
-                    campus: data.campus,
-                    academicYear: data.academicYear,
-                    base: data.base,
-                    joiningBonus: data.joiningBonus,
-                    relocationBonus: data.relocationBonus,
-                    variableBonus: data.variableBonus,
-                    monetaryValueOfBenefits: data.monetaryValueOfBenefits,
-                    description: data.description,
-                }),
-                headers: { 'Content-Type': 'application/json' },
+            const response = await axiosInstance.post('/api/zob/ctcs/add', {
+                company: data.name,
+                campus: data.campus,
+                academicYear: data.academicYear,
+                base: data.base,
+                joiningBonus: data.joiningBonus,
+                relocationBonus: data.relocationBonus,
+                variableBonus: data.variableBonus,
+                monetaryValueOfBenefits: data.monetaryValueOfBenefits,
+                description: data.description,
             })
-            const result = await res.json()
-            if (result.error) {
-                toast.error(result.message)
+            if (response.data.error) {
+                toast.error(response.data.message)
             } else {
                 toast.success(
                     'Thank you! Your placement CTC was added successfully!'
@@ -282,18 +270,16 @@ export default function MaintenancePage() {
     const handleCourseReviewSubmit = async (data: CourseReviewFormData) => {
         setIsLoading(true)
         try {
-            const res = await fetch('/api/courses/reviews/add', {
-                method: 'POST',
-                body: JSON.stringify({
+            const response = await axiosInstance.post(
+                '/api/courses/reviews/add',
+                {
                     course: data.course,
                     prof: data.prof,
                     review: data.review,
-                }),
-                headers: { 'Content-Type': 'application/json' },
-            })
-            const result = await res.json()
-            if (result.error) {
-                toast.error(result.message)
+                }
+            )
+            if (response.data.error) {
+                toast.error(response.data.message)
             } else {
                 toast.success(
                     'Thank you! Your course review was added successfully!'
@@ -309,21 +295,19 @@ export default function MaintenancePage() {
     const handleCourseGradingSubmit = async (data: CourseGradingFormData) => {
         setIsLoading(true)
         try {
-            const res = await fetch('/api/courses/grading/add', {
-                method: 'POST',
-                body: JSON.stringify({
+            const response = await axiosInstance.post(
+                '/api/courses/grading/add',
+                {
                     course: data.course,
                     dept: data.dept,
                     sem: data.semester,
                     prof: data.prof,
                     data: data.gradingData,
                     average_mark: data.averageMark,
-                }),
-                headers: { 'Content-Type': 'application/json' },
-            })
-            const result = await res.json()
-            if (result.error) {
-                toast.error(result.message)
+                }
+            )
+            if (response.data.error) {
+                toast.error(response.data.message)
             } else {
                 toast.success(
                     'Thank you! Your course grading data was added successfully!'
@@ -358,14 +342,12 @@ export default function MaintenancePage() {
                     : {}),
             }
 
-            const res = await fetch('/api/ps/cutoffs/add', {
-                method: 'POST',
-                body: JSON.stringify(payload),
-                headers: { 'Content-Type': 'application/json' },
-            })
-            const result = await res.json()
-            if (result.error) {
-                toast.error(result.message)
+            const response = await axiosInstance.post(
+                '/api/ps/cutoffs/add',
+                payload
+            )
+            if (response.data.error) {
+                toast.error(response.data.message)
             } else {
                 toast.success(
                     `Thank you! Your ${contributionType === PS1_CUTOFF ? 'PS1' : 'PS2'} cutoff was added successfully!`

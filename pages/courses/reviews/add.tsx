@@ -3,6 +3,7 @@ import CourseReviewForm, {
     CourseReviewFormData,
 } from '@/forms/CourseReviewForm'
 import AddPageLayout from '@/layout/AddPage'
+import axiosInstance from '@/utils/axiosCache'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
@@ -18,19 +19,17 @@ export default function AddReview() {
     ) => {
         setIsLoading(true)
         try {
-            const res = await fetch('/api/courses/reviews/add', {
-                method: 'POST',
-                body: JSON.stringify({
+            const response = await axiosInstance.post(
+                '/api/courses/reviews/add',
+                {
                     course: data.course,
                     prof: data.prof,
                     review: data.review,
-                }),
-                headers: { 'Content-Type': 'application/json' },
-            })
-            const result = await res.json()
+                }
+            )
 
-            if (result.error) {
-                toast.error(result.message)
+            if (response.data.error) {
+                toast.error(response.data.message)
             } else {
                 toast.success('Thank you! Your review was added successfully!')
                 // Clear localStorage

@@ -5,6 +5,7 @@ import CourseGradingForm, {
 } from '@/forms/CourseGradingForm'
 import AddPageLayout from '@/layout/AddPage'
 import { CourseGradeRow } from '@/types/Courses'
+import axiosInstance from '@/utils/axiosCache'
 import { GetStaticProps } from 'next'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
@@ -146,22 +147,20 @@ export default function AddGrading({ depts }: { depts: string[] }) {
 
         setIsLoading(true)
         try {
-            const response = await fetch('/api/courses/grading/add', {
-                method: 'POST',
-                body: JSON.stringify({
+            const response = await axiosInstance.post(
+                '/api/courses/grading/add',
+                {
                     course: data.course,
                     dept: data.dept,
                     prof: data.prof,
                     sem: data.semester,
                     data: parsedData,
                     average_mark: parseFloat(data.averageMark || '0'),
-                }),
-                headers: { 'Content-Type': 'application/json' },
-            })
+                }
+            )
 
-            const result = await response.json()
-            if (result.error) {
-                toast.error(result.message)
+            if (response.data.error) {
+                toast.error(response.data.message)
             } else {
                 toast.success('Grading data added successfully! Thank you!')
 

@@ -86,7 +86,7 @@ export default function ErrorPage() {
 
                 <div className="w-full md:w-2/5 mx-auto">
                     <StatusPageLayout code={errorContent.code} />
-                    <div className="text-center -mt-4">
+                    <div className="text-center mt-4">
                         <h3 className="text-lg font-semibold text-white">
                             {errorContent.title}
                         </h3>

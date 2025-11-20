@@ -4,6 +4,7 @@ import ResourceForm, {
     ResourceFormRef,
 } from '@/forms/ResourceForm'
 import AddPageLayout from '@/layout/AddPage'
+import axiosInstance from '@/utils/axiosCache'
 import { useRef, useState } from 'react'
 import { toast } from 'react-toastify'
 
@@ -14,20 +15,18 @@ export default function AddResources() {
     const handleSubmit = async (data: ResourceFormData) => {
         setIsLoading(true)
         try {
-            const res = await fetch('/api/courses/resources/add', {
-                method: 'POST',
-                body: JSON.stringify({
+            const response = await axiosInstance.post(
+                '/api/courses/resources/add',
+                {
                     name: data.name,
                     link: data.link,
                     created_by: data.createdBy,
                     category: data.category,
-                }),
-                headers: { 'Content-Type': 'application/json' },
-            })
-            const result = await res.json()
+                }
+            )
 
-            if (result.error) {
-                toast.error(result.message)
+            if (response.data.error) {
+                toast.error(response.data.message)
             } else {
                 toast.success(
                     'Thank you! Your resource was added successfully!'

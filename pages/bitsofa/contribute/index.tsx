@@ -64,23 +64,15 @@ export default function ContributeAdvice() {
     const submitAdvice = async () => {
         setIsSubmitting(true)
         try {
-            const response = await fetch('/api/bitsofa/add', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    title,
-                    author,
-                    content,
-                    tags: selectedTags,
-                }),
+            const response = await axiosInstance.post('/api/bitsofa/add', {
+                title,
+                author,
+                content,
+                tags: selectedTags,
             })
 
-            const result = await response.json()
-
-            if (!response.ok || result.error) {
-                toast.error(result.message || 'Failed to submit advice')
+            if (response.data.error) {
+                toast.error(response.data.message || 'Failed to submit advice')
                 return
             }
 
