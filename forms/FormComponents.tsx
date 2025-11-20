@@ -57,6 +57,7 @@ export function TextInput({
     return (
         <input
             type={type}
+            step="0.01"
             {...registration}
             className={`w-full p-3 bg-white/10 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-400 ${
                 error ? 'border-red-400 focus:ring-red-400' : 'border-white/20'
