@@ -1,5 +1,6 @@
 import { getUser } from '@/pages/api/auth/[...nextauth]'
 import { googleDriveService } from '@/utils/googleDrive'
+import { trackContribution } from '../../contributions/track'
 import formidable, { Part } from 'formidable'
 import fs from 'fs'
 import { NextApiRequest, NextApiResponse } from 'next'
@@ -14,7 +15,7 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
-    await getUser(req, res)
+    const { email } = await getUser(req, res)
     if (req.method !== 'POST') {
         return res.status(405).json({ message: 'Method not allowed' })
     }
@@ -79,6 +80,13 @@ export default async function handler(
         )
 
         fs.unlinkSync(file.filepath)
+
+        try {
+            await trackContribution({ email: email || 'Anonymous', contribution_type: 'course_pyq' })
+        } catch (e) {
+            // Non-fatal: tracking failure should not block upload success
+            console.error('Failed to track PYQ contribution', e)
+        }
 
         res.status(200).json({
             error: false,
