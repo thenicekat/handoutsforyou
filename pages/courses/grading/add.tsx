@@ -42,7 +42,10 @@ export default function AddGrading({ depts }: { depts: string[] }) {
         return values
     }
 
-    const handleSubmit = async (data: CourseGradingFormData, parsedData: string) => {
+    const handleSubmit = async (
+        data: CourseGradingFormData,
+        parsedData: string
+    ) => {
         if (!parsedData || parsedData.trim() === '') {
             toast.error('Please ensure the grading data is not empty!')
             return
@@ -68,7 +71,7 @@ export default function AddGrading({ depts }: { depts: string[] }) {
                 toast.success('Grading data added successfully! Thank you!')
 
                 setDefaultValues({})
-                setResetTrigger(prev => prev + 1)
+                setResetTrigger((prev) => prev + 1)
 
                 localStorage.removeItem('h4u_grading_course')
                 localStorage.removeItem('h4u_grading_prof')

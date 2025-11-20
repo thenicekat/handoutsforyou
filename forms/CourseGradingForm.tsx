@@ -106,7 +106,10 @@ export default function CourseGradingForm({
     }, [defaultValues, reset])
 
     const parseGradingData = (input: string): string => {
-        const lines = input.split('\n').map((line) => line.trim())
+        const lines = input
+            .split('\n')
+            .map((line) => line.trim())
+            .filter((line) => line.length > 0)
         const gradeData: CourseGradeRow[] = []
         const rowPattern = /^Row\s*\d+$/
 
@@ -115,7 +118,6 @@ export default function CourseGradingForm({
                 const dataLines = lines
                     .slice(i + 1, i + 5)
                     .filter((line) => line.length > 0)
-
                 const gradeRow: CourseGradeRow = {
                     grade: '',
                     numberOfStudents: 0,
@@ -339,10 +341,7 @@ export default function CourseGradingForm({
                 />
             </FormField>
 
-            <FormField
-                label="Average Mark"
-                error={errors.averageMark}
-            >
+            <FormField label="Average Mark" error={errors.averageMark}>
                 <TextInput
                     registration={register('averageMark')}
                     placeholder="Enter average marks"
