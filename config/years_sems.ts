@@ -2,6 +2,7 @@
 export const ps1Years = ['2023 Batch', '2022 Batch', '2021 Batch']
 // For PS2.
 export const ps2Semesters = [
+    '25-26 Sem 2',
     '25-26 Sem 1',
     '24-25 Sem 2',
     '24-25 Sem 1',
