@@ -2,6 +2,7 @@ import { BaseResponseData, getUser } from '@/pages/api/auth/[...nextauth]'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { PS1_REVIEWS, PS2_REVIEWS } from '../../constants'
 import { supabase } from '../../supabase'
+import { trackContribution } from '../../contributions/track'
 
 export default async function handler(
     req: NextApiRequest,
@@ -29,6 +30,10 @@ export default async function handler(
             res.status(500).json({ message: error.message, error: true })
             return
         } else {
+            await trackContribution({
+                email: email,
+                contribution_type: 'ps1_review',
+            })
             res.status(200).json({
                 message: 'success',
                 error: false,
@@ -48,6 +53,10 @@ export default async function handler(
             res.status(500).json({ message: error.message, error: true })
             return
         } else {
+            await trackContribution({
+                email: email,
+                contribution_type: 'ps2_review',
+            })
             res.status(200).json({
                 message: 'success',
                 error: false,

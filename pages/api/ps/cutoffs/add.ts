@@ -1,7 +1,6 @@
 import { BaseResponseData, getUser } from '@/pages/api/auth/[...nextauth]'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { PS1_RESPONSES, PS2_RESPONSES } from '../../constants'
-import { trackContribution } from '../../contributions/track'
 import { supabase } from '../../supabase'
 
 type RequestData = {
@@ -151,11 +150,6 @@ export default async function handler(
                 })
                 return
             } else {
-                await trackContribution({
-                    email: email,
-                    contribution_type: 'ps1_cutoff',
-                })
-
                 res.status(200).json({
                     message: 'success',
                     data: data,
@@ -256,11 +250,6 @@ export default async function handler(
                 })
                 return
             } else {
-                await trackContribution({
-                    email: email,
-                    contribution_type: 'ps2_cutoff',
-                })
-
                 res.status(200).json({
                     message: 'success',
                     data: data,

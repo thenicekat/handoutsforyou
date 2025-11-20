@@ -10,10 +10,13 @@ import CourseReviewForm, {
 } from '@/forms/CourseReviewForm'
 import { FormField } from '@/forms/FormComponents'
 import PSCutoffForm, { PSCutoffFormData } from '@/forms/PSCutoffForm'
+import PSReviewForm, { PSReviewFormData } from '@/forms/PSReviewForm'
 import PlacementCTCForm, {
     PlacementCTCFormData,
 } from '@/forms/PlacementCTCForm'
 import ResourceForm, { ResourceFormData } from '@/forms/ResourceForm'
+import { PS1Item, PS2Item } from '@/types/PS'
+import { axiosInstance } from '@/utils/axiosCache'
 import { useEffect, useMemo, useState } from 'react'
 import CountUp from 'react-countup'
 import { toast } from 'react-toastify'
@@ -23,6 +26,8 @@ const COURSE_REVIEW = 'course_review'
 const COURSE_GRADING = 'course_grading'
 const PS1_CUTOFF = 'ps1_cutoff'
 const PS2_CUTOFF = 'ps2_cutoff'
+const PS1_REVIEW = 'ps1_review'
+const PS2_REVIEW = 'ps2_review'
 const PLACEMENT_RESOURCE = 'placement_resource'
 const PLACEMENT_CTC = 'placement_ctc'
 const HIGHERSTUDIES_RESOURCE = 'higherstudies_resource'
@@ -33,6 +38,8 @@ type ContributionType =
     | typeof COURSE_GRADING
     | typeof PS1_CUTOFF
     | typeof PS2_CUTOFF
+    | typeof PS1_REVIEW
+    | typeof PS2_REVIEW
     | typeof PLACEMENT_RESOURCE
     | typeof PLACEMENT_CTC
     | typeof HIGHERSTUDIES_RESOURCE
@@ -43,6 +50,8 @@ const contributionTypes = [
     { value: COURSE_GRADING, label: 'Course Grading' },
     { value: PS1_CUTOFF, label: 'PS1 Cutoff' },
     { value: PS2_CUTOFF, label: 'PS2 Cutoff' },
+    { value: PS1_REVIEW, label: 'PS1 Review' },
+    { value: PS2_REVIEW, label: 'PS2 Review' },
     { value: PLACEMENT_RESOURCE, label: 'Placement Resource' },
     { value: PLACEMENT_CTC, label: 'Placement CTC' },
     { value: HIGHERSTUDIES_RESOURCE, label: 'Higher Studies Resource' },
@@ -67,6 +76,11 @@ export default function MaintenancePage() {
         useState<ContributionType>(COURSE_RESOURCE)
     const [isLoading, setIsLoading] = useState(false)
 
+    // PS Review state
+    const [psUserResponses, setPsUserResponses] = useState<(PS1Item | PS2Item)[]>([])
+    const [selectedPsResponse, setSelectedPsResponse] = useState<PS1Item | PS2Item | null>(null)
+    const [isPsLoading, setIsPsLoading] = useState(false)
+
     const fetchStats = async () => {
         try {
             const res = await fetch('/api/contributions/stats')
@@ -84,6 +98,20 @@ export default function MaintenancePage() {
     useEffect(() => {
         fetchStats()
     }, [])
+
+    // Fetch PS responses when contribution type changes to PS review
+    useEffect(() => {
+        if (contributionType === PS1_REVIEW) {
+            fetchPsUserResponses('ps1')
+            setSelectedPsResponse(null)
+        } else if (contributionType === PS2_REVIEW) {
+            fetchPsUserResponses('ps2')
+            setSelectedPsResponse(null)
+        } else {
+            setPsUserResponses([])
+            setSelectedPsResponse(null)
+        }
+    }, [contributionType])
 
     const onContributionAdded = () => {
         fetchStats()
@@ -345,6 +373,73 @@ export default function MaintenancePage() {
         setIsLoading(false)
     }
 
+    const fetchPsUserResponses = async (psType: 'ps1' | 'ps2') => {
+        setIsPsLoading(true)
+        try {
+            const response = await axiosInstance.post('/api/ps/cutoffs/get', {
+                type: psType,
+            })
+
+            if (response.status === 200) {
+                const data = response.data
+                if (!data.error) {
+                    setPsUserResponses(data.data)
+                } else {
+                    toast.error(data.message)
+                    setPsUserResponses([])
+                }
+            } else {
+                toast.error('Failed to fetch your responses')
+                setPsUserResponses([])
+            }
+        } catch (error) {
+            console.error('Error fetching user responses:', error)
+            toast.error('An error occurred while fetching your responses')
+            setPsUserResponses([])
+        } finally {
+            setIsPsLoading(false)
+        }
+    }
+
+    const handlePsResponseSelect = (response: PS1Item | PS2Item) => {
+        setSelectedPsResponse(response)
+    }
+
+    const handlePSReviewSubmit = async (data: PSReviewFormData) => {
+        if (!selectedPsResponse) {
+            toast.error('Please select a PS response')
+            return
+        }
+
+        setIsLoading(true)
+        try {
+            const psType = contributionType === PS1_REVIEW ? 'PS1' : 'PS2'
+            const response = await axiosInstance.post('/api/ps/reviews/add', {
+                type: psType,
+                batch: selectedPsResponse.year_and_sem,
+                station: selectedPsResponse.station,
+                review: data.review,
+                allotment_round: selectedPsResponse.allotment_round,
+            })
+            const res = response.data
+
+            if (res.error) {
+                toast.error(res.message)
+            } else {
+                toast.success(
+                    `Thank you! Your ${psType} review was added successfully!`
+                )
+                setSelectedPsResponse(null)
+                setPsUserResponses([])
+                onContributionAdded()
+            }
+        } catch (error) {
+            console.error('Error adding review:', error)
+            toast.error('Failed to add review')
+        }
+        setIsLoading(false)
+    }
+
     return (
         <>
             <Meta />
@@ -561,6 +656,20 @@ export default function MaintenancePage() {
                                 isPS1={contributionType === PS1_CUTOFF}
                                 onSubmit={handlePSCutoffSubmit}
                                 isLoading={isLoading}
+                            />
+                        )}
+
+                        {/* PS Review Forms */}
+                        {(contributionType === PS1_REVIEW ||
+                            contributionType === PS2_REVIEW) && (
+                            <PSReviewForm
+                                isPS1={contributionType === PS1_REVIEW}
+                                userResponses={psUserResponses}
+                                selectedResponse={selectedPsResponse}
+                                onResponseSelect={handlePsResponseSelect}
+                                onSubmit={handlePSReviewSubmit}
+                                isLoading={isPsLoading}
+                                isSubmitting={isLoading}
                             />
                         )}
                     </div>

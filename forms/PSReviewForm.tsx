@@ -79,7 +79,7 @@ export default function PSReviewForm<T extends PS1Item | PS2Item>({
                 </p>
                 <Link
                     href={addUrl}
-                    className="bg-gradient-to-r from-amber-400 to-orange-500 text-black font-semibold py-3 px-6 rounded-lg hover:scale-105 transition-transform"
+                    className="bg-gradient-to-r from-amber-400 to-orange-500 text-black font-semibold p-4 rounded-lg hover:scale-105 transition-transform"
                 >
                     Submit {psType} Response
                 </Link>
