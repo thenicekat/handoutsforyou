@@ -7,7 +7,7 @@ import { z } from 'zod'
 import { FormField, TextArea } from './FormComponents'
 
 const psReviewSchema = z.object({
-    review: z.string().min(10, 'Review must be at least 10 characters long'),
+    review: z.string().min(100, 'Review must be at least 100 characters long'),
 })
 
 export type PSReviewFormData = z.infer<typeof psReviewSchema>
