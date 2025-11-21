@@ -71,12 +71,10 @@ const ResourceForm = forwardRef<ResourceFormRef, ResourceFormProps>(
             switch (resourceType) {
                 case 'course':
                     return {
-                        categoryOptions: Object.keys(departments).map(
-                            (dept) => ({
-                                value: dept,
-                                label: dept,
-                            })
-                        ),
+                        categoryOptions: Object.keys(departments).map(dept => ({
+                            value: dept,
+                            label: dept,
+                        })),
                         categoryLabel: 'Department',
                         categoryPlaceholder: 'Select department',
                         allowTextCategory: false,
@@ -84,7 +82,7 @@ const ResourceForm = forwardRef<ResourceFormRef, ResourceFormProps>(
                 case 'higherStudies':
                     return {
                         categoryOptions: higherStudiesCategories.map(
-                            (category) => ({
+                            category => ({
                                 value: category,
                                 label: category,
                             })
@@ -95,7 +93,7 @@ const ResourceForm = forwardRef<ResourceFormRef, ResourceFormProps>(
                     }
                 case 'placement':
                     return {
-                        categoryOptions: zobCategories.map((category) => ({
+                        categoryOptions: zobCategories.map(category => ({
                             value: category,
                             label: category,
                         })),

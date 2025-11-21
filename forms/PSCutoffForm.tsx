@@ -14,7 +14,7 @@ const basePSCutoffSchema = z.object({
         .string()
         .min(1, 'Year/Semester is required')
         .refine(
-            (val) => ps1Years.includes(val) || ps2Semesters.includes(val),
+            val => ps1Years.includes(val) || ps2Semesters.includes(val),
             'Please select a valid year/semester from the list'
         ),
     station: z.string().min(1, 'Station is required'),
@@ -27,7 +27,7 @@ const basePSCutoffSchema = z.object({
         .string()
         .min(1, 'Allotment Round is required')
         .refine(
-            (val) => psAllotmentRounds.includes(val),
+            val => psAllotmentRounds.includes(val),
             'Please select a valid allotment round from the list'
         ),
     isPublic: z.boolean(),
@@ -47,7 +47,7 @@ const ps2CutoffSchema = basePSCutoffSchema
         offshootTotal: z.number().min(0, 'Offshoot Total must be positive'),
         offshootType: z.string().min(1, 'Offshoot Type is required'),
     })
-    .refine((data) => data.offshoot <= data.offshootTotal, {
+    .refine(data => data.offshoot <= data.offshootTotal, {
         message: 'Offshoot cannot be greater than Offshoot Total',
         path: ['offshoot'],
     })
@@ -99,10 +99,10 @@ export default function PSCutoffForm({
     })
 
     const yearOptions = isPS1
-        ? ps1Years.map((year) => ({ value: year, label: year }))
-        : ps2Semesters.map((sem) => ({ value: sem, label: sem }))
+        ? ps1Years.map(year => ({ value: year, label: year }))
+        : ps2Semesters.map(sem => ({ value: sem, label: sem }))
 
-    const roundOptions = psAllotmentRounds.map((round) => ({
+    const roundOptions = psAllotmentRounds.map(round => ({
         value: round,
         label: round,
     }))

@@ -11,8 +11,8 @@ export default async function handler(
 ) {
     const depts: string[] = Object.values(departments)
         .flatMap((code: string) => code.split('/'))
-        .map((code) => code.trim())
-        .filter((code) => code.length > 0)
+        .map(code => code.trim())
+        .filter(code => code.length > 0)
 
     const { course, dept, sem, prof, data, average_mark } = req.body
     const { email } = await getUser(req, res)

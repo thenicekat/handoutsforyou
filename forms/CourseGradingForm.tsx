@@ -20,7 +20,7 @@ const courseGradingSchema = z.object({
         .string()
         .min(1, 'Course is required')
         .refine(
-            (val) => courses.includes(val),
+            val => courses.includes(val),
             'Please select a valid course from the list'
         ),
     dept: z.string().min(1, 'Department is required'),
@@ -28,14 +28,14 @@ const courseGradingSchema = z.object({
         .string()
         .min(1, 'Professor is required')
         .refine(
-            (val) => profs.map((p) => p.name).includes(val),
+            val => profs.map(p => p.name).includes(val),
             'Please select a valid professor from the list'
         ),
     semester: z
         .string()
         .min(1, 'Semester is required')
         .refine(
-            (val) => gradedSemesters.includes(val),
+            val => gradedSemesters.includes(val),
             'Please select a valid semester from the list'
         ),
     gradingData: z.string().min(10, 'Grading data is required'),
@@ -85,17 +85,17 @@ export default function CourseGradingForm({
 
     const course = watch('course')
 
-    const semesterOptions = gradedSemesters.map((sem) => ({
+    const semesterOptions = gradedSemesters.map(sem => ({
         value: sem,
         label: sem,
     }))
 
-    const deptOptions = filterDepartmentCodes(course || '').map((d) => ({
+    const deptOptions = filterDepartmentCodes(course || '').map(d => ({
         value: d,
         label: d,
     }))
 
-    const profNames = profs.map((prof) => prof.name)
+    const profNames = profs.map(prof => prof.name)
 
     // Reset form when defaultValues change
     useEffect(() => {
@@ -107,8 +107,8 @@ export default function CourseGradingForm({
     const parseGradingData = (input: string): string => {
         const lines = input
             .split('\n')
-            .map((line) => line.trim())
-            .filter((line) => line.length > 0)
+            .map(line => line.trim())
+            .filter(line => line.length > 0)
         const gradeData: CourseGradeRow[] = []
         const rowPattern = /^Row\s*\d+$/
 
@@ -116,7 +116,7 @@ export default function CourseGradingForm({
             if (rowPattern.test(lines[i])) {
                 const dataLines = lines
                     .slice(i + 1, i + 5)
-                    .filter((line) => line.length > 0)
+                    .filter(line => line.length > 0)
                 const gradeRow: CourseGradeRow = {
                     grade: '',
                     numberOfStudents: 0,
@@ -156,17 +156,14 @@ export default function CourseGradingForm({
             'Min Marks',
             'Max Marks',
         ]
-        const rows = gradeData.map((row) => [
+        const rows = gradeData.map(row => [
             row.grade,
             row.numberOfStudents.toString(),
             row.minMarks?.toString() ?? '',
             row.maxMarks?.toString() ?? '',
         ])
 
-        const csvLines = [
-            headers.join(','),
-            ...rows.map((row) => row.join(',')),
-        ]
+        const csvLines = [headers.join(','), ...rows.map(row => row.join(','))]
 
         if (csvLines.length === 1) {
             toast.error('Could not parse properly!')
@@ -256,7 +253,7 @@ export default function CourseGradingForm({
                     <textarea
                         className="w-full p-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-400 h-60"
                         value={parsedData}
-                        onChange={(e) => setParsedData(e.target.value)}
+                        onChange={e => setParsedData(e.target.value)}
                     />
                 </div>
 

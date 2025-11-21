@@ -29,7 +29,7 @@ export default function AddPS2Response() {
     useEffect(() => {
         if (selectedResponse) {
             const response = userResponses.find(
-                (r) => r.id.toString() === selectedResponse
+                r => r.id.toString() === selectedResponse
             )
             if (response) {
                 setResponseId(response.id)
@@ -111,7 +111,7 @@ export default function AddPS2Response() {
         setIsLoading(false)
     }
 
-    const responseOptions = userResponses.map((response) => ({
+    const responseOptions = userResponses.map(response => ({
         value: response.id.toString(),
         label: `${response.station} - ${response.year_and_sem} - ${response.allotment_round}`,
     }))
@@ -131,15 +131,13 @@ export default function AddPS2Response() {
                     ) : userResponses.length > 0 ? (
                         <select
                             value={selectedResponse}
-                            onChange={(e) =>
-                                setSelectedResponse(e.target.value)
-                            }
+                            onChange={e => setSelectedResponse(e.target.value)}
                             className="w-full p-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-amber-400"
                         >
                             <option value="" className="bg-gray-800">
                                 Select a response to edit
                             </option>
-                            {responseOptions.map((option) => (
+                            {responseOptions.map(option => (
                                 <option
                                     key={option.value}
                                     value={option.value}
@@ -165,7 +163,7 @@ export default function AddPS2Response() {
                     selectedResponse
                         ? (() => {
                               const response = userResponses.find(
-                                  (r) => r.id.toString() === selectedResponse
+                                  r => r.id.toString() === selectedResponse
                               )
                               return response
                                   ? {

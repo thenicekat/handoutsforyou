@@ -44,7 +44,7 @@ title: "${title}"
 author: "${author}"
 email: "${email}"
 date: "${currentDate}"
-tags: [${tags.map((tag) => `"${tag}"`).join(', ')}]
+tags: [${tags.map(tag => `"${tag}"`).join(', ')}]
 ---
 
 ${content}

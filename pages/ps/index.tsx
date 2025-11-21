@@ -80,7 +80,7 @@ export default function PS() {
                 <div className="w-[70vw] mt-8">
                     <h2 className="text-2xl font-bold mb-4">PS1 Resources</h2>
                     <div className="grid md:grid-cols-2 gap-4">
-                        {psResources.ps1.map((resource) => (
+                        {psResources.ps1.map(resource => (
                             <div
                                 className="card bg-base-100 shadow-xl"
                                 key={resource.title}
@@ -111,7 +111,7 @@ export default function PS() {
                 <div className="w-[70vw] mt-8 mb-8">
                     <h2 className="text-2xl font-bold mb-4">PS2 Resources</h2>
                     <div className="grid md:grid-cols-2 gap-4">
-                        {psResources.ps2.map((resource) => (
+                        {psResources.ps2.map(resource => (
                             <div
                                 className="card bg-base-100 shadow-xl"
                                 key={resource.title}

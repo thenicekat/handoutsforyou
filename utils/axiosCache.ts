@@ -19,13 +19,13 @@ const axiosInstance: AxiosCacheInstance = setupCache(
     {
         storage: buildMemoryStorage(),
         cachePredicate: {
-            statusCheck: (status) => status >= 200 && status < 300,
-            responseMatch: (res) => {
+            statusCheck: status => status >= 200 && status < 300,
+            responseMatch: res => {
                 // Only cache GET requests for safety
                 return res.config.method?.toLowerCase() === 'get'
             },
         },
-        generateKey: (req) => {
+        generateKey: req => {
             return `${req.method?.toUpperCase()}_${req.url}`
         },
         ttl: 3600000,
@@ -33,8 +33,8 @@ const axiosInstance: AxiosCacheInstance = setupCache(
 )
 
 axiosInstance.interceptors.response.use(
-    (response) => response,
-    (error) => {
+    response => response,
+    error => {
         const status = error?.response?.status
         if (status === 401 || status === 403) {
             if (typeof window !== 'undefined') {

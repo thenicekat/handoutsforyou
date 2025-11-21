@@ -96,7 +96,7 @@ export default function PSReviewForm<T extends PS1Item | PS2Item>({
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
             <FormField label={`Your ${psType} Responses`} className="mb-8">
                 <div className="space-y-3">
-                    {userResponses.map((response) => (
+                    {userResponses.map(response => (
                         <div
                             key={response.id}
                             className={`p-4 rounded-lg cursor-pointer transition-all ${

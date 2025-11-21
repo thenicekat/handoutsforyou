@@ -33,7 +33,7 @@ async function backupDatabase() {
     try {
         console.log('Starting database backup...')
 
-        const backupPromises = tablesToBackup.map(async (tableName) => {
+        const backupPromises = tablesToBackup.map(async tableName => {
             console.log(`Fetching data for table: ${tableName}`)
 
             const { data, error } = await supabase.from(tableName).select('*')
@@ -45,9 +45,9 @@ async function backupDatabase() {
                 return ''
             }
 
-            const rows = data.map((row) => {
+            const rows = data.map(row => {
                 const values = Object.values(row)
-                    .map((value) =>
+                    .map(value =>
                         value === null
                             ? 'NULL'
                             : `'${value.toString().replace(/'/g, "''")}'`

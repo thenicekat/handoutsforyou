@@ -28,7 +28,7 @@ const MermaidDiagramComponent = ({ content }: MermaidDiagramProps) => {
                         containerRef.current.innerHTML = svg
                     }
                 })
-                .catch((error) => {
+                .catch(error => {
                     console.error('Mermaid rendering failed:', error)
                     if (containerRef.current) {
                         containerRef.current.innerHTML = `<pre>${content}</pre>`

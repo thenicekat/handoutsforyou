@@ -137,15 +137,15 @@ export default function MaintenancePage() {
     const depts = useMemo(() => {
         return Object.values(departments)
             .flatMap((code: string) => code.split('/'))
-            .map((code) => code.trim())
-            .filter((code) => code.length > 0)
+            .map(code => code.trim())
+            .filter(code => code.length > 0)
     }, [])
 
     const filterDepartmentCodes = (course: string): string[] => {
         let values: string[] = []
         if (course !== '') {
             const allowed = course.split(' ')[0]
-            values = depts.filter((code) => allowed.includes(code))
+            values = depts.filter(code => allowed.includes(code))
             if (values.length === 1) {
                 values = []
             }
@@ -575,14 +575,14 @@ export default function MaintenancePage() {
                         >
                             <select
                                 value={contributionType}
-                                onChange={(e) =>
+                                onChange={e =>
                                     setContributionType(
                                         e.target.value as ContributionType
                                     )
                                 }
                                 className="w-full p-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-amber-400"
                             >
-                                {CONTRIBUTION_DROP_DOWN.map((option) => (
+                                {CONTRIBUTION_DROP_DOWN.map(option => (
                                     <option
                                         key={option.value}
                                         value={option.value}

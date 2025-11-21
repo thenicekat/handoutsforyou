@@ -119,12 +119,12 @@ export class GoogleDriveService {
             const campusFolders = await this.listFolders(rootFolderId)
 
             await Promise.all(
-                campusFolders.map(async (folder) => {
+                campusFolders.map(async folder => {
                     if (!folder.id) return
 
                     const files = await this.listFiles(folder.id)
                     const pdfFiles = files.filter(
-                        (file) =>
+                        file =>
                             file.mimeType === 'application/pdf' ||
                             (file.name &&
                                 file.name.toLowerCase().endsWith('.pdf'))
@@ -132,8 +132,8 @@ export class GoogleDriveService {
 
                     if (pdfFiles.length > 0 && folder.name) {
                         chronicles[folder.name] = pdfFiles
-                            .filter((file) => file.id)
-                            .map((file) => this.mapFileToDriveFile(file))
+                            .filter(file => file.id)
+                            .map(file => this.mapFileToDriveFile(file))
                     }
                 })
             )
@@ -171,18 +171,18 @@ export class GoogleDriveService {
             const folders = await this.listFolders(rootFolderId)
 
             await Promise.all(
-                folders.map(async (folder) => {
+                folders.map(async folder => {
                     if (!folder.id || !folder.name) return
 
                     const files = await this.listFiles(folder.id)
                     const pdfFiles = files
                         .filter(
-                            (file) =>
+                            file =>
                                 file.mimeType === 'application/pdf' ||
                                 (file.name &&
                                     file.name.toLowerCase().endsWith('.pdf'))
                         )
-                        .map((file) => this.mapFileToDriveFile(file))
+                        .map(file => this.mapFileToDriveFile(file))
 
                     if (folder.name.toLowerCase().includes('ps1')) {
                         chronicles.ps1.push(...pdfFiles)
@@ -209,14 +209,14 @@ export class GoogleDriveService {
             const semesterFolders = await this.listFolders(rootFolderId)
 
             await Promise.all(
-                semesterFolders.map(async (folder) => {
+                semesterFolders.map(async folder => {
                     if (!folder.id || !folder.name) return
 
                     const files = await this.listFiles(folder.id)
                     if (files.length > 0) {
                         handouts[folder.name] = files
-                            .filter((file) => file.id)
-                            .map((file) => ({
+                            .filter(file => file.id)
+                            .map(file => ({
                                 ...this.mapFileToDriveFile(file),
                             }))
                     }
@@ -367,14 +367,14 @@ export class GoogleDriveService {
             const yearMapping: ChronicleMap = {}
 
             await Promise.all(
-                yearFolders.map(async (yearFolder) => {
+                yearFolders.map(async yearFolder => {
                     if (!yearFolder.id || !yearFolder.name) return
 
                     const files = await this.listFiles(yearFolder.id)
                     if (files.length > 0) {
                         yearMapping[yearFolder.name] = files
-                            .filter((file) => file.id)
-                            .map((file) => this.mapFileToDriveFile(file))
+                            .filter(file => file.id)
+                            .map(file => this.mapFileToDriveFile(file))
                     }
                 })
             )
@@ -464,7 +464,7 @@ export class GoogleDriveService {
         try {
             const folders = await this.listFolders(parentFolderId)
             const existingFolder = folders.find(
-                (folder) =>
+                folder =>
                     folder.name?.toLowerCase() === folderName.toLowerCase()
             )
 

@@ -31,9 +31,9 @@ export default function Chambers() {
                     <>
                         <AutoCompleter
                             name={'Prof'}
-                            items={profs.map((p) => p.name)}
+                            items={profs.map(p => p.name)}
                             value={prof}
-                            onChange={(val) => setProf(val)}
+                            onChange={val => setProf(val)}
                         />
                         <span className="m-2"></span>
                     </>
@@ -55,10 +55,10 @@ export default function Chambers() {
                             else if (a.name < b.name) return -1
                             else return 0
                         })
-                        .filter((p) =>
+                        .filter(p =>
                             p.name.toLowerCase().includes(prof.toLowerCase())
                         )
-                        .map((prof) => (
+                        .map(prof => (
                             <div
                                 className="card shadow-lg bg-base-100 break-words text-base-content w-full"
                                 key={prof.name}

@@ -49,7 +49,7 @@ export default function PlacementCTCs() {
     }
 
     React.useEffect(() => {
-        let filteredPlacementCTCs = placementCTCs.filter((placementCTC) =>
+        let filteredPlacementCTCs = placementCTCs.filter(placementCTC =>
             placementCTC.company.toLowerCase().includes(input.toLowerCase())
         )
         setFilteredPlacementCTCs(filteredPlacementCTCs)
@@ -58,48 +58,48 @@ export default function PlacementCTCs() {
     const columnHelper = createColumnHelper<PlacementCTC>()
 
     const columnDefs = [
-        columnHelper.accessor((row) => row.company, {
+        columnHelper.accessor(row => row.company, {
             id: 'Company',
-            cell: (info) => info.getValue(),
+            cell: info => info.getValue(),
             header: 'Company',
         }),
-        columnHelper.accessor((row) => row.campus, {
+        columnHelper.accessor(row => row.campus, {
             id: 'Campus',
-            cell: (info) => info.getValue(),
+            cell: info => info.getValue(),
             header: 'Campus',
         }),
-        columnHelper.accessor((row) => row.base, {
+        columnHelper.accessor(row => row.base, {
             id: 'Base',
-            cell: (info) => info.getValue().toLocaleString('en-IN') || 0,
+            cell: info => info.getValue().toLocaleString('en-IN') || 0,
             header: 'Base',
         }),
-        columnHelper.accessor((row) => row.joining_bonus, {
+        columnHelper.accessor(row => row.joining_bonus, {
             id: 'Joining Bonus',
-            cell: (info) => info.getValue().toLocaleString('en-IN'),
+            cell: info => info.getValue().toLocaleString('en-IN'),
             header: 'Joining Bonus',
         }),
-        columnHelper.accessor((row) => row.relocation_bonus, {
+        columnHelper.accessor(row => row.relocation_bonus, {
             id: 'Relocation Bonus',
-            cell: (info) => info.getValue().toLocaleString('en-IN'),
+            cell: info => info.getValue().toLocaleString('en-IN'),
             header: 'Relocation Bonus',
         }),
-        columnHelper.accessor((row) => row.variable_bonus, {
+        columnHelper.accessor(row => row.variable_bonus, {
             id: 'Variable Bonus',
-            cell: (info) => info.getValue().toLocaleString('en-IN'),
+            cell: info => info.getValue().toLocaleString('en-IN'),
             header: 'Variable Bonus',
         }),
-        columnHelper.accessor((row) => row.monetary_value_of_benefits, {
+        columnHelper.accessor(row => row.monetary_value_of_benefits, {
             id: 'Other',
-            cell: (info) => info.getValue().toLocaleString('en-IN'),
+            cell: info => info.getValue().toLocaleString('en-IN'),
             header: 'Other',
         }),
-        columnHelper.accessor((row) => row.description, {
+        columnHelper.accessor(row => row.description, {
             id: 'Description',
-            cell: (info) => info.getValue(),
+            cell: info => info.getValue(),
             header: 'Description',
         }),
         columnHelper.accessor(
-            (row) =>
+            row =>
                 row.base +
                 row.joining_bonus +
                 row.relocation_bonus +
@@ -107,7 +107,7 @@ export default function PlacementCTCs() {
                 row.monetary_value_of_benefits,
             {
                 id: 'Total CTC',
-                cell: (info) => info.getValue().toLocaleString('en-IN'),
+                cell: info => info.getValue().toLocaleString('en-IN'),
                 header: 'Total CTC',
             }
         ),
@@ -158,7 +158,7 @@ export default function PlacementCTCs() {
                                 type="text"
                                 placeholder="Search..."
                                 className="input input-secondary w-full max-w-xs m-3"
-                                onChange={(e) => setInput(e.target.value)}
+                                onChange={e => setInput(e.target.value)}
                             />
                         </div>
 
@@ -181,12 +181,12 @@ export default function PlacementCTCs() {
                         <div className="flex flex-col md:flex-row w-full justify-center">
                             <select
                                 className="select select-bordered w-full max-w-xs m-3"
-                                onChange={(e) => setYearRef(e.target.value)}
+                                onChange={e => setYearRef(e.target.value)}
                             >
                                 <option disabled selected>
                                     Which year to use as reference?
                                 </option>
-                                {placementYears.map((year) => (
+                                {placementYears.map(year => (
                                     <option
                                         value={year}
                                         key={year}
@@ -234,7 +234,7 @@ export default function PlacementCTCs() {
                     <>
                         {/* Mobile UI */}
                         <div className="px-2 p-2 grid md:hidden sm:grid-cols-2 grid-cols-1 place-items-center">
-                            {filteredPlacementCTCs.map((placementCTC) => (
+                            {filteredPlacementCTCs.map(placementCTC => (
                                 <div
                                     className="card w-72 bg-base-100 text-base-content m-2"
                                     key={
@@ -306,7 +306,7 @@ export default function PlacementCTCs() {
                             <table className="table table-sm table-pin-rows bg-base-100">
                                 <thead className="table-header-group">
                                     <tr>
-                                        {headers.map((header) => {
+                                        {headers.map(header => {
                                             const direction =
                                                 header.column.getIsSorted()
                                             const sort_indicator = direction
@@ -339,19 +339,17 @@ export default function PlacementCTCs() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {rows.map((row) => (
+                                    {rows.map(row => (
                                         <tr key={row.id}>
-                                            {row
-                                                .getVisibleCells()
-                                                .map((cell) => (
-                                                    <td key={cell.id}>
-                                                        {flexRender(
-                                                            cell.column
-                                                                .columnDef.cell,
-                                                            cell.getContext()
-                                                        )}
-                                                    </td>
-                                                ))}
+                                            {row.getVisibleCells().map(cell => (
+                                                <td key={cell.id}>
+                                                    {flexRender(
+                                                        cell.column.columnDef
+                                                            .cell,
+                                                        cell.getContext()
+                                                    )}
+                                                </td>
+                                            ))}
                                         </tr>
                                     ))}
                                 </tbody>

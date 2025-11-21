@@ -126,7 +126,7 @@ export function SelectInput({
             <option value="" className="bg-gray-800">
                 {placeholder}
             </option>
-            {options.map((option) => (
+            {options.map(option => (
                 <option
                     key={option.value}
                     value={option.value}
@@ -251,7 +251,7 @@ function FormAutoCompleter({
 
     const handleInputChange = (inputValue: string) => {
         onChange(inputValue)
-        const filtered = items.filter((item) =>
+        const filtered = items.filter(item =>
             item.toLowerCase().includes(inputValue.toLowerCase())
         )
         setFilteredItems(filtered)
@@ -265,7 +265,7 @@ function FormAutoCompleter({
 
     const handleInputFocus = () => {
         if (value.length > 0) {
-            const filtered = items.filter((item) =>
+            const filtered = items.filter(item =>
                 item.toLowerCase().includes(value.toLowerCase())
             )
             setFilteredItems(filtered)
@@ -283,7 +283,7 @@ function FormAutoCompleter({
             <input
                 type="text"
                 value={value}
-                onChange={(e) => handleInputChange(e.target.value)}
+                onChange={e => handleInputChange(e.target.value)}
                 onFocus={handleInputFocus}
                 onBlur={handleInputBlur}
                 className={`w-full p-3 bg-white/10 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-400 ${

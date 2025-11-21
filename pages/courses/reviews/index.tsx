@@ -28,7 +28,7 @@ export default function Reviews() {
             toast.error('Please select a course from the given list!')
             return
         }
-        if (profs.map((p) => p.name).includes(prof) == false && prof !== '') {
+        if (profs.map(p => p.name).includes(prof) == false && prof !== '') {
             toast.error('Please select a professor from the given list!')
             return
         }
@@ -64,9 +64,9 @@ export default function Reviews() {
         department: string
     ): CourseReview[] => {
         if (department === '' || department === undefined) return courseReviews
-        let departmentsToCheck = department.split('/').map((d) => d.trim())
+        let departmentsToCheck = department.split('/').map(d => d.trim())
         let filteredReviews = new Set()
-        courseReviews.forEach((review) => {
+        courseReviews.forEach(review => {
             departmentsToCheck.forEach((d: string) => {
                 if (review.course.split(' ')[0].includes(d))
                     filteredReviews.add(review)
@@ -110,21 +110,21 @@ export default function Reviews() {
                             name={'Course'}
                             items={courses}
                             value={course}
-                            onChange={(val) => setCourse(val)}
+                            onChange={val => setCourse(val)}
                         />
                         <span className="m-2"></span>
                         <AutoCompleter
                             name={'Prof'}
-                            items={profs.map((p) => p.name)}
+                            items={profs.map(p => p.name)}
                             value={prof}
-                            onChange={(val) => setProf(val)}
+                            onChange={val => setProf(val)}
                         />
                         <span className="m-2"></span>
                         <AutoCompleter
                             name={'Department'}
                             items={Object.keys(departments)}
                             value={dept}
-                            onChange={(val) => {
+                            onChange={val => {
                                 setDept(val)
                             }}
                         />
@@ -183,7 +183,7 @@ export default function Reviews() {
                                 else if (a.course < b.course) return -1
                                 else return 0
                             })
-                            .map((review) => (
+                            .map(review => (
                                 <div
                                     className="card shadow-lg bg-base-100 break-words text-base-content mt-5"
                                     key={review.created_at}

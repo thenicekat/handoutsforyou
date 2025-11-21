@@ -106,7 +106,7 @@ export default function Placement({
     const filterResources = () => {
         let filteredResources: ResourceByCategory = {}
         for (let key in resources) {
-            let filtered = resources[key].filter((resource) =>
+            let filtered = resources[key].filter(resource =>
                 resource.name.toLowerCase().includes(input.toLowerCase())
             )
             if (filtered.length > 0) {
@@ -156,7 +156,7 @@ export default function Placement({
                             type="text"
                             placeholder="Search..."
                             className="input input-secondary w-full max-w-xs m-3"
-                            onChange={(e) => setInput(e.target.value)}
+                            onChange={e => setInput(e.target.value)}
                         />
 
                         <button
@@ -195,7 +195,7 @@ export default function Placement({
                 <div className="place-items-center p-5 max-w-7xl mx-auto">
                     {Object.keys(resources)
                         .sort()
-                        .map((key) => {
+                        .map(key => {
                             return (
                                 <div
                                     key={key}
@@ -208,7 +208,7 @@ export default function Placement({
 
                                     <div className="collapse-content">
                                         <div className="px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center">
-                                            {resources[key].map((resource) => (
+                                            {resources[key].map(resource => (
                                                 <CardWithScore
                                                     key={resource.id}
                                                     resource={resource}
@@ -232,12 +232,12 @@ export default function Placement({
                             <div className="collapse-content">
                                 <div className="px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center">
                                     {puChronicles[campus]
-                                        .filter((chronicle) =>
+                                        .filter(chronicle =>
                                             chronicle.name
                                                 .toLowerCase()
                                                 .includes(input.toLowerCase())
                                         )
-                                        .map((chronicle) => (
+                                        .map(chronicle => (
                                             <div
                                                 className="card w-72 h-96 bg-base-100 text-base-content m-2"
                                                 key={chronicle.id}
@@ -300,12 +300,12 @@ export default function Placement({
                             <div className="collapse-content">
                                 <div className="px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center">
                                     {siChronicles[campus]
-                                        .filter((chronicle) =>
+                                        .filter(chronicle =>
                                             chronicle.name
                                                 .toLowerCase()
                                                 .includes(input.toLowerCase())
                                         )
-                                        .map((chronicle) => (
+                                        .map(chronicle => (
                                             <div
                                                 className="card w-72 h-96 bg-base-100 text-base-content m-2"
                                                 key={chronicle.id}
