@@ -513,27 +513,63 @@ export default function MaintenancePage() {
                                         </h3>
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                             {Object.entries(stats.byUser)
-                                                .sort(([, a], [, b]) => b - a) // Sort by contribution count descending
-                                                .slice(0, 10) // Show top 10 contributors
-                                                .map(([email, count]) => (
-                                                    <div
-                                                        key={email}
-                                                        className="bg-white/5 rounded-lg p-3 flex justify-between items-center"
-                                                    >
-                                                        <span className="text-gray-300 text-sm truncate mr-2">
-                                                            {email ===
-                                                            'Anonymous'
-                                                                ? '🔒 Anonymous'
-                                                                : `📧 ${email}`}
-                                                        </span>
-                                                        <span className="text-white font-semibold">
-                                                            <CountUp
-                                                                end={count}
-                                                                duration={1.5}
-                                                            />
-                                                        </span>
-                                                    </div>
-                                                ))}
+                                                .sort(([, a], [, b]) => b - a)
+                                                .slice(0, 10)
+                                                .map(
+                                                    ([email, count], index) => {
+                                                        let medal = ''
+                                                        let medalClass = ''
+                                                        if (index === 0) {
+                                                            medal = '🥇'
+                                                            medalClass =
+                                                                'bg-gradient-to-r from-yellow-400/20 to-yellow-600/20 border-yellow-400/30'
+                                                        } else if (
+                                                            index === 1
+                                                        ) {
+                                                            medal = '🥈'
+                                                            medalClass =
+                                                                'bg-gradient-to-r from-gray-600/20 to-gray-800/20 border-gray-800/30'
+                                                        } else if (
+                                                            index === 2
+                                                        ) {
+                                                            medal = '🥉'
+                                                            medalClass =
+                                                                'bg-gradient-to-r from-amber-600/20 to-amber-800/20 border-amber-600/30'
+                                                        } else {
+                                                            medal = '📧'
+                                                            medalClass =
+                                                                'bg-white/5'
+                                                        }
+
+                                                        return (
+                                                            <div
+                                                                key={email}
+                                                                className={`${medalClass} rounded-lg p-3 flex justify-between items-center ${index < 3 ? 'border' : ''}`}
+                                                            >
+                                                                <span className="text-gray-300 text-sm truncate mr-2 flex items-center gap-2">
+                                                                    {medal && (
+                                                                        <span className="text-lg">
+                                                                            {
+                                                                                medal
+                                                                            }
+                                                                        </span>
+                                                                    )}
+                                                                    {`${email}`}
+                                                                </span>
+                                                                <span className="text-white font-semibold">
+                                                                    <CountUp
+                                                                        end={
+                                                                            count
+                                                                        }
+                                                                        duration={
+                                                                            1.5
+                                                                        }
+                                                                    />
+                                                                </span>
+                                                            </div>
+                                                        )
+                                                    }
+                                                )}
                                         </div>
                                         {Object.keys(stats.byUser).length >
                                             10 && (
