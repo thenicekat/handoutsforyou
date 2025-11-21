@@ -21,7 +21,12 @@ const courseReviewSchema = z.object({
             (val) => profs.map((p) => p.name).includes(val),
             'Please select a valid professor from the list'
         ),
-    review: z.string().min(100, 'Review must be at least 100 characters long'),
+    review: z
+        .string()
+        .min(
+            200,
+            'Review must be at least 200 characters long. Please be genuine and descriptive about your experience.'
+        ),
 })
 
 export type CourseReviewFormData = z.infer<typeof courseReviewSchema>
