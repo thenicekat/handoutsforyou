@@ -44,13 +44,13 @@ type ContributionType =
     | typeof PLACEMENT_CTC
     | typeof HIGHERSTUDIES_RESOURCE
 
-const contributionTypes = [
+const CONTRIBUTION_DROP_DOWN = [
     // { value: COURSE_RESOURCE, label: 'Course Resource' },
     { value: COURSE_REVIEW, label: 'Course Review' },
     { value: COURSE_GRADING, label: 'Course Grading' },
     { value: PS1_CUTOFF, label: 'PS1 Cutoff' },
     { value: PS2_CUTOFF, label: 'PS2 Cutoff' },
-    { value: PS1_REVIEW, label: 'PS1 Review' },
+    // { value: PS1_REVIEW, label: 'PS1 Review' },
     { value: PS2_REVIEW, label: 'PS2 Review' },
     { value: PLACEMENT_RESOURCE, label: 'Placement Resource' },
     { value: PLACEMENT_CTC, label: 'Placement CTC' },
@@ -71,9 +71,8 @@ export default function MaintenancePage() {
     })
     const [isStatsLoading, setIsStatsLoading] = useState(true)
 
-    // Form state
     const [contributionType, setContributionType] = useState<ContributionType>(
-        contributionTypes[0]?.value as ContributionType
+        CONTRIBUTION_DROP_DOWN[0]?.value as ContributionType
     )
     const [isLoading, setIsLoading] = useState(false)
 
@@ -583,7 +582,7 @@ export default function MaintenancePage() {
                                 }
                                 className="w-full p-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-amber-400"
                             >
-                                {contributionTypes.map((option) => (
+                                {CONTRIBUTION_DROP_DOWN.map((option) => (
                                     <option
                                         key={option.value}
                                         value={option.value}
