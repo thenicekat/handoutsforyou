@@ -46,7 +46,7 @@ const PostCard = ({ post, onBookmarkToggle }: PostCardProps) => {
 
         let updated: string[]
         if (isBookmarked) {
-            updated = saved.filter((slug) => slug !== post.slug)
+            updated = saved.filter(slug => slug !== post.slug)
             toast.info('Removed from bookmarks', {
                 containerId: 'bitsofaIndex',
             })
@@ -116,9 +116,7 @@ const PostCard = ({ post, onBookmarkToggle }: PostCardProps) => {
                         <span className="font-semibold">
                             {post.authors.length === 1
                                 ? post.authors[0]
-                                : post.authors
-                                      .map((author) => author)
-                                      .join(', ')}
+                                : post.authors.map(author => author).join(', ')}
                         </span>
                         , on {post.date}
                     </span>

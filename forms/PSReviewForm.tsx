@@ -7,7 +7,12 @@ import { z } from 'zod'
 import { FormField, TextArea } from './FormComponents'
 
 const psReviewSchema = z.object({
-    review: z.string().min(100, 'Review must be at least 100 characters long'),
+    review: z
+        .string()
+        .min(
+            200,
+            'Review must be at least 200 characters long. Please be genuine and descriptive about your experience.'
+        ),
 })
 
 export type PSReviewFormData = z.infer<typeof psReviewSchema>
@@ -91,7 +96,7 @@ export default function PSReviewForm<T extends PS1Item | PS2Item>({
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
             <FormField label={`Your ${psType} Responses`} className="mb-8">
                 <div className="space-y-3">
-                    {userResponses.map((response) => (
+                    {userResponses.map(response => (
                         <div
                             key={response.id}
                             className={`p-4 rounded-lg cursor-pointer transition-all ${

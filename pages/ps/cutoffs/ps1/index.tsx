@@ -101,29 +101,29 @@ export default function PS1Data() {
     const columnHelper = createColumnHelper<PS1Item>()
 
     const columnDefs = [
-        columnHelper.accessor((row) => row.name, {
+        columnHelper.accessor(row => row.name, {
             id: 'Name',
-            cell: (info) => info.getValue(),
+            cell: info => info.getValue(),
             header: 'Name',
         }),
-        columnHelper.accessor((row) => row.id_number, {
+        columnHelper.accessor(row => row.id_number, {
             id: 'ID Number',
-            cell: (info) => info.getValue(),
+            cell: info => info.getValue(),
             header: 'ID Number',
         }),
-        columnHelper.accessor((row) => row.station, {
+        columnHelper.accessor(row => row.station, {
             id: 'Company',
-            cell: (info) => info.getValue(),
+            cell: info => info.getValue(),
             header: 'Company',
         }),
-        columnHelper.accessor((row) => row.cgpa, {
+        columnHelper.accessor(row => row.cgpa, {
             id: 'CGPA',
-            cell: (info) => info.getValue(),
+            cell: info => info.getValue(),
             header: 'CGPA',
         }),
-        columnHelper.accessor((row) => row.allotment_round, {
+        columnHelper.accessor(row => row.allotment_round, {
             id: 'Allotment Round',
-            cell: (info) => info.getValue(),
+            cell: info => info.getValue(),
             header: 'Allotment Round',
         }),
     ]
@@ -177,7 +177,7 @@ export default function PS1Data() {
                                 type="number"
                                 placeholder="Min CGPA"
                                 className="input input-secondary w-full max-w-xs m-3"
-                                onChange={(e) =>
+                                onChange={e =>
                                     setMinCGPA(parseFloat(e.target.value) || 0)
                                 }
                             />
@@ -185,7 +185,7 @@ export default function PS1Data() {
                                 type="number"
                                 placeholder="Max CGPA"
                                 className="input input-secondary w-full max-w-xs m-3"
-                                onChange={(e) =>
+                                onChange={e =>
                                     setMaxCGPA(parseFloat(e.target.value) || 10)
                                 }
                             />
@@ -193,19 +193,19 @@ export default function PS1Data() {
                                 type="text"
                                 placeholder="Search for Company..."
                                 className="input input-secondary w-full max-w-xs m-3"
-                                onChange={(e) => setSearch(e.target.value)}
+                                onChange={e => setSearch(e.target.value)}
                             />
                         </div>
 
                         <div className="flex flex-col md:flex-row w-full justify-center">
                             <select
                                 className="select select-bordered w-full max-w-xs m-3"
-                                onChange={(e) => setYearRef(e.target.value)}
+                                onChange={e => setYearRef(e.target.value)}
                             >
                                 <option disabled selected>
                                     Which year to use as reference?
                                 </option>
-                                {ps1Years.map((year) => (
+                                {ps1Years.map(year => (
                                     <option
                                         value={year}
                                         key={year}
@@ -316,7 +316,7 @@ export default function PS1Data() {
                                 <table className="table table-sm table-pin-rows bg-base-100">
                                     <thead className="table-header-group">
                                         <tr>
-                                            {headers.map((header) => {
+                                            {headers.map(header => {
                                                 const direction =
                                                     header.column.getIsSorted()
                                                 const sort_indicator = direction
@@ -352,11 +352,11 @@ export default function PS1Data() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {rows.map((row) => (
+                                        {rows.map(row => (
                                             <tr key={row.id}>
                                                 {row
                                                     .getVisibleCells()
-                                                    .map((cell) => (
+                                                    .map(cell => (
                                                         <td key={cell.id}>
                                                             {flexRender(
                                                                 cell.column

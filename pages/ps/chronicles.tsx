@@ -83,7 +83,7 @@ export default function PSChroniclesPage({
                             PS1 Chronicles ({psChronicles.ps1.length})
                         </h2>
                         <div className="grid md:grid-cols-3 gap-6">
-                            {psChronicles.ps1.map((chronicle) => (
+                            {psChronicles.ps1.map(chronicle => (
                                 <div
                                     key={chronicle.id}
                                     className="card bg-base-100 shadow-md hover:shadow-lg transition-shadow"
@@ -128,7 +128,7 @@ export default function PSChroniclesPage({
                             PS2 Chronicles ({psChronicles.ps2.length})
                         </h2>
                         <div className="grid md:grid-cols-3 gap-6">
-                            {psChronicles.ps2.map((chronicle) => (
+                            {psChronicles.ps2.map(chronicle => (
                                 <div
                                     key={chronicle.id}
                                     className="card bg-base-100 shadow-md hover:shadow-lg transition-shadow"

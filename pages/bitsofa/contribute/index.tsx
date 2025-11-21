@@ -43,14 +43,14 @@ export default function ContributeAdvice() {
             return false
         }
 
-        const invalidTag = selectedTags.find((tag) => !tags.includes(tag))
+        const invalidTag = selectedTags.find(tag => !tags.includes(tag))
 
         if (invalidTag) {
             toast.error('Please select a category from the given list!')
             return false
         }
 
-        const invalidTags = selectedTags.filter((tag) => !tags.includes(tag))
+        const invalidTags = selectedTags.filter(tag => !tags.includes(tag))
         if (invalidTags.length > 0) {
             toast.error(
                 `Invalid categories selected: ${invalidTags.join(', ')}`
@@ -122,7 +122,7 @@ export default function ContributeAdvice() {
                         <div className="bg-gray-800 rounded-lg p-8 border border-gray-700">
                             <form
                                 className="space-y-6"
-                                onSubmit={(e) => e.preventDefault()}
+                                onSubmit={e => e.preventDefault()}
                             >
                                 {/* Title Input */}
                                 <div>
@@ -135,9 +135,7 @@ export default function ContributeAdvice() {
                                         className="w-full bg-gray-900 border border-gray-600 rounded-md px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
                                         placeholder="Give your advice a catchy title..."
                                         value={title}
-                                        onChange={(e) =>
-                                            setTitle(e.target.value)
-                                        }
+                                        onChange={e => setTitle(e.target.value)}
                                         disabled={isSubmitting}
                                     />
                                 </div>
@@ -153,7 +151,7 @@ export default function ContributeAdvice() {
                                         className="w-full bg-gray-900 border border-gray-600 rounded-md px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
                                         placeholder="How should we credit you?"
                                         value={author}
-                                        onChange={(e) =>
+                                        onChange={e =>
                                             setAuthor(e.target.value)
                                         }
                                         disabled={isSubmitting}
@@ -188,7 +186,7 @@ export default function ContributeAdvice() {
                                         className="w-full bg-gray-900 border border-gray-600 rounded-md px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent h-60 resize-none"
                                         placeholder="Share your wisdom! You can use markdown formatting (e.g., **bold**, *italic*, [links](url), etc.)"
                                         value={content}
-                                        onChange={(e) =>
+                                        onChange={e =>
                                             setContent(e.target.value)
                                         }
                                         disabled={isSubmitting}
@@ -270,9 +268,7 @@ export default function ContributeAdvice() {
                         Cancel
                     </button>
                     <button
-                        className={`btn btn-primary ${
-                            isSubmitting ? 'loading' : ''
-                        }`}
+                        className={`btn btn-primary ${isSubmitting ? 'loading' : ''}`}
                         onClick={async () => {
                             await submitAdvice()
                             setShowGuidelines(false)

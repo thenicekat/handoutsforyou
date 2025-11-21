@@ -70,7 +70,7 @@ export default function PS1Reviews() {
                                 type="text"
                                 placeholder="Search station..."
                                 className="input input-bordered input-primary flex-1"
-                                onChange={(e) => setStation(e.target.value)}
+                                onChange={e => setStation(e.target.value)}
                             />
                             <Link
                                 href="/ps/reviews/ps1/add/"
@@ -92,12 +92,12 @@ export default function PS1Reviews() {
                     <div className="space-y-6">
                         {!isLoading ? (
                             reviews
-                                .filter((review) =>
+                                .filter(review =>
                                     review.station
                                         .toLowerCase()
                                         .includes(station.toLowerCase())
                                 )
-                                .map((review) => (
+                                .map(review => (
                                     <div
                                         className="card shadow-lg bg-base-100 break-words text-base-content"
                                         key={review.created_at}

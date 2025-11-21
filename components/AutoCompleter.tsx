@@ -29,7 +29,7 @@ const Autocomplete = (props: Props) => {
                 type="text"
                 className="input input-secondary w-full"
                 value={value}
-                onChange={(e) => onChange(e.target.value)}
+                onChange={e => onChange(e.target.value)}
                 placeholder={`Search by ${name}...`}
                 tabIndex={0}
             />
@@ -41,7 +41,7 @@ const Autocomplete = (props: Props) => {
                     style={{ width: ref.current?.clientWidth }}
                 >
                     {items
-                        .filter((item) =>
+                        .filter(item =>
                             item.toLowerCase().includes(value.toLowerCase())
                         )
                         .map((item, index) => {

@@ -72,28 +72,28 @@ const ForumPage = ({ posts }: ForumPageProps) => {
     }
 
     const handleTagClick = (tag: string) => {
-        setSelectedTags((prev) => {
+        setSelectedTags(prev => {
             if (prev.includes(tag)) {
-                return prev.filter((t) => t !== tag)
+                return prev.filter(t => t !== tag)
             } else {
                 return [...prev, tag]
             }
         })
     }
 
-    const filteredPosts = posts.filter((post) => {
+    const filteredPosts = posts.filter(post => {
         const searchMatch =
             post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
             post.content.toLowerCase().includes(searchQuery.toLowerCase())
 
         const tagMatch =
             selectedTags.length === 0 ||
-            selectedTags.some((tag) => (post.tags || []).includes(tag))
+            selectedTags.some(tag => (post.tags || []).includes(tag))
 
         return searchMatch && tagMatch
     })
 
-    const bookmarkedPosts = posts.filter((post) =>
+    const bookmarkedPosts = posts.filter(post =>
         bookmarkedSlugs.includes(post.slug)
     )
 
@@ -162,7 +162,7 @@ const ForumPage = ({ posts }: ForumPageProps) => {
                                 placeholder="What are you looking for..."
                                 className="bg-gray-800 border border-gray-200 focus:outline-none rounded-md p-2 w-full mx-auto text-white"
                                 value={searchQuery}
-                                onChange={(e) => setSearchQuery(e.target.value)}
+                                onChange={e => setSearchQuery(e.target.value)}
                             />
                             <hr />
                             <h2 className="text-lg font-bold">Tags</h2>

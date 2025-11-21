@@ -50,7 +50,7 @@ export default function SICompanies() {
 
     React.useEffect(() => {
         let filteredSiCompanies = siCompanies.filter(
-            (siCompany) =>
+            siCompany =>
                 siCompany.name.toLowerCase().includes(input.toLowerCase()) ||
                 siCompany.roles.toLowerCase().includes(input.toLowerCase())
         )
@@ -60,29 +60,29 @@ export default function SICompanies() {
     const columnHelper = createColumnHelper<SI_Company>()
 
     const columnDefs = [
-        columnHelper.accessor((row) => row.name, {
+        columnHelper.accessor(row => row.name, {
             id: 'Company',
-            cell: (info) => info.getValue(),
+            cell: info => info.getValue(),
             header: 'Company',
         }),
-        columnHelper.accessor((row) => row.roles, {
+        columnHelper.accessor(row => row.roles, {
             id: 'Roles',
-            cell: (info) => info.getValue(),
+            cell: info => info.getValue(),
             header: 'Roles',
         }),
-        columnHelper.accessor((row) => row.cgpa_cutoff, {
+        columnHelper.accessor(row => row.cgpa_cutoff, {
             id: 'CGPA Cutoff',
-            cell: (info) => info.getValue(),
+            cell: info => info.getValue(),
             header: 'CGPA Cutoff',
         }),
-        columnHelper.accessor((row) => row.stipend, {
+        columnHelper.accessor(row => row.stipend, {
             id: 'Stipend',
-            cell: (info) => info.getValue(),
+            cell: info => info.getValue(),
             header: 'Stipend',
         }),
-        columnHelper.accessor((row) => row.eligibility, {
+        columnHelper.accessor(row => row.eligibility, {
             id: 'Eligibility',
-            cell: (info) => info.getValue(),
+            cell: info => info.getValue(),
             header: 'Eligibility',
         }),
     ]
@@ -132,7 +132,7 @@ export default function SICompanies() {
                                 type="text"
                                 placeholder="Search..."
                                 className="input input-secondary w-full max-w-xs m-3"
-                                onChange={(e) => setInput(e.target.value)}
+                                onChange={e => setInput(e.target.value)}
                             />
                         </div>
 
@@ -161,12 +161,12 @@ export default function SICompanies() {
                         <div className="flex flex-col md:flex-row w-full justify-center">
                             <select
                                 className="select select-bordered w-full max-w-xs m-3"
-                                onChange={(e) => setYearRef(e.target.value)}
+                                onChange={e => setYearRef(e.target.value)}
                             >
                                 <option disabled selected>
                                     Which year to use as reference?
                                 </option>
-                                {siYears.map((year) => (
+                                {siYears.map(year => (
                                     <option
                                         value={year}
                                         key={year}
@@ -229,7 +229,7 @@ export default function SICompanies() {
                     <>
                         {/* Mobile UI */}
                         <div className="px-2 p-2 grid md:hidden sm:grid-cols-2 grid-cols-1 place-items-center">
-                            {filteredSiCompanies.map((siCompany) => (
+                            {filteredSiCompanies.map(siCompany => (
                                 <div
                                     className="card w-72 bg-base-100 text-base-content m-2"
                                     key={siCompany.name + '/' + siCompany.roles}
@@ -271,7 +271,7 @@ export default function SICompanies() {
                             <table className="table table-sm table-pin-rows bg-base-100">
                                 <thead className="table-header-group">
                                     <tr>
-                                        {headers.map((header) => {
+                                        {headers.map(header => {
                                             const direction =
                                                 header.column.getIsSorted()
                                             const sort_indicator = direction
@@ -304,19 +304,17 @@ export default function SICompanies() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {rows.map((row) => (
+                                    {rows.map(row => (
                                         <tr key={row.id}>
-                                            {row
-                                                .getVisibleCells()
-                                                .map((cell) => (
-                                                    <td key={cell.id}>
-                                                        {flexRender(
-                                                            cell.column
-                                                                .columnDef.cell,
-                                                            cell.getContext()
-                                                        )}
-                                                    </td>
-                                                ))}
+                                            {row.getVisibleCells().map(cell => (
+                                                <td key={cell.id}>
+                                                    {flexRender(
+                                                        cell.column.columnDef
+                                                            .cell,
+                                                        cell.getContext()
+                                                    )}
+                                                </td>
+                                            ))}
                                         </tr>
                                     ))}
                                 </tbody>

@@ -101,49 +101,49 @@ export default function PS2Data() {
     const columnHelper = createColumnHelper<PS2Item>()
 
     const columnDefs = [
-        columnHelper.accessor((row) => row.name, {
+        columnHelper.accessor(row => row.name, {
             id: 'Name',
-            cell: (info) => info.getValue(),
+            cell: info => info.getValue(),
             header: 'Name',
         }),
-        columnHelper.accessor((row) => row.id_number, {
+        columnHelper.accessor(row => row.id_number, {
             id: 'ID Number',
-            cell: (info) => info.getValue(),
+            cell: info => info.getValue(),
             header: 'ID Number',
         }),
-        columnHelper.accessor((row) => row.station, {
+        columnHelper.accessor(row => row.station, {
             id: 'Company',
-            cell: (info) => info.getValue(),
+            cell: info => info.getValue(),
             header: 'Company',
         }),
-        columnHelper.accessor((row) => row.cgpa, {
+        columnHelper.accessor(row => row.cgpa, {
             id: 'CGPA',
-            cell: (info) => info.getValue(),
+            cell: info => info.getValue(),
             header: 'CGPA',
         }),
-        columnHelper.accessor((row) => row.stipend, {
+        columnHelper.accessor(row => row.stipend, {
             id: 'Stipend',
-            cell: (info) => info.getValue(),
+            cell: info => info.getValue(),
             header: 'Stipend',
         }),
-        columnHelper.accessor((row) => row.allotment_round, {
+        columnHelper.accessor(row => row.allotment_round, {
             id: 'Allotment Round',
-            cell: (info) => info.getValue(),
+            cell: info => info.getValue(),
             header: 'Allotment Round',
         }),
-        columnHelper.accessor((row) => row.offshoot, {
+        columnHelper.accessor(row => row.offshoot, {
             id: 'Offshoot',
-            cell: (info) => info.getValue(),
+            cell: info => info.getValue(),
             header: 'Offshoot',
         }),
-        columnHelper.accessor((row) => row.offshoot_total, {
+        columnHelper.accessor(row => row.offshoot_total, {
             id: 'Offshoot Total',
-            cell: (info) => info.getValue(),
+            cell: info => info.getValue(),
             header: 'Offshoot Total',
         }),
-        columnHelper.accessor((row) => row.offshoot_type, {
+        columnHelper.accessor(row => row.offshoot_type, {
             id: 'Offshoot Type',
-            cell: (info) => info.getValue() || 'NA',
+            cell: info => info.getValue() || 'NA',
             header: 'Offshoot Type',
         }),
     ]
@@ -199,7 +199,7 @@ export default function PS2Data() {
                                 max="10"
                                 placeholder="Min CGPA"
                                 className="input input-secondary w-full max-w-xs m-3"
-                                onChange={(e) => {
+                                onChange={e => {
                                     const value = parseFloat(e.target.value)
                                     setMinCGPA(isNaN(value) ? 0 : value)
                                 }}
@@ -212,7 +212,7 @@ export default function PS2Data() {
                                 max="10"
                                 placeholder="Max CGPA"
                                 className="input input-secondary w-full max-w-xs m-3"
-                                onChange={(e) => {
+                                onChange={e => {
                                     const value = parseFloat(e.target.value)
                                     setMaxCGPA(isNaN(value) ? 10 : value)
                                 }}
@@ -222,19 +222,19 @@ export default function PS2Data() {
                                 type="text"
                                 placeholder="Search for Company..."
                                 className="input input-secondary w-full max-w-xs m-3"
-                                onChange={(e) => setSearch(e.target.value)}
+                                onChange={e => setSearch(e.target.value)}
                             />
                         </div>
 
                         <div className="flex flex-col md:flex-row w-full justify-center">
                             <select
                                 className="select select-bordered w-full max-w-xs m-3"
-                                onChange={(e) => setYearRef(e.target.value)}
+                                onChange={e => setYearRef(e.target.value)}
                             >
                                 <option disabled selected>
                                     Which year to use as reference?
                                 </option>
-                                {ps2Semesters.map((semester) => (
+                                {ps2Semesters.map(semester => (
                                     <option
                                         value={semester}
                                         key={semester}
@@ -364,7 +364,7 @@ export default function PS2Data() {
                                     <table className="table table-sm table-pin-rows bg-base-100">
                                         <thead className="table-header-group">
                                             <tr>
-                                                {headers.map((header) => {
+                                                {headers.map(header => {
                                                     const direction =
                                                         header.column.getIsSorted()
                                                     const sort_indicator =
@@ -401,11 +401,11 @@ export default function PS2Data() {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {rows.map((row) => (
+                                            {rows.map(row => (
                                                 <tr key={row.id}>
                                                     {row
                                                         .getVisibleCells()
-                                                        .map((cell) => (
+                                                        .map(cell => (
                                                             <td key={cell.id}>
                                                                 {flexRender(
                                                                     cell.column

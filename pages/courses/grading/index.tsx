@@ -61,7 +61,7 @@ export default function Grading() {
             toast.error('Please select a course from the given list!')
             return
         }
-        if (profs.map((p) => p.name).includes(prof) === false && prof !== '') {
+        if (profs.map(p => p.name).includes(prof) === false && prof !== '') {
             toast.error('Please select a professor from the given list!')
             return
         }
@@ -124,16 +124,16 @@ export default function Grading() {
                             name={'Course'}
                             items={courses}
                             value={course}
-                            onChange={(val) => setCourse(val)}
+                            onChange={val => setCourse(val)}
                         />
 
                         <span className="m-2"></span>
 
                         <AutoCompleter
                             name={'Professor'}
-                            items={profs.map((p) => p.name)}
+                            items={profs.map(p => p.name)}
                             value={prof}
-                            onChange={(val) => setProf(val)}
+                            onChange={val => setProf(val)}
                         />
 
                         <p className="text-center p-2 m-2">
@@ -175,7 +175,7 @@ export default function Grading() {
                     <>
                         {Object.keys(gradings)
                             .sort((a, b) => b.localeCompare(a))
-                            .map((sem) => (
+                            .map(sem => (
                                 <div
                                     key={course + prof + sem}
                                     className="mb-4 w-full"
@@ -187,7 +187,7 @@ export default function Grading() {
                                             entries)
                                         </div>
                                         <div className="collapse-content w-full overflow-x-auto">
-                                            {gradings[sem].map((grading) => (
+                                            {gradings[sem].map(grading => (
                                                 <div
                                                     className="card bg-base-100 shadow-xl mb-4 w-full"
                                                     key={grading.id}

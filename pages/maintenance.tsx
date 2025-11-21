@@ -48,7 +48,7 @@ type ContributionType =
     | typeof PLACEMENT_CTC
     | typeof HIGHERSTUDIES_RESOURCE
 
-const contributionTypes = [
+const CONTRIBUTION_DROP_DOWN = [
     // { value: COURSE_RESOURCE, label: 'Course Resource' },
     { value: COURSE_REVIEW, label: 'Course Review' },
     { value: COURSE_GRADING, label: 'Course Grading' },
@@ -56,7 +56,7 @@ const contributionTypes = [
     { value: COURSE_PYQ, label: 'Course PYQ' },
     { value: PS1_CUTOFF, label: 'PS1 Cutoff' },
     { value: PS2_CUTOFF, label: 'PS2 Cutoff' },
-    { value: PS1_REVIEW, label: 'PS1 Review' },
+    // { value: PS1_REVIEW, label: 'PS1 Review' },
     { value: PS2_REVIEW, label: 'PS2 Review' },
     { value: PLACEMENT_RESOURCE, label: 'Placement Resource' },
     { value: PLACEMENT_CTC, label: 'Placement CTC' },
@@ -77,9 +77,8 @@ export default function MaintenancePage() {
     })
     const [isStatsLoading, setIsStatsLoading] = useState(true)
 
-    // Form state
     const [contributionType, setContributionType] = useState<ContributionType>(
-        contributionTypes[0]?.value as ContributionType
+        CONTRIBUTION_DROP_DOWN[0]?.value as ContributionType
     )
     const [isLoading, setIsLoading] = useState(false)
 
@@ -146,15 +145,15 @@ export default function MaintenancePage() {
     const depts = useMemo(() => {
         return Object.values(departments)
             .flatMap((code: string) => code.split('/'))
-            .map((code) => code.trim())
-            .filter((code) => code.length > 0)
+            .map(code => code.trim())
+            .filter(code => code.length > 0)
     }, [])
 
     const filterDepartmentCodes = (course: string): string[] => {
         let values: string[] = []
         if (course !== '') {
             const allowed = course.split(' ')[0]
-            values = depts.filter((code) => allowed.includes(code))
+            values = depts.filter(code => allowed.includes(code))
             if (values.length === 1) {
                 values = []
             }
@@ -300,7 +299,10 @@ export default function MaintenancePage() {
         setIsLoading(false)
     }
 
-    const handleCourseGradingSubmit = async (data: CourseGradingFormData, parsedData: string) => {
+    const handleCourseGradingSubmit = async (
+        data: CourseGradingFormData,
+        parsedData: string
+    ) => {
         setIsLoading(true)
         try {
             const response = await axiosInstance.post(
@@ -323,7 +325,9 @@ export default function MaintenancePage() {
                 onContributionAdded()
             }
         } catch (error) {
-            toast.error('An error occurred. ' + (error as any).response.data.message)
+            toast.error(
+                'An error occurred. ' + (error as any).response.data.message
+            )
         }
         setIsLoading(false)
     }
@@ -599,18 +603,19 @@ export default function MaintenancePage() {
                                                 </div>
                                             )}
 
-                                        <div className="text-center text-white text-sm">
-                                            NOTE: Any spam contribution will
-                                            increase the limit by 100
-                                            contributions.
-                                        </div>
-                                    </div>
-                                )}
-
-                                {stats.total === 0 && (
-                                    <div className="text-center text-gray-400 py-8">
-                                        <div className="text-xl mb-4">
-                                            🌱 Be the first to contribute!
+                                        <div className="text-center text-white text-sm mt-2">
+                                            NOTE: Please do not spam this form.
+                                            We have limited bandwidth and any
+                                            such practices will only lead to h4u
+                                            not coming back up. I know this is
+                                            not the way to go about getting
+                                            data, but I really cannot go around
+                                            begging people to contribute. You
+                                            need to build your own data and
+                                            contribute to the community. In the
+                                            end, I never got anything out of
+                                            this, nor will I do if it continues
+                                            to exist.
                                         </div>
                                     </div>
                                 )}
@@ -626,14 +631,14 @@ export default function MaintenancePage() {
                         >
                             <select
                                 value={contributionType}
-                                onChange={(e) =>
+                                onChange={e =>
                                     setContributionType(
                                         e.target.value as ContributionType
                                     )
                                 }
                                 className="w-full p-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-amber-400"
                             >
-                                {contributionTypes.map((option) => (
+                                {CONTRIBUTION_DROP_DOWN.map(option => (
                                     <option
                                         key={option.value}
                                         value={option.value}

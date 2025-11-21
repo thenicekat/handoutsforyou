@@ -46,7 +46,7 @@ export default function Resources() {
     const filterResources = () => {
         let filteredResources: ResourceByCategory = {}
         for (let key in resources) {
-            let filtered = resources[key].filter((resource) =>
+            let filtered = resources[key].filter(resource =>
                 resource.name.toLowerCase().includes(input.toLowerCase())
             )
             if (filtered.length > 0) {
@@ -81,7 +81,7 @@ export default function Resources() {
                                 type="text"
                                 placeholder="Search..."
                                 className="input input-secondary w-full max-w-xs m-3"
-                                onChange={(e) => setInput(e.target.value)}
+                                onChange={e => setInput(e.target.value)}
                             />
 
                             <button
@@ -148,7 +148,7 @@ export default function Resources() {
                             else if (a < b) return -1
                             else return 0
                         })
-                        .map((key) => {
+                        .map(key => {
                             return (
                                 <>
                                     <div className="collapse collapse-plus">
@@ -160,7 +160,7 @@ export default function Resources() {
                                         <div className="collapse-content">
                                             <div className="px-2 p-2 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center">
                                                 {resources[key].map(
-                                                    (resource) => (
+                                                    resource => (
                                                         <CardWithScore
                                                             key={resource.id}
                                                             resource={resource}

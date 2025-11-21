@@ -145,7 +145,7 @@ export default function PYQs() {
 
     const filteredCourses = useMemo(
         () =>
-            courses.filter((c) =>
+            courses.filter(c =>
                 c.name.toLowerCase().includes(searchQuery.toLowerCase())
             ),
         [courses, searchQuery]
@@ -162,9 +162,7 @@ export default function PYQs() {
                 return
             }
 
-            const matched = files.filter((f) =>
-                f.name.toLowerCase().includes(q)
-            )
+            const matched = files.filter(f => f.name.toLowerCase().includes(q))
             if (matched.length) result[year] = matched
         })
         return result
@@ -210,7 +208,7 @@ export default function PYQs() {
                                     Professor Name
                                 </label>
                                 <AutoCompleter
-                                    items={profs.map((prof) => prof.name)}
+                                    items={profs.map(prof => prof.name)}
                                     value={uploadProfessor}
                                     onChange={setUploadProfessor}
                                     name="professor"
@@ -236,7 +234,7 @@ export default function PYQs() {
                                 <input
                                     type="file"
                                     className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                    onChange={(e) =>
+                                    onChange={e =>
                                         setSelectedFile(
                                             e.target.files?.[0] || null
                                         )
@@ -273,7 +271,7 @@ export default function PYQs() {
                         <input
                             type="search"
                             value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
+                            onChange={e => setSearchQuery(e.target.value)}
                             placeholder={
                                 selectedCourse
                                     ? 'Search PYQs for ' + selectedCourse.name
@@ -325,7 +323,7 @@ export default function PYQs() {
                                                 </p>
                                             </div>
                                         ) : (
-                                            filteredCourses.map((course) => (
+                                            filteredCourses.map(course => (
                                                 <div
                                                     key={course.id}
                                                     className="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow cursor-pointer"

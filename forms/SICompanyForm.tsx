@@ -47,7 +47,7 @@ export default function SICompanyForm({
         },
     })
 
-    const yearOptions = siYears.map((yr) => ({
+    const yearOptions = siYears.map(yr => ({
         value: yr,
         label: yr,
     }))
@@ -61,7 +61,7 @@ export default function SICompanyForm({
 
     return (
         <form
-            onSubmit={handleSubmit((data) => onSubmit(data, reset))}
+            onSubmit={handleSubmit(data => onSubmit(data, reset))}
             className="space-y-8"
         >
             {/* Company Details Section */}

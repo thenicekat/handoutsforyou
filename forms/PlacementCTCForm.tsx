@@ -92,7 +92,7 @@ export default function PlacementCTCForm({
         { value: 'Offcampus', label: 'Offcampus' },
     ]
 
-    const academicYearOptions = placementYears.map((year) => ({
+    const academicYearOptions = placementYears.map(year => ({
         value: year,
         label: year,
     }))
@@ -106,7 +106,7 @@ export default function PlacementCTCForm({
 
     return (
         <form
-            onSubmit={handleSubmit((data) => onSubmit(data, reset))}
+            onSubmit={handleSubmit(data => onSubmit(data, reset))}
             className="space-y-8"
         >
             {/* Company Details Section */}

@@ -11,17 +11,22 @@ const courseReviewSchema = z.object({
         .string()
         .min(1, 'Course is required')
         .refine(
-            (val) => courses.includes(val),
+            val => courses.includes(val),
             'Please select a valid course from the list'
         ),
     prof: z
         .string()
         .min(1, 'Professor is required')
         .refine(
-            (val) => profs.map((p) => p.name).includes(val),
+            val => profs.map(p => p.name).includes(val),
             'Please select a valid professor from the list'
         ),
-    review: z.string().min(100, 'Review must be at least 100 characters long'),
+    review: z
+        .string()
+        .min(
+            200,
+            'Review must be at least 200 characters long. Please be genuine and descriptive about your experience.'
+        ),
 })
 
 export type CourseReviewFormData = z.infer<typeof courseReviewSchema>
@@ -53,7 +58,7 @@ export default function CourseReviewForm({
         },
     })
 
-    const profNames = profs.map((prof) => prof.name)
+    const profNames = profs.map(prof => prof.name)
 
     // Reset form when defaultValues change
     useEffect(() => {
@@ -64,7 +69,7 @@ export default function CourseReviewForm({
 
     return (
         <form
-            onSubmit={handleSubmit((data) => onSubmit(data, reset))}
+            onSubmit={handleSubmit(data => onSubmit(data, reset))}
             className="space-y-6"
         >
             <FormField label="Course" required error={errors.course}>

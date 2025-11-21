@@ -1,5 +1,13 @@
-trailingComma: 'es5'
-tabWidth: 4
-semi: false
-singleQuote: true
-plugins: ['prettier-plugin-organize-imports']
+{
+    "semi": false,
+    "singleQuote": true,
+    "tabWidth": 4,
+    "useTabs": false,
+    "trailingComma": "es5",
+    "bracketSpacing": true,
+    "bracketSameLine": false,
+    "arrowParens": "avoid",
+    "printWidth": 80,
+    "endOfLine": "lf",
+    "plugins": ["prettier-plugin-organize-imports"]
+}

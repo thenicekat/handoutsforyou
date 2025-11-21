@@ -59,7 +59,7 @@ export default function Prereqs({ prereqs }: { prereqs: CoursePreReqGroup[] }) {
                         type="text"
                         placeholder="Search..."
                         className="input input-secondary w-full max-w-xs"
-                        onChange={(e) => setSearch(e.target.value)}
+                        onChange={e => setSearch(e.target.value)}
                     />
                 </div>
             </div>
@@ -72,7 +72,7 @@ export default function Prereqs({ prereqs }: { prereqs: CoursePreReqGroup[] }) {
                     <h3 className="font-bold text-lg">{prereq?.name}</h3>
                     <div className="card-actions justify-begin text-primary my-3">
                         {prereq && prereq.prereqs.length > 0 ? (
-                            prereq.prereqs.map((preq) => (
+                            prereq.prereqs.map(preq => (
                                 <>
                                     <li key={preq.prereq_name}>
                                         {preq.prereq_name} ({preq.pre_cop})

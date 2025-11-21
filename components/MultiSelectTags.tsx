@@ -16,7 +16,7 @@ const MultiSelectTags = ({
         if (disabled) return
 
         if (selectedTags.includes(tag)) {
-            onTagsChange(selectedTags.filter((t) => t !== tag))
+            onTagsChange(selectedTags.filter(t => t !== tag))
         } else {
             onTagsChange([...selectedTags, tag])
         }
@@ -25,7 +25,7 @@ const MultiSelectTags = ({
     return (
         <div className="space-y-3">
             <div className="flex flex-wrap gap-2">
-                {availableTags.map((tag) => {
+                {availableTags.map(tag => {
                     const isSelected = selectedTags.includes(tag)
                     return (
                         <button
@@ -53,7 +53,7 @@ const MultiSelectTags = ({
                 <div className="mt-3">
                     <p className="text-sm text-gray-400 mb-2">Selected tags:</p>
                     <div className="flex flex-wrap gap-2">
-                        {selectedTags.map((tag) => (
+                        {selectedTags.map(tag => (
                             <span
                                 key={tag}
                                 className="bg-yellow-500 text-black px-3 py-1 rounded-full text-sm font-medium flex items-center"

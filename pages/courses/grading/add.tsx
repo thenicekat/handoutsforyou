@@ -12,8 +12,8 @@ import { toast } from 'react-toastify'
 export const getStaticProps: GetStaticProps = async () => {
     const depts: string[] = Object.values(departments)
         .flatMap((code: string) => code.split('/'))
-        .map((code) => code.trim())
-        .filter((code) => code.length > 0)
+        .map(code => code.trim())
+        .filter(code => code.length > 0)
 
     return {
         props: {
@@ -33,7 +33,7 @@ export default function AddGrading({ depts }: { depts: string[] }) {
         let values: string[] = []
         if (course !== '') {
             const allowed = course.split(' ')[0]
-            values = depts.filter((code) => allowed.includes(code))
+            values = depts.filter(code => allowed.includes(code))
             if (values.length == 1) {
                 values = []
             }
@@ -71,7 +71,7 @@ export default function AddGrading({ depts }: { depts: string[] }) {
                 toast.success('Grading data added successfully! Thank you!')
 
                 setDefaultValues({})
-                setResetTrigger((prev) => prev + 1)
+                setResetTrigger(prev => prev + 1)
 
                 localStorage.removeItem('h4u_grading_course')
                 localStorage.removeItem('h4u_grading_prof')

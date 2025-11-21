@@ -37,7 +37,7 @@ export default function MonetagAd({ adFormat, id }: MonetagAdProps) {
         setTimeout(() => {
             const monetagScripts =
                 document.querySelectorAll('script[data-zone]')
-            monetagScripts.forEach((s) => {
+            monetagScripts.forEach(s => {
                 if (
                     s.getAttribute('src')?.includes('vignette.min.js') ||
                     s.getAttribute('src')?.includes('tag.min.js')
@@ -55,7 +55,7 @@ export default function MonetagAd({ adFormat, id }: MonetagAdProps) {
             }
 
             // Remove scripts we stored references to
-            createdScripts.forEach((s) => {
+            createdScripts.forEach(s => {
                 if (s.parentNode) {
                     s.remove()
                 }
