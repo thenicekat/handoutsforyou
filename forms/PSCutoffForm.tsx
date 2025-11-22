@@ -252,7 +252,7 @@ export default function PSCutoffForm({
             <FormField label="">
                 <Checkbox
                     registration={register('isPublic')}
-                    label="Make this data public (helps other students)"
+                    label="Make your details public"
                 />
             </FormField>
 
