@@ -1,9 +1,9 @@
 import { getUser } from '@/pages/api/auth/[...nextauth]'
 import { googleDriveService } from '@/utils/googleDrive'
-import { trackContribution } from '../../contributions/track'
 import formidable, { Part } from 'formidable'
 import fs from 'fs'
 import { NextApiRequest, NextApiResponse } from 'next'
+import { trackContribution } from '../../contributions/track'
 
 export const config = {
     api: {
@@ -82,7 +82,10 @@ export default async function handler(
         fs.unlinkSync(file.filepath)
 
         try {
-            await trackContribution({ email: email || 'Anonymous', contribution_type: 'course_pyq' })
+            await trackContribution({
+                email: email || 'Anonymous',
+                contribution_type: 'course_pyq',
+            })
         } catch (e) {
             // Non-fatal: tracking failure should not block upload success
             console.error('Failed to track PYQ contribution', e)
