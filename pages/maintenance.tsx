@@ -50,7 +50,7 @@ const CONTRIBUTION_DROP_DOWN = [
     { value: COURSE_GRADING, label: 'Course Grading' },
     { value: PS1_CUTOFF, label: 'PS1 Cutoff' },
     { value: PS2_CUTOFF, label: 'PS2 Cutoff' },
-    // { value: PS1_REVIEW, label: 'PS1 Review' },
+    { value: PS1_REVIEW, label: 'PS1 Review' },
     { value: PS2_REVIEW, label: 'PS2 Review' },
     { value: PLACEMENT_RESOURCE, label: 'Placement Resource' },
     { value: PLACEMENT_CTC, label: 'Placement CTC' },
