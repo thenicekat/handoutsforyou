@@ -13,8 +13,32 @@ export type AuthorizedUser = {
     name: string | null | undefined
 }
 
+const ALUMNI_DOMAIN = '@alumni.bits-pilani.ac.in'
 const EMAIL_REGEX =
     /^(?:[fh]\d{8}@(hyderabad|pilani|goa|dubai)\.bits-pilani\.ac\.in|[fh]\d{8}[pghd]@alumni\.bits-pilani\.ac\.in|\d{4}.*@online\.bits-pilani\.ac\.in)$/
+
+const convertAlumniEmailToNormal = (alumniEmail: string) => {
+    let userName = alumniEmail.split('@')[0]
+    let lastChar = userName[userName.length - 1]
+    let campus: string
+    switch (lastChar) {
+        case 'h':
+            campus = 'hyderabad'
+            break
+        case 'p':
+            campus = 'pilani'
+            break
+        case 'g':
+            campus = 'goa'
+            break
+        case 'd':
+            campus = 'dubai'
+            break
+        default:
+            return alumniEmail
+    }
+    return userName.slice(0, -1) + '@' + campus + '.bits-pilani.ac.in'
+}
 
 export async function getUser(
     request: NextApiRequest,
@@ -51,8 +75,12 @@ export async function getUser(
             })
             return response.end() as never
         }
+        let email = session.user?.email!
+        if (email && email.includes(ALUMNI_DOMAIN)) {
+            email = convertAlumniEmailToNormal(email)
+        }
         return {
-            email: session.user?.email!,
+            email: email,
             name: session.user?.name,
         }
     } catch (error) {
