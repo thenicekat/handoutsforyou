@@ -75,6 +75,8 @@ export default function MaintenancePage() {
         CONTRIBUTION_DROP_DOWN[0]?.value as ContributionType
     )
     const [isLoading, setIsLoading] = useState(false)
+    const [courseGradingResetTrigger, setCourseGradingResetTrigger] =
+        useState(0)
 
     // PS Review state
     const [psUserResponses, setPsUserResponses] = useState<
@@ -154,7 +156,10 @@ export default function MaintenancePage() {
         return values
     }
 
-    const handleCourseResourceSubmit = async (data: ResourceFormData) => {
+    const handleCourseResourceSubmit = async (
+        data: ResourceFormData,
+        reset: () => void
+    ) => {
         setIsLoading(true)
         try {
             const response = await axiosInstance.post(
@@ -172,6 +177,7 @@ export default function MaintenancePage() {
                 toast.success(
                     'Thank you! Your course resource was added successfully!'
                 )
+                reset()
                 onContributionAdded()
             }
         } catch (error) {
@@ -180,7 +186,10 @@ export default function MaintenancePage() {
         setIsLoading(false)
     }
 
-    const handlePlacementResourceSubmit = async (data: ResourceFormData) => {
+    const handlePlacementResourceSubmit = async (
+        data: ResourceFormData,
+        reset: () => void
+    ) => {
         setIsLoading(true)
         try {
             const response = await axiosInstance.post(
@@ -198,6 +207,7 @@ export default function MaintenancePage() {
                 toast.success(
                     'Thank you! Your placement resource was added successfully!'
                 )
+                reset()
                 onContributionAdded()
             }
         } catch (error) {
@@ -207,7 +217,8 @@ export default function MaintenancePage() {
     }
 
     const handleHigherStudiesResourceSubmit = async (
-        data: ResourceFormData
+        data: ResourceFormData,
+        reset: () => void
     ) => {
         setIsLoading(true)
         try {
@@ -226,6 +237,7 @@ export default function MaintenancePage() {
                 toast.success(
                     'Thank you! Your higher studies resource was added successfully!'
                 )
+                reset()
                 onContributionAdded()
             }
         } catch (error) {
@@ -266,7 +278,10 @@ export default function MaintenancePage() {
         setIsLoading(false)
     }
 
-    const handleCourseReviewSubmit = async (data: CourseReviewFormData) => {
+    const handleCourseReviewSubmit = async (
+        data: CourseReviewFormData,
+        reset: () => void
+    ) => {
         setIsLoading(true)
         try {
             const response = await axiosInstance.post(
@@ -283,6 +298,7 @@ export default function MaintenancePage() {
                 toast.success(
                     'Thank you! Your course review was added successfully!'
                 )
+                reset()
                 onContributionAdded()
             }
         } catch (error) {
@@ -314,6 +330,7 @@ export default function MaintenancePage() {
                 toast.success(
                     'Thank you! Your course grading data was added successfully!'
                 )
+                setCourseGradingResetTrigger(prev => prev + 1)
                 onContributionAdded()
             }
         } catch (error) {
@@ -324,7 +341,10 @@ export default function MaintenancePage() {
         setIsLoading(false)
     }
 
-    const handlePSCutoffSubmit = async (data: PSCutoffFormData) => {
+    const handlePSCutoffSubmit = async (
+        data: PSCutoffFormData,
+        reset: () => void
+    ) => {
         setIsLoading(true)
         try {
             const payload = {
@@ -356,6 +376,7 @@ export default function MaintenancePage() {
                 toast.success(
                     `Thank you! Your ${contributionType === PS1_CUTOFF ? 'PS1' : 'PS2'} cutoff was added successfully!`
                 )
+                reset()
                 onContributionAdded()
             }
         } catch (error) {
@@ -396,7 +417,10 @@ export default function MaintenancePage() {
         setSelectedPsResponse(response)
     }
 
-    const handlePSReviewSubmit = async (data: PSReviewFormData) => {
+    const handlePSReviewSubmit = async (
+        data: PSReviewFormData,
+        reset: () => void
+    ) => {
         if (!selectedPsResponse) {
             toast.error('Please select a PS response')
             return
@@ -420,6 +444,7 @@ export default function MaintenancePage() {
                 toast.success(
                     `Thank you! Your ${psType} review was added successfully!`
                 )
+                reset()
                 setSelectedPsResponse(null)
                 setPsUserResponses([])
                 onContributionAdded()
@@ -680,6 +705,7 @@ export default function MaintenancePage() {
                                 isLoading={isLoading}
                                 depts={depts}
                                 filterDepartmentCodes={filterDepartmentCodes}
+                                resetTrigger={courseGradingResetTrigger}
                             />
                         )}
 
