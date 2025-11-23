@@ -1,127 +1,163 @@
-import AutoCompleter from '@/components/AutoCompleter'
 import { courses as courseNames } from '@/config/courses'
 import { profs } from '@/config/profs'
 import { pyqYears } from '@/config/years_sems'
-import { useState } from 'react'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useEffect } from 'react'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+import { AutoCompleterInput, FormField } from './FormComponents'
+
+const pyqUploadSchema = z.object({
+    course: z
+        .string()
+        .min(1, 'Course is required')
+        .refine(
+            val => courseNames.includes(val),
+            'Please select a valid course from the list'
+        ),
+    professor: z
+        .string()
+        .min(1, 'Professor is required')
+        .refine(
+            val => profs.map(p => p.name).includes(val),
+            'Please select a valid professor from the list'
+        ),
+    year: z
+        .string()
+        .min(1, 'Year is required')
+        .refine(
+            val => pyqYears.includes(val),
+            'Please select a valid year from the list'
+        ),
+    file: z
+        .instanceof(FileList)
+        .refine(files => files.length > 0, 'File is required')
+        .refine(files => {
+            const file = files[0]
+            const ext = file?.name.split('.').pop()?.toLowerCase() || ''
+            return ['pdf', 'doc', 'docx'].includes(ext)
+        }, 'Invalid file type. Please upload a pdf/doc/docx.')
+        .refine(
+            files => files[0]?.size <= 10 * 1024 * 1024,
+            'File too large. Max size is 10MB.'
+        ),
+})
+
+export type PYQUploadFormData = z.infer<typeof pyqUploadSchema>
 
 interface PYQUploadFormProps {
-    onSubmit: (form: {
+    onSubmit: (data: {
         course: string
         professor: string
         year: string
         file: File
     }) => void
-    isLoading: boolean
+    isLoading?: boolean
+    defaultValues?: Partial<Omit<PYQUploadFormData, 'file'>>
 }
 
 export default function PYQUploadForm({
     onSubmit,
-    isLoading,
+    isLoading = false,
+    defaultValues,
 }: PYQUploadFormProps) {
-    const [course, setCourse] = useState('')
-    const [professor, setProfessor] = useState('')
-    const [year, setYear] = useState('')
-    const [file, setFile] = useState<File | null>(null)
-    const [error, setError] = useState('')
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+        reset,
+        control,
+    } = useForm<PYQUploadFormData>({
+        resolver: zodResolver(pyqUploadSchema),
+        defaultValues: {
+            course: '',
+            professor: '',
+            year: '',
+            ...defaultValues,
+        },
+    })
 
-    const allowedExtensions = ['pdf', 'doc', 'docx']
-    const maxSizeBytes = 10 * 1024 * 1024 // 10MB
+    const profNames = profs.map(prof => prof.name)
 
-    const validateFile = (f: File): string | null => {
-        const ext = f.name.split('.').pop()?.toLowerCase() || ''
-        if (!allowedExtensions.includes(ext)) {
-            return 'Invalid file type. Please upload a pdf/doc/docx.'
+    useEffect(() => {
+        if (defaultValues) {
+            reset(defaultValues)
         }
-        if (f.size > maxSizeBytes) {
-            return 'File too large. Max size is 10MB.'
-        }
-        return null
-    }
+    }, [defaultValues, reset])
 
-    const handleFileChange = (e: any) => {
-        const f = e.target.files?.[0] || null
-        setFile(f)
-        if (f) {
-            const validationError = validateFile(f)
-            setError(validationError || '')
-        } else {
-            setError('')
-        }
-    }
-
-    const handleSubmit = (e: any) => {
-        e.preventDefault()
-        if (!course || !professor || !year || !file) {
-            setError('Please fill all required fields.')
-            return
-        }
-        const validationError = validateFile(file)
-        if (validationError) {
-            setError(validationError)
-            return
-        }
-        setError('')
-        onSubmit({ course, professor, year, file })
+    const handleFormSubmit = (data: PYQUploadFormData) => {
+        const file = data.file[0]
+        onSubmit({
+            course: data.course,
+            professor: data.professor,
+            year: data.year,
+            file,
+        })
     }
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-                <label className="block text-sm font-medium mb-2 text-white">
-                    Course Name *
-                </label>
-                <AutoCompleter
-                    items={courseNames}
-                    value={course}
-                    onChange={setCourse}
+        <form
+            onSubmit={handleSubmit(handleFormSubmit)}
+            className="space-y-6"
+        >
+            <FormField label="Course Name" required error={errors.course}>
+                <AutoCompleterInput
+                    control={control}
                     name="course"
+                    items={courseNames}
+                    placeholder="course"
+                    error={errors.course}
                 />
-            </div>
-            <div>
-                <label className="block text-sm font-medium mb-2 text-white">
-                    Professor *
-                </label>
-                <AutoCompleter
-                    items={profs.map(p => p.name)}
-                    value={professor}
-                    onChange={setProfessor}
+            </FormField>
+
+            <FormField label="Professor" required error={errors.professor}>
+                <AutoCompleterInput
+                    control={control}
                     name="professor"
+                    items={profNames}
+                    placeholder="professor"
+                    error={errors.professor}
                 />
-            </div>
-            <div>
-                <label className="block text-sm font-medium mb-2 text-white">
-                    Year *
-                </label>
-                <AutoCompleter
-                    items={pyqYears}
-                    value={year}
-                    onChange={setYear}
+            </FormField>
+
+            <FormField label="Year" required error={errors.year}>
+                <AutoCompleterInput
+                    control={control}
                     name="year"
+                    items={pyqYears}
+                    placeholder="year"
+                    error={errors.year}
                 />
-            </div>
-            <div>
-                <label className="block text-sm font-medium mb-2 text-white">
-                    File (pdf/doc/docx) *
-                </label>
+            </FormField>
+
+            <FormField
+                label="File (pdf/doc/docx)"
+                required
+                error={errors.file}
+                helpText="Max size: 10MB"
+            >
                 <input
                     type="file"
                     accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                    onChange={handleFileChange}
-                    className="file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-amber-400/20 file:text-amber-500 hover:file:bg-amber-400/30 text-white"
+                    {...register('file')}
+                    className="file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-amber-400/20 file:text-amber-500 hover:file:bg-amber-400/30 text-white w-full"
                 />
-            </div>
-            {error && (
-                <p className="text-red-400 text-sm" role="alert">
-                    {error}
-                </p>
-            )}
+            </FormField>
+
             <div className="flex justify-center">
                 <button
                     type="submit"
                     disabled={isLoading}
                     className="btn btn-primary btn-lg min-w-48"
                 >
-                    {isLoading ? 'Uploading...' : 'Upload PYQ'}
+                    {isLoading ? (
+                        <>
+                            <span className="loading loading-spinner loading-sm"></span>
+                            Uploading...
+                        </>
+                    ) : (
+                        'Upload PYQ'
+                    )}
                 </button>
             </div>
         </form>
