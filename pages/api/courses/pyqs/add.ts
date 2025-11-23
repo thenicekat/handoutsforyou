@@ -81,9 +81,10 @@ export default async function handler(
 
         fs.unlinkSync(file.filepath)
 
-        
-        await trackContribution({ email: email || 'Anonymous', contribution_type: 'course_pyq' })
-        
+        await trackContribution({
+            email: email || 'Anonymous',
+            contribution_type: 'course_pyq',
+        })
 
         res.status(200).json({
             error: false,
