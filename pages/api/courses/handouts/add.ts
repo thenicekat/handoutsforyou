@@ -60,11 +60,9 @@ export default async function handler(
         )
         fs.unlinkSync(file.filepath)
 
-        try {
-            await trackContribution({ email: email || 'Anonymous', contribution_type: 'course_handout' })
-        } catch (e) {
-            console.error('Failed to track handout contribution', e)
-        }
+        
+        await trackContribution({ email: email || 'Anonymous', contribution_type: 'course_handout' })
+        
 
         res.status(200).json({
             error: false,

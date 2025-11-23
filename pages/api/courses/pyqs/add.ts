@@ -81,12 +81,9 @@ export default async function handler(
 
         fs.unlinkSync(file.filepath)
 
-        try {
-            await trackContribution({ email: email || 'Anonymous', contribution_type: 'course_pyq' })
-        } catch (e) {
-            // Non-fatal: tracking failure should not block upload success
-            console.error('Failed to track PYQ contribution', e)
-        }
+        
+        await trackContribution({ email: email || 'Anonymous', contribution_type: 'course_pyq' })
+        
 
         res.status(200).json({
             error: false,
