@@ -31,20 +31,20 @@ const pyqUploadSchema = z.object({
         ),
     file: z
         .any()
-        .refine(files => files instanceof FileList && files.length > 0, 'File is required')
+        .refine(
+            files => files instanceof FileList && files.length > 0,
+            'File is required'
+        )
         .refine(files => {
             if (!(files instanceof FileList)) return false
             const file = files[0]
             const ext = file?.name.split('.').pop()?.toLowerCase() || ''
             return ['pdf', 'doc', 'docx'].includes(ext)
         }, 'Invalid file type. Please upload a pdf/doc/docx.')
-        .refine(
-            files => {
-                if (!(files instanceof FileList)) return false
-                return files[0]?.size <= 10 * 1024 * 1024
-            },
-            'File too large. Max size is 10MB.'
-        ),
+        .refine(files => {
+            if (!(files instanceof FileList)) return false
+            return files[0]?.size <= 10 * 1024 * 1024
+        }, 'File too large. Max size is 10MB.'),
 })
 
 export type PYQUploadFormData = z.infer<typeof pyqUploadSchema>
@@ -100,10 +100,7 @@ export default function PYQUploadForm({
     }
 
     return (
-        <form
-            onSubmit={handleSubmit(handleFormSubmit)}
-            className="space-y-6"
-        >
+        <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-6">
             <FormField label="Course Name" required error={errors.course}>
                 <AutoCompleterInput
                     control={control}

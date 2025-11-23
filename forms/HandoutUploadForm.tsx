@@ -11,20 +11,20 @@ const handoutUploadSchema = z.object({
         .min(3, 'Folder name should be at least 3 characters'),
     file: z
         .any()
-        .refine(files => files instanceof FileList && files.length > 0, 'File is required')
+        .refine(
+            files => files instanceof FileList && files.length > 0,
+            'File is required'
+        )
         .refine(files => {
             if (!(files instanceof FileList)) return false
             const file = files[0]
             const ext = file?.name.split('.').pop()?.toLowerCase() || ''
             return ['pdf', 'doc', 'docx', 'ppt', 'pptx'].includes(ext)
         }, 'Invalid file type. Allowed: pdf, doc, docx, ppt, pptx.')
-        .refine(
-            files => {
-                if (!(files instanceof FileList)) return false
-                return files[0]?.size <= 25 * 1024 * 1024
-            },
-            'File too large. Max size is 25MB.'
-        ),
+        .refine(files => {
+            if (!(files instanceof FileList)) return false
+            return files[0]?.size <= 25 * 1024 * 1024
+        }, 'File too large. Max size is 25MB.'),
 })
 
 export type HandoutUploadFormData = z.infer<typeof handoutUploadSchema>
@@ -65,10 +65,7 @@ export default function HandoutUploadForm({
     }
 
     return (
-        <form
-            onSubmit={handleSubmit(handleFormSubmit)}
-            className="space-y-6"
-        >
+        <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-6">
             <FormField
                 label="Year / Semester Folder Name"
                 required
