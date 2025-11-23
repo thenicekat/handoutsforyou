@@ -10,15 +10,19 @@ const handoutUploadSchema = z.object({
         .min(1, 'Folder name is required')
         .min(3, 'Folder name should be at least 3 characters'),
     file: z
-        .instanceof(FileList)
-        .refine(files => files.length > 0, 'File is required')
+        .any()
+        .refine(files => files instanceof FileList && files.length > 0, 'File is required')
         .refine(files => {
+            if (!(files instanceof FileList)) return false
             const file = files[0]
             const ext = file?.name.split('.').pop()?.toLowerCase() || ''
             return ['pdf', 'doc', 'docx', 'ppt', 'pptx'].includes(ext)
         }, 'Invalid file type. Allowed: pdf, doc, docx, ppt, pptx.')
         .refine(
-            files => files[0]?.size <= 25 * 1024 * 1024,
+            files => {
+                if (!(files instanceof FileList)) return false
+                return files[0]?.size <= 25 * 1024 * 1024
+            },
             'File too large. Max size is 25MB.'
         ),
 })
@@ -81,7 +85,7 @@ export default function HandoutUploadForm({
             <FormField
                 label="File"
                 required
-                error={errors.file}
+                error={errors.file as any}
                 helpText="Allowed: pdf, doc, docx, ppt, pptx. Max size: 25MB"
             >
                 <input

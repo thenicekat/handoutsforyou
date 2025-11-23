@@ -30,15 +30,19 @@ const pyqUploadSchema = z.object({
             'Please select a valid year from the list'
         ),
     file: z
-        .instanceof(FileList)
-        .refine(files => files.length > 0, 'File is required')
+        .any()
+        .refine(files => files instanceof FileList && files.length > 0, 'File is required')
         .refine(files => {
+            if (!(files instanceof FileList)) return false
             const file = files[0]
             const ext = file?.name.split('.').pop()?.toLowerCase() || ''
             return ['pdf', 'doc', 'docx'].includes(ext)
         }, 'Invalid file type. Please upload a pdf/doc/docx.')
         .refine(
-            files => files[0]?.size <= 10 * 1024 * 1024,
+            files => {
+                if (!(files instanceof FileList)) return false
+                return files[0]?.size <= 10 * 1024 * 1024
+            },
             'File too large. Max size is 10MB.'
         ),
 })
@@ -133,7 +137,7 @@ export default function PYQUploadForm({
             <FormField
                 label="File (pdf/doc/docx)"
                 required
-                error={errors.file}
+                error={errors.file as any}
                 helpText="Max size: 10MB"
             >
                 <input
