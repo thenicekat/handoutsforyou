@@ -23,11 +23,9 @@ export default async function handler(
     try {
         const rootFolderId = process.env.GOOGLE_DRIVE_HANDOUTS_FOLDER_ID
         if (!rootFolderId) {
-            return res
-                .status(500)
-                .json({
-                    message: 'Google Drive Handouts folder ID not configured',
-                })
+            return res.status(500).json({
+                message: 'Google Drive Handouts folder ID not configured',
+            })
         }
 
         const form = formidable({
@@ -62,9 +60,10 @@ export default async function handler(
         )
         fs.unlinkSync(file.filepath)
 
-        
-        await trackContribution({ email: email || 'Anonymous', contribution_type: 'course_handout' })
-        
+        await trackContribution({
+            email: email || 'Anonymous',
+            contribution_type: 'course_handout',
+        })
 
         res.status(200).json({
             error: false,
