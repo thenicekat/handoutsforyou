@@ -22,6 +22,8 @@ import CountUp from 'react-countup'
 import { toast } from 'react-toastify'
 
 const COURSE_RESOURCE = 'course_resource'
+const COURSE_HANDOUT = 'course_handout'
+const COURSE_PYQ = 'course_pyq'
 const COURSE_REVIEW = 'course_review'
 const COURSE_GRADING = 'course_grading'
 const PS1_CUTOFF = 'ps1_cutoff'
@@ -36,6 +38,8 @@ type ContributionType =
     | typeof COURSE_RESOURCE
     | typeof COURSE_REVIEW
     | typeof COURSE_GRADING
+    | typeof COURSE_HANDOUT
+    | typeof COURSE_PYQ
     | typeof PS1_CUTOFF
     | typeof PS2_CUTOFF
     | typeof PS1_REVIEW
@@ -48,6 +52,8 @@ const CONTRIBUTION_DROP_DOWN = [
     // { value: COURSE_RESOURCE, label: 'Course Resource' },
     { value: COURSE_REVIEW, label: 'Course Review' },
     { value: COURSE_GRADING, label: 'Course Grading' },
+    { value: COURSE_HANDOUT, label: 'Course Handout' },
+    { value: COURSE_PYQ, label: 'Course PYQ' },
     { value: PS1_CUTOFF, label: 'PS1 Cutoff' },
     { value: PS2_CUTOFF, label: 'PS2 Cutoff' },
     { value: PS1_REVIEW, label: 'PS1 Review' },
@@ -128,6 +134,8 @@ export default function MaintenancePage() {
         ps1_cutoff: 'PS1 Cutoffs',
         ps2_cutoff: 'PS2 Cutoffs',
         placement_resource: 'Placement Resources',
+        course_handout: 'Course Handouts',
+        course_pyq: 'Course PYQs',
         higherstudies_resource: 'Higher Studies Resources',
         course_grading: 'Course Grading',
         ps1_review: 'PS1 Reviews',
