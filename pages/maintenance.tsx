@@ -58,7 +58,7 @@ const CONTRIBUTION_DROP_DOWN = [
     { value: COURSE_PYQ, label: 'Course PYQ' },
     { value: PS1_CUTOFF, label: 'PS1 Cutoff' },
     { value: PS2_CUTOFF, label: 'PS2 Cutoff' },
-    // { value: PS1_REVIEW, label: 'PS1 Review' },
+    { value: PS1_REVIEW, label: 'PS1 Review' },
     { value: PS2_REVIEW, label: 'PS2 Review' },
     { value: PLACEMENT_RESOURCE, label: 'Placement Resource' },
     { value: PLACEMENT_CTC, label: 'Placement CTC' },
@@ -83,6 +83,8 @@ export default function MaintenancePage() {
         CONTRIBUTION_DROP_DOWN[0]?.value as ContributionType
     )
     const [isLoading, setIsLoading] = useState(false)
+    const [courseGradingResetTrigger, setCourseGradingResetTrigger] =
+        useState(0)
 
     // PS Review state
     const [psUserResponses, setPsUserResponses] = useState<
@@ -164,7 +166,10 @@ export default function MaintenancePage() {
         return values
     }
 
-    const handleCourseResourceSubmit = async (data: ResourceFormData) => {
+    const handleCourseResourceSubmit = async (
+        data: ResourceFormData,
+        reset: () => void
+    ) => {
         setIsLoading(true)
         try {
             const response = await axiosInstance.post(
@@ -182,6 +187,7 @@ export default function MaintenancePage() {
                 toast.success(
                     'Thank you! Your course resource was added successfully!'
                 )
+                reset()
                 onContributionAdded()
             }
         } catch (error) {
@@ -190,7 +196,10 @@ export default function MaintenancePage() {
         setIsLoading(false)
     }
 
-    const handlePlacementResourceSubmit = async (data: ResourceFormData) => {
+    const handlePlacementResourceSubmit = async (
+        data: ResourceFormData,
+        reset: () => void
+    ) => {
         setIsLoading(true)
         try {
             const response = await axiosInstance.post(
@@ -208,6 +217,7 @@ export default function MaintenancePage() {
                 toast.success(
                     'Thank you! Your placement resource was added successfully!'
                 )
+                reset()
                 onContributionAdded()
             }
         } catch (error) {
@@ -217,7 +227,8 @@ export default function MaintenancePage() {
     }
 
     const handleHigherStudiesResourceSubmit = async (
-        data: ResourceFormData
+        data: ResourceFormData,
+        reset: () => void
     ) => {
         setIsLoading(true)
         try {
@@ -236,6 +247,7 @@ export default function MaintenancePage() {
                 toast.success(
                     'Thank you! Your higher studies resource was added successfully!'
                 )
+                reset()
                 onContributionAdded()
             }
         } catch (error) {
@@ -276,7 +288,10 @@ export default function MaintenancePage() {
         setIsLoading(false)
     }
 
-    const handleCourseReviewSubmit = async (data: CourseReviewFormData) => {
+    const handleCourseReviewSubmit = async (
+        data: CourseReviewFormData,
+        reset: () => void
+    ) => {
         setIsLoading(true)
         try {
             const response = await axiosInstance.post(
@@ -293,6 +308,7 @@ export default function MaintenancePage() {
                 toast.success(
                     'Thank you! Your course review was added successfully!'
                 )
+                reset()
                 onContributionAdded()
             }
         } catch (error) {
@@ -324,6 +340,7 @@ export default function MaintenancePage() {
                 toast.success(
                     'Thank you! Your course grading data was added successfully!'
                 )
+                setCourseGradingResetTrigger(prev => prev + 1)
                 onContributionAdded()
             }
         } catch (error) {
@@ -334,65 +351,10 @@ export default function MaintenancePage() {
         setIsLoading(false)
     }
 
-    const handleHandoutUpload = async (form: {
-        yearFolder: string
-        file: File
-    }) => {
-        setIsLoading(true)
-        try {
-            const formData = new FormData()
-            formData.append('yearFolder', form.yearFolder)
-            formData.append('file', form.file)
-            const response = await fetch('/api/courses/handouts/add', {
-                method: 'POST',
-                body: formData,
-            })
-            const data = await response.json()
-            if (data.error) {
-                toast.error(data.message || 'Failed to upload handout')
-            } else {
-                toast.success(
-                    'Thank you! Your handout was uploaded successfully!'
-                )
-                onContributionAdded()
-            }
-        } catch (error) {
-            toast.error('An error occurred. ' + (error as Error).message)
-        }
-        setIsLoading(false)
-    }
-
-    const handlePyqUpload = async (form: {
-        course: string
-        professor: string
-        year: string
-        file: File
-    }) => {
-        setIsLoading(true)
-        try {
-            const formData = new FormData()
-            formData.append('course', form.course)
-            formData.append('professor', form.professor)
-            formData.append('year', form.year)
-            formData.append('file', form.file)
-            const response = await fetch('/api/courses/pyqs/add', {
-                method: 'POST',
-                body: formData,
-            })
-            const data = await response.json()
-            if (data.error) {
-                toast.error(data.message || 'Failed to upload PYQ')
-            } else {
-                toast.success('Thank you! Your PYQ was uploaded successfully!')
-                onContributionAdded()
-            }
-        } catch (error) {
-            toast.error('An error occurred. ' + (error as Error).message)
-        }
-        setIsLoading(false)
-    }
-
-    const handlePSCutoffSubmit = async (data: PSCutoffFormData) => {
+    const handlePSCutoffSubmit = async (
+        data: PSCutoffFormData,
+        reset: () => void
+    ) => {
         setIsLoading(true)
         try {
             const payload = {
@@ -406,11 +368,11 @@ export default function MaintenancePage() {
                 public: data.isPublic ? 1 : 0,
                 ...(contributionType === PS2_CUTOFF && 'stipend' in data
                     ? {
-                          stipend: data.stipend,
-                          offshoot: data.offshoot,
-                          offshootTotal: data.offshootTotal,
-                          offshootType: data.offshootType,
-                      }
+                        stipend: data.stipend,
+                        offshoot: data.offshoot,
+                        offshootTotal: data.offshootTotal,
+                        offshootType: data.offshootType,
+                    }
                     : {}),
             }
 
@@ -424,6 +386,7 @@ export default function MaintenancePage() {
                 toast.success(
                     `Thank you! Your ${contributionType === PS1_CUTOFF ? 'PS1' : 'PS2'} cutoff was added successfully!`
                 )
+                reset()
                 onContributionAdded()
             }
         } catch (error) {
@@ -464,7 +427,10 @@ export default function MaintenancePage() {
         setSelectedPsResponse(response)
     }
 
-    const handlePSReviewSubmit = async (data: PSReviewFormData) => {
+    const handlePSReviewSubmit = async (
+        data: PSReviewFormData,
+        reset: () => void
+    ) => {
         if (!selectedPsResponse) {
             toast.error('Please select a PS response')
             return
@@ -488,6 +454,7 @@ export default function MaintenancePage() {
                 toast.success(
                     `Thank you! Your ${psType} review was added successfully!`
                 )
+                reset()
                 setSelectedPsResponse(null)
                 setPsUserResponses([])
                 onContributionAdded()
@@ -641,15 +608,15 @@ export default function MaintenancePage() {
                                         </div>
                                         {Object.keys(stats.byUser).length >
                                             10 && (
-                                            <div className="text-center mt-4 text-gray-400 text-sm">
-                                                Showing top 10 of{' '}
-                                                {
-                                                    Object.keys(stats.byUser)
-                                                        .length
-                                                }{' '}
-                                                contributors
-                                            </div>
-                                        )}
+                                                <div className="text-center mt-4 text-gray-400 text-sm">
+                                                    Showing top 10 of{' '}
+                                                    {
+                                                        Object.keys(stats.byUser)
+                                                            .length
+                                                    }{' '}
+                                                    contributors
+                                                </div>
+                                            )}
 
                                         <div className="text-center text-white text-sm mt-2">
                                             NOTE: Please do not spam this form.
@@ -748,48 +715,33 @@ export default function MaintenancePage() {
                                 isLoading={isLoading}
                                 depts={depts}
                                 filterDepartmentCodes={filterDepartmentCodes}
-                            />
-                        )}
-
-                        {/* Course Handout Upload */}
-                        {contributionType === COURSE_HANDOUT && (
-                            <HandoutUploadForm
-                                onSubmit={handleHandoutUpload}
-                                isLoading={isLoading}
-                            />
-                        )}
-
-                        {/* Course PYQ Upload */}
-                        {contributionType === COURSE_PYQ && (
-                            <PYQUploadForm
-                                onSubmit={handlePyqUpload}
-                                isLoading={isLoading}
+                                resetTrigger={courseGradingResetTrigger}
                             />
                         )}
 
                         {/* PS Cutoff Forms */}
                         {(contributionType === PS1_CUTOFF ||
                             contributionType === PS2_CUTOFF) && (
-                            <PSCutoffForm
-                                isPS1={contributionType === PS1_CUTOFF}
-                                onSubmit={handlePSCutoffSubmit}
-                                isLoading={isLoading}
-                            />
-                        )}
+                                <PSCutoffForm
+                                    isPS1={contributionType === PS1_CUTOFF}
+                                    onSubmit={handlePSCutoffSubmit}
+                                    isLoading={isLoading}
+                                />
+                            )}
 
                         {/* PS Review Forms */}
                         {(contributionType === PS1_REVIEW ||
                             contributionType === PS2_REVIEW) && (
-                            <PSReviewForm
-                                isPS1={contributionType === PS1_REVIEW}
-                                userResponses={psUserResponses}
-                                selectedResponse={selectedPsResponse}
-                                onResponseSelect={handlePsResponseSelect}
-                                onSubmit={handlePSReviewSubmit}
-                                isLoading={isPsLoading}
-                                isSubmitting={isLoading}
-                            />
-                        )}
+                                <PSReviewForm
+                                    isPS1={contributionType === PS1_REVIEW}
+                                    userResponses={psUserResponses}
+                                    selectedResponse={selectedPsResponse}
+                                    onResponseSelect={handlePsResponseSelect}
+                                    onSubmit={handlePSReviewSubmit}
+                                    isLoading={isPsLoading}
+                                    isSubmitting={isLoading}
+                                />
+                            )}
                     </div>
                 </div>
             </div>

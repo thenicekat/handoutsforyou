@@ -1,18 +1,14 @@
 import { getMetaConfig } from '@/config/meta'
-import ResourceForm, {
-    ResourceFormData,
-    ResourceFormRef,
-} from '@/forms/ResourceForm'
+import ResourceForm, { ResourceFormData } from '@/forms/ResourceForm'
 import AddPageLayout from '@/layout/AddPage'
 import axiosInstance from '@/utils/axiosCache'
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import { toast } from 'react-toastify'
 
 export default function AddResources() {
     const [isLoading, setIsLoading] = useState(false)
-    const formRef = useRef<ResourceFormRef>(null)
 
-    const handleSubmit = async (data: ResourceFormData) => {
+    const handleSubmit = async (data: ResourceFormData, reset: () => void) => {
         setIsLoading(true)
         try {
             const response = await axiosInstance.post(
@@ -32,7 +28,7 @@ export default function AddResources() {
                     'Thank you! Your resource was added successfully!'
                 )
                 // Reset form using React Hook Form's reset method
-                formRef.current?.reset()
+                reset()
             }
         } catch (error) {
             toast.error('An error occurred. Please try again.')
@@ -47,7 +43,6 @@ export default function AddResources() {
             containerId="addResources"
         >
             <ResourceForm
-                ref={formRef}
                 resourceType="course"
                 onSubmit={handleSubmit}
                 isLoading={isLoading}

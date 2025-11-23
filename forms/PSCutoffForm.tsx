@@ -58,7 +58,7 @@ export type PSCutoffFormData = PS1CutoffFormData | PS2CutoffFormData
 
 interface PSCutoffFormProps {
     isPS1: boolean
-    onSubmit: (data: any) => void
+    onSubmit: (data: any, reset: () => void) => void
     isLoading?: boolean
     defaultValues?: Partial<PSCutoffFormData>
 }
@@ -115,7 +115,10 @@ export default function PSCutoffForm({
     }, [defaultValues, reset])
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+        <form
+            onSubmit={handleSubmit(data => onSubmit(data, reset))}
+            className="space-y-6"
+        >
             <FormField label="ID Number" required error={errors.idNumber}>
                 <TextInput
                     registration={register('idNumber')}

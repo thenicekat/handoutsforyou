@@ -22,7 +22,7 @@ interface PSReviewFormProps<T = PS1Item | PS2Item> {
     userResponses: T[]
     selectedResponse: T | null
     onResponseSelect: (response: T) => void
-    onSubmit: (data: PSReviewFormData) => void
+    onSubmit: (data: PSReviewFormData, reset: () => void) => void
     isLoading: boolean
     isSubmitting?: boolean
     defaultValues?: Partial<PSReviewFormData>
@@ -93,7 +93,10 @@ export default function PSReviewForm<T extends PS1Item | PS2Item>({
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+        <form
+            onSubmit={handleSubmit(data => onSubmit(data, reset))}
+            className="space-y-8"
+        >
             <FormField label={`Your ${psType} Responses`} className="mb-8">
                 <div className="space-y-3">
                     {userResponses.map(response => (
