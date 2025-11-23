@@ -2,19 +2,21 @@ import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import CustomToastContainer from '@/components/ToastContainer'
 import { departments } from '@/config/departments'
-import CourseGradingForm, { CourseGradingFormData } from '@/forms/CourseGradingForm'
+import CourseGradingForm, {
+    CourseGradingFormData,
+} from '@/forms/CourseGradingForm'
 import CourseReviewForm, {
     CourseReviewFormData,
 } from '@/forms/CourseReviewForm'
 import { FormField } from '@/forms/FormComponents'
+import HandoutUploadForm from '@/forms/HandoutUploadForm'
 import PSCutoffForm, { PSCutoffFormData } from '@/forms/PSCutoffForm'
 import PSReviewForm, { PSReviewFormData } from '@/forms/PSReviewForm'
+import PYQUploadForm from '@/forms/PYQUploadForm'
 import PlacementCTCForm, {
     PlacementCTCFormData,
 } from '@/forms/PlacementCTCForm'
 import ResourceForm, { ResourceFormData } from '@/forms/ResourceForm'
-import PYQUploadForm from '@/forms/PYQUploadForm'
-import HandoutUploadForm from '@/forms/HandoutUploadForm'
 import { PS1Item, PS2Item } from '@/types/PS'
 import { axiosInstance } from '@/utils/axiosCache'
 import { useEffect, useMemo, useState } from 'react'
@@ -332,7 +334,10 @@ export default function MaintenancePage() {
         setIsLoading(false)
     }
 
-    const handleHandoutUpload = async (form: { yearFolder: string; file: File }) => {
+    const handleHandoutUpload = async (form: {
+        yearFolder: string
+        file: File
+    }) => {
         setIsLoading(true)
         try {
             const formData = new FormData()
@@ -346,7 +351,9 @@ export default function MaintenancePage() {
             if (data.error) {
                 toast.error(data.message || 'Failed to upload handout')
             } else {
-                toast.success('Thank you! Your handout was uploaded successfully!')
+                toast.success(
+                    'Thank you! Your handout was uploaded successfully!'
+                )
                 onContributionAdded()
             }
         } catch (error) {
@@ -355,7 +362,12 @@ export default function MaintenancePage() {
         setIsLoading(false)
     }
 
-    const handlePyqUpload = async (form: { course: string; professor: string; year: string; file: File }) => {
+    const handlePyqUpload = async (form: {
+        course: string
+        professor: string
+        year: string
+        file: File
+    }) => {
         setIsLoading(true)
         try {
             const formData = new FormData()
@@ -394,11 +406,11 @@ export default function MaintenancePage() {
                 public: data.isPublic ? 1 : 0,
                 ...(contributionType === PS2_CUTOFF && 'stipend' in data
                     ? {
-                        stipend: data.stipend,
-                        offshoot: data.offshoot,
-                        offshootTotal: data.offshootTotal,
-                        offshootType: data.offshootType,
-                    }
+                          stipend: data.stipend,
+                          offshoot: data.offshoot,
+                          offshootTotal: data.offshootTotal,
+                          offshootType: data.offshootType,
+                      }
                     : {}),
             }
 
@@ -629,15 +641,15 @@ export default function MaintenancePage() {
                                         </div>
                                         {Object.keys(stats.byUser).length >
                                             10 && (
-                                                <div className="text-center mt-4 text-gray-400 text-sm">
-                                                    Showing top 10 of{' '}
-                                                    {
-                                                        Object.keys(stats.byUser)
-                                                            .length
-                                                    }{' '}
-                                                    contributors
-                                                </div>
-                                            )}
+                                            <div className="text-center mt-4 text-gray-400 text-sm">
+                                                Showing top 10 of{' '}
+                                                {
+                                                    Object.keys(stats.byUser)
+                                                        .length
+                                                }{' '}
+                                                contributors
+                                            </div>
+                                        )}
 
                                         <div className="text-center text-white text-sm mt-2">
                                             NOTE: Please do not spam this form.
@@ -758,26 +770,26 @@ export default function MaintenancePage() {
                         {/* PS Cutoff Forms */}
                         {(contributionType === PS1_CUTOFF ||
                             contributionType === PS2_CUTOFF) && (
-                                <PSCutoffForm
-                                    isPS1={contributionType === PS1_CUTOFF}
-                                    onSubmit={handlePSCutoffSubmit}
-                                    isLoading={isLoading}
-                                />
-                            )}
+                            <PSCutoffForm
+                                isPS1={contributionType === PS1_CUTOFF}
+                                onSubmit={handlePSCutoffSubmit}
+                                isLoading={isLoading}
+                            />
+                        )}
 
                         {/* PS Review Forms */}
                         {(contributionType === PS1_REVIEW ||
                             contributionType === PS2_REVIEW) && (
-                                <PSReviewForm
-                                    isPS1={contributionType === PS1_REVIEW}
-                                    userResponses={psUserResponses}
-                                    selectedResponse={selectedPsResponse}
-                                    onResponseSelect={handlePsResponseSelect}
-                                    onSubmit={handlePSReviewSubmit}
-                                    isLoading={isPsLoading}
-                                    isSubmitting={isLoading}
-                                />
-                            )}
+                            <PSReviewForm
+                                isPS1={contributionType === PS1_REVIEW}
+                                userResponses={psUserResponses}
+                                selectedResponse={selectedPsResponse}
+                                onResponseSelect={handlePsResponseSelect}
+                                onSubmit={handlePSReviewSubmit}
+                                isLoading={isPsLoading}
+                                isSubmitting={isLoading}
+                            />
+                        )}
                     </div>
                 </div>
             </div>

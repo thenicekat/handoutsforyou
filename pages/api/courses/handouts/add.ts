@@ -25,7 +25,9 @@ export default async function handler(
         if (!rootFolderId) {
             return res
                 .status(500)
-                .json({ message: 'Google Drive Handouts folder ID not configured' })
+                .json({
+                    message: 'Google Drive Handouts folder ID not configured',
+                })
         }
 
         const form = formidable({

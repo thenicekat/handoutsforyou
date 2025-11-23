@@ -1,15 +1,23 @@
-import React, { useState } from 'react'
 import AutoCompleter from '@/components/AutoCompleter'
 import { courses as courseNames } from '@/config/courses'
 import { profs } from '@/config/profs'
 import { pyqYears } from '@/config/years_sems'
+import { useState } from 'react'
 
 interface PYQUploadFormProps {
-    onSubmit: (form: { course: string; professor: string; year: string; file: File }) => void
+    onSubmit: (form: {
+        course: string
+        professor: string
+        year: string
+        file: File
+    }) => void
     isLoading: boolean
 }
 
-export default function PYQUploadForm({ onSubmit, isLoading }: PYQUploadFormProps) {
+export default function PYQUploadForm({
+    onSubmit,
+    isLoading,
+}: PYQUploadFormProps) {
     const [course, setCourse] = useState('')
     const [professor, setProfessor] = useState('')
     const [year, setYear] = useState('')
@@ -59,19 +67,42 @@ export default function PYQUploadForm({ onSubmit, isLoading }: PYQUploadFormProp
     return (
         <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-                <label className="block text-sm font-medium mb-2 text-white">Course Name *</label>
-                <AutoCompleter items={courseNames} value={course} onChange={setCourse} name="course" />
+                <label className="block text-sm font-medium mb-2 text-white">
+                    Course Name *
+                </label>
+                <AutoCompleter
+                    items={courseNames}
+                    value={course}
+                    onChange={setCourse}
+                    name="course"
+                />
             </div>
             <div>
-                <label className="block text-sm font-medium mb-2 text-white">Professor *</label>
-                <AutoCompleter items={profs.map((p) => p.name)} value={professor} onChange={setProfessor} name="professor" />
+                <label className="block text-sm font-medium mb-2 text-white">
+                    Professor *
+                </label>
+                <AutoCompleter
+                    items={profs.map(p => p.name)}
+                    value={professor}
+                    onChange={setProfessor}
+                    name="professor"
+                />
             </div>
             <div>
-                <label className="block text-sm font-medium mb-2 text-white">Year *</label>
-                <AutoCompleter items={pyqYears} value={year} onChange={setYear} name="year" />
+                <label className="block text-sm font-medium mb-2 text-white">
+                    Year *
+                </label>
+                <AutoCompleter
+                    items={pyqYears}
+                    value={year}
+                    onChange={setYear}
+                    name="year"
+                />
             </div>
             <div>
-                <label className="block text-sm font-medium mb-2 text-white">File (pdf/doc/docx) *</label>
+                <label className="block text-sm font-medium mb-2 text-white">
+                    File (pdf/doc/docx) *
+                </label>
                 <input
                     type="file"
                     accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
@@ -85,7 +116,11 @@ export default function PYQUploadForm({ onSubmit, isLoading }: PYQUploadFormProp
                 </p>
             )}
             <div className="flex justify-center">
-                <button type="submit" disabled={isLoading} className="btn btn-primary btn-lg min-w-48">
+                <button
+                    type="submit"
+                    disabled={isLoading}
+                    className="btn btn-primary btn-lg min-w-48"
+                >
                     {isLoading ? 'Uploading...' : 'Upload PYQ'}
                 </button>
             </div>
