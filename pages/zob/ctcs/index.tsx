@@ -30,8 +30,10 @@ export default function PlacementCTCs() {
 
     const fetchPlacementCTCs = async () => {
         try {
-            const res = await axiosInstance.post('/api/zob/ctcs/get', {
-                year: yearRef,
+            const res = await axiosInstance.get('/api/zob/ctcs/get', {
+                params: {
+                    year: yearRef,
+                },
             })
             const resp = res.data
             if (!resp.error) {

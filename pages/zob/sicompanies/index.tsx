@@ -30,8 +30,10 @@ export default function SICompanies() {
 
     const fetchSiCompanies = async () => {
         try {
-            const res = await axiosInstance.post('/api/zob/companies/get', {
-                year: yearRef,
+            const res = await axiosInstance.get('/api/zob/companies/get', {
+                params: {
+                    year: yearRef,
+                },
             })
             const resp = res.data
             if (!resp.error) {

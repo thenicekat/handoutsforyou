@@ -33,8 +33,10 @@ export default function PS2Data() {
     const checkUserResponses = async () => {
         setCheckingResponses(true)
         try {
-            const response = await axiosInstance.post('/api/ps/cutoffs/get', {
-                type: 'ps2',
+            const response = await axiosInstance.get('/api/ps/cutoffs/my', {
+                params: {
+                    type: 'ps2',
+                },
             })
 
             if (response.status === 200) {
@@ -64,8 +66,10 @@ export default function PS2Data() {
         }
 
         try {
-            const res = await axiosInstance.post('/api/ps/cutoffs/ps2', {
-                year: yearRef,
+            const res = await axiosInstance.get('/api/ps/cutoffs/ps2', {
+                params: {
+                    year: yearRef,
+                },
             })
             if (res.status !== 400) {
                 const data = res.data

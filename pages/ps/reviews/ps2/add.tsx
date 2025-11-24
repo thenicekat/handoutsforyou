@@ -17,8 +17,10 @@ export default function AddPS2Review() {
     const fetchUserResponses = async () => {
         setIsLoading(true)
         try {
-            const response = await axiosInstance.post('/api/ps/cutoffs/get', {
-                type: 'ps2',
+            const response = await axiosInstance.get('/api/ps/cutoffs/my', {
+                params: {
+                    type: 'ps2',
+                },
             })
 
             if (response.status === 200) {

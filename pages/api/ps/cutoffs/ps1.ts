@@ -8,7 +8,7 @@ export default async function handler(
     res: NextApiResponse<BaseResponseData>
 ) {
     await getUser(req, res)
-    const { year } = req.body
+    const { year } = req.query
 
     if (!year) {
         res.status(422).json({

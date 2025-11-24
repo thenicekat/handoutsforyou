@@ -17,8 +17,10 @@ export default function PS2Reviews() {
     const fetchReviews = async () => {
         setIsLoading(true)
         try {
-            const response = await axiosInstance.post('/api/ps/reviews/get', {
-                type: 'PS2',
+            const response = await axiosInstance.get('/api/ps/reviews/get', {
+                params: {
+                    type: 'PS2',
+                },
             })
             if (response.status !== 400) {
                 const res = response.data

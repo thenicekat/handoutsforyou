@@ -56,7 +56,6 @@ export default function PSReviewForm<T extends PS1Item | PS2Item>({
     const psType = isPS1 ? 'PS1' : 'PS2'
     const addUrl = isPS1 ? '/ps/cutoffs/ps1' : '/ps/cutoffs/ps2'
 
-    // Reset form when defaultValues change
     useEffect(() => {
         if (defaultValues) {
             reset(defaultValues)

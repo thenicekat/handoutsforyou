@@ -7,7 +7,7 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<BaseResponseData>
 ) {
-    const { course, prof } = req.body
+    const { course, prof } = req.query
     await getUser(req, res)
 
     if (!course && !prof) {

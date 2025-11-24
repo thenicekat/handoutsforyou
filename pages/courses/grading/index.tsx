@@ -67,9 +67,11 @@ export default function Grading() {
         }
         setIsLoading(true)
         try {
-            const res = await axiosInstance.post('/api/courses/grading/get', {
-                course: course,
-                prof: prof,
+            const res = await axiosInstance.get('/api/courses/grading/get', {
+                params: {
+                    course: course,
+                    prof: prof,
+                },
             })
 
             if (res.status !== 400) {

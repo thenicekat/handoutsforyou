@@ -8,7 +8,7 @@ export default async function handler(
     res: NextApiResponse<BaseResponseData>
 ) {
     await getUser(req, res)
-    const { course, prof } = req.body
+    const { course, prof } = req.query
 
     if (!course && !prof) {
         const { data, error } = await supabase

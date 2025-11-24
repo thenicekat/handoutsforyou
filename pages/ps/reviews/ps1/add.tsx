@@ -17,8 +17,10 @@ export default function AddPS1Review() {
     const fetchUserResponses = async () => {
         setIsLoading(true)
         try {
-            const response = await axiosInstance.post('/api/ps/cutoffs/get', {
-                type: 'ps1',
+            const response = await axiosInstance.get('/api/ps/cutoffs/my', {
+                params: {
+                    type: 'ps1',
+                },
             })
 
             if (response.status === 200) {

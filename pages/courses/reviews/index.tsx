@@ -34,9 +34,11 @@ export default function Reviews() {
         }
         setIsLoading(true)
         try {
-            const res = await axiosInstance.post('/api/courses/reviews/get', {
-                course: course,
-                prof: prof,
+            const res = await axiosInstance.get('/api/courses/reviews/get', {
+                params: {
+                    course: course,
+                    prof: prof,
+                },
             })
             if (res.status !== 400) {
                 const reviews = res.data

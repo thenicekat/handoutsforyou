@@ -8,7 +8,7 @@ export default async function handler(
     res: NextApiResponse<BaseResponseData>
 ) {
     await getUser(req, res)
-    const { type } = req.body
+    const { type } = req.query
 
     if (type) {
         if (type === 'PS1') {

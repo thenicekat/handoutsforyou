@@ -388,8 +388,10 @@ export default function MaintenancePage() {
     const fetchPsUserResponses = async (psType: 'ps1' | 'ps2') => {
         setIsPsLoading(true)
         try {
-            const response = await axiosInstance.post('/api/ps/cutoffs/get', {
-                type: psType,
+            const response = await axiosInstance.get('/api/ps/cutoffs/my', {
+                params: {
+                    type: psType,
+                },
             })
 
             if (response.status === 200) {
