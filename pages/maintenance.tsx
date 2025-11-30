@@ -9,14 +9,14 @@ import CourseReviewForm, {
     CourseReviewFormData,
 } from '@/forms/CourseReviewForm'
 import { FormField } from '@/forms/FormComponents'
+import HandoutUploadForm from '@/forms/HandoutUploadForm'
 import PSCutoffForm, { PSCutoffFormData } from '@/forms/PSCutoffForm'
 import PSReviewForm, { PSReviewFormData } from '@/forms/PSReviewForm'
+import PYQUploadForm from '@/forms/PYQUploadForm'
 import PlacementCTCForm, {
     PlacementCTCFormData,
 } from '@/forms/PlacementCTCForm'
 import ResourceForm, { ResourceFormData } from '@/forms/ResourceForm'
-import PYQUploadForm, { PYQUploadFormData } from '@/forms/PYQUploadForm'
-import HandoutUploadForm, { HandoutUploadFormData } from '@/forms/HandoutUploadForm'
 import { PS1Item, PS2Item } from '@/types/PS'
 import { axiosInstance } from '@/utils/axiosCache'
 import { useEffect, useMemo, useState } from 'react'
@@ -493,9 +493,7 @@ export default function MaintenancePage() {
             if (response.data.error) {
                 toast.error(response.data.message)
             } else {
-                toast.success(
-                    'Thank you! Your PYQ was uploaded successfully!'
-                )
+                toast.success('Thank you! Your PYQ was uploaded successfully!')
                 onContributionAdded()
             }
         } catch (error) {
