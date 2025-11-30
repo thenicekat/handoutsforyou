@@ -12,7 +12,7 @@
     "dependencies": {
         "@heroicons/react": "^2.1.5",
         "@hookform/resolvers": "^5.2.2",
-        "@supabase/supabase-js": "^2.45.1",
+        "@supabase/supabase-js": "^2.86.0",
         "@tanstack/react-table": "^8.20.5",
         "@types/formidable": "^3.4.5",
         "@types/node": "18.11.18",

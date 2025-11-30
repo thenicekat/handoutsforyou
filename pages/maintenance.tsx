@@ -480,21 +480,21 @@ export default function MaintenancePage() {
                                 <div className="mb-6">
                                     <div className="flex justify-between text-sm text-gray-300 mb-2">
                                         <span>
-                                            Progress towards 5000 contributions
+                                            Progress towards 10000 contributions
                                         </span>
                                         <span>
-                                            {Math.min(stats.total, 5000)}/5000
+                                            {Math.min(stats.total, 10000)}/10000
                                         </span>
                                     </div>
                                     <div className="w-full bg-white/10 rounded-full h-3">
                                         <div
                                             className="bg-gradient-to-r from-amber-400 to-orange-500 h-3 rounded-full transition-all duration-1000 ease-out"
                                             style={{
-                                                width: `${Math.min((stats.total / 5000) * 100, 100)}%`,
+                                                width: `${Math.min((stats.total / 10000) * 100, 100)}%`,
                                             }}
                                         ></div>
                                     </div>
-                                    {stats.total >= 5000 && (
+                                    {stats.total >= 10000 && (
                                         <div className="text-center mt-2 text-green-400 font-semibold">
                                             🎉 Goal achieved! Thank you for your
                                             contributions!
