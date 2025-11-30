@@ -139,6 +139,7 @@ export default async function handler(
                     cgpa: reqBody.cgpa,
                     preference: reqBody.preference,
                     public: reqBody.public,
+                    added_by: email,
                 },
             ])
 
@@ -239,6 +240,7 @@ export default async function handler(
                     offshoot_total: reqBody.offshootTotal,
                     offshoot_type: reqBody.offshootType,
                     public: reqBody.public,
+                    added_by: email,
                 },
             ])
 
