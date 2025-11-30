@@ -15,6 +15,8 @@ import PlacementCTCForm, {
     PlacementCTCFormData,
 } from '@/forms/PlacementCTCForm'
 import ResourceForm, { ResourceFormData } from '@/forms/ResourceForm'
+import PYQUploadForm, { PYQUploadFormData } from '@/forms/PYQUploadForm'
+import HandoutUploadForm, { HandoutUploadFormData } from '@/forms/HandoutUploadForm'
 import { PS1Item, PS2Item } from '@/types/PS'
 import { axiosInstance } from '@/utils/axiosCache'
 import { useEffect, useMemo, useState } from 'react'
@@ -464,6 +466,80 @@ export default function MaintenancePage() {
         setIsLoading(false)
     }
 
+    const handlePYQUploadSubmit = async (data: {
+        course: string
+        professor: string
+        year: string
+        file: File
+    }) => {
+        setIsLoading(true)
+        try {
+            const formData = new FormData()
+            formData.append('course', data.course)
+            formData.append('professor', data.professor)
+            formData.append('year', data.year)
+            formData.append('file', data.file)
+
+            const response = await axiosInstance.post(
+                '/api/courses/pyqs/add',
+                formData,
+                {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                }
+            )
+
+            if (response.data.error) {
+                toast.error(response.data.message)
+            } else {
+                toast.success(
+                    'Thank you! Your PYQ was uploaded successfully!'
+                )
+                onContributionAdded()
+            }
+        } catch (error) {
+            console.error('Error uploading PYQ:', error)
+            toast.error('Failed to upload PYQ')
+        }
+        setIsLoading(false)
+    }
+
+    const handleHandoutUploadSubmit = async (data: {
+        yearFolder: string
+        file: File
+    }) => {
+        setIsLoading(true)
+        try {
+            const formData = new FormData()
+            formData.append('yearFolder', data.yearFolder)
+            formData.append('file', data.file)
+
+            const response = await axiosInstance.post(
+                '/api/courses/handouts/add',
+                formData,
+                {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                }
+            )
+
+            if (response.data.error) {
+                toast.error(response.data.message)
+            } else {
+                toast.success(
+                    'Thank you! Your handout was uploaded successfully!'
+                )
+                onContributionAdded()
+            }
+        } catch (error) {
+            console.error('Error uploading handout:', error)
+            toast.error('Failed to upload handout')
+        }
+        setIsLoading(false)
+    }
+
     return (
         <>
             <Meta />
@@ -714,6 +790,22 @@ export default function MaintenancePage() {
                                 depts={depts}
                                 filterDepartmentCodes={filterDepartmentCodes}
                                 resetTrigger={courseGradingResetTrigger}
+                            />
+                        )}
+
+                        {/* PYQ Upload Form */}
+                        {contributionType === COURSE_PYQ && (
+                            <PYQUploadForm
+                                onSubmit={handlePYQUploadSubmit}
+                                isLoading={isLoading}
+                            />
+                        )}
+
+                        {/* Handout Upload Form */}
+                        {contributionType === COURSE_HANDOUT && (
+                            <HandoutUploadForm
+                                onSubmit={handleHandoutUploadSubmit}
+                                isLoading={isLoading}
                             />
                         )}
 
