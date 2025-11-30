@@ -45,7 +45,6 @@ export async function getUser(
     response: NextApiResponse
 ): Promise<AuthorizedUser> {
     try {
-        console.log('getUser', process.env.MAINTENANCE)
         if (process.env.MAINTENANCE === '1') {
             console.log(request.method)
             if (request.method === 'GET') {
@@ -61,7 +60,6 @@ export async function getUser(
                 }
             }
         }
-        console.log('GET CALL')
         const session = await getServerSession(request, response, authOptions)
         if (!session) {
             response.status(401).json({

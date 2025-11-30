@@ -26,7 +26,9 @@ const axiosInstance: AxiosCacheInstance = setupCache(
             },
         },
         generateKey: req => {
-            return `${req.method?.toUpperCase()}_${req.url}`
+            const url = req.url || ''
+            const params = req.params ? JSON.stringify(req.params) : ''
+            return `${req.method?.toUpperCase()}_${url}_${params}`
         },
         ttl: 3600000,
     }
