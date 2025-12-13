@@ -1,62 +1,62 @@
 {
-    "name": "handoutsforyou",
-    "version": "0.1.0",
-    "private": true,
-    "scripts": {
-        "dev": "next dev --turbopack",
-        "build": "next build",
-        "start": "next start",
-        "lint": "next lint",
-        "format": "prettier --write ."
-    },
-    "dependencies": {
-        "@heroicons/react": "^2.1.5",
-        "@hookform/resolvers": "^5.2.2",
-        "@supabase/supabase-js": "^2.86.0",
-        "@tanstack/react-table": "^8.20.5",
-        "@types/formidable": "^3.4.5",
-        "@types/node": "18.11.18",
-        "@types/react": "19.1.2",
-        "@types/react-dom": "19.1.2",
-        "autoprefixer": "^10.4.20",
-        "axios": "^1.10.0",
-        "axios-cache-interceptor": "^1.8.0",
-        "classnames": "^2.5.1",
-        "daisyui": "^4.12.10",
-        "disable-devtool": "^0.3.7",
-        "formidable": "^3.5.4",
-        "googleapis": "^150.0.1",
-        "mermaid": "^11.9.0",
-        "next": "15.3.1",
-        "next-auth": "^4.24.11",
-        "next-pwa": "^5.6.0",
-        "postcss": "^8.4.41",
-        "react": "19.1.0",
-        "react-countup": "^6.5.3",
-        "react-dom": "19.1.0",
-        "react-hook-form": "^7.66.1",
-        "react-markdown": "^10.1.0",
-        "react-toastify": "^10.0.5",
-        "remark": "^15.0.1",
-        "remark-frontmatter": "^5.0.0",
-        "remark-gfm": "^4.0.1",
-        "remark-parse-frontmatter": "^1.0.3",
-        "tailwindcss": "^3.4.10",
-        "typescript": "5.4.2",
-        "zod": "^4.1.12"
-    },
-    "pnpm": {
-        "overrides": {
-            "@types/react": "19.1.2",
-            "@types/react-dom": "19.1.2",
-            "@types/d3-dispatch": "3.0.6"
-        }
-    },
-    "devDependencies": {
-        "@next/eslint-plugin-next": "^15.3.2",
-        "eslint": "^9.26.0",
-        "eslint-config-next": "^15.3.2",
-        "prettier": "3.5.3",
-        "prettier-plugin-organize-imports": "^4.1.0"
+  "name": "handoutsforyou",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@heroicons/react": "^2.1.5",
+    "@hookform/resolvers": "^5.2.2",
+    "@supabase/supabase-js": "^2.86.0",
+    "@tanstack/react-table": "^8.20.5",
+    "@types/formidable": "^3.4.5",
+    "@types/node": "18.11.18",
+    "@types/react": "19.1.2",
+    "@types/react-dom": "19.1.2",
+    "autoprefixer": "^10.4.20",
+    "axios": "^1.10.0",
+    "axios-cache-interceptor": "^1.8.0",
+    "classnames": "^2.5.1",
+    "daisyui": "^4.12.10",
+    "disable-devtool": "^0.3.7",
+    "formidable": "^3.5.4",
+    "googleapis": "^150.0.1",
+    "mermaid": "^11.9.0",
+    "next": "15.3.8",
+    "next-auth": "^4.24.11",
+    "next-pwa": "^5.6.0",
+    "postcss": "^8.4.41",
+    "react": "19.1.0",
+    "react-countup": "^6.5.3",
+    "react-dom": "19.1.0",
+    "react-hook-form": "^7.66.1",
+    "react-markdown": "^10.1.0",
+    "react-toastify": "^10.0.5",
+    "remark": "^15.0.1",
+    "remark-frontmatter": "^5.0.0",
+    "remark-gfm": "^4.0.1",
+    "remark-parse-frontmatter": "^1.0.3",
+    "tailwindcss": "^3.4.10",
+    "typescript": "5.4.2",
+    "zod": "^4.1.12"
+  },
+  "pnpm": {
+    "overrides": {
+      "@types/react": "19.1.2",
+      "@types/react-dom": "19.1.2",
+      "@types/d3-dispatch": "3.0.6"
     }
+  },
+  "devDependencies": {
+    "@next/eslint-plugin-next": "^15.3.2",
+    "eslint": "^9.26.0",
+    "eslint-config-next": "^15.3.2",
+    "prettier": "3.5.3",
+    "prettier-plugin-organize-imports": "^4.1.0"
+  }
 }
