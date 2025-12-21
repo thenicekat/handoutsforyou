@@ -63,7 +63,7 @@ interface ContributionStats {
     byUser: Record<string, number>
 }
 
-export default function MaintenancePage() {
+export default function LeaderboardPage() {
     const [stats, setStats] = useState<ContributionStats>({
         total: 0,
         byType: {},
@@ -474,7 +474,7 @@ export default function MaintenancePage() {
                         ) : (
                             <>
                                 <h2 className="text-2xl font-bold text-white mb-6 text-center">
-                                    🚀 Maintenance Mode.
+                                    🏆 Leaderboard
                                 </h2>
 
                                 <div className="mb-6">
@@ -738,7 +738,7 @@ export default function MaintenancePage() {
                 </div>
             </div>
 
-            <CustomToastContainer containerId="maintenance" />
+            <CustomToastContainer containerId="leaderboard" />
         </>
     )
 }

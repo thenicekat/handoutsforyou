@@ -1,5 +1,10 @@
 import { MenuProps } from '@/types/Menu'
-import { Bars3Icon, StarIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import {
+    Bars3Icon,
+    StarIcon,
+    TrophyIcon,
+    XMarkIcon,
+} from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import { useState } from 'react'
 import StarPrompt from './Prompt'
@@ -24,6 +29,7 @@ const Menu = ({ doNotShowMenu }: MenuProps) => {
         'Research Chronicles':
             'https://pollen-box-786.notion.site/Research-Chronicles-894bcac1266d4e5fac2f4cd76ff29750',
         'Higher Studies': '/higherstudies/resources',
+        Leaderboard: '/leaderboard',
     }
 
     return (
@@ -41,6 +47,12 @@ const Menu = ({ doNotShowMenu }: MenuProps) => {
                     </div>
 
                     <div className="flex items-center gap-2 md:gap-4">
+                        <Link href="/leaderboard">
+                            <button className="md:flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-400/20 hover:bg-amber-400/30 text-amber-500 transition-all">
+                                <TrophyIcon className="h-4 w-4" />
+                            </button>
+                        </Link>
+
                         <Link href="https://github.com/thenicekat/handoutsforyou">
                             <button className="md:flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-400/20 hover:bg-amber-400/30 text-amber-500 transition-all">
                                 <StarIcon className="h-4 w-4" />
