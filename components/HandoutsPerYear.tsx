@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export default function HandoutsPerYear({
     handouts,
-    year,
+    semester,
     searchWord,
 }: HandoutsPerYearProps) {
     return (
@@ -37,14 +37,7 @@ export default function HandoutsPerYear({
                                 </span>
                                 <div>
                                     <button className="btn btn-sm btn-ghost">
-                                        {'Year ' +
-                                            year.split('_')[0] +
-                                            '-' +
-                                            year.split('_')[1] +
-                                            ' ' +
-                                            (year.split('_').length > 2
-                                                ? year.split('_')[2]
-                                                : '')}
+                                        {semester}
                                     </button>
 
                                     <Link
@@ -65,7 +58,7 @@ export default function HandoutsPerYear({
             ) : (
                 <div className="flex justify-center">
                     <h1 className="text-lg text-primary">
-                        No handouts found for the year {year}!
+                        No handouts found for the semester {semester}!
                     </h1>
                 </div>
             )}

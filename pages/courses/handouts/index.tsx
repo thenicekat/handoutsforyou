@@ -1,13 +1,17 @@
+import AutoCompleter from '@/components/AutoCompleter'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import MonetagAd from '@/components/MonetagAd'
+import CustomToastContainer from '@/components/ToastContainer'
+import { courses as courseNames } from '@/config/courses'
 import { getMetaConfig } from '@/config/meta'
+import { pyqYears } from '@/config/years_sems'
 import axiosInstance from '@/utils/axiosCache'
 import { googleDriveService } from '@/utils/googleDrive'
 import { GetStaticProps } from 'next'
 import dynamic from 'next/dynamic'
-import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 
 const HandoutsPerYear = dynamic(() => import('@/components/HandoutsPerYear'), {
     loading: () => (
@@ -58,11 +62,73 @@ export default function Handouts({
     const [actualSearch, setActualSearch] = useState('')
     const [isLoading, setIsLoading] = useState(true)
 
+    const [showUploadForm, setShowUploadForm] = useState(false)
+    const [uploading, setUploading] = useState(false)
+    const [uploadCourse, setUploadCourse] = useState('')
+    const [uploadSemester, setUploadSemester] = useState('')
+    const [selectedFile, setSelectedFile] = useState<File | null>(null)
+
     const filterHandouts = async () => {
         setIsLoading(true)
         await axiosInstance.get('/api/auth/check')
         setActualSearch(search)
         setIsLoading(false)
+    }
+
+    const handleUpload = async (e: React.FormEvent) => {
+        e.preventDefault()
+
+        if (!uploadCourse || !uploadSemester || !selectedFile) {
+            toast.error('Please fill all fields')
+            return
+        }
+        if (!validateFile(selectedFile)) {
+            return
+        }
+
+        setUploading(true)
+
+        try {
+            const formData = new FormData()
+            formData.append('course', uploadCourse)
+            formData.append('semester', uploadSemester)
+            formData.append('file', selectedFile)
+
+            const response = await fetch('/api/courses/handouts/add', {
+                method: 'POST',
+                body: formData,
+            })
+
+            const data = await response.json()
+
+            if (!data.error) {
+                toast.success('Handout uploaded successfully!')
+                setShowUploadForm(false)
+                setUploadCourse('')
+                setUploadSemester('')
+                setSelectedFile(null)
+                window.location.reload()
+            } else {
+                toast.error(data.message || 'Failed to upload handout')
+            }
+        } catch (error) {
+            toast.error('Error uploading handout: ' + error)
+        } finally {
+            setUploading(false)
+        }
+    }
+
+    const validateFile = (file: File) => {
+        const allowedExtensions = ['pdf', 'docx', 'doc']
+        const extension = file.name.split('.').pop()
+        if (
+            !extension ||
+            !allowedExtensions.includes(extension.toLowerCase())
+        ) {
+            toast.error('Please upload: ' + allowedExtensions.join(', '))
+            return false
+        }
+        return true
     }
 
     useEffect(() => {
@@ -91,6 +157,75 @@ export default function Handouts({
                 id="monetag-interstitial-banner-inline-handouts"
             />
 
+            {showUploadForm && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                    <div className="bg-black rounded-lg p-6 w-full max-w-md mx-4">
+                        <h2 className="text-2xl font-bold mb-4">
+                            Upload Handout
+                        </h2>
+                        <form onSubmit={handleUpload}>
+                            <div className="mb-4">
+                                <label className="block text-sm font-medium mb-2">
+                                    Course Name
+                                </label>
+                                <AutoCompleter
+                                    items={courseNames}
+                                    value={uploadCourse}
+                                    onChange={setUploadCourse}
+                                    name="course"
+                                />
+                            </div>
+
+                            <div className="mb-4">
+                                <label className="block text-sm font-medium mb-2">
+                                    Semester
+                                </label>
+                                <AutoCompleter
+                                    items={pyqYears}
+                                    value={uploadSemester}
+                                    onChange={setUploadSemester}
+                                    name="semester"
+                                />
+                            </div>
+
+                            <div className="mb-4">
+                                <label className="block text-sm font-medium mb-2">
+                                    File
+                                </label>
+                                <input
+                                    type="file"
+                                    className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    onChange={e =>
+                                        setSelectedFile(
+                                            e.target.files?.[0] || null
+                                        )
+                                    }
+                                    required
+                                />
+                            </div>
+
+                            <div className="flex justify-end space-x-2">
+                                <button
+                                    type="button"
+                                    className="px-4 py-2 text-gray-500 hover:text-gray-700"
+                                    onClick={() => setShowUploadForm(false)}
+                                    disabled={uploading}
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    type="submit"
+                                    className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:opacity-50"
+                                    disabled={uploading}
+                                >
+                                    {uploading ? 'Uploading...' : 'Upload'}
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            )}
+
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
                     <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">
@@ -104,15 +239,20 @@ export default function Handouts({
                             className="input input-secondary w-full max-w-xs"
                             onChange={e => setSearch(e.target.value)}
                         />
-                        <Link className="m-3 w-full max-w-xs" href={''}>
+                        <div className="flex flex-col md:flex-row gap-3 m-3 w-full max-w-xs">
                             <button
-                                className="btn btn-outline w-full"
-                                tabIndex={-1}
+                                className="btn btn-outline flex-1"
                                 onClick={filterHandouts}
                             >
                                 Filter Handouts
                             </button>
-                        </Link>
+                            <button
+                                className="btn btn-outline flex-1"
+                                onClick={() => setShowUploadForm(true)}
+                            >
+                                Upload Handout
+                            </button>
+                        </div>
                     </>
                 </div>
             </div>
@@ -126,7 +266,7 @@ export default function Handouts({
                                 <>
                                     <HandoutsPerYear
                                         handouts={handoutsMap[handoutMap]}
-                                        year={handoutMap}
+                                        semester={handoutMap}
                                         key={handoutMap}
                                         searchWord={actualSearch}
                                     />
@@ -143,6 +283,8 @@ export default function Handouts({
                     <p className="text-lg mt-4">Loading data...</p>
                 </div>
             )}
+
+            <CustomToastContainer containerId="courseHandouts" />
         </>
     )
 }

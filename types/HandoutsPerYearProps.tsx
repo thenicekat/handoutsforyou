@@ -1,5 +1,5 @@
 export type HandoutsPerYearProps = {
     handouts: any
-    year: any
+    semester: any
     searchWord: string
 }
