@@ -87,9 +87,10 @@ export default async function handler(
         }
 
         const fileBuffer = fs.readFileSync(file.filepath)
+        const fileExtension = file.originalFilename?.split('.').pop() || 'pdf'
 
         const uploadedFile = await googleDriveService.uploadFile(
-            course + ' handout',
+            course + ' handout.' + fileExtension,
             fileBuffer,
             semesterFolderId,
             file.mimetype || 'application/pdf'
