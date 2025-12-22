@@ -9,6 +9,7 @@ import CourseReviewForm, {
     CourseReviewFormData,
 } from '@/forms/CourseReviewForm'
 import { FormField } from '@/forms/FormComponents'
+import HandoutForm, { HandoutFormData } from '@/forms/HandoutForm'
 import PSCutoffForm, { PSCutoffFormData } from '@/forms/PSCutoffForm'
 import PSReviewForm, { PSReviewFormData } from '@/forms/PSReviewForm'
 import PlacementCTCForm, {
@@ -22,6 +23,7 @@ import CountUp from 'react-countup'
 import { toast } from 'react-toastify'
 
 const COURSE_RESOURCE = 'course_resource'
+const COURSE_HANDOUT = 'course_handout'
 const COURSE_REVIEW = 'course_review'
 const COURSE_GRADING = 'course_grading'
 const PS1_CUTOFF = 'ps1_cutoff'
@@ -43,9 +45,11 @@ type ContributionType =
     | typeof PLACEMENT_RESOURCE
     | typeof PLACEMENT_CTC
     | typeof HIGHERSTUDIES_RESOURCE
+    | typeof COURSE_HANDOUT
 
 const CONTRIBUTION_DROP_DOWN = [
-    // { value: COURSE_RESOURCE, label: 'Course Resource' },
+    { value: COURSE_RESOURCE, label: 'Course Resource' },
+    { value: COURSE_HANDOUT, label: 'Course Handout' },
     { value: COURSE_REVIEW, label: 'Course Review' },
     { value: COURSE_GRADING, label: 'Course Grading' },
     { value: PS1_CUTOFF, label: 'PS1 Cutoff' },
@@ -124,6 +128,7 @@ export default function LeaderboardPage() {
 
     const contributionTypeLabels: Record<string, string> = {
         course_resource: 'Course Resources',
+        course_handout: 'Course Handouts',
         course_review: 'Course Reviews',
         ps1_cutoff: 'PS1 Cutoffs',
         ps2_cutoff: 'PS2 Cutoffs',
@@ -182,6 +187,39 @@ export default function LeaderboardPage() {
             }
         } catch (error) {
             toast.error('An error occurred. ' + error)
+        }
+        setIsLoading(false)
+    }
+
+    const handleHandoutSubmit = async (
+        data: HandoutFormData,
+        reset: () => void
+    ) => {
+        setIsLoading(true)
+        try {
+            const formData = new FormData()
+            formData.append('course', data.course)
+            formData.append('semester', data.semester)
+            formData.append('file', data.file)
+
+            const response = await fetch('/api/courses/handouts/add', {
+                method: 'POST',
+                body: formData,
+            })
+
+            const responseData = await response.json()
+
+            if (!responseData.error) {
+                toast.success(
+                    'Thank you! Your handout was uploaded successfully!'
+                )
+                reset()
+                onContributionAdded()
+            } else {
+                toast.error(responseData.message || 'Failed to upload handout')
+            }
+        } catch (error) {
+            toast.error('An error occurred. ' + (error as Error).message)
         }
         setIsLoading(false)
     }
@@ -609,21 +647,6 @@ export default function LeaderboardPage() {
                                                 contributors
                                             </div>
                                         )}
-
-                                        <div className="text-center text-white text-sm mt-2">
-                                            NOTE: Please do not spam this form.
-                                            We have limited bandwidth and any
-                                            such practices will only lead to h4u
-                                            not coming back up. I know this is
-                                            not the way to go about getting
-                                            data, but I really cannot go around
-                                            begging people to contribute. You
-                                            need to build your own data and
-                                            contribute to the community. In the
-                                            end, I never got anything out of
-                                            this, nor will I do if it continues
-                                            to exist.
-                                        </div>
                                     </div>
                                 )}
                             </>
@@ -662,6 +685,14 @@ export default function LeaderboardPage() {
                             <ResourceForm
                                 resourceType="course"
                                 onSubmit={handleCourseResourceSubmit}
+                                isLoading={isLoading}
+                            />
+                        )}
+
+                        {/* Course Handout Form */}
+                        {contributionType === COURSE_HANDOUT && (
+                            <HandoutForm
+                                onSubmit={handleHandoutSubmit}
                                 isLoading={isLoading}
                             />
                         )}

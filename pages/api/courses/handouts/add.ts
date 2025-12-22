@@ -1,8 +1,9 @@
-import { BaseResponseData } from '@/pages/api/auth/[...nextauth]'
+import { BaseResponseData, getUser } from '@/pages/api/auth/[...nextauth]'
 import { googleDriveService } from '@/utils/googleDrive'
 import formidable, { Part } from 'formidable'
 import fs from 'fs'
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { trackContribution } from '../../contributions/track'
 
 export const config = {
     api: {
@@ -16,6 +17,7 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<BaseResponseData>
 ) {
+    const { email } = await getUser(req, res)
     if (req.method !== 'POST') {
         return res.status(405).json({
             message: 'Method not allowed',
@@ -97,6 +99,11 @@ export default async function handler(
         )
 
         fs.unlinkSync(file.filepath)
+
+        await trackContribution({
+            email: email,
+            contribution_type: 'course_handout',
+        })
 
         res.status(200).json({
             error: false,

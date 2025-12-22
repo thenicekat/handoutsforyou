@@ -1,11 +1,9 @@
-import AutoCompleter from '@/components/AutoCompleter'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import MonetagAd from '@/components/MonetagAd'
 import CustomToastContainer from '@/components/ToastContainer'
-import { courses as courseNames } from '@/config/courses'
 import { getMetaConfig } from '@/config/meta'
-import { pyqYears } from '@/config/years_sems'
+import HandoutForm, { HandoutFormData } from '@/forms/HandoutForm'
 import axiosInstance from '@/utils/axiosCache'
 import { googleDriveService } from '@/utils/googleDrive'
 import { GetStaticProps } from 'next'
@@ -64,9 +62,6 @@ export default function Handouts({
 
     const [showUploadForm, setShowUploadForm] = useState(false)
     const [uploading, setUploading] = useState(false)
-    const [uploadCourse, setUploadCourse] = useState('')
-    const [uploadSemester, setUploadSemester] = useState('')
-    const [selectedFile, setSelectedFile] = useState<File | null>(null)
 
     const filterHandouts = async () => {
         setIsLoading(true)
@@ -75,60 +70,35 @@ export default function Handouts({
         setIsLoading(false)
     }
 
-    const handleUpload = async (e: React.FormEvent) => {
-        e.preventDefault()
-
-        if (!uploadCourse || !uploadSemester || !selectedFile) {
-            toast.error('Please fill all fields')
-            return
-        }
-        if (!validateFile(selectedFile)) {
-            return
-        }
-
+    const handleUpload = async (data: HandoutFormData, reset: () => void) => {
         setUploading(true)
 
         try {
             const formData = new FormData()
-            formData.append('course', uploadCourse)
-            formData.append('semester', uploadSemester)
-            formData.append('file', selectedFile)
+            formData.append('course', data.course)
+            formData.append('semester', data.semester)
+            formData.append('file', data.file)
 
             const response = await fetch('/api/courses/handouts/add', {
                 method: 'POST',
                 body: formData,
             })
 
-            const data = await response.json()
+            const responseData = await response.json()
 
-            if (!data.error) {
+            if (!responseData.error) {
                 toast.success('Handout uploaded successfully!')
                 setShowUploadForm(false)
-                setUploadCourse('')
-                setUploadSemester('')
-                setSelectedFile(null)
+                reset()
                 window.location.reload()
             } else {
-                toast.error(data.message || 'Failed to upload handout')
+                toast.error(responseData.message || 'Failed to upload handout')
             }
         } catch (error) {
             toast.error('Error uploading handout: ' + error)
         } finally {
             setUploading(false)
         }
-    }
-
-    const validateFile = (file: File) => {
-        const allowedExtensions = ['pdf', 'docx', 'doc']
-        const extension = file.name.split('.').pop()
-        if (
-            !extension ||
-            !allowedExtensions.includes(extension.toLowerCase())
-        ) {
-            toast.error('Please upload: ' + allowedExtensions.join(', '))
-            return false
-        }
-        return true
     }
 
     useEffect(() => {
@@ -160,68 +130,23 @@ export default function Handouts({
             {showUploadForm && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
                     <div className="bg-black rounded-lg p-6 w-full max-w-md mx-4">
-                        <h2 className="text-2xl font-bold mb-4">
-                            Upload Handout
-                        </h2>
-                        <form onSubmit={handleUpload}>
-                            <div className="mb-4">
-                                <label className="block text-sm font-medium mb-2">
-                                    Course Name
-                                </label>
-                                <AutoCompleter
-                                    items={courseNames}
-                                    value={uploadCourse}
-                                    onChange={setUploadCourse}
-                                    name="course"
-                                />
-                            </div>
-
-                            <div className="mb-4">
-                                <label className="block text-sm font-medium mb-2">
-                                    Semester
-                                </label>
-                                <AutoCompleter
-                                    items={pyqYears}
-                                    value={uploadSemester}
-                                    onChange={setUploadSemester}
-                                    name="semester"
-                                />
-                            </div>
-
-                            <div className="mb-4">
-                                <label className="block text-sm font-medium mb-2">
-                                    File
-                                </label>
-                                <input
-                                    type="file"
-                                    className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                    onChange={e =>
-                                        setSelectedFile(
-                                            e.target.files?.[0] || null
-                                        )
-                                    }
-                                    required
-                                />
-                            </div>
-
-                            <div className="flex justify-end space-x-2">
-                                <button
-                                    type="button"
-                                    className="px-4 py-2 text-gray-500 hover:text-gray-700"
-                                    onClick={() => setShowUploadForm(false)}
-                                    disabled={uploading}
-                                >
-                                    Cancel
-                                </button>
-                                <button
-                                    type="submit"
-                                    className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:opacity-50"
-                                    disabled={uploading}
-                                >
-                                    {uploading ? 'Uploading...' : 'Upload'}
-                                </button>
-                            </div>
-                        </form>
+                        <div className="flex justify-between items-center mb-4">
+                            <h2 className="text-2xl font-bold">
+                                Upload Handout
+                            </h2>
+                            <button
+                                type="button"
+                                className="text-gray-400 hover:text-white text-2xl"
+                                onClick={() => setShowUploadForm(false)}
+                                disabled={uploading}
+                            >
+                                ×
+                            </button>
+                        </div>
+                        <HandoutForm
+                            onSubmit={handleUpload}
+                            isLoading={uploading}
+                        />
                     </div>
                 </div>
             )}
