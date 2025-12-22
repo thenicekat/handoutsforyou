@@ -77,8 +77,8 @@ export default async function handler(
         const existingFiles =
             await googleDriveService.listFiles(semesterFolderId)
         if (existingFiles.length > 0) {
-            const existingFile = existingFiles.find(
-                file => file.name === course + ' handout'
+            const existingFile = existingFiles.find(file =>
+                file.name?.startsWith(course + ' handout')
             )
             if (existingFile) {
                 return res.status(400).json({
