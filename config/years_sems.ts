@@ -41,7 +41,6 @@ export const siYears = [
 ]
 // For PYQs and handouts.
 export const pyqYears = [
-    '2025-Sem-2',
     '2025-Sem-1',
     '2024-Sem-2',
     '2024-Sem-1',

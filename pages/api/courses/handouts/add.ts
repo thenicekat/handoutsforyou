@@ -1,3 +1,4 @@
+import { pyqYears } from '@/config/years_sems'
 import { BaseResponseData, getUser } from '@/pages/api/auth/[...nextauth]'
 import { googleDriveService } from '@/utils/googleDrive'
 import formidable, { Part } from 'formidable'
@@ -11,7 +12,7 @@ export const config = {
     },
 }
 
-const ALLOWLIST_SEMESTERS = ['2025-Sem-2', '2025-Sem-1']
+const ALLOWLIST_SEMESTERS = pyqYears.slice(0, 2)
 
 export default async function handler(
     req: NextApiRequest,
