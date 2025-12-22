@@ -45,21 +45,6 @@ export async function getUser(
     response: NextApiResponse
 ): Promise<AuthorizedUser> {
     try {
-        if (process.env.MAINTENANCE === '1') {
-            console.log(request.method)
-            if (request.method === 'GET') {
-                const url = request.url || ''
-                console.log(url)
-                if (!url.includes('/api/contributions/stats')) {
-                    response.status(503).json({
-                        error: true,
-                        message: 'Site is in contribute only mode.',
-                        data: null,
-                    })
-                    return response.end() as never
-                }
-            }
-        }
         const session = await getServerSession(request, response, authOptions)
         if (!session) {
             response.status(401).json({
