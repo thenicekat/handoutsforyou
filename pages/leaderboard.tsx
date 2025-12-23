@@ -61,6 +61,22 @@ const CONTRIBUTION_DROP_DOWN = [
     { value: HIGHERSTUDIES_RESOURCE, label: 'Higher Studies Resource' },
 ]
 
+const contributionTypeLabels: Record<string, string> = {
+    course_resource: 'Course Resources',
+    course_handout: 'Course Handouts',
+    course_review: 'Course Reviews',
+    course_pyq: 'Course PYQs',
+    ps1_cutoff: 'PS1 Cutoffs',
+    ps2_cutoff: 'PS2 Cutoffs',
+    placement_resource: 'Placement Resources',
+    higherstudies_resource: 'Higher Studies Resources',
+    course_grading: 'Course Grading',
+    ps1_review: 'PS1 Reviews',
+    ps2_review: 'PS2 Reviews',
+    placement_ctc: 'Placement CTCs',
+    si_company: 'SI Companies',
+}
+
 interface ContributionStats {
     total: number
     byType: Record<string, number>
@@ -124,21 +140,6 @@ export default function LeaderboardPage() {
 
     const onContributionAdded = () => {
         fetchStats()
-    }
-
-    const contributionTypeLabels: Record<string, string> = {
-        course_resource: 'Course Resources',
-        course_handout: 'Course Handouts',
-        course_review: 'Course Reviews',
-        ps1_cutoff: 'PS1 Cutoffs',
-        ps2_cutoff: 'PS2 Cutoffs',
-        placement_resource: 'Placement Resources',
-        higherstudies_resource: 'Higher Studies Resources',
-        course_grading: 'Course Grading',
-        ps1_review: 'PS1 Reviews',
-        ps2_review: 'PS2 Reviews',
-        placement_ctc: 'Placement CTCs',
-        si_company: 'SI Companies',
     }
 
     const depts = useMemo(() => {
