@@ -8,48 +8,6 @@ import CountUp from 'react-countup'
 
 const COUNT_UP_DURATION = 3
 
-type SummaryData = {
-    // PS Data.
-    ps1Cutoffs: number
-    ps2Cutoffs: number
-    // Course Insights.
-    courseHandouts: number
-    courseReviews: number
-    courseResources: number
-    courseGrading: number
-    coursePrerequisites: number
-    coursePyqs: number
-    // Placement Data
-    placementCtcs: number
-    placementResources: number
-    siCompanies: number
-    siChronicles: number
-    siResources: number
-    // Other Resources.
-    higherStudiesResources: number
-    links: number
-    profChambers: number
-}
-
-export const RESOURCE_COUNTS: SummaryData = {
-    ps1Cutoffs: 1411,
-    ps2Cutoffs: 4560,
-    courseHandouts: 3200,
-    courseReviews: 622,
-    courseGrading: 148,
-    courseResources: 109,
-    coursePrerequisites: 707,
-    coursePyqs: 87,
-    placementCtcs: 113,
-    placementResources: 27,
-    siCompanies: 142,
-    siChronicles: 316,
-    siResources: 10,
-    higherStudiesResources: 2,
-    links: 12,
-    profChambers: 320,
-}
-
 const USEFUL_LINKS = [
     {
         title: 'Official Bits Links',
@@ -101,17 +59,14 @@ export default function Home() {
                 {
                     name: 'Handouts',
                     path: '/courses/handouts',
-                    count: RESOURCE_COUNTS.courseHandouts,
                 },
                 {
                     name: 'Prerequisites',
                     path: '/courses/prereqs',
-                    count: RESOURCE_COUNTS.coursePrerequisites,
                 },
                 {
                     name: 'Previous Year Questions',
                     path: '/courses/pyqs',
-                    count: RESOURCE_COUNTS.coursePyqs,
                 },
             ],
         },
@@ -123,17 +78,14 @@ export default function Home() {
                 {
                     name: 'Reviews',
                     path: '/courses/reviews',
-                    count: RESOURCE_COUNTS.courseReviews,
                 },
                 {
                     name: 'Resources',
                     path: '/courses/resources',
-                    count: RESOURCE_COUNTS.courseResources,
                 },
                 {
                     name: 'Grading',
                     path: '/courses/grading',
-                    count: RESOURCE_COUNTS.courseGrading,
                 },
             ],
         },
@@ -144,21 +96,14 @@ export default function Home() {
                 {
                     name: 'Placement CTCs',
                     path: '/zob/ctcs',
-                    count: RESOURCE_COUNTS.placementCtcs,
                 },
                 {
                     name: 'Resources/Chronicles',
                     path: '/zob/resources',
-                    count:
-                        RESOURCE_COUNTS.siResources +
-                        RESOURCE_COUNTS.placementResources,
                 },
                 {
                     name: 'Summer Internships',
                     path: '/zob/sicompanies',
-                    count:
-                        RESOURCE_COUNTS.siCompanies +
-                        RESOURCE_COUNTS.siChronicles,
                 },
             ],
         },
@@ -174,7 +119,6 @@ export default function Home() {
                 {
                     name: 'Higher Studies',
                     path: '/higherstudies/resources',
-                    count: RESOURCE_COUNTS.higherStudiesResources,
                 },
             ],
         },
@@ -187,12 +131,10 @@ export default function Home() {
                 {
                     name: 'PS1 CGPA Cutoffs',
                     path: '/ps/cutoffs/ps1',
-                    count: RESOURCE_COUNTS.ps1Cutoffs,
                 },
                 {
                     name: 'PS2 CGPA Cutoffs',
                     path: '/ps/cutoffs/ps2',
-                    count: RESOURCE_COUNTS.ps2Cutoffs,
                 },
             ],
         },
@@ -204,11 +146,9 @@ export default function Home() {
                 {
                     name: 'Professor Chambers',
                     path: '/chambers',
-                    count: RESOURCE_COUNTS.profChambers,
                 },
                 {
                     name: 'Some Useful Links',
-                    count: RESOURCE_COUNTS.links,
                     onClick: () => setShowLinksModal(true),
                 },
             ],
@@ -239,10 +179,7 @@ export default function Home() {
                         <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
                             <div className="text-2xl md:text-3xl font-bold text-white">
                                 <CountUp
-                                    end={
-                                        RESOURCE_COUNTS.ps1Cutoffs +
-                                        RESOURCE_COUNTS.ps2Cutoffs
-                                    }
+                                    end={6000}
                                     duration={COUNT_UP_DURATION}
                                 />
                                 +
@@ -254,14 +191,7 @@ export default function Home() {
                         <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
                             <div className="text-2xl md:text-3xl font-bold text-white">
                                 <CountUp
-                                    end={
-                                        RESOURCE_COUNTS.courseHandouts +
-                                        RESOURCE_COUNTS.coursePrerequisites +
-                                        RESOURCE_COUNTS.coursePyqs +
-                                        RESOURCE_COUNTS.courseReviews +
-                                        RESOURCE_COUNTS.courseGrading +
-                                        RESOURCE_COUNTS.courseResources
-                                    }
+                                    end={5000}
                                     duration={COUNT_UP_DURATION}
                                 />
                                 +
@@ -273,12 +203,7 @@ export default function Home() {
                         <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
                             <div className="text-2xl md:text-3xl font-bold text-white">
                                 <CountUp
-                                    end={
-                                        RESOURCE_COUNTS.placementCtcs +
-                                        RESOURCE_COUNTS.siCompanies +
-                                        RESOURCE_COUNTS.siChronicles +
-                                        RESOURCE_COUNTS.siResources
-                                    }
+                                    end={500}
                                     duration={COUNT_UP_DURATION}
                                 />
                                 +
@@ -290,10 +215,7 @@ export default function Home() {
                         <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
                             <div className="text-2xl md:text-3xl font-bold text-white">
                                 <CountUp
-                                    end={
-                                        RESOURCE_COUNTS.links +
-                                        RESOURCE_COUNTS.higherStudiesResources
-                                    }
+                                    end={20}
                                     duration={COUNT_UP_DURATION}
                                 />
                             </div>
@@ -333,35 +255,6 @@ export default function Home() {
                                                             {item.name}
                                                         </span>
                                                     </div>
-                                                    <div className="flex items-center space-x-3">
-                                                        {'count' in item &&
-                                                            item.count &&
-                                                            item.count > 0 && (
-                                                                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gray-900 text-white">
-                                                                    <CountUp
-                                                                        end={
-                                                                            item.count
-                                                                        }
-                                                                        duration={
-                                                                            COUNT_UP_DURATION
-                                                                        }
-                                                                    />
-                                                                </span>
-                                                            )}
-                                                        <svg
-                                                            className="w-4 h-4 text-gray-400 group-hover:text-gray-600 transition-colors"
-                                                            fill="none"
-                                                            stroke="currentColor"
-                                                            viewBox="0 0 24 24"
-                                                        >
-                                                            <path
-                                                                strokeLinecap="round"
-                                                                strokeLinejoin="round"
-                                                                strokeWidth="2"
-                                                                d="M9 5l7 7-7 7"
-                                                            />
-                                                        </svg>
-                                                    </div>
                                                 </div>
                                             </Link>
                                         ) : (
@@ -377,35 +270,6 @@ export default function Home() {
                                                     <span className="font-semibold text-gray-800 group-hover:text-gray-900 transition-colors">
                                                         {item.name}
                                                     </span>
-                                                </div>
-                                                <div className="flex items-center space-x-3">
-                                                    {'count' in item &&
-                                                        item.count &&
-                                                        item.count > 0 && (
-                                                            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gray-900 text-white">
-                                                                <CountUp
-                                                                    end={
-                                                                        item.count
-                                                                    }
-                                                                    duration={
-                                                                        COUNT_UP_DURATION
-                                                                    }
-                                                                />
-                                                            </span>
-                                                        )}
-                                                    <svg
-                                                        className="w-4 h-4 text-gray-400 group-hover:text-gray-600 transition-colors"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        viewBox="0 0 24 24"
-                                                    >
-                                                        <path
-                                                            strokeLinecap="round"
-                                                            strokeLinejoin="round"
-                                                            strokeWidth="2"
-                                                            d="M9 5l7 7-7 7"
-                                                        />
-                                                    </svg>
                                                 </div>
                                             </div>
                                         )}
