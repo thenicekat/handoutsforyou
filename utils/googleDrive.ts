@@ -15,6 +15,7 @@ export class GoogleDriveService {
     private auth: any
     private readonly BATCH_SIZE = 1000
     private initialized = false
+    private folderCreationLocks: Map<string, Promise<string>> = new Map()
 
     private async initializeAuth() {
         if (this.initialized) return
@@ -455,42 +456,58 @@ export class GoogleDriveService {
     }
 
     /**
-     * Find or create year folder
+     * Find existing folder or create new one (with race condition protection)
      */
     async findOrCreateFolder(
         folderName: string,
         parentFolderId: string
     ): Promise<string> {
-        try {
-            const folders = await this.listFolders(parentFolderId)
-            const existingFolder = folders.find(
-                folder =>
-                    folder.name?.toLowerCase() === folderName.toLowerCase()
-            )
+        const lockKey = `${parentFolderId}:${folderName.toLowerCase()}`
 
-            if (existingFolder?.id) {
-                return existingFolder.id
+        const existingLock = this.folderCreationLocks.get(lockKey)
+        if (existingLock) {
+            try {
+                return await existingLock
+            } catch (error) {
+                console.error(
+                    'Previous folder creation attempt failed, retrying:',
+                    error
+                )
             }
-
-            const newFolder = await this.createFolder(
-                folderName,
-                parentFolderId
-            )
-            if (!newFolder.id) {
-                throw new Error('Failed to create new folder - no ID returned')
-            }
-
-            return newFolder.id
-        } catch (error) {
-            throw new Error(
-                `Failed to find or create folder: ${error instanceof Error ? error.message : 'Unknown error'}`
-            )
         }
+
+        const execute = async (): Promise<string> => {
+            try {
+                const folders = await this.listFolders(parentFolderId)
+                const existingFolder = folders.find(
+                    folder =>
+                        folder.name?.toLowerCase() === folderName.toLowerCase()
+                )
+
+                if (existingFolder?.id) {
+                    return existingFolder.id
+                }
+
+                const newFolder = await this.createFolder(
+                    folderName,
+                    parentFolderId
+                )
+                if (!newFolder.id) {
+                    throw new Error('Failed to create folder - no ID returned')
+                }
+
+                return newFolder.id
+            } finally {
+                this.folderCreationLocks.delete(lockKey)
+            }
+        }
+
+        const creationPromise = execute()
+        this.folderCreationLocks.set(lockKey, creationPromise)
+
+        return creationPromise
     }
 
-    /**
-     * Helper method to map Drive file to DriveFile interface
-     */
     private mapFileToDriveFile(file: drive_v3.Schema$File): GoogleDriveFile {
         if (!file.id) {
             throw new Error('Invalid file object - missing ID')
