@@ -36,7 +36,9 @@ export default async function handler(
                     part.mimetype === 'application/pdf' ||
                     part.mimetype === 'application/msword' ||
                     part.mimetype ===
-                        'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+                        'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ||
+                    part.mimetype === 'application/vnd.ms-excel' ||
+                    part.mimetype === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
                 )
             },
         })
