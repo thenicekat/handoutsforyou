@@ -38,7 +38,8 @@ export default async function handler(
                     part.mimetype ===
                         'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ||
                     part.mimetype === 'application/vnd.ms-excel' ||
-                    part.mimetype === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+                    part.mimetype ===
+                        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
                 )
             },
         })
