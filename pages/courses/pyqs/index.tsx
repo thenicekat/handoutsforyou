@@ -120,7 +120,7 @@ export default function PYQs() {
     }
 
     const validateFile = (file: File) => {
-        const allowedExtensions = ['pdf', 'docx', 'doc']
+        const allowedExtensions = ['pdf', 'docx', 'doc', 'xls', 'xlsx']
         const extension = file.name.split('.').pop()
         if (
             !extension ||
