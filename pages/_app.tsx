@@ -57,8 +57,8 @@ export default function App({
             if ((e.ctrlKey || e.metaKey) && e.keyCode === 86) {
                 const target = e.target as HTMLElement
                 if (
-                    target.tagName !== 'INPUT' && 
-                    target.tagName !== 'TEXTAREA' && 
+                    target.tagName !== 'INPUT' &&
+                    target.tagName !== 'TEXTAREA' &&
                     !target.isContentEditable
                 ) {
                     e.preventDefault()
@@ -101,13 +101,13 @@ export default function App({
         const handlePaste = (e: ClipboardEvent) => {
             const target = e.target as HTMLElement
             if (
-                target.tagName === 'INPUT' || 
-                target.tagName === 'TEXTAREA' || 
+                target.tagName === 'INPUT' ||
+                target.tagName === 'TEXTAREA' ||
                 target.isContentEditable
             ) {
                 return true
             }
-            
+
             e.preventDefault()
             return false
         }

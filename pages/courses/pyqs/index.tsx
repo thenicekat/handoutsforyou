@@ -77,7 +77,12 @@ export default function PYQs() {
     const handleUpload = async (e: React.FormEvent) => {
         e.preventDefault()
 
-        if (!uploadCourse || !uploadYear || !uploadProfessor || selectedFiles.length === 0) {
+        if (
+            !uploadCourse ||
+            !uploadYear ||
+            !uploadProfessor ||
+            selectedFiles.length === 0
+        ) {
             toast.error('Please fill all fields')
             return
         }
@@ -93,7 +98,7 @@ export default function PYQs() {
             formData.append('year', uploadYear)
             formData.append('professor', uploadProfessor)
 
-            selectedFiles.forEach((file) => {
+            selectedFiles.forEach(file => {
                 formData.append('file', file)
             })
 
@@ -130,7 +135,9 @@ export default function PYQs() {
                 !extension ||
                 !allowedExtensions.includes(extension.toLowerCase())
             ) {
-                toast.error(`Invalid file: ${file.name}. Please upload: ${allowedExtensions.join(', ')}`)
+                toast.error(
+                    `Invalid file: ${file.name}. Please upload: ${allowedExtensions.join(', ')}`
+                )
                 return false
             }
         }
@@ -241,13 +248,17 @@ export default function PYQs() {
                                     className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                     onChange={e =>
                                         setSelectedFiles(
-                                            e.target.files ? Array.from(e.target.files) : []
+                                            e.target.files
+                                                ? Array.from(e.target.files)
+                                                : []
                                         )
                                     }
                                     required
                                 />
                                 <p className="text-xs text-gray-400 mt-1">
-                                    {selectedFiles.length > 0 ? `${selectedFiles.length} file(s) selected` : ''}
+                                    {selectedFiles.length > 0
+                                        ? `${selectedFiles.length} file(s) selected`
+                                        : ''}
                                 </p>
                             </div>
 

@@ -55,9 +55,11 @@ export default async function handler(
         const year = Array.isArray(fields.year) ? fields.year[0] : fields.year
 
         const rawFiles = files.file
-        const fileList = Array.isArray(rawFiles) 
-            ? rawFiles 
-            : (rawFiles ? [rawFiles] : [])
+        const fileList = Array.isArray(rawFiles)
+            ? rawFiles
+            : rawFiles
+              ? [rawFiles]
+              : []
 
         if (!course || !professor || !year || fileList.length === 0) {
             return res.status(400).json({
