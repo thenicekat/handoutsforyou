@@ -53,9 +53,13 @@ export default async function handler(
             ? fields.professor[0]
             : fields.professor
         const year = Array.isArray(fields.year) ? fields.year[0] : fields.year
-        const file = Array.isArray(files.file) ? files.file[0] : files.file
 
-        if (!course || !professor || !year || !file) {
+        const rawFiles = files.file
+        const fileList = Array.isArray(rawFiles) 
+            ? rawFiles 
+            : (rawFiles ? [rawFiles] : [])
+
+        if (!course || !professor || !year || fileList.length === 0) {
             return res.status(400).json({
                 error: true,
                 message: 'Course, professor, year, and file are required',
@@ -73,28 +77,33 @@ export default async function handler(
             courseFolderId
         )
 
-        const fileBuffer = fs.readFileSync(file.filepath)
+        const uploadedResults = []
 
-        const uploadedFile = await googleDriveService.uploadFile(
-            file.originalFilename || file.newFilename,
-            fileBuffer,
-            pyqsFolderId,
-            file.mimetype || 'application/pdf'
-        )
+        for (const file of fileList) {
+            const fileBuffer = fs.readFileSync(file.filepath)
 
-        fs.unlinkSync(file.filepath)
+            const uploadedFile = await googleDriveService.uploadFile(
+                file.originalFilename || file.newFilename,
+                fileBuffer,
+                pyqsFolderId,
+                file.mimetype || 'application/pdf'
+            )
+
+            fs.unlinkSync(file.filepath)
+            uploadedResults.push(uploadedFile)
+        }
 
         await trackContribution({
             email: email,
             contribution_type: 'course_pyq',
+            count: uploadedResults.length,
         })
 
         res.status(200).json({
             error: false,
             message: 'PYQ uploaded successfully',
             data: {
-                fileId: uploadedFile.id,
-                fileName: uploadedFile.name,
+                filesCount: uploadedResults.length,
                 course,
                 year,
             },

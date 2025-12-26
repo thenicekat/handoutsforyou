@@ -55,8 +55,15 @@ export default function App({
 
             // Disable Ctrl+V (Paste)
             if ((e.ctrlKey || e.metaKey) && e.keyCode === 86) {
-                e.preventDefault()
-                return false
+                const target = e.target as HTMLElement
+                if (
+                    target.tagName !== 'INPUT' && 
+                    target.tagName !== 'TEXTAREA' && 
+                    !target.isContentEditable
+                ) {
+                    e.preventDefault()
+                    return false
+                }
             }
 
             // Disable Ctrl+X (Cut)
@@ -92,6 +99,15 @@ export default function App({
 
         // Disable paste
         const handlePaste = (e: ClipboardEvent) => {
+            const target = e.target as HTMLElement
+            if (
+                target.tagName === 'INPUT' || 
+                target.tagName === 'TEXTAREA' || 
+                target.isContentEditable
+            ) {
+                return true
+            }
+            
             e.preventDefault()
             return false
         }
