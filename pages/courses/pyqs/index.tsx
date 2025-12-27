@@ -27,7 +27,7 @@ export default function PYQs() {
     const [showUploadForm, setShowUploadForm] = useState(false)
     const [uploadCourse, setUploadCourse] = useState('')
     const [uploadYear, setUploadYear] = useState('')
-    const [selectedFile, setSelectedFile] = useState<File | null>(null)
+    const [selectedFiles, setSelectedFiles] = useState<File[]>([])
     const [uploadProfessor, setUploadProfessor] = useState('')
 
     useEffect(() => {
@@ -77,11 +77,16 @@ export default function PYQs() {
     const handleUpload = async (e: React.FormEvent) => {
         e.preventDefault()
 
-        if (!uploadCourse || !uploadYear || !uploadProfessor || !selectedFile) {
+        if (
+            !uploadCourse ||
+            !uploadYear ||
+            !uploadProfessor ||
+            selectedFiles.length === 0
+        ) {
             toast.error('Please fill all fields')
             return
         }
-        if (!validateFile(selectedFile)) {
+        if (!validateFiles(selectedFiles)) {
             return
         }
 
@@ -92,7 +97,10 @@ export default function PYQs() {
             formData.append('course', uploadCourse)
             formData.append('year', uploadYear)
             formData.append('professor', uploadProfessor)
-            formData.append('file', selectedFile)
+
+            selectedFiles.forEach(file => {
+                formData.append('file', file)
+            })
 
             const response = await fetch('/api/courses/pyqs/add', {
                 method: 'POST',
@@ -107,7 +115,7 @@ export default function PYQs() {
                 setUploadCourse('')
                 setUploadYear('')
                 setUploadProfessor('')
-                setSelectedFile(null)
+                setSelectedFiles([])
                 fetchCourses()
             } else {
                 toast.error(data.message || 'Failed to upload PYQ')
@@ -119,15 +127,19 @@ export default function PYQs() {
         }
     }
 
-    const validateFile = (file: File) => {
+    const validateFiles = (files: File[]) => {
         const allowedExtensions = ['pdf', 'docx', 'doc', 'xls', 'xlsx']
-        const extension = file.name.split('.').pop()
-        if (
-            !extension ||
-            !allowedExtensions.includes(extension.toLowerCase())
-        ) {
-            toast.error('Please upload: ' + allowedExtensions.join(', '))
-            return false
+        for (const file of files) {
+            const extension = file.name.split('.').pop()
+            if (
+                !extension ||
+                !allowedExtensions.includes(extension.toLowerCase())
+            ) {
+                toast.error(
+                    `Invalid file: ${file.name}. Please upload: ${allowedExtensions.join(', ')}`
+                )
+                return false
+            }
         }
         return true
     }
@@ -235,12 +247,19 @@ export default function PYQs() {
                                     type="file"
                                     className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                     onChange={e =>
-                                        setSelectedFile(
-                                            e.target.files?.[0] || null
+                                        setSelectedFiles(
+                                            e.target.files
+                                                ? Array.from(e.target.files)
+                                                : []
                                         )
                                     }
                                     required
                                 />
+                                <p className="text-xs text-gray-400 mt-1">
+                                    {selectedFiles.length > 0
+                                        ? `${selectedFiles.length} file(s) selected`
+                                        : ''}
+                                </p>
                             </div>
 
                             <div className="flex justify-end space-x-2">
