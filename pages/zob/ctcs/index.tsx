@@ -1,6 +1,5 @@
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
-import MonetagAd from '@/components/MonetagAd'
 import CustomToastContainer from '@/components/ToastContainer'
 import { getMetaConfig } from '@/config/meta'
 import { placementYears } from '@/config/years_sems'
@@ -141,11 +140,6 @@ export default function PlacementCTCs() {
     return (
         <>
             <Meta {...getMetaConfig('zob/ctcs')} />
-
-            <MonetagAd
-                adFormat="interstitial-banner"
-                id="monetag-interstitial-banner-inline-zob-ctcs"
-            />
 
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">

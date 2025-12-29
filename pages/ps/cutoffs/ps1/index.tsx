@@ -1,6 +1,5 @@
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
-import MonetagAd from '@/components/MonetagAd'
 import CustomToastContainer from '@/components/ToastContainer'
 import { getMetaConfig } from '@/config/meta'
 import { ps1Years } from '@/config/years_sems'
@@ -154,11 +153,6 @@ export default function PS1Data() {
     return (
         <>
             <Meta {...getMetaConfig('ps/cutoffs/ps1')} />
-
-            <MonetagAd
-                adFormat="interstitial-banner"
-                id="monetag-interstitial-banner-inline-ps-cutoffs-ps1"
-            />
 
             {/* Search box */}
             <div className="grid place-items-center">

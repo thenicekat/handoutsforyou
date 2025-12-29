@@ -1,6 +1,5 @@
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
-import MonetagAd from '@/components/MonetagAd'
 import CustomToastContainer from '@/components/ToastContainer'
 import { getMetaConfig } from '@/config/meta'
 import HandoutForm, { HandoutFormData } from '@/forms/HandoutForm'
@@ -121,11 +120,6 @@ export default function Handouts({
     return (
         <>
             <Meta {...getMetaConfig('courses/handouts')} />
-
-            <MonetagAd
-                adFormat="interstitial-banner"
-                id="monetag-interstitial-banner-inline-handouts"
-            />
 
             {showUploadForm && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">

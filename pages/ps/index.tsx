@@ -1,6 +1,5 @@
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
-import MonetagAd from '@/components/MonetagAd'
 import { getMetaConfig } from '@/config/meta'
 
 export default function PS() {
@@ -39,11 +38,6 @@ export default function PS() {
     return (
         <>
             <Meta {...getMetaConfig('ps')} />
-
-            <MonetagAd
-                adFormat="interstitial-banner"
-                id="monetag-interstitial-banner-inline-ps"
-            />
 
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
