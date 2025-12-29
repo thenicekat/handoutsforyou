@@ -30,6 +30,7 @@
         "next": "15.3.8",
         "next-auth": "^4.24.11",
         "next-pwa": "^5.6.0",
+        "nextjs-google-adsense": "^1.0.0",
         "postcss": "^8.4.41",
         "react": "19.1.0",
         "react-countup": "^6.5.3",

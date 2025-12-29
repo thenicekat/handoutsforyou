@@ -4,6 +4,7 @@ import '../styles/globals.css'
 import type { Session } from 'next-auth'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
+import { GoogleAdSense } from 'nextjs-google-adsense'
 import { useEffect } from 'react'
 import { useAntiScraping } from '../hooks/useAntiScraping'
 
@@ -153,6 +154,8 @@ export default function App({
                     content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
                 />
             </Head>
+
+            <GoogleAdSense publisherId="pub-8538529975248100" />
 
             <SessionProvider session={session}>
                 <Component {...pageProps} />
