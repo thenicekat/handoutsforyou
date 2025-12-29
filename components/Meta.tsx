@@ -66,6 +66,12 @@ export default function Meta({
                 href="/images/favicon-16x16.png"
             />
 
+            {/* Adsense */}
+            <meta
+                name="google-adsense-account"
+                content="ca-pub-8538529975248100"
+            />
+
             {/* Open Graph Tags */}
             {meta.openGraph?.title && (
                 <meta property="og:title" content={meta.openGraph.title} />
