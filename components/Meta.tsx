@@ -66,9 +66,6 @@ export default function Meta({
                 href="/images/favicon-16x16.png"
             />
 
-            {/* Monetag */}
-            <meta name="monetag" content="9f14733e352fad16554f2d8f355d4ed3" />
-
             {/* Open Graph Tags */}
             {meta.openGraph?.title && (
                 <meta property="og:title" content={meta.openGraph.title} />
