@@ -1,6 +1,5 @@
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
-import MonetagAd from '@/components/MonetagAd'
 import CustomToastContainer from '@/components/ToastContainer'
 import { getMetaConfig } from '@/config/meta'
 import { PS_Review } from '@/types/PS'
@@ -52,11 +51,6 @@ export default function PS2Reviews() {
     return (
         <>
             <Meta {...getMetaConfig('ps/reviews/ps2')} />
-
-            <MonetagAd
-                adFormat="interstitial-banner"
-                id="monetag-interstitial-banner-inline-ps-reviews-ps2"
-            />
 
             <div className="container mx-auto px-4 py-8">
                 <div className="max-w-4xl mx-auto">

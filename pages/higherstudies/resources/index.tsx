@@ -1,7 +1,6 @@
 import CardWithScore from '@/components/CardWithScore'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
-import MonetagAd from '@/components/MonetagAd'
 import CustomToastContainer from '@/components/ToastContainer'
 import { getMetaConfig } from '@/config/meta'
 import { ResourceByCategory } from '@/types/Resource'
@@ -66,11 +65,6 @@ export default function HSResources() {
     return (
         <>
             <Meta {...getMetaConfig('higherstudies')} />
-
-            <MonetagAd
-                adFormat="interstitial-banner"
-                id="monetag-interstitial-banner-inline-higherstudies"
-            />
 
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">

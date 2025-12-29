@@ -1,7 +1,6 @@
 import AutoCompleter from '@/components/AutoCompleter'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
-import MonetagAd from '@/components/MonetagAd'
 import CustomToastContainer from '@/components/ToastContainer'
 import { courses as courseNames } from '@/config/courses'
 import { getMetaConfig } from '@/config/meta'
@@ -183,11 +182,6 @@ export default function PYQs() {
     return (
         <>
             <Meta {...getMetaConfig('courses/pyqs')} />
-
-            <MonetagAd
-                adFormat="interstitial-banner"
-                id="monetag-interstitial-banner-inline-pyqs"
-            />
 
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">

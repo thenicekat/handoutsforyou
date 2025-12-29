@@ -1,7 +1,6 @@
 import CardWithScore from '@/components/CardWithScore'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
-import MonetagAd from '@/components/MonetagAd'
 import CustomToastContainer from '@/components/ToastContainer'
 import { getMetaConfig } from '@/config/meta'
 import {
@@ -136,11 +135,6 @@ export default function Placement({
     return (
         <>
             <Meta {...getMetaConfig('zob/resources')} />
-
-            <MonetagAd
-                adFormat="interstitial-banner"
-                id="monetag-interstitial-banner-inline-zob-resources"
-            />
 
             {/* Search box */}
             <div className="grid place-items-center">

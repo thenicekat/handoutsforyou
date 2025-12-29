@@ -1,7 +1,6 @@
 import AutoCompleter from '@/components/AutoCompleter'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
-import MonetagAd from '@/components/MonetagAd'
 import CustomToastContainer from '@/components/ToastContainer'
 import { getMetaConfig } from '@/config/meta'
 import { profs } from '@/config/profs'
@@ -13,11 +12,6 @@ export default function Chambers() {
     return (
         <>
             <Meta {...getMetaConfig('chambers')} />
-
-            <MonetagAd
-                adFormat="interstitial-banner"
-                id="monetag-interstitial-banner-inline-chambers"
-            />
 
             {/* Search box */}
             <div className="grid place-items-center">

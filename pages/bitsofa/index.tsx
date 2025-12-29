@@ -4,7 +4,6 @@ import React, { useEffect } from 'react'
 
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
-import MonetagAd from '@/components/MonetagAd'
 import PostCard from '@/components/PostCard'
 import CustomToastContainer from '@/components/ToastContainer'
 import { tags } from '@/config/tags'
@@ -103,11 +102,6 @@ const ForumPage = ({ posts }: ForumPageProps) => {
     return (
         <>
             <Meta title="BITS of Advice. | handoutsforyou." />
-
-            <MonetagAd
-                adFormat="interstitial-banner"
-                id="monetag-interstitial-banner-inline-bitsofa"
-            />
 
             <Menu />
             <div className="text-white min-h-screen pt-8">

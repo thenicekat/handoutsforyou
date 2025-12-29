@@ -1,7 +1,6 @@
 import AutoCompleter from '@/components/AutoCompleter'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
-import MonetagAd from '@/components/MonetagAd'
 import CustomToastContainer from '@/components/ToastContainer'
 import { courses } from '@/config/courses'
 import { getMetaConfig } from '@/config/meta'
@@ -107,11 +106,6 @@ export default function Grading() {
     return (
         <>
             <Meta {...getMetaConfig('courses/grading')} />
-
-            <MonetagAd
-                adFormat="interstitial-banner"
-                id="monetag-interstitial-banner-inline-grading"
-            />
 
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">

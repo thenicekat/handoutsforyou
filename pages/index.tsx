@@ -1,6 +1,5 @@
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
-import MonetagAd from '@/components/MonetagAd'
 import StarPrompt from '@/components/Prompt'
 import Link from 'next/link'
 import { useState } from 'react'
@@ -161,10 +160,6 @@ export default function Home() {
 
             <Menu doNotShowMenu={true} />
             <StarPrompt setStarCount={setStarCount} />
-            <MonetagAd
-                adFormat="vignette-banner"
-                id="monetag-vignette-banner-inline=landing"
-            />
             {/* Main Content */}
             <div className="container mx-auto px-4 py-12">
                 {/* Hero Section with Stats */}

@@ -1,7 +1,6 @@
 import AutoCompleter from '@/components/AutoCompleter'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
-import MonetagAd from '@/components/MonetagAd'
 import CustomToastContainer from '@/components/ToastContainer'
 import { courses } from '@/config/courses'
 import { departments } from '@/config/departments'
@@ -92,11 +91,6 @@ export default function Reviews() {
     return (
         <>
             <Meta {...getMetaConfig('courses/reviews')} />
-
-            <MonetagAd
-                adFormat="interstitial-banner"
-                id="monetag-interstitial-banner-inline-reviews"
-            />
 
             {/* Search box */}
             <div className="grid place-items-center">
