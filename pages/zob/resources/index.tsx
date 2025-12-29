@@ -255,7 +255,7 @@ export default function Placement({
                                                                 ) /
                                                                     1024 /
                                                                     1024) *
-                                                                100
+                                                                    100
                                                             ) / 100}{' '}
                                                             MB
                                                         </p>
@@ -323,7 +323,7 @@ export default function Placement({
                                                                 ) /
                                                                     1024 /
                                                                     1024) *
-                                                                100
+                                                                    100
                                                             ) / 100}{' '}
                                                             MB
                                                         </p>
