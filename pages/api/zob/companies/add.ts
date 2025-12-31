@@ -2,6 +2,7 @@ import { BaseResponseData, getUser } from '@/pages/api/auth/[...nextauth]'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { SI_COMPANIES } from '../../constants'
 import { supabase } from '../../supabase'
+import { trackContribution } from '../../contributions/track'
 
 export default async function handler(
     req: NextApiRequest,
@@ -85,6 +86,15 @@ export default async function handler(
         res.status(500).json({ message: error.message, error: true })
         return
     } else {
+        try {
+            await trackContribution({
+                email,
+                contribution_type: 'si_company',
+            })
+        } catch (e) {
+            console.error('Failed to track contribution:', e)
+        }
+
         res.status(200).json({
             message: 'success',
             error: false,
