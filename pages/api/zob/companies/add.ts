@@ -76,11 +76,12 @@ export default async function handler(
             stipend: stipend,
             eligibility: eligibility,
             otherdetails: otherDetails,
-            created_by: email,
+            email: email,
         },
     ])
 
     if (error) {
+        console.error(error)
         res.status(500).json({ message: error.message, error: true })
         return
     } else {
