@@ -27,12 +27,19 @@ export const getStaticProps: GetStaticProps = async () => {
             )
         }
 
-        const handoutsMap =
+        let ogHandoutsMap =
             await googleDriveService.getHandouts(handoutsFolderId)
+        let sortedKeys = Object.keys(ogHandoutsMap).sort((a, b) =>
+            a.localeCompare(b)
+        )
+        let sortedHandoutsMap: { [key: string]: any[] } = {}
+        for (const key of sortedKeys) {
+            sortedHandoutsMap[key] = ogHandoutsMap[key]
+        }
 
         return {
             props: {
-                handoutsMap,
+                handoutsMap: sortedHandoutsMap,
             },
             revalidate: 24 * 60 * 60, // Regenerate list of handouts every 24 hours.
         }
