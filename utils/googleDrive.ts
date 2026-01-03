@@ -92,15 +92,26 @@ export class GoogleDriveService {
     async listFolders(folderId: string): Promise<drive_v3.Schema$File[]> {
         await this.initializeAuth()
         try {
-            const response = await this.drive.files.list({
-                q: `'${folderId}' in parents and mimeType = 'application/vnd.google-apps.folder' and trashed = false`,
-                fields: 'files(id, name, mimeType, createdTime)',
-                orderBy: 'name',
-                supportsAllDrives: true,
-                includeItemsFromAllDrives: true,
-            })
+            let pageToken: string | undefined = undefined
+            const allFolders: drive_v3.Schema$File[] = []
 
-            return response.data.files || []
+            do {
+                const response: any = await this.drive.files.list({
+                    q: `'${folderId}' in parents and mimeType = 'application/vnd.google-apps.folder' and trashed = false`,
+                    fields: 'files(id, name, mimeType, createdTime)',
+                    orderBy: 'name',
+                    supportsAllDrives: true,
+                    includeItemsFromAllDrives: true,
+                    pageSize: this.BATCH_SIZE,
+                    pageToken,
+                })
+
+                const folders = response.data.files || []
+                allFolders.push(...folders)
+                pageToken = response.data.nextPageToken || undefined
+            } while (pageToken)
+
+            return allFolders
         } catch (error) {
             throw new Error(
                 `Failed to list folders from Google Drive: ${error instanceof Error ? error.message : 'Unknown error'}`
