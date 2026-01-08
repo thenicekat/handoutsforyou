@@ -27,7 +27,7 @@ export const psAllotmentRounds = [
     'Grievance',
 ]
 // For Course Grading.
-export const gradedSemesters = ['25-26 Sem 1', '24-25 Sem 2', '24-25 Sem 1']
+export const gradedSemesters = ['25-26 Sem 2', '25-26 Sem 1', '24-25 Sem 2', '24-25 Sem 1']
 // For Placement CTCs
 export const placementYears = ['2025-2026', '2024-2025', '2023-2024']
 // For SI Companies
@@ -41,6 +41,7 @@ export const siYears = [
 ]
 // For PYQs and handouts.
 export const pyqYears = [
+    '2025-Sem-2',
     '2025-Sem-1',
     '2024-Sem-2',
     '2024-Sem-1',

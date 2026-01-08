@@ -12,7 +12,7 @@ export const config = {
     },
 }
 
-const ALLOWLIST_SEMESTERS = pyqYears.slice(0, 2)
+const ALLOWLIST_SEMESTERS = pyqYears.slice(0, 3)
 
 export default async function handler(
     req: NextApiRequest,
