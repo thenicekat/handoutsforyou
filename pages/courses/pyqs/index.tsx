@@ -143,6 +143,26 @@ export default function PYQs() {
         return true
     }
 
+    const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files && e.target.files.length > 0) {
+            const newFiles = Array.from(e.target.files)
+            setSelectedFiles(prev => {
+                const prevSet = new Set(prev.map(f => `${f.name}-${f.size}`))
+                const uniqueNewFiles = newFiles.filter(
+                    f => !prevSet.has(`${f.name}-${f.size}`)
+                )
+                return [...prev, ...uniqueNewFiles]
+            })
+            e.target.value = ''
+        }
+    }
+
+    const removeFile = (indexToRemove: number) => {
+        setSelectedFiles(prev =>
+            prev.filter((_, index) => index !== indexToRemove)
+        )
+    }
+
     const formatFileSize = (bytes: string | number) => {
         const numBytes = typeof bytes === 'string' ? parseInt(bytes) : bytes
         if (numBytes === 0 || isNaN(numBytes)) return '0 Bytes'
@@ -194,7 +214,7 @@ export default function PYQs() {
 
             {showUploadForm && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                    <div className="bg-black rounded-lg p-6 w-full max-w-md mx-4">
+                    <div className="bg-black rounded-lg p-6 w-full max-w-md mx-4 max-h-[90vh] overflow-y-auto">
                         <h2 className="text-2xl font-bold mb-4">Upload PYQ</h2>
                         <form onSubmit={handleUpload}>
                             <div className="mb-4">
@@ -235,25 +255,54 @@ export default function PYQs() {
 
                             <div className="mb-4">
                                 <label className="block text-sm font-medium mb-2">
-                                    File
+                                    File(s)
                                 </label>
                                 <input
                                     type="file"
                                     multiple
                                     className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                    onChange={e =>
-                                        setSelectedFiles(
-                                            e.target.files
-                                                ? Array.from(e.target.files)
-                                                : []
-                                        )
-                                    }
-                                    required
+                                    onChange={handleFileSelect}
                                 />
+                                {/* Selected Files List */}
+                                {selectedFiles.length > 0 && (
+                                    <div className="mt-3 space-y-2">
+                                        {selectedFiles.map((file, index) => (
+                                            <div
+                                                key={`${file.name}-${index}`}
+                                                className="flex items-center justify-between p-2 bg-gray-900 border border-gray-700 rounded-md"
+                                            >
+                                                <span className="text-sm text-gray-300 truncate max-w-[85%]">
+                                                    {file.name}
+                                                </span>
+                                                <button
+                                                    type="button"
+                                                    onClick={() =>
+                                                        removeFile(index)
+                                                    }
+                                                    className="text-red-500 hover:text-red-400 p-1 rounded transition-colors"
+                                                    title="Remove file"
+                                                >
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        className="h-5 w-5"
+                                                        viewBox="0 0 20 20"
+                                                        fill="currentColor"
+                                                    >
+                                                        <path
+                                                            fillRule="evenodd"
+                                                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                                            clipRule="evenodd"
+                                                        />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
                                 <p className="text-xs text-gray-400 mt-1">
                                     {selectedFiles.length > 0
                                         ? `${selectedFiles.length} file(s) selected`
-                                        : ''}
+                                        : 'No files selected'}
                                 </p>
                             </div>
 
