@@ -209,7 +209,7 @@
         "name": "BIO G515 STEM CELL AND GENERATIBE BIOLOGY",
         "prereqs": [
             {
-                "prereq_name": "BIO F341 DEVELOPMENT AL BIOLOGY",
+                "prereq_name": "BIO F341 DEVELOPMENTAL BIOLOGY",
                 "pre_cop": "CO",
                 "condition": "AND"
             }
