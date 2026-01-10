@@ -1,5 +1,5 @@
 """
-@author: Divyateja Pasupuleti (Updated)
+@author: Umaang Khambhati
 @about: Convert prereqs.csv to prereqs.json
 """
 

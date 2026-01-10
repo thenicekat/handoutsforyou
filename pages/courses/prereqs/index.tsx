@@ -1,29 +1,13 @@
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import Modal from '@/components/Modal'
-import { BookIcon } from '@/components/BookIcon'
+import { BookOpenIcon } from '@heroicons/react/24/outline'
 import { getMetaConfig } from '@/config/meta'
 import { CoursePreReqGroup } from '@/types/Courses'
+import { PrereqItem, NestedPrereqNode, ExtendedCoursePreReqGroup } from '@/types/Prereqs'
 import axiosInstance from '@/utils/axiosCache'
 import { GetStaticProps } from 'next'
 import { useEffect, useState } from 'react'
-
-type PrereqItem = {
-    prereq_name: string
-    pre_cop: string
-    condition?: string
-}
-
-type NestedPrereqNode = {
-    type: 'AND' | 'OR'
-    items: (PrereqItem | NestedPrereqNode)[]
-}
-
-type ExtendedCoursePreReqGroup = Omit<CoursePreReqGroup, 'prereqs'> & {
-    prereqs: PrereqItem[]
-    prereqs_nested?: NestedPrereqNode
-    all_one?: string
-}
 
 export const getStaticProps: GetStaticProps = async () => {
     const fs = require('fs')
@@ -34,7 +18,7 @@ export const getStaticProps: GetStaticProps = async () => {
     }
 }
 
-const LogicRenderer = ({ node }: { node: PrereqItem | NestedPrereqNode }) => {
+const PrerequisiteRenderer = ({ node }: { node: PrereqItem | NestedPrereqNode }) => {
     if (!node) return null
 
     if ('prereq_name' in node) {
@@ -62,7 +46,7 @@ const LogicRenderer = ({ node }: { node: PrereqItem | NestedPrereqNode }) => {
                 
                 {node.items.map((it, idx) => (
                     <div key={idx} className="w-full">
-                        <LogicRenderer node={it} />
+                        <PrerequisiteRenderer node={it} />
                         {!isOr && idx < node.items.length - 1 && (
                             <div className="flex mt-3 justify-center py-1 opacity-90">
                                 <span className="text-lg bg-primary text-primary-content font-bold tracking-widest rounded-full px-3">• AND •</span>
@@ -95,8 +79,8 @@ export default function Prereqs({ prereqs }: { prereqs: ExtendedCoursePreReqGrou
     )
 
     const requirementText = prereq
-        ? prereq.all_one
-            ? prereq.all_one.toUpperCase()
+        ? prereq.completionRequirement
+            ? prereq.completionRequirement.toUpperCase()
             : (prereq.prereqs_nested || (prereq.prereqs && prereq.prereqs.length > 0))
                 ? 'ALL'
                 : null
@@ -106,7 +90,7 @@ export default function Prereqs({ prereqs }: { prereqs: ExtendedCoursePreReqGrou
         <div>
             <Meta {...getMetaConfig('courses/prereqs')} />
 
-            {/* --- Header Section --- */}
+            {/* Search box */}
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
                     <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">
@@ -123,7 +107,7 @@ export default function Prereqs({ prereqs }: { prereqs: ExtendedCoursePreReqGrou
                     />
                 </div>
             </div>
-            <div className="flex justify-center gap-6 mb-2 text-sm mt-8 bg-base-300/50 rounded-lg py-4 px-6 w-fit mx-auto">
+            <div className="flex flex-col md:flex-row justify-center gap-3 md:gap-6 mb-2 text-xs md:text-sm mt-8 bg-base-300/50 rounded-lg py-4 px-4 md:px-6 w-fit mx-auto max-w-full md:max-w-none">
                 <div className="flex items-center gap-2">
                     <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
                     <span className="font-semibold text-white">PRE:</span>
@@ -140,7 +124,7 @@ export default function Prereqs({ prereqs }: { prereqs: ExtendedCoursePreReqGrou
             <div className="container mx-auto px-4 py-8">
                 {filteredPrereqs.length === 0 ? (
                     <div className="text-center py-20 opacity-50">
-                        <p className="text-xl">No courses found matching "{search}"</p>
+                        <p className="text-xl">No courses found matching &quot;{search}&quot;</p>
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 place-items-stretch">
@@ -161,7 +145,7 @@ export default function Prereqs({ prereqs }: { prereqs: ExtendedCoursePreReqGrou
                                             <h2 className="card-title text-lg font-bold text-primary group-hover:text-primary-focus">
                                                 {preqgroup.name}
                                             </h2>
-                                            <BookIcon />
+                                            <BookOpenIcon className="h-6 w-6" />
                                         </div>
                                         
                                         <div className="mt-4 flex justify-end">
@@ -197,12 +181,12 @@ export default function Prereqs({ prereqs }: { prereqs: ExtendedCoursePreReqGrou
                             )}
                             {prereq.prereqs_nested ? (
                                 <div className="space-y-2">
-                                    <LogicRenderer node={prereq.prereqs_nested} />
+                                    <PrerequisiteRenderer node={prereq.prereqs_nested} />
                                 </div>
                             ) : prereq.prereqs && prereq.prereqs.length > 0 ? (
                                 <div className="space-y-2">
                                     {prereq.prereqs.map((preq, idx) => (
-                                        <LogicRenderer 
+                                        <PrerequisiteRenderer 
                                             key={idx} 
                                             node={preq}
                                         />

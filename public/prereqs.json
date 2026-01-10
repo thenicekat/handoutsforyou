@@ -16,7 +16,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BIO F212 MICROBIOLOGY",
@@ -27,7 +27,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BIO F213 CELL BIOLOGY",
@@ -38,7 +38,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BIO F214 INTEGRATED BIOLOGY",
@@ -49,7 +49,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BIO F215 BIOPHYSICS",
@@ -60,7 +60,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BIO F241 ECOLOGY & ENVIRON SCI",
@@ -75,7 +75,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BIO F243 GENETICS",
@@ -86,7 +86,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BIO F244 INSTRU METHODS OF ANAL",
@@ -97,7 +97,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BIO F312 PLANT PHYSIOLOGY",
@@ -113,7 +113,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BIO F313 ANIMAL PHYSIOLOGY",
@@ -129,7 +129,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BIO F341 DEVELOPMENTAL BIOLOGY",
@@ -145,7 +145,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BIO F342 IMMUNOLOGY",
@@ -161,7 +161,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BIO F352 CELL & TISSUE CULTR TECH",
@@ -184,7 +184,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BIO F431 REPRODUCTIVE PHYSIOLOGY",
@@ -195,7 +195,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BIO F441 BIOCHEMICAL ENGINEERING",
@@ -214,7 +214,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BIO G526 CANCER BIOLOGY",
@@ -225,7 +225,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BIO G545 MOLECULAR PARASITOLOGY AND VECTOR BIOLOGY",
@@ -236,7 +236,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BIO G561 ADVANCES IN RECOMBINANT DNA TECHNOLOGY",
@@ -247,7 +247,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BIO G570 RECENT DEVELOPMENTS IN BIOLOGY",
@@ -267,7 +267,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BIOT F211 BIOLOGICAL CHEMISTRY",
@@ -278,7 +278,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BIOT F212 MICROBIOLOGY",
@@ -289,7 +289,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BIOT F213 CELL BIOLOGY",
@@ -304,7 +304,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BIOT F241 GENETIC ENGINEERING TECH",
@@ -319,7 +319,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BIOT F243 GENETICS",
@@ -330,7 +330,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BIOT F244 INSTRU METHODS OF ANAL",
@@ -341,7 +341,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BIOT F245 INTRO TO ENVIRON BIOTECH",
@@ -357,7 +357,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BIOT F311 RECOMBINANT DNA TECH",
@@ -373,7 +373,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BIOT F314 INDUS MICROBIO & BIOPRO ENGG",
@@ -389,7 +389,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BIOT F342 IMMUNOLOGY",
@@ -405,7 +405,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BIOT F343 EXPERIMENTS IN BIOTECH",
@@ -416,7 +416,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BIOT F344 DOWNSTREAM PROCESSING",
@@ -432,7 +432,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BIOT F345 PROTEOMICS",
@@ -451,7 +451,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BIOT F352 CELL & TISSUE CULTR TECH",
@@ -474,7 +474,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BIOT F420 INTRO TO PLANT BIOTECH",
@@ -489,7 +489,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BIOT F423 DRUG DESIGN AND DELIVERY",
@@ -500,7 +500,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BIOT F424 FOOD BIOTECHNOLOGY",
@@ -511,7 +511,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BITS F110 ENGINEERING GRAPHICS",
@@ -588,7 +588,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BITS F317 THEORETICAL NEUROSCIENCE",
@@ -614,7 +614,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BITS F341 SHORT FILM & VIDEO PROD",
@@ -705,7 +705,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CE F242 CONSTRUCTION PLAN & TECH",
@@ -728,7 +728,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CE F312 HYDRAULIC ENGINEERING",
@@ -739,7 +739,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CE F313 FOUNDATION ENGINEERING",
@@ -750,7 +750,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CE F323 INTRO TO ENVIRN ENGG",
@@ -769,7 +769,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CE F342 WATER & WASTEWATER TREAT",
@@ -784,7 +784,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CE F345 COMPUTATIONAL GEOMECHANICS",
@@ -805,7 +805,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CE F411 OPER RESEARCH FOR ENGIN",
@@ -816,7 +816,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CE F412 DISASTER MANAGEMENT",
@@ -836,7 +836,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CE F415 DES OF PREST CONC STRUCT",
@@ -847,7 +847,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CE F416 COMP APPLI IN CIVIL ENGG",
@@ -866,7 +866,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CE F420 INTRO TO BRIDGE ENGG",
@@ -882,7 +882,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CE F421 A & D OF FRP REIN CON ST",
@@ -893,7 +893,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CE F422 URBAN HYDROLOGY",
@@ -916,7 +916,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CE F427 SYSTEM MODELING & ANAL",
@@ -931,7 +931,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CE F430 DES OF ADV CONC STRUCT",
@@ -942,7 +942,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CE F431 PRIN OF GEO INFO SYS",
@@ -957,7 +957,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CE F433 REMOTE SENS & IMAGE PROC",
@@ -976,7 +976,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CE G544 FRACTURE MECHANICS OF CONCRETE STRUCTURES",
@@ -991,7 +991,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE F211 CHEMICAL PROCESS CALCULA",
@@ -1010,7 +1010,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE F214 ENGINEERING CHEMISTRY",
@@ -1021,7 +1021,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE F241 HEAT TRANSFER",
@@ -1036,7 +1036,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE F243 MATERIAL SCIENCE & ENGG",
@@ -1059,7 +1059,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE F314 PROCESS DES PRINCIPLES I",
@@ -1083,7 +1083,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE F411 ENVIR POLLUTION CONTROL",
@@ -1094,7 +1094,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE F412 PROCESS EQUIPMENT DESIGN",
@@ -1105,7 +1105,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE F413 PROCESS PLANT SAFETY",
@@ -1116,7 +1116,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE F414 TRANSPORT PHENOMENA",
@@ -1137,7 +1137,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE F415 MOLEC & STAT THERMODYN",
@@ -1148,7 +1148,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE F416 PROCESS PLANT DES PRO I",
@@ -1159,7 +1159,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE F417 PROCESS PLANT DES PRO II",
@@ -1170,7 +1170,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE F418 MODEL & SIMU IN CHE ENGG",
@@ -1186,7 +1186,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE F419 CHEMICAL PROCESS TECH",
@@ -1197,7 +1197,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE F421 BIOCHEMICAL ENGINEERING",
@@ -1208,7 +1208,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE F422 PETROLEUM REFINING TECHNOLOGY",
@@ -1219,7 +1219,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE F433 CORROSION ENGINEERING",
@@ -1240,7 +1240,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "CHE F471 ADVANCE PROCESS CONTROL",
@@ -1251,7 +1251,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE F491 SPECIAL PROJECTS",
@@ -1266,7 +1266,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE G512 Petroleum Refining and Petrochemicals",
@@ -1277,7 +1277,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE G513 Environmental Management Systems",
@@ -1292,7 +1292,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE G523 Mathematical Methods in Chemical Engineering",
@@ -1303,7 +1303,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE G524 Introduction to Multiphase flow",
@@ -1314,7 +1314,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE G526 Nuclear Engineering",
@@ -1325,7 +1325,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE G527 Energy Conservation and Management",
@@ -1340,7 +1340,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE G529 Paper and Pulp Technology",
@@ -1351,7 +1351,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE G532 Alternate Energy Resources",
@@ -1366,7 +1366,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE G551 Advanced Separation Technology",
@@ -1377,7 +1377,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE G552 ADVANCED TRANSPORT PHENOMENA",
@@ -1456,7 +1456,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE G614 Advanced Heat Transfer",
@@ -1467,7 +1467,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE G616 Petroleum Reservoir Engineering",
@@ -1482,7 +1482,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE G618 Petroleum Downstream Processing",
@@ -1493,7 +1493,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE G619 Process Intensification",
@@ -1504,7 +1504,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE G620 Energy Integration Analysis",
@@ -1515,7 +1515,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE G622 Advanced Chemical Engineering Thermodynamics",
@@ -1526,7 +1526,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE G641 Reaction Engineering",
@@ -1537,7 +1537,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHEM F110 CHEMISTRY LABORATORY",
@@ -1588,7 +1588,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHEM F311 ORGANIC CHEMISTRY III",
@@ -1599,7 +1599,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHEM F312 PHYSICAL CHEMISTRY IV",
@@ -1646,7 +1646,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHEM F333 CHEMISTRY OF MATERIALS",
@@ -1666,7 +1666,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHEM F335 ORGANIC CHEM & DRUG DES",
@@ -1677,7 +1677,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHEM F336 NANOCHEMISTRY",
@@ -1708,7 +1708,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHEM F413 E COREL IN ATOM & MOLEC",
@@ -1719,7 +1719,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHEM F414 BIO & CHEMICAL SENSORS",
@@ -1734,7 +1734,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHEM F422 STATISTICAL THERMODYNAM",
@@ -1745,7 +1745,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CS F111 COMPUTER PROGRAMMING",
@@ -1765,7 +1765,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "CS F212 DATABASE SYSTEMS",
@@ -1780,7 +1780,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CS F214 LOGIC IN COMPUTER SC",
@@ -1807,7 +1807,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CS F303 COMPUTER NETWORKS",
@@ -1818,7 +1818,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CS F314 SOFT DEV FOR PORT DEVICE",
@@ -1838,7 +1838,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CS F351 THEORY OF COMPUTATION",
@@ -1854,7 +1854,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CS F363 COMPILER CONSTRUCTION",
@@ -1870,7 +1870,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CS F364 DESIGN & ANAL OF ALGO",
@@ -1881,7 +1881,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CS F372 OPERATING SYSTEMS",
@@ -1932,7 +1932,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "ECE F212 ELECTROMAGNETIC THEO I",
@@ -1947,7 +1947,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "ECE F215 DIGITAL DESIGN",
@@ -1978,7 +1978,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "ECE F312 EM FIELDS AND MICROWAVE ENGINEERING LABORATORY",
@@ -1999,7 +1999,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "ECE F314 EM FIELDS & MICRO ENGG",
@@ -2014,7 +2014,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "ECE F344 INFO THEORY & CODING",
@@ -2025,7 +2025,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "ECE F414 TELECOM SWIT SYS & NETWK",
@@ -2044,7 +2044,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "ECE F431 MOBILE TELECOM NETWORKS",
@@ -2055,7 +2055,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "ECE F434 DIGITAL SIGNAL PROCESS",
@@ -2066,7 +2066,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "ECE F472 SATELLITE COMMUNICATION",
@@ -2077,7 +2077,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "ECON F211 PRINCIPLES OF ECONOMICS",
@@ -2108,7 +2108,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "ECON F243 MACROECONOMICS",
@@ -2119,7 +2119,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "ECON F244 ECONOMIC OF GROWTH & DEV",
@@ -2130,7 +2130,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "ECON F311 INTERNATIONAL ECONOMICS",
@@ -2141,7 +2141,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "ECON F312 MONEY BANK & FIN MARKETS",
@@ -2152,7 +2152,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "ECON F313 ISSUES IN ECONOMIC DEV",
@@ -2163,7 +2163,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "ECON F341 PUBLIC FIN THEO & POLICY",
@@ -2174,7 +2174,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "ECON F342 APPLIED ECONOMETRICS",
@@ -2185,7 +2185,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "ECON F343 ECONOMIC ANAL OF PUB POL",
@@ -2244,7 +2244,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "ECON F414 CREAT & LEAD ENTREP ORGN",
@@ -2283,7 +2283,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "EEE F212 ELECTROMAGNETIC THEO I",
@@ -2298,7 +2298,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "EEE F215 DIGITAL DESIGN",
@@ -2339,7 +2339,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "EEE F246 ELECTRIC & ELECTRONIC CIR LAB",
@@ -2355,7 +2355,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "EEE F311 COMMUNICATION SYSTEMS",
@@ -2366,7 +2366,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "EEE F312 POWER SYSTEMS",
@@ -2381,7 +2381,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "EEE F341 ANALOG ELECTRONICS",
@@ -2392,7 +2392,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "EEE F342 POWER ELECTRONICS",
@@ -2407,7 +2407,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "EEE F346 DATA COMMUNIC & NETWORKS",
@@ -2431,7 +2431,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "EEE F414 TELECOM SWIT SYS & NETWK",
@@ -2450,7 +2450,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "EEE F422 MODERN CONTROL SYSTEMS",
@@ -2461,7 +2461,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "EEE F425 POWER SYS ANAL & CONTROL",
@@ -2484,7 +2484,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "EEE F432 MEDICAL INSTRUMENTATION",
@@ -2504,7 +2504,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "EEE F434 DIGITAL SIGNAL PROCESS",
@@ -2515,7 +2515,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "EEE F435 DIGITAL IMAGE PROCESSING",
@@ -2530,7 +2530,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "EEE F473 WIND ELECTRICAL SYSTEMS",
@@ -2561,7 +2561,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "EEE G512 EMBEDDED SYSTEM DESIGN",
@@ -2582,7 +2582,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "EEE G547 DEVICE DRIVERS",
@@ -2593,7 +2593,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "EEE G593 POWER QUALITY",
@@ -2656,7 +2656,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "FIN F341 INTER FIN MARKETS & SER",
@@ -2891,7 +2891,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "INSTR F212 ELECTROMAGNETIC THEO I",
@@ -2906,7 +2906,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "INSTR F215 DIGITAL DESIGN",
@@ -2945,7 +2945,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "INSTR F341 ANALOG ELECTRONICS",
@@ -2956,7 +2956,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "INSTR F342 POWER ELECTRONICS",
@@ -2979,7 +2979,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "INSTR F413 ADVANCE PROCESS CONTROL",
@@ -2990,7 +2990,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "INSTR F414 TELECOM SWIT SYS & NETWK",
@@ -3001,7 +3001,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "INSTR F415 DIGITAL CONTROL",
@@ -3012,7 +3012,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "INSTR F419 VIRTUAL INSTRUMENTATION",
@@ -3043,7 +3043,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "IS F213 OBJECT ORIENTED PROG",
@@ -3054,7 +3054,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "IS F214 LOGIC IN COMPUTER SC",
@@ -3073,7 +3073,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "IS F242 COMPUTER ORGANIZATION",
@@ -3084,7 +3084,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "IS F243 DATABASE SYSTEMS & APPL",
@@ -3099,7 +3099,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "IS F303 COMPUTER NETWORKS",
@@ -3110,7 +3110,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "IS F311 COMPUTER GRAPHICS",
@@ -3125,7 +3125,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "IS F341 SOFTWARE ENGINEERING",
@@ -3136,7 +3136,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "IS F342 COMPILER DESIGN",
@@ -3147,7 +3147,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "IS F372 OPERATING SYSTEMS",
@@ -3187,7 +3187,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "MATH F213 DISCRETE MATHEMATICS",
@@ -3218,7 +3218,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "MATH F243 GRAPHS AND NETWORKS",
@@ -3233,7 +3233,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "MATH F311 INTRODUCTION TO TOPOLOGY",
@@ -3248,7 +3248,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "MATH F313 NUMERICAL ANALYSIS",
@@ -3264,7 +3264,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "MATH F314 ALGEBRA-II",
@@ -3275,7 +3275,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "MATH F341 INTRO TO FUNCTIONAL ANAL",
@@ -3286,7 +3286,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "MATH F342 DIFFERENTIAL GEOMETRY",
@@ -3297,7 +3297,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "MATH F343 PARTIAL DIFF EQUATIONS",
@@ -3308,7 +3308,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "MATH F344 MATHEMATICAL FLUID DYNAMICS",
@@ -3339,7 +3339,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "MATH F354 COMPLEX ANALYSIS",
@@ -3350,7 +3350,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "MATH F378 ADVANCED PROBABILITY THEORY",
@@ -3366,7 +3366,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "MATH F421 COMBINATORIAL MATHS",
@@ -3394,7 +3394,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "MATH F420 MATHEMATICAL MODELLING",
@@ -3405,7 +3405,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "MATH F422 NUMERICAL METHODOLOGY FOR PARTIAL DIFFERENTIAL EQUATIONS",
@@ -3421,7 +3421,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "MATH F423 INTRODUCTION TO ALGEBRAIC TOPOLOGY",
@@ -3437,7 +3437,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "MATH F424 APPLIED STOCHASTIC PROCESS",
@@ -3448,7 +3448,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "MATH F444 NUMERICAL SOLUTIONS OF ORDINARY DIFFERENTIAL EQUATIONS",
@@ -3464,7 +3464,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "MATH F456 COSMOLOGY",
@@ -3483,7 +3483,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "MBA G553 ORGANIZATIONAL CHANGE AND DEVELOPMENT",
@@ -3526,7 +3526,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "ME F215 MECHANICAL ENGG LAB",
@@ -3541,7 +3541,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "ME F242 IC ENGINES",
@@ -3552,7 +3552,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "ME F243 PRODUCTION TECHNIQUES I",
@@ -3563,7 +3563,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "ME F244 KIN & DYN OF MACHINES",
@@ -3578,7 +3578,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "ME F312 ADV MECHANICS OF SOLIDS",
@@ -3589,7 +3589,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "ME F313 PRODUCTION TECHNIQUES II",
@@ -3600,7 +3600,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "ME F341 PRIMEMOVERS & FLUID MACH",
@@ -3616,7 +3616,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "ME F342 COMPUTER AIDED DESIGN",
@@ -3739,7 +3739,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "MF F215 MECHANICAL ENGG LAB",
@@ -3754,7 +3754,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "MF F242 MANUFACTURING MANAGEMENT",
@@ -3769,7 +3769,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "MF F244 KIN & DYN OF MACHINES",
@@ -3788,7 +3788,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "MF F313 METAL FORMING & MACHINE",
@@ -3799,7 +3799,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "MF F341 DESIGN OF MACHINE TOOLS",
@@ -3958,7 +3958,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHA F312 MEDICINAL CHEMISTRY I",
@@ -3981,7 +3981,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHA F342 MEDICINAL CHEMISTRY II",
@@ -3992,7 +3992,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHA F343 FORENSIC PHARMACY",
@@ -4015,7 +4015,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHA F415 PATHOPHYSIOLOGY",
@@ -4031,7 +4031,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHA F416 CHEM OF SYNTHETIC DRUGS",
@@ -4042,7 +4042,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHA F417 PHARMACOECONOMICS",
@@ -4065,7 +4065,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHA F442 APPLIED PHARMA CHEMISTRY",
@@ -4076,7 +4076,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHA F461 PHYTOCHEMISTRY",
@@ -4087,7 +4087,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHIL F211 INTRODUCTORY PHILOSOPHY",
@@ -4118,7 +4118,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHY F212 ELECTROMAGNETIC THEO I",
@@ -4129,7 +4129,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHY F213 OPTICS",
@@ -4140,7 +4140,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHY F214 ELEC MAGNET & OPTICS LAB",
@@ -4155,7 +4155,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHY F241 ELECTROMAGNETIC THEO II",
@@ -4166,7 +4166,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHY F242 QUANTUM MECHANICS I",
@@ -4177,7 +4177,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHY F243 MATH METHODS OF PHYSICS",
@@ -4212,7 +4212,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHY F312 STATISTICAL MECHANICS",
@@ -4223,7 +4223,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHY F313 COMPUTATIONAL PHYSICS",
@@ -4254,7 +4254,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHY F316 MUSICAL ACOUSTICS",
@@ -4265,7 +4265,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHY F341 SOLID STATE PHYSICS",
@@ -4276,7 +4276,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHY F342 ATOMIC & MOLECULAR PHY",
@@ -4292,7 +4292,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHY F343 NUCLEAR & PARTICLE PHY",
@@ -4313,7 +4313,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHY F344 ADVANCED PHYSICS LAB",
@@ -4343,7 +4343,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHY F378 PLASMA PHYSICS AND ITS APPLICATIONS",
@@ -4369,7 +4369,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "PHY F412 INTRO TO QUAN FIELD THEO",
@@ -4390,7 +4390,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHY F413 PARTICLE PHYSICS",
@@ -4406,7 +4406,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHY F414 PHYSICS OF ADV MATERIALS",
@@ -4479,7 +4479,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHY F419 ADV SOLID STATE PHYSICS",
@@ -4495,7 +4495,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHY F420 QUANTUM OPTICS",
@@ -4511,7 +4511,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHY F421 ADV QUANTUM MECHANICS",
@@ -4527,7 +4527,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHY F422 GROUP THEORY & APPLI",
@@ -4538,7 +4538,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHY F423 SPECIAL TOP IN STAT MECH",
@@ -4549,7 +4549,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHY F424 ADVANCED ELECTRODYNAMICS",
@@ -4560,7 +4560,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHY F425 ADV MATH METHODS OF PHY",
@@ -4571,7 +4571,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHY F426 PHY OF SEMICONDUCTOR DEV",
@@ -4586,7 +4586,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHY G512 ADVANCED QUANTUM FIELD THEORY",
@@ -4597,7 +4597,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "POL F311 GANDHIAN THOUGHTS",
@@ -4616,7 +4616,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CS F402 COMPUTATIONAL GEOMETRY",
@@ -4632,7 +4632,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "FIN F414 FINANCIAL RISK ANALATICS AND MANAGEMENT",
@@ -4648,7 +4648,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CS F320 FOUNDATIONS OF DATA SCIENCE",
@@ -4659,7 +4659,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "EEE G641 APPLIED ESTIMATION THEORY",
@@ -4675,7 +4675,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "MATH F432 APPLIED STATISTICAL METHODS",
@@ -4686,7 +4686,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHY F431 GEOMETRICAL METHODS IN PHYSICS",
@@ -4702,7 +4702,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHY F432 CLASSICAL THEORY OF FIELDS: A SYMMETRY PERSPECTIVE",
@@ -4713,7 +4713,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHEM F320 INTRODUCTORY COMPUTATIONAL CHEMISTRY LABORATORY",
@@ -4724,7 +4724,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "ME F414 FUEL CELL SCIENCE AND TECHNOLOGY",
@@ -4735,7 +4735,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CE F325 FUNDAMENTALS OF ROCK MECHANICS",
@@ -4746,7 +4746,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE F423 MEMBRANE SCIENCE AND ENGINEERING",
@@ -4757,7 +4757,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE F424 RHEOLOGY OF COMPLEX FLUIDS",
@@ -4768,7 +4768,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BITS F323 VENTURE FINANCE",
@@ -4779,7 +4779,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHY F317 INTRODUCTION TO RADIO ASTRONOMY",
@@ -4840,7 +4840,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "CE G564 STRUCTURAL HEALTH ASSESSMENT AND REHABILITATION",
@@ -4856,7 +4856,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "MBA G578 GAME THEORY AND BUSINESS STRATEGY",
@@ -4867,7 +4867,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "EEE F436 Electromagnetic Compatibility",
@@ -4878,7 +4878,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "MATH F481 COMMUTATIVE ALGEBRA",
@@ -4889,7 +4889,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "AN F311 Principles of Aerodynamics",
@@ -4915,7 +4915,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "AN F312 Aircraft Propulsion",
@@ -4941,7 +4941,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "AN F315 Aircraft Structures",
@@ -4957,7 +4957,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "CS F316 Quantum Architecture and Programming",
@@ -4968,7 +4968,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CS F426 Graph Mining",
@@ -4979,7 +4979,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CS F427 Performance Analysis of Computer Networks",
@@ -4990,7 +4990,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "EEE F419 Flexible and Stretchable Electronics",
@@ -5011,7 +5011,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "EEE F420 Biomedical Signal Processing",
@@ -5027,7 +5027,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "PHY F346 Laser Science and Technology",
@@ -5053,7 +5053,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "CS G518 Internet of Things: Design and Development",
@@ -5079,7 +5079,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "CHE F341 CHEMICAL ENGG LAB II",
@@ -5100,7 +5100,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BIO F311 RECOMBINANT DNA TECH",
@@ -5161,7 +5161,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "BIO F417 BIOMOLECULAR MODELING",
@@ -5177,7 +5177,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "ECE F216 Electronic Devices Simulation Laboratory",
@@ -5198,7 +5198,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "ECE F423 Electronic Material Design and Simulations Laboratory",
@@ -5219,7 +5219,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "ECE F424 Smart Grid for Sustainable Energy",
@@ -5240,7 +5240,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "EEE F216 Electronic Devices Simulation Laboratory",
@@ -5261,7 +5261,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "EEE F423 Electronic Material Design and Simulations Laboratory",
@@ -5282,7 +5282,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "EEE F424 Smart Grid for Sustainable Energy",
@@ -5303,7 +5303,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "EEE F430 Green Communications and Networks",
@@ -5314,7 +5314,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "INSTR F216 Electronic Devices Simulation Laboratory",
@@ -5335,7 +5335,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "INSTR F423 Electronic Material Design and Simulations Laboratory",
@@ -5356,7 +5356,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "INSTR F424 Smart Grid for Sustainable Energy",
@@ -5377,7 +5377,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "PHA F315 Pharmaceutical Formulations II",
@@ -5388,7 +5388,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHA F317 Safety Pharmacology and Toxicology",
@@ -5399,7 +5399,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHA F419 Herbal Drug Technology",
@@ -5410,7 +5410,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "BITS F429 NANOTECHNOGY FOR RENEWABLE ENERGY AND ENVIRONMENT",
@@ -5431,7 +5431,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "EEE G614 Advanced Wireless Communications",
@@ -5442,7 +5442,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "EEE G514 Nanoelectronic Memories and Technology",
@@ -5468,7 +5468,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "MEL G514 Nanoelectronic Memories and Technology",
@@ -5494,7 +5494,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "CS F430 Approximation Algorithms",
@@ -5505,7 +5505,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CS F431 Combinatorial Optimization",
@@ -5516,7 +5516,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "MATH F425 Numerical Linear Algebra",
@@ -5527,7 +5527,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "ME G613 Advanced Finite Element Modelling & Analysis",
@@ -5548,7 +5548,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "MPBA G537 Data Structures and Algorithmic Thinking",
@@ -5559,7 +5559,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CE G576 Advanced Computational Modelling",
@@ -5580,7 +5580,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "ECON F419 Advanced Microeconomics",
@@ -5591,7 +5591,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "ME F428 Smart Materials",
@@ -5612,7 +5612,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "ME F429 Micro-Nanoscale Heat Transport",
@@ -5628,7 +5628,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "PHY F433 Topics in Nonlinear Optics",
@@ -5644,7 +5644,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "BIO F217 LABORATORY FOR WATER, SANITATION AND SOLID WASTE MANAGEMENT",
@@ -5655,7 +5655,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CE F428 EARTHQUAKE RES DES & CON",
@@ -5666,7 +5666,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHY F434 Foundations of Quantum Mechanics",
@@ -5677,7 +5677,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "ECOM F321 Real Time Operating Systems",
@@ -5688,7 +5688,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE F315 Machine Learning for Chemical Engineers",
@@ -5704,7 +5704,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "CS F435 Cyber Security Analytics and Forensics",
@@ -5715,7 +5715,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CS F437 Generative Artificial Intelligence",
@@ -5731,7 +5731,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "PHY F318 Atoms and Photons",
@@ -5752,7 +5752,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "PHY F435 Advanced Computational Physics",
@@ -5763,7 +5763,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "MAC F211 Linear Algebra and Its Applications",
@@ -5774,7 +5774,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "MAC F243 Numerical Optimization",
@@ -5785,7 +5785,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "MAC F244 Stochastic Calculus and Application to Finance",
@@ -5806,7 +5806,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "MAC F313 Statistical Data Analysis",
@@ -5817,7 +5817,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "MAC F314 Mathematical Modelling",
@@ -5828,7 +5828,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "AUE F241 Architectural Design Studio I",
@@ -5839,7 +5839,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "AUE F311 Architectural Design Studio II",
@@ -5850,7 +5850,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "AUE F313 Design of Reinforced Concrete Structures",
@@ -5866,7 +5866,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "AUE F343 Design of Steel Structures",
@@ -5882,7 +5882,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "AUE F344 Directed Research in Architecture I",
@@ -5893,7 +5893,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "AUE F345 Directed Research in Architecture II",
@@ -5904,7 +5904,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "ME F430 Fluid-Structure Interactions",
@@ -5920,7 +5920,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "EEE F437 Semiconductor Fabrication Technology",
@@ -5946,7 +5946,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "AN F316 Orbital Mechanics",
@@ -5957,7 +5957,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CE F331 In-situ Testing Methods in Geotechnical Engineering",
@@ -5968,7 +5968,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "ECE F331 Microwave Engineering",
@@ -5994,7 +5994,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "ECE F438 Electric Vehicles",
@@ -6010,7 +6010,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "INSTR F438 Electric Vehicles",
@@ -6026,7 +6026,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "MATH F429 Modern Theory of Partial Differential Equations",
@@ -6037,7 +6037,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "PHY F438 Fundamentals of Quantum Field Theory",
@@ -6048,7 +6048,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "CHE F312 CHEMICAL ENGG LAB I",
@@ -6104,7 +6104,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     },
     {
         "name": "EEE F439 Communication and Computing for Drones",
@@ -6130,7 +6130,7 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "One"
+        "completionRequirement": "One"
     },
     {
         "name": "AN F321 Aircraft Design",
@@ -6166,6 +6166,6 @@
                 "condition": "AND"
             }
         ],
-        "all_one": "All"
+        "completionRequirement": "All"
     }
 ]
