@@ -1,4 +1,5 @@
 import { placementYears } from '@/config/years_sems'
+import { PlacementCTCFormData } from '@/types'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
@@ -26,8 +27,6 @@ const placementCTCSchema = z.object({
         .string()
         .min(30, 'Description should be at least 30 characters'),
 })
-
-export type PlacementCTCFormData = z.infer<typeof placementCTCSchema>
 
 interface PlacementCTCFormProps {
     onSubmit: (data: PlacementCTCFormData, reset: () => void) => void

@@ -1,4 +1,5 @@
-import { BaseResponseData, getUser } from '@/pages/api/auth/[...nextauth]'
+import { getUser } from '@/pages/api/auth/[...nextauth]'
+import { BaseResponseData } from '@/types'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { PLACEMENT_CTCS } from '../../constants'
 import { supabase } from '../../supabase'

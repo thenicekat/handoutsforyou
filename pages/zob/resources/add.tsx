@@ -1,6 +1,7 @@
 import { getMetaConfig } from '@/config/meta'
-import ResourceForm, { ResourceFormData } from '@/forms/ResourceForm'
+import ResourceForm from '@/forms/ResourceForm'
 import AddPageLayout from '@/layout/AddPage'
+import { ResourceFormData } from '@/types'
 import { axiosInstance } from '@/utils/axiosCache'
 import { useState } from 'react'
 import { toast } from 'react-toastify'

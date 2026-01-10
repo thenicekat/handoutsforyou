@@ -1,4 +1,4 @@
-import { PS1Item, PS2Item } from '@/types/PS'
+import { PS1Item, PS2Item, PSReviewFormData } from '@/types'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
 import { useEffect } from 'react'
@@ -14,8 +14,6 @@ const psReviewSchema = z.object({
             'Review must be at least 200 characters long. Please be genuine and descriptive about your experience.'
         ),
 })
-
-export type PSReviewFormData = z.infer<typeof psReviewSchema>
 
 interface PSReviewFormProps<T = PS1Item | PS2Item> {
     isPS1: boolean

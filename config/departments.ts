@@ -1,6 +1,4 @@
-type DeptType = {
-    [key: string]: string
-}
+import { DeptType } from '@/types'
 
 export const departments: DeptType = {
     'Aeronautical Engineering': 'AN',

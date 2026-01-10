@@ -1,17 +1,7 @@
+import { AuthorizedUser } from '@/types'
 import { NextApiRequest, NextApiResponse } from 'next'
 import NextAuth, { getServerSession } from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
-
-export type BaseResponseData = {
-    message: string
-    error: boolean
-    data?: any
-}
-
-export type AuthorizedUser = {
-    email: string
-    name: string | null | undefined
-}
 
 const ALUMNI_DOMAIN = '@alumni.bits-pilani.ac.in'
 const EMAIL_REGEX =
