@@ -1,9 +1,8 @@
 import { departments } from '@/config/departments'
 import { getMetaConfig } from '@/config/meta'
-import CourseGradingForm, {
-    CourseGradingFormData,
-} from '@/forms/CourseGradingForm'
+import CourseGradingForm from '@/forms/CourseGradingForm'
 import AddPageLayout from '@/layout/AddPage'
+import { CourseGradingFormData } from '@/types'
 import axiosInstance from '@/utils/axiosCache'
 import { GetStaticProps } from 'next'
 import { useEffect, useState } from 'react'

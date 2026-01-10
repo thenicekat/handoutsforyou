@@ -1,4 +1,4 @@
-import { DeptType } from '@/types/config'
+import { DeptType } from '@/types'
 
 export const departments: DeptType = {
     'Aeronautical Engineering': 'AN',

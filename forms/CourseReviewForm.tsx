@@ -1,6 +1,6 @@
 import { courses } from '@/config/courses'
 import { profs } from '@/config/profs'
-import { CourseReviewFormData } from '@/types/forms'
+import { CourseReviewFormData } from '@/types'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'

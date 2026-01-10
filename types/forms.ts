@@ -48,7 +48,7 @@ export type ResourceType = 'course' | 'higherStudies' | 'placement' | 'general'
 export type HandoutFormData = {
     course: string
     semester: string
-    file: File
+    file: File | null
 }
 
 export type SICompanyFormData = {

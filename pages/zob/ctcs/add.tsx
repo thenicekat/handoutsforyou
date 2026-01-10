@@ -1,8 +1,7 @@
 import { getMetaConfig } from '@/config/meta'
-import PlacementCTCForm, {
-    PlacementCTCFormData,
-} from '@/forms/PlacementCTCForm'
+import PlacementCTCForm from '@/forms/PlacementCTCForm'
 import AddPageLayout from '@/layout/AddPage'
+import { PlacementCTCFormData } from '@/types'
 import { axiosInstance } from '@/utils/axiosCache'
 import { useState } from 'react'
 import { toast } from 'react-toastify'

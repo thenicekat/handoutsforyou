@@ -1,4 +1,4 @@
-import { BaseResponseData, BlogPostRequest } from '@/types/api'
+import { BaseResponseData, BlogPostRequest } from '@/types'
 import { googleDriveService } from '@/utils/googleDrive'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { Readable } from 'stream'

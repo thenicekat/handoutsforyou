@@ -27,14 +27,14 @@ export type {
 export type { Post, PostPageProps } from './bitsofa'
 
 export type {
+    DeptType,
     FaqModel,
     HandoutsPerYearProps,
     MenuProps,
+    MetaConfig,
     Professor,
     Resource,
     ResourceByCategory,
-    MetaConfig,
-    DeptType,
 } from './common'
 
 export type {
@@ -59,4 +59,3 @@ export type {
     ResourceType,
     SICompanyFormData,
 } from './forms'
-

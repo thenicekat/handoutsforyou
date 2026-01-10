@@ -1,6 +1,6 @@
 import { higherStudiesCategories, zobCategories } from '@/config/categories'
 import { departments } from '@/config/departments'
-import { ResourceFormData, ResourceType } from '@/types/forms'
+import { ResourceFormData, ResourceType } from '@/types'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'

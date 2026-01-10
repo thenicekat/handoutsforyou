@@ -1,5 +1,5 @@
 import { placementYears } from '@/config/years_sems'
-import { PlacementCTCFormData } from '@/types/forms'
+import { PlacementCTCFormData } from '@/types'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'

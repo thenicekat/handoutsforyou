@@ -3,7 +3,7 @@ import remarkFrontmatter from 'remark-frontmatter'
 import remarkGfm from 'remark-gfm'
 import remarkParseFrontmatter from 'remark-parse-frontmatter'
 
-import { Post } from '@/types/bitsofa'
+import { Post } from '@/types'
 
 export async function convertGDriveDataToPost(
     fileContent: string,

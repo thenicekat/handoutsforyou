@@ -1,7 +1,7 @@
 import AutoCompleter from '@/components/AutoCompleter'
 import { courses as courseNames } from '@/config/courses'
 import { pyqYears } from '@/config/years_sems'
-import { HandoutFormData } from '@/types/forms'
+import { HandoutFormData } from '@/types'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'

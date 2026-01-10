@@ -1,4 +1,4 @@
-import { ContributionData } from '@/types/api'
+import { ContributionData } from '@/types'
 import { CONTRIBUTIONS } from '../constants'
 import { supabase } from '../supabase'
 

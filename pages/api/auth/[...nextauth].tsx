@@ -1,4 +1,4 @@
-import { AuthorizedUser } from '@/types/api'
+import { AuthorizedUser } from '@/types'
 import { NextApiRequest, NextApiResponse } from 'next'
 import NextAuth, { getServerSession } from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'

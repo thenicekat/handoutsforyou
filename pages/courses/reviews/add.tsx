@@ -1,8 +1,7 @@
 import { getMetaConfig } from '@/config/meta'
-import CourseReviewForm, {
-    CourseReviewFormData,
-} from '@/forms/CourseReviewForm'
+import CourseReviewForm from '@/forms/CourseReviewForm'
 import AddPageLayout from '@/layout/AddPage'
+import { CourseReviewFormData } from '@/types'
 import axiosInstance from '@/utils/axiosCache'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'

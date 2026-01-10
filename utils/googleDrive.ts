@@ -1,13 +1,9 @@
-import { Post } from '@/types/bitsofa'
+import { Post } from '@/types'
 import { google } from 'googleapis'
 import { drive_v3 } from 'googleapis/build/src/apis/drive/v3'
 import { Readable } from 'stream'
 
-import {
-    ChronicleMap,
-    GoogleDriveFile,
-    GoogleDrivePSChronicles,
-} from '@/types/google-drive'
+import { ChronicleMap, GoogleDriveFile, GoogleDrivePSChronicles } from '@/types'
 import { convertGDriveDataToPost } from './bitsofaHelperFunctions'
 
 export class GoogleDriveService {

@@ -1,4 +1,4 @@
-import { MetaConfig } from '@/types/config'
+import { MetaConfig } from '@/types'
 
 export const defaultMetaConfig: MetaConfig = {
     title: 'h4u. | handoutsforyou.',

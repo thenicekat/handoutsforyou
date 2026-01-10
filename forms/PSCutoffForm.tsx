@@ -1,5 +1,5 @@
 import { ps1Years, ps2Semesters, psAllotmentRounds } from '@/config/years_sems'
-import { PSCutoffFormData } from '@/types/forms'
+import { PSCutoffFormData } from '@/types'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'

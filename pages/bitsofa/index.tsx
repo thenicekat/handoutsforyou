@@ -7,7 +7,7 @@ import Meta from '@/components/Meta'
 import PostCard from '@/components/PostCard'
 import CustomToastContainer from '@/components/ToastContainer'
 import { tags } from '@/config/tags'
-import { Post } from '@/types/bitsofa'
+import { Post } from '@/types'
 import { googleDriveService } from '@/utils/googleDrive'
 
 interface ForumPageProps {

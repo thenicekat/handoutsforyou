@@ -1,5 +1,5 @@
 import { siYears } from '@/config/years_sems'
-import { SICompanyFormData } from '@/types/forms'
+import { SICompanyFormData } from '@/types'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'

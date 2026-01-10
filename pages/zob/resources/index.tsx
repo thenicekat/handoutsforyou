@@ -5,9 +5,9 @@ import CustomToastContainer from '@/components/ToastContainer'
 import { getMetaConfig } from '@/config/meta'
 import {
     PlacementChroniclesByCampus,
+    ResourceByCategory,
     SIChroniclesByCampus,
-} from '@/types/google-drive'
-import { ResourceByCategory } from '@/types/resources'
+} from '@/types'
 import { axiosInstance } from '@/utils/axiosCache'
 import { googleDriveService } from '@/utils/googleDrive'
 import { LinkIcon, PlusCircleIcon } from '@heroicons/react/24/solid'

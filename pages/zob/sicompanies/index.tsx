@@ -3,7 +3,7 @@ import Meta from '@/components/Meta'
 import CustomToastContainer from '@/components/ToastContainer'
 import { getMetaConfig } from '@/config/meta'
 import { siYears } from '@/config/years_sems'
-import { SI_Company } from '@/types/zob'
+import { SI_Company } from '@/types'
 import { axiosInstance } from '@/utils/axiosCache'
 import { PlusCircleIcon } from '@heroicons/react/24/solid'
 import {

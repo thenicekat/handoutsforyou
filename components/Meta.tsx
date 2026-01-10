@@ -1,5 +1,6 @@
+import { defaultMetaConfig } from '@/config/meta'
+import { MetaConfig } from '@/types'
 import Head from 'next/head'
-import { defaultMetaConfig, MetaConfig } from '../config/meta'
 
 interface MetaProps extends Partial<MetaConfig> {
     children?: React.ReactNode

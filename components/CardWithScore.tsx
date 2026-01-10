@@ -1,4 +1,4 @@
-import { Resource } from '@/types/resources'
+import { Resource } from '@/types'
 import { axiosInstance } from '@/utils/axiosCache'
 import {
     CursorArrowRippleIcon,

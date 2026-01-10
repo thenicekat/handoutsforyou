@@ -1,7 +1,7 @@
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import CustomToastContainer from '@/components/ToastContainer'
-import { ContributionStats } from '@/types/api'
+import { ContributionStats } from '@/types'
 import { axiosInstance } from '@/utils/axiosCache'
 import { useEffect, useState } from 'react'
 import CountUp from 'react-countup'

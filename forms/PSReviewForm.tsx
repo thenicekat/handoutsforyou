@@ -1,5 +1,4 @@
-import { PSReviewFormData } from '@/types/forms'
-import { PS1Item, PS2Item } from '@/types/ps'
+import { PS1Item, PS2Item, PSReviewFormData } from '@/types'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
 import { useEffect } from 'react'
