@@ -1,4 +1,4 @@
-import { HandoutsPerYearProps } from '@/types/HandoutsPerYearProps'
+import { HandoutsPerYearProps } from '@/types/common'
 import Link from 'next/link'
 
 export default function HandoutsPerYear({

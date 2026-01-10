@@ -1,3 +1,5 @@
+// Google Drive file and chronicles types
+
 export interface GoogleDriveFile {
     id: string
     name: string
@@ -10,15 +12,20 @@ export interface ChronicleMap {
     [key: string]: GoogleDriveFile[]
 }
 
+// PS Chronicles
 export interface GoogleDrivePSChronicles {
     ps1: GoogleDriveFile[]
     ps2: GoogleDriveFile[]
 }
-export interface PlacementChroniclesByCampus {
-    [campus: string]: GoogleDriveFile[]
+
+export interface PSChroniclesResponse {
+    message: string
+    data: GoogleDrivePSChronicles
+    error: boolean
 }
 
-export interface SIChroniclesByCampus {
+// Placement Chronicles
+export interface PlacementChroniclesByCampus {
     [campus: string]: GoogleDriveFile[]
 }
 
@@ -28,14 +35,13 @@ export interface GoogleDriveChroniclesResponse {
     error: boolean
 }
 
+// SI Chronicles
+export interface SIChroniclesByCampus {
+    [campus: string]: GoogleDriveFile[]
+}
+
 export interface SIChroniclesResponse {
     message: string
     data: SIChroniclesByCampus
-    error: boolean
-}
-
-export interface PSChroniclesResponse {
-    message: string
-    data: GoogleDrivePSChronicles
     error: boolean
 }

@@ -4,6 +4,7 @@ export type CourseGradeRow = {
     minMarks?: number
     maxMarks?: number
 }
+
 export type CourseGrading = {
     id: string
     course: string
@@ -26,6 +27,7 @@ export type CoursePreReq = {
     prereq_name: string
     pre_cop: string
 }
+
 export type CoursePreReqGroup = {
     name: string
     all_one: string

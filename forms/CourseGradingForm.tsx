@@ -1,7 +1,7 @@
 import { courses } from '@/config/courses'
 import { profs } from '@/config/profs'
 import { gradedSemesters } from '@/config/years_sems'
-import { CourseGradeRow } from '@/types/Courses'
+import { CourseGradeRow } from '@/types/courses'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'

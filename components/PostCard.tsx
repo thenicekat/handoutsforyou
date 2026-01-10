@@ -1,5 +1,5 @@
 import reactMarkdownComponentConfig from '@/components/ReactMarkdownComponent'
-import { Post } from '@/types/Post'
+import { Post } from '@/types/bitsofa'
 import { StarIcon as StarIconOutline } from '@heroicons/react/24/outline'
 import {
     ClockIcon,

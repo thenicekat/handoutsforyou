@@ -1,4 +1,4 @@
-import { PS1Item, PS2Item } from '@/types/PS'
+import { PS1Item, PS2Item } from '@/types/ps'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
 import { useEffect } from 'react'

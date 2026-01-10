@@ -1,4 +1,4 @@
-import { MenuProps } from '@/types/Menu'
+import { MenuProps } from '@/types/common'
 import {
     Bars3Icon,
     StarIcon,

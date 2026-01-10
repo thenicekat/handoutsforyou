@@ -6,8 +6,8 @@ import { getMetaConfig } from '@/config/meta'
 import {
     PlacementChroniclesByCampus,
     SIChroniclesByCampus,
-} from '@/types/GoogleDriveChronicles'
-import { ResourceByCategory } from '@/types/Resource'
+} from '@/types/google-drive'
+import { ResourceByCategory } from '@/types/resources'
 import { axiosInstance } from '@/utils/axiosCache'
 import { googleDriveService } from '@/utils/googleDrive'
 import { LinkIcon, PlusCircleIcon } from '@heroicons/react/24/solid'
