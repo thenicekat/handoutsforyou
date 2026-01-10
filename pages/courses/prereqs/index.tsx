@@ -94,17 +94,8 @@ export default function Prereqs({
     )
 
     const requirementText = prereq
-<<<<<<< HEAD
         ? (prereq.completion_requirement || '').toUpperCase() ||
             ((prereq.prereqs_nested || (prereq.prereqs && prereq.prereqs.length > 0)) ? 'ALL' : null)
-=======
-        ? prereq.completionRequirement
-            ? prereq.completionRequirement.toUpperCase()
-            : prereq.prereqs_nested ||
-                (prereq.prereqs && prereq.prereqs.length > 0)
-              ? 'ALL'
-              : null
->>>>>>> 59da766b94f0838166fa15cd0734a0b6bf622e20
         : null
 
     return (
