@@ -1,4 +1,5 @@
 import { siYears } from '@/config/years_sems'
+import { SICompanyFormData } from '@/types/forms'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
@@ -14,8 +15,6 @@ const siCompanySchema = z.object({
     eligibility: z.string().min(1, 'Eligibility criteria is required'),
     otherDetails: z.string().optional(),
 })
-
-export type SICompanyFormData = z.infer<typeof siCompanySchema>
 
 interface SICompanyFormProps {
     onSubmit: (data: SICompanyFormData, reset: () => void) => void

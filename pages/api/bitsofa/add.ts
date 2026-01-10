@@ -1,14 +1,8 @@
+import { BaseResponseData, BlogPostRequest } from '@/types/api'
 import { googleDriveService } from '@/utils/googleDrive'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { Readable } from 'stream'
-import { BaseResponseData, getUser } from '../auth/[...nextauth]'
-
-interface FormData {
-    title: string
-    author: string
-    content: string
-    tags?: string[]
-}
+import { getUser } from '../auth/[...nextauth]'
 
 export default async function handler(
     req: NextApiRequest,
@@ -22,7 +16,7 @@ export default async function handler(
     }
 
     try {
-        const { title, author, content, tags = [] }: FormData = req.body
+        const { title, author, content, tags = [] }: BlogPostRequest = req.body
         const { email } = await getUser(req, res)
 
         if (!title || !author || !content) {

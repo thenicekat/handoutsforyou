@@ -1,22 +1,8 @@
-import { BaseResponseData, getUser } from '@/pages/api/auth/[...nextauth]'
+import { getUser } from '@/pages/api/auth/[...nextauth]'
+import { BaseResponseData, PSCutoffRequest } from '@/types/api'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { PS1_RESPONSES, PS2_RESPONSES } from '../../constants'
 import { supabase } from '../../supabase'
-
-type RequestData = {
-    typeOfPS: string
-    idNumber: string | undefined
-    yearAndSem: string
-    stipend: number
-    allotmentRound: string
-    station: string
-    cgpa: number
-    preference: number
-    offshoot: number
-    offshootTotal: number
-    offshootType: string
-    public: number
-}
 
 const matchEmailIDNumber = (email: string, idNumber: string): string => {
     let uid = email.split('@')[0]
@@ -42,7 +28,7 @@ export default async function handler(
     res: NextApiResponse<BaseResponseData>
 ) {
     const { name, email } = await getUser(req, res)
-    const reqBody: RequestData = req.body
+    const reqBody: PSCutoffRequest = req.body
 
     if (!email || !name) {
         res.status(400).json({

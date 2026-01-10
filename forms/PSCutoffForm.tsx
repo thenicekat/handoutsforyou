@@ -1,4 +1,5 @@
 import { ps1Years, ps2Semesters, psAllotmentRounds } from '@/config/years_sems'
+import { PSCutoffFormData } from '@/types/forms'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
@@ -51,10 +52,6 @@ const ps2CutoffSchema = basePSCutoffSchema
         message: 'Offshoot cannot be greater than Offshoot Total',
         path: ['offshoot'],
     })
-
-export type PS1CutoffFormData = z.infer<typeof ps1CutoffSchema>
-export type PS2CutoffFormData = z.infer<typeof ps2CutoffSchema>
-export type PSCutoffFormData = PS1CutoffFormData | PS2CutoffFormData
 
 interface PSCutoffFormProps {
     isPS1: boolean

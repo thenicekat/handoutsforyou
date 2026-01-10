@@ -1,5 +1,6 @@
 import { courses } from '@/config/courses'
 import { profs } from '@/config/profs'
+import { CourseReviewFormData } from '@/types/forms'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
@@ -28,8 +29,6 @@ const courseReviewSchema = z.object({
             'Review must be at least 200 characters long. Please be genuine and descriptive about your experience.'
         ),
 })
-
-export type CourseReviewFormData = z.infer<typeof courseReviewSchema>
 
 interface CourseReviewFormProps {
     onSubmit: (data: CourseReviewFormData, reset: () => void) => void

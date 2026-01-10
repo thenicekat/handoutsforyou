@@ -30,3 +30,19 @@ export type Resource = {
 export interface ResourceByCategory {
     [key: string]: Resource[]
 }
+
+export interface MetaConfig {
+    title: string
+    description: string
+    keywords: string[]
+    openGraph?: {
+        title?: string
+        description?: string
+        image?: string
+        url?: string
+    }
+}
+
+export type DeptType = {
+    [key: string]: string
+}

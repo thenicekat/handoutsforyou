@@ -1,14 +1,4 @@
-interface MetaConfig {
-    title: string
-    description: string
-    keywords: string[]
-    openGraph?: {
-        title?: string
-        description?: string
-        image?: string
-        url?: string
-    }
-}
+import { MetaConfig } from '@/types/config'
 
 export const defaultMetaConfig: MetaConfig = {
     title: 'h4u. | handoutsforyou.',
@@ -207,8 +197,6 @@ export const defaultMetaConfig: MetaConfig = {
         url: 'https://h4u.app',
     },
 }
-
-export type { MetaConfig }
 
 const createMeta = (partial: Partial<MetaConfig>): MetaConfig => ({
     ...defaultMetaConfig,

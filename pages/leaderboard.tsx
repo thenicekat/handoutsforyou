@@ -1,6 +1,7 @@
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import CustomToastContainer from '@/components/ToastContainer'
+import { ContributionStats } from '@/types/api'
 import { axiosInstance } from '@/utils/axiosCache'
 import { useEffect, useState } from 'react'
 import CountUp from 'react-countup'
@@ -19,12 +20,6 @@ const contributionTypeLabels: Record<string, string> = {
     ps2_review: 'PS2 Reviews',
     placement_ctc: 'Placement CTCs',
     si_company: 'SI Companies',
-}
-
-interface ContributionStats {
-    total: number
-    byType: Record<string, number>
-    byUser: Record<string, number>
 }
 
 export default function LeaderboardPage() {

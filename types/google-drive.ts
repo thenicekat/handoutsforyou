@@ -1,5 +1,3 @@
-// Google Drive file and chronicles types
-
 export interface GoogleDriveFile {
     id: string
     name: string
