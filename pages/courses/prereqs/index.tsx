@@ -3,8 +3,7 @@ import Meta from '@/components/Meta'
 import Modal from '@/components/Modal'
 import { BookOpenIcon } from '@heroicons/react/24/outline'
 import { getMetaConfig } from '@/config/meta'
-import { CoursePreReqGroup } from '@/types/Courses'
-import { PrereqItem, NestedPrereqNode, ExtendedCoursePreReqGroup } from '@/types/Prereqs'
+import { CoursePreReqGroup, PrereqItem, NestedPrereqNode, ExtendedCoursePreReqGroup } from '@/types'
 import axiosInstance from '@/utils/axiosCache'
 import { GetStaticProps } from 'next'
 import { useEffect, useState } from 'react'
@@ -79,11 +78,8 @@ export default function Prereqs({ prereqs }: { prereqs: ExtendedCoursePreReqGrou
     )
 
     const requirementText = prereq
-        ? prereq.completionRequirement
-            ? prereq.completionRequirement.toUpperCase()
-            : (prereq.prereqs_nested || (prereq.prereqs && prereq.prereqs.length > 0))
-                ? 'ALL'
-                : null
+        ? (prereq.completion_requirement || '').toUpperCase() ||
+            ((prereq.prereqs_nested || (prereq.prereqs && prereq.prereqs.length > 0)) ? 'ALL' : null)
         : null
 
     return (

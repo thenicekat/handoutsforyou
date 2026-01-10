@@ -1,4 +1,4 @@
-import { Professor } from '@/types/Professor'
+import { Professor } from '@/types'
 
 export const profs: Professor[] = [
     { name: 'Debajit Bora', chamber: 'K217' },

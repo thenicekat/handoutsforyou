@@ -1,5 +1,6 @@
 import { departments } from '@/config/departments'
-import { BaseResponseData, getUser } from '@/pages/api/auth/[...nextauth]'
+import { getUser } from '@/pages/api/auth/[...nextauth]'
+import { BaseResponseData } from '@/types'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { COURSE_GRADING } from '../../constants'
 import { trackContribution } from '../../contributions/track'

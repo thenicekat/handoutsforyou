@@ -106,9 +106,9 @@ def main():
             if len(prereqs_list) > 0:
                 conds = [p.get('condition', 'AND').upper() for p in prereqs_list]
                 if 'OR' in conds:
-                    course['all_one'] = 'One'
+                    course['completion_requirement'] = 'One'
                 elif all(c == 'AND' for c in conds):
-                    course['all_one'] = 'All'
+                    course['completion_requirement'] = 'All'
 
             special_codes = ('PHY F415', 'PHY F317', 'CHE F312', 'BIO F311')
             if any(course.get('name', '').startswith(code) for code in special_codes):
@@ -138,7 +138,7 @@ def main():
                         }
                     
                     course['prereqs_nested'] = nested
-                    course.pop('all_one', None)
+                    course.pop('completion_requirement', None)
                 else:
                     course['prereqs_nested'] = {"type": "AND", "items": prereqs_list}
             courses.append(course)

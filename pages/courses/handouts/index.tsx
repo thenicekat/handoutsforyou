@@ -2,7 +2,8 @@ import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import CustomToastContainer from '@/components/ToastContainer'
 import { getMetaConfig } from '@/config/meta'
-import HandoutForm, { HandoutFormData } from '@/forms/HandoutForm'
+import HandoutForm from '@/forms/HandoutForm'
+import { HandoutFormData } from '@/types'
 import axiosInstance from '@/utils/axiosCache'
 import { googleDriveService } from '@/utils/googleDrive'
 import { GetStaticProps } from 'next'
@@ -80,6 +81,12 @@ export default function Handouts({
         setUploading(true)
 
         try {
+            if (!data.file) {
+                toast.error('Please select a file to upload')
+                setUploading(false)
+                return
+            }
+
             const formData = new FormData()
             formData.append('course', data.course)
             formData.append('semester', data.semester)

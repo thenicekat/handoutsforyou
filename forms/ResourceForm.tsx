@@ -1,5 +1,6 @@
 import { higherStudiesCategories, zobCategories } from '@/config/categories'
 import { departments } from '@/config/departments'
+import { ResourceFormData, ResourceType } from '@/types'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
@@ -12,10 +13,6 @@ const resourceSchema = z.object({
     createdBy: z.string().min(1, 'Your name is required'),
     category: z.string().min(1, 'Category is required'),
 })
-
-export type ResourceFormData = z.infer<typeof resourceSchema>
-
-type ResourceType = 'course' | 'higherStudies' | 'placement' | 'general'
 
 interface ResourceFormProps {
     onSubmit: (data: ResourceFormData, reset: () => void) => void

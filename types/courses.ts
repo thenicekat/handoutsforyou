@@ -4,6 +4,7 @@ export type CourseGradeRow = {
     minMarks?: number
     maxMarks?: number
 }
+
 export type CourseGrading = {
     id: string
     course: string
@@ -26,9 +27,10 @@ export type CoursePreReq = {
     prereq_name: string
     pre_cop: string
 }
+
 export type CoursePreReqGroup = {
     name: string
-    all_one: string
+    completion_requirement?: string
     prereqs: CoursePreReq[]
 }
 
@@ -49,4 +51,21 @@ export interface CourseDetails {
 
 export interface CoursePYQsByYear {
     [year: string]: CoursePYQFile[]
+}
+
+// Prerequisite types moved from Prereqs.ts
+export type PrereqItem = {
+    prereq_name: string
+    pre_cop: string
+    condition?: string
+}
+
+export type NestedPrereqNode = {
+    type: 'AND' | 'OR'
+    items: (PrereqItem | NestedPrereqNode)[]
+}
+
+export type ExtendedCoursePreReqGroup = Omit<CoursePreReqGroup, 'prereqs'> & {
+    prereqs: PrereqItem[]
+    prereqs_nested?: NestedPrereqNode
 }

@@ -1,7 +1,7 @@
 import { courses } from '@/config/courses'
 import { profs } from '@/config/profs'
 import { gradedSemesters } from '@/config/years_sems'
-import { CourseGradeRow } from '@/types/Courses'
+import { CourseGradeRow, CourseGradingFormData } from '@/types'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
@@ -41,8 +41,6 @@ const courseGradingSchema = z.object({
     gradingData: z.string().min(10, 'Grading data is required'),
     averageMark: z.string().optional(),
 })
-
-export type CourseGradingFormData = z.infer<typeof courseGradingSchema>
 
 interface CourseGradingFormProps {
     onSubmit: (data: CourseGradingFormData, parsedData: string) => void

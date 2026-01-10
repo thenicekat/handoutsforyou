@@ -1,13 +1,9 @@
-import { Post } from '@/types/Post'
+import { Post } from '@/types'
 import { google } from 'googleapis'
 import { drive_v3 } from 'googleapis/build/src/apis/drive/v3'
 import { Readable } from 'stream'
 
-import {
-    ChronicleMap,
-    GoogleDriveFile,
-    GoogleDrivePSChronicles,
-} from '@/types/GoogleDriveChronicles'
+import { ChronicleMap, GoogleDriveFile, GoogleDrivePSChronicles } from '@/types'
 import { convertGDriveDataToPost } from './bitsofaHelperFunctions'
 
 export class GoogleDriveService {
@@ -524,13 +520,18 @@ export class GoogleDriveService {
             throw new Error('Invalid file object - missing ID')
         }
 
-        return {
+        const mapped: GoogleDriveFile = {
             id: file.id,
             name: file.name || 'Unnamed File',
-            size: file.size || undefined,
             createdTime: file.createdTime || new Date().toISOString(),
             downloadUrl: this.getDirectDownloadUrl(file.id),
         }
+
+        if (file.size) {
+            mapped.size = file.size
+        }
+
+        return mapped
     }
 
     /**

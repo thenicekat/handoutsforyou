@@ -1,11 +1,6 @@
+import { ContributionData } from '@/types'
 import { CONTRIBUTIONS } from '../constants'
 import { supabase } from '../supabase'
-
-export interface ContributionData {
-    email: string
-    contribution_type: string
-    count?: number
-}
 
 export async function trackContribution(input: ContributionData) {
     const amount = input.count || 1

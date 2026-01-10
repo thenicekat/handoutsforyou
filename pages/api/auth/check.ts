@@ -1,4 +1,5 @@
-import { BaseResponseData, getUser } from '@/pages/api/auth/[...nextauth]'
+import { getUser } from '@/pages/api/auth/[...nextauth]'
+import { BaseResponseData } from '@/types'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function handler(

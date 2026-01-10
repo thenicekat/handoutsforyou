@@ -1,4 +1,5 @@
-import { BaseResponseData, getUser } from '@/pages/api/auth/[...nextauth]'
+import { getUser } from '@/pages/api/auth/[...nextauth]'
+import { BaseResponseData } from '@/types'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { SI_COMPANIES } from '../../constants'
 import { trackContribution } from '../../contributions/track'
