@@ -7,6 +7,9 @@ export type {
     CoursePreReq,
     CoursePreReqGroup,
     CourseReview,
+    ExtendedCoursePreReqGroup,
+    NestedPrereqNode,
+    PrereqItem,
 } from './courses'
 
 export type { PS1Item, PS2Item, PS_Review, PS_Station } from './ps'

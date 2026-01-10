@@ -520,13 +520,18 @@ export class GoogleDriveService {
             throw new Error('Invalid file object - missing ID')
         }
 
-        return {
+        const mapped: GoogleDriveFile = {
             id: file.id,
             name: file.name || 'Unnamed File',
-            size: file.size || undefined,
             createdTime: file.createdTime || new Date().toISOString(),
             downloadUrl: this.getDirectDownloadUrl(file.id),
         }
+
+        if (file.size) {
+            mapped.size = file.size
+        }
+
+        return mapped
     }
 
     /**
