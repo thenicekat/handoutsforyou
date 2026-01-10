@@ -231,7 +231,7 @@
         "name": "BIO G545 MOLECULAR PARASITOLOGY AND VECTOR BIOLOGY",
         "prereqs": [
             {
-                "prereq_name": "BIO F342 IMMUNOBIOLO GY",
+                "prereq_name": "BIO F342 IMMUNOBIOLOGY",
                 "pre_cop": "PRE",
                 "condition": "AND"
             }
