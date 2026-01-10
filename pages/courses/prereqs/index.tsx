@@ -2,7 +2,11 @@ import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import Modal from '@/components/Modal'
 import { getMetaConfig } from '@/config/meta'
-import { CoursePreReqGroup, PrereqItem, NestedPrereqNode, ExtendedCoursePreReqGroup } from '@/types'
+import {
+    ExtendedCoursePreReqGroup,
+    NestedPrereqNode,
+    PrereqItem,
+} from '@/types'
 import axiosInstance from '@/utils/axiosCache'
 import { BookOpenIcon } from '@heroicons/react/24/outline'
 import { GetStaticProps } from 'next'
@@ -95,7 +99,10 @@ export default function Prereqs({
 
     const requirementText = prereq
         ? (prereq.completion_requirement || '').toUpperCase() ||
-            ((prereq.prereqs_nested || (prereq.prereqs && prereq.prereqs.length > 0)) ? 'ALL' : null)
+          (prereq.prereqs_nested ||
+          (prereq.prereqs && prereq.prereqs.length > 0)
+              ? 'ALL'
+              : null)
         : null
 
     return (
