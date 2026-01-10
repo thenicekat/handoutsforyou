@@ -1,33 +1,87 @@
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import Modal from '@/components/Modal'
+import { BookIcon } from '@/components/BookIcon'
 import { getMetaConfig } from '@/config/meta'
 import { CoursePreReqGroup } from '@/types/Courses'
 import axiosInstance from '@/utils/axiosCache'
 import { GetStaticProps } from 'next'
 import { useEffect, useState } from 'react'
 
+type PrereqItem = {
+    prereq_name: string
+    pre_cop: string
+    condition?: string
+}
+
+type NestedPrereqNode = {
+    type: 'AND' | 'OR'
+    items: (PrereqItem | NestedPrereqNode)[]
+}
+
+type ExtendedCoursePreReqGroup = Omit<CoursePreReqGroup, 'prereqs'> & {
+    prereqs: PrereqItem[]
+    prereqs_nested?: NestedPrereqNode
+    all_one?: string
+}
+
 export const getStaticProps: GetStaticProps = async () => {
     const fs = require('fs')
-
     let prereqs = fs.readFileSync('./public/prereqs.json').toString()
     prereqs = JSON.parse(prereqs)
-
     return {
-        props: {
-            prereqs,
-        },
+        props: { prereqs },
     }
 }
 
-export default function Prereqs({ prereqs }: { prereqs: CoursePreReqGroup[] }) {
+const LogicRenderer = ({ node }: { node: PrereqItem | NestedPrereqNode }) => {
+    if (!node) return null
+
+    if ('prereq_name' in node) {
+        const isPre = node.pre_cop.toUpperCase().includes('PRE')
+        return (
+            <div className="flex items-center gap-2 p-2 bg-gray-200/10 rounded-lg border border-base-300 shadow-sm my-1">
+                <span className={`badge ${isPre ? 'badge-warning' : 'badge-info'} badge-sm font-bold mx-1`}>
+                    {isPre ? 'PRE' : 'CO'}
+                </span>
+                <span className="font-semibold text-base-content">{node.prereq_name}</span>
+            </div>
+        )
+    }
+
+    if (node.type && Array.isArray(node.items)) {
+        const isOr = node.type === 'OR'
+        
+        return (
+            <div className={`flex flex-col gap-2 p-3 rounded-xl ${isOr ? 'bg-base-100 border-2 border-dashed border-primary/30 relative mt-4' : ''}`}>
+                {isOr && (
+                    <span className="absolute -top-3 left-4 bg-primary text-primary-content text-xs px-2 py-1 rounded-full font-bold">
+                        COMPLETE ONE OF:
+                    </span>
+                )}
+                
+                {node.items.map((it, idx) => (
+                    <div key={idx} className="w-full">
+                        <LogicRenderer node={it} />
+                        {!isOr && idx < node.items.length - 1 && (
+                            <div className="flex mt-3 justify-center py-1 opacity-90">
+                                <span className="text-lg bg-primary text-primary-content font-bold tracking-widest rounded-full px-3">• AND •</span>
+                            </div>
+                        )}
+                    </div>
+                ))}
+            </div>
+        )
+    }
+    return null
+}
+
+export default function Prereqs({ prereqs }: { prereqs: ExtendedCoursePreReqGroup[] }) {
     const [search, setSearch] = useState('')
     const [open, setOpen] = useState(false)
-    const [prereq, setPrereq] = useState<CoursePreReqGroup | null>(null)
+    const [prereq, setPrereq] = useState<ExtendedCoursePreReqGroup | null>(null)
 
-    const toggleModal = () => {
-        setOpen(!open)
-    }
+    const toggleModal = () => setOpen(!open)
 
     useEffect(() => {
         async function checkAuth() {
@@ -36,11 +90,23 @@ export default function Prereqs({ prereqs }: { prereqs: CoursePreReqGroup[] }) {
         checkAuth()
     }, [])
 
+    const filteredPrereqs = prereqs.filter((d) =>
+        d.name.toLowerCase().includes(search.toLowerCase())
+    )
+
+    const requirementText = prereq
+        ? prereq.all_one
+            ? prereq.all_one.toUpperCase()
+            : (prereq.prereqs_nested || (prereq.prereqs && prereq.prereqs.length > 0))
+                ? 'ALL'
+                : null
+        : null
+
     return (
-        <>
+        <div>
             <Meta {...getMetaConfig('courses/prereqs')} />
 
-            {/* Search box */}
+            {/* --- Header Section --- */}
             <div className="grid place-items-center">
                 <div className="w-[70vw] place-items-center flex flex-col justify-between">
                     <h1 className="text-4xl pt-[50px] pb-[20px] px-[35px] text-primary">
@@ -57,65 +123,111 @@ export default function Prereqs({ prereqs }: { prereqs: CoursePreReqGroup[] }) {
                     />
                 </div>
             </div>
-            <p className="text-center m-2">
-                NOTE: Here PRE means you will have to complete before hand while
-                CO means you can do them parallelly
-            </p>
-            <div className="grid md:grid-cols-3 place-items-center p-5">
-                <Modal open={open}>
-                    <h3 className="font-bold text-lg">{prereq?.name}</h3>
-                    <div className="card-actions justify-begin text-primary my-3">
-                        {prereq && prereq.prereqs.length > 0 ? (
-                            prereq.prereqs.map(preq => (
-                                <>
-                                    <li key={preq.prereq_name}>
-                                        {preq.prereq_name} ({preq.pre_cop})
-                                    </li>
-                                </>
-                            ))
-                        ) : (
-                            <p>No Prerequisites</p>
-                        )}
-                        {prereq?.all_one && (
-                            <>
-                                Note: You will have to do{' '}
-                                <b>{prereq?.all_one.toLowerCase()}</b> of the
-                                above courses
-                            </>
-                        )}
-                        <br />
-                    </div>
-                    <div className="modal-action">
-                        <label
-                            className="btn btn-primary"
-                            onClick={() => toggleModal()}
-                        >
-                            Close
-                        </label>
-                    </div>
-                </Modal>
-
-                {prereqs
-                    .filter((d: CoursePreReqGroup) =>
-                        d.name.toLowerCase().includes(search.toLowerCase())
-                    )
-                    .map((preqgroup: CoursePreReqGroup) => (
-                        <div
-                            className="card w-11/12 bg-secondary text-neutral-content m-2 cursor-grab"
-                            key={preqgroup.name}
-                            onClick={() => {
-                                toggleModal()
-                                setPrereq(preqgroup)
-                            }}
-                        >
-                            <div className="card-body items-center">
-                                <h2 className="card-title text-primary">
-                                    {preqgroup.name}
-                                </h2>
-                            </div>
-                        </div>
-                    ))}
+            <div className="flex justify-center gap-6 mb-2 text-sm mt-8 bg-base-300/50 rounded-lg py-4 px-6 w-fit mx-auto">
+                <div className="flex items-center gap-2">
+                    <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
+                    <span className="font-semibold text-white">PRE:</span>
+                    <span className="text-gray-300">Must complete before</span>
+                </div>
+                <div className="flex items-center gap-2">
+                    <div className="w-3 h-3 rounded-full bg-gray-400"></div>
+                    <span className="font-semibold text-white">CO:</span>
+                    <span className="text-gray-300">Can take parallelly</span>
+                </div>
             </div>
-        </>
+
+            {/* --- Grid Section --- */}
+            <div className="container mx-auto px-4 py-8">
+                {filteredPrereqs.length === 0 ? (
+                    <div className="text-center py-20 opacity-50">
+                        <p className="text-xl">No courses found matching "{search}"</p>
+                    </div>
+                ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 place-items-stretch">
+                        {filteredPrereqs.map((preqgroup) => {
+                            const hasReqs = (preqgroup.prereqs && preqgroup.prereqs.length > 0) || preqgroup.prereqs_nested
+                            
+                            return (
+                                <div
+                                    key={preqgroup.name}
+                                    onClick={() => {
+                                        setPrereq(preqgroup)
+                                        toggleModal()
+                                    }}
+                                    className="group card bg-base-100 shadow-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer border border-base-200"
+                                >
+                                    <div className="card-body p-6 flex flex-col justify-between h-full">
+                                        <div className="flex items-start justify-between gap-2">
+                                            <h2 className="card-title text-lg font-bold text-primary group-hover:text-primary-focus">
+                                                {preqgroup.name}
+                                            </h2>
+                                            <BookIcon />
+                                        </div>
+                                        
+                                        <div className="mt-4 flex justify-end">
+                                            {hasReqs ? (
+                                                <div className="badge badge-outline gap-1">
+                                                    View Reqs
+                                                </div>
+                                            ) : (
+                                                <div className="badge badge-ghost opacity-50">Open</div>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        })}
+                    </div>
+                )}
+            </div>
+
+            <Modal open={open}>
+                {prereq && (
+                    <div className="relative">
+                        <div className="border-b border-base-200 pb-4 mb-4">
+                            <h3 className="font-extrabold text-2xl text-primary">{prereq.name}</h3>
+                            <p className="text-sm opacity-60 mt-1">Prerequisite Tree</p>
+                        </div>
+
+                        <div className="max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar">
+                            {requirementText && (
+                                <div className="alert alert-info shadow-sm mb-4">
+                                    <span>Requirement: Complete <b>{requirementText}</b> of the following.</span>
+                                </div>
+                            )}
+                            {prereq.prereqs_nested ? (
+                                <div className="space-y-2">
+                                    <LogicRenderer node={prereq.prereqs_nested} />
+                                </div>
+                            ) : prereq.prereqs && prereq.prereqs.length > 0 ? (
+                                <div className="space-y-2">
+                                    {prereq.prereqs.map((preq, idx) => (
+                                        <LogicRenderer 
+                                            key={idx} 
+                                            node={preq}
+                                        />
+                                    ))}
+                                </div>
+                            ) : (
+                                <div className="flex flex-col items-center justify-center py-10 opacity-80 bg-base-200 rounded-xl border border-dashed border-base-300">
+                                    <span className="text-4xl mb-2">🎉</span>
+                                    <p className="font-medium">No Prerequisites required!</p>
+                                    <p className="text-sm">You can register for this directly.</p>
+                                </div>
+                            )}
+                        </div>
+
+                        <div className="modal-action pt-4">
+                            <button
+                                className="btn btn-primary btn-block rounded-full"
+                                onClick={toggleModal}
+                            >
+                                Close Details
+                            </button>
+                        </div>
+                    </div>
+                )}
+            </Modal>
+        </div>
     )
 }
