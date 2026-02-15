@@ -62,3 +62,5 @@ export type {
     ResourceType,
     SICompanyFormData,
 } from './forms'
+
+export type { Confession, ConfessionReply } from './confessions'

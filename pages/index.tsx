@@ -142,6 +142,7 @@ export default function Home() {
             description: "We couldn't fit these in the other categories :P",
             items: [
                 { name: 'BITS of Advice', path: '/bitsofa' },
+                { name: 'Confessions', path: '/confessions' },
                 {
                     name: 'Professor Chambers',
                     path: '/chambers',

@@ -300,6 +300,11 @@ export const metaConfigs: Record<string, MetaConfig> = {
         description:
             'A collection of advice from seniors on various topics, searchable by title, author and category.',
     }),
+    confessions: createMeta({
+        title: 'Confessions.',
+        description:
+            'Share your thoughts anonymously. A safe space for the BITS community to express themselves.',
+    }),
 }
 
 export const getMetaConfig = (key: string): MetaConfig =>
