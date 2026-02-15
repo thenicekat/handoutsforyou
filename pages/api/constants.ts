@@ -15,6 +15,8 @@ export const PLACEMENT_CTCS = 'placement_ctcs'
 export const PLACEMENT_RESOURCES = 'placement_resources'
 export const HIGHER_STUDIES_RESOURCES = 'higherstudies_resources'
 export const CONTRIBUTIONS = 'contributions'
+export const CONFESSIONS = 'confessions'
+export const CONFESSION_REPLIES = 'confession_replies'
 
 export const capitalize = (s: string) => {
     if (typeof s !== 'string') return ''

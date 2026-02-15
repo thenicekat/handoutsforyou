@@ -10,6 +10,10 @@ create sequence "public"."ps2_responses_id_seq";
 
 create sequence "public"."placement_resources_id_seq";
 
+create sequence "public"."confessions_id_seq";
+
+create sequence "public"."confession_replies_id_seq";
+
 create table "public"."course_grading" (
     "id" uuid not null,
     "course" text,
@@ -154,6 +158,23 @@ create table "public"."si_companies" (
 );
 
 
+create table "public"."confessions" (
+    "id" bigint not null default nextval('confessions_id_seq'::regclass),
+    "content" text not null,
+    "email" text not null,
+    "created_at" bigint not null
+);
+
+
+create table "public"."confession_replies" (
+    "id" bigint not null default nextval('confession_replies_id_seq'::regclass),
+    "confession_id" bigint not null,
+    "content" text not null,
+    "email" text not null,
+    "created_at" bigint not null
+);
+
+
 alter sequence "public"."course_resources_id_seq" owned by "public"."course_resources"."id";
 
 alter sequence "public"."donations_id_seq" owned by "public"."donations"."id";
@@ -165,6 +186,10 @@ alter sequence "public"."ps1_responses_id_seq" owned by "public"."ps1_responses"
 alter sequence "public"."ps2_responses_id_seq" owned by "public"."ps2_responses"."id";
 
 alter sequence "public"."placement_resources_id_seq" owned by "public"."placement_resources"."id";
+
+alter sequence "public"."confessions_id_seq" owned by "public"."confessions"."id";
+
+alter sequence "public"."confession_replies_id_seq" owned by "public"."confession_replies"."id";
 
 CREATE UNIQUE INDEX course_grading_pkey ON public.course_grading USING btree (id);
 
@@ -182,6 +207,10 @@ CREATE UNIQUE INDEX ps1_responses_pkey ON public.ps1_responses USING btree (id);
 
 CREATE UNIQUE INDEX ps2_responses_pkey ON public.ps2_responses USING btree (id);
 
+CREATE UNIQUE INDEX confessions_pkey ON public.confessions USING btree (id);
+
+CREATE UNIQUE INDEX confession_replies_pkey ON public.confession_replies USING btree (id);
+
 alter table "public"."course_grading" add constraint "course_grading_pkey" PRIMARY KEY using index "course_grading_pkey";
 
 alter table "public"."course_resources" add constraint "course_resources_pkey" PRIMARY KEY using index "course_resources_pkey";
@@ -197,6 +226,14 @@ alter table "public"."placement_resources" add constraint "placement_resources_p
 alter table "public"."ps1_responses" add constraint "ps1_responses_pkey" PRIMARY KEY using index "ps1_responses_pkey";
 
 alter table "public"."ps2_responses" add constraint "ps2_responses_pkey" PRIMARY KEY using index "ps2_responses_pkey";
+
+alter table "public"."confessions" add constraint "confessions_pkey" PRIMARY KEY using index "confessions_pkey";
+
+alter table "public"."confession_replies" add constraint "confession_replies_pkey" PRIMARY KEY using index "confession_replies_pkey";
+
+alter table "public"."confession_replies" add constraint "confession_replies_confession_id_fkey" FOREIGN KEY (confession_id) REFERENCES confessions(id) not valid;
+
+alter table "public"."confession_replies" validate constraint "confession_replies_confession_id_fkey";
 
 grant delete on table "public"."course_grading" to "anon";
 
@@ -702,4 +739,87 @@ grant truncate on table "public"."si_companies" to "service_role";
 
 grant update on table "public"."si_companies" to "service_role";
 
+grant delete on table "public"."confessions" to "anon";
+
+grant insert on table "public"."confessions" to "anon";
+
+grant references on table "public"."confessions" to "anon";
+
+grant select on table "public"."confessions" to "anon";
+
+grant trigger on table "public"."confessions" to "anon";
+
+grant truncate on table "public"."confessions" to "anon";
+
+grant update on table "public"."confessions" to "anon";
+
+grant delete on table "public"."confessions" to "authenticated";
+
+grant insert on table "public"."confessions" to "authenticated";
+
+grant references on table "public"."confessions" to "authenticated";
+
+grant select on table "public"."confessions" to "authenticated";
+
+grant trigger on table "public"."confessions" to "authenticated";
+
+grant truncate on table "public"."confessions" to "authenticated";
+
+grant update on table "public"."confessions" to "authenticated";
+
+grant delete on table "public"."confessions" to "service_role";
+
+grant insert on table "public"."confessions" to "service_role";
+
+grant references on table "public"."confessions" to "service_role";
+
+grant select on table "public"."confessions" to "service_role";
+
+grant trigger on table "public"."confessions" to "service_role";
+
+grant truncate on table "public"."confessions" to "service_role";
+
+grant update on table "public"."confessions" to "service_role";
+
+grant delete on table "public"."confession_replies" to "anon";
+
+grant insert on table "public"."confession_replies" to "anon";
+
+grant references on table "public"."confession_replies" to "anon";
+
+grant select on table "public"."confession_replies" to "anon";
+
+grant trigger on table "public"."confession_replies" to "anon";
+
+grant truncate on table "public"."confession_replies" to "anon";
+
+grant update on table "public"."confession_replies" to "anon";
+
+grant delete on table "public"."confession_replies" to "authenticated";
+
+grant insert on table "public"."confession_replies" to "authenticated";
+
+grant references on table "public"."confession_replies" to "authenticated";
+
+grant select on table "public"."confession_replies" to "authenticated";
+
+grant trigger on table "public"."confession_replies" to "authenticated";
+
+grant truncate on table "public"."confession_replies" to "authenticated";
+
+grant update on table "public"."confession_replies" to "authenticated";
+
+grant delete on table "public"."confession_replies" to "service_role";
+
+grant insert on table "public"."confession_replies" to "service_role";
+
+grant references on table "public"."confession_replies" to "service_role";
+
+grant select on table "public"."confession_replies" to "service_role";
+
+grant trigger on table "public"."confession_replies" to "service_role";
+
+grant truncate on table "public"."confession_replies" to "service_role";
+
+grant update on table "public"."confession_replies" to "service_role";
 

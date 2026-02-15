@@ -22,6 +22,7 @@ const Menu = ({ doNotShowMenu }: MenuProps) => {
         'Course Grading': '/courses/grading',
         'BITS of Advice': '/bitsofa',
         'Professor Chambers': '/chambers',
+        Confessions: '/confessions',
         'Zob Resources': '/zob/resources',
         'SI Companies': '/zob/sicompanies',
         'Placement CTCs': '/zob/ctcs',
