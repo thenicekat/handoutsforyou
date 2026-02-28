@@ -4,6 +4,7 @@ import '../styles/globals.css'
 import type { Session } from 'next-auth'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import { GoogleAdSense } from 'nextjs-google-adsense'
 import { useEffect } from 'react'
 import { useAntiScraping } from '../hooks/useAntiScraping'
@@ -14,6 +15,7 @@ export default function App({
     Component,
     pageProps: { session, ...pageProps },
 }: AppProps<{ session: Session }>) {
+    const router = useRouter()
     if (
         typeof window !== 'undefined' &&
         typeof window.navigator !== 'undefined' &&
@@ -29,6 +31,22 @@ export default function App({
         redirectUrl: '/error',
         enableMonitoring: true,
     })
+
+    useEffect(() => {
+        const handleRouteChange = () => {
+            setTimeout(() => {
+                try {
+                    const adsbygoogle = (window as any).adsbygoogle || []
+                    adsbygoogle.push({})
+                } catch (_) {}
+            }, 300)
+        }
+
+        router.events.on('routeChangeComplete', handleRouteChange)
+        return () => {
+            router.events.off('routeChangeComplete', handleRouteChange)
+        }
+    }, [router.events])
 
     useEffect(() => {
         if (process.env.NODE_ENV === 'development') return
