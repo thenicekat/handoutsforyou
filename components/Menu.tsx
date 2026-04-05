@@ -7,6 +7,7 @@ import {
 } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import { useState } from 'react'
+import SiteDisplayAd from './SiteDisplayAd'
 import StarPrompt from './Prompt'
 
 const Menu = ({ doNotShowMenu }: MenuProps) => {
@@ -76,6 +77,8 @@ const Menu = ({ doNotShowMenu }: MenuProps) => {
                     </div>
                 </div>
             </nav>
+
+            <SiteDisplayAd />
 
             {/* Sidebar/Mobile Menu */}
             <div
