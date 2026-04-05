@@ -2,7 +2,7 @@ import { Professor } from '@/types'
 
 export const profs: Professor[] = [
     { name: 'Debajit Bora', chamber: 'K217' },
-    { name: 'Anjana Krishna S', chamber: 'K210'},
+    { name: 'Anjana Krishna S', chamber: 'K210' },
     { name: 'Ruchi Jain Dey', chamber: 'A115/A' },
     { name: 'Piyush Khandelia', chamber: 'B210' },
     { name: 'Pragya Komal', chamber: 'A107' },

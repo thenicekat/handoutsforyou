@@ -305,6 +305,11 @@ export const metaConfigs: Record<string, MetaConfig> = {
         description:
             'Share your thoughts anonymously. A safe space for the BITS community to express themselves.',
     }),
+    testimonials: createMeta({
+        title: 'Add Testimonial.',
+        description:
+            'Submit a yearbook testimonial through h4u. Split long messages to fit yearbook limits.',
+    }),
 }
 
 export const getMetaConfig = (key: string): MetaConfig =>
