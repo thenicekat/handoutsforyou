@@ -5,10 +5,12 @@ import {
     TrophyIcon,
     XMarkIcon,
 } from '@heroicons/react/24/outline'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { useState } from 'react'
-import SiteDisplayAd from './SiteDisplayAd'
 import StarPrompt from './Prompt'
+
+const SiteDisplayAd = dynamic(() => import('./SiteDisplayAd'), { ssr: false })
 
 const Menu = ({ doNotShowMenu }: MenuProps) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
