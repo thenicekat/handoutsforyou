@@ -34,6 +34,7 @@ const Menu = ({ doNotShowMenu }: MenuProps) => {
             'https://pollen-box-786.notion.site/Research-Chronicles-894bcac1266d4e5fac2f4cd76ff29750',
         'Higher Studies': '/higherstudies/resources',
         Leaderboard: '/leaderboard',
+        Ledger: '/ledger',
     }
 
     return (
