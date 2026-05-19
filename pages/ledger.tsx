@@ -168,6 +168,22 @@ const inFlowTransactions: Transaction[] = [
         detail: 'f20230160@hyderabad.bits-pilani.ac.in',
         amount: 200,
     },
+    {
+        id: '20',
+        type: 'inflow',
+        round: 'Second Round',
+        name: 'Vikrant Shrikant Jadhav',
+        detail: 'f20240368@hyderabad.bits-pilani.ac.in',
+        amount: 250,
+    },
+    {
+        id: '21',
+        type: 'inflow',
+        round: 'Second Round',
+        name: 'Sidhant Sinha',
+        detail: 'f20250520@hyderabad.bits-pilani.ac.in',
+        amount: 20,
+    },
 ]
 
 const outFlowTransactions: Transaction[] = [
