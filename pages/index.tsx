@@ -119,6 +119,7 @@ export default function Home() {
                     name: 'Higher Studies',
                     path: '/higherstudies/resources',
                 },
+                { name: 'BITS of Advice', path: '/bitsofa' },
             ],
         },
         {
@@ -141,7 +142,6 @@ export default function Home() {
             title: 'Everything else.',
             description: "We couldn't fit these in the other categories :P",
             items: [
-                { name: 'BITS of Advice', path: '/bitsofa' },
                 { name: 'Confessions', path: '/confessions' },
                 {
                     name: 'Professor Chambers',
@@ -151,6 +151,7 @@ export default function Home() {
                     name: 'Some Useful Links',
                     onClick: () => setShowLinksModal(true),
                 },
+                { name: 'Ledger', path: '/ledger' },
             ],
         },
     ]
