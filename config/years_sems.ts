@@ -34,7 +34,12 @@ export const gradedSemesters = [
     '24-25 Sem 1',
 ]
 // For Placement CTCs
-export const placementYears = ['2025-2026', '2024-2025', '2023-2024']
+export const placementYears = [
+    '2025-2026 Sem 2',
+    '2025-2026 Sem 1',
+    '2024-2025',
+    '2023-2024',
+]
 // For SI Companies
 export const siYears = [
     '2025-2026',
