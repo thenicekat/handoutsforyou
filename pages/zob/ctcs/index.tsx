@@ -15,7 +15,7 @@ import {
     useReactTable,
 } from '@tanstack/react-table'
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { toast } from 'react-toastify'
 
 export default function PlacementCTCs() {
@@ -26,6 +26,9 @@ export default function PlacementCTCs() {
     )
     const [yearRef, setYearRef] = useState(placementYears[0])
     const [isLoading, setIsLoading] = useState(true)
+    const [modalDescription, setModalDescription] = useState('')
+    const [modalCompany, setModalCompany] = useState('')
+    const modalRef = useRef<HTMLDialogElement>(null)
 
     const fetchPlacementCTCs = async () => {
         try {
@@ -94,11 +97,6 @@ export default function PlacementCTCs() {
             cell: info => info.getValue().toLocaleString('en-IN'),
             header: 'Other',
         }),
-        columnHelper.accessor(row => row.description, {
-            id: 'Description',
-            cell: info => info.getValue(),
-            header: 'Description',
-        }),
         columnHelper.accessor(
             row =>
                 row.base +
@@ -112,6 +110,26 @@ export default function PlacementCTCs() {
                 header: 'Total CTC',
             }
         ),
+        columnHelper.display({
+            id: 'Info',
+            cell: ({ row }) => {
+                const desc = row.original.description
+                if (!desc) return null
+                return (
+                    <button
+                        className="btn btn-xs btn-ghost text-primary"
+                        onClick={() => {
+                            setModalDescription(desc)
+                            setModalCompany(row.original.company)
+                            modalRef.current?.showModal()
+                        }}
+                    >
+                        More Info
+                    </button>
+                )
+            },
+            header: '',
+        }),
     ]
 
     const [sorting, setSorting] = React.useState<SortingState>([])
@@ -354,6 +372,20 @@ export default function PlacementCTCs() {
                     </>
                 )}
             </div>
+            <dialog ref={modalRef} className="modal">
+                <div className="modal-box">
+                    <h3 className="font-bold text-lg mb-2">{modalCompany}</h3>
+                    <p className="whitespace-pre-wrap">{modalDescription}</p>
+                    <div className="modal-action">
+                        <form method="dialog">
+                            <button className="btn">Close</button>
+                        </form>
+                    </div>
+                </div>
+                <form method="dialog" className="modal-backdrop">
+                    <button>close</button>
+                </form>
+            </dialog>
             <CustomToastContainer containerId="placementCTCs" />
         </>
     )
