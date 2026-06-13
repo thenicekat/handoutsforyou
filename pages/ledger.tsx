@@ -195,6 +195,14 @@ const outFlowTransactions: Transaction[] = [
         detail: '',
         amount: 800,
     },
+    {
+        id: '2',
+        type: 'outflow',
+        round: '',
+        name: 'Domain: 2026-2027',
+        detail: '',
+        amount: 1601.16,
+    }
 ]
 
 const transactions: Transaction[] = [
