@@ -67,6 +67,10 @@ export default function Home() {
                     name: 'Previous Year Questions',
                     path: '/courses/pyqs',
                 },
+                {
+                    name: 'Minors',
+                    path: '/minors',
+                },
             ],
         },
         {

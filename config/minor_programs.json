@@ -1,0 +1,2860 @@
+{
+  "general_info": {
+    "definition": "Minor programs are offered as options for first degree students with the intent of encouraging them to add focus to their supplemental learning (outside a major area) as well as recognizing and certifying the knowledge obtained in an area that is outside of their major area.",
+    "general_guidelines": [
+      "A minor would allow a Department (or multiple Departments) to offer a package of courses in an area/sub-area to students for whom this area/sub-area would not be part of their (major) program.",
+      "A minor option would allow a student to pursue the study of an area or a sub-area through a set of courses but not as exhaustively as required to obtain a degree (i.e. a major) in that area.",
+      "A minor may be inter-disciplinary (e.g. a minor in Computational Science may include courses in Numerical Analysis, Computational Physics, Computational Chemistry, and Bioinformatics among others).",
+      "A minor will be recognized by means of a separate certificate."
+    ],
+    "requirements": {
+      "summary": "Each minor would be defined by coursework requirement with the following conditions:",
+      "table": [
+        {
+          "category": "Minor (Core)",
+          "courses": "4 (max)",
+          "units": "12 (max)"
+        },
+        {
+          "category": "Minor (Electives)",
+          "courses": "2 (min)",
+          "units": "6 (min)"
+        },
+        {
+          "category": "Minor (Total)",
+          "courses": "5 (min)",
+          "units": "15 (min)"
+        }
+      ],
+      "elective_pool": [
+        "The pool of electives specific to a minor may include courses from one or more disciplines and may include project / seminar type courses.",
+        "A student may use at most one project / seminar type course to meet the requirements of a minor."
+      ],
+      "overlap_rules": [
+        "At most 2 courses (and at most 6 units) out of the above requirement (of 5 courses and 15 units) may be met by mandatory courses of the student’s degree i.e. major (or degrees i.e. majors): i.e. from the general institutional requirement (excluding Humanities requirement) or the (Major) discipline Core(s).",
+        "No course may be used to meet the requirements of two different minors nor may a course be used to meet the requirements of two majors and a minor."
+      ],
+      "gpa_requirement": "A student, on completion of the requirements for a minor, must have maintained a cumulative GPA of 4.5 or above in the courses applied to the minor."
+    },
+    "process": [
+      "A student, if choosing to pursue a minor, must declare at the end of the 2nd year that they will pursue a specific minor. The student will be charged a small fee for logistics.",
+      "If and when he/she completes the requirements for the minor, as stipulated above and as stipulated for the specific minor, then he/she may apply for a “minor” certificate.",
+      "If it is verified that the requirements are met then he/she will be awarded a “minor certificate” (separate from a degree, i.e. major, certificate).",
+      "A minor certificate will be issued only on completion of a degree (i.e. a major)."
+    ]
+  },
+  "minors": [
+    {
+      "name": "Minor in Aeronautics",
+      "description": "Aeronautics is an exhilarating field encompassing the fundamentals of aerodynamics\n(interaction of air with objects in motion), propulsion (power systems responsible for the\ngeneration of thrust for providing motion), structures (design of airframes and material\ncharacteristics), and flight mechanics (trajectory study and optimization), as applied to air-borne\nvehicles within the Earth’s atmosphere, and to rockets and spacecrafts outside.",
+      "requirements_text": "06 courses (min) 18 units (min)",
+      "core_courses": [
+        {
+          "code": "AN F311",
+          "title": "Principles of Aerodynamics",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        },
+        {
+          "code": "AN F312",
+          "title": "Aircraft Propulsion",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        },
+        {
+          "code": "AN F313",
+          "title": "Flight Mechanics and Controls",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        }
+      ],
+      "elective_pools": [
+        {
+          "pool_name": "Electives",
+          "pool_subtitle": "",
+          "courses": [
+            {
+              "code": "AN F314",
+              "title": "Introduction to Flight",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "AN F315",
+              "title": "Aircraft Structures",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "ME F415",
+              "title": "Gas Dynamics",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "ME F418",
+              "title": "Rocket and Spacecraft Propulsion",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "ME F435",
+              "title": "Shape Memory Alloys: Fundamentals and Applications",
+              "L": "2",
+              "P": "1",
+              "U": "3"
+            },
+            {
+              "code": "ME F452",
+              "title": "Composite Materials and Design",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "ME F482",
+              "title": "Combustion",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "ME F485",
+              "title": "Numerical Techniques for Fluid Flow & Heat Transfer",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "EEE F242",
+              "title": "Control Systems",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "EEE F417",
+              "title": "Computer Based Control Systems",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "ME F376",
+              "title": "Design Project",
+              "L": "",
+              "P": "",
+              "U": "3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Minor in Biomedical Engineering",
+      "description": "Biomedical Engineering is a long sought after package of courses aiming to cater Pharmacy\nand Engineering students having aspirations to join Bio Medical Industry. This minor aims to\nblend the expertise of an engineer into the applied realms of bio medicine through design and\ndevelopment of medical devices and systems; solving complex and multi-disciplinary\nproblems in the field of diagnostics, acquisition, imaging, and analysis of bio signals along\nwith the statistical interpretation of the results.",
+      "requirements_text": "05 courses (min) 15 units (min).",
+      "core_courses": [
+        {
+          "code": "BITS F418",
+          "title": "Introduction to Biomedical Engineering",
+          "L": "3",
+          "P": "1",
+          "U": "4"
+        },
+        {
+          "code": "PHA F214",
+          "title": "Anatomy Physiology & Hygiene",
+          "L": "2",
+          "P": "1",
+          "U": "3"
+        }
+      ],
+      "elective_pools": [
+        {
+          "pool_name": "Electives",
+          "pool_subtitle": "(Science Pool) 01 (min)",
+          "courses": [
+            {
+              "code": "BIO F215",
+              "title": "Biophysics",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "BITS F315",
+              "title": "Introduction to Cognitive Neuroscience",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "CHEM F414",
+              "title": "Bio and Chemical Sensors",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "MST F333",
+              "title": "Introduction to Biomaterials",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "PHA F215",
+              "title": "Introduction to Molecular Biology and Immunology",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            }
+          ]
+        },
+        {
+          "pool_name": "Electives",
+          "pool_subtitle": "(Engineering Pool) 02 (min)",
+          "courses": [
+            {
+              "code": "BITS F415",
+              "title": "Introduction to MEMS",
+              "L": "3",
+              "P": "1",
+              "U": "4"
+            },
+            {
+              "code": "BITS F417",
+              "title": "Microfluidics and Its Application",
+              "L": "",
+              "P": "",
+              "U": "4*"
+            },
+            {
+              "code": "BITS F441",
+              "title": "Robotics",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "BIO G532",
+              "title": "Biostatistics and Biomodelling",
+              "L": "3",
+              "P": "1",
+              "U": "4"
+            },
+            {
+              "code": "CS F320",
+              "title": "Foundations of Data Science",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "EEE F420",
+              "title": "Biomedical Signal Processing",
+              "L": "3",
+              "P": "1",
+              "U": "4"
+            },
+            {
+              "code": "EEE F435",
+              "title": "Digital Image Processing",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "EEE/INSTR F432",
+              "title": "Medical Instrumentation",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "ME F324",
+              "title": "Cell and Tissue Biomechanics",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Minor in Computational Economics",
+      "description": "The joint field of economics, mathematics, and computer science have emerged from\nconverging intellectual needs for interdisciplinary teaching and research. The contemporary\ntools and techniques used by computer scientists have become increasingly important for\neconomists working with data to address complex business problems. Students interested\nin learning about computational mechanism design with applications to economics and\nespecially those whose interest is more generally focused on data analytics will be highly\nbenefitted from this programme. This programme is designed to cater to the needs of the\ncutting-edge industry thereby combining advanced computational tools with economic\nreasoning. It would help students to develop a deep background in advanced tools for\nanalysis of economic data, which is essential for making sound economic decisions. The\nprogramme combines the strengths of multiple departments to educate students in these\nimportant computational skills linked to economics, and to prepare them for careers in\neconomics, finance, and business. Reflecting on this strong interdisciplinary relationship,\nthis programme will also be excellent preparation for graduate study in economics or\ndecision sciences.",
+      "requirements_text": "05 courses (min) 15 units (min)",
+      "core_courses": [
+        {
+          "code": "ECON F215",
+          "title": "Computational Methods for Economics",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        },
+        {
+          "code": "ECON F241",
+          "title": "Econometric Methods",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        },
+        {
+          "code": "ECON F242",
+          "title": "Microeconomics",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        }
+      ],
+      "elective_pools": [
+        {
+          "pool_name": "Electives",
+          "pool_subtitle": "",
+          "courses": [
+            {
+              "code": "BITS F314",
+              "title": "Game Theory and its Applications",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "BITS F464",
+              "title": "Machine Learning",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "CS F320",
+              "title": "Foundations of Data Science",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "ECON F342",
+              "title": "Applied Econometrics",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "ECON F419",
+              "title": "Advanced Microeconomics",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "ECON F420",
+              "title": "Applied Macroeconometrics",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "MATH F424",
+              "title": "Applied Stochastic Process",
+              "L": "3",
+              "P": "1",
+              "U": "4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Minor in Computational Mechanics",
+      "description": "A minor in Computational Mechanics holds significant justification, driven by the evolving industry demands and advancements. Here are key justifications for choosing this field: Interdisciplinary Relevance: Computational Mechanics serves as a bridge between engineering, physics, and mathematics. In today's complex technological landscape, industries increasingly require professionals who can integrate knowledge from diverse domains to solve intricate engineering problems. Advanced Simulation Skills: Proficiency in computational tools for intricate simulations and analyses. Vital in aerospace, automotive, and materials science for virtual testing and optimization. Industry 4.0 Integration: Plays a crucial role in implementing Industry 4.0 principles. Facilitates the development and application of Digital Twins for real-time system monitoring. Optimizing Engineering Designs: Enables the modelling and analysis of complex structures for optimized engineering solutions. Aligns with global sustainability goals. Career Opportunities in Emerging Technologies: High demand in additive manufacturing, autonomous systems, and renewable energy. Critical for simulating complex interactions in cutting-edge technologies. Research and Development Involvement: Provides opportunities for engaging in impactful research. Opens doors for collaboration with leading experts and institutions. Preparedness for Industry Challenges: Systematic and data-driven approach to problem- solving. Addresses contemporary challenges in diverse industries. Required",
+      "requirements_text": "Courses & Units 05 courses (min) 15 units (min)",
+      "core_courses": [
+        {
+          "code": "MATH F313",
+          "title": "Numerical Analysis",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        },
+        {
+          "code": "ME F427",
+          "title": "Continuum Mechanics",
+          "L": "3",
+          "P": "1",
+          "U": "4"
+        },
+        {
+          "code": "BITS F464",
+          "title": "Machine Learning",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        },
+        {
+          "code": "CS F422",
+          "title": "Parallel Computing",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        },
+        {
+          "code": "MATH F425",
+          "title": "Numerical Linear Algebra",
+          "L": "3",
+          "P": "1",
+          "U": "4"
+        },
+        {
+          "courses": [
+            {
+              "code": "MATH F426",
+              "title": "Mathematical Theory of Finite Element Methods",
+              "L": "3",
+              "P": "1",
+              "U": "4"
+            },
+            {
+              "code": "ME G512",
+              "title": "Finite Element Methods",
+              "L": "3",
+              "P": "2",
+              "U": "5"
+            }
+          ]
+        }
+      ],
+      "elective_pools": [
+        {
+          "pool_name": "Core Courses",
+          "pool_subtitle": "",
+          "courses": []
+        },
+        {
+          "pool_name": "Electives",
+          "pool_subtitle": "",
+          "courses": [
+            {
+              "code": "ME F321",
+              "title": "Data Mining in Mechanical Sciences",
+              "L": "2",
+              "P": "1",
+              "U": "3"
+            },
+            {
+              "code": "ME F485",
+              "title": "Numerical Techniques for Fluid Flow and Heat Transfer",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "ME F430",
+              "title": "Fluid-structure Interactions",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "ME G515",
+              "title": "Computational Fluid Dynamics",
+              "L": "3",
+              "P": "2",
+              "U": "5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Minor in Computing and Intelligence",
+      "description": "The Minor in Computing and Intelligence aims to enable the students majoring in disciplines other\nthan Computer Science to gain a deeper understanding of computing and artificial intelligence and\napply the same in solving problems in diverse domains. While courses like Foundations of Data\nStructures and Algorithms would help the students with abstract thinking and problem solving,\ncourses like Operating Systems, Artificial Intelligence etc., will give them exposure to the\nfundamental aspects of computing and intelligent systems. This minor programme is exclusively\ndesigned for first-degree students of non-Computer Science disciplines.",
+      "requirements_text": "06 courses (min)\n18 units (min)",
+      "core_courses": [
+        {
+          "code": "BITS F232",
+          "title": "Foundations of Data Structures and Algorithms",
+          "L": "3",
+          "P": "1",
+          "U": "4"
+        },
+        {
+          "code": "CS F372",
+          "title": "Operating Systems",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        },
+        {
+          "code": "CS F407",
+          "title": "Artificial intelligence",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        }
+      ],
+      "elective_pools": [
+        {
+          "pool_name": "Electives",
+          "pool_subtitle": "",
+          "courses": [
+            {
+              "code": "BITS F311",
+              "title": "Image Processing",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "BITS F452",
+              "title": "Blockchain Technology",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "BITS F459",
+              "title": "Computer Vision",
+              "L": "3",
+              "P": "1",
+              "U": "4"
+            },
+            {
+              "code": "BITS F463",
+              "title": "Cryptography",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "BITS F464",
+              "title": "Machine Learning",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "CS F212",
+              "title": "Database Systems",
+              "L": "3",
+              "P": "1",
+              "U": "4"
+            },
+            {
+              "code": "CS F213",
+              "title": "Object Oriented Programming",
+              "L": "3",
+              "P": "1",
+              "U": "4"
+            },
+            {
+              "code": "CS F301",
+              "title": "Principles of Programming Languages",
+              "L": "2",
+              "P": "0",
+              "U": "2"
+            },
+            {
+              "code": "CS F303",
+              "title": "Computer Networks",
+              "L": "3",
+              "P": "1",
+              "U": "4"
+            },
+            {
+              "code": "CS F314",
+              "title": "Software Development for Portable Devices",
+              "L": "2",
+              "P": "1",
+              "U": "3"
+            },
+            {
+              "code": "CS F315",
+              "title": "Information and Communication Technologies and Development",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "CS F321",
+              "title": "System Security",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "CS F415",
+              "title": "Data Mining",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "CS F437",
+              "title": "Generative Artificial Intelligence",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "IS F311",
+              "title": "Computer Graphics",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "IS F341",
+              "title": "Software Engineering",
+              "L": "3",
+              "P": "1",
+              "U": "4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Minor in Data Science",
+      "description": "The minor in Data Science aims to enable students to learn the basic skills required by\nData Scientist for today’s world. Data Science is becoming ubiquitous to all kinds of\nindustry and opening up new avenues of business. This minor will help students to apply\nknowledge from Mathematics, Statistics and Computing for analyzing data collected\nfrom different kinds of sources in their respective engineering applications and make\nmeaningful and actionable insights.",
+      "requirements_text": "5 courses (min) 15 units (min)",
+      "core_courses": [
+        {
+          "code": "BITS F464",
+          "title": "Machine Learning",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        },
+        {
+          "code": "CS F320",
+          "title": "Foundations of Data Science",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        },
+        {
+          "code": "MATH F432",
+          "title": "Applied statistical Methods",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        }
+      ],
+      "elective_pools": [
+        {
+          "pool_name": "Electives",
+          "pool_subtitle": "",
+          "courses": [
+            {
+              "code": "BITS F453",
+              "title": "Computational Learning Theory",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "BITS F454",
+              "title": "Bio-Inspired Intelligence: Algorithms and Applications",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "BITS F459",
+              "title": "Computer Vision",
+              "L": "3",
+              "P": "1",
+              "U": "4"
+            },
+            {
+              "code": "CS F317",
+              "title": "Reinforcement Learning",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "CS F407",
+              "title": "Artificial Intelligence",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "CS F415",
+              "title": "Data Mining",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "CS F425",
+              "title": "Deep Learning",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "CS F426",
+              "title": "Graph Mining",
+              "L": "3",
+              "P": "1",
+              "U": "4"
+            },
+            {
+              "code": "CS F429",
+              "title": "Natural Language Processing",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "CS F432",
+              "title": "Brain-inspired Deep Learning",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "CS F433",
+              "title": "Computational Neuroscience",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "CS F434",
+              "title": "Data science for Healthcare",
+              "L": "",
+              "P": "",
+              "U": "3*"
+            },
+            {
+              "code": "CS F437",
+              "title": "Generative Artificial Intelligence",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "CS F469",
+              "title": "Information Retrieval",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "CS G519",
+              "title": "Social Media Analytics",
+              "L": "3",
+              "P": "1",
+              "U": "4"
+            },
+            {
+              "courses": [
+                {
+                  "code": "MATH F212",
+                  "title": "Optimization",
+                  "L": "3",
+                  "P": "0",
+                  "U": "3"
+                },
+                {
+                  "code": "ME F320",
+                  "title": "Engineering Optimization",
+                  "L": "3",
+                  "P": "0",
+                  "U": "3"
+                }
+              ]
+            },
+            {
+              "code": "MATH F353",
+              "title": "Statistical Inference and applications",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "MATH F424",
+              "title": "Applied Stochastic Processes",
+              "L": "3",
+              "P": "1",
+              "U": "4"
+            },
+            {
+              "code": "MATH F471",
+              "title": "Nonlinear Optimization",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Minor in Data Science in Climate and Health",
+      "description": "The minor in Data Science aims to enable students to learn the basic skills required by Data\nScientist for today’s world. Data Science is becoming ubiquitous to all kinds of industry and\nopening up new avenues of business. This minor will equip students as emerging professionals\nwith the interdisciplinary data skills needed to address challenges at the intersection of climate\nand health. This new minor programme will train data practitioners on the front lines of the\nclimate crisis to help advance solutions to climate-related health issues.",
+      "requirements_text": "06 courses (min)\n17 units (min)",
+      "core_courses": [
+        {
+          "code": "BITS F329",
+          "title": "Project on Social and Environmental Applications of",
+          "L": "",
+          "P": "",
+          "U": "3*"
+        },
+        {
+          "code": "BITS F464",
+          "title": "Machine Learning",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        },
+        {
+          "code": "CS F320",
+          "title": "Foundations of Data Science",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        },
+        {
+          "code": "MATH F432",
+          "title": "Applied statistical Methods",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        }
+      ],
+      "elective_pools": [
+        {
+          "pool_name": "Electives",
+          "pool_subtitle": "(Any two)",
+          "courses": [
+            {
+              "code": "CE F326",
+              "title": "Impact of Climate Change on Water",
+              "L": "2",
+              "P": "1",
+              "U": "3"
+            },
+            {
+              "code": "CS F434",
+              "title": "Data science for Healthcare",
+              "L": "",
+              "P": "",
+              "U": "3*"
+            },
+            {
+              "code": "GS F212",
+              "title": "Environmental Development and Climate Change",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "MPH G510",
+              "title": "Biostatistics and Computers in Public Health",
+              "L": "3",
+              "P": "2",
+              "U": "5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Minor in English Studies",
+      "description": "English has a rich linguistic, literary and cultural heritage. The classic literary masterpieces of\nEnglish are still widely read and appreciated. English has also evolved over centuries and is\nnow considered as the pre-eminent means of communication in the various sectors such as\nbusiness, diplomacy, mass media, education, etc., across the globe. The Minor in English\nStudies introduces students to the language and literary canons, and renders them with\nadequate exposure not only to the cultural and linguistic aspects but also to practical\napplications of English language and literature. In particular, the core and elective courses\nincluded in the Minor would encourage students to acquire a critical understanding of literary\nand linguistic analyses, and the capacity to engage meaningfully in analysis, interpretation, and\nexplanation. The Minor also gives an opportunity for students to choose modules and develop\ntheir own interests in language or literature. Students who follow the Minor will have an\nenhanced understanding of the nature of the English language and literature and also of the\ntools needed for further independent exploration of literary and linguistic phenomena.",
+      "requirements_text": "5 courses (min) 15 units (min)",
+      "core_courses": [
+        {
+          "code": "GS F241",
+          "title": "Creative Writing",
+          "L": "2",
+          "P": "1",
+          "U": "3"
+        },
+        {
+          "code": "HSS F337",
+          "title": "English Literary Forms and Movements",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        }
+      ],
+      "elective_pools": [
+        {
+          "pool_name": "Electives Pool – I",
+          "pool_subtitle": "(Language)",
+          "courses": [
+            {
+              "code": "GS F221",
+              "title": "Business Communication",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "GS F244",
+              "title": "Reporting and Writing for Media",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "GS F245",
+              "title": "Effective Public Speaking",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F222",
+              "title": "Linguistics",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F227",
+              "title": "Cross Cultural Skills",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F228",
+              "title": "Phonetics and Spoken English",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F342",
+              "title": "Advanced Communicative English",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            }
+          ]
+        },
+        {
+          "pool_name": "Elective Pool-II",
+          "pool_subtitle": "(Literature)",
+          "courses": [
+            {
+              "code": "GS F242",
+              "title": "Cultural Studies",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "GS F322",
+              "title": "Critical Analysis of Literature and Cinema",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F221",
+              "title": "Readings from Drama",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F226",
+              "title": "Postmodernism",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F237",
+              "title": "Contemporary Indian English Fiction",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F316",
+              "title": "Popular Literature and Culture of South Asia",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F327",
+              "title": "Contemporary Drama",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F330",
+              "title": "Appreciation of Art",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F332",
+              "title": "Cinematic Arts",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F335",
+              "title": "Literary Criticism",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F336",
+              "title": "Modern Fiction",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F338",
+              "title": "Comparative Indian Literature",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F340",
+              "title": "Postcolonial Literatures",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F349",
+              "title": "Ecocriticism",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F373",
+              "title": "Shakespeare and Popular Culture",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F399",
+              "title": "Introduction to American Literature",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Minor in Entrepreneurship",
+      "description": "Entrepreneurship has tremendous impact on development of economy as well as society\naddressing various market & societal problems through continuous value creation in\nterms of innovations and job creation. The minor in entrepreneurship aims to equip\nstudents from different disciplines with better understanding of entrepreneurial process,\nnecessary skills and experience to translate ideas into real innovative products/services\nto new entrepreneurial ventures. In this programme, hands-on experiential learning is\nemphasized giving students an opportunity to learn in a team environment, design\ninnovative products/services and create their own businesses. This will motivate students\nto pursue entrepreneurship as their career choice.",
+      "requirements_text": "5 courses (min)\n15 units (min)",
+      "core_courses": [
+        {
+          "code": "BITS F468",
+          "title": "New Venture Creation",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        },
+        {
+          "courses": [
+            {
+              "code": "BITS F482",
+              "title": "Creating and Leading Entrepreneurial Organizations",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "ECON F414",
+              "title": "Creating and Leading Entrepreneurial Organizations",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            }
+          ]
+        },
+        {
+          "code": "ECON F212",
+          "title": "Fundamentals of Finance and Accounting",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        }
+      ],
+      "elective_pools": [
+        {
+          "pool_name": "Electives",
+          "pool_subtitle": "(minimum of 2 courses and additional units required to make the total to 15)",
+          "courses": [
+            {
+              "code": "BITS F322",
+              "title": "Venture Team Development and Organization",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "BITS F323",
+              "title": "Venture Finance",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "BITS F324",
+              "title": "Strategy for Entrepreneurs",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "BITS F325",
+              "title": "New Product and Service Design",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "BITS F326",
+              "title": "Design Thinking for Innovation & Entrepreneurship",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "BITS F427",
+              "title": "Digital Marketing",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Minor in Film and Media",
+      "description": "Film and its derivative forms of media such as television and advertising are dominant\ncultural forces in the contemporary world. The minor in Film and Media aims to\nprovide:\ni. An introduction to media studies with a specific focus on film studies\nii. A basic introduction to Print and Digital Media including film making and film\nappreciation\niii. Hands-on training in writing for media and film production",
+      "requirements_text": "6 courses (min) 18 units (min)",
+      "core_courses": [
+        {
+          "code": "GS F223",
+          "title": "Introduction to Mass Communication",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        },
+        {
+          "code": "GS F244",
+          "title": "Reporting and Writing for Media",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        },
+        {
+          "code": "GS F322",
+          "title": "Critical Analysis of Literature and Cinema",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        }
+      ],
+      "elective_pools": [
+        {
+          "pool_name": "Elective Courses",
+          "pool_subtitle": "",
+          "courses": [
+            {
+              "code": "GS F224",
+              "title": "Print and Audio Visual Advertising",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "GS F242",
+              "title": "Cultural Studies",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "GS F321",
+              "title": "Mass Media Content and Design",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "GS F343",
+              "title": "Short Film and Video Production",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F332",
+              "title": "Cinematic Arts",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F391",
+              "title": "Acoustic Humanities",
+              "L": "2",
+              "P": "1",
+              "U": "3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Minor in Finance",
+      "description": "The minor in Finance aims at providing the student a grounding in the basic concepts of\naccounting and finance so as to complement their existing disciplinary knowledge, enrich their\neducational experience, enable them to make better financial decisions, and expand their\ncareer opportunities. It will also give students an opportunity to learn more about investments\nand quantitative applications in finance.",
+      "requirements_text": "5 courses (min) 15 units (min)",
+      "core_courses": [
+        {
+          "code": "ECON F212",
+          "title": "Fundamentals of Finance and Accounting",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        },
+        {
+          "code": "FIN F315",
+          "title": "Financial Management",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        }
+      ],
+      "elective_pools": [
+        {
+          "pool_name": "Elective Courses",
+          "pool_subtitle": "",
+          "courses": [
+            {
+              "code": "ECON F241",
+              "title": "Econometric methods",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "ECON F312",
+              "title": "Money banking and Financial markets",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "ECON F355",
+              "title": "Business Analysis & Valuation",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "ECON F411",
+              "title": "Project Appraisal",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "ECON F413",
+              "title": "Financial Engineering",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "FIN F242",
+              "title": "Introduction to Financial Mathematics",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "FIN F243",
+              "title": "Functions & Working of Stock Exchanges",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "FIN F311",
+              "title": "Derivatives & Risk Management",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "FIN F312",
+              "title": "Fundamentals of Taxation and Audit",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "FIN F313",
+              "title": "Security Analysis & Portfolio Management",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "FIN F314",
+              "title": "Investment Banking & Financial Services",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "FIN F414",
+              "title": "Financial Risk Analytics and Management",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Minor in Management",
+      "description": "“Minor in Management” is designed for the student who wants a general introduction to the\nfunctioning of a business and develops a business acumen. By gaining an understanding of the\nareas of management, the student will have a competitive advantage in the marketplace and\nthroughout their career. The student shall be better equipped to handle their projects in practice\nschool by understanding organizational and managerial issues. It would also enable him/her to\ncombine their technical and managerial skills and explore the field of business consulting, role\nof management trainees, etc. Those interested in pursuing an MBA would get an opportunity to\nexplore the management field and assess its fit with their career interest.",
+      "requirements_text": "05 courses (min)\n15 units (min)",
+      "core_courses": [
+        {
+          "code": "BITS F428",
+          "title": "Essentials of Strategic Management",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        },
+        {
+          "code": "MGTS F211",
+          "title": "Principles of Management",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        },
+        {
+          "code": "MGTS F314",
+          "title": "Essentials of Financial Management",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        }
+      ],
+      "elective_pools": [
+        {
+          "pool_name": "Electives",
+          "pool_subtitle": "",
+          "courses": [
+            {
+              "code": "BITS F326",
+              "title": "Design Thinking for Innovation and Entrepreneurship",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "BITS F330",
+              "title": "Negotiation Skills and Techniques",
+              "L": "",
+              "P": "",
+              "U": "3*"
+            },
+            {
+              "code": "ECON F415",
+              "title": "New Venture Creation",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "ECON F434",
+              "title": "International Business",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "ECON F435",
+              "title": "Marketing Research",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F328",
+              "title": "Human Resources Development",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "MF F219",
+              "title": "Operations Management",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "MF F319",
+              "title": "Supply Chain Management",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "ME F443",
+              "title": "Quality Control, Assurance and Reliability",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "MGTS F311",
+              "title": "Marketing",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "MGTS F313",
+              "title": "Product and Brand Management",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "MGTS F315",
+              "title": "Foundations of Business Analytics",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "MGTS F316",
+              "title": "Managerial and Leadership Skills",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "MGTS F351",
+              "title": "Organizational Behaviour",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Minor in Materials Science and Engineering",
+      "description": "Materials Science and Engineering is an interdisciplinary subject that makes use of\nknowledge from Physics, Chemistry, Engineering, Mathematics, Biology and\nBiotechnology, but which has its own special character. It is always evolving – new and\nexciting materials such as nanomaterials, high-temperature and lightweight materials,\ngreen materials and sustainable biomaterials for tissue engineering are continually\nemerging. The field of Material Science combines a wide knowledge base and puts it to\ndiverse practical and commercial use.",
+      "requirements_text": "5 courses (min) 15 units (min)",
+      "core_courses": [
+        {
+          "courses": [
+            {
+              "code": "CHE F243",
+              "title": "Materials Science and Engineering",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "ME F213",
+              "title": "Materials Science and Engineering",
+              "L": "2",
+              "P": "0",
+              "U": "2"
+            }
+          ]
+        },
+        {
+          "code": "MST F331",
+          "title": "Materials Characterization",
+          "L": "3",
+          "P": "1",
+          "U": "4"
+        },
+        {
+          "code": "MST F332",
+          "title": "Materials Processing",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        }
+      ],
+      "elective_pools": [
+        {
+          "pool_name": "Elective Courses",
+          "pool_subtitle": "",
+          "courses": [
+            {
+              "code": "BITS F416",
+              "title": "Introduction to Nanoscience",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "CHE F433",
+              "title": "Corrosion Engineering",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "CHEM F223",
+              "title": "Colloid and Surface Chemistry",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "CHEM F326",
+              "title": "Solid State Chemistry",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "CHEM F336",
+              "title": "Nanochemistry",
+              "L": "3",
+              "P": "1",
+              "U": "4"
+            },
+            {
+              "code": "ME F452",
+              "title": "Composite Materials and Design",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "MST F333",
+              "title": "Introduction to Biomaterials",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "MST F334",
+              "title": "Materials for Catalytic Applications",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "MST F335",
+              "title": "Coating and thin film technology",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "MST F336",
+              "title": "Glass Technology",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "MST F337",
+              "title": "Materials for Energy Applications",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "MST F338",
+              "title": "Metals and Alloys",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "MST F339",
+              "title": "Polymer Materials",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "PHY F379",
+              "title": "Thin Film Technology",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "PHY F414",
+              "title": "Physics of Advanced Materials",
+              "L": "3",
+              "P": "1",
+              "U": "4"
+            },
+            {
+              "code": "PHY F416",
+              "title": "Soft condensed Matter Physics",
+              "L": "3",
+              "P": "1",
+              "U": "4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Minor in Nanoscience and Nanobiotechnology",
+      "description": "Nanoscience and nanotechnology a cutting edge branch of science and engineering in\nwhich we understand the control of the formation of structures and materials on scales\nranging from the atomic to the nanometer, their unique properties due to their\nnanostructures, and their applications in myriad fields including, alternative energy, energy\nstorage and conversion, electronic devices, sensors, catalysis, medical diagnostics,\ntherapeutics etc. This interdisciplinary subject makes use of knowledge from Physics,\nChemistry, Engineering, Biology, Biotechnology, etc. This Minor program in “Nanoscience\nand Nanobiotechnology” will provide the students deep understanding of nanostructured\nmaterials including their synthesis, characterizations, properties, and applications.",
+      "requirements_text": "05 courses (min) 15 units (min)",
+      "core_courses": [
+        {
+          "code": "BIOT F422",
+          "title": "Nanobiotechnology",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        },
+        {
+          "code": "BITS F416",
+          "title": "Introduction to Nanoscience",
+          "L": "3",
+          "P": "1",
+          "U": "4"
+        },
+        {
+          "courses": [
+            {
+              "code": "CHE F243/ME F216",
+              "title": "Material Science and Engineering",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "MF F216",
+              "title": "Material Science and Engineering",
+              "L": "2",
+              "P": "1",
+              "U": "3"
+            }
+          ]
+        }
+      ],
+      "elective_pools": [
+        {
+          "pool_name": "Electives (Any Two)",
+          "pool_subtitle": "",
+          "courses": [
+            {
+              "code": "BIO F417",
+              "title": "Biomolecular Modelling",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "CHEM F223",
+              "title": "Colloid and Surface Chemistry",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "CHEM F327",
+              "title": "Electrochemistry: Fundamentals and Applications",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "CHEM F328",
+              "title": "Supramolecular Chemistry",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "CHEM F333",
+              "title": "Chemistry of Materials",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "CHEM F336",
+              "title": "Nanochemistry",
+              "L": "3",
+              "P": "1",
+              "U": "4"
+            },
+            {
+              "code": "CHEM F414",
+              "title": "Bio and Chemical Sensors",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "MST F333",
+              "title": "Introduction to Biomaterials",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Minor in Philosophy, Economics, and Politics (PEP)",
+      "description": "Minor in Philosophy, Economics, and Politics The minor in Philosophy, Economics & Politics & (PEP) aims at introducing students to a\nwide range of approaches to understand the social and human world we live in and to\ndevelop skills useful for a range of career opportunities in national and international\norganizations. It would particularly interest and enthuse those students who wish to\ncomplement their core expertise in science and engineering with a good grasp of the\nhumanities and social sciences. As a multi-disciplinary minor, this option will provide a\njudicious mix of knowledge in social sciences (economics, sociology and politics) and the\nhumanities (philosophy) that would enable students to draw connections among political,\neconomic, and social phenomena as well as equip them with the necessary skills to think\nthrough complex challenges of our society in a creative and critical manner.",
+      "requirements_text": "6 courses (min) 18 units (min) Minor in Philosophy, Economics, and Politics",
+      "core_courses": [
+        {
+          "code": "ECON F211",
+          "title": "Principles of Economics",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        },
+        {
+          "code": "GS F211",
+          "title": "Modern Political Concepts",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        },
+        {
+          "code": "HSS F235",
+          "title": "Introductory Philosophy",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        }
+      ],
+      "elective_pools": [
+        {
+          "pool_name": "Elective Courses",
+          "pool_subtitle": "",
+          "courses": [
+            {
+              "code": "BITS F 385",
+              "title": "Introduction to Gender Studies",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "GS F231",
+              "title": "Dynamics of Social Change",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "GS F234",
+              "title": "Development Economics",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "GS F243",
+              "title": "Current Affairs",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "GS F312",
+              "title": "Applied Philosophy",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "GS F313",
+              "title": "Marxian Thoughts",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "GS F332",
+              "title": "Contemporary India",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "GS F333",
+              "title": "Public Administration",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F232",
+              "title": "Introduction to Development Studies",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F236",
+              "title": "Symbolic Logic",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F315",
+              "title": "Society, Business, and Politics",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F322",
+              "title": "Social and Political Ecology",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F331",
+              "title": "Sankara’s Thoughts",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F333",
+              "title": "Comparative Religion",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F343",
+              "title": "Professional Ethics",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F345",
+              "title": "Gandhian Thoughts",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F346",
+              "title": "International Relations",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F350",
+              "title": "Human Rights: History, Theory and Practice",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F353",
+              "title": "Philosophy of Aesthetics",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F354",
+              "title": "Introduction to Islamic Economy",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F355",
+              "title": "Dictatorship, Democracy & Development",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F356",
+              "title": "Social Movements and Protest Politics",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Minor in Physics",
+      "description": "The theories in physics are all-pervading and their applications are found in varied branches\nof engineering and sciences. The minor in Physics aims to introduce the student to\nfundamental theories in physics. The core courses cover the basics and by choosing from the\nlarge pool of electives, the student will be able to pursue to a deeper level the areas of her/his\ninterest. This minor would equip the students with the skill and knowledge which will help\nthem in gaining insights in their own primary area of study.",
+      "requirements_text": "5 courses (min) 15 units (min)",
+      "core_courses": [
+        {
+          "courses": [
+            {
+              "code": "PHY F212",
+              "title": "Electromagnetic Theory – 1",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "ECE F212/ EEE",
+              "title": "Electromagnetic Theory",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "F212/ INSTR F212",
+              "title": "Electromagnetic Theory",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            }
+          ]
+        },
+        {
+          "code": "PHY F242",
+          "title": "Quantum Mechanics – 1",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        },
+        {
+          "code": "PHY F312",
+          "title": "Statistical Mechanics",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        }
+      ],
+      "elective_pools": [
+        {
+          "pool_name": "Elective Courses",
+          "pool_subtitle": "",
+          "courses": [
+            {
+              "code": "BITS F316",
+              "title": "Nonlinear Dynamics and Chaos",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "BITS F386",
+              "title": "Quantum Information and Computing",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "PHY F211",
+              "title": "Classical Mechanics",
+              "L": "3",
+              "P": "1",
+              "U": "4"
+            },
+            {
+              "code": "PHY F213",
+              "title": "Optics",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "PHY F214",
+              "title": "Electricity Magnetism and Optics Lab",
+              "L": "0",
+              "P": "2",
+              "U": "2"
+            },
+            {
+              "code": "PHY F215",
+              "title": "Introduction to Astronomy and Astrophysics",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "PHY F241",
+              "title": "Electromagnetic Theory – 2",
+              "L": "3",
+              "P": "1",
+              "U": "4"
+            },
+            {
+              "code": "PHY F243",
+              "title": "Mathematical Method of Physics",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "PHY F244",
+              "title": "Modern Physics Lab",
+              "L": "0",
+              "P": "2",
+              "U": "2"
+            },
+            {
+              "code": "PHY F311",
+              "title": "Quantum Mechanics – 2",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "PHY F313",
+              "title": "Computational Physics",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "PHY F315",
+              "title": "Theory of Relativity",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "PHY F318",
+              "title": "Atoms and Photons",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "PHY F341",
+              "title": "Solid State Physics",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "PHY F342",
+              "title": "Atomic and Molecular Physics",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "PHY F343",
+              "title": "Nuclear and Particle Physics",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "PHY F346",
+              "title": "Laser Science and Technology",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "PHY F418",
+              "title": "Lasers and Applications",
+              "L": "3",
+              "P": "1",
+              "U": "4"
+            },
+            {
+              "code": "PHY F426",
+              "title": "Physics of Semiconductors Devices",
+              "L": "3",
+              "P": "1",
+              "U": "4"
+            },
+            {
+              "code": "PHY F427",
+              "title": "Atmospheric Physics",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "PHY F428",
+              "title": "Quantum Information Theory",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "PHY F434",
+              "title": "Foundations of Quantum Mechanics",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Minor in Public Policy",
+      "description": "The Minor in Public Policy aims at providing the students a clear and contextualised\nunderstanding of conceptual and empirical aspects of public policy, the nature of public\npolicy interventions in India and their varying impacts. Also, it intends to provide the students\nan understanding of the dynamics of policymaking, central aspects of governance and core\nfeatures and functions of institutions, and equip them with skills of policy analysis.",
+      "requirements_text": "5 courses (min) 15 units (min)",
+      "core_courses": [
+        {
+          "code": "GS F233",
+          "title": "Public Policy",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        },
+        {
+          "code": "GS F333",
+          "title": "Public Administration",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        }
+      ],
+      "elective_pools": [
+        {
+          "pool_name": "Elective Courses",
+          "pool_subtitle": "",
+          "courses": [
+            {
+              "code": "HSS F232",
+              "title": "Introduction to Development Studies",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F317",
+              "title": "Introduction to Globalisation",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F322",
+              "title": "Social and Political Ecology",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F361",
+              "title": "Urban Policy and Governance",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F362",
+              "title": "Local Governance and Participation",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "HSS F363",
+              "title": "Disaster and Development",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Minor in Quantum Information and Technologies",
+      "description": "Quantum Information Technology is a current area of interest the world over, throwing up many\nopportunities for employment in industry, start-ups and pure research. Equipping\nundergraduates with the basic tools and introducing them to the language of this area is of prime\nimportance in today’s age. Especially in light of the National Mission on Quantum Technologies\nand competition from other premier institutions in India, it is imperative that BITS play an\nimportant role in training manpower for the second quantum revolution. This program will\ndefinitely serve Physics and Engineering students in enhancing their knowledge and skills in this\ncurrent area.",
+      "requirements_text": "05 courses (min)\n15 units (min)",
+      "core_courses": [
+        {
+          "code": "BITS F386",
+          "title": "Quantum Information and Computations",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        }
+      ],
+      "elective_pools": [
+        {
+          "pool_name": "Electives",
+          "pool_subtitle": "",
+          "courses": [
+            {
+              "code": "BITS F463",
+              "title": "Cryptography",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "BITS F464",
+              "title": "Machine Learning",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "CS F316",
+              "title": "Quantum Architecture and Programming",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "courses": [
+                {
+                  "code": "PHY F242",
+                  "title": "Quantum Mechanics I",
+                  "L": "3",
+                  "P": "0",
+                  "U": "3"
+                },
+                {
+                  "code": "PHY F345",
+                  "title": "Quantum Mechanics for Engineers",
+                  "L": "3",
+                  "P": "0",
+                  "U": "3"
+                },
+                {
+                  "code": "CHEM F213",
+                  "title": "Physical Chemistry II",
+                  "L": "3",
+                  "P": "0",
+                  "U": "3"
+                }
+              ]
+            },
+            {
+              "courses": [
+                {
+                  "code": "PHY F420",
+                  "title": "Quantum Optics",
+                  "L": "3",
+                  "P": "1",
+                  "U": "4"
+                },
+                {
+                  "code": "PHY F318",
+                  "title": "Atoms and Photons",
+                  "L": "3",
+                  "P": "0",
+                  "U": "3"
+                }
+              ]
+            },
+            {
+              "code": "PHY F428",
+              "title": "Quantum Information Theory",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "PHY F434",
+              "title": "Foundations of Quantum Mechanics",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Minor in Robotics and Automation",
+      "description": "This minor aims to impart specialized knowledge and skills in robotics and automation\nrequired by engineers to the current demands of various industrial sectors. Automobile,\naerospace & defense, logistics engineering and factory automation companies are currently\nasking for engineering graduates with add-on skills in these areas. Feedback has established\nthat several sectors of industry need the newly recruited employees with knowledge and skills\nin 'automation', 'robotics', and 'mechatronics'. Currently, the need of core courses of any B.E.\nprogramme of the Institute limits sufficient coverage of these topics in the existing core and\nhence the only way students can complement their learning with these specialized courses is\nthrough a minor programme. This minor programme has been designed by keeping that need\nin focus. This minor programme consists of a fairly generic core so as to be relevant to\nstudents of any discipline and a broad set of elective courses covering application of the\nfundamentals of robotics and automation to various industry sectors.",
+      "requirements_text": "05 courses (min) 15 units (min)",
+      "core_courses": [
+        {
+          "code": "BITS F441",
+          "title": "Robotics",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        },
+        {
+          "code": "EEE/INSTR/ECE F242",
+          "title": "Control Systems",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        },
+        {
+          "code": "BITS F327",
+          "title": "Artificial Intelligence for Robotics",
+          "L": "2",
+          "P": "1",
+          "U": "3"
+        }
+      ],
+      "elective_pools": [
+        {
+          "pool_name": "Electives",
+          "pool_subtitle": "",
+          "courses": [
+            {
+              "code": "BITS F312",
+              "title": "Neural Network & Fuzzy Logic",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "BITS F415",
+              "title": "Introduction To MEMS",
+              "L": "3",
+              "P": "1",
+              "U": "4"
+            },
+            {
+              "code": "BITS F442",
+              "title": "Remote Sensing and Image Processing",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "BITS F451",
+              "title": "Autonomous Mobile Robotics",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "BITS F464",
+              "title": "Machine Learning",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "ECE F434",
+              "title": "Digital Signal Processing",
+              "L": "3",
+              "P": "1",
+              "U": "4"
+            },
+            {
+              "code": "EEE F411",
+              "title": "Internet of Things (IoT)",
+              "L": "3",
+              "P": "1",
+              "U": "4"
+            },
+            {
+              "code": "EEE F422",
+              "title": "Modern Control Systems",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "EEE G512",
+              "title": "Embedded System Design",
+              "L": "3",
+              "P": "1",
+              "U": "4"
+            },
+            {
+              "code": "INSTR F343",
+              "title": "Industrial Instrumentation and Control",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "INSTR G611",
+              "title": "Advanced Control Systems",
+              "L": "3",
+              "P": "2",
+              "U": "5"
+            },
+            {
+              "courses": [
+                {
+                  "code": "ME F221",
+                  "title": "Mechanisms and Machines",
+                  "L": "3",
+                  "P": "0",
+                  "U": "3"
+                },
+                {
+                  "code": "MF F221",
+                  "title": "Mechanisms and Machines",
+                  "L": "3",
+                  "P": "0",
+                  "U": "3"
+                }
+              ]
+            },
+            {
+              "code": "ME F426",
+              "title": "Industry 4.0 in Manufacturing",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "ME F432",
+              "title": "Computer Aided Manufacturing",
+              "L": "2",
+              "P": "1",
+              "U": "3"
+            },
+            {
+              "code": "MF F311",
+              "title": "Mechatronics & Automation",
+              "L": "2",
+              "P": "1",
+              "U": "3"
+            },
+            {
+              "code": "MSE G511",
+              "title": "Mechatronics",
+              "L": "3",
+              "P": "2",
+              "U": "5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Minor in Semiconductor Devices and Technology",
+      "description": "As the need for semiconductor chips increases globally, there will be a greater need for\nengineers who specialize in semiconductor-device and circuit design. There is a huge\ninvestment by government as well as the leading semiconductor industries to set up\nsemiconductor manufacturing units across the globe. Hence, there is an urgent need to train\nmanpower in this specialized field. The minor will also lay foundation for the more complex\ndesign level (both analog and digital) thinking thereby expanding the scope and expertise of the\nstudent and making them ready for the competitive job market. Further, the minor will also\nintroduce the component of semiconductor manufacturing, which is totally aligned with the\ngovernment National Semiconductor Mission.",
+      "requirements_text": "05 courses (min) 15 units (min)",
+      "core_courses": [
+        {
+          "code": "EEE F437",
+          "title": "Semiconductor Fabrication Technology",
+          "L": "3",
+          "P": "1",
+          "U": "4"
+        }
+      ],
+      "elective_pools": [
+        {
+          "pool_name": "Electives",
+          "pool_subtitle": "",
+          "courses": [
+            {
+              "code": "BITS F415",
+              "title": "Introduction to MEMS",
+              "L": "3",
+              "P": "1",
+              "U": "4"
+            },
+            {
+              "code": "EEE/ECE/INSTR F216",
+              "title": "Electronic Devices Simulation Laboratory",
+              "L": "0",
+              "P": "2",
+              "U": "2"
+            },
+            {
+              "code": "EEE/ECE/INSTR F423",
+              "title": "Electronic Material Design and Simulation Laboratory",
+              "L": "1",
+              "P": "2",
+              "U": "3"
+            },
+            {
+              "code": "EEE F477",
+              "title": "Modelling of Field-Effect Nano Devices",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "EEE G595",
+              "title": "Nanoelectronics and Nanophotonics",
+              "L": "",
+              "P": "",
+              "U": "5"
+            },
+            {
+              "code": "MEL G514",
+              "title": "Nanoelectronic Memories and Technology",
+              "L": "3",
+              "P": "2",
+              "U": "5"
+            },
+            {
+              "code": "MST F331",
+              "title": "Material Characterization",
+              "L": "3",
+              "P": "1",
+              "U": "4"
+            },
+            {
+              "code": "PHY F341",
+              "title": "Solid State Physics",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "PHY F379",
+              "title": "Thin Film Technology",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Minor in Supply Chain Analytics",
+      "description": "Supply chain analytics help organizations to take better, faster and more informed decisions\nabout their business operations. The global market for supply chain analytics is projected to\nexceed $10 billion by 2025 and has a compound annual growth rate (CAGR) of 16%. Today’s\nsupply chain analytics solutions already have impressive capabilities, and with future\nadvancements will only become more of a game-changer for businesses across all industries.\nSupply chain analytics minor programme will enable the students to develop foundations and\nto broaden their knowledge base of supply chain in general and supply chain analytics in\nspecific. It will cover three verticals such as supply chain management, supply chain modelling\nand empirical analysis (qualitative data analysis) & supply chain analytics (quantitative data\nanalysis). The minor programme is designed to create supply chain professionals for present\nand future business environment.",
+      "requirements_text": "05 courses (min)\n15 units (min)",
+      "core_courses": [
+        {
+          "code": "BITS F455",
+          "title": "Analytics for Supply Chain",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        },
+        {
+          "code": "MF F319",
+          "title": "Supply Chain Management",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        },
+        {
+          "code": "MF F422",
+          "title": "Supply Chain Modelling and Empirical Analysis",
+          "L": "3",
+          "P": "1",
+          "U": "4"
+        }
+      ],
+      "elective_pools": [
+        {
+          "pool_name": "Electives",
+          "pool_subtitle": "",
+          "courses": [
+            {
+              "code": "ME F443",
+              "title": "Quality Control Assurance and Reliability",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "MF F321",
+              "title": "Procurement Management",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "MF F418",
+              "title": "Lean Manufacturing",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "MF F485",
+              "title": "Sustainable Manufacturing",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "courses": [
+                {
+                  "code": "MATH F212",
+                  "title": "Optimization",
+                  "L": "3",
+                  "P": "0",
+                  "U": "3"
+                },
+                {
+                  "code": "ME F320",
+                  "title": "Engineering Optimization",
+                  "L": "3",
+                  "P": "0",
+                  "U": "3"
+                },
+                {
+                  "code": "MF F320",
+                  "title": "Engineering Optimization",
+                  "L": "3",
+                  "P": "0",
+                  "U": "3"
+                }
+              ]
+            },
+            {
+              "code": "MATH F242",
+              "title": "Operations Research",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "MATH F353",
+              "title": "Statistical Inference and Applications",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Minor in Water and Sanitation",
+      "description": "Sustainable Development Goal 6 (SDG 6) focusses on Water and Sanitation and the tasks\nmentioned in SDG 6. Sanitation is also high on agenda of the Indian Government as evident\nfrom Swachh Bharat Mission. Trained Postgraduate and working professionals are of high\ndemand. Bill and Melinda Gates foundation had significantly invested in Water, Sanitation and\nHygiene programme and they had funded UNESCO IHE and its 8 partners in developing e\nlearning alliance. The foundation’s investment strategy in sanitation requires qualified and\ntrained professionals. This minor would equip the students with the skill and knowledge which\nwill help them in gaining insights in the area of water and sanitation.",
+      "requirements_text": "05 courses (min) 15 units (min)",
+      "core_courses": [
+        {
+          "code": "BIO F216",
+          "title": "Water Sanitation and Solid Waste Management",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        },
+        {
+          "code": "BIO F217",
+          "title": "Laboratory for Water Sanitation and Solid Waste",
+          "L": "1",
+          "P": "2",
+          "U": "3"
+        }
+      ],
+      "elective_pools": [
+        {
+          "pool_name": "Electives",
+          "pool_subtitle": "",
+          "courses": [
+            {
+              "code": "BIO F266",
+              "title": "Study Project",
+              "L": "",
+              "P": "",
+              "U": "3"
+            },
+            {
+              "code": "SAN G511",
+              "title": "Sanitation Technology",
+              "L": "3",
+              "P": "2",
+              "U": "5"
+            },
+            {
+              "code": "SAN G512",
+              "title": "Sanitation and Public Health",
+              "L": "3",
+              "P": "2",
+              "U": "5"
+            },
+            {
+              "code": "SAN G513",
+              "title": "Sanitation Governance Behaviour change and Advocacy",
+              "L": "",
+              "P": "",
+              "U": "5*"
+            },
+            {
+              "code": "SAN G514",
+              "title": "Sanitation Finance and Project Management",
+              "L": "",
+              "P": "",
+              "U": "5*"
+            },
+            {
+              "code": "SAN G515",
+              "title": "Emergency Sanitation & Leadership",
+              "L": "",
+              "P": "",
+              "U": "5*"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Minor in Tissue Engineering",
+      "description": "Tissue Engineering is an upcoming field which required interdisciplinary knowledge of Engineering as well as Biological Sciences (specially Tissue Culture). The objective is to train students to do research and innovate to repair damaged tissues or produce organs or tissues for replacement in damaged patients. Its basically a field of Biomedical Engineering wherein skill sets of Cell & Tissue Culture, Materials Sciences and Engineering skills in terms of Mechanical or Chemical Engineering is required to develop or repair damaged tissues or organs. Required 15 units (min)",
+      "requirements_text": "05 courses (min)",
+      "core_courses": [
+        {
+          "code": "BIO F352",
+          "title": "Cell and Tissue Culture Technology",
+          "L": "3",
+          "P": "1",
+          "U": "4"
+        },
+        {
+          "code": "BIO F422",
+          "title": "Fundamentals of Tissue Engineering",
+          "L": "2",
+          "P": "1",
+          "U": "3"
+        },
+        {
+          "code": "MST F333",
+          "title": "Introduction to Biomaterials",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        },
+        {
+          "courses": [
+            {
+              "code": "BITS F417",
+              "title": "Microfluidics and Its Application",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "ME F423",
+              "title": "Microfluidics and Its Application",
+              "L": "",
+              "P": "",
+              "U": "4*"
+            }
+          ]
+        },
+        {
+          "code": "BITS F418",
+          "title": "Introduction to Biomedical Engineering",
+          "L": "3",
+          "P": "1",
+          "U": "4"
+        },
+        {
+          "code": "BIOT F422",
+          "title": "Nanobiotechnology",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        },
+        {
+          "code": "BIO F311",
+          "title": "Recombinant DNA Technology",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        },
+        {
+          "code": "CHE F414",
+          "title": "Transport Phenomena",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        }
+      ],
+      "elective_pools": [
+        {
+          "pool_name": "Core Courses",
+          "pool_subtitle": "",
+          "courses": []
+        },
+        {
+          "pool_name": "Electives",
+          "pool_subtitle": "",
+          "courses": [
+            {
+              "code": "CHE F421",
+              "title": "Biochemical Engineering",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "DE G513",
+              "title": "Tribiology",
+              "L": "3",
+              "P": "2",
+              "U": "5"
+            },
+            {
+              "code": "ME F211",
+              "title": "Mechanics of Solids",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "ME F216",
+              "title": "Materials Science & Engineering",
+              "L": "2",
+              "P": "1",
+              "U": "3"
+            },
+            {
+              "code": "ME F452",
+              "title": "Composite Materials and Design",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
