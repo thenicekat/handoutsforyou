@@ -3,6 +3,8 @@ import {
     Control,
     Controller,
     FieldError,
+    FieldValues,
+    Path,
     UseFormRegisterReturn,
 } from 'react-hook-form'
 
@@ -193,23 +195,23 @@ export function Checkbox({
     )
 }
 
-interface AutoCompleterInputProps {
-    control: Control<any>
-    name: string
+interface AutoCompleterInputProps<T extends FieldValues = any> {
+    control: Control<T, any>
+    name: Path<T>
     items: string[]
     placeholder?: string
     error?: FieldError
     className?: string
 }
 
-export function AutoCompleterInput({
+export function AutoCompleterInput<T extends FieldValues = any>({
     control,
     name,
     items,
     placeholder,
     error,
     className = '',
-}: AutoCompleterInputProps) {
+}: AutoCompleterInputProps<T>) {
     return (
         <Controller
             control={control}
