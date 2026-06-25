@@ -483,8 +483,9 @@ function PrerequisiteRoadmap({ minor }: { minor: Minor }) {
                         {/* Expand overlay button */}
                         <button
                             onClick={() => setIsModalOpen(true)}
-                            className="absolute top-3 right-3 p-2 bg-teal-600/90 hover:bg-teal-500 text-white rounded-lg shadow-lg transition-all opacity-0 group-hover:opacity-100 backdrop-blur-sm"
+                            className="absolute top-3 right-3 p-2 bg-teal-600/90 hover:bg-teal-500 text-white rounded-lg shadow-lg transition-all opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 focus:opacity-100 backdrop-blur-sm"
                             title="Open interactive view"
+                            aria-label="Open interactive prerequisite roadmap"
                         >
                             <svg
                                 className="w-4 h-4"
