@@ -108,17 +108,18 @@ function generateMermaidGraph(minor: Minor): string | null {
     let mermaid = 'graph TD\n'
 
     // Define nodes
+    const escapeLabel = (s: string) =>
+        s
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/\n/g, ' ')
     for (const code of Array.from(involvedCodes)) {
         const id = sanitizeId(code)
         const info = courseMap.get(code)
-        let label: string
-        if (info) {
-            label = `${code}<br/>${info.title}`
-        } else {
-            // External prereq — look up title from the global prereqs database
-            const externalTitle = courseTitleLookup.get(code)
-            label = externalTitle ? `${code}<br/>${externalTitle}` : code
-        }
+        const title = info ? info.title : courseTitleLookup.get(code)
+        const label = title ? `${escapeLabel(code)}<br/>${escapeLabel(title)}` : escapeLabel(code)
         mermaid += `    ${id}["${label}"]\n`
     }
 
