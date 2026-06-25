@@ -202,7 +202,7 @@ const outFlowTransactions: Transaction[] = [
         name: 'Domain: 2026-2027',
         detail: '',
         amount: 1601.16,
-    }
+    },
 ]
 
 const transactions: Transaction[] = [
