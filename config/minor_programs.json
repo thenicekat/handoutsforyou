@@ -393,57 +393,52 @@
           "L": "3",
           "P": "1",
           "U": "4"
-        },
+        }
+      ],
+      "elective_pools": [
         {
-          "code": "BITS F464",
-          "title": "Machine Learning",
-          "L": "3",
-          "P": "0",
-          "U": "3"
-        },
-        {
-          "code": "CS F422",
-          "title": "Parallel Computing",
-          "L": "3",
-          "P": "0",
-          "U": "3"
-        },
-        {
-          "code": "MATH F425",
-          "title": "Numerical Linear Algebra",
-          "L": "3",
-          "P": "1",
-          "U": "4"
-        },
-        {
+          "pool_name": "Electives",
+          "pool_subtitle": "",
           "courses": [
             {
-              "code": "MATH F426",
-              "title": "Mathematical Theory of Finite Element Methods",
+              "code": "BITS F464",
+              "title": "Machine Learning",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "CS F422",
+              "title": "Parallel Computing",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "MATH F425",
+              "title": "Numerical Linear Algebra",
               "L": "3",
               "P": "1",
               "U": "4"
             },
             {
-              "code": "ME G512",
-              "title": "Finite Element Methods",
-              "L": "3",
-              "P": "2",
-              "U": "5"
-            }
-          ]
-        }
-      ],
-      "elective_pools": [
-        {
-          "pool_name": "Core Courses",
-          "pool_subtitle": "",
-          "courses": []
-        },
-        {
-          "pool_name": "Electives",
-          "pool_subtitle": "",
-          "courses": [
+              "courses": [
+                {
+                  "code": "MATH F426",
+                  "title": "Mathematical Theory of Finite Element Methods",
+                  "L": "3",
+                  "P": "1",
+                  "U": "4"
+                },
+                {
+                  "code": "ME G512",
+                  "title": "Finite Element Methods",
+                  "L": "3",
+                  "P": "2",
+                  "U": "5"
+                }
+              ]
+            },
             {
               "code": "ME F321",
               "title": "Data Mining in Mechanical Sciences",
@@ -2481,6 +2476,13 @@
       "requirements_text": "05 courses (min) 15 units (min)",
       "core_courses": [
         {
+          "code": "EEE/ECE/INSTR/ECOM F214",
+          "title": "Electronic Devices",
+          "L": "3",
+          "P": "0",
+          "U": "3"
+        },
+        {
           "code": "EEE F437",
           "title": "Semiconductor Fabrication Technology",
           "L": "3",
@@ -2759,64 +2761,59 @@
           "L": "3",
           "P": "0",
           "U": "3"
-        },
+        }
+      ],
+      "elective_pools": [
         {
+          "pool_name": "Electives",
+          "pool_subtitle": "",
           "courses": [
             {
-              "code": "BITS F417",
-              "title": "Microfluidics and Its Application",
+              "courses": [
+                {
+                  "code": "BITS F417",
+                  "title": "Microfluidics and Its Application",
+                  "L": "3",
+                  "P": "0",
+                  "U": "3"
+                },
+                {
+                  "code": "ME F423",
+                  "title": "Microfluidics and Its Application",
+                  "L": "",
+                  "P": "",
+                  "U": "4*"
+                }
+              ]
+            },
+            {
+              "code": "BITS F418",
+              "title": "Introduction to Biomedical Engineering",
+              "L": "3",
+              "P": "1",
+              "U": "4"
+            },
+            {
+              "code": "BIOT F422",
+              "title": "Nanobiotechnology",
               "L": "3",
               "P": "0",
               "U": "3"
             },
             {
-              "code": "ME F423",
-              "title": "Microfluidics and Its Application",
-              "L": "",
-              "P": "",
-              "U": "4*"
-            }
-          ]
-        },
-        {
-          "code": "BITS F418",
-          "title": "Introduction to Biomedical Engineering",
-          "L": "3",
-          "P": "1",
-          "U": "4"
-        },
-        {
-          "code": "BIOT F422",
-          "title": "Nanobiotechnology",
-          "L": "3",
-          "P": "0",
-          "U": "3"
-        },
-        {
-          "code": "BIO F311",
-          "title": "Recombinant DNA Technology",
-          "L": "3",
-          "P": "0",
-          "U": "3"
-        },
-        {
-          "code": "CHE F414",
-          "title": "Transport Phenomena",
-          "L": "3",
-          "P": "0",
-          "U": "3"
-        }
-      ],
-      "elective_pools": [
-        {
-          "pool_name": "Core Courses",
-          "pool_subtitle": "",
-          "courses": []
-        },
-        {
-          "pool_name": "Electives",
-          "pool_subtitle": "",
-          "courses": [
+              "code": "BIO F311",
+              "title": "Recombinant DNA Technology",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
+            {
+              "code": "CHE F414",
+              "title": "Transport Phenomena",
+              "L": "3",
+              "P": "0",
+              "U": "3"
+            },
             {
               "code": "CHE F421",
               "title": "Biochemical Engineering",
