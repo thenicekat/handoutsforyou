@@ -148,13 +148,52 @@ function CourseTable({
                                             ))}
                                         </td>
                                         <td className="px-4 py-3 text-sm text-center text-gray-300">
-                                            {course.courses[0]?.L || ''}
+                                            {course.courses.map((c, i) => (
+                                                <span key={i}>
+                                                    {i > 0 && (
+                                                        <span className="block my-1.5 invisible">
+                                                            <span className="inline-block px-1.5 py-0.5 text-[12px] font-bold">
+                                                                OR
+                                                            </span>
+                                                        </span>
+                                                    )}
+                                                    <span className="block">
+                                                        {c.L || '—'}
+                                                    </span>
+                                                </span>
+                                            ))}
                                         </td>
                                         <td className="px-4 py-3 text-sm text-center text-gray-300">
-                                            {course.courses[0]?.P || ''}
+                                            {course.courses.map((c, i) => (
+                                                <span key={i}>
+                                                    {i > 0 && (
+                                                        <span className="block my-1.5 invisible">
+                                                            <span className="inline-block px-1.5 py-0.5 text-[12px] font-bold">
+                                                                OR
+                                                            </span>
+                                                        </span>
+                                                    )}
+                                                    <span className="block">
+                                                        {c.P || '—'}
+                                                    </span>
+                                                </span>
+                                            ))}
                                         </td>
                                         <td className="px-4 py-3 text-sm text-center text-gray-300">
-                                            {course.courses[0]?.U || ''}
+                                            {course.courses.map((c, i) => (
+                                                <span key={i}>
+                                                    {i > 0 && (
+                                                        <span className="block my-1.5 invisible">
+                                                            <span className="inline-block px-1.5 py-0.5 text-[12px] font-bold">
+                                                                OR
+                                                            </span>
+                                                        </span>
+                                                    )}
+                                                    <span className="block">
+                                                        {c.U || '—'}
+                                                    </span>
+                                                </span>
+                                            ))}
                                         </td>
                                     </tr>
                                 )
