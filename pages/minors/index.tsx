@@ -1,12 +1,12 @@
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import { getMetaConfig } from '@/config/meta'
-import type * as React from 'react'
-import { useState, useMemo, useRef, useCallback, useEffect } from 'react'
-import { createPortal } from 'react-dom'
 import minorData from '@/config/minor_programs.json'
 import prereqsData from '@/public/prereqs.json'
 import dynamic from 'next/dynamic'
+import type * as React from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 
 const MermaidDiagram = dynamic(() => import('@/components/MermaidDiagram'), {
     ssr: false,
@@ -19,12 +19,12 @@ const MermaidDiagram = dynamic(() => import('@/components/MermaidDiagram'), {
 
 // Build a global lookup: course code -> course title from official prereqs data
 const courseTitleLookup = new Map<string, string>()
-    ; (prereqsData as { name: string }[]).forEach((item) => {
-        const match = item.name.match(/^([A-Z/]+\s+[A-Z0-9]+)\s+(.*)$/)
-        if (match) {
-            courseTitleLookup.set(match[1], match[2])
-        }
-    })
+;(prereqsData as { name: string }[]).forEach(item => {
+    const match = item.name.match(/^([A-Z/]+\s+[A-Z0-9]+)\s+(.*)$/)
+    if (match) {
+        courseTitleLookup.set(match[1], match[2])
+    }
+})
 
 interface Course {
     code?: string
@@ -68,7 +68,10 @@ function sanitizeId(code: string): string {
 
 function generateMermaidGraph(minor: Minor): string | null {
     // Collect all courses with their type
-    const courseMap = new Map<string, { title: string; type: 'core' | 'elective' }>()
+    const courseMap = new Map<
+        string,
+        { title: string; type: 'core' | 'elective' }
+    >()
     const edges: { from: string; to: string }[] = []
 
     function collectCourses(courses: Course[], type: 'core' | 'elective') {
@@ -151,21 +154,39 @@ function RoadmapLegend() {
         <div className="flex flex-wrap gap-x-4 gap-y-2">
             <div className="flex items-center gap-1.5 md:gap-2">
                 <span className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-sm bg-teal-600" />
-                <span className="text-[10px] md:text-xs text-gray-300">Core</span>
+                <span className="text-[10px] md:text-xs text-gray-300">
+                    Core
+                </span>
             </div>
             <div className="flex items-center gap-1.5 md:gap-2">
                 <span className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-sm bg-blue-600" />
-                <span className="text-[10px] md:text-xs text-gray-300">Elective</span>
+                <span className="text-[10px] md:text-xs text-gray-300">
+                    Elective
+                </span>
             </div>
             <div className="flex items-center gap-1.5 md:gap-2">
                 <span className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-sm bg-gray-500" />
-                <span className="text-[10px] md:text-xs text-gray-300">External</span>
+                <span className="text-[10px] md:text-xs text-gray-300">
+                    External
+                </span>
             </div>
             <div className="flex items-center gap-1.5 md:gap-2">
-                <svg className="w-3.5 h-3.5 md:w-4 md:h-4 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                <svg
+                    className="w-3.5 h-3.5 md:w-4 md:h-4 text-gray-300"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                >
+                    <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
                 </svg>
-                <span className="text-[10px] md:text-xs text-gray-300">Requires</span>
+                <span className="text-[10px] md:text-xs text-gray-300">
+                    Requires
+                </span>
             </div>
         </div>
     )
@@ -181,14 +202,16 @@ function InteractiveRoadmapModal({
     onClose: () => void
 }) {
     const containerRef = useRef<HTMLDivElement>(null)
-    const [scale, setScale] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768 ? 1.5 : 4)
+    const [scale, setScale] = useState(() =>
+        typeof window !== 'undefined' && window.innerWidth < 768 ? 1.5 : 4
+    )
     const [position, setPosition] = useState({ x: 0, y: 0 })
     const isDragging = useRef(false)
     const lastPos = useRef({ x: 0, y: 0 })
 
     const handleWheel = useCallback((e: React.WheelEvent) => {
         e.preventDefault()
-        setScale((prev) => Math.min(10, Math.max(0.3, prev - e.deltaY * 0.001)))
+        setScale(prev => Math.min(10, Math.max(0.3, prev - e.deltaY * 0.001)))
     }, [])
 
     const handleMouseDown = useCallback((e: React.MouseEvent) => {
@@ -201,7 +224,7 @@ function InteractiveRoadmapModal({
         const dx = e.clientX - lastPos.current.x
         const dy = e.clientY - lastPos.current.y
         lastPos.current = { x: e.clientX, y: e.clientY }
-        setPosition((prev) => ({ x: prev.x + dx, y: prev.y + dy }))
+        setPosition(prev => ({ x: prev.x + dx, y: prev.y + dy }))
     }, [])
 
     const handleMouseUp = useCallback(() => {
@@ -219,7 +242,7 @@ function InteractiveRoadmapModal({
         const dx = e.touches[0].clientX - lastPos.current.x
         const dy = e.touches[0].clientY - lastPos.current.y
         lastPos.current = { x: e.touches[0].clientX, y: e.touches[0].clientY }
-        setPosition((prev) => ({ x: prev.x + dx, y: prev.y + dy }))
+        setPosition(prev => ({ x: prev.x + dx, y: prev.y + dy }))
     }, [])
 
     const handleTouchEnd = useCallback(() => {
@@ -227,7 +250,9 @@ function InteractiveRoadmapModal({
     }, [])
 
     const resetView = useCallback(() => {
-        setScale(typeof window !== 'undefined' && window.innerWidth < 768 ? 1.5 : 4)
+        setScale(
+            typeof window !== 'undefined' && window.innerWidth < 768 ? 1.5 : 4
+        )
         setPosition({ x: 0, y: 0 })
     }, [])
 
@@ -251,11 +276,11 @@ function InteractiveRoadmapModal({
     if (typeof window === 'undefined') return null
 
     return createPortal(
-        <div 
-            role="dialog" 
-            aria-modal="true" 
+        <div
+            role="dialog"
+            aria-modal="true"
             aria-label={`Prerequisite Roadmap: ${minorName}`}
-            className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex flex-col" 
+            className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex flex-col"
             style={{ position: 'fixed' }}
         >
             {/* Header */}
@@ -264,7 +289,9 @@ function InteractiveRoadmapModal({
                     <span className="inline-block px-3 py-1 md:px-4 md:py-1.5 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-xs md:text-sm font-semibold rounded-full shadow-lg">
                         Prerequisite Roadmap
                     </span>
-                    <span className="text-gray-300 text-xs md:text-sm font-medium">{minorName}</span>
+                    <span className="text-gray-300 text-xs md:text-sm font-medium">
+                        {minorName}
+                    </span>
                 </div>
 
                 <div className="flex flex-col md:flex-row md:items-center gap-3">
@@ -280,26 +307,68 @@ function InteractiveRoadmapModal({
                         {/* Zoom controls */}
                         <div className="flex items-center gap-1 bg-white/10 rounded-lg px-2 py-1 ml-auto md:ml-0 shrink-0">
                             <button
-                                onClick={() => setScale((s) => Math.max(0.3, s - 0.2))}
+                                onClick={() =>
+                                    setScale(s => Math.max(0.3, s - 0.2))
+                                }
                                 className="p-1 hover:bg-white/10 rounded transition-colors text-gray-300"
                                 title="Zoom out"
                             >
-                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" /></svg>
+                                <svg
+                                    className="w-4 h-4"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M20 12H4"
+                                    />
+                                </svg>
                             </button>
-                            <span className="text-xs text-gray-400 min-w-[2.5rem] text-center">{Math.round(scale * 100)}%</span>
+                            <span className="text-xs text-gray-400 min-w-[2.5rem] text-center">
+                                {Math.round(scale * 100)}%
+                            </span>
                             <button
-                                onClick={() => setScale((s) => Math.min(10, s + 0.2))}
+                                onClick={() =>
+                                    setScale(s => Math.min(10, s + 0.2))
+                                }
                                 className="p-1 hover:bg-white/10 rounded transition-colors text-gray-300"
                                 title="Zoom in"
                             >
-                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
+                                <svg
+                                    className="w-4 h-4"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M12 4v16m8-8H4"
+                                    />
+                                </svg>
                             </button>
                             <button
                                 onClick={resetView}
                                 className="p-1 hover:bg-white/10 rounded transition-colors text-gray-300 ml-1"
                                 title="Reset view"
                             >
-                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+                                <svg
+                                    className="w-4 h-4"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                                    />
+                                </svg>
                             </button>
                         </div>
                     </div>
@@ -311,7 +380,19 @@ function InteractiveRoadmapModal({
                     className="absolute top-2 right-2 md:static md:ml-3 p-2 hover:bg-white/10 rounded-lg transition-colors text-gray-400 hover:text-white"
                     title="Close (Esc)"
                 >
-                    <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+                    <svg
+                        className="w-5 h-5 md:w-6 md:h-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M6 18L18 6M6 6l12 12"
+                        />
+                    </svg>
                 </button>
             </div>
 
@@ -334,7 +415,9 @@ function InteractiveRoadmapModal({
                     style={{
                         transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
                         transformOrigin: 'center center',
-                        transition: isDragging.current ? 'none' : 'transform 0.1s ease-out',
+                        transition: isDragging.current
+                            ? 'none'
+                            : 'transform 0.1s ease-out',
                     }}
                 >
                     <MermaidDiagram content={content} />
@@ -344,7 +427,12 @@ function InteractiveRoadmapModal({
             {/* Footer */}
             <div className="px-6 py-3 border-t border-white/10 bg-gray-900/90">
                 <p className="text-xs text-gray-400 italic">
-                    Scroll to zoom · Drag to pan · Press Esc to close. Note: Multiple arrows pointing to a single course do not necessarily mean all those courses must be completed; it may be an &apos;OR&apos; condition. Always verify exact requirements with the official prerequisites page or Academic Bulletin.
+                    Scroll to zoom · Drag to pan · Press Esc to close. Note:
+                    Multiple arrows pointing to a single course do not
+                    necessarily mean all those courses must be completed; it may
+                    be an &apos;OR&apos; condition. Always verify exact
+                    requirements with the official prerequisites page or
+                    Academic Bulletin.
                 </p>
             </div>
         </div>,
@@ -401,22 +489,46 @@ function PrerequisiteRoadmap({ minor }: { minor: Minor }) {
                             className="absolute top-3 right-3 p-2 bg-teal-600/90 hover:bg-teal-500 text-white rounded-lg shadow-lg transition-all opacity-0 group-hover:opacity-100 backdrop-blur-sm"
                             title="Open interactive view"
                         >
-                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                            <svg
+                                className="w-4 h-4"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+                                />
                             </svg>
                         </button>
                     </div>
 
                     <div className="mt-3 flex items-center justify-between">
                         <p className="text-xs text-gray-300 italic max-w-3xl pr-4">
-                            Note: Multiple arrows pointing to a single course do not necessarily mean all those courses must be completed; it may be an &apos;OR&apos; condition. Always verify exact requirements with the official prerequisites page or Academic Bulletin.
+                            Note: Multiple arrows pointing to a single course do
+                            not necessarily mean all those courses must be
+                            completed; it may be an &apos;OR&apos; condition.
+                            Always verify exact requirements with the official
+                            prerequisites page or Academic Bulletin.
                         </p>
                         <button
                             onClick={() => setIsModalOpen(true)}
                             className="flex items-center gap-1.5 text-xs text-teal-400 hover:text-teal-300 transition-colors shrink-0 ml-4"
                         >
-                            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                            <svg
+                                className="w-3.5 h-3.5"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+                                />
                             </svg>
                             Open interactive view
                         </button>
@@ -514,7 +626,10 @@ function CourseTable({
                                 Array.isArray(course.courses)
                             ) {
                                 return (
-                                    <tr key={idx} className="border-b border-white/10 hover:bg-white/5 transition-colors">
+                                    <tr
+                                        key={idx}
+                                        className="border-b border-white/10 hover:bg-white/5 transition-colors"
+                                    >
                                         <td className="px-4 py-3 text-sm font-mono text-gray-300 whitespace-nowrap">
                                             {course.courses.map((c, i) => (
                                                 <span key={i}>
@@ -553,7 +668,9 @@ function CourseTable({
                                                             </span>
                                                         </span>
                                                     )}
-                                                    <span className="block">{c.L || '—'}</span>
+                                                    <span className="block">
+                                                        {c.L || '—'}
+                                                    </span>
                                                 </span>
                                             ))}
                                         </td>
@@ -567,7 +684,9 @@ function CourseTable({
                                                             </span>
                                                         </span>
                                                     )}
-                                                    <span className="block">{c.P || '—'}</span>
+                                                    <span className="block">
+                                                        {c.P || '—'}
+                                                    </span>
                                                 </span>
                                             ))}
                                         </td>
@@ -581,16 +700,16 @@ function CourseTable({
                                                             </span>
                                                         </span>
                                                     )}
-                                                    <span className="block">{c.U || '—'}</span>
+                                                    <span className="block">
+                                                        {c.U || '—'}
+                                                    </span>
                                                 </span>
                                             ))}
                                         </td>
                                     </tr>
                                 )
                             }
-                            return (
-                                <CourseRow key={idx} course={course} />
-                            )
+                            return <CourseRow key={idx} course={course} />
                         })}
                     </tbody>
                 </table>
@@ -772,7 +891,9 @@ function GeneralInfoSection() {
                                     <span className="flex-shrink-0 w-7 h-7 flex items-center justify-center rounded-full bg-teal-600/20 border border-teal-500/30 text-teal-300 text-xs font-bold shadow-sm">
                                         {i + 1}
                                     </span>
-                                    <span className="leading-relaxed mt-0.5">{step}</span>
+                                    <span className="leading-relaxed mt-0.5">
+                                        {step}
+                                    </span>
                                 </li>
                             ))}
                         </ol>
@@ -791,11 +912,13 @@ export default function Minors() {
     const filteredMinors = useMemo(() => {
         if (!searchQuery.trim()) return minors
         const q = searchQuery.toLowerCase()
-        return minors.filter((m) => m.name.toLowerCase().includes(q))
+        return minors.filter(m => m.name.toLowerCase().includes(q))
     }, [searchQuery, minors])
 
     const selectedMinor =
-        filteredMinors.length > 0 ? filteredMinors[selectedIndex] || filteredMinors[0] : null
+        filteredMinors.length > 0
+            ? filteredMinors[selectedIndex] || filteredMinors[0]
+            : null
 
     const reqs = selectedMinor
         ? parseRequirements(selectedMinor.requirements_text)
@@ -833,7 +956,7 @@ export default function Minors() {
                                     type="text"
                                     placeholder="Search for a Minor..."
                                     value={searchQuery}
-                                    onChange={(e) => {
+                                    onChange={e => {
                                         setSearchQuery(e.target.value)
                                         setSelectedIndex(0)
                                     }}
@@ -841,13 +964,28 @@ export default function Minors() {
                                 />
                                 <button
                                     onClick={() => {
-                                        document.getElementById('minor-content')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                        document
+                                            .getElementById('minor-content')
+                                            ?.scrollIntoView({
+                                                behavior: 'smooth',
+                                                block: 'start',
+                                            })
                                     }}
                                     className="lg:hidden flex-shrink-0 px-3 py-2.5 bg-teal-600/20 border border-teal-500/30 rounded-lg text-teal-300 hover:bg-teal-600/30 transition-colors flex items-center justify-center"
                                     aria-label="Scroll to content"
                                 >
-                                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                                    <svg
+                                        className="w-5 h-5"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                                        />
                                     </svg>
                                 </button>
                             </div>
@@ -868,20 +1006,29 @@ export default function Minors() {
                                             onClick={() => {
                                                 setSelectedIndex(idx)
                                                 if (window.innerWidth < 1024) {
-                                                    document.getElementById('minor-content')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                                    document
+                                                        .getElementById(
+                                                            'minor-content'
+                                                        )
+                                                        ?.scrollIntoView({
+                                                            behavior: 'smooth',
+                                                            block: 'start',
+                                                        })
                                                 }
                                             }}
-                                            className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 group ${isSelected
-                                                ? 'bg-gradient-to-r from-teal-600/30 to-teal-500/15 border border-teal-500/30 shadow-lg shadow-teal-500/5'
-                                                : 'hover:bg-white/5 border border-transparent'
-                                                }`}
+                                            className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 group ${
+                                                isSelected
+                                                    ? 'bg-gradient-to-r from-teal-600/30 to-teal-500/15 border border-teal-500/30 shadow-lg shadow-teal-500/5'
+                                                    : 'hover:bg-white/5 border border-transparent'
+                                            }`}
                                         >
                                             <div className="flex items-center justify-between gap-2">
                                                 <span
-                                                    className={`text-sm font-medium block ${isSelected
-                                                        ? 'text-teal-300'
-                                                        : 'text-gray-300 group-hover:text-white'
-                                                        }`}
+                                                    className={`text-sm font-medium block ${
+                                                        isSelected
+                                                            ? 'text-teal-300'
+                                                            : 'text-gray-300 group-hover:text-white'
+                                                    }`}
                                                 >
                                                     {minor.name.replace(
                                                         'Minor in ',
@@ -889,7 +1036,10 @@ export default function Minors() {
                                                     )}
                                                 </span>
                                                 {minor.isHyderabadOffered && (
-                                                    <span title="Offered at Hyderabad Campus" className="flex-shrink-0 inline-flex items-center justify-center w-5 h-5 rounded bg-teal-500/20 text-teal-300 text-xs font-bold border border-teal-500/30">
+                                                    <span
+                                                        title="Offered at Hyderabad Campus"
+                                                        className="flex-shrink-0 inline-flex items-center justify-center w-5 h-5 rounded bg-teal-500/20 text-teal-300 text-xs font-bold border border-teal-500/30"
+                                                    >
                                                         H
                                                     </span>
                                                 )}
@@ -902,7 +1052,10 @@ export default function Minors() {
                     </div>
 
                     {/* Content Panel */}
-                    <div id="minor-content" className="flex-1 min-w-0 scroll-mt-24">
+                    <div
+                        id="minor-content"
+                        className="flex-1 min-w-0 scroll-mt-24"
+                    >
                         {selectedMinor ? (
                             <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm overflow-hidden flex flex-col transition-all duration-300">
                                 {/* Minor Header */}
@@ -925,7 +1078,9 @@ export default function Minors() {
                                         {selectedMinor.department && (
                                             <span className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/20 border border-blue-500/30 rounded-lg text-sm text-blue-100 font-medium shadow-sm">
                                                 Department:{' '}
-                                                <strong>{selectedMinor.department}</strong>
+                                                <strong>
+                                                    {selectedMinor.department}
+                                                </strong>
                                             </span>
                                         )}
                                         {reqs.courses && (
@@ -946,7 +1101,8 @@ export default function Minors() {
                                         )}
                                         {selectedMinor.isHyderabadOffered && (
                                             <span className="inline-flex items-center gap-2 px-4 py-2 bg-teal-500/20 border border-teal-500/30 rounded-lg text-sm text-teal-100 font-medium shadow-sm">
-                                                Offered in AY 26-27 (Hyderabad Campus)
+                                                Offered in AY 26-27 (Hyderabad
+                                                Campus)
                                             </span>
                                         )}
                                     </div>
@@ -958,44 +1114,65 @@ export default function Minors() {
                                         </h3>
                                         {selectedMinor.hyderabadExclusions ? (
                                             <p className="text-gray-300 text-sm leading-relaxed">
-                                                Students of these programs cannot access the minor: <strong className="text-amber-400">{selectedMinor.hyderabadExclusions}</strong>
+                                                Students of these programs
+                                                cannot access the minor:{' '}
+                                                <strong className="text-amber-400">
+                                                    {
+                                                        selectedMinor.hyderabadExclusions
+                                                    }
+                                                </strong>
                                             </p>
                                         ) : (
                                             <p className="text-gray-300 text-sm leading-relaxed">
-                                                No specific branch restrictions are currently documented for this minor. Please consult your campus AUGSD for definitive eligibility criteria.
+                                                No specific branch restrictions
+                                                are currently documented for
+                                                this minor. Please consult your
+                                                campus AUGSD for definitive
+                                                eligibility criteria.
                                             </p>
                                         )}
                                     </div>
 
                                     {/* Core Courses */}
-                                    {selectedMinor.core_courses && selectedMinor.core_courses.length > 0 && (
-                                        <div className="p-6 hover:bg-white/5 transition-colors duration-200">
-                                            <CourseTable
-                                                label="Core Courses"
-                                                courses={selectedMinor.core_courses}
-                                            />
-                                        </div>
-                                    )}
+                                    {selectedMinor.core_courses &&
+                                        selectedMinor.core_courses.length >
+                                            0 && (
+                                            <div className="p-6 hover:bg-white/5 transition-colors duration-200">
+                                                <CourseTable
+                                                    label="Core Courses"
+                                                    courses={
+                                                        selectedMinor.core_courses
+                                                    }
+                                                />
+                                            </div>
+                                        )}
 
                                     {/* Elective Pools */}
                                     {selectedMinor.elective_pools
                                         .filter(
-                                            (pool) =>
+                                            pool =>
                                                 pool.courses &&
                                                 pool.courses.length > 0
                                         )
                                         .map((pool, idx) => (
-                                            <div key={idx} className="p-6 hover:bg-white/5 transition-colors duration-200">
+                                            <div
+                                                key={idx}
+                                                className="p-6 hover:bg-white/5 transition-colors duration-200"
+                                            >
                                                 <CourseTable
                                                     label={pool.pool_name}
-                                                    subtitle={pool.pool_subtitle}
+                                                    subtitle={
+                                                        pool.pool_subtitle
+                                                    }
                                                     courses={pool.courses}
                                                 />
                                             </div>
                                         ))}
 
                                     {/* Prerequisite Roadmap */}
-                                    <PrerequisiteRoadmap minor={selectedMinor} />
+                                    <PrerequisiteRoadmap
+                                        minor={selectedMinor}
+                                    />
                                 </div>
                             </div>
                         ) : (
@@ -1013,29 +1190,52 @@ export default function Minors() {
                 <div className="max-w-7xl mx-auto mt-8">
                     <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm p-6">
                         <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
-                            <span className="text-teal-400 font-bold text-xl">*</span> About Course Units with Asterisks
+                            <span className="text-teal-400 font-bold text-xl">
+                                *
+                            </span>{' '}
+                            About Course Units with Asterisks
                         </h3>
                         <p className="text-gray-300 text-sm leading-relaxed mb-4">
-                            In the BITS Pilani Academic Bulletin, an asterisk <span className="text-teal-400 font-bold">*</span> next to the units signifies that the course does not have a fixed number of units or is graded differently. Specifically:
+                            In the BITS Pilani Academic Bulletin, an asterisk{' '}
+                            <span className="text-teal-400 font-bold">*</span>{' '}
+                            next to the units signifies that the course does not
+                            have a fixed number of units or is graded
+                            differently. Specifically:
                         </p>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="bg-black/20 border border-white/5 rounded-lg overflow-hidden flex flex-col">
                                 <div className="bg-gradient-to-r from-teal-700/60 to-teal-600/40 px-4 py-2.5 border-b border-white/10">
-                                    <h4 className="text-sm font-semibold text-teal-100">Non-Letter Grading (GOOD/POOR)</h4>
+                                    <h4 className="text-sm font-semibold text-teal-100">
+                                        Non-Letter Grading (GOOD/POOR)
+                                    </h4>
                                 </div>
                                 <div className="p-4 flex-1">
                                     <p className="text-gray-300 text-xs leading-relaxed">
-                                        Courses marked with an asterisk (especially audit-type courses or certain seminar/project courses) often award non-letter grades (like GOOD or POOR). These do not contribute to the CGPA calculation but are required for completing the degree/minor requirements.
+                                        Courses marked with an asterisk
+                                        (especially audit-type courses or
+                                        certain seminar/project courses) often
+                                        award non-letter grades (like GOOD or
+                                        POOR). These do not contribute to the
+                                        CGPA calculation but are required for
+                                        completing the degree/minor
+                                        requirements.
                                     </p>
                                 </div>
                             </div>
                             <div className="bg-black/20 border border-white/5 rounded-lg overflow-hidden flex flex-col">
                                 <div className="bg-gradient-to-r from-teal-700/60 to-teal-600/40 px-4 py-2.5 border-b border-white/10">
-                                    <h4 className="text-sm font-semibold text-teal-100">Variable/Project Units</h4>
+                                    <h4 className="text-sm font-semibold text-teal-100">
+                                        Variable/Project Units
+                                    </h4>
                                 </div>
                                 <div className="p-4 flex-1">
                                     <p className="text-gray-300 text-xs leading-relaxed">
-                                        Certain project courses or elective offerings have units that depend on the specific project scope or are subject to department/instructor approval, or they denote that student work has practical components outside standard lectures.
+                                        Certain project courses or elective
+                                        offerings have units that depend on the
+                                        specific project scope or are subject to
+                                        department/instructor approval, or they
+                                        denote that student work has practical
+                                        components outside standard lectures.
                                     </p>
                                 </div>
                             </div>
@@ -1046,4 +1246,3 @@ export default function Minors() {
         </>
     )
 }
-
