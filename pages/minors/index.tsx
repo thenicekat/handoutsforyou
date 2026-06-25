@@ -375,6 +375,7 @@ function InteractiveRoadmapModal({
                     onClick={onClose}
                     className="absolute top-2 right-2 md:static md:ml-3 p-2 hover:bg-white/10 rounded-lg transition-colors text-gray-400 hover:text-white"
                     title="Close (Esc)"
+                    aria-label="Close interactive roadmap"
                 >
                     <svg
                         className="w-5 h-5 md:w-6 md:h-6"
