@@ -54,14 +54,16 @@
                     "title": "Principles of Aerodynamics",
                     "L": "3",
                     "P": "0",
-                    "U": "3"
+                    "U": "3",
+                    "prereqs": ["CE F231", "CHE F212", "ME F212", "MF F218"]
                 },
                 {
                     "code": "AN F312",
                     "title": "Aircraft Propulsion",
                     "L": "3",
                     "P": "0",
-                    "U": "3"
+                    "U": "3",
+                    "prereqs": ["CE F231", "CHE F212", "ME F212", "MF F218"]
                 },
                 {
                     "code": "AN F313",
@@ -88,7 +90,8 @@
                             "title": "Aircraft Structures",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["ME F211", "CE F211"]
                         },
                         {
                             "code": "ME F415",
@@ -155,7 +158,10 @@
                         }
                     ]
                 }
-            ]
+            ],
+            "isHyderabadOffered": true,
+            "hyderabadExclusions": "B. Pharm. & M.Sc.",
+            "department": "Mechanical Engineering"
         },
         {
             "name": "Minor in Biomedical Engineering",
@@ -187,7 +193,8 @@
                             "title": "Biophysics",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["BIO F111"]
                         },
                         {
                             "code": "BITS F315",
@@ -256,14 +263,16 @@
                             "title": "Foundations of Data Science",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["MATH F113"]
                         },
                         {
                             "code": "EEE F420",
                             "title": "Biomedical Signal Processing",
                             "L": "3",
                             "P": "1",
-                            "U": "4"
+                            "U": "4",
+                            "prereqs": ["EEE F434", "ECE F434"]
                         },
                         {
                             "code": "EEE F435",
@@ -288,7 +297,10 @@
                         }
                     ]
                 }
-            ]
+            ],
+            "isHyderabadOffered": true,
+            "hyderabadExclusions": null,
+            "department": "SIRE"
         },
         {
             "name": "Minor in Computational Economics",
@@ -314,7 +326,8 @@
                     "title": "Microeconomics",
                     "L": "3",
                     "P": "0",
-                    "U": "3"
+                    "U": "3",
+                    "prereqs": ["ECON F211"]
                 }
             ],
             "elective_pools": [
@@ -341,21 +354,24 @@
                             "title": "Foundations of Data Science",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["MATH F113"]
                         },
                         {
                             "code": "ECON F342",
                             "title": "Applied Econometrics",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["ECON F241"]
                         },
                         {
                             "code": "ECON F419",
                             "title": "Advanced Microeconomics",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["ECON F242"]
                         },
                         {
                             "code": "ECON F420",
@@ -369,11 +385,14 @@
                             "title": "Applied Stochastic Process",
                             "L": "3",
                             "P": "1",
-                            "U": "4"
+                            "U": "4",
+                            "prereqs": ["MATH F113"]
                         }
                     ]
                 }
-            ]
+            ],
+            "isHyderabadOffered": false,
+            "hyderabadExclusions": null
         },
         {
             "name": "Minor in Computational Mechanics",
@@ -385,7 +404,8 @@
                     "title": "Numerical Analysis",
                     "L": "3",
                     "P": "0",
-                    "U": "3"
+                    "U": "3",
+                    "prereqs": ["MATH F111", "MATH F112"]
                 },
                 {
                     "code": "ME F427",
@@ -419,7 +439,8 @@
                             "title": "Numerical Linear Algebra",
                             "L": "3",
                             "P": "1",
-                            "U": "4"
+                            "U": "4",
+                            "prereqs": ["MATH F112"]
                         },
                         {
                             "courses": [
@@ -458,7 +479,8 @@
                             "title": "Fluid-structure Interactions",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["ME F211", "ME F212"]
                         },
                         {
                             "code": "ME G515",
@@ -469,7 +491,9 @@
                         }
                     ]
                 }
-            ]
+            ],
+            "isHyderabadOffered": false,
+            "hyderabadExclusions": null
         },
         {
             "name": "Minor in Computing and Intelligence",
@@ -550,21 +574,24 @@
                             "title": "Object Oriented Programming",
                             "L": "3",
                             "P": "1",
-                            "U": "4"
+                            "U": "4",
+                            "prereqs": ["CS F111"]
                         },
                         {
                             "code": "CS F301",
                             "title": "Principles of Programming Languages",
                             "L": "2",
                             "P": "0",
-                            "U": "2"
+                            "U": "2",
+                            "prereqs": ["CS F211"]
                         },
                         {
                             "code": "CS F303",
                             "title": "Computer Networks",
                             "L": "3",
                             "P": "1",
-                            "U": "4"
+                            "U": "4",
+                            "prereqs": ["CS F372"]
                         },
                         {
                             "code": "CS F314",
@@ -599,7 +626,8 @@
                             "title": "Generative Artificial Intelligence",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["CS F429", "BITS F464"]
                         },
                         {
                             "code": "IS F311",
@@ -613,11 +641,15 @@
                             "title": "Software Engineering",
                             "L": "3",
                             "P": "1",
-                            "U": "4"
+                            "U": "4",
+                            "prereqs": ["IS F213"]
                         }
                     ]
                 }
-            ]
+            ],
+            "isHyderabadOffered": true,
+            "hyderabadExclusions": "B.E. Computer Science",
+            "department": "CS & IS"
         },
         {
             "name": "Minor in Data Science",
@@ -636,14 +668,16 @@
                     "title": "Foundations of Data Science",
                     "L": "3",
                     "P": "0",
-                    "U": "3"
+                    "U": "3",
+                    "prereqs": ["MATH F113"]
                 },
                 {
                     "code": "MATH F432",
                     "title": "Applied statistical Methods",
                     "L": "3",
                     "P": "0",
-                    "U": "3"
+                    "U": "3",
+                    "prereqs": ["MATH F113"]
                 }
             ],
             "elective_pools": [
@@ -705,7 +739,8 @@
                             "title": "Graph Mining",
                             "L": "3",
                             "P": "1",
-                            "U": "4"
+                            "U": "4",
+                            "prereqs": ["CS F211"]
                         },
                         {
                             "code": "CS F429",
@@ -740,7 +775,8 @@
                             "title": "Generative Artificial Intelligence",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["CS F429", "BITS F464"]
                         },
                         {
                             "code": "CS F469",
@@ -763,7 +799,8 @@
                                     "title": "Optimization",
                                     "L": "3",
                                     "P": "0",
-                                    "U": "3"
+                                    "U": "3",
+                                    "prereqs": ["MATH F111", "MATH F112"]
                                 },
                                 {
                                     "code": "ME F320",
@@ -779,14 +816,16 @@
                             "title": "Statistical Inference and applications",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["MATH F113"]
                         },
                         {
                             "code": "MATH F424",
                             "title": "Applied Stochastic Processes",
                             "L": "3",
                             "P": "1",
-                            "U": "4"
+                            "U": "4",
+                            "prereqs": ["MATH F113"]
                         },
                         {
                             "code": "MATH F471",
@@ -797,7 +836,10 @@
                         }
                     ]
                 }
-            ]
+            ],
+            "isHyderabadOffered": true,
+            "hyderabadExclusions": null,
+            "department": "CS & IS, Math"
         },
         {
             "name": "Minor in Data Science in Climate and Health",
@@ -823,14 +865,16 @@
                     "title": "Foundations of Data Science",
                     "L": "3",
                     "P": "0",
-                    "U": "3"
+                    "U": "3",
+                    "prereqs": ["MATH F113"]
                 },
                 {
                     "code": "MATH F432",
                     "title": "Applied statistical Methods",
                     "L": "3",
                     "P": "0",
-                    "U": "3"
+                    "U": "3",
+                    "prereqs": ["MATH F113"]
                 }
             ],
             "elective_pools": [
@@ -868,7 +912,9 @@
                         }
                     ]
                 }
-            ]
+            ],
+            "isHyderabadOffered": false,
+            "hyderabadExclusions": null
         },
         {
             "name": "Minor in English Studies",
@@ -1064,7 +1110,10 @@
                         }
                     ]
                 }
-            ]
+            ],
+            "isHyderabadOffered": true,
+            "hyderabadExclusions": null,
+            "department": "HSS"
         },
         {
             "name": "Minor in Entrepreneurship",
@@ -1121,7 +1170,8 @@
                             "title": "Venture Finance",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["ECON F212"]
                         },
                         {
                             "code": "BITS F324",
@@ -1153,7 +1203,9 @@
                         }
                     ]
                 }
-            ]
+            ],
+            "isHyderabadOffered": false,
+            "hyderabadExclusions": null
         },
         {
             "name": "Minor in Film and Media",
@@ -1231,7 +1283,10 @@
                         }
                     ]
                 }
-            ]
+            ],
+            "isHyderabadOffered": true,
+            "hyderabadExclusions": null,
+            "department": "HSS"
         },
         {
             "name": "Minor in Finance",
@@ -1250,7 +1305,8 @@
                     "title": "Financial Management",
                     "L": "3",
                     "P": "0",
-                    "U": "3"
+                    "U": "3",
+                    "prereqs": ["ECON F212"]
                 }
             ],
             "elective_pools": [
@@ -1270,7 +1326,8 @@
                             "title": "Money banking and Financial markets",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["ECON F211"]
                         },
                         {
                             "code": "ECON F355",
@@ -1291,7 +1348,8 @@
                             "title": "Financial Engineering",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["FIN F311"]
                         },
                         {
                             "code": "FIN F242",
@@ -1340,11 +1398,15 @@
                             "title": "Financial Risk Analytics and Management",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["FIN F311"]
                         }
                     ]
                 }
-            ]
+            ],
+            "isHyderabadOffered": true,
+            "hyderabadExclusions": "M. Sc. Economics",
+            "department": "Economics & Finance"
         },
         {
             "name": "Minor in Management",
@@ -1478,7 +1540,10 @@
                         }
                     ]
                 }
-            ]
+            ],
+            "isHyderabadOffered": true,
+            "hyderabadExclusions": null,
+            "department": "Economics & Finance"
         },
         {
             "name": "Minor in Materials Science and Engineering",
@@ -1535,7 +1600,8 @@
                             "title": "Corrosion Engineering",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["CHE F243", "ME F213", "MF F213"]
                         },
                         {
                             "code": "CHEM F223",
@@ -1637,7 +1703,10 @@
                         }
                     ]
                 }
-            ]
+            ],
+            "isHyderabadOffered": true,
+            "hyderabadExclusions": null,
+            "department": "Chemical, Civil, Mechanical, Chemistry & Physics"
         },
         {
             "name": "Minor in Nanoscience and Nanobiotechnology",
@@ -1649,7 +1718,8 @@
                     "title": "Nanobiotechnology",
                     "L": "3",
                     "P": "0",
-                    "U": "3"
+                    "U": "3",
+                    "prereqs": ["BIO F111"]
                 },
                 {
                     "code": "BITS F416",
@@ -1687,7 +1757,8 @@
                             "title": "Biomolecular Modelling",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["BIO F211", "PHA F242"]
                         },
                         {
                             "code": "CHEM F223",
@@ -1740,7 +1811,9 @@
                         }
                     ]
                 }
-            ]
+            ],
+            "isHyderabadOffered": false,
+            "hyderabadExclusions": null
         },
         {
             "name": "Minor in Philosophy, Economics, and Politics (PEP)",
@@ -1930,7 +2003,9 @@
                         }
                     ]
                 }
-            ]
+            ],
+            "isHyderabadOffered": false,
+            "hyderabadExclusions": null
         },
         {
             "name": "Minor in Physics",
@@ -1944,7 +2019,8 @@
                             "title": "Electromagnetic Theory – 1",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["PHY F111"]
                         },
                         {
                             "code": "ECE F212/ EEE",
@@ -1967,14 +2043,16 @@
                     "title": "Quantum Mechanics – 1",
                     "L": "3",
                     "P": "0",
-                    "U": "3"
+                    "U": "3",
+                    "prereqs": ["PHY F111"]
                 },
                 {
                     "code": "PHY F312",
                     "title": "Statistical Mechanics",
                     "L": "3",
                     "P": "0",
-                    "U": "3"
+                    "U": "3",
+                    "prereqs": ["PHY F242"]
                 }
             ],
             "elective_pools": [
@@ -1987,7 +2065,8 @@
                             "title": "Nonlinear Dynamics and Chaos",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["MATH F111", "MATH F112", "MATH F211"]
                         },
                         {
                             "code": "BITS F386",
@@ -2001,14 +2080,16 @@
                             "title": "Classical Mechanics",
                             "L": "3",
                             "P": "1",
-                            "U": "4"
+                            "U": "4",
+                            "prereqs": ["PHY F111"]
                         },
                         {
                             "code": "PHY F213",
                             "title": "Optics",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["PHY F111"]
                         },
                         {
                             "code": "PHY F214",
@@ -2022,21 +2103,24 @@
                             "title": "Introduction to Astronomy and Astrophysics",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["PHY F111"]
                         },
                         {
                             "code": "PHY F241",
                             "title": "Electromagnetic Theory – 2",
                             "L": "3",
                             "P": "1",
-                            "U": "4"
+                            "U": "4",
+                            "prereqs": ["PHY F212"]
                         },
                         {
                             "code": "PHY F243",
                             "title": "Mathematical Method of Physics",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["MATH F111", "MATH F112", "MATH F211"]
                         },
                         {
                             "code": "PHY F244",
@@ -2050,63 +2134,72 @@
                             "title": "Quantum Mechanics – 2",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["PHY F242"]
                         },
                         {
                             "code": "PHY F313",
                             "title": "Computational Physics",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["MATH F111", "MATH F112", "MATH F211"]
                         },
                         {
                             "code": "PHY F315",
                             "title": "Theory of Relativity",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["PHY F111"]
                         },
                         {
                             "code": "PHY F318",
                             "title": "Atoms and Photons",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["PHY F242", "PHY F345", "CHEM F213"]
                         },
                         {
                             "code": "PHY F341",
                             "title": "Solid State Physics",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["PHY F312"]
                         },
                         {
                             "code": "PHY F342",
                             "title": "Atomic and Molecular Physics",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["PHY F242", "PHY F311"]
                         },
                         {
                             "code": "PHY F343",
                             "title": "Nuclear and Particle Physics",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["PHY F242", "PHY F311", "PHY F212"]
                         },
                         {
                             "code": "PHY F346",
                             "title": "Laser Science and Technology",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["PHY F212", "ECE F212/ EEE"]
                         },
                         {
                             "code": "PHY F418",
                             "title": "Lasers and Applications",
                             "L": "3",
                             "P": "1",
-                            "U": "4"
+                            "U": "4",
+                            "prereqs": ["PHY F242", "PHY F212"]
                         },
                         {
                             "code": "PHY F426",
@@ -2120,25 +2213,31 @@
                             "title": "Atmospheric Physics",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["PHY F111"]
                         },
                         {
                             "code": "PHY F428",
                             "title": "Quantum Information Theory",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["BITS F386", "PHY F242"]
                         },
                         {
                             "code": "PHY F434",
                             "title": "Foundations of Quantum Mechanics",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["PHY F242"]
                         }
                     ]
                 }
-            ]
+            ],
+            "isHyderabadOffered": true,
+            "hyderabadExclusions": "M.Sc. Physics",
+            "department": "Physics"
         },
         {
             "name": "Minor in Public Policy",
@@ -2209,7 +2308,10 @@
                         }
                     ]
                 }
-            ]
+            ],
+            "isHyderabadOffered": true,
+            "hyderabadExclusions": null,
+            "department": "HSS"
         },
         {
             "name": "Minor in Quantum Information and Technologies",
@@ -2248,7 +2350,8 @@
                             "title": "Quantum Architecture and Programming",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["CS F215"]
                         },
                         {
                             "courses": [
@@ -2257,14 +2360,21 @@
                                     "title": "Quantum Mechanics I",
                                     "L": "3",
                                     "P": "0",
-                                    "U": "3"
+                                    "U": "3",
+                                    "prereqs": ["PHY F111"]
                                 },
                                 {
                                     "code": "PHY F345",
                                     "title": "Quantum Mechanics for Engineers",
                                     "L": "3",
                                     "P": "0",
-                                    "U": "3"
+                                    "U": "3",
+                                    "prereqs": [
+                                        "PHY F111",
+                                        "MATH F111",
+                                        "MATH F112",
+                                        "MATH F211"
+                                    ]
                                 },
                                 {
                                     "code": "CHEM F213",
@@ -2282,14 +2392,20 @@
                                     "title": "Quantum Optics",
                                     "L": "3",
                                     "P": "1",
-                                    "U": "4"
+                                    "U": "4",
+                                    "prereqs": ["PHY F242", "PHY F311"]
                                 },
                                 {
                                     "code": "PHY F318",
                                     "title": "Atoms and Photons",
                                     "L": "3",
                                     "P": "0",
-                                    "U": "3"
+                                    "U": "3",
+                                    "prereqs": [
+                                        "PHY F242",
+                                        "PHY F345",
+                                        "CHEM F213"
+                                    ]
                                 }
                             ]
                         },
@@ -2298,18 +2414,23 @@
                             "title": "Quantum Information Theory",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["BITS F386", "PHY F242"]
                         },
                         {
                             "code": "PHY F434",
                             "title": "Foundations of Quantum Mechanics",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["PHY F242"]
                         }
                     ]
                 }
-            ]
+            ],
+            "isHyderabadOffered": true,
+            "hyderabadExclusions": null,
+            "department": "Physics"
         },
         {
             "name": "Minor in Robotics and Automation",
@@ -2383,7 +2504,8 @@
                             "title": "Digital Signal Processing",
                             "L": "3",
                             "P": "1",
-                            "U": "4"
+                            "U": "4",
+                            "prereqs": ["ECE F243"]
                         },
                         {
                             "code": "EEE F411",
@@ -2404,7 +2526,8 @@
                             "title": "Embedded System Design",
                             "L": "3",
                             "P": "1",
-                            "U": "4"
+                            "U": "4",
+                            "prereqs": ["ECE F241", "EEE F241", "INSTR F241"]
                         },
                         {
                             "code": "INSTR F343",
@@ -2468,7 +2591,10 @@
                         }
                     ]
                 }
-            ]
+            ],
+            "isHyderabadOffered": true,
+            "hyderabadExclusions": "B. Pharm. & M.Sc.",
+            "department": "Mechanical Engineering"
         },
         {
             "name": "Minor in Semiconductor Devices and Technology",
@@ -2480,14 +2606,16 @@
                     "title": "Electronic Devices",
                     "L": "3",
                     "P": "0",
-                    "U": "3"
+                    "U": "3",
+                    "prereqs": ["EEE F111"]
                 },
                 {
                     "code": "EEE F437",
                     "title": "Semiconductor Fabrication Technology",
                     "L": "3",
                     "P": "1",
-                    "U": "4"
+                    "U": "4",
+                    "prereqs": ["EEE/ECE/INSTR/ECOM F214"]
                 }
             ],
             "elective_pools": [
@@ -2507,14 +2635,16 @@
                             "title": "Electronic Devices Simulation Laboratory",
                             "L": "0",
                             "P": "2",
-                            "U": "2"
+                            "U": "2",
+                            "prereqs": ["EEE/ECE/INSTR/ECOM F214"]
                         },
                         {
                             "code": "EEE/ECE/INSTR F423",
                             "title": "Electronic Material Design and Simulation Laboratory",
                             "L": "1",
                             "P": "2",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["EEE/ECE/INSTR/ECOM F214"]
                         },
                         {
                             "code": "EEE F477",
@@ -2535,7 +2665,13 @@
                             "title": "Nanoelectronic Memories and Technology",
                             "L": "3",
                             "P": "2",
-                            "U": "5"
+                            "U": "5",
+                            "prereqs": [
+                                "EEE/ECE/INSTR/ECOM F214",
+                                "EEE F313",
+                                "MEL G62",
+                                "MEL G631"
+                            ]
                         },
                         {
                             "code": "MST F331",
@@ -2549,7 +2685,8 @@
                             "title": "Solid State Physics",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["PHY F312"]
                         },
                         {
                             "code": "PHY F379",
@@ -2560,7 +2697,10 @@
                         }
                     ]
                 }
-            ]
+            ],
+            "isHyderabadOffered": true,
+            "hyderabadExclusions": null,
+            "department": "Chemical, EEE & Physics"
         },
         {
             "name": "Minor in Supply Chain Analytics",
@@ -2629,7 +2769,8 @@
                                     "title": "Optimization",
                                     "L": "3",
                                     "P": "0",
-                                    "U": "3"
+                                    "U": "3",
+                                    "prereqs": ["MATH F111", "MATH F112"]
                                 },
                                 {
                                     "code": "ME F320",
@@ -2652,18 +2793,23 @@
                             "title": "Operations Research",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["MATH F113"]
                         },
                         {
                             "code": "MATH F353",
                             "title": "Statistical Inference and Applications",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["MATH F113"]
                         }
                     ]
                 }
-            ]
+            ],
+            "isHyderabadOffered": true,
+            "hyderabadExclusions": null,
+            "department": "Mechanical Engineering"
         },
         {
             "name": "Minor in Water and Sanitation",
@@ -2682,7 +2828,8 @@
                     "title": "Laboratory for Water Sanitation and Solid Waste",
                     "L": "1",
                     "P": "2",
-                    "U": "3"
+                    "U": "3",
+                    "prereqs": ["BIO F216"]
                 }
             ],
             "elective_pools": [
@@ -2734,7 +2881,10 @@
                         }
                     ]
                 }
-            ]
+            ],
+            "isHyderabadOffered": true,
+            "hyderabadExclusions": null,
+            "department": "Biological Sciences"
         },
         {
             "name": "Minor in Tissue Engineering",
@@ -2798,28 +2948,32 @@
                             "title": "Nanobiotechnology",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["BIO F111"]
                         },
                         {
                             "code": "BIO F311",
                             "title": "Recombinant DNA Technology",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["BIO F211", "PHA F242", "BIO F243"]
                         },
                         {
                             "code": "CHE F414",
                             "title": "Transport Phenomena",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["CHE F212", "CHE F241", "CHE F244"]
                         },
                         {
                             "code": "CHE F421",
                             "title": "Biochemical Engineering",
                             "L": "3",
                             "P": "0",
-                            "U": "3"
+                            "U": "3",
+                            "prereqs": ["CHE F311"]
                         },
                         {
                             "code": "DE G513",
@@ -2851,7 +3005,9 @@
                         }
                     ]
                 }
-            ]
+            ],
+            "isHyderabadOffered": false,
+            "hyderabadExclusions": null
         }
     ]
 }
