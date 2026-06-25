@@ -310,6 +310,11 @@ export const metaConfigs: Record<string, MetaConfig> = {
         description:
             'Submit a yearbook testimonial through h4u. Split long messages to fit yearbook limits.',
     }),
+    minors: createMeta({
+        title: 'Minor Programs.',
+        description:
+            'Explore all minor programs offered at BITS Pilani — course requirements, electives, and descriptions for each minor.',
+    }),
 }
 
 export const getMetaConfig = (key: string): MetaConfig =>
