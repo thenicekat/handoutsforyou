@@ -1,8 +1,8 @@
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import { getMetaConfig } from '@/config/meta'
-import { useState, useMemo } from 'react'
 import minorData from '@/config/minor_programs.json'
+import { useMemo, useState } from 'react'
 
 interface Course {
     code?: string
@@ -115,7 +115,10 @@ function CourseTable({
                                 Array.isArray(course.courses)
                             ) {
                                 return (
-                                    <tr key={idx} className="border-b border-white/10 hover:bg-white/5 transition-colors">
+                                    <tr
+                                        key={idx}
+                                        className="border-b border-white/10 hover:bg-white/5 transition-colors"
+                                    >
                                         <td className="px-4 py-3 text-sm font-mono text-gray-300 whitespace-nowrap">
                                             {course.courses.map((c, i) => (
                                                 <span key={i}>
@@ -154,7 +157,9 @@ function CourseTable({
                                                             </span>
                                                         </span>
                                                     )}
-                                                    <span className="block">{c.L || '—'}</span>
+                                                    <span className="block">
+                                                        {c.L || '—'}
+                                                    </span>
                                                 </span>
                                             ))}
                                         </td>
@@ -168,7 +173,9 @@ function CourseTable({
                                                             </span>
                                                         </span>
                                                     )}
-                                                    <span className="block">{c.P || '—'}</span>
+                                                    <span className="block">
+                                                        {c.P || '—'}
+                                                    </span>
                                                 </span>
                                             ))}
                                         </td>
@@ -182,16 +189,16 @@ function CourseTable({
                                                             </span>
                                                         </span>
                                                     )}
-                                                    <span className="block">{c.U || '—'}</span>
+                                                    <span className="block">
+                                                        {c.U || '—'}
+                                                    </span>
                                                 </span>
                                             ))}
                                         </td>
                                     </tr>
                                 )
                             }
-                            return (
-                                <CourseRow key={idx} course={course} />
-                            )
+                            return <CourseRow key={idx} course={course} />
                         })}
                     </tbody>
                 </table>
@@ -373,7 +380,9 @@ function GeneralInfoSection() {
                                     <span className="flex-shrink-0 w-7 h-7 flex items-center justify-center rounded-full bg-teal-600/20 border border-teal-500/30 text-teal-300 text-xs font-bold shadow-sm">
                                         {i + 1}
                                     </span>
-                                    <span className="leading-relaxed mt-0.5">{step}</span>
+                                    <span className="leading-relaxed mt-0.5">
+                                        {step}
+                                    </span>
                                 </li>
                             ))}
                         </ol>
@@ -392,11 +401,13 @@ export default function Minors() {
     const filteredMinors = useMemo(() => {
         if (!searchQuery.trim()) return minors
         const q = searchQuery.toLowerCase()
-        return minors.filter((m) => m.name.toLowerCase().includes(q))
+        return minors.filter(m => m.name.toLowerCase().includes(q))
     }, [searchQuery, minors])
 
     const selectedMinor =
-        filteredMinors.length > 0 ? filteredMinors[selectedIndex] || filteredMinors[0] : null
+        filteredMinors.length > 0
+            ? filteredMinors[selectedIndex] || filteredMinors[0]
+            : null
 
     const reqs = selectedMinor
         ? parseRequirements(selectedMinor.requirements_text)
@@ -434,7 +445,7 @@ export default function Minors() {
                                     type="text"
                                     placeholder="Search for a Minor..."
                                     value={searchQuery}
-                                    onChange={(e) => {
+                                    onChange={e => {
                                         setSearchQuery(e.target.value)
                                         setSelectedIndex(0)
                                     }}
@@ -442,13 +453,28 @@ export default function Minors() {
                                 />
                                 <button
                                     onClick={() => {
-                                        document.getElementById('minor-content')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                        document
+                                            .getElementById('minor-content')
+                                            ?.scrollIntoView({
+                                                behavior: 'smooth',
+                                                block: 'start',
+                                            })
                                     }}
                                     className="lg:hidden flex-shrink-0 px-3 py-2.5 bg-teal-600/20 border border-teal-500/30 rounded-lg text-teal-300 hover:bg-teal-600/30 transition-colors flex items-center justify-center"
                                     aria-label="Scroll to content"
                                 >
-                                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                                    <svg
+                                        className="w-5 h-5"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                                        />
                                     </svg>
                                 </button>
                             </div>
@@ -469,19 +495,28 @@ export default function Minors() {
                                             onClick={() => {
                                                 setSelectedIndex(idx)
                                                 if (window.innerWidth < 1024) {
-                                                    document.getElementById('minor-content')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                                    document
+                                                        .getElementById(
+                                                            'minor-content'
+                                                        )
+                                                        ?.scrollIntoView({
+                                                            behavior: 'smooth',
+                                                            block: 'start',
+                                                        })
                                                 }
                                             }}
-                                            className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 group ${isSelected
-                                                ? 'bg-gradient-to-r from-teal-600/30 to-teal-500/15 border border-teal-500/30 shadow-lg shadow-teal-500/5'
-                                                : 'hover:bg-white/5 border border-transparent'
-                                                }`}
+                                            className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 group ${
+                                                isSelected
+                                                    ? 'bg-gradient-to-r from-teal-600/30 to-teal-500/15 border border-teal-500/30 shadow-lg shadow-teal-500/5'
+                                                    : 'hover:bg-white/5 border border-transparent'
+                                            }`}
                                         >
                                             <span
-                                                className={`text-sm font-medium block ${isSelected
-                                                    ? 'text-teal-300'
-                                                    : 'text-gray-300 group-hover:text-white'
-                                                    }`}
+                                                className={`text-sm font-medium block ${
+                                                    isSelected
+                                                        ? 'text-teal-300'
+                                                        : 'text-gray-300 group-hover:text-white'
+                                                }`}
                                             >
                                                 {minor.name.replace(
                                                     'Minor in ',
@@ -496,7 +531,10 @@ export default function Minors() {
                     </div>
 
                     {/* Content Panel */}
-                    <div id="minor-content" className="flex-1 min-w-0 scroll-mt-24">
+                    <div
+                        id="minor-content"
+                        className="flex-1 min-w-0 scroll-mt-24"
+                    >
                         {selectedMinor ? (
                             <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm overflow-hidden flex flex-col transition-all duration-300">
                                 {/* Minor Header */}
@@ -535,27 +573,36 @@ export default function Minors() {
                                     </div>
 
                                     {/* Core Courses */}
-                                    {selectedMinor.core_courses && selectedMinor.core_courses.length > 0 && (
-                                        <div className="p-6 hover:bg-white/5 transition-colors duration-200">
-                                            <CourseTable
-                                                label="Core Courses"
-                                                courses={selectedMinor.core_courses}
-                                            />
-                                        </div>
-                                    )}
+                                    {selectedMinor.core_courses &&
+                                        selectedMinor.core_courses.length >
+                                            0 && (
+                                            <div className="p-6 hover:bg-white/5 transition-colors duration-200">
+                                                <CourseTable
+                                                    label="Core Courses"
+                                                    courses={
+                                                        selectedMinor.core_courses
+                                                    }
+                                                />
+                                            </div>
+                                        )}
 
                                     {/* Elective Pools */}
                                     {selectedMinor.elective_pools
                                         .filter(
-                                            (pool) =>
+                                            pool =>
                                                 pool.courses &&
                                                 pool.courses.length > 0
                                         )
                                         .map((pool, idx) => (
-                                            <div key={idx} className="p-6 hover:bg-white/5 transition-colors duration-200">
+                                            <div
+                                                key={idx}
+                                                className="p-6 hover:bg-white/5 transition-colors duration-200"
+                                            >
                                                 <CourseTable
                                                     label={pool.pool_name}
-                                                    subtitle={pool.pool_subtitle}
+                                                    subtitle={
+                                                        pool.pool_subtitle
+                                                    }
                                                     courses={pool.courses}
                                                 />
                                             </div>
@@ -577,29 +624,52 @@ export default function Minors() {
                 <div className="max-w-7xl mx-auto mt-8">
                     <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm p-6">
                         <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
-                            <span className="text-teal-400 font-bold text-xl">*</span> About Course Units with Asterisks
+                            <span className="text-teal-400 font-bold text-xl">
+                                *
+                            </span>{' '}
+                            About Course Units with Asterisks
                         </h3>
                         <p className="text-gray-300 text-sm leading-relaxed mb-4">
-                            In the BITS Pilani Academic Bulletin, an asterisk <span className="text-teal-400 font-bold">*</span> next to the units signifies that the course does not have a fixed number of units or is graded differently. Specifically:
+                            In the BITS Pilani Academic Bulletin, an asterisk{' '}
+                            <span className="text-teal-400 font-bold">*</span>{' '}
+                            next to the units signifies that the course does not
+                            have a fixed number of units or is graded
+                            differently. Specifically:
                         </p>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="bg-black/20 border border-white/5 rounded-lg overflow-hidden flex flex-col">
                                 <div className="bg-gradient-to-r from-teal-700/60 to-teal-600/40 px-4 py-2.5 border-b border-white/10">
-                                    <h4 className="text-sm font-semibold text-teal-100">Non-Letter Grading (GOOD/POOR)</h4>
+                                    <h4 className="text-sm font-semibold text-teal-100">
+                                        Non-Letter Grading (GOOD/POOR)
+                                    </h4>
                                 </div>
                                 <div className="p-4 flex-1">
                                     <p className="text-gray-300 text-xs leading-relaxed">
-                                        Courses marked with an asterisk (especially audit-type courses or certain seminar/project courses) often award non-letter grades (like GOOD or POOR). These do not contribute to the CGPA calculation but are required for completing the degree/minor requirements.
+                                        Courses marked with an asterisk
+                                        (especially audit-type courses or
+                                        certain seminar/project courses) often
+                                        award non-letter grades (like GOOD or
+                                        POOR). These do not contribute to the
+                                        CGPA calculation but are required for
+                                        completing the degree/minor
+                                        requirements.
                                     </p>
                                 </div>
                             </div>
                             <div className="bg-black/20 border border-white/5 rounded-lg overflow-hidden flex flex-col">
                                 <div className="bg-gradient-to-r from-teal-700/60 to-teal-600/40 px-4 py-2.5 border-b border-white/10">
-                                    <h4 className="text-sm font-semibold text-teal-100">Variable/Project Units</h4>
+                                    <h4 className="text-sm font-semibold text-teal-100">
+                                        Variable/Project Units
+                                    </h4>
                                 </div>
                                 <div className="p-4 flex-1">
                                     <p className="text-gray-300 text-xs leading-relaxed">
-                                        Certain project courses or elective offerings have units that depend on the specific project scope or are subject to department/instructor approval, or they denote that student work has practical components outside standard lectures.
+                                        Certain project courses or elective
+                                        offerings have units that depend on the
+                                        specific project scope or are subject to
+                                        department/instructor approval, or they
+                                        denote that student work has practical
+                                        components outside standard lectures.
                                     </p>
                                 </div>
                             </div>
@@ -610,4 +680,3 @@ export default function Minors() {
         </>
     )
 }
-
