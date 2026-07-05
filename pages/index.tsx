@@ -1,8 +1,7 @@
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
-import StarPrompt from '@/components/Prompt'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import CountUp from 'react-countup'
 
 const COUNT_UP_DURATION = 3
@@ -48,9 +47,9 @@ const USEFUL_LINKS = [
 ]
 
 export default function Home() {
-    const [starCount, setStarCount] = useState(0)
     const [showLinksModal, setShowLinksModal] = useState(false)
-    const navigationCategories = [
+    const navigationCategories = useMemo(
+        () => [
         {
             title: 'Core Academics.',
             description: 'Essential course details needed to get started.',
@@ -158,14 +157,15 @@ export default function Home() {
                 { name: 'Ledger', path: '/ledger' },
             ],
         },
-    ]
+    ],
+        []
+    )
 
     return (
         <>
             <Meta />
 
             <Menu doNotShowMenu={true} />
-            <StarPrompt setStarCount={setStarCount} />
             {/* Main Content */}
             <div className="container mx-auto px-4 py-12">
                 {/* Hero Section with Stats */}

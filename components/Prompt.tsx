@@ -17,7 +17,9 @@ export default function StarPrompt({ setStarCount }: Props) {
             const data = await response.json()
             setInternalStarCount(data.stargazers_count || 0)
             setStarCount(data.stargazers_count || 0)
-        } catch (error) {}
+        } catch (error) {
+            console.error('Failed to fetch GitHub star count:', error)
+        }
     }
 
     React.useEffect(() => {

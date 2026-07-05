@@ -2,18 +2,20 @@ import AutoCompleter from '@/components/AutoCompleter'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import CustomToastContainer from '@/components/ToastContainer'
-import { courses } from '@/config/courses'
 import { departments } from '@/config/departments'
 import { getMetaConfig } from '@/config/meta'
-import { profs } from '@/config/profs'
+import { useCourses, useProfNames } from '@/hooks/useConstants'
 import { CourseReview } from '@/types'
 import { axiosInstance } from '@/utils/axiosCache'
 import { PlusCircleIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { toast } from 'react-toastify'
 
 export default function Reviews() {
+    const courses = useCourses()
+    const profNamesList = useProfNames()
+    const profNameSet = useMemo(() => new Set(profNamesList), [profNamesList])
     const [course, setCourse] = useState('')
     const [prof, setProf] = useState('')
     const [dept, setDept] = useState('')
@@ -23,11 +25,11 @@ export default function Reviews() {
     const [reviews, setReviews] = useState([] as CourseReview[])
 
     const fetchReviews = async () => {
-        if (courses.includes(course) == false && course !== '') {
+        if (!courses.includes(course) && course !== '') {
             toast.error('Please select a course from the given list!')
             return
         }
-        if (profs.map(p => p.name).includes(prof) == false && prof !== '') {
+        if (!profNameSet.has(prof) && prof !== '') {
             toast.error('Please select a professor from the given list!')
             return
         }
@@ -77,10 +79,7 @@ export default function Reviews() {
     }
 
     useEffect(() => {
-        async function checkAuth() {
-            await axiosInstance.get('/api/auth/check')
-        }
-        checkAuth()
+        axiosInstance.get('/api/auth/check').catch(() => {})
     }, [])
 
     useEffect(() => {
@@ -111,7 +110,7 @@ export default function Reviews() {
                         <span className="m-2"></span>
                         <AutoCompleter
                             name={'Prof'}
-                            items={profs.map(p => p.name)}
+                            items={profNamesList}
                             value={prof}
                             onChange={val => setProf(val)}
                         />
@@ -173,7 +172,7 @@ export default function Reviews() {
 
                 <div className="px-2 md:px-20 p-2">
                     {!isLoading ? (
-                        reviews
+                        [...reviews]
                             .sort((a, b) => {
                                 if (a.course > b.course) return 1
                                 else if (a.course < b.course) return -1
