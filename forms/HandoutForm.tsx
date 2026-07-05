@@ -1,6 +1,6 @@
 import AutoCompleter from '@/components/AutoCompleter'
-import { courses as courseNames } from '@/config/courses'
 import { pyqYears } from '@/config/years_sems'
+import { useCourses } from '@/hooks/useConstants'
 import { HandoutFormData } from '@/types'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect, useState } from 'react'
@@ -25,6 +25,7 @@ export default function HandoutForm({
     isLoading = false,
     defaultValues,
 }: HandoutFormProps) {
+    const courseNames = useCourses()
     const [uploadCourse, setUploadCourse] = useState('')
     const [uploadSemester, setUploadSemester] = useState('')
     const [selectedFile, setSelectedFile] = useState<File | null>(null)

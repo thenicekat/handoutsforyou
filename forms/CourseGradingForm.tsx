@@ -1,9 +1,8 @@
-import { courses } from '@/config/courses'
-import { profs } from '@/config/profs'
 import { gradedSemesters } from '@/config/years_sems'
+import { useCourses, useProfNames } from '@/hooks/useConstants'
 import { CourseGradeRow, CourseGradingFormData } from '@/types'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import { z } from 'zod'
@@ -16,21 +15,9 @@ import {
 } from './FormComponents'
 
 const courseGradingSchema = z.object({
-    course: z
-        .string()
-        .min(1, 'Course is required')
-        .refine(
-            val => courses.includes(val),
-            'Please select a valid course from the list'
-        ),
+    course: z.string().min(1, 'Course is required'),
     dept: z.string().min(1, 'Department is required'),
-    prof: z
-        .string()
-        .min(1, 'Professor is required')
-        .refine(
-            val => profs.map(p => p.name).includes(val),
-            'Please select a valid professor from the list'
-        ),
+    prof: z.string().min(1, 'Professor is required'),
     semester: z
         .string()
         .min(1, 'Semester is required')
@@ -59,6 +46,9 @@ export default function CourseGradingForm({
     filterDepartmentCodes,
     resetTrigger,
 }: CourseGradingFormProps) {
+    const courses = useCourses()
+    const profNamesList = useProfNames()
+    const profNameSet = useMemo(() => new Set(profNamesList), [profNamesList])
     const [parsedData, setParsedData] = useState<string | null>(null)
     const [showParsedData, setShowParsedData] = useState(false)
     const {
@@ -93,7 +83,7 @@ export default function CourseGradingForm({
         label: d,
     }))
 
-    const profNames = profs.map(prof => prof.name)
+    const profNames = profNamesList
 
     // Reset form when defaultValues change
     useEffect(() => {
@@ -172,6 +162,15 @@ export default function CourseGradingForm({
     }
 
     const handleFormSubmit = (data: CourseGradingFormData) => {
+        if (courses.length > 0 && !courses.includes(data.course)) {
+            toast.error('Please select a valid course from the list')
+            return
+        }
+        if (profNameSet.size > 0 && !profNameSet.has(data.prof)) {
+            toast.error('Please select a valid professor from the list')
+            return
+        }
+
         if (!parsedData) {
             // First step: Parse the data
             if (

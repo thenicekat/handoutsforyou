@@ -281,6 +281,17 @@ export class GoogleDriveService {
         }
     }
 
+    /**
+     * Get article summaries for listing pages (excludes full content body).
+     */
+    async getArticleSummaries(rootFolderId: string): Promise<Post[]> {
+        const articles = await this.getArticles(rootFolderId)
+        return articles.map(post => ({
+            ...post,
+            content: post.content.slice(0, 400),
+        }))
+    }
+
     async getArticle(slug: string): Promise<Post | null> {
         try {
             await this.initializeAuth()

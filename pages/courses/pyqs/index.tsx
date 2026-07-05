@@ -2,16 +2,17 @@ import AutoCompleter from '@/components/AutoCompleter'
 import Menu from '@/components/Menu'
 import Meta from '@/components/Meta'
 import CustomToastContainer from '@/components/ToastContainer'
-import { courses as courseNames } from '@/config/courses'
 import { getMetaConfig } from '@/config/meta'
-import { profs } from '@/config/profs'
 import { pyqYears } from '@/config/years_sems'
+import { useCourses, useProfNames } from '@/hooks/useConstants'
 import { CourseDetails, CoursePYQFile, CoursePYQsByYear } from '@/types'
 import axiosInstance from '@/utils/axiosCache'
 import { useEffect, useMemo, useState } from 'react'
 import { toast } from 'react-toastify'
 
 export default function PYQs() {
+    const courseNames = useCourses()
+    const profNamesList = useProfNames()
     const [courses, setCourses] = useState<CourseDetails[]>([])
     const [searchQuery, setSearchQuery] = useState('')
     const [selectedCourse, setSelectedCourse] = useState<CourseDetails | null>(
@@ -234,7 +235,7 @@ export default function PYQs() {
                                     Professor Name
                                 </label>
                                 <AutoCompleter
-                                    items={profs.map(prof => prof.name)}
+                                    items={profNamesList}
                                     value={uploadProfessor}
                                     onChange={setUploadProfessor}
                                     name="professor"

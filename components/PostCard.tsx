@@ -1,4 +1,3 @@
-import reactMarkdownComponentConfig from '@/components/ReactMarkdownComponent'
 import { Post } from '@/types'
 import { StarIcon as StarIconOutline } from '@heroicons/react/24/outline'
 import {
@@ -8,9 +7,7 @@ import {
 } from '@heroicons/react/24/solid'
 import Link from 'next/link'
 import React from 'react'
-import ReactMarkdown from 'react-markdown'
 import { toast } from 'react-toastify'
-import remarkGfm from 'remark-gfm'
 
 interface PostCardProps {
     post: Post
@@ -35,7 +32,7 @@ const PostCard = ({ post, onBookmarkToggle }: PostCardProps) => {
             )
             setIsBookmarked(saved.includes(post.slug))
         }
-    }, [])
+    }, [post.slug])
 
     const toggleBookmark = () => {
         if (typeof window === 'undefined') return
@@ -139,12 +136,7 @@ const PostCard = ({ post, onBookmarkToggle }: PostCardProps) => {
 
             <div className="text-gray-300 whitespace-pre-wrap leading-relaxed mt-2">
                 <Link href={`/bitsofa/${post.slug}`}>
-                    <ReactMarkdown
-                        remarkPlugins={[remarkGfm]}
-                        components={reactMarkdownComponentConfig}
-                    >
-                        {contentDisplay}
-                    </ReactMarkdown>
+                    <p>{contentDisplay}</p>
                 </Link>
             </div>
         </article>

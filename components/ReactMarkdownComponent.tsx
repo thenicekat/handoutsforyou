@@ -1,5 +1,9 @@
+import dynamic from 'next/dynamic'
 import { Components } from 'react-markdown'
-import MermaidDiagram from './MermaidDiagram'
+
+const MermaidDiagram = dynamic(() => import('./MermaidDiagram'), {
+    ssr: false,
+})
 
 const reactMarkdownComponentConfig: Components = {
     h1: ({ children, ...props }) => (
@@ -43,7 +47,7 @@ const reactMarkdownComponentConfig: Components = {
             {children}
         </p>
     ),
-    code: ({ node, className, children, ...props }) => {
+    code: ({ className, children, ...props }) => {
         const match = /language-(\w+)/.exec(className || '')
         const content = String(children).replace(/\n$/, '')
 
