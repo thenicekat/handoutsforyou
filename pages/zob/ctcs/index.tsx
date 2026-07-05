@@ -30,11 +30,12 @@ export default function PlacementCTCs() {
     const [modalCompany, setModalCompany] = useState('')
     const modalRef = useRef<HTMLDialogElement>(null)
 
-    const fetchPlacementCTCs = async () => {
+    const fetchPlacementCTCs = async (year: string = yearRef) => {
+        setIsLoading(true)
         try {
             const res = await axiosInstance.get('/api/zob/ctcs/get', {
                 params: {
-                    year: yearRef,
+                    year: year,
                 },
             })
             const resp = res.data
@@ -180,6 +181,24 @@ export default function PlacementCTCs() {
                                 className="input input-secondary w-full max-w-xs m-3"
                                 onChange={e => setInput(e.target.value)}
                             />
+
+                            <select
+                                className="select select-bordered w-full max-w-xs m-3"
+                                value={yearRef}
+                                onChange={e => {
+                                    setYearRef(e.target.value)
+                                    fetchPlacementCTCs(e.target.value)
+                                }}
+                            >
+                                <option disabled>
+                                    Which year to use as reference?
+                                </option>
+                                {placementYears.map(year => (
+                                    <option value={year} key={year}>
+                                        {year}
+                                    </option>
+                                ))}
+                            </select>
                         </div>
 
                         <div className="flex-col hidden md:block md:flex-row w-1/3 justify-center">
@@ -198,34 +217,6 @@ export default function PlacementCTCs() {
                             </Link>
                         </div>
 
-                        <div className="flex flex-col md:flex-row w-full justify-center">
-                            <select
-                                className="select select-bordered w-full max-w-xs m-3"
-                                onChange={e => setYearRef(e.target.value)}
-                            >
-                                <option disabled selected>
-                                    Which year to use as reference?
-                                </option>
-                                {placementYears.map(year => (
-                                    <option
-                                        value={year}
-                                        key={year}
-                                        selected={yearRef == year}
-                                    >
-                                        {year}
-                                    </option>
-                                ))}
-                            </select>
-
-                            <Link className="m-3 w-full max-w-xs" href={''}>
-                                <button
-                                    className="btn btn-outline w-full"
-                                    onClick={fetchPlacementCTCs}
-                                >
-                                    Update Year
-                                </button>
-                            </Link>
-                        </div>
                         <p className="text-center">
                             NOTE: ESOPs do not count as monetary benefits for
                             the sake of uniformity on this page.
