@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react'
 import dynamic from 'next/dynamic'
+import { useEffect, useRef } from 'react'
 
 interface MermaidDiagramProps {
     content: string

@@ -68,10 +68,7 @@ export default function CourseReviewForm({
     }
 
     return (
-        <form
-            onSubmit={handleSubmit(submitReview)}
-            className="space-y-6"
-        >
+        <form onSubmit={handleSubmit(submitReview)} className="space-y-6">
             <FormField label="Course" required error={errors.course}>
                 <AutoCompleterInput
                     control={control}

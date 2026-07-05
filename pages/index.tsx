@@ -50,114 +50,114 @@ export default function Home() {
     const [showLinksModal, setShowLinksModal] = useState(false)
     const navigationCategories = useMemo(
         () => [
-        {
-            title: 'Core Academics.',
-            description: 'Essential course details needed to get started.',
-            items: [
-                {
-                    name: 'Handouts',
-                    path: '/courses/handouts',
-                },
-                {
-                    name: 'Prerequisites',
-                    path: '/courses/prereqs',
-                },
-                {
-                    name: 'Previous Year Questions',
-                    path: '/courses/pyqs',
-                },
-                {
-                    name: 'Minors',
-                    path: '/minors',
-                },
-            ],
-        },
-        {
-            title: 'Course Extras.',
-            description:
-                'Crowd sourced reviews, resources and grading information for courses.',
-            items: [
-                {
-                    name: 'Reviews',
-                    path: '/courses/reviews',
-                },
-                {
-                    name: 'Resources',
-                    path: '/courses/resources',
-                },
-                {
-                    name: 'Grading',
-                    path: '/courses/grading',
-                },
-            ],
-        },
-        {
-            title: 'Zob.',
-            description: 'Placement and summer internship information.',
-            items: [
-                {
-                    name: 'Placement CTCs',
-                    path: '/zob/ctcs',
-                },
-                {
-                    name: 'Resources/Chronicles',
-                    path: '/zob/resources',
-                },
-                {
-                    name: 'Summer Internships',
-                    path: '/zob/sicompanies',
-                },
-            ],
-        },
-        {
-            title: 'Higher Studies.',
-            description:
-                'Resources for pursuing higher education and research.',
-            items: [
-                {
-                    name: 'Research Chronicles',
-                    path: 'https://pollen-box-786.notion.site/Research-Chronicles-894bcac1266d4e5fac2f4cd76ff29750',
-                },
-                {
-                    name: 'Higher Studies',
-                    path: '/higherstudies/resources',
-                },
-                { name: 'BITS of Advice', path: '/bitsofa' },
-            ],
-        },
-        {
-            title: 'Practice School.',
-            description:
-                'Practice School chronicles, reviews and CGPA cutoffs.',
-            items: [
-                { name: 'Practice School Dashboard', path: '/ps' },
-                {
-                    name: 'PS1 CGPA Cutoffs',
-                    path: '/ps/cutoffs/ps1',
-                },
-                {
-                    name: 'PS2 CGPA Cutoffs',
-                    path: '/ps/cutoffs/ps2',
-                },
-            ],
-        },
-        {
-            title: 'Everything else.',
-            description: "We couldn't fit these in the other categories :P",
-            items: [
-                { name: 'Confessions', path: '/confessions' },
-                {
-                    name: 'Professor Chambers',
-                    path: '/chambers',
-                },
-                {
-                    name: 'Some Useful Links',
-                    onClick: () => setShowLinksModal(true),
-                },
-                { name: 'Ledger', path: '/ledger' },
-            ],
-        },
-    ],
+            {
+                title: 'Core Academics.',
+                description: 'Essential course details needed to get started.',
+                items: [
+                    {
+                        name: 'Handouts',
+                        path: '/courses/handouts',
+                    },
+                    {
+                        name: 'Prerequisites',
+                        path: '/courses/prereqs',
+                    },
+                    {
+                        name: 'Previous Year Questions',
+                        path: '/courses/pyqs',
+                    },
+                    {
+                        name: 'Minors',
+                        path: '/minors',
+                    },
+                ],
+            },
+            {
+                title: 'Course Extras.',
+                description:
+                    'Crowd sourced reviews, resources and grading information for courses.',
+                items: [
+                    {
+                        name: 'Reviews',
+                        path: '/courses/reviews',
+                    },
+                    {
+                        name: 'Resources',
+                        path: '/courses/resources',
+                    },
+                    {
+                        name: 'Grading',
+                        path: '/courses/grading',
+                    },
+                ],
+            },
+            {
+                title: 'Zob.',
+                description: 'Placement and summer internship information.',
+                items: [
+                    {
+                        name: 'Placement CTCs',
+                        path: '/zob/ctcs',
+                    },
+                    {
+                        name: 'Resources/Chronicles',
+                        path: '/zob/resources',
+                    },
+                    {
+                        name: 'Summer Internships',
+                        path: '/zob/sicompanies',
+                    },
+                ],
+            },
+            {
+                title: 'Higher Studies.',
+                description:
+                    'Resources for pursuing higher education and research.',
+                items: [
+                    {
+                        name: 'Research Chronicles',
+                        path: 'https://pollen-box-786.notion.site/Research-Chronicles-894bcac1266d4e5fac2f4cd76ff29750',
+                    },
+                    {
+                        name: 'Higher Studies',
+                        path: '/higherstudies/resources',
+                    },
+                    { name: 'BITS of Advice', path: '/bitsofa' },
+                ],
+            },
+            {
+                title: 'Practice School.',
+                description:
+                    'Practice School chronicles, reviews and CGPA cutoffs.',
+                items: [
+                    { name: 'Practice School Dashboard', path: '/ps' },
+                    {
+                        name: 'PS1 CGPA Cutoffs',
+                        path: '/ps/cutoffs/ps1',
+                    },
+                    {
+                        name: 'PS2 CGPA Cutoffs',
+                        path: '/ps/cutoffs/ps2',
+                    },
+                ],
+            },
+            {
+                title: 'Everything else.',
+                description: "We couldn't fit these in the other categories :P",
+                items: [
+                    { name: 'Confessions', path: '/confessions' },
+                    {
+                        name: 'Professor Chambers',
+                        path: '/chambers',
+                    },
+                    {
+                        name: 'Some Useful Links',
+                        onClick: () => setShowLinksModal(true),
+                    },
+                    { name: 'Ledger', path: '/ledger' },
+                ],
+            },
+        ],
         []
     )
 
