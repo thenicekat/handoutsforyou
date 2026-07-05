@@ -1,7 +1,7 @@
 {
   "name": "h4u",
   "short_name": "h4u",
-  "description": "A website containing all bits pilani hyderabad campus handouts",
+  "description": "A website containing all BITS Pilani Hyderabad campus handouts",
   "scope": "/",
   "start_url": "/",
   "icons": [

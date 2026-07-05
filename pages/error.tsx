@@ -50,12 +50,14 @@ export default function ErrorPage() {
         useState<keyof typeof errorMessages>('Default')
 
     useEffect(() => {
+        if (!router.isReady) return
+
         const { error } = router.query
         if (error && typeof error === 'string' && error in errorMessages) {
             setErrorType(error as keyof typeof errorMessages)
-            setIsLoading(false)
         }
-    }, [router.query])
+        setIsLoading(false)
+    }, [router.isReady, router.query])
 
     const errorContent = errorMessages[errorType]
 

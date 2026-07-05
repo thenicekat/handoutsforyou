@@ -7,13 +7,29 @@ import { ResourceByCategory } from '@/types'
 import { axiosInstance } from '@/utils/axiosCache'
 import { PlusCircleIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { toast } from 'react-toastify'
 
 export default function HSResources() {
     const [input, setInput] = useState('')
-    const [resources, setResources] = useState<ResourceByCategory>({})
+    const [filterQuery, setFilterQuery] = useState('')
+    const [allResources, setAllResources] = useState<ResourceByCategory>({})
     const [isLoading, setIsLoading] = useState(false)
+
+    const resources = useMemo(() => {
+        if (!filterQuery) return allResources
+
+        const filteredResources: ResourceByCategory = {}
+        for (const key in allResources) {
+            const filtered = allResources[key].filter(resource =>
+                resource.name.toLowerCase().includes(filterQuery.toLowerCase())
+            )
+            if (filtered.length > 0) {
+                filteredResources[key] = filtered
+            }
+        }
+        return filteredResources
+    }, [allResources, filterQuery])
 
     const fetchResources = async () => {
         setIsLoading(true)
@@ -26,7 +42,7 @@ export default function HSResources() {
                 let resourcesByCategory: ResourceByCategory = {}
                 for (let i = 0; i < data.data.length; i++) {
                     if (
-                        resourcesByCategory[data.data[i].category] == undefined
+                        resourcesByCategory[data.data[i].category] === undefined
                     ) {
                         resourcesByCategory[data.data[i].category] = []
                     }
@@ -34,7 +50,7 @@ export default function HSResources() {
                         data.data[i]
                     )
                 }
-                setResources(resourcesByCategory)
+                setAllResources(resourcesByCategory)
             } else {
                 toast.error('Error fetching resources')
             }
@@ -46,16 +62,7 @@ export default function HSResources() {
     }
 
     const filterResources = () => {
-        let filteredResources: ResourceByCategory = {}
-        for (let key in resources) {
-            let filtered = resources[key].filter(resource =>
-                resource.name.toLowerCase().includes(input.toLowerCase())
-            )
-            if (filtered.length > 0) {
-                filteredResources[key] = filtered
-            }
-        }
-        setResources(filteredResources)
+        setFilterQuery(input)
     }
 
     useEffect(() => {
@@ -128,10 +135,9 @@ export default function HSResources() {
 
                     {Object.keys(resources)
                         .sort()
-                        .map(key => {
-                            return (
-                                <>
-                                    <div className="collapse collapse-plus">
+                        .map(key => (
+                            <div key={key}>
+                                <div className="collapse collapse-plus">
                                         <input type="checkbox" />
                                         <div className="collapse-title text-lg font-medium">
                                             {key} x {resources[key].length}
@@ -152,10 +158,9 @@ export default function HSResources() {
                                         </div>
                                     </div>
 
-                                    <br />
-                                </>
-                            )
-                        })}
+                                <br />
+                            </div>
+                        ))}
                 </div>
             ) : (
                 <div className="grid place-items-center py-16">

@@ -13,7 +13,7 @@ import { googleDriveService } from '@/utils/googleDrive'
 import { LinkIcon, PlusCircleIcon } from '@heroicons/react/24/solid'
 import { GetStaticProps } from 'next'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { toast } from 'react-toastify'
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -70,9 +70,25 @@ export default function Placement({
     error?: string
 }) {
     const [input, setInput] = useState('')
+    const [filterQuery, setFilterQuery] = useState('')
     const [isLoading, setIsLoading] = useState(false)
-    const [resources, setResources] = useState<ResourceByCategory>({})
+    const [allResources, setAllResources] = useState<ResourceByCategory>({})
     const [chroniclesLoading] = useState(false)
+
+    const resources = useMemo(() => {
+        if (!filterQuery) return allResources
+
+        const filteredResources: ResourceByCategory = {}
+        for (const key in allResources) {
+            const filtered = allResources[key].filter(resource =>
+                resource.name.toLowerCase().includes(filterQuery.toLowerCase())
+            )
+            if (filtered.length > 0) {
+                filteredResources[key] = filtered
+            }
+        }
+        return filteredResources
+    }, [allResources, filterQuery])
 
     const fetchResources = async () => {
         setIsLoading(true)
@@ -83,7 +99,7 @@ export default function Placement({
                 let resourcesByCategory: ResourceByCategory = {}
                 for (let i = 0; i < data.data.length; i++) {
                     if (
-                        resourcesByCategory[data.data[i].category] == undefined
+                        resourcesByCategory[data.data[i].category] === undefined
                     ) {
                         resourcesByCategory[data.data[i].category] = []
                     }
@@ -91,7 +107,7 @@ export default function Placement({
                         data.data[i]
                     )
                 }
-                setResources(resourcesByCategory)
+                setAllResources(resourcesByCategory)
             } else {
                 toast.error('Error fetching resources')
             }
@@ -103,16 +119,7 @@ export default function Placement({
     }
 
     const filterResources = () => {
-        let filteredResources: ResourceByCategory = {}
-        for (let key in resources) {
-            let filtered = resources[key].filter(resource =>
-                resource.name.toLowerCase().includes(input.toLowerCase())
-            )
-            if (filtered.length > 0) {
-                filteredResources[key] = filtered
-            }
-        }
-        setResources(filteredResources)
+        setFilterQuery(input)
     }
 
     useEffect(() => {

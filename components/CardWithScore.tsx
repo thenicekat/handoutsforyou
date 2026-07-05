@@ -36,7 +36,7 @@ export default function CardWithScore({ resource, incrementEP }: Props) {
                 <h2 className="text-sm font-bold uppercase">
                     {resource.created_by}
                 </h2>
-                <h2 className="text-md font-bond uppercase flex">
+                <h2 className="text-md font-bold uppercase flex">
                     {resource.score} Clicks{' '}
                     <CursorArrowRippleIcon className="w-4 h-4 m-1" />
                 </h2>
