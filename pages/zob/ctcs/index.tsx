@@ -40,7 +40,13 @@ export default function PlacementCTCs() {
             const resp = res.data
             if (!resp.error) {
                 setPlacementCTCs(resp.data)
-                setFilteredPlacementCTCs(resp.data)
+                setFilteredPlacementCTCs(
+                    resp.data.filter((placementCTC: PlacementCTC) =>
+                        placementCTC.company
+                            .toLowerCase()
+                            .includes(input.toLowerCase())
+                    )
+                )
             } else {
                 toast.error('Error fetching placement details')
             }
