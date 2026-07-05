@@ -8,6 +8,7 @@ import axiosInstance from '@/utils/axiosCache'
 import { googleDriveService } from '@/utils/googleDrive'
 import { GetStaticProps } from 'next'
 import dynamic from 'next/dynamic'
+import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
@@ -63,19 +64,20 @@ export default function Handouts({
     handoutsMap: { [key: string]: any[] }
     error?: string
 }) {
+    const router = useRouter()
     const [search, setSearch] = useState('')
     const [actualSearch, setActualSearch] = useState('')
-    const [isLoading, setIsLoading] = useState(true)
 
     const [showUploadForm, setShowUploadForm] = useState(false)
     const [uploading, setUploading] = useState(false)
 
-    const filterHandouts = async () => {
-        setIsLoading(true)
-        await axiosInstance.get('/api/auth/check')
+    const filterHandouts = () => {
         setActualSearch(search)
-        setIsLoading(false)
     }
+
+    useEffect(() => {
+        axiosInstance.get('/api/auth/check').catch(() => {})
+    }, [])
 
     const handleUpload = async (data: HandoutFormData, reset: () => void) => {
         setUploading(true)
@@ -103,7 +105,7 @@ export default function Handouts({
                 toast.success('Handout uploaded successfully!')
                 setShowUploadForm(false)
                 reset()
-                window.location.reload()
+                router.replace(router.asPath)
             } else {
                 toast.error(responseData.message || 'Failed to upload handout')
             }
@@ -113,10 +115,6 @@ export default function Handouts({
             setUploading(false)
         }
     }
-
-    useEffect(() => {
-        filterHandouts()
-    }, [])
 
     if (error) {
         return (
@@ -190,32 +188,20 @@ export default function Handouts({
                 </div>
             </div>
 
-            {!isLoading && (
-                <div className="px-2 md:px-20">
-                    {Object.keys(handoutsMap)
-                        .reverse()
-                        .map((handoutMap: string) => {
-                            return (
-                                <>
-                                    <HandoutsPerYear
-                                        handouts={handoutsMap[handoutMap]}
-                                        semester={handoutMap}
-                                        key={handoutMap}
-                                        searchWord={actualSearch}
-                                    />
-                                    <hr />
-                                </>
-                            )
-                        })}
-                </div>
-            )}
-
-            {isLoading && (
-                <div className="grid place-items-center py-16">
-                    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
-                    <p className="text-lg mt-4">Loading data...</p>
-                </div>
-            )}
+            <div className="px-2 md:px-20">
+                {Object.keys(handoutsMap)
+                    .reverse()
+                    .map((handoutMap: string) => (
+                        <div key={handoutMap}>
+                            <HandoutsPerYear
+                                handouts={handoutsMap[handoutMap]}
+                                semester={handoutMap}
+                                searchWord={actualSearch}
+                            />
+                            <hr />
+                        </div>
+                    ))}
+            </div>
 
             <CustomToastContainer containerId="courseHandouts" />
         </>

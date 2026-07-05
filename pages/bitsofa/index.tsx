@@ -25,7 +25,7 @@ export const getStaticProps: GetStaticProps = async () => {
         }
 
         const articles =
-            await googleDriveService.getArticles(bitsOfAdviceFolderId)
+            await googleDriveService.getArticleSummaries(bitsOfAdviceFolderId)
 
         return {
             props: {

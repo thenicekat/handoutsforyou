@@ -62,7 +62,7 @@ export async function getUser(
         }
     } catch (error) {
         response.status(500).json({
-            message: 'Error occured: ' + (error as Error).message,
+            message: 'Error occurred: ' + (error as Error).message,
             data: [],
             error: true,
         })

@@ -16,21 +16,20 @@ export default function App({
     pageProps: { session, ...pageProps },
 }: AppProps<{ session: Session }>) {
     const router = useRouter()
-    if (
-        typeof window !== 'undefined' &&
-        typeof window.navigator !== 'undefined' &&
-        typeof navigator !== 'undefined' &&
-        navigator.userAgent
-    ) {
-        const disableDevtool = require('disable-devtool')
-        if (process.env.NODE_ENV !== 'development') disableDevtool()
-    }
 
     useAntiScraping({
         redirectOnBot: true,
         redirectUrl: '/error',
         enableMonitoring: true,
     })
+
+    useEffect(() => {
+        if (process.env.NODE_ENV === 'development') return
+        if (typeof window === 'undefined') return
+
+        const disableDevtool = require('disable-devtool')
+        disableDevtool()
+    }, [])
 
     useEffect(() => {
         const handleRouteChange = () => {

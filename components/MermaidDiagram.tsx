@@ -1,4 +1,3 @@
-import mermaid from 'mermaid'
 import dynamic from 'next/dynamic'
 import { useEffect, useRef } from 'react'
 
@@ -6,21 +5,30 @@ interface MermaidDiagramProps {
     content: string
 }
 
+let mermaidInitialized = false
+
 const MermaidDiagramComponent = ({ content }: MermaidDiagramProps) => {
     const containerRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
-        if (containerRef.current) {
-            mermaid.initialize({
-                startOnLoad: false,
-                theme: 'dark',
-                securityLevel: 'strict',
-            })
+        if (!containerRef.current) return
 
-            // Clear previous content
+        let cancelled = false
+
+        import('mermaid').then(({ default: mermaid }) => {
+            if (cancelled || !containerRef.current) return
+
+            if (!mermaidInitialized) {
+                mermaid.initialize({
+                    startOnLoad: false,
+                    theme: 'dark',
+                    securityLevel: 'strict',
+                })
+                mermaidInitialized = true
+            }
+
             containerRef.current.innerHTML = ''
 
-            // Render new diagram
             mermaid
                 .render(`mermaid-${Date.now()}`, content)
                 .then(({ svg }) => {
@@ -34,13 +42,16 @@ const MermaidDiagramComponent = ({ content }: MermaidDiagramProps) => {
                         containerRef.current.innerHTML = `<pre>${content}</pre>`
                     }
                 })
+        })
+
+        return () => {
+            cancelled = true
         }
     }, [content])
 
     return <div ref={containerRef} className="mermaid my-4" />
 }
 
-// Create a dynamic version of the component that only renders on client-side
 const MermaidDiagram = dynamic<MermaidDiagramProps>(
     () => Promise.resolve(MermaidDiagramComponent),
     { ssr: false }

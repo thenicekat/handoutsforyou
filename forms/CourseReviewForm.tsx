@@ -1,27 +1,15 @@
-import { courses } from '@/config/courses'
-import { profs } from '@/config/profs'
+import { useCourses, useProfNames } from '@/hooks/useConstants'
 import { CourseReviewFormData } from '@/types'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 import { useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
 import { z } from 'zod'
 import { AutoCompleterInput, FormField, TextArea } from './FormComponents'
 
 const courseReviewSchema = z.object({
-    course: z
-        .string()
-        .min(1, 'Course is required')
-        .refine(
-            val => courses.includes(val),
-            'Please select a valid course from the list'
-        ),
-    prof: z
-        .string()
-        .min(1, 'Professor is required')
-        .refine(
-            val => profs.map(p => p.name).includes(val),
-            'Please select a valid professor from the list'
-        ),
+    course: z.string().min(1, 'Course is required'),
+    prof: z.string().min(1, 'Professor is required'),
     review: z
         .string()
         .min(
@@ -41,6 +29,10 @@ export default function CourseReviewForm({
     isLoading = false,
     defaultValues,
 }: CourseReviewFormProps) {
+    const courses = useCourses()
+    const profNamesList = useProfNames()
+    const profNameSet = useMemo(() => new Set(profNamesList), [profNamesList])
+
     const {
         register,
         handleSubmit,
@@ -57,20 +49,26 @@ export default function CourseReviewForm({
         },
     })
 
-    const profNames = profs.map(prof => prof.name)
-
-    // Reset form when defaultValues change
     useEffect(() => {
         if (defaultValues) {
             reset(defaultValues)
         }
     }, [defaultValues, reset])
 
+    const submitReview = (data: CourseReviewFormData) => {
+        if (courses.length > 0 && !courses.includes(data.course)) {
+            toast.error('Please select a valid course from the list')
+            return
+        }
+        if (profNameSet.size > 0 && !profNameSet.has(data.prof)) {
+            toast.error('Please select a valid professor from the list')
+            return
+        }
+        onSubmit(data, reset)
+    }
+
     return (
-        <form
-            onSubmit={handleSubmit(data => onSubmit(data, reset))}
-            className="space-y-6"
-        >
+        <form onSubmit={handleSubmit(submitReview)} className="space-y-6">
             <FormField label="Course" required error={errors.course}>
                 <AutoCompleterInput
                     control={control}
@@ -85,7 +83,7 @@ export default function CourseReviewForm({
                 <AutoCompleterInput
                     control={control}
                     name="prof"
-                    items={profNames}
+                    items={profNamesList}
                     placeholder="professor"
                     error={errors.prof}
                 />
