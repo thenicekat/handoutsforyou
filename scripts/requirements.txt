@@ -16,7 +16,7 @@ packaging==24.1
 pandas==2.2.2
 pdfminer.six==20231228
 pdfplumber==0.11.1
-pillow==12.2.0
+pillow==12.3.0
 postgrest==0.16.8
 pycparser==2.22
 pydantic==2.8.0
