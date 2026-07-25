@@ -1,6 +1,6 @@
 import { ContributionData } from '@/types'
-import { CONTRIBUTIONS } from '../constants'
-import { supabase } from '../supabase'
+import { CONTRIBUTIONS } from '@/utils/constants'
+import { supabase } from '@/utils/supabase'
 
 export async function trackContribution(input: ContributionData) {
     const amount = input.count || 1

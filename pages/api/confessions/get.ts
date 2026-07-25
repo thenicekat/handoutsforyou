@@ -1,8 +1,8 @@
 import { getUser } from '@/pages/api/auth/[...nextauth]'
 import { BaseResponseData } from '@/types'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { CONFESSIONS } from '../constants'
-import { supabase } from '../supabase'
+import { CONFESSIONS } from '@/utils/constants'
+import { supabase } from '@/utils/supabase'
 
 type ConfessionRow = {
     id: number

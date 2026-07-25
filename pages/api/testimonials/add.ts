@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { getServerSession } from 'next-auth/next'
 import { authOptions } from '../auth/[...nextauth]'
-import { capitalize } from '../constants'
+import { capitalize } from '@/utils/constants'
 
 type ResponseData = {
     message: string

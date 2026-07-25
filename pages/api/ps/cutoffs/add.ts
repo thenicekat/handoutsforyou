@@ -1,8 +1,8 @@
 import { getUser } from '@/pages/api/auth/[...nextauth]'
 import { BaseResponseData, PSCutoffRequest } from '@/types'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { PS1_RESPONSES, PS2_RESPONSES } from '../../constants'
-import { supabase } from '../../supabase'
+import { PS1_RESPONSES, PS2_RESPONSES } from '@/utils/constants'
+import { supabase } from '@/utils/supabase'
 
 const matchEmailIDNumber = (email: string, idNumber: string): string => {
     let uid = email.split('@')[0]

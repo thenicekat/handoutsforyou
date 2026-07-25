@@ -1,9 +1,9 @@
 import { getUser } from '@/pages/api/auth/[...nextauth]'
 import { BaseResponseData } from '@/types'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { COURSE_REVIEWS } from '../../constants'
-import { trackContribution } from '../../contributions/track'
-import { supabase } from '../../supabase'
+import { COURSE_REVIEWS } from '@/utils/constants'
+import { trackContribution } from '@/utils/trackContribution'
+import { supabase } from '@/utils/supabase'
 
 export default async function handler(
     req: NextApiRequest,

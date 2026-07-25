@@ -1,8 +1,8 @@
 import { getUser } from '@/pages/api/auth/[...nextauth]'
 import { BaseResponseData } from '@/types'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { SI_COMPANIES } from '../../constants'
-import { supabase } from '../../supabase'
+import { SI_COMPANIES } from '@/utils/constants'
+import { supabase } from '@/utils/supabase'
 
 export default async function handler(
     req: NextApiRequest,

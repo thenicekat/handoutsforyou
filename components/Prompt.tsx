@@ -9,22 +9,21 @@ export default function StarPrompt({ setStarCount }: Props) {
     const [starPromptOpen, setStarPromptOpen] = React.useState(false)
     const [internalStarCount, setInternalStarCount] = React.useState(0)
 
-    const getStarCount = async () => {
-        try {
-            const response = await fetch(
-                'https://api.github.com/repos/thenicekat/handoutsforyou'
-            )
-            const data = await response.json()
-            setInternalStarCount(data.stargazers_count || 0)
-            setStarCount(data.stargazers_count || 0)
-        } catch (error) {
-            console.error('Failed to fetch GitHub star count:', error)
-        }
-    }
-
     React.useEffect(() => {
+        const getStarCount = async () => {
+            try {
+                const response = await fetch(
+                    'https://api.github.com/repos/thenicekat/handoutsforyou'
+                )
+                const data = await response.json()
+                setInternalStarCount(data.stargazers_count || 0)
+                setStarCount(data.stargazers_count || 0)
+            } catch (error) {
+                console.error('Failed to fetch GitHub star count:', error)
+            }
+        }
         getStarCount()
-    }, [])
+    }, [setStarCount])
 
     React.useEffect(() => {
         let localStarPromptStore = localStorage.getItem('starPromptStore')

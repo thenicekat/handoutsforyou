@@ -3,7 +3,7 @@ import { googleDriveService } from '@/utils/googleDrive'
 import formidable, { Part } from 'formidable'
 import fs from 'fs'
 import { NextApiRequest, NextApiResponse } from 'next'
-import { trackContribution } from '../../contributions/track'
+import { trackContribution } from '@/utils/trackContribution'
 
 export const config = {
     api: {
