@@ -49,7 +49,8 @@
         "overrides": {
             "@types/react": "19.1.2",
             "@types/react-dom": "19.1.2",
-            "@types/d3-dispatch": "3.0.6"
+            "@types/d3-dispatch": "3.0.6",
+            "yaml@2": "2.8.3"
         }
     },
     "devDependencies": {
