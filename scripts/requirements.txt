@@ -1,9 +1,9 @@
 annotated-types==0.7.0
-anyio==4.4.0
+anyio==4.14.2
 certifi==2024.7.4
 cffi==1.16.0
 charset-normalizer==3.3.2
-cryptography==48.0.1
+cryptography==50.0.0
 deprecation==2.1.0
 gotrue==2.5.4
 h11==0.16.0
