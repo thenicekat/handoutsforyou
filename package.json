@@ -26,11 +26,11 @@
         "disable-devtool": "^0.3.9",
         "formidable": "^3.5.4",
         "googleapis": "^150.0.1",
-        "mermaid": "^11.16.1",
-        "next": "16.3.5",
+        "mermaid": "^12.2.0",
+        "next": "16.3.8",
         "next-auth": "^4.24.15",
         "nextjs-google-adsense": "^1.0.0",
-        "postcss": "^8.5.28",
+        "postcss": "^8.5.30",
         "react": "19.1.0",
         "react-countup": "^6.5.3",
         "react-dom": "19.1.0",
@@ -44,14 +44,6 @@
         "tailwindcss": "^3.4.19",
         "typescript": "5.4.2",
         "zod": "^4.3.5"
-    },
-    "pnpm": {
-        "overrides": {
-            "@types/react": "19.1.2",
-            "@types/react-dom": "19.1.2",
-            "@types/d3-dispatch": "3.0.6",
-            "yaml@2": "2.8.3"
-        }
     },
     "devDependencies": {
         "@next/eslint-plugin-next": "^15.5.9",

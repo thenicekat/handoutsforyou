@@ -23,9 +23,9 @@ jobs:
                   node-version: '20'
 
             - name: Install pnpm
-              uses: pnpm/action-setup@v2
+              uses: pnpm/action-setup@v6
               with:
-                  version: 8
+                  version: 12.10.1
 
             - name: Install dependencies
               run: pnpm install
