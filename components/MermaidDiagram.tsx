@@ -22,6 +22,8 @@ const MermaidDiagramComponent = ({ content }: MermaidDiagramProps) => {
                 mermaid.initialize({
                     startOnLoad: false,
                     theme: 'dark',
+                    look: 'classic',
+                    layout: 'dagre',
                     securityLevel: 'strict',
                 })
                 mermaidInitialized = true

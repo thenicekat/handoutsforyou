@@ -1,0 +1,9 @@
+allowBuilds:
+  unrs-resolver: true
+
+overrides:
+  "@types/react": "19.1.2"
+  "@types/react-dom": "19.1.2"
+  "@types/d3-dispatch": "3.0.6"
+  "yaml@2": "2.8.3"
+  postcss-selector-parser: "7.1.6"
