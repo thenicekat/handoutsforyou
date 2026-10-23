@@ -28,7 +28,7 @@
         "formidable": "^3.5.4",
         "googleapis": "^150.0.1",
         "mermaid": "^12.2.0",
-        "next": "16.3.8",
+        "next": "16.4.1",
         "next-auth": "^4.24.15",
         "nextjs-google-adsense": "^1.0.0",
         "postcss": "^8.5.30",
