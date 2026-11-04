@@ -28,6 +28,8 @@ export const psAllotmentRounds = [
 ]
 // For Course Grading.
 export const gradedSemesters = [
+    '26-27 Sem 2',
+    '26-27 Sem 1',
     '25-26 Sem 2',
     '25-26 Sem 1',
     '24-25 Sem 2',
@@ -42,6 +44,7 @@ export const placementYears = [
 ]
 // For SI Companies
 export const siYears = [
+    '2026-2027',
     '2025-2026',
     '2024-2025',
     '2023-2024',
@@ -51,6 +54,8 @@ export const siYears = [
 ]
 // For PYQs and handouts.
 export const pyqYears = [
+    '2026-Sem-2',
+    '2026-Sem-1',
     '2025-Sem-2',
     '2025-Sem-1',
     '2024-Sem-2',
